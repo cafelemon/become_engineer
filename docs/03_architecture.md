@@ -11,6 +11,7 @@
 四层：
 
 - `maps/`：学习地图，负责全局导航和能力关系。
+- `content-inbox/`：素材收纳，负责登记未整理资料、处理状态和下一步动作。
 - `learning-paths/`：学习路线，负责阶段拆解和学习顺序。
 - `projects/`、`exercises/`：项目实践，负责验证学习成果。
 - `resources/`、`reviews/`：资源事实与资源评测，负责筛选、纠错和使用建议。
@@ -33,6 +34,7 @@ become_engineer/
 ├── maps/
 │   ├── README.md
 │   └── become-engineer-map.md
+├── content-inbox/
 ├── learning-paths/
 │   ├── README.md
 │   ├── engineering-foundation/
@@ -54,6 +56,7 @@ become_engineer/
 ## 内容模块
 
 - `maps/`：总学习地图和主线关系。
+- `content-inbox/`：待整理素材索引和处理队列。
 - `learning-paths/`：六条主线的路线入口和阶段规划。
 - `resources/`：免费资源清单，记录事实信息。
 - `reviews/`：资源评测，记录使用判断和推荐建议。
@@ -85,6 +88,7 @@ become_engineer/
 - 每个资源条目保留来源链接。
 - 每个资源评测明确适合阶段和验证状态。
 - 每个学习路线必须包含可验证产出。
+- 每个 inbox 素材必须标注状态、主线和下一步动作。
 - 不确定内容标记为待验证。
 - 明确区分原创总结、引用、翻译和个人理解。
 - 对外发布前检查版权、隐私和准确性。
