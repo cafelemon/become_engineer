@@ -2,38 +2,66 @@
 
 ## 当前阶段
 
-当前项目首先以 GitHub 仓库形态建设，优先沉淀 Markdown 文档、资源索引、学习路线和实践任务。后续如果内容规模扩大，再考虑静态站点或学习平台应用。
+当前项目首先以 GitHub 仓库形态建设，优先沉淀 Markdown 文档、学习地图、路线索引、资源评测、公开笔记和实践项目。后续如果内容规模扩大，再考虑静态站点或学习平台应用。
 
-## 仓库结构草案
+## 信息架构
+
+项目采用四层六线结构。
+
+四层：
+
+- `maps/`：学习地图，负责全局导航和能力关系。
+- `learning-paths/`：学习路线，负责阶段拆解和学习顺序。
+- `projects/`、`exercises/`：项目实践，负责验证学习成果。
+- `resources/`、`reviews/`：资源事实与资源评测，负责筛选、纠错和使用建议。
+
+六线：
+
+- 工程基础
+- 编程语言
+- Web 全栈
+- CS 核心
+- AI 基础
+- LLM/Agent
+
+## 仓库结构
 
 ```text
 become_engineer/
 ├── README.md
 ├── docs/
-│   ├── 00_overview.md
-│   ├── 01_prd.md
-│   ├── 02_roadmap.md
-│   ├── 03_architecture.md
-│   ├── 04_acceptance_checklist.md
-│   ├── 05_ai_coding_agent_guide.md
-│   ├── 06_progress.md
-│   └── 07_decisions.md
+├── maps/
+│   ├── README.md
+│   └── become-engineer-map.md
 ├── learning-paths/
+│   ├── README.md
+│   ├── engineering-foundation/
+│   ├── programming-languages/
+│   ├── web-fullstack/
+│   ├── cs-core/
+│   ├── ai-foundation/
+│   └── llm-agent/
 ├── resources/
+├── reviews/
 ├── notes/
 ├── exercises/
 ├── projects/
-└── templates/
+├── publications/
+├── templates/
+└── 个人学习/
 ```
 
 ## 内容模块
 
-- `learning-paths/`：学习路线，按方向和阶段组织。
-- `resources/`：免费资源清单与评估。
+- `maps/`：总学习地图和主线关系。
+- `learning-paths/`：六条主线的路线入口和阶段规划。
+- `resources/`：免费资源清单，记录事实信息。
+- `reviews/`：资源评测，记录使用判断和推荐建议。
 - `notes/`：公开知识笔记。
 - `exercises/`：练习题、实验任务和答案提示。
 - `projects/`：阶段项目与综合项目。
-- `templates/`：资源条目、笔记、练习、复盘等模板。
+- `publications/`：从个人学习资料提炼出的公开输出。
+- `templates/`：资源、评测、路线、项目、笔记、练习和公开化模板。
 
 ## 私有目录
 
@@ -41,7 +69,7 @@ become_engineer/
 个人学习/
 ```
 
-该目录只在本地使用，不进入公开仓库。适合存放个人草稿、下载资料、未整理想法和私人复盘。
+该目录只在本地使用，不进入公开仓库。适合存放个人草稿、下载资料、未整理想法和私人复盘。公开化时必须先删除隐私信息、版权风险内容和私人上下文，再沉淀到公开目录。
 
 ## 未来技术选型
 
@@ -55,7 +83,8 @@ become_engineer/
 ## 质量控制
 
 - 每个资源条目保留来源链接。
-- 每个结论尽量标注依据。
+- 每个资源评测明确适合阶段和验证状态。
+- 每个学习路线必须包含可验证产出。
 - 不确定内容标记为待验证。
 - 明确区分原创总结、引用、翻译和个人理解。
 - 对外发布前检查版权、隐私和准确性。
