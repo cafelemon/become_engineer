@@ -23,4 +23,6 @@ source-materials/
 
 ## 当前素材
 
-- 《大模型全部学习笔记》2025：已确认可访问，原始内容分批拉取到 `raw/llm-notes-2025/`。该目录被 `.gitignore` 排除，只作为二次加工来源。
+- 《大模型全部学习笔记》2025：已完整拉取到 `raw/llm-notes-2025/`，共 2533 个节点、2519 个 Markdown 页面，失败数为 0。该目录被 `.gitignore` 排除，只作为二次加工来源。
+- 完整内容审计：2519 页逐项分类、覆盖矩阵、缺口分析和抽样复核位于 `working/llm-notes-2025/content-audit/`。
+- Tool Calling 样品：加工记录位于 `working/llm-notes-2025/tool-calling-sample/`，公开产物已进入 `notes/llm-agent/` 和 `exercises/llm-agent/`。

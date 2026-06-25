@@ -19,11 +19,16 @@ source-materials/exports/
 .idea/
 .vscode/
 *.log
+*.db
+*.db-journal
 
 # Common build/cache outputs
 node_modules/
 dist/
 build/
+site/
+.site/
+become_engineer_site/
 __pycache__/
 *.py[cod]
 .pytest_cache/

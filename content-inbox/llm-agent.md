@@ -9,7 +9,7 @@
 
 | 素材 | 类型 | 阶段 | 状态 | 下一步 |
 | --- | --- | --- | --- | --- |
-| 《大模型全部学习笔记》2025 | 飞书 Wiki / 综合学习笔记 | Python 到多模态已部分拉取，Agent 以后待续跑 | triaged, dedupe-needed, ad-cleanup-needed, fact-check-needed, project-pick-needed | 原始内容保存到 `source-materials/raw/llm-notes-2025/` 本地 ignored 目录；下一步做栏目级粗筛和项目候选清单 |
+| 《大模型全部学习笔记》2025 | 飞书 Wiki / 综合学习笔记 | 全量 2533 个节点已拉取；2519 页已完成内容审计 | audited, processing-by-project-roadmap | 先建设 Python 内容分析工具的连续笔记，再按项目主干加工 AI 与 LLM 内容 |
 
 ## 当前处理规则
 
@@ -18,12 +18,24 @@
 - 去广告：删除营销、引流、无关推广和重复口播。
 - 去重：合并重复概念、重复工具介绍和重复项目。
 - 纠错：核对模型名称、API 用法、框架版本、工具链和最佳实践是否仍可用。
-- 项目精选：只保留能形成学习闭环的项目，避免只收藏标题。
-- 分层沉淀：理论进入 `notes/`，资源判断进入 `reviews/`，可运行实践进入 `projects/`。
+- 项目精选：项目按真实知识关系划分，一个项目跨多篇笔记；框架和工具教程优先成为里程碑或练习。
+- 分层沉淀：理论进入 `notes/`，资源判断进入 `reviews/`，聚焦实验进入 `exercises/`，跨章节主干进入 `projects/`。
 
 ## 当前抓取状态
 
 - 已确认可通过飞书 user 身份读取。
-- 已拉取到本地 ignored 原素材目录，不进入公开仓库。
-- 当前已覆盖根节点、学前环境、Python、机器学习、深度学习、NLP、Transformer、微调部署、强化学习、多模态等栏目。
-- Agent、Dify/Coze、企业级落地案例、Codex 案例等后续栏目需要断点继续拉取。
+- 已完整拉取 2533 个节点和 2519 个 Markdown 页面，失败数为 0。
+- 原始内容保存在本地 ignored 目录，不进入公开仓库。
+- 已生成栏目级目录体检、项目候选和广告、过时风险粗筛。
+- 已完成 2519 页逐项分类，0 页遗漏；详细清单保存在 ignored 加工区。
+- 已公开 Python、AI 与 LLM 的能力依赖图、覆盖说明和五个项目主干。
+
+## 已完成样品
+
+### Tool Calling 基础与安全
+
+- 输入范围：4 篇 Function Calling 相关素材。
+- 加工记录：保存在 `source-materials/working/llm-notes-2025/tool-calling-sample/`，不公开。
+- 公开笔记：`notes/llm-agent/tool-calling.md`。
+- 聚焦练习：`exercises/llm-agent/safe-sales-tool-calling/`。
+- 状态：去重、去广告、事实核查、独立重写、离线测试和公开入库已完成。
