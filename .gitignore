@@ -1,0 +1,28 @@
+# Private learning materials
+个人学习/
+personal-learning/
+private/
+_private/
+
+# Local environment
+.env
+.env.*
+!.env.example
+.DS_Store
+
+# Editor and tooling
+.idea/
+.vscode/
+*.log
+
+# Common build/cache outputs
+node_modules/
+dist/
+build/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
