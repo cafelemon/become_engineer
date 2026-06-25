@@ -31,6 +31,10 @@
 - [x] `maps/become-engineer-map.md` 存在。
 - [x] `content-inbox/README.md` 存在。
 - [x] `content-inbox/llm-agent.md` 存在。
+- [x] `source-materials/README.md` 存在。
+- [x] `source-materials/raw/` 被 `.gitignore` 排除。
+- [x] `source-materials/working/` 被 `.gitignore` 排除。
+- [x] `source-materials/exports/` 被 `.gitignore` 排除。
 - [x] `learning-paths/engineering-foundation/README.md` 存在。
 - [x] `learning-paths/programming-languages/README.md` 存在。
 - [x] `learning-paths/web-fullstack/README.md` 存在。
@@ -58,6 +62,7 @@
 - [x] 资源事实记录和资源评测判断分开存放。
 - [x] 个人学习资料公开化前经过去隐私和版权检查。
 - [x] Inbox 素材不保存账号、密码、token 或原始版权资料。
+- [x] Source materials 原始抓取内容不进入公开仓库。
 
 ## 发布前检查
 

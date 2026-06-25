@@ -4,6 +4,11 @@ personal-learning/
 private/
 _private/
 
+# Source materials for second-pass processing
+source-materials/raw/
+source-materials/working/
+source-materials/exports/
+
 # Local environment
 .env
 .env.*

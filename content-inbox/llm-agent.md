@@ -9,7 +9,7 @@
 
 | 素材 | 类型 | 阶段 | 状态 | 下一步 |
 | --- | --- | --- | --- | --- |
-| 《大模型全部学习笔记》2025 | 飞书 Wiki / 综合学习笔记 | 待判断 | raw, dedupe-needed, ad-cleanup-needed, fact-check-needed, project-pick-needed | 先读取目录，去广告和重复内容，再筛选可实践项目；访问凭证不写入仓库 |
+| 《大模型全部学习笔记》2025 | 飞书 Wiki / 综合学习笔记 | Python 到多模态已部分拉取，Agent 以后待续跑 | triaged, dedupe-needed, ad-cleanup-needed, fact-check-needed, project-pick-needed | 原始内容保存到 `source-materials/raw/llm-notes-2025/` 本地 ignored 目录；下一步做栏目级粗筛和项目候选清单 |
 
 ## 当前处理规则
 
@@ -20,3 +20,10 @@
 - 纠错：核对模型名称、API 用法、框架版本、工具链和最佳实践是否仍可用。
 - 项目精选：只保留能形成学习闭环的项目，避免只收藏标题。
 - 分层沉淀：理论进入 `notes/`，资源判断进入 `reviews/`，可运行实践进入 `projects/`。
+
+## 当前抓取状态
+
+- 已确认可通过飞书 user 身份读取。
+- 已拉取到本地 ignored 原素材目录，不进入公开仓库。
+- 当前已覆盖根节点、学前环境、Python、机器学习、深度学习、NLP、Transformer、微调部署、强化学习、多模态等栏目。
+- Agent、Dify/Coze、企业级落地案例、Codex 案例等后续栏目需要断点继续拉取。

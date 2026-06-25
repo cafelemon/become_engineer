@@ -12,6 +12,7 @@
 
 - `maps/`：学习地图，负责全局导航和能力关系。
 - `content-inbox/`：素材收纳，负责登记未整理资料、处理状态和下一步动作。
+- `source-materials/`：素材加工区，负责本地保存原始抓取、清洗中间产物和临时导出。
 - `learning-paths/`：学习路线，负责阶段拆解和学习顺序。
 - `projects/`、`exercises/`：项目实践，负责验证学习成果。
 - `resources/`、`reviews/`：资源事实与资源评测，负责筛选、纠错和使用建议。
@@ -35,6 +36,7 @@ become_engineer/
 │   ├── README.md
 │   └── become-engineer-map.md
 ├── content-inbox/
+├── source-materials/
 ├── learning-paths/
 │   ├── README.md
 │   ├── engineering-foundation/
@@ -57,6 +59,7 @@ become_engineer/
 
 - `maps/`：总学习地图和主线关系。
 - `content-inbox/`：待整理素材索引和处理队列。
+- `source-materials/`：本地素材加工区；只有说明文件入库，原始内容和中间产物不入库。
 - `learning-paths/`：六条主线的路线入口和阶段规划。
 - `resources/`：免费资源清单，记录事实信息。
 - `reviews/`：资源评测，记录使用判断和推荐建议。

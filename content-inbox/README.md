@@ -11,6 +11,7 @@
 - 有广告、重复、过时或错误风险的资料先进入 inbox，不直接进入正式目录。
 - 每个素材必须映射到六条主线之一。
 - 通过筛选后，再沉淀到 `resources/`、`reviews/`、`notes/`、`projects/` 或 `publications/`。
+- 原始抓取内容、清洗中间产物和临时导出文件放入 `source-materials/` 的 ignored 子目录。
 
 ## 六条主线队列
 

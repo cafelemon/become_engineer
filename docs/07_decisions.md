@@ -79,3 +79,19 @@
 - Inbox 不保存访问密码、token、下载资料原件或受版权保护内容。
 - 素材必须先标注状态，再决定进入 `resources/`、`reviews/`、`notes/`、`projects/` 或 `publications/`。
 - 项目推动是优先原则，但工程基础和纯理论内容不强制独立项目化。
+
+## 2026-06-25: 原始素材放入 source-materials 而非个人学习区
+
+### 决策
+
+新增 `source-materials/` 作为项目级素材加工区。`README.md` 入库，`raw/`、`working/`、`exports/` 作为本地 ignored 子目录。
+
+### 原因
+
+外部资料是项目内容生产来源，不属于个人学习区；但原文、广告、旧内容和中间产物也不适合直接公开。
+
+### 影响
+
+- 原始抓取内容放入 `source-materials/raw/`。
+- 清洗、去重、纠错过程文件放入 `source-materials/working/`。
+- 只有二次加工后的公开内容进入正式目录。
