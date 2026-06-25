@@ -11,13 +11,10 @@
 - 规划首批学习领域：前端、后端、数据库、Python、C++、机器学习、深度学习、强化学习、Agent、LLM。
 - 建立第一版公开内容目录：`learning-paths/`、`resources/`、`notes/`、`exercises/`、`projects/`、`templates/`。
 - 建立资源、笔记、练习模板。
-
-### 进行中
-
 - 连接 GitHub 远程仓库。
+- 推送初始化版本到 `origin/main`。
 
 ### 下一步
 
-- 确认默认分支。
 - 整理首批免费资源清单。
 - 建立资源质量评估标准。
