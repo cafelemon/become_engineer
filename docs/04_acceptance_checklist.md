@@ -99,6 +99,7 @@
 - [x] 工程基础阶段0单元7/8已作为独立课程正文落地，并包含前置、顺序、练习、错误排查、完成标准和下一步。
 - [x] 工程基础阶段0单元9已作为独立课程正文落地，并包含前置、顺序、练习、错误排查、完成标准和下一步。
 - [x] 工程基础阶段0已完成结构和连贯性检查，9个单元形成学习记录、文件、终端、编辑器、Markdown、Git、环境、Docker和验证闭环。
+- [x] 工程基础阶段0已完成机器验收：课程契约、相对链接、MkDocs导航、线上页面关键内容和公开信息边界检查通过。
 
 ## Tool Calling 练习
 
@@ -127,4 +128,4 @@
 - [x] 使用 MkDocs Material 作为 Markdown 公开网站外壳。
 - [x] 网站配置不把 `个人学习/` 和 `source-materials/raw|working|exports/` 纳入构建。
 - [x] GitHub Actions 发布到 GitHub Pages。
-- [ ] 首次推送后检查 `https://cafelemon.github.io/become_engineer/` 可访问。
+- [x] 首次推送后检查 `https://cafelemon.github.io/become_engineer/` 可访问。
