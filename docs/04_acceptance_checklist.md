@@ -129,3 +129,6 @@
 - [x] 网站配置不把 `个人学习/` 和 `source-materials/raw|working|exports/` 纳入构建。
 - [x] GitHub Actions 发布到 GitHub Pages。
 - [x] 首次推送后检查 `https://cafelemon.github.io/become_engineer/` 可访问。
+- [x] 公开站点主导航收敛为首页、开始学习、项目、项目文档。
+- [x] 页面目录已整合到左侧导航，不再作为右侧独立目录展示。
+- [x] 首页和公开学习入口不再展示素材库、笔记库、资源库和内部编号口径。

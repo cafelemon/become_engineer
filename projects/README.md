@@ -1,33 +1,36 @@
-# 项目实践
+# 项目
 
-这里存放可公开的实践项目设计、代码和复盘。
+这里不是零散 demo 集合，而是把学习路线中的多个知识点整合到真实任务里的项目主干。
 
-项目应尽量覆盖真实工程流程：
+你不需要一开始就做完一个大项目。项目会随着课程推进逐步解锁：先完成前置课程，再进入对应里程碑；每个里程碑都会说明要产出什么、怎么验证、需要回到哪些基础知识。
 
-- 需求定义
-- 技术方案
-- 开发实现
-- 测试验证
-- 部署运行
-- 复盘改进
+## 项目怎么用
 
-## 项目要求
+项目分成两类实践：
 
-- 标注所属主线和适合阶段。
-- 一个项目应横跨多篇笔记和多个能力模块，通过里程碑逐步加码。
-- 每个里程碑写清对应笔记、代码产出和验收标准。
-- 在项目中持续链接回工程、语言、数学、CS 和 Web 基础。
-- 尽量保留真实问题、取舍和复盘。
-- 不提交私有数据、账号信息或受版权保护资料。
+- 核心项目：跨多门课程持续演进，用来整合工程、语言、CS、Web、AI 和 LLM/Agent 能力。
+- 局部练习：用于验证某个小知识点，例如一次工具调用实验、一个 SQL 查询练习或一个命令行小任务。
 
-## 项目主干
+核心项目会放在本页展示。局部练习会出现在具体课程或项目里程碑中，不会被包装成独立大项目。
 
-- 新学习者先完成[小白统一学习路线](../learning-paths/beginner-roadmap.md)中的解锁条件。
-- [项目主干规划](project-roadmap.md)
-- [Python 内容分析工具](python-content-analysis/README.md)
-- [结构化数据机器学习系统](structured-data-ml-system/README.md)
-- [文本分类模型演进](text-classification-evolution/README.md)
-- [强化学习控制实验](reinforcement-learning-control-lab/README.md)
-- [可评估的智能学习助手](intelligent-learning-assistant/README.md)
+## 核心项目
 
-聚焦实验和阶段性验证放入 [练习库](../exercises/README.md)，不为每篇笔记单独创建项目。
+| 什么时候开始 | 项目 | 训练目标 |
+| --- | --- | --- |
+| 完成 Python 起步后 | [Python 内容分析工具](python-content-analysis/README.md) | 用 Python 处理 Markdown、JSON 和目录数据，逐步加入 CLI、日志、测试和报告输出 |
+| 进入机器学习后 | [结构化数据机器学习系统](structured-data-ml-system/README.md) | 完成数据清洗、特征工程、训练验证、指标比较和推理闭环 |
+| 进入深度学习与 NLP 后 | [文本分类模型演进](text-classification-evolution/README.md) | 从传统模型推进到深度学习和 Transformer，比较效果、成本和误差 |
+| 完成机器学习基础后 | [强化学习控制实验](reinforcement-learning-control-lab/README.md) | 理解环境、状态、动作、奖励和价值方法，侧重实验分析 |
+| 进入 LLM / Agent 后 | [可评估的智能学习助手](intelligent-learning-assistant/README.md) | 用本学习库内容构建可检索、可引用、可评估、可使用工具的学习助手 |
+
+## 学习中的项目关系
+
+- 课程负责讲清概念和操作。
+- 练习负责验证局部知识点。
+- 项目负责把多个知识点合成完整能力。
+
+因此，一个项目会横跨多篇课程；一篇课程也可能只推进项目中的一个小里程碑。
+
+## 开始前
+
+新学习者先回到[开始学习](../learning-paths/beginner-roadmap.md)。到达项目解锁点后，再进入本页对应项目。

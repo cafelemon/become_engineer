@@ -1,18 +1,18 @@
 # 项目主干规划
 
-本项目不采用“一篇笔记对应一个项目”。项目是跨章节持续演进的学习主干，笔记负责解释并推进某个里程碑。
+本项目不采用“一篇笔记对应一个项目”。项目是跨章节持续演进的学习主干，课程负责解释并推进某个里程碑。
 
-新学习者不应从本页选择项目。请先按[小白统一学习路线](../learning-paths/beginner-roadmap.md)完成前置，项目会在对应阶段解锁。
+新学习者不应从本页选择项目。请先按[开始学习](../learning-paths/beginner-roadmap.md)完成前置，项目会在对应位置解锁。
 
 ## 核心项目
 
-| 解锁阶段 | 项目 | 主要知识模块 | 定位 |
+| 什么时候开始 | 项目 | 主要知识模块 | 定位 |
 | --- | --- | --- | --- |
-| Python起步完成 | [Python 内容分析工具](python-content-analysis/README.md) | 工程基础、Python、数据处理 | 建立可复用的内容审计工具 |
-| AI机器学习阶段 | [结构化数据机器学习系统](structured-data-ml-system/README.md) | Python、数学、机器学习、工程化 | 完成数据到推理的ML闭环 |
-| AI深度学习/NLP阶段 | [文本分类模型演进](text-classification-evolution/README.md) | 机器学习、深度学习、NLP/Transformer | 在同一任务上比较模型演进 |
-| AI独立进阶分支 | [强化学习控制实验](reinforcement-learning-control-lab/README.md) | Python、数学、机器学习、强化学习 | 独立验证决策学习方法 |
-| LLM/Agent阶段 | [可评估的智能学习助手](intelligent-learning-assistant/README.md) | 工程、Web、LLM、RAG、Agent、评估 | 将本仓库内容构建成可验证应用 |
+| 完成 Python 起步后 | [Python 内容分析工具](python-content-analysis/README.md) | 工程基础、Python、数据处理 | 建立可复用的内容审计工具 |
+| 进入机器学习后 | [结构化数据机器学习系统](structured-data-ml-system/README.md) | Python、数学、机器学习、工程化 | 完成数据到推理的ML闭环 |
+| 进入深度学习与 NLP 后 | [文本分类模型演进](text-classification-evolution/README.md) | 机器学习、深度学习、NLP/Transformer | 在同一任务上比较模型演进 |
+| 完成机器学习基础后 | [强化学习控制实验](reinforcement-learning-control-lab/README.md) | Python、数学、机器学习、强化学习 | 独立验证决策学习方法 |
+| 进入 LLM/Agent 后 | [可评估的智能学习助手](intelligent-learning-assistant/README.md) | 工程、Web、LLM、RAG、Agent、评估 | 将本仓库内容构建成可验证应用 |
 
 ## 关系
 

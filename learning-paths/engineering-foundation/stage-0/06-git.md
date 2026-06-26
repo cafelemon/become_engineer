@@ -1,19 +1,19 @@
-# 06 Git
+# Git
 
 ## 前置知识
 
-- 已完成 [01 学习方法](01-learning-method.md)。
-- 已完成 [02 文件系统](02-filesystem.md)。
-- 已完成 [03 终端与 Shell](03-terminal-shell.md)。
-- 已完成 [04 编辑器](04-editor.md)。
-- 已完成 [05 Markdown](05-markdown.md)。
+- 已完成 [学习方法](01-learning-method.md)。
+- 已完成 [文件系统](02-filesystem.md)。
+- 已完成 [终端与 Shell](03-terminal-shell.md)。
+- 已完成 [编辑器](04-editor.md)。
+- 已完成 [Markdown](05-markdown.md)。
 - 能打开终端、进入目录、修改并保存一个 Markdown 文件。
 
 ## 学习目标
 
-学完本单元后，你应该能理解仓库、工作区、暂存区、提交、状态、历史和远程仓库的最小概念，并完成一次本地 Git 提交流程。
+学完本节后，你应该能理解仓库、工作区、暂存区、提交、状态、历史和远程仓库的最小概念，并完成一次本地 Git 提交流程。
 
-本单元只讲本地 Git 最小闭环和远程仓库认知。不讲分支策略、Pull Request、rebase、冲突处理或 GitHub Actions。
+本节只讲本地 Git 最小闭环和远程仓库认知。不讲分支策略、Pull Request、rebase、冲突处理或 GitHub Actions。
 
 ## 核心概念
 
@@ -59,7 +59,7 @@ git add README.md
 git add .
 ```
 
-入门阶段建议先用具体文件名，减少误加无关文件。
+入门时建议先用具体文件名，减少误加无关文件。
 
 ### 提交
 
@@ -93,7 +93,7 @@ git log
 git remote -v
 ```
 
-本单元只要求知道远程仓库是什么，不要求执行 push 或配置 GitHub 权限。
+本节只要求知道远程仓库是什么，不要求执行 push 或配置 GitHub 权限。
 
 ## 学习顺序
 
@@ -268,11 +268,11 @@ git remote -v
 | 提交信息太模糊 | 历史里只看到 `update` | 用动词说明这次变化，比如 `Add learning note` |
 | 把无关文件一起提交 | 提交里混入缓存、数据库或私人文件 | 用具体文件名 `git add README.md`，不要一开始就依赖 `git add .` |
 | 不会退出 `git log` | 终端停在历史页面 | 按 `q` 退出 |
-| 第一次提交失败 | Git 要求配置用户名和邮箱 | 记录错误信息，后续在开发环境单元处理 |
+| 第一次提交失败 | Git 要求配置用户名和邮箱 | 记录错误信息，后续在开发环境处理 |
 
 ## 完成标准
 
-完成本单元需要同时满足：
+完成本节需要同时满足：
 
 - 能解释仓库、工作区、暂存区和提交的区别。
 - 能在临时目录中运行 `git init`。
@@ -284,4 +284,4 @@ git remote -v
 
 ## 下一步
 
-进入 [单元 7 开发环境](07-development-environment.md)。下一单元会学习解释器、编译器、环境变量和依赖的基本概念。
+进入 [开发环境](07-development-environment.md)。下一节会学习解释器、编译器、环境变量和依赖的基本概念。

@@ -36,6 +36,7 @@ theme:
     - navigation.indexes
     - navigation.top
     - navigation.footer
+    - toc.integrate
     - toc.follow
     - search.highlight
     - search.suggest
@@ -75,56 +76,26 @@ exclude_docs: |
 nav:
   - 首页: README.md
   - 开始学习:
-      - 小白统一学习路线: learning-paths/beginner-roadmap.md
-      - 总学习地图: maps/README.md
-      - Become Engineer 总地图: maps/become-engineer-map.md
-      - Python-AI-LLM 能力依赖图: maps/python-ai-llm-dependency-map.md
-      - Python-AI-LLM 素材覆盖说明: maps/python-ai-llm-content-coverage.md
-  - 工程基础:
-      - 主线入口: learning-paths/engineering-foundation/README.md
-      - 阶段 0 入口: learning-paths/engineering-foundation/stage-0/README.md
-      - 01 学习方法: learning-paths/engineering-foundation/stage-0/01-learning-method.md
-      - 02 文件系统: learning-paths/engineering-foundation/stage-0/02-filesystem.md
-      - 03 终端与 Shell: learning-paths/engineering-foundation/stage-0/03-terminal-shell.md
-      - 04 编辑器: learning-paths/engineering-foundation/stage-0/04-editor.md
-      - 05 Markdown: learning-paths/engineering-foundation/stage-0/05-markdown.md
-      - 06 Git: learning-paths/engineering-foundation/stage-0/06-git.md
-      - 07 开发环境: learning-paths/engineering-foundation/stage-0/07-development-environment.md
-      - 08 Docker最小认知: learning-paths/engineering-foundation/stage-0/08-docker-basics.md
-      - 09 验证习惯: learning-paths/engineering-foundation/stage-0/09-validation-habit.md
-  - 六条主线:
-      - 主线总览: learning-paths/README.md
-      - 编程语言: learning-paths/programming-languages/README.md
-      - CS 核心: learning-paths/cs-core/README.md
-      - Web 全栈: learning-paths/web-fullstack/README.md
-      - AI 基础: learning-paths/ai-foundation/README.md
-      - LLM/Agent: learning-paths/llm-agent/README.md
-  - 项目实践:
-      - 项目入口: projects/README.md
+      - 学习路线: learning-paths/beginner-roadmap.md
+      - 工程基础入门:
+          - 课程说明: learning-paths/engineering-foundation/stage-0/README.md
+          - 学习方法: learning-paths/engineering-foundation/stage-0/01-learning-method.md
+          - 文件系统: learning-paths/engineering-foundation/stage-0/02-filesystem.md
+          - 终端与 Shell: learning-paths/engineering-foundation/stage-0/03-terminal-shell.md
+          - 编辑器: learning-paths/engineering-foundation/stage-0/04-editor.md
+          - Markdown: learning-paths/engineering-foundation/stage-0/05-markdown.md
+          - Git: learning-paths/engineering-foundation/stage-0/06-git.md
+          - 开发环境: learning-paths/engineering-foundation/stage-0/07-development-environment.md
+          - Docker最小认知: learning-paths/engineering-foundation/stage-0/08-docker-basics.md
+          - 验证习惯: learning-paths/engineering-foundation/stage-0/09-validation-habit.md
+  - 项目:
+      - 项目说明: projects/README.md
       - 项目主干规划: projects/project-roadmap.md
       - Python 内容分析工具: projects/python-content-analysis/README.md
       - 结构化数据机器学习系统: projects/structured-data-ml-system/README.md
       - 文本分类模型演进: projects/text-classification-evolution/README.md
       - 强化学习控制实验: projects/reinforcement-learning-control-lab/README.md
       - 可评估的智能学习助手: projects/intelligent-learning-assistant/README.md
-  - 笔记与练习:
-      - 公开笔记: notes/README.md
-      - Tool Calling: notes/llm-agent/tool-calling.md
-      - 练习库: exercises/README.md
-      - 安全销售查询 Tool Calling: exercises/llm-agent/safe-sales-tool-calling/README.md
-  - 素材与资源:
-      - 素材收纳: content-inbox/README.md
-      - 外部来源目录: content-inbox/external-source-catalog.md
-      - 工程基础素材队列: content-inbox/engineering-foundation.md
-      - 编程语言素材队列: content-inbox/programming-languages.md
-      - CS 核心素材队列: content-inbox/cs-core.md
-      - Web 全栈素材队列: content-inbox/web-fullstack.md
-      - AI 基础素材队列: content-inbox/ai-foundation.md
-      - LLM/Agent 素材队列: content-inbox/llm-agent.md
-      - 素材加工区说明: source-materials/README.md
-      - 资源库: resources/README.md
-      - 资源评测: reviews/README.md
-      - 公开输出: publications/README.md
   - 项目文档:
       - 项目总览: docs/00_overview.md
       - PRD: docs/01_prd.md
