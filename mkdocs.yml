@@ -80,6 +80,7 @@ nav:
   - 首页: README.md
   - 开始学习:
       - 学习路线: learning-paths/beginner-roadmap.md
+      - 完整课程地图: learning-paths/curriculum-map.md
       - 工程基础入门:
           - 课程说明: learning-paths/engineering-foundation/stage-0/README.md
           - 学习方法: learning-paths/engineering-foundation/stage-0/01-learning-method.md
@@ -110,5 +111,6 @@ nav:
       - 架构: docs/03_architecture.md
       - 验收清单: docs/04_acceptance_checklist.md
       - AI Coding 工作协议: docs/05_ai_coding_agent_guide.md
+      - 课程内容规范: docs/08_content_standard.md
       - 进度记录: docs/06_progress.md
       - 决策记录: docs/07_decisions.md
