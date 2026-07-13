@@ -91,6 +91,10 @@ nav:
           - 开发环境: learning-paths/engineering-foundation/stage-0/07-development-environment.md
           - Docker最小认知: learning-paths/engineering-foundation/stage-0/08-docker-basics.md
           - 验证习惯: learning-paths/engineering-foundation/stage-0/09-validation-habit.md
+      - Python 起步:
+          - 课程说明: learning-paths/programming-languages/python-basics/README.md
+          - 变量、基本类型、输入输出: learning-paths/programming-languages/python-basics/01-variables-types-io.md
+          - 条件、循环、布尔逻辑: learning-paths/programming-languages/python-basics/02-conditions-loops-boolean.md
   - 项目:
       - 项目说明: projects/README.md
       - 项目主干规划: projects/project-roadmap.md

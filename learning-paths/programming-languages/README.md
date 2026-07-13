@@ -12,7 +12,7 @@
 
 ## 阶段划分
 
-1. Python 起步：变量、控制流、函数、数据结构、文件和基本调试。
+1. [Python 起步](python-basics/README.md)：变量、控制流、函数、数据结构、文件和基本调试。
 2. Python/C++ 双主修：Python工程化与数据处理；C++类型、编译、STL、内存和CMake。
 3. Java 补充：语法、面向对象、集合、JVM、构建与测试。
 4. Web语言：JavaScript与TypeScript在Web主线中展开。
@@ -36,6 +36,7 @@
 ## 进入与离开条件
 
 - 进入条件：工程基础前置验收完成。
+- Python 起步入口：[课程说明](python-basics/README.md)。
 - C++解锁：Python变量、控制流、函数、常用数据结构和基本调试完成。
 - CS最小核心解锁：Python可完成带测试的小工具，C++可完成CMake多文件程序并使用STL和RAII。
 

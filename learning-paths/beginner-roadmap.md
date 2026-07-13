@@ -72,8 +72,9 @@
 
 ### 学习内容
 
-- 变量、基本类型、输入和输出。
-- 条件、循环和布尔逻辑。
+- [课程说明](programming-languages/python-basics/README.md)
+- [变量、基本类型、输入输出](programming-languages/python-basics/01-variables-types-io.md)
+- [条件、循环、布尔逻辑](programming-languages/python-basics/02-conditions-loops-boolean.md)
 - 函数、参数、返回值和作用域。
 - 字符串、列表、字典、集合和元组。
 - 文件读取、JSON 和简单目录操作。
@@ -91,6 +92,8 @@
 ### 项目解锁
 
 完成 Python 起步后，可以进入 [Python 内容分析工具](../projects/python-content-analysis/README.md) 的第一个里程碑。
+
+项目不会替代 Python 起步课程。先完成本部分的变量、条件、循环、函数、数据结构、文件和调试练习，再进入项目里程碑。
 
 ## Python / C++ 双主修
 
