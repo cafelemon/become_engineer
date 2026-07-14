@@ -16,7 +16,7 @@
 - 提示
 - 延伸任务
 
-阶段作品默认由连续3-6节相关课程形成。若它推进已有长期项目，则直接写入项目里程碑，不在本目录重复创建。具体要求见[课程内容规范](../docs/08_content_standard.md)和[练习模板](https://github.com/cafelemon/become_engineer/blob/main/templates/exercise_template.md)。
+阶段作品默认由连续3-6节相关课程形成。若它推进已有长期项目，则直接写入项目里程碑，不在本目录重复创建。具体要求见[课程内容规范](https://github.com/cafelemon/become_engineer/blob/main/docs/08_content_standard.md)和[练习模板](https://github.com/cafelemon/become_engineer/blob/main/templates/exercise_template.md)。
 
 ## 主线映射
 

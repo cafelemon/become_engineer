@@ -1,257 +1,187 @@
+<div class="be-roadmap-hero" markdown>
+
+<span class="be-roadmap-eyebrow">从零开始的默认路线</span>
+
 # 开始学习
 
-这是一条给初学者使用的默认学习路线。你不需要先理解仓库目录，也不需要自己判断先学哪一门；从上往下走，完成当前部分的练习和验收后，再进入下一部分。
+你不需要先理解仓库目录，也不需要自己判断先学哪一门。沿着下面的阶段从上往下学习，完成当前部分的练习和验收后，再进入下一阶段。
+
+<div class="be-roadmap-actions" markdown>
+
+[开始第一课](engineering-foundation/stage-0/01-learning-method.md){ .md-button .md-button--primary }
+[查看完整课程地图](curriculum-map.md){ .md-button }
+
+</div>
+
+</div>
+
+## 默认学习路线
+
+点击阶段可以跳到本页对应的简介。状态表示当前公开内容的建设情况，不代表你个人的学习进度。
+
+<ol class="be-roadmap-steps">
+  <li class="be-roadmap-step" data-state="open">
+    <a class="be-roadmap-stage" href="#stage-engineering">
+      <span class="be-roadmap-number" aria-hidden="true">01</span>
+      <span class="be-roadmap-copy"><strong>工程基础入门</strong><small>学习方法、文件、终端、Git、环境与验证习惯</small></span>
+      <span class="be-roadmap-status">已开放</span>
+    </a>
+  </li>
+  <li class="be-roadmap-step" data-state="open">
+    <a class="be-roadmap-stage" href="#stage-python-start">
+      <span class="be-roadmap-number" aria-hidden="true">02</span>
+      <span class="be-roadmap-copy"><strong>Python 起步</strong><small>从变量与控制流推进到可维护、可测试的小程序</small></span>
+      <span class="be-roadmap-status">已开放</span>
+    </a>
+  </li>
+  <li class="be-roadmap-step" data-state="building">
+    <a class="be-roadmap-stage" href="#stage-dual-language">
+      <span class="be-roadmap-number" aria-hidden="true">03</span>
+      <span class="be-roadmap-copy"><strong>Python / C++ 双主修</strong><small>语言核心、工程化、并发网络、运行原理与性能</small></span>
+      <span class="be-roadmap-status">建设中</span>
+    </a>
+  </li>
+  <li class="be-roadmap-step" data-state="planned">
+    <a class="be-roadmap-stage" href="#stage-cs-core">
+      <span class="be-roadmap-number" aria-hidden="true">04</span>
+      <span class="be-roadmap-copy"><strong>CS 最小核心</strong><small>数据结构、算法、系统、网络和数据库最小集</small></span>
+      <span class="be-roadmap-status">规划中</span>
+    </a>
+  </li>
+  <li class="be-roadmap-step" data-state="planned">
+    <a class="be-roadmap-stage" href="#stage-web-cs">
+      <span class="be-roadmap-number" aria-hidden="true">05</span>
+      <span class="be-roadmap-copy"><strong>Web 实践 + CS 深化</strong><small>做出完整应用，并用计算机原理解释真实问题</small></span>
+      <span class="be-roadmap-status">规划中</span>
+    </a>
+  </li>
+  <li class="be-roadmap-step" data-state="planned">
+    <a class="be-roadmap-stage" href="#stage-ai-foundation">
+      <span class="be-roadmap-number" aria-hidden="true">06</span>
+      <span class="be-roadmap-copy"><strong>AI 基础</strong><small>数学、数据、机器学习、深度学习与可复现实验</small></span>
+      <span class="be-roadmap-status">规划中</span>
+    </a>
+  </li>
+  <li class="be-roadmap-step" data-state="planned">
+    <a class="be-roadmap-stage" href="#stage-llm-agent">
+      <span class="be-roadmap-number" aria-hidden="true">07</span>
+      <span class="be-roadmap-copy"><strong>LLM / Agent</strong><small>模型基础、检索、评估、Tool Calling 与有界工作流</small></span>
+      <span class="be-roadmap-status">规划中</span>
+    </a>
+  </li>
+</ol>
+
+<details class="be-roadmap-options">
+  <summary>查看 4 个可选专业分支</summary>
+  <div>
+    <p class="be-roadmap-options-intro">这些分支不会阻塞默认路线。先完成卡片中的前置，再根据职业或兴趣选择。</p>
+    <ol class="be-roadmap-steps be-roadmap-branches">
+      <li class="be-roadmap-step" data-state="elective">
+        <a class="be-roadmap-stage" href="#stage-dual-language">
+          <span class="be-roadmap-number" aria-hidden="true">A</span>
+          <span class="be-roadmap-copy"><strong>Java 后端生态</strong><small>完成 Python 起步后选学，补充 JVM、并发与后端框架能力</small></span>
+          <span class="be-roadmap-status">可选</span>
+        </a>
+      </li>
+      <li class="be-roadmap-step" data-state="elective">
+        <a class="be-roadmap-stage" href="#stage-cs-core">
+          <span class="be-roadmap-number" aria-hidden="true">B</span>
+          <span class="be-roadmap-copy"><strong>工业控制与实时通信</strong><small>完成 C++、操作系统、网络和并发基础后进入</small></span>
+          <span class="be-roadmap-status">可选</span>
+        </a>
+      </li>
+      <li class="be-roadmap-step" data-state="elective">
+        <a class="be-roadmap-stage" href="#stage-ai-foundation">
+          <span class="be-roadmap-number" aria-hidden="true">C</span>
+          <span class="be-roadmap-copy"><strong>强化学习</strong><small>完成机器学习与深度学习基础后进入，不是 Agent 的必经前置</small></span>
+          <span class="be-roadmap-status">可选</span>
+        </a>
+      </li>
+      <li class="be-roadmap-step" data-state="elective">
+        <a class="be-roadmap-stage" href="#stage-llm-agent">
+          <span class="be-roadmap-number" aria-hidden="true">D</span>
+          <span class="be-roadmap-copy"><strong>其他专业方向</strong><small>多模态、Text2SQL、视觉、金融 AI 与本地推理按前置选择</small></span>
+          <span class="be-roadmap-status">可选</span>
+        </a>
+      </li>
+    </ol>
+  </div>
+</details>
 
-## 学习路线树
+默认路线负责共同基础，可选分支按需求进入。全部推荐深化、专业选修和跨主线前置关系见[完整课程地图](curriculum-map.md)。
 
-```text
-工程基础入门
-└── Python 起步
-    └── Python / C++ 双主修
-        └── CS 最小核心
-            └── Web 实践 + CS 深化
-                └── AI 基础
-                    └── LLM / Agent
-```
+## 路线阶段简介
 
-可选分支：
+每个阶段只在这里说明“学什么、为什么学、从哪里进入”。详细课程、前置关系和验收标准放在对应课程入口或完整课程地图中。
 
-- Java：完成 Python 起步后可以作为补充语言学习，适合后续进入 Java 后端生态。
-- 工业控制与实时通信：完成 C++、操作系统、网络和并发基础后可以进入，覆盖 PLC、倍福（Beckhoff）、TwinCAT、ADS 和 DDS；没有工业自动化需求时可以跳过。
-- 强化学习：完成机器学习和深度学习基础后再进入，不是 LLM/Agent 的必经前置。
-- 多模态、Text2SQL、视觉、金融 AI、本地推理：完成对应基础后再选择。
+<div class="be-route-summary" data-state="open" markdown>
 
-本页只展示进入下一部分所需的必修主干。全部推荐深化、专业选修和跨主线前置关系见[完整课程地图](curriculum-map.md)。
+## 工程基础入门 { #stage-engineering }
 
-## 深入内容怎么学
+先建立学习记录、文件、终端、Git、开发环境和验证习惯，让后续每一次学习都能操作、排错并留下证据。
 
-- 必修主干：通过当前完成标准后，才能进入默认路线的下一部分。
-- 推荐深化：不阻塞默认路线，用于加强工程熟练度、原理理解和机考能力。
-- 专业选修：面向具体职业或技术方向，必须先满足该模块列出的前置。
+[开始第一课](engineering-foundation/stage-0/01-learning-method.md){ .md-button .md-button--primary }
+[查看阶段说明](engineering-foundation/stage-0/README.md){ .md-button }
 
-跳过选修不会影响默认路线继续前进，但可能无法进入依赖它的更深方向。选修也必须有练习、实验或项目证据，不能只阅读标题和资料。
+</div>
 
-## 使用规则
+<div class="be-route-summary" data-state="open" markdown>
 
-1. 当前部分的练习和完成标准没有通过，不进入下一部分。
-2. 项目只在达到解锁条件后开始，不替代前置课程。
-3. 学习中遇到不会的基础知识，回到对应课程补齐。
-4. 每次学习都留下可检查的记录，包括命令、输出、错误、问题和下一步。
+## Python 起步 { #stage-python-start }
 
-## 工程基础入门
+用 Python 建立共同的编程起点，从语法推进到能独立完成、检查和测试一个小型程序。
 
-先建立最基本的学习方法、文件意识、命令行能力、文档记录、版本管理、环境认知和验证习惯。
+[查看 Python 起步](programming-languages/python-basics/README.md){ .md-button }
 
-### 适合谁
+</div>
 
-- 从零开始学习工程、编程或 AI。
-- 会使用电脑，但还不熟悉终端、Git、Markdown 或开发环境。
-- 经常遇到“我不知道文件在哪里”“命令为什么不能运行”“学完不知道算不算会”的问题。
+<div class="be-route-summary" data-state="building" markdown>
 
-### 学习内容
+## Python / C++ 双主修 { #stage-dual-language }
 
-- [课程说明](engineering-foundation/stage-0/README.md)
-- [学习方法](engineering-foundation/stage-0/01-learning-method.md)
-- [文件系统](engineering-foundation/stage-0/02-filesystem.md)
-- [终端与 Shell](engineering-foundation/stage-0/03-terminal-shell.md)
-- [编辑器](engineering-foundation/stage-0/04-editor.md)
-- [Markdown](engineering-foundation/stage-0/05-markdown.md)
-- [Git](engineering-foundation/stage-0/06-git.md)
-- [开发环境](engineering-foundation/stage-0/07-development-environment.md)
-- [Docker最小认知](engineering-foundation/stage-0/08-docker-basics.md)
-- [验证习惯](engineering-foundation/stage-0/09-validation-habit.md)
+Python 负责快速实现与数据应用，C++ 帮助理解编译、类型、资源和性能；两条能力线会在后续项目中持续深化，Java 可作为补充语言选学。
 
-### 完成标准
+[进入 C++ 核心语言](programming-languages/cpp-core/README.md){ .md-button }
+[查看语言与选修关系](curriculum-map.md){ .md-button }
 
-- 能创建一个 Git 仓库并完成至少 3 次有意义的提交。
-- 能从终端进入项目目录并运行一个给定命令。
-- 能写一份包含目标、步骤、结果和问题的 Markdown 学习记录。
-- 能解释 Docker 解决的环境一致性问题。
-- 能根据错误信息指出失败发生在哪条命令，而不是只说“不能运行”。
+</div>
 
-### 下一步
+<div class="be-route-summary" data-state="planned" markdown>
 
-完成工程基础入门后，进入 Python 起步。
+## CS 最小核心 { #stage-cs-core }
 
-## Python 起步
+补齐数据结构、算法、系统、网络和数据库基础，为解释真实程序、Web 应用和专业系统做好准备。
 
-用 Python 建立完整的编程起点，并为后续 C++、数据处理、自动化和 AI 学习打基础。这里不是浏览几条语法就结束，而是要从能运行代码推进到能独立完成、检查和维护一个小型程序。
+[查看 CS 课程结构](curriculum-map.md#cs){ .md-button }
 
-### 前置要求
+</div>
 
-- 工程基础入门完成。
+<div class="be-route-summary" data-state="planned" markdown>
 
-### 学习内容
+## Web 实践 + CS 深化 { #stage-web-cs }
 
-- [课程说明](programming-languages/python-basics/README.md)
-- [变量、基本类型、输入输出](programming-languages/python-basics/01-variables-types-io.md)
-- [条件、循环、布尔逻辑](programming-languages/python-basics/02-conditions-loops-boolean.md)
-- [函数、参数、返回值和作用域](programming-languages/python-basics/03-functions-parameters-returns-scope.md)。
-- [字符串、列表、字典、集合和元组](programming-languages/python-basics/04-strings-collections.md)。
-- [文件、路径、JSON 和简单目录操作](programming-languages/python-basics/05-files-json-paths.md)。
-- [模块、导入和虚拟环境](programming-languages/python-basics/06-modules-imports-venv.md)。
-- [异常、基本调试和最小自动化测试](programming-languages/python-basics/07-errors-debugging-tests.md)。
+完成前后端、数据库、认证、测试和部署闭环，同时用操作系统、网络与数据库原理解释工程问题。
 
-### 完成标准
+[查看 Web 课程结构](curriculum-map.md#web){ .md-button }
 
-- 能独立完成一个读取文本或 JSON、校验输入、统计数据并输出结果的小型程序。
-- 能把程序拆成职责清楚的函数和模块，而不是把全部逻辑写在一个文件里。
-- 能根据数据特点选择列表、字典、集合或元组，并说明选择理由。
-- 能创建虚拟环境、运行项目命令，并写出最小使用说明。
-- 能处理常见异常，根据 traceback 定位问题，并用自动化检查覆盖至少一个正常场景和一个失败场景。
-- 能完成并验收[学习进度报告器](../exercises/python-basics/study-progress-reporter/README.md)，证明输入只读、导入无副作用、正常和失败退出码可检查。
+</div>
 
-### 项目解锁
+<div class="be-route-summary" data-state="planned" markdown>
 
-完成 Python 起步后，默认继续进入 Python / C++ 双主修；同时可以进入 [Python 内容分析工具](../projects/python-content-analysis/README.md) 的第一个里程碑。
+## AI 基础 { #stage-ai-foundation }
 
-项目不会替代 Python 起步课程。先完成本部分的变量、条件、循环、函数、数据结构、文件和调试练习，再进入项目里程碑。
+建立数学、数据、模型训练与评估闭环，再按前置进入机器学习、深度学习、NLP、视觉或强化学习方向。
 
-## Python / C++ 双主修
+[查看 AI 课程结构](curriculum-map.md#ai){ .md-button }
 
-Python 用于快速实现、数据处理、自动化和 AI；C++ 用于系统开发、工业通信，并深入理解类型、编译、资源管理和性能。双主修不是一个短期语法阶段，而是贯穿后续 CS、Web、AI 和专业项目的长期能力线。
+</div>
 
-### 前置要求
+<div class="be-route-summary" data-state="planned" markdown>
 
-- Python 起步完成。
+## LLM / Agent { #stage-llm-agent }
 
-### 五层能力阶梯
+在 Python 工程、Web/API、检索和评估基础上，学习 RAG、Tool Calling、有界工作流、安全与可观测性。
 
-| 层级 | Python | C++ | 通过标准 |
-| --- | --- | --- | --- |
-| 核心语言 | 数据模型、函数、类型提示、迭代器和上下文管理 | 编译链接、类型、引用、指针、类、对象生命周期和现代 C++ 基础 | 能读懂并修改中等规模代码，能解释关键语言行为 |
-| 工程化 | 包结构、配置、日志、异常、测试、CLI 和依赖管理 | 多文件组织、CMake、RAII、STL、智能指针、测试和调试 | 能建立可重复运行、可测试、可维护的项目 |
-| 并发与网络 | 线程、进程、异步、网络客户端和服务端基础 | 线程、同步、原子操作、内存模型、套接字和协议处理 | 能实现并验证一个并发或网络组件 |
-| 运行原理与性能 | Python 数据模型、解释器与 GIL 认知、性能分析和 C/C++ 扩展边界 | 模板与泛型、内存布局、未定义行为、性能分析和系统接口 | 能用测量结果定位性能或资源问题，而不是凭感觉优化 |
-| 领域应用 | 自动化、数据处理、Web、AI 和工业通信工具 | 系统组件、算法、实时通信、工业控制和本地推理 | 能在跨课程项目中承担真实模块并说明设计取舍 |
+[查看 LLM / Agent 课程结构](curriculum-map.md#llm-agent){ .md-button }
 
-学习时不要求先把五层全部学完再进入 CS。核心语言和基础工程化达到验收后即可进入 CS 最小核心；其余能力在 Web、AI、工业控制和系统项目中继续深化。
-
-### 当前学习入口
-
-Python起步完成后，先进入[C++核心语言](programming-languages/cpp-core/README.md)，完成[从源文件到可执行程序：编译、类型与输入输出](programming-languages/cpp-core/01-build-types-io.md)。随后进入配对课程“Python类型提示、接口与静态检查认知”。
-
-双主修按能力主题配对，不机械规定一节Python后必须紧接一节C++；同一主题需要完整上下文时，可以连续推进必要章节，但两门语言都必须达到核心语言与基础工程化验收。
-
-### Python 深化重点
-
-- 模块、包、类型提示、协议和可维护接口。
-- 迭代器、生成器、装饰器、上下文管理器和常用数据模型。
-- 配置、日志、异常、测试、CLI、依赖管理和发布认知。
-- 线程、进程、异步 IO、网络编程和任务调度。
-- 性能测量、内存观察、解释器与 GIL 认知，以及调用 C/C++ 的边界。
-
-### C++ 深化重点
-
-- 编译、链接、头文件、源文件和构建产物。
-- 类型系统、引用、指针、const、类、对象生命周期和 RAII。
-- STL、迭代器、算法、泛型、模板和现代 C++ 常用特性。
-- CMake、测试、调试、静态分析、错误处理和工程目录。
-- 并发、原子操作、内存模型、网络、性能分析和系统接口。
-
-### Java 补充
-
-Java 不是默认必修，但可以作为完整补充路线学习：
-
-- 语法、类型和控制流。
-- 面向对象、异常和集合。
-- 泛型、IO、并发基础。
-- JVM、构建工具和测试。
-- Spring 等后端生态在 Web 实践中再展开。
-
-## CS 最小核心
-
-在开始完整 Web 应用前，先补齐解释程序性能、网络请求和数据存储所需的计算机基础。
-
-### 前置要求
-
-- Python 和 C++ 基础完成。
-
-### 学习内容
-
-- 数据结构：数组、链表、栈、队列、哈希表、树。
-- 通用算法与复杂度：查找、排序、递归、动态规划、图的基本概念、时间和空间复杂度。
-- 计算机运行基础：进程、线程、内存、文件和系统调用概念。
-- 网络最小集：客户端/服务端、IP、TCP、DNS、HTTP。
-- 数据库最小集：关系模型、表、主键、SQL、索引和事务概念；实践工具以 PostgreSQL 和 `psql` 为主，MySQL 作为常见对照。
-- 数据交换：文本、JSON、编码和序列化。
-
-### 完成标准
-
-- 能为常见容器操作给出基本复杂度判断。
-- 能描述浏览器或客户端请求 API 的基本过程。
-- 能设计一个简单关系表并完成增删改查。
-- 能解释进程与线程、内存与磁盘的基本区别。
-
-## Web 实践 + CS 深化
-
-做出可访问的完整应用，同时用 CS 原理解释真实工程问题。
-
-### 前置要求
-
-- CS 最小核心完成。
-
-### Web 实践
-
-- HTML、CSS 和浏览器基础。
-- JavaScript，再进入 TypeScript。
-- 前端组件、状态、表单和请求。
-- Python 后端、FastAPI、数据校验和错误处理。
-- REST、OpenAPI、认证和权限。
-- PostgreSQL、psql、SQL、迁移、备份和数据访问层；根据项目需要补充 MySQL 差异。
-- 测试、日志、部署、监控和回滚。
-
-### CS 深化
-
-- 操作系统：进程线程、同步、内存和文件系统。
-- 网络：TCP、HTTP、连接、缓存和代理。
-- 数据库：PostgreSQL 优先的事务、索引、查询优化和并发；理解 MySQL 在类型、索引、事务和部署上的常见差异。
-- 系统设计：缓存、队列、可用性、一致性和扩展。
-- 安全：认证、授权、输入校验、密钥和最小权限。
-
-## AI 基础
-
-理解数据、模型、训练和评估的完整闭环，并能够通过实验判断模型是否有效。
-
-### 前置要求
-
-- Python 工程化和数据处理。
-- 数据结构、复杂度和基本实验方法。
-
-### 学习内容
-
-- 数学基础：线性代数、概率统计、微积分、梯度和优化。
-- 机器学习：数据清洗、特征工程、训练验证、指标和误差分析。
-- 深度学习：张量、神经网络、反向传播、优化器和正则化。
-- NLP / Transformer：文本表示、序列模型、注意力机制和预训练模型。
-- 强化学习：环境、状态、动作、奖励、价值方法和 DQN，作为独立进阶分支。
-
-### 项目解锁
-
-- [结构化数据机器学习系统](../projects/structured-data-ml-system/README.md)
-- [文本分类模型演进](../projects/text-classification-evolution/README.md)
-- [强化学习控制实验](../projects/reinforcement-learning-control-lab/README.md)
-
-## LLM / Agent
-
-在 Python 工程能力、Web/API、检索和评估能力具备后，再进入 LLM/Agent。
-
-### 前置要求
-
-- Python 工程化。
-- Web/API 基础。
-- 检索、评估和基础模型知识。
-
-### 学习内容
-
-- Prompt、结构化输出和工具调用。
-- Embedding、检索、RAG 和引用。
-- 评估集、自动评估和人工复核。
-- Workflow、Agent、状态管理和失败恢复。
-- 可观测性、部署和安全边界。
-
-### 项目解锁
-
-- [可评估的智能学习助手](../projects/intelligent-learning-assistant/README.md)
-
-这个项目会使用本学习库的公开内容作为知识来源，逐步加入检索、引用、RAG、评估、工具调用、工作流、Agent、可观测性和部署。
+</div>

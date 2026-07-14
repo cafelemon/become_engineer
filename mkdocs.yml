@@ -32,11 +32,9 @@ theme:
         name: 切换到浅色模式
   features:
     - navigation.tabs
-    - navigation.sections
     - navigation.indexes
     - navigation.top
     - navigation.footer
-    - toc.integrate
     - toc.follow
     - search.highlight
     - search.suggest
@@ -70,6 +68,7 @@ markdown_extensions:
       custom_checkbox: true
 
 exclude_docs: |
+  docs/**
   **/.DS_Store
   **/__pycache__/**
   **/*.pyc
@@ -77,12 +76,12 @@ exclude_docs: |
   **/*.db-journal
 
 nav:
-  - 首页: README.md
-  - 开始学习:
+  - 首页:
+      - README.md
       - 学习路线: learning-paths/beginner-roadmap.md
       - 完整课程地图: learning-paths/curriculum-map.md
+  - 开始学习:
       - 工程基础入门:
-          - 课程说明: learning-paths/engineering-foundation/stage-0/README.md
           - 学习方法: learning-paths/engineering-foundation/stage-0/01-learning-method.md
           - 文件系统: learning-paths/engineering-foundation/stage-0/02-filesystem.md
           - 终端与 Shell: learning-paths/engineering-foundation/stage-0/03-terminal-shell.md
@@ -112,13 +111,3 @@ nav:
       - 文本分类模型演进: projects/text-classification-evolution/README.md
       - 强化学习控制实验: projects/reinforcement-learning-control-lab/README.md
       - 可评估的智能学习助手: projects/intelligent-learning-assistant/README.md
-  - 项目文档:
-      - 项目总览: docs/00_overview.md
-      - PRD: docs/01_prd.md
-      - 路线图: docs/02_roadmap.md
-      - 架构: docs/03_architecture.md
-      - 验收清单: docs/04_acceptance_checklist.md
-      - AI Coding 工作协议: docs/05_ai_coding_agent_guide.md
-      - 课程内容规范: docs/08_content_standard.md
-      - 进度记录: docs/06_progress.md
-      - 决策记录: docs/07_decisions.md

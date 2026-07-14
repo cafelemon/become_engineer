@@ -18,6 +18,7 @@ source-materials/exports/
 # Editor and tooling
 .idea/
 .vscode/
+.ai/ui-evidence/
 *.log
 *.db
 *.db-journal

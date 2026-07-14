@@ -134,6 +134,22 @@ become_engineer/
 - 数据化资源库：JSON、YAML、SQLite 或轻量 CMS。
 - 自动检查：链接检查、Markdown lint、拼写检查、资源字段校验。
 
+## 学习体验前端边界
+
+- Markdown 继续拥有课程正文、路线说明和验收规则；前端样式与脚本只增强呈现和浏览交互。
+- CSS 组件负责入口、阶段、状态、按钮和响应式层级；原生 JavaScript 仅用于筛选、展开或本地状态等无法由语义化 HTML 完成的行为。
+- 所有交互采用渐进增强：脚本失败时完整内容、链接和导航仍然可用。
+- V1 不引入 React、Vue、Docusaurus、账号系统或服务端状态，不改变 GitHub Pages 静态发布边界。
+- 先在单个样板页验证，再沉淀到课程模板和通用样式，避免一次性重写全部历史页面。
+
+## 公开站点与治理文档边界
+
+- 根目录 `README.md` 通过 `site-src/README.md` 软链接同时作为 GitHub 仓库说明和公开站点首页。
+- `docs/` 是项目治理源，只在 GitHub 仓库阅读；MkDocs 通过 `exclude_docs` 将其从页面生成和搜索索引中排除。
+- 公开内容如需引用内容规范或治理决策，使用指向 `main` 分支的 GitHub 永久路径，不依赖站内 `docs/` URL。
+- 公开学习页面只保留首页、开始学习和项目三个顶部入口；课程与项目既有 URL 保持稳定。
+- 已批准的视觉组件统一由 `site-src/stylesheets/extra.css` 提供，项目级设计决策记录在 `.ai/design/system.md`。
+
 ## 质量控制
 
 - 每个资源条目保留来源链接。

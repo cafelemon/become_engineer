@@ -1,8 +1,40 @@
+<div class="be-page-hero be-lesson-hero" markdown>
+
+<span class="be-page-eyebrow">工程基础入门 · 第一课</span>
+
 # 学习方法
+
+把模糊的“我想学会”，变成今天可以执行、检查和复盘的小任务。先建立这个循环，后面的每一节课程都会更容易留下真正的学习证据。
+
+<div class="be-page-actions" markdown>
+
+[查看阶段说明与验收](README.md){ .md-button }
+[开始学习](#learning-loop){ .md-button .md-button--primary }
+
+</div>
+
+</div>
+
+<div class="be-lesson-overview">
+  <div>
+    <span>课程位置</span>
+    <strong>工程基础入门 · 1 / 9</strong>
+  </div>
+  <div>
+    <span>前置要求</span>
+    <strong>无需前置知识</strong>
+  </div>
+  <div>
+    <span>完成证据</span>
+    <strong>一份可检查的学习记录</strong>
+  </div>
+</div>
 
 ## 前置知识
 
 无。
+
+如果你想先了解工程基础阶段的课程范围、学习顺序和整体验收要求，可以查看[阶段说明与验收](README.md)。这不是开始第一课的前置要求。
 
 ## 学习目标
 
@@ -17,7 +49,7 @@
 3. 然后用主动练习留下产出。
 4. 最后记录问题并做学习复盘。
 
-## 你要养成的基本循环
+## 你要养成的基本循环 { #learning-loop }
 
 每次学习都按这个循环走：
 
@@ -191,3 +223,13 @@
 ## 下一步
 
 进入 [文件系统](02-filesystem.md)。下一节会用“目录”和“路径”继续练习把抽象概念落到可检查的产出上。
+
+<div class="be-next-panel" markdown>
+
+<span class="be-panel-label">完成本课后</span>
+
+**把你的目标、操作、结果、问题和下一步写下来，再继续学习文件与路径。**
+
+[进入下一课：文件系统](02-filesystem.md){ .md-button .md-button--primary }
+
+</div>

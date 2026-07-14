@@ -16,7 +16,7 @@
 - 不直接搬运课程、书籍或文章原文。
 - 对不确定内容标记为待验证。
 
-新增或扩写笔记遵循[课程内容规范](../docs/08_content_standard.md)和[笔记模板](https://github.com/cafelemon/become_engineer/blob/main/templates/note_template.md)。
+新增或扩写笔记遵循[课程内容规范](https://github.com/cafelemon/become_engineer/blob/main/docs/08_content_standard.md)和[笔记模板](https://github.com/cafelemon/become_engineer/blob/main/templates/note_template.md)。
 
 ## 已公开笔记
 

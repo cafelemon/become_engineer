@@ -1,61 +1,74 @@
+<div class="be-page-hero be-home-hero" markdown>
+
+<span class="be-page-eyebrow">从零开始，走向真正的工程实践</span>
+
 # Become Engineer
 
-Become Engineer 是一个从零基础出发、逐步走向工程实践与深入理解的公开学习库，目标是把工程、编程、计算机基础、Web、AI 和 LLM/Agent 串成一条可以照着走的学习路线。
+一套可以照着走的公开学习路线，把工程基础、编程语言、计算机基础、Web、AI 和 LLM/Agent 串成持续进阶的学习过程。
 
-这里不只是收集链接，也不是把零散笔记堆在一起。每一部分内容都会尽量说明：
+<div class="be-page-actions" markdown>
 
-- 为什么要学。
-- 学之前需要会什么。
-- 按什么顺序学。
-- 学完要能做什么。
-- 如何通过练习或项目验证自己真的掌握了。
+[开始第一课](learning-paths/engineering-foundation/stage-0/01-learning-method.md){ .md-button .md-button--primary }
+[查看学习路线](learning-paths/beginner-roadmap.md){ .md-button }
+[查看完整课程地图](learning-paths/curriculum-map.md){ .md-button }
 
-## 这个项目做什么
+</div>
 
-Become Engineer 主要做三件事：
+</div>
 
-1. 给出一条适合新手起步、又能持续深入的默认学习顺序。
-2. 把课程内容写成可以一步一步完成的学习材料。
-3. 用持续演进的项目把知识串起来，而不是学完就散掉。
+## 这个项目解决什么问题
 
-学习顺序会从最基础的工程习惯开始，再进入 Python、C++、计算机基础、Web、AI，最后进入 LLM/Agent。
+学习资源很多，真正困难的是判断先学什么、怎样练习，以及学到什么程度才算掌握。Become Engineer 不只是收集链接，也不把零散笔记堆在一起，而是把学习过程整理成三个可以执行的部分：
 
-## 怎么开始
+<div class="be-feature-grid">
+  <div class="be-info-card">
+    <strong>一条默认路线</strong>
+    <p>从工程基础开始，按前置关系逐步进入 Python、C++、CS、Web、AI 和 LLM/Agent。</p>
+  </div>
+  <div class="be-info-card">
+    <strong>每节都有验收</strong>
+    <p>课程说明学习目标、操作顺序、练习、常见错误、完成标准和明确的下一步。</p>
+  </div>
+  <div class="be-info-card">
+    <strong>用项目串起知识</strong>
+    <p>项目在满足前置后逐步解锁，用真实产出检验多个知识点能否一起工作。</p>
+  </div>
+</div>
 
-新学习者从这里开始：
+## 适合谁
 
-- [开始学习](learning-paths/beginner-roadmap.md)
+- 想从零开始学习工程、编程或 AI，但不想自己拼装课程顺序的人。
+- 学过一些语法，却不知道怎样进入工程化、计算机原理和完整项目的人。
+- 希望使用 AI 辅助学习，同时保留审阅、修改、排错和验证能力的人。
 
-想查看全部推荐深化、专业选修和前置关系，可以进入：
+如果你已经有经验，也可以从[完整课程地图](learning-paths/curriculum-map.md)检查前置，选择推荐深化或专业选修；第一次学习则建议直接进入[第一课](learning-paths/engineering-foundation/stage-0/01-learning-method.md)。
 
-- [完整课程地图](learning-paths/curriculum-map.md)
+## 作者与项目
 
-已经完成基础内容后，可以再看：
+<div class="be-repo-panel">
+  <div>
+    <span class="be-panel-label">作者</span>
+    <strong>贾飞（<a href="https://github.com/cafelemon">@cafelemon</a>）</strong>
+    <p>项目内容持续在 GitHub 公开维护，课程、练习和项目会按学习路线逐步完善。</p>
+  </div>
+  <div class="be-repo-action">
+    <a class="md-button" href="https://github.com/cafelemon/become_engineer">查看 GitHub 仓库</a>
+  </div>
+</div>
 
-- [项目](projects/README.md)
+如果这条学习路线对你有帮助，欢迎在 GitHub 点一个 Star，帮助更多学习者发现它。
 
-项目不会一开始就要求你全部完成。它们会在学习过程中逐步解锁，每个里程碑对应已经学过或正在学习的能力。
+[去 GitHub 点 Star](https://github.com/cafelemon/become_engineer){ .md-button .md-button--primary }
 
 ## 学习方式
 
-建议按下面方式使用这个学习库：
+1. 先确认当前课程的前置要求和学习目标。
+2. 按顺序完成正文、操作和练习，不只浏览标题。
+3. 记录命令、结果、错误、问题和下一步。
+4. 对照完成标准验收，再进入下一节或解锁项目。
 
-1. 先看当前课程的前置要求。
-2. 按顺序完成正文和练习。
-3. 把命令、结果、错误和问题记录下来。
-4. 对照完成标准检查是否可以进入下一部分。
-5. 到达项目解锁点后，用项目把多个知识点串起来。
-
-如果某一节还没有学会，不需要急着跳到后面。这个项目更看重可验证的掌握，而不是快速浏览。
-
-## 当前入口
-
-- [开始学习](learning-paths/beginner-roadmap.md)：完整学习顺序和已开放课程。
-- [项目](projects/README.md)：跨课程逐步完成的项目主干。
-- [项目文档](docs/00_overview.md)：这个学习库自身的规划、架构、进度和决策记录。
+这个项目更看重可验证的掌握，而不是快速浏览。遇到基础缺口时，回到对应课程补齐即可。
 
 ## 公开边界
 
-这个仓库只展示可以公开阅读和复用的内容。私人学习记录、账号信息、未整理草稿和不适合公开的材料不会进入公开页面。
-
-公开内容会尽量经过筛选、整理、验证和重写，避免直接搬运原始资料。
+仓库只展示可以公开阅读和复用的内容。私人学习记录、账号信息、未整理草稿和受版权保护的原始材料不会进入公开页面；公开内容会经过筛选、整理、验证和独立重写。

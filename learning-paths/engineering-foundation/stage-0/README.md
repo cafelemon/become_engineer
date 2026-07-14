@@ -1,3 +1,10 @@
+<div class="be-context-actions" markdown>
+
+[← 返回第一课：学习方法](01-learning-method.md){ .md-button .md-button--primary }
+[查看学习路线](../../beginner-roadmap.md){ .md-button }
+
+</div>
+
 # 工程基础入门
 
 本课程帮助零基础学习者先建立基本学习方法和开发工作环境认知，再进入 Python 起步。

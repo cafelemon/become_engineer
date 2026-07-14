@@ -1,14 +1,39 @@
+<div class="be-page-hero be-map-hero" markdown>
+
+<span class="be-page-eyebrow">看清主干、深化与专业方向</span>
+
 # 完整课程地图
 
 这张地图展示 Become Engineer 从共同基础到深入方向的完整结构。第一次学习时，请先使用[开始学习](beginner-roadmap.md)中的默认路线；当你想加强工程熟练度、准备机考或进入专业方向时，再回到这里选择已经满足前置条件的模块。
 
+<div class="be-page-actions" markdown>
+
+[按默认路线开始](beginner-roadmap.md){ .md-button .md-button--primary }
+[进入第一课](engineering-foundation/stage-0/01-learning-method.md){ .md-button }
+
+</div>
+
+</div>
+
 ## 三层课程结构
 
-| 层级 | 作用 | 是否阻塞默认路线 | 完成依据 |
-| --- | --- | --- | --- |
-| 必修主干 | 建立所有后续方向共同需要的能力 | 是，达到验收后才能进入下一主线 | 课程练习、阶段产出和客观验收 |
-| 推荐深化 | 提升工程熟练度、原理理解和机考能力 | 否，但可能是专业选修的前置 | 专题实验、题集、限时测试和复盘 |
-| 专业选修 | 面向具体职业、系统或研究方向 | 否，只影响该方向及其后续模块 | 专项实验、跨模块项目和领域验收 |
+<div class="be-layer-grid">
+  <div class="be-layer-card" data-layer="required">
+    <span>01 · 默认路线</span>
+    <strong>必修主干</strong>
+    <p>建立后续方向共同需要的能力。达到课程练习、阶段产出和客观验收后，才能进入下一主线。</p>
+  </div>
+  <div class="be-layer-card" data-layer="deepen">
+    <span>02 · 按需加强</span>
+    <strong>推荐深化</strong>
+    <p>提升工程熟练度、原理理解和机考能力。不阻塞默认路线，但可能是专业选修的前置。</p>
+  </div>
+  <div class="be-layer-card" data-layer="elective">
+    <span>03 · 方向选择</span>
+    <strong>专业选修</strong>
+    <p>面向具体职业、系统或研究方向，只影响该方向及其后续模块，以专项实验和领域项目验收。</p>
+  </div>
+</div>
 
 “推荐深化”不是不重要，而是不要求所有学习者在同一时间完成。跳过选修不会阻塞默认路线，但可能无法进入依赖它的更深方向。
 
@@ -25,6 +50,15 @@
 ```
 
 工程基础和语言路线已经单独定义。本页重点说明语言之后如何从必修主干进入推荐深化和专业选修。
+
+## 选择一个领域查看
+
+<nav class="be-domain-grid" aria-label="课程领域">
+  <a href="#cs"><strong>CS</strong><span>算法、系统、网络与数据库</span></a>
+  <a href="#web"><strong>Web</strong><span>前后端、数据、部署与安全</span></a>
+  <a href="#ai"><strong>AI</strong><span>数学、模型、训练与评估</span></a>
+  <a href="#llm-agent"><strong>LLM / Agent</strong><span>检索、工具、工作流与评估</span></a>
+</nav>
 
 ## 解锁关系
 
@@ -49,12 +83,18 @@ flowchart TD
 
 ## CS
 
+<div class="be-map-layer" data-layer="required" markdown>
+
 ### 必修主干
 
 - 数据结构与复杂度：数组、二维数组、字符串、链表、栈、队列、哈希表、树和基础图。
 - 基础算法：查找、排序、递归、迭代、BFS、DFS和复杂度分析。
 - 计算机基础：进程、线程、内存、文件、系统调用和计算机运行模型。
 - 网络与数据库最小核心：IP、TCP、DNS、HTTP、关系模型、SQL、索引和事务。
+
+</div>
+
+<div class="be-map-layer" data-layer="deepen" markdown>
 
 ### 推荐深化
 
@@ -64,6 +104,10 @@ flowchart TD
 - 数据库原理：事务、隔离、索引、查询计划、并发、备份和恢复。
 - 系统设计与安全：缓存、队列、一致性、可用性、扩展、认证、授权和最小权限。
 
+</div>
+
+<div class="be-map-layer" data-layer="elective" markdown>
+
 ### 专业选修
 
 - 工业控制与实时通信。
@@ -71,9 +115,13 @@ flowchart TD
 - 编译原理与程序语言。
 - 网络与系统安全。
 
+</div>
+
 详细前置、实践和验收见[CS 核心](cs-core/README.md)。
 
 ## Web
+
+<div class="be-map-layer" data-layer="required" markdown>
 
 ### 必修主干
 
@@ -83,18 +131,30 @@ flowchart TD
 - PostgreSQL、psql、数据建模、迁移和MySQL对照。
 - 认证、权限、测试、日志、安全和部署闭环。
 
+</div>
+
+<div class="be-map-layer" data-layer="deepen" markdown>
+
 ### 推荐深化
 
 - 前端工程、后端并发、数据库工程、API设计与安全。
 - 性能、可观测性、发布、回滚和故障排查。
 
+</div>
+
+<div class="be-map-layer" data-layer="elective" markdown>
+
 ### 专业选修
 
 - 前端工程、后端工程、实时通信、Java后端、DevOps/SRE。
 
+</div>
+
 详细前置、实践和验收见[Web 全栈](web-fullstack/README.md)。
 
 ## AI
+
+<div class="be-map-layer" data-layer="required" markdown>
 
 ### 必修主干
 
@@ -102,32 +162,54 @@ flowchart TD
 - 机器学习、深度学习、NLP/Transformer基础。
 - 训练、验证、误差分析和可复现实验。
 
+</div>
+
+<div class="be-map-layer" data-layer="deepen" markdown>
+
 ### 推荐深化
 
 - 优化与统计、经典机器学习扩展、深度网络与NLP深化。
 - 实验工程、MLOps、可解释性、鲁棒性和风险分析。
 
+</div>
+
+<div class="be-map-layer" data-layer="elective" markdown>
+
 ### 专业选修
 
 - 强化学习、计算机视觉、NLP与信息抽取、多模态与生成模型、时序与推荐。
 
+</div>
+
 详细前置、实践和验收见[AI 基础](ai-foundation/README.md)。
 
 ## LLM / Agent
+
+<div class="be-map-layer" data-layer="required" markdown>
 
 ### 必修主干
 
 - 模型基础、结构化输出、检索基线、RAG和引用。
 - 固定评估集、Tool Calling、有界工作流、安全和部署。
 
+</div>
+
+<div class="be-map-layer" data-layer="deepen" markdown>
+
 ### 推荐深化
 
 - 检索工程、评估系统、Agent状态与记忆、上下文工程。
 - 成本、延迟、可观测性、提示注入防护和失败恢复。
 
+</div>
+
+<div class="be-map-layer" data-layer="elective" markdown>
+
 ### 专业选修
 
 - 微调与对齐、本地推理与量化、Text2SQL、多模态Agent、Coding/Research Agent。
+
+</div>
 
 详细前置、实践和验收见[LLM/Agent](llm-agent/README.md)。
 
