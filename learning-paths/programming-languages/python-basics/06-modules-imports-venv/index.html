@@ -1,0 +1,3534 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="面向小白的工程、CS、Web、AI 与 LLM/Agent 公开学习库">
+      
+      
+      
+        <link rel="canonical" href="https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/python-basics/06-modules-imports-venv/">
+      
+      
+        <link rel="prev" href="../05-files-json-paths/">
+      
+      
+        <link rel="next" href="../07-errors-debugging-tests/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>模块、导入和虚拟环境 - Become Engineer</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="Become Engineer" class="md-header__button md-logo" aria-label="Become Engineer" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Become Engineer
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              模块、导入和虚拟环境
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cafelemon/become_engineer" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cafelemon/become_engineer
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../beginner-roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  开始学习
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../projects/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  项目
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../docs/00_overview/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  项目文档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Become Engineer" class="md-nav__button md-logo" aria-label="Become Engineer" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17z"/></svg>
+
+    </a>
+    Become Engineer
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cafelemon/become_engineer" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cafelemon/become_engineer
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开始学习
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    开始学习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../beginner-roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../curriculum-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    完整课程地图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../engineering-foundation/stage-0/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程基础入门
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程基础入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/01-learning-method/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/02-filesystem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文件系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/03-terminal-shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    终端与 Shell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/04-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    编辑器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/05-markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Markdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/06-git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/07-development-environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发环境
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/08-docker-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker最小认知
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/09-validation-habit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    验证习惯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 起步
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 起步
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-variables-types-io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    变量、基本类型、输入输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-conditions-loops-boolean/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    条件、循环、布尔逻辑
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-functions-parameters-returns-scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    函数、参数、返回值和作用域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-strings-collections/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    字符串、列表、字典、集合和元组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-files-json-paths/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文件、路径、JSON 和简单目录操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    模块、导入和虚拟环境
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    模块、导入和虚拟环境
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        课程信息
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        前置知识
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学习目标
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学习顺序
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模块怎样协作
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什么是模块
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="什么是模块">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么拆分模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        两种常用导入方式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="两种常用导入方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        导入模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从模块导入指定名称
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        必要时使用别名
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三种代码来源
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        导入会执行模块顶层代码
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        name 和主入口保护
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 在哪里找模块
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模块命名遮蔽
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        单向依赖和循环导入
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="单向依赖和循环导入">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        单向依赖
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        循环导入
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pycache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pycache 是什么
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        虚拟环境解决什么问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        创建虚拟环境
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        激活、验证和退出
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="激活、验证和退出">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#macos-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        macOS 或 Linux
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows PowerShell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        不激活也可以运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-m-pip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么使用 python -m pip
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Git 忽略边界
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可复现实例：多模块学习进度报告器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="可复现实例：多模块学习进度报告器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目录结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分析模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        文件读写模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        报告模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主入口
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSON 输入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        创建并使用虚拟环境
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        预期输出
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        验证导入没有副作用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        语法检查
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI 协作任务：拆分单文件程序
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI 协作任务：拆分单文件程序">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可复用任务描述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        人工审阅要求
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心手动检查点
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="核心手动检查点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点 1：追踪启动顺序
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点 2：解释主入口保护
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点 3：识别命名遮蔽
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点 4：修复循环导入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点 5：证明解释器来自虚拟环境
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点 6：不激活也能运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        微练习
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="微练习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习 1：拆分两个模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习 2：比较导入方式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习 3：主入口保护
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习 4：模块命名冲突
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习 5：创建并验证虚拟环境
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习 6：错误解释器排查
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见错误与排查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成标准
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下一步
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-errors-debugging-tests/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    异常、基本调试和最小自动化测试
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../cpp-core/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C++ 核心语言
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C++ 核心语言
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cpp-core/01-build-types-io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    从源文件到可执行程序
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../projects/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    项目
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    项目
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projects/project-roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    项目主干规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projects/python-content-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 内容分析工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projects/structured-data-ml-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    结构化数据机器学习系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projects/text-classification-evolution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文本分类模型演进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projects/reinforcement-learning-control-lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    强化学习控制实验
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projects/intelligent-learning-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    可评估的智能学习助手
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    项目文档
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    项目文档
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/00_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    项目总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/01_prd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/02_roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    路线图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/03_architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    架构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/04_acceptance_checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    验收清单
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/05_ai_coding_agent_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Coding 工作协议
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/08_content_standard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    课程内容规范
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/06_progress/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    进度记录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/07_decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    决策记录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="_1">模块、导入和虚拟环境<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>上一节的学习进度报告器已经能读取 JSON 并生成报告，但读取、计算、排版和启动流程仍然挤在一个文件里。程序继续增长后，修改一个功能时很难判断会影响哪里，也很难单独验证某一部分。</p>
+<p>本节把程序拆成职责明确的 Python 模块，并为它创建独立虚拟环境。目标不是追求文件数量，而是让代码关系可解释、运行环境可确认、重构前后行为可比较。</p>
+<h2 id="_2">课程信息<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>课程类型：编程课。</li>
+<li>所属主线：编程语言。</li>
+<li>课程层级：Python 起步必修。</li>
+<li>运行环境：Python 3.11 或更高版本，仅使用标准库。</li>
+<li>阶段作品：把单文件学习进度报告器重构为多模块程序，并在虚拟环境中运行。</li>
+<li>事实核查：2026-07-14，依据 Python 3 模块、<code>__main__</code>、<code>venv</code> 和 pip 官方文档。</li>
+</ul>
+<h2 id="_3">前置知识<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>开始前应完成：</p>
+<ul>
+<li><a href="../03-functions-parameters-returns-scope/">函数、参数、返回值和作用域</a>。</li>
+<li><a href="../04-strings-collections/">字符串、列表、字典、集合和元组</a>。</li>
+<li><a href="../05-files-json-paths/">文件、路径、JSON 和简单目录操作</a>。</li>
+<li>能从示例根目录运行 Python 文件。</li>
+<li>能解释输入文件、处理函数和输出文件各自的职责。</li>
+<li>能使用 Git 检查哪些文件会进入仓库。</li>
+</ul>
+<p>开始前先确认：你能在上一节单文件程序中指出读取数据、计算进度、生成报告和启动流程分别位于哪里。</p>
+<h2 id="_4">学习目标<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>完成本节后，你应该能做到：</p>
+<ul>
+<li>说明一个 <code>.py</code> 文件怎样成为可导入模块。</li>
+<li>使用 <code>import module</code> 和 <code>from module import name</code> 调用其他模块的能力。</li>
+<li>区分标准库模块、本地模块和第三方依赖。</li>
+<li>解释导入模块时顶层语句会执行，并避免产生意外副作用。</li>
+<li>使用 <code>if __name__ == "__main__":</code> 保护程序入口。</li>
+<li>根据职责拆分模块，并保持单向导入关系。</li>
+<li>识别模块命名遮蔽和简单循环导入问题。</li>
+<li>创建、激活、验证和退出 <code>.venv</code> 虚拟环境。</li>
+<li>使用 <code>sys.executable</code> 和 <code>python -m pip</code> 确认当前解释器与 pip 属于同一环境。</li>
+<li>使用 <code>.gitignore</code> 排除虚拟环境、缓存和生成输出。</li>
+<li>审阅 AI 的多模块重构，验证重构前后业务输出一致。</li>
+</ul>
+<h2 id="_5">学习顺序<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ol>
+<li>理解模块解决的维护问题。</li>
+<li>学习两种常用导入方式。</li>
+<li>区分标准库、本地模块和第三方依赖。</li>
+<li>观察导入时执行的代码，建立主入口保护。</li>
+<li>设计模块职责和单向依赖。</li>
+<li>识别命名遮蔽与循环导入。</li>
+<li>创建并验证虚拟环境。</li>
+<li>在虚拟环境中运行多模块学习进度报告器。</li>
+<li>比较重构前后的输出，并验证单独导入没有副作用。</li>
+</ol>
+<h2 id="_6">模块怎样协作<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>下面的图回答一个问题：多文件程序中，谁可以依赖谁？</p>
+<pre class="mermaid"><code>flowchart TD
+    M["main.py：编排流程"] --&gt; I["data_io.py：读写文件"]
+    M --&gt; A["analysis.py：计算与汇总"]
+    M --&gt; R["reporting.py：生成报告文本"]
+    I -. "读取" .-&gt; D["data/：输入数据"]
+    I -. "写入" .-&gt; O["output/：生成结果"]</code></pre>
+<p>箭头保持从入口指向能力模块。<code>analysis.py</code> 不需要知道报告写到哪里，<code>reporting.py</code> 不需要读取 JSON，三个业务模块也不应反向导入 <code>main.py</code>。这让每个模块都能被单独导入和检查。</p>
+<h2 id="_7">什么是模块<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>Python 模块通常是一个包含定义和语句的 <code>.py</code> 文件。文件名去掉 <code>.py</code> 后，就是常见的模块名。</p>
+<div class="highlight"><pre><span></span><code>analysis.py  -&gt; 模块名 analysis
+data_io.py   -&gt; 模块名 data_io
+reporting.py -&gt; 模块名 reporting
+</code></pre></div>
+<p>模块可以保存函数、变量和其他定义。另一个文件通过导入使用这些能力，不需要复制代码。</p>
+<h3 id="_8">为什么拆分模块<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>适合拆分的信号包括：</p>
+<ul>
+<li>一个文件同时负责读取、计算、展示和启动。</li>
+<li>一组函数可以用一句职责说明归类。</li>
+<li>修改报告格式时，不希望碰到数据读取代码。</li>
+<li>希望单独导入计算函数进行检查。</li>
+<li>相同能力需要被多个入口复用。</li>
+</ul>
+<p>不要为了“工程化”把每个函数放进一个文件。模块应围绕职责形成边界，而不是追求文件越多越好。</p>
+<h2 id="_9">两种常用导入方式<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h3 id="_10">导入模块<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">analysis</span>
+
+<span class="n">progress</span> <span class="o">=</span> <span class="n">analysis</span><span class="o">.</span><span class="n">calculate_progress</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;finished_hours&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>这种写法保留模块名前缀，读代码时能直接看出函数来自哪里。多个模块可能存在同名函数时，这种方式尤其清楚。</p>
+<h3 id="_11">从模块导入指定名称<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_progress</span>
+
+<span class="n">progress</span> <span class="o">=</span> <span class="n">calculate_progress</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;finished_hours&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>这种写法较短，适合导入少量、来源明确且不会重名的函数。</p>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>调用方式</th>
+<th>优点</th>
+<th>风险</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>import analysis</code></td>
+<td><code>analysis.calculate_progress()</code></td>
+<td>来源清楚，不易重名</td>
+<td>调用稍长</td>
+</tr>
+<tr>
+<td><code>from analysis import calculate_progress</code></td>
+<td><code>calculate_progress()</code></td>
+<td>简洁</td>
+<td>导入多时来源可能不清楚</td>
+</tr>
+</tbody>
+</table>
+<p>不要在正式程序中使用：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">analysis</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</code></pre></div>
+<p>它会把一组不明显的名称放进当前模块，可能覆盖已有名称，也让读者难以判断函数来源。</p>
+<h3 id="_12">必要时使用别名<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>别名用于解决名称过长或冲突，不用于制造只有自己看得懂的缩写：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">reporting</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">report_tools</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="n">report_tools</span><span class="o">.</span><span class="n">build_report</span><span class="p">([],</span> <span class="p">[],</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">[],</span> <span class="p">[])</span>
+</code></pre></div>
+<p>如果原模块名已经清楚且不长，就不需要别名。</p>
+<h2 id="_13">三种代码来源<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>示例</th>
+<th>从哪里来</th>
+<th>当前课程是否安装</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>标准库模块</td>
+<td><code>json</code>、<code>pathlib</code>、<code>sys</code></td>
+<td>随 Python 提供</td>
+<td>不需要安装</td>
+</tr>
+<tr>
+<td>本地模块</td>
+<td><code>analysis</code>、<code>data_io</code></td>
+<td>当前示例中的 <code>.py</code> 文件</td>
+<td>自己创建</td>
+</tr>
+<tr>
+<td>第三方依赖</td>
+<td><code>requests</code>、<code>pytest</code></td>
+<td>Python 之外的项目</td>
+<td>本节不安装</td>
+</tr>
+</tbody>
+</table>
+<p>看到 <code>ModuleNotFoundError</code> 时，先判断缺失的是哪一类：</p>
+<ul>
+<li>本地模块：检查文件名、当前目录和导入名称。</li>
+<li>标准库：检查是否被同名本地文件遮蔽，或模块是否适用于当前 Python 版本。</li>
+<li>第三方依赖：检查当前解释器和虚拟环境，再决定是否安装。</li>
+</ul>
+<p>不要看到缺失模块就立即执行网上找到的安装命令。先确认项目是否真的需要它，以及命令会安装到哪个 Python 环境。</p>
+<h2 id="_14">导入会执行模块顶层代码<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p>假设 <code>welcome.py</code> 内容是：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;welcome 模块正在加载&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">build_message</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;你好，</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
+<p>另一个文件只写：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">welcome</span>
+</code></pre></div>
+<p>第一次导入时，顶层的 <code>print()</code> 会执行。函数内部代码只有在函数被调用时才执行，但模块顶层语句会在加载模块时运行。</p>
+<p>因此，下面这些行为通常不应在业务模块导入时自动发生：</p>
+<ul>
+<li>读取大文件。</li>
+<li>创建输出目录。</li>
+<li>写入报告。</li>
+<li>发送网络请求。</li>
+<li>启动主流程。</li>
+</ul>
+<p>模块顶层可以保留导入、常量和函数定义。真正的业务动作由入口显式调用。</p>
+<h2 id="name"><strong>name</strong> 和主入口保护<a class="headerlink" href="#name" title="Permanent link">&para;</a></h2>
+<p>每个模块都有 <code>__name__</code>。直接运行文件时，它的值是 <code>"__main__"</code>；被其他文件导入时，它通常是模块名。</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;程序开始运行&quot;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<p>执行文件：</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>main.py
+</code></pre></div>
+<p>条件成立，<code>main()</code> 被调用。</p>
+<p>导入文件：</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import main&quot;</span>
+</code></pre></div>
+<p>条件不成立，只加载定义，不启动主流程。</p>
+<p>主入口保护不是让所有模块都必须有 <code>main()</code>。本节只有入口文件负责启动；<code>analysis.py</code>、<code>data_io.py</code> 和 <code>reporting.py</code> 只提供函数。</p>
+<h2 id="python">Python 在哪里找模块<a class="headerlink" href="#python" title="Permanent link">&para;</a></h2>
+<p>起步阶段可以先记住：运行 <code>main.py</code> 时，Python 会在包含入口脚本的目录、标准库位置和当前环境的依赖位置等搜索模块。</p>
+<p>本节把所有本地模块放在同一示例根目录：</p>
+<div class="highlight"><pre><span></span><code>python-learning/
+├── main.py
+├── analysis.py
+├── data_io.py
+└── reporting.py
+</code></pre></div>
+<p>从该目录运行 <code>python main.py</code>，导入关系最直观。本节不修改 <code>sys.path</code>，不设置 <code>PYTHONPATH</code>，也不使用包内相对导入；这些做法会在程序规模真正需要时再学习。</p>
+<h2 id="_15">模块命名遮蔽<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>本地文件可能遮蔽同名标准库模块。不要把自己的文件命名为：</p>
+<div class="highlight"><pre><span></span><code>json.py
+pathlib.py
+sys.py
+venv.py
+</code></pre></div>
+<p>例如项目中存在 <code>json.py</code> 时：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+</code></pre></div>
+<p>可能导入本地文件，而不是预期的标准库模块，随后出现看似奇怪的属性错误或循环导入。</p>
+<p>检查实际来源：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+</code></pre></div>
+<p>这个命令可能打印本机绝对路径。学习记录只需判断它来自标准库还是当前项目，不公开个人路径。</p>
+<p>如果刚改过文件名，仍有问题，可以在确认没有重要文件后清理对应的 <code>__pycache__/</code>，再重新运行。不要把缓存目录提交到 Git。</p>
+<h2 id="_16">单向依赖和循环导入<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<h3 id="_17">单向依赖<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>本节采用：</p>
+<div class="highlight"><pre><span></span><code>main -&gt; data_io
+main -&gt; analysis
+main -&gt; reporting
+</code></pre></div>
+<p>能力模块不知道入口文件的存在。数据通过参数传入，通过返回值传出。</p>
+<h3 id="_18">循环导入<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>错误示例：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># analysis.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">reporting</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_report</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># reporting.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">summarize_records</span>
+</code></pre></div>
+<p>加载 <code>analysis</code> 时需要加载 <code>reporting</code>，而 <code>reporting</code> 又回头等待尚未加载完成的 <code>analysis</code>，可能出现“partially initialized module”一类错误。</p>
+<p>修复思路不是把导入随意塞进函数内部，而是重新划分职责：</p>
+<ul>
+<li><code>analysis.py</code> 只返回结构化结果。</li>
+<li><code>reporting.py</code> 只接收结果并排版。</li>
+<li><code>main.py</code> 负责按顺序调用两者。</li>
+</ul>
+<h2 id="pycache"><strong>pycache</strong> 是什么<a class="headerlink" href="#pycache" title="Permanent link">&para;</a></h2>
+<p>导入模块后，Python 可能创建 <code>__pycache__/</code>，保存用于加快模块加载的缓存文件。它不是源代码，也不代表多出一个需要维护的模块。</p>
+<p>常见目录：</p>
+<div class="highlight"><pre><span></span><code>__pycache__/
+├── analysis.cpython-311.pyc
+└── reporting.cpython-311.pyc
+</code></pre></div>
+<p>不同 Python 版本生成的名称可能不同。缓存可以重新生成，通常应由 <code>.gitignore</code> 排除。</p>
+<h2 id="_19">虚拟环境解决什么问题<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
+<p>工程基础课程已经介绍过虚拟环境的作用。本节开始真正操作。</p>
+<p>虚拟环境为项目提供独立的 Python 解释器入口和依赖安装位置。它主要解决：</p>
+<div class="highlight"><pre><span></span><code>项目 A 需要依赖的一个版本
+项目 B 需要同一依赖的另一个版本
+全局安装容易互相影响
+</code></pre></div>
+<p>本节没有第三方依赖，仍然创建虚拟环境，是为了先学会确认“当前到底使用哪个 Python”。后续安装依赖时，这个判断会直接影响程序能否运行。</p>
+<h2 id="_20">创建虚拟环境<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<p>先从示例根目录检查版本：</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>--version
+</code></pre></div>
+<p>macOS 或 Linux：</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+</code></pre></div>
+<p>Windows PowerShell：</p>
+<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="n">-m</span> <span class="n">venv</span> <span class="p">.</span><span class="n">venv</span>
+</code></pre></div>
+<p><code>-m venv</code> 表示让当前 Python 解释器运行标准库中的 <code>venv</code> 模块。<code>.venv</code> 是本项目约定的虚拟环境目录名。</p>
+<p>创建后不要手动修改 <code>.venv/</code> 内部文件，也不要复制它给别人。虚拟环境通常不可移植；需要时应在目标计算机上重新创建。</p>
+<h2 id="_21">激活、验证和退出<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
+<h3 id="macos-linux">macOS 或 Linux<a class="headerlink" href="#macos-linux" title="Permanent link">&para;</a></h3>
+<p>激活：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</code></pre></div>
+<p>验证：</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>--version
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sys; print(sys.executable)&quot;</span>
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>--version
+</code></pre></div>
+<p>退出：</p>
+<div class="highlight"><pre><span></span><code>deactivate
+</code></pre></div>
+<h3 id="windows-powershell">Windows PowerShell<a class="headerlink" href="#windows-powershell" title="Permanent link">&para;</a></h3>
+<p>激活：</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></div>
+<p>验证：</p>
+<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="p">-</span><span class="n">-version</span>
+<span class="n">python</span> <span class="n">-c</span> <span class="s2">&quot;import sys; print(sys.executable)&quot;</span>
+<span class="n">python</span> <span class="n">-m</span> <span class="n">pip</span> <span class="p">-</span><span class="n">-version</span>
+</code></pre></div>
+<p>退出：</p>
+<div class="highlight"><pre><span></span><code><span class="n">deactivate</span>
+</code></pre></div>
+<p>如果 PowerShell 阻止脚本执行，先记录完整错误和当前策略，不要为了激活环境随意放宽整台计算机的执行策略。可以直接使用虚拟环境解释器运行程序。</p>
+<h3 id="_22">不激活也可以运行<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p>激活的主要作用是临时调整当前终端寻找 <code>python</code> 和相关命令的顺序。它不是使用虚拟环境的唯一方式。</p>
+<p>macOS 或 Linux：</p>
+<div class="highlight"><pre><span></span><code>.venv/bin/python<span class="w"> </span>main.py
+</code></pre></div>
+<p>Windows：</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">main</span><span class="p">.</span><span class="n">py</span>
+</code></pre></div>
+<p>这种方式明确指定解释器，在自动化脚本和排错时很有用。</p>
+<h2 id="python-m-pip">为什么使用 python -m pip<a class="headerlink" href="#python-m-pip" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>--version
+</code></pre></div>
+<p>这条命令让当前 <code>python</code> 运行它所属环境里的 pip，比直接输入 <code>pip</code> 更容易确认安装目标。</p>
+<p>本节只检查 pip，不安装第三方库。不要为了证明虚拟环境能用而随意安装一个包；后续课程需要依赖时，再记录包名、版本、来源和安装命令。</p>
+<p>可以同时检查：</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sys; print(sys.executable)&quot;</span>
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>--version
+</code></pre></div>
+<p>两条输出都应指向 <code>.venv</code> 对应环境。公开学习记录不要粘贴完整个人路径，只记录“解释器和 pip 均来自项目 <code>.venv</code>”。</p>
+<h2 id="git">Git 忽略边界<a class="headerlink" href="#git" title="Permanent link">&para;</a></h2>
+<p>虚拟环境、缓存和生成报告都可以重新创建，不应进入仓库。输入数据和源代码则需要保留。</p>
+<p><strong>文件：<code>.gitignore</code></strong></p>
+<div class="highlight"><pre><span></span><code>.venv/
+__pycache__/
+*.py[cod]
+output/
+</code></pre></div>
+<p>检查：</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>status<span class="w"> </span>--short<span class="w"> </span>--ignored
+git<span class="w"> </span>check-ignore<span class="w"> </span>-v<span class="w"> </span>.venv/<span class="w"> </span>__pycache__/<span class="w"> </span>output/
+</code></pre></div>
+<p>如果当前练习目录不是 Git 仓库，先理解规则即可，不需要为了本节额外创建远程仓库。</p>
+<h2 id="_23">可复现实例：多模块学习进度报告器<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h2>
+<h3 id="_24">目录结构<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>python-learning/
+├── .gitignore
+├── main.py
+├── analysis.py
+├── data_io.py
+├── reporting.py
+├── data/
+│   └── study_records.json
+└── output/                  # 运行后生成，不提交
+</code></pre></div>
+<p>所有命令从 <code>python-learning/</code> 执行。</p>
+<h3 id="_25">分析模块<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p><strong>文件：<code>analysis.py</code></strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">calculate_progress</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;计算单条记录的完成百分比，并限制在 0 到 100。&quot;&quot;&quot;</span>
+    <span class="n">target_hours</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;target_hours&quot;</span><span class="p">]</span>
+    <span class="n">finished_hours</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;finished_hours&quot;</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">target_hours</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+
+    <span class="n">progress</span> <span class="o">=</span> <span class="n">finished_hours</span> <span class="o">/</span> <span class="n">target_hours</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="k">if</span> <span class="n">progress</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">100.0</span>
+    <span class="k">if</span> <span class="n">progress</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+    <span class="k">return</span> <span class="n">progress</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">build_status</span><span class="p">(</span><span class="n">target_hours</span><span class="p">,</span> <span class="n">progress</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;根据目标和进度返回学习状态。&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">target_hours</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;目标无效&quot;</span>
+    <span class="k">if</span> <span class="n">progress</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;目标已完成&quot;</span>
+    <span class="k">if</span> <span class="n">progress</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;接近目标&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;继续推进&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">normalize_tags</span><span class="p">(</span><span class="n">tags</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;清理标签文本并返回去重集合。&quot;&quot;&quot;</span>
+    <span class="n">unique_tags</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">:</span>
+        <span class="n">clean_tag</span> <span class="o">=</span> <span class="n">tag</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">clean_tag</span><span class="p">:</span>
+            <span class="n">unique_tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">clean_tag</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">unique_tags</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">summarize_records</span><span class="p">(</span><span class="n">records</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;汇总多条学习记录，不修改输入列表和字典。&quot;&quot;&quot;</span>
+    <span class="n">total_target</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">total_finished</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">completed_courses</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">unique_tags</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">report_rows</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
+        <span class="n">course_name</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;course&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">target_hours</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;target_hours&quot;</span><span class="p">]</span>
+        <span class="n">finished_hours</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;finished_hours&quot;</span><span class="p">]</span>
+        <span class="n">progress</span> <span class="o">=</span> <span class="n">calculate_progress</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="n">build_status</span><span class="p">(</span><span class="n">target_hours</span><span class="p">,</span> <span class="n">progress</span><span class="p">)</span>
+
+        <span class="n">total_target</span> <span class="o">=</span> <span class="n">total_target</span> <span class="o">+</span> <span class="n">target_hours</span>
+        <span class="n">total_finished</span> <span class="o">=</span> <span class="n">total_finished</span> <span class="o">+</span> <span class="n">finished_hours</span>
+
+        <span class="k">if</span> <span class="n">progress</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
+            <span class="n">completed_courses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">course_name</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">normalize_tags</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">&quot;tags&quot;</span><span class="p">]):</span>
+            <span class="n">unique_tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+
+        <span class="n">report_rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;course&quot;</span><span class="p">:</span> <span class="n">course_name</span><span class="p">,</span>
+                <span class="s2">&quot;progress&quot;</span><span class="p">:</span> <span class="n">progress</span><span class="p">,</span>
+                <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">status</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+
+    <span class="n">summary</span> <span class="o">=</span> <span class="p">(</span><span class="n">total_target</span><span class="p">,</span> <span class="n">total_finished</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">completed_courses</span><span class="p">))</span>
+    <span class="n">sorted_tags</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">unique_tags</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">report_rows</span><span class="p">,</span> <span class="n">summary</span><span class="p">,</span> <span class="n">completed_courses</span><span class="p">,</span> <span class="n">sorted_tags</span>
+</code></pre></div>
+<h3 id="_26">文件读写模块<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<p><strong>文件：<code>data_io.py</code></strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_json_files</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;返回目录当前层级中排序后的 JSON 文件。&quot;&quot;&quot;</span>
+    <span class="n">json_files</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">directory</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.json&quot;</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+            <span class="n">json_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">json_files</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load_records</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;读取 JSON 文本，并返回 records 列表。&quot;&quot;&quot;</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="n">document</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">document</span><span class="p">[</span><span class="s2">&quot;records&quot;</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">write_report</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">report</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;创建输出目录并写入 UTF-8 文本报告。&quot;&quot;&quot;</span>
+    <span class="n">path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">report</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="_27">报告模块<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<p><strong>文件：<code>reporting.py</code></strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">build_report</span><span class="p">(</span><span class="n">json_files</span><span class="p">,</span> <span class="n">report_rows</span><span class="p">,</span> <span class="n">summary</span><span class="p">,</span> <span class="n">completed_courses</span><span class="p">,</span> <span class="n">sorted_tags</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;生成可以打印和写入文件的完整报告字符串。&quot;&quot;&quot;</span>
+    <span class="n">total_target</span><span class="p">,</span> <span class="n">total_finished</span><span class="p">,</span> <span class="n">completed_count</span> <span class="o">=</span> <span class="n">summary</span>
+    <span class="n">file_names</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">json_files</span><span class="p">:</span>
+        <span class="n">file_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;学习进度报告&quot;</span><span class="p">)</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;发现 JSON 文件：</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">json_files</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;数据文件：&quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">file_names</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">report_rows</span><span class="p">:</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;course&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">：</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;progress&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%｜</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;总计划时间：</span><span class="si">{</span><span class="n">total_target</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> 小时&quot;</span><span class="p">)</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;总完成时间：</span><span class="si">{</span><span class="n">total_finished</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> 小时&quot;</span><span class="p">)</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;已完成课程数：</span><span class="si">{</span><span class="n">completed_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;已完成课程：&quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">completed_courses</span><span class="p">))</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;唯一标签：&quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sorted_tags</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="_28">主入口<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<p><strong>文件：<code>main.py</code></strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">summarize_records</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">data_io</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_json_files</span><span class="p">,</span> <span class="n">load_records</span><span class="p">,</span> <span class="n">write_report</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">reporting</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_report</span>
+
+
+<span class="n">DATA_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">INPUT_PATH</span> <span class="o">=</span> <span class="n">DATA_DIR</span> <span class="o">/</span> <span class="s2">&quot;study_records.json&quot;</span>
+<span class="n">OUTPUT_PATH</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;output&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;study_report.txt&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">json_files</span> <span class="o">=</span> <span class="n">find_json_files</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">)</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">load_records</span><span class="p">(</span><span class="n">INPUT_PATH</span><span class="p">)</span>
+    <span class="n">report_rows</span><span class="p">,</span> <span class="n">summary</span><span class="p">,</span> <span class="n">completed_courses</span><span class="p">,</span> <span class="n">sorted_tags</span> <span class="o">=</span> <span class="n">summarize_records</span><span class="p">(</span>
+        <span class="n">records</span>
+    <span class="p">)</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="n">build_report</span><span class="p">(</span>
+        <span class="n">json_files</span><span class="p">,</span>
+        <span class="n">report_rows</span><span class="p">,</span>
+        <span class="n">summary</span><span class="p">,</span>
+        <span class="n">completed_courses</span><span class="p">,</span>
+        <span class="n">sorted_tags</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">write_report</span><span class="p">(</span><span class="n">OUTPUT_PATH</span><span class="p">,</span> <span class="n">report</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;报告已写入：</span><span class="si">{</span><span class="n">OUTPUT_PATH</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="json">JSON 输入<a class="headerlink" href="#json" title="Permanent link">&para;</a></h3>
+<p><strong>文件：<code>data/study_records.json</code></strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;records&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;course&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;  Python 起步  &quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;target_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;finished_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;基础&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Python&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;course&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;工程基础入门&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;target_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;finished_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;基础&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;工具&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;course&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CS 最小核心&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;target_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;finished_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;CS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;算法&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_29">创建并使用虚拟环境<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
+<p>macOS 或 Linux：</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sys; print(sys.executable)&quot;</span>
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>--version
+python<span class="w"> </span>main.py
+deactivate
+</code></pre></div>
+<p>Windows PowerShell：</p>
+<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="n">-m</span> <span class="n">venv</span> <span class="p">.</span><span class="n">venv</span>
+<span class="p">.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
+<span class="n">python</span> <span class="n">-c</span> <span class="s2">&quot;import sys; print(sys.executable)&quot;</span>
+<span class="n">python</span> <span class="n">-m</span> <span class="n">pip</span> <span class="p">-</span><span class="n">-version</span>
+<span class="n">python</span> <span class="n">main</span><span class="p">.</span><span class="n">py</span>
+<span class="n">deactivate</span>
+</code></pre></div>
+<h3 id="_30">预期输出<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>学习进度报告
+发现 JSON 文件：1
+数据文件：study_records.json
+- Python 起步：80.0%｜接近目标
+- 工程基础入门：100.0%｜目标已完成
+- CS 最小核心：25.0%｜继续推进
+总计划时间：30.0 小时
+总完成时间：20.0 小时
+已完成课程数：1
+已完成课程：工程基础入门
+唯一标签：cs, python, 基础, 工具, 算法
+报告已写入：output/study_report.txt
+</code></pre></div>
+<h3 id="_31">验证导入没有副作用<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
+<p>删除已有 <code>output/</code> 后执行：</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import analysis, data_io, reporting, main&quot;</span>
+</code></pre></div>
+<p>客观结果：</p>
+<ul>
+<li>终端没有报告输出。</li>
+<li>不会创建 <code>output/</code>。</li>
+<li>不会读取 JSON。</li>
+</ul>
+<p>再执行：</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>main.py
+</code></pre></div>
+<p>此时才会读取数据、打印报告并创建输出文件。</p>
+<h3 id="_32">语法检查<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>compileall<span class="w"> </span>-q<span class="w"> </span>main.py<span class="w"> </span>analysis.py<span class="w"> </span>data_io.py<span class="w"> </span>reporting.py
+</code></pre></div>
+<p>命令没有输出且退出码为0，表示四个模块可以编译。它不能证明模块职责合理或报告结果正确，仍要运行完整场景。</p>
+<h2 id="ai">AI 协作任务：拆分单文件程序<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h2>
+<p>AI 很适合完成机械搬运和导入语句初稿，但可能过度拆分、制造循环依赖、改变函数行为或在导入时启动程序。</p>
+<h3 id="_33">可复用任务描述<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>请把现有单文件学习进度报告器重构为四个同目录Python模块：
+main.py负责流程编排，data_io.py负责JSON和文本文件，
+analysis.py负责计算汇总，reporting.py负责生成报告字符串。
+约束：Python 3.11及以上，仅使用标准库；保持输入、输出和报告内容不变；
+业务模块不得导入main；不得使用类、包目录、相对导入或第三方库；
+只有显式运行main.py时才能读取数据、打印或写文件；
+main.py必须使用if __name__ == &quot;__main__&quot;保护入口；
+请给出完整文件、依赖图、运行命令、导入副作用检查和回归结果。
+</code></pre></div>
+<h3 id="_34">人工审阅要求<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
+<ol>
+<li>检查每个模块能否用一句话说明职责。</li>
+<li>检查业务模块是否反向导入 <code>main</code>，或彼此形成循环。</li>
+<li>检查顶层是否存在读取、写入、打印或启动流程。</li>
+<li>检查函数参数、返回值和报告文本是否被 AI 悄悄修改。</li>
+<li>检查是否出现 <code>from module import *</code> 或难以解释的动态导入。</li>
+<li>单独导入四个模块，确认没有输出和文件变化。</li>
+<li>主动把 <code>normalize_tags()</code> 从 <code>analysis.py</code> 移到新建的 <code>text_tools.py</code>，修正导入后再次运行；完成后说明文件是否真的更清楚。若只增加跳转而没有形成独立职责，应撤销该拆分并记录原因。</li>
+</ol>
+<p>学习记录：</p>
+<div class="highlight"><pre><span></span><code>重构前输入、输出和运行命令：
+AI建议的模块职责：
+我接受、合并或撤销的拆分：
+模块导入方向：
+导入时是否产生副作用：
+我主动移动的函数及判断：
+系统Python运行结果：
+虚拟环境解释器与pip检查：
+重构前后输出对比：
+仍未验证的风险：
+</code></pre></div>
+<h2 id="_35">核心手动检查点<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h2>
+<h3 id="1">检查点 1：追踪启动顺序<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>从 <code>python main.py</code> 开始，按顺序写出：</p>
+<ol>
+<li>哪些模块先被加载。</li>
+<li>哪些顶层内容会执行。</li>
+<li><code>main()</code> 在什么条件下调用。</li>
+<li>数据何时读取，报告何时写入。</li>
+</ol>
+<h3 id="2">检查点 2：解释主入口保护<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>分别预测：</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>main.py
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import main&quot;</span>
+</code></pre></div>
+<p>说明两种情况下 <code>main.__name__</code> 的差异，以及为什么第二条命令不应生成报告。</p>
+<h3 id="3">检查点 3：识别命名遮蔽<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>在临时练习目录创建 <code>json.py</code> 后运行：</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import json; print(json.__file__)&quot;</span>
+</code></pre></div>
+<p>判断导入来源，随后删除临时文件和对应缓存。不要在当前公开仓库中制造这个错误。</p>
+<h3 id="4">检查点 4：修复循环导入<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p>阅读前面的 <code>analysis</code> 与 <code>reporting</code> 循环示例，画出依赖环，再改为两个能力模块互不导入、由 <code>main</code> 组合结果。</p>
+<h3 id="5">检查点 5：证明解释器来自虚拟环境<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p>激活前后分别运行：</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sys; print(sys.executable)&quot;</span>
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>--version
+</code></pre></div>
+<p>记录两次结果属于系统环境还是项目 <code>.venv</code>，但不要公开个人绝对路径。</p>
+<h3 id="6">检查点 6：不激活也能运行<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<p>退出虚拟环境后，直接使用 <code>.venv</code> 中的解释器运行 <code>main.py</code>。解释为什么程序仍然使用虚拟环境，以及激活实际改变了什么。</p>
+<h2 id="_36">微练习<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">练习 1：拆分两个模块<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<p>把一个同时包含计算和打印的脚本拆成 <code>math_tools.py</code> 与 <code>main.py</code>。要求导入工具模块时没有输出，只有运行入口时打印结果。</p>
+<h3 id="2_1">练习 2：比较导入方式<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<p>分别使用 <code>import analysis</code> 和 <code>from analysis import calculate_progress</code> 调用同一函数。记录名称来源、调用写法和重名风险。</p>
+<h3 id="3_1">练习 3：主入口保护<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<p>故意把 <code>main()</code> 调用放在条件外，观察 <code>python -c "import main"</code> 的副作用；再恢复保护并验证输出目录不再创建。</p>
+<h3 id="4_1">练习 4：模块命名冲突<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<p>在独立临时目录使用 <code>json.py</code> 制造遮蔽，记录实际导入路径和错误。修复文件名并清理缓存后重新验证。</p>
+<h3 id="5_1">练习 5：创建并验证虚拟环境<a class="headerlink" href="#5_1" title="Permanent link">&para;</a></h3>
+<p>创建 <code>.venv</code>，分别记录系统解释器和虚拟环境解释器的版本、<code>sys.executable</code> 判断与 pip 归属。不安装第三方库。</p>
+<h3 id="6_1">练习 6：错误解释器排查<a class="headerlink" href="#6_1" title="Permanent link">&para;</a></h3>
+<p>先在虚拟环境中运行程序，再退出环境运行。虽然本节标准库示例都能成功，但要根据 <code>sys.executable</code> 说明两次实际使用的解释器不同。</p>
+<h2 id="_37">常见错误与排查<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>常见原因</th>
+<th>检查方法</th>
+<th>当前课程中的修复</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ModuleNotFoundError</code></td>
+<td>文件名、运行目录或导入名不一致</td>
+<td>核对目录树和导入语句</td>
+<td>从示例根目录运行并修正名称</td>
+</tr>
+<tr>
+<td><code>ImportError</code></td>
+<td>导入了不存在的名称</td>
+<td>检查模块中实际定义</td>
+<td>修正函数名和职责归属</td>
+</tr>
+<tr>
+<td>partially initialized module</td>
+<td>形成循环导入</td>
+<td>画出模块依赖箭头</td>
+<td>让 <code>main</code> 组合能力模块</td>
+</tr>
+<tr>
+<td>导入后自动打印或写文件</td>
+<td>主流程位于模块顶层</td>
+<td>执行单独导入检查</td>
+<td>把动作放入函数并保护入口</td>
+</tr>
+<tr>
+<td><code>json</code> 没有预期属性</td>
+<td>本地 <code>json.py</code> 遮蔽标准库</td>
+<td>查看 <code>json.__file__</code></td>
+<td>重命名本地文件并清理缓存</td>
+</tr>
+<tr>
+<td>修改模块后交互环境仍是旧行为</td>
+<td>同一解释器会话已缓存模块</td>
+<td>重新启动解释器</td>
+<td>结束旧会话后重新运行</td>
+</tr>
+<tr>
+<td>激活后仍使用错误 Python</td>
+<td>激活失败或终端状态不对</td>
+<td>查看 <code>sys.executable</code></td>
+<td>重新激活或直接调用 <code>.venv</code>解释器</td>
+</tr>
+<tr>
+<td><code>pip</code> 和 <code>python</code> 不属于同一环境</td>
+<td>直接调用了另一个 pip</td>
+<td>比较 pip 输出与解释器路径</td>
+<td>使用 <code>python -m pip</code></td>
+</tr>
+<tr>
+<td>PowerShell阻止激活脚本</td>
+<td>执行策略限制</td>
+<td>记录完整错误</td>
+<td>直接调用 <code>.venv\Scripts\python.exe</code></td>
+</tr>
+<tr>
+<td><code>.venv</code> 出现在 Git 状态</td>
+<td>忽略规则缺失或已被跟踪</td>
+<td>使用 <code>git check-ignore</code></td>
+<td>添加规则；已跟踪情况留到Git深化处理</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_38">完成标准<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h2>
+<p>完成本节需要同时满足：</p>
+<ul>
+<li>能解释模块、入口文件和函数之间的关系。</li>
+<li>能使用两种常见导入方式，并说明各自取舍。</li>
+<li>能区分标准库、本地模块和第三方依赖。</li>
+<li>能解释导入时会执行模块顶层语句。</li>
+<li>能使用 <code>if __name__ == "__main__":</code> 避免导入副作用。</li>
+<li>能为读取、计算、报告和编排划分清楚职责。</li>
+<li>能画出单向模块依赖，并识别一个循环导入。</li>
+<li>能识别本地文件遮蔽标准库的问题。</li>
+<li>能创建、激活、验证和退出 <code>.venv</code>。</li>
+<li>能在不激活时直接使用虚拟环境解释器运行程序。</li>
+<li>能使用 <code>sys.executable</code> 和 <code>python -m pip</code> 判断当前环境。</li>
+<li>能运行多模块学习进度报告器，确认输出与重构前一致。</li>
+<li>能证明单独导入四个模块不会打印、读写文件或创建输出目录。</li>
+<li>能使用 <code>.gitignore</code> 排除虚拟环境、缓存和生成输出。</li>
+<li>能审阅一次 AI 模块重构，主动调整一个职责并完成回归验证。</li>
+</ul>
+<h2 id="_39">来源与版本<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>来源</th>
+<th>用于核查</th>
+<th>版本或日期</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.python.org/3/tutorial/modules.html">Python 官方教程：Modules</a></td>
+<td>模块、导入、搜索路径、缓存和命名遮蔽</td>
+<td>Python 3 文档，2026-07-14核查</td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/__main__.html">Python 标准库：<code>__main__</code></a></td>
+<td>顶层代码环境和主入口保护</td>
+<td>Python 3 文档，2026-07-14核查</td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/venv.html">Python 标准库：venv</a></td>
+<td>虚拟环境创建、激活和解释器使用</td>
+<td>Python 3 文档，2026-07-14核查</td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><a href="https://pip.pypa.io/en/stable/user_guide/#running-pip">pip 官方用户指南</a></td>
+<td>使用当前解释器运行 pip</td>
+<td>pip 文档，2026-07-14核查</td>
+<td>已验证</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_40">下一步<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h2>
+<p>下一步进入<a href="../07-errors-debugging-tests/">异常、基本调试和最小自动化测试</a>。你会为多模块学习进度报告器增加输入校验、清楚的失败信息和自动化检查，并将连续课程成果沉淀为独立阶段作品。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../05-files-json-paths/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 文件、路径、JSON 和简单目录操作">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                文件、路径、JSON 和简单目录操作
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../07-errors-debugging-tests/" class="md-footer__link md-footer__link--next" aria-label="下一页: 异常、基本调试和最小自动化测试">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                异常、基本调试和最小自动化测试
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.integrate", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

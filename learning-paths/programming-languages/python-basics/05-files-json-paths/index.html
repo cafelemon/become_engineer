@@ -1,0 +1,3422 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="面向小白的工程、CS、Web、AI 与 LLM/Agent 公开学习库">
+      
+      
+      
+        <link rel="canonical" href="https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/python-basics/05-files-json-paths/">
+      
+      
+        <link rel="prev" href="../04-strings-collections/">
+      
+      
+        <link rel="next" href="../06-modules-imports-venv/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>文件、路径、JSON 和简单目录操作 - Become Engineer</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#json" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="Become Engineer" class="md-header__button md-logo" aria-label="Become Engineer" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Become Engineer
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              文件、路径、JSON 和简单目录操作
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cafelemon/become_engineer" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cafelemon/become_engineer
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../beginner-roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  开始学习
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../projects/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  项目
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../docs/00_overview/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  项目文档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Become Engineer" class="md-nav__button md-logo" aria-label="Become Engineer" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17z"/></svg>
+
+    </a>
+    Become Engineer
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cafelemon/become_engineer" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cafelemon/become_engineer
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开始学习
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    开始学习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../beginner-roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../curriculum-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    完整课程地图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../engineering-foundation/stage-0/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程基础入门
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程基础入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/01-learning-method/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/02-filesystem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文件系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/03-terminal-shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    终端与 Shell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/04-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    编辑器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/05-markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Markdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/06-git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/07-development-environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发环境
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/08-docker-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker最小认知
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/09-validation-habit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    验证习惯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 起步
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 起步
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-variables-types-io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    变量、基本类型、输入输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-conditions-loops-boolean/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    条件、循环、布尔逻辑
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-functions-parameters-returns-scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    函数、参数、返回值和作用域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-strings-collections/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    字符串、列表、字典、集合和元组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文件、路径、JSON 和简单目录操作
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文件、路径、JSON 和简单目录操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        课程信息
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        前置知识
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学习目标
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学习顺序
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据怎样流过程序
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        当前工作目录和路径
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="当前工作目录和路径">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        当前工作目录
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相对路径和绝对路径
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        项目根目录
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用 Path 表示路径
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="使用 Path 表示路径">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        判断路径状态
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utf-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        读取和写入 UTF-8 文本
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="读取和写入 UTF-8 文本">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        读取文本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        写入文本
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSON 是文本格式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从 JSON 文本得到 Python 数据
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="从 JSON 文本得到 Python 数据">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jsonloads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用 json.loads 解析字符串
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsondumps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用 json.dumps 生成字符串
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        扫描受限目录
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="扫描受限目录">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#glob" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        glob 扫描当前目录层级
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rglob" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rglob 递归扫描
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四个不同的失败位置
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可复现实例：从 JSON 生成学习报告
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="可复现实例：从 JSON 生成学习报告">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目录结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSON 输入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完整程序
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        运行命令
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        预期终端输出
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        验证场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI 协作任务：把内存数据迁移到 JSON
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI 协作任务：把内存数据迁移到 JSON">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可复用任务描述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        人工审阅要求
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心手动检查点
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="核心手动检查点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点 1：路径从哪里开始
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点 2：追踪 JSON 类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点 3：判断失败层次
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点 4：验证输入只读
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点 5：限制递归扫描
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        微练习
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="微练习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习 1：判断相对路径
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2utf-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习 2：UTF-8 文本读写
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习 3：JSON 类型映射
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习 4：修改数据重新生成报告
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习 5：扫描 JSON 文件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习 6：定位两种失败
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见错误与排查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成标准
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下一步
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-modules-imports-venv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    模块、导入和虚拟环境
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-errors-debugging-tests/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    异常、基本调试和最小自动化测试
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../cpp-core/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C++ 核心语言
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C++ 核心语言
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cpp-core/01-build-types-io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    从源文件到可执行程序
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../projects/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    项目
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    项目
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projects/project-roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    项目主干规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projects/python-content-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 内容分析工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projects/structured-data-ml-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    结构化数据机器学习系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projects/text-classification-evolution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文本分类模型演进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projects/reinforcement-learning-control-lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    强化学习控制实验
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projects/intelligent-learning-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    可评估的智能学习助手
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    项目文档
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    项目文档
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/00_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    项目总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/01_prd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/02_roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    路线图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/03_architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    架构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/04_acceptance_checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    验收清单
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/05_ai_coding_agent_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Coding 工作协议
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/08_content_standard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    课程内容规范
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/06_progress/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    进度记录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/07_decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    决策记录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="json">文件、路径、JSON 和简单目录操作<a class="headerlink" href="#json" title="Permanent link">&para;</a></h1>
+<p>上一节的学习进度报告器已经能处理多条记录，但数据仍然写死在 Python 代码中。每次调整课程时间或标签都要修改程序，这会把“数据变化”和“程序变化”混在一起。</p>
+<p>本节把课程记录移到 JSON 文件：程序先定位文件，再读取 UTF-8 文本，把 JSON 文本解析成 Python 数据结构，最后生成一份单独的文本报告。你将第一次完成“输入文件只读、处理逻辑独立、结果写到输出目录”的小型数据处理闭环。</p>
+<h2 id="_1">课程信息<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>课程类型：编程课。</li>
+<li>所属主线：编程语言。</li>
+<li>课程层级：Python 起步必修。</li>
+<li>运行环境：Python 3.11 或更高版本，仅使用标准库。</li>
+<li>阶段作品：让学习进度报告器读取外部 JSON，并生成文本报告。</li>
+<li>事实核查：2026-07-14，依据 Python 3 官方教程、<code>pathlib</code> 和 <code>json</code> 文档。</li>
+</ul>
+<h2 id="_2">前置知识<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>开始前应完成：</p>
+<ul>
+<li><a href="../03-functions-parameters-returns-scope/">函数、参数、返回值和作用域</a>。</li>
+<li><a href="../04-strings-collections/">字符串、列表、字典、集合和元组</a>。</li>
+<li>能使用字典表示一条记录，使用列表保存多条记录。</li>
+<li>能在终端进入指定目录并运行 Python 文件。</li>
+<li>能根据 traceback 找到错误类型和出错行。</li>
+</ul>
+<p>开始前先确认：你能解释为什么课程记录属于数据，而汇总进度、生成状态和输出报告属于程序逻辑。</p>
+<h2 id="_3">学习目标<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>完成本节后，你应该能做到：</p>
+<ul>
+<li>区分当前工作目录、相对路径、绝对路径和项目根目录。</li>
+<li>使用 <code>pathlib.Path</code> 组合路径，并判断路径代表文件还是目录。</li>
+<li>明确指定 UTF-8 编码读取和写入文本。</li>
+<li>说明 JSON 文本与 Python 数据结构之间的对应关系。</li>
+<li>使用 <code>json.loads()</code> 解析文本，使用 <code>json.dumps()</code> 生成 JSON 文本。</li>
+<li>使用 <code>glob()</code> 扫描当前目录中的指定类型文件。</li>
+<li>说明 <code>rglob()</code> 会递归进入子目录，并在使用前限制扫描根目录和文件模式。</li>
+<li>区分文件定位、文本读取、JSON 解析和字段访问四个失败位置。</li>
+<li>审阅 AI 生成的文件代码，检查路径假设、编码、扫描范围和覆盖输入的风险。</li>
+</ul>
+<h2 id="_4">学习顺序<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ol>
+<li>先理解程序从哪个目录解释相对路径。</li>
+<li>使用 <code>Path</code> 表示和组合路径。</li>
+<li>读取与写入 UTF-8 文本。</li>
+<li>理解 JSON 语法和类型映射。</li>
+<li>把 JSON 文本解析为列表和字典。</li>
+<li>使用 <code>glob()</code> 扫描受限目录。</li>
+<li>完成从 JSON 输入到文本报告的阶段作品。</li>
+<li>制造缺失文件、坏 JSON 和缺少字段三类失败，判断故障层次。</li>
+</ol>
+<h2 id="_5">数据怎样流过程序<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>下面的图回答一个问题：磁盘上的 JSON 文件怎样变成最终报告？</p>
+<pre class="mermaid"><code>flowchart LR
+    A["data 数据目录"] --&gt; B["Path 定位输入文件"]
+    B --&gt; C["按 UTF-8 读取文本"]
+    C --&gt; D["json.loads 解析"]
+    D --&gt; E["Python 列表与字典"]
+    E --&gt; F["汇总函数"]
+    F --&gt; G["报告字符串"]
+    G --&gt; H["output 输出目录"]</code></pre>
+<p>每条箭头都是一个可以单独验证的边界。文件不存在时，程序还没有读到文本；JSON 语法错误时，文本已经读到，但还没有得到 Python 数据；字段缺失时，解析已经成功，问题出在数据结构不符合程序约定。</p>
+<h2 id="_6">当前工作目录和路径<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="_7">当前工作目录<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>当前工作目录是你执行命令时所在的目录。相对路径从这里开始解释，而不是自动从 <code>.py</code> 文件所在位置开始。</p>
+<p>假设目录结构是：</p>
+<div class="highlight"><pre><span></span><code>python-learning/
+├── data/
+│   └── study_records.json
+└── study_records_from_json.py
+</code></pre></div>
+<p>先进入 <code>python-learning/</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>python-learning
+python3<span class="w"> </span>study_records_from_json.py
+</code></pre></div>
+<p>此时 <code>data/study_records.json</code> 会从 <code>python-learning/</code> 下查找。如果你站在它的父目录运行：</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>python-learning/study_records_from_json.py
+</code></pre></div>
+<p>程序的当前工作目录仍然是父目录，<code>data/study_records.json</code> 很可能找不到。本课程统一要求从示例根目录运行；使用 <code>__file__</code> 定位脚本目录会在模块与项目结构课程中学习。</p>
+<p>用 Python 观察当前工作目录：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">())</span>
+</code></pre></div>
+<p>不要把输出中的个人绝对路径写进公开代码或文档。学习记录可以写“当前目录是示例根目录”，不需要公开用户名和磁盘位置。</p>
+<h3 id="_8">相对路径和绝对路径<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">relative_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;study_records.json&quot;</span>
+<span class="n">absolute_path</span> <span class="o">=</span> <span class="n">relative_path</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">relative_path</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">relative_path</span><span class="o">.</span><span class="n">is_absolute</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">absolute_path</span><span class="o">.</span><span class="n">is_absolute</span><span class="p">())</span>
+</code></pre></div>
+<p>相对路径便于在不同计算机上复现；绝对路径说明文件在当前机器上的完整位置。不要把某台机器的绝对路径硬编码为公开示例。</p>
+<h3 id="_9">项目根目录<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>项目根目录不是 Python 的特殊语法，而是团队约定的执行起点。它通常包含入口程序、数据目录、配置或说明文件。</p>
+<p>本节约定：</p>
+<div class="highlight"><pre><span></span><code>python-learning/                 # 示例根目录
+├── data/                        # 只读输入
+├── output/                      # 程序生成的输出
+└── study_records_from_json.py   # 程序入口
+</code></pre></div>
+<p>所有命令都从 <code>python-learning/</code> 执行。明确执行起点，可以避免“代码一样，换个目录就找不到文件”的混乱。</p>
+<h2 id="path">使用 Path 表示路径<a class="headerlink" href="#path" title="Permanent link">&para;</a></h2>
+<p><code>Path</code> 会根据当前操作系统使用合适的路径规则。组合子路径时使用 <code>/</code>，不需要手动拼接 <code>/</code> 或 <code>\\</code>。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">input_path</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="s2">&quot;study_records.json&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">input_path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">input_path</span><span class="o">.</span><span class="n">suffix</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">input_path</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+</code></pre></div>
+<p>预期含义：</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>结果</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>input_path.name</code></td>
+<td><code>study_records.json</code></td>
+<td>最后一段文件名</td>
+</tr>
+<tr>
+<td><code>input_path.suffix</code></td>
+<td><code>.json</code></td>
+<td>文件扩展名</td>
+</tr>
+<tr>
+<td><code>input_path.parent</code></td>
+<td><code>data</code></td>
+<td>父路径</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10">判断路径状态<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">input_path</span><span class="o">.</span><span class="n">exists</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">input_path</span><span class="o">.</span><span class="n">is_file</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_dir</span><span class="o">.</span><span class="n">is_dir</span><span class="p">())</span>
+</code></pre></div>
+<ul>
+<li><code>exists()</code> 判断路径是否存在。</li>
+<li><code>is_file()</code> 判断现有路径是否是普通文件。</li>
+<li><code>is_dir()</code> 判断现有路径是否是目录。</li>
+</ul>
+<p>这些检查可以帮助定位问题，但不能替代后续异常处理。路径可能在检查后发生变化，权限也可能阻止读取；本节先观察失败，后续再设计恢复策略。</p>
+<h2 id="utf-8">读取和写入 UTF-8 文本<a class="headerlink" href="#utf-8" title="Permanent link">&para;</a></h2>
+<h3 id="_11">读取文本<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">input_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;study_records.json&quot;</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">input_path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+</code></pre></div>
+<p><code>read_text()</code> 返回字符串。明确写出 <code>encoding="utf-8"</code>，可以减少不同操作系统默认编码造成的差异。</p>
+<p>如果文件不存在，读取时会出现 <code>FileNotFoundError</code>。如果路径实际是目录，可能出现 <code>IsADirectoryError</code>。如果字节不能按指定编码解码，可能出现 <code>UnicodeDecodeError</code>。</p>
+<h3 id="_12">写入文本<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>输出应写到专用目录，不覆盖输入文件：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">output_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;output&quot;</span><span class="p">)</span>
+<span class="n">output_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">report_path</span> <span class="o">=</span> <span class="n">output_dir</span> <span class="o">/</span> <span class="s2">&quot;study_report.txt&quot;</span>
+<span class="n">report_path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="s2">&quot;学习进度报告</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li><code>parents=True</code> 允许在需要时一并创建缺少的父目录。</li>
+<li><code>exist_ok=True</code> 表示目录已经存在时不把它当成错误。</li>
+<li><code>write_text()</code> 默认覆盖同名文件，所以路径必须明确指向允许生成的输出文件。</li>
+</ul>
+<p>本节的安全边界是：读取 <code>data/</code>，只向 <code>output/</code> 写入生成结果。不要让 AI 把输入路径和输出路径设成同一个文件。</p>
+<h2 id="json_1">JSON 是文本格式<a class="headerlink" href="#json_1" title="Permanent link">&para;</a></h2>
+<p>JSON 是一种文本数据格式，不是 Python 代码。下面是一份合法 JSON：</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;records&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;course&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Python 起步&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;target_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;finished_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>JSON 与 Python 写法相似，但不能混用：</p>
+<table>
+<thead>
+<tr>
+<th>JSON</th>
+<th>解析后的 Python</th>
+<th>注意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对象 <code>{}</code></td>
+<td>字典 <code>dict</code></td>
+<td>JSON 对象的键是字符串</td>
+</tr>
+<tr>
+<td>数组 <code>[]</code></td>
+<td>列表 <code>list</code></td>
+<td>保留元素顺序</td>
+</tr>
+<tr>
+<td>字符串</td>
+<td><code>str</code></td>
+<td>JSON 字符串和键使用双引号</td>
+</tr>
+<tr>
+<td>整数</td>
+<td><code>int</code></td>
+<td>例如 <code>10</code></td>
+</tr>
+<tr>
+<td>小数</td>
+<td><code>float</code></td>
+<td>例如 <code>8.5</code></td>
+</tr>
+<tr>
+<td><code>true</code> / <code>false</code></td>
+<td><code>True</code> / <code>False</code></td>
+<td>大小写不同</td>
+</tr>
+<tr>
+<td><code>null</code></td>
+<td><code>None</code></td>
+<td>名称不同</td>
+</tr>
+</tbody>
+</table>
+<p>常见的无效 JSON：</p>
+<div class="highlight"><pre><span></span><code>{&#39;course&#39;: &#39;Python&#39;}       # 使用了单引号
+{&quot;course&quot;: &quot;Python&quot;,}     # 最后多了逗号
+{&quot;active&quot;: True}          # 使用了 Python 的 True
+</code></pre></div>
+<p>标准 JSON 不支持注释。需要说明字段时，把说明写进课程文档，或者增加含义明确的数据字段。</p>
+<h2 id="json-python">从 JSON 文本得到 Python 数据<a class="headerlink" href="#json-python" title="Permanent link">&para;</a></h2>
+<h3 id="jsonloads">使用 json.loads 解析字符串<a class="headerlink" href="#jsonloads" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;{&quot;course&quot;: &quot;Python&quot;, &quot;hours&quot;: 3}&#39;</span>
+<span class="n">record</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">record</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">&quot;course&quot;</span><span class="p">])</span>
+</code></pre></div>
+<p><code>loads</code> 中的 <code>s</code> 可以帮助记忆：它接收一个 JSON 字符串。解析成功后，才能使用字典和列表操作读取字段。</p>
+<p>如果文本不是合法 JSON，会出现 <code>json.JSONDecodeError</code>。这和文件不存在不是同一类问题：出现解析错误，通常说明文件已经读取成功，但内容语法不合法。</p>
+<h3 id="jsondumps">使用 json.dumps 生成字符串<a class="headerlink" href="#jsondumps" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="n">summary</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;course_count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s2">&quot;completed&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="s2">&quot;基础&quot;</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">summary</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li><code>ensure_ascii=False</code> 让中文直接显示，而不是转成 Unicode 转义序列。</li>
+<li><code>indent=2</code> 生成便于阅读的缩进。</li>
+<li><code>dumps()</code> 返回字符串，不会自动写入文件。</li>
+</ul>
+<p>如果需要保存，再使用 <code>write_text()</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">output_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;output&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;summary.json&quot;</span>
+<span class="n">output_path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">output_path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">text</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="_13">扫描受限目录<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<h3 id="glob">glob 扫描当前目录层级<a class="headerlink" href="#glob" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.json&quot;</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+<p><code>glob("*.json")</code> 只匹配 <code>data/</code> 当前层级中的 JSON 路径。使用 <code>sorted()</code> 后，输出顺序稳定，便于测试和比较。</p>
+<h3 id="rglob">rglob 递归扫描<a class="headerlink" href="#rglob" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data_dir</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.json&quot;</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</code></pre></div>
+<p><code>rglob()</code> 会进入所有匹配的子目录。它不是“更高级所以总该使用”的版本：扫描范围越大，运行越慢，也越容易读到缓存、生成文件、私人资料或本来不属于任务的目录。</p>
+<p>递归前至少回答：</p>
+<ol>
+<li>扫描根目录是否明确且足够小？</li>
+<li>文件模式是否限定为真正需要的类型？</li>
+<li>是否会进入输出目录、隐藏目录或私人素材目录？</li>
+<li>程序只读取文件，还是会修改扫描到的内容？</li>
+</ol>
+<p>本节完整示例使用 <code>glob("*.json")</code>，不递归扫描。Python 内容分析工具进入正式项目后，再设计排除规则和递归边界。</p>
+<h2 id="_14">四个不同的失败位置<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>层次</th>
+<th>操作</th>
+<th>典型错误</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>路径定位</td>
+<td>找到输入路径</td>
+<td>路径指向错误位置</td>
+<td>常见原因是当前工作目录不对</td>
+</tr>
+<tr>
+<td>文本读取</td>
+<td><code>read_text()</code></td>
+<td><code>FileNotFoundError</code>、<code>UnicodeDecodeError</code></td>
+<td>还没有得到可解析的 JSON 文本</td>
+</tr>
+<tr>
+<td>JSON 解析</td>
+<td><code>json.loads()</code></td>
+<td><code>JSONDecodeError</code></td>
+<td>文件已读到，但 JSON 语法错误</td>
+</tr>
+<tr>
+<td>字段访问</td>
+<td><code>document["records"]</code></td>
+<td><code>KeyError</code></td>
+<td>JSON 合法，但数据结构不符合程序约定</td>
+</tr>
+</tbody>
+</table>
+<p>看到错误时，不要立即让 AI 加一层宽泛的 <code>try/except</code>。先根据 traceback 判断失败发生在哪一步，再决定应该修路径、编码、JSON 语法还是数据字段。</p>
+<h2 id="json_2">可复现实例：从 JSON 生成学习报告<a class="headerlink" href="#json_2" title="Permanent link">&para;</a></h2>
+<h3 id="_15">目录结构<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>在自己的练习目录中建立：</p>
+<div class="highlight"><pre><span></span><code>python-learning/
+├── data/
+│   └── study_records.json
+└── study_records_from_json.py
+</code></pre></div>
+<p><code>output/</code> 不需要提前创建，程序会在成功处理数据后创建它。</p>
+<h3 id="json_3">JSON 输入<a class="headerlink" href="#json_3" title="Permanent link">&para;</a></h3>
+<p><strong>文件：<code>data/study_records.json</code></strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;records&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;course&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;  Python 起步  &quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;target_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;finished_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;基础&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Python&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;course&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;工程基础入门&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;target_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;finished_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;基础&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;工具&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;course&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CS 最小核心&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;target_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;finished_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;CS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;算法&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_16">完整程序<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p><strong>文件：<code>study_records_from_json.py</code></strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+
+<span class="n">DATA_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">INPUT_PATH</span> <span class="o">=</span> <span class="n">DATA_DIR</span> <span class="o">/</span> <span class="s2">&quot;study_records.json&quot;</span>
+<span class="n">OUTPUT_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;output&quot;</span><span class="p">)</span>
+<span class="n">OUTPUT_PATH</span> <span class="o">=</span> <span class="n">OUTPUT_DIR</span> <span class="o">/</span> <span class="s2">&quot;study_report.txt&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_json_files</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;返回目录当前层级中排序后的 JSON 文件。&quot;&quot;&quot;</span>
+    <span class="n">json_files</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">directory</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.json&quot;</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+            <span class="n">json_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">json_files</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load_records</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;读取 JSON 文本，并返回 records 列表。&quot;&quot;&quot;</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="n">document</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">document</span><span class="p">[</span><span class="s2">&quot;records&quot;</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_progress</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;计算单条记录的完成百分比，并限制在 0 到 100。&quot;&quot;&quot;</span>
+    <span class="n">target_hours</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;target_hours&quot;</span><span class="p">]</span>
+    <span class="n">finished_hours</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;finished_hours&quot;</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">target_hours</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+
+    <span class="n">progress</span> <span class="o">=</span> <span class="n">finished_hours</span> <span class="o">/</span> <span class="n">target_hours</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="k">if</span> <span class="n">progress</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">100.0</span>
+    <span class="k">if</span> <span class="n">progress</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+    <span class="k">return</span> <span class="n">progress</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">build_status</span><span class="p">(</span><span class="n">target_hours</span><span class="p">,</span> <span class="n">progress</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;根据目标和进度返回学习状态。&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">target_hours</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;目标无效&quot;</span>
+    <span class="k">if</span> <span class="n">progress</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;目标已完成&quot;</span>
+    <span class="k">if</span> <span class="n">progress</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;接近目标&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;继续推进&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">normalize_tags</span><span class="p">(</span><span class="n">tags</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;清理标签文本并返回去重集合。&quot;&quot;&quot;</span>
+    <span class="n">unique_tags</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">:</span>
+        <span class="n">clean_tag</span> <span class="o">=</span> <span class="n">tag</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">clean_tag</span><span class="p">:</span>
+            <span class="n">unique_tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">clean_tag</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">unique_tags</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">summarize_records</span><span class="p">(</span><span class="n">records</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;汇总多条学习记录，不修改输入列表和字典。&quot;&quot;&quot;</span>
+    <span class="n">total_target</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">total_finished</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">completed_courses</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">unique_tags</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">report_rows</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
+        <span class="n">course_name</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;course&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">target_hours</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;target_hours&quot;</span><span class="p">]</span>
+        <span class="n">finished_hours</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;finished_hours&quot;</span><span class="p">]</span>
+        <span class="n">progress</span> <span class="o">=</span> <span class="n">calculate_progress</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="n">build_status</span><span class="p">(</span><span class="n">target_hours</span><span class="p">,</span> <span class="n">progress</span><span class="p">)</span>
+
+        <span class="n">total_target</span> <span class="o">=</span> <span class="n">total_target</span> <span class="o">+</span> <span class="n">target_hours</span>
+        <span class="n">total_finished</span> <span class="o">=</span> <span class="n">total_finished</span> <span class="o">+</span> <span class="n">finished_hours</span>
+
+        <span class="k">if</span> <span class="n">progress</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
+            <span class="n">completed_courses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">course_name</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">normalize_tags</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">&quot;tags&quot;</span><span class="p">]):</span>
+            <span class="n">unique_tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+
+        <span class="n">report_rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;course&quot;</span><span class="p">:</span> <span class="n">course_name</span><span class="p">,</span>
+                <span class="s2">&quot;progress&quot;</span><span class="p">:</span> <span class="n">progress</span><span class="p">,</span>
+                <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">status</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+
+    <span class="n">summary</span> <span class="o">=</span> <span class="p">(</span><span class="n">total_target</span><span class="p">,</span> <span class="n">total_finished</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">completed_courses</span><span class="p">))</span>
+    <span class="n">sorted_tags</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">unique_tags</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">report_rows</span><span class="p">,</span> <span class="n">summary</span><span class="p">,</span> <span class="n">completed_courses</span><span class="p">,</span> <span class="n">sorted_tags</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">build_report</span><span class="p">(</span><span class="n">json_files</span><span class="p">,</span> <span class="n">report_rows</span><span class="p">,</span> <span class="n">summary</span><span class="p">,</span> <span class="n">completed_courses</span><span class="p">,</span> <span class="n">sorted_tags</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;生成可以打印和写入文件的完整报告字符串。&quot;&quot;&quot;</span>
+    <span class="n">total_target</span><span class="p">,</span> <span class="n">total_finished</span><span class="p">,</span> <span class="n">completed_count</span> <span class="o">=</span> <span class="n">summary</span>
+    <span class="n">file_names</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">json_files</span><span class="p">:</span>
+        <span class="n">file_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;学习进度报告&quot;</span><span class="p">)</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;发现 JSON 文件：</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">json_files</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;数据文件：&quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">file_names</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">report_rows</span><span class="p">:</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;course&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">：</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;progress&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%｜</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;总计划时间：</span><span class="si">{</span><span class="n">total_target</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> 小时&quot;</span><span class="p">)</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;总完成时间：</span><span class="si">{</span><span class="n">total_finished</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> 小时&quot;</span><span class="p">)</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;已完成课程数：</span><span class="si">{</span><span class="n">completed_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;已完成课程：&quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">completed_courses</span><span class="p">))</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;唯一标签：&quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sorted_tags</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">json_files</span> <span class="o">=</span> <span class="n">find_json_files</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">)</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">load_records</span><span class="p">(</span><span class="n">INPUT_PATH</span><span class="p">)</span>
+    <span class="n">report_rows</span><span class="p">,</span> <span class="n">summary</span><span class="p">,</span> <span class="n">completed_courses</span><span class="p">,</span> <span class="n">sorted_tags</span> <span class="o">=</span> <span class="n">summarize_records</span><span class="p">(</span>
+        <span class="n">records</span>
+    <span class="p">)</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="n">build_report</span><span class="p">(</span>
+        <span class="n">json_files</span><span class="p">,</span>
+        <span class="n">report_rows</span><span class="p">,</span>
+        <span class="n">summary</span><span class="p">,</span>
+        <span class="n">completed_courses</span><span class="p">,</span>
+        <span class="n">sorted_tags</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">OUTPUT_DIR</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">OUTPUT_PATH</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">report</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;报告已写入：</span><span class="si">{</span><span class="n">OUTPUT_PATH</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<p>完整示例重复了一部分上一节函数，是为了让当前文件能够独立运行。下一节学习模块和导入后，再把这些职责拆到多个文件中。</p>
+<h3 id="_17">运行命令<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>从 <code>python-learning/</code> 执行。</p>
+<p>macOS 或 Linux：</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>study_records_from_json.py
+</code></pre></div>
+<p>Windows：</p>
+<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="n">study_records_from_json</span><span class="p">.</span><span class="n">py</span>
+</code></pre></div>
+<h3 id="_18">预期终端输出<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>学习进度报告
+发现 JSON 文件：1
+数据文件：study_records.json
+- Python 起步：80.0%｜接近目标
+- 工程基础入门：100.0%｜目标已完成
+- CS 最小核心：25.0%｜继续推进
+总计划时间：30.0 小时
+总完成时间：20.0 小时
+已完成课程数：1
+已完成课程：工程基础入门
+唯一标签：cs, python, 基础, 工具, 算法
+报告已写入：output/study_report.txt
+</code></pre></div>
+<p><code>output/study_report.txt</code> 的内容与上面报告主体相同，但不包含最后一行“报告已写入”。文件以换行结束。</p>
+<h3 id="_19">验证场景<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>输入变化</th>
+<th>应观察到的结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正常数据</td>
+<td>使用完整示例</td>
+<td>读取三条记录，生成终端输出和文本报告</td>
+</tr>
+<tr>
+<td>空记录</td>
+<td>把 <code>records</code> 改成 <code>[]</code></td>
+<td>明细为空，汇总时间和数量均为0</td>
+</tr>
+<tr>
+<td>重复标签</td>
+<td>保留示例中的重复 <code>Python</code></td>
+<td>输出标签只出现一次</td>
+</tr>
+<tr>
+<td>多个 JSON 文件</td>
+<td>在 <code>data/</code> 增加另一个合法 JSON</td>
+<td>扫描数量增加，主输入仍只读取指定文件</td>
+</tr>
+<tr>
+<td>中文内容</td>
+<td>保留中文课程名和标签</td>
+<td>终端与输出文件中的中文可读</td>
+</tr>
+<tr>
+<td>缺失文件</td>
+<td>暂时改名 <code>study_records.json</code></td>
+<td><code>read_text()</code> 处出现 <code>FileNotFoundError</code></td>
+</tr>
+<tr>
+<td>坏 JSON</td>
+<td>删除一个双引号或增加尾随逗号</td>
+<td><code>json.loads()</code> 处出现 <code>JSONDecodeError</code></td>
+</tr>
+<tr>
+<td>缺少必填字段</td>
+<td>删除 <code>records</code> 或记录中的字段</td>
+<td>字段访问处出现对应 <code>KeyError</code></td>
+</tr>
+</tbody>
+</table>
+<p>语法检查：</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>py_compile<span class="w"> </span>study_records_from_json.py
+</code></pre></div>
+<p>运行后还要检查：</p>
+<div class="highlight"><pre><span></span><code>data/study_records.json      内容与运行前相同
+output/study_report.txt      已创建，内容与预期一致
+</code></pre></div>
+<h2 id="ai-json">AI 协作任务：把内存数据迁移到 JSON<a class="headerlink" href="#ai-json" title="Permanent link">&para;</a></h2>
+<p>AI 可以帮助生成目录结构、JSON 样例和文件读写代码，但必须给它清楚的读写边界。</p>
+<h3 id="_20">可复用任务描述<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>请把现有 Python 学习进度报告器从硬编码列表改为读取 JSON。
+约束：Python 3.11及以上，仅使用 json 和 pathlib 等标准库；
+从示例根目录运行；输入固定为 data/study_records.json；
+只能读取 data/，只能写入 output/study_report.txt；不得覆盖输入；
+使用 UTF-8；使用 glob(&quot;*.json&quot;)展示数据目录中的 JSON 文件；
+不要使用类、第三方库、try/except、__file__或复杂路径封装；
+请给出目录结构、完整代码、示例 JSON、预期输出和失败检查顺序。
+</code></pre></div>
+<h3 id="_21">人工审阅要求<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<ol>
+<li>确认 AI 说明了命令从哪个目录执行。</li>
+<li>确认所有文本读写都显式使用 UTF-8。</li>
+<li>确认输入和输出路径不同，程序不会覆盖原始 JSON。</li>
+<li>确认扫描根目录固定为 <code>data/</code>，模式限定为 <code>*.json</code>。</li>
+<li>确认程序没有因为“方便”递归扫描整个个人目录或仓库。</li>
+<li>确认 JSON 使用双引号、<code>true</code>、<code>false</code> 和 <code>null</code>，没有混入 Python 语法。</li>
+<li>主动把报告输出目录改为 <code>reports/</code>，重新运行并确认输入不变。</li>
+</ol>
+<p>学习记录：</p>
+<div class="highlight"><pre><span></span><code>任务目标与输入输出：
+当前工作目录约定：
+AI 给出的路径和扫描范围：
+我修正的编码或覆盖风险：
+我主动修改的输出位置或字段：
+运行命令和结果：
+输入文件运行前后是否一致：
+一次失败及其所属层次：
+仍未验证的风险：
+</code></pre></div>
+<h2 id="_22">核心手动检查点<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
+<h3 id="1">检查点 1：路径从哪里开始<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>画出以下命令执行时的当前工作目录，并分别判断 <code>Path("data/study_records.json")</code> 指向哪里：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>python-learning
+python3<span class="w"> </span>study_records_from_json.py
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>..
+python3<span class="w"> </span>python-learning/study_records_from_json.py
+</code></pre></div>
+<p>不能只回答“第二个会报错”，还要说明相对路径从当前工作目录开始解释。</p>
+<h3 id="2-json">检查点 2：追踪 JSON 类型<a class="headerlink" href="#2-json" title="Permanent link">&para;</a></h3>
+<p>对完整示例手动写出下面表达式的类型和值：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">type</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">document</span><span class="p">[</span><span class="s2">&quot;records&quot;</span><span class="p">])</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">document</span><span class="p">[</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">document</span><span class="p">[</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;tags&quot;</span><span class="p">])</span>
+</code></pre></div>
+<h3 id="3">检查点 3：判断失败层次<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>为以下现象标记失败层次：路径定位、文本读取、JSON解析或字段访问。</p>
+<ul>
+<li>文件名拼错。</li>
+<li>JSON 最后多了逗号。</li>
+<li>根对象没有 <code>records</code>。</li>
+<li>文件不是 UTF-8，但使用 UTF-8 解码。</li>
+</ul>
+<h3 id="4">检查点 4：验证输入只读<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p>运行程序前后分别读取 <code>data/study_records.json</code>，确认内容没有变化。然后找到代码中唯一写入文件的位置，说明它为什么不会覆盖输入。</p>
+<h3 id="5">检查点 5：限制递归扫描<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p>解释为什么 <code>Path.home().rglob("*.json")</code> 不适合作为本节示例。答案至少应涉及扫描范围、隐私、性能和误读文件中的两项。</p>
+<h2 id="_23">微练习<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">练习 1：判断相对路径<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<p>给出当前目录和三个相对路径，画出它们最终指向的目录树位置。再用 <code>Path.cwd()</code> 和 <code>resolve()</code>验证判断，学习记录中不要公开个人绝对路径。</p>
+<h3 id="2utf-8">练习 2：UTF-8 文本读写<a class="headerlink" href="#2utf-8" title="Permanent link">&para;</a></h3>
+<p>读取一个包含中文的文本文件，把行数和字符数写入 <code>output/text_summary.txt</code>。验证原文件未变化，输出文件可以正常显示中文。</p>
+<h3 id="3json">练习 3：JSON 类型映射<a class="headerlink" href="#3json" title="Permanent link">&para;</a></h3>
+<p>建立包含字符串、数字、布尔值、<code>null</code>、数组和对象的 JSON。解析后逐项打印 Python 类型，记录 JSON 名称与 Python 类型的对应关系。</p>
+<h3 id="4_1">练习 4：修改数据重新生成报告<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<p>只修改 <code>study_records.json</code> 中一条记录的完成时间，不改 Python 文件。重新运行并确认报告变化，解释这如何体现数据与程序逻辑分离。</p>
+<h3 id="5-json">练习 5：扫描 JSON 文件<a class="headerlink" href="#5-json" title="Permanent link">&para;</a></h3>
+<p>在 <code>data/</code> 中增加两个 JSON 文件和一个文本文件。使用 <code>glob("*.json")</code> 输出排序后的文件名，确认文本文件不会进入结果。</p>
+<h3 id="6">练习 6：定位两种失败<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<p>先让输入路径指向不存在的文件，记录 <code>FileNotFoundError</code>；修复路径后再制造坏 JSON，记录 <code>JSONDecodeError</code>。比较两次 traceback 的出错函数和失败阶段。</p>
+<h2 id="_24">常见错误与排查<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>常见原因</th>
+<th>检查方法</th>
+<th>当前课程中的修复</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FileNotFoundError</code></td>
+<td>当前工作目录或文件名不对</td>
+<td>打印 <code>Path.cwd()</code>，核对目录树和输入路径</td>
+<td>从示例根目录运行，修正相对路径</td>
+</tr>
+<tr>
+<td><code>IsADirectoryError</code></td>
+<td>把目录当文件读取</td>
+<td>使用 <code>is_file()</code> 和 <code>is_dir()</code> 判断</td>
+<td>指向具体文件</td>
+</tr>
+<tr>
+<td><code>UnicodeDecodeError</code></td>
+<td>文件编码与读取编码不一致</td>
+<td>核对文件实际编码</td>
+<td>将练习数据保存为UTF-8，并显式指定编码</td>
+</tr>
+<tr>
+<td><code>JSONDecodeError</code></td>
+<td>单引号、尾随逗号或括号不匹配</td>
+<td>查看错误行列，使用最小 JSON 复现</td>
+<td>修正 JSON 语法</td>
+</tr>
+<tr>
+<td><code>KeyError: 'records'</code></td>
+<td>JSON 根对象缺少约定字段</td>
+<td>打印并检查根对象的键</td>
+<td>补齐数据结构，不要静默忽略必填字段</td>
+</tr>
+<tr>
+<td>输出中文变成转义序列</td>
+<td><code>json.dumps()</code> 使用默认设置</td>
+<td>检查序列化参数</td>
+<td>使用 <code>ensure_ascii=False</code></td>
+</tr>
+<tr>
+<td>在父目录运行后找不到 <code>data/</code></td>
+<td>相对路径按当前工作目录解释</td>
+<td>比较命令位置和 <code>Path.cwd()</code></td>
+<td>进入示例根目录后运行</td>
+</tr>
+<tr>
+<td>输入文件被覆盖</td>
+<td>输入路径和输出路径相同</td>
+<td>对比两个常量和运行前后内容</td>
+<td>输出限定到 <code>output/</code></td>
+</tr>
+<tr>
+<td>扫描到不相关文件</td>
+<td>根目录过大或使用递归模式</td>
+<td>打印扫描根目录和匹配模式</td>
+<td>使用明确的 <code>data/</code> 和 <code>*.json</code></td>
+</tr>
+</tbody>
+</table>
+<p>本节不使用 <code>try/except</code> 隐藏这些错误。先读懂 traceback 并修正原因；异常捕获、错误消息和恢复策略会在后续课程中系统学习。</p>
+<h2 id="_25">完成标准<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h2>
+<p>完成本节需要同时满足：</p>
+<ul>
+<li>能解释当前工作目录、相对路径、绝对路径和示例根目录的区别。</li>
+<li>能使用 <code>Path</code> 组合路径，并使用 <code>exists()</code>、<code>is_file()</code> 和 <code>is_dir()</code> 检查状态。</li>
+<li>能明确使用 UTF-8 读取和写入文本。</li>
+<li>能说出 JSON 与 Python 常用类型的对应关系。</li>
+<li>能使用 <code>json.loads()</code> 解析文本，使用 <code>json.dumps()</code> 生成可读中文 JSON。</li>
+<li>能使用 <code>glob("*.json")</code> 获得排序后的文件列表。</li>
+<li>能说明何时才应该使用 <code>rglob()</code>，以及递归前需要限制什么。</li>
+<li>能运行完整示例，从 JSON 读取三条记录并生成文本报告。</li>
+<li>能验证空记录、重复标签、多个 JSON 文件和中文内容。</li>
+<li>能制造并区分 <code>FileNotFoundError</code>、<code>JSONDecodeError</code> 和 <code>KeyError</code>。</li>
+<li>能证明输入 JSON 在程序运行前后没有变化。</li>
+<li>能审阅一次 AI 文件重构，修正至少一个路径、编码、扫描或覆盖风险。</li>
+<li>能主动修改一个输出路径或报告字段，并重新运行验证。</li>
+</ul>
+<h2 id="_26">来源与版本<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>来源</th>
+<th>用于核查</th>
+<th>版本或日期</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files">Python 官方教程：Reading and Writing Files</a></td>
+<td>文本文件读取、写入和编码</td>
+<td>Python 3 文档，2026-07-14核查</td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/pathlib.html">Python 标准库：pathlib</a></td>
+<td>路径组合、查询、扫描、目录和文本操作</td>
+<td>Python 3 文档，2026-07-14核查</td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/json.html">Python 标准库：json</a></td>
+<td>JSON解析、序列化、类型映射和错误</td>
+<td>Python 3 文档，2026-07-14核查</td>
+<td>已验证</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_27">下一步<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h2>
+<p>下一步进入<a href="../06-modules-imports-venv/">模块、导入和虚拟环境</a>。学习进度报告器会把当前单文件中的读取、汇总和报告职责拆分到多个模块，并建立可重复的运行环境；异常处理和自动化测试仍在之后单独学习。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../04-strings-collections/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 字符串、列表、字典、集合和元组">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                字符串、列表、字典、集合和元组
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../06-modules-imports-venv/" class="md-footer__link md-footer__link--next" aria-label="下一页: 模块、导入和虚拟环境">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                模块、导入和虚拟环境
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.integrate", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
