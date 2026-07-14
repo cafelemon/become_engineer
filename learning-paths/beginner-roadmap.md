@@ -139,9 +139,10 @@
 
 ## Python / C++ 双主修 { #stage-dual-language }
 
-Python 负责快速实现与数据应用，C++ 帮助理解编译、类型、资源和性能；两条能力线会在后续项目中持续深化，Java 可作为补充语言选学。
+Python 负责快速实现与数据应用，C++ 帮助理解编译、类型、资源和性能。第一组“构建与类型”配对已经开放，两条能力线会在后续项目中持续深化，Java可作为补充语言选学。
 
 [进入 C++ 核心语言](programming-languages/cpp-core/README.md){ .md-button }
+[进入 Python 核心语言](programming-languages/python-core/README.md){ .md-button }
 [查看语言与选修关系](curriculum-map.md){ .md-button }
 
 </div>

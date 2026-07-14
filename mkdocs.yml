@@ -103,6 +103,9 @@ nav:
       - C++ 核心语言:
           - 课程说明: learning-paths/programming-languages/cpp-core/README.md
           - 从源文件到可执行程序: learning-paths/programming-languages/cpp-core/01-build-types-io.md
+      - Python 核心语言:
+          - 课程说明: learning-paths/programming-languages/python-core/README.md
+          - 类型提示、接口与静态检查认知: learning-paths/programming-languages/python-core/01-type-hints-interfaces-static-checking.md
   - 项目:
       - 项目说明: projects/README.md
       - 项目主干规划: projects/project-roadmap.md
