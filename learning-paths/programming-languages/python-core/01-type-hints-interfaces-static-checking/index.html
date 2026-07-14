@@ -1,0 +1,3838 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="面向小白的工程、CS、Web、AI 与 LLM/Agent 公开学习库">
+      
+      
+      
+        <link rel="canonical" href="https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/python-core/01-type-hints-interfaces-static-checking/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../../../projects/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>类型提示、接口与静态检查认知 - Become Engineer</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="Become Engineer" class="md-header__button md-logo" aria-label="Become Engineer" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Become Engineer
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              类型提示、接口与静态检查认知
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cafelemon/become_engineer" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cafelemon/become_engineer
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  首页
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../engineering-foundation/stage-0/01-learning-method/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  开始学习
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../projects/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  项目
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Become Engineer" class="md-nav__button md-logo" aria-label="Become Engineer" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17z"/></svg>
+
+    </a>
+    Become Engineer
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cafelemon/become_engineer" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cafelemon/become_engineer
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    首页
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../beginner-roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../curriculum-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    完整课程地图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开始学习
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    开始学习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程基础入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程基础入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/01-learning-method/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/02-filesystem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文件系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/03-terminal-shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    终端与 Shell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/04-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    编辑器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/05-markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Markdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/06-git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/07-development-environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发环境
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/08-docker-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker最小认知
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/09-validation-habit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    验证习惯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../python-basics/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 起步
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 起步
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python-basics/01-variables-types-io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    变量、基本类型、输入输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python-basics/02-conditions-loops-boolean/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    条件、循环、布尔逻辑
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python-basics/03-functions-parameters-returns-scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    函数、参数、返回值和作用域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python-basics/04-strings-collections/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    字符串、列表、字典、集合和元组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python-basics/05-files-json-paths/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文件、路径、JSON 和简单目录操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python-basics/06-modules-imports-venv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    模块、导入和虚拟环境
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python-basics/07-errors-debugging-tests/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    异常、基本调试和最小自动化测试
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../cpp-core/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C++ 核心语言
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C++ 核心语言
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cpp-core/01-build-types-io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    从源文件到可执行程序
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 核心语言
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 核心语言
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    类型提示、接口与静态检查认知
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    类型提示、接口与静态检查认知
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        课程信息
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pythonc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么类型提示不是“把Python改成C++”
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学习目标
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三层检查各自负责什么
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pythonc_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python与C++类型检查对照
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最小函数类型契约
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="最小函数类型契约">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        注解不会自动执行校验
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常用类型写法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="常用类型写法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        容器
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可能缺失的值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        类型别名
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typeddict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用TypedDict表达固定字典结构
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用Sequence表达需要的能力
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objectanycast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        object、Any和cast()
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="object、Any和cast()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        object：未知，但使用前必须缩窄
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#any" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Any：暂时退出类型检查
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cast()：只告诉检查器，不检查运行时
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可复现实例：类型化学习进度报告器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="可复现实例：类型化学习进度报告器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        环境与依赖
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目录结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        开发依赖
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        类型化分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSON边界与运行时校验
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        程序入口
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        固定JSON样例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最小回归测试
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装、检查和运行
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        让静态检查真正失败
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="让静态检查真正失败">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        错误参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typeddict_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TypedDict缺字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        错误返回类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI协作任务
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI协作任务">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可复用提示模板
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        人工审阅清单
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心手动检查点
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="核心手动检查点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点1：证明注解不拦截运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点2：阅读一条完整诊断
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点3：追踪类型缩窄
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4typeddict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点4：识别TypedDict边界
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点5：删除逃生口
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点6：与C++对照
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        微练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段作品线索
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见错误与排查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成标准
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下一步
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../projects/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    项目
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    项目
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projects/project-roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    项目主干规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projects/python-content-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 内容分析工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projects/structured-data-ml-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    结构化数据机器学习系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projects/text-classification-evolution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文本分类模型演进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projects/reinforcement-learning-control-lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    强化学习控制实验
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projects/intelligent-learning-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    可评估的智能学习助手
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        课程信息
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pythonc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么类型提示不是“把Python改成C++”
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学习目标
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三层检查各自负责什么
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pythonc_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python与C++类型检查对照
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最小函数类型契约
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="最小函数类型契约">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        注解不会自动执行校验
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常用类型写法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="常用类型写法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        容器
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可能缺失的值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        类型别名
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typeddict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用TypedDict表达固定字典结构
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用Sequence表达需要的能力
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objectanycast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        object、Any和cast()
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="object、Any和cast()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        object：未知，但使用前必须缩窄
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#any" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Any：暂时退出类型检查
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cast()：只告诉检查器，不检查运行时
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可复现实例：类型化学习进度报告器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="可复现实例：类型化学习进度报告器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        环境与依赖
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目录结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        开发依赖
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        类型化分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSON边界与运行时校验
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        程序入口
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        固定JSON样例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最小回归测试
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装、检查和运行
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        让静态检查真正失败
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="让静态检查真正失败">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        错误参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typeddict_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TypedDict缺字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        错误返回类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI协作任务
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI协作任务">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可复用提示模板
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        人工审阅清单
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心手动检查点
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="核心手动检查点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点1：证明注解不拦截运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点2：阅读一条完整诊断
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点3：追踪类型缩窄
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4typeddict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点4：识别TypedDict边界
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点5：删除逃生口
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查点6：与C++对照
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        微练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段作品线索
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见错误与排查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成标准
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下一步
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="_1">类型提示、接口与静态检查认知<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">课程信息<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>适合人群</td>
+<td>已完成Python起步和C++构建与类型课程，希望提高Python接口可维护性的学习者</td>
+</tr>
+<tr>
+<td>前置知识</td>
+<td>函数、容器、JSON、模块、异常、unittest，以及C++静态类型和编译诊断的基本认知</td>
+</tr>
+<tr>
+<td>学习结果</td>
+<td>能用类型提示表达接口，用mypy严格检查代码，同时保留外部数据的运行时校验和自动化测试</td>
+</tr>
+<tr>
+<td>运行时基线</td>
+<td>Python 3.11及以上</td>
+</tr>
+<tr>
+<td>检查工具</td>
+<td>mypy 2.2.0，<code>--strict</code>模式</td>
+</tr>
+<tr>
+<td>实践产出</td>
+<td>学习进度报告器的完整类型化副本、静态检查与运行测试证据</td>
+</tr>
+</tbody>
+</table>
+<h2 id="pythonc">为什么类型提示不是“把Python改成C++”<a class="headerlink" href="#pythonc" title="Permanent link">&para;</a></h2>
+<p>上一节 C++ 代码在生成目标文件前就会由编译器检查类型。Python的类型提示采用不同模型：</p>
+<ul>
+<li>Python运行时仍然根据对象的实际类型执行程序。</li>
+<li>函数注解通常不会自动拒绝错误参数。</li>
+<li>mypy在不运行程序的情况下分析代码，并报告可能违反类型契约的位置。</li>
+<li>外部JSON即使“静态检查通过”，运行时仍可能缺字段、类型错误或格式损坏。</li>
+<li>自动化测试仍然负责验证具体行为和边界结果。</li>
+</ul>
+<p>本节的目标不是追求“所有地方都有注解”，而是让模块之间的接口更清楚，让错误尽可能在运行前暴露，同时不伪造安全感。</p>
+<h2 id="_3">学习目标<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>完成本节后，你应该能够：</p>
+<ul>
+<li>区分运行时类型、类型提示、静态检查和运行时校验。</li>
+<li>为函数参数、返回值、局部变量和常用容器添加准确标注。</li>
+<li>使用<code>X | None</code>表达可能缺失，而不是用模糊注释说明。</li>
+<li>使用<code>TypeAlias</code>缩短复杂但重复的接口类型。</li>
+<li>使用<code>TypedDict</code>描述固定键结构，理解它在运行时仍是普通字典。</li>
+<li>使用<code>Sequence</code>表达只需读取、不要求调用者必须传入列表。</li>
+<li>区分<code>object</code>与<code>Any</code>，控制动态类型的传播范围。</li>
+<li>说明<code>cast()</code>只影响静态检查，不执行运行时转换或校验。</li>
+<li>在JSON边界先校验未知对象，再构造类型化数据。</li>
+<li>使用<code>mypy --strict</code>、运行程序和<code>unittest</code>形成三层证据。</li>
+</ul>
+<h2 id="_4">三层检查各自负责什么<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>下面的图回答：<strong>静态检查通过后，为什么仍然需要校验JSON和运行测试？</strong></p>
+<pre class="mermaid"><code>flowchart LR
+    A["JSON文本\n外部输入"] --&gt; B["json.loads\n动态结果"]
+    B --&gt; C["object边界\n不假设结构"]
+    C --&gt; D["isinstance与业务规则\n运行时校验"]
+    D --&gt; E["StudyRecord\n类型化数据"]
+    E --&gt; F["类型化分析函数"]
+    F --&gt; G["报告输出"]
+
+    M["mypy --strict\n检查代码接口"] -.检查.-&gt; C
+    M -.检查.-&gt; E
+    M -.检查.-&gt; F
+    T["unittest\n检查实际行为"] -.运行.-&gt; D
+    T -.运行.-&gt; G</code></pre>
+<table>
+<thead>
+<tr>
+<th>检查层</th>
+<th>能发现什么</th>
+<th>不能证明什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>类型提示与mypy</td>
+<td>错误参数、错误返回、缺少TypedDict字段、未标注接口</td>
+<td>JSON实际内容正确、算法结果正确</td>
+</tr>
+<tr>
+<td>运行时校验</td>
+<td>文件中的真实值是否符合结构和范围规则</td>
+<td>所有代码路径都正确、未来修改不回归</td>
+</tr>
+<tr>
+<td>自动化测试</td>
+<td>给定场景的真实输出、异常和副作用</td>
+<td>没有覆盖到的所有输入都正确</td>
+</tr>
+</tbody>
+</table>
+<p>三层相互补充，不能相互替代。</p>
+<h2 id="pythonc_1">Python与C++类型检查对照<a class="headerlink" href="#pythonc_1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>Python + mypy</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>类型主要何时检查</td>
+<td>独立静态分析步骤</td>
+<td>编译过程的一部分</td>
+</tr>
+<tr>
+<td>不运行检查器会怎样</td>
+<td>注解通常不阻止程序启动</td>
+<td>类型错误通常阻止目标文件生成</td>
+</tr>
+<tr>
+<td>注解是否改变值</td>
+<td>通常不会</td>
+<td>声明决定对象类型和部分运行行为</td>
+</tr>
+<tr>
+<td>错误类型能否在运行时进入函数</td>
+<td>可以，除非代码主动校验</td>
+<td>能通过接口的值受编译期类型规则限制</td>
+</tr>
+<tr>
+<td>外部文本或JSON</td>
+<td>仍需解析和运行时校验</td>
+<td>同样需要解析和运行时校验</td>
+</tr>
+<tr>
+<td>检查产物</td>
+<td>诊断信息，不生成程序</td>
+<td>诊断以及目标文件/可执行程序</td>
+</tr>
+</tbody>
+</table>
+<p>共同点是：接口越准确，调用者越容易发现错误。根本差异是：mypy不是Python解释器，也不参与生成可执行机器代码。</p>
+<h2 id="_5">最小函数类型契约<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<div class="highlight"><span class="filename">minimal_types.py</span><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">calculate_progress</span><span class="p">(</span><span class="n">target_hours</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">finished_hours</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">finished_hours</span> <span class="o">/</span> <span class="n">target_hours</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+
+<span class="n">progress</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">calculate_progress</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">progress</span><span class="p">)</span>
+</code></pre></div>
+<p>函数签名表达：两个参数应当能作为<code>float</code>使用，结果是<code>float</code>。Python中<code>int</code>通常可以用于要求<code>float</code>的静态位置，但字符串不可以：</p>
+<div class="highlight"><pre><span></span><code><span class="n">calculate_progress</span><span class="p">(</span><span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">)</span>
+</code></pre></div>
+<p>mypy会报告参数类型不兼容。不过直接运行这行代码时，失败来自函数中的除法，而不是注解自动拦截调用。</p>
+<h3 id="_6">注解不会自动执行校验<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">annotations_are_not_guards.py</span><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">echo_hours</span><span class="p">(</span><span class="n">hours</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">hours</span>
+
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">echo_hours</span><span class="p">(</span><span class="s2">&quot;five&quot;</span><span class="p">)</span>  <span class="c1"># 运行时仍会进入函数</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+</code></pre></div>
+<p>Python解释器会打印字符串及其类型。mypy会在运行前报告错误参数。这正是“运行时行为”和“静态契约”的区别。</p>
+<h2 id="_7">常用类型写法<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="_8">容器<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">course_names</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;C++&quot;</span><span class="p">]</span>
+<span class="n">hours_by_course</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Python&quot;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">,</span> <span class="s2">&quot;C++&quot;</span><span class="p">:</span> <span class="mf">6.0</span><span class="p">}</span>
+<span class="n">unique_tags</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;语言&quot;</span><span class="p">,</span> <span class="s2">&quot;工程&quot;</span><span class="p">}</span>
+<span class="n">point</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span>
+<span class="n">history</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;起步&quot;</span><span class="p">,</span> <span class="s2">&quot;类型&quot;</span><span class="p">,</span> <span class="s2">&quot;工程化&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><code>tuple[float, float]</code>表示恰好两个位置；<code>tuple[str, ...]</code>表示任意长度且每项都是字符串。</p>
+<h3 id="_9">可能缺失的值<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">find_course</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;python&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Python&quot;</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</code></pre></div>
+<p>调用者必须处理<code>None</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">course</span> <span class="o">=</span> <span class="n">find_course</span><span class="p">(</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">course</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">course</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+</code></pre></div>
+<p>不要因为“实际数据里通常存在”就省略<code>None</code>。类型契约应该表达真实可能性。</p>
+<h3 id="_10">类型别名<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>Python 3.11使用<code>TypeAlias</code>显式标记别名：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypeAlias</span>
+
+<span class="n">Summary</span><span class="p">:</span> <span class="n">TypeAlias</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">[</span>
+    <span class="nb">float</span><span class="p">,</span>
+    <span class="nb">float</span><span class="p">,</span>
+    <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+    <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+<span class="p">]</span>
+</code></pre></div>
+<p>别名提高可读性，但不会创建新的运行时类型。Python 3.12引入的<code>type Summary = ...</code>不作为本课程基线。</p>
+<h2 id="typeddict">用<code>TypedDict</code>表达固定字典结构<a class="headerlink" href="#typeddict" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypedDict</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">StudyRecord</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+    <span class="n">course</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">target_hours</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">finished_hours</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</code></pre></div>
+<p>静态检查器会检查已知构造位置是否缺少字段或字段类型错误：</p>
+<div class="highlight"><pre><span></span><code><span class="n">record</span><span class="p">:</span> <span class="n">StudyRecord</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;course&quot;</span><span class="p">:</span> <span class="s2">&quot;Python类型&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="mf">6.0</span><span class="p">,</span>
+    <span class="s2">&quot;finished_hours&quot;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span>
+    <span class="c1"># 缺少 tags，mypy应报告错误</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>但<code>TypedDict</code>在运行时仍是普通<code>dict</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">record</span><span class="p">))</span>  <span class="c1"># &lt;class &#39;dict&#39;&gt;</span>
+</code></pre></div>
+<p>它不会自动检查<code>json.loads()</code>返回的数据。外部数据必须先通过运行时校验。</p>
+<h2 id="sequence">使用<code>Sequence</code>表达需要的能力<a class="headerlink" href="#sequence" title="Permanent link">&para;</a></h2>
+<p>如果函数只遍历记录、不增加删除元素，就不必要求调用者一定传入<code>list</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">total_hours</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+</code></pre></div>
+<p>列表和元组都能满足这个只读接口：</p>
+<div class="highlight"><pre><span></span><code><span class="n">total_hours</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">])</span>
+<span class="n">total_hours</span><span class="p">((</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">))</span>
+</code></pre></div>
+<p><code>Sequence</code>不保证对象在运行时绝对不可变；它表达的是当前函数只依赖读取、索引和长度等序列能力，不应调用<code>append()</code>。</p>
+<h2 id="objectanycast"><code>object</code>、<code>Any</code>和<code>cast()</code><a class="headerlink" href="#objectanycast" title="Permanent link">&para;</a></h2>
+<h3 id="object"><code>object</code>：未知，但使用前必须缩窄<a class="headerlink" href="#object" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">normalize_name</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;name必须是字符串&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</code></pre></div>
+<p>所有Python对象都兼容<code>object</code>，但不能在未经检查时任意调用字符串方法。<code>isinstance()</code>同时提供运行时校验，并帮助静态检查器把类型从<code>object</code>缩窄到<code>str</code>。</p>
+<h3 id="any"><code>Any</code>：暂时退出类型检查<a class="headerlink" href="#any" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">unsafe_name</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">not_a_real_method</span><span class="p">()</span>
+</code></pre></div>
+<p><code>Any</code>与几乎所有类型双向兼容，错误操作可能继续传播而不被报告。它适合无法类型化的动态边界，但不应成为省事的默认类型。</p>
+<h3 id="cast"><code>cast()</code>：只告诉检查器，不检查运行时<a class="headerlink" href="#cast" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">cast</span>
+
+<span class="n">value</span><span class="p">:</span> <span class="nb">object</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+</code></pre></div>
+<p><code>cast(str, value)</code>不会把整数转换成字符串，也不会执行<code>isinstance()</code>。这个程序仍会在运行时失败。只有已经通过其他证据确认类型、而检查器无法推导时，才考虑使用<code>cast()</code>。</p>
+<p>同样，<code># type: ignore</code>只是压制诊断。课程示例不使用它来获得“零错误”截图。</p>
+<h2 id="_11">可复现实例：类型化学习进度报告器<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h3 id="_12">环境与依赖<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Python 3.11或更高版本。</li>
+<li>运行代码只使用标准库。</li>
+<li>开发检查依赖固定版本<code>mypy==2.2.0</code>。</li>
+<li>从示例根目录运行命令。</li>
+</ul>
+<h3 id="_13">目录结构<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>typed-reporter/
+├── data/
+│   └── study_records.json
+├── tests/
+│   └── test_typed_reporter.py
+├── analysis.py
+├── data_io.py
+├── main.py
+├── models.py
+└── requirements-dev.txt
+</code></pre></div>
+<h3 id="_14">开发依赖<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">requirements-dev.txt</span><pre><span></span><code>mypy==2.2.0
+</code></pre></div>
+<h3 id="_15">数据模型<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">models.py</span><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypeAlias</span><span class="p">,</span> <span class="n">TypedDict</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">StudyRecord</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+    <span class="n">course</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">target_hours</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">finished_hours</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+
+
+<span class="n">Summary</span><span class="p">:</span> <span class="n">TypeAlias</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">[</span>
+    <span class="nb">float</span><span class="p">,</span>
+    <span class="nb">float</span><span class="p">,</span>
+    <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+    <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+<span class="p">]</span>
+</code></pre></div>
+<h3 id="_16">类型化分析<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">analysis.py</span><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">StudyRecord</span><span class="p">,</span> <span class="n">Summary</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_progress</span><span class="p">(</span><span class="n">target_hours</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">finished_hours</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">finished_hours</span> <span class="o">/</span> <span class="n">target_hours</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">build_status</span><span class="p">(</span><span class="n">target_hours</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">finished_hours</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">finished_hours</span> <span class="o">&gt;=</span> <span class="n">target_hours</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;已完成&quot;</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;还需 </span><span class="si">{</span><span class="n">target_hours</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">finished_hours</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2"> 小时&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">normalize_tags</span><span class="p">(</span><span class="n">records</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">StudyRecord</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
+    <span class="n">tags</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
+        <span class="n">tags</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">&quot;tags&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">tags</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">summarize_records</span><span class="p">(</span><span class="n">records</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">StudyRecord</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Summary</span><span class="p">:</span>
+    <span class="n">total_target</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">total_finished</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">course_lines</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;target_hours&quot;</span><span class="p">]</span>
+        <span class="n">finished</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;finished_hours&quot;</span><span class="p">]</span>
+        <span class="n">total_target</span> <span class="o">+=</span> <span class="n">target</span>
+        <span class="n">total_finished</span> <span class="o">+=</span> <span class="n">finished</span>
+        <span class="n">progress</span> <span class="o">=</span> <span class="n">calculate_progress</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">finished</span><span class="p">)</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="n">build_status</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">finished</span><span class="p">)</span>
+        <span class="n">course_lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s1">&#39;- </span><span class="si">{</span><span class="n">record</span><span class="p">[</span><span class="s2">&quot;course&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">progress</span><span class="si">:</span><span class="s1">.0%</span><span class="si">}</span><span class="s1">，</span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">total_target</span><span class="p">,</span>
+        <span class="n">total_finished</span><span class="p">,</span>
+        <span class="nb">tuple</span><span class="p">(</span><span class="n">course_lines</span><span class="p">),</span>
+        <span class="n">normalize_tags</span><span class="p">(</span><span class="n">records</span><span class="p">),</span>
+    <span class="p">)</span>
+</code></pre></div>
+<h3 id="json">JSON边界与运行时校验<a class="headerlink" href="#json" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">data_io.py</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">StudyRecord</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_as_string_key_dict</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">object</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">context</span><span class="si">}</span><span class="s2">必须是对象&quot;</span><span class="p">)</span>
+
+    <span class="n">result</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">object</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">context</span><span class="si">}</span><span class="s2">的键必须是字符串&quot;</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_required</span><span class="p">(</span><span class="n">mapping</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">object</span><span class="p">],</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">field</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mapping</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">context</span><span class="si">}</span><span class="s2">缺少</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2">字段&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mapping</span><span class="p">[</span><span class="n">field</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_number</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">record_number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;第</span><span class="si">{</span><span class="n">record_number</span><span class="si">}</span><span class="s2">条记录的</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2">必须是数字&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_tags</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">record_number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;第</span><span class="si">{</span><span class="n">record_number</span><span class="si">}</span><span class="s2">条记录的tags必须是列表&quot;</span><span class="p">)</span>
+
+    <span class="n">validated</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;第</span><span class="si">{</span><span class="n">record_number</span><span class="si">}</span><span class="s2">条记录的tags必须只包含字符串&quot;</span>
+            <span class="p">)</span>
+        <span class="n">validated</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">validated</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_record</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">record_number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">StudyRecord</span><span class="p">:</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;第</span><span class="si">{</span><span class="n">record_number</span><span class="si">}</span><span class="s2">条记录&quot;</span>
+    <span class="n">mapping</span> <span class="o">=</span> <span class="n">_as_string_key_dict</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+    <span class="n">course</span> <span class="o">=</span> <span class="n">_required</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="s2">&quot;course&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">course</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">course</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">context</span><span class="si">}</span><span class="s2">的course必须是非空字符串&quot;</span><span class="p">)</span>
+
+    <span class="n">target</span> <span class="o">=</span> <span class="n">_number</span><span class="p">(</span>
+        <span class="n">_required</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="s2">&quot;target_hours&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">),</span>
+        <span class="s2">&quot;target_hours&quot;</span><span class="p">,</span>
+        <span class="n">record_number</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">finished</span> <span class="o">=</span> <span class="n">_number</span><span class="p">(</span>
+        <span class="n">_required</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="s2">&quot;finished_hours&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">),</span>
+        <span class="s2">&quot;finished_hours&quot;</span><span class="p">,</span>
+        <span class="n">record_number</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="n">_tags</span><span class="p">(</span><span class="n">_required</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">),</span> <span class="n">record_number</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">target</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">context</span><span class="si">}</span><span class="s2">的target_hours必须大于0&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">finished</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">context</span><span class="si">}</span><span class="s2">的finished_hours不能小于0&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">StudyRecord</span><span class="p">(</span>
+        <span class="n">course</span><span class="o">=</span><span class="n">course</span><span class="p">,</span>
+        <span class="n">target_hours</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+        <span class="n">finished_hours</span><span class="o">=</span><span class="n">finished</span><span class="p">,</span>
+        <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">validate_document</span><span class="p">(</span><span class="n">document</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">StudyRecord</span><span class="p">]:</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">_as_string_key_dict</span><span class="p">(</span><span class="n">document</span><span class="p">,</span> <span class="s2">&quot;JSON根结构&quot;</span><span class="p">)</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">_required</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;records&quot;</span><span class="p">,</span> <span class="s2">&quot;JSON根结构&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;records必须是列表&quot;</span><span class="p">)</span>
+
+    <span class="n">validated</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">StudyRecord</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">record</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">validated</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_record</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">index</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">validated</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load_records</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">StudyRecord</span><span class="p">]:</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="n">document</span><span class="p">:</span> <span class="nb">object</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">validate_document</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
+</code></pre></div>
+<p><code>json.loads()</code>的类型信息无法证明实际JSON结构。代码立刻把结果收进<code>object</code>边界，然后逐层检查并重新构造<code>StudyRecord</code>，没有使用<code>cast()</code>假装数据已经可信。</p>
+<h3 id="_17">程序入口<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">main.py</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Final</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">summarize_records</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">data_io</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_records</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Summary</span>
+
+
+<span class="n">PROJECT_ROOT</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span>
+<span class="n">INPUT_PATH</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">PROJECT_ROOT</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;study_records.json&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">build_report</span><span class="p">(</span><span class="n">summary</span><span class="p">:</span> <span class="n">Summary</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">total_target</span><span class="p">,</span> <span class="n">total_finished</span><span class="p">,</span> <span class="n">course_lines</span><span class="p">,</span> <span class="n">tags</span> <span class="o">=</span> <span class="n">summary</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;学习进度报告&quot;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s2">&quot;总计划：</span><span class="si">{</span><span class="n">total_target</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2"> 小时&quot;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s2">&quot;总完成：</span><span class="si">{</span><span class="n">total_finished</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2"> 小时&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;课程状态：&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">course_lines</span> <span class="ow">or</span> <span class="p">(</span><span class="s2">&quot;- 暂无记录&quot;</span><span class="p">,))</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;唯一标签：</span><span class="si">{</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tags</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">tags</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">&quot;无&quot;</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="n">input_path</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">INPUT_PATH</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">load_records</span><span class="p">(</span><span class="n">input_path</span><span class="p">)</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="n">build_report</span><span class="p">(</span><span class="n">summarize_records</span><span class="p">(</span><span class="n">records</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">report</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">input_path</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">INPUT_PATH</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">run</span><span class="p">(</span><span class="n">input_path</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;输入错误：找不到文件 </span><span class="si">{</span><span class="n">error</span><span class="o">.</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;输入错误：JSON格式无效，第</span><span class="si">{</span><span class="n">error</span><span class="o">.</span><span class="n">lineno</span><span class="si">}</span><span class="s2">行，&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;第</span><span class="si">{</span><span class="n">error</span><span class="o">.</span><span class="n">colno</span><span class="si">}</span><span class="s2">列&quot;</span><span class="p">,</span>
+            <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;输入错误：</span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="mi">0</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<h3 id="json_1">固定JSON样例<a class="headerlink" href="#json_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">data/study_records.json</span><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;records&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;course&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Python类型&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;target_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;finished_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;类型&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;course&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;C++构建&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;target_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;finished_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;C++&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;类型&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_18">最小回归测试<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">tests/test_typed_reporter.py</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">unittest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">summarize_records</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">data_io</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_records</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">main</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_report</span><span class="p">,</span> <span class="n">main</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TypedReporterTests</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">write_document</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">document</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;records.json&quot;</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">document</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+            <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">path</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_report_matches_existing_behavior</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">directory</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_document</span><span class="p">(</span>
+                <span class="n">directory</span><span class="p">,</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;records&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;course&quot;</span><span class="p">:</span> <span class="s2">&quot;Python类型&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+                            <span class="s2">&quot;finished_hours&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+                            <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;类型&quot;</span><span class="p">],</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;course&quot;</span><span class="p">:</span> <span class="s2">&quot;C++构建&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                            <span class="s2">&quot;finished_hours&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                            <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;C++&quot;</span><span class="p">,</span> <span class="s2">&quot;类型&quot;</span><span class="p">],</span>
+                        <span class="p">},</span>
+                    <span class="p">]</span>
+                <span class="p">},</span>
+            <span class="p">)</span>
+
+            <span class="n">report</span> <span class="o">=</span> <span class="n">build_report</span><span class="p">(</span><span class="n">summarize_records</span><span class="p">(</span><span class="n">load_records</span><span class="p">(</span><span class="n">path</span><span class="p">)))</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+                <span class="n">report</span><span class="p">,</span>
+                <span class="s2">&quot;学习进度报告</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;总计划：11 小时</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;总完成：9 小时</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;课程状态：</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;- Python类型: 67%，还需 2 小时</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;- C++构建: 100%，已完成</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;唯一标签：C++, Python, 类型</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_input_is_not_modified</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">directory</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_document</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;records&quot;</span><span class="p">:</span> <span class="p">[]})</span>
+            <span class="n">before</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">read_bytes</span><span class="p">()</span>
+            <span class="n">load_records</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">read_bytes</span><span class="p">(),</span> <span class="n">before</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_bad_field_type_is_rejected_at_runtime</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">directory</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_document</span><span class="p">(</span>
+                <span class="n">directory</span><span class="p">,</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;records&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;course&quot;</span><span class="p">:</span> <span class="s2">&quot;Python类型&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="s2">&quot;six&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;finished_hours&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+                            <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">],</span>
+                        <span class="p">}</span>
+                    <span class="p">]</span>
+                <span class="p">},</span>
+            <span class="p">)</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="s2">&quot;target_hours必须是数字&quot;</span><span class="p">):</span>
+                <span class="n">load_records</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_invalid_document_returns_nonzero</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">directory</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_document</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;records&quot;</span><span class="p">:</span> <span class="s2">&quot;not-a-list&quot;</span><span class="p">})</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">main</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="_19">安装、检查和运行<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
+<p>创建隔离环境：</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+</code></pre></div>
+<p>macOS/Linux：</p>
+<div class="highlight"><pre><span></span><code>.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-dev.txt
+.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--version
+.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>.
+.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>-v
+.venv/bin/python<span class="w"> </span>main.py
+</code></pre></div>
+<p>Windows PowerShell：</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">-r</span> <span class="n">requirements-dev</span><span class="p">.</span><span class="n">txt</span>
+<span class="p">.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-m</span> <span class="n">mypy</span> <span class="p">-</span><span class="n">-version</span>
+<span class="p">.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-m</span> <span class="n">mypy</span> <span class="p">-</span><span class="n">-strict</span> <span class="p">.</span>
+<span class="p">.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-m</span> <span class="n">unittest</span> <span class="n">discover</span> <span class="n">-s</span> <span class="n">tests</span> <span class="n">-v</span>
+<span class="p">.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">main</span><span class="p">.</span><span class="n">py</span>
+</code></pre></div>
+<p>预期静态检查结果：</p>
+<div class="highlight"><pre><span></span><code>Success: no issues found in 5 source files
+</code></pre></div>
+<p>文件数量可能因mypy版本和发现规则略有不同；验收依据是零错误和退出码<code>0</code>。</p>
+<p>预期程序关键输出：</p>
+<div class="highlight"><pre><span></span><code>学习进度报告
+总计划：11 小时
+总完成：9 小时
+课程状态：
+- Python类型: 67%，还需 2 小时
+- C++构建: 100%，已完成
+唯一标签：C++, Python, 类型
+</code></pre></div>
+<h2 id="_20">让静态检查真正失败<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<h3 id="_21">错误参数<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<p>在临时文件<code>type_errors.py</code>中加入：</p>
+<div class="highlight"><span class="filename">type_errors.py</span><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_progress</span>
+
+
+<span class="n">calculate_progress</span><span class="p">(</span><span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+</code></pre></div>
+<p>运行：</p>
+<div class="highlight"><pre><span></span><code>.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>type_errors.py
+</code></pre></div>
+<p>mypy应报告第一个参数期望<code>float</code>、实际是<code>str</code>，并返回非零退出码。</p>
+<h3 id="typeddict_1">TypedDict缺字段<a class="headerlink" href="#typeddict_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">StudyRecord</span>
+
+
+<span class="n">record</span><span class="p">:</span> <span class="n">StudyRecord</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;course&quot;</span><span class="p">:</span> <span class="s2">&quot;Python类型&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>
+    <span class="s2">&quot;finished_hours&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>静态检查应指出缺少<code>tags</code>。这只能检查源码中可见的构造位置，不能检查运行时读取的JSON。</p>
+<h3 id="_22">错误返回类型<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">progress_label</span><span class="p">(</span><span class="n">progress</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">progress</span>
+</code></pre></div>
+<p>检查器应指出函数承诺返回<code>str</code>，实际返回<code>float</code>。</p>
+<p>修复或删除临时错误文件后，重新运行整个目录的严格检查和全部测试。</p>
+<h2 id="ai">AI协作任务<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h2>
+<h3 id="_23">可复用提示模板<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>请为这个Python 3.11多模块程序补充类型提示，并使其通过mypy --strict。
+外部JSON必须从object边界开始并执行运行时校验；
+使用TypedDict表达已验证记录，使用Sequence表达只读输入；
+不要用Any、cast、# type: ignore或assert跳过问题；
+不要改变业务输出、输入只读行为和现有异常边界。
+请列出每个接口的输入、输出、是否修改数据，以及仍需运行时测试的风险。
+</code></pre></div>
+<h3 id="_24">人工审阅清单<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<ul>
+<li>AI是否把<code>json.loads()</code>结果直接标成<code>StudyRecord</code>。</li>
+<li>是否用<code>Any</code>让诊断消失，而不是缩小动态边界。</li>
+<li>是否在没有运行证据时使用<code>cast()</code>。</li>
+<li>是否用<code>assert</code>替代用户数据校验。</li>
+<li>是否添加了没有语义价值的重复注解。</li>
+<li>是否把只读参数错误标成必须是<code>list</code>。</li>
+<li>类型化前后报告、错误信息和输入只读行为是否一致。</li>
+</ul>
+<p>主动修改一项规则：允许调用者向分析函数传入元组形式的记录序列，并用mypy和测试证明<code>Sequence</code>接口有效。</p>
+<h2 id="_25">核心手动检查点<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h2>
+<h3 id="1">检查点1：证明注解不拦截运行<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>运行<code>annotations_are_not_guards.py</code>，记录实际输出；再运行mypy，比较运行时与静态检查的不同结论。</p>
+<h3 id="2">检查点2：阅读一条完整诊断<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>制造字符串参数错误，指出文件、行列、错误类型、期望类型和实际类型。不要只记录“mypy失败”。</p>
+<h3 id="3">检查点3：追踪类型缩窄<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>从<code>document: object</code>开始，逐行说明<code>isinstance()</code>之后检查器知道了什么，以及业务范围检查为何仍需自己编写。</p>
+<h3 id="4typeddict">检查点4：识别<code>TypedDict</code>边界<a class="headerlink" href="#4typeddict" title="Permanent link">&para;</a></h3>
+<p>分别测试源码中缺字段的<code>StudyRecord</code>和JSON中缺字段的对象。说明前者由mypy发现，后者必须由运行时校验发现。</p>
+<h3 id="5">检查点5：删除逃生口<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p>让AI生成一个使用<code>Any</code>、<code>cast()</code>或<code>type: ignore</code>的修复，再把逃生口删除，使用真实校验或准确签名解决诊断。</p>
+<h3 id="6c">检查点6：与C++对照<a class="headerlink" href="#6c" title="Permanent link">&para;</a></h3>
+<p>说明C++窄化错误、Python错误参数诊断分别发生在哪个阶段；如果跳过mypy，两者的结果有什么差异。</p>
+<h2 id="_26">微练习<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
+<ol>
+<li>为三个已有函数补齐参数和返回类型，运行严格检查。</li>
+<li>使用<code>str | None</code>表示可选课程名，并在调用位置完成缩窄。</li>
+<li>分别用<code>list[str]</code>和<code>tuple[str, ...]</code>表达可变与固定输出。</li>
+<li>构造缺少<code>tags</code>的<code>StudyRecord</code>，阅读静态诊断并修复。</li>
+<li>构造字段类型错误的JSON，证明运行时校验仍然生效。</li>
+<li>把一个<code>Any</code>参数改为<code>object</code>，补齐必要的<code>isinstance()</code>检查。</li>
+<li>证明<code>cast(str, 42)</code>不会执行字符串转换。</li>
+<li>故意返回错误类型，确认mypy失败；修复后运行全部检查和测试。</li>
+</ol>
+<h2 id="_27">阶段作品线索<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h2>
+<p>本节的类型化报告器只存在于课程正文，不创建新练习目录，也不修改Python起步阶段作品。它与上一节C++学习状态卡共同积累以下能力：</p>
+<ul>
+<li>两种语言的类型契约和检查时机对照。</li>
+<li>相同学习数据场景下的输入边界。</li>
+<li>静态检查、运行校验和测试证据。</li>
+<li>后续函数接口和多文件组织的基础。</li>
+</ul>
+<p>完成C++函数组织和后续Python接口课程后，再判断是否形成双语言阶段作品。</p>
+<h2 id="_28">常见错误与排查<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>常见原因</th>
+<th>检查方法</th>
+<th>修复方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>No module named mypy</code></td>
+<td>安装到了其他解释器</td>
+<td>检查<code>sys.executable</code>和pip归属</td>
+<td>使用当前虚拟环境的<code>python -m pip</code></td>
+</tr>
+<tr>
+<td>mypy显示版本不一致</td>
+<td>未按课程固定版本安装</td>
+<td>运行<code>python -m mypy --version</code></td>
+<td>重新安装<code>requirements-dev.txt</code></td>
+</tr>
+<tr>
+<td>大量<code>no-untyped-def</code></td>
+<td>函数接口未标注</td>
+<td>从公开模块边界开始</td>
+<td>补充真实参数和返回类型</td>
+</tr>
+<tr>
+<td>加注解后程序仍接受错误值</td>
+<td>把注解误当运行时校验</td>
+<td>直接运行错误调用</td>
+<td>在外部边界主动校验</td>
+</tr>
+<tr>
+<td>JSON通过mypy但运行失败</td>
+<td>直接信任动态数据</td>
+<td>检查<code>json.loads()</code>后的路径</td>
+<td>从<code>object</code>逐层验证</td>
+</tr>
+<tr>
+<td><code>Any</code>让错误全部消失</td>
+<td>类型检查被绕过</td>
+<td>搜索<code>Any</code>传播路径</td>
+<td>缩小边界并改用<code>object</code></td>
+</tr>
+<tr>
+<td><code>cast()</code>后运行崩溃</td>
+<td>cast没有运行时转换</td>
+<td>查看实际<code>type()</code></td>
+<td>使用真实转换或<code>isinstance()</code></td>
+</tr>
+<tr>
+<td><code>TypedDict</code>运行时没有校验</td>
+<td>它运行时只是dict</td>
+<td>打印<code>type(record)</code></td>
+<td>保留独立校验函数</td>
+</tr>
+<tr>
+<td><code>Sequence</code>中不能<code>append</code></td>
+<td>接口只承诺读取能力</td>
+<td>检查函数职责</td>
+<td>需要修改时明确复制或改接口</td>
+</tr>
+<tr>
+<td><code>type</code>语句出现语法错误</td>
+<td>使用Python 3.11运行3.12语法</td>
+<td>查看Python版本</td>
+<td>使用<code>TypeAlias</code>兼容写法</td>
+</tr>
+<tr>
+<td>为通过检查添加<code>type: ignore</code></td>
+<td>没有解决真实类型矛盾</td>
+<td>删除ignore重新检查</td>
+<td>修正签名、数据或校验逻辑</td>
+</tr>
+<tr>
+<td>mypy通过但测试失败</td>
+<td>静态契约不等于行为正确</td>
+<td>阅读测试差异</td>
+<td>修复业务行为并回归</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_29">完成标准<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h2>
+<ul>
+<li>能区分Python运行时类型、类型提示和mypy静态检查。</li>
+<li>能说明Python与C++类型检查发生阶段的根本差异。</li>
+<li>能为函数、容器、可选值和复杂返回结果添加准确类型。</li>
+<li>能使用<code>TypeAlias</code>和<code>TypedDict</code>表达接口，不把它们误认为运行时校验器。</li>
+<li>能使用<code>Sequence</code>表达只读能力边界。</li>
+<li>能解释<code>object</code>、<code>Any</code>和<code>cast()</code>的不同风险。</li>
+<li>能从<code>object</code>开始校验JSON，并构造真正的<code>StudyRecord</code>。</li>
+<li>能使完整示例通过<code>mypy --strict</code>且零错误。</li>
+<li>能故意制造参数、缺字段和返回类型错误，并确认检查器非零退出。</li>
+<li>能通过unittest验证正常报告、输入只读和运行时错误字段。</li>
+<li>能证明类型化前后正常业务结果保持一致。</li>
+<li>能审阅AI标注，删除至少一个不必要的类型逃生口。</li>
+<li>能说明为什么静态检查、运行时校验和测试必须同时保留。</li>
+</ul>
+<h2 id="_30">来源与版本<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>来源</th>
+<th>用于核查</th>
+<th>版本或日期</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.python.org/3.11/library/typing.html">Python 3.11 <code>typing</code></a></td>
+<td>TypeAlias、TypedDict、Any、object和容器类型</td>
+<td>Python 3.11文档，2026-07-14核查</td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><a href="https://typing.python.org/en/latest/spec/type-system.html">Python类型系统规范</a></td>
+<td>类型提示目标、动态类型与运行时检查边界</td>
+<td>2026-07-14核查</td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><a href="https://mypy.readthedocs.io/en/stable/getting_started.html">mypy入门</a></td>
+<td>安装、运行和渐进类型检查</td>
+<td>mypy 2.2文档，2026-07-14核查</td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><a href="https://mypy.readthedocs.io/en/stable/command_line.html">mypy命令行</a></td>
+<td><code>--strict</code>与退出行为</td>
+<td>mypy 2.2文档，2026-07-14核查</td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><a href="https://mypy.readthedocs.io/en/stable/type_narrowing.html">mypy类型缩窄</a></td>
+<td><code>isinstance()</code>后的类型缩窄</td>
+<td>mypy 2.2文档，2026-07-14核查</td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><a href="https://mypy.readthedocs.io/en/stable/typed_dict.html">mypy TypedDict</a></td>
+<td>固定字典结构和字段检查</td>
+<td>mypy 2.2文档，2026-07-14核查</td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><a href="https://pypi.org/project/mypy/2.2.0/">mypy 2.2.0 PyPI</a></td>
+<td>固定工具版本和Python 3.11兼容性</td>
+<td>2026-07-14核查</td>
+<td>已验证</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_31">下一步<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h2>
+<p>第一组“构建与类型”配对完成。下一节回到 C++，学习 <strong>函数、声明与程序组织</strong>：区分声明和定义，理解参数、返回值、作用域与重载，并把单文件学习状态卡拆成职责清楚的函数，为后续头文件、源文件和CMake做准备。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="上一页: 课程说明">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                课程说明
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../../projects/" class="md-footer__link md-footer__link--next" aria-label="下一页: 项目说明">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                项目说明
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
