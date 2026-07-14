@@ -69,6 +69,8 @@ markdown_extensions:
 
 exclude_docs: |
   docs/**
+  content-inbox/**
+  source-materials/**
   **/.DS_Store
   **/__pycache__/**
   **/*.pyc

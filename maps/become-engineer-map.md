@@ -61,7 +61,7 @@ CS 深化可选分支
 外部素材按统一路线逐阶段加工，不直接决定学习顺序。来源情况见：
 
 - [Python、AI 与 LLM 素材覆盖说明](python-ai-llm-content-coverage.md)
-- [外部来源目录](../content-inbox/external-source-catalog.md)
+- 外部来源候选与加工记录只保留在本地；正式课程会保留实际使用的必要引用。
 - [项目主干规划](../projects/project-roadmap.md)
 
 ## 内容沉淀规则

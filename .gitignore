@@ -1,39 +1,102 @@
-# Private learning materials
+# Local-only content and private workspaces
+content-inbox/
+source-materials/
 个人学习/
 personal-learning/
 private/
 _private/
+.ai/ui-evidence/
 
-# Source materials for second-pass processing
-source-materials/raw/
-source-materials/working/
-source-materials/exports/
-
-# Local environment
+# Local secrets and environment overrides
 .env
 .env.*
 !.env.example
-.DS_Store
 
-# Editor and tooling
-.idea/
-.vscode/
-.ai/ui-evidence/
-*.log
+# Source documents, archives, audio, video, and Office originals
+*.pdf
+*.epub
+*.mobi
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.tgz
+*.gz
+*.bz2
+*.xz
+*.mp3
+*.wav
+*.m4a
+*.flac
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.doc
+*.docx
+*.ppt
+*.pptx
+*.xls
+*.xlsx
+
+# Databases, large datasets, and model artifacts
 *.db
 *.db-journal
+*.sqlite
+*.sqlite3
+*.parquet
+*.feather
+*.arrow
+*.pkl
+*.pickle
+*.joblib
+*.npy
+*.npz
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+*.h5
+*.hdf5
 
-# Common build/cache outputs
-node_modules/
-dist/
-build/
-site/
-.site/
-become_engineer_site/
+# Operating system, editor, and tooling files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+
+# Python environments, caches, tests, and packaging
+.venv/
+venv/
 __pycache__/
 *.py[cod]
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
-.venv/
-venv/
+.hypothesis/
+.tox/
+.nox/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+*.egg-info/
+.eggs/
+.ipynb_checkpoints/
+
+# JavaScript dependencies and caches
+node_modules/
+.npm/
+.pnpm-store/
+.yarn/
+
+# Generated build and site outputs
+dist/
+build/
+site/
+.site/
+become_engineer_site/

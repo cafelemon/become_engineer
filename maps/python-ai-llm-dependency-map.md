@@ -55,7 +55,7 @@ flowchart TD
 
 当前外部来源已经登记，但公开课程按统一顺序逐阶段加工：
 
-- 工程、C++、CS和Web可从[CS自学指南目录](../content-inbox/external-source-catalog.md)按需筛选。
+- 工程、C++、CS和Web的外部来源在本地素材清单中按需筛选；公开课程只保留实际采用的必要引用。
 - Python类型和Web API可从FastAPI官方文档按需核查。
 - AI与LLM候选内容来自已审计的大模型笔记，但仍需逐单元加工。
 - “已登记来源”不等于“公开课程已完成”。

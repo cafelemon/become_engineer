@@ -13,8 +13,8 @@
 四层：
 
 - `maps/`：学习地图，负责全局导航和能力关系。
-- `content-inbox/`：素材收纳，负责登记未整理资料、处理状态和下一步动作。
-- `source-materials/`：素材加工区，负责本地保存原始抓取、清洗中间产物和临时导出。
+- `content-inbox/`：本地素材收纳，负责登记未整理资料、处理状态和下一步动作；不进入 Git。
+- `source-materials/`：本地素材加工区，负责保存原始抓取、清洗中间产物和临时导出；不进入 Git。
 - `learning-paths/`：学习路线，负责阶段拆解和学习顺序。
 - `projects/`、`exercises/`：项目实践，负责验证学习成果。
 - `resources/`、`reviews/`：资源事实与资源评测，负责筛选、纠错和使用建议。
@@ -77,8 +77,8 @@ become_engineer/
 ├── maps/
 │   ├── README.md
 │   └── become-engineer-map.md
-├── content-inbox/
-├── source-materials/
+├── content-inbox/              # 本地 ignored
+├── source-materials/           # 本地 ignored
 ├── learning-paths/
 │   ├── README.md
 │   ├── curriculum-map.md
@@ -101,8 +101,8 @@ become_engineer/
 ## 内容模块
 
 - `maps/`：总学习地图和主线关系。
-- `content-inbox/`：待整理素材索引和处理队列。
-- `source-materials/`：本地素材加工区；只有说明文件入库，原始内容和中间产物不入库。
+- `content-inbox/`：本地待整理素材索引和处理队列，目录整体不入库。
+- `source-materials/`：本地素材加工区，目录整体不入库。
 - `learning-paths/`：六条主线的路线入口和阶段规划。
 - `resources/`：免费资源清单，记录事实信息。
 - `reviews/`：资源评测，记录使用判断和推荐建议。
@@ -120,6 +120,14 @@ become_engineer/
 ```
 
 该目录只在本地使用，不进入公开仓库。适合存放个人草稿、下载资料、未整理想法和私人复盘。公开化时必须先删除隐私信息、版权风险内容和私人上下文，再沉淀到公开目录。
+
+## 版本控制边界
+
+- `content-inbox/`、`source-materials/`、`个人学习/`、私有目录和 UI 验收截图整体保留在本地，由根目录 `.gitignore` 保护。
+- PDF、电子书、压缩包、音视频、Office 文件、大型数据格式和模型产物在仓库范围内统一忽略。
+- PNG、JPG、SVG 等图片可以作为正式课程插图入库；小型 CSV、JSON 和 TXT 可以作为可复现练习或测试夹具入库。
+- 公开课程只保留实际使用的必要来源链接，不公开候选来源队列、清洗记录或原始文件。
+- 本轮只清理当前版本，不重写 Git 历史；原始素材从未进入历史。
 
 ## 未来技术选型
 

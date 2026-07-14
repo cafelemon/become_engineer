@@ -44,12 +44,10 @@
 
 - [x] `maps/README.md` 存在。
 - [x] `maps/become-engineer-map.md` 存在。
-- [x] `content-inbox/README.md` 存在。
-- [x] `content-inbox/llm-agent.md` 存在。
-- [x] `source-materials/README.md` 存在。
-- [x] `source-materials/raw/` 被 `.gitignore` 排除。
-- [x] `source-materials/working/` 被 `.gitignore` 排除。
-- [x] `source-materials/exports/` 被 `.gitignore` 排除。
+- [x] `content-inbox/` 和 `source-materials/` 本地文件仍然存在，但不再被 Git 跟踪。
+- [x] `content-inbox/`、`source-materials/`、`个人学习/` 和 `.ai/ui-evidence/` 整体被 `.gitignore` 排除。
+- [x] PDF、压缩包、音视频、Office、大型数据和模型产物在全仓范围被忽略。
+- [x] PNG、JPG、SVG、CSV、JSON、TXT 和公开 Markdown 不被全局规则误伤。
 - [x] `learning-paths/engineering-foundation/README.md` 存在。
 - [x] `learning-paths/programming-languages/README.md` 存在。
 - [x] `learning-paths/web-fullstack/README.md` 存在。
@@ -200,7 +198,7 @@
 ## 文档站
 
 - [x] 使用 MkDocs Material 作为 Markdown 公开网站外壳。
-- [x] 网站配置不把 `个人学习/` 和 `source-materials/raw|working|exports/` 纳入构建。
+- [x] 网站配置不把 `content-inbox/`、`source-materials/` 和 `个人学习/` 纳入构建或搜索。
 - [x] GitHub Actions 发布到 GitHub Pages。
 - [x] 首次推送后检查 `https://cafelemon.github.io/become_engineer/` 可访问。
 - [x] 公开站点主导航收敛为首页、开始学习和项目。
