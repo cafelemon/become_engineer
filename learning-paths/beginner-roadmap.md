@@ -86,11 +86,11 @@
 - [课程说明](programming-languages/python-basics/README.md)
 - [变量、基本类型、输入输出](programming-languages/python-basics/01-variables-types-io.md)
 - [条件、循环、布尔逻辑](programming-languages/python-basics/02-conditions-loops-boolean.md)
-- 函数、参数、返回值、作用域和代码拆分。
-- 字符串、列表、字典、集合、元组以及常见数据处理方法。
-- 文件、路径、JSON、目录遍历和文本统计。
-- 模块、导入、虚拟环境和最小项目结构。
-- 异常处理、traceback、基本调试和最小自动化测试。
+- [函数、参数、返回值和作用域](programming-languages/python-basics/03-functions-parameters-returns-scope.md)。
+- [字符串、列表、字典、集合和元组](programming-languages/python-basics/04-strings-collections.md)。
+- [文件、路径、JSON 和简单目录操作](programming-languages/python-basics/05-files-json-paths.md)。
+- [模块、导入和虚拟环境](programming-languages/python-basics/06-modules-imports-venv.md)。
+- [异常、基本调试和最小自动化测试](programming-languages/python-basics/07-errors-debugging-tests.md)。
 
 ### 完成标准
 
@@ -99,10 +99,11 @@
 - 能根据数据特点选择列表、字典、集合或元组，并说明选择理由。
 - 能创建虚拟环境、运行项目命令，并写出最小使用说明。
 - 能处理常见异常，根据 traceback 定位问题，并用自动化检查覆盖至少一个正常场景和一个失败场景。
+- 能完成并验收[学习进度报告器](../exercises/python-basics/study-progress-reporter/README.md)，证明输入只读、导入无副作用、正常和失败退出码可检查。
 
 ### 项目解锁
 
-完成 Python 起步后，可以进入 [Python 内容分析工具](../projects/python-content-analysis/README.md) 的第一个里程碑。
+完成 Python 起步后，默认继续进入 Python / C++ 双主修；同时可以进入 [Python 内容分析工具](../projects/python-content-analysis/README.md) 的第一个里程碑。
 
 项目不会替代 Python 起步课程。先完成本部分的变量、条件、循环、函数、数据结构、文件和调试练习，再进入项目里程碑。
 
@@ -125,6 +126,12 @@ Python 用于快速实现、数据处理、自动化和 AI；C++ 用于系统开
 | 领域应用 | 自动化、数据处理、Web、AI 和工业通信工具 | 系统组件、算法、实时通信、工业控制和本地推理 | 能在跨课程项目中承担真实模块并说明设计取舍 |
 
 学习时不要求先把五层全部学完再进入 CS。核心语言和基础工程化达到验收后即可进入 CS 最小核心；其余能力在 Web、AI、工业控制和系统项目中继续深化。
+
+### 当前学习入口
+
+Python起步完成后，先进入[C++核心语言](programming-languages/cpp-core/README.md)，完成[从源文件到可执行程序：编译、类型与输入输出](programming-languages/cpp-core/01-build-types-io.md)。随后进入配对课程“Python类型提示、接口与静态检查认知”。
+
+双主修按能力主题配对，不机械规定一节Python后必须紧接一节C++；同一主题需要完整上下文时，可以连续推进必要章节，但两门语言都必须达到核心语言与基础工程化验收。
 
 ### Python 深化重点
 

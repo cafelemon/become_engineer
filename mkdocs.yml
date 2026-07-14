@@ -96,6 +96,14 @@ nav:
           - 课程说明: learning-paths/programming-languages/python-basics/README.md
           - 变量、基本类型、输入输出: learning-paths/programming-languages/python-basics/01-variables-types-io.md
           - 条件、循环、布尔逻辑: learning-paths/programming-languages/python-basics/02-conditions-loops-boolean.md
+          - 函数、参数、返回值和作用域: learning-paths/programming-languages/python-basics/03-functions-parameters-returns-scope.md
+          - 字符串、列表、字典、集合和元组: learning-paths/programming-languages/python-basics/04-strings-collections.md
+          - 文件、路径、JSON 和简单目录操作: learning-paths/programming-languages/python-basics/05-files-json-paths.md
+          - 模块、导入和虚拟环境: learning-paths/programming-languages/python-basics/06-modules-imports-venv.md
+          - 异常、基本调试和最小自动化测试: learning-paths/programming-languages/python-basics/07-errors-debugging-tests.md
+      - C++ 核心语言:
+          - 课程说明: learning-paths/programming-languages/cpp-core/README.md
+          - 从源文件到可执行程序: learning-paths/programming-languages/cpp-core/01-build-types-io.md
   - 项目:
       - 项目说明: projects/README.md
       - 项目主干规划: projects/project-roadmap.md

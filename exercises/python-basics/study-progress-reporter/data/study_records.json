@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "records": [
+    {
+      "course": "Python 函数",
+      "target_hours": 6,
+      "finished_hours": 6,
+      "tags": ["Python", "编程"]
+    },
+    {
+      "course": "常用数据结构",
+      "target_hours": 8,
+      "finished_hours": 5,
+      "tags": ["Python", "数据结构"]
+    },
+    {
+      "course": "文件与 JSON",
+      "target_hours": 5,
+      "finished_hours": 7,
+      "tags": ["Python", "文件"]
+    }
+  ]
+}
+
