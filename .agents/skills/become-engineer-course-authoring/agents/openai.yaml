@@ -1,0 +1,4 @@
+interface:
+  display_name: "Become Engineer 课程生产"
+  short_description: "创建任务驱动课程、小码助教和可检索验收。"
+  default_prompt: "使用 $become-engineer-course-authoring 为 Become Engineer 新建或重构一节正式课程。"

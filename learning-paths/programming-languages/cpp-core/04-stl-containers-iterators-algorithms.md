@@ -882,4 +882,4 @@ ctest --test-dir build --build-config Debug --output-on-failure
 
 ## 下一步
 
-下一节进入Python核心语言的 **容器协议、迭代器与生成器**。它会从Python侧解释可迭代对象、迭代器、惰性生成和能力型容器接口，并与本节的半开区间和STL算法形成对照。
+下一节进入Python核心语言的 **[容器协议、迭代器与生成器](../python-core/03-iterables-iterators-generators.md)**。完成这组对照后，继续学习 C++ **[对象、引用、指针、生命周期与RAII](05-objects-references-pointers-lifetime-raii.md)**，把容器中的对象、借用与资源释放纳入同一份阶段作品。

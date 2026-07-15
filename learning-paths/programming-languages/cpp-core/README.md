@@ -32,7 +32,7 @@ C++23及后续标准会在对应专题中说明，不使用预览特性作为核
 | 构建与类型 | 编译、链接、静态类型、初始化、输入输出 | [Python类型提示、接口和静态检查认知](../python-core/01-type-hints-interfaces-static-checking.md) | 已完成 |
 | 函数与程序组织 | 声明、定义、参数、返回、重载和单文件职责拆分 | [Python可维护接口、协议与模块边界](../python-core/02-maintainable-function-interfaces-protocols-modules.md) | 已完成 |
 | 容器与算法 | `std::vector`、`std::string`、关联容器、迭代器和算法 | [Python容器协议、迭代器和生成器](../python-core/03-iterables-iterators-generators.md) | 已完成 |
-| 对象与资源 | 类、构造析构、引用、指针、生命周期、RAII和智能指针 | Python 数据模型、上下文管理和资源边界 | 待建设 |
+| 对象与资源 | 类、构造析构、引用、指针、生命周期、RAII和智能指针 | Python 数据模型、上下文管理和资源边界 | C++基础已完成 |
 | 工程化 | CMake、多文件工程、测试、调试和静态分析 | Python 包、CLI、配置、日志和依赖管理 | 多文件与CMake基础已完成 |
 | 深入能力 | 并发、内存模型、网络、系统接口和性能分析 | Python 线程、进程、异步、网络和解释器认知 | 后续持续深化 |
 
@@ -49,7 +49,7 @@ C++23及后续标准会在对应专题中说明，不使用预览特性作为核
 | [头文件、源文件与最小CMake工程](03-headers-sources-cmake.md) | 已完成 | 把函数接口迁移到多翻译单元，建立库、应用、CTest和可重复构建 |
 | [C++ STL容器、迭代器与基础算法](04-stl-containers-iterators-algorithms.md) | 已完成 | 将单条状态卡升级为多条记录并沉淀双语言阶段作品 |
 | [Python容器协议、迭代器与生成器](../python-core/03-iterables-iterators-generators.md) | 已完成 | 从Python侧深化能力型容器接口、单次消费与惰性遍历 |
-| 对象、引用、指针、生命周期与RAII | 下一节 | 理解对象身份、借用关系、资源所有权和确定性释放 |
+| [对象、引用、指针、生命周期与RAII](05-objects-references-pointers-lifetime-raii.md) | 已完成 | 理解对象身份、借用关系、资源所有权和确定性释放 |
 
 后续详细顺序会随着每组能力课程落地更新，不用从未完成的标题提前自学。
 
@@ -72,16 +72,16 @@ C++23及后续标准会在对应专题中说明，不使用预览特性作为核
 - 能使用显式标准和高警告级别编译代码。
 - 能区分声明、定义、初始化、赋值和转换。
 - 能使用函数、`std::string`、基础 STL 容器、迭代器和算法。
-- 能解释引用、指针、对象生命周期和 RAII 的基本边界。
+- 能解释引用、指针、对象生命周期和 RAII 的基本边界，并用受控文件导出验证资源释放。
 - 能阅读常见编译与链接诊断，并形成最小复现。
 - 能独立完成一个具有输入、输出、错误路径和验证证据的小型程序。
 
 ## 项目与阶段作品
 
-累计六节内容已经沉淀为[双语言学习进度报告器](../../../exercises/programming-languages/study-progress-reporters/README.md)。Python与C++使用同一数据和行为契约，分别通过类型检查、编译器和自动化测试验收；它是阶段作品，不是新的长期项目。
+累计七节内容已经沉淀为[双语言学习进度报告器](../../../exercises/programming-languages/study-progress-reporters/README.md)。Python与C++使用同一数据和行为契约；C++在保持主报告输出稳定的前提下新增对象借用与RAII审计导出，并通过编译器和自动化测试验收；它是阶段作品，不是新的长期项目。
 
 C++ 后续会服务于算法与 CS、工业控制与实时通信、本地模型推理和性能方向，但这些项目不会在核心前置未完成时提前解锁。
 
 ## 下一步
 
-尚未开始时，从[从源文件到可执行程序：编译、类型与输入输出](01-build-types-io.md)开始，按表格顺序学习到Python[容器协议、迭代器与生成器](../python-core/03-iterables-iterators-generators.md)。当前下一节为对象、引用、指针、生命周期与RAII。
+尚未开始时，从[从源文件到可执行程序：编译、类型与输入输出](01-build-types-io.md)开始，按表格顺序学习到[对象、引用、指针、生命周期与RAII](05-objects-references-pointers-lifetime-raii.md)。后续会从 Python 数据模型、上下文管理和资源边界形成对照；在对应课程落地前，回到阶段作品复查本组能力。

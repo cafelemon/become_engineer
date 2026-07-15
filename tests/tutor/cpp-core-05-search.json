@@ -1,0 +1,20 @@
+[
+  {"query": "RAII 课程开始前如何验证报告器基线？", "step_id": "step-1", "expected": "raii-baseline-run"},
+  {"query": "报告器基线怎么运行", "step_id": "step-1", "expected": "raii-baseline-run"},
+  {"query": "按值传递为什么不会修改原始记录？", "step_id": "step-1", "expected": "value-copy-boundary"},
+  {"query": "StudyRecord副本", "step_id": "step-1", "expected": "value-copy-boundary"},
+  {"query": "如何通过引用更新学习记录的完成小时？", "step_id": "step-2", "expected": "reference-mutation"},
+  {"query": "引用修改记录", "step_id": "step-2", "expected": "reference-mutation"},
+  {"query": "什么时候使用 const StudyRecord&？", "step_id": "step-2", "expected": "const-reference-choice"},
+  {"query": "只读引用", "step_id": "step-2", "expected": "const-reference-choice"},
+  {"query": "找不到课程记录时函数应该返回什么？", "step_id": "step-3", "expected": "nullable-find-pointer"},
+  {"query": "查不到记录返回什么", "step_id": "step-3", "expected": "nullable-find-pointer"},
+  {"query": "find_record_by_name 返回的指针需要 delete 吗？", "step_id": "step-3", "expected": "pointer-not-owner"},
+  {"query": "裸指针所有权", "step_id": "step-3", "expected": "pointer-not-owner"},
+  {"query": "为什么不能返回局部对象的引用？", "step_id": "step-4", "expected": "dangling-local-reference"},
+  {"query": "悬空引用原因", "step_id": "step-4", "expected": "dangling-local-reference"},
+  {"query": "vector 增长后为什么不能继续使用旧指针？", "step_id": "step-4", "expected": "vector-position-lifetime"},
+  {"query": "push_back后指针失效", "step_id": "step-4", "expected": "vector-position-lifetime"},
+  {"query": "如何用 RAII 写审计快照并处理文件打开失败？", "step_id": "step-5", "expected": "ofstream-raii-audit"},
+  {"query": "ofstream自动关闭", "step_id": "step-5", "expected": "ofstream-raii-audit"}
+]

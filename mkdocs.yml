@@ -112,6 +112,7 @@ nav:
           - 函数、声明与程序组织: learning-paths/programming-languages/cpp-core/02-functions-declarations-program-organization.md
           - 头文件、源文件与最小 CMake 工程: learning-paths/programming-languages/cpp-core/03-headers-sources-cmake.md
           - STL 容器、迭代器与基础算法: learning-paths/programming-languages/cpp-core/04-stl-containers-iterators-algorithms.md
+          - 对象、引用、指针、生命周期与 RAII: learning-paths/programming-languages/cpp-core/05-objects-references-pointers-lifetime-raii.md
       - Python 核心语言:
           - 课程说明: learning-paths/programming-languages/python-core/README.md
           - 类型提示、接口与静态检查认知: learning-paths/programming-languages/python-core/01-type-hints-interfaces-static-checking.md

@@ -1,6 +1,7 @@
 #include "study/study_report.hpp"
 
 #include <algorithm>
+#include <fstream>
 #include <iomanip>
 #include <iterator>
 #include <numeric>
@@ -86,6 +87,41 @@ std::vector<StudyRecord> filter_by_tag(
         }
     );
     return result;
+}
+
+void add_completed_hours(StudyRecord& record, double additional_hours) {
+    record.completed_hours += additional_hours;
+}
+
+StudyRecord* find_record_by_name(
+    std::vector<StudyRecord>& records,
+    const std::string& course_name
+) {
+    const auto iterator{std::find_if(
+        records.begin(), records.end(),
+        [&course_name](const StudyRecord& record) {
+            return record.course_name == course_name;
+        }
+    )};
+    return iterator == records.end() ? nullptr : &*iterator;
+}
+
+bool write_audit_snapshot(
+    const std::vector<StudyRecord>& records,
+    const std::filesystem::path& output_path
+) {
+    std::ofstream output{output_path};
+    if (!output) {
+        return false;
+    }
+
+    output << "学习审计快照\\n";
+    for (const StudyRecord& record : records) {
+        output << record.course_name << '\t'
+               << record.target_hours << '\t'
+               << record.completed_hours << '\n';
+    }
+    return static_cast<bool>(output);
 }
 
 namespace {

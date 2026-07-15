@@ -1,6 +1,8 @@
 #include "study/study_report.hpp"
 
 #include <cmath>
+#include <filesystem>
+#include <fstream>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -71,6 +73,43 @@ int main() {
     expect_true(
         study::filter_by_tag(records, "不存在").empty(),
         "missing tag should return an empty vector"
+    );
+
+    std::vector<study::StudyRecord> mutable_records{study::sample_records()};
+    study::add_completed_hours(mutable_records.front(), 1.5);
+    expect_close(
+        mutable_records.front().completed_hours, 9.0,
+        "reference mutation should update the original record"
+    );
+    study::StudyRecord* python_record{
+        study::find_record_by_name(mutable_records, "Python 起步")
+    };
+    expect_true(python_record != nullptr, "existing record should produce a non-owning pointer");
+    expect_true(
+        study::find_record_by_name(mutable_records, "不存在") == nullptr,
+        "missing record should produce nullptr"
+    );
+
+    const std::filesystem::path audit_path{"study_report_audit_test.txt"};
+    std::filesystem::remove(audit_path);
+    expect_true(
+        study::write_audit_snapshot(records, audit_path),
+        "audit snapshot should open and write a file"
+    );
+    std::ifstream audit_input{audit_path};
+    std::string audit_contents{
+        (std::istreambuf_iterator<char>{audit_input}),
+        std::istreambuf_iterator<char>{}
+    };
+    expect_true(
+        audit_contents.find("学习审计快照") != std::string::npos &&
+            audit_contents.find("Python 起步") != std::string::npos,
+        "audit snapshot should contain its header and records"
+    );
+    std::filesystem::remove(audit_path);
+    expect_true(
+        !study::write_audit_snapshot(records, "/missing-directory/study-report.txt"),
+        "unopenable audit path should report failure"
     );
 
     const std::vector<study::StudyRecord> equal_progress{

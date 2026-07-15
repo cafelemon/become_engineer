@@ -13,6 +13,7 @@
 - [C++：头文件、源文件与最小CMake工程](../../../learning-paths/programming-languages/cpp-core/03-headers-sources-cmake.md)
 - [C++：STL容器、迭代器与基础算法](../../../learning-paths/programming-languages/cpp-core/04-stl-containers-iterators-algorithms.md)
 - [Python：容器协议、迭代器与生成器](../../../learning-paths/programming-languages/python-core/03-iterables-iterators-generators.md)
+- [C++：对象、引用、指针、生命周期与RAII](../../../learning-paths/programming-languages/cpp-core/05-objects-references-pointers-lifetime-raii.md)
 
 ## 统一行为契约
 
@@ -24,6 +25,7 @@
 - 按进度降序排列；进度相同时按课程名升序排列。
 - 按标签筛选，返回独立记录副本，不修改原始输入。
 - Python额外提供惰性的标签筛选和进度行生成器，并在报告边界只物化一次输入。
+- C++额外提供按引用更新、可空非拥有查找和作用域内审计文件导出；审计导出不改变主报告标准输出。
 - 生成完全相同的UTF-8报告文本。
 
 本作品故意不读取JSON或CSV。C++标准库没有JSON解析器，而文件格式不是本次容器对照的学习目标；两边都使用代码内固定样例，避免额外依赖干扰比较。
@@ -105,7 +107,8 @@ Visual Studio等多配置生成器通常从`build/Debug/study_report_app.exe`运
 | 惰性遍历 | `Iterator`与生成器按需产出 | 迭代器表示容器范围中的位置 |
 | 唯一标签 | `set`后`sorted` | `std::set` |
 | 状态统计 | `dict`并按键排序输出 | `std::map` |
-| 自动检查 | mypy、unittest | 编译器、CTest |
+| 对象与资源 | `TypedDict` 与惰性消费边界 | 引用借用、可空非拥有指针、`ofstream` RAII |
+| 自动检查 | mypy、unittest | 编译器、CTest、审计成功与打开失败路径 |
 
 ## AI协作边界
 
@@ -120,7 +123,7 @@ AI可以生成容器替换、排序条件和测试候选，学习者必须亲自
 ## 验收
 
 - Python严格类型检查和全部unittest通过。
-- C++以C++20和严格警告零警告构建，CTest全部通过。
+- C++以C++20和严格警告零警告构建，CTest全部通过；审计文件成功与无法打开路径均有测试。
 - 两个应用的标准输出逐字一致。
 - 空记录、重复标签、同进度、超额完成和筛选无结果均有测试。
 - Python测试证明生成器惰性执行、单次消费和一次性输入报告行为。
@@ -129,4 +132,4 @@ AI可以生成容器替换、排序条件和测试候选，学习者必须亲自
 
 ## 下一步
 
-继续学习Python的“容器协议、迭代器与生成器”，从Python侧进一步理解惰性遍历和能力型接口。对象生命周期与资源管理会在后续C++课程中继续深化。
+对象生命周期与资源管理已在C++课程中完成基础实践。后续会从Python数据模型、上下文管理和资源边界继续形成对照；当前可回到对应课程复查双语言输出与审计契约。
