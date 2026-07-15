@@ -1353,6 +1353,8 @@
       
         
       
+        
+      
     
     
     
@@ -1448,6 +1450,34 @@
     
   
     可维护函数接口、协议与模块边界
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learning-paths/programming-languages/python-core/03-iterables-iterators-generators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    容器协议、迭代器与生成器
   
 
     
@@ -1885,7 +1915,7 @@
 
 
 <h1 id="_1">双语言学习进度报告器<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>这是 Python/C++ 双主修的第一个阶段作品。它把六节课程中的类型、函数接口、模块边界、多文件构建、STL容器和标准算法组合为两套行为一致的实现。</p>
+<p>这是 Python/C++ 双主修的第一个阶段作品。它由六节课程形成基础版本，并在Python“容器协议、迭代器与生成器”课程中继续演进惰性遍历能力。两种语言仍保持相同的数据、业务规则和报告输出。</p>
 <p>它不是长期项目。这里关注的是：同一个问题在两种语言中如何表达类型、容器、复制边界、构建和测试，而不是引入数据库、Web界面或第三方框架。</p>
 <h2 id="_2">关联课程<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1895,6 +1925,7 @@
 <li><a href="../../../learning-paths/programming-languages/python-core/02-maintainable-function-interfaces-protocols-modules/">Python：可维护函数接口、协议与模块边界</a></li>
 <li><a href="../../../learning-paths/programming-languages/cpp-core/03-headers-sources-cmake/">C++：头文件、源文件与最小CMake工程</a></li>
 <li><a href="../../../learning-paths/programming-languages/cpp-core/04-stl-containers-iterators-algorithms/">C++：STL容器、迭代器与基础算法</a></li>
+<li><a href="../../../learning-paths/programming-languages/python-core/03-iterables-iterators-generators/">Python：容器协议、迭代器与生成器</a></li>
 </ul>
 <h2 id="_3">统一行为契约<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>两套实现使用相同的四条内存记录，并提供相同能力：</p>
@@ -1904,6 +1935,7 @@
 <li>汇总总计划、总完成、状态数量和唯一标签。</li>
 <li>按进度降序排列；进度相同时按课程名升序排列。</li>
 <li>按标签筛选，返回独立记录副本，不修改原始输入。</li>
+<li>Python额外提供惰性的标签筛选和进度行生成器，并在报告边界只物化一次输入。</li>
 <li>生成完全相同的UTF-8报告文本。</li>
 </ul>
 <p>本作品故意不读取JSON或CSV。C++标准库没有JSON解析器，而文件格式不是本次容器对照的学习目标；两边都使用代码内固定样例，避免额外依赖干扰比较。</p>
@@ -1976,13 +2008,18 @@ ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class=
 </tr>
 <tr>
 <td>只读输入意图</td>
-<td><code>Sequence[StudyRecord]</code></td>
+<td><code>Iterable[StudyRecord]</code></td>
 <td><code>const std::vector&lt;StudyRecord&gt;&amp;</code></td>
 </tr>
 <tr>
 <td>排序副本</td>
 <td><code>sorted()</code>处理复制后的记录</td>
 <td>参数按值复制后<code>std::sort</code></td>
+</tr>
+<tr>
+<td>惰性遍历</td>
+<td><code>Iterator</code>与生成器按需产出</td>
+<td>迭代器表示容器范围中的位置</td>
 </tr>
 <tr>
 <td>唯一标签</td>
@@ -2016,6 +2053,7 @@ ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class=
 <li>C++以C++20和严格警告零警告构建，CTest全部通过。</li>
 <li>两个应用的标准输出逐字一致。</li>
 <li>空记录、重复标签、同进度、超额完成和筛选无结果均有测试。</li>
+<li>Python测试证明生成器惰性执行、单次消费和一次性输入报告行为。</li>
 <li>排序、筛选和汇总后原始记录顺序与内容保持不变。</li>
 <li>没有第三方运行依赖、个人路径、密钥或生成产物进入Git。</li>
 </ul>
@@ -2082,6 +2120,10 @@ ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class=
     
     
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/tutor-search.js"></script>
+      
+        <script src="../../../javascripts/tutor.js"></script>
       
     
   </body>
