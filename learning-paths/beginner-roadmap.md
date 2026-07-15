@@ -139,7 +139,7 @@
 
 ## Python / C++ 双主修 { #stage-dual-language }
 
-Python 负责快速实现与数据应用，C++ 帮助理解编译、类型、资源和性能。第一组“构建与类型”配对已经开放，两条能力线会在后续项目中持续深化，Java可作为补充语言选学。
+Python 负责快速实现与数据应用，C++ 帮助理解编译、类型、资源和性能。C++容器与算法已经把单条状态卡升级为多记录报告器，并形成首个双语言阶段作品；下一步进入Python容器协议、迭代器与生成器。两条能力线会在后续项目中持续深化，Java可作为补充语言选学。
 
 [进入 C++ 核心语言](programming-languages/cpp-core/README.md){ .md-button }
 [进入 Python 核心语言](programming-languages/python-core/README.md){ .md-button }

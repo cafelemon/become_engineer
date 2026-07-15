@@ -105,9 +105,13 @@ nav:
       - C++ 核心语言:
           - 课程说明: learning-paths/programming-languages/cpp-core/README.md
           - 从源文件到可执行程序: learning-paths/programming-languages/cpp-core/01-build-types-io.md
+          - 函数、声明与程序组织: learning-paths/programming-languages/cpp-core/02-functions-declarations-program-organization.md
+          - 头文件、源文件与最小 CMake 工程: learning-paths/programming-languages/cpp-core/03-headers-sources-cmake.md
+          - STL 容器、迭代器与基础算法: learning-paths/programming-languages/cpp-core/04-stl-containers-iterators-algorithms.md
       - Python 核心语言:
           - 课程说明: learning-paths/programming-languages/python-core/README.md
           - 类型提示、接口与静态检查认知: learning-paths/programming-languages/python-core/01-type-hints-interfaces-static-checking.md
+          - 可维护函数接口、协议与模块边界: learning-paths/programming-languages/python-core/02-maintainable-function-interfaces-protocols-modules.md
   - 项目:
       - 项目说明: projects/README.md
       - 项目主干规划: projects/project-roadmap.md

@@ -36,7 +36,7 @@
 ## 推荐学习顺序
 
 1. 先用Python掌握变量、控制流、函数、数据结构和调试。
-2. 完成Python起步后先用[从源文件到可执行程序](cpp-core/01-build-types-io.md)启动C++，再完成Python[类型提示、接口与静态检查认知](python-core/01-type-hints-interfaces-static-checking.md)；随后围绕函数与组织、容器与迭代等能力主题继续配对，不要求机械轮流。
+2. 完成Python起步后先用[从源文件到可执行程序](cpp-core/01-build-types-io.md)启动C++，再完成Python[类型提示、接口与静态检查认知](python-core/01-type-hints-interfaces-static-checking.md)、C++[函数、声明与程序组织](cpp-core/02-functions-declarations-program-organization.md)、Python[可维护函数接口、协议与模块边界](python-core/02-maintainable-function-interfaces-protocols-modules.md)、C++[头文件、源文件与最小CMake工程](cpp-core/03-headers-sources-cmake.md)和[STL容器、迭代器与基础算法](cpp-core/04-stl-containers-iterators-algorithms.md)；随后进入Python容器协议、迭代器与生成器，不要求机械轮流。
 3. 核心语言和基础工程化达到验收后进入CS最小核心，不等待所有高级主题学完。
 4. 在Web、AI和工业控制等项目中继续学习并发、网络、运行原理、性能和领域接口。
 5. Java在双主修基础后作为完整补充路线。

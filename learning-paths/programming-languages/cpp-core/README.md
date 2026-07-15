@@ -30,10 +30,10 @@ C++23及后续标准会在对应专题中说明，不使用预览特性作为核
 | 能力主题 | C++ 重点 | 与 Python 的配对关系 | 当前状态 |
 | --- | --- | --- | --- |
 | 构建与类型 | 编译、链接、静态类型、初始化、输入输出 | [Python类型提示、接口和静态检查认知](../python-core/01-type-hints-interfaces-static-checking.md) | 已完成 |
-| 函数与程序组织 | 声明、定义、参数、返回、重载、头文件和源文件 | Python 可维护接口、协议与模块边界 | 待建设 |
-| 容器与算法 | `std::vector`、`std::string`、关联容器、迭代器和算法 | Python 容器协议、迭代器和生成器 | 待建设 |
+| 函数与程序组织 | 声明、定义、参数、返回、重载和单文件职责拆分 | [Python可维护接口、协议与模块边界](../python-core/02-maintainable-function-interfaces-protocols-modules.md) | 已完成 |
+| 容器与算法 | `std::vector`、`std::string`、关联容器、迭代器和算法 | Python 容器协议、迭代器和生成器 | C++部分已完成 |
 | 对象与资源 | 类、构造析构、引用、指针、生命周期、RAII和智能指针 | Python 数据模型、上下文管理和资源边界 | 待建设 |
-| 工程化 | CMake、多文件工程、测试、调试和静态分析 | Python 包、CLI、配置、日志和依赖管理 | 待建设 |
+| 工程化 | CMake、多文件工程、测试、调试和静态分析 | Python 包、CLI、配置、日志和依赖管理 | 多文件与CMake基础已完成 |
 | 深入能力 | 并发、内存模型、网络、系统接口和性能分析 | Python 线程、进程、异步、网络和解释器认知 | 后续持续深化 |
 
 核心语言与基础工程化达到验收后即可进入 CS 最小核心。并发、网络、性能和领域能力会在后续课程与项目中继续加深，不要求此时一次学完。
@@ -44,7 +44,11 @@ C++23及后续标准会在对应专题中说明，不使用预览特性作为核
 | --- | --- | --- |
 | [从源文件到可执行程序：编译、类型与输入输出](01-build-types-io.md) | 已完成 | 理解构建链路、静态类型、初始化、转换、标准输入输出和诊断分类 |
 | [Python类型提示、接口与静态检查认知](../python-core/01-type-hints-interfaces-static-checking.md) | 已完成 | 区分运行时类型、类型提示与静态分析，建立可信数据边界 |
-| C++函数、声明与程序组织 | 下一节配对课 | 把单文件主流程拆成职责明确的函数，并为多文件工程做准备 |
+| [函数、声明与程序组织](02-functions-declarations-program-organization.md) | 已完成 | 把单文件主流程拆成职责明确的函数，并为多文件工程做准备 |
+| [Python可维护函数接口、协议与模块边界](../python-core/02-maintainable-function-interfaces-protocols-modules.md) | 已完成 | 从Python侧深化签名、协议、公开接口和依赖方向 |
+| [头文件、源文件与最小CMake工程](03-headers-sources-cmake.md) | 已完成 | 把函数接口迁移到多翻译单元，建立库、应用、CTest和可重复构建 |
+| [C++ STL容器、迭代器与基础算法](04-stl-containers-iterators-algorithms.md) | 已完成 | 将单条状态卡升级为多条记录并沉淀双语言阶段作品 |
+| Python 容器协议、迭代器与生成器 | 下一节 | 从Python侧深化能力型容器接口与惰性遍历 |
 
 后续详细顺序会随着每组能力课程落地更新，不用从未完成的标题提前自学。
 
@@ -73,10 +77,10 @@ C++23及后续标准会在对应专题中说明，不使用预览特性作为核
 
 ## 项目与阶段作品
 
-第一节只留下阶段作品线索，不创建新目录。连续3-6节形成稳定能力后，再根据[课程内容规范](https://github.com/cafelemon/become_engineer/blob/main/docs/08_content_standard.md)决定进入 `exercises/`，或推进已有长期项目里程碑。
+累计六节内容已经沉淀为[双语言学习进度报告器](../../../exercises/programming-languages/study-progress-reporters/README.md)。Python与C++使用同一数据和行为契约，分别通过类型检查、编译器和自动化测试验收；它是阶段作品，不是新的长期项目。
 
 C++ 后续会服务于算法与 CS、工业控制与实时通信、本地模型推理和性能方向，但这些项目不会在核心前置未完成时提前解锁。
 
 ## 下一步
 
-尚未开始时，从[从源文件到可执行程序：编译、类型与输入输出](01-build-types-io.md)开始，再完成配对的[Python类型课程](../python-core/01-type-hints-interfaces-static-checking.md)。当前下一节为C++函数、声明与程序组织。
+尚未开始时，从[从源文件到可执行程序：编译、类型与输入输出](01-build-types-io.md)开始，再按顺序完成[Python类型课程](../python-core/01-type-hints-interfaces-static-checking.md)、[函数、声明与程序组织](02-functions-declarations-program-organization.md)、[Python可维护函数接口、协议与模块边界](../python-core/02-maintainable-function-interfaces-protocols-modules.md)、[头文件、源文件与最小CMake工程](03-headers-sources-cmake.md)和[STL容器、迭代器与基础算法](04-stl-containers-iterators-algorithms.md)。当前下一节为Python容器协议、迭代器与生成器。

@@ -30,6 +30,10 @@
 
 - [学习进度报告器](python-basics/study-progress-reporter/README.md)：连续整合函数、数据结构、文件与JSON、模块、异常和测试；用于验收一个可运行、可排错、可回归的小型Python程序，不作为长期项目。
 
+### Python / C++ 双主修
+
+- [双语言学习进度报告器](programming-languages/study-progress-reporters/README.md)：使用同一数据和行为契约对照Python类型化模块与C++ STL/CMake实现，验收容器、算法、复制边界和双语言一致性。
+
 ### LLM/Agent
 
 - [安全销售查询 Tool Calling](llm-agent/safe-sales-tool-calling/README.md)：后期 LLM/Agent 阶段的加工样品；需先具备Python工程化、Web/API与数据库最小核心，再用于验证Tool Calling、参数校验、只读SQLite和错误处理。
