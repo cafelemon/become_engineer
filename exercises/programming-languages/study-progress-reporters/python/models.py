@@ -1,4 +1,7 @@
-from typing import TypedDict
+from typing import TypeAlias, TypedDict
+
+
+ProgressRow: TypeAlias = tuple[str, float, str]
 
 
 class StudyRecord(TypedDict):

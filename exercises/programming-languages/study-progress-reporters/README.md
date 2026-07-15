@@ -1,6 +1,6 @@
 # 双语言学习进度报告器
 
-这是 Python/C++ 双主修的第一个阶段作品。它把六节课程中的类型、函数接口、模块边界、多文件构建、STL容器和标准算法组合为两套行为一致的实现。
+这是 Python/C++ 双主修的第一个阶段作品。它由六节课程形成基础版本，并在Python“容器协议、迭代器与生成器”课程中继续演进惰性遍历能力。两种语言仍保持相同的数据、业务规则和报告输出。
 
 它不是长期项目。这里关注的是：同一个问题在两种语言中如何表达类型、容器、复制边界、构建和测试，而不是引入数据库、Web界面或第三方框架。
 
@@ -12,6 +12,7 @@
 - [Python：可维护函数接口、协议与模块边界](../../../learning-paths/programming-languages/python-core/02-maintainable-function-interfaces-protocols-modules.md)
 - [C++：头文件、源文件与最小CMake工程](../../../learning-paths/programming-languages/cpp-core/03-headers-sources-cmake.md)
 - [C++：STL容器、迭代器与基础算法](../../../learning-paths/programming-languages/cpp-core/04-stl-containers-iterators-algorithms.md)
+- [Python：容器协议、迭代器与生成器](../../../learning-paths/programming-languages/python-core/03-iterables-iterators-generators.md)
 
 ## 统一行为契约
 
@@ -22,6 +23,7 @@
 - 汇总总计划、总完成、状态数量和唯一标签。
 - 按进度降序排列；进度相同时按课程名升序排列。
 - 按标签筛选，返回独立记录副本，不修改原始输入。
+- Python额外提供惰性的标签筛选和进度行生成器，并在报告边界只物化一次输入。
 - 生成完全相同的UTF-8报告文本。
 
 本作品故意不读取JSON或CSV。C++标准库没有JSON解析器，而文件格式不是本次容器对照的学习目标；两边都使用代码内固定样例，避免额外依赖干扰比较。
@@ -98,8 +100,9 @@ Visual Studio等多配置生成器通常从`build/Debug/study_report_app.exe`运
 | 能力 | Python | C++ |
 | --- | --- | --- |
 | 记录类型 | `TypedDict` | 简单聚合`struct` |
-| 只读输入意图 | `Sequence[StudyRecord]` | `const std::vector<StudyRecord>&` |
+| 只读输入意图 | `Iterable[StudyRecord]` | `const std::vector<StudyRecord>&` |
 | 排序副本 | `sorted()`处理复制后的记录 | 参数按值复制后`std::sort` |
+| 惰性遍历 | `Iterator`与生成器按需产出 | 迭代器表示容器范围中的位置 |
 | 唯一标签 | `set`后`sorted` | `std::set` |
 | 状态统计 | `dict`并按键排序输出 | `std::map` |
 | 自动检查 | mypy、unittest | 编译器、CTest |
@@ -120,6 +123,7 @@ AI可以生成容器替换、排序条件和测试候选，学习者必须亲自
 - C++以C++20和严格警告零警告构建，CTest全部通过。
 - 两个应用的标准输出逐字一致。
 - 空记录、重复标签、同进度、超额完成和筛选无结果均有测试。
+- Python测试证明生成器惰性执行、单次消费和一次性输入报告行为。
 - 排序、筛选和汇总后原始记录顺序与内容保持不变。
 - 没有第三方运行依赖、个人路径、密钥或生成产物进入Git。
 

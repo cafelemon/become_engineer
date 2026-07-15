@@ -46,6 +46,10 @@ plugins:
 extra_css:
   - stylesheets/extra.css
 
+extra_javascript:
+  - javascripts/tutor-search.js
+  - javascripts/tutor.js
+
 markdown_extensions:
   - admonition
   - attr_list
@@ -112,6 +116,7 @@ nav:
           - 课程说明: learning-paths/programming-languages/python-core/README.md
           - 类型提示、接口与静态检查认知: learning-paths/programming-languages/python-core/01-type-hints-interfaces-static-checking.md
           - 可维护函数接口、协议与模块边界: learning-paths/programming-languages/python-core/02-maintainable-function-interfaces-protocols-modules.md
+          - 容器协议、迭代器与生成器: learning-paths/programming-languages/python-core/03-iterables-iterators-generators.md
   - 项目:
       - 项目说明: projects/README.md
       - 项目主干规划: projects/project-roadmap.md

@@ -1,9 +1,9 @@
-from collections.abc import Sequence
+from collections.abc import Iterable, Sequence
 
 from analysis import (
-    build_status,
-    calculate_progress,
-    filter_by_tag,
+    clone_record,
+    iter_by_tag,
+    iter_progress_rows,
     sort_by_progress,
     summarize,
 )
@@ -16,10 +16,11 @@ def _format_names(records: Sequence[StudyRecord]) -> str:
     return ", ".join(record["course_name"] for record in records)
 
 
-def build_report(records: Sequence[StudyRecord]) -> str:
-    summary = summarize(records)
-    sorted_records = sort_by_progress(records)
-    basic_records = filter_by_tag(records, "基础")
+def build_report(records: Iterable[StudyRecord]) -> str:
+    snapshot = [clone_record(record) for record in records]
+    summary = summarize(snapshot)
+    sorted_records = sort_by_progress(snapshot)
+    basic_records = list(iter_by_tag(snapshot, "基础"))
     total_target = summary["total_target_hours"]
     overall_progress = (
         summary["total_completed_hours"] / total_target
@@ -36,11 +37,9 @@ def build_report(records: Sequence[StudyRecord]) -> str:
         "按进度排序：",
     ]
 
-    for record in sorted_records:
+    for course_name, progress, status in iter_progress_rows(sorted_records):
         lines.append(
-            f"- {record['course_name']}："
-            f"{calculate_progress(record) * 100.0:.1f}%"
-            f"（{build_status(record)}）"
+            f"- {course_name}：{progress * 100.0:.1f}%（{status}）"
         )
 
     lines.extend(["", "状态统计："])

@@ -6,6 +6,12 @@ on:
       - main
     paths:
       - "**.md"
+      - "site-src/**/*.css"
+      - "site-src/**/*.js"
+      - "site-src/**/*.json"
+      - "site-src/**/*.webp"
+      - "scripts/test_tutor_search.cjs"
+      - "tests/tutor/**"
       - "mkdocs.yml"
       - "requirements.txt"
       - ".github/workflows/docs.yml"
@@ -35,6 +41,9 @@ jobs:
 
       - name: Install documentation dependencies
         run: pip install -r requirements.txt
+
+      - name: Validate tutor knowledge base
+        run: node scripts/test_tutor_search.cjs
 
       - name: Deploy to GitHub Pages
         run: mkdocs gh-deploy --force --clean --verbose

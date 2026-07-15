@@ -1,0 +1,230 @@
+{
+  "version": 1,
+  "lesson": {
+    "id": "python-basics-01",
+    "title": "变量、基本类型、输入输出",
+    "path": "learning-paths/programming-languages/python-basics/01-variables-types-io/"
+  },
+  "steps": [
+    {"id": "step-1", "title": "首次运行"},
+    {"id": "step-2", "title": "主动修改"},
+    {"id": "step-3", "title": "认识类型"},
+    {"id": "step-4", "title": "接收输入"},
+    {"id": "step-5", "title": "转换计算"},
+    {"id": "step-6", "title": "定位错误"},
+    {"id": "step-7", "title": "迁移验收"}
+  ],
+  "cards": [
+    {
+      "id": "run-file-not-found",
+      "lesson_id": "python-basics-01",
+      "step_id": "step-1",
+      "question": "运行时提示找不到文件怎么办？",
+      "aliases": ["找不到文件", "python打不开文件", "no such file", "can't open file", "运行不了learning_profile.py"],
+      "keywords": ["找不到", "文件", "目录", "路径", "pwd", "ls"],
+      "diagnostic": "先确认终端当前目录里能否看到 learning_profile.py。你执行 pwd 和 ls 后看到了什么？",
+      "hints": [
+        "运行命令只会在当前目录寻找相对路径。先确认当前目录，再确认文件名和扩展名。",
+        "如果文件在 python-study 目录，先执行 cd python-study，再运行 python3 learning_profile.py。"
+      ],
+      "example": "macOS/Linux 可用 pwd 和 ls；Windows PowerShell 可用 Get-Location 和 dir。",
+      "answer": "进入 learning_profile.py 所在目录，确认文件已经保存且扩展名不是 .py.txt，然后重新运行。",
+      "source": {"label": "第一步：先让学习档案运行起来", "href": "#step-1"},
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "run-output-stale",
+      "lesson_id": "python-basics-01",
+      "step_id": "step-1",
+      "question": "为什么修改代码后输出没有变化？",
+      "aliases": ["输出没变化", "代码改了没反应", "运行的还是旧代码", "保存后还是旧输出"],
+      "keywords": ["输出", "没有变化", "保存", "旧代码", "运行错文件"],
+      "diagnostic": "编辑器标签上是否还有未保存标记？运行命令里的文件名和正在编辑的文件一致吗？",
+      "hints": [
+        "先保存文件，再查看终端命令中的文件名。",
+        "在程序第一行临时输出一个明显标记，可以确认实际运行的是哪个文件。"
+      ],
+      "example": "临时加入 print(\"正在运行新版\")，保存后重新运行。",
+      "answer": "最常见原因是文件未保存或终端运行了另一个同名文件。确认保存状态、当前目录和命令文件名。",
+      "source": {"label": "第一步：即时反馈", "href": "#step-1"},
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "variable-meaning",
+      "lesson_id": "python-basics-01",
+      "step_id": "step-2",
+      "question": "变量是什么，等号两边分别表示什么？",
+      "aliases": ["变量是什么", "等号是什么意思", "name等于lemon怎么理解", "变量和值的关系"],
+      "keywords": ["变量", "等号", "变量名", "值", "name", "course"],
+      "diagnostic": "当你只修改 name 右边的值时，哪一行输出发生了变化？",
+      "hints": [
+        "等号左边是之后引用这个值的名字，右边是当前保存的值。",
+        "print(name) 使用的是变量当前保存的值，而不是输出单词 name。"
+      ],
+      "example": "name = \"Lemon\" 中，name 是变量名，\"Lemon\" 是字符串值。",
+      "answer": "变量是指向当前值的名字；赋值语句把右侧计算得到的值绑定给左侧变量名。",
+      "source": {"label": "第二步：修改昵称和课程", "href": "#step-2"},
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "string-needs-quotes",
+      "lesson_id": "python-basics-01",
+      "step_id": "step-2",
+      "question": "为什么文字需要加引号？",
+      "aliases": ["字符串为什么加引号", "不加引号为什么nameerror", "文字不加引号", "引号有什么用"],
+      "keywords": ["字符串", "文字", "引号", "nameerror"],
+      "diagnostic": "报错内容是不是 NameError，并且把你输入的文字当成了一个名字？",
+      "hints": [
+        "Python 需要区分代码中的名字和普通文本。",
+        "没有引号的 Lemon 会被当作变量名查找；\"Lemon\" 才是字符串。"
+      ],
+      "example": "course = \"Python 起步\" 是字符串；course = Python 会尝试读取名为 Python 的变量。",
+      "answer": "引号标记字符串边界，让 Python 把内容作为文本值处理，而不是变量名或语法。",
+      "source": {"label": "第二步：变量与字符串", "href": "#step-2"},
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "basic-types",
+      "lesson_id": "python-basics-01",
+      "step_id": "step-3",
+      "question": "怎么区分字符串、整数、浮点数和布尔值？",
+      "aliases": ["四种类型怎么区分", "int float str bool区别", "基本类型", "怎么知道变量类型"],
+      "keywords": ["类型", "字符串", "整数", "浮点数", "布尔", "str", "int", "float", "bool"],
+      "diagnostic": "先对不确定的变量执行 print(type(变量名))，实际输出是什么？",
+      "hints": [
+        "文本通常是 str，不带小数点的数字是 int，带小数点的是 float，True/False 是 bool。",
+        "类型应由数据用途决定：是否需要计算、是否表达真假、是否只是显示文本。"
+      ],
+      "example": "type(5) 是 int，type(0.2) 是 float，type(\"5\") 是 str，type(True) 是 bool。",
+      "answer": "使用 type() 观察实际类型，再结合数据含义选择；不要只凭输入看起来像数字就假定它是数字。",
+      "source": {"label": "第三步：不同类型的数据", "href": "#step-3"},
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "boolean-case",
+      "lesson_id": "python-basics-01",
+      "step_id": "step-3",
+      "question": "为什么 True 和 False 首字母必须大写？",
+      "aliases": ["true为什么报错", "false为什么报错", "布尔值大小写", "true和false怎么写"],
+      "keywords": ["true", "false", "布尔", "大小写", "nameerror"],
+      "diagnostic": "你写的是 Python 规定的 True/False，还是小写 true/false 或带引号的文本？",
+      "hints": [
+        "Python 区分大小写，布尔常量的固定拼写是 True 和 False。",
+        "\"True\" 带引号后是字符串，不再是布尔值。"
+      ],
+      "example": "type(True) 是 bool；type(\"True\") 是 str；true 通常触发 NameError。",
+      "answer": "True 和 False 是 Python 语法定义的布尔常量，拼写和大小写固定。",
+      "source": {"label": "第三步：认识类型", "href": "#step-3"},
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "input-waiting",
+      "lesson_id": "python-basics-01",
+      "step_id": "step-4",
+      "question": "程序停在输入提示处是不是卡住了？",
+      "aliases": ["程序卡住了", "input没有反应", "一直等待输入", "终端停住了"],
+      "keywords": ["input", "卡住", "等待", "输入", "回车"],
+      "diagnostic": "终端最后是否显示了“请输入……”并且光标仍在闪动？",
+      "hints": [
+        "input() 会暂停程序，等待键盘内容。",
+        "在终端键入内容后按回车，input() 才会返回结果，程序继续执行。"
+      ],
+      "example": "看到“请输入昵称：”后输入 Lemon，再按回车。",
+      "answer": "如果出现输入提示并等待光标，程序通常没有卡死，而是在正常等待输入。",
+      "source": {"label": "第四步：让档案接收输入", "href": "#step-4"},
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "input-always-string",
+      "lesson_id": "python-basics-01",
+      "step_id": "step-4",
+      "question": "为什么 input 输入数字后仍然是字符串？",
+      "aliases": ["为什么输入是字符串", "input为什么返回str", "输入5为什么不是int", "键盘输入数字类型"],
+      "keywords": ["input", "字符串", "str", "数字", "类型", "键盘"],
+      "diagnostic": "你是否实际打印了 type(weekly_hours_text)？输入 5 时显示什么？",
+      "hints": [
+        "键盘输入先作为文本进入程序，input() 不会猜测你想要整数还是浮点数。",
+        "需要计算时，再显式使用 int() 或 float() 转换，能让数据边界更清楚。"
+      ],
+      "example": "weekly_hours_text = input(...) 后，输入 5，type(weekly_hours_text) 仍是 str。",
+      "answer": "input() 的契约就是返回字符串。数字转换需要程序根据用途显式选择 int() 或 float()。",
+      "source": {"label": "第四步：接收输入", "href": "#step-4"},
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "convert-before-math",
+      "lesson_id": "python-basics-01",
+      "step_id": "step-5",
+      "question": "为什么计算前要用 int 或 float 转换？",
+      "aliases": ["为什么要类型转换", "int有什么用", "float有什么用", "字符串怎么变数字", "数字不能相加"],
+      "keywords": ["转换", "int", "float", "计算", "相加", "字符串", "数字"],
+      "diagnostic": "打印参与计算的两个值的 type()，它们是否都是数字类型？",
+      "hints": [
+        "字符串的加号表示拼接，数字的加号表示算术；不同类型不能随意混合。",
+        "保留原始 *_text，再把转换结果放入数字变量，更容易定位输入边界。"
+      ],
+      "example": "int(\"5\") + 2 得到 7；\"5\" + \"2\" 得到字符串 \"52\"。",
+      "answer": "转换让程序明确数据语义，并使后续算术使用正确的数字操作。整数用 int()，小数用 float()。",
+      "source": {"label": "第五步：转换输入并计算", "href": "#step-5"},
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "type-error-math",
+      "lesson_id": "python-basics-01",
+      "step_id": "step-5",
+      "question": "字符串和数字计算出现 TypeError 怎么办？",
+      "aliases": ["typeerror怎么办", "str和int不能相加", "unsupported operand", "can only concatenate str"],
+      "keywords": ["typeerror", "str", "int", "相加", "operand", "concatenate"],
+      "diagnostic": "错误行中参与运算的每个变量分别是什么类型？",
+      "hints": [
+        "在出错行之前临时打印变量和值的 type()。",
+        "如果数据来自 input()，检查是否在计算之前完成了 int() 或 float() 转换。"
+      ],
+      "example": "weekly_hours_text + 1 会失败；int(weekly_hours_text) + 1 才是数字加法。",
+      "answer": "让运算两边具有兼容类型。需要数字计算时先转换输入；需要文本拼接时把数字转成字符串或分开传给 print()。",
+      "source": {"label": "第五步：转换计算", "href": "#step-5"},
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "value-error-int",
+      "lesson_id": "python-basics-01",
+      "step_id": "step-6",
+      "question": "输入 abc 后出现 ValueError 应该怎么看？",
+      "aliases": ["这个错误怎么看", "valueerror怎么办", "invalid literal for int", "输入abc报错", "int转换失败"],
+      "keywords": ["valueerror", "abc", "invalid literal", "int", "错误", "traceback", "转换失败"],
+      "diagnostic": "先看 traceback 最后一行和自己文件中的行号：错误发生在 input() 还是 int()？",
+      "hints": [
+        "input() 已经成功读取 abc；失败发生在 int() 尝试把它解释为整数时。",
+        "记录输入、错误类型、文件行号和这一行的目标，再换成合法整数验证判断。"
+      ],
+      "example": "int(\"5\") 成功，int(\"abc\") 触发 ValueError。",
+      "answer": "ValueError 表示值的内容不满足转换要求。当前先用合法整数恢复；如何捕获和提示非法输入会在异常课程学习。",
+      "source": {"label": "第六步：故意触发并定位错误", "href": "#step-6"},
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "migration-new-field",
+      "lesson_id": "python-basics-01",
+      "step_id": "step-7",
+      "question": "迁移任务的新字段应该怎么设计？",
+      "aliases": ["怎么增加新字段", "第七步怎么做", "迁移任务提示", "我应该加什么变量", "给我一个提示"],
+      "keywords": ["迁移", "新字段", "变量", "类型", "主动修改", "提示"],
+      "diagnostic": "先用一句话说明新字段表示什么，以及它是否需要参与计算。",
+      "hints": [
+        "只显示文字可以保留字符串；需要加减比较的数字应转换；真假状态可以使用布尔值。",
+        "为新字段设计正常输入和一个边界输入，再检查最终输出是否符合含义。"
+      ],
+      "example": "记录每天练习分钟数时，可以先取得 minutes_text，再决定是否需要 int()。",
+      "answer": "迁移任务没有唯一答案。变量名清楚、类型合理、能运行，并完成正常与边界检查即可通过。",
+      "source": {"label": "第七步：独立完成迁移任务", "href": "#step-7"},
+      "updated_at": "2026-07-15",
+      "recommended": true
+    }
+  ]
+}
