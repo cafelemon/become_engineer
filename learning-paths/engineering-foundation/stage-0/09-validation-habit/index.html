@@ -497,6 +497,10 @@
       
         
       
+        
+          
+        
+      
     
     
     
@@ -514,8 +518,9 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cs-core/" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -529,8 +534,14 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
@@ -553,6 +564,8 @@
   
     
     
+      
+        
       
         
       
@@ -713,7 +726,7 @@
   <span class="md-ellipsis">
     
   
-    编辑器
+    VS Code 编辑器
   
 
     
@@ -769,7 +782,35 @@
   <span class="md-ellipsis">
     
   
-    Git
+    本地 Git 与 .gitignore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-github-remote/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub 远程协作
   
 
     
@@ -1745,6 +1786,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1881,12 +1926,70 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming-languages/python-core/04-data-model-dataclasses-context-managers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据模型、数据类与上下文管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming-languages/python-core/05-decorators-closures-custom-context-managers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    装饰器、闭包与自定义上下文管理器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
     </li>
   
 
+              
+            
               
             
           </ul>
@@ -1907,6 +2010,8 @@
       
         
           
+        
+      
         
       
         
@@ -1996,6 +2101,126 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    求职训练样板
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    求职训练样板
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../exercises/career-readiness/python-entry-machine-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 起步机考与限时模拟
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../exercises/career-readiness/study-progress-reporter-evidence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习进度报告器项目证据问答
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2503,7 +2728,7 @@
 
 <section class="be-task-step" data-step-id="step-1" id="step-1">
 <h3 id="_3">第一步：选择一个可验证目标<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p><strong>任务：</strong> 从前八课选择一个已有产出，例如“终端能读取 learning-log.md”或“Git 仓库有一次提交”。<strong>成功证据：</strong> 目标能用命令或文件状态检查，不是“感觉会了”。</p>
+<p><strong>任务：</strong> 从前九课选择一个已有产出，例如“终端能读取 learning-log.md”“Git 仓库有一次提交”或“GitHub 能看到一次 push”。<strong>成功证据：</strong> 目标能用命令、文件状态或远程页面检查，不是“感觉会了”。</p>
 <details class="tip">
 <summary>提示一</summary>
 <p>一次验证只检查一个明确主张。</p>
@@ -2561,7 +2786,7 @@
 <p>将一个待复查项变成下一阶段的第一件可执行任务。</p>
 </details>
 </section>
-<p>本节是工程基础入门的收口课。前面已经学习了方法、文件、终端、编辑器、Markdown、Git、开发环境和 Docker 最小认知；本节把这些能力合在一起，形成一个最基础但非常重要的习惯：每做一步，都能运行、观察、记录和复现。</p>
+<p>本节是工程基础入门的收口课。前面已经学习了方法、文件、终端、编辑器、Markdown、本地 Git、GitHub 远程协作、开发环境和 Docker 最小认知；本节把这些能力合在一起，形成一个最基础但非常重要的习惯：每做一步，都能运行、观察、记录和复现。</p>
 <p>验证习惯不是高级工程技巧。它的核心是不要只凭感觉说“好了”或“坏了”，而是用可检查的证据说明当前状态。</p>
 <h2 id="_8">前置知识<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <p>开始前应完成：</p>
@@ -3099,6 +3324,10 @@ docker<span class="w"> </span>--version
         <script src="../../../../javascripts/tutor-search.js"></script>
       
         <script src="../../../../javascripts/tutor.js"></script>
+      
+        <script src="../../../../javascripts/personalization-core.js"></script>
+      
+        <script src="../../../../javascripts/personalization.js"></script>
       
     
   </body>

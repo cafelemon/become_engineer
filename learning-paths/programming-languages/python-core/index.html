@@ -497,6 +497,10 @@
       
         
       
+        
+          
+        
+      
     
     
     
@@ -514,8 +518,9 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../../cs-core/" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -529,8 +534,14 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
@@ -551,6 +562,8 @@
   
     
     
+      
+        
       
         
       
@@ -711,7 +724,7 @@
   <span class="md-ellipsis">
     
   
-    编辑器
+    VS Code 编辑器
   
 
     
@@ -767,7 +780,35 @@
   <span class="md-ellipsis">
     
   
-    Git
+    本地 Git 与 .gitignore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../engineering-foundation/stage-0/06-github-remote/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub 远程协作
   
 
     
@@ -1400,6 +1441,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1536,12 +1581,70 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-data-model-dataclasses-context-managers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据模型、数据类与上下文管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-decorators-closures-custom-context-managers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    装饰器、闭包与自定义上下文管理器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
     </li>
   
 
+              
+            
               
             
           </ul>
@@ -1562,6 +1665,8 @@
       
         
           
+        
+      
         
       
         
@@ -1651,6 +1756,126 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    求职训练样板
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    求职训练样板
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../exercises/career-readiness/python-entry-machine-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 起步机考与限时模拟
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../exercises/career-readiness/study-progress-reporter-evidence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习进度报告器项目证据问答
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1967,9 +2192,15 @@
 </tr>
 <tr>
 <td>对象与资源</td>
-<td>数据模型、类、装饰器和上下文管理</td>
-<td>对象生命周期、RAII和智能指针</td>
-<td>待建设</td>
+<td><a href="04-data-model-dataclasses-context-managers/">数据模型、数据类和上下文管理</a></td>
+<td><a href="../cpp-core/05-objects-references-pointers-lifetime-raii/">对象生命周期、RAII和资源边界</a></td>
+<td>基础配对已完成</td>
+</tr>
+<tr>
+<td>包装与资源边界</td>
+<td><a href="05-decorators-closures-custom-context-managers/">装饰器、闭包和自定义上下文管理器</a></td>
+<td>RAII 边界作为既有对照，不机械映射语法</td>
+<td>已完成</td>
 </tr>
 <tr>
 <td>工程化</td>
@@ -2020,9 +2251,19 @@
 <td>理解可迭代协议、单次消费、惰性生成和显式物化边界</td>
 </tr>
 <tr>
-<td>C++ 对象、引用、指针、生命周期与 RAII</td>
-<td>下一节</td>
+<td><a href="../cpp-core/05-objects-references-pointers-lifetime-raii/">C++ 对象、引用、指针、生命周期与 RAII</a></td>
+<td>已完成</td>
 <td>建立对象与资源所有权的基本模型</td>
+</tr>
+<tr>
+<td><a href="04-data-model-dataclasses-context-managers/">数据模型、数据类与上下文管理</a></td>
+<td>已完成</td>
+<td>把结构化字典迁移为对象，并用 <code>with</code> 管理审计文件</td>
+</tr>
+<tr>
+<td><a href="05-decorators-closures-custom-context-managers/">装饰器、闭包与自定义上下文管理器</a></td>
+<td>已完成</td>
+<td>用类型安全包装器复用调用边界，并分阶段提交审计文件</td>
 </tr>
 </tbody>
 </table>
@@ -2045,9 +2286,9 @@
 </ol>
 <h2 id="_6">阶段作品边界<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>Python起步的学习进度报告器保持原样，代表当时已经验收的能力。本课程在正文中提供类型化副本，不反向修改起步作品，也不创建新的独立练习目录。</p>
-<p>双主修累计六节基础内容已经形成<a href="../../../exercises/programming-languages/study-progress-reporters/">双语言学习进度报告器</a>。本节继续演进其中的Python实现，加入惰性筛选、一次遍历汇总和显式物化边界，同时保持C++实现与公开报告契约不变。类型提示、协议、CMake或容器本身都不是独立项目。</p>
+<p>双主修课程已经形成<a href="../../../exercises/programming-languages/study-progress-reporters/">双语言学习进度报告器</a>。Python 实现已加入惰性筛选、数据类对象、类型安全调用追踪和分阶段审计导出，C++ 实现已加入借用与 RAII 审计导出；两边继续保持公开主报告契约不变。类型提示、协议、CMake、容器或装饰器本身都不是独立项目。</p>
 <h2 id="_7">下一步<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p>从<a href="01-type-hints-interfaces-static-checking/">类型提示、接口与静态检查认知</a>开始，按表格顺序学习到<a href="03-iterables-iterators-generators/">容器协议、迭代器与生成器</a>。完成后进入C++<a href="../cpp-core/05-objects-references-pointers-lifetime-raii/">对象、引用、指针、生命周期与RAII</a>，继续建立双语言的对象与资源能力对照。</p>
+<p>从<a href="01-type-hints-interfaces-static-checking/">类型提示、接口与静态检查认知</a>开始，按表格顺序学习到<a href="05-decorators-closures-custom-context-managers/">装饰器、闭包与自定义上下文管理器</a>。完成后进入包结构、CLI、配置与日志，把多模块报告器推进为最小工程化工具。</p>
 
 
 
@@ -2151,6 +2392,10 @@
         <script src="../../../javascripts/tutor-search.js"></script>
       
         <script src="../../../javascripts/tutor.js"></script>
+      
+        <script src="../../../javascripts/personalization-core.js"></script>
+      
+        <script src="../../../javascripts/personalization.js"></script>
       
     
   </body>

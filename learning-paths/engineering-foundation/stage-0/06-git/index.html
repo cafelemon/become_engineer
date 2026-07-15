@@ -16,7 +16,7 @@
         <link rel="prev" href="../05-markdown/">
       
       
-        <link rel="next" href="../07-development-environment/">
+        <link rel="next" href="../06-github-remote/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Git - Become Engineer</title>
+        <title>本地 Git 与 .gitignore - Become Engineer</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#git" class="md-skip">
+        <a href="#git-gitignore" class="md-skip">
           跳转至
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Git
+              本地 Git 与 .gitignore
             
           </span>
         </div>
@@ -497,6 +497,10 @@
       
         
       
+        
+          
+        
+      
     
     
     
@@ -514,8 +518,9 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cs-core/" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -529,8 +534,14 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
@@ -553,6 +564,8 @@
   
     
     
+      
+        
       
         
       
@@ -713,7 +726,7 @@
   <span class="md-ellipsis">
     
   
-    编辑器
+    VS Code 编辑器
   
 
     
@@ -778,7 +791,7 @@
   <span class="md-ellipsis">
     
   
-    Git
+    本地 Git 与 .gitignore
   
 
     
@@ -796,7 +809,7 @@
   <span class="md-ellipsis">
     
   
-    Git
+    本地 Git 与 .gitignore
   
 
     
@@ -822,6 +835,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        开始前：安装并验证 Git
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -845,10 +869,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#gitignore" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：创建记录并查看状态
+        第二步：创建 .gitignore、记录并查看状态
       
     </span>
   </a>
@@ -856,7 +880,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         第三步：把变化放入暂存区
@@ -867,7 +891,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         第四步：创建一次有意义的提交
@@ -878,7 +902,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         第五步：查看历史并完成迁移
@@ -894,7 +918,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         前置知识
@@ -905,7 +929,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         学习目标
@@ -916,7 +940,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         核心概念
@@ -928,7 +952,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         仓库
@@ -939,7 +963,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         工作区
@@ -950,7 +974,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         暂存区
@@ -961,7 +985,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         提交
@@ -972,7 +996,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         历史
@@ -983,10 +1007,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#gitignore_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        远程仓库
+        .gitignore
       
     </span>
   </a>
@@ -999,7 +1023,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         学习顺序
@@ -1010,7 +1034,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
         最小命令表
@@ -1021,7 +1045,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       
         示例：完成一次本地提交
@@ -1032,7 +1056,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       
         实践练习
@@ -1091,7 +1115,7 @@
   <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        练习 5：查看历史和远程
+        练习 5：查看历史和忽略结果
       
     </span>
   </a>
@@ -1104,7 +1128,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       
         常见错误与排查
@@ -1115,7 +1139,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       
         完成标准
@@ -1126,7 +1150,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
+  <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -1140,6 +1164,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-github-remote/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub 远程协作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1762,6 +1814,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1898,12 +1954,70 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming-languages/python-core/04-data-model-dataclasses-context-managers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据模型、数据类与上下文管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming-languages/python-core/05-decorators-closures-custom-context-managers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    装饰器、闭包与自定义上下文管理器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
     </li>
   
 
+              
+            
               
             
           </ul>
@@ -1924,6 +2038,8 @@
       
         
           
+        
+      
         
       
         
@@ -2013,6 +2129,126 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    求职训练样板
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    求职训练样板
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../exercises/career-readiness/python-entry-machine-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 起步机考与限时模拟
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../exercises/career-readiness/study-progress-reporter-evidence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习进度报告器项目证据问答
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2192,6 +2428,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        开始前：安装并验证 Git
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2215,10 +2462,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#gitignore" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：创建记录并查看状态
+        第二步：创建 .gitignore、记录并查看状态
       
     </span>
   </a>
@@ -2226,7 +2473,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         第三步：把变化放入暂存区
@@ -2237,7 +2484,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         第四步：创建一次有意义的提交
@@ -2248,7 +2495,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         第五步：查看历史并完成迁移
@@ -2264,7 +2511,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         前置知识
@@ -2275,7 +2522,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         学习目标
@@ -2286,7 +2533,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         核心概念
@@ -2298,7 +2545,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         仓库
@@ -2309,7 +2556,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         工作区
@@ -2320,7 +2567,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         暂存区
@@ -2331,7 +2578,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         提交
@@ -2342,7 +2589,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         历史
@@ -2353,10 +2600,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#gitignore_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        远程仓库
+        .gitignore
       
     </span>
   </a>
@@ -2369,7 +2616,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         学习顺序
@@ -2380,7 +2627,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
         最小命令表
@@ -2391,7 +2638,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       
         示例：完成一次本地提交
@@ -2402,7 +2649,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       
         实践练习
@@ -2461,7 +2708,7 @@
   <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        练习 5：查看历史和远程
+        练习 5：查看历史和忽略结果
       
     </span>
   </a>
@@ -2474,7 +2721,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       
         常见错误与排查
@@ -2485,7 +2732,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       
         完成标准
@@ -2496,7 +2743,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
+  <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -2526,13 +2773,40 @@
   
 
 
-<h1 id="git">Git<a class="headerlink" href="#git" title="Permanent link">&para;</a></h1>
+<h1 id="git-gitignore">本地 Git 与 .gitignore<a class="headerlink" href="#git-gitignore" title="Permanent link">&para;</a></h1>
 <div class="be-tutor-mount" data-tutor-lesson="engineering-foundation-06" aria-hidden="true"></div>
 
-<p>本课在一个临时学习目录完成第一次本地 Git 闭环：初始化、查看状态、暂存、提交、查看历史；不直接改动当前公开仓库。</p>
+<p>本课先确认 Git 已安装，再在一个临时学习目录完成第一次本地闭环：初始化、忽略不应提交的文件、查看状态、暂存、提交和查看历史；不直接改动当前公开仓库。</p>
+<h2 id="git">开始前：安装并验证 Git<a class="headerlink" href="#git" title="Permanent link">&para;</a></h2>
+<p>先在终端运行：</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>--version
+</code></pre></div>
+<p>出现 <code>git version ...</code> 表示终端已经能找到 Git。版本号会随时间更新，不需要和截图完全一致。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows</label><label for="__tabbed_1_2">macOS</label><label for="__tabbed_1_3">Linux 简要补充</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>打开 <a href="https://git-scm.com/install/windows">Git 官方 Windows 安装页</a>，下载维护中的安装程序。</li>
+<li>双击安装程序。第一次学习可以保留默认选项；不理解的 Shell、换行符和凭据选项不要随意改成教程外的配置。</li>
+<li>安装结束后关闭并重新打开 PowerShell，再运行 <code>git --version</code>。</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>先运行 <code>git --version</code>；部分 macOS 会提示安装 Xcode Command Line Tools。</li>
+<li>如果没有 Git，可按 <a href="https://git-scm.com/install/mac.html">Git 官方 macOS 安装页</a>使用 <code>xcode-select --install</code>；已经使用 Homebrew 的学习者也可选择 <code>brew install git</code>。</li>
+<li>安装结束后重新打开终端，再运行 <code>git --version</code>。</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p>使用发行版的软件包管理器安装 Git，然后运行 <code>git --version</code>。命令因发行版不同而不同，以 <a href="https://git-scm.com/install/">Git 官方安装入口</a>为准。</p>
+</div>
+</div>
+</div>
+<p>如果安装失败，记录系统版本、下载来源、安装步骤和完整错误；不要为了继续课程复制来源不明的一键安装脚本。</p>
 <h2 id="_1">五步任务路线<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <div class="be-task-route" role="list" aria-label="本课五步任务">
-  <span role="listitem">1 建立临时仓库</span><span role="listitem">2 查看状态</span><span role="listitem">3 暂存变化</span><span role="listitem">4 创建提交</span><span role="listitem">5 检查历史</span>
+  <span role="listitem">1 建立临时仓库</span><span role="listitem">2 配置忽略并看状态</span><span role="listitem">3 暂存变化</span><span role="listitem">4 配置身份并提交</span><span role="listitem">5 检查历史</span>
 </div>
 
 <section class="be-task-step" data-step-id="step-1" id="step-1">
@@ -2548,20 +2822,20 @@
 </details>
 </section>
 <section class="be-task-step" data-step-id="step-2" id="step-2">
-<h3 id="_3">第二步：创建记录并查看状态<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p><strong>任务：</strong> 在临时仓库创建 <code>README.md</code>，写下一句练习说明，执行 <code>git status</code>。<strong>成功证据：</strong> 能看到未跟踪文件状态。</p>
+<h3 id="gitignore">第二步：创建 .gitignore、记录并查看状态<a class="headerlink" href="#gitignore" title="Permanent link">&para;</a></h3>
+<p><strong>任务：</strong> 创建 <code>README.md</code>、临时文件 <code>debug.log</code> 和 <code>.gitignore</code>，在 <code>.gitignore</code> 写入 <code>*.log</code> 后执行 <code>git status</code>。<strong>成功证据：</strong> Git 显示 README 和 <code>.gitignore</code>，但不把 <code>debug.log</code> 列为待提交文件。</p>
 <details class="tip">
 <summary>提示一</summary>
-<p>工作区是你正在编辑的文件状态，<code>git status</code> 不会修改文件。</p>
+<p><code>.gitignore</code> 只描述哪些未跟踪文件不应进入版本库；它自己通常应该提交。</p>
 </details>
 <details class="tip">
 <summary>提示二</summary>
-<p>看不到文件时，先确认文件已经保存且当前目录正确。</p>
+<p>已经被 Git 跟踪的文件不会因为后来加入 <code>.gitignore</code> 就自动停止跟踪。本练习先创建忽略规则，再暂存文件。</p>
 </details>
 </section>
 <section class="be-task-step" data-step-id="step-3" id="step-3">
-<h3 id="_4">第三步：把变化放入暂存区<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p><strong>任务：</strong> 执行 <code>git add README.md</code>，再次执行 <code>git status</code>。<strong>成功证据：</strong> 文件显示为待提交，而不是未跟踪。</p>
+<h3 id="_3">第三步：把变化放入暂存区<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><strong>任务：</strong> 执行 <code>git add README.md .gitignore</code>，再次执行 <code>git status</code>。<strong>成功证据：</strong> README 和 <code>.gitignore</code> 显示为待提交，<code>debug.log</code> 仍被忽略。</p>
 <details class="tip">
 <summary>提示一</summary>
 <p><code>git add</code> 是选择下一次提交包含哪些变化，不是永久保存。</p>
@@ -2572,8 +2846,12 @@
 </details>
 </section>
 <section class="be-task-step" data-step-id="step-4" id="step-4">
-<h3 id="_5">第四步：创建一次有意义的提交<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p><strong>任务：</strong> 执行 <code>git commit -m "add learning note"</code>。<strong>成功证据：</strong> 命令成功并返回提交标识；若要求配置身份，按报错完成本机配置后重试。</p>
+<h3 id="_4">第四步：创建一次有意义的提交<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><strong>任务：</strong> 先检查 <code>git config --global user.name</code> 和 <code>git config --global user.email</code>；没有结果时按下面示例换成自己的信息，再执行 <code>git commit -m "add learning note"</code>。<strong>成功证据：</strong> 命令成功并返回提交标识。</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;你的名字或 GitHub 用户名&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;你用于提交的邮箱&quot;</span>
+</code></pre></div>
+<p>用户名和邮箱会写进提交作者信息，不会自动创建 GitHub 账号，也不会把本地仓库连接到 GitHub。公开仓库可使用 GitHub 提供的 noreply 邮箱保护真实邮箱。</p>
 <details class="tip">
 <summary>提示一</summary>
 <p>提交消息描述这次变化做了什么，而不是写“修改”。</p>
@@ -2584,7 +2862,7 @@
 </details>
 </section>
 <section class="be-task-step" data-step-id="step-5" id="step-5">
-<h3 id="_6">第五步：查看历史并完成迁移<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_5">第五步：查看历史并完成迁移<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p><strong>任务：</strong> 执行 <code>git log --oneline</code>，然后在 README 追加一行并说明下一次应如何重复流程。<strong>成功证据：</strong> 能区分工作区、暂存区、提交历史。</p>
 <details class="tip">
 <summary>提示一</summary>
@@ -2595,7 +2873,7 @@
 <p>第二次变化先 <code>git status</code>，再决定是否暂存和提交。</p>
 </details>
 </section>
-<h2 id="_7">前置知识<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_6">前置知识<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
 <li>已完成 <a href="../01-learning-method/">学习方法</a>。</li>
 <li>已完成 <a href="../02-filesystem/">文件系统</a>。</li>
@@ -2604,24 +2882,24 @@
 <li>已完成 <a href="../05-markdown/">Markdown</a>。</li>
 <li>能打开终端、进入目录、修改并保存一个 Markdown 文件。</li>
 </ul>
-<h2 id="_8">学习目标<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<p>学完本节后，你应该能理解仓库、工作区、暂存区、提交、状态、历史和远程仓库的最小概念，并完成一次本地 Git 提交流程。</p>
-<p>本节只讲本地 Git 最小闭环和远程仓库认知。不讲分支策略、Pull Request、rebase、冲突处理或 GitHub Actions。</p>
-<h2 id="_9">核心概念<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<h3 id="_10">仓库<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h2 id="_7">学习目标<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>学完本节后，你应该能验证 Git 安装、理解仓库、工作区、忽略规则、暂存区、提交、状态和历史，并完成一次本地 Git 提交流程。</p>
+<p>本节只讲本地 Git 最小闭环。下一课专门处理 GitHub、远程地址、认证、push 和 clone；本节不讲分支策略、Pull Request、rebase、冲突处理或 GitHub Actions。</p>
+<h2 id="_8">核心概念<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="_9">仓库<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>Git 仓库是一个被 Git 管理历史的项目目录。</p>
 <p>普通目录只是保存当前文件；Git 仓库还能记录文件每次重要变化。</p>
 <p>初始化仓库的命令是：</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>init
 </code></pre></div>
 <p>入门练习请使用一个临时学习目录，不要直接在当前公开仓库里随便提交。</p>
-<h3 id="_11">工作区<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h3 id="_10">工作区<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>工作区是你正在编辑的文件状态。</p>
 <p>你修改了文件，但还没有告诉 Git 要保存这次变化时，这些变化就在工作区。</p>
 <p>查看状态的命令是：</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>status
 </code></pre></div>
-<h3 id="_12">暂存区<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h3 id="_11">暂存区<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>暂存区是准备进入下一次提交的变化清单。</p>
 <p>把文件加入暂存区的命令是：</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>README.md
@@ -2630,24 +2908,26 @@
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>.
 </code></pre></div>
 <p>入门时建议先用具体文件名，减少误加无关文件。</p>
-<h3 id="_13">提交<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h3 id="_12">提交<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>提交是一次带说明的历史记录。</p>
 <p>提交命令是：</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add first learning note&quot;</span>
 </code></pre></div>
 <p>提交信息应该说明这次变化做了什么，而不是写“update”或“改了一下”。</p>
-<h3 id="_14">历史<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h3 id="_13">历史<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p>查看提交历史：</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>log
 </code></pre></div>
 <p>如果输出太长，可以先按 <code>q</code> 退出。</p>
-<h3 id="_15">远程仓库<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p>远程仓库是放在 GitHub 等平台上的仓库副本。</p>
-<p>查看当前仓库配置的远程地址：</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>remote<span class="w"> </span>-v
+<h3 id="gitignore_1">.gitignore<a class="headerlink" href="#gitignore_1" title="Permanent link">&para;</a></h3>
+<p><code>.gitignore</code> 是仓库中的规则文件，用来声明缓存、日志、构建产物、密钥或本机配置等不应进入版本历史的路径。例如：</p>
+<div class="highlight"><pre><span></span><code>*.log
+.venv/
+.env
+__pycache__/
 </code></pre></div>
-<p>本节只要求知道远程仓库是什么，不要求执行 push 或配置 GitHub 权限。</p>
-<h2 id="_16">学习顺序<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<p>忽略规则不是保密工具：文件一旦提交过，或内容已经被推送到远程，后来写进 <code>.gitignore</code> 不能抹掉历史。密钥和隐私文件从一开始就不要提交。</p>
+<h2 id="_14">学习顺序<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
 <ol>
 <li>新建一个临时学习目录。</li>
 <li>初始化 Git 仓库。</li>
@@ -2656,9 +2936,9 @@
 <li>暂存文件。</li>
 <li>提交一次变化。</li>
 <li>查看提交历史。</li>
-<li>查看远程仓库配置。</li>
+<li>确认日志文件被忽略。</li>
 </ol>
-<h2 id="_17">最小命令表<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<h2 id="_15">最小命令表<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2680,7 +2960,7 @@
 </tr>
 <tr>
 <td>暂存文件</td>
-<td><code>git add README.md</code></td>
+<td><code>git add README.md .gitignore</code></td>
 <td>把指定文件放入下一次提交</td>
 </tr>
 <tr>
@@ -2694,13 +2974,13 @@
 <td>查看提交记录</td>
 </tr>
 <tr>
-<td>查看远程</td>
-<td><code>git remote -v</code></td>
-<td>查看远程仓库地址</td>
+<td>验证忽略</td>
+<td><code>git status --ignored</code></td>
+<td>查看被忽略文件，避免误提交</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_18">示例：完成一次本地提交<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<h2 id="_16">示例：完成一次本地提交<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
 <p>创建一个临时学习目录，例如：</p>
 <div class="highlight"><pre><span></span><code>git-practice/
 </code></pre></div>
@@ -2712,11 +2992,12 @@
 
 这是我的 Git 入门练习。
 </code></pre></div>
+<p>再创建 <code>.gitignore</code> 并写入 <code>*.log</code>，同时创建不会提交的 <code>debug.log</code>。</p>
 <p>查看状态：</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>status
 </code></pre></div>
 <p>暂存文件：</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>README.md
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>README.md<span class="w"> </span>.gitignore
 </code></pre></div>
 <p>再次查看状态：</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>status
@@ -2727,8 +3008,8 @@
 <p>查看历史：</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>log
 </code></pre></div>
-<p>如果 <code>git commit</code> 提示你配置用户名和邮箱，先记录提示内容。用户名和邮箱配置属于后续工程环境内容，这里只要求你知道提交失败在哪里。</p>
-<h2 id="_19">实践练习<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
+<p>如果 <code>git commit</code> 提示你配置用户名和邮箱，回到第四步完成本机身份配置后重试。</p>
+<h2 id="_17">实践练习<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
 <h3 id="1">练习 1：初始化临时仓库<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
 <p>新建一个临时学习目录，并在里面执行：</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>init
@@ -2739,7 +3020,7 @@
 `git init` 后我看到了什么输出：
 </code></pre></div>
 <h3 id="2">练习 2：查看状态<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
-<p>创建一个 <code>README.md</code>，写入一行学习记录，然后执行：</p>
+<p>创建 <code>README.md</code>、<code>.gitignore</code> 和 <code>debug.log</code>，在忽略规则写入 <code>*.log</code> 后执行：</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>status
 </code></pre></div>
 <p>需要产出：</p>
@@ -2749,7 +3030,7 @@
 </code></pre></div>
 <h3 id="3">练习 3：暂存文件<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
 <p>执行：</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>README.md
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>README.md<span class="w"> </span>.gitignore
 git<span class="w"> </span>status
 </code></pre></div>
 <p>需要产出：</p>
@@ -2768,19 +3049,19 @@ git<span class="w"> </span>status
 
 如果失败，错误信息是：
 </code></pre></div>
-<h3 id="5">练习 5：查看历史和远程<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<h3 id="5">练习 5：查看历史和忽略结果<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
 <p>执行：</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>log
-git<span class="w"> </span>remote<span class="w"> </span>-v
+git<span class="w"> </span>status<span class="w"> </span>--ignored
 </code></pre></div>
 <p>需要产出：</p>
 <div class="highlight"><pre><span></span><code>我看到的最近一次提交信息是：
 
-当前是否配置了远程仓库：
+当前被忽略的文件是：
 
 我的判断依据是：
 </code></pre></div>
-<h2 id="_20">常见错误与排查<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<h2 id="_18">常见错误与排查<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2818,11 +3099,16 @@ git<span class="w"> </span>remote<span class="w"> </span>-v
 <tr>
 <td>第一次提交失败</td>
 <td>Git 要求配置用户名和邮箱</td>
-<td>记录错误信息，后续在开发环境处理</td>
+<td>按第四步配置自己的 <code>user.name</code> 和 <code>user.email</code> 后重试</td>
+</tr>
+<tr>
+<td><code>.gitignore</code> 没生效</td>
+<td>文件仍出现在已暂存或已跟踪列表</td>
+<td>先确认规则和相对路径；已跟踪文件需单独从索引处理，不要直接删除真实文件</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_21">完成标准<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
+<h2 id="_19">完成标准<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
 <p>完成本节需要同时满足：</p>
 <ul>
 <li>能解释仓库、工作区、暂存区和提交的区别。</li>
@@ -2831,10 +3117,10 @@ git<span class="w"> </span>remote<span class="w"> </span>-v
 <li>能用 <code>git add</code> 暂存一个指定文件。</li>
 <li>能尝试执行一次 <code>git commit</code>，并记录成功结果或失败原因。</li>
 <li>能用 <code>git log</code> 查看提交历史。</li>
-<li>能用 <code>git remote -v</code> 判断当前是否配置远程仓库。</li>
+<li>能用 <code>.gitignore</code> 排除一个日志文件，并解释为什么密钥不能只依靠忽略规则保护。</li>
 </ul>
-<h2 id="_22">下一步<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
-<p>进入 <a href="../07-development-environment/">开发环境</a>。下一节会学习解释器、编译器、环境变量和依赖的基本概念。</p>
+<h2 id="_20">下一步<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<p>进入 <a href="../06-github-remote/">GitHub 远程协作</a>。下一节会把本地提交连接到 GitHub，实际执行 remote、push 和 clone。</p>
 
 
 
@@ -2887,13 +3173,13 @@ git<span class="w"> </span>remote<span class="w"> </span>-v
         
         
           
-          <a href="../07-development-environment/" class="md-footer__link md-footer__link--next" aria-label="下一页: 开发环境">
+          <a href="../06-github-remote/" class="md-footer__link md-footer__link--next" aria-label="下一页: GitHub 远程协作">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                开发环境
+                GitHub 远程协作
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2938,6 +3224,10 @@ git<span class="w"> </span>remote<span class="w"> </span>-v
         <script src="../../../../javascripts/tutor-search.js"></script>
       
         <script src="../../../../javascripts/tutor.js"></script>
+      
+        <script src="../../../../javascripts/personalization-core.js"></script>
+      
+        <script src="../../../../javascripts/personalization.js"></script>
       
     
   </body>

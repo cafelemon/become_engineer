@@ -9,6 +9,14 @@
          <lastmod>2026-07-15</lastmod>
     </url>
     <url>
+         <loc>https://cafelemon.github.io/become_engineer/exercises/career-readiness/python-entry-machine-test/</loc>
+         <lastmod>2026-07-15</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/exercises/career-readiness/study-progress-reporter-evidence/</loc>
+         <lastmod>2026-07-15</lastmod>
+    </url>
+    <url>
          <loc>https://cafelemon.github.io/become_engineer/exercises/llm-agent/safe-sales-tool-calling/</loc>
          <lastmod>2026-07-15</lastmod>
     </url>
@@ -70,6 +78,10 @@
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/engineering-foundation/stage-0/06-git/</loc>
+         <lastmod>2026-07-15</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/engineering-foundation/stage-0/06-github-remote/</loc>
          <lastmod>2026-07-15</lastmod>
     </url>
     <url>
@@ -162,6 +174,14 @@
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/python-core/03-iterables-iterators-generators/</loc>
+         <lastmod>2026-07-15</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/python-core/04-data-model-dataclasses-context-managers/</loc>
+         <lastmod>2026-07-15</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/python-core/05-decorators-closures-custom-context-managers/</loc>
          <lastmod>2026-07-15</lastmod>
     </url>
     <url>

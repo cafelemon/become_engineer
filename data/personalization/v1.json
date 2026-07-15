@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "fallbackStartUrl": "learning-paths/engineering-foundation/stage-0/01-learning-method/",
+  "assessment": {
+    "title": "让小码帮你规划第一段路线",
+    "intro": "用 3–5 分钟回答学习目的和八道情境小题。结果只是可调整的起点建议，不是考试，也不会保存原始答案。",
+    "purposes": [
+      {
+        "id": "interest",
+        "label": "兴趣学习",
+        "description": "按能力和兴趣持续深入，不主动加入机考与面试训练。"
+      },
+      {
+        "id": "career",
+        "label": "求职准备",
+        "description": "在共同课程之外，逐阶段加入机考、项目证据和面试表达。"
+      }
+    ],
+    "dimensions": [
+      { "id": "engineering_tools", "label": "工程工具", "descriptions": ["需要从文件、终端和 Git 的首次操作开始", "能完成部分操作，但仍需要结构化补修", "能独立使用终端、编辑器和本地 Git 闭环"] },
+      { "id": "programming", "label": "编程基础", "descriptions": ["需要从变量、分支、循环和首次运行开始", "能阅读和修改基础程序", "能组织函数、定位常见错误并验证结果"] },
+      { "id": "algorithms_cs", "label": "算法与 CS", "descriptions": ["尚未建立数据结构和复杂度认知", "能识别常见结构并完成基础问题拆解", "能比较复杂度、边界和多种解法"] },
+      { "id": "project_engineering", "label": "项目工程", "descriptions": ["需要学习测试、版本和可复现证据", "能完成小项目，但工程边界仍不稳定", "能用测试、模块和版本记录证明交付"] }
+    ],
+    "questions": [
+      {
+        "id": "tools-terminal",
+        "dimension": "engineering_tools",
+        "question": "课程让你“打开终端并确认当前目录”，你最接近哪种情况？",
+        "options": [
+          { "id": "unknown", "label": "我不确定终端是什么或在哪里打开", "score": 0, "evidence": "需要补齐终端的寻找、打开和首次确认步骤" },
+          { "id": "open", "label": "我能打开 Terminal、PowerShell 或编辑器终端", "score": 1, "evidence": "已经认识终端，但目录与命令验证仍需练习" },
+          { "id": "verify", "label": "我会用 pwd/Get-Location、cd 和 ls/dir 确认位置", "score": 2, "evidence": "能够独立完成终端目录闭环" }
+        ]
+      },
+      {
+        "id": "tools-git",
+        "dimension": "engineering_tools",
+        "question": "关于本地 Git 仓库和 GitHub，哪句话最符合你的理解？",
+        "options": [
+          { "id": "linked", "label": "执行 git init 后应该会自动连接 GitHub", "score": 0, "evidence": "需要区分本地仓库、远程仓库和连接动作" },
+          { "id": "local", "label": "我做过本地提交，但 remote、push 或认证还不熟", "score": 1, "evidence": "本地 Git 有基础，远程协作需要补修" },
+          { "id": "remote", "label": "我能解释 remote，并完成 add、commit、push 和 clone", "score": 2, "evidence": "具备本地到远程的基本版本管理能力" }
+        ]
+      },
+      {
+        "id": "programming-flow",
+        "dimension": "programming",
+        "question": "看到变量、if 和 for 组成的一小段 Python，你通常能做到什么？",
+        "options": [
+          { "id": "unreadable", "label": "大多看不懂，也不知道从哪里运行", "score": 0, "evidence": "需要从首次运行和基本语法开始" },
+          { "id": "predict", "label": "能大致说出输出，并修改一个条件或循环", "score": 1, "evidence": "已经具备阅读和主动修改基础程序的能力" },
+          { "id": "explain", "label": "能解释执行顺序、边界，并写测试验证", "score": 2, "evidence": "基础控制流和验证能力较稳定" }
+        ]
+      },
+      {
+        "id": "programming-debug",
+        "dimension": "programming",
+        "question": "程序出现 ValueError 或 TypeError 时，你通常怎么处理？",
+        "options": [
+          { "id": "stuck", "label": "不知道报错信息从哪里看", "score": 0, "evidence": "需要学习读取报错与最小复现" },
+          { "id": "locate", "label": "会看最后几行、定位行号并尝试修复", "score": 1, "evidence": "已经能完成常见错误定位" },
+          { "id": "isolate", "label": "会构造最小输入、验证假设并补回归测试", "score": 2, "evidence": "具备结构化排错和回归意识" }
+        ]
+      },
+      {
+        "id": "algorithms-structure",
+        "dimension": "algorithms_cs",
+        "question": "需要按进入顺序处理任务时，你会怎样选择数据结构？",
+        "options": [
+          { "id": "unknown", "label": "我还不了解栈、队列或集合的区别", "score": 0, "evidence": "需要建立常见数据结构的用途认知" },
+          { "id": "queue", "label": "会优先想到队列，并能说明先进先出", "score": 1, "evidence": "能够把问题特征映射到基础数据结构" },
+          { "id": "tradeoff", "label": "会比较队列实现、复杂度和边界输入", "score": 2, "evidence": "能够从结构、复杂度和边界共同判断" }
+        ]
+      },
+      {
+        "id": "algorithms-complexity",
+        "dimension": "algorithms_cs",
+        "question": "同一个列表被重复完整扫描很多次，你会关注什么？",
+        "options": [
+          { "id": "result", "label": "只要结果正确就可以", "score": 0, "evidence": "需要建立规模和复杂度意识" },
+          { "id": "loops", "label": "会检查循环次数和是否能减少重复扫描", "score": 1, "evidence": "已经能识别基础性能问题" },
+          { "id": "measure", "label": "会分析时间空间复杂度，并用不同规模输入验证", "score": 2, "evidence": "具备复杂度分析和实验验证意识" }
+        ]
+      },
+      {
+        "id": "project-tests",
+        "dimension": "project_engineering",
+        "question": "你说“项目功能完成了”时，通常能提供什么证据？",
+        "options": [
+          { "id": "screenshot", "label": "主要是截图或口头说明", "score": 0, "evidence": "需要建立可重复运行和验收证据" },
+          { "id": "commands", "label": "有运行命令、输入输出和几个测试", "score": 1, "evidence": "已经开始使用可复现证据" },
+          { "id": "regression", "label": "有自动测试、失败路径、环境说明和回归记录", "score": 2, "evidence": "具备较完整的工程验收习惯" }
+        ]
+      },
+      {
+        "id": "project-structure",
+        "dimension": "project_engineering",
+        "question": "一个小程序开始变长时，你通常怎样继续维护？",
+        "options": [
+          { "id": "single", "label": "继续都写在同一个文件里", "score": 0, "evidence": "需要学习函数、模块和职责边界" },
+          { "id": "split", "label": "会拆函数或模块，并用 Git 记录变化", "score": 1, "evidence": "具备基础程序组织和版本意识" },
+          { "id": "contract", "label": "会定义接口、配置、日志、测试和发布边界", "score": 2, "evidence": "能够从可维护和可交付角度组织项目" }
+        ]
+      }
+    ]
+  },
+  "profiles": {
+    "beginner-interest": { "label": "从零起步 · 兴趣学习", "description": "完整建立工程与编程基础，再进入核心知识和兴趣项目。" },
+    "experienced-interest": { "label": "已有基础 · 兴趣学习", "description": "补齐具体缺口，优先进入核心、深化和兴趣项目。" },
+    "beginner-career": { "label": "从零起步 · 求职准备", "description": "先建立完整基础，再逐阶段加入机考、项目证据和面试表达。" },
+    "experienced-career": { "label": "已有基础 · 求职准备", "description": "针对缺口补修，并行推进深化课程与通用软件工程求职训练。" }
+  },
+  "catalog": [
+    { "id": "engineering-foundation-01", "title": "学习方法", "url": "learning-paths/engineering-foundation/stage-0/01-learning-method/", "group": "工程基础", "kind": "course", "status": "ready", "selection": "beginner-or-gap", "dimension": "engineering_tools" },
+    { "id": "engineering-foundation-02", "title": "文件系统", "url": "learning-paths/engineering-foundation/stage-0/02-filesystem/", "group": "工程基础", "kind": "course", "status": "ready", "selection": "beginner-or-gap", "dimension": "engineering_tools" },
+    { "id": "engineering-foundation-03", "title": "终端与 Shell", "url": "learning-paths/engineering-foundation/stage-0/03-terminal-shell/", "group": "工程基础", "kind": "course", "status": "ready", "selection": "beginner-or-gap", "dimension": "engineering_tools" },
+    { "id": "engineering-foundation-04", "title": "VS Code 编辑器", "url": "learning-paths/engineering-foundation/stage-0/04-editor/", "group": "工程基础", "kind": "course", "status": "ready", "selection": "beginner-or-gap", "dimension": "engineering_tools" },
+    { "id": "engineering-foundation-05", "title": "Markdown", "url": "learning-paths/engineering-foundation/stage-0/05-markdown/", "group": "工程基础", "kind": "course", "status": "ready", "selection": "beginner-or-gap", "dimension": "engineering_tools" },
+    { "id": "engineering-foundation-06", "title": "本地 Git 与 .gitignore", "url": "learning-paths/engineering-foundation/stage-0/06-git/", "group": "工程基础", "kind": "course", "status": "ready", "selection": "beginner-or-gap", "dimension": "engineering_tools" },
+    { "id": "engineering-foundation-10", "title": "GitHub 远程协作", "url": "learning-paths/engineering-foundation/stage-0/06-github-remote/", "group": "工程基础", "kind": "course", "status": "ready", "selection": "beginner-or-gap", "dimension": "engineering_tools" },
+    { "id": "engineering-foundation-07", "title": "开发环境", "url": "learning-paths/engineering-foundation/stage-0/07-development-environment/", "group": "工程基础", "kind": "course", "status": "ready", "selection": "beginner-or-gap", "dimension": "engineering_tools" },
+    { "id": "engineering-foundation-08", "title": "Docker 最小认知", "url": "learning-paths/engineering-foundation/stage-0/08-docker-basics/", "group": "工程基础", "kind": "course", "status": "ready", "selection": "beginner-or-gap", "dimension": "engineering_tools" },
+    { "id": "engineering-foundation-09", "title": "验证习惯", "url": "learning-paths/engineering-foundation/stage-0/09-validation-habit/", "group": "工程基础", "kind": "course", "status": "ready", "selection": "beginner-or-gap", "dimension": "engineering_tools" },
+    { "id": "python-basics-01", "title": "变量、基本类型、输入输出", "url": "learning-paths/programming-languages/python-basics/01-variables-types-io/", "group": "Python 起步", "kind": "course", "status": "ready", "selection": "beginner-or-gap", "dimension": "programming" },
+    { "id": "python-basics-02", "title": "条件、循环、布尔逻辑", "url": "learning-paths/programming-languages/python-basics/02-conditions-loops-boolean/", "group": "Python 起步", "kind": "course", "status": "ready", "selection": "beginner-or-gap", "dimension": "programming" },
+    { "id": "python-basics-03", "title": "函数、参数、返回值和作用域", "url": "learning-paths/programming-languages/python-basics/03-functions-parameters-returns-scope/", "group": "Python 起步", "kind": "course", "status": "ready", "selection": "beginner-or-gap", "dimension": "programming" },
+    { "id": "python-basics-04", "title": "字符串与基础容器", "url": "learning-paths/programming-languages/python-basics/04-strings-collections/", "group": "Python 起步", "kind": "course", "status": "ready", "selection": "beginner-or-gap", "dimension": "programming" },
+    { "id": "python-basics-05", "title": "文件、路径与 JSON", "url": "learning-paths/programming-languages/python-basics/05-files-json-paths/", "group": "Python 起步", "kind": "course", "status": "ready", "selection": "beginner-or-gap", "dimension": "programming" },
+    { "id": "python-basics-06", "title": "模块、导入和虚拟环境", "url": "learning-paths/programming-languages/python-basics/06-modules-imports-venv/", "group": "Python 起步", "kind": "course", "status": "ready", "selection": "beginner-or-gap", "dimension": "programming" },
+    { "id": "python-basics-07", "title": "异常、调试和最小测试", "url": "learning-paths/programming-languages/python-basics/07-errors-debugging-tests/", "group": "Python 起步", "kind": "course", "status": "ready", "selection": "beginner-or-gap", "dimension": "programming" },
+    { "id": "cpp-core-01", "title": "C++：从源文件到可执行程序", "url": "learning-paths/programming-languages/cpp-core/01-build-types-io/", "group": "C++ 核心", "kind": "course", "status": "ready", "selection": "always" },
+    { "id": "cpp-core-02", "title": "C++：函数、声明与程序组织", "url": "learning-paths/programming-languages/cpp-core/02-functions-declarations-program-organization/", "group": "C++ 核心", "kind": "course", "status": "ready", "selection": "always" },
+    { "id": "cpp-core-03", "title": "C++：头文件、源文件与 CMake", "url": "learning-paths/programming-languages/cpp-core/03-headers-sources-cmake/", "group": "C++ 核心", "kind": "course", "status": "ready", "selection": "always" },
+    { "id": "cpp-core-04", "title": "C++：STL 容器、迭代器与算法", "url": "learning-paths/programming-languages/cpp-core/04-stl-containers-iterators-algorithms/", "group": "C++ 核心", "kind": "course", "status": "ready", "selection": "always" },
+    { "id": "cpp-core-05", "title": "C++：对象、引用、指针与 RAII", "url": "learning-paths/programming-languages/cpp-core/05-objects-references-pointers-lifetime-raii/", "group": "C++ 核心", "kind": "course", "status": "ready", "selection": "always" },
+    { "id": "python-core-01", "title": "Python：类型提示、接口与静态检查", "url": "learning-paths/programming-languages/python-core/01-type-hints-interfaces-static-checking/", "group": "Python 核心", "kind": "course", "status": "ready", "selection": "always" },
+    { "id": "python-core-02", "title": "Python：函数接口、协议与模块边界", "url": "learning-paths/programming-languages/python-core/02-maintainable-function-interfaces-protocols-modules/", "group": "Python 核心", "kind": "course", "status": "ready", "selection": "always" },
+    { "id": "python-core-03", "title": "Python：容器协议、迭代器与生成器", "url": "learning-paths/programming-languages/python-core/03-iterables-iterators-generators/", "group": "Python 核心", "kind": "course", "status": "ready", "selection": "always" },
+    { "id": "python-core-04", "title": "Python：数据模型、数据类与上下文管理", "url": "learning-paths/programming-languages/python-core/04-data-model-dataclasses-context-managers/", "group": "Python 核心", "kind": "course", "status": "ready", "selection": "always" },
+    { "id": "python-core-05", "title": "Python：装饰器、闭包与自定义上下文管理", "url": "learning-paths/programming-languages/python-core/05-decorators-closures-custom-context-managers/", "group": "Python 核心", "kind": "course", "status": "ready", "selection": "always" },
+    { "id": "cs-core-overview", "title": "CS 核心说明", "url": "learning-paths/cs-core/", "group": "CS 核心", "kind": "reference", "status": "ready", "selection": "prerequisite", "dimension": "programming", "minLevel": 1 },
+    { "id": "career-python-machine-test", "title": "Python 起步机考与限时模拟", "url": "exercises/career-readiness/python-entry-machine-test/", "group": "求职训练", "kind": "career_pack", "status": "ready", "selection": "career", "audience": "career" },
+    { "id": "career-project-evidence", "title": "学习进度报告器项目证据问答", "url": "exercises/career-readiness/study-progress-reporter-evidence/", "group": "求职训练", "kind": "career_pack", "status": "ready", "selection": "career", "audience": "career" },
+    { "id": "cs-required-track", "title": "CS 必修主干正文", "group": "后续路线", "kind": "planned", "status": "planned", "selection": "prerequisite", "dimension": "programming", "minLevel": 2 },
+    { "id": "web-required-track", "title": "Web 必修主干正文", "group": "后续路线", "kind": "planned", "status": "planned", "selection": "prerequisite", "dimension": "project_engineering", "minLevel": 1 },
+    { "id": "ai-required-track", "title": "AI 必修主干正文", "group": "后续路线", "kind": "planned", "status": "planned", "selection": "prerequisite", "dimension": "algorithms_cs", "minLevel": 1 },
+    { "id": "role-ai-application", "title": "AI 应用工程岗位专项", "group": "岗位专项", "kind": "planned", "status": "planned", "selection": "career", "audience": "career" },
+    { "id": "role-backend", "title": "后端工程岗位专项", "group": "岗位专项", "kind": "planned", "status": "planned", "selection": "career", "audience": "career" },
+    { "id": "role-cpp", "title": "C++ 工程岗位专项", "group": "岗位专项", "kind": "planned", "status": "planned", "selection": "career", "audience": "career" }
+  ]
+}

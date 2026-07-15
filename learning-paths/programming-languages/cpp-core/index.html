@@ -497,6 +497,10 @@
       
         
       
+        
+          
+        
+      
     
     
     
@@ -514,8 +518,9 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../../cs-core/" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -529,8 +534,14 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
@@ -551,6 +562,8 @@
   
     
     
+      
+        
       
         
       
@@ -711,7 +724,7 @@
   <span class="md-ellipsis">
     
   
-    编辑器
+    VS Code 编辑器
   
 
     
@@ -767,7 +780,35 @@
   <span class="md-ellipsis">
     
   
-    Git
+    本地 Git 与 .gitignore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../engineering-foundation/stage-0/06-github-remote/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub 远程协作
   
 
     
@@ -1400,6 +1441,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1536,12 +1581,70 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-core/04-data-model-dataclasses-context-managers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据模型、数据类与上下文管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-core/05-decorators-closures-custom-context-managers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    装饰器、闭包与自定义上下文管理器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
     </li>
   
 
+              
+            
               
             
           </ul>
@@ -1562,6 +1665,8 @@
       
         
           
+        
+      
         
       
         
@@ -1651,6 +1756,126 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    求职训练样板
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    求职训练样板
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../exercises/career-readiness/python-entry-machine-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 起步机考与限时模拟
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../exercises/career-readiness/study-progress-reporter-evidence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习进度报告器项目证据问答
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2086,7 +2311,7 @@
 <p>累计七节内容已经沉淀为<a href="../../../exercises/programming-languages/study-progress-reporters/">双语言学习进度报告器</a>。Python与C++使用同一数据和行为契约；C++在保持主报告输出稳定的前提下新增对象借用与RAII审计导出，并通过编译器和自动化测试验收；它是阶段作品，不是新的长期项目。</p>
 <p>C++ 后续会服务于算法与 CS、工业控制与实时通信、本地模型推理和性能方向，但这些项目不会在核心前置未完成时提前解锁。</p>
 <h2 id="_8">下一步<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<p>尚未开始时，从<a href="01-build-types-io/">从源文件到可执行程序：编译、类型与输入输出</a>开始，按表格顺序学习到<a href="05-objects-references-pointers-lifetime-raii/">对象、引用、指针、生命周期与RAII</a>。后续会从 Python 数据模型、上下文管理和资源边界形成对照；在对应课程落地前，回到阶段作品复查本组能力。</p>
+<p>尚未开始时，从<a href="01-build-types-io/">从源文件到可执行程序：编译、类型与输入输出</a>开始，按表格顺序学习到<a href="05-objects-references-pointers-lifetime-raii/">对象、引用、指针、生命周期与RAII</a>，再进入 Python <a href="../python-core/04-data-model-dataclasses-context-managers/">数据模型、数据类与上下文管理</a>完成对象与资源配对。</p>
 
 
 
@@ -2190,6 +2415,10 @@
         <script src="../../../javascripts/tutor-search.js"></script>
       
         <script src="../../../javascripts/tutor.js"></script>
+      
+        <script src="../../../javascripts/personalization-core.js"></script>
+      
+        <script src="../../../javascripts/personalization.js"></script>
       
     
   </body>
