@@ -1,6 +1,6 @@
 # 双语言学习进度报告器
 
-这是 Python/C++ 双主修的第一个阶段作品。它由六节课程形成基础版本，并在Python“容器协议、迭代器与生成器”课程中继续演进惰性遍历能力。两种语言仍保持相同的数据、业务规则和报告输出。
+这是 Python/C++ 双主修的第一个阶段作品。它由多节配对课程形成基础版本，并沿容器、对象、资源与调用边界持续演进。两种语言仍保持相同的数据、业务规则和报告输出。
 
 它不是长期项目。这里关注的是：同一个问题在两种语言中如何表达类型、容器、复制边界、构建和测试，而不是引入数据库、Web界面或第三方框架。
 
@@ -14,6 +14,8 @@
 - [C++：STL容器、迭代器与基础算法](../../../learning-paths/programming-languages/cpp-core/04-stl-containers-iterators-algorithms.md)
 - [Python：容器协议、迭代器与生成器](../../../learning-paths/programming-languages/python-core/03-iterables-iterators-generators.md)
 - [C++：对象、引用、指针、生命周期与RAII](../../../learning-paths/programming-languages/cpp-core/05-objects-references-pointers-lifetime-raii.md)
+- [Python：数据模型、数据类与上下文管理](../../../learning-paths/programming-languages/python-core/04-data-model-dataclasses-context-managers.md)
+- [Python：装饰器、闭包与自定义上下文管理器](../../../learning-paths/programming-languages/python-core/05-decorators-closures-custom-context-managers.md)
 
 ## 统一行为契约
 
@@ -26,6 +28,8 @@
 - 按标签筛选，返回独立记录副本，不修改原始输入。
 - Python额外提供惰性的标签筛选和进度行生成器，并在报告边界只物化一次输入。
 - C++额外提供按引用更新、可空非拥有查找和作用域内审计文件导出；审计导出不改变主报告标准输出。
+- Python 已把 `TypedDict` 记录迁移为数据类对象，并使用 `with` 提供相同格式的审计文件；主报告输出保持稳定。
+- Python 提供可选的类型安全调用追踪器，并通过生成器式上下文管理器先写临时文件、成功后再发布审计；追踪事件不进入主报告。
 - 生成完全相同的UTF-8报告文本。
 
 本作品故意不读取JSON或CSV。C++标准库没有JSON解析器，而文件格式不是本次容器对照的学习目标；两边都使用代码内固定样例，避免额外依赖干扰比较。
@@ -45,9 +49,11 @@ study-progress-reporters/
 │   ├── tests/test_reporter.py
 │   ├── analysis.py
 │   ├── fixtures.py
+│   ├── instrumentation.py
 │   ├── main.py
 │   ├── models.py
-│   └── reporting.py
+│   ├── reporting.py
+│   └── resources.py
 └── README.md
 ```
 
@@ -101,13 +107,14 @@ Visual Studio等多配置生成器通常从`build/Debug/study_report_app.exe`运
 
 | 能力 | Python | C++ |
 | --- | --- | --- |
-| 记录类型 | `TypedDict` | 简单聚合`struct` |
+| 记录类型 | `@dataclass` 对象 | 简单聚合`struct` |
 | 只读输入意图 | `Iterable[StudyRecord]` | `const std::vector<StudyRecord>&` |
 | 排序副本 | `sorted()`处理复制后的记录 | 参数按值复制后`std::sort` |
 | 惰性遍历 | `Iterator`与生成器按需产出 | 迭代器表示容器范围中的位置 |
 | 唯一标签 | `set`后`sorted` | `std::set` |
 | 状态统计 | `dict`并按键排序输出 | `std::map` |
-| 对象与资源 | `TypedDict` 与惰性消费边界 | 引用借用、可空非拥有指针、`ofstream` RAII |
+| 对象与资源 | 对象方法、复制边界、`with` 文件上下文 | 引用借用、可空非拥有指针、`ofstream` RAII |
+| 调用与发布边界 | `ParamSpec` 装饰器、`contextmanager` 分阶段提交 | 保持既有显式调用与 `ofstream` RAII 对照 |
 | 自动检查 | mypy、unittest | 编译器、CTest、审计成功与打开失败路径 |
 
 ## AI协作边界
@@ -118,18 +125,22 @@ AI可以生成容器替换、排序条件和测试候选，学习者必须亲自
 - 排序或筛选是否修改了调用者输入。
 - C++是否返回悬空引用或失效迭代器。
 - Python是否用`Any`或忽略注释绕过类型矛盾。
+- Python装饰器是否吞掉异常、丢失返回值或把事件写入全局状态。
+- 分阶段审计是否只在成功后替换正式文件，失败时是否保留旧内容并清理临时文件。
 - 两种语言的边界数据、输出顺序和测试是否真的一致。
 
 ## 验收
 
-- Python严格类型检查和全部unittest通过。
+- Python严格类型检查和全部unittest通过；审计成功与缺失父目录失败均有测试。
 - C++以C++20和严格警告零警告构建，CTest全部通过；审计文件成功与无法打开路径均有测试。
 - 两个应用的标准输出逐字一致。
 - 空记录、重复标签、同进度、超额完成和筛选无结果均有测试。
 - Python测试证明生成器惰性执行、单次消费和一次性输入报告行为。
+- Python测试证明装饰器保留签名、返回值与元数据，失败事件不会抑制原异常。
+- Python测试证明审计首次发布、覆盖和失败清理路径，旧文件在块内失败时保持不变。
 - 排序、筛选和汇总后原始记录顺序与内容保持不变。
 - 没有第三方运行依赖、个人路径、密钥或生成产物进入Git。
 
 ## 下一步
 
-对象生命周期与资源管理已在C++课程中完成基础实践。后续会从Python数据模型、上下文管理和资源边界继续形成对照；当前可回到对应课程复查双语言输出与审计契约。
+调用包装与分阶段资源提交已经完成。下一步进入 Python 包结构、CLI、配置与日志，把当前多模块阶段作品推进为可稳定运行和诊断的最小工程化工具。

@@ -1,8 +1,33 @@
-# 编辑器
+# 编辑器：从安装 VS Code 开始
 
 <div class="be-tutor-mount" data-tutor-lesson="engineering-foundation-04" aria-hidden="true"></div>
 
 本课把前面已有的学习工作区作为真实项目打开，完成“定位、修改、保存、搜索、用内置终端验证”的最小编辑器闭环。
+
+## 开始前：下载安装并找到 VS Code
+
+本路线统一推荐 **Visual Studio Code（VS Code）** 作为第一款编辑器。这样课程可以给出明确按钮位置；以后换用 Cursor、Trae 或其他编辑器时，再迁移相同的文件树、搜索、终端和保存概念。
+
+=== "Windows"
+
+    1. 打开 [VS Code 官方 Windows 安装页](https://code.visualstudio.com/docs/setup/windows)，下载面向当前用户的 User Setup。
+    2. 双击下载的 `VSCodeUserSetup-...exe`，按安装程序提示完成安装。
+    3. 安装后按 Windows 键，输入 `Visual Studio Code`，点击应用图标。
+    4. 看到带有左侧活动栏和中间欢迎页的窗口，即为首次打开成功。
+
+=== "macOS"
+
+    1. 打开 [VS Code 官方 macOS 安装页](https://code.visualstudio.com/docs/setup/mac)，下载 `.dmg`。
+    2. 打开 `.dmg`，把 `Visual Studio Code.app` 拖到 Applications（应用程序）文件夹。
+    3. 按 `Command + Space`，输入 `Visual Studio Code` 后打开。
+    4. 看到带有左侧活动栏和中间欢迎页的窗口，即为首次打开成功。
+
+=== "Linux 简要补充"
+
+    按 [VS Code 官方 Linux 安装说明](https://code.visualstudio.com/docs/setup/linux)选择发行版对应的包或软件源。完成后从应用列表搜索 Visual Studio Code。
+
+!!! warning "只从官方页面获取安装包"
+    不要从不明网盘或第三方下载站获取编辑器，也不要一开始安装大量扩展。当前课程只需要 VS Code 本体。
 
 ## 五步任务路线
 
@@ -15,6 +40,16 @@
 ### 第一步：用编辑器打开整个工作区
 
 **任务：** 选择“打开文件夹/打开目录”，打开学习工作区而不是单个文件。**成功证据：** 文件树能显示 `notes`、`practice` 和 `assets`。
+
+=== "Windows"
+
+    点击顶部菜单 **File → Open Folder...**，在文件选择窗口中找到上一课的学习工作区，选中整个目录后点击“选择文件夹”。
+
+=== "macOS"
+
+    点击顶部菜单 **File → Open Folder...**，在 Finder 选择窗口中找到上一课的学习工作区，选中整个目录后点击“Open”。
+
+如果出现“是否信任此文件夹”的提示，只对你自己创建或确认来源可靠的学习目录选择信任；来源不明的目录先不要运行其中命令。
 
 ??? tip "提示一"
     单独打开一个文件会失去项目结构和相对路径上下文。
@@ -68,6 +103,8 @@
 
 **任务：** 打开编辑器内置终端，执行目录查看命令确认刚才保存的文件。**成功证据：** 编辑器和终端看到的是同一工作区。
 
+在 VS Code 顶部选择 **Terminal → New Terminal**。窗口下方会出现终端面板；Windows 通常打开 PowerShell，macOS 通常打开 zsh。先运行 `pwd`（PowerShell 也可运行 `Get-Location`），不要直接假定它已经在正确目录。
+
 ??? tip "提示一"
     内置终端通常会从项目根目录启动，仍要先确认当前位置。
 ??? tip "提示二"
@@ -86,7 +123,7 @@
 
 学完本节后，你应该能用编辑器打开一个项目，理解文件树、标签页、搜索、修改、保存和内置终端的基本工作流。
 
-本节采用平台中立写法。VS Code、Cursor、Trae 等现代编辑器界面不同，但基本概念相似。
+本节使用 VS Code 给出可重复的首次操作。Cursor、Trae 等现代编辑器界面不同，但打开目录、文件树、保存、搜索和内置终端等基本概念相似。
 
 本节不讲插件生态、调试器、AI 编程、复杂快捷键或主题美化。
 

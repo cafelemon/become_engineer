@@ -10,6 +10,7 @@ on:
       - "site-src/**/*.js"
       - "site-src/**/*.json"
       - "site-src/**/*.webp"
+      - "scripts/test_personalization.cjs"
       - "scripts/test_tutor_search.cjs"
       - "tests/tutor/**"
       - "mkdocs.yml"
@@ -44,6 +45,12 @@ jobs:
 
       - name: Validate tutor knowledge base
         run: node scripts/test_tutor_search.cjs
+
+      - name: Build documentation strictly
+        run: mkdocs build --strict
+
+      - name: Validate assessment and route rules
+        run: node scripts/test_personalization.cjs
 
       - name: Deploy to GitHub Pages
         run: mkdocs gh-deploy --force --clean --verbose

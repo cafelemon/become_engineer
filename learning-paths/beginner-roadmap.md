@@ -9,6 +9,7 @@
 <div class="be-roadmap-actions" markdown>
 
 [开始第一课](engineering-foundation/stage-0/01-learning-method.md){ .md-button .md-button--primary }
+[让小码规划路线](../README.md#learning-assessment){ .md-button }
 [查看完整课程地图](curriculum-map.md){ .md-button }
 
 </div>
@@ -23,7 +24,7 @@
   <li class="be-roadmap-step" data-state="open">
     <a class="be-roadmap-stage" href="#stage-engineering">
       <span class="be-roadmap-number" aria-hidden="true">01</span>
-      <span class="be-roadmap-copy"><strong>工程基础入门</strong><small>学习方法、文件、终端、Git、环境与验证习惯</small></span>
+      <span class="be-roadmap-copy"><strong>工程基础入门</strong><small>学习方法、文件、终端、VS Code、Git/GitHub、环境与验证</small></span>
       <span class="be-roadmap-status">已开放</span>
     </a>
   </li>
@@ -108,7 +109,7 @@
   </div>
 </details>
 
-默认路线负责共同基础，可选分支按需求进入。全部推荐深化、专业选修和跨主线前置关系见[完整课程地图](curriculum-map.md)。
+默认路线负责共同基础，可选分支按需求进入。完成测评后，小码会在不复制课程的前提下收起已掌握内容、加入能力缺口补修，并按兴趣或求职目的组合深化与训练包。全部推荐深化、专业选修、四类画像编排和建设顺序见[完整课程地图](curriculum-map.md)。
 
 ## 路线阶段简介
 
@@ -118,7 +119,7 @@
 
 ## 工程基础入门 { #stage-engineering }
 
-先建立学习记录、文件、终端、Git、开发环境和验证习惯，让后续每一次学习都能操作、排错并留下证据。
+先建立学习记录、文件、终端、VS Code、本地 Git、GitHub 远程协作、开发环境和验证习惯，让后续每一次学习都能操作、排错并留下证据。
 
 [开始第一课](engineering-foundation/stage-0/01-learning-method.md){ .md-button .md-button--primary }
 [查看阶段说明](engineering-foundation/stage-0/README.md){ .md-button }
@@ -139,7 +140,7 @@
 
 ## Python / C++ 双主修 { #stage-dual-language }
 
-Python 负责快速实现与数据应用，C++ 帮助理解编译、类型、资源和性能。容器与迭代、对象借用与RAII能力均已完成基础配对，并形成首个双语言阶段作品；后续会从 Python 数据模型与上下文管理继续深化资源边界。两条能力线会在后续项目中持续深化，Java可作为补充语言选学。
+Python 负责快速实现与数据应用，C++ 帮助理解编译、类型、资源和性能。容器与迭代、对象与资源两组能力已经完成基础配对，Python 也已补充类型安全装饰器和分阶段资源提交；下一步进入包结构、CLI、配置与日志。两条能力线会在后续项目中持续深化，Java可作为补充语言选学。
 
 [进入 C++ 核心语言](programming-languages/cpp-core/README.md){ .md-button }
 [进入 Python 核心语言](programming-languages/python-core/README.md){ .md-button }

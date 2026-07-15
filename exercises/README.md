@@ -26,6 +26,13 @@
 
 ## 已公开练习
 
+### 通用软件工程求职训练样板
+
+- [Python 起步机考与限时模拟](career-readiness/python-entry-machine-test.md)：原创分级题、混合题、固定输入和本地限时验收。
+- [学习进度报告器项目证据问答](career-readiness/study-progress-reporter-evidence.md)：用代码、测试、失败记录和设计取舍组织项目表达。
+
+这两项只在求职路线主动推荐，兴趣路线仍可自由访问。它们是纵向样板，不代表 AI、后端或 C++ 岗位专项已经完成。
+
 ### Python 起步
 
 - [学习进度报告器](python-basics/study-progress-reporter/README.md)：连续整合函数、数据结构、文件与JSON、模块、异常和测试；用于验收一个可运行、可排错、可回归的小型Python程序，不作为长期项目。

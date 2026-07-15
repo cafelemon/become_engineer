@@ -1,0 +1,18 @@
+[
+  { "query": "远程仓库为什么要建空的", "step_id": "step-1", "expected": "empty-remote" },
+  { "query": "已有本地仓库怎么创建 GitHub 仓库", "step_id": "step-1", "expected": "empty-remote" },
+  { "query": "本地仓库会自动有远程地址吗", "step_id": "step-1", "expected": "init-vs-remote" },
+  { "query": "为什么 git remote -v 没输出", "step_id": "step-1", "expected": "init-vs-remote" },
+  { "query": "origin 到底是什么", "step_id": "step-2", "expected": "origin" },
+  { "query": "git remote add origin 是什么意思", "step_id": "step-2", "expected": "origin" },
+  { "query": "origin 已经存在怎么改", "step_id": "step-2", "expected": "origin-exists" },
+  { "query": "远程地址加重复了", "step_id": "step-2", "expected": "origin-exists" },
+  { "query": "第一次 push 为什么有 -u", "step_id": "step-3", "expected": "first-push" },
+  { "query": "怎么把本地提交推到 GitHub", "step_id": "step-3", "expected": "first-push" },
+  { "query": "push 认证失败怎么办", "step_id": "step-3", "expected": "authentication" },
+  { "query": "GitHub password 应该填什么", "step_id": "step-3", "expected": "authentication" },
+  { "query": "文件改了 GitHub 没更新", "step_id": "step-4", "expected": "commit-before-push" },
+  { "query": "git push 没有新内容", "step_id": "step-4", "expected": "commit-before-push" },
+  { "query": "clone 会自动添加 origin 吗", "step_id": "step-5", "expected": "clone" },
+  { "query": "怎么把 GitHub 仓库下载到本地", "step_id": "step-5", "expected": "clone" }
+]

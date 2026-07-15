@@ -332,4 +332,4 @@ expect_true(
 
 ## 下一步
 
-对象与资源能力已经建立到可验证的基础层。下一组课程会从 Python 数据模型、上下文管理和资源边界形成对照；在其落地前，可以回到[双语言学习进度报告器](../../../exercises/programming-languages/study-progress-reporters/README.md)复查本课的审计、借用和输出契约。
+对象与资源能力已经建立到可验证的基础层。下一节进入 Python **[数据模型、数据类与上下文管理](../python-core/04-data-model-dataclasses-context-managers.md)**，用对象方法和 `with` 对照本课的借用、RAII 与审计契约。

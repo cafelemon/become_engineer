@@ -88,7 +88,8 @@
 - [终端与 Shell](03-terminal-shell.md)
 - [编辑器](04-editor.md)
 - [Markdown](05-markdown.md)
-- [Git](06-git.md)
+- [本地 Git 与 .gitignore](06-git.md)
+- [GitHub 远程协作](06-github-remote.md)
 
 你需要能打开终端，能执行简单命令，能把结果记录到 Markdown 文件里。
 

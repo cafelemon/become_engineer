@@ -18,7 +18,7 @@
 <div class="be-lesson-overview">
   <div>
     <span>课程位置</span>
-    <strong>工程基础入门 · 1 / 9</strong>
+    <strong>工程基础入门 · 1 / 10</strong>
   </div>
   <div>
     <span>前置要求</span>

@@ -1,0 +1,1 @@
+../../../exercises/career-readiness/python-entry-machine-test.md

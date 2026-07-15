@@ -111,7 +111,7 @@ for (const lessonFile of courseFiles()) {
   const hitRate = cases.length ? topThreeHits / cases.length : 0;
   if (hitRate < 0.8) fail(lessonId + "：Top 3 命中率低于 80%");
   const unknownResults = searchApi.search(
-    "量子编译器的海底安装步骤是什么",
+    "月球烘焙的彩虹配方是什么",
     kb.cards,
     { lessonId: lessonId, stepId: (kb.steps[0] || {}).id },
     { limit: 3, threshold: 24 }
@@ -126,7 +126,7 @@ for (const lessonFile of courseFiles()) {
 console.log(`课程: ${lessonCount}`);
 console.log(`知识卡: ${totalCards}`);
 console.log(`固定问题: ${totalCases}`);
-if (lessonCount !== 24) fail("正式课程数量应为 24，实际为 " + lessonCount);
+if (lessonCount !== 27) fail("正式课程数量应为 27，实际为 " + lessonCount);
 if (failures.length) {
   console.error("助教知识库校验失败：");
   for (const message of failures) console.error("- " + message);

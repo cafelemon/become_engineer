@@ -1,0 +1,20 @@
+[
+  {"query": "数据类迁移前要保存什么基线？", "step_id": "step-1", "expected": "object-baseline-run"},
+  {"query": "迁移前先跑什么", "step_id": "step-1", "expected": "object-baseline-run"},
+  {"query": "为什么把 TypedDict 改成 dataclass？", "step_id": "step-2", "expected": "dataclass-purpose"},
+  {"query": "TypedDict和dataclass区别", "step_id": "step-2", "expected": "dataclass-purpose"},
+  {"query": "对象不可下标的 mypy 错误怎么修？", "step_id": "step-2", "expected": "attribute-migration"},
+  {"query": "字典访问改属性", "step_id": "step-2", "expected": "attribute-migration"},
+  {"query": "progress 和 status 为什么放在对象上？", "step_id": "step-3", "expected": "object-properties-method"},
+  {"query": "对象方法更新小时", "step_id": "step-3", "expected": "object-properties-method"},
+  {"query": "为什么 replace 后还要复制 tags？", "step_id": "step-3", "expected": "clone-nested-list"},
+  {"query": "数据类浅复制", "step_id": "step-3", "expected": "clone-nested-list"},
+  {"query": "为什么 tags 不能直接默认等于空列表？", "step_id": "step-4", "expected": "mutable-default-factory"},
+  {"query": "default_factory为什么必要", "step_id": "step-4", "expected": "mutable-default-factory"},
+  {"query": "with 为什么能保证文件离开代码块时关闭？", "step_id": "step-5", "expected": "with-resource-boundary"},
+  {"query": "上下文管理器做什么", "step_id": "step-5", "expected": "with-resource-boundary"},
+  {"query": "审计文件父目录不存在时如何测试？", "step_id": "step-5", "expected": "audit-oserror-failure"},
+  {"query": "文件打不开返回False", "step_id": "step-5", "expected": "audit-oserror-failure"},
+  {"query": "这节课的迁移任务怎样验收？", "step_id": "step-5", "expected": "object-resource-migration"},
+  {"query": "对象资源迁移验收", "step_id": "step-5", "expected": "object-resource-migration"}
+]

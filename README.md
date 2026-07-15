@@ -6,9 +6,12 @@
 
 一套可以照着走的公开学习路线，把工程基础、编程语言、计算机基础、Web、AI 和 LLM/Agent 串成持续进阶的学习过程。
 
+<div id="learning-assessment" class="be-assessment-mount" data-assessment-version="1" aria-hidden="true"></div>
+
 <div class="be-page-actions" markdown>
 
-[开始第一课](learning-paths/engineering-foundation/stage-0/01-learning-method.md){ .md-button .md-button--primary }
+[开始第一课](learning-paths/engineering-foundation/stage-0/01-learning-method.md){ .md-button .md-button--primary .be-personalized-start }
+[让小码帮我规划](#learning-assessment){ .md-button .be-assessment-open }
 [查看学习路线](learning-paths/beginner-roadmap.md){ .md-button }
 [查看完整课程地图](learning-paths/curriculum-map.md){ .md-button }
 
@@ -42,6 +45,17 @@
 - 希望使用 AI 辅助学习，同时保留审阅、修改、排错和验证能力的人。
 
 如果你已经有经验，也可以从[完整课程地图](learning-paths/curriculum-map.md)检查前置，选择推荐深化或专业选修；第一次学习则建议直接进入[第一课](learning-paths/engineering-foundation/stage-0/01-learning-method.md)。
+
+## 不确定从哪里开始
+
+小码同学可以用一组学习目的和能力情境题，给出“从零／已有基础 × 兴趣／求职”四类起点建议。结果会解释工程工具、编程、算法与 CS、项目工程四个维度，并在你确认后精简课程导航。
+
+- 测评可以跳过，也可以随时重做。
+- 个性化只改变推荐顺序，不限制任何课程。
+- 未显示内容会说明是已掌握、当前目标不需要、前置未满足，还是尚未建设。
+- 浏览器只保存画像摘要和导航模式，不保存原始答案。
+
+[开始入学测评](#learning-assessment){ .md-button .md-button--primary .be-assessment-open }
 
 ## 作者与项目
 

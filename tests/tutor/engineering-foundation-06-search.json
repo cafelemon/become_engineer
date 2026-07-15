@@ -78,5 +78,15 @@
     "query": "Git 工作区和暂存区",
     "step_id": "step-5",
     "expected": "areas"
+  },
+  {
+    "query": "Windows 怎么下载 Git",
+    "step_id": "step-1",
+    "expected": "install"
+  },
+  {
+    "query": "日志文件怎么不提交",
+    "step_id": "step-2",
+    "expected": "gitignore"
   }
 ]

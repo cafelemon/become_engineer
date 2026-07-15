@@ -49,6 +49,8 @@ extra_css:
 extra_javascript:
   - javascripts/tutor-search.js
   - javascripts/tutor.js
+  - javascripts/personalization-core.js
+  - javascripts/personalization.js
 
 markdown_extensions:
   - admonition
@@ -91,9 +93,10 @@ nav:
           - 学习方法: learning-paths/engineering-foundation/stage-0/01-learning-method.md
           - 文件系统: learning-paths/engineering-foundation/stage-0/02-filesystem.md
           - 终端与 Shell: learning-paths/engineering-foundation/stage-0/03-terminal-shell.md
-          - 编辑器: learning-paths/engineering-foundation/stage-0/04-editor.md
+          - VS Code 编辑器: learning-paths/engineering-foundation/stage-0/04-editor.md
           - Markdown: learning-paths/engineering-foundation/stage-0/05-markdown.md
-          - Git: learning-paths/engineering-foundation/stage-0/06-git.md
+          - 本地 Git 与 .gitignore: learning-paths/engineering-foundation/stage-0/06-git.md
+          - GitHub 远程协作: learning-paths/engineering-foundation/stage-0/06-github-remote.md
           - 开发环境: learning-paths/engineering-foundation/stage-0/07-development-environment.md
           - Docker最小认知: learning-paths/engineering-foundation/stage-0/08-docker-basics.md
           - 验证习惯: learning-paths/engineering-foundation/stage-0/09-validation-habit.md
@@ -118,9 +121,15 @@ nav:
           - 类型提示、接口与静态检查认知: learning-paths/programming-languages/python-core/01-type-hints-interfaces-static-checking.md
           - 可维护函数接口、协议与模块边界: learning-paths/programming-languages/python-core/02-maintainable-function-interfaces-protocols-modules.md
           - 容器协议、迭代器与生成器: learning-paths/programming-languages/python-core/03-iterables-iterators-generators.md
+          - 数据模型、数据类与上下文管理: learning-paths/programming-languages/python-core/04-data-model-dataclasses-context-managers.md
+          - 装饰器、闭包与自定义上下文管理器: learning-paths/programming-languages/python-core/05-decorators-closures-custom-context-managers.md
+      - CS 核心说明: learning-paths/cs-core/README.md
   - 项目:
       - 项目说明: projects/README.md
       - 项目主干规划: projects/project-roadmap.md
+      - 求职训练样板:
+          - Python 起步机考与限时模拟: exercises/career-readiness/python-entry-machine-test.md
+          - 学习进度报告器项目证据问答: exercises/career-readiness/study-progress-reporter-evidence.md
       - Python 内容分析工具: projects/python-content-analysis/README.md
       - 结构化数据机器学习系统: projects/structured-data-ml-system/README.md
       - 文本分类模型演进: projects/text-classification-evolution/README.md

@@ -1,0 +1,20 @@
+[
+  {"query": "装饰器课程开始前要锁定什么基线？", "step_id": "step-1", "expected": "decorator-baseline-contract"},
+  {"query": "包装函数前保存哪些结果", "step_id": "step-1", "expected": "decorator-baseline-contract"},
+  {"query": "装饰器和手工包装函数是什么关系？", "step_id": "step-2", "expected": "function-value-wrapper"},
+  {"query": "@decorator等价于什么", "step_id": "step-2", "expected": "function-value-wrapper"},
+  {"query": "装饰器是在定义函数时还是调用时执行？", "step_id": "step-2", "expected": "decorator-definition-time"},
+  {"query": "为什么没调用函数就装饰了", "step_id": "step-2", "expected": "decorator-definition-time"},
+  {"query": "trace_calls 为什么需要闭包？", "step_id": "step-3", "expected": "closure-event-sink"},
+  {"query": "event_sink怎么被记住", "step_id": "step-3", "expected": "closure-event-sink"},
+  {"query": "ParamSpec、TypeVar 和 wraps 各自保留什么？", "step_id": "step-3", "expected": "paramspec-wraps-contract"},
+  {"query": "包装后mypy类型怎么不丢", "step_id": "step-3", "expected": "paramspec-wraps-contract"},
+  {"query": "为什么包装后函数名变成 wrapper？", "step_id": "step-4", "expected": "wraps-metadata-failure"},
+  {"query": "缺少wraps会怎样", "step_id": "step-4", "expected": "wraps-metadata-failure"},
+  {"query": "装饰器记录失败后为什么还要 raise？", "step_id": "step-4", "expected": "decorator-exception-propagation"},
+  {"query": "怎样记录异常又继续抛出", "step_id": "step-4", "expected": "decorator-exception-propagation"},
+  {"query": "staged_output_path 怎样保证失败时不覆盖旧文件？", "step_id": "step-5", "expected": "staged-contextmanager-boundary"},
+  {"query": "contextmanager怎么清理tmp", "step_id": "step-5", "expected": "staged-contextmanager-boundary"},
+  {"query": "装饰器与上下文管理器迁移任务怎样验收？", "step_id": "step-5", "expected": "decorator-context-migration"},
+  {"query": "新增发布校验怎么证明", "step_id": "step-5", "expected": "decorator-context-migration"}
+]

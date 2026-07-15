@@ -2,7 +2,7 @@
   "version": 1,
   "lesson": {
     "id": "engineering-foundation-06",
-    "title": "Git",
+    "title": "本地 Git 与 .gitignore",
     "path": "learning-paths/engineering-foundation/stage-0/06-git/"
   },
   "steps": [
@@ -12,7 +12,7 @@
     },
     {
       "id": "step-2",
-      "title": "查看状态"
+      "title": "配置忽略并看状态"
     },
     {
       "id": "step-3",
@@ -256,6 +256,66 @@
       "source": {
         "label": "检查历史",
         "href": "#step-5"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "install",
+      "lesson_id": "engineering-foundation-06",
+      "step_id": "step-1",
+      "question": "Git 怎么安装并确认成功",
+      "aliases": [
+        "Windows 怎么下载 Git",
+        "macOS 怎么安装 Git",
+        "git version 找不到"
+      ],
+      "keywords": [
+        "安装",
+        "下载",
+        "git --version",
+        "找不到"
+      ],
+      "diagnostic": "先在新打开的终端执行 `git --version`，确认是返回版本号、触发系统安装提示，还是提示找不到命令。",
+      "hints": [
+        "Windows 从 git-scm.com 的官方 Windows 安装页获取维护中的安装程序；macOS 先运行 `git --version`，缺失时按官方页安装 Xcode Command Line Tools 或使用已有 Homebrew。",
+        "安装完成后要关闭并重新打开终端，再运行 `git --version`；旧终端可能还没有新的 PATH。"
+      ],
+      "example": "局部示例：`git --version` 返回 `git version ...` 即为终端可用，不要求版本号与课程截图一致。",
+      "answer": "从 Git 官方安装入口选择系统对应方式，安装后重开终端，以 `git --version` 返回版本号作为成功证据。",
+      "source": {
+        "label": "建立临时仓库",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "gitignore",
+      "lesson_id": "engineering-foundation-06",
+      "step_id": "step-2",
+      "question": ".gitignore 为什么没有忽略文件",
+      "aliases": [
+        "gitignore 怎么写",
+        "日志文件怎么不提交",
+        "已经提交的文件还能忽略吗"
+      ],
+      "keywords": [
+        ".gitignore",
+        "忽略",
+        "日志",
+        "已跟踪"
+      ],
+      "diagnostic": "先运行 `git status --ignored`，确认规则文件是否保存、目标路径是否匹配，以及文件是否已经被 Git 跟踪。",
+      "hints": [
+        "本课在 `.gitignore` 写 `*.log`，新建 `debug.log` 后应出现在 ignored 列表，而不是待提交列表。",
+        "`.gitignore` 只影响未跟踪文件；已经提交或暂存过的文件不会因为新增规则自动退出历史。"
+      ],
+      "example": "局部示例：暂存 `README.md` 和 `.gitignore`，但 `debug.log` 保持 ignored；不要把真实密钥拿来测试。",
+      "answer": "检查规则、保存状态和相对路径；如果文件已经被跟踪，需要单独处理索引，不能只追加忽略规则，更不能把 `.gitignore` 当作历史清除或保密工具。",
+      "source": {
+        "label": "配置忽略并看状态",
+        "href": "#step-2"
       },
       "updated_at": "2026-07-15",
       "recommended": true
