@@ -1173,6 +1173,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1253,6 +1259,90 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-functions-declarations-program-organization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    函数、声明与程序组织
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-headers-sources-cmake/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    头文件、源文件与最小 CMake 工程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-stl-containers-iterators-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    STL 容器、迭代器与基础算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1272,6 +1362,8 @@
       
         
           
+        
+      
         
       
         
@@ -1343,6 +1435,34 @@
     
   
     类型提示、接口与静态检查认知
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-core/02-maintainable-function-interfaces-protocols-modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    可维护函数接口、协议与模块边界
   
 
     
@@ -1797,15 +1917,15 @@
 </tr>
 <tr>
 <td>函数与程序组织</td>
-<td>声明、定义、参数、返回、重载、头文件和源文件</td>
-<td>Python 可维护接口、协议与模块边界</td>
-<td>待建设</td>
+<td>声明、定义、参数、返回、重载和单文件职责拆分</td>
+<td><a href="../python-core/02-maintainable-function-interfaces-protocols-modules/">Python可维护接口、协议与模块边界</a></td>
+<td>已完成</td>
 </tr>
 <tr>
 <td>容器与算法</td>
 <td><code>std::vector</code>、<code>std::string</code>、关联容器、迭代器和算法</td>
 <td>Python 容器协议、迭代器和生成器</td>
-<td>待建设</td>
+<td>C++部分已完成</td>
 </tr>
 <tr>
 <td>对象与资源</td>
@@ -1817,7 +1937,7 @@
 <td>工程化</td>
 <td>CMake、多文件工程、测试、调试和静态分析</td>
 <td>Python 包、CLI、配置、日志和依赖管理</td>
-<td>待建设</td>
+<td>多文件与CMake基础已完成</td>
 </tr>
 <tr>
 <td>深入能力</td>
@@ -1849,9 +1969,29 @@
 <td>区分运行时类型、类型提示与静态分析，建立可信数据边界</td>
 </tr>
 <tr>
-<td>C++函数、声明与程序组织</td>
-<td>下一节配对课</td>
+<td><a href="02-functions-declarations-program-organization/">函数、声明与程序组织</a></td>
+<td>已完成</td>
 <td>把单文件主流程拆成职责明确的函数，并为多文件工程做准备</td>
+</tr>
+<tr>
+<td><a href="../python-core/02-maintainable-function-interfaces-protocols-modules/">Python可维护函数接口、协议与模块边界</a></td>
+<td>已完成</td>
+<td>从Python侧深化签名、协议、公开接口和依赖方向</td>
+</tr>
+<tr>
+<td><a href="03-headers-sources-cmake/">头文件、源文件与最小CMake工程</a></td>
+<td>已完成</td>
+<td>把函数接口迁移到多翻译单元，建立库、应用、CTest和可重复构建</td>
+</tr>
+<tr>
+<td><a href="04-stl-containers-iterators-algorithms/">C++ STL容器、迭代器与基础算法</a></td>
+<td>已完成</td>
+<td>将单条状态卡升级为多条记录并沉淀双语言阶段作品</td>
+</tr>
+<tr>
+<td>Python 容器协议、迭代器与生成器</td>
+<td>下一节</td>
+<td>从Python侧深化能力型容器接口与惰性遍历</td>
 </tr>
 </tbody>
 </table>
@@ -1878,10 +2018,10 @@
 <li>能独立完成一个具有输入、输出、错误路径和验证证据的小型程序。</li>
 </ul>
 <h2 id="_7">项目与阶段作品<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p>第一节只留下阶段作品线索，不创建新目录。连续3-6节形成稳定能力后，再根据<a href="https://github.com/cafelemon/become_engineer/blob/main/docs/08_content_standard.md">课程内容规范</a>决定进入 <code>exercises/</code>，或推进已有长期项目里程碑。</p>
+<p>累计六节内容已经沉淀为<a href="../../../exercises/programming-languages/study-progress-reporters/">双语言学习进度报告器</a>。Python与C++使用同一数据和行为契约，分别通过类型检查、编译器和自动化测试验收；它是阶段作品，不是新的长期项目。</p>
 <p>C++ 后续会服务于算法与 CS、工业控制与实时通信、本地模型推理和性能方向，但这些项目不会在核心前置未完成时提前解锁。</p>
 <h2 id="_8">下一步<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<p>尚未开始时，从<a href="01-build-types-io/">从源文件到可执行程序：编译、类型与输入输出</a>开始，再完成配对的<a href="../python-core/01-type-hints-interfaces-static-checking/">Python类型课程</a>。当前下一节为C++函数、声明与程序组织。</p>
+<p>尚未开始时，从<a href="01-build-types-io/">从源文件到可执行程序：编译、类型与输入输出</a>开始，再按顺序完成<a href="../python-core/01-type-hints-interfaces-static-checking/">Python类型课程</a>、<a href="02-functions-declarations-program-organization/">函数、声明与程序组织</a>、<a href="../python-core/02-maintainable-function-interfaces-protocols-modules/">Python可维护函数接口、协议与模块边界</a>、<a href="03-headers-sources-cmake/">头文件、源文件与最小CMake工程</a>和<a href="04-stl-containers-iterators-algorithms/">STL容器、迭代器与基础算法</a>。当前下一节为Python容器协议、迭代器与生成器。</p>
 
 
 

@@ -2,206 +2,226 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://cafelemon.github.io/become_engineer/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/exercises/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/exercises/llm-agent/safe-sales-tool-calling/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/exercises/programming-languages/study-progress-reporters/</loc>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/exercises/python-basics/study-progress-reporter/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/beginner-roadmap/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/curriculum-map/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/ai-foundation/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/engineering-foundation/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/engineering-foundation/stage-0/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/engineering-foundation/stage-0/01-learning-method/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/engineering-foundation/stage-0/02-filesystem/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/engineering-foundation/stage-0/03-terminal-shell/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/engineering-foundation/stage-0/04-editor/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/engineering-foundation/stage-0/05-markdown/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/engineering-foundation/stage-0/06-git/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/engineering-foundation/stage-0/07-development-environment/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/engineering-foundation/stage-0/08-docker-basics/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/engineering-foundation/stage-0/09-validation-habit/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/llm-agent/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/cpp-core/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/cpp-core/01-build-types-io/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/cpp-core/02-functions-declarations-program-organization/</loc>
+         <lastmod>2026-07-15</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/cpp-core/03-headers-sources-cmake/</loc>
+         <lastmod>2026-07-15</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/cpp-core/04-stl-containers-iterators-algorithms/</loc>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/python-basics/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/python-basics/01-variables-types-io/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/python-basics/02-conditions-loops-boolean/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/python-basics/03-functions-parameters-returns-scope/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/python-basics/04-strings-collections/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/python-basics/05-files-json-paths/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/python-basics/06-modules-imports-venv/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/python-basics/07-errors-debugging-tests/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/python-core/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/python-core/01-type-hints-interfaces-static-checking/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/python-core/02-maintainable-function-interfaces-protocols-modules/</loc>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/web-fullstack/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/maps/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/maps/become-engineer-map/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/maps/python-ai-llm-content-coverage/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/maps/python-ai-llm-dependency-map/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/notes/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/notes/llm-agent/tool-calling/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/projects/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/projects/project-roadmap/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/projects/intelligent-learning-assistant/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/projects/python-content-analysis/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/projects/reinforcement-learning-control-lab/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/projects/structured-data-ml-system/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/projects/text-classification-evolution/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/publications/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/resources/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/reviews/</loc>
-         <lastmod>2026-07-14</lastmod>
+         <lastmod>2026-07-15</lastmod>
     </url>
 </urlset>

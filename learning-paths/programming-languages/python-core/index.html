@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/python-core/">
       
       
-        <link rel="prev" href="../cpp-core/01-build-types-io/">
+        <link rel="prev" href="../cpp-core/04-stl-containers-iterators-algorithms/">
       
       
         <link rel="next" href="01-type-hints-interfaces-static-checking/">
@@ -1171,6 +1171,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1251,6 +1257,90 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpp-core/02-functions-declarations-program-organization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    函数、声明与程序组织
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpp-core/03-headers-sources-cmake/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    头文件、源文件与最小 CMake 工程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpp-core/04-stl-containers-iterators-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    STL 容器、迭代器与基础算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1272,6 +1362,8 @@
       
         
           
+        
+      
         
       
         
@@ -1343,6 +1435,34 @@
     
   
     类型提示、接口与静态检查认知
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-maintainable-function-interfaces-protocols-modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    可维护函数接口、协议与模块边界
   
 
     
@@ -1776,14 +1896,14 @@
 <tr>
 <td>函数与程序组织</td>
 <td>可维护签名、模块接口、协议和依赖方向</td>
-<td>声明、定义、参数、返回和多文件边界</td>
-<td>下一组</td>
+<td><a href="../cpp-core/02-functions-declarations-program-organization/">声明、定义、参数、返回和单文件职责拆分</a></td>
+<td>已完成</td>
 </tr>
 <tr>
 <td>容器与迭代</td>
 <td>抽象容器接口、迭代器和生成器</td>
-<td>STL容器、迭代器和算法</td>
-<td>待建设</td>
+<td><a href="../cpp-core/04-stl-containers-iterators-algorithms/">STL容器、迭代器和算法</a></td>
+<td>下一节</td>
 </tr>
 <tr>
 <td>对象与资源</td>
@@ -1815,14 +1935,29 @@
 <td>区分运行时类型、类型提示和静态检查，为不可信数据建立可验证边界</td>
 </tr>
 <tr>
-<td>C++函数、声明与程序组织</td>
-<td>下一节配对课</td>
-<td>学习函数接口和源文件边界</td>
+<td><a href="../cpp-core/02-functions-declarations-program-organization/">C++函数、声明与程序组织</a></td>
+<td>已完成</td>
+<td>学习函数接口、参数传递和单文件职责边界</td>
 </tr>
 <tr>
-<td>Python可维护函数接口与协议</td>
-<td>待建设</td>
-<td>继续深化Python接口设计并与C++函数组织对照</td>
+<td><a href="02-maintainable-function-interfaces-protocols-modules/">可维护函数接口、协议与模块边界</a></td>
+<td>已完成</td>
+<td>使用关键字参数、协议、公开接口和单向依赖组织多模块程序</td>
+</tr>
+<tr>
+<td><a href="../cpp-core/03-headers-sources-cmake/">C++头文件、源文件与最小CMake工程</a></td>
+<td>已完成</td>
+<td>把稳定接口迁移到多翻译单元、库目标和CTest构建结构</td>
+</tr>
+<tr>
+<td><a href="../cpp-core/04-stl-containers-iterators-algorithms/">C++ STL容器、迭代器与基础算法</a></td>
+<td>已完成</td>
+<td>从单条状态卡进入多条记录处理并形成双语言阶段作品</td>
+</tr>
+<tr>
+<td>Python 容器协议、迭代器与生成器</td>
+<td>下一节</td>
+<td>理解可迭代协议、迭代器状态和惰性生成</td>
 </tr>
 </tbody>
 </table>
@@ -1845,9 +1980,9 @@
 </ol>
 <h2 id="_6">阶段作品边界<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>Python起步的学习进度报告器保持原样，代表当时已经验收的能力。本课程在正文中提供类型化副本，不反向修改起步作品，也不创建新的独立练习目录。</p>
-<p>双主修连续3-6节形成稳定能力后，再决定是否沉淀新的阶段作品。类型提示本身不是一个项目。</p>
+<p>双主修累计六节内容已经形成<a href="../../../exercises/programming-languages/study-progress-reporters/">双语言学习进度报告器</a>。类型提示、协议、CMake或容器本身都不是独立项目；阶段作品用于比较两门语言如何实现同一数据处理契约。</p>
 <h2 id="_7">下一步<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p>从<a href="01-type-hints-interfaces-static-checking/">类型提示、接口与静态检查认知</a>开始。</p>
+<p>从<a href="01-type-hints-interfaces-static-checking/">类型提示、接口与静态检查认知</a>开始，再完成C++<a href="../cpp-core/02-functions-declarations-program-organization/">函数、声明与程序组织</a>、<a href="02-maintainable-function-interfaces-protocols-modules/">可维护函数接口、协议与模块边界</a>、C++<a href="../cpp-core/03-headers-sources-cmake/">头文件、源文件与最小CMake工程</a>和<a href="../cpp-core/04-stl-containers-iterators-algorithms/">STL容器、迭代器与基础算法</a>。当前下一节为Python容器协议、迭代器与生成器。</p>
 
 
 
@@ -1883,7 +2018,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../cpp-core/01-build-types-io/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 从源文件到可执行程序">
+          <a href="../cpp-core/04-stl-containers-iterators-algorithms/" class="md-footer__link md-footer__link--prev" aria-label="上一页: STL 容器、迭代器与基础算法">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1893,7 +2028,7 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                从源文件到可执行程序
+                STL 容器、迭代器与基础算法
               </div>
             </div>
           </a>
