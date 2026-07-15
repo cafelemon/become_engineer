@@ -1,0 +1,82 @@
+[
+  {
+    "query": "怎么选择验证目标",
+    "step_id": "step-1",
+    "expected": "goal"
+  },
+  {
+    "query": "验证目标怎么写",
+    "step_id": "step-1",
+    "expected": "goal"
+  },
+  {
+    "query": "验证操作怎么记录",
+    "step_id": "step-2",
+    "expected": "environment"
+  },
+  {
+    "query": "验证时记录目录吗",
+    "step_id": "step-2",
+    "expected": "environment"
+  },
+  {
+    "query": "验证成功证据是什么",
+    "step_id": "step-3",
+    "expected": "success"
+  },
+  {
+    "query": "成功结果怎么写",
+    "step_id": "step-3",
+    "expected": "success"
+  },
+  {
+    "query": "验证记录怎么写结果判断",
+    "step_id": "step-3",
+    "expected": "judgment"
+  },
+  {
+    "query": "结果和结论区别",
+    "step_id": "step-3",
+    "expected": "judgment"
+  },
+  {
+    "query": "怎么做安全失败实验",
+    "step_id": "step-4",
+    "expected": "repro"
+  },
+  {
+    "query": "最小复现怎么写",
+    "step_id": "step-4",
+    "expected": "repro"
+  },
+  {
+    "query": "报错怎么记录才有用",
+    "step_id": "step-4",
+    "expected": "failure"
+  },
+  {
+    "query": "错误记录怎么写",
+    "step_id": "step-4",
+    "expected": "failure"
+  },
+  {
+    "query": "未验证状态怎么标记",
+    "step_id": "step-5",
+    "expected": "unverified"
+  },
+  {
+    "query": "没检查能算完成吗",
+    "step_id": "step-5",
+    "expected": "unverified"
+  },
+  {
+    "query": "九课学完怎么检查",
+    "step_id": "step-5",
+    "expected": "accept"
+  },
+  {
+    "query": "阶段验收怎么写",
+    "step_id": "step-5",
+    "expected": "accept"
+  }
+]

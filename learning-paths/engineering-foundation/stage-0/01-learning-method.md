@@ -30,6 +30,81 @@
   </div>
 </div>
 
+<div class="be-tutor-mount" data-tutor-lesson="engineering-foundation-01" aria-hidden="true"></div>
+
+本课先不追求“学完学习方法”，而是完成一份可以复查的学习记录。下面五步完成后，再回到原有说明，把每个选择理解得更扎实。
+
+## 五步任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务">
+  <span role="listitem">1 建立记录</span><span role="listitem">2 缩小目标</span><span role="listitem">3 主动操作</span><span role="listitem">4 保留问题</span><span role="listitem">5 复盘迁移</span>
+</div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+### 第一步：建立今天的学习记录
+
+**任务：** 新建 `learning-log.md`，写下今天学习工程基础的目标、操作、结果、问题和下一步五个小标题。**成功证据：** 文件能保存并重新打开。
+
+??? tip "提示一"
+    可以先复制本页后面的“学习记录”结构，内容先写得短。
+??? tip "提示二"
+    不确定怎么开始时，只写“目标：完成本课第一步”，然后继续做。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+### 第二步：把目标缩小到一次操作
+
+**任务：** 把“学会工程基础”改成一个今天可检查的动作，例如“在编辑器里完成并保存 learning-log.md”。**成功证据：** 目标包含对象和可观察结果。
+
+??? tip "提示一"
+    一个好目标能回答：做什么、在哪里做、做到什么状态。
+??? tip "提示二"
+    如果目标不能在本次学习结束时判断完成，就继续把它拆小。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+### 第三步：记录一次主动操作
+
+**任务：** 完成一个实际动作：创建文件、输入内容、保存并重新打开。把命令或点击动作写入“操作”。**成功证据：** 记录的是你做过的事，不是概念抄写。
+
+??? tip "提示一"
+    操作可以写成一行，例如“在编辑器中新建 learning-log.md 并保存”。
+??? tip "提示二"
+    做完立刻写结果，避免靠记忆补写。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+### 第四步：保留一个具体问题
+
+**任务：** 写下一个尚未确定的问题，例如“文件保存在哪里？”或“为什么要记录输出？”。**成功证据：** 问题能被别人理解和继续排查。
+
+??? tip "提示一"
+    不要只写“不会”；补充当时的操作和看到的现象。
+??? tip "提示二"
+    问题暂时没有答案也没关系，先保留它。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+### 第五步：复盘并迁移到下一课
+
+**任务：** 在“下一步”写下将用这份记录验证的下一件事：创建一个目录、查看路径或打开终端。**成功证据：** 他人只看记录也知道你完成了什么、下一步做什么。
+
+??? tip "提示一"
+    复盘只需比较目标与实际结果，不需要写长篇感想。
+??? tip "提示二"
+    下一步应指向一个可执行动作，而不是“继续努力”。
+
+</section>
+
 ## 前置知识
 
 无。

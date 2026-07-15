@@ -1,0 +1,82 @@
+[
+  {
+    "query": "打开文件还是文件夹",
+    "step_id": "step-1",
+    "expected": "folder"
+  },
+  {
+    "query": "编辑器打开根目录",
+    "step_id": "step-1",
+    "expected": "folder"
+  },
+  {
+    "query": "怎么在编辑器找文件",
+    "step_id": "step-2",
+    "expected": "tree"
+  },
+  {
+    "query": "文件树如何定位",
+    "step_id": "step-2",
+    "expected": "tree"
+  },
+  {
+    "query": "编辑器标签页是什么",
+    "step_id": "step-2",
+    "expected": "tabs"
+  },
+  {
+    "query": "关闭标签会删文件吗",
+    "step_id": "step-2",
+    "expected": "tabs"
+  },
+  {
+    "query": "编辑器怎么确认保存",
+    "step_id": "step-3",
+    "expected": "save"
+  },
+  {
+    "query": "保存后怎么验证",
+    "step_id": "step-3",
+    "expected": "save"
+  },
+  {
+    "query": "编辑器搜索没结果",
+    "step_id": "step-4",
+    "expected": "search"
+  },
+  {
+    "query": "搜索所有文件",
+    "step_id": "step-4",
+    "expected": "search"
+  },
+  {
+    "query": "编辑器终端和系统终端一样吗",
+    "step_id": "step-5",
+    "expected": "terminal"
+  },
+  {
+    "query": "编辑器终端在哪",
+    "step_id": "step-5",
+    "expected": "terminal"
+  },
+  {
+    "query": "打开错目录怎么办",
+    "step_id": "step-1",
+    "expected": "wrong"
+  },
+  {
+    "query": "编辑器没有文件",
+    "step_id": "step-1",
+    "expected": "wrong"
+  },
+  {
+    "query": "编辑器终端找不到文件",
+    "step_id": "step-5",
+    "expected": "verify"
+  },
+  {
+    "query": "编辑器终端如何验证",
+    "step_id": "step-5",
+    "expected": "verify"
+  }
+]

@@ -1,5 +1,53 @@
 # 类型提示、接口与静态检查认知
 
+<div class="be-tutor-mount" data-tutor-lesson="python-core-01" aria-hidden="true"></div>
+
+> **任务先行：** 给已有学习进度报告器加上能被检查的类型契约。先让它正常运行，再让 `mypy --strict` 告诉你接口哪里不一致。
+
+## 任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务"><span role="listitem">1 运行</span><span role="listitem">2 标注</span><span role="listitem">3 校验</span><span role="listitem">4 诊断</span><span role="listitem">5 迁移</span></div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+## 第一步：运行类型化报告器
+
+按“安装、检查和运行”创建环境、运行报告器和测试。**可观察结果：** 正常业务输出仍成立；类型提示本身不会改变 Python 的运行行为。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+## 第二步：给一个边界补充准确契约
+
+为一个函数的参数与返回值补类型，或为固定 JSON 记录使用既有 `TypedDict`。**成功标准：** 标注表达真实数据形状，而不是用 `Any` 绕过检查。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+## 第三步：在静态与运行时两层验证
+
+执行 `mypy --strict` 与 unittest；从 JSON 边界以 `object` 开始，经过运行时检查后再构造 `StudyRecord`。记录两类工具各自报告什么。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+## 第四步：故意让检查器失败
+
+复现错误参数、`TypedDict` 缺字段或错误返回类型中的一项，确认 mypy 非零退出，然后修复。**验收：** 知道注解不会自动拦截运行期错误。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+## 第五步：迁移验收与下一步
+
+独立为报告器增加一个可选字段或类型别名，保留运行时校验与测试，并让严格检查通过。下一课将类型契约扩展为可维护函数接口和模块边界。
+
+</section>
+
 ## 课程信息
 
 | 项目 | 内容 |

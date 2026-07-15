@@ -1,0 +1,82 @@
+[
+  {
+    "query": "一级二级标题怎么写",
+    "step_id": "step-1",
+    "expected": "heading"
+  },
+  {
+    "query": "井号标题怎么用",
+    "step_id": "step-1",
+    "expected": "heading"
+  },
+  {
+    "query": "Markdown 能有多个一级标题吗",
+    "step_id": "step-1",
+    "expected": "one-h1"
+  },
+  {
+    "query": "一个文档几个 H1",
+    "step_id": "step-1",
+    "expected": "one-h1"
+  },
+  {
+    "query": "无序有序列表区别",
+    "step_id": "step-2",
+    "expected": "list"
+  },
+  {
+    "query": "列表语法是什么",
+    "step_id": "step-2",
+    "expected": "list"
+  },
+  {
+    "query": "相对链接打不开怎么办",
+    "step_id": "step-3",
+    "expected": "link"
+  },
+  {
+    "query": "链接语法是什么",
+    "step_id": "step-3",
+    "expected": "link"
+  },
+  {
+    "query": "三个反引号有什么用",
+    "step_id": "step-4",
+    "expected": "code"
+  },
+  {
+    "query": "命令怎么写进 Markdown",
+    "step_id": "step-4",
+    "expected": "code"
+  },
+  {
+    "query": "表格第二行横线为什么",
+    "step_id": "step-5",
+    "expected": "table"
+  },
+  {
+    "query": "表格语法是什么",
+    "step_id": "step-5",
+    "expected": "table"
+  },
+  {
+    "query": "Markdown 怎么预览",
+    "step_id": "step-4",
+    "expected": "preview"
+  },
+  {
+    "query": "Markdown 渲染是什么",
+    "step_id": "step-4",
+    "expected": "preview"
+  },
+  {
+    "query": "学习记录 Markdown 验收",
+    "step_id": "step-5",
+    "expected": "readable"
+  },
+  {
+    "query": "文档如何验收",
+    "step_id": "step-5",
+    "expected": "readable"
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "query": "docker 命令找不到",
+    "step_id": "step-1",
+    "expected": "version"
+  },
+  {
+    "query": "Docker 未安装怎么办",
+    "step_id": "step-1",
+    "expected": "version"
+  },
+  {
+    "query": "Docker image container 区别",
+    "step_id": "step-2",
+    "expected": "image"
+  },
+  {
+    "query": "镜像是什么容器是什么",
+    "step_id": "step-2",
+    "expected": "image"
+  },
+  {
+    "query": "docker run 命令怎么看",
+    "step_id": "step-2",
+    "expected": "run"
+  },
+  {
+    "query": "docker run 是启动容器吗",
+    "step_id": "step-2",
+    "expected": "run"
+  },
+  {
+    "query": "Docker 端口映射怎么看",
+    "step_id": "step-3",
+    "expected": "port"
+  },
+  {
+    "query": "端口映射左右是什么",
+    "step_id": "step-3",
+    "expected": "port"
+  },
+  {
+    "query": "-v 参数是什么意思",
+    "step_id": "step-4",
+    "expected": "volume"
+  },
+  {
+    "query": "容器能访问本机文件吗",
+    "step_id": "step-4",
+    "expected": "volume"
+  },
+  {
+    "query": "-e 参数泄露密码吗",
+    "step_id": "step-4",
+    "expected": "secret"
+  },
+  {
+    "query": "Docker 密钥怎么处理",
+    "step_id": "step-4",
+    "expected": "secret"
+  },
+  {
+    "query": "怎么查看容器状态日志",
+    "step_id": "step-5",
+    "expected": "logs"
+  },
+  {
+    "query": "Docker 如何看日志",
+    "step_id": "step-5",
+    "expected": "logs"
+  },
+  {
+    "query": "Docker 验收怎么写",
+    "step_id": "step-5",
+    "expected": "safe"
+  },
+  {
+    "query": "Docker 安全检查",
+    "step_id": "step-5",
+    "expected": "safe"
+  }
+]

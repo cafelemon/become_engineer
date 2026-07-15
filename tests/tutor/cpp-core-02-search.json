@@ -1,0 +1,82 @@
+[
+  {
+    "query": "函数化状态卡如何验证没有改变行为？",
+    "step_id": "step-1",
+    "expected": "function-run"
+  },
+  {
+    "query": "重构后怎么验证",
+    "step_id": "step-1",
+    "expected": "function-run"
+  },
+  {
+    "query": "函数声明和定义有什么区别？",
+    "step_id": "step-2",
+    "expected": "declaration-definition"
+  },
+  {
+    "query": "声明定义区别",
+    "step_id": "step-2",
+    "expected": "declaration-definition"
+  },
+  {
+    "query": "返回值和打印输出有什么区别？",
+    "step_id": "step-2",
+    "expected": "return-side-effect"
+  },
+  {
+    "query": "return和cout区别",
+    "step_id": "step-2",
+    "expected": "return-side-effect"
+  },
+  {
+    "query": "什么时候使用 const std::string& 参数？",
+    "step_id": "step-3",
+    "expected": "const-reference"
+  },
+  {
+    "query": "const引用有什么用",
+    "step_id": "step-3",
+    "expected": "const-reference"
+  },
+  {
+    "query": "按值参数为什么不会修改调用者变量？",
+    "step_id": "step-3",
+    "expected": "value-copy"
+  },
+  {
+    "query": "按值传递修改没生效",
+    "step_id": "step-3",
+    "expected": "value-copy"
+  },
+  {
+    "query": "调用前没有声明为什么会报错？",
+    "step_id": "step-4",
+    "expected": "missing-declaration"
+  },
+  {
+    "query": "函数未声明",
+    "step_id": "step-4",
+    "expected": "missing-declaration"
+  },
+  {
+    "query": "函数重载二义性怎么处理？",
+    "step_id": "step-4",
+    "expected": "overload-ambiguous"
+  },
+  {
+    "query": "重载ambiguous",
+    "step_id": "step-4",
+    "expected": "overload-ambiguous"
+  },
+  {
+    "query": "如何为状态卡增加纯计算函数？",
+    "step_id": "step-5",
+    "expected": "function-migration"
+  },
+  {
+    "query": "新增函数迁移",
+    "step_id": "step-5",
+    "expected": "function-migration"
+  }
+]

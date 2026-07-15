@@ -1,0 +1,82 @@
+[
+  {
+    "query": "项目根目录是什么",
+    "step_id": "step-1",
+    "expected": "root"
+  },
+  {
+    "query": "学习工作区在哪里",
+    "step_id": "step-1",
+    "expected": "root"
+  },
+  {
+    "query": "文件夹和文件区别",
+    "step_id": "step-2",
+    "expected": "dir-file"
+  },
+  {
+    "query": "目录是什么",
+    "step_id": "step-2",
+    "expected": "dir-file"
+  },
+  {
+    "query": "文件扩展名是什么",
+    "step_id": "step-3",
+    "expected": "extension"
+  },
+  {
+    "query": "md 是什么文件",
+    "step_id": "step-3",
+    "expected": "extension"
+  },
+  {
+    "query": "相对路径怎么写",
+    "step_id": "step-4",
+    "expected": "relative"
+  },
+  {
+    "query": "notes 路径怎么写",
+    "step_id": "step-4",
+    "expected": "relative"
+  },
+  {
+    "query": "绝对路径和相对路径区别",
+    "step_id": "step-4",
+    "expected": "absolute"
+  },
+  {
+    "query": "完整文件路径是什么",
+    "step_id": "step-4",
+    "expected": "absolute"
+  },
+  {
+    "query": "文件路径错误怎么办",
+    "step_id": "step-5",
+    "expected": "not-found"
+  },
+  {
+    "query": "找不到文件怎么查",
+    "step_id": "step-5",
+    "expected": "not-found"
+  },
+  {
+    "query": "学习文件放哪里",
+    "step_id": "step-2",
+    "expected": "organize"
+  },
+  {
+    "query": "notes practice assets 区别",
+    "step_id": "step-2",
+    "expected": "organize"
+  },
+  {
+    "query": "下一课还用这个目录吗",
+    "step_id": "step-5",
+    "expected": "workspace"
+  },
+  {
+    "query": "工作区有什么用",
+    "step_id": "step-5",
+    "expected": "workspace"
+  }
+]

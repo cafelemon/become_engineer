@@ -1,5 +1,67 @@
 # 字符串、列表、字典、集合和元组
 
+<div class="be-tutor-mount" data-tutor-lesson="python-basics-04" aria-hidden="true"></div>
+
+本节把 `study_report.py` 升级成处理多条内存记录的 `study_records.py`。从一条可读记录开始，再选择合适的数据结构；下方保留完整方法表、练习与排错说明供按需查阅。
+
+## 本节任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务">
+  <span role="listitem">1 清理文本</span><span role="listitem">2 保存记录</span><span role="listitem">3 处理多条</span><span role="listitem">4 定位共享</span><span role="listitem">5 迁移验收</span>
+</div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+## 第一步：清理课程标签
+
+**任务：** 在 `study_records.py` 中把 `"  Python, 基础,工具,Python  "` 用 `strip()`、`split(",")` 处理成标签列表，并用 `" | ".join()` 输出。
+
+**即时反馈：** 原字符串不变，清理后的列表与最终输出都可见。观察为什么必须接收字符串方法返回的新值。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+## 第二步：用字典表示一条学习记录
+
+**任务：** 创建含 `course`、`target_hours`、`finished_hours`、`tags` 的字典，用字段名读取课程和完成时间，再增加 `status` 字段。
+
+**成功标准：** 输出中能看出每个值的含义，不依赖“第几个位置”的记忆。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+## 第三步：让报告器遍历多条记录
+
+**任务：** 用“列表中的字典”保存至少三条记录，复用上一节函数逐条输出状态；用集合统计去重后的标签。
+
+**主动修改：** 增加一条带重复标签的记录，比较列表保留重复与集合去重后的结果。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+## 第四步：故意制造容器错误
+
+**任务：** 先用 `copied = records`，向 `copied` 追加一条记录，观察原列表也变化；然后改为 `records.copy()` 验证外层列表独立。
+
+**错误证据：** 记录两个变量在修改前后的内容，并指出这不是 Python 随机改变数据，而是两个名字指向同一列表。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+## 第五步：迁移验收
+
+**任务：** 独立为每条记录增加一个可选字段，例如 `note` 或 `priority`；读取时使用合适的默认值，并按课程名排序输出报告。
+
+**完成证据：** 验证空列表、重复标签、超额完成和缺失可选字段四种场景。
+
+**下一步：** 进入[文件、路径、JSON 和简单目录操作](05-files-json-paths.md)，把内存数据移到 JSON 文件。
+
+</section>
+
 上一节的学习进度报告器只能处理一条记录。真实程序通常需要处理多门课程、多个文件或多次实验，因此必须知道怎样表示一组数据，以及怎样根据用途选择合适的数据结构。
 
 本节不以背方法名为目标。你要理解五种常用结构分别解决什么问题、哪些可以修改、怎样组合它们，并能判断一个程序为什么应该使用列表、字典、集合或元组。

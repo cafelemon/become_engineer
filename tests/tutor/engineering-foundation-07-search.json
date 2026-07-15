@@ -1,0 +1,82 @@
+[
+  {
+    "query": "python3 --version 报错",
+    "step_id": "step-1",
+    "expected": "version"
+  },
+  {
+    "query": "怎么查看 Python 版本",
+    "step_id": "step-1",
+    "expected": "version"
+  },
+  {
+    "query": "怎么找 Python 安装位置",
+    "step_id": "step-2",
+    "expected": "which"
+  },
+  {
+    "query": "Python 命令在哪里",
+    "step_id": "step-2",
+    "expected": "which"
+  },
+  {
+    "query": "PATH 和 Python 区别",
+    "step_id": "step-3",
+    "expected": "path"
+  },
+  {
+    "query": "PATH 有什么用",
+    "step_id": "step-3",
+    "expected": "path"
+  },
+  {
+    "query": "Python 文件为何不能运行",
+    "step_id": "step-4",
+    "expected": "interpreter"
+  },
+  {
+    "query": "解释器做什么",
+    "step_id": "step-4",
+    "expected": "interpreter"
+  },
+  {
+    "query": "项目代码和依赖区别",
+    "step_id": "step-4",
+    "expected": "dependency"
+  },
+  {
+    "query": "第三方库是什么",
+    "step_id": "step-4",
+    "expected": "dependency"
+  },
+  {
+    "query": "为什么项目要虚拟环境",
+    "step_id": "step-4",
+    "expected": "venv"
+  },
+  {
+    "query": "venv 是什么",
+    "step_id": "step-4",
+    "expected": "venv"
+  },
+  {
+    "query": "command not found 怎么办",
+    "step_id": "step-5",
+    "expected": "not-found"
+  },
+  {
+    "query": "Python 命令找不到",
+    "step_id": "step-5",
+    "expected": "not-found"
+  },
+  {
+    "query": "怎么记录开发环境",
+    "step_id": "step-5",
+    "expected": "record"
+  },
+  {
+    "query": "环境检查怎么写",
+    "step_id": "step-5",
+    "expected": "record"
+  }
+]

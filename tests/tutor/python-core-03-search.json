@@ -1,0 +1,82 @@
+[
+  {
+    "query": "惰性学习报告器如何观察生成时机？",
+    "step_id": "step-1",
+    "expected": "lazy-run"
+  },
+  {
+    "query": "生成器什么时候执行",
+    "step_id": "step-1",
+    "expected": "lazy-run"
+  },
+  {
+    "query": "Iterable 和 Iterator 有什么区别？",
+    "step_id": "step-1",
+    "expected": "iterable-iterator"
+  },
+  {
+    "query": "可迭代对象和迭代器",
+    "step_id": "step-1",
+    "expected": "iterable-iterator"
+  },
+  {
+    "query": "生成器函数为什么要用 yield？",
+    "step_id": "step-2",
+    "expected": "generator-function"
+  },
+  {
+    "query": "yield有什么用",
+    "step_id": "step-2",
+    "expected": "generator-function"
+  },
+  {
+    "query": "列表推导式和生成器表达式怎么选？",
+    "step_id": "step-2",
+    "expected": "generator-expression"
+  },
+  {
+    "query": "列表推导和生成器区别",
+    "step_id": "step-2",
+    "expected": "generator-expression"
+  },
+  {
+    "query": "为什么无限或长迭代要用 islice 限制？",
+    "step_id": "step-3",
+    "expected": "islice-boundary"
+  },
+  {
+    "query": "islice怎么用",
+    "step_id": "step-3",
+    "expected": "islice-boundary"
+  },
+  {
+    "query": "为什么第二次遍历迭代器没有结果？",
+    "step_id": "step-4",
+    "expected": "double-consume"
+  },
+  {
+    "query": "迭代器第二次为空",
+    "step_id": "step-4",
+    "expected": "double-consume"
+  },
+  {
+    "query": "Iterable、Iterator 和 Sequence 应该怎样写进类型签名？",
+    "step_id": "step-4",
+    "expected": "sequence-interface"
+  },
+  {
+    "query": "迭代类型注解",
+    "step_id": "step-4",
+    "expected": "sequence-interface"
+  },
+  {
+    "query": "如何新增惰性报告视图并验收？",
+    "step_id": "step-5",
+    "expected": "lazy-migration"
+  },
+  {
+    "query": "生成器迁移任务",
+    "step_id": "step-5",
+    "expected": "lazy-migration"
+  }
+]

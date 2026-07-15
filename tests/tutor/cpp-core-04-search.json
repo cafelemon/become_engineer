@@ -1,0 +1,82 @@
+[
+  {
+    "query": "多记录学习报告器如何验证？",
+    "step_id": "step-1",
+    "expected": "report-run"
+  },
+  {
+    "query": "报告器怎么运行",
+    "step_id": "step-1",
+    "expected": "report-run"
+  },
+  {
+    "query": "什么时候应该使用 std::vector？",
+    "step_id": "step-2",
+    "expected": "choose-vector"
+  },
+  {
+    "query": "vector适用场景",
+    "step_id": "step-2",
+    "expected": "choose-vector"
+  },
+  {
+    "query": "map 和 set 分别解决什么问题？",
+    "step_id": "step-2",
+    "expected": "map-set"
+  },
+  {
+    "query": "map和set区别",
+    "step_id": "step-2",
+    "expected": "map-set"
+  },
+  {
+    "query": "为什么 STL 范围使用 [begin, end)？",
+    "step_id": "step-3",
+    "expected": "half-open-range"
+  },
+  {
+    "query": "end不是最后元素",
+    "step_id": "step-3",
+    "expected": "half-open-range"
+  },
+  {
+    "query": "find_if 和 count_if 分别什么时候用？",
+    "step_id": "step-3",
+    "expected": "algorithm-choice"
+  },
+  {
+    "query": "find_if和count_if区别",
+    "step_id": "step-3",
+    "expected": "algorithm-choice"
+  },
+  {
+    "query": "vector 迭代器为什么会失效？",
+    "step_id": "step-4",
+    "expected": "iterator-invalid"
+  },
+  {
+    "query": "push_back后迭代器",
+    "step_id": "step-4",
+    "expected": "iterator-invalid"
+  },
+  {
+    "query": "sort 比较器为什么不能使用 <=？",
+    "step_id": "step-4",
+    "expected": "sort-comparator"
+  },
+  {
+    "query": "sort用小于等于",
+    "step_id": "step-4",
+    "expected": "sort-comparator"
+  },
+  {
+    "query": "如何给报告器增加统计而不修改输入？",
+    "step_id": "step-5",
+    "expected": "algorithm-migration"
+  },
+  {
+    "query": "报告器新增统计",
+    "step_id": "step-5",
+    "expected": "algorithm-migration"
+  }
+]

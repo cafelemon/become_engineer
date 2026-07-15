@@ -1,0 +1,82 @@
+[
+  {
+    "query": "CMake 配置、构建和测试有什么区别？",
+    "step_id": "step-1",
+    "expected": "cmake-stages"
+  },
+  {
+    "query": "cmake三步",
+    "step_id": "step-1",
+    "expected": "cmake-stages"
+  },
+  {
+    "query": "为什么要使用全新的构建目录？",
+    "step_id": "step-1",
+    "expected": "fresh-build"
+  },
+  {
+    "query": "新建build目录",
+    "step_id": "step-1",
+    "expected": "fresh-build"
+  },
+  {
+    "query": "声明为什么放头文件，定义为什么放源文件？",
+    "step_id": "step-2",
+    "expected": "header-source"
+  },
+  {
+    "query": "头文件和源文件区别",
+    "step_id": "step-2",
+    "expected": "header-source"
+  },
+  {
+    "query": "include guard 有什么作用？",
+    "step_id": "step-2",
+    "expected": "include-guard"
+  },
+  {
+    "query": "ifndef define endif",
+    "step_id": "step-2",
+    "expected": "include-guard"
+  },
+  {
+    "query": "为什么 C++ 标准和警告要写在 target 上？",
+    "step_id": "step-3",
+    "expected": "target-properties"
+  },
+  {
+    "query": "target compile features",
+    "step_id": "step-3",
+    "expected": "target-properties"
+  },
+  {
+    "query": "undefined reference 或 unresolved external 怎么办？",
+    "step_id": "step-4",
+    "expected": "undefined-reference"
+  },
+  {
+    "query": "链接找不到符号",
+    "step_id": "step-4",
+    "expected": "undefined-reference"
+  },
+  {
+    "query": "如何检查头文件是否自包含？",
+    "step_id": "step-4",
+    "expected": "header-self-contained"
+  },
+  {
+    "query": "头文件自包含",
+    "step_id": "step-4",
+    "expected": "header-self-contained"
+  },
+  {
+    "query": "多文件状态卡的迁移验收包括什么？",
+    "step_id": "step-5",
+    "expected": "cmake-migration"
+  },
+  {
+    "query": "多文件工程验收",
+    "step_id": "step-5",
+    "expected": "cmake-migration"
+  }
+]

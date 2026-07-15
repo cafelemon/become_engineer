@@ -1,0 +1,82 @@
+[
+  {
+    "query": "学习记录写什么",
+    "step_id": "step-1",
+    "expected": "record"
+  },
+  {
+    "query": "怎么开始学习记录",
+    "step_id": "step-1",
+    "expected": "record"
+  },
+  {
+    "query": "目标太大怎么办",
+    "step_id": "step-2",
+    "expected": "goal"
+  },
+  {
+    "query": "可执行目标怎么写",
+    "step_id": "step-2",
+    "expected": "goal"
+  },
+  {
+    "query": "主动练习是什么",
+    "step_id": "step-3",
+    "expected": "practice"
+  },
+  {
+    "query": "只看课算练习吗",
+    "step_id": "step-3",
+    "expected": "practice"
+  },
+  {
+    "query": "不会了怎么写问题",
+    "step_id": "step-4",
+    "expected": "question"
+  },
+  {
+    "query": "问题写不清楚",
+    "step_id": "step-4",
+    "expected": "question"
+  },
+  {
+    "query": "学习复盘怎么写",
+    "step_id": "step-5",
+    "expected": "review"
+  },
+  {
+    "query": "怎么总结学习结果",
+    "step_id": "step-5",
+    "expected": "review"
+  },
+  {
+    "query": "完成标准是什么",
+    "step_id": "step-5",
+    "expected": "evidence"
+  },
+  {
+    "query": "怎样证明完成",
+    "step_id": "step-5",
+    "expected": "evidence"
+  },
+  {
+    "query": "还没学会怎么办",
+    "step_id": "step-1",
+    "expected": "no-result"
+  },
+  {
+    "query": "暂时没结果算失败吗",
+    "step_id": "step-1",
+    "expected": "no-result"
+  },
+  {
+    "query": "下一步写继续学习吗",
+    "step_id": "step-5",
+    "expected": "next"
+  },
+  {
+    "query": "学习后做什么",
+    "step_id": "step-5",
+    "expected": "next"
+  }
+]

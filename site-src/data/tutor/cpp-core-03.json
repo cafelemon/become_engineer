@@ -1,0 +1,256 @@
+{
+  "version": 1,
+  "lesson": {
+    "id": "cpp-core-03",
+    "title": "头文件、源文件与最小 CMake 工程",
+    "path": "learning-paths/programming-languages/cpp-core/03-headers-sources-cmake/"
+  },
+  "steps": [
+    {
+      "id": "step-1",
+      "title": "开始任务"
+    },
+    {
+      "id": "step-2",
+      "title": "主动修改"
+    },
+    {
+      "id": "step-3",
+      "title": "按需知识"
+    },
+    {
+      "id": "step-4",
+      "title": "排错实验"
+    },
+    {
+      "id": "step-5",
+      "title": "迁移验收"
+    }
+  ],
+  "cards": [
+    {
+      "id": "cmake-stages",
+      "lesson_id": "cpp-core-03",
+      "step_id": "step-1",
+      "question": "CMake 配置、构建和测试有什么区别？",
+      "aliases": [
+        "cmake三步",
+        "cmake configure build ctest"
+      ],
+      "keywords": [
+        "CMake",
+        "配置",
+        "构建",
+        "CTest"
+      ],
+      "diagnostic": "你正在生成构建系统、编译目标，还是运行已注册测试？",
+      "hints": [
+        "配置生成构建系统，构建编译链接目标，CTest 运行测试；它们不是同一步。",
+        "依次运行配置、构建和测试命令；任一步失败都先修复该步，不把三类问题混在一起。"
+      ],
+      "example": "局部示例：`cmake -S . -B build`，随后 `cmake --build build`，最后 `ctest --test-dir build`。",
+      "answer": "按顺序执行 cmake -S/-B、cmake --build、ctest --test-dir，并分别查看反馈。",
+      "source": {
+        "label": "第一步：配置并构建课程工程",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "fresh-build",
+      "lesson_id": "cpp-core-03",
+      "step_id": "step-1",
+      "question": "为什么要使用全新的构建目录？",
+      "aliases": [
+        "新建build目录",
+        "CMake缓存问题"
+      ],
+      "keywords": [
+        "构建目录",
+        "缓存",
+        "CMake",
+        "验收"
+      ],
+      "diagnostic": "旧 build 目录是否可能保留不同配置或生成物？",
+      "hints": [
+        "独立构建目录隔离缓存和产物，能证明工程不依赖偶然的旧文件。",
+        "选用从未使用过的目录名重新配置，避免旧缓存让本次构建“碰巧”成功。"
+      ],
+      "example": "局部示例：`cmake -S . -B build-audit` 后再执行 `cmake --build build-audit`。",
+      "answer": "用新的目录执行完整配置、构建和测试，不要危险删除不确定路径。",
+      "source": {
+        "label": "第一步：配置并构建课程工程",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "header-source",
+      "lesson_id": "cpp-core-03",
+      "step_id": "step-2",
+      "question": "声明为什么放头文件，定义为什么放源文件？",
+      "aliases": [
+        "头文件和源文件区别",
+        "hpp cpp怎么分"
+      ],
+      "keywords": [
+        "头文件",
+        "源文件",
+        "声明",
+        "定义"
+      ],
+      "diagnostic": "其他翻译单元需要知道接口，还是需要复制实现？",
+      "hints": [
+        "头文件公开可调用接口；源文件保存一个实现，避免每个翻译单元重复定义。",
+        "从头文件复制一个声明的签名，再在源文件中核对返回类型、参数类型和命名空间完全一致。"
+      ],
+      "example": "局部示例：头文件的 `int remaining_hours(int, int);` 对应源文件必须有同签名定义。",
+      "answer": "让调用者 include 声明，确保每个非 inline 定义只在一个源文件。",
+      "source": {
+        "label": "第二步：主动追踪一个公开接口",
+        "href": "#step-2"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "include-guard",
+      "lesson_id": "cpp-core-03",
+      "step_id": "step-2",
+      "question": "include guard 有什么作用？",
+      "aliases": [
+        "ifndef define endif",
+        "头文件重复包含"
+      ],
+      "keywords": [
+        "include guard",
+        "ifndef",
+        "重复包含"
+      ],
+      "diagnostic": "同一头文件是否可能通过多个路径被处理多次？",
+      "hints": [
+        "guard 防止同一翻译单元重复处理头文件内容。",
+        "打开公开头文件，确认 guard 宏从文件第一处有效内容包住到最后的 `#endif`。"
+      ],
+      "example": "局部示例：`#ifndef BECOME_ENGINEER_STUDY_STUDY_STATUS_HPP`、`#define ...`、文件末尾 `#endif`。",
+      "answer": "使用项目唯一宏包住头文件，并保持头文件自包含。",
+      "source": {
+        "label": "第二步：主动追踪一个公开接口",
+        "href": "#step-2"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "target-properties",
+      "lesson_id": "cpp-core-03",
+      "step_id": "step-3",
+      "question": "为什么 C++ 标准和警告要写在 target 上？",
+      "aliases": [
+        "target compile features",
+        "不要全局flags"
+      ],
+      "keywords": [
+        "target",
+        "CMake",
+        "警告",
+        "C++20"
+      ],
+      "diagnostic": "这项要求属于所有未来目标，还是当前库/可执行文件？",
+      "hints": [
+        "目标化配置把需求附着在真正使用它的库或程序上，依赖传播可控。",
+        "把 C++20 和警告配置写在实际库或可执行目标旁，重配后查看只有需要的目标接收它们。"
+      ],
+      "example": "局部示例：`target_compile_features(study_status PRIVATE cxx_std_20)`。",
+      "answer": "优先 target_compile_features 与 target_compile_options，不拼全局 flags。",
+      "source": {
+        "label": "第三步：修改目标化构建的一项行为",
+        "href": "#step-3"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "undefined-reference",
+      "lesson_id": "cpp-core-03",
+      "step_id": "step-4",
+      "question": "undefined reference 或 unresolved external 怎么办？",
+      "aliases": [
+        "链接找不到符号",
+        "unresolved external"
+      ],
+      "keywords": [
+        "链接",
+        "符号",
+        "源文件",
+        "CMake"
+      ],
+      "diagnostic": "声明存在但定义是否被编译并链接到当前目标？",
+      "hints": [
+        "这类信息通常表示链接器找不到已声明符号的定义。",
+        "先检查函数声明与定义签名一致，再确认实现 `.cpp` 列在 `add_library` 或 `add_executable` 的源文件中。"
+      ],
+      "example": "局部示例：漏掉 `study_status.cpp` 时，调用者可编译但链接器会找不到其中定义的符号。",
+      "answer": "检查签名一致、实现源文件在目标源列表中、所需库已链接。",
+      "source": {
+        "label": "第四步：故意制造一次多文件失败",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "header-self-contained",
+      "lesson_id": "cpp-core-03",
+      "step_id": "step-2",
+      "question": "如何检查头文件是否自包含？",
+      "aliases": [
+        "头文件自包含",
+        "include顺序问题"
+      ],
+      "keywords": [
+        "头文件",
+        "自包含",
+        "include"
+      ],
+      "diagnostic": "头文件是否依赖调用者先 include 某个标准库头？",
+      "hints": [
+        "自包含头文件应包含自己声明所需的直接依赖。",
+        "建立一个最小 `.cpp`，只 include 目标公开头文件并编译；缺少直接 include 时该测试会失败。"
+      ],
+      "example": "局部示例：`#include \"study/study_status.hpp\"\\nint main() {}` 应无需调用者预先 include `<string>`。",
+      "answer": "用单独小翻译单元 include 该头文件并构建，避免靠偶然 include 顺序。",
+      "source": {
+        "label": "第二步：主动追踪一个公开接口",
+        "href": "#step-2"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "cmake-migration",
+      "lesson_id": "cpp-core-03",
+      "step_id": "step-5",
+      "question": "多文件状态卡的迁移验收包括什么？",
+      "aliases": [
+        "多文件工程验收",
+        "CMake迁移任务"
+      ],
+      "keywords": [
+        "迁移",
+        "CTest",
+        "build",
+        "Git"
+      ],
+      "diagnostic": "你是否在新构建目录完成三阶段并检查 Git 状态？",
+      "hints": [
+        "验收是配置、构建、测试均成功，且产物留在构建目录。",
+        "在新构建目录增加一项小函数或断言，依次配置、构建、运行 CTest，并检查 Git 没出现 build 产物。"
+      ],
+      "example": "局部示例：`cmake -S . -B build-verify && cmake --build build-verify && ctest --test-dir build-verify`。",
+      "answer": "再新增一个小函数或测试，确认只修改对应目标、没有把生成物入库。",
+      "source": {
+        "label": "第五步：迁移验收与下一步",
+        "href": "#step-5"
+      },
+      "updated_at": "2026-07-15"
+    }
+  ]
+}

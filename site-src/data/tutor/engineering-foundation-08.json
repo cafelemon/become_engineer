@@ -1,0 +1,265 @@
+{
+  "version": 1,
+  "lesson": {
+    "id": "engineering-foundation-08",
+    "title": "Docker最小认知",
+    "path": "learning-paths/engineering-foundation/stage-0/08-docker-basics/"
+  },
+  "steps": [
+    {
+      "id": "step-1",
+      "title": "检查可用性"
+    },
+    {
+      "id": "step-2",
+      "title": "区分镜像容器"
+    },
+    {
+      "id": "step-3",
+      "title": "读端口"
+    },
+    {
+      "id": "step-4",
+      "title": "判断挂载"
+    },
+    {
+      "id": "step-5",
+      "title": "安全迁移"
+    }
+  ],
+  "cards": [
+    {
+      "id": "version",
+      "lesson_id": "engineering-foundation-08",
+      "step_id": "step-1",
+      "question": "Docker 未安装还能学吗",
+      "aliases": [
+        "docker 命令找不到",
+        "Docker 未安装怎么办"
+      ],
+      "keywords": [
+        "docker",
+        "docker未安装",
+        "版本",
+        "命令找不到"
+      ],
+      "diagnostic": "当前任务是“执行 `docker --version`；没有安装也如实记录命令和输出。”。处理“Docker 未安装还能学吗”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：执行 `docker --version`；没有安装也如实记录命令和输出。",
+        "本步成功证据是：知道“未安装”是检查结果，不是学习失败。 可以；记录 docker --version 输出，本课先建立概念与安全边界。"
+      ],
+      "example": "局部检查示例：知道“未安装”是检查结果，不是学习失败。",
+      "answer": "可以；记录 docker --version 输出，本课先建立概念与安全边界。",
+      "source": {
+        "label": "检查可用性",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "image",
+      "lesson_id": "engineering-foundation-08",
+      "step_id": "step-2",
+      "question": "镜像和容器区别",
+      "aliases": [
+        "Docker image container 区别",
+        "镜像是什么容器是什么"
+      ],
+      "keywords": [
+        "镜像",
+        "容器",
+        "image",
+        "container"
+      ],
+      "diagnostic": "当前任务是“将镜像写成“可复用模板”，将容器写成“由模板启动的运行实例”。”。处理“镜像和容器区别”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：将镜像写成“可复用模板”，将容器写成“由模板启动的运行实例”。",
+        "本步成功证据是：能判断 `docker run` 使用镜像并创建/启动容器。 镜像是可复用模板，容器是由镜像启动的运行实例。"
+      ],
+      "example": "局部检查示例：能判断 `docker run` 使用镜像并创建/启动容器。",
+      "answer": "镜像是可复用模板，容器是由镜像启动的运行实例。",
+      "source": {
+        "label": "区分镜像容器",
+        "href": "#step-2"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "run",
+      "lesson_id": "engineering-foundation-08",
+      "step_id": "step-2",
+      "question": "docker run 做什么",
+      "aliases": [
+        "docker run 命令怎么看",
+        "docker run 是启动容器吗"
+      ],
+      "keywords": [
+        "docker run",
+        "镜像",
+        "容器",
+        "启动"
+      ],
+      "diagnostic": "当前任务是“将镜像写成“可复用模板”，将容器写成“由模板启动的运行实例”。”。处理“docker run 做什么”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：将镜像写成“可复用模板”，将容器写成“由模板启动的运行实例”。",
+        "本步成功证据是：能判断 `docker run` 使用镜像并创建/启动容器。 docker run 基于指定镜像创建并启动容器，参数决定端口、挂载等行为。"
+      ],
+      "example": "局部检查示例：能判断 `docker run` 使用镜像并创建/启动容器。",
+      "answer": "docker run 基于指定镜像创建并启动容器，参数决定端口、挂载等行为。",
+      "source": {
+        "label": "区分镜像容器",
+        "href": "#step-2"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "port",
+      "lesson_id": "engineering-foundation-08",
+      "step_id": "step-3",
+      "question": "-p 8080:80 意思",
+      "aliases": [
+        "Docker 端口映射怎么看",
+        "端口映射左右是什么"
+      ],
+      "keywords": [
+        "端口",
+        "-p",
+        "8080",
+        "80",
+        "映射"
+      ],
+      "diagnostic": "当前任务是“解释 `-p 8080:80` 中哪个是本机端口、哪个是容器端口。”。处理“-p 8080:80 意思”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：解释 `-p 8080:80` 中哪个是本机端口、哪个是容器端口。",
+        "本步成功证据是：能说明浏览器访问本机 `8080` 后如何到达容器服务。 左侧 8080 是本机端口，右侧 80 是容器内服务端口。"
+      ],
+      "example": "局部检查示例：能说明浏览器访问本机 `8080` 后如何到达容器服务。",
+      "answer": "左侧 8080 是本机端口，右侧 80 是容器内服务端口。",
+      "source": {
+        "label": "读端口",
+        "href": "#step-3"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "volume",
+      "lesson_id": "engineering-foundation-08",
+      "step_id": "step-4",
+      "question": "Docker 挂载风险",
+      "aliases": [
+        "-v 参数是什么意思",
+        "容器能访问本机文件吗"
+      ],
+      "keywords": [
+        "挂载",
+        "-v",
+        "本机目录",
+        "风险"
+      ],
+      "diagnostic": "当前任务是“看一条带 `-v` 和 `-e` 的命令，指出本机目录会暴露给容器、密钥不能写进公开命令。”。处理“Docker 挂载风险”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：看一条带 `-v` 和 `-e` 的命令，指出本机目录会暴露给容器、密钥不能写进公开命令。",
+        "本步成功证据是：能说出挂载和环境变量各自传递什么。 -v 会将本机路径交给容器访问，必须核对路径与写入风险。"
+      ],
+      "example": "局部检查示例：能说出挂载和环境变量各自传递什么。",
+      "answer": "-v 会将本机路径交给容器访问，必须核对路径与写入风险。",
+      "source": {
+        "label": "判断挂载",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "secret",
+      "lesson_id": "engineering-foundation-08",
+      "step_id": "step-4",
+      "question": "环境变量能放密钥吗",
+      "aliases": [
+        "-e 参数泄露密码吗",
+        "Docker 密钥怎么处理"
+      ],
+      "keywords": [
+        "环境变量",
+        "-e",
+        "密钥",
+        "密码"
+      ],
+      "diagnostic": "当前任务是“看一条带 `-v` 和 `-e` 的命令，指出本机目录会暴露给容器、密钥不能写进公开命令。”。处理“环境变量能放密钥吗”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：看一条带 `-v` 和 `-e` 的命令，指出本机目录会暴露给容器、密钥不能写进公开命令。",
+        "本步成功证据是：能说出挂载和环境变量各自传递什么。 -e 可以传配置，但真实令牌和密码不能出现在公开命令、截图或提交中。"
+      ],
+      "example": "局部检查示例：能说出挂载和环境变量各自传递什么。",
+      "answer": "-e 可以传配置，但真实令牌和密码不能出现在公开命令、截图或提交中。",
+      "source": {
+        "label": "判断挂载",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "logs",
+      "lesson_id": "engineering-foundation-08",
+      "step_id": "step-5",
+      "question": "docker ps 和 logs 区别",
+      "aliases": [
+        "怎么查看容器状态日志",
+        "Docker 如何看日志"
+      ],
+      "keywords": [
+        "docker ps",
+        "docker logs",
+        "容器",
+        "日志"
+      ],
+      "diagnostic": "当前任务是“记录你检查到的 Docker 状态，并写下下一步只验证一个命令或概念。”。处理“docker ps 和 logs 区别”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：记录你检查到的 Docker 状态，并写下下一步只验证一个命令或概念。",
+        "本步成功证据是：记录不含真实密钥、不把“镜像”和“容器”混淆。 docker ps 查看容器列表与状态；docker logs 查看指定容器输出。"
+      ],
+      "example": "局部检查示例：记录不含真实密钥、不把“镜像”和“容器”混淆。",
+      "answer": "docker ps 查看容器列表与状态；docker logs 查看指定容器输出。",
+      "source": {
+        "label": "安全迁移",
+        "href": "#step-5"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "safe",
+      "lesson_id": "engineering-foundation-08",
+      "step_id": "step-5",
+      "question": "Docker 记录注意什么",
+      "aliases": [
+        "Docker 验收怎么写",
+        "Docker 安全检查"
+      ],
+      "keywords": [
+        "Docker",
+        "记录",
+        "安全",
+        "验收"
+      ],
+      "diagnostic": "当前任务是“记录你检查到的 Docker 状态，并写下下一步只验证一个命令或概念。”。处理“Docker 记录注意什么”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：记录你检查到的 Docker 状态，并写下下一步只验证一个命令或概念。",
+        "本步成功证据是：记录不含真实密钥、不把“镜像”和“容器”混淆。 记录命令用途和当前状态，不暴露真实密钥或私有路径。"
+      ],
+      "example": "局部检查示例：记录不含真实密钥、不把“镜像”和“容器”混淆。",
+      "answer": "记录命令用途和当前状态，不暴露真实密钥或私有路径。",
+      "source": {
+        "label": "安全迁移",
+        "href": "#step-5"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    }
+  ]
+}

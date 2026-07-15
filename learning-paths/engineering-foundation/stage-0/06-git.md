@@ -1,5 +1,80 @@
 # Git
 
+<div class="be-tutor-mount" data-tutor-lesson="engineering-foundation-06" aria-hidden="true"></div>
+
+本课在一个临时学习目录完成第一次本地 Git 闭环：初始化、查看状态、暂存、提交、查看历史；不直接改动当前公开仓库。
+
+## 五步任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务">
+  <span role="listitem">1 建立临时仓库</span><span role="listitem">2 查看状态</span><span role="listitem">3 暂存变化</span><span role="listitem">4 创建提交</span><span role="listitem">5 检查历史</span>
+</div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+### 第一步：在临时目录初始化仓库
+
+**任务：** 新建一个只用于练习的目录，进入后执行 `git init`。**成功证据：** Git 提示已初始化仓库，目录里出现 `.git` 管理信息。
+
+??? tip "提示一"
+    不要用当前公开课程仓库练习随意提交。
+??? tip "提示二"
+    先用 `pwd` 或 `Get-Location` 确认自己进入的是临时目录。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+### 第二步：创建记录并查看状态
+
+**任务：** 在临时仓库创建 `README.md`，写下一句练习说明，执行 `git status`。**成功证据：** 能看到未跟踪文件状态。
+
+??? tip "提示一"
+    工作区是你正在编辑的文件状态，`git status` 不会修改文件。
+??? tip "提示二"
+    看不到文件时，先确认文件已经保存且当前目录正确。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+### 第三步：把变化放入暂存区
+
+**任务：** 执行 `git add README.md`，再次执行 `git status`。**成功证据：** 文件显示为待提交，而不是未跟踪。
+
+??? tip "提示一"
+    `git add` 是选择下一次提交包含哪些变化，不是永久保存。
+??? tip "提示二"
+    先精确写文件名，理解后再使用更宽泛的路径。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+### 第四步：创建一次有意义的提交
+
+**任务：** 执行 `git commit -m "add learning note"`。**成功证据：** 命令成功并返回提交标识；若要求配置身份，按报错完成本机配置后重试。
+
+??? tip "提示一"
+    提交消息描述这次变化做了什么，而不是写“修改”。
+??? tip "提示二"
+    若提示没有暂存内容，回到第三步重新查看状态。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+### 第五步：查看历史并完成迁移
+
+**任务：** 执行 `git log --oneline`，然后在 README 追加一行并说明下一次应如何重复流程。**成功证据：** 能区分工作区、暂存区、提交历史。
+
+??? tip "提示一"
+    历史中每一行对应一次提交，不等于当前未提交的修改。
+??? tip "提示二"
+    第二次变化先 `git status`，再决定是否暂存和提交。
+
+</section>
+
 ## 前置知识
 
 - 已完成 [学习方法](01-learning-method.md)。

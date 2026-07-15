@@ -1,5 +1,80 @@
 # 文件系统
 
+<div class="be-tutor-mount" data-tutor-lesson="engineering-foundation-02" aria-hidden="true"></div>
+
+本课的产出不是背定义，而是在你的学习工作区创建一棵可解释的目录树，并能写出其中任意文件的路径。
+
+## 五步任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务">
+  <span role="listitem">1 定位工作区</span><span role="listitem">2 创建目录</span><span role="listitem">3 放入文件</span><span role="listitem">4 写出路径</span><span role="listitem">5 检查迁移</span>
+</div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+### 第一步：定位学习工作区
+
+**任务：** 找到你保存学习记录的位置，确认它是这次练习的项目根目录。**成功证据：** 能说出该目录的名称和位置。
+
+??? tip "提示一"
+    项目根目录是本次学习文件共同归属的最外层目录。
+??? tip "提示二"
+    不要把练习散放在下载目录或桌面多个位置。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+### 第二步：创建可读目录结构
+
+**任务：** 在工作区创建 `notes`、`practice` 和 `assets` 三个目录。**成功证据：** 在文件管理器或编辑器文件树中能看见三层级条目。
+
+??? tip "提示一"
+    目录用于组织文件，不是文件本身。
+??? tip "提示二"
+    名称使用清楚、稳定的英文小写或你能持续使用的命名方式。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+### 第三步：把记录放进正确位置
+
+**任务：** 把上一课的 `learning-log.md` 放入 `notes`，或在其中新建同名文件。**成功证据：** 能解释文件名和扩展名分别是什么。
+
+??? tip "提示一"
+    `learning-log.md` 的 `.md` 表示 Markdown 文档。
+??? tip "提示二"
+    移动后重新打开一次，确认不是只创建了快捷方式。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+### 第四步：分别写出相对与绝对路径
+
+**任务：** 从项目根目录写出 `notes/learning-log.md` 的相对路径；再查看系统显示的完整位置。**成功证据：** 两种路径都能对应同一文件。
+
+??? tip "提示一"
+    相对路径从当前工作位置开始写。
+??? tip "提示二"
+    绝对路径从磁盘根或用户目录开始，通常更长。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+### 第五步：故意判断一个错误路径
+
+**任务：** 写一个不存在的路径并说明它错在目录名、文件名还是起点。然后为下一课保留工作区。**成功证据：** 能用“当前目录 + 相对路径”解释错误。
+
+??? tip "提示一"
+    先确认路径中的每一级目录是否真实存在。
+??? tip "提示二"
+    下一课会在这个工作区中用终端查看这些文件。
+
+</section>
+
 ## 前置知识
 
 - 已完成 [学习方法](01-learning-method.md)。

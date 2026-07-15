@@ -1,0 +1,255 @@
+{
+  "version": 1,
+  "lesson": {
+    "id": "python-core-02",
+    "title": "可维护函数接口、协议与模块边界",
+    "path": "learning-paths/programming-languages/python-core/02-maintainable-function-interfaces-protocols-modules/"
+  },
+  "steps": [
+    {
+      "id": "step-1",
+      "title": "开始任务"
+    },
+    {
+      "id": "step-2",
+      "title": "主动修改"
+    },
+    {
+      "id": "step-3",
+      "title": "按需知识"
+    },
+    {
+      "id": "step-4",
+      "title": "排错实验"
+    },
+    {
+      "id": "step-5",
+      "title": "迁移验收"
+    }
+  ],
+  "cards": [
+    {
+      "id": "interface-run",
+      "lesson_id": "python-core-02",
+      "step_id": "step-1",
+      "question": "可替换输出报告器如何验证？",
+      "aliases": [
+        "报告器接口测试",
+        "可替换输出怎么运行"
+      ],
+      "keywords": [
+        "报告器",
+        "输出",
+        "mypy",
+        "测试"
+      ],
+      "diagnostic": "你是否分别运行具体输出和内存输出测试？",
+      "hints": [
+        "运行程序确认用户可见输出，再用内存输出验证核心逻辑。",
+        "运行真实输出流程，再运行使用内存输出对象的测试；两者应共享同一分析结果。"
+      ],
+      "example": "局部示例：测试可把报告行收集进列表，而命令行版本仍把同一行写到终端。",
+      "answer": "mypy 与 unittest 都通过，说明接口与行为同时受检。",
+      "source": {
+        "label": "第一步：运行可替换输出的报告器",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "parameter-kinds",
+      "lesson_id": "python-core-02",
+      "step_id": "step-2",
+      "question": "位置参数和仅限关键字参数怎么选？",
+      "aliases": [
+        "斜杠星号参数",
+        "keyword only"
+      ],
+      "keywords": [
+        "参数",
+        "关键字",
+        "签名",
+        "调用"
+      ],
+      "diagnostic": "调用时该选项的含义是否容易被位置顺序误解？",
+      "hints": [
+        "稳定、短小的核心值可位置传递；含义容易混淆的选项用仅限关键字。",
+        "把易混淆的开关改为仅限关键字，在调用点明确写出参数名，比较可读性。"
+      ],
+      "example": "局部示例：`def render(title: str, *, include_details: bool) -> str:` 必须以 `include_details=True` 调用。",
+      "answer": "让签名表达意图，并在调用点用清晰关键字。",
+      "source": {
+        "label": "第二步：读出一个函数接口",
+        "href": "#step-2"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "mutable-default",
+      "lesson_id": "python-core-02",
+      "step_id": "step-4",
+      "question": "为什么不能把可变对象当默认参数？",
+      "aliases": [
+        "默认列表陷阱",
+        "mutable default"
+      ],
+      "keywords": [
+        "默认参数",
+        "列表",
+        "共享状态"
+      ],
+      "diagnostic": "默认对象是在每次调用创建，还是函数定义时创建？",
+      "hints": [
+        "默认参数只求值一次；可变列表/字典会在调用之间共享。",
+        "连续两次调用使用默认列表的函数，观察第二次是否看到第一次留下的内容；随后改用 None。"
+      ],
+      "example": "局部示例：`def add_tag(tag: str, tags: list[str] | None = None) -> list[str]:`。",
+      "answer": "用 None 作为默认值，在函数体内创建新容器。",
+      "source": {
+        "label": "第四步：复现接口失败",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "protocol",
+      "lesson_id": "python-core-02",
+      "step_id": "step-3",
+      "question": "Protocol 和 Callable 分别什么时候用？",
+      "aliases": [
+        "Protocol和Callable区别",
+        "结构化兼容"
+      ],
+      "keywords": [
+        "Protocol",
+        "Callable",
+        "接口",
+        "回调"
+      ],
+      "diagnostic": "你只需要一个简单调用签名，还是需要命名的多项能力？",
+      "hints": [
+        "简单回调用 Callable；需要清晰命名或多成员约束时使用 Protocol。",
+        "为输出边界写一个满足同一调用签名的最小对象，并把它传入应用流程。"
+      ],
+      "example": "局部示例：`class Output(Protocol):\\n    def write(self, text: str) -> None: ...`。",
+      "answer": "普通实现无需继承 Protocol，只要结构满足接口即可。",
+      "source": {
+        "label": "第三步：替换边界而非核心逻辑",
+        "href": "#step-3"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "dependency-direction",
+      "lesson_id": "python-core-02",
+      "step_id": "step-3",
+      "question": "为什么业务模块不应该反向导入 main？",
+      "aliases": [
+        "循环导入",
+        "依赖方向"
+      ],
+      "keywords": [
+        "模块",
+        "依赖",
+        "main",
+        "循环导入"
+      ],
+      "diagnostic": "核心分析是否只依赖数据模型和接口，而非具体应用入口？",
+      "hints": [
+        "反向依赖会制造循环与隐藏耦合，降低测试替换能力。",
+        "从业务模块的 import 列表开始检查：它应依赖模型和协议，而不是反向 import 应用入口。"
+      ],
+      "example": "局部示例：`main.py` 装配 `ConsoleOutput`；分析模块只接收 `Output` 参数。",
+      "answer": "让 main 负责装配具体依赖，业务模块保持向内依赖。",
+      "source": {
+        "label": "第三步：替换边界而非核心逻辑",
+        "href": "#step-3"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "protocol-failure",
+      "lesson_id": "python-core-02",
+      "step_id": "step-4",
+      "question": "回调不满足 Protocol 怎么排查？",
+      "aliases": [
+        "Protocol不匹配",
+        "mypy协议错误"
+      ],
+      "keywords": [
+        "Protocol",
+        "mypy",
+        "参数",
+        "返回"
+      ],
+      "diagnostic": "实现的参数种类、名称和返回类型是否与协议兼容？",
+      "hints": [
+        "结构化检查会比较调用契约，不只比较函数名。",
+        "让实现的参数或返回类型暂时与协议不同，运行 mypy 后逐项对照协议签名恢复兼容。"
+      ],
+      "example": "局部示例：协议要求 `write(self, text: str) -> None` 时，`write(self, value: int) -> int` 不兼容。",
+      "answer": "从协议签名逐项比较实现，修复参数种类和返回类型。",
+      "source": {
+        "label": "第四步：复现接口失败",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "public-boundary",
+      "lesson_id": "python-core-02",
+      "step_id": "step-3",
+      "question": "__all__ 和下划线是安全权限吗？",
+      "aliases": [
+        "__all__安全吗",
+        "下划线私有"
+      ],
+      "keywords": [
+        "__all__",
+        "下划线",
+        "公开接口"
+      ],
+      "diagnostic": "你是想表达维护约定，还是阻止恶意访问？",
+      "hints": [
+        "它们表达公开 API 约定，不是运行时安全边界。",
+        "只从模块公开名称导入报告函数，再确认 `__all__` 不会阻止 Python 访问下划线内部名称。"
+      ],
+      "example": "局部示例：`__all__ = [\"render_report\"]` 表达稳定入口，不等同于安全隔离。",
+      "answer": "把稳定名称列为公开，测试不要依赖内部实现细节。",
+      "source": {
+        "label": "第三步：替换边界而非核心逻辑",
+        "href": "#step-3"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "interface-migration",
+      "lesson_id": "python-core-02",
+      "step_id": "step-5",
+      "question": "如何新增输出实现而不修改核心分析？",
+      "aliases": [
+        "新增报告输出",
+        "接口迁移验收"
+      ],
+      "keywords": [
+        "迁移",
+        "输出",
+        "Protocol",
+        "测试"
+      ],
+      "diagnostic": "新输出实现是否满足现有协议，并由 main 在边界装配？",
+      "hints": [
+        "先实现同一输出接口，再把它传给应用流程。",
+        "新增输出实现后，先用内存输出断言生成的行，再从 `main` 选择该实现，不改分析模块。"
+      ],
+      "example": "局部示例：`class ConsoleOutput: def write(self, text: str) -> None: print(text)`。",
+      "answer": "用内存输出和具体输出分别测试，确保业务模块无反向导入。",
+      "source": {
+        "label": "第五步：迁移验收与下一步",
+        "href": "#step-5"
+      },
+      "updated_at": "2026-07-15"
+    }
+  ]
+}

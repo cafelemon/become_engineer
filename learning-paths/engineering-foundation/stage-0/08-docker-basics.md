@@ -1,5 +1,80 @@
 # Docker最小认知
 
+<div class="be-tutor-mount" data-tutor-lesson="engineering-foundation-08" aria-hidden="true"></div>
+
+本课用“读懂并安全验证一条容器命令”建立 Docker 最小认知：不强制安装，不执行生产部署，也不暴露任何密钥。
+
+## 五步任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务">
+  <span role="listitem">1 检查可用性</span><span role="listitem">2 区分镜像容器</span><span role="listitem">3 读端口</span><span role="listitem">4 判断挂载</span><span role="listitem">5 安全迁移</span>
+</div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+### 第一步：检查 Docker 是否可用
+
+**任务：** 执行 `docker --version`；没有安装也如实记录命令和输出。**成功证据：** 知道“未安装”是检查结果，不是学习失败。
+
+??? tip "提示一"
+    本课大部分练习可通过阅读命令完成，不要求立刻安装 Docker。
+??? tip "提示二"
+    命令找不到时，记录完整报错和当前环境，先不要复制不明安装脚本。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+### 第二步：用一句话区分镜像和容器
+
+**任务：** 将镜像写成“可复用模板”，将容器写成“由模板启动的运行实例”。**成功证据：** 能判断 `docker run` 使用镜像并创建/启动容器。
+
+??? tip "提示一"
+    镜像不等于正在运行的程序；容器才有运行状态。
+??? tip "提示二"
+    同一个镜像可以启动多个彼此独立的容器。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+### 第三步：读懂一次端口映射
+
+**任务：** 解释 `-p 8080:80` 中哪个是本机端口、哪个是容器端口。**成功证据：** 能说明浏览器访问本机 `8080` 后如何到达容器服务。
+
+??? tip "提示一"
+    冒号左侧是宿主机对外暴露的端口，右侧是容器内服务端口。
+??? tip "提示二"
+    端口被占用时，换左侧端口；不要随意改变服务实际监听的右侧端口。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+### 第四步：判断挂载与环境变量风险
+
+**任务：** 看一条带 `-v` 和 `-e` 的命令，指出本机目录会暴露给容器、密钥不能写进公开命令。**成功证据：** 能说出挂载和环境变量各自传递什么。
+
+??? tip "提示一"
+    `-v` 将本机路径交给容器访问，路径写错可能写入意外位置。
+??? tip "提示二"
+    `-e` 可传配置，但令牌和密码不应出现在截图、提交或公开文档。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+### 第五步：完成安全学习记录
+
+**任务：** 记录你检查到的 Docker 状态，并写下下一步只验证一个命令或概念。**成功证据：** 记录不含真实密钥、不把“镜像”和“容器”混淆。
+
+??? tip "提示一"
+    还未安装时，可记录“未安装，已理解 docker --version 的用途”。
+??? tip "提示二"
+    以后启动容器时先检查端口、挂载路径和环境变量来源。
+
+</section>
+
 本节先建立 Docker 的最小认知：它不是必须一开始就精通的工具，但后面做 Web、AI、LLM 和部署时会经常遇到。
 
 工程基础入门只要求你知道 Docker 解决什么问题，能读懂最常见的几个词：镜像、容器、端口、挂载和环境变量。复杂的 Dockerfile、docker compose 和生产部署放到后续项目中学习。

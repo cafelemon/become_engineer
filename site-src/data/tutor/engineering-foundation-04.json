@@ -1,0 +1,264 @@
+{
+  "version": 1,
+  "lesson": {
+    "id": "engineering-foundation-04",
+    "title": "编辑器",
+    "path": "learning-paths/engineering-foundation/stage-0/04-editor/"
+  },
+  "steps": [
+    {
+      "id": "step-1",
+      "title": "打开根目录"
+    },
+    {
+      "id": "step-2",
+      "title": "定位文件"
+    },
+    {
+      "id": "step-3",
+      "title": "修改保存"
+    },
+    {
+      "id": "step-4",
+      "title": "搜索验证"
+    },
+    {
+      "id": "step-5",
+      "title": "内置终端迁移"
+    }
+  ],
+  "cards": [
+    {
+      "id": "folder",
+      "lesson_id": "engineering-foundation-04",
+      "step_id": "step-1",
+      "question": "为何打开项目文件夹",
+      "aliases": [
+        "打开文件还是文件夹",
+        "编辑器打开根目录"
+      ],
+      "keywords": [
+        "打开文件夹",
+        "项目根目录",
+        "文件树",
+        "编辑器"
+      ],
+      "diagnostic": "当前任务是“选择“打开文件夹/打开目录”，打开学习工作区而不是单个文件。”。处理“为何打开项目文件夹”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：选择“打开文件夹/打开目录”，打开学习工作区而不是单个文件。",
+        "本步成功证据是：文件树能显示 `notes`、`practice` 和 `assets`。 打开根目录能保留文件树、搜索范围和相对路径上下文。"
+      ],
+      "example": "局部检查示例：文件树能显示 `notes`、`practice` 和 `assets`。",
+      "answer": "打开根目录能保留文件树、搜索范围和相对路径上下文。",
+      "source": {
+        "label": "打开根目录",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "tree",
+      "lesson_id": "engineering-foundation-04",
+      "step_id": "step-2",
+      "question": "文件树有什么用",
+      "aliases": [
+        "怎么在编辑器找文件",
+        "文件树如何定位"
+      ],
+      "keywords": [
+        "文件树",
+        "定位",
+        "目录",
+        "文件"
+      ],
+      "diagnostic": "当前任务是“展开 `notes` 并打开 `learning-log.md`。”。处理“文件树有什么用”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：展开 `notes` 并打开 `learning-log.md`。",
+        "本步成功证据是：标签页显示正确文件，文件树中也能定位它。 文件树按目录层级定位项目文件，例如 notes/learning-log.md。"
+      ],
+      "example": "局部检查示例：标签页显示正确文件，文件树中也能定位它。",
+      "answer": "文件树按目录层级定位项目文件，例如 notes/learning-log.md。",
+      "source": {
+        "label": "定位文件",
+        "href": "#step-2"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "tabs",
+      "lesson_id": "engineering-foundation-04",
+      "step_id": "step-2",
+      "question": "标签页和文件树区别",
+      "aliases": [
+        "编辑器标签页是什么",
+        "关闭标签会删文件吗"
+      ],
+      "keywords": [
+        "标签页",
+        "文件树",
+        "打开",
+        "切换"
+      ],
+      "diagnostic": "当前任务是“展开 `notes` 并打开 `learning-log.md`。”。处理“标签页和文件树区别”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：展开 `notes` 并打开 `learning-log.md`。",
+        "本步成功证据是：标签页显示正确文件，文件树中也能定位它。 文件树显示项目条目，标签页用于切换已打开文件；关闭标签不会删除文件。"
+      ],
+      "example": "局部检查示例：标签页显示正确文件，文件树中也能定位它。",
+      "answer": "文件树显示项目条目，标签页用于切换已打开文件；关闭标签不会删除文件。",
+      "source": {
+        "label": "定位文件",
+        "href": "#step-2"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "save",
+      "lesson_id": "engineering-foundation-04",
+      "step_id": "step-3",
+      "question": "为何修改后保存",
+      "aliases": [
+        "编辑器怎么确认保存",
+        "保存后怎么验证"
+      ],
+      "keywords": [
+        "保存",
+        "修改",
+        "圆点",
+        "磁盘"
+      ],
+      "diagnostic": "当前任务是“在学习记录追加一行结果，保存后关闭再打开确认内容仍在。”。处理“为何修改后保存”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：在学习记录追加一行结果，保存后关闭再打开确认内容仍在。",
+        "本步成功证据是：未保存标记消失，重新打开仍能看到新内容。 保存才会把屏幕修改写入磁盘；关闭重开可验证保存。"
+      ],
+      "example": "局部检查示例：未保存标记消失，重新打开仍能看到新内容。",
+      "answer": "保存才会把屏幕修改写入磁盘；关闭重开可验证保存。",
+      "source": {
+        "label": "修改保存",
+        "href": "#step-3"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "search",
+      "lesson_id": "engineering-foundation-04",
+      "step_id": "step-4",
+      "question": "怎样搜索整个工作区",
+      "aliases": [
+        "编辑器搜索没结果",
+        "搜索所有文件"
+      ],
+      "keywords": [
+        "搜索",
+        "工作区",
+        "关键词",
+        "保存"
+      ],
+      "diagnostic": "当前任务是“在工作区搜索“目标”或你写下的关键词，确认搜索范围。”。处理“怎样搜索整个工作区”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：在工作区搜索“目标”或你写下的关键词，确认搜索范围。",
+        "本步成功证据是：能说出搜索结果来自哪个文件。 使用工作区搜索；没有结果时检查拼写、保存状态和打开目录。"
+      ],
+      "example": "局部检查示例：能说出搜索结果来自哪个文件。",
+      "answer": "使用工作区搜索；没有结果时检查拼写、保存状态和打开目录。",
+      "source": {
+        "label": "搜索验证",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "terminal",
+      "lesson_id": "engineering-foundation-04",
+      "step_id": "step-5",
+      "question": "内置终端有什么用",
+      "aliases": [
+        "编辑器终端和系统终端一样吗",
+        "编辑器终端在哪"
+      ],
+      "keywords": [
+        "内置终端",
+        "终端",
+        "项目根目录",
+        "命令"
+      ],
+      "diagnostic": "当前任务是“打开编辑器内置终端，执行目录查看命令确认刚才保存的文件。”。处理“内置终端有什么用”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：打开编辑器内置终端，执行目录查看命令确认刚才保存的文件。",
+        "本步成功证据是：编辑器和终端看到的是同一工作区。 内置终端仍需先用 pwd 和 ls 确认实际当前目录。"
+      ],
+      "example": "局部检查示例：编辑器和终端看到的是同一工作区。",
+      "answer": "内置终端仍需先用 pwd 和 ls 确认实际当前目录。",
+      "source": {
+        "label": "内置终端迁移",
+        "href": "#step-5"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "wrong",
+      "lesson_id": "engineering-foundation-04",
+      "step_id": "step-1",
+      "question": "文件树为空怎么办",
+      "aliases": [
+        "打开错目录怎么办",
+        "编辑器没有文件"
+      ],
+      "keywords": [
+        "文件树",
+        "空",
+        "目录",
+        "项目根目录"
+      ],
+      "diagnostic": "当前任务是“选择“打开文件夹/打开目录”，打开学习工作区而不是单个文件。”。处理“文件树为空怎么办”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：选择“打开文件夹/打开目录”，打开学习工作区而不是单个文件。",
+        "本步成功证据是：文件树能显示 `notes`、`practice` 和 `assets`。 重新打开包含 notes、practice、assets 的工作区父目录。"
+      ],
+      "example": "局部检查示例：文件树能显示 `notes`、`practice` 和 `assets`。",
+      "answer": "重新打开包含 notes、practice、assets 的工作区父目录。",
+      "source": {
+        "label": "打开根目录",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "verify",
+      "lesson_id": "engineering-foundation-04",
+      "step_id": "step-5",
+      "question": "终端看不到保存文件",
+      "aliases": [
+        "编辑器终端找不到文件",
+        "编辑器终端如何验证"
+      ],
+      "keywords": [
+        "终端",
+        "保存",
+        "目录",
+        "验证"
+      ],
+      "diagnostic": "当前任务是“打开编辑器内置终端，执行目录查看命令确认刚才保存的文件。”。处理“终端看不到保存文件”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：打开编辑器内置终端，执行目录查看命令确认刚才保存的文件。",
+        "本步成功证据是：编辑器和终端看到的是同一工作区。 先在文件树和终端分别确认路径，再用 ls 检查同一工作区。"
+      ],
+      "example": "局部检查示例：编辑器和终端看到的是同一工作区。",
+      "answer": "先在文件树和终端分别确认路径，再用 ls 检查同一工作区。",
+      "source": {
+        "label": "内置终端迁移",
+        "href": "#step-5"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    }
+  ]
+}

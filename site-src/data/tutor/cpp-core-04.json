@@ -1,0 +1,257 @@
+{
+  "version": 1,
+  "lesson": {
+    "id": "cpp-core-04",
+    "title": "C++ STL 容器、迭代器与基础算法",
+    "path": "learning-paths/programming-languages/cpp-core/04-stl-containers-iterators-algorithms/"
+  },
+  "steps": [
+    {
+      "id": "step-1",
+      "title": "开始任务"
+    },
+    {
+      "id": "step-2",
+      "title": "主动修改"
+    },
+    {
+      "id": "step-3",
+      "title": "按需知识"
+    },
+    {
+      "id": "step-4",
+      "title": "排错实验"
+    },
+    {
+      "id": "step-5",
+      "title": "迁移验收"
+    }
+  ],
+  "cards": [
+    {
+      "id": "report-run",
+      "lesson_id": "cpp-core-04",
+      "step_id": "step-1",
+      "question": "多记录学习报告器如何验证？",
+      "aliases": [
+        "报告器怎么运行",
+        "C++报告器测试"
+      ],
+      "keywords": [
+        "报告器",
+        "CTest",
+        "双语言",
+        "输出"
+      ],
+      "diagnostic": "你是否已构建课程工程并有共同样例输入？",
+      "hints": [
+        "先运行 CTest 和报告器，再与共同数据规则及 Python 输出对照。",
+        "先执行课程工程的构建与 CTest，再使用共同样例运行报告器，最后与 Python 版输出比较。"
+      ],
+      "example": "局部示例：构建成功后，报告中的记录数量、完成统计和排序应与共同样例相符。",
+      "answer": "验证输出一致和输入未被意外修改。",
+      "source": {
+        "label": "第一步：生成第一份多记录报告",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "choose-vector",
+      "lesson_id": "cpp-core-04",
+      "step_id": "step-2",
+      "question": "什么时候应该使用 std::vector？",
+      "aliases": [
+        "vector适用场景",
+        "动态记录容器"
+      ],
+      "keywords": [
+        "vector",
+        "动态",
+        "记录",
+        "容器"
+      ],
+      "diagnostic": "记录数量是运行时变化，还是固定长度？",
+      "hints": [
+        "需要按顺序保存可增长记录时 vector 是常用选择。",
+        "向记录序列 `push_back` 一条新学习记录，运行报告确认它按输入顺序出现。"
+      ],
+      "example": "局部示例：`std::vector<StudyRecord> records; records.push_back(record);`。",
+      "answer": "固定长度可考虑 array；唯一性或键查找是不同需求。",
+      "source": {
+        "label": "第二步：为记录选择容器",
+        "href": "#step-2"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "map-set",
+      "lesson_id": "cpp-core-04",
+      "step_id": "step-2",
+      "question": "map 和 set 分别解决什么问题？",
+      "aliases": [
+        "map和set区别",
+        "关联容器怎么选"
+      ],
+      "keywords": [
+        "map",
+        "set",
+        "键",
+        "唯一"
+      ],
+      "diagnostic": "你需要键到值的映射，还是只需要唯一元素？",
+      "hints": [
+        "set 保存唯一键；map 保存唯一键及其对应值。",
+        "分别把一个重复标签插入 set、把标签对应数值写入 map，观察二者保存的信息不同。"
+      ],
+      "example": "局部示例：`std::set<std::string> tags;` 与 `std::map<std::string, int> hours_by_tag;`。",
+      "answer": "按业务查询模式选容器，不要只因名称熟悉就使用。",
+      "source": {
+        "label": "第二步：为记录选择容器",
+        "href": "#step-2"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "half-open-range",
+      "lesson_id": "cpp-core-04",
+      "step_id": "step-3",
+      "question": "为什么 STL 范围使用 [begin, end)？",
+      "aliases": [
+        "end不是最后元素",
+        "半开区间"
+      ],
+      "keywords": [
+        "begin",
+        "end",
+        "半开区间",
+        "迭代器"
+      ],
+      "diagnostic": "你是否把 end() 当作可解引用的最后元素？",
+      "hints": [
+        "end 指向最后元素之后的位置，半开区间便于空范围和长度计算。",
+        "把算法参数写成 `records.begin(), records.end()`，不要尝试输出或解引用 `records.end()`。"
+      ],
+      "example": "局部示例：`std::count_if(records.begin(), records.end(), predicate)`。",
+      "answer": "循环或算法传入 begin 到 end，不要解引用 end。",
+      "source": {
+        "label": "第三步：用算法完成一个可观察修改",
+        "href": "#step-3"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "algorithm-choice",
+      "lesson_id": "cpp-core-04",
+      "step_id": "step-3",
+      "question": "find_if 和 count_if 分别什么时候用？",
+      "aliases": [
+        "find_if和count_if区别",
+        "算法选择"
+      ],
+      "keywords": [
+        "find_if",
+        "count_if",
+        "算法",
+        "谓词"
+      ],
+      "diagnostic": "你要找到第一条匹配记录，还是统计所有匹配数量？",
+      "hints": [
+        "find_if 返回第一个匹配位置；count_if 返回匹配数量。",
+        "先输出第一个匹配记录或匹配总数之一，再选择返回迭代器的 `find_if` 或返回数量的 `count_if`。"
+      ],
+      "example": "局部示例：`const auto done = std::count_if(records.begin(), records.end(), is_done);`。",
+      "answer": "先定义可观察结果再选择算法，避免手写重复循环。",
+      "source": {
+        "label": "第三步：用算法完成一个可观察修改",
+        "href": "#step-3"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "iterator-invalid",
+      "lesson_id": "cpp-core-04",
+      "step_id": "step-4",
+      "question": "vector 迭代器为什么会失效？",
+      "aliases": [
+        "push_back后迭代器",
+        "迭代器失效"
+      ],
+      "keywords": [
+        "vector",
+        "迭代器",
+        "reallocate",
+        "capacity"
+      ],
+      "diagnostic": "增长操作是否可能触发重新分配？",
+      "hints": [
+        "vector 重新分配会移动元素，旧迭代器、指针和引用可能失效。",
+        "保存迭代器后增长 vector，再重新通过 `begin()` 或 `find` 获取位置；不要解引用旧迭代器。"
+      ],
+      "example": "局部示例：`records.push_back(new_record);` 后此前的 `auto it = records.begin();` 可能已失效。",
+      "answer": "修改容量后重新取得迭代器，不要继续解引用旧位置。",
+      "source": {
+        "label": "第四步：故意观察迭代器失效或排序风险",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "sort-comparator",
+      "lesson_id": "cpp-core-04",
+      "step_id": "step-4",
+      "question": "sort 比较器为什么不能使用 <=？",
+      "aliases": [
+        "sort用小于等于",
+        "严格弱序"
+      ],
+      "keywords": [
+        "sort",
+        "比较器",
+        "严格弱序",
+        "<="
+      ],
+      "diagnostic": "比较器在同一元素与自身比较时是否可能返回 true？",
+      "hints": [
+        "sort 要求严格弱序；<= 会破坏“元素不小于自身”的规则。",
+        "把比较器改回只表达严格“小于”，并对相同进度记录验证比较器不会说一条小于自身。"
+      ],
+      "example": "局部示例：`std::sort(records.begin(), records.end(), [](const auto& a, const auto& b) { return a.hours < b.hours; });`。",
+      "answer": "使用 < 或以明确字段组成严格比较。",
+      "source": {
+        "label": "第四步：故意观察迭代器失效或排序风险",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "algorithm-migration",
+      "lesson_id": "cpp-core-04",
+      "step_id": "step-5",
+      "question": "如何给报告器增加统计而不修改输入？",
+      "aliases": [
+        "报告器新增统计",
+        "算法迁移验收"
+      ],
+      "keywords": [
+        "迁移",
+        "统计",
+        "复制",
+        "输入"
+      ],
+      "diagnostic": "新规则是否需要排序或转换，且调用者是否还需原顺序？",
+      "hints": [
+        "会修改范围的算法如 sort 需在副本上运行，或明确把修改写入契约。",
+        "若统计前要排序，先复制记录再排序副本，并证明原始输入的顺序未变。"
+      ],
+      "example": "局部示例：`auto sorted_records = records; std::sort(sorted_records.begin(), sorted_records.end(), compare);`。",
+      "answer": "新增一个统计/筛选后运行 CTest，并对照双语言输出。",
+      "source": {
+        "label": "第五步：迁移验收与下一步",
+        "href": "#step-5"
+      },
+      "updated_at": "2026-07-15"
+    }
+  ]
+}

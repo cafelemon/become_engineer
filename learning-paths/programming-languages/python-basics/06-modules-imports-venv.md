@@ -1,5 +1,67 @@
 # 模块、导入和虚拟环境
 
+<div class="be-tutor-mount" data-tutor-lesson="python-basics-06" aria-hidden="true"></div>
+
+本节把单文件学习进度报告器拆成可单独导入的 `data_io.py`、`analysis.py`、`reporting.py` 和 `main.py`，并在 `.venv` 中稳定运行。先建立可验证的边界，再按需使用下方完整模块与环境说明。
+
+## 本节任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务">
+  <span role="listitem">1 划分职责</span><span role="listitem">2 导入能力</span><span role="listitem">3 保护入口</span><span role="listitem">4 验证环境</span><span role="listitem">5 迁移验收</span>
+</div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+## 第一步：按职责拆出四个文件
+
+**任务：** 从上一节可运行版本复制到新目录：`data_io.py` 读写、`analysis.py` 计算、`reporting.py` 生成文本、`main.py` 编排。每个文件顶部用一句注释说明它的唯一职责。
+
+**即时反馈：** 不运行时不产生输出文件；`main.py` 是唯一启动主流程的位置。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+## 第二步：让入口显式导入能力
+
+**任务：** 在 `main.py` 使用 `import analysis` 调用计算函数，并用一个明确的 `from reporting import build_report` 比较两种导入方式。
+
+**主动修改：** 给其中一次调用改为关键字参数，确认读代码的人能判断数据来源和职责。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+## 第三步：阻止导入时启动程序
+
+**任务：** 将启动过程放入 `main()`，再使用 `if __name__ == "__main__": main()`。运行 `python3 -c "import main"`，确认没有打印、读写或创建目录。
+
+**成功标准：** 直接运行 `python3 main.py` 才生成与上一节一致的报告。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+## 第四步：故意制造环境或导入错误
+
+**任务：** 临时把本地模块命名为 `json.py` 或拼错一个导入名，记录实际错误；恢复有意义的模块名。随后创建 `.venv`，激活后用 `python -c "import sys; print(sys.executable)"` 和 `python -m pip --version` 核对环境。
+
+**错误证据：** 说明这是本地模块问题、标准库遮蔽还是解释器不一致；不要直接安装不明依赖。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+## 第五步：迁移验收
+
+**任务：** 从 `.venv` 运行多模块报告器，并将输出与拆分前版本比较；退出环境后直接调用虚拟环境解释器再运行一次。
+
+**完成证据：** 单独导入四个模块无副作用、模块依赖保持单向、`.venv` 不进入 Git 状态。
+
+**下一步：** 进入[异常、基本调试和最小自动化测试](07-errors-debugging-tests.md)，为这套多模块程序建立失败边界与回归测试。
+
+</section>
+
 上一节的学习进度报告器已经能读取 JSON 并生成报告，但读取、计算、排版和启动流程仍然挤在一个文件里。程序继续增长后，修改一个功能时很难判断会影响哪里，也很难单独验证某一部分。
 
 本节把程序拆成职责明确的 Python 模块，并为它创建独立虚拟环境。目标不是追求文件数量，而是让代码关系可解释、运行环境可确认、重构前后行为可比较。

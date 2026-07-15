@@ -1,0 +1,82 @@
+[
+  {
+    "query": "类型化学习报告器怎么运行和检查？",
+    "step_id": "step-1",
+    "expected": "typed-run"
+  },
+  {
+    "query": "mypy和测试怎么运行",
+    "step_id": "step-1",
+    "expected": "typed-run"
+  },
+  {
+    "query": "类型注解会自动拦截运行时错误吗？",
+    "step_id": "step-1",
+    "expected": "annotation-runtime"
+  },
+  {
+    "query": "注解会检查吗",
+    "step_id": "step-1",
+    "expected": "annotation-runtime"
+  },
+  {
+    "query": "函数类型契约应该标注什么？",
+    "step_id": "step-2",
+    "expected": "function-contract"
+  },
+  {
+    "query": "函数参数返回类型",
+    "step_id": "step-2",
+    "expected": "function-contract"
+  },
+  {
+    "query": "TypedDict 适合解决什么问题？",
+    "step_id": "step-2",
+    "expected": "typeddict"
+  },
+  {
+    "query": "TypedDict是什么",
+    "step_id": "step-2",
+    "expected": "typeddict"
+  },
+  {
+    "query": "object、Any 和 cast 的风险有什么不同？",
+    "step_id": "step-3",
+    "expected": "object-any-cast"
+  },
+  {
+    "query": "object Any cast区别",
+    "step_id": "step-3",
+    "expected": "object-any-cast"
+  },
+  {
+    "query": "为什么 JSON 边界需要运行时校验？",
+    "step_id": "step-3",
+    "expected": "json-validation"
+  },
+  {
+    "query": "JSON类型检查",
+    "step_id": "step-3",
+    "expected": "json-validation"
+  },
+  {
+    "query": "mypy 报错后应该先看什么？",
+    "step_id": "step-4",
+    "expected": "mypy-failure"
+  },
+  {
+    "query": "mypy错误怎么看",
+    "step_id": "step-4",
+    "expected": "mypy-failure"
+  },
+  {
+    "query": "如何增加类型化字段并验收？",
+    "step_id": "step-5",
+    "expected": "type-migration"
+  },
+  {
+    "query": "新增TypedDict字段",
+    "step_id": "step-5",
+    "expected": "type-migration"
+  }
+]

@@ -1,5 +1,67 @@
 # 从源文件到可执行程序：编译、类型与输入输出
 
+<div class="be-tutor-mount" data-tutor-lesson="cpp-core-01" aria-hidden="true"></div>
+
+> **任务先行：** 本课把单文件“学习状态卡”从源代码构建成可执行程序。先获得一次可验证输出，再用类型、输入与诊断改善它；后面的说明用于解释你已经做过的操作。
+
+## 任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务">
+  <span role="listitem">1 构建</span><span role="listitem">2 输出</span><span role="listitem">3 类型</span><span role="listitem">4 诊断</span><span role="listitem">5 迁移</span>
+</div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+## 第一步：得到第一个可执行状态卡
+
+按“完整示例：学习状态卡”创建 `study_status.cpp` 和 `build/`，用 `clang++` 或 `g++` 的 C++20 命令构建后运行。**可观察结果：** `build/study_status`（Windows 为 `.exe`）存在并输出状态卡。保留终端中的编译命令和输出。
+
+??? tip "提示"
+    先执行 `clang++ --version` 或 `g++ --version`；使用 C++ 驱动程序而不是 `clang` 或 `gcc`。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+## 第二步：主动修改一项学习状态
+
+修改状态卡的姓名、计划小时或完成小时，重新编译运行并确认输出改变。**最少知识：** 对象先声明并以花括号初始化；文本使用 `std::string`。不要只改源码，必须重新构建可执行文件。
+
+??? tip "提示"
+    完成计算后不应再变的局部结果可加 `const`，让编译器保护意图。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+## 第三步：让程序读取并检查输入
+
+按完整示例输入姓名和学习小时，分别尝试合法数字与带空格的姓名。**成功标准：** 你能说出标准输入、标准输出、标准错误各自出现在哪里，并观察正常退出码为零。
+
+??? tip "提示"
+    混用 `>>` 和 `getline()` 时，先处理残留换行；具体做法在“标准输入、输出和错误”一节。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+## 第四步：故意制造一个编译诊断
+
+把 `int hours{2.5};` 临时放入程序并构建，记录花括号窄化诊断；随后删除或改为有业务理由的显式转换。**验收：** 能区分这类编译错误与链接错误、运行期输入错误。
+
+??? tip "提示"
+    修复不是关闭警告；先读出错行、值的类型和想保留的信息。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+## 第五步：迁移验收与下一步
+
+独立增加一个状态字段（例如本周目标），选择正确类型、输出它并在严格警告下重新构建。确认生成文件只在 `build/`。完成后进入下一课，把状态卡拆成职责清楚的函数。
+
+</section>
+
 ## 课程信息
 
 | 项目 | 内容 |
@@ -689,4 +751,3 @@ const auto c{2.5};
 下一节进入与本课配对的 **Python 类型提示、接口与静态检查认知**。你会比较 Python 运行时类型与静态分析、为现有函数补充类型契约，并理解它与 C++ 静态类型的相同点和根本差异。
 
 完成这组配对后，再回到 C++ 学习函数声明、定义、参数、返回值和程序组织。
-

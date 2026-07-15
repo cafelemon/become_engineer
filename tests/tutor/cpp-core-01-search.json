@@ -1,0 +1,82 @@
+[
+  {
+    "query": "为什么要用 clang++ 或 g++ 而不是 clang？",
+    "step_id": "step-1",
+    "expected": "compiler-driver"
+  },
+  {
+    "query": "clang++和clang区别",
+    "step_id": "step-1",
+    "expected": "compiler-driver"
+  },
+  {
+    "query": "编译和链接有什么区别？",
+    "step_id": "step-1",
+    "expected": "compile-link"
+  },
+  {
+    "query": "链接错误和编译错误",
+    "step_id": "step-1",
+    "expected": "compile-link"
+  },
+  {
+    "query": "花括号初始化为什么拒绝 2.5 赋给 int？",
+    "step_id": "step-2",
+    "expected": "brace-narrowing"
+  },
+  {
+    "query": "int hours 2.5报错",
+    "step_id": "step-2",
+    "expected": "brace-narrowing"
+  },
+  {
+    "query": "auto 是动态类型吗？",
+    "step_id": "step-2",
+    "expected": "auto-static"
+  },
+  {
+    "query": "auto类型什么时候确定",
+    "step_id": "step-2",
+    "expected": "auto-static"
+  },
+  {
+    "query": "为什么 getline 读到空字符串？",
+    "step_id": "step-3",
+    "expected": "getline-newline"
+  },
+  {
+    "query": "cin后getline为空",
+    "step_id": "step-3",
+    "expected": "getline-newline"
+  },
+  {
+    "query": "程序退出码如何检查？",
+    "step_id": "step-3",
+    "expected": "exit-code"
+  },
+  {
+    "query": "如何查看退出码",
+    "step_id": "step-3",
+    "expected": "exit-code"
+  },
+  {
+    "query": "C++ 编译诊断应该怎么看？",
+    "step_id": "step-4",
+    "expected": "diagnostic-read"
+  },
+  {
+    "query": "看不懂编译错误",
+    "step_id": "step-4",
+    "expected": "diagnostic-read"
+  },
+  {
+    "query": "状态卡新增字段应该怎么验收？",
+    "step_id": "step-5",
+    "expected": "build-migration"
+  },
+  {
+    "query": "cpp新增学习字段",
+    "step_id": "step-5",
+    "expected": "build-migration"
+  }
+]

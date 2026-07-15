@@ -1,5 +1,80 @@
 # Markdown
 
+<div class="be-tutor-mount" data-tutor-lesson="engineering-foundation-05" aria-hidden="true"></div>
+
+本课用已有的 `learning-log.md` 做一次真实排版：写标题、列表、链接、命令块和小表格，最后让别人能读懂你的学习证据。
+
+## 五步任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务">
+  <span role="listitem">1 写标题</span><span role="listitem">2 整理列表</span><span role="listitem">3 加入链接</span><span role="listitem">4 记录命令</span><span role="listitem">5 表格验收</span>
+</div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+### 第一步：给学习记录建立标题层级
+
+**任务：** 在 `learning-log.md` 使用一个一级标题和至少两个二级标题。**成功证据：** 标题层级能表达文档结构，而不是只为了变大字体。
+
+??? tip "提示一"
+    `#` 后加空格写一级标题，`##` 后加空格写二级标题。
+??? tip "提示二"
+    一个文档通常只保留一个一级标题，后续内容使用二级或三级标题。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+### 第二步：把操作写成列表
+
+**任务：** 把本次完成的三项操作改成无序或有序列表。**成功证据：** 每个条目只表达一个动作。
+
+??? tip "提示一"
+    无序列表用 `- `，有顺序的步骤用 `1. `。
+??? tip "提示二"
+    保持同一层级的缩进一致，避免列表意外断开。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+### 第三步：链接到一节相关课程
+
+**任务：** 在记录中添加到“终端与 Shell”或本课的 Markdown 链接。**成功证据：** 链接文字清楚，点击目标正确。
+
+??? tip "提示一"
+    基本写法是 `[可读文字](目标地址)`。
+??? tip "提示二"
+    相对链接的起点是当前 Markdown 文件所在目录。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+### 第四步：记录一段命令和输出
+
+**任务：** 用围栏代码块记录上一课的 `pwd`、`ls` 或输出。**成功证据：** 命令不会被渲染成普通段落或标题。
+
+??? tip "提示一"
+    在代码前后各放一行三个反引号。
+??? tip "提示二"
+    代码块中保留原始空格和符号，便于复现。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+### 第五步：用小表格完成迁移验收
+
+**任务：** 创建“目标 / 结果 / 下一步”三列的小表格，填入一行真实记录。**成功证据：** 别人能只读表格理解你的当前状态。
+
+??? tip "提示一"
+    表格第二行需要使用 `---` 分隔表头和内容。
+??? tip "提示二"
+    若表格难写，先用三个短字段，避免把长段文字塞进单元格。
+
+</section>
+
 ## 前置知识
 
 - 已完成 [学习方法](01-learning-method.md)。

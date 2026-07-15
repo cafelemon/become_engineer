@@ -1,0 +1,264 @@
+{
+  "version": 1,
+  "lesson": {
+    "id": "engineering-foundation-06",
+    "title": "Git",
+    "path": "learning-paths/engineering-foundation/stage-0/06-git/"
+  },
+  "steps": [
+    {
+      "id": "step-1",
+      "title": "建立临时仓库"
+    },
+    {
+      "id": "step-2",
+      "title": "查看状态"
+    },
+    {
+      "id": "step-3",
+      "title": "暂存变化"
+    },
+    {
+      "id": "step-4",
+      "title": "创建提交"
+    },
+    {
+      "id": "step-5",
+      "title": "检查历史"
+    }
+  ],
+  "cards": [
+    {
+      "id": "init",
+      "lesson_id": "engineering-foundation-06",
+      "step_id": "step-1",
+      "question": "git init 有什么用",
+      "aliases": [
+        "怎么初始化 Git 仓库",
+        "git init 是什么"
+      ],
+      "keywords": [
+        "git init",
+        "初始化",
+        "仓库",
+        "git"
+      ],
+      "diagnostic": "当前任务是“新建一个只用于练习的目录，进入后执行 `git init`。”。处理“git init 有什么用”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：新建一个只用于练习的目录，进入后执行 `git init`。",
+        "本步成功证据是：Git 提示已初始化仓库，目录里出现 `.git` 管理信息。 `git init` 将当前目录初始化为本地 Git 仓库。"
+      ],
+      "example": "局部检查示例：Git 提示已初始化仓库，目录里出现 `.git` 管理信息。",
+      "answer": "`git init` 将当前目录初始化为本地 Git 仓库。",
+      "source": {
+        "label": "建立临时仓库",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "temp",
+      "lesson_id": "engineering-foundation-06",
+      "step_id": "step-1",
+      "question": "为何用临时仓库练习",
+      "aliases": [
+        "Git 练习用哪个目录",
+        "不要在课程仓库练习吗"
+      ],
+      "keywords": [
+        "临时仓库",
+        "练习",
+        "公开仓库",
+        "git"
+      ],
+      "diagnostic": "当前任务是“新建一个只用于练习的目录，进入后执行 `git init`。”。处理“为何用临时仓库练习”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：新建一个只用于练习的目录，进入后执行 `git init`。",
+        "本步成功证据是：Git 提示已初始化仓库，目录里出现 `.git` 管理信息。 独立临时仓库避免把练习和错误提交混入真实公开项目。"
+      ],
+      "example": "局部检查示例：Git 提示已初始化仓库，目录里出现 `.git` 管理信息。",
+      "answer": "独立临时仓库避免把练习和错误提交混入真实公开项目。",
+      "source": {
+        "label": "建立临时仓库",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "status",
+      "lesson_id": "engineering-foundation-06",
+      "step_id": "step-2",
+      "question": "git status 显示什么",
+      "aliases": [
+        "Git 状态怎么看",
+        "未跟踪文件是什么"
+      ],
+      "keywords": [
+        "git status",
+        "状态",
+        "工作区",
+        "未跟踪"
+      ],
+      "diagnostic": "当前任务是“在临时仓库创建 `README.md`，写下一句练习说明，执行 `git status`。”。处理“git status 显示什么”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：在临时仓库创建 `README.md`，写下一句练习说明，执行 `git status`。",
+        "本步成功证据是：能看到未跟踪文件状态。 git status 显示工作区、暂存区与上次提交之间的状态。"
+      ],
+      "example": "局部检查示例：能看到未跟踪文件状态。",
+      "answer": "git status 显示工作区、暂存区与上次提交之间的状态。",
+      "source": {
+        "label": "查看状态",
+        "href": "#step-2"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "add",
+      "lesson_id": "engineering-foundation-06",
+      "step_id": "step-3",
+      "question": "git add 是提交吗",
+      "aliases": [
+        "暂存区是什么",
+        "git add 有什么用"
+      ],
+      "keywords": [
+        "git add",
+        "暂存",
+        "暂存区",
+        "提交"
+      ],
+      "diagnostic": "当前任务是“执行 `git add README.md`，再次执行 `git status`。”。处理“git add 是提交吗”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：执行 `git add README.md`，再次执行 `git status`。",
+        "本步成功证据是：文件显示为待提交，而不是未跟踪。 git add 选择下次提交包含的变化，尚未写入历史。"
+      ],
+      "example": "局部检查示例：文件显示为待提交，而不是未跟踪。",
+      "answer": "git add 选择下次提交包含的变化，尚未写入历史。",
+      "source": {
+        "label": "暂存变化",
+        "href": "#step-3"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "commit",
+      "lesson_id": "engineering-foundation-06",
+      "step_id": "step-4",
+      "question": "git commit 有什么用",
+      "aliases": [
+        "提交消息怎么写",
+        "Git 怎么提交"
+      ],
+      "keywords": [
+        "git commit",
+        "提交",
+        "历史",
+        "消息"
+      ],
+      "diagnostic": "当前任务是“执行 `git commit -m \"add learning note\"`。”。处理“git commit 有什么用”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：执行 `git commit -m \"add learning note\"`。",
+        "本步成功证据是：命令成功并返回提交标识；若要求配置身份，按报错完成本机配置后重试。 git commit 将暂存变化写入本地历史，消息应说明本次做了什么。"
+      ],
+      "example": "局部检查示例：命令成功并返回提交标识；若要求配置身份，按报错完成本机配置后重试。",
+      "answer": "git commit 将暂存变化写入本地历史，消息应说明本次做了什么。",
+      "source": {
+        "label": "创建提交",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "identity",
+      "lesson_id": "engineering-foundation-06",
+      "step_id": "step-4",
+      "question": "Git 没用户名怎么处理",
+      "aliases": [
+        "Git commit 身份错误",
+        "user.name user.email 报错"
+      ],
+      "keywords": [
+        "user.name",
+        "user.email",
+        "身份",
+        "commit"
+      ],
+      "diagnostic": "当前任务是“执行 `git commit -m \"add learning note\"`。”。处理“Git 没用户名怎么处理”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：执行 `git commit -m \"add learning note\"`。",
+        "本步成功证据是：命令成功并返回提交标识；若要求配置身份，按报错完成本机配置后重试。 按 Git 报错配置本机 user.name 和 user.email 后重试提交。"
+      ],
+      "example": "局部检查示例：命令成功并返回提交标识；若要求配置身份，按报错完成本机配置后重试。",
+      "answer": "按 Git 报错配置本机 user.name 和 user.email 后重试提交。",
+      "source": {
+        "label": "创建提交",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "log",
+      "lesson_id": "engineering-foundation-06",
+      "step_id": "step-5",
+      "question": "怎样查看 Git 历史",
+      "aliases": [
+        "git log --oneline 有什么用",
+        "Git 历史怎么查"
+      ],
+      "keywords": [
+        "git log",
+        "历史",
+        "oneline",
+        "提交"
+      ],
+      "diagnostic": "当前任务是“执行 `git log --oneline`，然后在 README 追加一行并说明下一次应如何重复流程。”。处理“怎样查看 Git 历史”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：执行 `git log --oneline`，然后在 README 追加一行并说明下一次应如何重复流程。",
+        "本步成功证据是：能区分工作区、暂存区、提交历史。 git log --oneline 用简洁格式列出已提交历史。"
+      ],
+      "example": "局部检查示例：能区分工作区、暂存区、提交历史。",
+      "answer": "git log --oneline 用简洁格式列出已提交历史。",
+      "source": {
+        "label": "检查历史",
+        "href": "#step-5"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "areas",
+      "lesson_id": "engineering-foundation-06",
+      "step_id": "step-5",
+      "question": "Git 三个区域如何区分",
+      "aliases": [
+        "工作区暂存区历史区别",
+        "Git 工作区和暂存区"
+      ],
+      "keywords": [
+        "工作区",
+        "暂存区",
+        "历史",
+        "git"
+      ],
+      "diagnostic": "当前任务是“执行 `git log --oneline`，然后在 README 追加一行并说明下一次应如何重复流程。”。处理“Git 三个区域如何区分”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：执行 `git log --oneline`，然后在 README 追加一行并说明下一次应如何重复流程。",
+        "本步成功证据是：能区分工作区、暂存区、提交历史。 工作区是编辑中内容，暂存区是下次提交选择，历史是已提交记录。"
+      ],
+      "example": "局部检查示例：能区分工作区、暂存区、提交历史。",
+      "answer": "工作区是编辑中内容，暂存区是下次提交选择，历史是已提交记录。",
+      "source": {
+        "label": "检查历史",
+        "href": "#step-5"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    }
+  ]
+}

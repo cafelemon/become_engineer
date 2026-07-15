@@ -86,7 +86,9 @@
       if (!Array.isArray(card.keywords) || card.keywords.length === 0) errors.push(card.id + " keywords 不能为空");
       if (!Array.isArray(card.hints) || card.hints.length < 2) errors.push(card.id + " 至少需要两层 hints");
       if (!card.source || !card.source.label || !card.source.href) errors.push(card.id + " source 必须包含 label 和 href");
-      if (!/^#step-[1-7]$/.test(card.source && card.source.href || "")) errors.push(card.id + " source 必须指向任务步骤锚点");
+      if (card.source && card.source.href !== "#" + card.step_id) {
+        errors.push(card.id + " source 必须指向所属任务步骤锚点");
+      }
       if (!/^\d{4}-\d{2}-\d{2}$/.test(card.updated_at || "")) errors.push(card.id + " updated_at 格式错误");
     }
     if (!Array.isArray(data.cards) || data.cards.length === 0) errors.push("cards 不能为空");

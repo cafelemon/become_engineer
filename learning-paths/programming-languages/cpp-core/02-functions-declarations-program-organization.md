@@ -1,5 +1,56 @@
 # 函数、声明与程序组织
 
+<div class="be-tutor-mount" data-tutor-lesson="cpp-core-02" aria-hidden="true"></div>
+
+> **任务先行：** 把上一课的单文件状态卡重构成可检查的函数。每次只移动一项职责，运行输出与退出码保持不变。
+
+## 任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务"><span role="listitem">1 调用</span><span role="listitem">2 拆分</span><span role="listitem">3 参数</span><span role="listitem">4 诊断</span><span role="listitem">5 迁移</span></div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+## 第一步：运行函数化状态卡
+
+提取“完整示例：函数化学习状态卡”，按现有编译命令运行一组正常输入。**可观察结果：** 程序输出与上一课状态卡一致，且函数名能说明各自职责。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+## 第二步：主动拆出一个计算函数
+
+从 `main()` 中选出一个只计算、不打印的步骤，写成有明确返回值的函数并调用它。**成功标准：** 输入通过参数进入，结果通过 `return` 返回，不依赖可变全局状态。
+
+??? tip "提示"
+    先写调用点需要什么结果，再决定返回类型和参数顺序。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+## 第三步：选择参数传递方式
+
+为一个小数值使用按值参数，为一个只读 `std::string` 使用 `const&`，并在函数内临时尝试修改它们。**可观察结果：** 按值修改不影响调用者；`const&` 修改会被编译器拒绝。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+## 第四步：复现声明或重载诊断
+
+将一个函数定义暂时移到调用之后且不补声明，构建并记录诊断；补回匹配声明。也可复现一处重载二义性。**验收：** 能指出调用点为什么必须先看见声明。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+## 第五步：迁移验收与下一步
+
+独立新增“是否达到计划”的纯计算函数，并保持所有原输入的输出和退出码。完成后进入 Python 接口课，再回到 C++ 将这些稳定接口放入头文件与源文件。
+
+</section>
+
 ## 课程信息
 
 | 项目 | 内容 |

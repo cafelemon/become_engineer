@@ -1,5 +1,53 @@
 # 头文件、源文件与最小 CMake 工程
 
+<div class="be-tutor-mount" data-tutor-lesson="cpp-core-03" aria-hidden="true"></div>
+
+> **任务先行：** 将函数化状态卡迁移成可重复构建、可测试的多文件工程。先让 CMake 构建成功，再理解声明、定义和目标依赖。
+
+## 任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务"><span role="listitem">1 配置</span><span role="listitem">2 拆分</span><span role="listitem">3 构建</span><span role="listitem">4 诊断</span><span role="listitem">5 迁移</span></div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+## 第一步：配置并构建课程工程
+
+按“配置、构建与测试”使用一个新的构建目录执行 `cmake -S . -B build`、`cmake --build build` 和 `ctest --test-dir build`。**可观察结果：** 配置、构建、测试是三条独立成功反馈。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+## 第二步：主动追踪一个公开接口
+
+从公开头文件找到一个函数声明，再到源文件找到同签名定义，最后在 `main` 或测试中找到调用。**成功标准：** 能说明头文件暴露什么、源文件保存什么。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+## 第三步：修改目标化构建的一项行为
+
+为学习状态卡新增一个小函数或测试断言，只在对应目标上修改源文件列表或链接关系，然后重新构建。**最少知识：** C++ 标准、警告、include 目录和链接依赖都应该属于目标，不是全局拼接参数。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+## 第四步：故意制造一次多文件失败
+
+临时移除一个源文件、改变声明签名或破坏 include 路径，再构建并记录是编译、链接还是测试失败；恢复后再验证。不要用危险删除命令清理构建目录。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+## 第五步：迁移验收与下一步
+
+在全新构建目录完成配置、构建和 CTest，并证明生成物没有进入 Git。下一课把单条学习状态升级为多条记录，用容器和算法完成双语言报告器。
+
+</section>
+
 ## 课程信息
 
 | 项目 | 内容 |

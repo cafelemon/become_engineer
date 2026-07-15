@@ -1,5 +1,67 @@
 # 异常、基本调试和最小自动化测试
 
+<div class="be-tutor-mount" data-tutor-lesson="python-basics-07" aria-hidden="true"></div>
+
+本节为多模块学习进度报告器建立可解释失败和可重复回归：先复现，再最小修复，最后让测试固定证据。下方原有异常、调试和 `unittest` 材料保持完整，按任务卡需要查阅。
+
+## 本节任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务">
+  <span role="listitem">1 稳定复现</span><span role="listitem">2 建立边界</span><span role="listitem">3 缩小问题</span><span role="listitem">4 固化测试</span><span role="listitem">5 迁移验收</span>
+</div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+## 第一步：复现一条错误结果
+
+**任务：** 对 `calculate_progress(2, 3)` 运行报告器，观察可能得到 `1.5` 的错误结果；写下规则要求的最大值 `1.0`、实际值和最小输入。
+
+**即时反馈：** 程序即使没有抛异常也可能错误，复现必须包含输入、实际结果和期望结果。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+## 第二步：把非法输入留在边界
+
+**任务：** 为 `target_hours = 0` 写出明确校验并 `raise ValueError`；分别制造不存在文件和坏 JSON，使用窄范围 `except` 给出可解释提示。
+
+**成功标准：** 已知输入失败被说明，拼错变量等编程缺陷仍保留 traceback，不能用 `except Exception` 吞掉。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+## 第三步：沿 traceback 缩小问题
+
+**任务：** 让一条记录缺少必填键或完成时间为错误类型，用 traceback 的最后一行、文件行号和调用来源定位问题；需要时用 `repr()`、`type()` 或 `breakpoint()` 观察。
+
+**主动修改：** 在修复前只改变最小一处，重新运行同一输入确认现象消失。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+## 第四步：先让测试失败，再修复
+
+**任务：** 在 `tests/test_analysis.py` 用 `unittest` 写超额完成应为 `1.0` 的测试。先让实现或期望暂时不匹配，观察失败；再修复 `calculate_progress()` 并运行完整测试发现。
+
+**错误证据：** 保存红灯中的预期/实际差异，以及修复后的绿灯命令输出。文件测试使用临时目录，不污染 `data/` 或 `output/`。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+## 第五步：迁移验收
+
+**任务：** 自己增加一个未在示例中出现的边界，例如空课程名、负完成时间或 UTF-8 中文；先写测试，再增加最小校验。
+
+**完成证据：** 正常、边界和失败测试均通过；输入只读、导入无副作用，成功退出码为 0，输入错误为非 0。
+
+**下一步：** Python 起步至此完成。继续进入[Python / C++ 双主修](../README.md)，将这份报告器能力迁移到后续课程与项目。
+
+</section>
+
 ## 课程信息
 
 | 项目 | 内容 |

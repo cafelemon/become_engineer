@@ -1,5 +1,53 @@
 # 可维护函数接口、协议与模块边界
 
+<div class="be-tutor-mount" data-tutor-lesson="python-core-02" aria-hidden="true"></div>
+
+> **任务先行：** 让学习报告器可以替换输出方式而不破坏核心分析。先跑通现有报告，再把依赖改成清晰、可检查的接口。
+
+## 任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务"><span role="listitem">1 运行</span><span role="listitem">2 接口</span><span role="listitem">3 替换</span><span role="listitem">4 诊断</span><span role="listitem">5 迁移</span></div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+## 第一步：运行可替换输出的报告器
+
+按“安装、检查和运行”执行程序、mypy 与测试。**可观察结果：** 应用流程可用具体输出运行，测试可用内存输出验证，核心分析不直接打印。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+## 第二步：读出一个函数接口
+
+选择一个函数，说明位置参数、仅限关键字参数、输入能力与返回值；再在调用点用显式关键字传入一项有歧义的选项。**成功标准：** 函数签名让调用意图可读。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+## 第三步：替换边界而非核心逻辑
+
+为既有输出协议写一个最小兼容实现，运行同一份分析并比较结果。**最少知识：** `Protocol` 表达需要的能力，普通函数或对象可按结构兼容，无需继承。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+## 第四步：复现接口失败
+
+选择位置参数违反签名、回调不满足协议、循环导入或共享可变默认参数中的一项，复现并恢复。记录错误发生在类型检查、导入还是运行阶段。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+## 第五步：迁移验收与下一步
+
+独立增加一种报告输出或一个仅限关键字选项，保持业务模块不反向导入 `main`，并通过已有测试。下一课处理可迭代输入与惰性生成。
+
+</section>
+
 ## 课程信息
 
 | 项目 | 内容 |

@@ -1,5 +1,53 @@
 # Python 容器协议、迭代器与生成器
 
+<div class="be-tutor-mount" data-tutor-lesson="python-core-03" aria-hidden="true"></div>
+
+> **任务先行：** 给双语言学习报告器增加惰性标签筛选与进度行。先观察生成器何时执行，再用迭代协议解释为什么不会重复消费。
+
+## 任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务"><span role="listitem">1 消费</span><span role="listitem">2 生成</span><span role="listitem">3 限制</span><span role="listitem">4 诊断</span><span role="listitem">5 迁移</span></div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+## 第一步：观察一次惰性报告消费
+
+运行“惰性学习报告器”示例，先创建迭代器，再用 `next()` 或循环消费。**可观察结果：** 创建生成器时不立刻产生全部结果，消费时才推进。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+## 第二步：增加一个惰性筛选或报告行
+
+为报告器增加一条基于标签的筛选或一条进度行，使用生成器函数或生成器表达式。**成功标准：** 输入接受 `Iterable`，输出按消费顺序产生。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+## 第三步：为消费设定边界
+
+对一个可能很长或无限的来源使用 `itertools.islice` 限制消费，或在需要二次分析时仅在明确边界物化一次。记录为什么 `Sequence` 与 `Iterator` 不能随意互换。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+## 第四步：复现单次消费错误
+
+把同一个迭代器连续遍历两次，观察第二次为空；再通过重新创建迭代器或在边界 `list()` 物化修复。**验收：** 不把重复消费当成随机错误。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+## 第五步：迁移验收与下一步
+
+独立新增一种惰性报告视图，保持双语言最终输出规则不变，并运行 mypy、测试和比较。完成后进入下一阶段的 C++ 对象、生命周期与 RAII。
+
+</section>
+
 C++课程使用迭代器表示容器范围中的位置；Python也有迭代器，但它更强调“按需取得下一个值”的协议。列表可以反复遍历，生成器通常只能向前消费一次。如果没有看清这个区别，程序很容易第一次计算正确、第二次却得到空结果。
 
 本节把双语言学习进度报告器的Python实现升级为惰性筛选和进度行生成器，同时保持报告文本与C++版本完全一致。

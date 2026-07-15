@@ -1,5 +1,70 @@
 # 函数、参数、返回值和作用域
 
+<div class="be-tutor-mount" data-tutor-lesson="python-basics-03" aria-hidden="true"></div>
+
+本节把 `study_check.py` 重构为第一版 `study_report.py`：计算、状态和输出各有清楚职责。先让函数协作起来，再按需要阅读下方完整讲解与练习。
+
+## 本节任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务">
+  <span role="listitem">1 消除重复</span><span role="listitem">2 传入参数</span><span role="listitem">3 返回结果</span><span role="listitem">4 定位作用域</span><span role="listitem">5 迁移验收</span>
+</div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+## 第一步：提取一个可调用的计算
+
+**任务：** 新建 `study_report.py`，把“目标时间减完成时间、最小为 0”的重复逻辑写成 `calculate_remaining_hours()`，分别传入 `(10, 6)` 和 `(8, 9)`。
+
+**即时反馈：** 两次调用得到 `4` 和 `0`；函数定义本身不会输出，调用后才会执行。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+## 第二步：让调用者提供变化数据
+
+**任务：** 给函数加入 `target_hours`、`finished_hours` 两个参数，并用位置参数和关键字参数各调用一次。
+
+**主动修改：** 刻意交换一次位置参数，比较结果；再改用关键字参数说明每个值属于谁。
+
+??? tip "提示"
+    写在 `def` 里的名字是形参；调用括号中的具体值是实参。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+## 第三步：让报告器使用返回值
+
+**任务：** 新增 `build_status()`，返回“目标已完成”或“继续推进”；入口保存两个函数的返回值，再统一 `print()` 报告。
+
+**成功标准：** 把 `return` 临时改成单独 `print()` 后，能观察到调用结果是 `None`，再恢复正确版本。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+## 第四步：故意触发作用域错误
+
+**任务：** 在函数内部创建 `message`，然后在函数外直接 `print(message)`，记录 `NameError`；通过 `return message` 和外部变量接收修复它。
+
+**错误证据：** 写下 traceback 指向的行和该名字在哪个函数内定义。不要用全局变量绕过问题。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+## 第五步：迁移验收
+
+**任务：** 给 `build_status()` 增加一个默认阈值参数，例如接近目标时返回“接近目标”；用默认值与自定义关键字参数各验证一次。
+
+**完成证据：** `study_report.py` 至少有计算、判断、输出三个职责清楚的函数，并运行未完成、完成、超额和接近目标场景。
+
+**下一步：** 进入[字符串、列表、字典、集合和元组](04-strings-collections.md)，让报告器处理多条记录。
+
+</section>
+
 前两节已经能让程序接收输入、做判断并重复执行。但是代码一旦变长，一个新问题会出现：同一段逻辑可能写很多次，输入、计算和输出也容易混在一起。
 
 本节学习用函数整理代码。目标不只是认识 `def`，而是能把一个问题拆成职责清楚、可以单独调用和验证的小块。

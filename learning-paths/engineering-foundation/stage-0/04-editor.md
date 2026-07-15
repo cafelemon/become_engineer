@@ -1,5 +1,80 @@
 # 编辑器
 
+<div class="be-tutor-mount" data-tutor-lesson="engineering-foundation-04" aria-hidden="true"></div>
+
+本课把前面已有的学习工作区作为真实项目打开，完成“定位、修改、保存、搜索、用内置终端验证”的最小编辑器闭环。
+
+## 五步任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务">
+  <span role="listitem">1 打开根目录</span><span role="listitem">2 定位文件</span><span role="listitem">3 修改保存</span><span role="listitem">4 搜索验证</span><span role="listitem">5 内置终端迁移</span>
+</div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+### 第一步：用编辑器打开整个工作区
+
+**任务：** 选择“打开文件夹/打开目录”，打开学习工作区而不是单个文件。**成功证据：** 文件树能显示 `notes`、`practice` 和 `assets`。
+
+??? tip "提示一"
+    单独打开一个文件会失去项目结构和相对路径上下文。
+??? tip "提示二"
+    如果文件树为空，检查是否误打开了 `notes` 而不是它的父目录。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+### 第二步：从文件树定位学习记录
+
+**任务：** 展开 `notes` 并打开 `learning-log.md`。**成功证据：** 标签页显示正确文件，文件树中也能定位它。
+
+??? tip "提示一"
+    文件树负责定位，标签页负责在已打开文件之间切换。
+??? tip "提示二"
+    同名文件出现时，查看它所属的目录。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+### 第三步：完成一次修改并保存
+
+**任务：** 在学习记录追加一行结果，保存后关闭再打开确认内容仍在。**成功证据：** 未保存标记消失，重新打开仍能看到新内容。
+
+??? tip "提示一"
+    修改出现在屏幕上不等于已经写入磁盘。
+??? tip "提示二"
+    使用保存快捷键后观察标签页上的圆点或状态提示。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+### 第四步：用搜索找到一个关键词
+
+**任务：** 在工作区搜索“目标”或你写下的关键词，确认搜索范围。**成功证据：** 能说出搜索结果来自哪个文件。
+
+??? tip "提示一"
+    优先使用工作区搜索，而非只在当前文件搜索。
+??? tip "提示二"
+    没有结果时检查拼写、大小写和是否保存。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+### 第五步：在内置终端复查文件
+
+**任务：** 打开编辑器内置终端，执行目录查看命令确认刚才保存的文件。**成功证据：** 编辑器和终端看到的是同一工作区。
+
+??? tip "提示一"
+    内置终端通常会从项目根目录启动，仍要先确认当前位置。
+??? tip "提示二"
+    如果目录不同，使用 `cd` 调整后再验证。
+
+</section>
+
 ## 前置知识
 
 - 已完成 [学习方法](01-learning-method.md)。

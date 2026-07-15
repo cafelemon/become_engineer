@@ -1,0 +1,82 @@
+[
+  {
+    "query": "终端是干什么的",
+    "step_id": "step-1",
+    "expected": "terminal"
+  },
+  {
+    "query": "Shell 是什么",
+    "step_id": "step-1",
+    "expected": "terminal"
+  },
+  {
+    "query": "怎么进入学习目录",
+    "step_id": "step-1",
+    "expected": "cd"
+  },
+  {
+    "query": "cd 怎么用",
+    "step_id": "step-1",
+    "expected": "cd"
+  },
+  {
+    "query": "pwd 是什么",
+    "step_id": "step-2",
+    "expected": "pwd"
+  },
+  {
+    "query": "当前目录怎么查",
+    "step_id": "step-2",
+    "expected": "pwd"
+  },
+  {
+    "query": "ls 命令有什么用",
+    "step_id": "step-3",
+    "expected": "ls"
+  },
+  {
+    "query": "怎么列出文件",
+    "step_id": "step-3",
+    "expected": "ls"
+  },
+  {
+    "query": "怎么返回上一级目录",
+    "step_id": "step-4",
+    "expected": "parent"
+  },
+  {
+    "query": ".. 代表什么",
+    "step_id": "step-4",
+    "expected": "parent"
+  },
+  {
+    "query": "cat 命令是什么",
+    "step_id": "step-4",
+    "expected": "cat"
+  },
+  {
+    "query": "终端怎么打开 md 文件",
+    "step_id": "step-4",
+    "expected": "cat"
+  },
+  {
+    "query": "终端报错是不是坏了",
+    "step_id": "step-5",
+    "expected": "error"
+  },
+  {
+    "query": "命令失败怎么办",
+    "step_id": "step-5",
+    "expected": "error"
+  },
+  {
+    "query": "PowerShell 怎么查看目录",
+    "step_id": "step-3",
+    "expected": "shell"
+  },
+  {
+    "query": "不同 Shell 命令",
+    "step_id": "step-3",
+    "expected": "shell"
+  }
+]

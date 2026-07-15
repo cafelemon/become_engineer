@@ -1,0 +1,82 @@
+[
+  {
+    "query": "怎么初始化 Git 仓库",
+    "step_id": "step-1",
+    "expected": "init"
+  },
+  {
+    "query": "git init 是什么",
+    "step_id": "step-1",
+    "expected": "init"
+  },
+  {
+    "query": "Git 练习用哪个目录",
+    "step_id": "step-1",
+    "expected": "temp"
+  },
+  {
+    "query": "不要在课程仓库练习吗",
+    "step_id": "step-1",
+    "expected": "temp"
+  },
+  {
+    "query": "Git 状态怎么看",
+    "step_id": "step-2",
+    "expected": "status"
+  },
+  {
+    "query": "未跟踪文件是什么",
+    "step_id": "step-2",
+    "expected": "status"
+  },
+  {
+    "query": "暂存区是什么",
+    "step_id": "step-3",
+    "expected": "add"
+  },
+  {
+    "query": "git add 有什么用",
+    "step_id": "step-3",
+    "expected": "add"
+  },
+  {
+    "query": "提交消息怎么写",
+    "step_id": "step-4",
+    "expected": "commit"
+  },
+  {
+    "query": "Git 怎么提交",
+    "step_id": "step-4",
+    "expected": "commit"
+  },
+  {
+    "query": "Git commit 身份错误",
+    "step_id": "step-4",
+    "expected": "identity"
+  },
+  {
+    "query": "user.name user.email 报错",
+    "step_id": "step-4",
+    "expected": "identity"
+  },
+  {
+    "query": "git log --oneline 有什么用",
+    "step_id": "step-5",
+    "expected": "log"
+  },
+  {
+    "query": "Git 历史怎么查",
+    "step_id": "step-5",
+    "expected": "log"
+  },
+  {
+    "query": "工作区暂存区历史区别",
+    "step_id": "step-5",
+    "expected": "areas"
+  },
+  {
+    "query": "Git 工作区和暂存区",
+    "step_id": "step-5",
+    "expected": "areas"
+  }
+]

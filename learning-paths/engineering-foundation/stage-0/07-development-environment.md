@@ -1,5 +1,80 @@
 # 开发环境
 
+<div class="be-tutor-mount" data-tutor-lesson="engineering-foundation-07" aria-hidden="true"></div>
+
+本课不先安装一堆工具，而是为你的学习工作区完成一份环境检查：版本、命令位置、PATH、依赖边界和一次错误记录。
+
+## 五步任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务">
+  <span role="listitem">1 记录版本</span><span role="listitem">2 定位命令</span><span role="listitem">3 理解 PATH</span><span role="listitem">4 区分依赖</span><span role="listitem">5 验证迁移</span>
+</div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+### 第一步：记录一个可运行版本
+
+**任务：** 在终端执行 `python3 --version`（或系统可用的 `python --version`），把命令和输出写入学习记录。**成功证据：** 版本号与执行命令成对保留。
+
+??? tip "提示一"
+    “装过 Python”不等于终端能找到可执行命令。
+??? tip "提示二"
+    若命令失败，先完整记录报错，暂时不要盲目重复安装。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+### 第二步：找到命令来自哪里
+
+**任务：** 使用 `which python3`（Windows 可用 `where python`）查询命令位置。**成功证据：** 能说明版本输出和可执行文件路径来自同一次检查。
+
+??? tip "提示一"
+    系统可能安装多个同名程序，路径能解释你实际运行的是哪一个。
+??? tip "提示二"
+    没有结果时，把命令、系统和完整输出记录下来。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+### 第三步：用 PATH 解释一次查找
+
+**任务：** 查看 PATH 的概念说明，并用自己的话写一句“系统如何找到 python”。**成功证据：** 能区分 PATH 是查找顺序，不是 Python 本身。
+
+??? tip "提示一"
+    输入命令时，Shell 会按 PATH 中的目录依次查找。
+??? tip "提示二"
+    同名命令冲突时，第二步记录的位置比猜测更可靠。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+### 第四步：区分代码、运行时和依赖
+
+**任务：** 为一个 Python 小程序分别标注项目代码、解释器和将来可能安装的第三方依赖。**成功证据：** 不把 `.py` 文件、Python 程序和第三方库混成一个概念。
+
+??? tip "提示一"
+    解释器负责执行代码；依赖是项目额外需要的库。
+??? tip "提示二"
+    虚拟环境用于隔离不同项目的依赖，不等于复制项目代码。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+### 第五步：记录一次环境问题并迁移
+
+**任务：** 任选“找不到命令”或“版本不对”的场景，写下环境、命令、输出和下一步检查。**成功证据：** 别人能据此重现或继续排查。
+
+??? tip "提示一"
+    环境问题先收集事实：系统、终端、命令、完整输出。
+??? tip "提示二"
+    下一节 Docker 会继续使用“命令 + 输出 + 判断”的验证方式。
+
+</section>
+
 本节解决一个最常见的小白困惑：同样一段代码，为什么有的人能运行，有的人运行不了。
 
 开发环境不是某个软件的名字，而是一组让程序能被编写、运行和验证的条件。你现在只需要理解最小概念：解释器、编译器、运行时、版本、环境变量、PATH、依赖和虚拟环境。

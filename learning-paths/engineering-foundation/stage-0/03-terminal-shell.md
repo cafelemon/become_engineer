@@ -1,5 +1,80 @@
 # 终端与 Shell
 
+<div class="be-tutor-mount" data-tutor-lesson="engineering-foundation-03" aria-hidden="true"></div>
+
+本课直接在上一课的学习工作区完成一个命令闭环：确认位置、查看目录、进入目录、读取记录，再把一次错误保留下来。
+
+## 五步任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务">
+  <span role="listitem">1 打开终端</span><span role="listitem">2 确认位置</span><span role="listitem">3 查看内容</span><span role="listitem">4 进入并读取</span><span role="listitem">5 记录错误</span>
+</div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+### 第一步：打开终端并进入工作区
+
+**任务：** 打开系统或编辑器内置终端，进入上一课创建的学习工作区。**成功证据：** 提示符回到可输入状态，没有报错。
+
+??? tip "提示一"
+    macOS/Linux 常用 `cd 路径`；PowerShell 也可用 `cd 路径`。
+??? tip "提示二"
+    路径带空格时用引号包住，或先从较短的父目录逐级进入。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+### 第二步：确认你现在在哪里
+
+**任务：** 执行 `pwd`（PowerShell 可用 `Get-Location`）。**成功证据：** 输出与学习工作区位置一致。
+
+??? tip "提示一"
+    终端不会自动知道你想操作哪个目录，先确认当前位置。
+??? tip "提示二"
+    若输出不对，使用 `cd` 回到目标目录后再检查。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+### 第三步：列出工作区内容
+
+**任务：** 执行 `ls`（PowerShell 可用 `dir`），找到 `notes`、`practice`、`assets`。**成功证据：** 输出与文件树一致。
+
+??? tip "提示一"
+    先只观察输出，不要急着修改或删除文件。
+??? tip "提示二"
+    看不到目录时，回到第二步检查当前位置。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+### 第四步：进入目录并读取记录
+
+**任务：** 进入 `notes`，用 `cat learning-log.md`（PowerShell 可用 `Get-Content learning-log.md`）读取文件，然后用 `cd ..` 回到父目录。**成功证据：** 能解释 `.`、`..` 和当前目录的关系。
+
+??? tip "提示一"
+    `cd notes` 会从当前目录进入 notes；`cd ..` 返回上一级。
+??? tip "提示二"
+    文件名不一致时先 `ls`，不要猜扩展名。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+### 第五步：记录一次可复现错误
+
+**任务：** 有意执行一个错误文件名，记录命令、报错和正确修复方式。**成功证据：** 能区分命令失败与终端损坏。
+
+??? tip "提示一"
+    不存在的文件是安全的失败实验，不会修改原文件。
+??? tip "提示二"
+    记录后使用真实文件名重新执行，确认恢复成功。
+
+</section>
+
 ## 前置知识
 
 - 已完成 [学习方法](01-learning-method.md)。

@@ -1,5 +1,75 @@
 # 条件、循环、布尔逻辑
 
+<div class="be-tutor-mount" data-tutor-lesson="python-basics-02" aria-hidden="true"></div>
+
+本节把上一课的学习档案推进为一个会判断进度、逐项检查清单并限制尝试次数的 `study_check.py`。先完成可观察任务；下方原有讲解、练习和错误表在需要时再查阅。
+
+## 本节任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务">
+  <span role="listitem">1 比较进度</span><span role="listitem">2 写出分支</span><span role="listitem">3 检查清单</span><span role="listitem">4 限制尝试</span><span role="listitem">5 迁移验收</span>
+</div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+## 第一步：比较两组学习时间
+
+**任务：** 创建或打开 `study_check.py`，为 `target_hours = 8`、`finished_hours = 5` 输出 `finished_hours >= target_hours`；再把完成时间改为 `8` 和 `10` 各运行一次。
+
+**即时反馈：** 三次输出应依次为 `False`、`True`、`True`。这就是分支判断将使用的布尔条件。
+
+??? tip "提示"
+    比较相等使用 `==`，给变量赋值才使用 `=`。先用 `print()` 看真实结果。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+## 第二步：让报告器给出不同状态
+
+**任务：** 用 `if/else` 把上一步条件接入报告器：完成时输出“本周学习目标已完成”，未完成时计算并输出剩余小时。至少运行未完成与已完成两组输入。
+
+**按需知识：** 参考下文“条件分支”；冒号后的代码统一缩进 4 个空格。
+
+**成功标准：** 两个分支都被真实运行过，并保留输入与输出记录。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+## 第三步：循环打印行动清单
+
+**任务：** 用列表保存 `记录目标`、`运行代码`、`记录输出`、`复盘问题`，使用 `for` 在报告器中逐项打印；再用 `range(1, 4)` 输出三次检查编号。
+
+**主动修改：** 增加一项你自己的行动，并确认它只出现一次、编号首尾正确。
+
+??? tip "提示"
+    `range(1, 4)` 包含 1 不包含 4；先实际打印，别凭感觉判断边界。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+## 第四步：故意制造一次循环错误
+
+**任务：** 写“最多猜三次”的 `while` 小循环。先故意删除计数器更新或把循环体缩进打乱，观察错误/停不下来的现象；停止后修复为最多三次，并在猜对时用 `break` 退出。
+
+**错误证据：** 记录触发条件、表现、相关代码行和最小修复。死循环时使用 `Ctrl+C` 停止，不要等待它自行结束。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+## 第五步：迁移验收
+
+**任务：** 在 `study_check.py` 增加一个由两个条件共同决定的状态，例如“完成时间达到目标且本周至少运行过一次程序”。使用 `and` 或 `or`，设计三组输入覆盖成立与不成立。
+
+**完成证据：** 能解释每组输入为什么进入对应分支，并从本页“常见错误与排查”确认没有遗漏冒号、缩进或范围边界。
+
+**下一步：** 进入[函数、参数、返回值和作用域](03-functions-parameters-returns-scope.md)，把重复判断提取为可复用能力。
+
+</section>
+
 上一节的脚本基本是从上到下一行一行执行。本节开始学习两个关键能力：让程序根据条件选择不同分支，让程序重复执行某段逻辑。
 
 条件和循环是后续所有项目的基础。数据清洗、文件扫描、接口处理、模型评估都会大量使用它们。

@@ -1,5 +1,53 @@
 # C++ STL 容器、迭代器与基础算法
 
+<div class="be-tutor-mount" data-tutor-lesson="cpp-core-04" aria-hidden="true"></div>
+
+> **任务先行：** 把学习状态卡升级为多记录学习报告器。先完成一条可验证报告，再用容器、范围和算法解释每次修改。
+
+## 任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务"><span role="listitem">1 报告</span><span role="listitem">2 容器</span><span role="listitem">3 算法</span><span role="listitem">4 诊断</span><span role="listitem">5 迁移</span></div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+## 第一步：生成第一份多记录报告
+
+按完整示例构建并运行双语言学习报告器。**可观察结果：** C++ 输出与共同数据和报告规则一致，CTest 通过。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+## 第二步：为记录选择容器
+
+向样例增加一条学习记录，说明为什么动态记录使用 `std::vector`，唯一标签可使用 `std::set`，按键查找才考虑 `std::map`。重新运行并确认记录进入报告。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+## 第三步：用算法完成一个可观察修改
+
+在半开区间 `[begin, end)` 上使用 `find_if`、`count_if`、`transform`、`accumulate` 或 `sort` 中的一种，输出修改前后结果。**成功标准：** 能说明 `end()` 不是最后一个元素。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+## 第四步：故意观察迭代器失效或排序风险
+
+保存 `vector` 迭代器后触发可能重新分配的增长，或把排序比较器临时写成 `<=` 并阅读问题。恢复安全写法。**验收：** 不持有可能失效的迭代器继续解引用。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+## 第五步：迁移验收与下一步
+
+独立增加一种统计或筛选规则，保证输入记录不被意外修改，并与 Python 版本对比输出。完成后进入 Python 迭代器与生成器，理解惰性消费的对应关系。
+
+</section>
+
 上一节已经把程序拆成头文件、源文件、库、应用和测试，但学习状态卡仍然只能处理一条记录。本节把它升级为多记录报告器，并学习如何根据数据的顺序、唯一性和查找方式选择容器。
 
 目标不是背完STL接口，而是建立三个判断：数据应该放在哪里、算法通过什么范围处理数据、修改容器后哪些位置仍然有效。

@@ -1,5 +1,80 @@
 # 验证习惯
 
+<div class="be-tutor-mount" data-tutor-lesson="engineering-foundation-09" aria-hidden="true"></div>
+
+本课为工程基础入门做最后一次可交接验证：选择一个已有结果，记录环境和操作，分别留下成功与失败证据，再完成阶段验收。
+
+## 五步任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务">
+  <span role="listitem">1 选择目标</span><span role="listitem">2 记录环境</span><span role="listitem">3 验证成功</span><span role="listitem">4 最小复现失败</span><span role="listitem">5 阶段验收</span>
+</div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+### 第一步：选择一个可验证目标
+
+**任务：** 从前八课选择一个已有产出，例如“终端能读取 learning-log.md”或“Git 仓库有一次提交”。**成功证据：** 目标能用命令或文件状态检查，不是“感觉会了”。
+
+??? tip "提示一"
+    一次验证只检查一个明确主张。
+??? tip "提示二"
+    选择你能在当前设备上立刻操作的目标。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+### 第二步：记录环境和操作
+
+**任务：** 在验证记录中写下系统/目录、执行命令或编辑器动作。**成功证据：** 他人知道在哪里、怎样重复你的检查。
+
+??? tip "提示一"
+    环境至少包含当前目录和有关版本或工具。
+??? tip "提示二"
+    操作写原始命令，比“运行了一下”更可复现。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+### 第三步：留下成功证据
+
+**任务：** 执行验证并原样记录关键输出、文件状态或截图说明。**成功证据：** 输出能支撑“成功”这个判断。
+
+??? tip "提示一"
+    成功也需要记录，否则下次无法确认环境是否变化。
+??? tip "提示二"
+    结果和判断分开写：先写看到什么，再写因此说明什么。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+### 第四步：保留一个最小失败实验
+
+**任务：** 设计一个不会破坏工作区的失败，如错误文件名或错误路径，记录输入、报错、恢复动作。**成功证据：** 别人按同样步骤能看到同类失败。
+
+??? tip "提示一"
+    最小复现只保留触发问题所需的最少步骤。
+??? tip "提示二"
+    不要为了制造失败删除真实文件或提交。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+### 第五步：完成工程基础阶段验收
+
+**任务：** 对照本页的工程基础验收记录，填入已完成、待复查和下一步。**成功证据：** 每项状态都有对应的可检查证据。
+
+??? tip "提示一"
+    “没有验证”不是失败，但不能标为已完成。
+??? tip "提示二"
+    将一个待复查项变成下一阶段的第一件可执行任务。
+
+</section>
+
 本节是工程基础入门的收口课。前面已经学习了方法、文件、终端、编辑器、Markdown、Git、开发环境和 Docker 最小认知；本节把这些能力合在一起，形成一个最基础但非常重要的习惯：每做一步，都能运行、观察、记录和复现。
 
 验证习惯不是高级工程技巧。它的核心是不要只凭感觉说“好了”或“坏了”，而是用可检查的证据说明当前状态。

@@ -1,5 +1,70 @@
 # 文件、路径、JSON 和简单目录操作
 
+<div class="be-tutor-mount" data-tutor-lesson="python-basics-05" aria-hidden="true"></div>
+
+本节让 `study_records.py` 从受控的 `data/study_records.json` 读取记录，并只把报告写到 `output/`。先完成一次安全读写闭环；下方完整路径、编码和 JSON 说明作为操作时的参考。
+
+## 本节任务路线
+
+<div class="be-task-route" role="list" aria-label="本课五步任务">
+  <span role="listitem">1 确认路径</span><span role="listitem">2 读取 JSON</span><span role="listitem">3 写出报告</span><span role="listitem">4 定位坏数据</span><span role="listitem">5 迁移验收</span>
+</div>
+
+<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+
+## 第一步：建立受控目录边界
+
+**任务：** 在报告器根目录创建 `data/` 和 `output/`，在代码中用 `Path("data") / "study_records.json"` 组成输入路径，并打印 `Path.cwd()` 与 `input_path.exists()`。
+
+**即时反馈：** 从示例根目录运行时，当前目录与输入文件状态都清楚；不扫描个人目录，也不写入输入目录。
+
+</section>
+
+<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+
+## 第二步：把 JSON 变成报告器记录
+
+**任务：** 创建含三条记录的 `data/study_records.json`，使用 UTF-8、`read_text()` 和 `json.loads()` 读取 `records`，调用上一节逻辑输出每条状态。
+
+**主动修改：** 只改 JSON 中一条完成时间，不改 Python 文件，确认报告随数据变化。
+
+??? tip "提示"
+    JSON 使用双引号、`true/false/null`；解析后才是 Python 的字典、列表、`True/False/None`。
+
+</section>
+
+<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+
+## 第三步：生成独立输出
+
+**任务：** 使用 `output_dir.mkdir(parents=True, exist_ok=True)` 创建输出目录，将报告写到 `output/study_report.txt`，明确指定 `encoding="utf-8"`。
+
+**成功标准：** 输入 JSON 在运行前后字节不变，输出文件包含中文和三条记录摘要。
+
+</section>
+
+<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+
+## 第四步：故意制造两种读取失败
+
+**任务：** 先把输入文件名拼错，记录 `FileNotFoundError`；恢复路径后在 JSON 最后多写一个逗号，记录 `JSONDecodeError` 的行列。
+
+**错误证据：** 分别指出失败发生在路径定位还是 JSON 解析，不要用空 `except` 隐藏 traceback。
+
+</section>
+
+<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+
+## 第五步：迁移验收
+
+**任务：** 在 `data/` 加入第二个 JSON 文件，用 `glob("*.json")` 输出排序后的文件名；保留只读取预期记录文件的主流程。
+
+**完成证据：** 验证中文、空记录、多个 JSON、坏 JSON 和输入只读；说明为什么本节不使用无范围的 `rglob()`。
+
+**下一步：** 进入[模块、导入和虚拟环境](06-modules-imports-venv.md)，按职责拆分已能工作的报告器。
+
+</section>
+
 上一节的学习进度报告器已经能处理多条记录，但数据仍然写死在 Python 代码中。每次调整课程时间或标签都要修改程序，这会把“数据变化”和“程序变化”混在一起。
 
 本节把课程记录移到 JSON 文件：程序先定位文件，再读取 UTF-8 文本，把 JSON 文本解析成 Python 数据结构，最后生成一份单独的文本报告。你将第一次完成“输入文件只读、处理逻辑独立、结果写到输出目录”的小型数据处理闭环。

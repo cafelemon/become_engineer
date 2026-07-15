@@ -1,0 +1,82 @@
+[
+  {
+    "query": "可替换输出报告器如何验证？",
+    "step_id": "step-1",
+    "expected": "interface-run"
+  },
+  {
+    "query": "报告器接口测试",
+    "step_id": "step-1",
+    "expected": "interface-run"
+  },
+  {
+    "query": "位置参数和仅限关键字参数怎么选？",
+    "step_id": "step-2",
+    "expected": "parameter-kinds"
+  },
+  {
+    "query": "斜杠星号参数",
+    "step_id": "step-2",
+    "expected": "parameter-kinds"
+  },
+  {
+    "query": "为什么不能把可变对象当默认参数？",
+    "step_id": "step-2",
+    "expected": "mutable-default"
+  },
+  {
+    "query": "默认列表陷阱",
+    "step_id": "step-2",
+    "expected": "mutable-default"
+  },
+  {
+    "query": "Protocol 和 Callable 分别什么时候用？",
+    "step_id": "step-3",
+    "expected": "protocol"
+  },
+  {
+    "query": "Protocol和Callable区别",
+    "step_id": "step-3",
+    "expected": "protocol"
+  },
+  {
+    "query": "为什么业务模块不应该反向导入 main？",
+    "step_id": "step-3",
+    "expected": "dependency-direction"
+  },
+  {
+    "query": "循环导入",
+    "step_id": "step-3",
+    "expected": "dependency-direction"
+  },
+  {
+    "query": "回调不满足 Protocol 怎么排查？",
+    "step_id": "step-4",
+    "expected": "protocol-failure"
+  },
+  {
+    "query": "Protocol不匹配",
+    "step_id": "step-4",
+    "expected": "protocol-failure"
+  },
+  {
+    "query": "__all__ 和下划线是安全权限吗？",
+    "step_id": "step-4",
+    "expected": "public-boundary"
+  },
+  {
+    "query": "__all__安全吗",
+    "step_id": "step-4",
+    "expected": "public-boundary"
+  },
+  {
+    "query": "如何新增输出实现而不修改核心分析？",
+    "step_id": "step-5",
+    "expected": "interface-migration"
+  },
+  {
+    "query": "新增报告输出",
+    "step_id": "step-5",
+    "expected": "interface-migration"
+  }
+]
