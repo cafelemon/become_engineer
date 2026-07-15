@@ -1,0 +1,255 @@
+{
+  "version": 1,
+  "lesson": {
+    "id": "cpp-core-02",
+    "title": "函数、声明与程序组织",
+    "path": "learning-paths/programming-languages/cpp-core/02-functions-declarations-program-organization/"
+  },
+  "steps": [
+    {
+      "id": "step-1",
+      "title": "开始任务"
+    },
+    {
+      "id": "step-2",
+      "title": "主动修改"
+    },
+    {
+      "id": "step-3",
+      "title": "按需知识"
+    },
+    {
+      "id": "step-4",
+      "title": "排错实验"
+    },
+    {
+      "id": "step-5",
+      "title": "迁移验收"
+    }
+  ],
+  "cards": [
+    {
+      "id": "function-run",
+      "lesson_id": "cpp-core-02",
+      "step_id": "step-1",
+      "question": "函数化状态卡如何验证没有改变行为？",
+      "aliases": [
+        "重构后怎么验证",
+        "函数化报告运行"
+      ],
+      "keywords": [
+        "函数",
+        "输出",
+        "退出码",
+        "回归"
+      ],
+      "diagnostic": "你是否保留了重构前的一组输入和输出？",
+      "hints": [
+        "先运行固定输入，再比较输出和退出码，而不是只看能否编译。",
+        "用课程的固定正常输入运行函数化版本，并保留一份上一课状态卡的输出用于逐行比较。"
+      ],
+      "example": "局部示例：同一姓名、计划小时和完成小时应得到相同报告文本与零退出码。",
+      "answer": "把同一输入矩阵用于重构前后，确认行为不变。",
+      "source": {
+        "label": "第一步：运行函数化状态卡",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "declaration-definition",
+      "lesson_id": "cpp-core-02",
+      "step_id": "step-2",
+      "question": "函数声明和定义有什么区别？",
+      "aliases": [
+        "声明定义区别",
+        "函数原型是什么"
+      ],
+      "keywords": [
+        "声明",
+        "定义",
+        "签名",
+        "函数"
+      ],
+      "diagnostic": "调用点只需要知道接口，还是还需要函数体？",
+      "hints": [
+        "声明给出名称、参数和返回类型；定义提供函数体实现。",
+        "先在 `main` 前写出函数原型，再把带花括号的函数体放在后面，重新构建确认调用可见。"
+      ],
+      "example": "局部示例：`int remaining_hours(int planned, int completed);` 是声明；带 `{ return planned - completed; }` 的版本是定义。",
+      "answer": "调用之前需有可见匹配声明，定义在程序中提供实际实现。",
+      "source": {
+        "label": "第二步：主动拆出一个计算函数",
+        "href": "#step-2"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "return-side-effect",
+      "lesson_id": "cpp-core-02",
+      "step_id": "step-2",
+      "question": "返回值和打印输出有什么区别？",
+      "aliases": [
+        "return和cout区别",
+        "函数应该打印吗"
+      ],
+      "keywords": [
+        "return",
+        "输出",
+        "副作用",
+        "测试"
+      ],
+      "diagnostic": "调用者需要拿到数据继续计算，还是只是展示文本？",
+      "hints": [
+        "返回值把结果交给调用者；打印是可观察副作用。",
+        "把计算结果从 `std::cout` 调整为 `return`，由 `main` 负责显示结果，然后单独调用函数检查返回值。"
+      ],
+      "example": "局部示例：`int remaining_hours(int planned, int completed) { return planned - completed; }`。",
+      "answer": "计算函数优先返回数据，把展示放到边界以便单独测试。",
+      "source": {
+        "label": "第二步：主动拆出一个计算函数",
+        "href": "#step-2"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "const-reference",
+      "lesson_id": "cpp-core-02",
+      "step_id": "step-3",
+      "question": "什么时候使用 const std::string& 参数？",
+      "aliases": [
+        "const引用有什么用",
+        "string按值还是引用"
+      ],
+      "keywords": [
+        "const",
+        "引用",
+        "string",
+        "参数"
+      ],
+      "diagnostic": "函数需要修改调用者字符串吗？",
+      "hints": [
+        "只读且可能较大的对象可用 const&，既避免复制又禁止通过该名字修改。",
+        "把只读姓名参数写成 `const std::string& name`，在函数体内临时赋值并观察编译器拒绝。"
+      ],
+      "example": "局部示例：`void print_name(const std::string& name) { std::cout << name; }`。",
+      "answer": "小型数值通常按值；需要修改调用者时才明确使用非常量引用。",
+      "source": {
+        "label": "第三步：选择参数传递方式",
+        "href": "#step-3"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "value-copy",
+      "lesson_id": "cpp-core-02",
+      "step_id": "step-3",
+      "question": "按值参数为什么不会修改调用者变量？",
+      "aliases": [
+        "按值传递修改没生效",
+        "copy参数"
+      ],
+      "keywords": [
+        "按值",
+        "复制",
+        "调用者"
+      ],
+      "diagnostic": "函数形参是原变量本身还是一份副本？",
+      "hints": [
+        "按值传递创建副本；函数内修改的是副本。",
+        "为小数值参数在函数内赋新值，并在 `main` 中随后输出原变量，观察原变量未变。"
+      ],
+      "example": "局部示例：`void reset(int value) { value = 0; }` 不会改变调用者的 `planned_hours`。",
+      "answer": "用输出比较调用前后变量，确认数据流而不是猜测。",
+      "source": {
+        "label": "第三步：选择参数传递方式",
+        "href": "#step-3"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "missing-declaration",
+      "lesson_id": "cpp-core-02",
+      "step_id": "step-4",
+      "question": "调用前没有声明为什么会报错？",
+      "aliases": [
+        "函数未声明",
+        "找不到函数声明"
+      ],
+      "keywords": [
+        "声明",
+        "调用",
+        "可见",
+        "诊断"
+      ],
+      "diagnostic": "调用位置之前是否已有同签名声明？",
+      "hints": [
+        "编译器分析调用时必须先知道函数名称、参数和返回类型。",
+        "把函数体暂时移到 `main` 后面且删除原型，构建后再把同签名声明放回调用点之前。"
+      ],
+      "example": "局部示例：在 `main` 前增加 `bool reached_goal(int planned, int completed);`。",
+      "answer": "把匹配声明放到调用点前，或把定义移到前面。",
+      "source": {
+        "label": "第四步：复现声明或重载诊断",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "overload-ambiguous",
+      "lesson_id": "cpp-core-02",
+      "step_id": "step-4",
+      "question": "函数重载二义性怎么处理？",
+      "aliases": [
+        "重载ambiguous",
+        "调用不明确"
+      ],
+      "keywords": [
+        "重载",
+        "二义性",
+        "转换"
+      ],
+      "diagnostic": "同一调用是否能以相近代价匹配多个重载？",
+      "hints": [
+        "多个候选同样合适时，编译器不能猜测你想调用哪个。",
+        "若两个重载都能接收同一实参，先用显式类型表达业务意图，再考虑是否应合并接口。"
+      ],
+      "example": "局部示例：`show(static_cast<int>(hours));` 让调用明确选择整数版本。",
+      "answer": "改变参数类型、补充显式转换或重新设计接口，使候选唯一。",
+      "source": {
+        "label": "第四步：复现声明或重载诊断",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "function-migration",
+      "lesson_id": "cpp-core-02",
+      "step_id": "step-5",
+      "question": "如何为状态卡增加纯计算函数？",
+      "aliases": [
+        "新增函数迁移",
+        "计算函数验收"
+      ],
+      "keywords": [
+        "迁移",
+        "函数",
+        "return",
+        "测试"
+      ],
+      "diagnostic": "这个新规则需要输入什么，应该返回什么？",
+      "hints": [
+        "先写清参数和返回值，再让 main 负责读取与输出。",
+        "新增纯函数后在 `main` 中读取结果并输出，保留原有输入验证分支不变。"
+      ],
+      "example": "局部示例：`bool reached_goal(int planned, int completed) { return completed >= planned; }`。",
+      "answer": "新增“是否达到计划”之类函数后，用原输入矩阵确认输出与退出码。",
+      "source": {
+        "label": "第五步：迁移验收与下一步",
+        "href": "#step-5"
+      },
+      "updated_at": "2026-07-15"
+    }
+  ]
+}

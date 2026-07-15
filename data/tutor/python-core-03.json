@@ -1,0 +1,258 @@
+{
+  "version": 1,
+  "lesson": {
+    "id": "python-core-03",
+    "title": "Python 容器协议、迭代器与生成器",
+    "path": "learning-paths/programming-languages/python-core/03-iterables-iterators-generators/"
+  },
+  "steps": [
+    {
+      "id": "step-1",
+      "title": "开始任务"
+    },
+    {
+      "id": "step-2",
+      "title": "主动修改"
+    },
+    {
+      "id": "step-3",
+      "title": "按需知识"
+    },
+    {
+      "id": "step-4",
+      "title": "排错实验"
+    },
+    {
+      "id": "step-5",
+      "title": "迁移验收"
+    }
+  ],
+  "cards": [
+    {
+      "id": "lazy-run",
+      "lesson_id": "python-core-03",
+      "step_id": "step-1",
+      "question": "惰性学习报告器如何观察生成时机？",
+      "aliases": [
+        "生成器什么时候执行",
+        "惰性报告器运行"
+      ],
+      "keywords": [
+        "生成器",
+        "惰性",
+        "next",
+        "报告器"
+      ],
+      "diagnostic": "你只创建了生成器，还是已经调用 next 或进入循环？",
+      "hints": [
+        "生成器函数调用创建生成器对象，代码在首次消费时才推进。",
+        "先创建生成器对象但不消费，再调用一次 `next()`，观察代码只产生第一条报告行。"
+      ],
+      "example": "局部示例：`rows = progress_lines(records)` 后尚未输出；`next(rows)` 才得到第一行。",
+      "answer": "在产生值处加临时可观察输出，比较创建与消费顺序。",
+      "source": {
+        "label": "第一步：观察一次惰性报告消费",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "iterable-iterator",
+      "lesson_id": "python-core-03",
+      "step_id": "step-1",
+      "question": "Iterable 和 Iterator 有什么区别？",
+      "aliases": [
+        "可迭代对象和迭代器",
+        "iter next区别"
+      ],
+      "keywords": [
+        "Iterable",
+        "Iterator",
+        "iter",
+        "next"
+      ],
+      "diagnostic": "对象能否提供新迭代器，还是自身保存当前消费位置？",
+      "hints": [
+        "Iterable 可交给 iter；Iterator 既可迭代又可被 next 推进并保存位置。",
+        "对容器调用 `iter()` 得到迭代器，并用 `next()` 消费一项，比较容器与迭代器的状态。"
+      ],
+      "example": "局部示例：`iterator = iter(records); first = next(iterator)`。",
+      "answer": "容器通常可重复迭代，单个迭代器通常只能消费一次。",
+      "source": {
+        "label": "第一步：观察一次惰性报告消费",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "generator-function",
+      "lesson_id": "python-core-03",
+      "step_id": "step-2",
+      "question": "生成器函数为什么要用 yield？",
+      "aliases": [
+        "yield有什么用",
+        "生成器函数怎么写"
+      ],
+      "keywords": [
+        "yield",
+        "生成器",
+        "暂停",
+        "惰性"
+      ],
+      "diagnostic": "你希望一次性返回所有结果，还是按需要逐个产生？",
+      "hints": [
+        "yield 产出一个值并保留函数状态，下一次消费从暂停处继续。",
+        "将逐条报告的 `return` 改为 `yield`，用 for 循环消费并观察每条只在需要时创建。"
+      ],
+      "example": "局部示例：`def progress_lines(records):\\n    for record in records:\\n        yield record[\"course\"]`。",
+      "answer": "用 yield 逐条产生报告行，而不是先构造所有文本。",
+      "source": {
+        "label": "第二步：增加一个惰性筛选或报告行",
+        "href": "#step-2"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "generator-expression",
+      "lesson_id": "python-core-03",
+      "step_id": "step-2",
+      "question": "列表推导式和生成器表达式怎么选？",
+      "aliases": [
+        "列表推导和生成器区别",
+        "括号生成器"
+      ],
+      "keywords": [
+        "列表",
+        "生成器",
+        "内存",
+        "惰性"
+      ],
+      "diagnostic": "调用方是否需要多次遍历、长度或索引？",
+      "hints": [
+        "列表立即物化并可多次遍历；生成器表达式按需产生值且常更省内存。",
+        "对同一筛选写一个列表推导和一个圆括号生成器，观察列表立即有全部值而生成器需消费。"
+      ],
+      "example": "局部示例：`(record for record in records if record[\"done\"])` 是生成器表达式。",
+      "answer": "按消费次数和接口需求选择，不把惰性当绝对更好。",
+      "source": {
+        "label": "第二步：增加一个惰性筛选或报告行",
+        "href": "#step-2"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "islice-boundary",
+      "lesson_id": "python-core-03",
+      "step_id": "step-3",
+      "question": "为什么无限或长迭代要用 islice 限制？",
+      "aliases": [
+        "islice怎么用",
+        "无限生成器限制"
+      ],
+      "keywords": [
+        "islice",
+        "无限",
+        "消费",
+        "边界"
+      ],
+      "diagnostic": "来源是否可能无限或远大于当前展示需要？",
+      "hints": [
+        "惰性不等于自动停止；消费者需给出明确数量或终止条件。",
+        "给可能很长的报告行加明确数量限制，再确认只显示需要的前几项。"
+      ],
+      "example": "局部示例：`from itertools import islice; preview = list(islice(rows, 3))`。",
+      "answer": "用 islice 限制报告预览，避免无界循环或无界工作。",
+      "source": {
+        "label": "第三步：为消费设定边界",
+        "href": "#step-3"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "double-consume",
+      "lesson_id": "python-core-03",
+      "step_id": "step-4",
+      "question": "为什么第二次遍历迭代器没有结果？",
+      "aliases": [
+        "迭代器第二次为空",
+        "生成器被消费"
+      ],
+      "keywords": [
+        "迭代器",
+        "消费",
+        "第二次",
+        "空"
+      ],
+      "diagnostic": "第一次循环是否已走到迭代器末尾？",
+      "hints": [
+        "迭代器维护当前位置，耗尽后不会自动回到开头。",
+        "先 `list(iterator)` 一次，再次转列表观察为空；按需求重新创建迭代器或在边界保存列表。"
+      ],
+      "example": "局部示例：`rows = progress_lines(records); list(rows); list(rows)` 的第二个列表为空。",
+      "answer": "重新创建迭代器，或在确实需要二次消费的边界 list() 一次。",
+      "source": {
+        "label": "第四步：复现单次消费错误",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "sequence-interface",
+      "lesson_id": "python-core-03",
+      "step_id": "step-3",
+      "question": "Iterable、Iterator 和 Sequence 应该怎样写进类型签名？",
+      "aliases": [
+        "迭代类型注解",
+        "Sequence还是Iterable"
+      ],
+      "keywords": [
+        "Iterable",
+        "Iterator",
+        "Sequence",
+        "类型"
+      ],
+      "diagnostic": "函数需要索引和多次遍历，还是只需一次顺序消费？",
+      "hints": [
+        "按最低能力写接口：一次消费用 Iterable/Iterator，索引与可重复访问才要求 Sequence。",
+        "根据函数是否需要索引或二次遍历来写签名，不要求生成器具备 Sequence 能力。"
+      ],
+      "example": "局部示例：只遍历一次可写 `def render(records: Iterable[StudyRecord]) -> Iterable[str]:`。",
+      "answer": "过宽的 Sequence 会限制可传入生成器；过窄的 Iterator 会误导调用者。",
+      "source": {
+        "label": "第三步：为消费设定边界",
+        "href": "#step-3"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "lazy-migration",
+      "lesson_id": "python-core-03",
+      "step_id": "step-5",
+      "question": "如何新增惰性报告视图并验收？",
+      "aliases": [
+        "生成器迁移任务",
+        "惰性视图验收"
+      ],
+      "keywords": [
+        "迁移",
+        "惰性",
+        "测试",
+        "双语言"
+      ],
+      "diagnostic": "新视图是按标签筛选、逐行输出，还是需要物化汇总？",
+      "hints": [
+        "先定义消费方式与停止条件，再保持最终共同报告规则不变。",
+        "新增惰性标签视图后，将它与共同报告比较，并确认不会提前把全部记录变成列表。"
+      ],
+      "example": "局部示例：`yield from (row for row in rows if \"Python\" in row)` 可作为一条惰性视图。",
+      "answer": "运行 mypy、测试和双语言比较，验证输入不被意外耗尽或修改。",
+      "source": {
+        "label": "第五步：迁移验收与下一步",
+        "href": "#step-5"
+      },
+      "updated_at": "2026-07-15"
+    }
+  ]
+}

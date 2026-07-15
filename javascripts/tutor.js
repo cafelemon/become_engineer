@@ -42,11 +42,10 @@
 
   const header = element("header", "be-tutor-header");
   const headingWrap = element("div", "be-tutor-heading");
-  const eyebrow = element("span", "be-tutor-eyebrow", "知识库助教 · 不生成答案");
   const title = element("h2", "be-tutor-title", "小码同学");
   title.id = "be-tutor-title";
   const stepStatus = element("span", "be-tutor-step", "当前：首次运行");
-  headingWrap.append(eyebrow, title, stepStatus);
+  headingWrap.append(title, stepStatus);
 
   const closeButton = element("button", "be-tutor-close", "关闭");
   closeButton.type = "button";
@@ -162,6 +161,9 @@
   function openPanel(fromUser) {
     returnFocus = fromUser ? document.activeElement : launcher;
     panel.hidden = false;
+    marker.dataset.panelOpen = "true";
+    document.documentElement.classList.add("be-tutor-open");
+    panel.setAttribute("aria-modal", String(window.matchMedia("(max-width: 44.984375em)").matches));
     launcher.setAttribute("aria-expanded", "true");
     launcher.setAttribute("aria-label", "关闭学习助教");
     state.open = true;
@@ -175,6 +177,9 @@
 
   function closePanel() {
     panel.hidden = true;
+    marker.dataset.panelOpen = "false";
+    document.documentElement.classList.remove("be-tutor-open");
+    panel.setAttribute("aria-modal", "false");
     launcher.setAttribute("aria-expanded", "false");
     launcher.setAttribute("aria-label", "打开学习助教");
     state.open = false;

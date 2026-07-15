@@ -828,12 +828,13 @@
 .be-tutor-panel {
   position: fixed;
   right: 1rem;
-  bottom: 5.9rem;
+  bottom: 1rem;
   z-index: 20;
   display: flex;
   flex-direction: column;
-  width: min(24rem, calc(100vw - 2rem));
-  max-height: min(42rem, calc(100vh - 8rem));
+  width: min(34rem, calc(100vw - 2rem));
+  height: min(50rem, calc(100dvh - 2rem));
+  max-height: calc(100dvh - 2rem);
   overflow: hidden;
   border: 1px solid var(--be-border);
   border-radius: 0.55rem;
@@ -844,28 +845,35 @@
 
 .be-tutor-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  gap: 0.8rem;
-  padding: 0.85rem 0.9rem;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding: 0.35rem 0.8rem;
   border-bottom: 1px solid var(--be-border);
   background: var(--be-surface);
 }
 
 .be-tutor-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
   min-width: 0;
 }
 
-.be-tutor-eyebrow,
 .be-tutor-step {
-  display: block;
   color: var(--be-muted);
-  font-size: 0.58rem;
+  font-size: 0.57rem;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .be-tutor-title {
-  margin: 0.1rem 0;
-  font-size: 0.88rem;
+  flex: 0 0 auto;
+  margin: 0;
+  font-size: 0.72rem;
   line-height: 1.25;
 }
 
@@ -886,21 +894,22 @@
 
 .be-tutor-messages {
   flex: 1 1 auto;
-  min-height: 8rem;
+  min-height: 14rem;
   overflow: auto;
-  padding: 0.8rem;
+  padding: 0.95rem 1rem;
   overscroll-behavior: contain;
 }
 
 .be-tutor-message {
   width: fit-content;
-  max-width: 92%;
+  max-width: 88%;
   margin: 0 0 0.65rem;
-  padding: 0.62rem 0.7rem;
+  padding: 0.7rem 0.8rem;
   border: 1px solid var(--be-border);
   border-radius: 0.45rem;
   background: var(--be-surface);
-  font-size: 0.66rem;
+  font-size: 0.71rem;
+  line-height: 1.55;
 }
 
 .be-tutor-message p {
@@ -925,14 +934,14 @@
 .be-tutor-level__label {
   display: block;
   color: var(--be-muted);
-  font-size: 0.55rem;
+  font-size: 0.59rem;
   font-weight: 700;
 }
 
 .be-tutor-message__title {
   display: block;
   margin-top: 0.15rem;
-  font-size: 0.68rem;
+  font-size: 0.73rem;
 }
 
 .be-tutor-level {
@@ -988,7 +997,7 @@
 }
 
 .be-tutor-quick {
-  padding: 0.65rem 0.8rem;
+  padding: 0.55rem 1rem;
   border-top: 1px solid var(--be-border);
 }
 
@@ -1025,7 +1034,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 0.4rem;
-  padding: 0.65rem 0.8rem;
+  padding: 0.7rem 1rem;
   border-top: 1px solid var(--be-border);
 }
 
@@ -1050,7 +1059,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.6rem;
-  padding: 0.55rem 0.8rem;
+  padding: 0.45rem 1rem;
   border-top: 1px solid var(--be-border);
   color: var(--be-muted);
   background: var(--be-surface);
@@ -1088,18 +1097,67 @@
   }
 
   .be-tutor-panel {
+    top: 0;
     right: 0;
     bottom: 0;
     width: 100vw;
-    max-height: min(82vh, 42rem);
-    border-right: 0;
-    border-bottom: 0;
-    border-left: 0;
-    border-radius: 0.7rem 0.7rem 0 0;
+    height: 100vh;
+    height: 100dvh;
+    max-height: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  html.be-tutor-open,
+  html.be-tutor-open body {
+    overflow: hidden;
+  }
+
+  .be-tutor-header {
+    min-height: 3.35rem;
+    padding: calc(0.45rem + env(safe-area-inset-top)) 0.9rem 0.45rem;
+  }
+
+  .be-tutor-title {
+    font-size: 0.78rem;
+  }
+
+  .be-tutor-step {
+    font-size: 0.61rem;
+  }
+
+  .be-tutor-messages {
+    min-height: 0;
+    padding: 0.85rem 0.9rem;
   }
 
   .be-tutor-message {
-    max-width: 96%;
+    max-width: 92%;
+    padding: 0.75rem 0.8rem;
+    font-size: 0.76rem;
+  }
+
+  .be-tutor-quick {
+    padding: 0.55rem 0.9rem;
+  }
+
+  .be-tutor-form {
+    padding: 0.65rem 0.9rem;
+  }
+
+  .be-tutor-input,
+  .be-tutor-submit {
+    min-height: 2.6rem;
+    font-size: 0.72rem;
+  }
+
+  .be-tutor-footer {
+    padding: 0.45rem 0.9rem calc(0.45rem + env(safe-area-inset-bottom));
+  }
+
+  .be-tutor-privacy {
+    font-size: 0.55rem;
   }
 }
 

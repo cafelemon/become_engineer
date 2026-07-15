@@ -1,0 +1,258 @@
+{
+  "version": 1,
+  "lesson": {
+    "id": "python-core-01",
+    "title": "类型提示、接口与静态检查认知",
+    "path": "learning-paths/programming-languages/python-core/01-type-hints-interfaces-static-checking/"
+  },
+  "steps": [
+    {
+      "id": "step-1",
+      "title": "开始任务"
+    },
+    {
+      "id": "step-2",
+      "title": "主动修改"
+    },
+    {
+      "id": "step-3",
+      "title": "按需知识"
+    },
+    {
+      "id": "step-4",
+      "title": "排错实验"
+    },
+    {
+      "id": "step-5",
+      "title": "迁移验收"
+    }
+  ],
+  "cards": [
+    {
+      "id": "typed-run",
+      "lesson_id": "python-core-01",
+      "step_id": "step-1",
+      "question": "类型化学习报告器怎么运行和检查？",
+      "aliases": [
+        "mypy和测试怎么运行",
+        "类型化报告器运行"
+      ],
+      "keywords": [
+        "mypy",
+        "unittest",
+        "报告器",
+        "严格"
+      ],
+      "diagnostic": "你是在运行 Python 程序，还是运行静态检查？",
+      "hints": [
+        "先按课程环境命令运行程序、mypy --strict 与 unittest；三者反馈不同。",
+        "依次运行课程给出的程序、`mypy --strict` 和 unittest；不要把静态检查当成运行命令。"
+      ],
+      "example": "局部示例：正常 JSON 输入应生成报告，同时 mypy 对项目模块报告零错误。",
+      "answer": "记录正常业务输出与静态检查结果，二者都需要成功。",
+      "source": {
+        "label": "第一步：运行类型化报告器",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "annotation-runtime",
+      "lesson_id": "python-core-01",
+      "step_id": "step-1",
+      "question": "类型注解会自动拦截运行时错误吗？",
+      "aliases": [
+        "注解会检查吗",
+        "python类型提示运行时"
+      ],
+      "keywords": [
+        "注解",
+        "运行时",
+        "mypy",
+        "类型"
+      ],
+      "diagnostic": "错误值是否已经进入正在执行的 Python 程序？",
+      "hints": [
+        "普通类型注解主要供工具使用，不会自动验证传入值。",
+        "向带 `int` 注解的函数传入字符串，先运行观察 Python 不自动阻止，再用 mypy 检查调用。"
+      ],
+      "example": "局部示例：`def add_hour(hours: int) -> int: return hours + 1` 在运行时仍可能收到 `\"five\"`。",
+      "answer": "保留运行时校验和测试；用 mypy 在运行前发现可推断的不一致。",
+      "source": {
+        "label": "第一步：运行类型化报告器",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "function-contract",
+      "lesson_id": "python-core-01",
+      "step_id": "step-2",
+      "question": "函数类型契约应该标注什么？",
+      "aliases": [
+        "函数参数返回类型",
+        "怎么写类型提示"
+      ],
+      "keywords": [
+        "函数",
+        "参数",
+        "返回",
+        "类型提示"
+      ],
+      "diagnostic": "函数从调用者接收什么，并把什么结果交还？",
+      "hints": [
+        "从参数类型和返回类型开始，标注真实输入能力与结果形状。",
+        "从一个分析函数的输入、输出写起，确保参数类型描述它真正消费的数据而返回类型描述结果。"
+      ],
+      "example": "局部示例：`def completed_count(records: Sequence[StudyRecord]) -> int:`。",
+      "answer": "不要为了通过检查器写宽泛 Any；让标注表达实际接口。",
+      "source": {
+        "label": "第二步：给一个边界补充准确契约",
+        "href": "#step-2"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "typeddict",
+      "lesson_id": "python-core-01",
+      "step_id": "step-2",
+      "question": "TypedDict 适合解决什么问题？",
+      "aliases": [
+        "TypedDict是什么",
+        "固定字典类型"
+      ],
+      "keywords": [
+        "TypedDict",
+        "字典",
+        "字段",
+        "JSON"
+      ],
+      "diagnostic": "数据是否有固定键名和每个字段的预期类型？",
+      "hints": [
+        "TypedDict 描述固定字典形状，帮助检查缺字段和错误字段类型。",
+        "在样例记录中删除一个必填键并运行 mypy，观察 `TypedDict` 报出缺少字段。"
+      ],
+      "example": "局部示例：`class StudyRecord(TypedDict): course: str; hours: float`。",
+      "answer": "它不做运行时校验；外部 JSON 仍应先验证。",
+      "source": {
+        "label": "第二步：给一个边界补充准确契约",
+        "href": "#step-2"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "object-any-cast",
+      "lesson_id": "python-core-01",
+      "step_id": "step-3",
+      "question": "object、Any 和 cast 的风险有什么不同？",
+      "aliases": [
+        "object Any cast区别",
+        "类型逃生口"
+      ],
+      "keywords": [
+        "object",
+        "Any",
+        "cast",
+        "缩窄"
+      ],
+      "diagnostic": "值来自不可信边界，还是你只是想跳过检查？",
+      "hints": [
+        "object 需要缩窄后使用；Any 会传播未检查操作；cast 只告诉检查器，不验证值。",
+        "把 JSON 边界值当作 `object`，先用 `isinstance` 缩窄后再读取字段，避免直接传播 `Any`。"
+      ],
+      "example": "局部示例：`if not isinstance(value, dict): raise ValueError(\"记录必须是对象\")`。",
+      "answer": "优先从 object 做运行时检查，避免把 Any 当默认答案。",
+      "source": {
+        "label": "第三步：在静态与运行时两层验证",
+        "href": "#step-3"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "json-validation",
+      "lesson_id": "python-core-01",
+      "step_id": "step-3",
+      "question": "为什么 JSON 边界需要运行时校验？",
+      "aliases": [
+        "JSON类型检查",
+        "外部数据校验"
+      ],
+      "keywords": [
+        "JSON",
+        "运行时",
+        "校验",
+        "StudyRecord"
+      ],
+      "diagnostic": "JSON 文件实际内容是否由 Python 类型提示产生并受控制？",
+      "hints": [
+        "外部 JSON 可能不符合注解假设，必须检查字段与值后再构造内部记录。",
+        "在构造内部 `StudyRecord` 前检查字段名和值类型，故意给一个错误字段验证异常路径。"
+      ],
+      "example": "局部示例：先确认 `hours` 是数字，再将其写入可信的报告记录。",
+      "answer": "先以 object 读取，验证结构，再转换为可信类型。",
+      "source": {
+        "label": "第三步：在静态与运行时两层验证",
+        "href": "#step-3"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "mypy-failure",
+      "lesson_id": "python-core-01",
+      "step_id": "step-4",
+      "question": "mypy 报错后应该先看什么？",
+      "aliases": [
+        "mypy错误怎么看",
+        "静态检查失败"
+      ],
+      "keywords": [
+        "mypy",
+        "诊断",
+        "文件",
+        "行号"
+      ],
+      "diagnostic": "诊断给出的期望类型和实际类型分别是什么？",
+      "hints": [
+        "先读文件行号、错误代码/描述与期待接口，回到数据流源头修复。",
+        "阅读 mypy 的文件名、行号、实际类型和期望类型，然后修改源头的标注或调用，而不是添加 Any。"
+      ],
+      "example": "局部示例：把要求 `int` 的参数传入 `str`，应得到参数类型不兼容诊断。",
+      "answer": "不要用 Any 压掉问题；让函数契约和调用处重新一致。",
+      "source": {
+        "label": "第四步：故意让检查器失败",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "type-migration",
+      "lesson_id": "python-core-01",
+      "step_id": "step-5",
+      "question": "如何增加类型化字段并验收？",
+      "aliases": [
+        "新增TypedDict字段",
+        "类型迁移验收"
+      ],
+      "keywords": [
+        "迁移",
+        "字段",
+        "mypy",
+        "测试"
+      ],
+      "diagnostic": "新字段是必填还是可缺失，运行时来源在哪里？",
+      "hints": [
+        "先调整类型模型和运行时校验，再更新构造、测试和输出。",
+        "新增字段时同时修改 `TypedDict`、JSON 校验、构造位置和 unittest，使四处契约保持一致。"
+      ],
+      "example": "局部示例：可选说明字段可写成 `note: NotRequired[str]`，并为有/无该字段各写一例测试。",
+      "answer": "验收包括 mypy --strict、unittest、正常报告输出和故意错误样例。",
+      "source": {
+        "label": "第五步：迁移验收与下一步",
+        "href": "#step-5"
+      },
+      "updated_at": "2026-07-15"
+    }
+  ]
+}

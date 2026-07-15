@@ -1,0 +1,264 @@
+{
+  "version": 1,
+  "lesson": {
+    "id": "engineering-foundation-03",
+    "title": "终端与 Shell",
+    "path": "learning-paths/engineering-foundation/stage-0/03-terminal-shell/"
+  },
+  "steps": [
+    {
+      "id": "step-1",
+      "title": "打开终端"
+    },
+    {
+      "id": "step-2",
+      "title": "确认位置"
+    },
+    {
+      "id": "step-3",
+      "title": "查看内容"
+    },
+    {
+      "id": "step-4",
+      "title": "进入并读取"
+    },
+    {
+      "id": "step-5",
+      "title": "记录错误"
+    }
+  ],
+  "cards": [
+    {
+      "id": "terminal",
+      "lesson_id": "engineering-foundation-03",
+      "step_id": "step-1",
+      "question": "终端是什么",
+      "aliases": [
+        "终端是干什么的",
+        "Shell 是什么"
+      ],
+      "keywords": [
+        "终端",
+        "命令",
+        "shell",
+        "窗口"
+      ],
+      "diagnostic": "当前任务是“打开系统或编辑器内置终端，进入上一课创建的学习工作区。”。处理“终端是什么”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：打开系统或编辑器内置终端，进入上一课创建的学习工作区。",
+        "本步成功证据是：提示符回到可输入状态，没有报错。 终端是文字交互窗口；Shell 读取命令并执行。"
+      ],
+      "example": "局部检查示例：提示符回到可输入状态，没有报错。",
+      "answer": "终端是文字交互窗口；Shell 读取命令并执行。",
+      "source": {
+        "label": "打开终端",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "cd",
+      "lesson_id": "engineering-foundation-03",
+      "step_id": "step-1",
+      "question": "cd 如何进入目录",
+      "aliases": [
+        "怎么进入学习目录",
+        "cd 怎么用"
+      ],
+      "keywords": [
+        "cd",
+        "进入目录",
+        "路径",
+        "工作区"
+      ],
+      "diagnostic": "当前任务是“打开系统或编辑器内置终端，进入上一课创建的学习工作区。”。处理“cd 如何进入目录”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：打开系统或编辑器内置终端，进入上一课创建的学习工作区。",
+        "本步成功证据是：提示符回到可输入状态，没有报错。 使用 `cd 目标路径` 进入工作区，路径有空格时使用引号。"
+      ],
+      "example": "局部检查示例：提示符回到可输入状态，没有报错。",
+      "answer": "使用 `cd 目标路径` 进入工作区，路径有空格时使用引号。",
+      "source": {
+        "label": "打开终端",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "pwd",
+      "lesson_id": "engineering-foundation-03",
+      "step_id": "step-2",
+      "question": "怎样确认当前目录",
+      "aliases": [
+        "pwd 是什么",
+        "当前目录怎么查"
+      ],
+      "keywords": [
+        "pwd",
+        "当前目录",
+        "位置",
+        "get-location"
+      ],
+      "diagnostic": "当前任务是“执行 `pwd`（PowerShell 可用 `Get-Location`）。”。处理“怎样确认当前目录”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：执行 `pwd`（PowerShell 可用 `Get-Location`）。",
+        "本步成功证据是：输出与学习工作区位置一致。 macOS/Linux 常用 pwd；PowerShell 可用 Get-Location。"
+      ],
+      "example": "局部检查示例：输出与学习工作区位置一致。",
+      "answer": "macOS/Linux 常用 pwd；PowerShell 可用 Get-Location。",
+      "source": {
+        "label": "确认位置",
+        "href": "#step-2"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "ls",
+      "lesson_id": "engineering-foundation-03",
+      "step_id": "step-3",
+      "question": "怎样查看目录内容",
+      "aliases": [
+        "ls 命令有什么用",
+        "怎么列出文件"
+      ],
+      "keywords": [
+        "ls",
+        "dir",
+        "查看",
+        "目录内容"
+      ],
+      "diagnostic": "当前任务是“执行 `ls`（PowerShell 可用 `dir`），找到 `notes`、`practice`、`assets`。”。处理“怎样查看目录内容”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：执行 `ls`（PowerShell 可用 `dir`），找到 `notes`、`practice`、`assets`。",
+        "本步成功证据是：输出与文件树一致。 macOS/Linux 用 ls；PowerShell 可用 dir 查看当前目录条目。"
+      ],
+      "example": "局部检查示例：输出与文件树一致。",
+      "answer": "macOS/Linux 用 ls；PowerShell 可用 dir 查看当前目录条目。",
+      "source": {
+        "label": "查看内容",
+        "href": "#step-3"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "parent",
+      "lesson_id": "engineering-foundation-03",
+      "step_id": "step-4",
+      "question": "cd .. 是什么",
+      "aliases": [
+        "怎么返回上一级目录",
+        ".. 代表什么"
+      ],
+      "keywords": [
+        "cd",
+        "父目录",
+        "返回",
+        "上一级"
+      ],
+      "diagnostic": "当前任务是“进入 `notes`，用 `cat learning-log.md`（PowerShell 可用 `Get-Content learning-log.md`）读取文件，然后用 `cd ..` 回到父目录。”。处理“cd .. 是什么”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：进入 `notes`，用 `cat learning-log.md`（PowerShell 可用 `Get-Content learning-log.md`）读取文件，然后用 `cd ..` 回到父目录。",
+        "本步成功证据是：能解释 `.`、`..` 和当前目录的关系。 `..` 表示父目录，`cd ..` 会返回上一级。"
+      ],
+      "example": "局部检查示例：能解释 `.`、`..` 和当前目录的关系。",
+      "answer": "`..` 表示父目录，`cd ..` 会返回上一级。",
+      "source": {
+        "label": "进入并读取",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "cat",
+      "lesson_id": "engineering-foundation-03",
+      "step_id": "step-4",
+      "question": "怎样读取文本文件",
+      "aliases": [
+        "cat 命令是什么",
+        "终端怎么打开 md 文件"
+      ],
+      "keywords": [
+        "cat",
+        "get-content",
+        "读取",
+        "文件"
+      ],
+      "diagnostic": "当前任务是“进入 `notes`，用 `cat learning-log.md`（PowerShell 可用 `Get-Content learning-log.md`）读取文件，然后用 `cd ..` 回到父目录。”。处理“怎样读取文本文件”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：进入 `notes`，用 `cat learning-log.md`（PowerShell 可用 `Get-Content learning-log.md`）读取文件，然后用 `cd ..` 回到父目录。",
+        "本步成功证据是：能解释 `.`、`..` 和当前目录的关系。 macOS/Linux 用 cat 文件名；PowerShell 用 Get-Content 文件名。"
+      ],
+      "example": "局部检查示例：能解释 `.`、`..` 和当前目录的关系。",
+      "answer": "macOS/Linux 用 cat 文件名；PowerShell 用 Get-Content 文件名。",
+      "source": {
+        "label": "进入并读取",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "error",
+      "lesson_id": "engineering-foundation-03",
+      "step_id": "step-5",
+      "question": "终端报错怎么办",
+      "aliases": [
+        "终端报错是不是坏了",
+        "命令失败怎么办"
+      ],
+      "keywords": [
+        "报错",
+        "命令",
+        "终端",
+        "失败"
+      ],
+      "diagnostic": "当前任务是“有意执行一个错误文件名，记录命令、报错和正确修复方式。”。处理“终端报错怎么办”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：有意执行一个错误文件名，记录命令、报错和正确修复方式。",
+        "本步成功证据是：能区分命令失败与终端损坏。 命令错误是执行结果，不表示终端损坏；保留命令、输出和当前目录。"
+      ],
+      "example": "局部检查示例：能区分命令失败与终端损坏。",
+      "answer": "命令错误是执行结果，不表示终端损坏；保留命令、输出和当前目录。",
+      "source": {
+        "label": "记录错误",
+        "href": "#step-5"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "shell",
+      "lesson_id": "engineering-foundation-03",
+      "step_id": "step-3",
+      "question": "ls 和 dir 区别",
+      "aliases": [
+        "PowerShell 怎么查看目录",
+        "不同 Shell 命令"
+      ],
+      "keywords": [
+        "ls",
+        "dir",
+        "powershell",
+        "shell"
+      ],
+      "diagnostic": "当前任务是“执行 `ls`（PowerShell 可用 `dir`），找到 `notes`、`practice`、`assets`。”。处理“ls 和 dir 区别”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：执行 `ls`（PowerShell 可用 `dir`），找到 `notes`、`practice`、`assets`。",
+        "本步成功证据是：输出与文件树一致。 同一目的在不同 Shell 中有不同常用命令，先确认当前环境。"
+      ],
+      "example": "局部检查示例：输出与文件树一致。",
+      "answer": "同一目的在不同 Shell 中有不同常用命令，先确认当前环境。",
+      "source": {
+        "label": "查看内容",
+        "href": "#step-3"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    }
+  ]
+}

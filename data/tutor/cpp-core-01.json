@@ -1,0 +1,256 @@
+{
+  "version": 1,
+  "lesson": {
+    "id": "cpp-core-01",
+    "title": "从源文件到可执行程序：编译、类型与输入输出",
+    "path": "learning-paths/programming-languages/cpp-core/01-build-types-io/"
+  },
+  "steps": [
+    {
+      "id": "step-1",
+      "title": "开始任务"
+    },
+    {
+      "id": "step-2",
+      "title": "主动修改"
+    },
+    {
+      "id": "step-3",
+      "title": "按需知识"
+    },
+    {
+      "id": "step-4",
+      "title": "排错实验"
+    },
+    {
+      "id": "step-5",
+      "title": "迁移验收"
+    }
+  ],
+  "cards": [
+    {
+      "id": "compiler-driver",
+      "lesson_id": "cpp-core-01",
+      "step_id": "step-1",
+      "question": "为什么要用 clang++ 或 g++ 而不是 clang？",
+      "aliases": [
+        "clang++和clang区别",
+        "g++怎么用"
+      ],
+      "keywords": [
+        "clang++",
+        "g++",
+        "链接",
+        "标准库"
+      ],
+      "diagnostic": "你执行的是 C++ 驱动程序还是 C 驱动程序？",
+      "hints": [
+        "C++ 驱动程序会按 C++ 规则编译并在链接时加入所需标准库。",
+        "编译前先在终端输入 `clang++ --version` 或 `g++ --version`，确认实际可用的 C++ 驱动程序。"
+      ],
+      "example": "例如：`clang++ -std=c++20 study_status.cpp -o build/study_status` 会同时完成 C++ 编译和链接。",
+      "answer": "把 clang++ 或 g++ 用于本课 C++20 命令；clang/gcc 不是同一层入口。",
+      "source": {
+        "label": "第一步：得到第一个可执行状态卡",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "compile-link",
+      "lesson_id": "cpp-core-01",
+      "step_id": "step-1",
+      "question": "编译和链接有什么区别？",
+      "aliases": [
+        "链接错误和编译错误",
+        "什么是目标文件"
+      ],
+      "keywords": [
+        "翻译单元",
+        "链接",
+        "目标文件",
+        "符号"
+      ],
+      "diagnostic": "错误出现在生成 .o/.obj 前，还是解析符号时？",
+      "hints": [
+        "编译检查一个翻译单元并产生目标文件；链接把目标文件和库组合成可执行文件。",
+        "先加 `-c` 只生成 `build/study_status.o`，再把这个目标文件交给第二条链接命令，观察两个产物。"
+      ],
+      "example": "示例：`clang++ -c study_status.cpp -o build/study_status.o` 后执行 `clang++ build/study_status.o -o build/study_status`。",
+      "answer": "先根据失败阶段定位：语法与类型多属编译，未定义符号多属链接。",
+      "source": {
+        "label": "第一步：得到第一个可执行状态卡",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "brace-narrowing",
+      "lesson_id": "cpp-core-01",
+      "step_id": "step-4",
+      "question": "花括号初始化为什么拒绝 2.5 赋给 int？",
+      "aliases": [
+        "int hours 2.5报错",
+        "窄化转换"
+      ],
+      "keywords": [
+        "花括号",
+        "窄化",
+        "int",
+        "double"
+      ],
+      "diagnostic": "你是否需要保留小数部分？",
+      "hints": [
+        "花括号初始化会阻止可能丢失信息的窄化转换。",
+        "将 `int hours{2.5};` 原样构建并保留诊断；不要把它换成无提示的等号初始化来逃避问题。"
+      ],
+      "example": "局部示例：`const double measured_hours{2.5}; const int whole_hours{static_cast<int>(measured_hours)};` 明确了丢弃小数。",
+      "answer": "若业务确实只要整数，先说明舍弃规则，再使用显式 static_cast<int>。",
+      "source": {
+        "label": "第四步：故意制造一个编译诊断",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "auto-static",
+      "lesson_id": "cpp-core-01",
+      "step_id": "step-2",
+      "question": "auto 是动态类型吗？",
+      "aliases": [
+        "auto类型什么时候确定",
+        "cpp auto"
+      ],
+      "keywords": [
+        "auto",
+        "静态类型",
+        "推导"
+      ],
+      "diagnostic": "编译器能否在初始化表达式处推导类型？",
+      "hints": [
+        "auto 在编译期由初始化器推导，变量之后仍是固定静态类型。",
+        "在状态卡中声明 `const auto progress{0.75};`，让编译器从右侧推导 `double`，再尝试赋字符串观察静态检查。"
+      ],
+      "example": "局部示例：`const auto completed{false};` 的类型在初始化处确定为 `bool`。",
+      "answer": "使用 auto 不会让 C++ 变量像 Python 一样在后续赋值时改变类型。",
+      "source": {
+        "label": "第二步：主动修改一项学习状态",
+        "href": "#step-2"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "getline-newline",
+      "lesson_id": "cpp-core-01",
+      "step_id": "step-3",
+      "question": "为什么 getline 读到空字符串？",
+      "aliases": [
+        "cin后getline为空",
+        "残留换行"
+      ],
+      "keywords": [
+        "getline",
+        "换行",
+        "cin",
+        "输入"
+      ],
+      "diagnostic": "前一条输入是否用过 operator>>？",
+      "hints": [
+        "operator>> 通常留下换行；随后的 getline 会先读到它。",
+        "读取数值后，在读取姓名前使用 `std::getline(std::cin >> std::ws, learner);`，再输入带空格的姓名验证。"
+      ],
+      "example": "局部示例：先 `std::cin >> planned_hours;`，再 `std::getline(std::cin >> std::ws, learner);`。",
+      "answer": "在切换前处理残留换行，或统一设计输入读取策略。",
+      "source": {
+        "label": "第三步：让程序读取并检查输入",
+        "href": "#step-3"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "exit-code",
+      "lesson_id": "cpp-core-01",
+      "step_id": "step-3",
+      "question": "程序退出码如何检查？",
+      "aliases": [
+        "如何查看退出码",
+        "Windows 如何查看退出码"
+      ],
+      "keywords": [
+        "退出码",
+        "return 0",
+        "错误"
+      ],
+      "diagnostic": "你使用的是 macOS/Linux 终端还是 PowerShell？",
+      "hints": [
+        "main 返回 0 表示成功；shell 会保存最近进程状态。",
+        "在正常输入和非法输入后分别查看 shell 保存的状态值，而不是只看屏幕上的提示文字。"
+      ],
+      "example": "macOS/Linux 运行程序后输入 `echo $?`；PowerShell 使用 `$LASTEXITCODE`。",
+      "answer": "正常输入检查零退出码，非法输入应产生非零退出码；命令按当前平台查看。",
+      "source": {
+        "label": "第三步：让程序读取并检查输入",
+        "href": "#step-3"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "diagnostic-read",
+      "lesson_id": "cpp-core-01",
+      "step_id": "step-4",
+      "question": "C++ 编译诊断应该怎么看？",
+      "aliases": [
+        "看不懂编译错误",
+        "错误信息怎么看"
+      ],
+      "keywords": [
+        "诊断",
+        "文件",
+        "行号",
+        "错误"
+      ],
+      "diagnostic": "诊断指向的第一处自己源码位置在哪里？",
+      "hints": [
+        "先读错误类别、文件和行号，再看该行的类型与期望值。",
+        "从编译输出中先定位第一条指向 `study_status.cpp` 的报错，再检查该行两边值的类型。"
+      ],
+      "example": "局部示例：花括号窄化诊断指向 `int hours{2.5};`，说明目标 `int` 不能无损接收 `double`。",
+      "answer": "不要先关闭警告；用最小修改恢复构建并重新运行。",
+      "source": {
+        "label": "第四步：故意制造一个编译诊断",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15"
+    },
+    {
+      "id": "build-migration",
+      "lesson_id": "cpp-core-01",
+      "step_id": "step-5",
+      "question": "状态卡新增字段应该怎么验收？",
+      "aliases": [
+        "cpp新增学习字段",
+        "迁移任务提示"
+      ],
+      "keywords": [
+        "迁移",
+        "字段",
+        "构建",
+        "build"
+      ],
+      "diagnostic": "新字段是文本、整数、浮点数还是真假状态？",
+      "hints": [
+        "先选择能表达业务含义的类型，再输出并重新构建。",
+        "新增 `weekly_goal` 后同时修改初始化与输出，再以严格警告命令重建状态卡。"
+      ],
+      "example": "局部示例：`const int weekly_goal{8}; std::cout << \"本周目标：\" << weekly_goal << '\\n';`。",
+      "answer": "验收包括严格警告构建、运行输出变化，以及生成物仍只在 build 目录。",
+      "source": {
+        "label": "第五步：迁移验收与下一步",
+        "href": "#step-5"
+      },
+      "updated_at": "2026-07-15"
+    }
+  ]
+}

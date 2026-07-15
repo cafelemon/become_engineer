@@ -1,0 +1,264 @@
+{
+  "version": 1,
+  "lesson": {
+    "id": "engineering-foundation-05",
+    "title": "Markdown",
+    "path": "learning-paths/engineering-foundation/stage-0/05-markdown/"
+  },
+  "steps": [
+    {
+      "id": "step-1",
+      "title": "写标题"
+    },
+    {
+      "id": "step-2",
+      "title": "整理列表"
+    },
+    {
+      "id": "step-3",
+      "title": "加入链接"
+    },
+    {
+      "id": "step-4",
+      "title": "记录命令"
+    },
+    {
+      "id": "step-5",
+      "title": "表格验收"
+    }
+  ],
+  "cards": [
+    {
+      "id": "heading",
+      "lesson_id": "engineering-foundation-05",
+      "step_id": "step-1",
+      "question": "Markdown 标题怎么写",
+      "aliases": [
+        "一级二级标题怎么写",
+        "井号标题怎么用"
+      ],
+      "keywords": [
+        "标题",
+        "markdown",
+        "井号",
+        "层级"
+      ],
+      "diagnostic": "当前任务是“在 `learning-log.md` 使用一个一级标题和至少两个二级标题。”。处理“Markdown 标题怎么写”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：在 `learning-log.md` 使用一个一级标题和至少两个二级标题。",
+        "本步成功证据是：标题层级能表达文档结构，而不是只为了变大字体。 `# ` 写一级标题，`## ` 写二级标题，井号后要有空格。"
+      ],
+      "example": "局部检查示例：标题层级能表达文档结构，而不是只为了变大字体。",
+      "answer": "`# ` 写一级标题，`## ` 写二级标题，井号后要有空格。",
+      "source": {
+        "label": "写标题",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "one-h1",
+      "lesson_id": "engineering-foundation-05",
+      "step_id": "step-1",
+      "question": "为何通常一个一级标题",
+      "aliases": [
+        "Markdown 能有多个一级标题吗",
+        "一个文档几个 H1"
+      ],
+      "keywords": [
+        "一级标题",
+        "结构",
+        "文档",
+        "标题"
+      ],
+      "diagnostic": "当前任务是“在 `learning-log.md` 使用一个一级标题和至少两个二级标题。”。处理“为何通常一个一级标题”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：在 `learning-log.md` 使用一个一级标题和至少两个二级标题。",
+        "本步成功证据是：标题层级能表达文档结构，而不是只为了变大字体。 一个 Markdown 文档通常只有一个主标题，后续内容用二级和三级标题组织。"
+      ],
+      "example": "局部检查示例：标题层级能表达文档结构，而不是只为了变大字体。",
+      "answer": "一个 Markdown 文档通常只有一个主标题，后续内容用二级和三级标题组织。",
+      "source": {
+        "label": "写标题",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "list",
+      "lesson_id": "engineering-foundation-05",
+      "step_id": "step-2",
+      "question": "Markdown 列表怎么写",
+      "aliases": [
+        "无序有序列表区别",
+        "列表语法是什么"
+      ],
+      "keywords": [
+        "列表",
+        "无序",
+        "有序",
+        "markdown"
+      ],
+      "diagnostic": "当前任务是“把本次完成的三项操作改成无序或有序列表。”。处理“Markdown 列表怎么写”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：把本次完成的三项操作改成无序或有序列表。",
+        "本步成功证据是：每个条目只表达一个动作。 无序列表用 `- `，有顺序的步骤用 `1. `。"
+      ],
+      "example": "局部检查示例：每个条目只表达一个动作。",
+      "answer": "无序列表用 `- `，有顺序的步骤用 `1. `。",
+      "source": {
+        "label": "整理列表",
+        "href": "#step-2"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "link",
+      "lesson_id": "engineering-foundation-05",
+      "step_id": "step-3",
+      "question": "Markdown 链接怎么写",
+      "aliases": [
+        "相对链接打不开怎么办",
+        "链接语法是什么"
+      ],
+      "keywords": [
+        "链接",
+        "相对路径",
+        "markdown",
+        "地址"
+      ],
+      "diagnostic": "当前任务是“在记录中添加到“终端与 Shell”或本课的 Markdown 链接。”。处理“Markdown 链接怎么写”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：在记录中添加到“终端与 Shell”或本课的 Markdown 链接。",
+        "本步成功证据是：链接文字清楚，点击目标正确。 基本写法是 `[文字](目标地址)`，相对路径从当前文件位置计算。"
+      ],
+      "example": "局部检查示例：链接文字清楚，点击目标正确。",
+      "answer": "基本写法是 `[文字](目标地址)`，相对路径从当前文件位置计算。",
+      "source": {
+        "label": "加入链接",
+        "href": "#step-3"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "code",
+      "lesson_id": "engineering-foundation-05",
+      "step_id": "step-4",
+      "question": "Markdown 代码块怎么写",
+      "aliases": [
+        "三个反引号有什么用",
+        "命令怎么写进 Markdown"
+      ],
+      "keywords": [
+        "代码块",
+        "反引号",
+        "命令",
+        "输出"
+      ],
+      "diagnostic": "当前任务是“用围栏代码块记录上一课的 `pwd`、`ls` 或输出。”。处理“Markdown 代码块怎么写”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：用围栏代码块记录上一课的 `pwd`、`ls` 或输出。",
+        "本步成功证据是：命令不会被渲染成普通段落或标题。 代码块前后各放一行三个反引号，保留命令与输出原格式。"
+      ],
+      "example": "局部检查示例：命令不会被渲染成普通段落或标题。",
+      "answer": "代码块前后各放一行三个反引号，保留命令与输出原格式。",
+      "source": {
+        "label": "记录命令",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "table",
+      "lesson_id": "engineering-foundation-05",
+      "step_id": "step-5",
+      "question": "Markdown 表格怎么写",
+      "aliases": [
+        "表格第二行横线为什么",
+        "表格语法是什么"
+      ],
+      "keywords": [
+        "表格",
+        "横线",
+        "表头",
+        "markdown"
+      ],
+      "diagnostic": "当前任务是“创建“目标 / 结果 / 下一步”三列的小表格，填入一行真实记录。”。处理“Markdown 表格怎么写”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：创建“目标 / 结果 / 下一步”三列的小表格，填入一行真实记录。",
+        "本步成功证据是：别人能只读表格理解你的当前状态。 表格第一行写表头，第二行用 `---` 分隔，再写真实数据。"
+      ],
+      "example": "局部检查示例：别人能只读表格理解你的当前状态。",
+      "answer": "表格第一行写表头，第二行用 `---` 分隔，再写真实数据。",
+      "source": {
+        "label": "表格验收",
+        "href": "#step-5"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "preview",
+      "lesson_id": "engineering-foundation-05",
+      "step_id": "step-4",
+      "question": "源码和预览区别",
+      "aliases": [
+        "Markdown 怎么预览",
+        "Markdown 渲染是什么"
+      ],
+      "keywords": [
+        "预览",
+        "源码",
+        "渲染",
+        "markdown"
+      ],
+      "diagnostic": "当前任务是“用围栏代码块记录上一课的 `pwd`、`ls` 或输出。”。处理“源码和预览区别”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：用围栏代码块记录上一课的 `pwd`、`ls` 或输出。",
+        "本步成功证据是：命令不会被渲染成普通段落或标题。 源码是可编辑文本，预览是 Markdown 被渲染后的页面。"
+      ],
+      "example": "局部检查示例：命令不会被渲染成普通段落或标题。",
+      "answer": "源码是可编辑文本，预览是 Markdown 被渲染后的页面。",
+      "source": {
+        "label": "记录命令",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "readable",
+      "lesson_id": "engineering-foundation-05",
+      "step_id": "step-5",
+      "question": "怎样判断记录可读",
+      "aliases": [
+        "学习记录 Markdown 验收",
+        "文档如何验收"
+      ],
+      "keywords": [
+        "学习记录",
+        "可读",
+        "验收",
+        "表格"
+      ],
+      "diagnostic": "当前任务是“创建“目标 / 结果 / 下一步”三列的小表格，填入一行真实记录。”。处理“怎样判断记录可读”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：创建“目标 / 结果 / 下一步”三列的小表格，填入一行真实记录。",
+        "本步成功证据是：别人能只读表格理解你的当前状态。 检查标题、列表、链接、代码和表格是否让他人读懂真实目标、结果和下一步。"
+      ],
+      "example": "局部检查示例：别人能只读表格理解你的当前状态。",
+      "answer": "检查标题、列表、链接、代码和表格是否让他人读懂真实目标、结果和下一步。",
+      "source": {
+        "label": "表格验收",
+        "href": "#step-5"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    }
+  ]
+}

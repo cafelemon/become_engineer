@@ -1,0 +1,265 @@
+{
+  "version": 1,
+  "lesson": {
+    "id": "engineering-foundation-07",
+    "title": "开发环境",
+    "path": "learning-paths/engineering-foundation/stage-0/07-development-environment/"
+  },
+  "steps": [
+    {
+      "id": "step-1",
+      "title": "记录版本"
+    },
+    {
+      "id": "step-2",
+      "title": "定位命令"
+    },
+    {
+      "id": "step-3",
+      "title": "理解 PATH"
+    },
+    {
+      "id": "step-4",
+      "title": "区分依赖"
+    },
+    {
+      "id": "step-5",
+      "title": "验证迁移"
+    }
+  ],
+  "cards": [
+    {
+      "id": "version",
+      "lesson_id": "engineering-foundation-07",
+      "step_id": "step-1",
+      "question": "怎样检查 Python 版本",
+      "aliases": [
+        "python3 --version 报错",
+        "怎么查看 Python 版本"
+      ],
+      "keywords": [
+        "python",
+        "版本",
+        "python3",
+        "检查"
+      ],
+      "diagnostic": "当前任务是“在终端执行 `python3 --version`（或系统可用的 `python --version`），把命令和输出写入学习记录。”。处理“怎样检查 Python 版本”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：在终端执行 `python3 --version`（或系统可用的 `python --version`），把命令和输出写入学习记录。",
+        "本步成功证据是：版本号与执行命令成对保留。 执行 python3 --version；Windows 可使用 python --version，并记录完整输出。"
+      ],
+      "example": "局部检查示例：版本号与执行命令成对保留。",
+      "answer": "执行 python3 --version；Windows 可使用 python --version，并记录完整输出。",
+      "source": {
+        "label": "记录版本",
+        "href": "#step-1"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "which",
+      "lesson_id": "engineering-foundation-07",
+      "step_id": "step-2",
+      "question": "which 和 where 用途",
+      "aliases": [
+        "怎么找 Python 安装位置",
+        "Python 命令在哪里"
+      ],
+      "keywords": [
+        "which",
+        "where",
+        "路径",
+        "python"
+      ],
+      "diagnostic": "当前任务是“使用 `which python3`（Windows 可用 `where python`）查询命令位置。”。处理“which 和 where 用途”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：使用 `which python3`（Windows 可用 `where python`）查询命令位置。",
+        "本步成功证据是：能说明版本输出和可执行文件路径来自同一次检查。 macOS/Linux 用 which python3；Windows 用 where python 查找实际命令位置。"
+      ],
+      "example": "局部检查示例：能说明版本输出和可执行文件路径来自同一次检查。",
+      "answer": "macOS/Linux 用 which python3；Windows 用 where python 查找实际命令位置。",
+      "source": {
+        "label": "定位命令",
+        "href": "#step-2"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "path",
+      "lesson_id": "engineering-foundation-07",
+      "step_id": "step-3",
+      "question": "PATH 是什么",
+      "aliases": [
+        "PATH 和 Python 区别",
+        "PATH 有什么用"
+      ],
+      "keywords": [
+        "PATH",
+        "环境变量",
+        "命令",
+        "查找"
+      ],
+      "diagnostic": "当前任务是“查看 PATH 的概念说明，并用自己的话写一句“系统如何找到 python”。”。处理“PATH 是什么”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：查看 PATH 的概念说明，并用自己的话写一句“系统如何找到 python”。",
+        "本步成功证据是：能区分 PATH 是查找顺序，不是 Python 本身。 PATH 是 Shell 查找可执行命令的目录顺序，不是 Python 本身。"
+      ],
+      "example": "局部检查示例：能区分 PATH 是查找顺序，不是 Python 本身。",
+      "answer": "PATH 是 Shell 查找可执行命令的目录顺序，不是 Python 本身。",
+      "source": {
+        "label": "理解 PATH",
+        "href": "#step-3"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "interpreter",
+      "lesson_id": "engineering-foundation-07",
+      "step_id": "step-4",
+      "question": "解释器和运行时是什么",
+      "aliases": [
+        "Python 文件为何不能运行",
+        "解释器做什么"
+      ],
+      "keywords": [
+        "解释器",
+        "运行时",
+        "python",
+        "代码"
+      ],
+      "diagnostic": "当前任务是“为一个 Python 小程序分别标注项目代码、解释器和将来可能安装的第三方依赖。”。处理“解释器和运行时是什么”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：为一个 Python 小程序分别标注项目代码、解释器和将来可能安装的第三方依赖。",
+        "本步成功证据是：不把 `.py` 文件、Python 程序和第三方库混成一个概念。 Python 解释器读取并执行 .py 源码；源码文件不会自行运行。"
+      ],
+      "example": "局部检查示例：不把 `.py` 文件、Python 程序和第三方库混成一个概念。",
+      "answer": "Python 解释器读取并执行 .py 源码；源码文件不会自行运行。",
+      "source": {
+        "label": "区分依赖",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "dependency",
+      "lesson_id": "engineering-foundation-07",
+      "step_id": "step-4",
+      "question": "依赖是什么",
+      "aliases": [
+        "项目代码和依赖区别",
+        "第三方库是什么"
+      ],
+      "keywords": [
+        "依赖",
+        "代码",
+        "第三方库",
+        "项目"
+      ],
+      "diagnostic": "当前任务是“为一个 Python 小程序分别标注项目代码、解释器和将来可能安装的第三方依赖。”。处理“依赖是什么”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：为一个 Python 小程序分别标注项目代码、解释器和将来可能安装的第三方依赖。",
+        "本步成功证据是：不把 `.py` 文件、Python 程序和第三方库混成一个概念。 项目代码由你维护；依赖是项目需要的外部库。"
+      ],
+      "example": "局部检查示例：不把 `.py` 文件、Python 程序和第三方库混成一个概念。",
+      "answer": "项目代码由你维护；依赖是项目需要的外部库。",
+      "source": {
+        "label": "区分依赖",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "venv",
+      "lesson_id": "engineering-foundation-07",
+      "step_id": "step-4",
+      "question": "虚拟环境有什么用",
+      "aliases": [
+        "为什么项目要虚拟环境",
+        "venv 是什么"
+      ],
+      "keywords": [
+        "虚拟环境",
+        "依赖",
+        "隔离",
+        "venv"
+      ],
+      "diagnostic": "当前任务是“为一个 Python 小程序分别标注项目代码、解释器和将来可能安装的第三方依赖。”。处理“虚拟环境有什么用”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：为一个 Python 小程序分别标注项目代码、解释器和将来可能安装的第三方依赖。",
+        "本步成功证据是：不把 `.py` 文件、Python 程序和第三方库混成一个概念。 虚拟环境隔离不同项目的依赖，减少版本相互影响。"
+      ],
+      "example": "局部检查示例：不把 `.py` 文件、Python 程序和第三方库混成一个概念。",
+      "answer": "虚拟环境隔离不同项目的依赖，减少版本相互影响。",
+      "source": {
+        "label": "区分依赖",
+        "href": "#step-4"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": false
+    },
+    {
+      "id": "not-found",
+      "lesson_id": "engineering-foundation-07",
+      "step_id": "step-5",
+      "question": "找不到命令怎么排查",
+      "aliases": [
+        "command not found 怎么办",
+        "Python 命令找不到"
+      ],
+      "keywords": [
+        "找不到命令",
+        "command not found",
+        "PATH",
+        "环境"
+      ],
+      "diagnostic": "当前任务是“任选“找不到命令”或“版本不对”的场景，写下环境、命令、输出和下一步检查。”。处理“找不到命令怎么排查”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：任选“找不到命令”或“版本不对”的场景，写下环境、命令、输出和下一步检查。",
+        "本步成功证据是：别人能据此重现或继续排查。 先记录系统、终端、命令和完整输出，再检查拼写、安装位置与 PATH。"
+      ],
+      "example": "局部检查示例：别人能据此重现或继续排查。",
+      "answer": "先记录系统、终端、命令和完整输出，再检查拼写、安装位置与 PATH。",
+      "source": {
+        "label": "验证迁移",
+        "href": "#step-5"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    },
+    {
+      "id": "record",
+      "lesson_id": "engineering-foundation-07",
+      "step_id": "step-5",
+      "question": "环境问题怎样记录",
+      "aliases": [
+        "怎么记录开发环境",
+        "环境检查怎么写"
+      ],
+      "keywords": [
+        "环境",
+        "记录",
+        "版本",
+        "命令",
+        "输出"
+      ],
+      "diagnostic": "当前任务是“任选“找不到命令”或“版本不对”的场景，写下环境、命令、输出和下一步检查。”。处理“环境问题怎样记录”时，你实际看到的文件、命令输出或错误是什么？",
+      "hints": [
+        "先按本步执行：任选“找不到命令”或“版本不对”的场景，写下环境、命令、输出和下一步检查。",
+        "本步成功证据是：别人能据此重现或继续排查。 记录系统/终端、命令、版本或报错输出、判断和下一次具体检查。"
+      ],
+      "example": "局部检查示例：别人能据此重现或继续排查。",
+      "answer": "记录系统/终端、命令、版本或报错输出、判断和下一次具体检查。",
+      "source": {
+        "label": "验证迁移",
+        "href": "#step-5"
+      },
+      "updated_at": "2026-07-15",
+      "recommended": true
+    }
+  ]
+}
