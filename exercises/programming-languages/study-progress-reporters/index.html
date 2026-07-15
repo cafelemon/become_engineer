@@ -1164,6 +1164,8 @@
       
         
       
+        
+      
     
     
     
@@ -1315,6 +1317,34 @@
     
   
     STL 容器、迭代器与基础算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learning-paths/programming-languages/cpp-core/05-objects-references-pointers-lifetime-raii/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    对象、引用、指针、生命周期与 RAII
   
 
     
@@ -1926,6 +1956,7 @@
 <li><a href="../../../learning-paths/programming-languages/cpp-core/03-headers-sources-cmake/">C++：头文件、源文件与最小CMake工程</a></li>
 <li><a href="../../../learning-paths/programming-languages/cpp-core/04-stl-containers-iterators-algorithms/">C++：STL容器、迭代器与基础算法</a></li>
 <li><a href="../../../learning-paths/programming-languages/python-core/03-iterables-iterators-generators/">Python：容器协议、迭代器与生成器</a></li>
+<li><a href="../../../learning-paths/programming-languages/cpp-core/05-objects-references-pointers-lifetime-raii/">C++：对象、引用、指针、生命周期与RAII</a></li>
 </ul>
 <h2 id="_3">统一行为契约<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>两套实现使用相同的四条内存记录，并提供相同能力：</p>
@@ -1936,6 +1967,7 @@
 <li>按进度降序排列；进度相同时按课程名升序排列。</li>
 <li>按标签筛选，返回独立记录副本，不修改原始输入。</li>
 <li>Python额外提供惰性的标签筛选和进度行生成器，并在报告边界只物化一次输入。</li>
+<li>C++额外提供按引用更新、可空非拥有查找和作用域内审计文件导出；审计导出不改变主报告标准输出。</li>
 <li>生成完全相同的UTF-8报告文本。</li>
 </ul>
 <p>本作品故意不读取JSON或CSV。C++标准库没有JSON解析器，而文件格式不是本次容器对照的学习目标；两边都使用代码内固定样例，避免额外依赖干扰比较。</p>
@@ -2032,9 +2064,14 @@ ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class=
 <td><code>std::map</code></td>
 </tr>
 <tr>
+<td>对象与资源</td>
+<td><code>TypedDict</code> 与惰性消费边界</td>
+<td>引用借用、可空非拥有指针、<code>ofstream</code> RAII</td>
+</tr>
+<tr>
 <td>自动检查</td>
 <td>mypy、unittest</td>
-<td>编译器、CTest</td>
+<td>编译器、CTest、审计成功与打开失败路径</td>
 </tr>
 </tbody>
 </table>
@@ -2050,7 +2087,7 @@ ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class=
 <h2 id="_6">验收<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Python严格类型检查和全部unittest通过。</li>
-<li>C++以C++20和严格警告零警告构建，CTest全部通过。</li>
+<li>C++以C++20和严格警告零警告构建，CTest全部通过；审计文件成功与无法打开路径均有测试。</li>
 <li>两个应用的标准输出逐字一致。</li>
 <li>空记录、重复标签、同进度、超额完成和筛选无结果均有测试。</li>
 <li>Python测试证明生成器惰性执行、单次消费和一次性输入报告行为。</li>
@@ -2058,7 +2095,7 @@ ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class=
 <li>没有第三方运行依赖、个人路径、密钥或生成产物进入Git。</li>
 </ul>
 <h2 id="_7">下一步<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p>继续学习Python的“容器协议、迭代器与生成器”，从Python侧进一步理解惰性遍历和能力型接口。对象生命周期与资源管理会在后续C++课程中继续深化。</p>
+<p>对象生命周期与资源管理已在C++课程中完成基础实践。后续会从Python数据模型、上下文管理和资源边界继续形成对照；当前可回到对应课程复查双语言输出与审计契约。</p>
 
 
 
