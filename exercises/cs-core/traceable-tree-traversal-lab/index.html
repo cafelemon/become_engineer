@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://cafelemon.github.io/become_engineer/learning-paths/cs-core/03-string-utf8-byte-code-point-boundaries/">
+        <link rel="canonical" href="https://cafelemon.github.io/become_engineer/exercises/cs-core/traceable-tree-traversal-lab/">
       
       
-        <link rel="prev" href="../02-operation-count-growth-asymptotic-complexity/">
+        <link rel="prev" href="../traceable-search-sort-lab/">
       
       
-        <link rel="next" href="../04-two-dimensional-grid-row-major-layout/">
+        <link rel="next" href="../../../projects/python-content-analysis/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>字符串、UTF-8 字节与码点边界 - Become Engineer</title>
+        <title>可追踪树与遍历实验 - Become Engineer</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#utf-8" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              字符串、UTF-8 字节与码点边界
+              可追踪树与遍历实验
             
           </span>
         </div>
@@ -247,8 +247,6 @@
   
   
   
-    
-  
   
     
     
@@ -256,13 +254,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../engineering-foundation/stage-0/01-learning-method/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../learning-paths/engineering-foundation/stage-0/01-learning-method/" class="md-tabs__link">
           
   
   
@@ -283,10 +279,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../../projects/" class="md-tabs__link">
           
   
@@ -422,7 +420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../beginner-roadmap/" class="md-nav__link">
+      <a href="../../../learning-paths/beginner-roadmap/" class="md-nav__link">
         
   
   
@@ -450,7 +448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../curriculum-map/" class="md-nav__link">
+      <a href="../../../learning-paths/curriculum-map/" class="md-nav__link">
         
   
   
@@ -482,10 +480,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -503,20 +499,17 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -534,7 +527,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -624,7 +617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../engineering-foundation/stage-0/01-learning-method/" class="md-nav__link">
+      <a href="../../../learning-paths/engineering-foundation/stage-0/01-learning-method/" class="md-nav__link">
         
   
   
@@ -652,7 +645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../engineering-foundation/stage-0/02-filesystem/" class="md-nav__link">
+      <a href="../../../learning-paths/engineering-foundation/stage-0/02-filesystem/" class="md-nav__link">
         
   
   
@@ -680,7 +673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../engineering-foundation/stage-0/03-terminal-shell/" class="md-nav__link">
+      <a href="../../../learning-paths/engineering-foundation/stage-0/03-terminal-shell/" class="md-nav__link">
         
   
   
@@ -708,7 +701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../engineering-foundation/stage-0/04-editor/" class="md-nav__link">
+      <a href="../../../learning-paths/engineering-foundation/stage-0/04-editor/" class="md-nav__link">
         
   
   
@@ -736,7 +729,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../engineering-foundation/stage-0/05-markdown/" class="md-nav__link">
+      <a href="../../../learning-paths/engineering-foundation/stage-0/05-markdown/" class="md-nav__link">
         
   
   
@@ -764,7 +757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../engineering-foundation/stage-0/06-git/" class="md-nav__link">
+      <a href="../../../learning-paths/engineering-foundation/stage-0/06-git/" class="md-nav__link">
         
   
   
@@ -792,7 +785,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../engineering-foundation/stage-0/06-github-remote/" class="md-nav__link">
+      <a href="../../../learning-paths/engineering-foundation/stage-0/06-github-remote/" class="md-nav__link">
         
   
   
@@ -820,7 +813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../engineering-foundation/stage-0/07-development-environment/" class="md-nav__link">
+      <a href="../../../learning-paths/engineering-foundation/stage-0/07-development-environment/" class="md-nav__link">
         
   
   
@@ -848,7 +841,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../engineering-foundation/stage-0/08-docker-basics/" class="md-nav__link">
+      <a href="../../../learning-paths/engineering-foundation/stage-0/08-docker-basics/" class="md-nav__link">
         
   
   
@@ -876,7 +869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../engineering-foundation/stage-0/09-validation-habit/" class="md-nav__link">
+      <a href="../../../learning-paths/engineering-foundation/stage-0/09-validation-habit/" class="md-nav__link">
         
   
   
@@ -947,7 +940,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../programming-languages/python-basics/" class="md-nav__link ">
+            <a href="../../../learning-paths/programming-languages/python-basics/" class="md-nav__link ">
               
   
   
@@ -991,7 +984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../programming-languages/python-basics/01-variables-types-io/" class="md-nav__link">
+      <a href="../../../learning-paths/programming-languages/python-basics/01-variables-types-io/" class="md-nav__link">
         
   
   
@@ -1019,7 +1012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../programming-languages/python-basics/02-conditions-loops-boolean/" class="md-nav__link">
+      <a href="../../../learning-paths/programming-languages/python-basics/02-conditions-loops-boolean/" class="md-nav__link">
         
   
   
@@ -1047,7 +1040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../programming-languages/python-basics/03-functions-parameters-returns-scope/" class="md-nav__link">
+      <a href="../../../learning-paths/programming-languages/python-basics/03-functions-parameters-returns-scope/" class="md-nav__link">
         
   
   
@@ -1075,7 +1068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../programming-languages/python-basics/04-strings-collections/" class="md-nav__link">
+      <a href="../../../learning-paths/programming-languages/python-basics/04-strings-collections/" class="md-nav__link">
         
   
   
@@ -1103,7 +1096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../programming-languages/python-basics/05-files-json-paths/" class="md-nav__link">
+      <a href="../../../learning-paths/programming-languages/python-basics/05-files-json-paths/" class="md-nav__link">
         
   
   
@@ -1131,7 +1124,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../programming-languages/python-basics/06-modules-imports-venv/" class="md-nav__link">
+      <a href="../../../learning-paths/programming-languages/python-basics/06-modules-imports-venv/" class="md-nav__link">
         
   
   
@@ -1159,7 +1152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../programming-languages/python-basics/07-errors-debugging-tests/" class="md-nav__link">
+      <a href="../../../learning-paths/programming-languages/python-basics/07-errors-debugging-tests/" class="md-nav__link">
         
   
   
@@ -1226,7 +1219,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../programming-languages/cpp-core/" class="md-nav__link ">
+            <a href="../../../learning-paths/programming-languages/cpp-core/" class="md-nav__link ">
               
   
   
@@ -1270,7 +1263,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../programming-languages/cpp-core/01-build-types-io/" class="md-nav__link">
+      <a href="../../../learning-paths/programming-languages/cpp-core/01-build-types-io/" class="md-nav__link">
         
   
   
@@ -1298,7 +1291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../programming-languages/cpp-core/02-functions-declarations-program-organization/" class="md-nav__link">
+      <a href="../../../learning-paths/programming-languages/cpp-core/02-functions-declarations-program-organization/" class="md-nav__link">
         
   
   
@@ -1326,7 +1319,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../programming-languages/cpp-core/03-headers-sources-cmake/" class="md-nav__link">
+      <a href="../../../learning-paths/programming-languages/cpp-core/03-headers-sources-cmake/" class="md-nav__link">
         
   
   
@@ -1354,7 +1347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../programming-languages/cpp-core/04-stl-containers-iterators-algorithms/" class="md-nav__link">
+      <a href="../../../learning-paths/programming-languages/cpp-core/04-stl-containers-iterators-algorithms/" class="md-nav__link">
         
   
   
@@ -1382,7 +1375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../programming-languages/cpp-core/05-objects-references-pointers-lifetime-raii/" class="md-nav__link">
+      <a href="../../../learning-paths/programming-languages/cpp-core/05-objects-references-pointers-lifetime-raii/" class="md-nav__link">
         
   
   
@@ -1453,7 +1446,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../programming-languages/python-core/" class="md-nav__link ">
+            <a href="../../../learning-paths/programming-languages/python-core/" class="md-nav__link ">
               
   
   
@@ -1497,7 +1490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../programming-languages/python-core/01-type-hints-interfaces-static-checking/" class="md-nav__link">
+      <a href="../../../learning-paths/programming-languages/python-core/01-type-hints-interfaces-static-checking/" class="md-nav__link">
         
   
   
@@ -1525,7 +1518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../programming-languages/python-core/02-maintainable-function-interfaces-protocols-modules/" class="md-nav__link">
+      <a href="../../../learning-paths/programming-languages/python-core/02-maintainable-function-interfaces-protocols-modules/" class="md-nav__link">
         
   
   
@@ -1553,7 +1546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../programming-languages/python-core/03-iterables-iterators-generators/" class="md-nav__link">
+      <a href="../../../learning-paths/programming-languages/python-core/03-iterables-iterators-generators/" class="md-nav__link">
         
   
   
@@ -1581,7 +1574,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../programming-languages/python-core/04-data-model-dataclasses-context-managers/" class="md-nav__link">
+      <a href="../../../learning-paths/programming-languages/python-core/04-data-model-dataclasses-context-managers/" class="md-nav__link">
         
   
   
@@ -1609,7 +1602,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../programming-languages/python-core/05-decorators-closures-custom-context-managers/" class="md-nav__link">
+      <a href="../../../learning-paths/programming-languages/python-core/05-decorators-closures-custom-context-managers/" class="md-nav__link">
         
   
   
@@ -1637,7 +1630,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../programming-languages/python-core/06-package-structure-installable-cli/" class="md-nav__link">
+      <a href="../../../learning-paths/programming-languages/python-core/06-package-structure-installable-cli/" class="md-nav__link">
         
   
   
@@ -1665,7 +1658,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../programming-languages/python-core/07-toml-configuration-logging-diagnostics/" class="md-nav__link">
+      <a href="../../../learning-paths/programming-languages/python-core/07-toml-configuration-logging-diagnostics/" class="md-nav__link">
         
   
   
@@ -1698,8 +1691,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1750,15 +1741,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../../learning-paths/cs-core/" class="md-nav__link ">
               
   
   
@@ -1782,7 +1773,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1802,7 +1793,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-sequence-interface-array-representation-boundaries/" class="md-nav__link">
+      <a href="../../../learning-paths/cs-core/01-sequence-interface-array-representation-boundaries/" class="md-nav__link">
         
   
   
@@ -1830,7 +1821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02-operation-count-growth-asymptotic-complexity/" class="md-nav__link">
+      <a href="../../../learning-paths/cs-core/02-operation-count-growth-asymptotic-complexity/" class="md-nav__link">
         
   
   
@@ -1855,37 +1846,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    字符串、UTF-8 字节与码点边界
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../learning-paths/cs-core/03-string-utf8-byte-code-point-boundaries/" class="md-nav__link">
         
   
   
@@ -1901,202 +1865,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        任务路线
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第一步：锁定旧报告并运行文本模式
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第二步：区分文本、字节和码点
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#utf-8_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第三步：实现严格 UTF-8 扫描
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#python-c" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第四步：对照 Python 与 C++ 字符串视图
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第五步：触发非法与截断序列
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第六步：完成扫描分类迁移验收
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        课程信息
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        为什么长度必须带单位
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        运行与输出
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        验证边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI 协作任务
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常见错误与排查
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完成证据
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        来源与版本
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        下一步
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2109,7 +1877,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../04-two-dimensional-grid-row-major-layout/" class="md-nav__link">
+      <a href="../../../learning-paths/cs-core/04-two-dimensional-grid-row-major-layout/" class="md-nav__link">
         
   
   
@@ -2137,7 +1905,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../05-dynamic-array-capacity-amortized-cost/" class="md-nav__link">
+      <a href="../../../learning-paths/cs-core/05-dynamic-array-capacity-amortized-cost/" class="md-nav__link">
         
   
   
@@ -2165,7 +1933,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../06-singly-linked-list-nodes-ownership/" class="md-nav__link">
+      <a href="../../../learning-paths/cs-core/06-singly-linked-list-nodes-ownership/" class="md-nav__link">
         
   
   
@@ -2193,7 +1961,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../07-stack-lifo-interface-underflow/" class="md-nav__link">
+      <a href="../../../learning-paths/cs-core/07-stack-lifo-interface-underflow/" class="md-nav__link">
         
   
   
@@ -2221,7 +1989,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../08-queue-fifo-head-tail-invariants/" class="md-nav__link">
+      <a href="../../../learning-paths/cs-core/08-queue-fifo-head-tail-invariants/" class="md-nav__link">
         
   
   
@@ -2249,7 +2017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../09-hash-function-key-equality-collisions/" class="md-nav__link">
+      <a href="../../../learning-paths/cs-core/09-hash-function-key-equality-collisions/" class="md-nav__link">
         
   
   
@@ -2277,7 +2045,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../10-separate-chaining-load-factor-rehash/" class="md-nav__link">
+      <a href="../../../learning-paths/cs-core/10-separate-chaining-load-factor-rehash/" class="md-nav__link">
         
   
   
@@ -2305,7 +2073,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../11-set-frequency-map-deterministic-output/" class="md-nav__link">
+      <a href="../../../learning-paths/cs-core/11-set-frequency-map-deterministic-output/" class="md-nav__link">
         
   
   
@@ -2333,7 +2101,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../12-ordered-search-half-open-boundaries/" class="md-nav__link">
+      <a href="../../../learning-paths/cs-core/12-ordered-search-half-open-boundaries/" class="md-nav__link">
         
   
   
@@ -2361,7 +2129,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../13-insertion-selection-sort-stability/" class="md-nav__link">
+      <a href="../../../learning-paths/cs-core/13-insertion-selection-sort-stability/" class="md-nav__link">
         
   
   
@@ -2389,7 +2157,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../14-bottom-up-merge-sort-stable-complexity/" class="md-nav__link">
+      <a href="../../../learning-paths/cs-core/14-bottom-up-merge-sort-stable-complexity/" class="md-nav__link">
         
   
   
@@ -2417,7 +2185,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../15-binary-tree-shape-linked-ownership/" class="md-nav__link">
+      <a href="../../../learning-paths/cs-core/15-binary-tree-shape-linked-ownership/" class="md-nav__link">
         
   
   
@@ -2445,7 +2213,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../16-recursive-dfs-traversal-call-frames/" class="md-nav__link">
+      <a href="../../../learning-paths/cs-core/16-recursive-dfs-traversal-call-frames/" class="md-nav__link">
         
   
   
@@ -2473,7 +2241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../17-iterative-dfs-bfs-frontier-levels/" class="md-nav__link">
+      <a href="../../../learning-paths/cs-core/17-iterative-dfs-bfs-frontier-levels/" class="md-nav__link">
         
   
   
@@ -2513,6 +2281,8 @@
       
   
   
+    
+  
   
   
     
@@ -2542,14 +2312,17 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -2571,13 +2344,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2681,7 +2454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../exercises/career-readiness/python-entry-machine-test/" class="md-nav__link">
+      <a href="../../career-readiness/python-entry-machine-test/" class="md-nav__link">
         
   
   
@@ -2709,7 +2482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../exercises/career-readiness/study-progress-reporter-evidence/" class="md-nav__link">
+      <a href="../../career-readiness/study-progress-reporter-evidence/" class="md-nav__link">
         
   
   
@@ -2742,6 +2515,8 @@
                 
   
   
+    
+  
   
   
     
@@ -2766,15 +2541,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../exercises/cs-core/traceable-array-lab/" class="md-nav__link ">
+            <a href="../traceable-array-lab/" class="md-nav__link ">
               
   
   
@@ -2798,7 +2573,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2818,7 +2593,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../exercises/cs-core/traceable-linear-structures-lab/" class="md-nav__link">
+      <a href="../traceable-linear-structures-lab/" class="md-nav__link">
         
   
   
@@ -2846,7 +2621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../exercises/cs-core/traceable-hash-lab/" class="md-nav__link">
+      <a href="../traceable-hash-lab/" class="md-nav__link">
         
   
   
@@ -2874,7 +2649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../exercises/cs-core/traceable-search-sort-lab/" class="md-nav__link">
+      <a href="../traceable-search-sort-lab/" class="md-nav__link">
         
   
   
@@ -2899,10 +2674,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../exercises/cs-core/traceable-tree-traversal-lab/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    可追踪树与遍历实验
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2918,6 +2720,92 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目录
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三种模式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C++
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公开契约
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        课程迁移任务
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3105,21 +2993,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        任务路线
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：锁定旧报告并运行文本模式
+        目录
       
     </span>
   </a>
@@ -3130,7 +3007,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：区分文本、字节和码点
+        三种模式
       
     </span>
   </a>
@@ -3138,10 +3015,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#utf-8_1" class="md-nav__link">
+  <a href="#python" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：实现严格 UTF-8 扫描
+        Python
       
     </span>
   </a>
@@ -3149,10 +3026,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#python-c" class="md-nav__link">
+  <a href="#c" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：对照 Python 与 C++ 字符串视图
+        C++
       
     </span>
   </a>
@@ -3163,7 +3040,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：触发非法与截断序列
+        公开契约
       
     </span>
   </a>
@@ -3174,106 +3051,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第六步：完成扫描分类迁移验收
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        课程信息
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        为什么长度必须带单位
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        运行与输出
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        验证边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI 协作任务
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常见错误与排查
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完成证据
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        来源与版本
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        下一步
+        课程迁移任务
       
     </span>
   </a>
@@ -3300,179 +3078,71 @@
   
 
 
-<h1 id="utf-8">字符串、UTF-8 字节与码点边界<a class="headerlink" href="#utf-8" title="Permanent link">&para;</a></h1>
-<div class="be-tutor-mount" data-tutor-lesson="cs-core-03" aria-hidden="true"></div>
-
-<blockquote>
-<p><strong>任务先行：</strong> 让 Python 与 C++ 对同一段 UTF-8 数据给出相同的字节数、Unicode 码点数和 ASCII／多字节分类；再用受控失败证明“字符串长度”必须说明计数单位。</p>
-</blockquote>
-<h2 id="_1">任务路线<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="be-task-route" role="list" aria-label="本课六步任务"><span role="listitem">1 锁定旧报告</span><span role="listitem">2 三种计数单位</span><span role="listitem">3 严格扫描</span><span role="listitem">4 双语言视图</span><span role="listitem">5 非法序列</span><span role="listitem">6 迁移验收</span></div>
-
-<section class="be-task-step" data-step-id="step-1" id="step-1">
-<h2 id="_2">第一步：锁定旧报告并运行文本模式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>先运行无参数模式，确认 V2.1 数组报告逐字不变；再运行 <code>text</code> 模式。<strong>当前任务：</strong>观察 <code>A工🧪</code> 的 <code>bytes=8</code> 与 <code>code_points=3</code>。<strong>成功证据：</strong>Python 与 C++ 两种模式都退出 0，且对应输出逐字一致。</p>
-</section>
-<section class="be-task-step" data-step-id="step-2" id="step-2">
-<h2 id="_3">第二步：区分文本、字节和码点<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>Python <code>str</code> 是 Unicode 码点序列，编码后得到 <code>bytes</code>；C++20 <code>std::string_view</code> 在本实验中只借用 UTF-8 字节。<strong>主动修改：</strong>分别输入纯 ASCII、一个中文码点和一个四字节码点。<strong>成功证据：</strong>解释每个输入的字节数和码点数为什么相同或不同。</p>
-</section>
-<section class="be-task-step" data-step-id="step-3" id="step-3">
-<h2 id="utf-8_1">第三步：实现严格 UTF-8 扫描<a class="headerlink" href="#utf-8_1" title="Permanent link">&para;</a></h2>
-<p>Python 用严格 <code>decode("utf-8")</code> 验证；C++ 根据起始字节确定 1–4 字节宽度，再验证续字节、最小码点、代理项和上限。<strong>当前任务：</strong>返回 <code>Utf8Trace</code>，不修改输入。<strong>成功证据：</strong>空输入、ASCII、中文和补充平面码点测试通过。</p>
-</section>
-<section class="be-task-step" data-step-id="step-4" id="step-4">
-<h2 id="python-c">第四步：对照 Python 与 C++ 字符串视图<a class="headerlink" href="#python-c" title="Permanent link">&para;</a></h2>
-<p>Python <code>bytes</code> 拥有不可变字节；C++ <code>string_view</code> 不拥有数据，调用期间源存储必须仍然有效。<strong>主动修改：</strong>把输入放入调用者变量，再把只读视图传给分析函数。<strong>成功证据：</strong>函数只读输入，返回值不包含悬空视图，报告保持一致。</p>
-</section>
-<section class="be-task-step" data-step-id="step-5" id="step-5">
-<h2 id="_4">第五步：触发非法与截断序列<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>依次测试孤立续字节、错误续字节、过长编码、代理项、超过 <code>U+10FFFF</code> 和缺少尾字节。<strong>安全失败实验：</strong>只把固定字节交给验证函数，不读取数组边界之外的数据。<strong>恢复标准：</strong>Python 捕获 <code>UnicodeDecodeError</code>，C++ 捕获 <code>std::invalid_argument</code>，随后合法输入仍通过。</p>
-</section>
-<section class="be-task-step" data-step-id="step-6" id="step-6">
-<h2 id="_5">第六步：完成扫描分类迁移验收<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>增加一个不提供完整答案的迁移：统计 ASCII 码点与多字节码点，但不把组合字符或 emoji 序列称为“一个用户字符”。<strong>约束：</strong>只在验证成功后计数。<strong>成功证据：</strong>满足 <code>ascii_count + multibyte_count == code_point_count</code>，并补混合输入和空输入测试。</p>
-</section>
-<h2 id="_6">课程信息<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>前置</td>
-<td>序列边界、线性扫描、操作计数</td>
-</tr>
-<tr>
-<td>环境</td>
-<td>Python 3.11+、C++20，标准库</td>
-</tr>
-<tr>
-<td>阶段作品</td>
-<td><a href="../../../exercises/cs-core/traceable-array-lab/">可追踪数组实验</a></td>
-</tr>
-<tr>
-<td>可观察产出</td>
-<td>四字段 UTF-8 追踪、严格失败矩阵、双语言文本报告</td>
-</tr>
-<tr>
-<td>事实核查</td>
-<td>Python 3.11.15、Unicode 17.0、C++ 工作草案，2026-07-16</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_7">为什么长度必须带单位<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart LR
-    Text["文本 A工🧪"] --&gt; CodePoints["3 个 Unicode 码点"]
-    CodePoints --&gt; Encode["UTF-8 编码"]
-    Encode --&gt; Bytes["8 个字节"]
-    Bytes --&gt; Validate["验证起始字节与续字节"]
-    Validate --&gt; Trace["Utf8Trace"]</code></pre>
-<p>读图顺序是“抽象文本 → 码点 → 编码字节 → 验证与计数”。UTF-8 是变宽编码：ASCII 码点占 1 字节，<code>工</code> 占 3 字节，<code>🧪</code> 占 4 字节。码点也不等于用户看到的字形簇；本课不处理组合字符、区域旗帜或 emoji 连接序列。</p>
-<h2 id="_8">运行与输出<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/cs-core/traceable-array-lab/python
-python<span class="w"> </span>-m<span class="w"> </span>traceable_array_lab<span class="w"> </span>text
-
-<span class="nb">cd</span><span class="w"> </span>../cpp
-cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release
-cmake<span class="w"> </span>--build<span class="w"> </span>build
-./build/traceable_array_lab<span class="w"> </span>text
+<h1 id="_1">可追踪树与遍历实验<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>这个阶段作品把二叉树槽位、链接节点、递归深度和显式遍历前沿实现为一份可安装、可测试、可逐字对照的双语言实验。Python 3.11 与 C++20 只使用标准库，所有计数来自教学实现。</p>
+<h2 id="_2">目录<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>traceable-tree-traversal-lab/
+├── python/   # src 布局、模块入口、unittest
+└── cpp/      # CMake、公开头文件、CTest
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>UTF-8 扫描
-text：A工🧪
-bytes=8，code_points=3
-ascii=1，multibyte=2
+<h2 id="_3">三种模式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>观察重点</th>
+<th>固定证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>shape</code></td>
+<td>零基槽位、链接节点、树形指标</td>
+<td>大小、高度、叶子数与根子节点</td>
+</tr>
+<tr>
+<td><code>recursive</code></td>
+<td>前中后序、递归帧和深度保护</td>
+<td>访问顺序、访问数与最大深度</td>
+</tr>
+<tr>
+<td><code>frontier</code></td>
+<td>显式栈、队列与层级边界</td>
+<td>DFS/BFS 顺序与最大前沿</td>
+</tr>
+</tbody>
+</table>
+<p>无参数等价于 <code>shape</code>。未知模式只写标准错误并返回退出码 <code>2</code>。</p>
+<h2 id="python">Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/cs-core/traceable-tree-traversal-lab/python
+python3.11<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;.[dev]&#39;</span>
+.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>src<span class="w"> </span>tests
+.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>-v
+.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>traceable_tree_traversal_lab<span class="w"> </span>shape
+.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>traceable_tree_traversal_lab<span class="w"> </span>recursive
+.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>traceable_tree_traversal_lab<span class="w"> </span>frontier
 </code></pre></div>
-<h2 id="_9">验证边界<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<p>合法 UTF-8 不只是“续字节看起来像 <code>10xxxxxx</code>”。还要拒绝用更多字节表示本可更短的码点、代理项范围和超过 Unicode 最大值的序列。C++ 扫描每次先确认剩余长度，再读取续字节，因此失败实验不会越界。</p>
-<p><code>std::string_view</code> 描述连续 <code>char</code> 序列而不拥有存储。它适合只读参数，但不能从临时字符串返回并长期保存。本实验只在函数调用期间借用输入，返回纯计数值。</p>
-<h2 id="ai">AI 协作任务<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h2>
-<p>可以让 AI 列出 UTF-8 失败候选或审阅状态机，但学习者必须核查：</p>
+<h2 id="c">C++<a class="headerlink" href="#c" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>-S<span class="w"> </span>exercises/cs-core/traceable-tree-traversal-lab/cpp<span class="w"> </span>-B<span class="w"> </span>/tmp/traceable-tree-traversal-build<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release
+cmake<span class="w"> </span>--build<span class="w"> </span>/tmp/traceable-tree-traversal-build
+ctest<span class="w"> </span>--test-dir<span class="w"> </span>/tmp/traceable-tree-traversal-build<span class="w"> </span>--output-on-failure
+/tmp/traceable-tree-traversal-build/traceable_tree_traversal_lab<span class="w"> </span>shape
+</code></pre></div>
+<h2 id="_4">公开契约<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
-<li>是否混淆字节、码点、字形簇和屏幕宽度。</li>
-<li>是否接受 <code>C0 AF</code> 这类过长编码。</li>
-<li>是否在确认剩余长度前读取续字节。</li>
-<li>是否让返回值保存指向临时字符串的 <code>string_view</code>。</li>
-<li>是否用“忽略错误”代替严格失败测试。</li>
+<li><code>BinaryTree</code> 复制并规范化零基层序槽位；非空输入拒绝空根和孤儿节点。</li>
+<li>空树高度为 <code>-1</code>，根深度为 <code>0</code>，叶子高度为 <code>0</code>。</li>
+<li>递归遍历提供显式 <code>max_depth</code> 教学保护，不通过真实栈溢出演示失败。</li>
+<li>迭代 DFS 先压右后压左；BFS 先左后右入队；最大前沿包含初始根节点。</li>
+<li>C++ 树节点由 <code>std::unique_ptr</code> 单一拥有，树可移动但不可复制；两种语言都不公开节点引用。</li>
 </ul>
-<h2 id="_10">常见错误与排查<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>现象</th>
-<th>原因</th>
-<th>检查与恢复</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>中文长度被写成字节数</td>
-<td>混淆编码前后单位</td>
-<td>同时打印 bytes 与 code_points</td>
-</tr>
-<tr>
-<td>截断输入导致越界</td>
-<td>先读后检查</td>
-<td>先比较剩余长度与序列宽度</td>
-</tr>
-<tr>
-<td>非法输入被静默接受</td>
-<td>使用忽略/替换错误策略</td>
-<td>使用严格解码或显式抛错</td>
-</tr>
-<tr>
-<td>C++ 结果偶发变化</td>
-<td>视图指向已销毁存储</td>
-<td>保证源对象覆盖调用期，不返回视图</td>
-</tr>
-<tr>
-<td>emoji 被称为一个字符</td>
-<td>未说明计数层级</td>
-<td>本课只写 Unicode 码点数</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_11">完成证据<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h2 id="_5">课程迁移任务<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
-<li>默认报告保持不变，<code>text</code> 输出双语言逐字一致。</li>
-<li>合法 1、2、3、4 字节序列和空输入均有测试。</li>
-<li>六类非法序列全部受控失败，没有越界读取。</li>
-<li>能解释 <code>A工🧪</code> 为什么是 8 字节、3 码点。</li>
-<li>返回值只包含计数，不延长或隐藏输入生命周期。</li>
+<li>第 15 课：实现并验证 <code>path_to_slot</code>，区分空槽、越界和合法根路径。</li>
+<li>第 16 课：实现 <code>count_at_depth</code>，到达目标层后不继续进入更深子树。</li>
+<li>第 17 课：实现 <code>widest_level</code>，宽度并列时选择更浅的层。</li>
 </ul>
-<h2 id="_12">来源与版本<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>来源</th>
-<th>用途</th>
-<th>核查日期</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://docs.python.org/3.11/library/stdtypes.html#text-sequence-type-str">Python 文本序列 <code>str</code></a></td>
-<td>Unicode 码点序列、不可变性和 UTF-8 编码</td>
-<td>2026-07-16</td>
-</tr>
-<tr>
-<td><a href="https://www.unicode.org/versions/Unicode17.0.0/core-spec/chapter-2/">Unicode 17：编码形式与 UTF-8</a></td>
-<td>变宽字节形式、码点与编码边界</td>
-<td>2026-07-16</td>
-</tr>
-<tr>
-<td><a href="https://eel.is/c++draft/string.view">C++ <code>string_view</code></a></td>
-<td>连续只读字符视图与非拥有边界</td>
-<td>2026-07-16</td>
-</tr>
-</tbody>
-</table>
-<p>本地 JavaGuide 字符串算法页只用于整理扫描、计数和边界误区；正文未复用题面、答案或原图，也不引入正式机考训练。</p>
-<h2 id="_13">下一步<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
-<p>进入<a href="../04-two-dimensional-grid-row-major-layout/">二维网格、行优先布局与坐标边界</a>，把一维位置扩展为二维坐标，同时继续保留连续存储与受控边界。</p>
 
 
 
@@ -3508,7 +3178,7 @@ ascii=1，multibyte=2
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../02-operation-count-growth-asymptotic-complexity/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 操作计数、增长率与渐近复杂度">
+          <a href="../traceable-search-sort-lab/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 可追踪查找与排序实验">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3518,20 +3188,20 @@ ascii=1，multibyte=2
                 上一页
               </span>
               <div class="md-ellipsis">
-                操作计数、增长率与渐近复杂度
+                可追踪查找与排序实验
               </div>
             </div>
           </a>
         
         
           
-          <a href="../04-two-dimensional-grid-row-major-layout/" class="md-footer__link md-footer__link--next" aria-label="下一页: 二维网格、行优先布局与坐标边界">
+          <a href="../../../projects/python-content-analysis/" class="md-footer__link md-footer__link--next" aria-label="下一页: Python 内容分析工具">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                二维网格、行优先布局与坐标边界
+                Python 内容分析工具
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -33,6 +33,10 @@
          <lastmod>2026-07-16</lastmod>
     </url>
     <url>
+         <loc>https://cafelemon.github.io/become_engineer/exercises/cs-core/traceable-tree-traversal-lab/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
          <loc>https://cafelemon.github.io/become_engineer/exercises/llm-agent/safe-sales-tool-calling/</loc>
          <lastmod>2026-07-16</lastmod>
     </url>
@@ -118,6 +122,18 @@
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/14-bottom-up-merge-sort-stable-complexity/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/15-binary-tree-shape-linked-ownership/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/16-recursive-dfs-traversal-call-frames/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/17-iterative-dfs-bfs-frontier-levels/</loc>
          <lastmod>2026-07-16</lastmod>
     </url>
     <url>

@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://cafelemon.github.io/become_engineer/learning-paths/cs-core/03-string-utf8-byte-code-point-boundaries/">
+        <link rel="canonical" href="https://cafelemon.github.io/become_engineer/learning-paths/cs-core/15-binary-tree-shape-linked-ownership/">
       
       
-        <link rel="prev" href="../02-operation-count-growth-asymptotic-complexity/">
+        <link rel="prev" href="../14-bottom-up-merge-sort-stable-complexity/">
       
       
-        <link rel="next" href="../04-two-dimensional-grid-row-major-layout/">
+        <link rel="next" href="../16-recursive-dfs-traversal-call-frames/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>字符串、UTF-8 字节与码点边界 - Become Engineer</title>
+        <title>二叉树形状、链接所有权与槽位表示 - Become Engineer</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#utf-8" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              字符串、UTF-8 字节与码点边界
+              二叉树形状、链接所有权与槽位表示
             
           </span>
         </div>
@@ -1855,37 +1855,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    字符串、UTF-8 字节与码点边界
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../03-string-utf8-byte-code-point-boundaries/" class="md-nav__link">
         
   
   
@@ -1901,202 +1874,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        任务路线
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第一步：锁定旧报告并运行文本模式
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第二步：区分文本、字节和码点
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#utf-8_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第三步：实现严格 UTF-8 扫描
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#python-c" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第四步：对照 Python 与 C++ 字符串视图
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第五步：触发非法与截断序列
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第六步：完成扫描分类迁移验收
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        课程信息
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        为什么长度必须带单位
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        运行与输出
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        验证边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI 协作任务
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常见错误与排查
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完成证据
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        来源与版本
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        下一步
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2414,10 +2191,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../15-binary-tree-shape-linked-ownership/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二叉树形状、链接所有权与槽位表示
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2433,6 +2237,169 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        任务路线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：锁定归并与树形基线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二步：固定根、深度、叶子与高度约定
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三步：校验并规范化零基槽位
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第四步：把槽位链接成私有节点
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第五步：执行根、孤儿和空槽失败实验
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#path_to_slot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第六步：完成 path_to_slot 迁移验收
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        课程信息
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        固定输出
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见错误与排查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成证据
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下一步
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3105,7 +3072,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         任务路线
@@ -3116,43 +3083,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第一步：锁定旧报告并运行文本模式
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：区分文本、字节和码点
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#utf-8_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第三步：实现严格 UTF-8 扫描
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#python-c" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第四步：对照 Python 与 C++ 字符串视图
+        第一步：锁定归并与树形基线
       
     </span>
   </a>
@@ -3163,7 +3097,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：触发非法与截断序列
+        第二步：固定根、深度、叶子与高度约定
       
     </span>
   </a>
@@ -3174,7 +3108,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第六步：完成扫描分类迁移验收
+        第三步：校验并规范化零基槽位
       
     </span>
   </a>
@@ -3185,7 +3119,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        第四步：把槽位链接成私有节点
       
     </span>
   </a>
@@ -3196,7 +3130,18 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        为什么长度必须带单位
+        第五步：执行根、孤儿和空槽失败实验
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#path_to_slot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第六步：完成 path_to_slot 迁移验收
       
     </span>
   </a>
@@ -3207,7 +3152,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        运行与输出
+        课程信息
       
     </span>
   </a>
@@ -3218,18 +3163,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        验证边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI 协作任务
+        固定输出
       
     </span>
   </a>
@@ -3300,40 +3234,47 @@
   
 
 
-<h1 id="utf-8">字符串、UTF-8 字节与码点边界<a class="headerlink" href="#utf-8" title="Permanent link">&para;</a></h1>
-<div class="be-tutor-mount" data-tutor-lesson="cs-core-03" aria-hidden="true"></div>
+<h1 id="_1">二叉树形状、链接所有权与槽位表示<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<div class="be-tutor-mount" data-tutor-lesson="cs-core-15" aria-hidden="true"></div>
 
 <blockquote>
-<p><strong>任务先行：</strong> 让 Python 与 C++ 对同一段 UTF-8 数据给出相同的字节数、Unicode 码点数和 ASCII／多字节分类；再用受控失败证明“字符串长度”必须说明计数单位。</p>
+<p><strong>任务先行：</strong> 把同一棵树同时表示为可复现的零基槽位和安全链接节点，先锁定形状报告，再迁移出检查式根到槽位路径。</p>
 </blockquote>
-<h2 id="_1">任务路线<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="be-task-route" role="list" aria-label="本课六步任务"><span role="listitem">1 锁定旧报告</span><span role="listitem">2 三种计数单位</span><span role="listitem">3 严格扫描</span><span role="listitem">4 双语言视图</span><span role="listitem">5 非法序列</span><span role="listitem">6 迁移验收</span></div>
+<h2 id="_2">任务路线<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="be-task-route" role="list" aria-label="本课六步任务"><span role="listitem">1 树形基线</span><span role="listitem">2 术语约定</span><span role="listitem">3 槽位校验</span><span role="listitem">4 链接所有权</span><span role="listitem">5 失败边界</span><span role="listitem">6 路径迁移</span></div>
 
 <section class="be-task-step" data-step-id="step-1" id="step-1">
-<h2 id="_2">第一步：锁定旧报告并运行文本模式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>先运行无参数模式，确认 V2.1 数组报告逐字不变；再运行 <code>text</code> 模式。<strong>当前任务：</strong>观察 <code>A工🧪</code> 的 <code>bytes=8</code> 与 <code>code_points=3</code>。<strong>成功证据：</strong>Python 与 C++ 两种模式都退出 0，且对应输出逐字一致。</p>
+<h2 id="_3">第一步：锁定归并与树形基线<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>先回归上一课 <code>merge</code>，再运行新实验 <code>shape</code>。<strong>当前任务：</strong>确认旧项目未被改写，并记录槽位、大小、高度、叶子数和根的两个孩子。<strong>成功证据：</strong>固定树得到 <code>size=6，height=2，leaves=3</code>。</p>
 </section>
 <section class="be-task-step" data-step-id="step-2" id="step-2">
-<h2 id="_3">第二步：区分文本、字节和码点<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>Python <code>str</code> 是 Unicode 码点序列，编码后得到 <code>bytes</code>；C++20 <code>std::string_view</code> 在本实验中只借用 UTF-8 字节。<strong>主动修改：</strong>分别输入纯 ASCII、一个中文码点和一个四字节码点。<strong>成功证据：</strong>解释每个输入的字节数和码点数为什么相同或不同。</p>
+<h2 id="_4">第二步：固定根、深度、叶子与高度约定<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>本实验按边数计高度：空树为 <code>-1</code>，根深度为 <code>0</code>，叶子高度为 <code>0</code>。<strong>主动修改：</strong>分别构造空树和单节点树。<strong>成功证据：</strong>结果为 <code>(0,-1,0)</code> 与 <code>(1,0,1)</code>，解释中不混用“节点层数”和“边数高度”。</p>
 </section>
 <section class="be-task-step" data-step-id="step-3" id="step-3">
-<h2 id="utf-8_1">第三步：实现严格 UTF-8 扫描<a class="headerlink" href="#utf-8_1" title="Permanent link">&para;</a></h2>
-<p>Python 用严格 <code>decode("utf-8")</code> 验证；C++ 根据起始字节确定 1–4 字节宽度，再验证续字节、最小码点、代理项和上限。<strong>当前任务：</strong>返回 <code>Utf8Trace</code>，不修改输入。<strong>成功证据：</strong>空输入、ASCII、中文和补充平面码点测试通过。</p>
+<h2 id="_5">第三步：校验并规范化零基槽位<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>槽位 <code>i</code> 的孩子位于 <code>2i+1</code> 和 <code>2i+2</code>。构造器先复制输入，再裁掉末尾 <code>null</code>；非空输入必须有根，任何非空子槽都必须有非空父槽。<strong>主动修改：</strong>给固定输入追加三个末尾空槽。<strong>成功证据：</strong>规范化结果不变，原输入后续修改不影响树。</p>
 </section>
 <section class="be-task-step" data-step-id="step-4" id="step-4">
-<h2 id="python-c">第四步：对照 Python 与 C++ 字符串视图<a class="headerlink" href="#python-c" title="Permanent link">&para;</a></h2>
-<p>Python <code>bytes</code> 拥有不可变字节；C++ <code>string_view</code> 不拥有数据，调用期间源存储必须仍然有效。<strong>主动修改：</strong>把输入放入调用者变量，再把只读视图传给分析函数。<strong>成功证据：</strong>函数只读输入，返回值不包含悬空视图，报告保持一致。</p>
+<h2 id="_6">第四步：把槽位链接成私有节点<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>槽位适合确定性输入，节点链接适合遍历。Python <code>_Node</code> 只在包内使用；C++ <code>Node</code> 由父节点的 <code>unique_ptr</code> 单一拥有，树可移动但不可复制。</p>
+<pre class="mermaid"><code>flowchart TD
+    S["slots[0]=7"] --&gt; L["slots[1]=3"]
+    S --&gt; R["slots[2]=9"]
+    L --&gt; LR["slots[4]=5"]
+    R --&gt; RL["slots[5]=8"]
+    R --&gt; RR["slots[6]=11"]</code></pre>
+<p><strong>成功证据：</strong>调用方只能看到树的公开值和轨迹，不能取得可悬空的节点指针。</p>
 </section>
 <section class="be-task-step" data-step-id="step-5" id="step-5">
-<h2 id="_4">第五步：触发非法与截断序列<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>依次测试孤立续字节、错误续字节、过长编码、代理项、超过 <code>U+10FFFF</code> 和缺少尾字节。<strong>安全失败实验：</strong>只把固定字节交给验证函数，不读取数组边界之外的数据。<strong>恢复标准：</strong>Python 捕获 <code>UnicodeDecodeError</code>，C++ 捕获 <code>std::invalid_argument</code>，随后合法输入仍通过。</p>
+<h2 id="_7">第五步：执行根、孤儿和空槽失败实验<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>依次尝试 <code>[null]</code>、<code>[7,null,9,4]</code> 和读取固定树的槽位 3。前两种构造失败，第三种检查式访问失败；不要用 C++ 未检查下标或空指针解引用演示错误。<strong>恢复标准：</strong>改回合法父子关系后报告重新生成，失败前的输入没有被覆盖。</p>
 </section>
 <section class="be-task-step" data-step-id="step-6" id="step-6">
-<h2 id="_5">第六步：完成扫描分类迁移验收<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>增加一个不提供完整答案的迁移：统计 ASCII 码点与多字节码点，但不把组合字符或 emoji 序列称为“一个用户字符”。<strong>约束：</strong>只在验证成功后计数。<strong>成功证据：</strong>满足 <code>ascii_count + multibyte_count == code_point_count</code>，并补混合输入和空输入测试。</p>
+<h2 id="path_to_slot">第六步：完成 <code>path_to_slot</code> 迁移验收<a class="headerlink" href="#path_to_slot" title="Permanent link">&para;</a></h2>
+<p>根据槽位下标反推到根的父下标，再逆序得到 <code>L/R</code> 路径。<strong>约束：</strong>不提供完整实现；不得通过遍历所有节点查找值，因为值允许重复。<strong>成功证据：</strong>根路径为空，槽位 4 返回 <code>value=5, directions=(L,R)</code>，负下标、空槽和越界均受控失败。</p>
 </section>
-<h2 id="_6">课程信息<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_8">课程信息<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -3344,104 +3285,67 @@
 <tbody>
 <tr>
 <td>前置</td>
-<td>序列边界、线性扫描、操作计数</td>
-</tr>
-<tr>
-<td>环境</td>
-<td>Python 3.11+、C++20，标准库</td>
+<td><a href="../14-bottom-up-merge-sort-stable-complexity/">自底向上归并排序与稳定复杂度</a></td>
 </tr>
 <tr>
 <td>阶段作品</td>
-<td><a href="../../../exercises/cs-core/traceable-array-lab/">可追踪数组实验</a></td>
+<td><a href="../../../exercises/cs-core/traceable-tree-traversal-lab/">可追踪树与遍历实验</a></td>
 </tr>
 <tr>
-<td>可观察产出</td>
-<td>四字段 UTF-8 追踪、严格失败矩阵、双语言文本报告</td>
+<td>构造成本</td>
+<td>规范化槽位长度为 <code>m</code> 时 <code>Theta(m)</code></td>
 </tr>
 <tr>
 <td>事实核查</td>
-<td>Python 3.11.15、Unicode 17.0、C++ 工作草案，2026-07-16</td>
+<td>MIT、Open Data Structures 与 C++ 标准草案，2026-07-16</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_7">为什么长度必须带单位<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart LR
-    Text["文本 A工🧪"] --&gt; CodePoints["3 个 Unicode 码点"]
-    CodePoints --&gt; Encode["UTF-8 编码"]
-    Encode --&gt; Bytes["8 个字节"]
-    Bytes --&gt; Validate["验证起始字节与续字节"]
-    Validate --&gt; Trace["Utf8Trace"]</code></pre>
-<p>读图顺序是“抽象文本 → 码点 → 编码字节 → 验证与计数”。UTF-8 是变宽编码：ASCII 码点占 1 字节，<code>工</code> 占 3 字节，<code>🧪</code> 占 4 字节。码点也不等于用户看到的字形簇；本课不处理组合字符、区域旗帜或 emoji 连接序列。</p>
-<h2 id="_8">运行与输出<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/cs-core/traceable-array-lab/python
-python<span class="w"> </span>-m<span class="w"> </span>traceable_array_lab<span class="w"> </span>text
-
-<span class="nb">cd</span><span class="w"> </span>../cpp
-cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release
-cmake<span class="w"> </span>--build<span class="w"> </span>build
-./build/traceable_array_lab<span class="w"> </span>text
+<h2 id="_9">固定输出<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>可追踪二叉树实验
+slots：7, 3, 9, null, 5, 8, 11
+size=6，height=2，leaves=3
+root=7，left=3，right=9
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>UTF-8 扫描
-text：A工🧪
-bytes=8，code_points=3
-ascii=1，multibyte=2
-</code></pre></div>
-<h2 id="_9">验证边界<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<p>合法 UTF-8 不只是“续字节看起来像 <code>10xxxxxx</code>”。还要拒绝用更多字节表示本可更短的码点、代理项范围和超过 Unicode 最大值的序列。C++ 扫描每次先确认剩余长度，再读取续字节，因此失败实验不会越界。</p>
-<p><code>std::string_view</code> 描述连续 <code>char</code> 序列而不拥有存储。它适合只读参数，但不能从临时字符串返回并长期保存。本实验只在函数调用期间借用输入，返回纯计数值。</p>
-<h2 id="ai">AI 协作任务<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h2>
-<p>可以让 AI 列出 UTF-8 失败候选或审阅状态机，但学习者必须核查：</p>
-<ul>
-<li>是否混淆字节、码点、字形簇和屏幕宽度。</li>
-<li>是否接受 <code>C0 AF</code> 这类过长编码。</li>
-<li>是否在确认剩余长度前读取续字节。</li>
-<li>是否让返回值保存指向临时字符串的 <code>string_view</code>。</li>
-<li>是否用“忽略错误”代替严格失败测试。</li>
-</ul>
+<p>实验同时保留规范化槽位和链接节点是教学取舍，不代表所有生产二叉树都应保存两份表示。稀疏树的槽位表示还可能包含较多空位。</p>
 <h2 id="_10">常见错误与排查<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>现象</th>
 <th>原因</th>
-<th>检查与恢复</th>
+<th>恢复</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>中文长度被写成字节数</td>
-<td>混淆编码前后单位</td>
-<td>同时打印 bytes 与 code_points</td>
+<td>单节点高度写成 1</td>
+<td>混入节点层数约定</td>
+<td>回到边数高度约定</td>
 </tr>
 <tr>
-<td>截断输入导致越界</td>
-<td>先读后检查</td>
-<td>先比较剩余长度与序列宽度</td>
+<td>空槽下面出现值</td>
+<td>只检查数组边界</td>
+<td>同时验证父槽存在</td>
 </tr>
 <tr>
-<td>非法输入被静默接受</td>
-<td>使用忽略/替换错误策略</td>
-<td>使用严格解码或显式抛错</td>
+<td>修改原列表后树变化</td>
+<td>未复制构造输入</td>
+<td>构造时保存独立副本</td>
 </tr>
 <tr>
-<td>C++ 结果偶发变化</td>
-<td>视图指向已销毁存储</td>
-<td>保证源对象覆盖调用期，不返回视图</td>
-</tr>
-<tr>
-<td>emoji 被称为一个字符</td>
-<td>未说明计数层级</td>
-<td>本课只写 Unicode 码点数</td>
+<td>C++ 树被浅复制</td>
+<td>节点所有权不唯一</td>
+<td>删除复制，保留移动语义</td>
 </tr>
 </tbody>
 </table>
 <h2 id="_11">完成证据<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <ul>
-<li>默认报告保持不变，<code>text</code> 输出双语言逐字一致。</li>
-<li>合法 1、2、3、4 字节序列和空输入均有测试。</li>
-<li>六类非法序列全部受控失败，没有越界读取。</li>
-<li>能解释 <code>A工🧪</code> 为什么是 8 字节、3 码点。</li>
-<li>返回值只包含计数，不延长或隐藏输入生命周期。</li>
+<li>空树、单节点、稀疏树、重复值和负值均有测试。</li>
+<li>空根、孤儿、空槽、负下标和越界均为受控失败。</li>
+<li>C++ 静态断言证明树可移动不可复制。</li>
+<li>Python 与 C++ <code>shape</code> 输出逐字一致。</li>
 </ul>
 <h2 id="_12">来源与版本<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
 <table>
@@ -3454,25 +3358,25 @@ ascii=1，multibyte=2
 </thead>
 <tbody>
 <tr>
-<td><a href="https://docs.python.org/3.11/library/stdtypes.html#text-sequence-type-str">Python 文本序列 <code>str</code></a></td>
-<td>Unicode 码点序列、不可变性和 UTF-8 编码</td>
+<td><a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/376714cc85c6c784d90eec9c575ec027_MIT6_006S20_lec6.pdf">MIT 6.006 Binary Trees</a></td>
+<td>二叉树术语、深度与高度</td>
 <td>2026-07-16</td>
 </tr>
 <tr>
-<td><a href="https://www.unicode.org/versions/Unicode17.0.0/core-spec/chapter-2/">Unicode 17：编码形式与 UTF-8</a></td>
-<td>变宽字节形式、码点与编码边界</td>
+<td><a href="https://opendatastructures.org/ods-python/6_1_BinaryTree_Basic_Binary.html">Open Data Structures BinaryTree</a></td>
+<td>基本树操作与空树高度</td>
 <td>2026-07-16</td>
 </tr>
 <tr>
-<td><a href="https://eel.is/c++draft/string.view">C++ <code>string_view</code></a></td>
-<td>连续只读字符视图与非拥有边界</td>
+<td><a href="https://eel.is/c++draft/unique.ptr.single">C++ <code>unique_ptr</code></a></td>
+<td>单一所有权边界</td>
 <td>2026-07-16</td>
 </tr>
 </tbody>
 </table>
-<p>本地 JavaGuide 字符串算法页只用于整理扫描、计数和边界误区；正文未复用题面、答案或原图，也不引入正式机考训练。</p>
+<p>本地树素材只用于审计术语混用和“平衡树等同搜索树”等过度概括；正文、图和代码均独立重写。</p>
 <h2 id="_13">下一步<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
-<p>进入<a href="../04-two-dimensional-grid-row-major-layout/">二维网格、行优先布局与坐标边界</a>，把一维位置扩展为二维坐标，同时继续保留连续存储与受控边界。</p>
+<p>进入<a href="../16-recursive-dfs-traversal-call-frames/">递归深度优先遍历、基线条件与调用深度</a>，用同一链接结构观察前中后序和递归空间。</p>
 
 
 
@@ -3508,7 +3412,7 @@ ascii=1，multibyte=2
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../02-operation-count-growth-asymptotic-complexity/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 操作计数、增长率与渐近复杂度">
+          <a href="../14-bottom-up-merge-sort-stable-complexity/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 自底向上归并排序与稳定复杂度">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3518,20 +3422,20 @@ ascii=1，multibyte=2
                 上一页
               </span>
               <div class="md-ellipsis">
-                操作计数、增长率与渐近复杂度
+                自底向上归并排序与稳定复杂度
               </div>
             </div>
           </a>
         
         
           
-          <a href="../04-two-dimensional-grid-row-major-layout/" class="md-footer__link md-footer__link--next" aria-label="下一页: 二维网格、行优先布局与坐标边界">
+          <a href="../16-recursive-dfs-traversal-call-frames/" class="md-footer__link md-footer__link--next" aria-label="下一页: 递归深度优先遍历、基线条件与调用深度">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                二维网格、行优先布局与坐标边界
+                递归深度优先遍历、基线条件与调用深度
               </div>
             </div>
             <div class="md-footer__button md-icon">
