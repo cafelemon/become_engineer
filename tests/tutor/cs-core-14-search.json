@@ -1,0 +1,11 @@
+[
+  { "query": "merge 基线要锁定哪些证据？", "step_id": "step-1", "expected": "merge-baseline" }, { "query": "固定归并输出几轮", "step_id": "step-1", "expected": "merge-baseline" },
+  { "query": "怎样合并两个已有序的段？", "step_id": "step-2", "expected": "merge-two-runs" }, { "query": "一侧耗尽后怎么办", "step_id": "step-2", "expected": "merge-two-runs" },
+  { "query": "归并的 comparisons 和 writes 怎么统计？", "step_id": "step-2", "expected": "merge-counts" }, { "query": "剩余复制算比较吗", "step_id": "step-2", "expected": "merge-counts" },
+  { "query": "相等键为什么必须先取左段？", "step_id": "step-3", "expected": "left-first-stability" }, { "query": "3L和3R谁先输出", "step_id": "step-3", "expected": "left-first-stability" },
+  { "query": "自底向上归并的宽度怎样变化？", "step_id": "step-4", "expected": "bottom-up-passes" }, { "query": "为什么按1 2 4合并", "step_id": "step-4", "expected": "bottom-up-passes" },
+  { "query": "奇数长度归并如何避免丢尾项？", "step_id": "step-4", "expected": "odd-tail-boundary" }, { "query": "最后没有完整右段怎么办", "step_id": "step-4", "expected": "odd-tail-boundary" },
+  { "query": "迭代归并为什么是 Theta(n log n)？", "step_id": "step-4", "expected": "merge-complexity" }, { "query": "不用递归也能nlogn吗", "step_id": "step-4", "expected": "merge-complexity" },
+  { "query": "相等时右侧优先会造成什么失败？", "step_id": "step-5", "expected": "right-first-failure" }, { "query": "怎样复现归并不稳定", "step_id": "step-5", "expected": "right-first-failure" },
+  { "query": "稳定降序归并迁移验收什么？", "step_id": "step-6", "expected": "merge-descending-migration" }, { "query": "为什么不能反转或改递归", "step_id": "step-6", "expected": "merge-descending-migration" }
+]

@@ -152,7 +152,7 @@ Python 负责快速实现与数据应用，C++ 帮助理解编译、类型、资
 
 ## CS 最小核心 { #stage-cs-core }
 
-序列表示五课已经开放，覆盖数组边界、复杂度、UTF-8、二维网格和动态容量；后续继续补齐链表、栈队列、哈希、算法、系统、网络和数据库基础。
+CS 前 14 课已经开放，覆盖序列表示、链表与栈队列、哈希集合、有序查找和稳定排序；后续继续补齐树、递归、系统、网络和数据库基础。
 
 [开始 CS 第一课](cs-core/01-sequence-interface-array-representation-boundaries.md){ .md-button .md-button--primary }
 [查看 CS 课程结构](cs-core/README.md){ .md-button }

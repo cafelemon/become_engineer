@@ -1,0 +1,11 @@
+[
+  { "query": "elementary 基线证明什么？", "step_id": "step-1", "expected": "elementary-baseline" }, { "query": "3A和3C顺序有什么差异", "step_id": "step-1", "expected": "elementary-baseline" },
+  { "query": "排序稳定性到底是什么？", "step_id": "step-2", "expected": "stability-contract" }, { "query": "有序但不稳定矛盾吗", "step_id": "step-2", "expected": "stability-contract" },
+  { "query": "为什么测试排序要给重复键加标签？", "step_id": "step-2", "expected": "tagged-values-evidence" }, { "query": "TaggedValue有什么用", "step_id": "step-2", "expected": "tagged-values-evidence" },
+  { "query": "插入排序的 comparisons 和 shifts 怎么数？", "step_id": "step-3", "expected": "insertion-trace" }, { "query": "固定插入排序为何5次比较", "step_id": "step-3", "expected": "insertion-trace" },
+  { "query": "插入排序为什么只能严格越过？", "step_id": "step-3", "expected": "strict-move-stability" }, { "query": "相等时为什么停止移动", "step_id": "step-3", "expected": "strict-move-stability" },
+  { "query": "选择排序的 comparisons 和 swaps 怎么数？", "step_id": "step-4", "expected": "selection-trace" }, { "query": "自交换算swap吗", "step_id": "step-4", "expected": "selection-trace" },
+  { "query": "标准选择排序为什么可能不稳定？", "step_id": "step-5", "expected": "selection-instability" }, { "query": "3C为什么会跑到3A前", "step_id": "step-5", "expected": "selection-instability" },
+  { "query": "排序实验为什么必须返回副本？", "step_id": "step-5", "expected": "input-copy-contract" }, { "query": "怎样验证原输入不变", "step_id": "step-5", "expected": "input-copy-contract" },
+  { "query": "稳定降序迁移为什么不能反转升序结果？", "step_id": "step-6", "expected": "descending-migration" }, { "query": "插入排序降序怎样验收", "step_id": "step-6", "expected": "descending-migration" }
+]

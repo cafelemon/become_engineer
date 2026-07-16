@@ -1,0 +1,11 @@
+[
+  { "query": "search 基线要锁定哪些结果？", "step_id": "step-1", "expected": "search-baseline" }, { "query": "目标3的固定输出是什么", "step_id": "step-1", "expected": "search-baseline" },
+  { "query": "SortedValues 为什么构造时复制并验证？", "step_id": "step-2", "expected": "sorted-values-contract" }, { "query": "修改原列表会影响查找吗", "step_id": "step-2", "expected": "sorted-values-contract" },
+  { "query": "有序验证成本算进二分比较次数吗？", "step_id": "step-2", "expected": "validation-cost-boundary" }, { "query": "一次性成本和查询成本怎么分", "step_id": "step-2", "expected": "validation-cost-boundary" },
+  { "query": "线性查找怎样统计首次命中？", "step_id": "step-3", "expected": "linear-search-trace" }, { "query": "缺失目标比较几次", "step_id": "step-3", "expected": "linear-search-trace" },
+  { "query": "二分为什么使用 [left,right)？", "step_id": "step-4", "expected": "half-open-invariant" }, { "query": "空区间怎样表示", "step_id": "step-4", "expected": "half-open-invariant" },
+  { "query": "lower_bound 与 upper_bound 有什么区别？", "step_id": "step-4", "expected": "bound-semantics" }, { "query": "第一个大于等于和第一个大于", "step_id": "step-4", "expected": "bound-semantics" },
+  { "query": "无序输入为什么要在构造时失败？", "step_id": "step-5", "expected": "unsorted-safe-failure" }, { "query": "二分能直接查无序数据吗", "step_id": "step-5", "expected": "unsorted-safe-failure" },
+  { "query": "边界查找返回序列长度合法吗？", "step_id": "step-5", "expected": "empty-and-end-boundary" }, { "query": "空序列边界返回什么", "step_id": "step-5", "expected": "empty-and-end-boundary" },
+  { "query": "equal_range 迁移任务验收什么？", "step_id": "step-6", "expected": "equal-range-migration" }, { "query": "缺失目标equal_range是什么", "step_id": "step-6", "expected": "equal-range-migration" }
+]

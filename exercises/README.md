@@ -46,6 +46,7 @@
 - [可追踪数组实验](cs-core/traceable-array-lab/README.md)：使用双语言确定性契约验证数组、字符串、网格和动态容量。
 - [可追踪线性结构实验](cs-core/traceable-linear-structures-lab/README.md)：使用节点所有权、LIFO、FIFO 和受控下溢验证链表、栈与队列。
 - [可追踪哈希实验](cs-core/traceable-hash-lab/README.md)：使用确定性教学哈希、分离链接、负载扩容和稳定输出验证哈希与集合应用。
+- [可追踪查找与排序实验](cs-core/traceable-search-sort-lab/README.md)：使用有序输入契约、确定性操作计数和带标签元素验证二分边界、基础排序与稳定归并。
 
 ### LLM/Agent
 
