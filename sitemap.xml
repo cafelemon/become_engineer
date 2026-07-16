@@ -33,6 +33,10 @@
          <lastmod>2026-07-16</lastmod>
     </url>
     <url>
+         <loc>https://cafelemon.github.io/become_engineer/exercises/cs-core/traceable-priority-shortest-path-lab/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
          <loc>https://cafelemon.github.io/become_engineer/exercises/cs-core/traceable-search-sort-lab/</loc>
          <lastmod>2026-07-16</lastmod>
     </url>
@@ -150,6 +154,18 @@
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/20-dfs-connected-components-undirected-cycles/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/21-binary-min-heap-implicit-tree-invariant/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/22-stable-priority-queue-tie-order-underflow/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/23-weighted-relaxation-dijkstra-stale-entries/</loc>
          <lastmod>2026-07-16</lastmod>
     </url>
     <url>
