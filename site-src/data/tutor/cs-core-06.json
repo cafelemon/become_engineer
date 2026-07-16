@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "lesson": { "id": "cs-core-06", "title": "单链表、节点链接与所有权", "path": "learning-paths/cs-core/06-singly-linked-list-nodes-ownership/" },
+  "steps": [
+    { "id": "step-1", "title": "锁定链表模式基线" },
+    { "id": "step-2", "title": "定义节点和链表不变量" },
+    { "id": "step-3", "title": "实现头部插入与删除" },
+    { "id": "step-4", "title": "追踪线性查找访问次数" },
+    { "id": "step-5", "title": "验证所有权与安全失败" },
+    { "id": "step-6", "title": "迁移 remove_first" }
+  ],
+  "cards": [
+    {
+      "id": "linked-output-baseline", "lesson_id": "cs-core-06", "step_id": "step-1",
+      "question": "单链表课开始前要锁定什么输出？", "aliases": ["linked模式基线是什么", "链表实验首次成功证据"],
+      "keywords": ["linked", "基线", "7 -> 3 -> 9", "visits", "双语言"],
+      "diagnostic": "Python 与 C++ 是否都显示首次匹配 index=1、visits=2？",
+      "hints": ["先运行无参数或 linked 模式。", "同时核对删除头节点后的 remaining。"],
+      "example": "remaining 应为 3 -> 9。", "answer": "基线锁定节点顺序、首次匹配、访问次数和头部删除四项契约。",
+      "source": { "label": "第一步：锁定链表模式基线", "href": "#step-1" }, "updated_at": "2026-07-16", "recommended": true
+    },
+    {
+      "id": "node-link-invariant", "lesson_id": "cs-core-06", "step_id": "step-2",
+      "question": "单链表的节点和链接不变量是什么？", "aliases": ["head为空代表什么", "size为何要等于可达节点数"],
+      "keywords": ["节点", "head", "next", "size", "不变量"],
+      "diagnostic": "从 head 沿 next 访问的节点数是否等于 size？",
+      "hints": ["空表由空 head 表示。", "每个非尾节点的 next 指向下一个逻辑元素。"],
+      "example": "3 -> 7 有两个可达节点，所以 size=2。", "answer": "头链接决定入口，next 决定顺序，size 必须与整条可达链一致。",
+      "source": { "label": "第二步：定义节点和链表不变量", "href": "#step-2" }, "updated_at": "2026-07-16", "recommended": true
+    },
+    {
+      "id": "head-operations-cost", "lesson_id": "cs-core-06", "step_id": "step-3",
+      "question": "链表头部插入和删除为什么是常量时间？", "aliases": ["push_front复杂度", "pop_front只改几个链接"],
+      "keywords": ["push_front", "pop_front", "头部", "Theta(1)", "链接"],
+      "diagnostic": "操作是否只创建或移动 head，而没有遍历？",
+      "hints": ["新节点直接指向旧 head。", "删除时把 head 替换为原 head.next。"],
+      "example": "无论链表有 3 个还是 300 个节点，头部只重连常量次。", "answer": "已知头位置时无需查找，因此头部插入和删除为 Θ(1)。",
+      "source": { "label": "第三步：实现头部插入与删除", "href": "#step-3" }, "updated_at": "2026-07-16", "recommended": true
+    },
+    {
+      "id": "linked-find-trace", "lesson_id": "cs-core-06", "step_id": "step-4",
+      "question": "链表查找的 visits 怎样计算？", "aliases": ["缺失目标访问次数", "find为何返回首个匹配"],
+      "keywords": ["find", "visits", "首个匹配", "缺失", "遍历"],
+      "diagnostic": "每检查一个节点是否只增加一次 visits，并在首次匹配立即返回？",
+      "hints": ["从 head 开始逐节点检查。", "缺失时 visits 应等于链表长度。"],
+      "example": "7,3,9,3 查找3返回 index=1、visits=2。", "answer": "访问次数是实际检查的节点数，首个匹配停止，缺失则扫描整条链。",
+      "source": { "label": "第四步：追踪线性查找访问次数", "href": "#step-4" }, "updated_at": "2026-07-16", "recommended": true
+    },
+    {
+      "id": "insertion-complexity-condition", "lesson_id": "cs-core-06", "step_id": "step-4",
+      "question": "为什么不能说链表插入永远是 O(1)？", "aliases": ["链表插入复杂度的成立条件", "先找位置再插入多快"],
+      "keywords": ["插入", "位置已知", "查找", "O(1)", "Theta(n)"],
+      "diagnostic": "插入位置或前驱链接是否已经给定，还是需要先查找？",
+      "hints": ["局部重连可以是常量。", "按值或下标定位位置仍可能扫描 n 个节点。"],
+      "example": "没有尾指针时 append 先走到尾部，因此整体为 Θ(n)。", "answer": "常量结论只适用于位置已知；把定位成本算入后，完整操作可能为线性。",
+      "source": { "label": "第四步：追踪线性查找访问次数", "href": "#step-4" }, "updated_at": "2026-07-16", "recommended": true
+    },
+    {
+      "id": "unique-ownership-chain", "lesson_id": "cs-core-06", "step_id": "step-5",
+      "question": "C++ 单链表为什么使用 unique_ptr 所有权链？", "aliases": ["节点由谁释放", "为什么不公开裸指针所有权"],
+      "keywords": ["unique_ptr", "所有权", "RAII", "节点", "释放"],
+      "diagnostic": "每个节点是否只有 head 或前一节点的 next 负责拥有？",
+      "hints": ["head 拥有首节点。", "每个 next 唯一拥有后继，尾节点 next 为空。"],
+      "example": "替换 head 会沿被移除节点的拥有关系安全释放。", "answer": "单一所有权让销毁路径明确，并避免两个链接重复释放同一节点。",
+      "source": { "label": "第五步：验证所有权与安全失败", "href": "#step-5" }, "updated_at": "2026-07-16", "recommended": true
+    },
+    {
+      "id": "move-only-list", "lesson_id": "cs-core-06", "step_id": "step-5",
+      "question": "C++ 链表为什么禁止复制但允许移动？", "aliases": ["move-only链表是什么", "浅复制节点有什么风险"],
+      "keywords": ["move-only", "复制", "移动", "浅复制", "源对象"],
+      "diagnostic": "复制是否会产生不明确的共享或重复所有权？",
+      "hints": ["unique_ptr 本身不可复制。", "移动要转移 head 和 size，并清空源对象状态。"],
+      "example": "移动后目标保留元素，源对象 empty 且 size=0。", "answer": "本实验不定义深复制；移动完整转移唯一所有权，避免含糊的浅复制。",
+      "source": { "label": "第五步：验证所有权与安全失败", "href": "#step-5" }, "updated_at": "2026-07-16"
+    },
+    {
+      "id": "empty-list-underflow", "lesson_id": "cs-core-06", "step_id": "step-5",
+      "question": "空链表 pop_front 应怎样安全失败？", "aliases": ["空表不能解引用怎么办", "下溢后状态如何验证", "空表下溢为什么不能直接解引用head"],
+      "keywords": ["空链表", "空表下溢", "解引用head", "pop_front", "IndexError", "out_of_range", "状态不变"],
+      "diagnostic": "读取 head.value 前是否先检查 head 为空？",
+      "hints": ["Python 抛 IndexError。", "C++ 抛 std::out_of_range，异常后仍为空。"],
+      "example": "失败后 to_list 仍为 []，随后可正常 push_front。", "answer": "用受控异常拒绝空节点访问，并测试失败没有改变结构。",
+      "source": { "label": "第五步：验证所有权与安全失败", "href": "#step-5" }, "updated_at": "2026-07-16"
+    },
+    {
+      "id": "remove-first-migration", "lesson_id": "cs-core-06", "step_id": "step-6",
+      "question": "remove_first 迁移任务要验收什么？", "aliases": ["删除首个匹配如何测试", "删除缺失值能否改变链表"],
+      "keywords": ["remove_first", "迁移验收", "头中尾", "重复值", "缺失"],
+      "diagnostic": "命中后是否只重连一次并立即返回，缺失时是否保持原状态？",
+      "hints": ["头节点和非头节点需要两条重连路径。", "覆盖头、中、尾、重复、缺失和空表。"],
+      "example": "7,3,9,3 删除3后为7,9,3。", "answer": "迁移通过标准是只删除首个匹配、正确更新 size，并在所有边界保持链接不变量。",
+      "source": { "label": "第六步：迁移 remove_first", "href": "#step-6" }, "updated_at": "2026-07-16", "recommended": true
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+[
+  { "query": "hash固定输出怎么看", "step_id": "step-1", "expected": "hash-baseline" },
+  { "query": "为什么要先回归queue基线", "step_id": "step-1", "expected": "hash-baseline" },
+  { "query": "相同哈希就一定相等吗", "step_id": "step-2", "expected": "hash-equality-contract" },
+  { "query": "相等键为何必须同哈希", "step_id": "step-2", "expected": "hash-equality-contract" },
+  { "query": "教学哈希为什么不能代表标准容器实现？", "step_id": "step-2", "expected": "teaching-hash-boundary" },
+  { "query": "教学哈希和标准容器实现边界", "step_id": "step-2", "expected": "teaching-hash-boundary" },
+  { "query": "bucket_index怎样保证不越界", "step_id": "step-3", "expected": "bucket-index-range" },
+  { "query": "取模后的桶索引范围", "step_id": "step-3", "expected": "bucket-index-range" },
+  { "query": "chain_before为什么插入前记录", "step_id": "step-4", "expected": "collision-chain-before" },
+  { "query": "BucketEvent碰撞怎么计算", "step_id": "step-4", "expected": "collision-chain-before" },
+  { "query": "为什么桶链保持输入顺序", "step_id": "step-4", "expected": "collision-order" },
+  { "query": "冲突操作计数怎样可复现", "step_id": "step-4", "expected": "collision-order" },
+  { "query": "非法桶数和负键怎样安全失败？", "step_id": "step-5", "expected": "invalid-hash-input" },
+  { "query": "负键为什么主动拒绝", "step_id": "step-5", "expected": "invalid-hash-input" },
+  { "query": "list放进set为什么TypeError", "step_id": "step-5", "expected": "unhashable-python-key" },
+  { "query": "不可哈希的Python键", "step_id": "step-5", "expected": "unhashable-python-key" },
+  { "query": "怎样找到第一个冲突", "step_id": "step-6", "expected": "first-collision-migration" },
+  { "query": "first_collision没有碰撞返回什么", "step_id": "step-6", "expected": "first-collision-migration" }
+]

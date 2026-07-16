@@ -1,0 +1,20 @@
+[
+  { "query": "集合应用首次成功怎么看", "step_id": "step-1", "expected": "applications-baseline" },
+  { "query": "首个重复值为何visits是3", "step_id": "step-1", "expected": "applications-baseline" },
+  { "query": "集合与映射分别解决什么问题？", "step_id": "step-2", "expected": "set-map-difference" },
+  { "query": "判重和频次计数用什么", "step_id": "step-2", "expected": "set-map-difference" },
+  { "query": "unordered是不是每次都随机", "step_id": "step-2", "expected": "unordered-not-random" },
+  { "query": "为什么不能依赖一次遍历顺序", "step_id": "step-2", "expected": "unordered-not-random" },
+  { "query": "first_duplicate访问次数怎么算", "step_id": "step-3", "expected": "first-duplicate-trace" },
+  { "query": "first_duplicate 的访问次数怎样计算？", "step_id": "step-3", "expected": "first-duplicate-trace" },
+  { "query": "频次映射为什么最后要按键排序？", "step_id": "step-4", "expected": "frequency-map-sorting" },
+  { "query": "负数频次如何按键排序", "step_id": "step-4", "expected": "frequency-map-sorting" },
+  { "query": "频次与去重为什么不能修改输入？", "step_id": "step-4", "expected": "input-immutability" },
+  { "query": "如何验证输入不变", "step_id": "step-4", "expected": "input-immutability" },
+  { "query": "unordered_map跨语言输出不一致怎么办", "step_id": "step-5", "expected": "stable-output-boundary" },
+  { "query": "怎样建立跨语言稳定输出？", "step_id": "step-5", "expected": "stable-output-boundary" },
+  { "query": "列表当字典键TypeError后怎么恢复", "step_id": "step-5", "expected": "unhashable-failure" },
+  { "query": "不可哈希失败能输出半成品吗", "step_id": "step-5", "expected": "unhashable-failure" },
+  { "query": "deduplicate_preserving_order怎么验收", "step_id": "step-6", "expected": "stable-dedup-migration" },
+  { "query": "为什么集合外还要输出列表", "step_id": "step-6", "expected": "stable-dedup-migration" }
+]

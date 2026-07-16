@@ -41,6 +41,12 @@
 
 - [双语言学习进度报告器](programming-languages/study-progress-reporters/README.md)：使用同一数据和行为契约对照Python类型化模块与C++ STL/CMake实现，验收容器、算法、复制边界和双语言一致性。
 
+### CS 核心
+
+- [可追踪数组实验](cs-core/traceable-array-lab/README.md)：使用双语言确定性契约验证数组、字符串、网格和动态容量。
+- [可追踪线性结构实验](cs-core/traceable-linear-structures-lab/README.md)：使用节点所有权、LIFO、FIFO 和受控下溢验证链表、栈与队列。
+- [可追踪哈希实验](cs-core/traceable-hash-lab/README.md)：使用确定性教学哈希、分离链接、负载扩容和稳定输出验证哈希与集合应用。
+
 ### LLM/Agent
 
 - [安全销售查询 Tool Calling](llm-agent/safe-sales-tool-calling/README.md)：后期 LLM/Agent 阶段的加工样品；需先具备Python工程化、Web/API与数据库最小核心，再用于验证Tool Calling、参数校验、只读SQLite和错误处理。

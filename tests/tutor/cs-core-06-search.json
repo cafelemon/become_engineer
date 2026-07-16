@@ -1,0 +1,20 @@
+[
+  { "query": "单链表课开始前要锁定什么输出？", "step_id": "step-1", "expected": "linked-output-baseline" },
+  { "query": "linked模式首次成功要核对哪些结果", "step_id": "step-1", "expected": "linked-output-baseline" },
+  { "query": "单链表的节点和链接不变量是什么？", "step_id": "step-2", "expected": "node-link-invariant" },
+  { "query": "head为空和size等于可达节点数是什么意思", "step_id": "step-2", "expected": "node-link-invariant" },
+  { "query": "链表头部插入和删除为什么是常量时间？", "step_id": "step-3", "expected": "head-operations-cost" },
+  { "query": "push_front和pop_front为什么不用遍历", "step_id": "step-3", "expected": "head-operations-cost" },
+  { "query": "链表查找的 visits 怎样计算？", "step_id": "step-4", "expected": "linked-find-trace" },
+  { "query": "缺失目标时find要访问多少节点", "step_id": "step-4", "expected": "linked-find-trace" },
+  { "query": "为什么不能说链表插入永远是 O(1)？", "step_id": "step-4", "expected": "insertion-complexity-condition" },
+  { "query": "先查找位置再插入为什么可能是Theta n", "step_id": "step-4", "expected": "insertion-complexity-condition" },
+  { "query": "C++ 单链表为什么使用 unique_ptr 所有权链？", "step_id": "step-5", "expected": "unique-ownership-chain" },
+  { "query": "head和next怎样唯一拥有并释放节点", "step_id": "step-5", "expected": "unique-ownership-chain" },
+  { "query": "C++ 链表为什么禁止复制但允许移动？", "step_id": "step-5", "expected": "move-only-list" },
+  { "query": "move-only链表移动后源对象应该是什么状态", "step_id": "step-5", "expected": "move-only-list" },
+  { "query": "空链表 pop_front 应怎样安全失败？", "step_id": "step-5", "expected": "empty-list-underflow" },
+  { "query": "空表下溢为什么不能直接解引用head", "step_id": "step-5", "expected": "empty-list-underflow" },
+  { "query": "remove_first 迁移任务要验收什么？", "step_id": "step-6", "expected": "remove-first-migration" },
+  { "query": "删除首个重复值和缺失值要怎样测试", "step_id": "step-6", "expected": "remove-first-migration" }
+]

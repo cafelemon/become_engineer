@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "lesson": { "id": "cs-core-07", "title": "栈、LIFO 接口与空栈边界", "path": "learning-paths/cs-core/07-stack-lifo-interface-underflow/" },
+  "steps": [
+    { "id": "step-1", "title": "运行链表基线与栈模式" },
+    { "id": "step-2", "title": "定义 LIFO 接口契约" },
+    { "id": "step-3", "title": "用链表头实现栈" },
+    { "id": "step-4", "title": "追踪嵌套压栈和弹栈" },
+    { "id": "step-5", "title": "验证空栈安全失败" },
+    { "id": "step-6", "title": "迁移 drain_stack" }
+  ],
+  "cards": [
+    {
+      "id": "stack-output-baseline", "lesson_id": "cs-core-07", "step_id": "step-1",
+      "question": "栈模式的固定输出要证明什么？", "aliases": ["stack首次成功是什么", "为什么先锁定linked基线"],
+      "keywords": ["stack", "基线", "top", "pop", "双语言"],
+      "diagnostic": "压入 7、3、9 后 top 是否为9，弹出后是否为3、7？",
+      "hints": ["先确认 linked 输出未回归。", "再比较两端 stack 输出。"],
+      "example": "top=9，pop=9，remaining(top->bottom)=3, 7。", "answer": "基线同时证明旧模式兼容和新模式的 LIFO 可观察结果。",
+      "source": { "label": "第一步：运行链表基线与栈模式", "href": "#step-1" }, "updated_at": "2026-07-16", "recommended": true
+    },
+    {
+      "id": "lifo-contract", "lesson_id": "cs-core-07", "step_id": "step-2",
+      "question": "栈的 LIFO 契约是什么？", "aliases": ["后进先出怎么理解", "栈允许哪些核心操作"],
+      "keywords": ["LIFO", "后进先出", "push", "pop", "peek"],
+      "diagnostic": "最后 push 的元素是否总由下一次 pop 返回？",
+      "hints": ["push 和 pop 在同一端。", "peek 只观察栈顶，不修改状态。"],
+      "example": "依次 push 7、3、9，首次 pop 返回9。", "answer": "LIFO 规定访问顺序，不规定必须使用数组还是链表。",
+      "source": { "label": "第二步：定义 LIFO 接口契约", "href": "#step-2" }, "updated_at": "2026-07-16", "recommended": true
+    },
+    {
+      "id": "stack-interface-representation", "lesson_id": "cs-core-07", "step_id": "step-2",
+      "question": "为什么栈接口不等于某一种底层容器？", "aliases": ["栈就是数组吗", "栈就是数组还是链表吗", "std stack为何叫容器适配器"],
+      "keywords": ["接口", "表示", "容器适配器", "list", "std::stack"],
+      "diagnostic": "当前结论描述的是操作契约，还是某个实现选择？",
+      "hints": ["链表头和动态数组尾都能实现栈。", "比较复杂度与失效边界，而不是混同名称。"],
+      "example": "本实验用链表，Python list 和 std::stack 也能提供 LIFO。", "answer": "栈定义 push/pop/peek 行为，底层表示是可替换的工程选择。",
+      "source": { "label": "第二步：定义 LIFO 接口契约", "href": "#step-2" }, "updated_at": "2026-07-16"
+    },
+    {
+      "id": "head-as-stack-top", "lesson_id": "cs-core-07", "step_id": "step-3",
+      "question": "为什么把链表头作为栈顶？", "aliases": ["链式栈怎样做到Theta1", "push pop peek复杂度"],
+      "keywords": ["链表头", "栈顶", "Theta(1)", "push", "peek"],
+      "diagnostic": "三个核心操作是否都只读取或重连 head？",
+      "hints": ["push_front 对应 push。", "pop_front 对应 pop，头值对应 peek。"],
+      "example": "链表长度不会改变一次栈顶操作触碰的节点数。", "answer": "头部已知且支持常量重连，正好满足栈只操作一端的契约。",
+      "source": { "label": "第三步：用链表头实现栈", "href": "#step-3" }, "updated_at": "2026-07-16", "recommended": true
+    },
+    {
+      "id": "peek-no-mutation", "lesson_id": "cs-core-07", "step_id": "step-3",
+      "question": "peek 为什么不能改变栈？", "aliases": ["查看栈顶后size变了怎么办", "peek和pop区别"],
+      "keywords": ["peek", "pop", "只读", "size", "状态"],
+      "diagnostic": "peek 前后的 head、size 和元素顺序是否完全相同？",
+      "hints": ["peek 只读取头节点的 value。", "不要复用会移动 head 的 pop。"],
+      "example": "peek 返回9后 size 仍为3。", "answer": "peek 是观察操作；删除或减少大小会破坏公开接口契约。",
+      "source": { "label": "第三步：用链表头实现栈", "href": "#step-3" }, "updated_at": "2026-07-16"
+    },
+    {
+      "id": "stack-state-trace", "lesson_id": "cs-core-07", "step_id": "step-4",
+      "question": "怎样追踪一串压栈和弹栈状态？", "aliases": ["嵌套push pop如何画状态", "栈顶到栈底顺序"],
+      "keywords": ["状态追踪", "push", "pop", "top-to-bottom", "size"],
+      "diagnostic": "每一步是否同时记录返回值、栈顶到栈底序列和大小？",
+      "hints": ["先写预测，再运行。", "每次 push 放到序列最前，每次 pop 移除最前。"],
+      "example": "push7,push3,pop,push9 最终为[9,7]。", "answer": "逐步状态表能定位顺序错误，比只看最终结果更可靠。",
+      "source": { "label": "第四步：追踪嵌套压栈和弹栈", "href": "#step-4" }, "updated_at": "2026-07-16", "recommended": true
+    },
+    {
+      "id": "stack-underflow", "lesson_id": "cs-core-07", "step_id": "step-5",
+      "question": "空栈 pop 和 peek 应怎样失败？", "aliases": ["栈下溢用什么异常", "为什么不能返回0哨兵"],
+      "keywords": ["空栈", "下溢", "IndexError", "out_of_range", "哨兵"],
+      "diagnostic": "空栈是否抛公开异常，且没有伪造一个可能合法的返回值？",
+      "hints": ["Python 使用 IndexError。", "C++ 使用 std::out_of_range。"],
+      "example": "失败后 size=0，随后 push7 仍成功。", "answer": "异常明确区分无结果和合法整数，并让调用方处理下溢。",
+      "source": { "label": "第五步：验证空栈安全失败", "href": "#step-5" }, "updated_at": "2026-07-16", "recommended": true
+    },
+    {
+      "id": "stack-failure-invariant", "lesson_id": "cs-core-07", "step_id": "step-5",
+      "question": "怎样证明栈下溢没有破坏状态？", "aliases": ["异常后栈还能继续用吗", "失败不变性测试"],
+      "keywords": ["失败不变性", "异常", "empty", "size", "恢复"],
+      "diagnostic": "异常前后 empty、size 和 to_list 是否相同？",
+      "hints": ["在任何链接修改之前检查空状态。", "失败后再执行一次成功 push/pop。"],
+      "example": "空栈 peek 失败后 push7、pop 仍返回7。", "answer": "比较失败前后快照并继续一次成功操作，可以证明结构仍有效。",
+      "source": { "label": "第五步：验证空栈安全失败", "href": "#step-5" }, "updated_at": "2026-07-16"
+    },
+    {
+      "id": "drain-stack-migration", "lesson_id": "cs-core-07", "step_id": "step-6",
+      "question": "drain_stack 迁移任务要验收什么？", "aliases": ["排空栈为何要保护输入", "逆序弹出测试"],
+      "keywords": ["drain_stack", "迁移验收", "逆序", "输入不变", "空输入"],
+      "diagnostic": "是否把输入复制进独立栈，并按 pop 顺序收集全部值？",
+      "hints": ["输入顺序用于 push。", "覆盖空、单元素、重复和一般序列。"],
+      "example": "[7,3,9] 返回[9,3,7]，源列表仍为[7,3,9]。", "answer": "迁移通过标准是完整 LIFO 输出、原输入不变且所有边界可复现。",
+      "source": { "label": "第六步：迁移 drain_stack", "href": "#step-6" }, "updated_at": "2026-07-16", "recommended": true
+    }
+  ]
+}

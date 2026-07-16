@@ -1,0 +1,20 @@
+[
+  { "query": "哈希表首次成功怎么看", "step_id": "step-1", "expected": "table-baseline" },
+  { "query": "13插入为何触发扩容搬移", "step_id": "step-1", "expected": "table-baseline" },
+  { "query": "分离链接怎样保存冲突键", "step_id": "step-2", "expected": "separate-chaining-layout" },
+  { "query": "分离链接哈希表怎样保存冲突键？", "step_id": "step-2", "expected": "separate-chaining-layout" },
+  { "query": "size是桶数还是键值对数", "step_id": "step-2", "expected": "map-size-invariant" },
+  { "query": "哈希表 size 统计什么？", "step_id": "step-2", "expected": "map-size-invariant" },
+  { "query": "相同键更新会扩容吗", "step_id": "step-3", "expected": "put-update-contract" },
+  { "query": "put inserted no是什么意思", "step_id": "step-3", "expected": "put-update-contract" },
+  { "query": "get comparisons怎么算", "step_id": "step-4", "expected": "lookup-comparisons" },
+  { "query": "缺失查询比较几次", "step_id": "step-4", "expected": "lookup-comparisons" },
+  { "query": "负载等于1会扩容吗", "step_id": "step-5", "expected": "load-factor-boundary" },
+  { "query": "什么时候触发rehash", "step_id": "step-5", "expected": "load-factor-boundary" },
+  { "query": "扩容为什么必须重新映射旧键？", "step_id": "step-5", "expected": "rehash-movement" },
+  { "query": "扩容moved数量是什么", "step_id": "step-5", "expected": "rehash-movement" },
+  { "query": "哈希表最坏情况也是O1吗", "step_id": "step-5", "expected": "hash-complexity-conditions" },
+  { "query": "期望常量成本需要哪些条件", "step_id": "step-5", "expected": "hash-complexity-conditions" },
+  { "query": "erase删除缺失键怎样保持状态", "step_id": "step-6", "expected": "erase-migration" },
+  { "query": "哈希表删除比较次数怎么验收", "step_id": "step-6", "expected": "erase-migration" }
+]
