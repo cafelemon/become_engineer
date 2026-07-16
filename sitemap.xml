@@ -21,6 +21,10 @@
          <lastmod>2026-07-16</lastmod>
     </url>
     <url>
+         <loc>https://cafelemon.github.io/become_engineer/exercises/cs-core/traceable-graph-traversal-lab/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
          <loc>https://cafelemon.github.io/become_engineer/exercises/cs-core/traceable-hash-lab/</loc>
          <lastmod>2026-07-16</lastmod>
     </url>
@@ -134,6 +138,18 @@
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/17-iterative-dfs-bfs-frontier-levels/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/18-undirected-graph-adjacency-representations/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/19-bfs-unweighted-distances-shortest-paths/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/20-dfs-connected-components-undirected-cycles/</loc>
          <lastmod>2026-07-16</lastmod>
     </url>
     <url>
