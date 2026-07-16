@@ -1,0 +1,20 @@
+[
+  {"query":"网格课开始前要锁定哪些基线？","step_id":"step-1","expected":"grid-output-baseline"},
+  {"query":"为什么新增grid模式不能改默认和text报告","step_id":"step-1","expected":"grid-output-baseline"},
+  {"query":"扁平网格的形状契约是什么？","step_id":"step-2","expected":"grid-shape-contract"},
+  {"query":"rows乘columns为什么必须等于数据长度","step_id":"step-2","expected":"grid-shape-contract"},
+  {"query":"行优先网格怎样把坐标映射为下标？","step_id":"step-3","expected":"row-major-formula"},
+  {"query":"2x3网格一行二列的flat index是多少","step_id":"step-3","expected":"row-major-formula"},
+  {"query":"网格坐标要拒绝哪些边界输入？","step_id":"step-3","expected":"grid-coordinate-boundary"},
+  {"query":"负坐标和row等于rows为什么都非法","step_id":"step-3","expected":"grid-coordinate-boundary"},
+  {"query":"Python 重复行引用为什么危险？","step_id":"step-4","expected":"repeated-row-alias"},
+  {"query":"二维列表改一个格子为什么另一行也改变","step_id":"step-4","expected":"repeated-row-alias"},
+  {"query":"为什么 C++ 网格使用扁平 span？","step_id":"step-5","expected":"flat-contiguous-representation"},
+  {"query":"C++20不用mdspan怎样表示连续二维网格","step_id":"step-5","expected":"flat-contiguous-representation"},
+  {"query":"C++ 为什么要在 rows 乘 columns 前检查溢出？","step_id":"step-5","expected":"grid-shape-overflow"},
+  {"query":"size_t形状乘法回绕应该怎样预防","step_id":"step-5","expected":"grid-shape-overflow"},
+  {"query":"行扫描的 visits 应怎样计数？","step_id":"step-6","expected":"row-scan-trace"},
+  {"query":"sum grid row为什么访问次数等于列数","step_id":"step-6","expected":"row-scan-trace"},
+  {"query":"修改网格形状后要重新验收哪些不变量？","step_id":"step-6","expected":"grid-migration-invariant"},
+  {"query":"从2x3迁移到3x2后应该测试什么","step_id":"step-6","expected":"grid-migration-invariant"}
+]

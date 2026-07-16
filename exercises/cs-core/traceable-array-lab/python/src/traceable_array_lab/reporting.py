@@ -2,7 +2,16 @@ from __future__ import annotations
 
 from collections.abc import Sequence
 
-from traceable_array_lab.lab import build_growth_rows, checked_at, linear_search
+from traceable_array_lab.lab import (
+    analyze_utf8,
+    build_growth_rows,
+    checked_at,
+    checked_grid_at,
+    linear_search,
+    simulate_growth,
+    sum_grid_row,
+    summarize_growth,
+)
 
 
 SAMPLE_VALUES = (7, 3, 9, 3)
@@ -29,4 +38,48 @@ def build_report() -> str:
         lines.append(
             f"{row.size} | {row.constant_steps} | {row.linear_steps} | {row.pair_steps}"
         )
+    return "\n".join(lines)
+
+
+def build_text_report() -> str:
+    data = "A工🧪".encode("utf-8")
+    trace = analyze_utf8(data)
+    return "\n".join(
+        [
+            "UTF-8 扫描",
+            "text：A工🧪",
+            f"bytes={trace.byte_count}，code_points={trace.code_point_count}",
+            f"ascii={trace.ascii_count}，multibyte={trace.multibyte_count}",
+        ]
+    )
+
+
+def build_grid_report() -> str:
+    values = (1, 2, 3, 4, 5, 6)
+    cell = checked_grid_at(values, 2, 3, 1, 2)
+    row = sum_grid_row(values, 2, 3, 0)
+    return "\n".join(
+        [
+            "二维网格",
+            "shape=2x3",
+            "data：1, 2, 3 / 4, 5, 6",
+            f"row=1，col=2：value={cell.value}，flat_index={cell.flat_index}",
+            f"row=0：sum={row.total}，visits={row.visits}",
+        ]
+    )
+
+
+def build_capacity_report() -> str:
+    events = simulate_growth((7, 3, 9, 3, 5))
+    summary = summarize_growth(events)
+    lines = [
+        "动态数组扩容",
+        "append | size | capacity | copies | steps",
+    ]
+    for event in events:
+        lines.append(
+            f"{event.value} | {event.size} | {event.capacity} | "
+            f"{event.copies} | {event.steps}"
+        )
+    lines.append(f"total_steps={summary.total_steps}")
     return "\n".join(lines)

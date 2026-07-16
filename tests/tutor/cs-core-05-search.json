@@ -1,0 +1,20 @@
+[
+  {"query":"容量课开始前要锁定哪些输出？","step_id":"step-1","expected":"capacity-output-baseline"},
+  {"query":"为什么新增capacity不能改变grid和默认报告","step_id":"step-1","expected":"capacity-output-baseline"},
+  {"query":"动态数组的 size 和 capacity 有什么区别？","step_id":"step-2","expected":"size-capacity-distinction"},
+  {"query":"元素数量和已分配容量为什么不能混用","step_id":"step-2","expected":"size-capacity-distinction"},
+  {"query":"一次追加事件怎样记录成本？","step_id":"step-3","expected":"append-event-cost"},
+  {"query":"扩容追加的copies和steps应该怎么算","step_id":"step-3","expected":"append-event-cost"},
+  {"query":"实验的确定性倍增规则是什么？","step_id":"step-4","expected":"deterministic-doubling"},
+  {"query":"初始容量0时为什么按1 2 4 8增长","step_id":"step-4","expected":"deterministic-doubling"},
+  {"query":"追加的最坏成本和摊还成本为什么不同？","step_id":"step-4","expected":"amortized-vs-worst"},
+  {"query":"单次扩容Theta n为何一串追加摊还是常量","step_id":"step-4","expected":"amortized-vs-worst"},
+  {"query":"为什么不能断言 Python list 或 C++ vector 的具体扩容倍数？","step_id":"step-5","expected":"standard-growth-boundary"},
+  {"query":"vector标准是否保证容量每次翻倍","step_id":"step-5","expected":"standard-growth-boundary"},
+  {"query":"预留足够容量会怎样改变模拟结果？","step_id":"step-5","expected":"reserve-effect"},
+  {"query":"initial capacity够用时为何复制次数是0","step_id":"step-5","expected":"reserve-effect"},
+  {"query":"容量倍增为什么还要检查整数溢出？","step_id":"step-5","expected":"capacity-overflow-boundary"},
+  {"query":"size_t capacity乘2回绕怎样安全失败","step_id":"step-5","expected":"capacity-overflow-boundary"},
+  {"query":"迁移不同初始容量要验收什么？","step_id":"step-6","expected":"initial-capacity-migration"},
+  {"query":"从容量0改到2和5后哪些不变量必须保持","step_id":"step-6","expected":"initial-capacity-migration"}
+]

@@ -1,0 +1,20 @@
+[
+  {"query":"文本课开始前要锁定哪些输出？","step_id":"step-1","expected":"utf8-output-baseline"},
+  {"query":"为什么新增UTF-8模式不能改默认数组报告","step_id":"step-1","expected":"utf8-output-baseline"},
+  {"query":"字节、Unicode 码点和文本有什么区别？","step_id":"step-2","expected":"text-byte-codepoint-units"},
+  {"query":"A工🧪为什么是8个字节3个码点","step_id":"step-2","expected":"text-byte-codepoint-units"},
+  {"query":"Python str 和 bytes 应怎样分工？","step_id":"step-2","expected":"python-str-bytes-boundary"},
+  {"query":"原始字节什么时候需要严格decode UTF-8","step_id":"step-2","expected":"python-str-bytes-boundary"},
+  {"query":"严格 UTF-8 扫描需要验证什么？","step_id":"step-3","expected":"strict-utf8-scan"},
+  {"query":"C++如何检查起始字节续字节和剩余长度","step_id":"step-3","expected":"strict-utf8-scan"},
+  {"query":"C++ string_view 的生命周期边界是什么？","step_id":"step-4","expected":"string-view-lifetime"},
+  {"query":"为什么不能长期保存指向临时字符串的视图","step_id":"step-4","expected":"string-view-lifetime"},
+  {"query":"非法 UTF-8 要覆盖哪些失败族？","step_id":"step-5","expected":"malformed-utf8-families"},
+  {"query":"截断错误续字节代理项超范围应该怎么测","step_id":"step-5","expected":"malformed-utf8-families"},
+  {"query":"续字节正确为什么仍可能是非法 UTF-8？","step_id":"step-5","expected":"overlong-surrogate-boundary"},
+  {"query":"过长编码和代理项为什么必须拒绝","step_id":"step-5","expected":"overlong-surrogate-boundary"},
+  {"query":"Utf8Trace 应满足什么计数不变量？","step_id":"step-6","expected":"utf8-trace-invariant"},
+  {"query":"ascii加multibyte为什么等于code point总数","step_id":"step-6","expected":"utf8-trace-invariant"},
+  {"query":"为什么码点数不能直接叫用户字符数？","step_id":"step-6","expected":"codepoint-not-grapheme"},
+  {"query":"emoji码点和字形簇是否总是一回事","step_id":"step-6","expected":"codepoint-not-grapheme"}
+]

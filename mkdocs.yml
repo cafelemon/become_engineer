@@ -129,6 +129,9 @@ nav:
           - 课程说明: learning-paths/cs-core/README.md
           - 序列接口、数组表示与安全边界: learning-paths/cs-core/01-sequence-interface-array-representation-boundaries.md
           - 操作计数、增长率与渐近复杂度: learning-paths/cs-core/02-operation-count-growth-asymptotic-complexity.md
+          - 字符串、UTF-8 字节与码点边界: learning-paths/cs-core/03-string-utf8-byte-code-point-boundaries.md
+          - 二维网格、行优先布局与坐标边界: learning-paths/cs-core/04-two-dimensional-grid-row-major-layout.md
+          - 动态数组容量、扩容成本与摊还分析: learning-paths/cs-core/05-dynamic-array-capacity-amortized-cost.md
   - 项目:
       - 项目说明: projects/README.md
       - 项目主干规划: projects/project-roadmap.md

@@ -6,6 +6,9 @@
 
 - [序列接口、数组表示与安全边界](../../../learning-paths/cs-core/01-sequence-interface-array-representation-boundaries.md)
 - [操作计数、增长率与渐近复杂度](../../../learning-paths/cs-core/02-operation-count-growth-asymptotic-complexity.md)
+- [字符串、UTF-8 字节与码点边界](../../../learning-paths/cs-core/03-string-utf8-byte-code-point-boundaries.md)
+- [二维网格、行优先布局与坐标边界](../../../learning-paths/cs-core/04-two-dimensional-grid-row-major-layout.md)
+- [动态数组容量、扩容成本与摊还分析](../../../learning-paths/cs-core/05-dynamic-array-capacity-amortized-cost.md)
 
 ## 公开契约
 
@@ -13,6 +16,9 @@
 - `replace_at_copy` 返回修改后的副本，调用者输入保持不变。
 - `linear_search` 返回第一个匹配位置和精确比较次数；缺失目标比较 `n` 次。
 - `build_growth_rows` 生成常量访问、线性扫描和两两比较的确定性步骤数。
+- `analyze_utf8` 严格验证 UTF-8，并分别统计字节、码点、ASCII 和多字节码点。
+- `checked_grid_at` 与 `sum_grid_row` 使用扁平行优先表示，并校验形状和坐标。
+- `simulate_growth` 使用公开的确定性倍增规则记录追加、复制和总步骤，不代表标准库实际增长因子。
 - 两个程序的 UTF-8 标准输出逐字一致。
 
 ## Python
@@ -23,6 +29,9 @@
 cd python
 python -m pip install -e ".[dev]"
 python -m traceable_array_lab
+python -m traceable_array_lab text
+python -m traceable_array_lab grid
+python -m traceable_array_lab capacity
 python -m unittest discover -s tests -v
 python -m mypy --strict src tests
 ```
@@ -37,6 +46,9 @@ cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
 cmake --build build --config Debug
 ctest --test-dir build --build-config Debug --output-on-failure
 ./build/traceable_array_lab
+./build/traceable_array_lab text
+./build/traceable_array_lab grid
+./build/traceable_array_lab capacity
 ```
 
 ## 输出
@@ -56,3 +68,5 @@ n | 常量访问 | 线性扫描 | 两两比较
 ```
 
 计时只能辅助观察环境噪声，不属于正确性测试，也不用于比较语言胜负。
+
+无参数与 `baseline` 模式继续输出上面的 V2.1 报告。其余模式各自输出独立、可逐字比较的 UTF-8、二维网格或容量事件报告；未知模式返回退出码 2。
