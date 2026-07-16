@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "lesson": {"id": "cs-core-02", "title": "操作计数、增长率与渐近复杂度", "path": "learning-paths/cs-core/02-operation-count-growth-asymptotic-complexity/"},
+  "steps": [
+    {"id": "step-1", "title": "双语言输出基线"},
+    {"id": "step-2", "title": "输入规模与基本操作"},
+    {"id": "step-3", "title": "线性查找计数"},
+    {"id": "step-4", "title": "确定性增长表"},
+    {"id": "step-5", "title": "计时噪声实验"},
+    {"id": "step-6", "title": "相邻增长迁移验收"}
+  ],
+  "cards": [
+    {
+      "id":"growth-output-baseline","lesson_id":"cs-core-02","step_id":"step-1","question":"增加增长表前要锁定什么基线？","aliases":["第二课基线是什么","如何防止旧报告漂移"],"keywords":["增长表","基线","旧输出","双语言","回归"],"diagnostic":"新增复杂度输出是否改动了上一课的数据、索引和首次匹配四行？","hints":["先运行两边测试并保存上一课报告。","新增内容只能接在空行之后；对完整字符串和旧前缀分别断言。"],"example":"局部证据：数据、index=2、target=3 行保持逐字相同。","answer":"先锁定旧输出和测试，才能证明本课只新增增长证据，没有改变上一课行为。","source":{"label":"第一步：锁定双语言输出基线","href":"#step-1"},"updated_at":"2026-07-16","recommended":true
+    },
+    {
+      "id":"input-size-basic-operation","lesson_id":"cs-core-02","step_id":"step-2","question":"复杂度分析为什么先定义 n 和基本操作？","aliases":["n到底表示什么","操作计数口径怎么定"],"keywords":["输入规模","基本操作","n","模型","计数口径"],"diagnostic":"当前 n 是元素数、数值大小还是文本字节数，计数的是访问、比较还是指令？","hints":["本实验把 n 定义为序列元素数。","分别数合法下标读取、元素与目标比较、元素对比较；改变口径就要重新说明 T(n)。"],"example":"缺失目标扫描的基本操作是一次相等比较。","answer":"只有固定输入规模和基本操作，T(n) 才可重复推导、测试和跨语言比较。","source":{"label":"第二步：定义输入规模和基本操作","href":"#step-2"},"updated_at":"2026-07-16","recommended":true
+    },
+    {
+      "id":"zero-size-boundary","lesson_id":"cs-core-02","step_id":"step-2","question":"n 等于 0 时三类操作怎样计数？","aliases":["空序列增长行是多少","常量访问空输入为什么不是1"],"keywords":["n=0","空序列","边界","常量访问","0次"],"diagnostic":"空序列是否真的执行了合法位置访问或比较？","hints":["没有合法元素，检查式访问不能执行。","本实验记录常量访问、线性扫描、两两比较均为 0；增长表正文从正规模开始。"],"example":"GrowthRow(0, 0, 0, 0)。","answer":"渐近分类关注大规模，但实现仍要给空输入明确、可测试的边界语义。","source":{"label":"第二步：定义输入规模和基本操作","href":"#step-2"},"updated_at":"2026-07-16"
+    },
+    {
+      "id":"linear-search-comparison-trace","lesson_id":"cs-core-02","step_id":"step-3","question":"线性查找的比较次数怎样追踪？","aliases":["找到后还要继续数吗","SearchTrace记录什么"],"keywords":["线性查找","comparisons","SearchTrace","首次匹配","比较次数"],"diagnostic":"比较计数是在每次相等判断前增加，并在首次匹配时立即返回吗？","hints":["每检查一个元素就把 comparisons 加一。","匹配时立即返回位置和当前次数；扫描结束返回 None 和总次数。"],"example":"[7,3,9,3] 查找 3 返回 index=1、comparisons=2。","answer":"SearchTrace 同时表达正确性和成本，首次返回规则保证重复值不会多算后续元素。","source":{"label":"第三步：追踪线性查找比较次数","href":"#step-3"},"updated_at":"2026-07-16","recommended":true
+    },
+    {
+      "id":"linear-search-cases","lesson_id":"cs-core-02","step_id":"step-3","question":"线性查找最好和最坏输入怎样构造？","aliases":["开头末尾缺失比较几次","为什么缺失目标是n次"],"keywords":["最好情况","最坏情况","开头","末尾","缺失"],"diagnostic":"目标位于哪里，或者是否根本不存在？","hints":["目标在首位只比较 1 次。","目标在末尾或不存在时必须检查全部 n 个元素；说明你分析的是哪种情况。"],"example":"长度4：查7为1次，查3为2次，查4为4次。","answer":"输入位置决定实际比较次数；最坏线性扫描是 n 次，不能把最好情况和最坏情况混成一个无条件数字。","source":{"label":"第三步：追踪线性查找比较次数","href":"#step-3"},"updated_at":"2026-07-16"
+    },
+    {
+      "id":"deterministic-growth-table","lesson_id":"cs-core-02","step_id":"step-4","question":"增长表三列公式分别是什么？","aliases":["常量线性平方怎么生成","n翻倍三列如何变化"],"keywords":["增长表","1","n","n(n-1)/2","平方"],"diagnostic":"表格是否来自精确公式和整数测试，而不是手填或计时猜测？","hints":["正规模检查式访问为1，缺失扫描为n。","不同元素两两比较为 n(n-1)/2；用 4、8、16、32 生成。"],"example":"n=8 时三列是 1、8、28。","answer":"确定性公式让 Python 与 C++ 可逐行对照，并直接观察输入翻倍时的增长差异。","source":{"label":"第四步：生成三类确定性增长表","href":"#step-4"},"updated_at":"2026-07-16","recommended":true
+    },
+    {
+      "id":"big-o-omega-theta","lesson_id":"cs-core-02","step_id":"step-4","question":"O、Ω 和 Θ 有什么区别？","aliases":["Big O是不是精确等式","什么时候写Theta"],"keywords":["O","Omega","Theta","上界","下界","同阶"],"diagnostic":"你是在给上界、下界，还是同时证明同阶增长？","hints":["O 是渐近上界，Ω 是渐近下界。","同时满足上下界时写 Θ；缺失扫描精确 n 次，因此 Θ(n) 比只写 O(n) 信息更完整。"],"example":"n(n-1)/2 的主导增长是 Θ(n²)。","answer":"三个符号描述界而非秒数；Theta 表示同阶，Big O 不能被随意当成精确运行时间。","source":{"label":"第四步：生成三类确定性增长表","href":"#step-4"},"updated_at":"2026-07-16","recommended":true
+    },
+    {
+      "id":"timing-noise-boundary","lesson_id":"cs-core-02","step_id":"step-5","question":"为什么计时不能替代操作计数测试？","aliases":["timeit结果波动怎么办","能不能断言运行必须小于1毫秒"],"keywords":["timeit","计时噪声","阈值","环境","操作计数"],"diagnostic":"失败来自算法结果错误，还是后台任务、缓存、解释器和测量顺序造成的耗时波动？","hints":["重复计时并记录环境，只把结果当辅助观察。","正确性测试断言返回值和精确操作次数，不设置机器相关毫秒阈值。"],"example":"交换测试顺序或重复运行，耗时可能变化但 comparisons 不变。","answer":"真实时间包含许多模型外因素；计数提供稳定证据，计时负责提醒实际实现仍受环境影响。","source":{"label":"第五步：用计时实验观察噪声","href":"#step-5"},"updated_at":"2026-07-16","recommended":true
+    },
+    {
+      "id":"adjacent-increase-migration","lesson_id":"cs-core-02","step_id":"step-6","question":"相邻增长迁移为什么最多比较 n-1 次？","aliases":["count_adjacent_increases复杂度","空序列单元素比较几次"],"keywords":["相邻增长","n-1","比较次数","迁移验收","Theta(n)"],"diagnostic":"循环是否从第二个元素开始，每个元素只与前一个比较一次？","hints":["长度 n 只有 n-1 对相邻位置。","空和单元素比较0次；递增、下降和重复值都断言增长数与 comparisons。"],"example":"[1,1,2] 增长1次、比较2次。","answer":"单次从左到右覆盖每个相邻对且不重复，比较次数 max(n-1,0)，因此正规模增长属于 Θ(n)。","source":{"label":"第六步：完成相邻增长计数迁移验收","href":"#step-6"},"updated_at":"2026-07-16","recommended":true
+    }
+  ]
+}
