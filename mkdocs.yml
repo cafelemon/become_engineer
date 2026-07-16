@@ -125,13 +125,18 @@ nav:
           - 装饰器、闭包与自定义上下文管理器: learning-paths/programming-languages/python-core/05-decorators-closures-custom-context-managers.md
           - 包结构、可安装入口与 CLI: learning-paths/programming-languages/python-core/06-package-structure-installable-cli.md
           - TOML 配置、日志与诊断: learning-paths/programming-languages/python-core/07-toml-configuration-logging-diagnostics.md
-      - CS 核心说明: learning-paths/cs-core/README.md
+      - CS 核心:
+          - 课程说明: learning-paths/cs-core/README.md
+          - 序列接口、数组表示与安全边界: learning-paths/cs-core/01-sequence-interface-array-representation-boundaries.md
+          - 操作计数、增长率与渐近复杂度: learning-paths/cs-core/02-operation-count-growth-asymptotic-complexity.md
   - 项目:
       - 项目说明: projects/README.md
       - 项目主干规划: projects/project-roadmap.md
       - 求职训练样板:
           - Python 起步机考与限时模拟: exercises/career-readiness/python-entry-machine-test.md
           - 学习进度报告器项目证据问答: exercises/career-readiness/study-progress-reporter-evidence.md
+      - CS 阶段作品:
+          - 可追踪数组实验: exercises/cs-core/traceable-array-lab/README.md
       - Python 内容分析工具: projects/python-content-analysis/README.md
       - 结构化数据机器学习系统: projects/structured-data-ml-system/README.md
       - 文本分类模型演进: projects/text-classification-evolution/README.md

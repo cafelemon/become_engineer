@@ -1,0 +1,20 @@
+[
+  {"query":"增加增长表前要锁定什么基线？","step_id":"step-1","expected":"growth-output-baseline"},
+  {"query":"如何防止旧报告漂移","step_id":"step-1","expected":"growth-output-baseline"},
+  {"query":"复杂度分析为什么先定义 n 和基本操作？","step_id":"step-2","expected":"input-size-basic-operation"},
+  {"query":"n代表元素数还是数值大小操作计数口径怎么定","step_id":"step-2","expected":"input-size-basic-operation"},
+  {"query":"n 等于 0 时三类操作怎样计数？","step_id":"step-2","expected":"zero-size-boundary"},
+  {"query":"空序列的常量访问为什么记录为0","step_id":"step-2","expected":"zero-size-boundary"},
+  {"query":"线性查找的比较次数怎样追踪？","step_id":"step-3","expected":"linear-search-comparison-trace"},
+  {"query":"SearchTrace找到第一个匹配后是否继续比较","step_id":"step-3","expected":"linear-search-comparison-trace"},
+  {"query":"线性查找最好和最坏输入怎样构造？","step_id":"step-3","expected":"linear-search-cases"},
+  {"query":"目标在开头末尾或缺失分别比较多少次","step_id":"step-3","expected":"linear-search-cases"},
+  {"query":"增长表三列公式分别是什么？","step_id":"step-4","expected":"deterministic-growth-table"},
+  {"query":"n等于8时常量线性两两比较是多少","step_id":"step-4","expected":"deterministic-growth-table"},
+  {"query":"O、Ω 和 Θ 有什么区别？","step_id":"step-4","expected":"big-o-omega-theta"},
+  {"query":"Big O是不是精确等式什么时候应该写Theta","step_id":"step-4","expected":"big-o-omega-theta"},
+  {"query":"为什么计时不能替代操作计数测试？","step_id":"step-5","expected":"timing-noise-boundary"},
+  {"query":"timeit结果波动能不能断言必须小于1毫秒","step_id":"step-5","expected":"timing-noise-boundary"},
+  {"query":"相邻增长迁移为什么最多比较 n-1 次？","step_id":"step-6","expected":"adjacent-increase-migration"},
+  {"query":"空序列单元素比较几次","step_id":"step-6","expected":"adjacent-increase-migration"}
+]

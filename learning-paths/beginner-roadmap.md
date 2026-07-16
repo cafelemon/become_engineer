@@ -42,11 +42,11 @@
       <span class="be-roadmap-status">建设中</span>
     </a>
   </li>
-  <li class="be-roadmap-step" data-state="planned">
+  <li class="be-roadmap-step" data-state="building">
     <a class="be-roadmap-stage" href="#stage-cs-core">
       <span class="be-roadmap-number" aria-hidden="true">04</span>
       <span class="be-roadmap-copy"><strong>CS 最小核心</strong><small>数据结构、算法、系统、网络和数据库最小集</small></span>
-      <span class="be-roadmap-status">规划中</span>
+      <span class="be-roadmap-status">建设中</span>
     </a>
   </li>
   <li class="be-roadmap-step" data-state="planned">
@@ -148,13 +148,14 @@ Python 负责快速实现与数据应用，C++ 帮助理解编译、类型、资
 
 </div>
 
-<div class="be-route-summary" data-state="planned" markdown>
+<div class="be-route-summary" data-state="building" markdown>
 
 ## CS 最小核心 { #stage-cs-core }
 
-补齐数据结构、算法、系统、网络和数据库基础，为解释真实程序、Web 应用和专业系统做好准备。
+首批序列接口、数组安全边界与复杂度课程已经开放；后续继续补齐字符串、二维数组、线性结构、算法、系统、网络和数据库基础。
 
-[查看 CS 课程结构](curriculum-map.md#cs){ .md-button }
+[开始 CS 第一课](cs-core/01-sequence-interface-array-representation-boundaries.md){ .md-button .md-button--primary }
+[查看 CS 课程结构](cs-core/README.md){ .md-button }
 
 </div>
 

@@ -61,6 +61,8 @@ assert.ok(!experiencedInterest.includedIds.includes("engineering-foundation-03")
 assert.ok(!experiencedInterest.includedIds.includes("python-basics-01"));
 assert.ok(experiencedInterest.includedIds.includes("python-core-01"));
 assert.ok(experiencedInterest.includedIds.includes("cs-core-overview"));
+assert.ok(experiencedInterest.includedIds.includes("cs-core-01"));
+assert.ok(experiencedInterest.includedIds.includes("cs-core-02"));
 
 const beginnerCareer = personalization.scoreAssessment(
   config,

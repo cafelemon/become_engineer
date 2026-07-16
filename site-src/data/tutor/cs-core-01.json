@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "lesson": {"id": "cs-core-01", "title": "序列接口、数组表示与安全边界", "path": "learning-paths/cs-core/01-sequence-interface-array-representation-boundaries/"},
+  "steps": [
+    {"id": "step-1", "title": "固定数组基线"},
+    {"id": "step-2", "title": "序列操作接口"},
+    {"id": "step-3", "title": "Python 检查式访问"},
+    {"id": "step-4", "title": "C++ 连续容器迁移"},
+    {"id": "step-5", "title": "安全越界实验"},
+    {"id": "step-6", "title": "复制修改迁移验收"}
+  ],
+  "cards": [
+    {
+      "id": "dual-language-array-baseline", "lesson_id": "cs-core-01", "step_id": "step-1",
+      "question": "第一步要锁定哪些双语言基线？", "aliases": ["数组实验首次输出是什么", "Python和C++基线怎么比", "Python和C++数组实验首次输出怎么逐字比较"],
+      "keywords": ["基线", "标准输出", "7 3 9 3", "index=2", "首次匹配"],
+      "diagnostic": "两边是否使用相同固定数据，并同时确认位置访问、首次匹配和退出状态？",
+      "hints": ["先运行两个程序，不改代码，保存完整标准输出。", "确认数据为 7,3,9,3，index=2 得到 9，target=3 首次位置为 1，再逐字比较。"],
+      "example": "局部证据：两个进程都返回 0，`diff` 没有输出。",
+      "answer": "基线锁定固定数据、检查式访问结果、首次匹配位置、比较次数和完整文本，后续迁移只能扩展实现，不能悄悄改契约。",
+      "source": {"label": "第一步：运行固定数组基线", "href": "#step-1"}, "updated_at": "2026-07-16", "recommended": true
+    },
+    {
+      "id": "sequence-interface-vs-representation", "lesson_id": "cs-core-01", "step_id": "step-2",
+      "question": "序列接口和数组表示有什么区别？", "aliases": ["接口和数据结构实现怎么分", "序列是不是数组"],
+      "keywords": ["序列接口", "表示", "数据结构", "操作", "实现"],
+      "diagnostic": "你是在描述需要支持的操作，还是在描述元素如何拥有和存储？",
+      "hints": ["接口先列长度、按位置读取、顺序扫描和复制替换。", "Python Sequence 与 C++ span 可以表达相似只读操作，但具体拥有方式和内存语义不同。"],
+      "example": "局部对照：同一 get-at 操作可由 Python list 或 C++ vector/span 支持。",
+      "answer": "接口说明能做什么，表示说明如何存储并实现操作；先固定接口才能公平比较不同结构的成本。",
+      "source": {"label": "第二步：把需求写成序列接口", "href": "#step-2"}, "updated_at": "2026-07-16", "recommended": true
+    },
+    {
+      "id": "first-match-contract", "lesson_id": "cs-core-01", "step_id": "step-2",
+      "question": "重复值为什么要返回第一个匹配位置？", "aliases": ["两个3返回哪个下标", "线性查找重复值契约"],
+      "keywords": ["重复值", "第一个匹配", "位置", "契约", "线性查找"],
+      "diagnostic": "调用者能否从函数名和测试确定遇到第一个匹配后是否继续扫描？",
+      "hints": ["固定样例中 3 出现两次，预期下标是 1。", "在首次相等时立即返回，并用重复值测试锁定行为。"],
+      "example": "`[7,3,9,3]` 查找 3 返回 index=1。",
+      "answer": "明确首次匹配可以让两种语言共享稳定语义，也为下一课的比较次数提供停止条件。",
+      "source": {"label": "第二步：把需求写成序列接口", "href": "#step-2"}, "updated_at": "2026-07-16"
+    },
+    {
+      "id": "python-negative-index-policy", "lesson_id": "cs-core-01", "step_id": "step-3",
+      "question": "Python 为什么主动拒绝负索引？", "aliases": ["list负索引不是合法吗", "跨语言索引边界", "list的-1明明合法为什么checked_at报错"],
+      "keywords": ["Python", "负索引", "IndexError", "跨语言", "边界"],
+      "diagnostic": "当前目标是保留 Python 原生便利语义，还是建立 Python/C++ 共用的索引契约？",
+      "hints": ["Python 的 -1 合法，但 C++ 没有相同约定。", "本实验收窄为 0 <= index < len，先检查再访问；不是宣称 Python 负索引本身错误。"],
+      "example": "`checked_at([7], -1)` 必须抛出 IndexError。",
+      "answer": "主动拒绝负索引让两种语言使用同一边界条件推理，避免接口因语言默认行为分叉。",
+      "source": {"label": "第三步：实现 Python 检查式访问", "href": "#step-3"}, "updated_at": "2026-07-16", "recommended": true
+    },
+    {
+      "id": "python-list-not-raw-array", "lesson_id": "cs-core-01", "step_id": "step-3",
+      "question": "为什么不能把 Python list 直接说成传统数组？", "aliases": ["Python列表是不是连续同类型数组", "list和C数组差异"],
+      "keywords": ["Python list", "传统数组", "同类型", "连续内存", "序列"],
+      "diagnostic": "当前结论来自 Python 公开序列语义，还是擅自推断了对象引用和内存布局？",
+      "hints": ["课程只依赖 list 的可变序列接口，不依赖具体解释器布局。", "把连续同类型元素的结论留给明确满足该要求的 C++ 容器或数组类型。"],
+      "example": "可以说 list 支持按位置读写；不要据此声称它存放连续 int 值。",
+      "answer": "Python list 的公开契约是可变序列；课程应区分抽象操作与实现布局，避免用类比替代事实。",
+      "source": {"label": "第三步：实现 Python 检查式访问", "href": "#step-3"}, "updated_at": "2026-07-16"
+    },
+    {
+      "id": "cpp-vector-span-ownership", "lesson_id": "cs-core-01", "step_id": "step-4",
+      "question": "C++ vector 和 span 在实验里各负责什么？", "aliases": ["span拥有数据吗", "为什么参数用只读span"],
+      "keywords": ["vector", "span", "只读视图", "拥有", "连续容器"],
+      "diagnostic": "函数是否需要拥有或改变输入，还是只需要查看调用者提供的连续元素？",
+      "hints": ["vector 持有元素和生命周期，span 只描述一段连续视图。", "读取和查找接收 span<const int>；复制修改创建新 vector，不让 span 超过原数据寿命。"],
+      "example": "局部签名：`checked_at(std::span<const int>, ptrdiff_t)`。",
+      "answer": "vector 管理存储，span 提供非拥有只读边界；二者分工让输入意图和复制行为可见。",
+      "source": {"label": "第四步：迁移到 C++ 连续容器", "href": "#step-4"}, "updated_at": "2026-07-16", "recommended": true
+    },
+    {
+      "id": "signed-index-before-size-conversion", "lesson_id": "cs-core-01", "step_id": "step-4",
+      "question": "C++ 为什么要在转 size_t 前检查负数？", "aliases": ["负索引转无符号会怎样", "ptrdiff_t边界顺序"],
+      "keywords": ["size_t", "ptrdiff_t", "负数", "无符号", "边界检查"],
+      "diagnostic": "负索引是否已经被转换成巨大无符号值，导致错误信息和比较难以理解？",
+      "hints": ["接口先接收可表达负数的 ptrdiff_t。", "先判断 index < 0，再与 size 比较，确认合法后才转 size_t。"],
+      "example": "不要先写 `auto i = static_cast<size_t>(index)` 再检查负数。",
+      "answer": "先检查有符号输入可以保留调用者错误的真实含义，并避免无符号转换掩盖负数边界。",
+      "source": {"label": "第四步：迁移到 C++ 连续容器", "href": "#step-4"}, "updated_at": "2026-07-16"
+    },
+    {
+      "id": "safe-out-of-range-experiment", "lesson_id": "cs-core-01", "step_id": "step-5",
+      "question": "怎样安全观察数组越界失败？", "aliases": ["为什么不能直接越界崩溃", "越界实验怎么做"],
+      "keywords": ["越界", "IndexError", "out_of_range", "未定义行为", "单元测试"],
+      "diagnostic": "失败是否通过已定义异常路径触发，还是依赖偶然崩溃或读取垃圾值？",
+      "hints": ["只调用检查式接口，覆盖 -1、size 和空序列。", "Python 断言 IndexError，C++ 断言 out_of_range；不执行未检查的越界 operator[]。"],
+      "example": "局部恢复：测试捕获异常后继续运行其他用例。",
+      "answer": "受控异常是稳定证据；未定义行为可能崩溃、看似成功或破坏状态，不能用于教学验收。",
+      "source": {"label": "第五步：安全观察负索引和越界", "href": "#step-5"}, "updated_at": "2026-07-16", "recommended": true
+    },
+    {
+      "id": "copy-replacement-migration", "lesson_id": "cs-core-01", "step_id": "step-6",
+      "question": "replace_at_copy 迁移验收要证明什么？", "aliases": ["复制修改要测哪些边界", "怎样证明原输入没变"],
+      "keywords": ["replace_at_copy", "副本", "原输入", "迁移验收", "首尾"],
+      "diagnostic": "测试是否同时检查返回副本和调用后原输入，而不是只看新值？",
+      "hints": ["先保存原输入，调用后断言返回值符合替换。", "再次断言原输入完全相同，并复用负索引、size 和空序列边界。"],
+      "example": "原 `[7,3,9]` 替换 index=1 后返回 `[7,8,9]`，原值仍是 `[7,3,9]`。",
+      "answer": "迁移通过需要结果正确、输入不变和边界一致三类证据，两种语言都不能偷偷原地修改。",
+      "source": {"label": "第六步：完成复制修改迁移验收", "href": "#step-6"}, "updated_at": "2026-07-16", "recommended": true
+    }
+  ]
+}

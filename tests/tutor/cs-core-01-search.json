@@ -1,0 +1,20 @@
+[
+  {"query":"第一步要锁定哪些双语言基线？","step_id":"step-1","expected":"dual-language-array-baseline"},
+  {"query":"Python和C++数组实验首次输出怎么逐字比较","step_id":"step-1","expected":"dual-language-array-baseline"},
+  {"query":"序列接口和数组表示有什么区别？","step_id":"step-2","expected":"sequence-interface-vs-representation"},
+  {"query":"接口说能做什么实现说怎么存对吗","step_id":"step-2","expected":"sequence-interface-vs-representation"},
+  {"query":"重复值为什么要返回第一个匹配位置？","step_id":"step-2","expected":"first-match-contract"},
+  {"query":"两个3线性查找应该返回哪个下标","step_id":"step-2","expected":"first-match-contract"},
+  {"query":"Python 为什么主动拒绝负索引？","step_id":"step-3","expected":"python-negative-index-policy"},
+  {"query":"list的-1明明合法为什么checked_at报错","step_id":"step-3","expected":"python-negative-index-policy"},
+  {"query":"为什么不能把 Python list 直接说成传统数组？","step_id":"step-3","expected":"python-list-not-raw-array"},
+  {"query":"Python列表是否就是连续同类型int数组","step_id":"step-3","expected":"python-list-not-raw-array"},
+  {"query":"C++ vector 和 span 在实验里各负责什么？","step_id":"step-4","expected":"cpp-vector-span-ownership"},
+  {"query":"只读span是否拥有传入的数据","step_id":"step-4","expected":"cpp-vector-span-ownership"},
+  {"query":"C++ 为什么要在转 size_t 前检查负数？","step_id":"step-4","expected":"signed-index-before-size-conversion"},
+  {"query":"负索引先变成无符号巨大数字怎么办","step_id":"step-4","expected":"signed-index-before-size-conversion"},
+  {"query":"怎样安全观察数组越界失败？","step_id":"step-5","expected":"safe-out-of-range-experiment"},
+  {"query":"不能靠C++越界崩溃证明错误那要怎么测","step_id":"step-5","expected":"safe-out-of-range-experiment"},
+  {"query":"replace_at_copy 迁移验收要证明什么？","step_id":"step-6","expected":"copy-replacement-migration"},
+  {"query":"复制替换怎样证明结果正确而且原输入没变","step_id":"step-6","expected":"copy-replacement-migration"}
+]
