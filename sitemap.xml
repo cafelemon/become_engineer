@@ -29,6 +29,10 @@
          <lastmod>2026-07-16</lastmod>
     </url>
     <url>
+         <loc>https://cafelemon.github.io/become_engineer/exercises/cs-core/traceable-search-sort-lab/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
          <loc>https://cafelemon.github.io/become_engineer/exercises/llm-agent/safe-sales-tool-calling/</loc>
          <lastmod>2026-07-16</lastmod>
     </url>
@@ -102,6 +106,18 @@
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/11-set-frequency-map-deterministic-output/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/12-ordered-search-half-open-boundaries/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/13-insertion-selection-sort-stability/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/14-bottom-up-merge-sort-stable-complexity/</loc>
          <lastmod>2026-07-16</lastmod>
     </url>
     <url>

@@ -10,31 +10,31 @@
       
       
       
-        <link rel="canonical" href="https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/python-basics/01-variables-types-io/">
+        <link rel="canonical" href="https://cafelemon.github.io/become_engineer/learning-paths/cs-core/14-bottom-up-merge-sort-stable-complexity/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../13-insertion-selection-sort-stability/">
       
       
-        <link rel="next" href="../02-conditions-loops-boolean/">
+        <link rel="next" href="../../../projects/">
       
       
         
       
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>变量、基本类型、输入输出 - Become Engineer</title>
+        <title>自底向上归并排序与稳定复杂度 - Become Engineer</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,9 +53,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -94,7 +94,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../../.." title="Become Engineer" class="md-header__button md-logo" aria-label="Become Engineer" data-md-component="logo">
+    <a href="../../.." title="Become Engineer" class="md-header__button md-logo" aria-label="Become Engineer" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17z"/></svg>
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              变量、基本类型、输入输出
+              自底向上归并排序与稳定复杂度
             
           </span>
         </div>
@@ -229,7 +229,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../.." class="md-tabs__link">
+        <a href="../../.." class="md-tabs__link">
           
   
   
@@ -262,7 +262,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../engineering-foundation/stage-0/01-learning-method/" class="md-tabs__link">
+        <a href="../../engineering-foundation/stage-0/01-learning-method/" class="md-tabs__link">
           
   
   
@@ -287,7 +287,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../projects/" class="md-tabs__link">
+        <a href="../../../projects/" class="md-tabs__link">
           
   
   
@@ -323,7 +323,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="Become Engineer" class="md-nav__button md-logo" aria-label="Become Engineer" data-md-component="logo">
+    <a href="../../.." title="Become Engineer" class="md-nav__button md-logo" aria-label="Become Engineer" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17z"/></svg>
@@ -378,7 +378,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../.." class="md-nav__link ">
+            <a href="../../.." class="md-nav__link ">
               
   
   
@@ -422,7 +422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../beginner-roadmap/" class="md-nav__link">
+      <a href="../../beginner-roadmap/" class="md-nav__link">
         
   
   
@@ -450,7 +450,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../curriculum-map/" class="md-nav__link">
+      <a href="../../curriculum-map/" class="md-nav__link">
         
   
   
@@ -624,7 +624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../engineering-foundation/stage-0/01-learning-method/" class="md-nav__link">
+      <a href="../../engineering-foundation/stage-0/01-learning-method/" class="md-nav__link">
         
   
   
@@ -652,7 +652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../engineering-foundation/stage-0/02-filesystem/" class="md-nav__link">
+      <a href="../../engineering-foundation/stage-0/02-filesystem/" class="md-nav__link">
         
   
   
@@ -680,7 +680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../engineering-foundation/stage-0/03-terminal-shell/" class="md-nav__link">
+      <a href="../../engineering-foundation/stage-0/03-terminal-shell/" class="md-nav__link">
         
   
   
@@ -708,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../engineering-foundation/stage-0/04-editor/" class="md-nav__link">
+      <a href="../../engineering-foundation/stage-0/04-editor/" class="md-nav__link">
         
   
   
@@ -736,7 +736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../engineering-foundation/stage-0/05-markdown/" class="md-nav__link">
+      <a href="../../engineering-foundation/stage-0/05-markdown/" class="md-nav__link">
         
   
   
@@ -764,7 +764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../engineering-foundation/stage-0/06-git/" class="md-nav__link">
+      <a href="../../engineering-foundation/stage-0/06-git/" class="md-nav__link">
         
   
   
@@ -792,7 +792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../engineering-foundation/stage-0/06-github-remote/" class="md-nav__link">
+      <a href="../../engineering-foundation/stage-0/06-github-remote/" class="md-nav__link">
         
   
   
@@ -820,7 +820,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../engineering-foundation/stage-0/07-development-environment/" class="md-nav__link">
+      <a href="../../engineering-foundation/stage-0/07-development-environment/" class="md-nav__link">
         
   
   
@@ -848,7 +848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../engineering-foundation/stage-0/08-docker-basics/" class="md-nav__link">
+      <a href="../../engineering-foundation/stage-0/08-docker-basics/" class="md-nav__link">
         
   
   
@@ -876,7 +876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../engineering-foundation/stage-0/09-validation-habit/" class="md-nav__link">
+      <a href="../../engineering-foundation/stage-0/09-validation-habit/" class="md-nav__link">
         
   
   
@@ -909,8 +909,6 @@
                 
   
   
-    
-  
   
   
     
@@ -941,15 +939,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../programming-languages/python-basics/" class="md-nav__link ">
               
   
   
@@ -973,7 +971,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -990,37 +988,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    变量、基本类型、输入输出
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../programming-languages/python-basics/01-variables-types-io/" class="md-nav__link">
         
   
   
@@ -1036,180 +1007,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        本节产出
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        开始前检查
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        七步任务路线
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第一步：先让学习档案运行起来
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第二步：修改昵称和课程
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第三步：给档案增加不同类型的数据
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第四步：让档案接收输入
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第五步：转换输入并计算计划
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第六步：故意触发并定位错误
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第七步：独立完成迁移任务
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        一份可工作的组合版本
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常见错误与排查
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完成证据
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        下一步
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1222,7 +1019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02-conditions-loops-boolean/" class="md-nav__link">
+      <a href="../../programming-languages/python-basics/02-conditions-loops-boolean/" class="md-nav__link">
         
   
   
@@ -1250,7 +1047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03-functions-parameters-returns-scope/" class="md-nav__link">
+      <a href="../../programming-languages/python-basics/03-functions-parameters-returns-scope/" class="md-nav__link">
         
   
   
@@ -1278,7 +1075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../04-strings-collections/" class="md-nav__link">
+      <a href="../../programming-languages/python-basics/04-strings-collections/" class="md-nav__link">
         
   
   
@@ -1306,7 +1103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../05-files-json-paths/" class="md-nav__link">
+      <a href="../../programming-languages/python-basics/05-files-json-paths/" class="md-nav__link">
         
   
   
@@ -1334,7 +1131,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../06-modules-imports-venv/" class="md-nav__link">
+      <a href="../../programming-languages/python-basics/06-modules-imports-venv/" class="md-nav__link">
         
   
   
@@ -1362,7 +1159,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../07-errors-debugging-tests/" class="md-nav__link">
+      <a href="../../programming-languages/python-basics/07-errors-debugging-tests/" class="md-nav__link">
         
   
   
@@ -1429,7 +1226,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../cpp-core/" class="md-nav__link ">
+            <a href="../../programming-languages/cpp-core/" class="md-nav__link ">
               
   
   
@@ -1473,7 +1270,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cpp-core/01-build-types-io/" class="md-nav__link">
+      <a href="../../programming-languages/cpp-core/01-build-types-io/" class="md-nav__link">
         
   
   
@@ -1501,7 +1298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cpp-core/02-functions-declarations-program-organization/" class="md-nav__link">
+      <a href="../../programming-languages/cpp-core/02-functions-declarations-program-organization/" class="md-nav__link">
         
   
   
@@ -1529,7 +1326,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cpp-core/03-headers-sources-cmake/" class="md-nav__link">
+      <a href="../../programming-languages/cpp-core/03-headers-sources-cmake/" class="md-nav__link">
         
   
   
@@ -1557,7 +1354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cpp-core/04-stl-containers-iterators-algorithms/" class="md-nav__link">
+      <a href="../../programming-languages/cpp-core/04-stl-containers-iterators-algorithms/" class="md-nav__link">
         
   
   
@@ -1585,7 +1382,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cpp-core/05-objects-references-pointers-lifetime-raii/" class="md-nav__link">
+      <a href="../../programming-languages/cpp-core/05-objects-references-pointers-lifetime-raii/" class="md-nav__link">
         
   
   
@@ -1656,7 +1453,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../python-core/" class="md-nav__link ">
+            <a href="../../programming-languages/python-core/" class="md-nav__link ">
               
   
   
@@ -1700,7 +1497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../python-core/01-type-hints-interfaces-static-checking/" class="md-nav__link">
+      <a href="../../programming-languages/python-core/01-type-hints-interfaces-static-checking/" class="md-nav__link">
         
   
   
@@ -1728,7 +1525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../python-core/02-maintainable-function-interfaces-protocols-modules/" class="md-nav__link">
+      <a href="../../programming-languages/python-core/02-maintainable-function-interfaces-protocols-modules/" class="md-nav__link">
         
   
   
@@ -1756,7 +1553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../python-core/03-iterables-iterators-generators/" class="md-nav__link">
+      <a href="../../programming-languages/python-core/03-iterables-iterators-generators/" class="md-nav__link">
         
   
   
@@ -1784,7 +1581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../python-core/04-data-model-dataclasses-context-managers/" class="md-nav__link">
+      <a href="../../programming-languages/python-core/04-data-model-dataclasses-context-managers/" class="md-nav__link">
         
   
   
@@ -1812,7 +1609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../python-core/05-decorators-closures-custom-context-managers/" class="md-nav__link">
+      <a href="../../programming-languages/python-core/05-decorators-closures-custom-context-managers/" class="md-nav__link">
         
   
   
@@ -1840,7 +1637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../python-core/06-package-structure-installable-cli/" class="md-nav__link">
+      <a href="../../programming-languages/python-core/06-package-structure-installable-cli/" class="md-nav__link">
         
   
   
@@ -1868,7 +1665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../python-core/07-toml-configuration-logging-diagnostics/" class="md-nav__link">
+      <a href="../../programming-languages/python-core/07-toml-configuration-logging-diagnostics/" class="md-nav__link">
         
   
   
@@ -1901,6 +1698,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1945,15 +1744,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../cs-core/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -1977,7 +1776,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1997,7 +1796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs-core/01-sequence-interface-array-representation-boundaries/" class="md-nav__link">
+      <a href="../01-sequence-interface-array-representation-boundaries/" class="md-nav__link">
         
   
   
@@ -2025,7 +1824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs-core/02-operation-count-growth-asymptotic-complexity/" class="md-nav__link">
+      <a href="../02-operation-count-growth-asymptotic-complexity/" class="md-nav__link">
         
   
   
@@ -2053,7 +1852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs-core/03-string-utf8-byte-code-point-boundaries/" class="md-nav__link">
+      <a href="../03-string-utf8-byte-code-point-boundaries/" class="md-nav__link">
         
   
   
@@ -2081,7 +1880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs-core/04-two-dimensional-grid-row-major-layout/" class="md-nav__link">
+      <a href="../04-two-dimensional-grid-row-major-layout/" class="md-nav__link">
         
   
   
@@ -2109,7 +1908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs-core/05-dynamic-array-capacity-amortized-cost/" class="md-nav__link">
+      <a href="../05-dynamic-array-capacity-amortized-cost/" class="md-nav__link">
         
   
   
@@ -2137,7 +1936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs-core/06-singly-linked-list-nodes-ownership/" class="md-nav__link">
+      <a href="../06-singly-linked-list-nodes-ownership/" class="md-nav__link">
         
   
   
@@ -2165,7 +1964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs-core/07-stack-lifo-interface-underflow/" class="md-nav__link">
+      <a href="../07-stack-lifo-interface-underflow/" class="md-nav__link">
         
   
   
@@ -2193,7 +1992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs-core/08-queue-fifo-head-tail-invariants/" class="md-nav__link">
+      <a href="../08-queue-fifo-head-tail-invariants/" class="md-nav__link">
         
   
   
@@ -2221,7 +2020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs-core/09-hash-function-key-equality-collisions/" class="md-nav__link">
+      <a href="../09-hash-function-key-equality-collisions/" class="md-nav__link">
         
   
   
@@ -2249,7 +2048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs-core/10-separate-chaining-load-factor-rehash/" class="md-nav__link">
+      <a href="../10-separate-chaining-load-factor-rehash/" class="md-nav__link">
         
   
   
@@ -2277,7 +2076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs-core/11-set-frequency-map-deterministic-output/" class="md-nav__link">
+      <a href="../11-set-frequency-map-deterministic-output/" class="md-nav__link">
         
   
   
@@ -2305,7 +2104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs-core/12-ordered-search-half-open-boundaries/" class="md-nav__link">
+      <a href="../12-ordered-search-half-open-boundaries/" class="md-nav__link">
         
   
   
@@ -2333,7 +2132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs-core/13-insertion-selection-sort-stability/" class="md-nav__link">
+      <a href="../13-insertion-selection-sort-stability/" class="md-nav__link">
         
   
   
@@ -2358,10 +2157,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../cs-core/14-bottom-up-merge-sort-stable-complexity/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自底向上归并排序与稳定复杂度
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2377,6 +2203,180 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        任务路线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：运行基础排序基线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二步：定义两个有序段的合并
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三步：实现左侧优先的稳定归并
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#124" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第四步：按宽度 1、2、4 迭代合并
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第五步：复现相等键右侧优先的失败
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第六步：完成稳定降序迁移验收
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        课程信息
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        宽度如何覆盖全序列
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        固定输出
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见错误与排查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成证据
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下一步
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2441,7 +2441,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../projects/" class="md-nav__link ">
+            <a href="../../../projects/" class="md-nav__link ">
               
   
   
@@ -2485,7 +2485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../projects/project-roadmap/" class="md-nav__link">
+      <a href="../../../projects/project-roadmap/" class="md-nav__link">
         
   
   
@@ -2569,7 +2569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../exercises/career-readiness/python-entry-machine-test/" class="md-nav__link">
+      <a href="../../../exercises/career-readiness/python-entry-machine-test/" class="md-nav__link">
         
   
   
@@ -2597,7 +2597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../exercises/career-readiness/study-progress-reporter-evidence/" class="md-nav__link">
+      <a href="../../../exercises/career-readiness/study-progress-reporter-evidence/" class="md-nav__link">
         
   
   
@@ -2660,7 +2660,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../exercises/cs-core/traceable-array-lab/" class="md-nav__link ">
+            <a href="../../../exercises/cs-core/traceable-array-lab/" class="md-nav__link ">
               
   
   
@@ -2704,7 +2704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../exercises/cs-core/traceable-linear-structures-lab/" class="md-nav__link">
+      <a href="../../../exercises/cs-core/traceable-linear-structures-lab/" class="md-nav__link">
         
   
   
@@ -2732,7 +2732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../exercises/cs-core/traceable-hash-lab/" class="md-nav__link">
+      <a href="../../../exercises/cs-core/traceable-hash-lab/" class="md-nav__link">
         
   
   
@@ -2760,7 +2760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../exercises/cs-core/traceable-search-sort-lab/" class="md-nav__link">
+      <a href="../../../exercises/cs-core/traceable-search-sort-lab/" class="md-nav__link">
         
   
   
@@ -2796,7 +2796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../projects/python-content-analysis/" class="md-nav__link">
+      <a href="../../../projects/python-content-analysis/" class="md-nav__link">
         
   
   
@@ -2824,7 +2824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../projects/structured-data-ml-system/" class="md-nav__link">
+      <a href="../../../projects/structured-data-ml-system/" class="md-nav__link">
         
   
   
@@ -2852,7 +2852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../projects/text-classification-evolution/" class="md-nav__link">
+      <a href="../../../projects/text-classification-evolution/" class="md-nav__link">
         
   
   
@@ -2880,7 +2880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../projects/reinforcement-learning-control-lab/" class="md-nav__link">
+      <a href="../../../projects/reinforcement-learning-control-lab/" class="md-nav__link">
         
   
   
@@ -2908,7 +2908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../projects/intelligent-learning-assistant/" class="md-nav__link">
+      <a href="../../../projects/intelligent-learning-assistant/" class="md-nav__link">
         
   
   
@@ -2966,7 +2966,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        本节产出
+        任务路线
       
     </span>
   </a>
@@ -2977,7 +2977,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        开始前检查
+        第一步：运行基础排序基线
       
     </span>
   </a>
@@ -2988,7 +2988,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        七步任务路线
+        第二步：定义两个有序段的合并
       
     </span>
   </a>
@@ -2999,7 +2999,18 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：先让学习档案运行起来
+        第三步：实现左侧优先的稳定归并
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#124" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第四步：按宽度 1、2、4 迭代合并
       
     </span>
   </a>
@@ -3010,7 +3021,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：修改昵称和课程
+        第五步：复现相等键右侧优先的失败
       
     </span>
   </a>
@@ -3021,7 +3032,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：给档案增加不同类型的数据
+        第六步：完成稳定降序迁移验收
       
     </span>
   </a>
@@ -3032,7 +3043,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：让档案接收输入
+        课程信息
       
     </span>
   </a>
@@ -3043,7 +3054,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：转换输入并计算计划
+        宽度如何覆盖全序列
       
     </span>
   </a>
@@ -3054,7 +3065,7 @@
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第六步：故意触发并定位错误
+        固定输出
       
     </span>
   </a>
@@ -3065,7 +3076,7 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第七步：独立完成迁移任务
+        常见错误与排查
       
     </span>
   </a>
@@ -3076,7 +3087,7 @@
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
-        一份可工作的组合版本
+        完成证据
       
     </span>
   </a>
@@ -3087,7 +3098,7 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        来源与版本
       
     </span>
   </a>
@@ -3096,17 +3107,6 @@
       
         <li class="md-nav__item">
   <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完成证据
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -3136,379 +3136,164 @@
   
 
 
-<h1 id="_1">变量、基本类型、输入输出<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<div class="be-tutor-mount" data-tutor-lesson="python-basics-01" aria-hidden="true"></div>
+<h1 id="_1">自底向上归并排序与稳定复杂度<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<div class="be-tutor-mount" data-tutor-lesson="cs-core-14" aria-hidden="true"></div>
 
-<p>本节是 Python 起步的第一课。你不会先背完变量和类型，而是连续完成一个可以运行的“个人学习档案”。每一步都只引入当前任务需要的知识，并立刻用输出或错误信息检查结果。</p>
-<h2 id="_2">本节产出<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>完成后，你将拥有一个能够接收输入、保存学习信息、计算计划并输出结果的 <code>learning_profile.py</code>，同时保留一次成功运行和一次失败排查记录。</p>
-<div class="be-lesson-goals">
-<ul>
-<li><strong>首次反馈</strong>：10 分钟内运行第一个版本。</li>
-<li><strong>主动修改</strong>：改变昵称、课程和计划，观察输出同步变化。</li>
-<li><strong>失败练习</strong>：故意触发并定位一次 <code>ValueError</code>。</li>
-<li><strong>迁移验收</strong>：独立增加一个字段，而不是照抄固定答案。</li>
-</ul>
-</div>
-<h2 id="_3">开始前检查<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<ul>
-<li>已完成<a href="../../../engineering-foundation/stage-0/">工程基础入门</a>。</li>
-<li>能用编辑器创建 <code>.py</code> 文件，并在终端进入文件所在目录。</li>
-<li>执行 <code>python3 --version</code> 能显示版本；Windows 也可以使用 <code>python --version</code>。</li>
-</ul>
-<p>本节只使用 Python 标准库，不需要安装第三方依赖。下面命令默认使用 <code>python3</code>，如果你的环境只有 <code>python</code>，请统一替换。</p>
-<h2 id="_4">七步任务路线<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<div class="be-task-route" role="list" aria-label="本课七步任务">
-  <span role="listitem">1 首次运行</span>
-  <span role="listitem">2 主动修改</span>
-  <span role="listitem">3 认识类型</span>
-  <span role="listitem">4 接收输入</span>
-  <span role="listitem">5 转换计算</span>
-  <span role="listitem">6 定位错误</span>
-  <span role="listitem">7 迁移验收</span>
-</div>
+<blockquote>
+<p><strong>任务先行：</strong> 先可靠合并两个有序段，再让段宽从 1、2、4 逐轮翻倍，在不使用递归的情况下得到稳定的 <code>Theta(n log n)</code> 排序。</p>
+</blockquote>
+<h2 id="_2">任务路线<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="be-task-route" role="list" aria-label="本课六步任务"><span role="listitem">1 基础基线</span><span role="listitem">2 有序段合并</span><span role="listitem">3 左侧优先</span><span role="listitem">4 宽度翻倍</span><span role="listitem">5 稳定失败</span><span role="listitem">6 稳定降序</span></div>
 
 <section class="be-task-step" data-step-id="step-1" id="step-1">
-<h2 id="_5">第一步：先让学习档案运行起来<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p><strong>当前任务：</strong> 创建 <code>learning_profile.py</code>，复制下面的第一个版本并运行。现在不用先理解每一行。</p>
-<p><strong>文件：<code>learning_profile.py</code></strong></p>
-<div class="highlight"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Lemon&quot;</span>
-<span class="n">course</span> <span class="o">=</span> <span class="s2">&quot;Python 起步&quot;</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;学习档案&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;昵称：&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;课程：&quot;</span><span class="p">,</span> <span class="n">course</span><span class="p">)</span>
-</code></pre></div>
-<p><strong>运行：</strong></p>
-<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>learning_profile.py
-</code></pre></div>
-<p><strong>预期输出：</strong></p>
-<div class="highlight"><pre><span></span><code>学习档案
-昵称： Lemon
-课程： Python 起步
-</code></pre></div>
-<p><strong>即时反馈：</strong> 文件存在、命令正常结束、三行输出一致，就说明第一次闭环完成了。先记录文件名、命令和输出，再继续。</p>
-<details class="tip">
-<summary>提示一：命令提示找不到文件</summary>
-<p>先用 <code>pwd</code> 或 Windows PowerShell 的 <code>Get-Location</code> 确认当前位置，再用 <code>ls</code> 或 <code>dir</code> 确认当前目录里能看到 <code>learning_profile.py</code>。</p>
-</details>
-<details class="tip">
-<summary>提示二：运行后没有最新内容</summary>
-<p>确认编辑器已经保存文件，再重新运行命令。编辑器标签上的圆点通常表示尚未保存。</p>
-</details>
-<details class="example">
-<summary>局部示例</summary>
-<p>如果文件放在 <code>python-study</code> 目录，先进入它：<code>cd python-study</code>，再执行运行命令。</p>
-</details>
+<h2 id="_3">第一步：运行基础排序基线<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>先运行 <code>elementary</code>，再运行 <code>merge</code>。<strong>当前任务：</strong>锁定输入、副本不变性与最终标签顺序。<strong>成功证据：</strong>两轮归并得到 <code>1B,2D,3A,3C</code>，固定比较 5 次、写入 8 次。</p>
 </section>
 <section class="be-task-step" data-step-id="step-2" id="step-2">
-<h2 id="_6">第二步：修改昵称和课程<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<p><strong>当前任务：</strong> 把 <code>Lemon</code> 和 <code>Python 起步</code> 改成你自己的内容，再次运行。</p>
-<p>刚才使用了两个变量：</p>
-<div class="highlight"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Lemon&quot;</span>
-<span class="n">course</span> <span class="o">=</span> <span class="s2">&quot;Python 起步&quot;</span>
-</code></pre></div>
-<p>变量可以理解为给一个值起名字。等号左边是变量名，右边是当前保存的值。文本需要放在引号中，这种值叫字符串。</p>
-<p><strong>必须主动修改：</strong></p>
-<ul>
-<li>将 <code>name</code> 改成你的昵称。</li>
-<li>将 <code>course</code> 改成你正在学习的内容。</li>
-<li>再增加一行 <code>print()</code>，输出一句自己的学习目标。</li>
-</ul>
-<p><strong>成功标准：</strong> 三处修改都能在终端输出中看到，而不是只改了代码但没有重新运行。</p>
-<details class="tip">
-<summary>提示一：文本为什么需要引号</summary>
-<p>没有引号时，Python 会把内容当作变量名查找。普通文字应写成 <code>"文字"</code>。</p>
-</details>
-<details class="tip">
-<summary>提示二：新增输出放在哪里</summary>
-<p>可以在最后一行下面继续调用 <code>print()</code>，括号中放要显示的字符串。</p>
-</details>
-<details class="example">
-<summary>局部示例</summary>
-<p><code>print("目标：完成第一个可运行程序")</code></p>
-</details>
+<h2 id="_4">第二步：定义两个有序段的合并<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>为左右段各维护一个游标，每次写入顺序更靠前的元素，一侧耗尽后复制另一侧。<strong>主动修改：</strong>覆盖左空、右空、单项和奇数总长度。<strong>成功证据：</strong>每个输入元素恰好写入结果一次。</p>
 </section>
 <section class="be-task-step" data-step-id="step-3" id="step-3">
-<h2 id="_7">第三步：给档案增加不同类型的数据<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p><strong>当前任务：</strong> 在文件顶部增加三个变量，并在末尾输出它们。</p>
-<div class="highlight"><pre><span></span><code><span class="n">weekly_hours</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">completion_rate</span> <span class="o">=</span> <span class="mf">0.2</span>
-<span class="n">foundation_finished</span> <span class="o">=</span> <span class="kc">True</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;本周计划小时：&quot;</span><span class="p">,</span> <span class="n">weekly_hours</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;当前完成比例：&quot;</span><span class="p">,</span> <span class="n">completion_rate</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;是否完成工程基础：&quot;</span><span class="p">,</span> <span class="n">foundation_finished</span><span class="p">)</span>
-</code></pre></div>
-<p>这里出现了四种起步阶段最常用的类型：</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>当前示例</th>
-<th>适合表达</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>字符串 <code>str</code></td>
-<td><code>"Python 起步"</code></td>
-<td>名字、课程、路径等文本</td>
-</tr>
-<tr>
-<td>整数 <code>int</code></td>
-<td><code>5</code></td>
-<td>次数、数量、整小时</td>
-</tr>
-<tr>
-<td>浮点数 <code>float</code></td>
-<td><code>0.2</code></td>
-<td>比例、价格、带小数的数</td>
-</tr>
-<tr>
-<td>布尔值 <code>bool</code></td>
-<td><code>True</code></td>
-<td>是或否、成立或不成立</td>
-</tr>
-</tbody>
-</table>
-<p>用下面的临时输出检查类型：</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">course</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">weekly_hours</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">completion_rate</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">foundation_finished</span><span class="p">))</span>
-</code></pre></div>
-<p><strong>必须主动修改：</strong> 改变计划小时和完成比例，确认值和类型分别发生了什么变化。</p>
-<p><strong>成功标准：</strong> 能指出四个变量分别保存什么类型，并解释为什么 <code>True</code> 没有引号且首字母必须大写。</p>
-<details class="tip">
-<summary>提示一：先看值的外形</summary>
-<p>有引号的文本通常是字符串；不带小数点的数字是整数；带小数点的是浮点数；<code>True</code> 和 <code>False</code> 是布尔值。</p>
-</details>
-<details class="tip">
-<summary>提示二：检查而不是猜</summary>
-<p>在不确定时调用 <code>type(变量名)</code>，再用 <code>print()</code> 显示检查结果。</p>
-</details>
-<details class="example">
-<summary>局部示例</summary>
-<p><code>print(type(weekly_hours))</code> 应显示 <code>&lt;class 'int'&gt;</code>。</p>
-</details>
+<h2 id="_5">第三步：实现左侧优先的稳定归并<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>当左右键相等时取左侧。<strong>当前任务：</strong>合并 <code>3L</code> 与 <code>3R</code>。<strong>成功证据：</strong>输出保持 L、R；比较一次、写入两次，稳定性来自明确分支而非偶然。</p>
 </section>
 <section class="be-task-step" data-step-id="step-4" id="step-4">
-<h2 id="_8">第四步：让档案接收输入<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<p><strong>当前任务：</strong> 把固定昵称和课程替换为运行时输入。</p>
-<div class="highlight"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入昵称：&quot;</span><span class="p">)</span>
-<span class="n">course</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入当前课程：&quot;</span><span class="p">)</span>
-</code></pre></div>
-<p>运行后，程序会停下来等待你输入。<code>input()</code> 返回的内容默认都是字符串，即使你键入的是数字。</p>
-<p>用下面的代码验证，而不是只记住结论：</p>
-<div class="highlight"><pre><span></span><code><span class="n">weekly_hours_text</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入本周计划小时：&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;输入内容：&quot;</span><span class="p">,</span> <span class="n">weekly_hours_text</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;输入类型：&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">weekly_hours_text</span><span class="p">))</span>
-</code></pre></div>
-<p><strong>必须主动修改：</strong> 分别输入 <code>5</code> 和 <code>five</code>，观察两次的类型是否不同。</p>
-<p><strong>成功标准：</strong> 能通过实际输出说明为什么键盘输入的 <code>5</code> 仍然是字符串。</p>
-<details class="tip">
-<summary>提示一：程序像是卡住了</summary>
-<p>如果终端显示输入提示并停住，通常不是卡死，而是在等待你键入内容并按回车。</p>
-</details>
-<details class="tip">
-<summary>提示二：数字为什么不是整数</summary>
-<p>键盘输入先以文本形式进入程序。需要计算时，程序必须明确决定要转换成哪种数字。</p>
-</details>
-<details class="example">
-<summary>局部示例</summary>
-<p>输入 <code>5</code> 后，<code>type(weekly_hours_text)</code> 仍显示 <code>&lt;class 'str'&gt;</code>。</p>
-</details>
+<h2 id="124">第四步：按宽度 1、2、4 迭代合并<a class="headerlink" href="#124" title="Permanent link">&para;</a></h2>
+<p>把单项视为已排序段，每轮合并相邻等宽段并记录完整快照，随后宽度翻倍。<strong>主动修改：</strong>加入 5 项输入。<strong>成功证据：</strong>尾部不足一整对时仍被安全复制，循环在 <code>width &gt;= n</code> 时结束。</p>
 </section>
 <section class="be-task-step" data-step-id="step-5" id="step-5">
-<h2 id="_9">第五步：转换输入并计算计划<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<p><strong>当前任务：</strong> 把计划小时转换为整数，再计算下周增加一小时后的计划。</p>
-<div class="highlight"><pre><span></span><code><span class="n">weekly_hours_text</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入本周计划小时：&quot;</span><span class="p">)</span>
-<span class="n">weekly_hours</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">weekly_hours_text</span><span class="p">)</span>
-<span class="n">next_week_hours</span> <span class="o">=</span> <span class="n">weekly_hours</span> <span class="o">+</span> <span class="mi">1</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;本周计划小时：&quot;</span><span class="p">,</span> <span class="n">weekly_hours</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;下周建议小时：&quot;</span><span class="p">,</span> <span class="n">next_week_hours</span><span class="p">)</span>
-</code></pre></div>
-<p>常见转换：</p>
+<h2 id="_6">第五步：复现相等键右侧优先的失败<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>临时把相等分支改为先取右段，运行 <code>3L + 3R</code> 和完整稳定性测试。<strong>恢复标准：</strong>测试先显示 R 越过 L；恢复左侧优先后，升序结果、比较数和输入副本再次通过。</p>
+</section>
+<section class="be-task-step" data-step-id="step-6" id="step-6">
+<h2 id="_7">第六步：完成稳定降序迁移验收<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>把合并与完整排序迁移为降序。<strong>约束：</strong>不提供完整答案；不得反转升序结果、不得改用递归或标准排序。<strong>成功证据：</strong>相等键仍左侧优先，每轮快照方向正确，空、奇数长度和输入不变性通过。</p>
+</section>
+<h2 id="_8">课程信息<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>写法</th>
-<th>结果</th>
+<th>项目</th>
+<th>内容</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>int("5")</code></td>
-<td>整数 <code>5</code></td>
+<td>前置</td>
+<td><a href="../13-insertion-selection-sort-stability/">插入排序、选择排序与稳定性</a></td>
 </tr>
 <tr>
-<td><code>float("2.5")</code></td>
-<td>浮点数 <code>2.5</code></td>
+<td>阶段作品</td>
+<td><a href="../../../exercises/cs-core/traceable-search-sort-lab/">可追踪查找与排序实验</a></td>
 </tr>
 <tr>
-<td><code>str(5)</code></td>
-<td>字符串 <code>"5"</code></td>
+<td>时间复杂度</td>
+<td>完整排序 <code>Theta(n log n)</code></td>
+</tr>
+<tr>
+<td>额外空间</td>
+<td>教学实现使用 <code>Theta(n)</code> 辅助序列</td>
+</tr>
+<tr>
+<td>事实核查</td>
+<td>Python、C++ 与 MIT 资料，2026-07-16</td>
 </tr>
 </tbody>
 </table>
-<p><strong>必须主动修改：</strong> 把下周增加量从 <code>1</code> 改成 <code>2</code>，重新运行并确认输出变化。</p>
-<p><strong>成功标准：</strong> 输入 <code>5</code> 时得到下周建议小时 <code>7</code>，并能说明转换发生在哪一行。</p>
-<details class="tip">
-<summary>提示一：先区分转换前后变量</summary>
-<p>名字带 <code>_text</code> 的变量保存原始字符串，转换后的数字保存在另一个变量中，便于观察边界。</p>
-</details>
-<details class="tip">
-<summary>提示二：计算报 TypeError</summary>
-<p>检查参与加法的两边是否都是数字。可以分别打印它们的 <code>type()</code>。</p>
-</details>
-<details class="example">
-<summary>局部示例</summary>
-<p><code>weekly_hours = int(weekly_hours_text)</code> 负责把可转换的数字文本变成整数。</p>
-</details>
-</section>
-<section class="be-task-step" data-step-id="step-6" id="step-6">
-<h2 id="_10">第六步：故意触发并定位错误<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<p><strong>当前任务：</strong> 运行第五步代码，在计划小时处输入 <code>abc</code>。</p>
-<p>你会看到类似下面的信息：</p>
-<div class="highlight"><pre><span></span><code>ValueError: invalid literal for int() with base 10: &#39;abc&#39;
+<h2 id="_9">宽度如何覆盖全序列<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TD
+    A["width=1：单项段"] --&gt; B["两两合并为长度 2"]
+    B --&gt; C["width=2：合并为长度 4"]
+    C --&gt; D["width=4：合并为长度 8"]
+    D --&gt; E{"width &gt;= n？"}
+    E --&gt;|否| F["宽度翻倍，继续一轮"]
+    F --&gt; E
+    E --&gt;|是| G["完整有序序列"]</code></pre>
+<p>每一轮读取和写入总量都是线性级，宽度最多翻倍约 <code>log n</code> 轮，因此完整排序是 <code>Theta(n log n)</code>。这个结论不依赖递归；递归只是另一种组织“先排序子段再合并”的控制流。</p>
+<h2 id="_10">固定输出<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>迭代归并排序
+data：3A, 1B, 3C, 2D
+width=1：1B, 3A | 2D, 3C
+width=2：1B, 2D, 3A, 3C
+comparisons=5，writes=8，passes=2
+stable=yes，input_unchanged=yes
 </code></pre></div>
-<p>这次不要马上删除错误。按下面顺序记录：</p>
-<ol>
-<li>输入了什么。</li>
-<li>错误类型是什么。</li>
-<li>traceback 指向哪个文件和哪一行。</li>
-<li>这一行接收了什么值，试图得到什么结果。</li>
-<li>换成什么输入后重新运行成功。</li>
-</ol>
-<p><strong>必须主动修改：</strong> 输入一个合法整数让程序恢复成功，并保存失败与成功两次证据。</p>
-<p><strong>成功标准：</strong> 能说出错误不是 <code>input()</code> 无法读取，而是 <code>int()</code> 无法把 <code>abc</code> 转成整数。</p>
-<details class="tip">
-<summary>提示一：先看最后一行</summary>
-<p>traceback 最后一行通常给出错误类型和摘要；再向上找自己文件中的行号。</p>
-</details>
-<details class="tip">
-<summary>提示二：检查数据流</summary>
-<p>原始输入先进入 <code>weekly_hours_text</code>，下一行才交给 <code>int()</code>。检查哪一步的输入不满足要求。</p>
-</details>
-<details class="example">
-<summary>局部示例</summary>
-<p><code>int("5")</code> 可以成功，<code>int("abc")</code> 会触发 <code>ValueError</code>。</p>
-</details>
-</section>
-<section class="be-task-step" data-step-id="step-7" id="step-7">
-<h2 id="_11">第七步：独立完成迁移任务<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
-<p><strong>当前任务：</strong> 不复制固定答案，给档案增加一个新字段。</p>
-<p>可以选择：</p>
-<ul>
-<li>每天练习分钟数。</li>
-<li>当前学习方向。</li>
-<li>是否完成今天的练习。</li>
-<li>自己定义的其他学习信息。</li>
-</ul>
-<p>你的修改必须包含：</p>
-<ol>
-<li>一个含义清楚的变量名。</li>
-<li>输入或固定初始值。</li>
-<li>需要时完成类型转换。</li>
-<li>在最终档案中输出。</li>
-<li>一次正常输入和一次边界输入的检查。</li>
-</ol>
-<p><strong>成功标准：</strong> 新字段能正常显示，并且你能解释它为什么选择字符串、整数、浮点数或布尔值。</p>
-<details class="tip">
-<summary>提示一：先决定信息是什么</summary>
-<p>先用一句话说清这个字段表示什么，再选择变量名和类型，不要先随意写一个 <code>x</code>。</p>
-</details>
-<details class="tip">
-<summary>提示二：判断是否需要计算</summary>
-<p>只显示文本通常保留字符串；需要加减比较的数字应先转换。</p>
-</details>
-<details class="example">
-<summary>局部示例而非完整答案</summary>
-<p>如果记录每天分钟数，可以先取得 <code>minutes_text</code>，再思考是否需要 <code>int()</code>。</p>
-</details>
-<details class="success">
-<summary>参考答案检查原则</summary>
-<p>本步骤没有唯一代码。只要字段语义清楚、类型合理、能够运行，并完成正常与边界检查，就可以通过。</p>
-</details>
-</section>
-<h2 id="_12">一份可工作的组合版本<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
-<p>如果中途文件结构已经混乱，可以用下面版本核对缺失部分。请先完成自己的尝试，再对照；不要用它代替第七步的独立字段。</p>
-<div class="highlight"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入昵称：&quot;</span><span class="p">)</span>
-<span class="n">course</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入当前课程：&quot;</span><span class="p">)</span>
-<span class="n">weekly_hours_text</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入本周计划小时：&quot;</span><span class="p">)</span>
-
-<span class="n">weekly_hours</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">weekly_hours_text</span><span class="p">)</span>
-<span class="n">next_week_hours</span> <span class="o">=</span> <span class="n">weekly_hours</span> <span class="o">+</span> <span class="mi">2</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;学习档案&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;昵称：&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;课程：&quot;</span><span class="p">,</span> <span class="n">course</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;本周计划小时：&quot;</span><span class="p">,</span> <span class="n">weekly_hours</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;下周建议小时：&quot;</span><span class="p">,</span> <span class="n">next_week_hours</span><span class="p">)</span>
-</code></pre></div>
-<h2 id="_13">常见错误与排查<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p><code>writes</code> 统计每轮写入目标序列的元素数，不把内部容器实现的复制或分配细节混入教学计数。Python 和 C++ 的标准稳定排序仅用于对照，不作为本实验操作计数来源。</p>
+<h2 id="_11">常见错误与排查<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>现象</th>
-<th>可能原因</th>
-<th>检查方式</th>
-<th>修复方向</th>
+<th>原因</th>
+<th>检查与恢复</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>找不到文件</td>
-<td>当前终端目录不对</td>
-<td><code>pwd</code>、<code>ls</code> 或 <code>Get-Location</code>、<code>dir</code></td>
-<td>进入文件目录后再运行</td>
+<td>相等标签反转</td>
+<td>相等时选择右段</td>
+<td>相等固定先取左段</td>
 </tr>
 <tr>
-<td>输出没有变化</td>
-<td>文件未保存或运行错文件</td>
-<td>检查标签状态和命令中的文件名</td>
-<td>保存并重新运行正确文件</td>
+<td>奇数长度丢尾项</td>
+<td>假设每轮都有完整左右段</td>
+<td>用 <code>min</code> 截断段末尾</td>
 </tr>
 <tr>
-<td><code>NameError</code></td>
-<td>变量名拼写不同或文本缺少引号</td>
-<td>对照定义和使用位置</td>
-<td>统一名称，文本加引号</td>
+<td>写入数少于预期</td>
+<td>未计一侧剩余复制</td>
+<td>每个输出元素都计一次</td>
 </tr>
 <tr>
-<td><code>TypeError</code></td>
-<td>字符串与数字直接计算</td>
-<td>打印参与计算值的 <code>type()</code></td>
-<td>先完成正确类型转换</td>
+<td>循环不结束</td>
+<td>宽度没有翻倍或溢出</td>
+<td>每轮验证宽度增长与终止条件</td>
 </tr>
 <tr>
-<td><code>ValueError</code></td>
-<td>输入不能转换成目标数字</td>
-<td>查看实际输入和报错行</td>
-<td>使用可转换输入；异常处理留到后续课程</td>
-</tr>
-<tr>
-<td><code>True</code>、<code>False</code> 报错</td>
-<td>布尔值大小写错误或加了不合适的写法</td>
-<td>对照 Python 布尔值语法</td>
-<td>使用首字母大写的 <code>True</code>、<code>False</code></td>
+<td>输入被覆盖</td>
+<td>直接复用调用方序列</td>
+<td>先复制并在轮间切换缓冲</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_14">完成证据<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 记录了首次成功运行的文件名、命令和输出。</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 主动修改了昵称、课程、目标和计划值。</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能用实际输出区分字符串、整数、浮点数和布尔值。</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说明 <code>input()</code> 的结果默认是字符串。</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能使用 <code>int()</code> 或 <code>float()</code> 完成一次转换和计算。</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 保存了一次 <code>ValueError</code> 的输入、行号、判断和恢复结果。</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 独立增加了一个新字段，并完成正常与边界检查。</li>
+<h2 id="_12">完成证据<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<ul>
+<li>空段、单侧为空、单元素、奇数长度均安全。</li>
+<li>相等键左侧优先，稳定性失败实验可复现和恢复。</li>
+<li>固定样例记录宽度 1、2 两轮，比较 5 次、写入 8 次。</li>
+<li>稳定降序不使用反转、递归或标准排序。</li>
+<li>Python 与 C++ <code>merge</code> 输出逐字一致。</li>
 </ul>
-<h2 id="_15">下一步<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
-<p>进入<a href="../02-conditions-loops-boolean/">条件、循环、布尔逻辑</a>。下一节会在这份学习档案的基础上，让程序根据条件判断学习状态，并重复处理多项任务。</p>
+<h2 id="_13">来源与版本<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>来源</th>
+<th>用途</th>
+<th>核查日期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/6d1ae5278d02bbecb5c4428928b24194_MIT6_006S20_lec3.pdf">MIT 6.006 Sorting</a></td>
+<td>合并排序与渐近成本</td>
+<td>2026-07-16</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3.11/howto/sorting.html">Python Sorting HOWTO</a></td>
+<td>稳定排序语义对照</td>
+<td>2026-07-16</td>
+</tr>
+<tr>
+<td><a href="https://eel.is/c++draft/algorithm.stable">C++ 稳定算法要求</a></td>
+<td>稳定算法契约对照</td>
+<td>2026-07-16</td>
+</tr>
+</tbody>
+</table>
+<p>本地排序素材只用于核查“归并只能递归”等过度概括；正文、Mermaid、示例和测试均独立重写。</p>
+<h2 id="_14">下一步<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p>查找与排序基础闭环完成。下一批按<a href="../">CS 核心说明</a>进入树与递归；快速排序、堆排序、非比较排序与正式机考仍留在后续深化。</p>
 
 
 
@@ -3544,7 +3329,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="上一页: 课程说明">
+          <a href="../13-insertion-selection-sort-stability/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 插入排序、选择排序与稳定性">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3554,20 +3339,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                课程说明
+                插入排序、选择排序与稳定性
               </div>
             </div>
           </a>
         
         
           
-          <a href="../02-conditions-loops-boolean/" class="md-footer__link md-footer__link--next" aria-label="下一页: 条件、循环、布尔逻辑">
+          <a href="../../../projects/" class="md-footer__link md-footer__link--next" aria-label="下一页: 项目说明">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                条件、循环、布尔逻辑
+                项目说明
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -3604,18 +3389,18 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../../../../javascripts/tutor-search.js"></script>
+        <script src="../../../javascripts/tutor-search.js"></script>
       
-        <script src="../../../../javascripts/tutor.js"></script>
+        <script src="../../../javascripts/tutor.js"></script>
       
-        <script src="../../../../javascripts/personalization-core.js"></script>
+        <script src="../../../javascripts/personalization-core.js"></script>
       
-        <script src="../../../../javascripts/personalization.js"></script>
+        <script src="../../../javascripts/personalization.js"></script>
       
     
   </body>
