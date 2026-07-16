@@ -1,0 +1,11 @@
+[
+  { "query": "Dijkstra 固定样例的路径和计数是什么？", "step_id": "step-1", "expected": "dijkstra-fixed-baseline" }, { "query": "0到5最短路怎么走", "step_id": "step-1", "expected": "dijkstra-fixed-baseline" },
+  { "query": "本课 WeightedGraph 接受和拒绝哪些边？", "step_id": "step-2", "expected": "weighted-graph-contract" }, { "query": "零权边允许吗", "step_id": "step-2", "expected": "weighted-graph-contract" },
+  { "query": "怎样让带权图轨迹跨语言可复现？", "step_id": "step-2", "expected": "weighted-deterministic-order" }, { "query": "交换边输入顺序为什么结果不变", "step_id": "step-2", "expected": "weighted-deterministic-order" },
+  { "query": "Dijkstra 为什么只在候选距离严格更小时松弛？", "step_id": "step-3", "expected": "dijkstra-strict-relaxation" }, { "query": "等距路线要更新父节点吗", "step_id": "step-3", "expected": "dijkstra-strict-relaxation" },
+  { "query": "edge_checks 和 relaxations 有什么区别？", "step_id": "step-3", "expected": "dijkstra-relaxation-count" }, { "query": "为什么16次检查只有8次松弛", "step_id": "step-3", "expected": "dijkstra-relaxation-count" },
+  { "query": "没有 decrease-key 时怎样处理旧距离队列项？", "step_id": "step-4", "expected": "dijkstra-stale-entry" }, { "query": "stale entry为什么要跳过", "step_id": "step-4", "expected": "dijkstra-stale-entry" },
+  { "query": "懒惰重复项 Dijkstra 的复杂度怎样表述？", "step_id": "step-4", "expected": "dijkstra-lazy-complexity" }, { "query": "为什么不是E加VlogV", "step_id": "step-4", "expected": "dijkstra-lazy-complexity" },
+  { "query": "负权和遗漏过期检查分别会造成什么问题？", "step_id": "step-5", "expected": "dijkstra-negative-stale-failure" }, { "query": "Dijkstra能处理负边吗", "step_id": "step-5", "expected": "dijkstra-negative-stale-failure" },
+  { "query": "vertices_within_distance 迁移怎样验收？", "step_id": "step-6", "expected": "dijkstra-within-migration" }, { "query": "距离4以内有哪些顶点", "step_id": "step-6", "expected": "dijkstra-within-migration" }
+]

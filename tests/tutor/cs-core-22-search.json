@@ -1,0 +1,11 @@
+[
+  { "query": "稳定优先队列固定弹出顺序是什么？", "step_id": "step-1", "expected": "priority-fixed-baseline" }, { "query": "test和lint谁先出队", "step_id": "step-1", "expected": "priority-fixed-baseline" },
+  { "query": "优先队列接口和内部堆表示有什么区别？", "step_id": "step-2", "expected": "priority-interface-representation" }, { "query": "优先队列会让整个集合排序吗", "step_id": "step-2", "expected": "priority-interface-representation" },
+  { "query": "怎样验证 peek 与 pop 的接口契约？", "step_id": "step-2", "expected": "priority-peek-pop" }, { "query": "peek会修改队列吗", "step_id": "step-2", "expected": "priority-peek-pop" },
+  { "query": "同优先级任务怎样保持稳定 FIFO？", "step_id": "step-3", "expected": "priority-stable-sequence" }, { "query": "sequence字段有什么用", "step_id": "step-3", "expected": "priority-stable-sequence" },
+  { "query": "任务标签为什么不能参与优先级平局比较？", "step_id": "step-3", "expected": "priority-label-payload" }, { "query": "重复标签可以入队吗", "step_id": "step-3", "expected": "priority-label-payload" },
+  { "query": "Python heapq 与 C++ priority_queue 默认方向有何不同？", "step_id": "step-4", "expected": "priority-language-contrast" }, { "query": "C++为什么先弹最大值", "step_id": "step-4", "expected": "priority-language-contrast" },
+  { "query": "优先队列比较次数怎样统计？", "step_id": "step-4", "expected": "priority-count-contract" }, { "query": "元组字段比较算几次", "step_id": "step-4", "expected": "priority-count-contract" },
+  { "query": "遗漏 sequence 或空队列操作会怎样失败？", "step_id": "step-5", "expected": "priority-tie-underflow-failure" }, { "query": "空priority queue怎样安全失败", "step_id": "step-5", "expected": "priority-tie-underflow-failure" },
+  { "query": "drain_by_priority 迁移怎样验收？", "step_id": "step-6", "expected": "priority-drain-migration" }, { "query": "稳定排空要测试什么", "step_id": "step-6", "expected": "priority-drain-migration" }
+]

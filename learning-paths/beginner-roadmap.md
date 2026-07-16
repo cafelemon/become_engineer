@@ -152,7 +152,7 @@ Python 负责快速实现与数据应用，C++ 帮助理解编译、类型、资
 
 ## CS 最小核心 { #stage-cs-core }
 
-CS 前 20 课已经开放，覆盖序列表示、链表与栈队列、哈希集合、查找排序、二叉树、递归/显式树遍历，以及简单无向图的 BFS/DFS；后续继续补齐带权图、系统、网络和数据库基础。
+CS 前 23 课已经开放，覆盖序列表示、链表与栈队列、哈希集合、查找排序、二叉树、递归/显式树遍历、简单无向图 BFS/DFS，以及最小堆、稳定优先队列和非负权 Dijkstra；后续继续补齐系统、网络和数据库基础。
 
 [开始 CS 第一课](cs-core/01-sequence-interface-array-representation-boundaries.md){ .md-button .md-button--primary }
 [查看 CS 课程结构](cs-core/README.md){ .md-button }

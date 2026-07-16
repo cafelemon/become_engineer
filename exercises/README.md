@@ -47,6 +47,9 @@
 - [可追踪线性结构实验](cs-core/traceable-linear-structures-lab/README.md)：使用节点所有权、LIFO、FIFO 和受控下溢验证链表、栈与队列。
 - [可追踪哈希实验](cs-core/traceable-hash-lab/README.md)：使用确定性教学哈希、分离链接、负载扩容和稳定输出验证哈希与集合应用。
 - [可追踪查找与排序实验](cs-core/traceable-search-sort-lab/README.md)：使用有序输入契约、确定性操作计数和带标签元素验证二分边界、基础排序与稳定归并。
+- [可追踪树与遍历实验](cs-core/traceable-tree-traversal-lab/README.md)：使用槽位表示、链接所有权和确定性前沿验证递归与迭代树遍历。
+- [可追踪图遍历实验](cs-core/traceable-graph-traversal-lab/README.md)：使用规范简单无向图验证邻接表示、BFS、DFS、连通分量和无向环。
+- [可追踪优先队列与最短路实验](cs-core/traceable-priority-shortest-path-lab/README.md)：使用最小堆、稳定序号和懒惰重复项验证非负权 Dijkstra。
 
 ### LLM/Agent
 

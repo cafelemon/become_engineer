@@ -1,0 +1,11 @@
+[
+  { "query": "最小堆固定基线的比较和交换次数是多少？", "step_id": "step-1", "expected": "heap-fixed-baseline" }, { "query": "五次push的计数是多少", "step_id": "step-1", "expected": "heap-fixed-baseline" },
+  { "query": "零基最小堆的父子下标怎样计算？", "step_id": "step-2", "expected": "heap-zero-based-index" }, { "query": "位置i的左右孩子在哪里", "step_id": "step-2", "expected": "heap-zero-based-index" },
+  { "query": "为什么合法最小堆的内部数组不一定升序？", "step_id": "step-2", "expected": "heap-local-invariant" }, { "query": "堆有序和全局有序差别", "step_id": "step-2", "expected": "heap-local-invariant" },
+  { "query": "插入新值时上浮为什么只做严格小于比较？", "step_id": "step-3", "expected": "heap-sift-up" }, { "query": "重复值需要交换吗", "step_id": "step-3", "expected": "heap-sift-up" },
+  { "query": "最小堆的 comparisons 具体统计什么？", "step_id": "step-3", "expected": "heap-operation-count" }, { "query": "边界检查算比较吗", "step_id": "step-3", "expected": "heap-operation-count" },
+  { "query": "删除堆顶后下沉应选择哪个孩子？", "step_id": "step-4", "expected": "heap-sift-down-child" }, { "query": "为什么不能总和左孩子交换", "step_id": "step-4", "expected": "heap-sift-down-child" },
+  { "query": "最小堆查看、插入和删除的复杂度分别是什么？", "step_id": "step-4", "expected": "heap-complexity" }, { "query": "push pop为什么是logn", "step_id": "step-4", "expected": "heap-complexity" },
+  { "query": "空堆 peek 或 pop 应怎样安全失败？", "step_id": "step-5", "expected": "heap-underflow-failure" }, { "query": "空堆异常后状态怎样", "step_id": "step-5", "expected": "heap-underflow-failure" },
+  { "query": "build_min_heap 迁移怎样验收？", "step_id": "step-6", "expected": "heap-build-migration" }, { "query": "为什么自底向上建堆是线性的", "step_id": "step-6", "expected": "heap-build-migration" }
+]
