@@ -75,6 +75,9 @@ assert.ok(experiencedInterest.includedIds.includes("cs-core-11"));
 assert.ok(experiencedInterest.includedIds.includes("cs-core-12"));
 assert.ok(experiencedInterest.includedIds.includes("cs-core-13"));
 assert.ok(experiencedInterest.includedIds.includes("cs-core-14"));
+assert.ok(experiencedInterest.includedIds.includes("cs-core-15"));
+assert.ok(experiencedInterest.includedIds.includes("cs-core-16"));
+assert.ok(experiencedInterest.includedIds.includes("cs-core-17"));
 
 const beginnerCareer = personalization.scoreAssessment(
   config,

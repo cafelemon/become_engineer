@@ -1,0 +1,11 @@
+[
+  { "query": "frontier 基线要对照哪些证据？", "step_id": "step-1", "expected": "frontier-baseline" }, { "query": "DFS和BFS峰值各是多少", "step_id": "step-1", "expected": "frontier-baseline" },
+  { "query": "max_frontier 应在什么时候统计？", "step_id": "step-2", "expected": "frontier-count-contract" }, { "query": "初始根算不算前沿", "step_id": "step-2", "expected": "frontier-count-contract" },
+  { "query": "遍历前沿具体指什么？", "step_id": "step-2", "expected": "frontier-meaning" }, { "query": "前沿和已访问集合一样吗", "step_id": "step-2", "expected": "frontier-meaning" },
+  { "query": "迭代前序为什么先压右再压左？", "step_id": "step-3", "expected": "dfs-push-order" }, { "query": "栈怎样保证左孩子先访问", "step_id": "step-3", "expected": "dfs-push-order" },
+  { "query": "怎样证明迭代 DFS 等价于递归前序？", "step_id": "step-3", "expected": "dfs-recursive-equivalence" }, { "query": "显式栈和调用栈如何对照", "step_id": "step-3", "expected": "dfs-recursive-equivalence" },
+  { "query": "BFS 怎样保持层级和同层左右顺序？", "step_id": "step-4", "expected": "bfs-level-order" }, { "query": "LevelRow如何生成", "step_id": "step-4", "expected": "bfs-level-order" },
+  { "query": "DFS 和 BFS 的显式空间怎样分析？", "step_id": "step-4", "expected": "frontier-space-complexity" }, { "query": "BFS空间为什么跟宽度有关", "step_id": "step-4", "expected": "frontier-space-complexity" },
+  { "query": "先压左再压右会造成什么失败？", "step_id": "step-5", "expected": "reversed-push-failure" }, { "query": "为什么DFS突然先走右树", "step_id": "step-5", "expected": "reversed-push-failure" },
+  { "query": "widest_level 迁移的并列规则是什么？", "step_id": "step-6", "expected": "widest-level-migration" }, { "query": "最宽层相同时选哪层", "step_id": "step-6", "expected": "widest-level-migration" }
+]

@@ -1,0 +1,11 @@
+[
+  { "query": "recursive 基线要检查哪些结果？", "step_id": "step-1", "expected": "recursive-baseline" }, { "query": "三种DFS首次输出怎么看", "step_id": "step-1", "expected": "recursive-baseline" },
+  { "query": "树递归为什么一定会终止？", "step_id": "step-2", "expected": "recursive-contract" }, { "query": "怎样证明递归有进展", "step_id": "step-2", "expected": "recursive-contract" },
+  { "query": "空树递归轨迹为什么最大深度是 -1？", "step_id": "step-2", "expected": "empty-recursive-trace" }, { "query": "空树visits是多少", "step_id": "step-2", "expected": "empty-recursive-trace" },
+  { "query": "前序遍历的调用帧怎样变化？", "step_id": "step-3", "expected": "preorder-frames" }, { "query": "递归DFS栈里保存什么", "step_id": "step-3", "expected": "preorder-frames" },
+  { "query": "递归树遍历的时间和空间复杂度是什么？", "step_id": "step-3", "expected": "recursive-complexity" }, { "query": "递归空间是不是O1", "step_id": "step-3", "expected": "recursive-complexity" },
+  { "query": "前中后序到底改变了什么？", "step_id": "step-4", "expected": "visit-position-orders" }, { "query": "后序为什么根最后", "step_id": "step-4", "expected": "visit-position-orders" },
+  { "query": "怎样安全观察递归深度超限？", "step_id": "step-5", "expected": "depth-guard-failure" }, { "query": "max_depth=1会怎样", "step_id": "step-5", "expected": "depth-guard-failure" },
+  { "query": "count_at_depth 迁移怎样提前停止？", "step_id": "step-6", "expected": "count-depth-migration" }, { "query": "目标层计数访问几次", "step_id": "step-6", "expected": "count-depth-migration" },
+  { "query": "负目标深度为什么要拒绝？", "step_id": "step-6", "expected": "negative-depth-boundary" }, { "query": "目标层不存在返回什么", "step_id": "step-6", "expected": "negative-depth-boundary" }
+]

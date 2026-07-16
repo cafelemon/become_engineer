@@ -124,4 +124,4 @@ stable=yes，input_unchanged=yes
 
 ## 下一步
 
-查找与排序基础闭环完成。下一批按[CS 核心说明](README.md)进入树与递归；快速排序、堆排序、非比较排序与正式机考仍留在后续深化。
+查找与排序基础闭环完成。进入[二叉树形状、链接所有权与槽位表示](15-binary-tree-shape-linked-ownership.md)；快速排序、堆排序、非比较排序与正式机考仍留在后续深化。

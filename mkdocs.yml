@@ -141,6 +141,9 @@ nav:
           - 有序查找、半开区间与左右边界: learning-paths/cs-core/12-ordered-search-half-open-boundaries.md
           - 插入排序、选择排序与稳定性: learning-paths/cs-core/13-insertion-selection-sort-stability.md
           - 自底向上归并排序与稳定复杂度: learning-paths/cs-core/14-bottom-up-merge-sort-stable-complexity.md
+          - 二叉树形状、链接所有权与槽位表示: learning-paths/cs-core/15-binary-tree-shape-linked-ownership.md
+          - 递归深度优先遍历、基线条件与调用深度: learning-paths/cs-core/16-recursive-dfs-traversal-call-frames.md
+          - 迭代 DFS、BFS 与层级前沿: learning-paths/cs-core/17-iterative-dfs-bfs-frontier-levels.md
   - 项目:
       - 项目说明: projects/README.md
       - 项目主干规划: projects/project-roadmap.md
@@ -152,6 +155,7 @@ nav:
           - 可追踪线性结构实验: exercises/cs-core/traceable-linear-structures-lab/README.md
           - 可追踪哈希实验: exercises/cs-core/traceable-hash-lab/README.md
           - 可追踪查找与排序实验: exercises/cs-core/traceable-search-sort-lab/README.md
+          - 可追踪树与遍历实验: exercises/cs-core/traceable-tree-traversal-lab/README.md
       - Python 内容分析工具: projects/python-content-analysis/README.md
       - 结构化数据机器学习系统: projects/structured-data-ml-system/README.md
       - 文本分类模型演进: projects/text-classification-evolution/README.md
