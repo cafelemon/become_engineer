@@ -1445,6 +1445,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1624,6 +1628,62 @@
     
   
     装饰器、闭包与自定义上下文管理器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-package-structure-installable-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    包结构、可安装入口与 CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-toml-configuration-logging-diagnostics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TOML 配置、日志与诊断
   
 
     
@@ -2204,9 +2264,9 @@
 </tr>
 <tr>
 <td>工程化</td>
-<td>包、CLI、配置、日志、测试、依赖和发布认知</td>
+<td><a href="06-package-structure-installable-cli/">包、CLI</a>、<a href="07-toml-configuration-logging-diagnostics/">配置、日志、测试与安装认知</a></td>
 <td>CMake、测试、调试和静态分析</td>
-<td>待建设</td>
+<td>最小闭环已完成</td>
 </tr>
 </tbody>
 </table>
@@ -2265,6 +2325,16 @@
 <td>已完成</td>
 <td>用类型安全包装器复用调用边界，并分阶段提交审计文件</td>
 </tr>
+<tr>
+<td><a href="06-package-structure-installable-cli/">包结构、可安装入口与 CLI</a></td>
+<td>已完成</td>
+<td>把多模块报告器迁移为 <code>src</code> 包，并提供模块入口、控制台脚本和 argparse 子命令</td>
+</tr>
+<tr>
+<td><a href="07-toml-configuration-logging-diagnostics/">TOML 配置、日志与可诊断执行契约</a></td>
+<td>已完成</td>
+<td>建立显式配置、固定优先级、标准流、命名日志和退出码契约</td>
+</tr>
 </tbody>
 </table>
 <h2 id="_4">工具基线<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
@@ -2273,7 +2343,8 @@
 <li>类型语法以Python 3.11兼容写法为准。</li>
 <li>静态检查器使用固定版本的mypy并启用严格模式。</li>
 <li>测试继续使用标准库<code>unittest</code>，静态检查不能替代运行测试。</li>
-<li>第三方工具只安装到项目虚拟环境，不进入全局Python。</li>
+<li>阶段作品使用 <code>pyproject.toml</code> 和 <code>src</code> 布局；运行依赖仍只有标准库，构建与 mypy 作为开发依赖安装到项目虚拟环境。</li>
+<li>editable install 用于开发，wheel install 用于检查分发内容；课程不上传 PyPI。</li>
 </ul>
 <h2 id="_5">学习方式<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ol>
@@ -2286,9 +2357,9 @@
 </ol>
 <h2 id="_6">阶段作品边界<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>Python起步的学习进度报告器保持原样，代表当时已经验收的能力。本课程在正文中提供类型化副本，不反向修改起步作品，也不创建新的独立练习目录。</p>
-<p>双主修课程已经形成<a href="../../../exercises/programming-languages/study-progress-reporters/">双语言学习进度报告器</a>。Python 实现已加入惰性筛选、数据类对象、类型安全调用追踪和分阶段审计导出，C++ 实现已加入借用与 RAII 审计导出；两边继续保持公开主报告契约不变。类型提示、协议、CMake、容器或装饰器本身都不是独立项目。</p>
+<p>双主修课程已经形成<a href="../../../exercises/programming-languages/study-progress-reporters/">双语言学习进度报告器</a>。Python 实现已加入惰性筛选、数据类对象、类型安全调用追踪、分阶段审计、可安装 CLI、显式 TOML 配置和 stderr 日志，C++ 实现已加入借用与 RAII 审计导出；两边继续保持公开主报告契约不变。类型提示、协议、CMake、容器、装饰器或 CLI 本身都不是独立项目。</p>
 <h2 id="_7">下一步<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p>从<a href="01-type-hints-interfaces-static-checking/">类型提示、接口与静态检查认知</a>开始，按表格顺序学习到<a href="05-decorators-closures-custom-context-managers/">装饰器、闭包与自定义上下文管理器</a>。完成后进入包结构、CLI、配置与日志，把多模块报告器推进为最小工程化工具。</p>
+<p>从<a href="01-type-hints-interfaces-static-checking/">类型提示、接口与静态检查认知</a>开始，按表格顺序学习到<a href="07-toml-configuration-logging-diagnostics/">TOML 配置、日志与可诊断执行契约</a>。完成后，Python 核心已达到最小工程化离开条件；按总课程表进入四类路线纵向验证与 <a href="../../cs-core/">CS 核心</a>，并在后续项目中继续深化并发、网络、数据库、Web 与发布。</p>
 
 
 

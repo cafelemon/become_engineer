@@ -1430,6 +1430,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1609,6 +1613,62 @@
     
   
     装饰器、闭包与自定义上下文管理器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learning-paths/programming-languages/python-core/06-package-structure-installable-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    包结构、可安装入口与 CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learning-paths/programming-languages/python-core/07-toml-configuration-logging-diagnostics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TOML 配置、日志与诊断
   
 
     
@@ -2184,6 +2244,8 @@
 <li><a href="../../../learning-paths/programming-languages/cpp-core/05-objects-references-pointers-lifetime-raii/">C++：对象、引用、指针、生命周期与RAII</a></li>
 <li><a href="../../../learning-paths/programming-languages/python-core/04-data-model-dataclasses-context-managers/">Python：数据模型、数据类与上下文管理</a></li>
 <li><a href="../../../learning-paths/programming-languages/python-core/05-decorators-closures-custom-context-managers/">Python：装饰器、闭包与自定义上下文管理器</a></li>
+<li><a href="../../../learning-paths/programming-languages/python-core/06-package-structure-installable-cli/">Python：包结构、可安装入口与 CLI</a></li>
+<li><a href="../../../learning-paths/programming-languages/python-core/07-toml-configuration-logging-diagnostics/">Python：TOML 配置、日志与可诊断执行契约</a></li>
 </ul>
 <h2 id="_3">统一行为契约<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>两套实现使用相同的四条内存记录，并提供相同能力：</p>
@@ -2197,6 +2259,9 @@
 <li>C++额外提供按引用更新、可空非拥有查找和作用域内审计文件导出；审计导出不改变主报告标准输出。</li>
 <li>Python 已把 <code>TypedDict</code> 记录迁移为数据类对象，并使用 <code>with</code> 提供相同格式的审计文件；主报告输出保持稳定。</li>
 <li>Python 提供可选的类型安全调用追踪器，并通过生成器式上下文管理器先写临时文件、成功后再发布审计；追踪事件不进入主报告。</li>
+<li>Python 已迁移为 <code>src</code> 布局可安装包，提供 <code>study-progress</code> 和 <code>python -m study_progress_reporter</code> 等价入口，以及 <code>report</code>、<code>audit</code> 子命令。</li>
+<li>Python 只读取 <code>--config</code> 显式指定的 TOML；命令行覆盖配置、配置覆盖默认值，报告进入 stdout，日志与错误进入 stderr。</li>
+<li>Python 成功返回 0，配置或 I/O 失败返回 1，argparse 参数语法错误返回 2；失败不覆盖旧审计或留下临时文件。</li>
 <li>生成完全相同的UTF-8报告文本。</li>
 </ul>
 <p>本作品故意不读取JSON或CSV。C++标准库没有JSON解析器，而文件格式不是本次容器对照的学习目标；两边都使用代码内固定样例，避免额外依赖干扰比较。</p>
@@ -2210,22 +2275,33 @@
 │   ├── .gitignore
 │   └── CMakeLists.txt
 ├── python/
-│   ├── tests/test_reporter.py
-│   ├── analysis.py
-│   ├── fixtures.py
-│   ├── instrumentation.py
-│   ├── main.py
-│   ├── models.py
-│   ├── reporting.py
-│   └── resources.py
+│   ├── pyproject.toml
+│   ├── config.example.toml
+│   ├── src/study_progress_reporter/
+│   │   ├── __init__.py
+│   │   ├── __main__.py
+│   │   ├── cli.py
+│   │   ├── config.py
+│   │   ├── logging_setup.py
+│   │   └── ...业务模块
+│   └── tests/
+│       ├── test_reporter.py
+│       └── test_cli_config.py
 └── README.md
 </code></pre></div>
 <h2 id="python">运行 Python 版本<a class="headerlink" href="#python" title="Permanent link">&para;</a></h2>
-<p>环境：Python 3.11及以上，仅使用标准库；静态检查使用仓库开发环境中的mypy。</p>
+<p>环境：Python 3.11及以上，运行仅使用标准库；构建与静态检查工具作为开发依赖安装到虚拟环境。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>python
-python<span class="w"> </span>main.py
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span>
+study-progress<span class="w"> </span>report
+python<span class="w"> </span>-m<span class="w"> </span>study_progress_reporter<span class="w"> </span>report
 python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>-v
-python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>.
+python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>src<span class="w"> </span>tests
+python<span class="w"> </span>-m<span class="w"> </span>build
+</code></pre></div>
+<p>配置不会自动加载。需要时显式运行：</p>
+<div class="highlight"><pre><span></span><code>study-progress<span class="w"> </span>--config<span class="w"> </span>config.example.toml<span class="w"> </span>report
+study-progress<span class="w"> </span>audit<span class="w"> </span>--output<span class="w"> </span>build/audit.txt
 </code></pre></div>
 <h2 id="c">运行 C++ 版本<a class="headerlink" href="#c" title="Permanent link">&para;</a></h2>
 <p>环境：C++20、CMake 3.20及以上，仅使用标准库。</p>
@@ -2305,6 +2381,16 @@ ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class=
 <td>保持既有显式调用与 <code>ofstream</code> RAII 对照</td>
 </tr>
 <tr>
+<td>工程入口</td>
+<td><code>src</code> 包、pyproject、模块入口与控制台脚本</td>
+<td>CMake 应用目标与构建产物</td>
+</tr>
+<tr>
+<td>配置与诊断</td>
+<td>显式 TOML、命名 logger、stdout/stderr、退出码</td>
+<td>保持现有命令行与 CTest 诊断基线</td>
+</tr>
+<tr>
 <td>自动检查</td>
 <td>mypy、unittest</td>
 <td>编译器、CTest、审计成功与打开失败路径</td>
@@ -2331,11 +2417,13 @@ ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class=
 <li>Python测试证明生成器惰性执行、单次消费和一次性输入报告行为。</li>
 <li>Python测试证明装饰器保留签名、返回值与元数据，失败事件不会抑制原异常。</li>
 <li>Python测试证明审计首次发布、覆盖和失败清理路径，旧文件在块内失败时保持不变。</li>
+<li>Python 测试证明包可安装、两个入口等价、帮助文本和标签筛选可用，默认报告不受新增参数影响。</li>
+<li>Python 测试证明 TOML 的合法、缺省、未知、错误类型和优先级路径，以及日志流和退出码 0/1/2 契约。</li>
 <li>排序、筛选和汇总后原始记录顺序与内容保持不变。</li>
 <li>没有第三方运行依赖、个人路径、密钥或生成产物进入Git。</li>
 </ul>
 <h2 id="_7">下一步<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p>调用包装与分阶段资源提交已经完成。下一步进入 Python 包结构、CLI、配置与日志，把当前多模块阶段作品推进为可稳定运行和诊断的最小工程化工具。</p>
+<p>Python 的包结构、CLI、配置与日志已形成最小工程化闭环。下一步按总课程表进入四类路线纵向验证和 CS 共同主干；并发、网络、数据库、Web 与真实发布继续留给后续课程和项目里程碑。</p>
 
 
 

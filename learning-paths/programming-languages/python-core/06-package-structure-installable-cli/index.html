@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://cafelemon.github.io/become_engineer/learning-paths/engineering-foundation/stage-0/02-filesystem/">
+        <link rel="canonical" href="https://cafelemon.github.io/become_engineer/learning-paths/programming-languages/python-core/06-package-structure-installable-cli/">
       
       
-        <link rel="prev" href="../01-learning-method/">
+        <link rel="prev" href="../05-decorators-closures-custom-context-managers/">
       
       
-        <link rel="next" href="../03-terminal-shell/">
+        <link rel="next" href="../07-toml-configuration-logging-diagnostics/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>文件系统 - Become Engineer</title>
+        <title>包结构、可安装入口与 CLI - Become Engineer</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#python-cli" class="md-skip">
           跳转至
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              文件系统
+              包结构、可安装入口与 CLI
             
           </span>
         </div>
@@ -262,7 +262,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../01-learning-method/" class="md-tabs__link">
+        <a href="../../../engineering-foundation/stage-0/01-learning-method/" class="md-tabs__link">
           
   
   
@@ -558,10 +558,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -592,11 +590,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
         
           
           <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
@@ -617,7 +615,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -635,7 +633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-learning-method/" class="md-nav__link">
+      <a href="../../../engineering-foundation/stage-0/01-learning-method/" class="md-nav__link">
         
   
   
@@ -660,37 +658,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    文件系统
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../engineering-foundation/stage-0/02-filesystem/" class="md-nav__link">
         
   
   
@@ -706,319 +677,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        五步任务路线
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="五步任务路线">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第一步：定位学习工作区
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第二步：创建可读目录结构
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第三步：把记录放进正确位置
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第四步：分别写出相对与绝对路径
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第五步：故意判断一个错误路径
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        前置知识
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        学习目标
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        核心概念
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="核心概念">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        文件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        目录
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        项目根目录
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        路径
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        绝对路径
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        相对路径
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        学习顺序
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        示例：读懂一个项目结构
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        实践练习
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="实践练习">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        练习 1：标出文件和目录
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        练习 2：写出路径含义
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        练习 3：判断相对路径和绝对路径
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        练习 4：设计一个学习目录
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常见错误与排查
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完成标准
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        下一步
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1031,7 +689,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03-terminal-shell/" class="md-nav__link">
+      <a href="../../../engineering-foundation/stage-0/03-terminal-shell/" class="md-nav__link">
         
   
   
@@ -1059,7 +717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../04-editor/" class="md-nav__link">
+      <a href="../../../engineering-foundation/stage-0/04-editor/" class="md-nav__link">
         
   
   
@@ -1087,7 +745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../05-markdown/" class="md-nav__link">
+      <a href="../../../engineering-foundation/stage-0/05-markdown/" class="md-nav__link">
         
   
   
@@ -1115,7 +773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../06-git/" class="md-nav__link">
+      <a href="../../../engineering-foundation/stage-0/06-git/" class="md-nav__link">
         
   
   
@@ -1143,7 +801,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../06-github-remote/" class="md-nav__link">
+      <a href="../../../engineering-foundation/stage-0/06-github-remote/" class="md-nav__link">
         
   
   
@@ -1171,7 +829,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../07-development-environment/" class="md-nav__link">
+      <a href="../../../engineering-foundation/stage-0/07-development-environment/" class="md-nav__link">
         
   
   
@@ -1199,7 +857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../08-docker-basics/" class="md-nav__link">
+      <a href="../../../engineering-foundation/stage-0/08-docker-basics/" class="md-nav__link">
         
   
   
@@ -1227,7 +885,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../09-validation-habit/" class="md-nav__link">
+      <a href="../../../engineering-foundation/stage-0/09-validation-habit/" class="md-nav__link">
         
   
   
@@ -1298,7 +956,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../programming-languages/python-basics/" class="md-nav__link ">
+            <a href="../../python-basics/" class="md-nav__link ">
               
   
   
@@ -1342,7 +1000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming-languages/python-basics/01-variables-types-io/" class="md-nav__link">
+      <a href="../../python-basics/01-variables-types-io/" class="md-nav__link">
         
   
   
@@ -1370,7 +1028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming-languages/python-basics/02-conditions-loops-boolean/" class="md-nav__link">
+      <a href="../../python-basics/02-conditions-loops-boolean/" class="md-nav__link">
         
   
   
@@ -1398,7 +1056,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming-languages/python-basics/03-functions-parameters-returns-scope/" class="md-nav__link">
+      <a href="../../python-basics/03-functions-parameters-returns-scope/" class="md-nav__link">
         
   
   
@@ -1426,7 +1084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming-languages/python-basics/04-strings-collections/" class="md-nav__link">
+      <a href="../../python-basics/04-strings-collections/" class="md-nav__link">
         
   
   
@@ -1454,7 +1112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming-languages/python-basics/05-files-json-paths/" class="md-nav__link">
+      <a href="../../python-basics/05-files-json-paths/" class="md-nav__link">
         
   
   
@@ -1482,7 +1140,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming-languages/python-basics/06-modules-imports-venv/" class="md-nav__link">
+      <a href="../../python-basics/06-modules-imports-venv/" class="md-nav__link">
         
   
   
@@ -1510,7 +1168,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming-languages/python-basics/07-errors-debugging-tests/" class="md-nav__link">
+      <a href="../../python-basics/07-errors-debugging-tests/" class="md-nav__link">
         
   
   
@@ -1577,7 +1235,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../programming-languages/cpp-core/" class="md-nav__link ">
+            <a href="../../cpp-core/" class="md-nav__link ">
               
   
   
@@ -1621,7 +1279,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming-languages/cpp-core/01-build-types-io/" class="md-nav__link">
+      <a href="../../cpp-core/01-build-types-io/" class="md-nav__link">
         
   
   
@@ -1649,7 +1307,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming-languages/cpp-core/02-functions-declarations-program-organization/" class="md-nav__link">
+      <a href="../../cpp-core/02-functions-declarations-program-organization/" class="md-nav__link">
         
   
   
@@ -1677,7 +1335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming-languages/cpp-core/03-headers-sources-cmake/" class="md-nav__link">
+      <a href="../../cpp-core/03-headers-sources-cmake/" class="md-nav__link">
         
   
   
@@ -1705,7 +1363,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming-languages/cpp-core/04-stl-containers-iterators-algorithms/" class="md-nav__link">
+      <a href="../../cpp-core/04-stl-containers-iterators-algorithms/" class="md-nav__link">
         
   
   
@@ -1733,7 +1391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming-languages/cpp-core/05-objects-references-pointers-lifetime-raii/" class="md-nav__link">
+      <a href="../../cpp-core/05-objects-references-pointers-lifetime-raii/" class="md-nav__link">
         
   
   
@@ -1766,6 +1424,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1796,15 +1456,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../programming-languages/python-core/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -1828,7 +1488,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1848,7 +1508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming-languages/python-core/01-type-hints-interfaces-static-checking/" class="md-nav__link">
+      <a href="../01-type-hints-interfaces-static-checking/" class="md-nav__link">
         
   
   
@@ -1876,7 +1536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming-languages/python-core/02-maintainable-function-interfaces-protocols-modules/" class="md-nav__link">
+      <a href="../02-maintainable-function-interfaces-protocols-modules/" class="md-nav__link">
         
   
   
@@ -1904,7 +1564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming-languages/python-core/03-iterables-iterators-generators/" class="md-nav__link">
+      <a href="../03-iterables-iterators-generators/" class="md-nav__link">
         
   
   
@@ -1932,7 +1592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming-languages/python-core/04-data-model-dataclasses-context-managers/" class="md-nav__link">
+      <a href="../04-data-model-dataclasses-context-managers/" class="md-nav__link">
         
   
   
@@ -1960,7 +1620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming-languages/python-core/05-decorators-closures-custom-context-managers/" class="md-nav__link">
+      <a href="../05-decorators-closures-custom-context-managers/" class="md-nav__link">
         
   
   
@@ -1985,10 +1645,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../programming-languages/python-core/06-package-structure-installable-cli/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    包结构、可安装入口与 CLI
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2004,6 +1691,257 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        任务路线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：锁定 16 项测试和报告基线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二步：迁移为 src 布局常规包
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pyproject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三步：建立 pyproject 和两个安装入口
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#argparse-report-audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第四步：用 argparse 建立 report 和 audit 子命令
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第五步：安全复现直接运行包内文件的失败
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第六步：完成参数迁移验收
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        课程信息
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学习目标
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从脚本到命令发生了什么
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 保存可回归基线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-src" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 组织常规包与 src 布局
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 声明安装与入口
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-argparse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 让 argparse 只管理调用边界
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 观察导入上下文失败
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 迁移任务与完整验收
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI 协作任务
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见错误与排查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成证据
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下一步
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2016,7 +1954,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming-languages/python-core/07-toml-configuration-logging-diagnostics/" class="md-nav__link">
+      <a href="../07-toml-configuration-logging-diagnostics/" class="md-nav__link">
         
   
   
@@ -2455,90 +2393,95 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        任务路线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：锁定 16 项测试和报告基线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二步：迁移为 src 布局常规包
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pyproject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三步：建立 pyproject 和两个安装入口
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#argparse-report-audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第四步：用 argparse 建立 report 和 audit 子命令
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        五步任务路线
+        第五步：安全复现直接运行包内文件的失败
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="五步任务路线">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：定位学习工作区
+        第六步：完成参数迁移验收
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：创建可读目录结构
+        课程信息
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第三步：把记录放进正确位置
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第四步：分别写出相对与绝对路径
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第五步：故意判断一个错误路径
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        前置知识
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         学习目标
@@ -2549,93 +2492,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        核心概念
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="核心概念">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        文件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        目录
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        项目根目录
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        路径
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        绝对路径
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        相对路径
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        学习顺序
+        从脚本到命令发生了什么
       
     </span>
   </a>
@@ -2643,79 +2503,84 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        示例：读懂一个项目结构
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        实践练习
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="实践练习">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        练习 1：标出文件和目录
+        1. 保存可回归基线
       
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        练习 2：写出路径含义
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        练习 3：判断相对路径和绝对路径
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        练习 4：设计一个学习目录
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
+  <a href="#2-src" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 组织常规包与 src 布局
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 声明安装与入口
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-argparse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 让 argparse 只管理调用边界
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 观察导入上下文失败
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 迁移任务与完整验收
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI 协作任务
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         常见错误与排查
@@ -2726,10 +2591,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        完成标准
+        完成证据
       
     </span>
   </a>
@@ -2737,7 +2602,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -2767,324 +2643,327 @@
   
 
 
-<h1 id="_1">文件系统<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<div class="be-tutor-mount" data-tutor-lesson="engineering-foundation-02" aria-hidden="true"></div>
+<h1 id="python-cli">Python 包结构、可安装入口与 CLI<a class="headerlink" href="#python-cli" title="Permanent link">&para;</a></h1>
+<div class="be-tutor-mount" data-tutor-lesson="python-core-06" aria-hidden="true"></div>
 
-<p>本课的产出不是背定义，而是在你的学习工作区创建一棵可解释的目录树，并能写出其中任意文件的路径。</p>
-<h2 id="_2">五步任务路线<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<div class="be-task-route" role="list" aria-label="本课五步任务">
-  <span role="listitem">1 定位工作区</span><span role="listitem">2 创建目录</span><span role="listitem">3 放入文件</span><span role="listitem">4 写出路径</span><span role="listitem">5 检查迁移</span>
-</div>
+<blockquote>
+<p><strong>任务先行：</strong> 把只能依赖当前目录运行的多模块报告器迁移为可安装包，并用同一业务函数同时支持 <code>study-progress</code> 和 <code>python -m study_progress_reporter</code>。先在项目目录外看到报告，再解释包、分发项目、入口和参数边界。</p>
+</blockquote>
+<h2 id="_1">任务路线<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="be-task-route" role="list" aria-label="本课六步任务"><span role="listitem">1 锁定基线</span><span role="listitem">2 src 包</span><span role="listitem">3 安装入口</span><span role="listitem">4 CLI</span><span role="listitem">5 导入失败</span><span role="listitem">6 迁移验收</span></div>
 
 <section class="be-task-step" data-step-id="step-1" id="step-1">
-<h3 id="_3">第一步：定位学习工作区<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p><strong>任务：</strong> 找到你保存学习记录的位置，确认它是这次练习的项目根目录。<strong>成功证据：</strong> 能说出该目录的名称和位置。</p>
-<details class="tip">
-<summary>提示一</summary>
-<p>项目根目录是本次学习文件共同归属的最外层目录。</p>
-</details>
-<details class="tip">
-<summary>提示二</summary>
-<p>不要把练习散放在下载目录或桌面多个位置。</p>
-</details>
+<h2 id="16">第一步：锁定 16 项测试和报告基线<a class="headerlink" href="#16" title="Permanent link">&para;</a></h2>
+<p>从旧结构的 Python 子目录运行 unittest、mypy 和 <code>main.py</code>，保存 16 项测试与 <code>总体进度：87.1%</code>。<strong>当前任务：</strong> 明确迁移只改变运行边界。<strong>成功证据：</strong> 默认报告文本、<code>build_report()</code> 和 <code>write_audit_snapshot()</code> 行为在迁移前后不变。</p>
 </section>
 <section class="be-task-step" data-step-id="step-2" id="step-2">
-<h3 id="_4">第二步：创建可读目录结构<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p><strong>任务：</strong> 在工作区创建 <code>notes</code>、<code>practice</code> 和 <code>assets</code> 三个目录。<strong>成功证据：</strong> 在文件管理器或编辑器文件树中能看见三层级条目。</p>
-<details class="tip">
-<summary>提示一</summary>
-<p>目录用于组织文件，不是文件本身。</p>
-</details>
-<details class="tip">
-<summary>提示二</summary>
-<p>名称使用清楚、稳定的英文小写或你能持续使用的命名方式。</p>
-</details>
+<h2 id="src">第二步：迁移为 src 布局常规包<a class="headerlink" href="#src" title="Permanent link">&para;</a></h2>
+<p>把可导入代码放入 <code>src/study_progress_reporter/</code>，增加 <code>__init__.py</code>，并改用包内绝对导入。<strong>最少知识：</strong> 导入包名与发布名不是同一个概念。<strong>主动修改：</strong> 从包根导出一个稳定业务接口。<strong>成功证据：</strong> 测试从安装后的包导入，不再向 <code>sys.path</code> 塞路径。</p>
 </section>
 <section class="be-task-step" data-step-id="step-3" id="step-3">
-<h3 id="_5">第三步：把记录放进正确位置<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p><strong>任务：</strong> 把上一课的 <code>learning-log.md</code> 放入 <code>notes</code>，或在其中新建同名文件。<strong>成功证据：</strong> 能解释文件名和扩展名分别是什么。</p>
-<details class="tip">
-<summary>提示一</summary>
-<p><code>learning-log.md</code> 的 <code>.md</code> 表示 Markdown 文档。</p>
-</details>
-<details class="tip">
-<summary>提示二</summary>
-<p>移动后重新打开一次，确认不是只创建了快捷方式。</p>
-</details>
+<h2 id="pyproject">第三步：建立 pyproject 和两个安装入口<a class="headerlink" href="#pyproject" title="Permanent link">&para;</a></h2>
+<p>用 <code>pyproject.toml</code> 声明 Python 3.11、<code>src</code> 包发现和 <code>[project.scripts]</code>，再执行 editable install。<strong>可观察结果：</strong> 在阶段作品目录之外运行 <code>study-progress report</code> 与 <code>python -m study_progress_reporter report</code> 都得到相同报告。</p>
 </section>
 <section class="be-task-step" data-step-id="step-4" id="step-4">
-<h3 id="_6">第四步：分别写出相对与绝对路径<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p><strong>任务：</strong> 从项目根目录写出 <code>notes/learning-log.md</code> 的相对路径；再查看系统显示的完整位置。<strong>成功证据：</strong> 两种路径都能对应同一文件。</p>
-<details class="tip">
-<summary>提示一</summary>
-<p>相对路径从当前工作位置开始写。</p>
-</details>
-<details class="tip">
-<summary>提示二</summary>
-<p>绝对路径从磁盘根或用户目录开始，通常更长。</p>
-</details>
+<h2 id="argparse-report-audit">第四步：用 argparse 建立 report 和 audit 子命令<a class="headerlink" href="#argparse-report-audit" title="Permanent link">&para;</a></h2>
+<p>入口只解析参数、选择数据并调用业务函数；<code>report --tag</code> 提供主动变化，<code>audit --output</code> 显式决定写入位置。<strong>成功证据：</strong> <code>--help</code> 自动列出子命令，默认报告无回归，筛选不会修改样例记录。</p>
 </section>
 <section class="be-task-step" data-step-id="step-5" id="step-5">
-<h3 id="_7">第五步：故意判断一个错误路径<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p><strong>任务：</strong> 写一个不存在的路径并说明它错在目录名、文件名还是起点。然后为下一课保留工作区。<strong>成功证据：</strong> 能用“当前目录 + 相对路径”解释错误。</p>
-<details class="tip">
-<summary>提示一</summary>
-<p>先确认路径中的每一级目录是否真实存在。</p>
-</details>
-<details class="tip">
-<summary>提示二</summary>
-<p>下一课会在这个工作区中用终端查看这些文件。</p>
-</details>
+<h2 id="_2">第五步：安全复现直接运行包内文件的失败<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>在临时副本或只读观察中直接执行 <code>src/study_progress_reporter/cli.py</code>，记录包导入失败；随后恢复为模块入口或安装后的控制台入口。<strong>恢复标准：</strong> 不修改 <code>sys.path</code>，不退回裸同目录导入，两个正式入口重新通过。</p>
 </section>
-<h2 id="_8">前置知识<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<ul>
-<li>已完成 <a href="../01-learning-method/">学习方法</a>。</li>
-<li>能写一份包含目标、操作、结果、问题和下一步的学习记录。</li>
-</ul>
-<h2 id="_9">学习目标<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<p>学完本节后，你应该能解释文件、目录、扩展名、项目根目录、相对路径和绝对路径，并能判断一个文件应该放在项目的哪个位置。</p>
-<p>本节不讲终端命令。你只需要先把“文件在哪里”这件事想清楚。</p>
-<h2 id="_10">核心概念<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<h3 id="_11">文件<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p>文件是电脑里保存内容的基本单位。比如：</p>
-<div class="highlight"><pre><span></span><code>README.md
-notes.txt
-main.py
-photo.png
-</code></pre></div>
-<p>文件名通常由两部分组成：</p>
-<div class="highlight"><pre><span></span><code>名字.扩展名
-</code></pre></div>
-<p>例如 <code>README.md</code> 中：</p>
-<ul>
-<li><code>README</code> 是名字。</li>
-<li><code>.md</code> 是扩展名。</li>
-</ul>
-<p>扩展名常用来提示文件类型：</p>
+<section class="be-task-step" data-step-id="step-6" id="step-6">
+<h2 id="_3">第六步：完成参数迁移验收<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>在不提供完整实现的前提下新增一种报告选择参数，并保持默认报告、审计和 C++ 对照契约。<strong>验收：</strong> 新参数有帮助文本、成功路径、空结果或边界测试；命令入口与模块入口行为一致。</p>
+</section>
+<h2 id="_4">课程信息<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>扩展名</th>
-<th>常见含义</th>
+<th>项目</th>
+<th>内容</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>.md</code></td>
-<td>Markdown 文档</td>
+<td>适合人群</td>
+<td>已完成装饰器与资源边界，希望把多模块程序变成可稳定调用工具的学习者</td>
 </tr>
 <tr>
-<td><code>.txt</code></td>
-<td>普通文本</td>
+<td>前置知识</td>
+<td>模块、导入、虚拟环境、函数接口、unittest、mypy、上下文管理器</td>
 </tr>
 <tr>
-<td><code>.py</code></td>
-<td>Python 代码</td>
+<td>可观察产出</td>
+<td><code>src</code> 布局包、<code>pyproject.toml</code>、模块入口、控制台脚本、两个 CLI 子命令</td>
 </tr>
 <tr>
-<td><code>.json</code></td>
-<td>JSON 数据</td>
+<td>环境</td>
+<td>Python 3.11+；运行只用标准库；构建与类型检查属于开发依赖</td>
 </tr>
 <tr>
-<td><code>.png</code></td>
-<td>图片</td>
+<td>阶段作品</td>
+<td><a href="../../../../exercises/programming-languages/study-progress-reporters/">双语言学习进度报告器</a></td>
+</tr>
+<tr>
+<td>事实核查</td>
+<td>Python 3.11.15 与 PyPA 文档，2026-07-15 核查</td>
 </tr>
 </tbody>
 </table>
-<p>扩展名不是绝对保证，但它是阅读项目时的重要线索。</p>
-<h3 id="_12">目录<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<p>目录也常被叫做文件夹。它用来组织文件和其他目录。</p>
-<p>一个项目可能长这样：</p>
-<div class="highlight"><pre><span></span><code>become_engineer/
-├── README.md
-├── docs/
-│   └── 00_overview.md
-└── learning-paths/
-    └── engineering-foundation/
-</code></pre></div>
-<p>这里：</p>
+<h2 id="_5">学习目标<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>become_engineer/</code> 是一个目录。</li>
-<li><code>README.md</code> 是一个文件。</li>
-<li><code>docs/</code> 是一个目录。</li>
-<li><code>00_overview.md</code> 是 <code>docs/</code> 目录里的文件。</li>
+<li>区分模块、导入包、分发项目、命令入口和正在运行的 <code>__main__</code>。</li>
+<li>解释 <code>src</code> 布局为何要求先安装，并识别“从源码目录碰巧可导入”的假成功。</li>
+<li>使用 <code>pyproject.toml</code> 声明包发现、Python 版本和控制台脚本。</li>
+<li>使用 <code>argparse</code> 设计子命令、帮助文本和可测试的 <code>main(argv)</code>。</li>
+<li>保持 CLI 层、业务层和文件副作用边界，不在导入时解析参数或退出进程。</li>
+<li>用项目目录外运行、自动测试和报告对照证明工具可安装、可调用。</li>
 </ul>
-<p>结尾带 <code>/</code> 的名字通常表示目录，比如 <code>docs/</code>。不带 <code>/</code> 且带扩展名的名字通常表示文件，比如 <code>README.md</code>。</p>
-<h3 id="_13">项目根目录<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<p>项目根目录是一个项目最外层的目录。</p>
-<p>在上面的例子中：</p>
-<div class="highlight"><pre><span></span><code>become_engineer/
+<h2 id="_6">从脚本到命令发生了什么<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+    A["study-progress"] --&gt; C["cli.main(argv)"]
+    B["python -m study_progress_reporter"] --&gt; D["__main__.py"]
+    D --&gt; C
+    C --&gt; E{"report / audit"}
+    E --&gt; F["reporting.build_report"]
+    E --&gt; G["reporting.write_audit_snapshot"]
+    F --&gt; H["stdout 报告"]
+    G --&gt; I["审计文件"]</code></pre>
+<p>两条入口只在最外层不同，最终都调用 <code>cli.main()</code>。业务模块不知道控制台脚本名称，也不在导入时读取 <code>sys.argv</code>。</p>
+<h2 id="1">1. 保存可回归基线<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>迁移前从旧 Python 子目录运行：</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>-v
+python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>.
+python<span class="w"> </span>main.py
 </code></pre></div>
-<p>就是项目根目录。</p>
-<p>很多说明文档会说“在项目根目录下创建文件”。意思是在项目最外层创建，而不是随便找一个子目录。</p>
-<h3 id="_14">路径<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<p>路径用来描述文件或目录的位置。</p>
-<p>例如：</p>
-<div class="highlight"><pre><span></span><code>docs/00_overview.md
+<p>当时应有 16 项测试。迁移完成后的仓库有更多 CLI 与配置测试，但以下默认输出仍必须存在：</p>
+<div class="highlight"><pre><span></span><code>学习进度报告
+总计划：35.0 小时
+总完成：30.5 小时
+总体进度：87.1%
 </code></pre></div>
-<p>它表示：</p>
-<div class="highlight"><pre><span></span><code>docs 目录里的 00_overview.md 文件
+<p>基线不是“程序能启动”一句话，而是业务接口、报告文本、审计成功/失败和 C++ 对照共同组成的回归证据。</p>
+<h2 id="2-src">2. 组织常规包与 src 布局<a class="headerlink" href="#2-src" title="Permanent link">&para;</a></h2>
+<p>迁移后的关键结构：</p>
+<div class="highlight"><pre><span></span><code>python/
+├── pyproject.toml
+├── config.example.toml
+├── src/
+│   └── study_progress_reporter/
+│       ├── __init__.py
+│       ├── __main__.py
+│       ├── cli.py
+│       ├── config.py
+│       ├── logging_setup.py
+│       └── ...业务模块
+└── tests/
 </code></pre></div>
-<p>再看一个更深的例子：</p>
-<div class="highlight"><pre><span></span><code>learning-paths/engineering-foundation/stage-0/02-filesystem.md
-</code></pre></div>
-<p>它表示：</p>
-<div class="highlight"><pre><span></span><code>learning-paths 目录
-  -&gt; engineering-foundation 目录
-    -&gt; stage-0 目录
-      -&gt; 02-filesystem.md 文件
-</code></pre></div>
-<h3 id="_15">绝对路径<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p>绝对路径从电脑里的固定起点开始描述位置。</p>
-<p>macOS 或 Linux 上常见长这样：</p>
-<div class="highlight"><pre><span></span><code>/Users/your-name/Desktop/become_engineer/README.md
-</code></pre></div>
-<p>Windows 上常见长这样：</p>
-<div class="highlight"><pre><span></span><code>C:\Users\your-name\Desktop\become_engineer\README.md
-</code></pre></div>
-<p>绝对路径的特点是：不管你现在在哪个目录，它都能从系统固定起点找到目标。</p>
-<p>公开文档中通常不写个人电脑上的绝对路径，因为它会暴露私人路径，也不适合别人复用。</p>
-<h3 id="_16">相对路径<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<p>相对路径从“当前位置”开始描述位置。</p>
-<p>如果当前位置是项目根目录 <code>become_engineer/</code>，那么：</p>
-<div class="highlight"><pre><span></span><code>README.md
-docs/00_overview.md
-learning-paths/engineering-foundation/README.md
-</code></pre></div>
-<p>都是相对路径。</p>
-<p>相对路径的特点是：它依赖当前位置。当前位置变了，同一个相对路径可能指向不同位置，或者找不到目标。</p>
-<h2 id="_17">学习顺序<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
-<ol>
-<li>先区分文件和目录。</li>
-<li>再看扩展名，判断文件大概是什么类型。</li>
-<li>找到项目根目录。</li>
-<li>用路径描述一个文件的位置。</li>
-<li>判断路径是绝对路径还是相对路径。</li>
-</ol>
-<h2 id="_18">示例：读懂一个项目结构<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
-<p>看到这个结构：</p>
-<div class="highlight"><pre><span></span><code>my-project/
-├── README.md
-├── notes/
-│   └── day-1.md
-└── data/
-    └── sample.json
-</code></pre></div>
-<p>可以这样解释：</p>
-<ul>
-<li>项目根目录是 <code>my-project/</code>。</li>
-<li><code>README.md</code> 在项目根目录下。</li>
-<li><code>day-1.md</code> 在 <code>notes/</code> 目录下。</li>
-<li><code>sample.json</code> 在 <code>data/</code> 目录下。</li>
-<li><code>notes/day-1.md</code> 是从项目根目录出发的相对路径。</li>
-</ul>
-<h2 id="_19">实践练习<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
-<h3 id="1">练习 1：标出文件和目录<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
-<p>看下面的结构，写出哪些是目录，哪些是文件。</p>
-<div class="highlight"><pre><span></span><code>study-demo/
-├── README.md
-├── docs/
-│   └── plan.md
-├── notes/
-│   └── stage-0.md
-└── data/
-    └── example.json
-</code></pre></div>
-<p>需要产出：</p>
-<div class="highlight"><pre><span></span><code>目录：
-- 
-
-文件：
-- 
-</code></pre></div>
-<h3 id="2">练习 2：写出路径含义<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
-<p>解释下面三个路径分别表示什么。</p>
-<div class="highlight"><pre><span></span><code>README.md
-docs/plan.md
-notes/stage-0.md
-</code></pre></div>
-<p>需要写成类似这样：</p>
-<div class="highlight"><pre><span></span><code>docs/plan.md 表示 docs 目录里的 plan.md 文件。
-</code></pre></div>
-<h3 id="3">练习 3：判断相对路径和绝对路径<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
-<p>判断下面哪些是相对路径，哪些是绝对路径。</p>
-<div class="highlight"><pre><span></span><code>README.md
-docs/00_overview.md
-/Users/your-name/Desktop/become_engineer/README.md
-C:\Users\your-name\Desktop\become_engineer\README.md
-learning-paths/engineering-foundation/README.md
-</code></pre></div>
-<p>需要产出：</p>
-<div class="highlight"><pre><span></span><code>相对路径：
-- 
-
-绝对路径：
-- 
-</code></pre></div>
-<h3 id="4">练习 4：设计一个学习目录<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
-<p>设计一个自己的学习目录结构，至少包含：</p>
-<ul>
-<li>一个项目根目录。</li>
-<li>一个 <code>README.md</code>。</li>
-<li>一个放学习记录的目录。</li>
-<li>一个放资料索引的目录。</li>
-</ul>
-<p>示例格式：</p>
-<div class="highlight"><pre><span></span><code>my-learning/
-├── README.md
-├── notes/
-│   └── stage-0.md
-└── resources/
-    └── index.md
-</code></pre></div>
-<h2 id="_20">常见错误与排查<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<p>三个名称解决不同问题：</p>
 <table>
 <thead>
 <tr>
-<th>错误</th>
-<th>表现</th>
-<th>怎么排查</th>
+<th>名称</th>
+<th>本课值</th>
+<th>用途</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>分不清文件和目录</td>
-<td>把 <code>docs/</code> 当成文件，或把 <code>README.md</code> 当成目录</td>
-<td>看是否带 <code>/</code>，再看是否有扩展名</td>
+<td>分发项目名</td>
+<td><code>study-progress-reporter</code></td>
+<td>安装器和项目元数据使用，可含连字符</td>
 </tr>
 <tr>
-<td>不知道项目根目录</td>
-<td>文件随便放，后面找不到</td>
-<td>找最外层项目目录，通常里面有 <code>README.md</code></td>
+<td>导入包名</td>
+<td><code>study_progress_reporter</code></td>
+<td>Python <code>import</code> 使用，采用合法标识符</td>
 </tr>
 <tr>
-<td>把绝对路径写进公开文档</td>
-<td>文档里出现自己的电脑用户名或桌面路径</td>
-<td>改成从项目根目录出发的相对路径</td>
-</tr>
-<tr>
-<td>相对路径依赖当前位置</td>
-<td>同一个路径在不同位置解释不同</td>
-<td>先说清“当前位置是哪里”</td>
-</tr>
-<tr>
-<td>只看文件名不看扩展名</td>
-<td>不知道文件大概是什么类型</td>
-<td>先看 <code>.md</code>、<code>.py</code>、<code>.json</code> 等后缀</td>
+<td>控制台命令</td>
+<td><code>study-progress</code></td>
+<td>学习者在终端调用</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_21">完成标准<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
-<p>完成本节需要同时满足：</p>
+<p>包内导入写完整名称：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">study_progress_reporter.reporting</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_report</span>
+</code></pre></div>
+<p>本课不使用 <code>sys.path.append()</code> 修补导入。那会把运行位置和机器状态藏进源码，测试通过也无法证明安装后的使用者能导入。</p>
+<h2 id="3">3. 声明安装与入口<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p><code>pyproject.toml</code> 的最小边界：</p>
+<div class="highlight"><pre><span></span><code><span class="k">[build-system]</span>
+<span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;setuptools&gt;=68&quot;</span><span class="p">]</span>
+<span class="n">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;setuptools.build_meta&quot;</span>
+
+<span class="k">[project]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;study-progress-reporter&quot;</span>
+<span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.1.0&quot;</span>
+<span class="n">requires-python</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&gt;=3.11&quot;</span>
+<span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+
+<span class="k">[project.scripts]</span>
+<span class="n">study-progress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;study_progress_reporter.cli:main&quot;</span>
+
+<span class="k">[tool.setuptools.packages.find]</span>
+<span class="n">where</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p>从 Python 阶段作品目录执行：</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span>
+study-progress<span class="w"> </span>report
+python<span class="w"> </span>-m<span class="w"> </span>study_progress_reporter<span class="w"> </span>report
+</code></pre></div>
+<p>editable install 让源码修改在下一次进程启动时可见，适合开发；常规 wheel 安装用于验证发布物是否真的包含包。两者都不是上传 PyPI。</p>
+<p><code>__main__.py</code> 保持很薄：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">study_progress_reporter.cli</span><span class="w"> </span><span class="kn">import</span> <span class="n">main</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<h2 id="4-argparse">4. 让 argparse 只管理调用边界<a class="headerlink" href="#4-argparse" title="Permanent link">&para;</a></h2>
+<p>解析器定义两个子命令：</p>
+<div class="highlight"><pre><span></span><code>study-progress report [--tag TAG]
+study-progress audit [--output PATH]
+</code></pre></div>
+<p>观察帮助而不是猜参数：</p>
+<div class="highlight"><pre><span></span><code>study-progress<span class="w"> </span>--help
+study-progress<span class="w"> </span>report<span class="w"> </span>--help
+study-progress<span class="w"> </span>audit<span class="w"> </span>--help
+</code></pre></div>
+<p><code>main(argv)</code> 接收可选参数序列，使单元测试不必修改全局 <code>sys.argv</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">arguments</span> <span class="o">=</span> <span class="n">build_parser</span><span class="p">()</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
+    <span class="o">...</span>
+</code></pre></div>
+<p>主动修改：</p>
+<div class="highlight"><pre><span></span><code>study-progress<span class="w"> </span>report<span class="w"> </span>--tag<span class="w"> </span>工程
+</code></pre></div>
+<p>应只出现“工程复盘”；再次运行默认报告时，四条记录全部恢复，证明筛选没有修改共享样例。</p>
+<h2 id="5">5. 观察导入上下文失败<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p>下面命令只作为受控失败实验：</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>src/study_progress_reporter/cli.py
+</code></pre></div>
+<p>包内文件被当成普通脚本直接执行时，解释器不会自动把 <code>src</code> 当作已安装包根，绝对包导入可能出现 <code>ModuleNotFoundError</code>。不要把导入改回 <code>from reporting import ...</code>，也不要写机器路径。</p>
+<p>恢复并验证：</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>study_progress_reporter<span class="w"> </span>report
+study-progress<span class="w"> </span>report
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import study_progress_reporter; print(study_progress_reporter.__file__)&quot;</span>
+</code></pre></div>
+<p>这三条命令分别证明模块入口、控制台入口和已安装导入边界。</p>
+<h2 id="6">6. 迁移任务与完整验收<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p>独立新增 <code>--status</code>、<code>--min-progress</code> 或另一种只读筛选参数，要求：</p>
 <ul>
-<li>能说清文件、目录和扩展名的区别。</li>
-<li>能指出一个项目结构中的项目根目录。</li>
-<li>能解释至少 3 个路径的含义。</li>
-<li>能区分相对路径和绝对路径。</li>
-<li>能设计一个简单学习目录结构，并说明每个目录的用途。</li>
+<li>不改变无参数默认报告。</li>
+<li>不修改 <code>sample_records()</code> 返回的原始对象。</li>
+<li>在 <code>--help</code> 中有可理解描述。</li>
+<li>覆盖正常、无匹配和非法输入中的适用场景。</li>
+<li><code>study-progress</code> 与 <code>python -m</code> 结果一致。</li>
 </ul>
-<h2 id="_22">下一步<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
-<p>进入 <a href="../03-terminal-shell/">终端与 Shell</a>。下一节会开始用命令进入目录、查看文件和运行简单命令。</p>
+<p>验证命令：</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>src<span class="w"> </span>tests
+python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>-v
+python<span class="w"> </span>-m<span class="w"> </span>build
+</code></pre></div>
+<p>在干净临时虚拟环境安装 <code>dist/*.whl</code> 后，从项目目录外运行 <code>study-progress report</code>。这一步能捕获源码目录中“碰巧可导入”、但 wheel 漏包的问题。</p>
+<h2 id="ai">AI 协作任务<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h2>
+<p>AI 可以提出目录迁移和 parser 结构候选，学习者必须检查：</p>
+<ul>
+<li>是否把分发名、导入包名和控制台命令混为一谈。</li>
+<li>是否在 <code>__init__.py</code> 执行 CLI、写文件或配置日志。</li>
+<li>是否通过 <code>sys.path</code>、当前目录或未安装源码获得假成功。</li>
+<li>是否让 <code>argparse</code> 代码进入业务模块，导致导入时退出。</li>
+<li>是否改变默认报告、审计函数或 C++ 对照输出。</li>
+</ul>
+<h2 id="_7">常见错误与排查<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>可能原因</th>
+<th>恢复顺序</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ModuleNotFoundError</code></td>
+<td>尚未安装、用了错误解释器或直接运行包内文件</td>
+<td>检查 <code>python -m pip --version</code>，执行 editable install，再用正式入口</td>
+</tr>
+<tr>
+<td>命令找不到</td>
+<td>虚拟环境未激活或脚本安装到另一环境</td>
+<td>检查 <code>python</code> 与 <code>study-progress</code> 路径</td>
+</tr>
+<tr>
+<td>wheel 安装后缺少模块</td>
+<td>包发现未指向 <code>src</code></td>
+<td>检查 <code>[tool.setuptools.packages.find]</code> 并重建 wheel</td>
+</tr>
+<tr>
+<td>导入包就打印报告</td>
+<td>顶层执行了 CLI</td>
+<td>入口逻辑只留在 <code>main()</code> 和 <code>__main__.py</code></td>
+</tr>
+<tr>
+<td>测试只能在源码目录通过</td>
+<td>仍依赖当前目录导入</td>
+<td>从安装包导入，并在项目目录外做 smoke test</td>
+</tr>
+<tr>
+<td><code>--help</code> 没有子命令</td>
+<td>subparser 未注册或未设为必需</td>
+<td>检查 parser 构建函数和帮助测试</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_8">完成证据<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>src/study_progress_reporter</code> 可作为常规包导入，顶层导入无输出和文件副作用。</li>
+<li>editable install 与 wheel install 后，两个入口都能在项目目录外运行。</li>
+<li>默认报告保留 <code>87.1%</code> 和完整文本，Python/C++ 输出一致。</li>
+<li><code>report --tag</code> 与 <code>audit --output</code> 有自动测试，筛选不修改输入。</li>
+<li>参数语法错误由 argparse 输出帮助并返回 2；业务失败留给下一课形成完整诊断契约。</li>
+</ul>
+<h2 id="_9">来源与版本<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>来源</th>
+<th>用于核查</th>
+<th>日期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.python.org/3.11/tutorial/modules.html">Python 模块与包</a></td>
+<td><code>__main__</code>、包、搜索路径和包内引用</td>
+<td>2026-07-15</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3.11/using/cmdline.html#cmdoption-m">Python 命令行 <code>-m</code></a></td>
+<td>包的 <code>__main__.py</code> 执行语义</td>
+<td>2026-07-15</td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3.11/library/argparse.html">argparse</a></td>
+<td>参数、子命令、帮助与语法失败</td>
+<td>2026-07-15</td>
+</tr>
+<tr>
+<td><a href="https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/">PyPA src 布局说明</a></td>
+<td>src/flat 差异、editable 安装边界</td>
+<td>2026-07-15</td>
+</tr>
+<tr>
+<td><a href="https://packaging.python.org/en/latest/guides/writing-pyproject-toml/">编写 pyproject.toml</a></td>
+<td>项目元数据与 <code>[project.scripts]</code></td>
+<td>2026-07-15</td>
+</tr>
+</tbody>
+</table>
+<p>本地素材库的模块与包章节用于识别 <code>__name__</code>、导入方式和包概念等新手卡点；其中旧式发布步骤没有进入课程，现代安装与入口事实由 PyPA 官方资料和实际 wheel 测试重新建立。</p>
+<h2 id="_10">下一步<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>进入 <a href="../07-toml-configuration-logging-diagnostics/">TOML 配置、日志与可诊断执行契约</a>。下一课保持包和 CLI 入口稳定，让学习者能够显式提供配置、区分业务输出与诊断，并用退出码判断成功或失败。</p>
 
 
 
@@ -3120,7 +2999,7 @@ learning-paths/engineering-foundation/README.md
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../01-learning-method/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 学习方法">
+          <a href="../05-decorators-closures-custom-context-managers/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 装饰器、闭包与自定义上下文管理器">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3130,20 +3009,20 @@ learning-paths/engineering-foundation/README.md
                 上一页
               </span>
               <div class="md-ellipsis">
-                学习方法
+                装饰器、闭包与自定义上下文管理器
               </div>
             </div>
           </a>
         
         
           
-          <a href="../03-terminal-shell/" class="md-footer__link md-footer__link--next" aria-label="下一页: 终端与 Shell">
+          <a href="../07-toml-configuration-logging-diagnostics/" class="md-footer__link md-footer__link--next" aria-label="下一页: TOML 配置、日志与诊断">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                终端与 Shell
+                TOML 配置、日志与诊断
               </div>
             </div>
             <div class="md-footer__button md-icon">

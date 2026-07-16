@@ -122,6 +122,90 @@
   margin: 0;
 }
 
+/* Device and edge-intelligence route: dependency map without runtime JS. */
+.be-edge-flow {
+  display: grid;
+  gap: 0.55rem;
+  margin: 1rem 0 1.3rem;
+  padding: 1rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.5rem;
+  background: var(--be-surface);
+}
+
+.be-edge-flow__node,
+.be-edge-flow__outcome {
+  display: grid;
+  gap: 0.18rem;
+  align-content: center;
+  min-width: 0;
+  min-height: 3.2rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.4rem;
+  background: var(--md-default-bg-color);
+  text-align: center;
+}
+
+.be-edge-flow__node span,
+.be-edge-flow__outcome span,
+.be-edge-flow__outcome small {
+  color: var(--be-muted);
+  font-size: 0.58rem;
+  line-height: 1.45;
+}
+
+.be-edge-flow__node strong,
+.be-edge-flow__outcome strong {
+  color: var(--md-default-fg-color);
+  font-size: 0.7rem;
+  line-height: 1.45;
+}
+
+.be-edge-flow__node--required {
+  border-color: var(--be-required);
+  background: var(--be-required-bg);
+}
+
+.be-edge-flow__node--common {
+  border-color: var(--be-deepen);
+  background: var(--be-deepen-bg);
+}
+
+.be-edge-flow__arrow {
+  color: var(--be-muted);
+  font-size: 0.58rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.be-edge-flow__platforms {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.be-edge-flow__outcomes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-top: 0.25rem;
+  padding-top: 0.8rem;
+  border-top: 1px dashed var(--be-border);
+}
+
+.be-edge-flow__outcome {
+  border-color: var(--be-elective);
+  background: var(--be-elective-bg);
+}
+
+.be-edge-flow__outcome strong::before {
+  display: block;
+  margin-bottom: 0.15rem;
+  color: var(--be-elective);
+  content: "↓";
+}
+
 .be-roadmap-steps {
   margin: 1.2rem 0 1.4rem;
   padding: 0;
@@ -1701,6 +1785,15 @@ html.be-modal-open body {
 }
 
 @media screen and (max-width: 44.984375em) {
+  .be-edge-flow {
+    padding: 0.7rem;
+  }
+
+  .be-edge-flow__platforms,
+  .be-edge-flow__outcomes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .be-profile-route-table table,
   .be-content-assets-table table,
   .be-curriculum-plan-table table,

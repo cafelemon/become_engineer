@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://cafelemon.github.io/become_engineer/learning-paths/cs-core/">
       
       
-        <link rel="prev" href="../programming-languages/python-core/05-decorators-closures-custom-context-managers/">
+        <link rel="prev" href="../programming-languages/python-core/07-toml-configuration-logging-diagnostics/">
       
       
         <link rel="next" href="../../projects/">
@@ -1443,6 +1443,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1622,6 +1626,62 @@
     
   
     装饰器、闭包与自定义上下文管理器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../programming-languages/python-core/06-package-structure-installable-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    包结构、可安装入口与 CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../programming-languages/python-core/07-toml-configuration-logging-diagnostics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TOML 配置、日志与诊断
   
 
     
@@ -2207,7 +2267,7 @@
 
 <h1 id="cs">CS 核心<a class="headerlink" href="#cs" title="Permanent link">&para;</a></h1>
 <h2 id="_1">定位<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>CS 核心用于解释程序、计算机和系统为什么这样运行。它不只服务Web或面试，也为系统开发、AI工程、LLM应用和工业控制提供共同基础。</p>
+<p>CS 核心用于解释程序、计算机和系统为什么这样运行。它不只服务Web或面试，也为系统开发、AI工程、LLM应用和<a href="../device-edge-systems/">设备系统与边缘智能</a>提供共同基础。</p>
 <p>本主线里的“算法”指数据结构、复杂度和通用问题求解方法。机器学习、深度学习、NLP和强化学习中的模型算法属于<a href="../ai-foundation/">AI 基础</a>。</p>
 <h2 id="_2">在默认路线中的位置<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
@@ -2221,7 +2281,7 @@
 <li>想理解数据结构、算法和程序性能的人。</li>
 <li>准备工程师机考，同时不希望只背题的人。</li>
 <li>想深入操作系统、网络、数据库、分布式或系统安全的人。</li>
-<li>需要理解PLC、工业软件、设备通信或实时数据系统的人。</li>
+<li>需要理解 MCU、嵌入式 Linux、PLC、设备通信或实时数据系统的人。</li>
 </ul>
 <h2 id="_4">必修主干<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>必修主干负责建立共同概念和最小实践能力。学习者需要实现和验证基础结构，而不是只会说出名称。</p>
@@ -2376,12 +2436,12 @@
 </thead>
 <tbody>
 <tr>
-<td>工业控制与实时通信</td>
-<td>面向自动化设备、工业软件和实时数据系统</td>
-<td>C++工程化、系统编程、网络深化、并发和序列化完成后</td>
-<td>PLC、IEC 61131-3、Structured Text、Beckhoff/TwinCAT、ADS、DDS、仿真到硬件</td>
-<td>仿真PLC经ADS进入Python/C++服务并通过DDS分发；真实硬件单独验收</td>
-<td>不影响默认路线；跳过则不进入工业设备集成；已登记项目候选，厂商与DDS官方来源待按需登记</td>
+<td>设备系统与边缘智能</td>
+<td>面向 MCU、嵌入式 Linux、工业设备和端侧智能</td>
+<td>C++工程化、系统编程、网络深化、并发和序列化完成后；边缘智能另需 AI 基础</td>
+<td>共同基础后并行进入 MCU/RTOS、Linux/BSP 或工业控制，满足 AI 前置后进入边缘智能</td>
+<td>一级仿真实践；二级真机模块；三级 BSP、驱动或板端智能系统证据</td>
+<td>不影响默认路线；跳过不影响 Web、AI 深化或 LLM/Agent；课程与硬件待建设，详见专业路线总览</td>
 </tr>
 <tr>
 <td>分布式与高性能</td>
@@ -2415,7 +2475,7 @@
 <li>完成必修数据结构、算法、系统、网络和数据库最小核心。</li>
 <li>解锁Web，同时选择算法与机考或一个CS推荐深化模块并行推进。</li>
 <li>在真实项目遇到性能、网络、数据库和架构问题时回到相应深化模块。</li>
-<li>满足全部前置后再进入工业控制、分布式、编译或安全专业选修。</li>
+<li>满足全部前置后再进入设备系统与边缘智能、分布式、编译或安全专业选修。</li>
 </ol>
 <h2 id="_11">对应入口<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <ul>
@@ -2461,7 +2521,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../programming-languages/python-core/05-decorators-closures-custom-context-managers/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 装饰器、闭包与自定义上下文管理器">
+          <a href="../programming-languages/python-core/07-toml-configuration-logging-diagnostics/" class="md-footer__link md-footer__link--prev" aria-label="上一页: TOML 配置、日志与诊断">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2471,7 +2531,7 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                装饰器、闭包与自定义上下文管理器
+                TOML 配置、日志与诊断
               </div>
             </div>
           </a>

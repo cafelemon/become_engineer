@@ -1430,6 +1430,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1609,6 +1613,62 @@
     
   
     装饰器、闭包与自定义上下文管理器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../programming-languages/python-core/06-package-structure-installable-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    包结构、可安装入口与 CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../programming-languages/python-core/07-toml-configuration-logging-diagnostics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TOML 配置、日志与诊断
   
 
     
@@ -2120,10 +2180,27 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="专业选修">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        与设备系统和边缘智能的关系
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         项目主干
@@ -2134,7 +2211,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         推荐学习顺序
@@ -2145,7 +2222,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         对应入口
@@ -2183,7 +2260,7 @@
 <ul>
 <li>进入条件：Python工程化、CS必修主干和Web必修主干完成。</li>
 <li>必修主干完成后：解锁LLM/Agent必修主干，并能进入AI推荐深化。</li>
-<li>推荐深化和专业选修：不阻塞LLM/Agent，但部分专业方向互相依赖。</li>
+<li>推荐深化和专业选修：不阻塞LLM/Agent；强化学习单独突出，边缘智能还需要设备平台前置。</li>
 <li>完整关系见<a href="../curriculum-map/">完整课程地图</a>。</li>
 </ul>
 <h2 id="_3">适合人群<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
@@ -2192,6 +2269,7 @@
 <li>想理解NLP、Transformer和LLM前置原理的人。</li>
 <li>想继续进入强化学习、视觉、多模态或生成模型的人。</li>
 <li>想把模型实验推进到可复现工程的人。</li>
+<li>想在完成设备平台前置后，把模型部署到 MCU 或嵌入式 Linux 的人。</li>
 </ul>
 <h2 id="_4">必修主干<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <table>
@@ -2353,13 +2431,21 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_8">项目主干<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="_8">与设备系统和边缘智能的关系<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>AI 推荐深化继续覆盖优化、MLOps、鲁棒性和深度网络等完整能力，不因新增设备方向而改变。</li>
+<li>强化学习是独立专业选修；只有进入控制与决策场景时，才与设备平台能力汇合为智能控制实验。</li>
+<li>边缘智能要求 AI 基础与 MCU/RTOS 或嵌入式 Linux/BSP 中至少一条平台能力，不要求先完成强化学习。</li>
+<li>不选择设备方向时，学习者仍可继续 AI 推荐深化、其他 AI 专业选修或 LLM/Agent。</li>
+</ul>
+<p><a href="../device-edge-systems/">查看设备系统与边缘智能路线</a></p>
+<h2 id="_9">项目主干<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../../projects/structured-data-ml-system/">结构化数据机器学习系统</a>：承载机器学习、评估和实验工程。</li>
 <li><a href="../../projects/text-classification-evolution/">文本分类模型演进</a>：承载传统模型、深度学习和NLP/Transformer比较。</li>
 <li><a href="../../projects/reinforcement-learning-control-lab/">强化学习控制实验</a>：属于强化学习专业选修，不是LLM/Agent前置。</li>
 </ul>
-<h2 id="_9">推荐学习顺序<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h2 id="_10">推荐学习顺序<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <ol>
 <li>先完成数学、数据和可靠评估。</li>
 <li>用机器学习建立完整实验闭环。</li>
@@ -2367,7 +2453,7 @@
 <li>完成复现实验和误差分析后解锁LLM/Agent。</li>
 <li>根据目标选择推荐深化和专业选修，不要求一次铺开全部方向。</li>
 </ol>
-<h2 id="_10">对应入口<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h2 id="_11">对应入口<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <ul>
 <li>完整地图：<a href="../curriculum-map/">完整课程地图</a></li>
 <li>资源：../../resources/README.md</li>
