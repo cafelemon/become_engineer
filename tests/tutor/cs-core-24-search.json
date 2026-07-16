@@ -1,0 +1,11 @@
+[
+  { "query": "DSU 固定样例有哪些关键计数？", "step_id": "step-1", "expected": "dsu-fixed-baseline" }, { "query": "find5访问和压缩几次", "step_id": "step-1", "expected": "dsu-fixed-baseline" },
+  { "query": "并查集父数组是不是原图中的边？", "step_id": "step-2", "expected": "dsu-parent-forest" }, { "query": "parent数组能还原图路径吗", "step_id": "step-2", "expected": "dsu-parent-forest" },
+  { "query": "零元素和单元素并查集怎样定义？", "step_id": "step-2", "expected": "dsu-empty-single" }, { "query": "空并查集有几个分量", "step_id": "step-2", "expected": "dsu-empty-single" },
+  { "query": "find 的 visits 与 compressions 怎样计数？", "step_id": "step-3", "expected": "dsu-find-counting" }, { "query": "根算不算find访问", "step_id": "step-3", "expected": "dsu-find-counting" },
+  { "query": "按大小合并和平局规则是什么？", "step_id": "step-4", "expected": "dsu-union-by-size" }, { "query": "两棵同样大的树谁当根", "step_id": "step-4", "expected": "dsu-union-by-size" },
+  { "query": "重复 union 已连通元素会发生什么？", "step_id": "step-4", "expected": "dsu-repeated-union" }, { "query": "同根合并会减少分量吗", "step_id": "step-4", "expected": "dsu-repeated-union" },
+  { "query": "为什么 DSU 复杂度写成摊还 O(alpha(n))？", "step_id": "step-4", "expected": "dsu-amortized-complexity" }, { "query": "并查集是不是每次严格O1", "step_id": "step-4", "expected": "dsu-amortized-complexity" },
+  { "query": "越界与错误挂接实验怎样安全恢复？", "step_id": "step-5", "expected": "dsu-failure-safety" }, { "query": "find负索引怎么处理", "step_id": "step-5", "expected": "dsu-failure-safety" },
+  { "query": "groups 迁移任务怎样验收？", "step_id": "step-6", "expected": "dsu-groups-migration" }, { "query": "并查集分组输出怎么排序", "step_id": "step-6", "expected": "dsu-groups-migration" }
+]
