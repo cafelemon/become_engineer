@@ -21,6 +21,14 @@
          <lastmod>2026-07-16</lastmod>
     </url>
     <url>
+         <loc>https://cafelemon.github.io/become_engineer/exercises/cs-core/traceable-hash-lab/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/exercises/cs-core/traceable-linear-structures-lab/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
          <loc>https://cafelemon.github.io/become_engineer/exercises/llm-agent/safe-sales-tool-calling/</loc>
          <lastmod>2026-07-16</lastmod>
     </url>
@@ -70,6 +78,30 @@
     </url>
     <url>
          <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/05-dynamic-array-capacity-amortized-cost/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/06-singly-linked-list-nodes-ownership/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/07-stack-lifo-interface-underflow/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/08-queue-fifo-head-tail-invariants/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/09-hash-function-key-equality-collisions/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/10-separate-chaining-load-factor-rehash/</loc>
+         <lastmod>2026-07-16</lastmod>
+    </url>
+    <url>
+         <loc>https://cafelemon.github.io/become_engineer/learning-paths/cs-core/11-set-frequency-map-deterministic-output/</loc>
          <lastmod>2026-07-16</lastmod>
     </url>
     <url>
