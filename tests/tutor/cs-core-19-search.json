@@ -1,0 +1,11 @@
+[
+  { "query": "BFS 基线为什么只访问五个顶点？", "step_id": "step-1", "expected": "bfs-graph-baseline" }, { "query": "5和6为什么是unreachable", "step_id": "step-1", "expected": "bfs-graph-baseline" },
+  { "query": "BFS 为什么必须在入队时标记？", "step_id": "step-2", "expected": "mark-on-enqueue" }, { "query": "怎样避免顶点3重复入队", "step_id": "step-2", "expected": "mark-on-enqueue" },
+  { "query": "图 BFS 的 max_frontier 怎样统计？", "step_id": "step-2", "expected": "bfs-frontier-contract" }, { "query": "前沿峰值为什么是2", "step_id": "step-2", "expected": "bfs-frontier-contract" },
+  { "query": "BFS 距离和父节点在何时写入？", "step_id": "step-3", "expected": "distance-parent-contract" }, { "query": "起点和不可达的parent都为空怎么区分", "step_id": "step-3", "expected": "distance-parent-contract" },
+  { "query": "BFS 的 edge_checks 为什么是10？", "step_id": "step-3", "expected": "bfs-edge-checks" }, { "query": "无向边是不是只检查一次", "step_id": "step-3", "expected": "bfs-edge-checks" },
+  { "query": "BFS 最短路径结论需要什么条件？", "step_id": "step-4", "expected": "unweighted-shortest-path" }, { "query": "带权图能直接用BFS吗", "step_id": "step-4", "expected": "unweighted-shortest-path" },
+  { "query": "怎样从 parent 恢复 BFS 路径？", "step_id": "step-4", "expected": "path-reconstruction" }, { "query": "不可达目标应该返回什么", "step_id": "step-4", "expected": "path-reconstruction" },
+  { "query": "出队才标记会造成什么失败？", "step_id": "step-5", "expected": "mark-on-dequeue-failure" }, { "query": "为什么3会进队两次", "step_id": "step-5", "expected": "mark-on-dequeue-failure" },
+  { "query": "reachable_within 迁移怎样验收？", "step_id": "step-6", "expected": "reachable-within-migration" }, { "query": "负的max_distance怎么办", "step_id": "step-6", "expected": "reachable-within-migration" }
+]

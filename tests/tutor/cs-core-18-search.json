@@ -1,0 +1,11 @@
+[
+  { "query": "图实验基线要锁定哪些数字？", "step_id": "step-1", "expected": "graph-baseline" }, { "query": "邻接项为什么是12", "step_id": "step-1", "expected": "graph-baseline" },
+  { "query": "简单无向图契约排除了什么？", "step_id": "step-2", "expected": "simple-undirected-contract" }, { "query": "本实验允许空图吗", "step_id": "step-2", "expected": "simple-undirected-contract" },
+  { "query": "一般图遍历为什么需要 visited？", "step_id": "step-2", "expected": "graph-vs-tree" }, { "query": "树遍历不用visited图为什么要", "step_id": "step-2", "expected": "graph-vs-tree" },
+  { "query": "无向边怎样规范化后查重？", "step_id": "step-3", "expected": "canonical-edge" }, { "query": "2,0和0,2是不是同一条边", "step_id": "step-3", "expected": "canonical-edge" },
+  { "query": "怎样保证图输出不受输入顺序影响？", "step_id": "step-3", "expected": "input-copy-order" }, { "query": "调用方修改边列表会怎样", "step_id": "step-3", "expected": "input-copy-order" },
+  { "query": "邻接表和邻接矩阵怎样选择？", "step_id": "step-4", "expected": "adjacency-tradeoff" }, { "query": "邻接矩阵是不是总更快", "step_id": "step-4", "expected": "adjacency-tradeoff" },
+  { "query": "怎样验证无向邻接表示对称？", "step_id": "step-4", "expected": "undirected-symmetry" }, { "query": "一条无向边贡献几个邻接项", "step_id": "step-4", "expected": "undirected-symmetry" },
+  { "query": "非法图输入应该怎样失败？", "step_id": "step-5", "expected": "invalid-graph-failure" }, { "query": "越界自环重边测试怎么做", "step_id": "step-5", "expected": "invalid-graph-failure" },
+  { "query": "degree_sequence 迁移怎样验收？", "step_id": "step-6", "expected": "degree-sequence-migration" }, { "query": "孤立顶点的度数是多少", "step_id": "step-6", "expected": "degree-sequence-migration" }
+]

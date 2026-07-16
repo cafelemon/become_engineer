@@ -144,6 +144,9 @@ nav:
           - 二叉树形状、链接所有权与槽位表示: learning-paths/cs-core/15-binary-tree-shape-linked-ownership.md
           - 递归深度优先遍历、基线条件与调用深度: learning-paths/cs-core/16-recursive-dfs-traversal-call-frames.md
           - 迭代 DFS、BFS 与层级前沿: learning-paths/cs-core/17-iterative-dfs-bfs-frontier-levels.md
+          - 简单无向图、邻接表示与输入边界: learning-paths/cs-core/18-undirected-graph-adjacency-representations.md
+          - BFS、无权距离与最短路径: learning-paths/cs-core/19-bfs-unweighted-distances-shortest-paths.md
+          - DFS、连通分量与无向环检测: learning-paths/cs-core/20-dfs-connected-components-undirected-cycles.md
   - 项目:
       - 项目说明: projects/README.md
       - 项目主干规划: projects/project-roadmap.md
@@ -156,6 +159,7 @@ nav:
           - 可追踪哈希实验: exercises/cs-core/traceable-hash-lab/README.md
           - 可追踪查找与排序实验: exercises/cs-core/traceable-search-sort-lab/README.md
           - 可追踪树与遍历实验: exercises/cs-core/traceable-tree-traversal-lab/README.md
+          - 可追踪图遍历实验: exercises/cs-core/traceable-graph-traversal-lab/README.md
       - Python 内容分析工具: projects/python-content-analysis/README.md
       - 结构化数据机器学习系统: projects/structured-data-ml-system/README.md
       - 文本分类模型演进: projects/text-classification-evolution/README.md

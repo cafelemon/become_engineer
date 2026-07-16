@@ -1,0 +1,11 @@
+[
+  { "query": "全图 DFS 基线和单起点 BFS 有何差异？", "step_id": "step-1", "expected": "dfs-full-baseline" }, { "query": "为什么DFS访问7个BFS只访问5个", "step_id": "step-1", "expected": "dfs-full-baseline" },
+  { "query": "递归 DFS 应在什么时候标记 visited？", "step_id": "step-2", "expected": "dfs-mark-before-recursion" }, { "query": "环上怎样避免无限递归", "step_id": "step-2", "expected": "dfs-mark-before-recursion" },
+  { "query": "怎样让 DFS 输出顺序可复现？", "step_id": "step-2", "expected": "dfs-deterministic-order" }, { "query": "交换边输入顺序为什么结果不变", "step_id": "step-2", "expected": "dfs-deterministic-order" },
+  { "query": "全图 DFS 怎样收集连通分量？", "step_id": "step-3", "expected": "connected-components" }, { "query": "孤立顶点算分量吗", "step_id": "step-3", "expected": "connected-components" },
+  { "query": "全图 DFS 的 max_depth 怎样定义？", "step_id": "step-3", "expected": "dfs-depth-contract" }, { "query": "空图最大深度是多少", "step_id": "step-3", "expected": "dfs-depth-contract" },
+  { "query": "无向 DFS 检测环为什么要排除父边？", "step_id": "step-4", "expected": "undirected-cycle-parent" }, { "query": "v看到u为什么不算环", "step_id": "step-4", "expected": "undirected-cycle-parent" },
+  { "query": "为什么全图 DFS 是 Theta(V+E)？", "step_id": "step-4", "expected": "dfs-complexity-counts" }, { "query": "edge_checks为什么等于2E", "step_id": "step-4", "expected": "dfs-complexity-counts" },
+  { "query": "不排除父边会出现什么误判？", "step_id": "step-5", "expected": "parent-edge-failure" }, { "query": "路径图为什么被说成有环", "step_id": "step-5", "expected": "parent-edge-failure" },
+  { "query": "build_component_labels 迁移怎样验收？", "step_id": "step-6", "expected": "component-labels-migration" }, { "query": "分量标签按什么顺序编号", "step_id": "step-6", "expected": "component-labels-migration" }
+]
