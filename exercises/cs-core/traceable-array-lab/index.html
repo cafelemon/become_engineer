@@ -1704,6 +1704,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1799,6 +1805,90 @@
     
   
     操作计数、增长率与渐近复杂度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learning-paths/cs-core/03-string-utf8-byte-code-point-boundaries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    字符串、UTF-8 字节与码点边界
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learning-paths/cs-core/04-two-dimensional-grid-row-major-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二维网格、行优先布局与坐标边界
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learning-paths/cs-core/05-dynamic-array-capacity-amortized-cost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    动态数组容量、扩容成本与摊还分析
   
 
     
@@ -2385,6 +2475,9 @@
 <ul>
 <li><a href="../../../learning-paths/cs-core/01-sequence-interface-array-representation-boundaries/">序列接口、数组表示与安全边界</a></li>
 <li><a href="../../../learning-paths/cs-core/02-operation-count-growth-asymptotic-complexity/">操作计数、增长率与渐近复杂度</a></li>
+<li><a href="../../../learning-paths/cs-core/03-string-utf8-byte-code-point-boundaries/">字符串、UTF-8 字节与码点边界</a></li>
+<li><a href="../../../learning-paths/cs-core/04-two-dimensional-grid-row-major-layout/">二维网格、行优先布局与坐标边界</a></li>
+<li><a href="../../../learning-paths/cs-core/05-dynamic-array-capacity-amortized-cost/">动态数组容量、扩容成本与摊还分析</a></li>
 </ul>
 <h2 id="_3">公开契约<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
@@ -2392,6 +2485,9 @@
 <li><code>replace_at_copy</code> 返回修改后的副本，调用者输入保持不变。</li>
 <li><code>linear_search</code> 返回第一个匹配位置和精确比较次数；缺失目标比较 <code>n</code> 次。</li>
 <li><code>build_growth_rows</code> 生成常量访问、线性扫描和两两比较的确定性步骤数。</li>
+<li><code>analyze_utf8</code> 严格验证 UTF-8，并分别统计字节、码点、ASCII 和多字节码点。</li>
+<li><code>checked_grid_at</code> 与 <code>sum_grid_row</code> 使用扁平行优先表示，并校验形状和坐标。</li>
+<li><code>simulate_growth</code> 使用公开的确定性倍增规则记录追加、复制和总步骤，不代表标准库实际增长因子。</li>
 <li>两个程序的 UTF-8 标准输出逐字一致。</li>
 </ul>
 <h2 id="python">Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h2>
@@ -2399,6 +2495,9 @@
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>python
 python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span>
 python<span class="w"> </span>-m<span class="w"> </span>traceable_array_lab
+python<span class="w"> </span>-m<span class="w"> </span>traceable_array_lab<span class="w"> </span>text
+python<span class="w"> </span>-m<span class="w"> </span>traceable_array_lab<span class="w"> </span>grid
+python<span class="w"> </span>-m<span class="w"> </span>traceable_array_lab<span class="w"> </span>capacity
 python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>-v
 python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>src<span class="w"> </span>tests
 </code></pre></div>
@@ -2409,6 +2508,9 @@ cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>
 cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>--config<span class="w"> </span>Debug
 ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class="w"> </span>--build-config<span class="w"> </span>Debug<span class="w"> </span>--output-on-failure
 ./build/traceable_array_lab
+./build/traceable_array_lab<span class="w"> </span>text
+./build/traceable_array_lab<span class="w"> </span>grid
+./build/traceable_array_lab<span class="w"> </span>capacity
 </code></pre></div>
 <h2 id="_4">输出<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>可追踪数组实验
@@ -2424,6 +2526,7 @@ n | 常量访问 | 线性扫描 | 两两比较
 32 | 1 | 32 | 496
 </code></pre></div>
 <p>计时只能辅助观察环境噪声，不属于正确性测试，也不用于比较语言胜负。</p>
+<p>无参数与 <code>baseline</code> 模式继续输出上面的 V2.1 报告。其余模式各自输出独立、可逐字比较的 UTF-8、二维网格或容量事件报告；未知模式返回退出码 2。</p>
 
 
 
