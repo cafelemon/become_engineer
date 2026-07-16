@@ -1,15 +1,15 @@
 from collections.abc import Iterable, Sequence
 from pathlib import Path
 
-from analysis import (
+from study_progress_reporter.analysis import (
     clone_record,
     iter_by_tag,
     iter_progress_rows,
     sort_by_progress,
     summarize,
 )
-from models import StudyRecord
-from resources import staged_output_path
+from study_progress_reporter.models import StudyRecord
+from study_progress_reporter.resources import staged_output_path
 
 
 def _format_names(records: Sequence[StudyRecord]) -> str:
@@ -25,9 +25,7 @@ def build_report(records: Iterable[StudyRecord]) -> str:
     basic_records = list(iter_by_tag(snapshot, "基础"))
     total_target = summary.total_target_hours
     overall_progress = (
-        summary.total_completed_hours / total_target
-        if total_target > 0.0
-        else 0.0
+        summary.total_completed_hours / total_target if total_target > 0.0 else 0.0
     )
 
     lines = [
@@ -40,9 +38,7 @@ def build_report(records: Iterable[StudyRecord]) -> str:
     ]
 
     for course_name, progress, status in iter_progress_rows(sorted_records):
-        lines.append(
-            f"- {course_name}：{progress * 100.0:.1f}%（{status}）"
-        )
+        lines.append(f"- {course_name}：{progress * 100.0:.1f}%（{status}）")
 
     lines.extend(["", "状态统计："])
     for status in sorted(summary.status_counts):
@@ -54,9 +50,7 @@ def build_report(records: Iterable[StudyRecord]) -> str:
     return "\n".join(lines)
 
 
-def write_audit_snapshot(
-    records: Iterable[StudyRecord], output_path: Path
-) -> bool:
+def write_audit_snapshot(records: Iterable[StudyRecord], output_path: Path) -> bool:
     """Write an audit snapshot without exposing a partially written file."""
 
     snapshot = [record.clone() for record in records]
@@ -72,3 +66,4 @@ def write_audit_snapshot(
     except OSError:
         return False
     return True
+

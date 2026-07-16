@@ -1,0 +1,20 @@
+[
+  {"query": "包结构迁移前要锁定哪些基线？", "step_id": "step-1", "expected": "package-baseline-contract"},
+  {"query": "为什么先保存16项测试和87.1%", "step_id": "step-1", "expected": "package-baseline-contract"},
+  {"query": "src 布局解决什么问题？", "step_id": "step-2", "expected": "src-layout-boundary"},
+  {"query": "源码放src为什么必须先安装", "step_id": "step-2", "expected": "src-layout-boundary"},
+  {"query": "分发名、导入包名和命令名有什么区别？", "step_id": "step-2", "expected": "package-naming-layers"},
+  {"query": "连字符和下划线分别放哪里", "step_id": "step-2", "expected": "package-naming-layers"},
+  {"query": "editable install 和 wheel 验证各证明什么？", "step_id": "step-3", "expected": "editable-install-entry"},
+  {"query": "pip install -e以后为什么还要测wheel", "step_id": "step-3", "expected": "editable-install-entry"},
+  {"query": "python -m 和控制台脚本怎样保持一致？", "step_id": "step-3", "expected": "module-console-equivalence"},
+  {"query": "__main__.py应该调用谁", "step_id": "step-3", "expected": "module-console-equivalence"},
+  {"query": "argparse CLI 层应该负责什么？", "step_id": "step-4", "expected": "argparse-subcommand-boundary"},
+  {"query": "report和audit子命令为什么让main接收argv", "step_id": "step-4", "expected": "argparse-subcommand-boundary"},
+  {"query": "为什么直接运行 cli.py 会导入失败？", "step_id": "step-5", "expected": "direct-file-import-failure"},
+  {"query": "直接执行包内文件遇到ModuleNotFoundError怎么恢复", "step_id": "step-5", "expected": "direct-file-import-failure"},
+  {"query": "为什么导入包时不能启动 CLI？", "step_id": "step-5", "expected": "import-side-effect-boundary"},
+  {"query": "__init__里打印报告有什么问题", "step_id": "step-5", "expected": "import-side-effect-boundary"},
+  {"query": "包与 CLI 迁移任务怎样验收？", "step_id": "step-6", "expected": "package-cli-migration"},
+  {"query": "新增筛选参数后要保存哪些证据", "step_id": "step-6", "expected": "package-cli-migration"}
+]

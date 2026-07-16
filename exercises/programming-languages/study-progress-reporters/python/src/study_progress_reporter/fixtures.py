@@ -1,4 +1,4 @@
-from models import StudyRecord
+from study_progress_reporter.models import StudyRecord
 
 
 def sample_records() -> list[StudyRecord]:
@@ -8,3 +8,4 @@ def sample_records() -> list[StudyRecord]:
         StudyRecord("算法练习", 8.0, 4.0, ["算法", "基础", "基础"]),
         StudyRecord("工程复盘", 5.0, 7.0, ["工程", "复盘"]),
     ]
+

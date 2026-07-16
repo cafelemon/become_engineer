@@ -6,19 +6,19 @@ from itertools import islice
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
-from analysis import (
+from study_progress_reporter.analysis import (
     filter_by_tag,
     iter_by_tag,
     iter_progress_rows,
     sort_by_progress,
     summarize,
 )
-from fixtures import sample_records
-from instrumentation import trace_calls
-from main import main
-from models import StudyRecord
-from reporting import build_report, write_audit_snapshot
-from resources import staged_output_path
+from study_progress_reporter.cli import main
+from study_progress_reporter.fixtures import sample_records
+from study_progress_reporter.instrumentation import trace_calls
+from study_progress_reporter.models import StudyRecord
+from study_progress_reporter.reporting import build_report, write_audit_snapshot
+from study_progress_reporter.resources import staged_output_path
 
 
 class ReporterTests(unittest.TestCase):
@@ -223,7 +223,7 @@ class ReporterTests(unittest.TestCase):
         self.assertEqual(build_report(iter(sample_records())), expected)
         output = io.StringIO()
         with redirect_stdout(output):
-            exit_code = main()
+            exit_code = main(["report"])
         self.assertEqual(exit_code, 0)
         self.assertEqual(output.getvalue(), expected + "\n")
 

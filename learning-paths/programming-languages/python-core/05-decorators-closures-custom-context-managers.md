@@ -402,4 +402,4 @@ assert not pending_path.exists()
 
 ## 下一步
 
-Python 核心语言的函数、对象、迭代和资源边界已经形成一条连续成果线。下一节进入 **包结构、CLI、配置与日志**，把当前多模块报告器组织为可以从命令行稳定运行、诊断和发布的最小工程；本节不提前引入 `ContextDecorator`、`ExitStack`、异步装饰器或 `asynccontextmanager`。
+Python 核心语言的函数、对象、迭代和资源边界已经形成一条连续成果线。下一节进入 [包结构、可安装入口与 CLI](06-package-structure-installable-cli.md)，把当前多模块报告器组织为可以从命令行稳定运行的最小工具；本节不提前引入配置、日志、`ContextDecorator`、`ExitStack` 或异步上下文管理。

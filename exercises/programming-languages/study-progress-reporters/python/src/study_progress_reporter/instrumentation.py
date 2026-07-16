@@ -20,9 +20,7 @@ def trace_calls(
             try:
                 result = function(*args, **kwargs)
             except Exception as error:
-                event_sink(
-                    f"失败:{function.__name__}:{type(error).__name__}"
-                )
+                event_sink(f"失败:{function.__name__}:{type(error).__name__}")
                 raise
             event_sink(f"完成:{function.__name__}")
             return result
@@ -30,3 +28,4 @@ def trace_calls(
         return wrapper
 
     return decorate
+

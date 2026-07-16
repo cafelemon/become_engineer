@@ -1,6 +1,6 @@
 from collections.abc import Iterable, Iterator
 
-from models import ProgressRow, StudyRecord, StudySummary
+from study_progress_reporter.models import ProgressRow, StudyRecord, StudySummary
 
 
 def clone_record(record: StudyRecord) -> StudyRecord:
@@ -43,26 +43,21 @@ def sort_by_progress(records: Iterable[StudyRecord]) -> list[StudyRecord]:
     )
 
 
-def iter_by_tag(
-    records: Iterable[StudyRecord], tag: str
-) -> Iterator[StudyRecord]:
+def iter_by_tag(records: Iterable[StudyRecord], tag: str) -> Iterator[StudyRecord]:
     for record in records:
         if tag in record.tags:
             yield clone_record(record)
 
 
-def filter_by_tag(
-    records: Iterable[StudyRecord], tag: str
-) -> list[StudyRecord]:
+def filter_by_tag(records: Iterable[StudyRecord], tag: str) -> list[StudyRecord]:
     return list(iter_by_tag(records, tag))
 
 
-def iter_progress_rows(
-    records: Iterable[StudyRecord],
-) -> Iterator[ProgressRow]:
+def iter_progress_rows(records: Iterable[StudyRecord]) -> Iterator[ProgressRow]:
     for record in records:
         yield (
             record.course_name,
             calculate_progress(record),
             build_status(record),
         )
+

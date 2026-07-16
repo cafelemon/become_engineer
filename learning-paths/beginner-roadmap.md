@@ -85,9 +85,9 @@
         </a>
       </li>
       <li class="be-roadmap-step" data-state="elective">
-        <a class="be-roadmap-stage" href="#stage-cs-core">
+        <a class="be-roadmap-stage" href="../device-edge-systems/">
           <span class="be-roadmap-number" aria-hidden="true">B</span>
-          <span class="be-roadmap-copy"><strong>工业控制与实时通信</strong><small>完成 C++、操作系统、网络和并发基础后进入</small></span>
+          <span class="be-roadmap-copy"><strong>设备系统与边缘智能</strong><small>MCU/RTOS、Linux/BSP、工业控制与端侧 AI，按多重前置进入</small></span>
           <span class="be-roadmap-status">可选</span>
         </a>
       </li>
@@ -101,7 +101,7 @@
       <li class="be-roadmap-step" data-state="elective">
         <a class="be-roadmap-stage" href="#stage-llm-agent">
           <span class="be-roadmap-number" aria-hidden="true">D</span>
-          <span class="be-roadmap-copy"><strong>其他专业方向</strong><small>多模态、Text2SQL、视觉、金融 AI 与本地推理按前置选择</small></span>
+          <span class="be-roadmap-copy"><strong>AI 推荐深化与其他选修</strong><small>优化、MLOps、鲁棒性、视觉、多模态与其他方向按前置选择</small></span>
           <span class="be-roadmap-status">可选</span>
         </a>
       </li>
@@ -140,7 +140,7 @@
 
 ## Python / C++ 双主修 { #stage-dual-language }
 
-Python 负责快速实现与数据应用，C++ 帮助理解编译、类型、资源和性能。容器与迭代、对象与资源两组能力已经完成基础配对，Python 也已补充类型安全装饰器和分阶段资源提交；下一步进入包结构、CLI、配置与日志。两条能力线会在后续项目中持续深化，Java可作为补充语言选学。
+Python 负责快速实现与数据应用，C++ 帮助理解编译、类型、资源和性能。容器与迭代、对象与资源两组能力已经完成基础配对；Python 进一步完成类型安全包装、可安装包、CLI、显式 TOML 配置和日志诊断，形成最小工程化闭环。两条能力线会在后续项目中持续深化，Java可作为补充语言选学。
 
 [进入 C++ 核心语言](programming-languages/cpp-core/README.md){ .md-button }
 [进入 Python 核心语言](programming-languages/python-core/README.md){ .md-button }

@@ -36,9 +36,9 @@
 ## 推荐学习顺序
 
 1. 先用Python掌握变量、控制流、函数、数据结构和调试。
-2. 完成Python起步后先用[从源文件到可执行程序](cpp-core/01-build-types-io.md)启动C++，再完成Python[类型提示、接口与静态检查认知](python-core/01-type-hints-interfaces-static-checking.md)、C++[函数、声明与程序组织](cpp-core/02-functions-declarations-program-organization.md)、Python[可维护函数接口、协议与模块边界](python-core/02-maintainable-function-interfaces-protocols-modules.md)、C++[头文件、源文件与最小CMake工程](cpp-core/03-headers-sources-cmake.md)、[STL容器、迭代器与基础算法](cpp-core/04-stl-containers-iterators-algorithms.md)、Python[容器协议、迭代器与生成器](python-core/03-iterables-iterators-generators.md)、C++[对象、引用、指针、生命周期与RAII](cpp-core/05-objects-references-pointers-lifetime-raii.md)、Python[数据模型、数据类与上下文管理](python-core/04-data-model-dataclasses-context-managers.md)和[装饰器、闭包与自定义上下文管理器](python-core/05-decorators-closures-custom-context-managers.md)，不要求机械轮流。
+2. 完成Python起步后先用[从源文件到可执行程序](cpp-core/01-build-types-io.md)启动C++，再完成Python[类型提示、接口与静态检查认知](python-core/01-type-hints-interfaces-static-checking.md)、C++[函数、声明与程序组织](cpp-core/02-functions-declarations-program-organization.md)、Python[可维护函数接口、协议与模块边界](python-core/02-maintainable-function-interfaces-protocols-modules.md)、C++[头文件、源文件与最小CMake工程](cpp-core/03-headers-sources-cmake.md)、[STL容器、迭代器与基础算法](cpp-core/04-stl-containers-iterators-algorithms.md)、Python[容器协议、迭代器与生成器](python-core/03-iterables-iterators-generators.md)、C++[对象、引用、指针、生命周期与RAII](cpp-core/05-objects-references-pointers-lifetime-raii.md)、Python[数据模型、数据类与上下文管理](python-core/04-data-model-dataclasses-context-managers.md)、[装饰器与自定义上下文管理器](python-core/05-decorators-closures-custom-context-managers.md)、[包结构与 CLI](python-core/06-package-structure-installable-cli.md)和[TOML 配置与日志](python-core/07-toml-configuration-logging-diagnostics.md)，不要求机械轮流。
 3. 核心语言和基础工程化达到验收后进入CS最小核心，不等待所有高级主题学完。
-4. 在Web、AI和工业控制等项目中继续学习并发、网络、运行原理、性能和领域接口。
+4. 在Web、AI和设备系统等项目中继续学习并发、网络、运行原理、性能和领域接口。
 5. Java在双主修基础后作为完整补充路线。
 6. JavaScript/TypeScript在Web阶段进入，不与前期双主修争抢起步时间。
 
@@ -46,7 +46,7 @@
 
 - Python：[Python 内容分析工具](../../projects/python-content-analysis/README.md)
 - Python 数据与 AI：[结构化数据机器学习系统](../../projects/structured-data-ml-system/README.md)
-- Python/C++ 工业通信：工业控制与实时通信项目已登记为高级候选，课程和项目目录尚未建设。
+- Python/C++ 设备系统：MCU/RTOS、嵌入式 Linux/BSP 和工业控制已纳入跨主线专业领域，课程、硬件和项目目录尚未建设。
 - C++本地推理：`llama.cpp` 只作为后期部署与性能方向，不代替C++课程。
 - Java：来源已登记，作为补充主流语言建设。
 
@@ -57,7 +57,9 @@
 - Python深化入口：[Python核心语言](python-core/README.md)。
 - C++解锁：Python起步完成，能够独立编写、检查和维护一个小型程序；当前入口为[C++核心语言](cpp-core/README.md)。
 - CS最小核心解锁：Python可完成带测试和错误处理的小工具，C++可完成CMake多文件程序并使用STL和RAII。
-- 工业控制与实时通信解锁：完成C++基础工程化，以及操作系统、并发、网络、数据类型和序列化基础。
+- 设备系统共同基础解锁：完成 C++ 基础工程化，以及操作系统、并发、网络、数据类型和序列化基础；边缘智能另需 AI 基础。
+
+完整能力树见[设备系统与边缘智能](../device-edge-systems/README.md)。
 
 详细顺序见[小白统一学习路线](../beginner-roadmap.md)。
 

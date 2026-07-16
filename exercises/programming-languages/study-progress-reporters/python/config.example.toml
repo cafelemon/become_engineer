@@ -1,0 +1,8 @@
+[report]
+tag = "基础"
+
+[audit]
+output = "audit.txt"
+
+[logging]
+level = "INFO"

@@ -13,3 +13,4 @@ def staged_output_path(output_path: Path) -> Iterator[Path]:
         pending_path.replace(output_path)
     finally:
         pending_path.unlink(missing_ok=True)
+

@@ -1,0 +1,20 @@
+[
+  {"query": "stdout、stderr 和退出码各表达什么？", "step_id": "step-1", "expected": "stream-exit-baseline"},
+  {"query": "业务结果诊断信息和进程状态怎么分", "step_id": "step-1", "expected": "stream-exit-baseline"},
+  {"query": "为什么配置只通过 --config 显式读取？", "step_id": "step-2", "expected": "explicit-toml-loading"},
+  {"query": "tomllib为什么用二进制打开且不自动找配置", "step_id": "step-2", "expected": "explicit-toml-loading"},
+  {"query": "TOML 解析成功后为什么还要校验？", "step_id": "step-3", "expected": "toml-business-validation"},
+  {"query": "tag等于3或出现未知字段应该怎样", "step_id": "step-3", "expected": "toml-business-validation"},
+  {"query": "配置优先级如何固定和测试？", "step_id": "step-3", "expected": "config-precedence-contract"},
+  {"query": "命令行TOML默认值谁覆盖谁", "step_id": "step-3", "expected": "config-precedence-contract"},
+  {"query": "为什么使用命名 logger 而不是到处 basicConfig？", "step_id": "step-4", "expected": "named-logger-boundary"},
+  {"query": "库模块配置root日志导致handler重复怎么办", "step_id": "step-4", "expected": "named-logger-boundary"},
+  {"query": "开启 INFO 日志后怎样保证报告不变？", "step_id": "step-4", "expected": "stdout-stderr-separation"},
+  {"query": "日志为什么进stderr且默认成功安静", "step_id": "step-4", "expected": "stdout-stderr-separation"},
+  {"query": "坏 TOML 和未知字段怎样失败？", "step_id": "step-5", "expected": "malformed-config-failure"},
+  {"query": "TOMLDecodeError为什么返回1并写stderr", "step_id": "step-5", "expected": "malformed-config-failure"},
+  {"query": "审计写入失败怎样保护旧文件？", "step_id": "step-5", "expected": "audit-failure-contract"},
+  {"query": "缺失父目录后不能留下tmp且退出码为1", "step_id": "step-5", "expected": "audit-failure-contract"},
+  {"query": "新增配置项怎样完成迁移验收？", "step_id": "step-6", "expected": "config-logging-migration"},
+  {"query": "配置项默认值CLI覆盖错误类型要测哪些", "step_id": "step-6", "expected": "config-logging-migration"}
+]

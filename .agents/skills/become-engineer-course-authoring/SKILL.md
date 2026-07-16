@@ -21,7 +21,8 @@ description: Create or refactor official Become Engineer lessons into task-drive
 4. 为该课创建 `site-src/data/tutor/<lesson_id>.json`：至少 8 张任务专属卡，使用两层提示、局部示例、主动展开的答案和正文锚点来源。不得使用通用或占位提示。
 5. 为该课创建 `tests/tutor/<lesson_id>-search.json`：至少 16 条标准问法和自然改写，覆盖当前任务、关键概念、主动修改、典型错误、验收和下一步。
 6. 新建正式课程时，同步更新导航、课程说明、上一/下一课、阶段作品关联、学习路线及受影响的进度和验收记录；重构时保持导航与 URL 稳定。
-7. 运行本 Skill 的验证清单；失败时先修正文锚点、知识卡或测试问法，再处理视觉细节。
+7. 课程包含求职训练、深化挑战或项目证据问答时，阅读 `references/recruiting-reference-v2.md`，通过查询脚本取得脱敏能力信号；不得直接读取 raw 外部素材。
+8. 运行本 Skill 的验证清单；失败时先修正文锚点、知识卡或测试问法，再处理视觉细节。
 
 ## 助教与内容边界
 
@@ -29,6 +30,7 @@ description: Create or refactor official Become Engineer lessons into task-drive
 - 卡片必须先帮助学习者诊断，再逐层给提示；完整解释只在学习者主动展开时出现。
 - 不执行未定义行为来展示错误。对悬空引用、空指针、权限或资源类风险，使用编译诊断、受控失败、测试或安全替代方案。
 - AI 可以协助提出实现与诊断候选；学习者必须解释边界、主动修改代码并运行验证。
+- V2 只提供方向、高频证据和教学优先级。任何原创机考或面试任务都必须重新设计场景、失败路径、测试与验收，不能把外部信号改写成近似原题。
 
 ## 验证
 
@@ -45,5 +47,6 @@ git diff --check
 ## 参考资料
 
 - `references/course-contract.md`：课程、助教、数据文件和接入的完整约束。
+- `references/recruiting-reference-v2.md`：求职信号查询、频率解释和原创转化边界。
 - `templates/course_lesson_template.md`：可复用的正文结构。
 - `docs/08_content_standard.md`：课程内容规范与来源要求。

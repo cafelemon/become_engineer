@@ -123,6 +123,8 @@ nav:
           - 容器协议、迭代器与生成器: learning-paths/programming-languages/python-core/03-iterables-iterators-generators.md
           - 数据模型、数据类与上下文管理: learning-paths/programming-languages/python-core/04-data-model-dataclasses-context-managers.md
           - 装饰器、闭包与自定义上下文管理器: learning-paths/programming-languages/python-core/05-decorators-closures-custom-context-managers.md
+          - 包结构、可安装入口与 CLI: learning-paths/programming-languages/python-core/06-package-structure-installable-cli.md
+          - TOML 配置、日志与诊断: learning-paths/programming-languages/python-core/07-toml-configuration-logging-diagnostics.md
       - CS 核心说明: learning-paths/cs-core/README.md
   - 项目:
       - 项目说明: projects/README.md

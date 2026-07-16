@@ -38,3 +38,4 @@ class StudySummary:
     total_completed_hours: float
     status_counts: dict[str, int]
     unique_tags: set[str]
+
