@@ -1755,6 +1755,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -2451,6 +2457,90 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="24-disjoint-set-union-path-compression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    并查集、按大小合并与路径压缩
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="25-kruskal-minimum-spanning-forest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kruskal、环检测与最小生成森林
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="26-lazy-prim-cut-frontier-stale-edges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lazy Prim、割边前沿与过期边
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2720,6 +2810,8 @@
       
         
       
+        
+      
     
     
     
@@ -2940,6 +3032,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exercises/cs-core/traceable-spanning-forest-lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    可追踪生成森林实验
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3136,7 +3256,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        在默认路线中的位置
+        在共享能力树中的位置
       
     </span>
   </a>
@@ -3169,12 +3289,12 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        必修主干
+        目标分层（待按地图重构）
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="必修主干">
+    <nav class="md-nav" aria-label="目标分层（待按地图重构）">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3208,12 +3328,12 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        推荐深化
+        能力深化
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="推荐深化">
+    <nav class="md-nav" aria-label="能力深化">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3236,7 +3356,7 @@
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        专业选修
+        专业与求职方向
       
     </span>
   </a>
@@ -3289,11 +3409,12 @@
 <h2 id="_1">定位<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>CS 核心用于解释程序、计算机和系统为什么这样运行。它不只服务Web或面试，也为系统开发、AI工程、LLM应用和<a href="../device-edge-systems/">设备系统与边缘智能</a>提供共同基础。</p>
 <p>本主线里的“算法”指数据结构、复杂度和通用问题求解方法。机器学习、深度学习、NLP和强化学习中的模型算法属于<a href="../ai-foundation/">AI 基础</a>。</p>
-<h2 id="_2">在默认路线中的位置<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_2">在共享能力树中的位置<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
-<li>进入条件：Python起步完成，Python/C++达到核心语言和基础工程化验收。</li>
-<li>必修主干完成后：解锁Web必修主干，并与CS推荐深化并行。</li>
-<li>推荐深化和专业选修：不阻塞Web、AI或LLM/Agent默认路线，但可以成为更深选修的前置。</li>
+<li>进入条件：Python 起步完成；C++ 不是进入 CS 起步的强制前置。</li>
+<li>当前 26 节均可访问，但整体标记为“已开放待重分层”：前四课是 CS 起步候选，第 5–20 课是共同算法基础候选，第 21–26 课是算法核心候选。</li>
+<li>操作系统、网络与数据库核心尚未建设；系统工程和设备方向会另外要求 C++ 或 C 语言前置。</li>
+<li>算法深化与求职机考按方向和画像叠加，不阻塞应用、AI 模型或 LLM 应用方向。</li>
 <li>完整关系见<a href="../curriculum-map/">完整课程地图</a>。</li>
 </ul>
 <h2 id="_3">适合人群<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
@@ -3428,10 +3549,25 @@
 <td><a href="23-weighted-relaxation-dijkstra-stale-entries/">带权图松弛、Dijkstra 与过期队列项</a></td>
 <td>非负权验证、严格松弛与懒惰重复项</td>
 </tr>
+<tr>
+<td>24</td>
+<td><a href="24-disjoint-set-union-path-compression/">并查集、按大小合并与路径压缩</a></td>
+<td>父森林、完整路径压缩与确定性按大小合并</td>
+</tr>
+<tr>
+<td>25</td>
+<td><a href="25-kruskal-minimum-spanning-forest/">Kruskal、环检测与最小生成森林</a></td>
+<td>确定边序、DSU 环拒绝与断开图森林</td>
+</tr>
+<tr>
+<td>26</td>
+<td><a href="26-lazy-prim-cut-frontier-stale-edges/">Lazy Prim、割边前沿与过期边</a></td>
+<td>割边堆、分量重启与双算法对照</td>
+</tr>
 </tbody>
 </table>
-<p>前五课共用<a href="../../exercises/cs-core/traceable-array-lab/">可追踪数组实验</a>，完成序列表示闭环；第 6 至 8 课共用<a href="../../exercises/cs-core/traceable-linear-structures-lab/">可追踪线性结构实验</a>，完成节点所有权、LIFO 与 FIFO 基础闭环；第 9 至 11 课共用<a href="../../exercises/cs-core/traceable-hash-lab/">可追踪哈希实验</a>，完成哈希、分离链接与集合应用基础闭环；第 12 至 14 课共用<a href="../../exercises/cs-core/traceable-search-sort-lab/">可追踪查找与排序实验</a>，完成有序边界、基础比较排序和稳定归并闭环；第 15 至 17 课共用<a href="../../exercises/cs-core/traceable-tree-traversal-lab/">可追踪树与遍历实验</a>，完成树形、递归 DFS 与显式前沿闭环；第 18 至 20 课共用<a href="../../exercises/cs-core/traceable-graph-traversal-lab/">可追踪图遍历实验</a>，完成简单无向图表示、无权 BFS 与全图 DFS 闭环；第 21 至 23 课共用<a href="../../exercises/cs-core/traceable-priority-shortest-path-lab/">可追踪优先队列与最短路实验</a>，完成最小堆、稳定优先队列与非负权 Dijkstra 闭环。当前 CS 主干处于建设中；系统、网络和数据库正文尚未开放。</p>
-<h2 id="_5">必修主干<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>前五课共用<a href="../../exercises/cs-core/traceable-array-lab/">可追踪数组实验</a>，完成序列表示闭环；第 6 至 8 课共用<a href="../../exercises/cs-core/traceable-linear-structures-lab/">可追踪线性结构实验</a>，完成节点所有权、LIFO 与 FIFO 基础闭环；第 9 至 11 课共用<a href="../../exercises/cs-core/traceable-hash-lab/">可追踪哈希实验</a>，完成哈希、分离链接与集合应用基础闭环；第 12 至 14 课共用<a href="../../exercises/cs-core/traceable-search-sort-lab/">可追踪查找与排序实验</a>，完成有序边界、基础比较排序和稳定归并闭环；第 15 至 17 课共用<a href="../../exercises/cs-core/traceable-tree-traversal-lab/">可追踪树与遍历实验</a>，完成树形、递归 DFS 与显式前沿闭环；第 18 至 20 课共用<a href="../../exercises/cs-core/traceable-graph-traversal-lab/">可追踪图遍历实验</a>，完成简单无向图表示、无权 BFS 与全图 DFS 闭环；第 21 至 23 课共用<a href="../../exercises/cs-core/traceable-priority-shortest-path-lab/">可追踪优先队列与最短路实验</a>，完成最小堆、稳定优先队列与非负权 Dijkstra 闭环；第 24 至 26 课共用<a href="../../exercises/cs-core/traceable-spanning-forest-lab/">可追踪生成森林实验</a>，完成 DSU、Kruskal 与 Lazy Prim 闭环。当前 CS 主干处于建设中；系统、网络和数据库正文尚未开放。</p>
+<h2 id="_5">目标分层（待按地图重构）<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>必修主干负责建立共同概念和最小实践能力。学习者需要实现和验证基础结构，而不是只会说出名称。</p>
 <table>
 <thead>
@@ -3503,7 +3639,7 @@
 <li>能解释递归、迭代、BFS和DFS的执行过程及边界。</li>
 <li>能描述进程线程、HTTP请求和关系数据库的最小工作过程。</li>
 </ul>
-<h2 id="_8">推荐深化<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="_8">能力深化<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <p>推荐深化不阻塞默认路线，但承担机考能力、系统原理和工程熟练度。每个模块都有明确前置；部分专业选修依赖这里的能力。</p>
 <table>
 <thead>
@@ -3570,7 +3706,7 @@
 <li>综合机考：读取输入、处理多组数据、复杂度控制、限时提交和失败复盘。</li>
 </ul>
 <p>限时模拟可使用主力语言；代表性题目需要使用Python和C++对照实现，比较容器、类型、内存和标准库差异。</p>
-<h2 id="_10">专业选修<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h2 id="_10">专业与求职方向<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -3620,9 +3756,9 @@
 <p>安全PLC、现场总线、生产控制、设备互锁和真实I/O操作必须遵守厂商、设备和现场规范。仿真结果不能作为生产部署证明。</p>
 <h2 id="_11">推荐学习顺序<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <ol>
-<li>从已开放的 23 课开始，依次完成序列表示、线性结构、哈希集合、查找排序、树遍历、一般图和非负权最短路七条双语言实验成果线。</li>
-<li>后续依次完成系统、网络和数据库最小核心。</li>
-<li>解锁Web，同时选择算法与机考或一个CS推荐深化模块并行推进。</li>
+<li>当前可以学习 26 节现有课程和八条双语言实验成果线，但新手应关注课程地图中的“待重分层”提示。</li>
+<li>后续先补真正的 CS 起步，再建设系统、网络和数据库核心。</li>
+<li>完成共同基座后，按方向选择算法核心、Web、系统工程或其他主干；求职画像再叠加机考与复盘。</li>
 <li>在真实项目遇到性能、网络、数据库和架构问题时回到相应深化模块。</li>
 <li>满足全部前置后再进入设备系统与边缘智能、分布式、编译或安全专业选修。</li>
 </ol>
