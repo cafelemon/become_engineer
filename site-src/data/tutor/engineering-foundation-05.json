@@ -1,263 +1,214 @@
 {
-  "version": 1,
   "lesson": {
     "id": "engineering-foundation-05",
     "title": "Markdown",
     "path": "learning-paths/engineering-foundation/stage-0/05-markdown/"
   },
-  "steps": [
-    {
-      "id": "step-1",
-      "title": "写标题"
-    },
-    {
-      "id": "step-2",
-      "title": "整理列表"
-    },
-    {
-      "id": "step-3",
-      "title": "加入链接"
-    },
-    {
-      "id": "step-4",
-      "title": "记录命令"
-    },
-    {
-      "id": "step-5",
-      "title": "表格验收"
-    }
+  "contexts": [
+    {"id": "overview-markdown-result", "type": "overview", "title": "源文本与阅读效果", "anchor": "#overview-markdown-result"},
+    {"id": "concept-source-preview", "type": "concept", "title": "源文本和预览的关系", "anchor": "#concept-source-preview"},
+    {"id": "example-markdown-building-blocks", "type": "example", "title": "五种常用写法", "anchor": "#example-markdown-building-blocks"},
+    {"id": "reproduce-structure-learning-log", "type": "reproduce", "title": "整理学习记录", "anchor": "#reproduce-structure-learning-log"},
+    {"id": "reproduce-preview-side-by-side", "type": "reproduce", "title": "在 VS Code 中预览", "anchor": "#reproduce-preview-side-by-side"},
+    {"id": "modify-personal-learning-log", "type": "modify", "title": "换成真实记录", "anchor": "#modify-personal-learning-log"},
+    {"id": "troubleshoot-markdown-rendering", "type": "troubleshoot", "title": "从渲染问题恢复", "anchor": "#troubleshoot-markdown-rendering"},
+    {"id": "deepen-markdown-portability", "type": "deepen", "title": "不同平台的兼容差异", "anchor": "#deepen-markdown-portability"},
+    {"id": "project-workspace-v05", "type": "project", "title": "工程学习工作台 v0.5", "anchor": "#project-workspace-v05"}
   ],
   "cards": [
     {
-      "id": "heading",
+      "id": "ef05-source-preview",
       "lesson_id": "engineering-foundation-05",
-      "step_id": "step-1",
-      "question": "Markdown 标题怎么写",
-      "aliases": [
-        "一级二级标题怎么写",
-        "井号标题怎么用"
-      ],
-      "keywords": [
-        "标题",
-        "markdown",
-        "井号",
-        "层级"
-      ],
-      "diagnostic": "当前任务是“在 `learning-log.md` 使用一个一级标题和至少两个二级标题。”。处理“Markdown 标题怎么写”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：在 `learning-log.md` 使用一个一级标题和至少两个二级标题。",
-        "本步成功证据是：标题层级能表达文档结构，而不是只为了变大字体。 `# ` 写一级标题，`## ` 写二级标题，井号后要有空格。"
-      ],
-      "example": "局部检查示例：标题层级能表达文档结构，而不是只为了变大字体。",
-      "answer": "`# ` 写一级标题，`## ` 写二级标题，井号后要有空格。",
-      "source": {
-        "label": "写标题",
-        "href": "#step-1"
-      },
-      "updated_at": "2026-07-15",
+      "context_id": "overview-markdown-result",
+      "question": "Markdown 源文本和预览是什么关系？",
+      "aliases": ["为什么左边有井号右边没有", "预览是不是另一份文件"],
+      "keywords": ["源文本", "预览", "渲染", "同一文件", "Markdown"],
+      "diagnostic": "你正在看的左侧编辑区，还是右侧预览？",
+      "hints": ["磁盘里只保存 .md 纯文本。", "预览器读取同一份文本，按照标题、列表和代码块规则改变显示方式。"],
+      "example": "源文本 `# 学习记录` 在预览中显示成一级标题。",
+      "answer": "两边来自同一份 .md 文件。编辑区修改原始字符，预览器按 Markdown 规则显示阅读效果，不会自动生成第二份文档。",
+      "source": {"label": "源文本与阅读效果", "href": "#overview-markdown-result"},
+      "updated_at": "2026-07-17",
       "recommended": true
     },
     {
-      "id": "one-h1",
+      "id": "ef05-saved-source",
       "lesson_id": "engineering-foundation-05",
-      "step_id": "step-1",
-      "question": "为何通常一个一级标题",
-      "aliases": [
-        "Markdown 能有多个一级标题吗",
-        "一个文档几个 H1"
-      ],
-      "keywords": [
-        "一级标题",
-        "结构",
-        "文档",
-        "标题"
-      ],
-      "diagnostic": "当前任务是“在 `learning-log.md` 使用一个一级标题和至少两个二级标题。”。处理“为何通常一个一级标题”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：在 `learning-log.md` 使用一个一级标题和至少两个二级标题。",
-        "本步成功证据是：标题层级能表达文档结构，而不是只为了变大字体。 一个 Markdown 文档通常只有一个主标题，后续内容用二级和三级标题组织。"
-      ],
-      "example": "局部检查示例：标题层级能表达文档结构，而不是只为了变大字体。",
-      "answer": "一个 Markdown 文档通常只有一个主标题，后续内容用二级和三级标题组织。",
-      "source": {
-        "label": "写标题",
-        "href": "#step-1"
-      },
-      "updated_at": "2026-07-15",
+      "context_id": "concept-source-preview",
+      "question": "预览已经变了，为什么终端还读到旧内容？",
+      "aliases": ["Markdown预览和终端不一样", "预览变化是不是已经保存"],
+      "keywords": ["保存", "终端", "预览", "圆点", "同名文件"],
+      "diagnostic": "文件标签上还有圆点吗？终端读到的完整路径是什么？",
+      "hints": ["预览可以跟随编辑区实时更新，但修改可能还没写入磁盘。", "先保存，再从项目根目录读取 notes/learning-log.md。"],
+      "example": "按 Ctrl/Command+S，再运行 Get-Content 或 head 读取同一路径。",
+      "answer": "预览变化不等于文件已经保存。先检查标签圆点并保存，再核对终端当前位置和文件路径。",
+      "source": {"label": "源文本和预览的关系", "href": "#concept-source-preview"},
+      "updated_at": "2026-07-17",
       "recommended": true
     },
     {
-      "id": "list",
+      "id": "ef05-headings",
       "lesson_id": "engineering-foundation-05",
-      "step_id": "step-2",
-      "question": "Markdown 列表怎么写",
-      "aliases": [
-        "无序有序列表区别",
-        "列表语法是什么"
-      ],
-      "keywords": [
-        "列表",
-        "无序",
-        "有序",
-        "markdown"
-      ],
-      "diagnostic": "当前任务是“把本次完成的三项操作改成无序或有序列表。”。处理“Markdown 列表怎么写”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：把本次完成的三项操作改成无序或有序列表。",
-        "本步成功证据是：每个条目只表达一个动作。 无序列表用 `- `，有顺序的步骤用 `1. `。"
-      ],
-      "example": "局部检查示例：每个条目只表达一个动作。",
-      "answer": "无序列表用 `- `，有顺序的步骤用 `1. `。",
-      "source": {
-        "label": "整理列表",
-        "href": "#step-2"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
-    },
-    {
-      "id": "link",
-      "lesson_id": "engineering-foundation-05",
-      "step_id": "step-3",
-      "question": "Markdown 链接怎么写",
-      "aliases": [
-        "相对链接打不开怎么办",
-        "链接语法是什么"
-      ],
-      "keywords": [
-        "链接",
-        "相对路径",
-        "markdown",
-        "地址"
-      ],
-      "diagnostic": "当前任务是“在记录中添加到“终端与 Shell”或本课的 Markdown 链接。”。处理“Markdown 链接怎么写”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：在记录中添加到“终端与 Shell”或本课的 Markdown 链接。",
-        "本步成功证据是：链接文字清楚，点击目标正确。 基本写法是 `[文字](目标地址)`，相对路径从当前文件位置计算。"
-      ],
-      "example": "局部检查示例：链接文字清楚，点击目标正确。",
-      "answer": "基本写法是 `[文字](目标地址)`，相对路径从当前文件位置计算。",
-      "source": {
-        "label": "加入链接",
-        "href": "#step-3"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
-    },
-    {
-      "id": "code",
-      "lesson_id": "engineering-foundation-05",
-      "step_id": "step-4",
-      "question": "Markdown 代码块怎么写",
-      "aliases": [
-        "三个反引号有什么用",
-        "命令怎么写进 Markdown"
-      ],
-      "keywords": [
-        "代码块",
-        "反引号",
-        "命令",
-        "输出"
-      ],
-      "diagnostic": "当前任务是“用围栏代码块记录上一课的 `pwd`、`ls` 或输出。”。处理“Markdown 代码块怎么写”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：用围栏代码块记录上一课的 `pwd`、`ls` 或输出。",
-        "本步成功证据是：命令不会被渲染成普通段落或标题。 代码块前后各放一行三个反引号，保留命令与输出原格式。"
-      ],
-      "example": "局部检查示例：命令不会被渲染成普通段落或标题。",
-      "answer": "代码块前后各放一行三个反引号，保留命令与输出原格式。",
-      "source": {
-        "label": "记录命令",
-        "href": "#step-4"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
-    },
-    {
-      "id": "table",
-      "lesson_id": "engineering-foundation-05",
-      "step_id": "step-5",
-      "question": "Markdown 表格怎么写",
-      "aliases": [
-        "表格第二行横线为什么",
-        "表格语法是什么"
-      ],
-      "keywords": [
-        "表格",
-        "横线",
-        "表头",
-        "markdown"
-      ],
-      "diagnostic": "当前任务是“创建“目标 / 结果 / 下一步”三列的小表格，填入一行真实记录。”。处理“Markdown 表格怎么写”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：创建“目标 / 结果 / 下一步”三列的小表格，填入一行真实记录。",
-        "本步成功证据是：别人能只读表格理解你的当前状态。 表格第一行写表头，第二行用 `---` 分隔，再写真实数据。"
-      ],
-      "example": "局部检查示例：别人能只读表格理解你的当前状态。",
-      "answer": "表格第一行写表头，第二行用 `---` 分隔，再写真实数据。",
-      "source": {
-        "label": "表格验收",
-        "href": "#step-5"
-      },
-      "updated_at": "2026-07-15",
+      "context_id": "example-markdown-building-blocks",
+      "question": "Markdown 一级和二级标题怎么写？",
+      "aliases": ["井号标题怎么用", "一个文档要写几个一级标题"],
+      "keywords": ["标题", "一级", "二级", "井号", "层级"],
+      "diagnostic": "井号后面有空格吗？标题是在说明结构，还是只想把字变大？",
+      "hints": ["`# ` 写一级标题，`## ` 写二级标题。", "这份记录把一级标题留给整篇文档，主要部分使用二级标题。"],
+      "example": "`# 工程学习记录`，下一段写 `## 当前目标`。",
+      "answer": "井号数量表示标题层级，井号后留空格。这份短文档用一个一级主标题，再用二级标题组织目标、操作和结果。",
+      "source": {"label": "五种常用写法", "href": "#example-markdown-building-blocks"},
+      "updated_at": "2026-07-17",
       "recommended": true
     },
     {
-      "id": "preview",
+      "id": "ef05-lists",
       "lesson_id": "engineering-foundation-05",
-      "step_id": "step-4",
-      "question": "源码和预览区别",
-      "aliases": [
-        "Markdown 怎么预览",
-        "Markdown 渲染是什么"
-      ],
-      "keywords": [
-        "预览",
-        "源码",
-        "渲染",
-        "markdown"
-      ],
-      "diagnostic": "当前任务是“用围栏代码块记录上一课的 `pwd`、`ls` 或输出。”。处理“源码和预览区别”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：用围栏代码块记录上一课的 `pwd`、`ls` 或输出。",
-        "本步成功证据是：命令不会被渲染成普通段落或标题。 源码是可编辑文本，预览是 Markdown 被渲染后的页面。"
-      ],
-      "example": "局部检查示例：命令不会被渲染成普通段落或标题。",
-      "answer": "源码是可编辑文本，预览是 Markdown 被渲染后的页面。",
-      "source": {
-        "label": "记录命令",
-        "href": "#step-4"
-      },
-      "updated_at": "2026-07-15",
+      "context_id": "example-markdown-building-blocks",
+      "question": "什么时候用有序列表，什么时候用无序列表？",
+      "aliases": ["Markdown列表怎么写", "减号和数字列表有什么区别"],
+      "keywords": ["列表", "有序", "无序", "步骤", "并列"],
+      "diagnostic": "这些条目必须按顺序完成，还是只是互相并列？",
+      "hints": ["有先后顺序的操作用 `1. `。", "没有顺序的结果或特点用 `- `；标记后都要有空格。"],
+      "example": "操作写 1、2、3；已经完成的结果写成三个减号条目。",
+      "answer": "顺序会影响结果时用有序列表，只是并列信息时用无序列表。每个条目尽量只表达一个动作或结论。",
+      "source": {"label": "五种常用写法", "href": "#example-markdown-building-blocks"},
+      "updated_at": "2026-07-17",
       "recommended": false
     },
     {
-      "id": "readable",
+      "id": "ef05-relative-link",
       "lesson_id": "engineering-foundation-05",
-      "step_id": "step-5",
-      "question": "怎样判断记录可读",
-      "aliases": [
-        "学习记录 Markdown 验收",
-        "文档如何验收"
-      ],
-      "keywords": [
-        "学习记录",
-        "可读",
-        "验收",
-        "表格"
-      ],
-      "diagnostic": "当前任务是“创建“目标 / 结果 / 下一步”三列的小表格，填入一行真实记录。”。处理“怎样判断记录可读”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：创建“目标 / 结果 / 下一步”三列的小表格，填入一行真实记录。",
-        "本步成功证据是：别人能只读表格理解你的当前状态。 检查标题、列表、链接、代码和表格是否让他人读懂真实目标、结果和下一步。"
-      ],
-      "example": "局部检查示例：别人能只读表格理解你的当前状态。",
-      "answer": "检查标题、列表、链接、代码和表格是否让他人读懂真实目标、结果和下一步。",
-      "source": {
-        "label": "表格验收",
-        "href": "#step-5"
-      },
-      "updated_at": "2026-07-15",
+      "context_id": "example-markdown-building-blocks",
+      "question": "从 notes 里的文件怎样链接到 practice？",
+      "aliases": ["相对链接怎么写", "Markdown链接点开找不到 README"],
+      "keywords": ["链接", "相对路径", "notes", "practice", "README"],
+      "diagnostic": "当前 Markdown 文件在哪个目录？目标文件又在哪个目录？",
+      "hints": ["从 notes 先用 `..` 回到 learning-workspace。", "再进入 practice，完整目标是 `../practice/README.md`。"],
+      "example": "`[练习目录说明](../practice/README.md)`。",
+      "answer": "链接起点是 notes/learning-log.md 所在的 notes 目录，所以写 `../practice/README.md`。目标文件必须真实存在，并应实际点击检查。",
+      "source": {"label": "五种常用写法", "href": "#example-markdown-building-blocks"},
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "ef05-code-fence",
+      "lesson_id": "engineering-foundation-05",
+      "context_id": "example-markdown-building-blocks",
+      "question": "命令和输出怎样写进 Markdown 代码块？",
+      "aliases": ["三个反引号有什么用", "怎么保留终端输出格式"],
+      "keywords": ["代码块", "反引号", "命令", "输出", "围栏"],
+      "diagnostic": "代码块开头和结尾都有单独一行的三个反引号吗？",
+      "hints": ["开头写三个反引号和语言标记，例如 `text`。", "内容写完后，再用单独一行三个反引号闭合。"],
+      "example": "用 `text` 代码块保存 assets、notes、practice 三行终端输出。",
+      "answer": "围栏代码块前后各放一行三个反引号，内容保持原样。语言标记帮助显示，但不改变命令本身。",
+      "source": {"label": "五种常用写法", "href": "#example-markdown-building-blocks"},
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "ef05-gfm-table",
+      "lesson_id": "engineering-foundation-05",
+      "context_id": "example-markdown-building-blocks",
+      "question": "为什么 Markdown 表格第二行要写横线？",
+      "aliases": ["表格语法怎么写", "表格在别的平台不显示怎么办"],
+      "keywords": ["表格", "分隔行", "GFM", "CommonMark", "兼容"],
+      "diagnostic": "当前预览器支持 GFM 表格吗？表头后是否有分隔行？",
+      "hints": ["第一行是表头，第二行用 `---` 把表头和数据分开。", "表格是 GFM 扩展；不支持时改用标题和列表。"],
+      "example": "`| 检查项 | 结果 |` 下一行写 `| --- | --- |`。",
+      "answer": "分隔行让 GFM 解析器识别列结构。表格不属于 CommonMark 基础语法，所以发布到其他平台前要实际预览。",
+      "source": {"label": "五种常用写法", "href": "#example-markdown-building-blocks"},
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "ef05-backup-restructure",
+      "lesson_id": "engineering-foundation-05",
+      "context_id": "reproduce-structure-learning-log",
+      "question": "整理学习记录前为什么要留一份备份？",
+      "aliases": ["learning-log-before-markdown有什么用", "重写文档怕丢内容怎么办"],
+      "keywords": ["备份", "整理前", "对照", "丢内容", "学习记录"],
+      "diagnostic": "旧记录里的真实路径、命令和错误说明都已经放进新结构了吗？",
+      "hints": ["先把旧文件复制为 .txt 对照，不要直接删除内容。", "整理后逐项核对真实路径、命令、结果和问题是否仍在。"],
+      "example": "保留 notes/learning-log-before-markdown.txt，再整理 learning-log.md。",
+      "answer": "备份用于核对整理前后有没有丢事实，不是让你长期维护两份记录。下一课 Git 接管版本历史后，就不再依赖手工复制每个版本。",
+      "source": {"label": "整理学习记录", "href": "#reproduce-structure-learning-log"},
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "ef05-vscode-preview",
+      "lesson_id": "engineering-foundation-05",
+      "context_id": "reproduce-preview-side-by-side",
+      "question": "VS Code 怎样在旁边打开 Markdown 预览？",
+      "aliases": ["Markdown怎么预览", "怎么一边写一边看效果"],
+      "keywords": ["VS Code", "预览", "侧边", "命令面板", "快捷键"],
+      "diagnostic": "当前打开的文件扩展名是 .md 吗？",
+      "hints": ["打开命令面板，运行 `Markdown: Open Preview to the Side`。", "也可使用 Ctrl/Command+K 后按 V；预览变化后仍要保存源文件。"],
+      "example": "左边编辑 notes/learning-log.md，右边同步查看标题和链接。",
+      "answer": "VS Code 内置 Markdown 预览。命令面板选择 Open Preview to the Side，或使用平台对应快捷键；不需要先安装扩展。",
+      "source": {"label": "在 VS Code 中预览", "href": "#reproduce-preview-side-by-side"},
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "ef05-personalize",
+      "lesson_id": "engineering-foundation-05",
+      "context_id": "modify-personal-learning-log",
+      "question": "模板里的哪些内容必须换成我自己的？",
+      "aliases": ["学习记录不能只复制什么", "怎么判断记录是真实的"],
+      "keywords": ["真实记录", "目标", "路径", "结果", "修改"],
+      "diagnostic": "文档里的路径、命令、问题和下一步，有多少来自你实际操作？",
+      "hints": ["至少替换目标、真实路径、一个独有操作和表格结果。", "让别人从记录中找到你做到哪里、遇到什么、下一步是什么。"],
+      "example": "把“项目根目录”换成自己的实际输出，而不是保留“换成你的真实路径”。",
+      "answer": "模板结构可以沿用，但目标、路径、命令、结果、错误和下一步必须来自你的实际操作，并能被文件或输出复核。",
+      "source": {"label": "换成真实记录", "href": "#modify-personal-learning-log"},
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "ef05-unclosed-fence",
+      "lesson_id": "engineering-foundation-05",
+      "context_id": "troubleshoot-markdown-rendering",
+      "question": "为什么后面整页都变成代码样式？",
+      "aliases": ["Markdown代码块没有结束", "页面突然全变灰了"],
+      "keywords": ["代码块", "未闭合", "反引号", "整页", "排错"],
+      "diagnostic": "最近一个代码块的开头和结尾能一一配对吗？",
+      "hints": ["从样式开始异常的位置向上找三个反引号。", "如果只找到开头，就在内容结束后补一行三个反引号并保存。"],
+      "example": "删掉结尾围栏会让后续标题和列表都留在代码块中；补回后恢复。",
+      "answer": "围栏代码块没有闭合。找到开头，在代码内容结束处补上同样的三个反引号，再检查后续标题是否恢复。",
+      "source": {"label": "从渲染问题恢复", "href": "#troubleshoot-markdown-rendering"},
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "ef05-portability",
+      "lesson_id": "engineering-foundation-05",
+      "context_id": "deepen-markdown-portability",
+      "question": "为什么同一份 Markdown 在不同平台显示不一样？",
+      "aliases": ["CommonMark和GFM有什么区别", "VS Code能显示GitHub也一定能吗"],
+      "keywords": ["CommonMark", "GFM", "平台", "扩展", "兼容"],
+      "diagnostic": "差异来自基础标题列表，还是表格、任务列表等扩展语法？",
+      "hints": ["标题、段落、列表、链接和围栏代码块属于共同基础。", "表格等功能依赖 GFM 或其他扩展，目标平台不支持时要换成基础结构。"],
+      "example": "表格无法显示时，用二级标题加无序列表表达同样信息。",
+      "answer": "不同渲染器实现的规范和扩展不同。优先使用 CommonMark 基础语法，并在目标平台实际预览扩展内容。",
+      "source": {"label": "不同平台的兼容差异", "href": "#deepen-markdown-portability"},
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "ef05-project-v05",
+      "lesson_id": "engineering-foundation-05",
+      "context_id": "project-workspace-v05",
+      "question": "这份 Markdown 记录下一课会怎样继续？",
+      "aliases": ["工程学习工作台v0.5是什么", "Markdown和Git怎么接起来"],
+      "keywords": ["项目", "Git", "版本", "learning-log", "README"],
+      "diagnostic": "整理前后两份记录和 practice/README.md 都已经保存了吗？",
+      "hints": ["下一课会让 Git 管理这些真实文档的版本。", "还会建立 .gitignore，区分正式文件和不该提交的临时产物。"],
+      "example": "Git 第一次提交包含 learning-log.md、practice/README.md 和 .gitignore。",
+      "answer": "Markdown 让内容可读，Git 会让这些修改可追踪。下一课先安装 Git，再把工程学习工作台变成本地版本库。",
+      "source": {"label": "工程学习工作台 v0.5", "href": "#project-workspace-v05"},
+      "updated_at": "2026-07-17",
       "recommended": true
     }
   ]

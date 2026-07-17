@@ -1,357 +1,319 @@
-# 变量、基本类型、输入输出
-
 <div class="be-tutor-mount" data-tutor-lesson="python-basics-01" aria-hidden="true"></div>
 
-本节是 Python 起步的第一课。你不会先背完变量和类型，而是连续完成一个可以运行的“个人学习档案”。每一步都只引入当前任务需要的知识，并立刻用输出或错误信息检查结果。
+<section id="overview-profile" class="be-page-hero be-lesson-hero" data-learning-context="overview-profile" data-context-type="overview" markdown="1">
 
-## 本节产出
+<span class="be-page-eyebrow">Python 起步 · 第一课 · 学习进度报告器 v0.1</span>
 
-完成后，你将拥有一个能够接收输入、保存学习信息、计算计划并输出结果的 `learning_profile.py`，同时保留一次成功运行和一次失败排查记录。
+# 变量、基本类型、输入输出
 
-<div class="be-lesson-goals" markdown="1">
+## 先让程序介绍一下你
 
-- **首次反馈**：10 分钟内运行第一个版本。
-- **主动修改**：改变昵称、课程和计划，观察输出同步变化。
-- **失败练习**：故意触发并定位一次 `ValueError`。
-- **迁移验收**：独立增加一个字段，而不是照抄固定答案。
-
-</div>
-
-## 开始前检查
-
-- 已完成[工程基础入门](../../engineering-foundation/stage-0/README.md)。
-- 能用编辑器创建 `.py` 文件，并在终端进入文件所在目录。
-- 执行 `python3 --version` 能显示版本；Windows 也可以使用 `python --version`。
-
-本节只使用 Python 标准库，不需要安装第三方依赖。下面命令默认使用 `python3`，如果你的环境只有 `python`，请统一替换。
-
-## 七步任务路线
-
-<div class="be-task-route" role="list" aria-label="本课七步任务">
-  <span role="listitem">1 首次运行</span>
-  <span role="listitem">2 主动修改</span>
-  <span role="listitem">3 认识类型</span>
-  <span role="listitem">4 接收输入</span>
-  <span role="listitem">5 转换计算</span>
-  <span role="listitem">6 定位错误</span>
-  <span role="listitem">7 迁移验收</span>
-</div>
-
-<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
-
-## 第一步：先让学习档案运行起来
-
-**当前任务：** 创建 `learning_profile.py`，复制下面的第一个版本并运行。现在不用先理解每一行。
-
-**文件：`learning_profile.py`**
-
-```python
-name = "Lemon"
-course = "Python 起步"
-
-print("学习档案")
-print("昵称：", name)
-print("课程：", course)
-```
-
-**运行：**
-
-```bash
-python3 learning_profile.py
-```
-
-**预期输出：**
+今天结束时，你会得到这样一段真实输出：
 
 ```text
 学习档案
-昵称： Lemon
+昵称： 小码
 课程： Python 起步
+本周计划： 5 小时
 ```
 
-**即时反馈：** 文件存在、命令正常结束、三行输出一致，就说明第一次闭环完成了。先记录文件名、命令和输出，再继续。
+它现在只会记住一条学习档案，但后面六节课都会在这份数据上继续加功能。先让它跑起来，再慢慢看懂变量、类型和输入怎样配合。
 
-??? tip "提示一：命令提示找不到文件"
-    先用 `pwd` 或 Windows PowerShell 的 `Get-Location` 确认当前位置，再用 `ls` 或 `dir` 确认当前目录里能看到 `learning_profile.py`。
-
-??? tip "提示二：运行后没有最新内容"
-    确认编辑器已经保存文件，再重新运行命令。编辑器标签上的圆点通常表示尚未保存。
-
-??? example "局部示例"
-    如果文件放在 `python-study` 目录，先进入它：`cd python-study`，再执行运行命令。
+<div class="be-page-actions" markdown="1">
+[先理解变量和值](#concept-variable){ .md-button .md-button--primary }
+[查看阶段作品](../../../exercises/python-basics/study-progress-reporter/README.md){ .md-button }
+</div>
 
 </section>
 
-<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+<div class="be-lesson-overview">
+  <div><span>课程位置</span><strong>Python 起步 · 1 / 7</strong></div>
+  <div><span>使用环境</span><strong>Python 3.11+，只用标准能力</strong></div>
+  <div><span>完成后留下</span><strong>learning_profile.py 与两次运行结果</strong></div>
+</div>
 
-## 第二步：修改昵称和课程
+## 开始前
 
-**当前任务：** 把 `Lemon` 和 `Python 起步` 改成你自己的内容，再次运行。
+- 已完成[工程基础入门](../../engineering-foundation/stage-0/README.md)，能打开 `learning-workspace` 并使用项目虚拟环境。
+- 在工作区中新建 `practice/python-basics/`，这七节课的代码都放在这里。
+- Windows 下使用 `.venv\\Scripts\\python.exe`；macOS／Linux 下使用 `.venv/bin/python`。如果虚拟环境不在，请先回到[开发环境](../../engineering-foundation/stage-0/07-development-environment.md)补齐。
+- 页面运行器只适合立即试一小段代码。键盘输入、文件和正式项目仍在本地终端完成。
 
-刚才使用了两个变量：
+<section id="concept-variable" data-learning-context="concept-variable" data-context-type="concept" markdown="1">
+
+## 变量名和值
+
+先看最短的一行：
 
 ```python
-name = "Lemon"
-course = "Python 起步"
+name = "小码"
 ```
 
-变量可以理解为给一个值起名字。等号左边是变量名，右边是当前保存的值。文本需要放在引号中，这种值叫字符串。
+<div class="be-variable-model" role="img" aria-label="赋值关系：先计算右侧的字符串值小码，再把名称 name 绑定到这个值，值的类型是 str。">
+  <div><span>名称</span><strong>name</strong></div>
+  <b aria-hidden="true">绑定到 →</b>
+  <div><span>当前值</span><strong>"小码"</strong></div>
+  <b aria-hidden="true">它的类型是 →</b>
+  <div><span>类型</span><strong>str</strong></div>
+</div>
 
-**必须主动修改：**
+Python 会先得到等号右边的值，再把左边的名称绑定到这个值。起步时可以把变量理解成“程序里用来找到当前值的名字”。这里先别把它想成一个永远装着同一种东西的固定盒子。
 
-- 将 `name` 改成你的昵称。
-- 将 `course` 改成你正在学习的内容。
-- 再增加一行 `print()`，输出一句自己的学习目标。
-
-**成功标准：** 三处修改都能在终端输出中看到，而不是只改了代码但没有重新运行。
-
-??? tip "提示一：文本为什么需要引号"
-    没有引号时，Python 会把内容当作变量名查找。普通文字应写成 `"文字"`。
-
-??? tip "提示二：新增输出放在哪里"
-    可以在最后一行下面继续调用 `print()`，括号中放要显示的字符串。
-
-??? example "局部示例"
-    `print("目标：完成第一个可运行程序")`
+- `name` 是程序里使用的名称。
+- `"小码"` 是字符串值，引号标出文本的开始和结束。
+- `str` 描述这个值的类型，也决定它适合参加哪些操作。
 
 </section>
 
-<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+<section id="example-reassignment" data-learning-context="example-reassignment" data-context-type="example" markdown="1">
 
-## 第三步：给档案增加不同类型的数据
+## 再赋值以后会怎样
 
-**当前任务：** 在文件顶部增加三个变量，并在末尾输出它们。
+先预测下面程序会输出“小码”还是“贾飞”：
+
+```python
+name = "小码"
+name = "贾飞"
+print(name)
+```
+
+??? question "先说出答案，再展开"
+    输出 `贾飞`。第二次赋值让 `name` 绑定到新值；`print(name)` 读取的是它此刻对应的值。
+
+如果忘了给文字加引号：
+
+```python
+name = 小码
+```
+
+Python 会把 `小码` 当作另一个名称去查找，找不到时出现 `NameError`。普通文本要写成字符串：`"小码"`。
+
+</section>
+
+<section id="example-types" data-learning-context="example-types" data-context-type="example" markdown="1">
+
+## 四种常见的值
+
+| 值 | Python 类型 | 适合表达 | 容易混淆的地方 |
+| --- | --- | --- | --- |
+| `"Python 起步"` | `str` | 名字、课程、路径等文本 | 看起来像数字的文本仍然不能直接计算 |
+| `5` | `int` | 次数、数量、整小时 | 它和字符串 `"5"` 不是同一种值 |
+| `0.2` | `float` | 比例、测量值和小数 | 不适合直接承担严格的金额规则 |
+| `True` | `bool` | 是／否、成立／不成立 | 首字母必须大写；`"True"` 是文本 |
+
+拿不准时，不用猜。把下面代码保存为临时文件运行，或者直接看正式示例：
+
+```python
+--8<-- "examples/python-basics/learning_profile_types.py"
+```
+
+预期会看到：
+
+```text
+小码 <class 'str'>
+5 <class 'int'>
+0.2 <class 'float'>
+True <class 'bool'>
+```
+
+`type()` 适合这节课观察实际类型。以后写需要兼容继承关系的判断时，会再学习 `isinstance()`，现在不用提前展开。
+
+</section>
+
+<section id="reproduce-first-run" data-learning-context="reproduce-first-run" data-context-type="reproduce" markdown="1">
+
+## 先猜输出，再运行
+
+这就是报告器 v0.1 的正式示例。完整读一遍，猜它会打印几行、每行是什么，再点运行：
+
+```python
+--8<-- "examples/python-basics/learning_profile_v01.py"
+```
+
+<div class="be-python-runner" data-python-runner data-python-source="../../../../examples/python-basics/learning_profile_v01.py">
+  <p class="be-python-runner__fallback">浏览器运行器需要 JavaScript 和网络。你仍可把上方代码保存为 <code>learning_profile.py</code>，再用本地 Python 运行。</p>
+</div>
+
+第一次点击才会从 CDN 加载 Pyodide 0.29.4，约 12MB。代码在独立 Worker 中运行，超过 3 秒会停止；页面不会把你的修改保存到浏览器存储。CDN 不可用时，直接走下面的本地路径。
+
+把代码复制到 `learning-workspace/practice/python-basics/learning_profile.py`，从工作区根目录运行：
+
+=== "Windows PowerShell"
+
+    ```powershell
+    .\.venv\Scripts\python.exe .\practice\python-basics\learning_profile.py
+    ```
+
+=== "macOS / Linux"
+
+    ```bash
+    .venv/bin/python practice/python-basics/learning_profile.py
+    ```
+
+命令正常结束并显示第一屏的四行内容，就完成了第一次运行。若输出不同，先逐行比较代码，不要立即换一份更长的程序。
+
+</section>
+
+<section id="modify-profile" data-learning-context="modify-profile" data-context-type="modify" markdown="1">
+
+## 改成你的学习档案
+
+现在改自己的本地文件：
+
+1. 把 `name` 改成你的昵称。
+2. 把 `course` 改成你现在学习的内容。
+3. 把 `weekly_hours` 改成你的计划小时。
+4. 自己新增一个字段，例如 `goal`、`city` 或 `favorite_topic`，并用 `print()` 输出。
+
+运行前先写下你预计改变的两行输出，运行后再对照。代码和输出都要保存，仅仅在编辑器里改完还不算结束。
+
+<div class="be-editor-check" role="status">
+  <strong>想一想</strong>
+  <span>如果把 <code>weekly_hours = 5</code> 改成 <code>weekly_hours = "5"</code>，打印结果看起来很接近，但它还能直接加一吗？</span>
+</div>
+
+</section>
+
+<section id="reproduce-input" data-learning-context="reproduce-input" data-context-type="reproduce" markdown="1">
+
+## 为什么输入 `5`，得到的却是文字
+
+`input()` 会显示提示并等你键入一行内容。它去掉结尾的换行后，返回一个字符串。键盘上敲出的 `5` 因此先是文本，不会自动变成整数。
+
+<div class="be-python-input-flow" role="img" aria-label="键盘输入字符串 5，input 返回 str，int 转换后得到整数 5，整数才能进行数字加法。">
+  <div><span>键盘输入</span><strong>"5"</strong></div>
+  <b aria-hidden="true">input() →</b>
+  <div><span>程序先收到</span><strong>str</strong></div>
+  <b aria-hidden="true">int() →</b>
+  <div><span>转换后得到</span><strong>5 · int</strong></div>
+</div>
+
+正式输入版本如下：
+
+```python
+--8<-- "examples/python-basics/learning_profile_input.py"
+```
+
+把它复制到本地的 `learning_profile.py` 后运行。页面微型运行器不模拟键盘输入。
+
+第一次依次输入：
+
+```text
+小码
+Python 起步
+5
+```
+
+应该看到 `本周计划： 5 小时` 和 `下周建议： 6 小时`。然后再输入一次 `five`，保留终端出现的错误。
+
+!!! note "程序停在输入提示处，不一定是卡住"
+    如果光标停在“请输入昵称：”后面，程序正在等你输入。键入内容并按回车即可。真要停止当前程序，可以在终端按 `Ctrl+C`。
+
+</section>
+
+<section id="troubleshoot-valueerror" data-learning-context="troubleshoot-valueerror" data-context-type="troubleshoot" markdown="1">
+
+## 遇到 `ValueError`，先读最后一行
+
+输入 `five` 时会看到类似结果：
+
+```text
+ValueError: invalid literal for int() with base 10: 'five'
+```
+
+按这个顺序读：
+
+1. 最后一行先告诉你错误类型是 `ValueError`。
+2. 向上找到自己的文件和 `int(weekly_hours_text)` 所在行。
+3. `input()` 已经成功读取了文字 `"five"`；失败的是 `int()` 无法把它解释成十进制整数。
+4. 重新输入 `5`。程序恢复成功后，你的判断才算经过检查。
+
+这里先保留 traceback，不急着用 `try` 隐藏它。异常处理会在 Python 起步最后一课专门学习。
+
+| 现象 | 先看哪里 | 怎样回来 |
+| --- | --- | --- |
+| 找不到 `learning_profile.py` | 当前目录与命令里的相对路径 | 回到 `learning-workspace` 根目录再运行 |
+| 修改后输出没变化 | 文件是否保存、命令是否运行了同名的另一个文件 | 保存文件，核对路径后重跑 |
+| `NameError` | 文本是否漏了引号，变量名拼写是否一致 | 给文本加引号或统一名称 |
+| `TypeError` | 运算两边的实际类型 | 用 `type()` 检查；数字输入先经过 `int()` |
+| `ValueError` | 传给 `int()` 的具体文本 | 改用能表示整数的输入，再运行一次 |
+
+</section>
+
+<section id="project-v01" data-learning-context="project-v01" data-context-type="project" markdown="1">
+
+## 报告器的第一个版本：v0.1
+
+工程基础阶段只有学习工作区，没有真正的 Python 程序。这节课给它增加第一条能运行的学习记录：
+
+| 上一版 | 这节课增加 | 涉及文件 | 需要保存 | 下一版 |
+| --- | --- | --- | --- | --- |
+| 工程学习工作台 v1.0 | 昵称、课程、计划小时和一个自选字段 | `practice/python-basics/learning_profile.py` | 代码、一次成功输出、一次 `ValueError` 与恢复结果 | 用条件判断“进行中／已完成” |
+
+在 `notes/learning-log.md` 追加本课记录，然后提交：
+
+```bash
+git add practice/python-basics/learning_profile.py notes/learning-log.md
+git diff --cached
+git commit -m "build study profile v0.1"
+git status --short
+```
+
+提交前不要跳过 `git diff --cached`：确认里面只有准备公开的学习代码和记录，没有私人绝对路径、账号、密钥或无关文件。
+
+[查看阶段作品的最终版本](../../../exercises/python-basics/study-progress-reporter/README.md){ .md-button .md-button--primary }
+
+</section>
+
+<section id="deepen-values-have-types" data-learning-context="deepen-values-have-types" data-context-type="deepen" markdown="1">
+
+## 再深入一点：类型属于值
+
+Python 允许同一个名称先后绑定到不同类型的值：
 
 ```python
 weekly_hours = 5
-completion_rate = 0.2
-foundation_finished = True
+weekly_hours = "five"
 ```
 
-```python
-print("本周计划小时：", weekly_hours)
-print("当前完成比例：", completion_rate)
-print("是否完成工程基础：", foundation_finished)
-```
-
-这里出现了四种起步阶段最常用的类型：
-
-| 类型 | 当前示例 | 适合表达 |
-| --- | --- | --- |
-| 字符串 `str` | `"Python 起步"` | 名字、课程、路径等文本 |
-| 整数 `int` | `5` | 次数、数量、整小时 |
-| 浮点数 `float` | `0.2` | 比例、价格、带小数的数 |
-| 布尔值 `bool` | `True` | 是或否、成立或不成立 |
-
-用下面的临时输出检查类型：
-
-```python
-print(type(course))
-print(type(weekly_hours))
-print(type(completion_rate))
-print(type(foundation_finished))
-```
-
-**必须主动修改：** 改变计划小时和完成比例，确认值和类型分别发生了什么变化。
-
-**成功标准：** 能指出四个变量分别保存什么类型，并解释为什么 `True` 没有引号且首字母必须大写。
-
-??? tip "提示一：先看值的外形"
-    有引号的文本通常是字符串；不带小数点的数字是整数；带小数点的是浮点数；`True` 和 `False` 是布尔值。
-
-??? tip "提示二：检查而不是猜"
-    在不确定时调用 `type(变量名)`，再用 `print()` 显示检查结果。
-
-??? example "局部示例"
-    `print(type(weekly_hours))` 应显示 `<class 'int'>`。
+语法允许，不代表这样写容易维护。一个名称的含义和数据形态越稳定，后面阅读、排错和测试越轻松。起步阶段更建议使用 `weekly_hours_text` 保存原始输入，再用 `weekly_hours` 保存转换后的整数，让转换前后清楚分开。
 
 </section>
 
-<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+<section id="career-explain-input" data-learning-context="career-explain-input" data-context-type="career" markdown="1">
 
-## 第四步：让档案接收输入
+## 被问到输入和类型时，可以这样讲
 
-**当前任务：** 把固定昵称和课程替换为运行时输入。
+不要只背 `str`、`int`、`float`、`bool` 四个名字。拿这段程序说明一条数据怎样流动：键盘输入由 `input()` 读成字符串，程序在需要计算的位置调用 `int()`，非法文本触发 `ValueError`，你通过 traceback 找到转换行并用合法输入验证恢复。
 
-```python
-name = input("请输入昵称：")
-course = input("请输入当前课程：")
-```
-
-运行后，程序会停下来等待你输入。`input()` 返回的内容默认都是字符串，即使你键入的是数字。
-
-用下面的代码验证，而不是只记住结论：
-
-```python
-weekly_hours_text = input("请输入本周计划小时：")
-print("输入内容：", weekly_hours_text)
-print("输入类型：", type(weekly_hours_text))
-```
-
-**必须主动修改：** 分别输入 `5` 和 `five`，观察两次的类型是否不同。
-
-**成功标准：** 能通过实际输出说明为什么键盘输入的 `5` 仍然是字符串。
-
-??? tip "提示一：程序像是卡住了"
-    如果终端显示输入提示并停住，通常不是卡死，而是在等待你键入内容并按回车。
-
-??? tip "提示二：数字为什么不是整数"
-    键盘输入先以文本形式进入程序。需要计算时，程序必须明确决定要转换成哪种数字。
-
-??? example "局部示例"
-    输入 `5` 后，`type(weekly_hours_text)` 仍显示 `<class 'str'>`。
+这还不是复杂项目，但它已经能说明你会运行、观察、解释和修复，而不只是记住语法表。
 
 </section>
 
-<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+## 完成检查
 
-## 第五步：转换输入并计算计划
+- [ ] 我能解释名称、值和类型之间的关系。
+- [ ] 我在本地运行了 `learning_profile.py`，而不只使用页面运行器。
+- [ ] 我修改了昵称、课程、计划小时，并独立增加一个字段。
+- [ ] 我用 `type()` 看过 `str`、`int`、`float` 和 `bool`。
+- [ ] 我能说明为什么 `input()` 返回字符串，以及转换发生在哪一行。
+- [ ] 我保留了一次 `ValueError`，并用合法输入恢复成功。
+- [ ] 我提交了报告器 v0.1 的代码和学习记录。
 
-**当前任务：** 把计划小时转换为整数，再计算下周增加一小时后的计划。
+## 来源与版本
 
-```python
-weekly_hours_text = input("请输入本周计划小时：")
-weekly_hours = int(weekly_hours_text)
-next_week_hours = weekly_hours + 1
+- 适用版本：Python 3.11 及以上；示例只使用内置类型与函数。
+- 页面微型运行器：Pyodide 0.29.4，点击后加载；加载失败时使用本地 Python。
+- 核查日期：2026-07-17。
+- 事实来源：[赋值语句](https://docs.python.org/3.11/reference/simple_stmts.html#assignment-statements)、[内置函数 `input()`、`int()` 与 `type()`](https://docs.python.org/3.11/library/functions.html)、[内置异常 `ValueError`](https://docs.python.org/3.11/library/exceptions.html#ValueError)。
+- 代码验证：仓库脚本分别检查固定输出、四种类型、合法输入和 `ValueError`；自动测试不联网，也不安装第三方包。
 
-print("本周计划小时：", weekly_hours)
-print("下周建议小时：", next_week_hours)
-```
-
-常见转换：
-
-| 写法 | 结果 |
-| --- | --- |
-| `int("5")` | 整数 `5` |
-| `float("2.5")` | 浮点数 `2.5` |
-| `str(5)` | 字符串 `"5"` |
-
-**必须主动修改：** 把下周增加量从 `1` 改成 `2`，重新运行并确认输出变化。
-
-**成功标准：** 输入 `5` 时得到下周建议小时 `7`，并能说明转换发生在哪一行。
-
-??? tip "提示一：先区分转换前后变量"
-    名字带 `_text` 的变量保存原始字符串，转换后的数字保存在另一个变量中，便于观察边界。
-
-??? tip "提示二：计算报 TypeError"
-    检查参与加法的两边是否都是数字。可以分别打印它们的 `type()`。
-
-??? example "局部示例"
-    `weekly_hours = int(weekly_hours_text)` 负责把可转换的数字文本变成整数。
-
-</section>
-
-<section id="step-6" class="be-task-step" data-step-id="step-6" markdown="1">
-
-## 第六步：故意触发并定位错误
-
-**当前任务：** 运行第五步代码，在计划小时处输入 `abc`。
-
-你会看到类似下面的信息：
-
-```text
-ValueError: invalid literal for int() with base 10: 'abc'
-```
-
-这次不要马上删除错误。按下面顺序记录：
-
-1. 输入了什么。
-2. 错误类型是什么。
-3. traceback 指向哪个文件和哪一行。
-4. 这一行接收了什么值，试图得到什么结果。
-5. 换成什么输入后重新运行成功。
-
-**必须主动修改：** 输入一个合法整数让程序恢复成功，并保存失败与成功两次证据。
-
-**成功标准：** 能说出错误不是 `input()` 无法读取，而是 `int()` 无法把 `abc` 转成整数。
-
-??? tip "提示一：先看最后一行"
-    traceback 最后一行通常给出错误类型和摘要；再向上找自己文件中的行号。
-
-??? tip "提示二：检查数据流"
-    原始输入先进入 `weekly_hours_text`，下一行才交给 `int()`。检查哪一步的输入不满足要求。
-
-??? example "局部示例"
-    `int("5")` 可以成功，`int("abc")` 会触发 `ValueError`。
-
-</section>
-
-<section id="step-7" class="be-task-step" data-step-id="step-7" markdown="1">
-
-## 第七步：独立完成迁移任务
-
-**当前任务：** 不复制固定答案，给档案增加一个新字段。
-
-可以选择：
-
-- 每天练习分钟数。
-- 当前学习方向。
-- 是否完成今天的练习。
-- 自己定义的其他学习信息。
-
-你的修改必须包含：
-
-1. 一个含义清楚的变量名。
-2. 输入或固定初始值。
-3. 需要时完成类型转换。
-4. 在最终档案中输出。
-5. 一次正常输入和一次边界输入的检查。
-
-**成功标准：** 新字段能正常显示，并且你能解释它为什么选择字符串、整数、浮点数或布尔值。
-
-??? tip "提示一：先决定信息是什么"
-    先用一句话说清这个字段表示什么，再选择变量名和类型，不要先随意写一个 `x`。
-
-??? tip "提示二：判断是否需要计算"
-    只显示文本通常保留字符串；需要加减比较的数字应先转换。
-
-??? example "局部示例而非完整答案"
-    如果记录每天分钟数，可以先取得 `minutes_text`，再思考是否需要 `int()`。
-
-??? success "参考答案检查原则"
-    本步骤没有唯一代码。只要字段语义清楚、类型合理、能够运行，并完成正常与边界检查，就可以通过。
-
-</section>
-
-## 一份可工作的组合版本
-
-如果中途文件结构已经混乱，可以用下面版本核对缺失部分。请先完成自己的尝试，再对照；不要用它代替第七步的独立字段。
-
-```python
-name = input("请输入昵称：")
-course = input("请输入当前课程：")
-weekly_hours_text = input("请输入本周计划小时：")
-
-weekly_hours = int(weekly_hours_text)
-next_week_hours = weekly_hours + 2
-
-print("学习档案")
-print("昵称：", name)
-print("课程：", course)
-print("本周计划小时：", weekly_hours)
-print("下周建议小时：", next_week_hours)
-```
-
-## 常见错误与排查
-
-| 现象 | 可能原因 | 检查方式 | 修复方向 |
-| --- | --- | --- | --- |
-| 找不到文件 | 当前终端目录不对 | `pwd`、`ls` 或 `Get-Location`、`dir` | 进入文件目录后再运行 |
-| 输出没有变化 | 文件未保存或运行错文件 | 检查标签状态和命令中的文件名 | 保存并重新运行正确文件 |
-| `NameError` | 变量名拼写不同或文本缺少引号 | 对照定义和使用位置 | 统一名称，文本加引号 |
-| `TypeError` | 字符串与数字直接计算 | 打印参与计算值的 `type()` | 先完成正确类型转换 |
-| `ValueError` | 输入不能转换成目标数字 | 查看实际输入和报错行 | 使用可转换输入；异常处理留到后续课程 |
-| `True`、`False` 报错 | 布尔值大小写错误或加了不合适的写法 | 对照 Python 布尔值语法 | 使用首字母大写的 `True`、`False` |
-
-## 完成证据
-
-- [ ] 记录了首次成功运行的文件名、命令和输出。
-- [ ] 主动修改了昵称、课程、目标和计划值。
-- [ ] 能用实际输出区分字符串、整数、浮点数和布尔值。
-- [ ] 能说明 `input()` 的结果默认是字符串。
-- [ ] 能使用 `int()` 或 `float()` 完成一次转换和计算。
-- [ ] 保存了一次 `ValueError` 的输入、行号、判断和恢复结果。
-- [ ] 独立增加了一个新字段，并完成正常与边界检查。
+<div class="be-next-panel" markdown="1">
 
 ## 下一步
 
-进入[条件、循环、布尔逻辑](02-conditions-loops-boolean.md)。下一节会在这份学习档案的基础上，让程序根据条件判断学习状态，并重复处理多项任务。
+现在的档案只会照原样打印数据。下一课进入[条件、循环、布尔逻辑](02-conditions-loops-boolean.md)，让程序根据完成小时判断状态，并开始处理重复记录。
+
+[进入下一课](02-conditions-loops-boolean.md){ .md-button .md-button--primary }
+
+</div>

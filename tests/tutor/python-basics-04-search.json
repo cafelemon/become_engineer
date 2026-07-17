@@ -1,3 +1,53 @@
-[
-  {"query":"strip不生效","step_id":"step-1","expected":"string-method-result"},{"query":"字符串方法没改值","step_id":"step-1","expected":"string-method-result"},{"query":"split怎么用","step_id":"step-1","expected":"split-join"},{"query":"join怎么用","step_id":"step-1","expected":"split-join"},{"query":"字典有什么用","step_id":"step-2","expected":"dictionary-field"},{"query":"记录用什么结构","step_id":"step-2","expected":"dictionary-field"},{"query":"keyerror怎么办","step_id":"step-2","expected":"missing-key"},{"query":"字典没有这个键","step_id":"step-2","expected":"missing-key"},{"query":"多个字典怎么放","step_id":"step-3","expected":"list-of-dicts"},{"query":"列表中的字典","step_id":"step-3","expected":"list-of-dicts"},{"query":"set去重","step_id":"step-3","expected":"set-deduplicate"},{"query":"集合顺序乱了","step_id":"step-3","expected":"set-deduplicate"},{"query":"列表复制后原列表变了","step_id":"step-4","expected":"list-alias"},{"query":"copied影响records","step_id":"step-4","expected":"list-alias"},{"query":"note没有怎么办","step_id":"step-5","expected":"optional-field"},{"query":"迁移任务字段提示","step_id":"step-5","expected":"optional-field"}
-]
+{
+  "lesson_id": "python-basics-04",
+  "cases": [
+    {"query":"报告器 v0.4 增加什么","expected_card":"multiple-result"},
+    {"query":"第四课的项目结果是什么","expected_card":"multiple-result"},
+    {"query":"数据结构怎么选择","expected_card":"choose-by-use"},
+    {"query":"不知道用 list 还是 dict","expected_card":"choose-by-use"},
+    {"query":"容器可以嵌套吗","expected_card":"nested-shape"},
+    {"query":"tags 为什么又是列表","expected_card":"nested-shape"},
+    {"query":"切片为什么不包含结尾","expected_card":"index-slice"},
+    {"query":"最后一个字符怎么取","expected_card":"index-slice"},
+    {"query":"strip 不生效","expected_card":"string-immutable"},
+    {"query":"字符串方法没改值","expected_card":"string-immutable"},
+    {"query":"标签文本怎么拆开","expected_card":"split-join"},
+    {"query":"join 为什么写在分隔符前面","expected_card":"split-join"},
+    {"query":"append 列表为什么出现嵌套","expected_card":"append-extend"},
+    {"query":"怎样一次增加多个元素","expected_card":"append-extend"},
+    {"query":"排序后变量变成 none","expected_card":"sorted-vs-sort"},
+    {"query":"怎样排序又保留原列表","expected_card":"sorted-vs-sort"},
+    {"query":"too many values to unpack","expected_card":"tuple-unpack"},
+    {"query":"固定返回结果怎么接","expected_card":"tuple-unpack"},
+    {"query":"单元素元组怎么写","expected_card":"singleton-tuple"},
+    {"query":"括号能创建元组吗","expected_card":"singleton-tuple"},
+    {"query":"多个字典怎么放","expected_card":"list-of-dicts"},
+    {"query":"多记录用什么结构","expected_card":"list-of-dicts"},
+    {"query":"record get 应该怎么用","expected_card":"required-optional-key"},
+    {"query":"必填字段和可选字段怎么读","expected_card":"required-optional-key"},
+    {"query":"set 去重","expected_card":"set-unique-order"},
+    {"query":"唯一标签怎样稳定输出","expected_card":"set-unique-order"},
+    {"query":"{} 是集合还是字典","expected_card":"empty-set"},
+    {"query":"空 set 怎么创建","expected_card":"empty-set"},
+    {"query":"怎样找共同标签","expected_card":"set-operations"},
+    {"query":"怎样找还缺的能力","expected_card":"set-operations"},
+    {"query":"多记录报告怎么复现","expected_card":"reproduce-v04"},
+    {"query":"第四课代码怎么跑","expected_card":"reproduce-v04"},
+    {"query":"容器课主动修改什么","expected_card":"active-record"},
+    {"query":"怎么加入自己的记录","expected_card":"active-record"},
+    {"query":"列表越界和字典缺键区别","expected_card":"index-key-errors"},
+    {"query":"错误是在位置还是字段","expected_card":"index-key-errors"},
+    {"query":"第四课给项目加了什么","expected_card":"project-v04"},
+    {"query":"下一课为什么读 JSON","expected_card":"project-v04"},
+    {"query":"列表复制后原列表变了","expected_card":"list-alias"},
+    {"query":"直接赋值是不是复制","expected_card":"list-alias"},
+    {"query":"浅复制是什么意思","expected_card":"shallow-copy"},
+    {"query":"要不要总用 deepcopy","expected_card":"shallow-copy"},
+    {"query":"容器课怎么讲项目","expected_card":"career-data-shape"},
+    {"query":"为什么用列表中的字典怎么回答","expected_card":"career-data-shape"}
+  ],
+  "unknown": [
+    "怎样给盆栽换土",
+    "火星上的咖啡店几点开门"
+  ]
+}

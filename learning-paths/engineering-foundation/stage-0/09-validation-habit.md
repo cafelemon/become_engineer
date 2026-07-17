@@ -1,533 +1,323 @@
-# 验证习惯
-
 <div class="be-tutor-mount" data-tutor-lesson="engineering-foundation-09" aria-hidden="true"></div>
 
-本课为工程基础入门做最后一次可交接验证：选择一个已有结果，记录环境和操作，分别留下成功与失败证据，再完成阶段验收。
+<section id="overview-stage-result" class="be-page-hero be-lesson-hero" data-learning-context="overview-stage-result" data-context-type="overview" markdown="1">
 
-## 五步任务路线
+<span class="be-page-eyebrow">工程基础入门 · 第十课</span>
 
-<div class="be-task-route" role="list" aria-label="本课五步任务">
-  <span role="listitem">1 选择目标</span><span role="listitem">2 记录环境</span><span role="listitem">3 验证成功</span><span role="listitem">4 最小复现失败</span><span role="listitem">5 阶段验收</span>
+# 验证习惯
+
+## “我做过”还不够，要能说明现在是什么状态
+
+<div class="be-tool-result" role="group" aria-label="工程基础阶段检查结果" markdown="1">
+
+```text
+[通过] 当前目录就是 learning-workspace
+[通过] Git 历史至少有 3 次提交
+[通过] .venv 仍被 Git 忽略
+[已复现] 错误文件名会失败；改回正确路径后恢复
+[未检查] Docker Engine（可选，不阻断进入 Python）
+
+结论：必需项通过；一次失败已经恢复；可选项如实保留。
+```
+
 </div>
 
-<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+前九课留下了目录、记录、提交、远程仓库、开发环境和 Docker 认知。这节课不再增加一个新工具，而是把它们检查一遍：看到什么就写什么，没有运行的项目就标“未检查”。
 
-### 第一步：选择一个可验证目标
-
-**任务：** 从前九课选择一个已有产出，例如“终端能读取 learning-log.md”“Git 仓库有一次提交”或“GitHub 能看到一次 push”。**成功证据：** 目标能用命令、文件状态或远程页面检查，不是“感觉会了”。
-
-??? tip "提示一"
-    一次验证只检查一个明确主张。
-??? tip "提示二"
-    选择你能在当前设备上立刻操作的目标。
+<div class="be-page-actions" markdown="1">
+[先看一份判断怎样成立](#concept-claim-evidence-judgment){ .md-button .md-button--primary }
+[检查上一课的 Docker 记录](08-docker-basics.md){ .md-button }
+</div>
 
 </section>
 
-<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+<div class="be-lesson-overview">
+  <div><span>课程位置</span><strong>工程基础入门 · 10 / 10</strong></div>
+  <div><span>继续使用</span><strong>learning-workspace 的文件、Git 与环境</strong></div>
+  <div><span>完成后留下</span><strong>stage-0-acceptance.md 与工作台 v1.0</strong></div>
+</div>
 
-### 第二步：记录环境和操作
+## 开始前
 
-**任务：** 在验证记录中写下系统/目录、执行命令或编辑器动作。**成功证据：** 他人知道在哪里、怎样重复你的检查。
+- 已按顺序完成前九课，并保留同一个 `learning-workspace`。
+- 工作区至少有 `notes/learning-log.md`、`practice/README.md`、`.gitignore` 和本地 Git 历史。
+- 已完成 GitHub 远程配置和项目 `.venv`；如果中途没有完成，请如实记为待补，不要补写不存在的结果。
+- Docker 安装和 Engine 运行仍是可选项；本阶段要求能解释和检查，不要求所有电脑都运行容器。
 
-??? tip "提示一"
-    环境至少包含当前目录和有关版本或工具。
-??? tip "提示二"
-    操作写原始命令，比“运行了一下”更可复现。
+!!! note "公开前先脱敏"
+    验收记录可以提交，但完整用户目录、公司路径、内部仓库地址、账号、令牌、环境变量和 Docker 配置不应进入公开页面或 Git。
 
-</section>
+<section id="concept-claim-evidence-judgment" data-learning-context="concept-claim-evidence-judgment" data-context-type="concept" markdown="1">
 
-<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+## 一次检查怎样变成可靠判断
 
-### 第三步：留下成功证据
+<div class="be-validation-cycle" role="list" aria-label="验证记录从主张到下一步的五个组成部分">
+  <article role="listitem"><b>1</b><span>主张</span><small>我想确认什么</small></article>
+  <article role="listitem"><b>2</b><span>环境与操作</span><small>在哪里，执行了什么</small></article>
+  <article role="listitem"><b>3</b><span>实际结果</span><small>原样保留关键输出</small></article>
+  <article role="listitem"><b>4</b><span>判断</span><small>结果为什么支持结论</small></article>
+  <article role="listitem"><b>5</b><span>下一步</span><small>失败或未检查时继续做什么</small></article>
+</div>
 
-**任务：** 执行验证并原样记录关键输出、文件状态或截图说明。**成功证据：** 输出能支撑“成功”这个判断。
+例如，“Git 应该没问题”不是一条可靠判断。可以把它改成：
 
-??? tip "提示一"
-    成功也需要记录，否则下次无法确认环境是否变化。
-??? tip "提示二"
-    结果和判断分开写：先写看到什么，再写因此说明什么。
+```text
+主张：当前目录是 Git 仓库，并且能读取最近一次提交。
+环境：learning-workspace 根目录，Git 2.x。
+操作：git rev-parse --show-toplevel；git log -1 --oneline。
+结果：第一条显示工作区根目录，第二条显示最近一次提交。
+判断：通过，因为目录与提交历史都能由 Git 自己读取。
+下一步：提交阶段验收后再检查一次状态和最新提交。
+```
 
-</section>
-
-<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
-
-### 第四步：保留一个最小失败实验
-
-**任务：** 设计一个不会破坏工作区的失败，如错误文件名或错误路径，记录输入、报错、恢复动作。**成功证据：** 别人按同样步骤能看到同类失败。
-
-??? tip "提示一"
-    最小复现只保留触发问题所需的最少步骤。
-??? tip "提示二"
-    不要为了制造失败删除真实文件或提交。
-
-</section>
-
-<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
-
-### 第五步：完成工程基础阶段验收
-
-**任务：** 对照本页的工程基础验收记录，填入已完成、待复查和下一步。**成功证据：** 每项状态都有对应的可检查证据。
-
-??? tip "提示一"
-    “没有验证”不是失败，但不能标为已完成。
-??? tip "提示二"
-    将一个待复查项变成下一阶段的第一件可执行任务。
+结果和判断要分开。结果是命令真正输出了什么；判断是这段输出为什么足以支持主张。把两者混在一起，很容易只留下“应该可以”。
 
 </section>
 
-本节是工程基础入门的收口课。前面已经学习了方法、文件、终端、编辑器、Markdown、本地 Git、GitHub 远程协作、开发环境和 Docker 最小认知；本节把这些能力合在一起，形成一个最基础但非常重要的习惯：每做一步，都能运行、观察、记录和复现。
+<section id="example-three-statuses" data-learning-context="example-three-statuses" data-context-type="example" markdown="1">
 
-验证习惯不是高级工程技巧。它的核心是不要只凭感觉说“好了”或“坏了”，而是用可检查的证据说明当前状态。
+## 通过、失败、未检查不是一回事
 
-## 前置知识
+<div class="be-validation-status" role="list" aria-label="验证的三种状态">
+  <article role="listitem" data-state="success"><strong>通过</strong><span>已经执行，结果符合事先写下的判断条件。</span></article>
+  <article role="listitem" data-state="failure"><strong>失败</strong><span>已经执行，结果不符合条件；保留错误并写恢复动作。</span></article>
+  <article role="listitem" data-state="unverified"><strong>未检查</strong><span>还没有运行或没有足够依据；不能写成通过。</span></article>
+</div>
 
-开始前应完成：
+“失败”说明检查给出了有用信息，不等于整个项目没有价值；“未检查”也不是失败，只是当前没有足够依据。真正需要避免的是把未检查写成完成，或者看到失败后删掉错误记录。
 
-- [学习方法](01-learning-method.md)
-- [文件系统](02-filesystem.md)
-- [终端与 Shell](03-terminal-shell.md)
-- [编辑器](04-editor.md)
-- [Markdown](05-markdown.md)
-- [Git](06-git.md)
-- [开发环境](07-development-environment.md)
-- [Docker最小认知](08-docker-basics.md)
+工程基础阶段还要区分**必需项**和**可选项**：项目目录、文件、Git 和 Python 环境属于进入下一阶段的必需项；Docker Engine 是否已经安装属于可选项。可选项未检查，不会阻断 Python 起步。
 
-你需要能打开项目目录，能运行简单命令，能把命令和结果写进 Markdown 学习记录。
+</section>
 
-## 学习目标
+<section id="reproduce-stage-check" data-learning-context="reproduce-stage-check" data-context-type="reproduce" markdown="1">
 
-完成本节后，你应该能做到：
+## 给工作台做一次阶段检查
 
-- 每次学习或修改后，都知道应该验证什么。
-- 能记录命令、目录、输入、输出和判断依据。
-- 能区分“运行成功”“运行失败”和“没有验证”。
-- 能用最小步骤复现一个错误。
-- 能把问题描述成别人可以接着排查的形式。
-- 能完成工程基础入门的最终验收记录。
+先在 `learning-workspace` 根目录新建 `notes/stage-0-acceptance.md`，写下日期、系统和终端。然后运行与你系统对应的命令。
 
-## 学习顺序
+=== "Windows PowerShell"
 
-按下面顺序学习：
+    ```powershell
+    Get-Location
+    Test-Path .\notes\learning-log.md
+    Test-Path .\practice\README.md
+    git rev-parse --show-toplevel
+    git status --short --ignored
+    git log --oneline -3
+    git remote get-url origin
+    .\.venv\Scripts\python.exe -c "import sys; print(sys.version); print(sys.prefix != sys.base_prefix)"
+    docker version
+    ```
 
-1. 先理解什么是验证。
-2. 再学习一次验证记录应该包含什么。
-3. 接着练习成功场景和失败场景的记录。
-4. 然后练习最小复现。
-5. 最后完成工程基础入门验收记录。
+=== "macOS / Linux"
 
-本节不要求你写自动化测试，也不要求你使用 CI。测试、日志、CI 和部署会在后续项目中继续深化。
+    ```bash
+    pwd
+    test -f notes/learning-log.md && echo "learning log: found"
+    test -f practice/README.md && echo "practice readme: found"
+    git rev-parse --show-toplevel
+    git status --short --ignored
+    git log --oneline -3
+    git remote get-url origin
+    ./.venv/bin/python -c "import sys; print(sys.version); print(sys.prefix != sys.base_prefix)"
+    docker version
+    ```
 
-## 什么是验证
+逐项判断：
 
-验证就是用证据确认一件事是否真的成立。
-
-例如：
-
-| 说法 | 弱证据 | 更好的验证 |
+| 检查项 | 通过时应该看到什么 | 要求 |
 | --- | --- | --- |
-| 我已经会进入项目目录 | 我觉得我会 | 运行 `pwd`，确认当前路径是项目根目录 |
-| Git 提交成功了 | 终端没有报错 | 运行 `git log`，看到刚才的提交 |
-| Docker 当前可用 | 我以前装过 Docker | 运行 `docker --version`，记录输出或错误 |
-| 一个文件链接正确 | 我手动看过 | 点击链接或检查目标文件存在 |
+| 项目根目录 | 当前路径与 `git rev-parse --show-toplevel` 指向同一个工作区 | 必需 |
+| 关键文件 | 学习记录与练习说明都存在 | 必需 |
+| Git 历史 | 能看到至少 3 次有说明的提交 | 必需 |
+| Git 忽略 | `.venv/` 显示为忽略项，没有进入提交 | 必需 |
+| 远程关系 | `origin` 已配置；公开记录时不暴露私人地址或凭据 | 必需 |
+| Python 环境 | 项目 Python 能运行，prefix 对比为 `True` | 必需 |
+| Docker Engine | Client 与 Server 都能显示；没有安装则如实记录 | 可选 |
 
-工程基础入门的验证目标很简单：你不用证明系统完美，只需要证明自己知道当前状态。
+`git status --short --ignored` 可能显示新建的验收文件，这是正常变化，不要为了追求“空输出”先删除它。记录当前状态，等文件完成并提交后再检查工作区是否收口。
 
-## 一次验证记录包含什么
+如果 `docker version` 找不到命令或只有 Client、没有 Server，把实际状态写下即可。上一课要求的是能区分和检查这些层，不是强制安装。
 
-一份可用的验证记录至少包含 5 件事：
+</section>
 
-```text
-1. 我想验证什么
-2. 我在哪个目录执行
-3. 我执行了什么命令或操作
-4. 我看到什么输出或现象
-5. 我如何判断成功、失败或未完成
-```
+<section id="example-minimal-failure" data-learning-context="example-minimal-failure" data-context-type="example" markdown="1">
 
-推荐写成 Markdown：
+## 故意写错一次文件名，再恢复
 
-````markdown
-# 验证记录
+这个练习不会删除或覆盖任何文件，只是读取一个不存在的路径。
 
-## 目标
+=== "Windows PowerShell"
 
-验证我是否能在项目根目录运行 Git 状态检查。
+    ```powershell
+    Get-Content .\notes\does-not-exist.md
+    Get-Content .\notes\learning-log.md -TotalCount 3
+    ```
 
-## 环境
+=== "macOS / Linux"
 
-- 当前目录：
-- 使用的终端：
-- 相关工具版本：
+    ```bash
+    head -n 3 notes/does-not-exist.md
+    head -n 3 notes/learning-log.md
+    ```
 
-## 操作
-
-```bash
-pwd
-git status
-```
-
-## 结果
+第一条应该报告找不到文件，第二条应该重新读到真实学习记录。把这段过程写成：
 
 ```text
-把关键输出粘贴在这里
-```
-
-## 判断
-
-- 是否成功：
-- 判断依据：
-- 如果失败，下一步要查什么：
-````
-
-这份记录以后会越来越重要。后面做 Python、C++、Web、AI 项目时，你会经常用类似格式记录实验和问题。
-
-## 成功也要记录
-
-很多初学者只在失败时记录，成功时直接跳过。这样会导致以后很难复现。
-
-成功记录可以很短：
-
-```text
-目标：确认当前目录是项目根目录。
-命令：pwd
-结果：输出路径末尾是 become_engineer。
-判断：成功，因为当前目录与项目名称一致。
-```
-
-成功记录的价值是：以后出问题时，你能知道之前哪个状态是正常的。
-
-## 失败要保留完整信息
-
-失败时不要只写“报错了”。要保留完整错误信息，尤其是：
-
-- 执行的命令。
-- 当前目录。
-- 完整错误输出。
-- 你期望看到什么。
-- 实际看到什么。
-
-差的记录：
-
-```text
-Git坏了。
-```
-
-更好的记录：
-
-```text
-目标：查看当前仓库状态。
-当前目录：桌面。
-命令：git status
-结果：fatal: not a git repository
-判断：失败。原因可能是我没有进入项目根目录。
-下一步：先进入 become_engineer 目录，再重新运行 git status。
-```
-
-这类记录能让别人快速判断：问题可能不在 Git，而在当前目录。
-
-## 最小复现
-
-最小复现是用尽可能少的步骤稳定看到同一个问题。
-
-例如你说“运行不了”，别人很难帮你。但如果你写：
-
-```text
-1. 打开终端。
-2. 进入 demo 目录。
-3. 执行 python main.py。
-4. 看到 ModuleNotFoundError: No module named 'requests'。
-```
-
-别人就能知道问题可能和 Python 依赖有关。
-
-最小复现不追求复杂，而是追求清楚：
-
-- 步骤少。
-- 顺序明确。
-- 每一步可执行。
-- 结果可观察。
-
-## 判断状态
-
-学习时常见状态有三种：
-
-| 状态 | 含义 | 记录方式 |
-| --- | --- | --- |
-| 成功 | 结果符合预期 | 写出命令、输出和判断依据 |
-| 失败 | 结果不符合预期 | 写出错误、当前目录和下一步排查 |
-| 未验证 | 还没有证据 | 明确写“未验证”，不要说已完成 |
-
-“未验证”不是坏事。真正危险的是没有验证却以为已经完成。
-
-## 工程基础入门验收记录
-
-完成工程基础入门时，建议新建一份学习记录：
-
-```text
-stage-0-acceptance.md
-```
-
-内容可以按下面结构写：
-
-````markdown
-# 工程基础入门验收记录
-
-## 1. 学习方法
-
-- 我的学习目标拆解示例：
-- 我的问题记录方式：
-
-## 2. 文件系统
-
-- 我能解释的路径概念：
-- 一个相对路径例子：
-- 一个绝对路径例子：
-
-## 3. 终端与 Shell
-
-```bash
-pwd
-ls
-```
-
-结果：
-
-```text
-记录关键输出
-```
-
-## 4. 编辑器
-
-- 我能打开项目根目录：
-- 我能搜索文件：
-- 我能使用编辑器内终端：
-
-## 5. Markdown
-
-- 我写过的学习记录文件：
-- 里面包含标题、列表、链接和代码块：
-
-## 6. Git
-
-```bash
-git status
-git log
-```
-
-结果：
-
-```text
-记录关键输出
-```
-
-## 7. 开发环境
-
-```bash
-python3 --version
-git --version
-```
-
-结果：
-
-```text
-记录关键输出
-```
-
-## 8. Docker最小认知
-
-```bash
-docker --version
-```
-
-结果或错误：
-
-```text
-记录关键输出
-```
-
-我的判断：
-
-- Docker当前是否可用：
-- 镜像和容器的区别：
-- 端口映射的含义：
-
-## 9. 验证习惯
-
-- 我能说明本次验收验证了什么：
-- 哪些内容成功：
-- 哪些内容失败：
-- 哪些内容未验证：
-- 下一步进入 Python 前要补什么：
-````
-
-这份文件可以放在你自己的学习目录里，也可以作为以后公开学习笔记的素材。不要把私人路径、账号、密钥或不可公开资料写进去。
-
-## 实践练习
-
-### 练习 1：验证当前目录
-
-执行：
-
-```bash
-pwd
-```
-
-Windows PowerShell 也可以执行：
-
-```powershell
-Get-Location
-```
-
-需要产出：
-
-```text
-我想验证什么：
-
-我执行的命令：
-
-输出结果：
-
-我判断当前是否在目标目录：
-
-判断依据：
-```
-
-### 练习 2：验证 Git 状态
-
-在一个 Git 仓库中执行：
-
-```bash
-git status
-```
-
-需要产出：
-
-```text
-当前目录：
-
-命令：
-
-输出里最重要的一句话：
-
-我判断工作区是否干净：
-
-如果不干净，哪些文件发生了变化：
-```
-
-### 练习 3：记录一个成功场景
-
-从前 8 个单元中任选一个成功操作，例如查看版本、打开项目、写 Markdown、运行 `git log`。
-
-需要产出：
-
-```text
-目标：
-
-操作：
-
-结果：
-
-判断：
-```
-
-要求判断里必须写“因为……”，不能只写“成功”。
-
-### 练习 4：记录一个失败场景
-
-找一个真实失败或使用下面的示例：
-
-```bash
-git status
-```
-
-如果你不在 Git 仓库里，可能会看到：
-
-```text
-fatal: not a git repository
-```
-
-需要产出：
-
-```text
-目标：
-
-当前目录：
-
-命令：
-
+主张：错误文件名会被明确拒绝，改回正确路径后可以恢复。
+错误命令：
 完整错误：
-
-我期望看到：
-
-实际看到：
-
-我的初步判断：
-
-下一步排查：
+我确认的原因：notes 目录中没有这个文件。
+恢复命令：
+恢复结果：
 ```
 
-### 练习 5：写一个最小复现
+最小复现不是故意把真实项目弄坏。它只保留触发问题所需的最少条件，并且知道怎样回到正常状态。
 
-从你遇到过的一个问题中，写出最小复现步骤。
+</section>
 
-需要产出：
+<section id="modify-write-acceptance" data-learning-context="modify-write-acceptance" data-context-type="modify" markdown="1">
 
-```text
-问题名称：
+## 写成你自己的阶段验收
 
-复现步骤：
-1.
-2.
-3.
+把真实检查结果整理进 `notes/stage-0-acceptance.md`：
 
-预期结果：
+````markdown
+# 工程基础阶段验收
 
-实际结果：
+- 核查日期：
+- 操作系统与终端：
+- 工作区：learning-workspace（不写私人绝对路径）
 
-是否每次都能复现：
-```
+| 主张 | 必需/可选 | 状态 | 关键结果 | 判断与下一步 |
+| --- | --- | --- | --- | --- |
+| 当前目录是项目根目录 | 必需 | 通过/失败/未检查 |  |  |
+| 学习记录与练习说明存在 | 必需 |  |  |  |
+| Git 历史至少有 3 次提交 | 必需 |  |  |  |
+| .venv 被 Git 忽略 | 必需 |  |  |  |
+| origin 已配置 | 必需 |  |  |  |
+| 项目 Python 属于 .venv | 必需 |  |  |  |
+| 能解释 CLI、Engine、镜像和容器 | 必需 |  |  |  |
+| Docker Engine 可以运行 | 可选 |  |  |  |
 
-### 练习 6：完成工程基础入门验收记录
+## 一次失败与恢复
 
-按“工程基础入门验收记录”的结构，写一份自己的验收记录。
+- 错误命令：
+- 完整错误：
+- 原因判断：
+- 恢复动作：
+- 恢复结果：
 
-需要产出：
+## 进入 Python 前
 
-```text
-文件名：
+- 已经具备的能力：
+- 仍需补上的必需项：
+- 第一个 Python 文件准备放在哪里：
+````
 
-我已验证成功的内容：
+至少把一项最初的“失败”或“未检查”推进一步：补上缺失文件、重新进入正确目录、确认 `.venv`，或者明确写出可选 Docker 暂不安装的理由。修改后重新运行对应命令，用新结果更新状态。
 
-我验证失败的内容：
+</section>
 
-我还没有验证的内容：
+<section id="troubleshoot-validation" data-learning-context="troubleshoot-validation" data-context-type="troubleshoot" markdown="1">
 
-进入 Python 起步前要补的内容：
-```
+## 阶段检查卡住时，先别把所有问题混在一起
 
-## 常见错误与排查
-
-| 错误 | 表现 | 怎么排查 |
+| 现象 | 先判断什么 | 怎样继续 |
 | --- | --- | --- |
-| 把感觉当成验证 | 只写“应该可以” | 必须写出命令、输出或操作结果 |
-| 只记录失败不记录成功 | 以后无法知道之前的正常状态 | 成功也留下最短验证记录 |
-| 错误信息不完整 | 别人无法判断问题位置 | 保留完整命令、目录和错误输出 |
-| 复现步骤太多 | 问题被无关步骤掩盖 | 删除与问题无关的操作 |
-| 把未验证写成已完成 | 后续学习建立在不确定状态上 | 明确标记“未验证” |
-| 公开记录里包含私人信息 | 文档里出现个人路径、账号或密钥 | 发布前删除私人路径和真实凭据 |
+| 项目根目录和当前目录不同 | 是否打开了父目录、clone 副本或 `notes/` | 回到真正要验收的 `learning-workspace` 再运行命令 |
+| 关键文件找不到 | 路径起点、拼写和文件是否保存 | 用文件树和目录命令逐层确认，不重建同名空文件冒充原记录 |
+| Git 提交少于 3 次 | 是否一直没有提交，或打开了另一个仓库 | 先看完整 `git log` 和仓库根目录，再决定需要补哪次有意义的提交 |
+| `.venv` 出现在普通待提交文件中 | `.gitignore` 是否包含 `.venv/`，文件是否已被跟踪 | 回到 Git 课的忽略检查；不要直接批量提交 |
+| `origin` 不存在 | 本地仓库是否完成远程课 | 按远程课配置自己的 GitHub 仓库，再独立 clone 验证 |
+| 项目 Python prefix 对比为 `False` | 调用的是全局 Python，不是 `.venv` 中的解释器 | 使用平台对应的 `.venv` 完整路径重新检查 |
+| Docker Server 无法连接 | CLI 和 Engine 的状态不同 | 记为 Docker 可选项未通过或未完成，不影响必需项结论 |
+| 验收记录含私人信息 | 复制了完整路径、远程 URL 或环境输出 | 保留判断所需片段，其余替换为 `<HOME>`、`<REPOSITORY>` 等占位符 |
 
-## 完成标准
+一张表里可能同时有通过、失败和未检查。按检查项逐个处理，比写一句“环境有问题”更容易继续。
 
-完成本节需要同时满足：
+</section>
 
-- 能解释验证和普通“试一下”的区别。
-- 能写出一份包含目标、环境、操作、结果和判断的验证记录。
-- 能记录一个成功场景，并写出判断依据。
-- 能记录一个失败场景，并保留完整错误信息。
-- 能写出一个最小复现步骤。
-- 能区分成功、失败和未验证三种状态。
-- 能完成一份工程基础入门验收记录，并列出进入 Python 起步前还需要补的内容。
+<section id="deepen-manual-to-automated" data-learning-context="deepen-manual-to-automated" data-context-type="deepen" markdown="1">
+
+## 手工检查以后会怎样长成自动化测试
+
+现在的检查由你运行命令、读输出并写判断。以后进入编程和项目课程，同样的结构会逐渐变成自动化：
+
+```text
+手工主张        → 测试名称
+手工操作        → 测试代码或脚本
+预期结果        → 断言
+实际输出        → 测试报告和日志
+修复后再检查    → 回归测试
+多人重复执行    → CI
+```
+
+自动化不会替你决定应该验证什么。一个脚本即使每次都显示绿色，也可能只检查了不重要的事情。因此本课先练主张、结果和判断，后面的测试框架再把重复动作交给程序。
+
+</section>
+
+<section id="career-handoff-story" data-learning-context="career-handoff-story" data-context-type="career" markdown="1">
+
+## 求职时，这个小工作台能说明什么
+
+它还不是商业项目，也不需要包装成“完整开发平台”。更诚实的说法是：
+
+> 我从零建立了一个可交接的学习工作区。文件、Markdown、Git、本地与远程仓库、Python 虚拟环境和 Docker 基础检查都沿同一目录演进；阶段结束时，我用通过、失败、未检查三种状态整理结果，并保留了一次可重复的错误与恢复记录。
+
+如果被继续追问，可以打开提交历史、`.gitignore`、环境记录和阶段验收，说明一次具体问题是怎样定位的。能够拿出文件和命令解释，比背一句“我有工程意识”更有说服力。
+
+</section>
+
+<section id="project-workspace-v10" data-learning-context="project-workspace-v10" data-context-type="project" markdown="1">
+
+## 工程学习工作台 v1.0
+
+| 版本 | 工作台新学会了什么 |
+| --- | --- |
+| v0.1–v0.3 | 记录目标，建立目录，并从终端读写同一份学习记录 |
+| v0.4–v0.5 | 用 VS Code 操作工作区，用 Markdown 整理成可读文档 |
+| v0.6–v0.7 | 建立本地版本历史，安全连接 GitHub，并用 clone 复核 |
+| v0.8–v0.9 | 固定项目 Python 环境，读懂 Docker 的对象和配置 |
+| v1.0 | 汇总必需项、可选项、失败恢复和进入 Python 的准备状态 |
+
+确认验收文件已经脱敏，再完成这次阶段提交：
+
+```bash
+git add notes/stage-0-acceptance.md
+git diff --cached
+git commit -m "complete engineering foundation"
+git push
+git status --short --ignored
+git log -1 --oneline
+```
+
+最后两条应该显示：没有意外的普通修改，`.venv/` 仍处于忽略状态，最新提交就是阶段收口。若 push 暂时失败，本地提交仍然存在；把远程失败单独记录和修复，不要重做整个工作区。
+
+从下一课开始，`learning-workspace` 不再继续堆放所有编程文件。Python 起步会建立自己的练习目录和“学习进度报告器”，但本课形成的目录、版本、环境和验证习惯会继续使用。
+
+</section>
+
+## 完成检查
+
+- [ ] 我能把一次检查写成主张、环境与操作、实际结果、判断和下一步。
+- [ ] 我能区分通过、失败和未检查，不把可选 Docker 状态当成 Python 的阻断项。
+- [ ] 我检查了项目根目录、关键文件、Git 历史、忽略规则、远程关系和项目 Python。
+- [ ] 我安全复现了一次错误文件名，并用正确路径恢复。
+- [ ] 我至少推进了一项原来的失败或未检查状态。
+- [ ] `stage-0-acceptance.md` 已脱敏，并保存了真实命令和关键结果。
+- [ ] 我完成阶段提交，再检查了工作区状态和最新提交。
+- [ ] 我知道进入 Python 起步后，哪些能力和记录方式仍会继续使用。
+
+## 来源与版本
+
+- 适用版本：Git 2.28 及以上、Python 3.11–3.14；Docker CLI／Engine 27–29 为可选检查项。Windows 11 PowerShell、当前受支持的 macOS 与常见 Linux 发行版均提供对应路径。
+- 核查日期：2026-07-17。
+- 官方资料：[Git 状态](https://git-scm.com/docs/git-status)、[Git 历史](https://git-scm.com/docs/git-log)、[仓库根目录解析](https://git-scm.com/docs/git-rev-parse)、[读取远程 URL](https://git-scm.com/docs/git-remote)、[Python `venv`](https://docs.python.org/3/library/venv.html)、[Docker Client／Server 版本](https://docs.docker.com/reference/cli/docker/version/)。
+- 验证方式：仓库测试在临时目录创建真实 Git 工作区和 3 次提交，检查根目录、提交数量、`.venv` 忽略和干净状态；随后触发一次无破坏的缺失文件错误并恢复。测试不访问网络、不调用 Docker。
+- 隐私说明：自动测试只使用临时路径和无效测试邮箱；学习者公开自己的记录前仍需检查私人路径、账号、远程地址、环境变量和凭据。
 
 ## 下一步
 
-工程基础入门已经完成。请回到[工程基础入门](README.md)对照完成标准，再进入[Python 起步](../../programming-languages/python-basics/README.md)。
+进入 [Python 起步](../../programming-languages/python-basics/README.md)。第一课会让“个人学习档案”先运行起来；工程基础形成的文件、终端、Git、环境和验证方法会直接用在这个新程序上。

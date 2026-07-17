@@ -1,82 +1,51 @@
-[
-  {
-    "query": "docker 命令找不到",
-    "step_id": "step-1",
-    "expected": "version"
-  },
-  {
-    "query": "Docker 未安装怎么办",
-    "step_id": "step-1",
-    "expected": "version"
-  },
-  {
-    "query": "Docker image container 区别",
-    "step_id": "step-2",
-    "expected": "image"
-  },
-  {
-    "query": "镜像是什么容器是什么",
-    "step_id": "step-2",
-    "expected": "image"
-  },
-  {
-    "query": "docker run 命令怎么看",
-    "step_id": "step-2",
-    "expected": "run"
-  },
-  {
-    "query": "docker run 是启动容器吗",
-    "step_id": "step-2",
-    "expected": "run"
-  },
-  {
-    "query": "Docker 端口映射怎么看",
-    "step_id": "step-3",
-    "expected": "port"
-  },
-  {
-    "query": "端口映射左右是什么",
-    "step_id": "step-3",
-    "expected": "port"
-  },
-  {
-    "query": "-v 参数是什么意思",
-    "step_id": "step-4",
-    "expected": "volume"
-  },
-  {
-    "query": "容器能访问本机文件吗",
-    "step_id": "step-4",
-    "expected": "volume"
-  },
-  {
-    "query": "-e 参数泄露密码吗",
-    "step_id": "step-4",
-    "expected": "secret"
-  },
-  {
-    "query": "Docker 密钥怎么处理",
-    "step_id": "step-4",
-    "expected": "secret"
-  },
-  {
-    "query": "怎么查看容器状态日志",
-    "step_id": "step-5",
-    "expected": "logs"
-  },
-  {
-    "query": "Docker 如何看日志",
-    "step_id": "step-5",
-    "expected": "logs"
-  },
-  {
-    "query": "Docker 验收怎么写",
-    "step_id": "step-5",
-    "expected": "safe"
-  },
-  {
-    "query": "Docker 安全检查",
-    "step_id": "step-5",
-    "expected": "safe"
-  }
-]
+{
+  "lesson_id": "engineering-foundation-08",
+  "cases": [
+    {"query":"docker 命令背后是谁在工作","expected_card":"docker-roles"},
+    {"query":"镜像容器客户端引擎有什么关系","expected_card":"docker-roles"},
+    {"query":"docker 命令有版本但 Engine 连不上","expected_card":"version-vs-engine"},
+    {"query":"怎么判断 Docker 后台服务真的启动了","expected_card":"version-vs-engine"},
+    {"query":"Windows 和 macOS 怎么安装 Docker","expected_card":"install-docker"},
+    {"query":"Linux 应该装 Docker Desktop 还是 Engine","expected_card":"install-docker"},
+    {"query":"docker run 会自动拉镜像吗","expected_card":"hello-world-pull"},
+    {"query":"Unable to find image locally 是报错吗","expected_card":"hello-world-pull"},
+    {"query":"hello-world 运行后为什么容器不见了","expected_card":"rm-container"},
+    {"query":"容器自动删除和删除镜像一样吗","expected_card":"rm-container"},
+    {"query":"同一个镜像能启动几个容器","expected_card":"image-vs-container"},
+    {"query":"镜像是不是一台虚拟机","expected_card":"image-vs-container"},
+    {"query":"be-hello-check 名称冲突怎么处理","expected_card":"container-name-conflict"},
+    {"query":"容器退出了为什么还占名字","expected_card":"container-name-conflict"},
+    {"query":"Docker 端口映射左右怎么记","expected_card":"port-order"},
+    {"query":"浏览器应该访问 8080 还是 80","expected_card":"port-order"},
+    {"query":"-p 8080:80 会不会让别人访问","expected_card":"loopback-port"},
+    {"query":"怎样让 Docker 服务只在本机打开","expected_card":"loopback-port"},
+    {"query":"Docker 说 8080 端口被占用","expected_card":"port-conflict"},
+    {"query":"容器端口冲突应该改左边还是右边","expected_card":"port-conflict"},
+    {"query":"--mount 的 src 和 dst 怎么区分","expected_card":"bind-mount-purpose"},
+    {"query":"Docker 怎么读取本机项目文件","expected_card":"bind-mount-purpose"},
+    {"query":"容器默认能改本机文件吗","expected_card":"readonly-mount"},
+    {"query":"只读挂载能避免什么问题","expected_card":"readonly-mount"},
+    {"query":"Docker 找不到我要挂载的目录","expected_card":"mount-path-error"},
+    {"query":"相对路径挂载失败怎么查","expected_card":"mount-path-error"},
+    {"query":"Docker 环境变量怎么传配置","expected_card":"environment-config"},
+    {"query":"-e 和 --env 有什么用途","expected_card":"environment-config"},
+    {"query":"Docker 环境变量会不会泄露密码","expected_card":"no-secrets"},
+    {"query":"为什么命令里不能放真实 token","expected_card":"no-secrets"},
+    {"query":"docker run 参数太多看不懂怎么办","expected_card":"read-run-command"},
+    {"query":"怎么拆解端口挂载环境变量和镜像","expected_card":"read-run-command"},
+    {"query":"docker-command.txt 应该写什么","expected_card":"modify-command"},
+    {"query":"怎么把预览端口改成 9090","expected_card":"modify-command"},
+    {"query":"Docker Server 连接失败怎么查","expected_card":"engine-connection"},
+    {"query":"Docker Desktop 打开了还是连不上","expected_card":"engine-connection"},
+    {"query":"docker pull 网络失败怎么判断","expected_card":"pull-timeout"},
+    {"query":"镜像下载失败要不要重装 Docker","expected_card":"pull-timeout"},
+    {"query":"Docker Desktop 为什么还需要 Linux 虚拟机","expected_card":"container-vs-vm"},
+    {"query":"容器有没有自己的操作系统内核","expected_card":"container-vs-vm"},
+    {"query":"Docker 课完成后保存哪些文件","expected_card":"project-v09"},
+    {"query":"docker-check.md 需要记录什么","expected_card":"project-v09"}
+  ],
+  "unknown": [
+    "怎样给兰花配营养土",
+    "如何制作木工榫卯"
+  ]
+}

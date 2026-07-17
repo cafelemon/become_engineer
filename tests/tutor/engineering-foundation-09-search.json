@@ -1,82 +1,51 @@
-[
-  {
-    "query": "怎么选择验证目标",
-    "step_id": "step-1",
-    "expected": "goal"
-  },
-  {
-    "query": "验证目标怎么写",
-    "step_id": "step-1",
-    "expected": "goal"
-  },
-  {
-    "query": "验证操作怎么记录",
-    "step_id": "step-2",
-    "expected": "environment"
-  },
-  {
-    "query": "验证时记录目录吗",
-    "step_id": "step-2",
-    "expected": "environment"
-  },
-  {
-    "query": "验证成功证据是什么",
-    "step_id": "step-3",
-    "expected": "success"
-  },
-  {
-    "query": "成功结果怎么写",
-    "step_id": "step-3",
-    "expected": "success"
-  },
-  {
-    "query": "验证记录怎么写结果判断",
-    "step_id": "step-3",
-    "expected": "judgment"
-  },
-  {
-    "query": "结果和结论区别",
-    "step_id": "step-3",
-    "expected": "judgment"
-  },
-  {
-    "query": "怎么做安全失败实验",
-    "step_id": "step-4",
-    "expected": "repro"
-  },
-  {
-    "query": "最小复现怎么写",
-    "step_id": "step-4",
-    "expected": "repro"
-  },
-  {
-    "query": "报错怎么记录才有用",
-    "step_id": "step-4",
-    "expected": "failure"
-  },
-  {
-    "query": "错误记录怎么写",
-    "step_id": "step-4",
-    "expected": "failure"
-  },
-  {
-    "query": "未验证状态怎么标记",
-    "step_id": "step-5",
-    "expected": "unverified"
-  },
-  {
-    "query": "没检查能算完成吗",
-    "step_id": "step-5",
-    "expected": "unverified"
-  },
-  {
-    "query": "九课学完怎么检查",
-    "step_id": "step-5",
-    "expected": "accept"
-  },
-  {
-    "query": "阶段验收怎么写",
-    "step_id": "step-5",
-    "expected": "accept"
-  }
-]
+{
+  "lesson_id": "engineering-foundation-09",
+  "cases": [
+    {"query":"什么才算真的检查过","expected_card":"what-is-validation"},
+    {"query":"为什么不能只说应该可以","expected_card":"what-is-validation"},
+    {"query":"怎么把学习目标写成检查项","expected_card":"write-claim"},
+    {"query":"验证前要先写什么","expected_card":"write-claim"},
+    {"query":"为什么输出和结论要分开写","expected_card":"result-vs-judgment"},
+    {"query":"检查记录里的结果应该写什么","expected_card":"result-vs-judgment"},
+    {"query":"没运行到底算失败还是未检查","expected_card":"three-statuses"},
+    {"query":"检查报错是不是整个阶段都失败","expected_card":"three-statuses"},
+    {"query":"哪些阶段检查是必需的哪些是可选的","expected_card":"required-vs-optional"},
+    {"query":"Docker Engine 未检查算不算工程基础没完成","expected_card":"required-vs-optional"},
+    {"query":"git rev-parse --show-toplevel 是做什么的","expected_card":"project-root"},
+    {"query":"当前目录和 Git 根目录怎么对比","expected_card":"project-root"},
+    {"query":"learning-log 和 practice README 怎么检查","expected_card":"key-files"},
+    {"query":"文件不存在时能不能重新建个空文件","expected_card":"key-files"},
+    {"query":"为什么工作区不干净也可以继续验收","expected_card":"git-status"},
+    {"query":"git status --short --ignored 应该怎么看","expected_card":"git-status"},
+    {"query":"git log --oneline -3 应该看到什么","expected_card":"git-history"},
+    {"query":"提交历史少于三条怎么办","expected_card":"git-history"},
+    {"query":".venv 显示什么才算被忽略","expected_card":"ignored-venv"},
+    {"query":"虚拟环境出现在普通待提交文件中怎么办","expected_card":"ignored-venv"},
+    {"query":"git remote get-url origin 输出要不要贴进记录","expected_card":"remote-check"},
+    {"query":"阶段验收怎么检查 GitHub 远程","expected_card":"remote-check"},
+    {"query":"prefix 对比为什么应该是 True","expected_card":"venv-check"},
+    {"query":"阶段验收要不要激活虚拟环境","expected_card":"venv-check"},
+    {"query":"阶段验收为什么用 docker version 而不是只看 --version","expected_card":"docker-check"},
+    {"query":"Docker Client 正常 Server 失败怎么登记","expected_card":"docker-check"},
+    {"query":"怎样安全练习一次失败和恢复","expected_card":"minimal-reproduction"},
+    {"query":"错误文件名练习到底在验证什么","expected_card":"minimal-reproduction"},
+    {"query":"报错记录为什么不能只写失败了","expected_card":"failure-record"},
+    {"query":"怎样让别人复现我的错误","expected_card":"failure-record"},
+    {"query":"工程基础阶段验收表要写哪些列","expected_card":"acceptance-file"},
+    {"query":"进入 Python 前要汇总什么","expected_card":"acceptance-file"},
+    {"query":"验收表写完就算完成了吗","expected_card":"advance-one-status"},
+    {"query":"怎样把检查结果变成实际改进","expected_card":"advance-one-status"},
+    {"query":"远程 URL 和绝对路径能不能提交","expected_card":"privacy-review"},
+    {"query":"怎样给验收记录脱敏","expected_card":"privacy-review"},
+    {"query":"以后写测试是不是不用人工判断了","expected_card":"manual-to-test"},
+    {"query":"断言和现在的通过条件有什么关系","expected_card":"manual-to-test"},
+    {"query":"怎样讲工程基础项目才不夸大","expected_card":"career-story"},
+    {"query":"面试怎么证明自己有基本工程习惯","expected_card":"career-story"},
+    {"query":"工程基础最后一次提交怎么做","expected_card":"project-v10"},
+    {"query":"阶段收口后怎样确认工作区干净","expected_card":"project-v10"}
+  ],
+  "unknown": [
+    "怎样给咖啡豆选择烘焙度",
+    "如何修复自行车变速器"
+  ]
+}

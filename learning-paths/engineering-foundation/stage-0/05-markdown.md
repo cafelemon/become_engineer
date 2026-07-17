@@ -1,376 +1,326 @@
-# Markdown
-
 <div class="be-tutor-mount" data-tutor-lesson="engineering-foundation-05" aria-hidden="true"></div>
 
-本课用已有的 `learning-log.md` 做一次真实排版：写标题、列表、链接、命令块和小表格，最后让别人能读懂你的学习证据。
+<section id="overview-markdown-result" class="be-page-hero be-lesson-hero" data-learning-context="overview-markdown-result" data-context-type="overview" markdown="1">
 
-## 五步任务路线
+<span class="be-page-eyebrow">工程基础入门 · 第五课</span>
 
-<div class="be-task-route" role="list" aria-label="本课五步任务">
-  <span role="listitem">1 写标题</span><span role="listitem">2 整理列表</span><span role="listitem">3 加入链接</span><span role="listitem">4 记录命令</span><span role="listitem">5 表格验收</span>
+# Markdown
+
+## 左边是纯文本，右边是给人读的文档
+
+<div class="be-markdown-compare" role="group" aria-label="同一份 Markdown 源文本与渲染后阅读效果的对照">
+  <div class="be-markdown-compare__source">
+    <span>你编辑的源文本</span>
+    <pre><code># 学习记录
+
+## 本次结果
+
+- 找到项目目录
+- 保存并复核文件
+
+&#96;&#96;&#96;text
+assets  notes  practice
+&#96;&#96;&#96;</code></pre>
+  </div>
+  <div class="be-markdown-compare__preview">
+    <span>预览中的阅读效果</span>
+    <div class="be-markdown-preview-card">
+      <strong>学习记录</strong>
+      <h3>本次结果</h3>
+      <ul><li>找到项目目录</li><li>保存并复核文件</li></ul>
+      <pre><code>assets  notes  practice</code></pre>
+    </div>
+  </div>
 </div>
 
-<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+两边来自同一份 `.md` 文件。Markdown 没有把源文本变成另一份文档；预览器只是按照符号和结构，把它显示得更容易阅读。
 
-### 第一步：给学习记录建立标题层级
-
-**任务：** 在 `learning-log.md` 使用一个一级标题和至少两个二级标题。**成功证据：** 标题层级能表达文档结构，而不是只为了变大字体。
-
-??? tip "提示一"
-    `#` 后加空格写一级标题，`##` 后加空格写二级标题。
-??? tip "提示二"
-    一个文档通常只保留一个一级标题，后续内容使用二级或三级标题。
+<div class="be-page-actions" markdown="1">
+[先看懂源文本和预览](#concept-source-preview){ .md-button .md-button--primary }
+[返回 VS Code 编辑器](04-editor.md){ .md-button }
+</div>
 
 </section>
 
-<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+<div class="be-lesson-overview">
+  <div><span>课程位置</span><strong>工程基础入门 · 5 / 10</strong></div>
+  <div><span>继续使用</span><strong>notes/learning-log.md</strong></div>
+  <div><span>完成后留下</span><strong>一份可阅读、可复核的学习记录</strong></div>
+</div>
 
-### 第二步：把操作写成列表
+<section id="concept-source-preview" data-learning-context="concept-source-preview" data-context-type="concept" markdown="1">
 
-**任务：** 把本次完成的三项操作改成无序或有序列表。**成功证据：** 每个条目只表达一个动作。
+## 源文本负责保存，预览负责阅读
 
-??? tip "提示一"
-    无序列表用 `- `，有顺序的步骤用 `1. `。
-??? tip "提示二"
-    保持同一层级的缩进一致，避免列表意外断开。
-
-</section>
-
-<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
-
-### 第三步：链接到一节相关课程
-
-**任务：** 在记录中添加到“终端与 Shell”或本课的 Markdown 链接。**成功证据：** 链接文字清楚，点击目标正确。
-
-??? tip "提示一"
-    基本写法是 `[可读文字](目标地址)`。
-??? tip "提示二"
-    相对链接的起点是当前 Markdown 文件所在目录。
-
-</section>
-
-<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
-
-### 第四步：记录一段命令和输出
-
-**任务：** 用围栏代码块记录上一课的 `pwd`、`ls` 或输出。**成功证据：** 命令不会被渲染成普通段落或标题。
-
-??? tip "提示一"
-    在代码前后各放一行三个反引号。
-??? tip "提示二"
-    代码块中保留原始空格和符号，便于复现。
-
-</section>
-
-<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
-
-### 第五步：用小表格完成迁移验收
-
-**任务：** 创建“目标 / 结果 / 下一步”三列的小表格，填入一行真实记录。**成功证据：** 别人能只读表格理解你的当前状态。
-
-??? tip "提示一"
-    表格第二行需要使用 `---` 分隔表头和内容。
-??? tip "提示二"
-    若表格难写，先用三个短字段，避免把长段文字塞进单元格。
-
-</section>
-
-## 前置知识
-
-- 已完成 [学习方法](01-learning-method.md)。
-- 已完成 [文件系统](02-filesystem.md)。
-- 已完成 [终端与 Shell](03-terminal-shell.md)。
-- 已完成 [编辑器](04-editor.md)。
-- 能用编辑器打开项目、修改文本文件并保存。
-
-## 学习目标
-
-学完本节后，你应该能用 Markdown 写出一份结构清楚、能被别人阅读和检查的学习记录。
-
-本节只讲学习记录必需语法：标题、段落、列表、链接、代码块、表格和基本文档结构。不讲静态站点、MkDocs、HTML 或复杂排版。
-
-## 核心概念
-
-### Markdown 是什么
-
-Markdown 是一种用纯文本写文档的格式。
-
-它的特点是：
-
-- 文件可以直接用编辑器打开。
-- 语法简单，适合写学习记录和项目说明。
-- 可以被 GitHub、文档站和很多编辑器渲染成更易读的页面。
-
-Markdown 文件通常使用 `.md` 扩展名，比如：
+Markdown 是一种纯文本写法。文件仍然由普通字符组成，所以编辑器、终端和 Git 都能直接读取；支持 Markdown 的工具会把其中的结构渲染成标题、列表、链接和代码块。
 
 ```text
-README.md
-stage-0.md
-learning-note.md
+learning-log.md（磁盘中的纯文本）
+        │
+        ├── VS Code 编辑区：修改原始字符
+        ├── 终端 cat / Get-Content：读取原始字符
+        └── Markdown 预览：按照语法显示阅读效果
 ```
 
-### 标题
+预览不是最终事实。修改是否真的保存，要看标签状态、重新打开结果或终端读取；链接是否正确，要实际点击；命令是否有效，要回到终端运行。
 
-标题用 `#` 表示。
+!!! tip "文件扩展名仍然重要"
+    保存为 `learning-log.md`，VS Code 才会自动启用内置 Markdown 支持。若文件实际叫 `learning-log.md.txt`，先回到文件系统课修正扩展名。
+
+</section>
+
+<section id="example-markdown-building-blocks" data-learning-context="example-markdown-building-blocks" data-context-type="example" markdown="1">
+
+## 先用五种写法整理一份记录
+
+### 标题说明文档层级
 
 ```markdown
-# 一级标题
+# 工程学习记录
 
-## 二级标题
+## 本次目标
 
-### 三级标题
+## 实际操作
+
+## 结果与问题
 ```
 
-学习记录里，一级标题通常只用一次，用来说明这篇记录是什么。
+`#` 后留一个空格。这里把一级标题留给整篇文档，主要部分使用二级标题；标题表达结构，不是用来把字变大。
 
-### 段落
-
-普通文字直接写即可。段落之间留一个空行。
+### 列表把并列项和步骤分开
 
 ```markdown
-今天学习 Markdown 的基本语法。
+## 实际操作
 
-目标是写出一份别人能读懂的学习记录。
+1. 打开学习工作区。
+2. 修改并保存学习记录。
+3. 从终端重新读取文件。
+
+## 结果与问题
+
+- 搜索能找到独特关键词。
+- 曾经打开错一层目录，已经恢复。
 ```
 
-不要把整篇内容挤在一行里。文档不是越密越好，能读清楚更重要。
+有先后顺序的操作用有序列表；互相并列的结果用无序列表。标记后也要留空格，例如 `- 结果`，不要写成 `-结果`。
 
-### 列表
-
-无序列表用 `-`：
+### 链接把相关文件连起来
 
 ```markdown
-- 目标
-- 操作
-- 结果
-- 问题
-- 下一步
+[练习目录说明](../practice/README.md)
 ```
 
-有序列表用数字：
+方括号里是读者看见的文字，圆括号里是目标地址。这个链接从 `notes/learning-log.md` 出发，先回到上一层，再进入 `practice`。
 
-```markdown
-1. 打开编辑器。
-2. 新建 Markdown 文件。
-3. 写入学习记录。
-4. 保存文件。
-```
-
-当顺序重要时用有序列表；只是并列信息时用无序列表。
-
-### 链接
-
-链接格式是：
-
-```markdown
-[显示文字](README.md)
-```
-
-例如：
-
-```markdown
-[工程基础入门](README.md)
-```
-
-如果链接到同一目录下的文件，可以直接写文件名。如果链接到上一级或其他目录，就需要使用相对路径。
-
-### 代码块
-
-代码块用三个反引号包起来。
+### 代码块保留命令和输出
 
 ````markdown
 ```text
-这里放命令、路径、输出或代码
+assets
+notes
+practice
 ```
 ````
 
-如果只是展示命令，可以写：
+前后各一行三个反引号。`text` 是语言标记，表示这段只是普通文字；若记录 Shell 命令，也可以写 `bash` 或 `powershell`。
 
-````markdown
-```bash
-pwd
-ls
-```
-````
-
-代码块适合放：
-
-- 命令。
-- 文件路径。
-- 错误信息。
-- 目录结构。
-- 示例代码。
-
-### 表格
-
-表格适合对照信息。
+### 表格只在需要对照时使用
 
 ```markdown
-| 项目 | 说明 |
-| --- | --- |
-| 目标 | 今天要完成什么 |
-| 结果 | 最后产出了什么 |
-```
-
-入门时不要滥用表格。只有当信息需要横向比较时才用。
-
-## 学习顺序
-
-1. 先学标题和段落，让文档有层次。
-2. 再学列表，用来记录步骤和结论。
-3. 然后学链接，把相关文件连接起来。
-4. 再学代码块，保存命令、路径和错误信息。
-5. 最后用表格整理对照信息。
-
-## 示例：一份学习记录结构
-
-```markdown
-# 学习记录：Markdown
-
-## 目标
-
-学会用 Markdown 写清楚学习记录。
-
-## 操作
-
-1. 阅读 Markdown。
-2. 练习标题、列表、链接和代码块。
-3. 写出一份完整学习记录。
-
-## 结果
-
-- 我能写出标题和列表。
-- 我能用代码块记录命令。
-- 我能写一个指向其他文件的链接。
-
-## 问题
-
-我还不确定相对链接在不同目录下怎么写。
-
-## 下一步
-
-进入 Git，学习如何保存一次文档修改。
-```
-
-## 实践练习
-
-### 练习 1：写标题层级
-
-新建一份 Markdown 学习记录，写入下面结构：
-
-```markdown
-# 学习记录：Markdown
-
-## 目标
-
-## 操作
-
-## 结果
-
-## 问题
-
-## 下一步
-```
-
-需要产出：
-
-```text
-我创建的文件名是：
-
-我使用了几个二级标题：
-```
-
-### 练习 2：写列表
-
-在“操作”下面写一个有序列表，至少包含 3 步。
-
-在“结果”下面写一个无序列表，至少包含 2 条。
-
-需要产出：
-
-```text
-我的有序列表有几步：
-
-我的无序列表有几条：
-```
-
-### 练习 3：写链接
-
-写一个指向工程基础入门的链接：
-
-```markdown
-[工程基础入门](README.md)
-```
-
-需要产出：
-
-```text
-我写出的链接是：
-
-这个链接从当前文件出发指向哪里：
-```
-
-### 练习 4：记录命令和输出
-
-用代码块记录你在终端与 Shell 学过的两个命令。
-
-示例：
-
-````markdown
-```bash
-pwd
-ls
-```
-````
-
-需要产出：
-
-```text
-我记录了哪些命令：
-
-我是否使用了代码块：
-```
-
-### 练习 5：制作一个小表格
-
-写一个表格，对比“目标”和“结果”。
-
-```markdown
-| 项目 | 我的内容 |
-| --- | --- |
-| 目标 |  |
-| 结果 |  |
-```
-
-需要产出：
-
-```text
-表格有几列：
-
-表格有几行内容：
-```
-
-## 常见错误与排查
-
-| 错误 | 表现 | 怎么排查 |
+| 检查项 | 实际结果 | 下一步 |
 | --- | --- | --- |
-| 标题层级乱跳 | `#`、`###` 混着用，看不出结构 | 一级标题只用一次，二级标题用于主要部分 |
-| 列表没有空格 | `-目标` 不渲染成列表 | `-` 后面加一个空格 |
-| 代码块没有闭合 | 后面的文字都变成代码样式 | 检查是否有开头和结尾两组三个反引号 |
-| 链接路径写错 | 点击后找不到文件 | 回到文件系统，确认当前文件和目标文件的位置 |
-| 表格分隔线缺失 | 表格不渲染 | 第二行必须有 `---` |
+| 文件保存 | 重新打开仍能看到新内容 | 用 Git 保存版本 |
+```
 
-## 完成标准
+表格的第二行叫分隔行。它属于 GitHub Flavored Markdown（GFM）扩展，不在 CommonMark 基础语法中；GitHub、VS Code 和本站能显示，但其他渲染器不一定支持。
 
-完成本节需要同时满足：
+</section>
 
-- 能写出一级标题和二级标题。
-- 能写出有序列表和无序列表。
-- 能写出一个相对链接。
-- 能用代码块记录命令或错误信息。
-- 能写出一个简单表格。
-- 能完成一份包含目标、操作、结果、问题、下一步的 Markdown 学习记录。
+<section id="reproduce-structure-learning-log" data-learning-context="reproduce-structure-learning-log" data-context-type="reproduce" markdown="1">
+
+## 把现有记录整理成下面的结构
+
+在 VS Code 打开 `notes/learning-log.md`。先复制一份备份为 `notes/learning-log-before-markdown.txt`，然后把原文件整理成下面的完整版本。已有的真实路径、命令和错误记录不要丢，替换到对应位置。
+
+````markdown
+# 工程学习记录
+
+## 当前目标
+
+完成工程基础入门，并保留每次操作和排错记录。
+
+## 已完成
+
+- 建立 `learning-workspace` 目录。
+- 从终端定位并读取学习记录。
+- 用 VS Code 修改、保存和搜索文件。
+
+## 终端检查
+
+```text
+项目根目录：换成你的真实路径
+目录内容：assets  notes  practice
+```
+
+## 编辑器检查
+
+1. 打开完整工作区。
+2. 保存带有独特关键词的修改。
+3. 从搜索和内置终端复核同一份文件。
+
+## 相关文件
+
+[练习目录说明](../practice/README.md)
+
+## 当前状态
+
+| 检查项 | 实际结果 | 下一步 |
+| --- | --- | --- |
+| 文件和目录 | 能从三种入口找到 | 用 Git 保存第一个版本 |
+````
+
+接着在 `practice` 中新建 `README.md`：
+
+```markdown
+# 练习目录
+
+这里保存后续课程的可运行代码和练习结果。
+```
+
+现在 `learning-log.md` 中的相对链接有了真实目标。保存两个文件，再从文件树重新打开，确认内容都还在。
+
+</section>
+
+<section id="reproduce-preview-side-by-side" data-learning-context="reproduce-preview-side-by-side" data-context-type="reproduce" markdown="1">
+
+## 在 VS Code 里一边写，一边看
+
+保持 `learning-log.md` 处于编辑状态：
+
+1. 打开命令面板：Windows / Linux 按 `Ctrl + Shift + P`，macOS 按 `Command + Shift + P`。
+2. 输入 `Markdown: Open Preview to the Side` 并执行。
+3. 左边保留源文本，右边显示预览。
+4. 点击每个标题、列表和链接，确认结构与目标正确。
+
+也可以使用快捷键：
+
+- 当前标签切换预览：Windows / Linux `Ctrl + Shift + V`；macOS `Command + Shift + V`。
+- 打开侧边预览：Windows / Linux `Ctrl + K` 后按 `V`；macOS `Command + K` 后按 `V`。
+
+预览会随编辑更新，但这里仍建议先保存，再用终端读取一次：
+
+=== "macOS / Linux"
+
+    ```bash
+    head -n 12 notes/learning-log.md
+    ```
+
+=== "Windows PowerShell"
+
+    ```powershell
+    Get-Content notes\learning-log.md -TotalCount 12
+    ```
+
+预览、编辑区和终端都指向同一份文件，才完成这次整理。
+
+</section>
+
+<section id="modify-personal-learning-log" data-learning-context="modify-personal-learning-log" data-context-type="modify" markdown="1">
+
+## 把模板改成你的真实记录
+
+模板只是起点。至少完成下面四处修改：
+
+1. 把“当前目标”换成自己正在完成的目标。
+2. 把终端路径和目录列表换成真实输出。
+3. 在“已完成”里加入一条只有你做过的操作。
+4. 把表格的“实际结果”改成能被文件、输出或操作证明的描述。
+
+然后点击 `[练习目录说明](../practice/README.md)`。如果预览能打开刚创建的文件，再返回学习记录，说明相对路径正确。
+
+最后请一个不了解前几课的人只读预览，或者隔几分钟后自己重读一次，回答三个问题：现在做到哪里、遇到过什么、下一步是什么。答案都能从页面中找到，文档才真的清楚。
+
+</section>
+
+<section id="troubleshoot-markdown-rendering" data-learning-context="troubleshoot-markdown-rendering" data-context-type="troubleshoot" markdown="1">
+
+## 预览不对，先看源文本
+
+| 预览中的现象 | 常见原因 | 怎样修 |
+| --- | --- | --- |
+| `#标题` 仍是普通文字 | `#` 后没有空格 | 改成 `# 标题` |
+| `-结果` 没变成列表 | 列表标记后没有空格 | 改成 `- 结果` |
+| 后面整页都变成代码 | 围栏代码块没有闭合 | 找到开头三个反引号，补上结尾三个 |
+| 链接点击后找不到文件 | 路径起点或目标文件不对 | 从当前 `.md` 所在目录逐级走一遍 |
+| 表格仍显示竖线文字 | 缺少分隔行，或当前渲染器不支持 GFM 表格 | 补上 `| --- |`；必要时改用列表 |
+| 预览和终端内容不同 | 文件尚未保存，或读了同名文件 | 看标签圆点，再核对完整路径 |
+
+故意删掉代码块最后三个反引号，观察后续内容怎样被吞进代码块；然后补回并保存。这个错误很常见，亲眼见过一次，以后更容易从页面突然“全变灰”定位到围栏未闭合。
+
+</section>
+
+<section id="deepen-markdown-portability" data-learning-context="deepen-markdown-portability" data-context-type="deepen" markdown="1">
+
+## 不同平台为什么可能显示不同
+
+“Markdown”不是所有平台完全相同的一套功能。CommonMark 规定了标题、段落、列表、链接和围栏代码块等共同基础；GitHub Flavored Markdown 在此之上增加表格、任务列表、删除线和自动链接等扩展。
+
+为了让项目文档更容易迁移：
+
+- 主要结构优先使用 CommonMark 基础语法。
+- 表格适合短小对照；内容很长时改用标题和列表。
+- 不依赖复杂 HTML、脚本或只在某个插件里生效的写法。
+- 发布前在目标平台实际预览，不把 VS Code 预览当成所有平台的最终效果。
+
+</section>
+
+<section id="project-workspace-v05" data-learning-context="project-workspace-v05" data-context-type="project" markdown="1">
+
+## 工程学习工作台 v0.5
+
+工作区里的记录不再只是零散文字，它开始承担项目说明和复盘入口：
+
+| 原来会什么 | 这节课增加什么 | 发生变化的文件 | 下一课怎样继续 |
+| --- | --- | --- | --- |
+| 用编辑器保存、搜索和复核文件 | 用标题、列表、链接、代码块和表格组织真实记录 | `notes/learning-log.md`、`practice/README.md` | 安装 Git，建立 `.gitignore`，保存第一个本地版本 |
+
+保留 `learning-log-before-markdown.txt` 作为整理前对照。下一课 Git 初始化前，会先判断哪些文件应该进入版本库，哪些临时文件应该忽略。
+
+</section>
+
+??? success "求职时怎样展示"
+    文档能力不是“会背 Markdown 语法”。更有价值的是：项目入口清楚、命令和错误可复现、相对链接能打开、别人能从记录理解你做了什么以及怎样验证。
+
+## 完成检查
+
+- [ ] 能解释 Markdown 源文本和预览的区别。
+- [ ] `learning-log.md` 有一个主标题和清楚的二级标题结构。
+- [ ] 能根据内容选择有序列表或无序列表。
+- [ ] 相对链接能从学习记录打开 `practice/README.md`。
+- [ ] 代码块完整保留一段真实命令或输出。
+- [ ] 能说明表格属于 GFM 扩展，并在不支持时改用列表。
+- [ ] 已故意制造并修复一次未闭合代码块。
+- [ ] 预览、编辑区和终端读取的是同一份保存文件。
+
+## 来源与版本
+
+- 适用格式：CommonMark 0.31.2 基础语法；GitHub Flavored Markdown 的表格扩展。
+- 基础语法：[CommonMark Spec](https://spec.commonmark.org/0.31.2/)。
+- 表格扩展：[GitHub Flavored Markdown Spec：Tables](https://github.github.com/gfm/#tables-extension-)。
+- VS Code 编辑与预览：[Markdown and Visual Studio Code](https://code.visualstudio.com/docs/languages/markdown)。
+- 验证方式：在 VS Code Stable 中使用侧边预览，并从终端读取保存后的源文本；相对链接实际点击打开目标文件。
+- 核查日期：2026-07-17。
 
 ## 下一步
 
-进入 [Git](06-git.md)。下一节会学习如何用 Git 保存一次文档修改，并查看修改历史。
+进入 [本地 Git 与 .gitignore](06-git.md)。下一节会先安装并验证 Git，再把当前工作区的文档变成可以查看历史、撤回和继续演进的本地版本库。
+
+<div class="be-next-panel" markdown="1">
+
+<span class="be-panel-label">完成本课后</span>
+
+**保留整理前后的两份记录和 `practice/README.md`，下一课会判断它们怎样进入版本历史。**
+
+[进入下一课：本地 Git 与 .gitignore](06-git.md){ .md-button .md-button--primary }
+
+</div>

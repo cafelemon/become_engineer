@@ -26,9 +26,9 @@
 | [Markdown](05-markdown.md) | 已完成 | 用标题、列表、链接、代码块写清学习记录 |
 | [本地 Git 与 .gitignore](06-git.md) | 已完成 | 安装 Git，查看状态、忽略文件、暂存、提交和阅读历史 |
 | [GitHub 远程协作](06-github-remote.md) | 已完成 | 解释本地与远程关系，完成 remote、push 和 clone |
-| [开发环境](07-development-environment.md) | 已完成 | 理解解释器、编译器、环境变量和依赖的基本概念 |
-| [Docker最小认知](08-docker-basics.md) | 已完成 | 解释镜像、容器、端口、挂载和环境变量的基本含义 |
-| [验证习惯](09-validation-habit.md) | 已完成 | 运行、观察输出、复现错误、记录命令和结果 |
+| [开发环境](07-development-environment.md) | 已完成 | 找到 Python、创建项目 `.venv` 并留下可复核的环境记录 |
+| [Docker最小认知](08-docker-basics.md) | 已完成 | 区分 CLI、Engine、镜像和容器，安全读懂端口、挂载与配置参数 |
+| [验证习惯](09-validation-habit.md) | 已完成 | 区分通过、失败和未验证，完成工程学习工作台阶段检查 |
 
 ## 学习方式
 
@@ -44,7 +44,7 @@
 - 能创建一个本地 Git 仓库、配置 `.gitignore`、完成至少 3 次有意义的提交，并把练习仓库推送到 GitHub。
 - 能从终端进入项目目录并运行一个给定命令。
 - 能写一份包含目标、步骤、结果和问题的 Markdown 学习记录。
-- 能解释 Docker 解决的环境一致性问题，并知道 `docker --version`、`docker run`、`docker ps`、`docker logs` 和 `docker stop` 的用途。
+- 能解释 Docker 解决的环境一致性问题，知道 `docker --version` 只检查 CLI，并能用 `docker version` 继续判断 Engine 是否可达。
 - 能根据错误信息指出失败发生在哪条命令，而不是只说“不能运行”。
 
 ## 收口检查
@@ -58,12 +58,12 @@
 5. Markdown 让每次学习都能沉淀成可读记录。
 6. 本地 Git 让文档和代码修改可以被忽略、保存、检查和回看。
 7. GitHub 远程协作让本地提交能够安全地 push，并能从远程 clone 验证。
-8. 开发环境解释命令、版本、PATH、依赖和虚拟环境为什么会影响运行。
-9. Docker最小认知提前建立环境一致性和部署工具的基本词汇。
-10. 验证习惯把前面所有能力合成“运行、观察、复现、记录”的闭环。
+8. 开发环境找到实际 Python，创建项目 `.venv`，并说明版本、PATH 与依赖为什么会影响运行。
+9. Docker最小认知把 CLI、Engine、镜像和容器串起来，并用本机端口、只读挂载与非敏感配置建立安全默认值。
+10. 验证习惯把前面所有能力合成“提出结论、运行检查、判断结果、继续处理”的闭环，并收口为工程学习工作台 v1.0。
 
 本课程暂不展开 Pull Request、冲突处理、测试框架、CI、复杂 Dockerfile、docker compose、部署或安全加固。这些内容需要代码和项目上下文，会在后续 Python、Web、AI 和 LLM/Agent 项目中继续深化。
 
 ## 下一步
 
-先完成[学习方法](01-learning-method.md)，再依次进入后续内容。完成验收后，回到[开始学习](../../beginner-roadmap.md)，进入 Python 起步。
+如果还没开始，先学习[学习方法](01-learning-method.md)，再依次完成后续内容。十课全部通过后，直接进入 [Python 起步：变量、基本类型与输入输出](../../programming-languages/python-basics/01-variables-types-io.md)。

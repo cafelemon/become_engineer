@@ -1,3 +1,193 @@
-[
-  {"query":"程序没报错结果错了","step_id":"step-1","expected":"wrong-result"},{"query":"进度超过100","step_id":"step-1","expected":"wrong-result"},{"query":"错误栈怎么看","step_id":"step-1","expected":"traceback-read"},{"query":"traceback最后一行","step_id":"step-1","expected":"traceback-read"},{"query":"目标时间为0","step_id":"step-2","expected":"raise-value-error"},{"query":"valueerror怎么抛出","step_id":"step-2","expected":"raise-value-error"},{"query":"except exception问题","step_id":"step-2","expected":"narrow-except"},{"query":"捕获所有错误好吗","step_id":"step-2","expected":"narrow-except"},{"query":"repr有什么用","step_id":"step-3","expected":"repr-type"},{"query":"怎么检查变量类型","step_id":"step-3","expected":"repr-type"},{"query":"断点怎么用","step_id":"step-3","expected":"breakpoint-use"},{"query":"python调试器","step_id":"step-3","expected":"breakpoint-use"},{"query":"测试先红灯","step_id":"step-4","expected":"red-green-test"},{"query":"单元测试怎么验证","step_id":"step-4","expected":"red-green-test"},{"query":"测试会污染文件吗","step_id":"step-5","expected":"temp-directory"},{"query":"temporarydirectory怎么用","step_id":"step-5","expected":"temp-directory"}
-]
+{
+  "lesson_id": "python-basics-07",
+  "cases": [
+    {
+      "query": "报告器 v1.0 增加什么",
+      "expected_card": "failure-result"
+    },
+    {
+      "query": "Python 起步最后一课做什么",
+      "expected_card": "failure-result"
+    },
+    {
+      "query": "程序不对有哪几种",
+      "expected_card": "problem-kinds"
+    },
+    {
+      "query": "没报错为什么也可能错",
+      "expected_card": "problem-kinds"
+    },
+    {
+      "query": "错误栈怎么看",
+      "expected_card": "traceback-read"
+    },
+    {
+      "query": "traceback 最后一行怎么看",
+      "expected_card": "traceback-read"
+    },
+    {
+      "query": "最小复现有什么用",
+      "expected_card": "minimal-reproduction"
+    },
+    {
+      "query": "调试为什么只留一条记录",
+      "expected_card": "minimal-reproduction"
+    },
+    {
+      "query": "数据校验放哪个模块",
+      "expected_card": "data-boundary"
+    },
+    {
+      "query": "为什么在 data_io 校验",
+      "expected_card": "data-boundary"
+    },
+    {
+      "query": "True 为什么被当成数字",
+      "expected_card": "bool-number"
+    },
+    {
+      "query": "isinstance bool int 是什么",
+      "expected_card": "bool-number"
+    },
+    {
+      "query": "捕获所有错误好吗",
+      "expected_card": "narrow-except"
+    },
+    {
+      "query": "except Exception 有什么问题",
+      "expected_card": "narrow-except"
+    },
+    {
+      "query": "else finally 有什么区别",
+      "expected_card": "else-finally"
+    },
+    {
+      "query": "每个 try 都要 finally 吗",
+      "expected_card": "else-finally"
+    },
+    {
+      "query": "第七课项目怎么跑",
+      "expected_card": "reproduce-v10"
+    },
+    {
+      "query": "14 项测试命令是什么",
+      "expected_card": "reproduce-v10"
+    },
+    {
+      "query": "正常返回 0 怎么看",
+      "expected_card": "exit-code"
+    },
+    {
+      "query": "PowerShell LASTEXITCODE 是什么",
+      "expected_card": "exit-code"
+    },
+    {
+      "query": "异常课主动修改什么",
+      "expected_card": "active-rule"
+    },
+    {
+      "query": "怎样自己加一条校验",
+      "expected_card": "active-rule"
+    },
+    {
+      "query": "repr 有什么用",
+      "expected_card": "debug-tools"
+    },
+    {
+      "query": "怎么检查变量类型",
+      "expected_card": "debug-tools"
+    },
+    {
+      "query": "断点怎么用",
+      "expected_card": "breakpoint-use"
+    },
+    {
+      "query": "pdb 从哪里停",
+      "expected_card": "breakpoint-use"
+    },
+    {
+      "query": "第一份单元测试怎么写",
+      "expected_card": "unittest-basic"
+    },
+    {
+      "query": "assertEqual assertRaises 怎么用",
+      "expected_card": "unittest-basic"
+    },
+    {
+      "query": "测试为什么先红再绿",
+      "expected_card": "red-green"
+    },
+    {
+      "query": "一直绿的测试可靠吗",
+      "expected_card": "red-green"
+    },
+    {
+      "query": "TemporaryDirectory 有什么用",
+      "expected_card": "temp-directory"
+    },
+    {
+      "query": "测试怎样不污染 data",
+      "expected_card": "temp-directory"
+    },
+    {
+      "query": "测试之间互相影响",
+      "expected_card": "test-pollution"
+    },
+    {
+      "query": "测试有共享状态",
+      "expected_card": "test-pollution"
+    },
+    {
+      "query": "assert 优化模式会怎样",
+      "expected_card": "assert-boundary"
+    },
+    {
+      "query": "输入校验能用 assert 吗",
+      "expected_card": "assert-boundary"
+    },
+    {
+      "query": "stdout stderr 怎么区分",
+      "expected_card": "stderr-stream"
+    },
+    {
+      "query": "错误提示在哪个输出流",
+      "expected_card": "stderr-stream"
+    },
+    {
+      "query": "SystemExit 有什么用",
+      "expected_card": "system-exit"
+    },
+    {
+      "query": "返回值怎样变成退出码",
+      "expected_card": "system-exit"
+    },
+    {
+      "query": "第七课给项目加了什么",
+      "expected_card": "project-v10"
+    },
+    {
+      "query": "Python 起步阶段作品完成了吗",
+      "expected_card": "project-v10"
+    },
+    {
+      "query": "测试契约是什么意思",
+      "expected_card": "test-contract"
+    },
+    {
+      "query": "测试覆盖率越高越好吗",
+      "expected_card": "test-contract"
+    },
+    {
+      "query": "异常课怎么讲项目",
+      "expected_card": "career-debug-story"
+    },
+    {
+      "query": "调试经历怎么回答",
+      "expected_card": "career-debug-story"
+    }
+  ],
+  "unknown": [
+    "怎样把毛衣洗得不缩水",
+    "月球上能不能种薄荷"
+  ]
+}

@@ -1,15 +1,244 @@
 {
-  "version": 1,
-  "lesson": {"id":"python-basics-03","title":"函数、参数、返回值和作用域","path":"learning-paths/programming-languages/python-basics/03-functions-parameters-returns-scope/"},
-  "steps":[{"id":"step-1","title":"消除重复"},{"id":"step-2","title":"传入参数"},{"id":"step-3","title":"返回结果"},{"id":"step-4","title":"定位作用域"},{"id":"step-5","title":"迁移验收"}],
-  "cards":[
-    {"id":"define-call","lesson_id":"python-basics-03","step_id":"step-1","question":"定义函数后为什么没有输出？","aliases":["函数没反应","def后不执行"],"keywords":["def","函数","调用","输出"],"diagnostic":"定义下面是否写了带括号的函数调用？","hints":["def 只定义能力，不会立刻执行函数体。","在定义之后写 calculate_remaining_hours(10, 6) 或保存它的结果。"],"example":"def hello(): ...; hello() 才会进入函数体。","answer":"函数必须被调用才执行，定义阶段只是让 Python 记住名称和代码。","source":{"label":"第一步：提取一个可调用的计算","href":"#step-1"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"remaining-zero","lesson_id":"python-basics-03","step_id":"step-1","question":"完成时间超过目标为什么剩余时间是 0？","aliases":["超额完成怎么计算","剩余时间不能负数"],"keywords":["剩余","超额","0","计算"],"diagnostic":"target_hours - finished_hours 的原始结果是否小于 0？","hints":["先计算差值，再判断它是否为负。","若为负就 return 0，报告器不需要显示负剩余时间。"],"example":"目标 8、完成 9 时原始差是 -1，最终剩余为 0。","answer":"剩余时间的业务含义不应为负数，因此将负差值限制为 0。","source":{"label":"第一步：提取一个可调用的计算","href":"#step-1"},"updated_at":"2026-07-15"},
-    {"id":"parameter-argument","lesson_id":"python-basics-03","step_id":"step-2","question":"形参和实参有什么区别？","aliases":["参数和实参区别","函数括号里的名字"],"keywords":["形参","实参","参数","调用"],"diagnostic":"这个名字是在 def 这一行出现，还是在调用函数的括号中出现？","hints":["def 中的 target_hours 是函数接收数据的形参。","调用 calculate_remaining_hours(10, 6) 中的 10 和 6 是实参。"],"example":"形参像接口名称，实参是本次交给接口的具体值。","answer":"形参定义函数需要什么数据；实参是调用时实际传入的数据。","source":{"label":"第二步：让调用者提供变化数据","href":"#step-2"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"keyword-order","lesson_id":"python-basics-03","step_id":"step-2","question":"位置参数顺序写反怎么办？","aliases":["参数顺序错了","关键字参数怎么用"],"keywords":["位置参数","顺序","关键字参数","调用"],"diagnostic":"函数定义中第一个参数代表目标还是完成时间？本次调用传入顺序是什么？","hints":["位置参数按定义顺序绑定，交换顺序会改变含义。","用 target_hours=10, finished_hours=6 显式标记来源。"],"example":"calculate_remaining_hours(target_hours=10, finished_hours=6)。","answer":"核对定义顺序；不确定时使用关键字参数防止把不同含义的数字交换。","source":{"label":"第二步：让调用者提供变化数据","href":"#step-2"},"updated_at":"2026-07-15"},
-    {"id":"return-vs-print","lesson_id":"python-basics-03","step_id":"step-3","question":"为什么 print 后调用结果是 None？","aliases":["print为什么返回none","return和print区别"],"keywords":["print","return","none","结果"],"diagnostic":"函数是否使用 return 把值交给调用位置，还是只显示了值？","hints":["print 只把内容显示到终端。","需要后续判断或计算的值应使用 return 交出。"],"example":"result = show_total(3, 5) 会得到 None，除非 show_total return 结果。","answer":"没有显式 return 的函数默认返回 None；显示输出不等于提供可复用结果。","source":{"label":"第三步：让报告器使用返回值","href":"#step-3"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"return-stops","lesson_id":"python-basics-03","step_id":"step-3","question":"return 后面的代码为什么不执行？","aliases":["return后不运行","函数提前结束"],"keywords":["return","结束","函数","代码"],"diagnostic":"必要的打印或计算是否写在 return 语句之后？","hints":["执行到 return 时当前函数立即结束。","把必须执行的代码移动到 return 前，或重构分支。"],"example":"return status 后的 print 不会被运行。","answer":"return 同时交出值并结束当前函数；不可达代码应移到前面。","source":{"label":"第三步：让报告器使用返回值","href":"#step-3"},"updated_at":"2026-07-15"},
-    {"id":"local-name","lesson_id":"python-basics-03","step_id":"step-4","question":"函数外为什么访问不到局部变量？","aliases":["nameerror局部变量","函数外访问message"],"keywords":["局部变量","nameerror","作用域","message"],"diagnostic":"message 是在函数体内赋值，还是在函数外定义？","hints":["函数内部变量只在本次函数调用范围内可见。","return message，再在外部保存为新变量。"],"example":"message = build_status(...); print(message)。","answer":"局部变量不会自动离开函数；通过返回值把需要的结果交给调用者。","source":{"label":"第四步：故意触发作用域错误","href":"#step-4"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"default-threshold","lesson_id":"python-basics-03","step_id":"step-5","question":"默认参数什么时候生效？","aliases":["默认参数怎么用","阈值不传怎么办"],"keywords":["默认参数","阈值","关键字","函数"],"diagnostic":"调用时是否为 almost_done_ratio 明确传入了值？","hints":["未传该参数时，函数定义中的默认值生效。","需要改变时，用关键字参数传入新阈值，避免混淆顺序。"],"example":"build_status(0.7) 与 build_status(0.7, almost_done_ratio=0.6)。","answer":"默认参数提供常用行为；调用者传值时覆盖默认值。","source":{"label":"第五步：迁移验收","href":"#step-5"},"updated_at":"2026-07-15","recommended":true}
+  "version": 2,
+  "lesson": {
+    "id": "python-basics-03",
+    "title": "函数、参数、返回值和作用域",
+    "path": "learning-paths/programming-languages/python-basics/03-functions-parameters-returns-scope/"
+  },
+  "contexts": [
+    {"id":"overview-functions","type":"overview","title":"把一段做法叫出名字","anchor":"#overview-functions"},
+    {"id":"concept-call","type":"concept","title":"定义以后，还要调用","anchor":"#concept-call"},
+    {"id":"example-small-functions","type":"example","title":"先拆出两个小函数","anchor":"#example-small-functions"},
+    {"id":"concept-parameters","type":"concept","title":"参数是函数的入口","anchor":"#concept-parameters"},
+    {"id":"example-return-print","type":"example","title":"return 不是另一种 print","anchor":"#example-return-print"},
+    {"id":"reproduce-v03","type":"reproduce","title":"跑起报告器 v0.3","anchor":"#reproduce-v03"},
+    {"id":"modify-report-line","type":"modify","title":"给报告行加上自己的选择","anchor":"#modify-report-line"},
+    {"id":"concept-scope","type":"concept","title":"函数里的名字有自己的范围","anchor":"#concept-scope"},
+    {"id":"troubleshoot-functions","type":"troubleshoot","title":"函数没有按预期工作时","anchor":"#troubleshoot-functions"},
+    {"id":"project-v03","type":"project","title":"报告器 v0.3","anchor":"#project-v03"},
+    {"id":"deepen-function-contract","type":"deepen","title":"函数也有约定","anchor":"#deepen-function-contract"},
+    {"id":"career-function-story","type":"career","title":"为什么要这样拆函数","anchor":"#career-function-story"}
+  ],
+  "cards": [
+    {
+      "id":"function-result","lesson_id":"python-basics-03","context_id":"overview-functions",
+      "question":"这节课会把报告器改成什么样？",
+      "aliases":["报告器 v0.3 增加什么","第三课的项目结果是什么","函数课会留下什么"],
+      "keywords":["v0.3","报告器","函数","结果","项目"],
+      "diagnostic":"先看第一屏，两条记录哪些数据不同，哪些计算规则相同？",
+      "hints":["课程、小时和前缀会变化。","进度计算、状态判断和报告行拼接各自只保留一份。"],
+      "example":"两次调用 `build_report_line()`，传入不同课程和小时。",
+      "answer":"v0.3 把进度、状态和报告行整理成有名字的函数；主流程提供数据并使用返回结果。",
+      "source":{"label":"把一段做法叫出名字","href":"#overview-functions"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"define-vs-call","lesson_id":"python-basics-03","context_id":"concept-call",
+      "question":"定义函数后为什么没有任何反应？",
+      "aliases":["函数没执行","def 后为什么不输出","函数是不是定义就会运行"],
+      "keywords":["def","定义","调用","执行","输出"],
+      "diagnostic":"定义下面是否真的写了带括号的函数调用？",
+      "hints":["`def` 让 Python 记住函数名和函数体。","读到 `build_welcome(...)` 这样的调用时，函数体才执行。"],
+      "example":"先定义 `build_welcome`，再写 `message = build_welcome(\"小码\")`。",
+      "answer":"定义只建立函数；调用才会创建本次局部环境并执行函数体。",
+      "source":{"label":"定义以后，还要调用","href":"#concept-call"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"function-name","lesson_id":"python-basics-03","context_id":"concept-call",
+      "question":"函数名应该怎么起才容易读？",
+      "aliases":["函数怎么命名","为什么不用 do_it","函数名要写动作吗"],
+      "keywords":["函数名","命名","动作","职责","可读性"],
+      "diagnostic":"只看函数名，能不能猜出它会计算、生成还是显示什么？",
+      "hints":["通常用动词开头。","名字应对应一个主要职责，例如 `calculate_progress`。"],
+      "example":"`build_status` 比 `handle` 更能说明结果是什么。",
+      "answer":"使用能描述动作和结果的名字，并让函数只承担一个主要职责。",
+      "source":{"label":"定义以后，还要调用","href":"#concept-call"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"calculate-progress","lesson_id":"python-basics-03","context_id":"example-small-functions",
+      "question":"calculate_progress 为什么最多返回 100%？",
+      "aliases":["完成小时超过目标怎么办","进度为什么用 min","进度可以大于一吗"],
+      "keywords":["calculate_progress","min","100%","进度","超额"],
+      "diagnostic":"把完成 7 小时、目标 5 小时直接相除，会得到多少？页面希望怎样显示？",
+      "hints":["直接相除得到 1.4。","`min(..., 1.0)` 把报告显示上限限制为 100%。"],
+      "example":"`min(7 / 5, 1.0)` 得到 `1.0`。",
+      "answer":"本项目把完成比例显示上限设为 100%，因此用 `min` 截住超额结果；原始小时数仍保留。",
+      "source":{"label":"先拆出两个小函数","href":"#example-small-functions"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"positive-target","lesson_id":"python-basics-03","context_id":"example-small-functions",
+      "question":"目标小时写成 0 为什么会报错？",
+      "aliases":["ZeroDivisionError 怎么办","calculate_progress 除以零","目标为零能不能算进度"],
+      "keywords":["zerodivisionerror","目标小时","0","除法","约定"],
+      "diagnostic":"进度公式的分母是哪一个参数？它现在是不是 0？",
+      "hints":["任何数除以 0 都没有这个计算结果。","本课先要求目标小时为正数，后续异常课程再加入输入校验。"],
+      "example":"`calculate_progress(0, 0)` 会在除法处触发 `ZeroDivisionError`。",
+      "answer":"当前函数约定 `target_hours > 0`；回到数据修正目标，不要用随意结果隐藏无效输入。",
+      "source":{"label":"先拆出两个小函数","href":"#example-small-functions"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"parameter-argument","lesson_id":"python-basics-03","context_id":"concept-parameters",
+      "question":"形参和实参到底有什么区别？",
+      "aliases":["参数和实参区别","函数括号里的名字是什么","调用时的值叫什么"],
+      "keywords":["形参","实参","参数","调用","def"],
+      "diagnostic":"这个名字或值出现在 `def` 这一行，还是出现在具体调用中？",
+      "hints":["定义中的名字说明函数需要接收什么。","调用中的具体值是本次真正交给函数的数据。"],
+      "example":"`target_hours` 是形参，`calculate_progress(5, 3)` 中的 `5` 是实参。",
+      "answer":"形参是函数接口中的名称；实参是每次调用传入的具体值。",
+      "source":{"label":"参数是函数的入口","href":"#concept-parameters"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"positional-keyword","lesson_id":"python-basics-03","context_id":"concept-parameters",
+      "question":"两个数字参数容易传反怎么办？",
+      "aliases":["位置参数顺序写反","关键字参数怎么用","target 和 finished 传反了"],
+      "keywords":["位置参数","关键字参数","顺序","target_hours","finished_hours"],
+      "diagnostic":"只看 `calculate_progress(5, 3)`，以后还能马上分清两个数字分别代表什么吗？",
+      "hints":["位置参数按定义顺序绑定。","改写成 `target_hours=5, finished_hours=3`，含义会直接出现在调用处。"],
+      "example":"`calculate_progress(finished_hours=3, target_hours=5)` 即使换书写顺序也不会换含义。",
+      "answer":"同类型参数容易混淆时使用关键字参数，让名称决定绑定关系。",
+      "source":{"label":"参数是函数的入口","href":"#concept-parameters"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"default-prefix","lesson_id":"python-basics-03","context_id":"concept-parameters",
+      "question":"默认参数什么时候会生效？",
+      "aliases":["prefix 不传会怎样","默认值怎么覆盖","函数参数可以省略吗"],
+      "keywords":["默认参数","prefix","默认值","覆盖","调用"],
+      "diagnostic":"调用时有没有明确给 `prefix` 传值？",
+      "hints":["没有传入时使用定义中的 `\"- \"`。","需要改变时用 `prefix=\"* \"` 覆盖。"],
+      "example":"`build_report_line(..., prefix=\"* \")` 只改变这一次调用。",
+      "answer":"可选参数未传入时采用默认值；调用者显式传值时覆盖它。",
+      "source":{"label":"参数是函数的入口","href":"#concept-parameters"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"return-vs-print","lesson_id":"python-basics-03","context_id":"example-return-print",
+      "question":"为什么 print 以后调用结果还是 None？",
+      "aliases":["return 和 print 区别","print 为什么返回 none","显示了结果为什么变量是 None"],
+      "keywords":["print","return","none","调用结果","显示"],
+      "diagnostic":"函数是把内容显示给人看，还是使用 `return` 把值交回调用处？",
+      "hints":["`print()` 只写到终端。","没有显式 `return` 的函数会返回 `None`。"],
+      "example":"`printed_result = show_status(...)` 得到 `None`，即使终端已经显示状态。",
+      "answer":"显示输出与返回结果是两条不同路径；后续代码需要使用的数据必须由 `return` 交出。",
+      "source":{"label":"return 不是另一种 print","href":"#example-return-print"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"return-stops","lesson_id":"python-basics-03","context_id":"example-return-print",
+      "question":"return 后面的代码为什么不运行？",
+      "aliases":["return 后不执行","函数为什么提前结束","不可达代码是什么"],
+      "keywords":["return","结束","不可达","函数","执行"],
+      "diagnostic":"那行代码是否位于本次会经过的 `return` 后面？",
+      "hints":["执行到 `return` 时，本次函数调用立即结束。","把必要语句移到返回之前，或重新整理分支。"],
+      "example":"`return status` 后面的 `print(status)` 不会被执行。",
+      "answer":"`return` 同时交出结果并结束当前函数；同一路径后面的语句不可达。",
+      "source":{"label":"return 不是另一种 print","href":"#example-return-print"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"reproduce-v03","lesson_id":"python-basics-03","context_id":"reproduce-v03",
+      "question":"报告器 v0.3 应该怎样运行？",
+      "aliases":["第三课代码怎么跑","learning_profile_v03 输出什么","函数版报告器怎么复现"],
+      "keywords":["v0.3","运行","learning_profile","输出","终端"],
+      "diagnostic":"代码是否保存到原来的 `practice/python-basics/learning_profile.py`，虚拟环境命令是否从工作区根目录执行？",
+      "hints":["先运行页面固定数据版并对照四行输出。","再只改完成小时，确认进度和状态同时变化。"],
+      "example":"macOS/Linux 使用 `./.venv/bin/python ./practice/python-basics/learning_profile.py`。",
+      "answer":"在同一练习文件中运行 v0.3，先核对固定输出，再用另一组小时验证函数返回值确实进入主流程。",
+      "source":{"label":"跑起报告器 v0.3","href":"#reproduce-v03"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"active-modification","lesson_id":"python-basics-03","context_id":"modify-report-line",
+      "question":"这次我必须亲手改哪些地方？",
+      "aliases":["函数课要主动修改什么","不能只复制例子吗","报告行怎样改成自己的"],
+      "keywords":["主动修改","昵称","关键字参数","prefix","can_review"],
+      "diagnostic":"现在的输出里还有“小码”“Python 起步”和示例前缀吗？",
+      "hints":["先换成自己的课程与小时。","再用关键字参数、不同前缀，并新增 `can_review()` 三组判断。"],
+      "example":"完成且运行过返回 True；另外两组返回 False。",
+      "answer":"修改真实数据和报告格式，并自己写 `can_review()` 覆盖三组输入，才完成本课的主动练习。",
+      "source":{"label":"给报告行加上自己的选择","href":"#modify-report-line"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"local-scope","lesson_id":"python-basics-03","context_id":"concept-scope",
+      "question":"函数外为什么看不到里面的变量？",
+      "aliases":["局部变量出了函数不能用","message 为什么 NameError","什么是局部作用域"],
+      "keywords":["局部变量","作用域","nameerror","message","函数外"],
+      "diagnostic":"这个名称是不是只在函数体内部赋值？",
+      "hints":["参数和函数内部创建的名称属于本次调用。","需要带出去的结果用 `return`，再在调用处保存。"],
+      "example":"`returned_message = build_message(...)` 后打印 `returned_message`。",
+      "answer":"函数局部名称不会自动出现在外部范围；返回需要的数据，并由调用者给它绑定新名称。",
+      "source":{"label":"函数里的名字有自己的范围","href":"#concept-scope"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"avoid-global","lesson_id":"python-basics-03","context_id":"concept-scope",
+      "question":"能不能直接用全局变量解决 NameError？",
+      "aliases":["用 global 行不行","局部变量改全局可以吗","为什么不建议全局变量"],
+      "keywords":["global","全局变量","nameerror","return","依赖"],
+      "diagnostic":"这个值是函数的计算结果，还是所有代码都必须共享和修改的状态？",
+      "hints":["计算结果通常应该明确返回。","隐藏的全局读写会让调用依赖变得难看见、难测试。"],
+      "example":"让 `build_message()` 返回字符串，比在函数里修改全局 `message` 清楚。",
+      "answer":"本课不要用全局变量绕过作用域；用参数传入依赖，用返回值交出结果。",
+      "source":{"label":"函数里的名字有自己的范围","href":"#concept-scope"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"missing-argument","lesson_id":"python-basics-03","context_id":"troubleshoot-functions",
+      "question":"TypeError 说缺少参数应该看哪里？",
+      "aliases":["missing required positional argument","函数少传参数","调用参数数量不对"],
+      "keywords":["typeerror","缺少参数","required positional argument","调用","形参"],
+      "diagnostic":"定义括号里有几个必需形参，调用括号里实际给了几个值？",
+      "hints":["先读错误里的函数名和参数名。","对照函数定义补齐必需数据，不要随便增加无意义默认值。"],
+      "example":"`build_status(5)` 少了 `finished_hours`。",
+      "answer":"对照定义与调用，补上错误信息指出的必需参数；必要时改用关键字参数让对应关系更清楚。",
+      "source":{"label":"函数没有按预期工作时","href":"#troubleshoot-functions"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"unexpected-none","lesson_id":"python-basics-03","context_id":"troubleshoot-functions",
+      "question":"函数返回 None 时我该怎么查？",
+      "aliases":["结果突然是 None","函数忘记 return","有的分支没有返回值"],
+      "keywords":["none","return","分支","返回值","排错"],
+      "diagnostic":"所有可能走到的分支都执行了显式 `return` 吗？",
+      "hints":["先找只有 `print()` 没有 `return` 的路径。","再逐个输入检查每条分支最终是否返回需要的值。"],
+      "example":"`if` 分支 return，但 `else` 路径走到函数末尾，也会得到 `None`。",
+      "answer":"沿本次输入的执行路径寻找缺失的 `return`；函数自然结束时会隐式返回 `None`。",
+      "source":{"label":"函数没有按预期工作时","href":"#troubleshoot-functions"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"project-v03","lesson_id":"python-basics-03","context_id":"project-v03",
+      "question":"报告器 v0.3 比 v0.2 多了什么？",
+      "aliases":["第三课给项目加了什么","学习档案版本线怎么走","下一课为什么学容器"],
+      "keywords":["v0.3","项目","函数","返回值","下一课"],
+      "diagnostic":"上一版哪些判断和拼接还直接写在主流程里？现在它们分别放在哪里？",
+      "hints":["进度、状态和报告行都有独立函数。","主流程只准备数据、调用函数并显示最终结果。"],
+      "example":"同一个 `build_report_line()` 生成课程记录和复盘记录。",
+      "answer":"v0.3 把重复规则整理成可调用、可验证的函数；v0.4 会让这些函数处理多条记录。",
+      "source":{"label":"报告器 v0.3","href":"#project-v03"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"function-contract","lesson_id":"python-basics-03","context_id":"deepen-function-contract",
+      "question":"什么是函数的输入输出约定？",
+      "aliases":["函数契约是什么意思","怎样让函数容易测试","函数接口包括什么"],
+      "keywords":["函数约定","契约","输入","返回值","测试"],
+      "diagnostic":"调用者能否从名称和参数知道要提供什么，并理解返回值代表什么？",
+      "hints":["明确参数含义与有效范围。","明确返回结果的类型和业务含义，避免隐藏全局依赖。"],
+      "example":"`calculate_progress` 接收正数目标和完成小时，返回最多为 1.0 的比例。",
+      "answer":"函数约定描述输入、返回结果和限制；清楚的约定让函数能独立验证并安全组合。",
+      "source":{"label":"函数也有约定","href":"#deepen-function-contract"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"one-responsibility","lesson_id":"python-basics-03","context_id":"deepen-function-contract",
+      "question":"一个函数到底应该做多少事？",
+      "aliases":["函数是不是越短越好","什么叫一个主要职责","输入计算输出要不要全写一起"],
+      "keywords":["职责","函数长度","输入","计算","输出"],
+      "diagnostic":"你能不能用一句清楚的话说明这个函数负责什么？",
+      "hints":["重点不是机械限制行数。","当输入、计算、文件和显示纠缠时，先按变化原因拆开。"],
+      "example":"`calculate_progress` 只计算比例，终端显示留给主流程。",
+      "answer":"让函数围绕一个主要职责组织；职责清楚比单纯追求短小更重要。",
+      "source":{"label":"函数也有约定","href":"#deepen-function-contract"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"career-refactor","lesson_id":"python-basics-03","context_id":"career-function-story",
+      "question":"怎样向面试官解释这次函数重构？",
+      "aliases":["函数课怎么讲项目","为什么拆函数怎么回答","重构有什么验证证据"],
+      "keywords":["面试","重构","职责","验证","项目"],
+      "diagnostic":"你能说清重构前的问题、拆分后的接口，以及跑过哪些代表输入吗？",
+      "hints":["先讲重复规则和职责混杂。","再讲参数、返回值，以及未完成、完成、超额三组验证。"],
+      "example":"不是只说“更整洁”，而是说明规则只有一份且能被独立检查。",
+      "answer":"用“原问题—职责拆分—接口选择—输入覆盖—后续扩展”说明重构价值，避免只背函数语法。",
+      "source":{"label":"为什么要这样拆函数","href":"#career-function-story"},"updated_at":"2026-07-17"
+    }
   ]
 }

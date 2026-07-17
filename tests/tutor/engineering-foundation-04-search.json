@@ -1,82 +1,28 @@
-[
-  {
-    "query": "打开文件还是文件夹",
-    "step_id": "step-1",
-    "expected": "folder"
-  },
-  {
-    "query": "编辑器打开根目录",
-    "step_id": "step-1",
-    "expected": "folder"
-  },
-  {
-    "query": "怎么在编辑器找文件",
-    "step_id": "step-2",
-    "expected": "tree"
-  },
-  {
-    "query": "文件树如何定位",
-    "step_id": "step-2",
-    "expected": "tree"
-  },
-  {
-    "query": "编辑器标签页是什么",
-    "step_id": "step-2",
-    "expected": "tabs"
-  },
-  {
-    "query": "关闭标签会删文件吗",
-    "step_id": "step-2",
-    "expected": "tabs"
-  },
-  {
-    "query": "编辑器怎么确认保存",
-    "step_id": "step-3",
-    "expected": "save"
-  },
-  {
-    "query": "保存后怎么验证",
-    "step_id": "step-3",
-    "expected": "save"
-  },
-  {
-    "query": "编辑器搜索没结果",
-    "step_id": "step-4",
-    "expected": "search"
-  },
-  {
-    "query": "搜索所有文件",
-    "step_id": "step-4",
-    "expected": "search"
-  },
-  {
-    "query": "编辑器终端和系统终端一样吗",
-    "step_id": "step-5",
-    "expected": "terminal"
-  },
-  {
-    "query": "编辑器终端在哪",
-    "step_id": "step-5",
-    "expected": "terminal"
-  },
-  {
-    "query": "打开错目录怎么办",
-    "step_id": "step-1",
-    "expected": "wrong"
-  },
-  {
-    "query": "编辑器没有文件",
-    "step_id": "step-1",
-    "expected": "wrong"
-  },
-  {
-    "query": "编辑器终端找不到文件",
-    "step_id": "step-5",
-    "expected": "verify"
-  },
-  {
-    "query": "编辑器终端如何验证",
-    "step_id": "step-5",
-    "expected": "verify"
-  }
-]
+{
+  "lesson_id": "engineering-foundation-04",
+  "cases": [
+    {"query": "学完这节，我应该在屏幕上看到什么？", "expected_card": "ef04-three-views"},
+    {"query": "为什么要从三个地方找同一个关键词", "expected_card": "ef04-three-views"},
+    {"query": "工作区和单独打开一个文件有什么区别？", "expected_card": "ef04-workspace-folder"},
+    {"query": "为什么要打开整个文件夹", "expected_card": "ef04-workspace-folder"},
+    {"query": "文件树、编辑区和内置终端分别做什么？", "expected_card": "ef04-interface-areas"},
+    {"query": "左边中间下面三块是什么", "expected_card": "ef04-interface-areas"},
+    {"query": "安装以后在哪里找到 VS Code？", "expected_card": "ef04-install-open"},
+    {"query": "找不到 Visual Studio Code", "expected_card": "ef04-install-open"},
+    {"query": "VS Code 问我是否信任这个文件夹，应该怎么选？", "expected_card": "ef04-workspace-trust"},
+    {"query": "Restricted Mode 是什么", "expected_card": "ef04-workspace-trust"},
+    {"query": "怎样确认我打开的是正确目录？", "expected_card": "ef04-open-root"},
+    {"query": "文件树为什么少了目录", "expected_card": "ef04-open-root"},
+    {"query": "怎么判断文件到底保存了没有？", "expected_card": "ef04-save-state"},
+    {"query": "标签页圆点是什么意思", "expected_card": "ef04-save-state"},
+    {"query": "怎么在整个工作区搜索我写的内容？", "expected_card": "ef04-workspace-search"},
+    {"query": "搜索只找到当前文件怎么办", "expected_card": "ef04-workspace-search"},
+    {"query": "内置终端为什么找不到刚才的文件？", "expected_card": "ef04-terminal-location"},
+    {"query": "终端和编辑器目录不一致", "expected_card": "ef04-terminal-location"},
+    {"query": "编辑器里找不到新内容，应该先查什么？", "expected_card": "ef04-troubleshoot-order"},
+    {"query": "VS Code排错顺序", "expected_card": "ef04-troubleshoot-order"},
+    {"query": "这个编辑器练习以后还会用到吗？", "expected_card": "ef04-project-v04"},
+    {"query": "learning-workspace 后面还保留吗", "expected_card": "ef04-project-v04"}
+  ],
+  "unknown": ["量子纠缠怎么证明", "帮我预测明天股票价格"]
+}

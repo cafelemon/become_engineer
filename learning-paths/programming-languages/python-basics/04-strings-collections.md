@@ -1,1143 +1,385 @@
-# 字符串、列表、字典、集合和元组
-
 <div class="be-tutor-mount" data-tutor-lesson="python-basics-04" aria-hidden="true"></div>
 
-本节把 `study_report.py` 升级成处理多条内存记录的 `study_records.py`。从一条可读记录开始，再选择合适的数据结构；下方保留完整方法表、练习与排错说明供按需查阅。
+<section id="overview-multiple" class="be-page-hero be-lesson-hero" data-learning-context="overview-multiple" data-context-type="overview" markdown="1">
 
-## 本节任务路线
+<span class="be-page-eyebrow">Python 起步 · 第四课 · 学习进度报告器 v0.4</span>
 
-<div class="be-task-route" role="list" aria-label="本课五步任务">
-  <span role="listitem">1 清理文本</span><span role="listitem">2 保存记录</span><span role="listitem">3 处理多条</span><span role="listitem">4 定位共享</span><span role="listitem">5 迁移验收</span>
+# 字符串、列表、字典、集合和元组
+
+## 一条档案变成一组记录
+
+报告器终于不只认识一门课程了：
+
+```text
+学习进度报告
+总计划：10 小时
+总完成：8 小时
+课程状态：
+- Python 起步: 60%，还需 2 小时
+- 复盘练习: 100%，已完成
+- Git 复习: 100%，已完成
+唯一标签：Python, 复盘, 工具, 起步
+```
+
+这里同时出现了五种常见结构：文字用字符串，多条记录放在列表里，一条记录用字典说明字段，唯一标签用集合去重，汇总结果用元组返回。它们不是五份互不相干的语法，而是在同一份程序中各自解决一个问题。
+
+<div class="be-page-actions" markdown="1">
+[先看怎样选容器](#concept-choose){ .md-button .md-button--primary }
+[查看阶段作品](../../../exercises/python-basics/study-progress-reporter/README.md){ .md-button }
 </div>
 
-<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+</section>
 
-## 第一步：清理课程标签
+<div class="be-lesson-overview">
+  <div><span>课程位置</span><strong>Python 起步 · 4 / 7</strong></div>
+  <div><span>使用环境</span><strong>Python 3.11+，只用内置类型</strong></div>
+  <div><span>完成后留下</span><strong>报告器 v0.4 与多记录汇总</strong></div>
+</div>
 
-**任务：** 在 `study_records.py` 中把 `"  Python, 基础,工具,Python  "` 用 `strip()`、`split(",")` 处理成标签列表，并用 `" | ".join()` 输出。
+## 开始前
 
-**即时反馈：** 原字符串不变，清理后的列表与最终输出都可见。观察为什么必须接收字符串方法返回的新值。
+- 已完成[函数、参数、返回值和作用域](03-functions-parameters-returns-scope.md)，本地报告器已有进度与状态函数。
+- 能用 `for` 逐项处理数据，并能接住函数返回值。
+- 继续修改 `practice/python-basics/learning_profile.py`，不要为每一课建立互不关联的新程序。
+- 页面运行器用于观察固定数据；最终版本仍要在本地终端运行并提交。
+
+<section id="concept-choose" data-learning-context="concept-choose" data-context-type="concept" markdown="1">
+
+## 先问数据要拿来做什么
+
+假设要表示一条学习记录：
+
+```python
+{
+    "course": "Python 起步",
+    "target_hours": 5,
+    "finished_hours": 3,
+    "tags": ["Python", "起步", "工具"],
+}
+```
+
+<div class="be-collection-model" role="img" aria-label="外层列表保存多条记录，每条记录由字典按字段名组织，tags 字段再保存一个列表；汇总时用集合得到唯一标签，并用元组返回固定的汇总结果。">
+  <article><span>多条、有顺序</span><strong>list 记录列表</strong><small>可以追加下一门课程</small></article>
+  <b aria-hidden="true">包含</b>
+  <article><span>一条、有字段名</span><strong>dict 学习记录</strong><small>course、hours、tags</small></article>
+  <b aria-hidden="true">再包含</b>
+  <article><span>标签可重复</span><strong>list 标签</strong><small>保留原始输入顺序</small></article>
+  <b aria-hidden="true">汇总为</b>
+  <article><span>唯一成员</span><strong>set 标签集合</strong><small>展示前再排序</small></article>
+</div>
+
+选择结构时先看用途：
+
+| 结构 | 最适合回答的问题 | 顺序 | 能否原地修改 | 重复 |
+| --- | --- | --- | --- | --- |
+| `str` | 这段文本是什么 | 有 | 不能 | 字符可重复 |
+| `list` | 第几项是什么，要不要追加或修改 | 有 | 能 | 允许 |
+| `tuple` | 这一组固定结果分别是什么 | 有 | 不能 | 允许 |
+| `dict` | 某个字段名对应什么值 | 保留插入顺序 | 能 | 键唯一 |
+| `set` | 某个成员是否存在，有哪些唯一成员 | 不依赖显示顺序 | 能 | 不允许 |
+
+不要从“哪个结构更高级”开始。先说清读取方式、是否需要修改、是否允许重复，再选最贴合用途的一种。
 
 </section>
 
-<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+<section id="example-text-tags" data-learning-context="example-text-tags" data-context-type="example" markdown="1">
 
-## 第二步：用字典表示一条学习记录
+## 字符串先把标签清理干净
 
-**任务：** 创建含 `course`、`target_hours`、`finished_hours`、`tags` 的字典，用字段名读取课程和完成时间，再增加 `status` 字段。
-
-**成功标准：** 输出中能看出每个值的含义，不依赖“第几个位置”的记忆。
-
-</section>
-
-<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
-
-## 第三步：让报告器遍历多条记录
-
-**任务：** 用“列表中的字典”保存至少三条记录，复用上一节函数逐条输出状态；用集合统计去重后的标签。
-
-**主动修改：** 增加一条带重复标签的记录，比较列表保留重复与集合去重后的结果。
-
-</section>
-
-<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
-
-## 第四步：故意制造容器错误
-
-**任务：** 先用 `copied = records`，向 `copied` 追加一条记录，观察原列表也变化；然后改为 `records.copy()` 验证外层列表独立。
-
-**错误证据：** 记录两个变量在修改前后的内容，并指出这不是 Python 随机改变数据，而是两个名字指向同一列表。
-
-</section>
-
-<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
-
-## 第五步：迁移验收
-
-**任务：** 独立为每条记录增加一个可选字段，例如 `note` 或 `priority`；读取时使用合适的默认值，并按课程名排序输出报告。
-
-**完成证据：** 验证空列表、重复标签、超额完成和缺失可选字段四种场景。
-
-**下一步：** 进入[文件、路径、JSON 和简单目录操作](05-files-json-paths.md)，把内存数据移到 JSON 文件。
-
-</section>
-
-上一节的学习进度报告器只能处理一条记录。真实程序通常需要处理多门课程、多个文件或多次实验，因此必须知道怎样表示一组数据，以及怎样根据用途选择合适的数据结构。
-
-本节不以背方法名为目标。你要理解五种常用结构分别解决什么问题、哪些可以修改、怎样组合它们，并能判断一个程序为什么应该使用列表、字典、集合或元组。
-
-## 课程信息
-
-- 课程类型：编程课。
-- 所属主线：编程语言。
-- 课程层级：Python 起步必修。
-- 运行环境：Python 3.11 或更高版本，仅使用标准库。
-- 阶段作品：把学习进度报告器升级为多条内存记录。
-- 事实核查：2026-07-14，依据 Python 3 官方教程和内置类型参考。
-
-## 前置知识
-
-开始前应完成：
-
-- [变量、基本类型、输入输出](01-variables-types-io.md)。
-- [条件、循环、布尔逻辑](02-conditions-loops-boolean.md)。
-- [函数、参数、返回值和作用域](03-functions-parameters-returns-scope.md)。
-- 能用 `for` 遍历一组数据。
-- 能定义函数、传入参数并使用返回值。
-- 能根据错误信息找到文件、行号和错误类型。
-
-开始前先确认：你能解释为什么一条学习记录需要课程名、目标时间、完成时间等多个字段，但多条学习记录又不能全部堆在互不相关的变量里。
-
-## 学习目标
-
-完成本节后，你应该能做到：
-
-- 使用索引、切片、遍历和常用字符串方法处理文本。
-- 使用列表保存有顺序且需要修改的一组数据。
-- 说明列表赋值共享和列表复制的区别。
-- 使用元组表示顺序固定、不希望被修改的一组值。
-- 使用字典按字段名保存和读取结构化记录。
-- 使用集合去重、判断成员并完成基本集合运算。
-- 使用“列表中的字典”表示多条记录。
-- 根据顺序、可变性、访问方式和唯一性选择数据结构。
-- 审阅 AI 生成的数据处理代码，发现不必要的复杂语法或输入数据修改。
-
-## 学习顺序
-
-1. 先认识不同数据结构的选择依据。
-2. 学习字符串的读取、清理、拆分和格式化。
-3. 学习列表的增删改、排序、嵌套和复制。
-4. 学习元组的固定结构和解包。
-5. 学习字典的字段访问、更新和遍历。
-6. 学习集合的去重与集合运算。
-7. 把列表和字典组合为多条学习记录。
-8. 完成学习进度报告器的多记录版本。
-
-## 怎样选择数据结构
-
-下面的图回答一个问题：面对一组数据时，首先应该考虑什么？
-
-```mermaid
-flowchart TD
-    A["需要保存或处理什么"] --> B{"主要是文本吗"}
-    B -- "是" --> C["字符串 str"]
-    B -- "否" --> D{"需要按字段名查找吗"}
-    D -- "是" --> E["字典 dict"]
-    D -- "否" --> F{"主要关心唯一性或集合运算吗"}
-    F -- "是" --> G["集合 set"]
-    F -- "否" --> H{"数据需要修改吗"}
-    H -- "是" --> I["列表 list"]
-    H -- "否" --> J["元组 tuple"]
-```
-
-这不是绝对规则，而是起步时的判断顺序。一个程序通常会组合多种结构，例如使用列表保存多条记录，每条记录用字典表示，字典中的标签再用列表保存。
-
-| 类型 | 有顺序 | 能否原地修改 | 允许重复 | 主要访问方式 | 常见用途 |
-| --- | --- | --- | --- | --- | --- |
-| 字符串 `str` | 是 | 否 | 是 | 索引、切片、文本方法 | 名称、文本、路径片段 |
-| 列表 `list` | 是 | 是 | 是 | 索引、切片、遍历 | 多条记录、任务序列 |
-| 元组 `tuple` | 是 | 否 | 是 | 索引、解包 | 固定结构的结果 |
-| 字典 `dict` | 按插入顺序保留键 | 是 | 键不能重复，值可以 | 键 | 结构化记录、配置 |
-| 集合 `set` | 不应依赖显示顺序 | 是 | 否 | 成员判断、集合运算 | 去重、标签集合 |
-
-“可变”表示对象创建后能否在原位置改变内容。可变性会影响共享、复制和函数设计，是本节最重要的判断之一。
-
-## 字符串：处理文本
-
-字符串是由字符组成的不可变序列。
+字符串是有顺序、不可原地修改的字符序列：
 
 ```python
-course_name = "Python 起步"
+course = "Python 起步"
+
+print(course[0])       # P
+print(course[-1])      # 步
+print(course[0:6])     # Python
 ```
 
-### 索引
+索引从 `0` 开始；`-1` 表示最后一个字符。切片 `course[start:end]` 包含起点、不包含终点。索引越界会触发 `IndexError`，而超出末尾的切片会在可用位置停止。
 
-索引从 `0` 开始：
+真实输入常带有多余空格和分隔符。运行下面这段清理代码：
 
 ```python
-text = "Python"
-
-print(text[0])
-print(text[1])
-print(text[-1])
+--8<-- "examples/python-basics/normalize_tag_text.py"
 ```
 
-输出：
+这里有三次形状变化：
 
-```text
-P
-y
-n
-```
+1. `split(",")` 把一段文本拆成字符串列表。
+2. `strip()` 为每个标签返回去掉两端空白的新字符串。
+3. `" | ".join(clean_tags)` 把字符串列表重新连接成可读文本。
 
-负索引从末尾开始，`-1` 表示最后一个字符。
-
-如果索引超出范围，会出现 `IndexError`：
-
-```python
-text = "Python"
-print(text[10])
-```
-
-### 切片
-
-切片用于取得一段新字符串：
-
-```python
-text = "Python"
-
-print(text[0:3])
-print(text[3:])
-print(text[:4])
-print(text[::2])
-```
-
-输出：
-
-```text
-Pyt
-hon
-Pyth
-Pto
-```
-
-`text[start:end]` 包含 `start`，不包含 `end`。`text[::2]` 表示从头到尾每隔两个位置取一个字符。
-
-### 遍历、长度和成员判断
-
-```python
-course_name = "Python"
-
-print(len(course_name))
-print("thon" in course_name)
-
-for character in course_name:
-    print(character)
-```
-
-`len()` 返回长度，`in` 判断某段文本是否存在，`for` 可以逐个读取字符。
-
-### 清理、查找和替换
-
-```python
-raw_name = "  Python 起步  "
-clean_name = raw_name.strip()
-
-print(clean_name)
-print(clean_name.lower())
-print(clean_name.replace("起步", "基础"))
-print(clean_name.count("P"))
-```
-
-常用方法：
-
-| 方法 | 作用 | 是否修改原字符串 |
-| --- | --- | --- |
-| `strip()` | 删除两端空白 | 否，返回新字符串 |
-| `lower()` | 转成小写 | 否，返回新字符串 |
-| `upper()` | 转成大写 | 否，返回新字符串 |
-| `replace(old, new)` | 替换文本 | 否，返回新字符串 |
-| `count(part)` | 统计出现次数 | 不修改 |
-| `find(part)` | 返回首次位置，找不到返回 `-1` | 不修改 |
-
-字符串不可变，所以方法通常返回新字符串。必须保存返回值：
+字符串方法通常返回新值，不会改动原字符串：
 
 ```python
 name = "  Python  "
 name.strip()
-print(name)
+print(repr(name))       # '  Python  '
 
 name = name.strip()
-print(name)
+print(repr(name))       # 'Python'
 ```
 
-第一次调用没有改变 `name`，第二次把新字符串重新赋给了 `name`。
+`join()` 的每一项都必须是字符串。如果列表里混入整数，会触发 `TypeError`；先决定整数应该怎样显示，再明确转换，不要在不理解数据含义时一股脑调用 `str()`。
 
-### 拆分和连接
+</section>
+
+<section id="concept-sequences" data-learning-context="concept-sequences" data-context-type="concept" markdown="1">
+
+## 列表会变，元组保持固定
+
+列表适合保存数量可能变化、需要按顺序处理的一组值：
 
 ```python
-tag_text = "python,基础,工具"
-tags = tag_text.split(",")
-
-print(tags)
-print(" | ".join(tags))
-```
-
-输出：
-
-```text
-['python', '基础', '工具']
-python | 基础 | 工具
-```
-
-- `split()` 把字符串拆成列表。
-- `join()` 把多个字符串连接成一个新字符串。
-
-### f-string 格式化
-
-f-string 可以把变量放进文本：
-
-```python
-course_name = "Python 起步"
-progress = 80.0
-
-message = f"{course_name} 完成比例：{progress:.1f}%"
-print(message)
-```
-
-输出：
-
-```text
-Python 起步 完成比例：80.0%
-```
-
-`:.1f` 表示浮点数保留一位小数。f-string 让输出结构比多个逗号拼接更清楚。
-
-### 为什么字符串不能原地修改
-
-下面代码会失败：
-
-```python
-course_name = "python"
-course_name[0] = "P"
-```
-
-错误类型是 `TypeError`。正确做法是构造新字符串：
-
-```python
-course_name = "python"
-course_name = "P" + course_name[1:]
-print(course_name)
-```
-
-本节只需要理解“修改会产生新字符串”，不展开 Python 对字符串的底层存储实现。
-
-## 列表：保存有序且可修改的数据
-
-列表适合保存有顺序、数量可能变化的一组值：
-
-```python
-courses = ["工程基础入门", "Python 起步", "CS 最小核心"]
-```
-
-### 读取、切片和遍历
-
-```python
-courses = ["工程基础入门", "Python 起步", "CS 最小核心"]
-
-print(courses[0])
-print(courses[-1])
-print(courses[0:2])
+courses = ["工程基础", "Python 起步"]
+courses.append("Git 复习")
+courses[0] = "工程基础起步"
 
 for course in courses:
     print(course)
 ```
 
-列表和字符串都支持索引、切片、`len()`、`in` 和遍历，但列表可以原地修改。
+几个容易混淆的操作：
 
-### 增加和修改
+| 写法 | 发生什么 | 返回值 |
+| --- | --- | --- |
+| `items.append(value)` | 把一个整体放到末尾 | `None` |
+| `items.extend(values)` | 把另一组值逐项加到末尾 | `None` |
+| `items.pop()` | 删除并返回最后一项 | 被删除的值 |
+| `sorted(items)` | 生成一个排好序的新列表 | 新列表 |
+| `items.sort()` | 原地调整当前列表 | `None` |
 
-```python
-courses = ["工程基础入门", "Python 起步"]
+如果写成 `result = courses.sort()`，`result` 会是 `None`，不是排序后的列表。想保留原顺序时用 `sorted(courses)`；确认可以修改原列表时才调用 `.sort()`。
 
-courses.append("CS 最小核心")
-courses.insert(1, "Git 复习")
-courses[0] = "工程基础"
-
-print(courses)
-```
-
-常用操作：
-
-| 操作 | 作用 |
-| --- | --- |
-| `append(value)` | 在末尾增加一个值 |
-| `extend(values)` | 把另一组值依次加到末尾 |
-| `insert(index, value)` | 在指定位置插入 |
-| `items[index] = value` | 修改指定位置 |
-
-`append()` 增加一个整体，`extend()` 增加多个元素：
+元组同样有顺序，也支持索引、切片和遍历，但不能替换其中的位置：
 
 ```python
-tags = ["python"]
-tags.append(["基础", "工具"])
-print(tags)
-
-tags = ["python"]
-tags.extend(["基础", "工具"])
-print(tags)
+summary = (10, 8, "进行中")
+total_target, total_finished, status = summary
 ```
 
-输出：
+这种解包适合固定结构的返回结果。左右数量必须一致，否则会触发 `ValueError`。只有一个成员的元组要保留逗号：`("Python",)`；`("Python")` 仍然只是字符串。
 
-```text
-['python', ['基础', '工具']]
-['python', '基础', '工具']
-```
+</section>
 
-### 删除
+<section id="example-list-dict" data-learning-context="example-list-dict" data-context-type="example" markdown="1">
 
-```python
-courses = ["工程基础", "临时课程", "Python 起步"]
+## 列表中的字典表示多条记录
 
-courses.remove("临时课程")
-last_course = courses.pop()
-
-print(courses)
-print(last_course)
-```
-
-- `remove(value)` 删除首次出现的指定值，找不到会报 `ValueError`。
-- `pop()` 删除并返回一个值，默认处理最后一个位置。
-- `del items[index]` 按位置删除。
-
-删除前如果不确定值是否存在，可以先使用 `in` 判断。
-
-### 排序
-
-```python
-hours = [8, 3, 10, 5]
-
-sorted_hours = sorted(hours)
-print(hours)
-print(sorted_hours)
-
-hours.sort(reverse=True)
-print(hours)
-```
-
-输出：
-
-```text
-[8, 3, 10, 5]
-[3, 5, 8, 10]
-[10, 8, 5, 3]
-```
-
-- `sorted(values)` 返回一个新的已排序列表。
-- `list.sort()` 原地修改当前列表，并返回 `None`。
-
-按字典字段排序需要 `key` 函数，后续在掌握更多函数用法时再深入；本节不使用 `lambda`。
-
-### 嵌套列表
-
-列表可以包含列表：
-
-```python
-weekly_hours = [
-    [1.5, 2.0, 1.0],
-    [2.5, 0.5, 2.0],
-]
-
-print(weekly_hours[0])
-print(weekly_hours[1][2])
-```
-
-`weekly_hours[1][2]` 先取得第二个内部列表，再取得其中第三个值。二维数组和矩阵算法会在 CS 与 AI 数学课程中正式展开。
-
-## 列表赋值和复制
-
-这是本节最容易产生真实错误的部分。
-
-### 赋值不会复制列表
-
-```python
-original_tags = ["python", "基础"]
-shared_tags = original_tags
-
-shared_tags.append("工具")
-
-print(original_tags)
-print(shared_tags)
-```
-
-输出：
-
-```text
-['python', '基础', '工具']
-['python', '基础', '工具']
-```
-
-`original_tags` 和 `shared_tags` 指向同一个列表。通过任意一个名字修改，另一个名字看到的内容也会变化。
-
-### 使用复制得到独立的外层列表
-
-```python
-original_tags = ["python", "基础"]
-copied_tags = original_tags.copy()
-
-copied_tags.append("工具")
-
-print(original_tags)
-print(copied_tags)
-```
-
-输出：
-
-```text
-['python', '基础']
-['python', '基础', '工具']
-```
-
-也可以使用完整切片：
-
-```python
-copied_tags = original_tags[:]
-```
-
-`copy()` 和完整切片只复制最外层。如果列表内部还有可变列表或字典，它们仍可能被共享。递归的深复制规则不属于本节，但在修改嵌套数据前必须意识到这一边界。
-
-## 元组：保存固定顺序的数据
-
-元组与列表一样有顺序，但元组本身不可变：
-
-```python
-summary = (30.0, 20.0, 1)
-
-print(summary[0])
-print(summary[1])
-print(summary[2])
-```
-
-元组适合表示结构固定、不希望调用者随意增删的结果，例如：总计划时间、总完成时间、已完成课程数。
-
-### 打包和解包
-
-```python
-summary = (30.0, 20.0, 1)
-total_target, total_finished, completed_count = summary
-
-print(total_target)
-print(total_finished)
-print(completed_count)
-```
-
-左侧变量数量必须与元组中的值数量一致，否则会出现 `ValueError`。
-
-### 只有一个值的元组
-
-```python
-not_a_tuple = ("Python")
-one_item_tuple = ("Python",)
-
-print(type(not_a_tuple))
-print(type(one_item_tuple))
-```
-
-单值元组需要逗号，括号本身不是决定因素。
-
-### 元组不能原地修改
-
-```python
-summary = (30.0, 20.0, 1)
-summary[0] = 40.0
-```
-
-这会产生 `TypeError`。如果结果需要变化，应创建一个新元组，或者从一开始就选择列表。
-
-元组不可变指的是元组保存的引用位置不能改变；如果元组内部放入可变列表，内部列表仍然可能变化。本节不使用这种容易混淆的结构。
-
-## 字典：按字段名保存记录
-
-字典使用键和值保存数据：
+字典用键说明字段含义：
 
 ```python
 record = {
     "course": "Python 起步",
-    "target_hours": 10,
-    "finished_hours": 8,
+    "target_hours": 5,
+    "finished_hours": 3,
+    "tags": ["Python", "起步"],
 }
-```
 
-字典适合表示一条有明确字段含义的记录。与 `record[0]` 相比，`record["course"]` 更容易看出数据用途。
-
-### 读取
-
-```python
 print(record["course"])
-print(record["target_hours"])
+record["finished_hours"] = 4
 ```
 
-使用不存在的键会产生 `KeyError`：
-
-```python
-print(record["teacher"])
-```
-
-如果字段允许不存在，可以使用 `get()`：
-
-```python
-print(record.get("teacher"))
-print(record.get("teacher", "未填写"))
-```
-
-输出：
-
-```text
-None
-未填写
-```
-
-必填字段使用方括号能更早暴露数据错误；可选字段可以使用 `get()` 和明确默认值。不要为了避免报错而把所有字段都改成 `get()`。
-
-### 增加、修改和删除
-
-```python
-record["status"] = "接近目标"
-record["finished_hours"] = 9
-removed_status = record.pop("status")
-
-print(record)
-print(removed_status)
-```
-
-同一个键再次赋值会更新原来的值，不会保留两个同名键。
-
-### 判断和遍历
-
-```python
-if "course" in record:
-    print("课程字段存在")
-
-for key in record:
-    print(key)
-
-for key, value in record.items():
-    print(key, value)
-```
-
-- `in` 默认判断键是否存在。
-- `keys()` 提供所有键。
-- `values()` 提供所有值。
-- `items()` 提供键值对，适合同时遍历键和值。
-
-字典按插入顺序保留键，但业务逻辑仍应通过键名访问字段，不应依赖“第几个键”。
-
-### 字典键的边界
-
-常见的字符串、数字和元组可以作为字典键。列表不能作为键，因为列表可变。起步阶段优先使用含义明确的字符串键，不展开哈希表底层实现。
-
-## 集合：去重和集合运算
-
-集合保存不重复的元素：
-
-```python
-tags = {"python", "基础", "python", "工具"}
-print(tags)
-```
-
-集合中只会保留一个 `"python"`。不要依赖打印出来的先后顺序。
-
-### 创建空集合
-
-```python
-empty_set = set()
-empty_dict = {}
-
-print(type(empty_set))
-print(type(empty_dict))
-```
-
-`{}` 创建的是空字典，空集合必须写 `set()`。
-
-### 增加、删除和成员判断
-
-```python
-tags = {"python", "基础"}
-
-tags.add("工具")
-tags.discard("不存在的标签")
-
-print("python" in tags)
-print("java" in tags)
-```
-
-- `add(value)` 增加元素。
-- `remove(value)` 删除元素，找不到会报 `KeyError`。
-- `discard(value)` 删除元素，找不到也不会报错。
-- `in` 判断成员是否存在。
-
-### 并集、交集和差集
-
-```python
-python_tags = {"python", "后端", "数据"}
-web_tags = {"后端", "前端", "数据库"}
-
-print(python_tags | web_tags)
-print(python_tags & web_tags)
-print(python_tags - web_tags)
-```
-
-| 运算 | 写法 | 含义 |
-| --- | --- | --- |
-| 并集 | `a | b` | 两边出现过的全部元素 |
-| 交集 | `a & b` | 两边共同存在的元素 |
-| 差集 | `a - b` | 只在左边存在的元素 |
-
-如果需要稳定展示集合结果，先使用 `sorted()` 转成有序列表：
-
-```python
-print(sorted(python_tags | web_tags))
-```
-
-集合适合成员判断和去重，不适合保存必须按输入顺序展示的数据。
-
-## 组合结构：列表中的字典
-
-多条结构化记录通常使用列表和字典组合：
+多条结构相同的记录放进列表：
 
 ```python
 records = [
-    {
-        "course": "Python 起步",
-        "target_hours": 10,
-        "finished_hours": 8,
-        "tags": ["python", "基础"],
-    },
-    {
-        "course": "工程基础入门",
-        "target_hours": 8,
-        "finished_hours": 9,
-        "tags": ["基础", "工具"],
-    },
+    {"course": "Python 起步", "target_hours": 5, "finished_hours": 3},
+    {"course": "复盘练习", "target_hours": 2, "finished_hours": 2},
 ]
-```
 
-结构关系：
-
-- 最外层列表表示“多条记录”。
-- 每个字典表示“一条课程记录”。
-- 字典键表示字段名。
-- `tags` 字段中的列表保留原始标签顺序，稍后可以用集合去重。
-
-读取第二条记录的第一个标签：
-
-```python
-tag = records[1]["tags"][0]
-print(tag)
-```
-
-更新第一条记录的完成时间：
-
-```python
-records[0]["finished_hours"] = 9
-```
-
-访问嵌套结构时从外向内读：先取得第几条记录，再按键取得字段，最后按索引取得列表元素。
-
-## 可选阅读：简单列表推导式
-
-下面两段代码结果相同：
-
-```python
-course_names = []
 for record in records:
-    course_names.append(record["course"])
+    print(record["course"], record["finished_hours"])
 ```
+
+`record["course"]` 适合必填字段：缺失时抛出 `KeyError`，能尽早暴露数据问题。真正允许缺失的字段再用 `.get()`：
 
 ```python
-course_names = [record["course"] for record in records]
+note = record.get("note", "未填写")
 ```
 
-第二种叫列表推导式，适合简单转换。它不是本节验收要求。如果一行同时出现多个条件、多个循环或看不懂的函数调用，应先改回普通循环，保证自己能够解释每一步。
+不要对所有字段都使用 `.get()`。如果课程名或目标小时是必填数据，安静地返回 `None` 只会把错误推迟到更难排查的位置。
 
-## 可复现实例：多记录学习进度报告器
+</section>
 
-本节把上一节的阶段作品从“一条输入记录”升级为“多条内存记录”。下一节会继续把硬编码数据移到 JSON 文件。
+<section id="concept-tuple-set" data-learning-context="concept-tuple-set" data-context-type="concept" markdown="1">
 
-### 环境与文件
+## 集合只关心唯一成员
 
-- Python 3.11 或更高版本。
-- 仅使用标准库，无需安装依赖。
-- 文件名：`study_records.py`。
-- 从文件所在目录运行。
-
-### 完整代码
-
-**文件：`study_records.py`**
+多条记录可能重复出现同一标签：
 
 ```python
-def calculate_progress(record):
-    """计算单条记录的完成百分比，并限制在 0 到 100。"""
-    target_hours = record["target_hours"]
-    finished_hours = record["finished_hours"]
+tags = {"Python", "工具"}
+tags.add("复盘")
+tags.add("Python")
 
-    if target_hours <= 0:
-        return 0.0
-
-    progress = finished_hours / target_hours * 100
-    if progress > 100:
-        return 100.0
-    if progress < 0:
-        return 0.0
-    return progress
-
-
-def build_status(target_hours, progress):
-    """根据目标和进度返回学习状态。"""
-    if target_hours <= 0:
-        return "目标无效"
-    if progress >= 100:
-        return "目标已完成"
-    if progress >= 80:
-        return "接近目标"
-    return "继续推进"
-
-
-def normalize_tags(tags):
-    """清理标签文本并返回去重集合。"""
-    unique_tags = set()
-
-    for tag in tags:
-        clean_tag = tag.strip().lower()
-        if clean_tag:
-            unique_tags.add(clean_tag)
-
-    return unique_tags
-
-
-def summarize_records(records):
-    """汇总多条学习记录，不修改输入列表和字典。"""
-    total_target = 0.0
-    total_finished = 0.0
-    completed_courses = []
-    unique_tags = set()
-    report_rows = []
-
-    for record in records:
-        course_name = record["course"].strip()
-        target_hours = record["target_hours"]
-        finished_hours = record["finished_hours"]
-        progress = calculate_progress(record)
-        status = build_status(target_hours, progress)
-
-        total_target = total_target + target_hours
-        total_finished = total_finished + finished_hours
-
-        if progress >= 100:
-            completed_courses.append(course_name)
-
-        for tag in normalize_tags(record["tags"]):
-            unique_tags.add(tag)
-
-        report_rows.append(
-            {
-                "course": course_name,
-                "progress": progress,
-                "status": status,
-            }
-        )
-
-    summary = (total_target, total_finished, len(completed_courses))
-    sorted_tags = sorted(unique_tags)
-
-    return report_rows, summary, completed_courses, sorted_tags
-
-
-def print_report(report_rows, summary, completed_courses, sorted_tags):
-    """输出课程明细和汇总结果。"""
-    total_target, total_finished, completed_count = summary
-
-    print("学习进度报告")
-    for row in report_rows:
-        print(
-            f"- {row['course']}：{row['progress']:.1f}%｜{row['status']}"
-        )
-
-    print(f"总计划时间：{total_target:.1f} 小时")
-    print(f"总完成时间：{total_finished:.1f} 小时")
-    print(f"已完成课程数：{completed_count}")
-    print("已完成课程：", completed_courses)
-    print("唯一标签：", sorted_tags)
-
-
-def main():
-    records = [
-        {
-            "course": "  Python 起步  ",
-            "target_hours": 10,
-            "finished_hours": 8,
-            "tags": ["Python", "基础", "Python"],
-        },
-        {
-            "course": "工程基础入门",
-            "target_hours": 8,
-            "finished_hours": 9,
-            "tags": ["基础", "工具"],
-        },
-        {
-            "course": "CS 最小核心",
-            "target_hours": 12,
-            "finished_hours": 3,
-            "tags": ["CS", "算法"],
-        },
-    ]
-
-    report_rows, summary, completed_courses, sorted_tags = summarize_records(
-        records
-    )
-    print_report(report_rows, summary, completed_courses, sorted_tags)
-
-
-main()
+print("Python" in tags)
 ```
 
-### 结构如何对应五种类型
+第二次加入 `"Python"` 不会产生重复项。集合适合成员判断、去重和集合运算：
 
-| 类型 | 示例中的用途 |
-| --- | --- |
-| 字符串 | 课程名、状态、标签和格式化输出 |
-| 列表 | 多条原始记录、报告行、已完成课程和排序后标签 |
-| 字典 | 每条课程记录和每条报告结果 |
-| 集合 | 清理并汇总不重复标签 |
-| 元组 | 固定返回总计划、总完成和已完成数量 |
+```python
+current = {"Python", "工具", "复盘"}
+required = {"Python", "Git"}
 
-### 运行命令
+print(current & required)  # 两边都有
+print(current | required)  # 合并所有唯一成员
+print(required - current)  # 还缺什么
+```
 
-macOS 或 Linux：
+不要依赖集合打印出来的顺序。需要稳定输出或测试时，先 `sorted(tags)`。空集合必须写成 `set()`；`{}` 创建的是空字典。
+
+本课的 `summarize_records()` 最后返回一个元组：总计划、总完成、课程行和唯一标签。集合负责收集唯一标签，元组负责把固定的四项结果交回调用者，两者用途并不冲突。
+
+</section>
+
+<section id="reproduce-v04" data-learning-context="reproduce-v04" data-context-type="reproduce" markdown="1">
+
+## 跑起报告器 v0.4
+
+先看 `records` 的形状，再沿 `for record in records` 追踪第一条记录：
+
+```python
+--8<-- "examples/python-basics/learning_records_v04.py"
+```
+
+<div class="be-python-runner" data-python-runner data-python-source="../../../../examples/python-basics/learning_records_v04.py">
+  <p class="be-python-runner__fallback">页面运行器正在准备。若它没有出现，请把上面的代码复制到本地文件运行。</p>
+</div>
+
+把代码保存到原来的练习文件：
+
+=== "Windows PowerShell"
+
+    ```powershell
+    .\.venv\Scripts\python.exe .\practice\python-basics\learning_profile.py
+    ```
+
+=== "macOS / Linux"
+
+    ```bash
+    ./.venv/bin/python ./practice/python-basics/learning_profile.py
+    ```
+
+请逐项核对：总计划是每条 `target_hours` 的和；总完成是每条 `finished_hours` 的和；课程行保持记录顺序；唯一标签去重后按稳定顺序显示。
+
+</section>
+
+<section id="modify-records" data-learning-context="modify-records" data-context-type="modify" markdown="1">
+
+## 加入一条自己的记录
+
+请做四处真实修改：
+
+1. 把三条示例记录换成你最近学习的内容。
+2. 为其中一条加入重复标签，确认课程原始标签列表仍保留输入，而汇总标签只显示一次。
+3. 为部分记录增加可选字段 `note`，打印时使用 `record.get("note", "未填写")`。
+4. 用 `sorted(records, key=course_name)` 按课程名生成新顺序，但不要破坏原列表。
+
+排序函数先写成有名字的形式：
+
+```python
+def course_name(record):
+    return record["course"]
+
+
+sorted_records = sorted(records, key=course_name)
+```
+
+至少验证空列表、重复标签、超额完成和缺失 `note` 四种情况。空列表的汇总应该是 `0`、`0`、空课程行和空标签，而不是突然访问第一项。
+
+</section>
+
+<section id="troubleshoot-containers" data-learning-context="troubleshoot-containers" data-context-type="troubleshoot" markdown="1">
+
+## 先看错误是在按位置还是按字段读取
+
+| 现象 | 常见原因 | 怎样回来 |
+| --- | --- | --- |
+| `IndexError` | 列表或字符串位置超出范围 | 打印 `len()`，确认最后有效位置是 `len(...) - 1` |
+| `KeyError: 'course'` | 必填字段缺失或拼写不同 | 检查实际字典和数据来源，修正字段，不要直接吞掉 |
+| `TypeError` 提示不能修改字符串或元组 | 正在替换不可变对象中的位置 | 构造新字符串/元组，或确认是否本该使用列表 |
+| `join()` 提示期待字符串 | 列表中混有整数或其他对象 | 先决定显示格式，再明确转换每一项 |
+| `.sort()` 的结果是 `None` | 把原地修改方法当成新列表 | 直接检查原列表，或改用 `sorted()` |
+| 集合输出每次看起来不同 | 依赖了集合显示顺序 | 展示与测试前使用 `sorted()` |
+| 改了副本，原数据也变 | 变量仍共享同一列表或内层字典 | 先画出引用关系，再决定复制外层还是复制嵌套对象 |
+
+错误类型已经在提示你访问方式：`IndexError` 通常对应位置，`KeyError` 通常对应字典键。先读 traceback 指向的表达式，再看容器当前真实内容。
+
+</section>
+
+<section id="project-v04" data-learning-context="project-v04" data-context-type="project" markdown="1">
+
+## 报告器 v0.4
+
+| 上一版 | 这节课增加 | 涉及文件 | 需要保存 | 下一版 |
+| --- | --- | --- | --- | --- |
+| v0.3：函数处理一条记录 | 列表中的字典、多记录汇总、唯一标签和固定汇总元组 | `learning_profile.py`、`notes/learning-log.md` | 多记录报告、四类边界输入、一次容器错误与恢复 | 从 JSON 文件读取记录 |
+
+在学习记录中画出自己的数据形状：最外层是什么，每条记录是什么，标签又是什么。然后保存实际输出与四类验证结果：
 
 ```bash
-python3 study_records.py
+git add practice/python-basics/learning_profile.py notes/learning-log.md
+git diff --cached
+git commit -m "summarize multiple study records"
+git status --short
 ```
 
-Windows：
+下一课会把同样的字典和列表写进 JSON。数据形状先在内存里理清，文件读写就不会同时混进两个新问题。
 
-```powershell
-python study_records.py
-```
+</section>
 
-### 预期输出
+<section id="deepen-copy" data-learning-context="deepen-copy" data-context-type="deepen" markdown="1">
 
-```text
-学习进度报告
-- Python 起步：80.0%｜接近目标
-- 工程基础入门：100.0%｜目标已完成
-- CS 最小核心：25.0%｜继续推进
-总计划时间：30.0 小时
-总完成时间：20.0 小时
-已完成课程数：1
-已完成课程： ['工程基础入门']
-唯一标签： ['cs', 'python', '基础', '工具', '算法']
-```
+## 再深入一点：赋值、浅复制和内层共享
 
-标签先使用集合去重，再使用 `sorted()` 转成列表，所以输出顺序稳定。原始 `records` 中的标签列表没有被修改。
-
-### 验证场景
-
-| 场景 | 输入变化 | 应观察到的结果 |
-| --- | --- | --- |
-| 正常多记录 | 使用完整示例 | 三条明细和汇总与预期输出一致 |
-| 重复标签 | 同一标签出现多次 | 唯一标签中只出现一次 |
-| 超额完成 | 完成时间大于目标时间 | 单课进度限制为100%，状态为目标已完成 |
-| 空记录 | `records = []` | 明细为空，汇总为 `(0.0, 0.0, 0)`，列表为空 |
-| 缺少必填键 | 删除一条记录的 `target_hours` | 出现 `KeyError: 'target_hours'` |
-
-语法检查：
-
-```bash
-python3 -m py_compile study_records.py
-```
-
-命令正常返回只能证明语法可编译，不能证明容器选择、汇总结果和输入数据保护正确。
-
-### 已知失败路径
-
-如果记录缺少 `target_hours`，访问必填字段时会失败：
-
-```text
-KeyError: 'target_hours'
-```
-
-本节需要根据 traceback 找到失败的字典访问，并说明它是数据不完整，不要把所有访问都改成静默返回 `None`。数据校验、异常捕获和恢复策略会在后续异常课程展开。
-
-如果直接打印集合，不同运行环境下展示顺序可能不同。需要稳定报告时，先把集合传给 `sorted()`。
-
-## AI 协作任务：从单记录升级为多记录
-
-AI 可以生成容器操作和汇总代码，但它经常使用学习者尚未理解的复杂推导式、修改输入数据，或者依赖集合的显示顺序。
-
-### 任务
-
-把上一节的一条学习记录交给 AI，要求升级为多记录汇总：
-
-```text
-请把单条学习进度记录升级为多条记录汇总。
-约束：使用列表保存多条字典记录；使用普通 for 循环；
-不得使用 lambda、复杂推导式、类或第三方库；不得修改输入记录；
-使用集合去重标签，但输出前必须排序；
-请给出正常、空列表和重复标签三个验证场景。
-```
-
-### 人工审阅要求
-
-1. 检查外层是否是列表，每条记录是否是字段含义明确的字典。
-2. 检查函数是否修改了输入列表或原始字典。
-3. 检查集合结果是否经过排序后再展示。
-4. 检查空列表是否仍能返回清楚的零值结果。
-5. 如果 AI 使用当前无法解释的推导式或 `lambda`，要求改写为普通循环和命名函数。
-6. 主动把“接近目标”阈值从80%改为75%，重新验证74%、75%和100%。
-
-学习记录：
-
-```text
-任务和数据约束：
-AI 选择了哪些数据结构：
-我同意或调整了哪些选择：
-是否发现输入数据被修改：
-我要求改写的复杂语法：
-我主动修改的汇总规则：
-验证输入与输出：
-一次错误和排查过程：
-仍未验证的边界：
-```
-
-## 核心手动检查点
-
-### 检查点 1：预测共享列表
-
-运行前先预测两个变量的最终内容：
+运行下面的短例子：
 
 ```python
-first = ["python"]
-second = first
-second.append("基础")
-
-print(first)
-print(second)
+--8<-- "examples/python-basics/list_aliasing.py"
 ```
 
-然后使用 `copy()` 修改代码，使 `second` 的变化不影响 `first`。
+`same_list = records` 没有创建列表，只让两个名字指向同一个对象。`records.copy()` 创建了新的外层列表，所以向副本追加记录不会改变原列表长度。
 
-### 检查点 2：解释不可变
+但这是**浅复制**：外层位置里原有的字典仍是同一批对象。修改 `outer_copy[0]["course"]`，原列表中的第一条记录也会看到变化。
 
-分别解释为什么下面两行不能工作，以及应该怎样得到新值：
+这里先别急着把每次复制都换成 `copy.deepcopy()`。先判断你是否真的需要修改内层对象；很多时候，建立新的记录字典或让函数不修改输入，比无条件深复制更清楚。
 
-```python
-text = "python"
-text[0] = "P"
+</section>
 
-summary = (10, 8)
-summary[0] = 12
-```
+<section id="career-data-shape" data-learning-context="career-data-shape" data-context-type="career" markdown="1">
 
-### 检查点 3：选择数据结构
+## 被问到“为什么这样组织数据”时
 
-为下面场景选择结构并说明理由：
+可以沿着访问方式回答：多条记录需要保留顺序并逐项处理，所以外层用列表；每条记录要按课程、目标和完成小时读取，所以用字典；原始标签允许重复且要保留输入顺序，所以仍用列表；汇总只关心唯一标签，因此临时转成集合；固定的汇总结果用元组返回并解包。
 
-- 按输入顺序保存待办任务，并允许增加和删除。
-- 保存一条用户资料，需要按姓名、年龄等字段访问。
-- 保存不重复的课程标签并判断交集。
-- 返回经纬度两个固定值。
-- 保存一段需要清理和查找的文本。
+这比“我会五种数据结构”更有说服力。真正的能力不是背方法表，而是能用程序行为解释结构选择，并说清共享、顺序和缺失字段的处理办法。
 
-答案不能只写类型名，必须提到顺序、可变性、访问方式或唯一性中的至少一个依据。
+</section>
 
-### 检查点 4：追踪嵌套访问
+## 完成检查
 
-手动写出下面每一步得到的类型和值：
-
-```python
-records[1]
-records[1]["tags"]
-records[1]["tags"][0]
-```
-
-然后把第二条记录的第一个标签改为 `"工程工具"`，确认修改位置正确。
-
-### 检查点 5：集合顺序
-
-解释为什么集合适合去重，却不适合直接承担稳定展示顺序。使用 `sorted()` 生成一个可重复比较的列表结果。
-
-## 微练习
-
-### 练习 1：清理标签字符串
-
-输入字符串：
-
-```text
-  Python, 基础,工具,Python  
-```
-
-使用 `strip()`、`split()` 和循环得到清理后的标签列表，再使用 `join()` 输出为 `Python | 基础 | 工具 | Python`。
-
-记录每一步的数据类型和值。
-
-### 练习 2：列表共享和复制
-
-创建原始课程列表，分别使用直接赋值和 `copy()` 创建两个变量。向两个变量追加不同课程，记录原始列表如何变化并解释原因。
-
-### 练习 3：元组解包
-
-创建 `(12.0, 8.5, 2)`，分别解包为计划时间、完成时间和课程数。故意使用两个变量接收三个值，记录 `ValueError` 后修复。
-
-### 练习 4：更新课程字典
-
-建立包含课程名、目标时间和完成时间的字典：
-
-- 新增 `status`。
-- 更新完成时间。
-- 使用 `get()` 读取可选的 `note` 字段并提供默认值。
-- 遍历并输出全部键值对。
-
-### 练习 5：标签集合
-
-建立 Python 和 Web 两组标签，输出并集、交集和两个方向的差集。所有展示结果先使用 `sorted()`。
-
-### 练习 6：汇总多条记录
-
-创建至少三条课程字典并放进列表，编写函数统计：
-
-- 总目标时间。
-- 总完成时间。
-- 完成比例达到100%的课程名。
-- 所有不重复标签。
-
-至少验证正常记录、重复标签和空列表。
-
-## 常见错误与排查
-
-| 错误 | 表现 | 排查方式 |
-| --- | --- | --- |
-| 索引超出范围 | `IndexError` | 先检查 `len()`，确认索引从0开始 |
-| 试图修改字符串或元组 | `TypeError` | 构造新值，或确认是否应该使用列表 |
-| 调用字符串方法但没有保存结果 | 内容看起来没变化 | 记住字符串方法通常返回新字符串 |
-| 混淆 `append()` 和 `extend()` | 列表中出现意外的嵌套列表 | 判断要增加一个整体还是多个元素 |
-| 把 `sort()` 的返回值赋给变量 | 变量变成 `None` | 使用原列表，或改用 `sorted()` |
-| 直接赋值后修改列表 | 原列表也被修改 | 需要独立外层列表时使用 `copy()` |
-| 元组解包数量不一致 | `ValueError` | 让左侧变量数与右侧值数一致 |
-| 字典缺少必填键 | `KeyError` | 核对数据结构；可选字段才使用 `get()` |
-| 以为 `in` 判断字典值 | 判断结果不符合预期 | `in` 默认判断字典键 |
-| 使用 `{}` 创建空集合 | 得到的是字典 | 空集合使用 `set()` |
-| 依赖集合显示顺序 | 输出顺序不稳定 | 展示前使用 `sorted()` 转成列表 |
-| 修改嵌套复制中的内部对象 | 原数据内部也变化 | `copy()` 只复制外层，先检查嵌套共享关系 |
-
-## 完成标准
-
-完成本节需要同时满足：
-
-- 能使用索引、切片、遍历和至少五种字符串操作完成文本清理。
-- 能解释字符串不可变，并正确保存字符串方法返回的新值。
-- 能对列表完成读取、增加、删除、修改和排序。
-- 能预测直接赋值造成的列表共享，并使用 `copy()` 修复外层共享。
-- 能创建、读取和解包元组，并说明它与列表的选择差异。
-- 能使用字典表示一条记录，读取必填字段和可选字段并遍历键值对。
-- 能使用集合完成去重、成员判断、并集、交集和差集。
-- 能使用列表中的字典表示和更新多条记录。
-- 能为至少五个场景选择数据结构并说明依据。
-- 能运行 `study_records.py`，验证正常、重复、超额、空列表和缺失键场景。
-- 能审阅一次 AI 多记录重构，确认输入未被修改并主动调整一项汇总规则。
-- 能记录一次容器相关错误、排查过程和修复结果。
+- [ ] 我能根据用途区分字符串、列表、元组、字典和集合。
+- [ ] 我用索引和切片读取过字符串或列表，并能说明结束位置不包含。
+- [ ] 我用 `strip()`、`split()` 和 `join()` 清理过真实标签文本。
+- [ ] 我能解释 `append()`/`extend()`、`sorted()`/`.sort()` 的差别。
+- [ ] 我用列表中的字典保存并遍历了至少三条记录。
+- [ ] 我只对可选字段使用 `.get()`，必填字段缺失仍会暴露问题。
+- [ ] 我用集合去重，并在展示前排序。
+- [ ] 我验证了空列表、重复标签、超额完成和缺失可选字段。
+- [ ] 我能用输出解释直接赋值、外层复制和内层共享。
+- [ ] 我提交了报告器 v0.4 和学习记录。
 
 ## 来源与版本
 
-| 来源 | 用于核查 | 版本或日期 | 状态 |
-| --- | --- | --- | --- |
-| [Python 官方教程：Strings](https://docs.python.org/3/tutorial/introduction.html#strings) | 字符串索引、切片和不可变性 | Python 3 文档，2026-07-14核查 | 已验证 |
-| [Python 官方教程：Data Structures](https://docs.python.org/3/tutorial/datastructures.html) | 列表、元组、集合、字典和遍历 | Python 3 文档，2026-07-14核查 | 已验证 |
-| [Python 内置类型：Sequence Types](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range) | 可变与不可变序列的共同操作 | Python 3 文档，2026-07-14核查 | 已验证 |
-| [Python 内置类型：Set Types](https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset) | 集合成员和集合运算 | Python 3 文档，2026-07-14核查 | 已验证 |
-| [Python 内置类型：Mapping Types](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict) | 字典键值访问和顺序行为 | Python 3 文档，2026-07-14核查 | 已验证 |
+- 适用版本：Python 3.11 及以上；示例只使用内置类型与函数。
+- 核查日期：2026-07-17。
+- 事实来源：[Python 数据结构教程](https://docs.python.org/3.11/tutorial/datastructures.html)说明列表操作、元组与解包、集合、字典及循环方式；[内置类型](https://docs.python.org/3.11/library/stdtypes.html)说明字符串、序列、映射和集合的正式行为。
+- 代码验证：仓库脚本检查多记录固定报告、标签清理、唯一标签顺序、列表共享与浅复制边界；自动测试不联网，也不安装第三方包。
 
 ## 下一步
 
-下一步进入[文件、路径、JSON 和简单目录操作](05-files-json-paths.md)。学习进度报告器会把本节硬编码在程序中的列表与字典移到 JSON 文件，实现“数据和代码分离”。
+现在的数据只活在程序运行期间。下一课进入[文件、路径、JSON 和简单目录操作](05-files-json-paths.md)，把同样的列表与字典从 JSON 文件读进来，并把报告写回文件。
+
+[进入下一课](05-files-json-paths.md){ .md-button .md-button--primary }

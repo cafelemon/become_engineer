@@ -1,15 +1,266 @@
 {
-  "version":1,
-  "lesson":{"id":"python-basics-04","title":"字符串、列表、字典、集合和元组","path":"learning-paths/programming-languages/python-basics/04-strings-collections/"},
-  "steps":[{"id":"step-1","title":"清理文本"},{"id":"step-2","title":"保存记录"},{"id":"step-3","title":"处理多条"},{"id":"step-4","title":"定位共享"},{"id":"step-5","title":"迁移验收"}],
-  "cards":[
-    {"id":"string-method-result","lesson_id":"python-basics-04","step_id":"step-1","question":"为什么 strip 后原字符串没有变化？","aliases":["strip不生效","字符串方法没改值"],"keywords":["strip","字符串","不可变","返回值"],"diagnostic":"你是否把 strip() 返回的新字符串重新保存到变量？","hints":["字符串不可原地修改，方法通常返回新字符串。","写 clean_name = raw_name.strip() 后再检查 clean_name。"],"example":"name.strip() 不会改 name；name = name.strip() 才保存结果。","answer":"str 是不可变对象，清理方法返回新值；必须接收返回值。","source":{"label":"第一步：清理课程标签","href":"#step-1"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"split-join","lesson_id":"python-basics-04","step_id":"step-1","question":"split 和 join 分别做什么？","aliases":["split怎么用","join怎么用"],"keywords":["split","join","标签","列表"],"diagnostic":"当前数据是一个逗号分隔文本，还是一组字符串列表？","hints":["split 把一个字符串按分隔符拆成列表。","join 用指定分隔符把字符串列表连接成新文本。"],"example":"'a,b'.split(',') 得到 ['a', 'b']；' | '.join(['a','b']) 得到 'a | b'。","answer":"split 从文本到列表，join 从字符串列表到文本；join 的元素必须是字符串。","source":{"label":"第一步：清理课程标签","href":"#step-1"},"updated_at":"2026-07-15"},
-    {"id":"dictionary-field","lesson_id":"python-basics-04","step_id":"step-2","question":"为什么一条记录适合用字典？","aliases":["字典有什么用","记录用什么结构"],"keywords":["字典","字段","记录","course"],"diagnostic":"你需要通过课程名、目标时间等名称读取值，还是只依赖固定顺序？","hints":["字典用清楚的键表达字段含义。","先用 record['course'] 读取必填字段，再为可选字段考虑 get()。"],"example":"{'course':'Python','target_hours':8}。","answer":"结构化记录有具名字段，字典比位置编号更可读、更不易把数值含义弄反。","source":{"label":"第二步：用字典表示一条学习记录","href":"#step-2"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"missing-key","lesson_id":"python-basics-04","step_id":"step-2","question":"读取字典字段出现 KeyError 怎么办？","aliases":["keyerror怎么办","字典没有这个键"],"keywords":["keyerror","字典","键","字段"],"diagnostic":"该字段是每条记录都必须拥有，还是允许缺失的可选字段？","hints":["必填字段先检查数据结构与拼写，不要静默吞掉错误。","可选字段可用 record.get('note', '') 提供明确默认值。"],"example":"record['course'] 缺失会报错；record.get('note', '') 可返回默认文本。","answer":"区分数据错误和可选字段：修复必填键，或仅对可选键使用 get 与合理默认值。","source":{"label":"第二步：用字典表示一条学习记录","href":"#step-2"},"updated_at":"2026-07-15"},
-    {"id":"list-of-dicts","lesson_id":"python-basics-04","step_id":"step-3","question":"多条学习记录怎样保存？","aliases":["多个字典怎么放","列表中的字典"],"keywords":["列表","字典","多条","记录"],"diagnostic":"每条记录是否有相同字段，而记录整体是否需要保留顺序并逐项处理？","hints":["外层列表保存多条记录，内层字典保存每条具名字段。","for record in records 逐条交给上一节函数。"],"example":"records = [{'course':'Python'}, {'course':'C++'}]。","answer":"使用列表中的字典：列表表达多条和顺序，字典表达单条记录的字段。","source":{"label":"第三步：让报告器遍历多条记录","href":"#step-3"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"set-deduplicate","lesson_id":"python-basics-04","step_id":"step-3","question":"集合为什么会去重且顺序不同？","aliases":["set去重","集合顺序乱了"],"keywords":["集合","set","去重","顺序"],"diagnostic":"你当前目的是保留原顺序，还是只判断有哪些不同标签？","hints":["set 关注唯一成员，不承诺展示顺序。","需要稳定展示时，使用 sorted(set(tags))。"],"example":"set(['Python','Python','工具']) 只有两个成员。","answer":"集合按唯一性存储元素，不应依赖它的显示顺序；去重后可排序展示。","source":{"label":"第三步：让报告器遍历多条记录","href":"#step-3"},"updated_at":"2026-07-15"},
-    {"id":"list-alias","lesson_id":"python-basics-04","step_id":"step-4","question":"为什么修改 copied 后 records 也变了？","aliases":["列表复制后原列表变了","copied影响records"],"keywords":["列表","复制","共享","copy"],"diagnostic":"你使用 copied = records，还是 records.copy() 创建了新外层列表？","hints":["直接赋值只增加同一列表的另一个名字。","使用 records.copy() 创建独立外层列表，并再次追加验证。"],"example":"copied = records 会共享；copied = records.copy() 不共享外层。","answer":"直接赋值不是复制；两个变量指向同一列表。copy() 可解决本课的外层列表共享。","source":{"label":"第四步：故意制造容器错误","href":"#step-4"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"optional-field","lesson_id":"python-basics-04","step_id":"step-5","question":"可选字段应该怎样读取？","aliases":["note没有怎么办","迁移任务字段提示"],"keywords":["可选字段","get","note","迁移"],"diagnostic":"新字段缺失时，报告仍能合理输出吗？默认值应该是什么？","hints":["先选择不会误导读者的默认值，例如空文本或“未填写”。","用 get 读取可选字段，并用有/无该字段两条记录验证。"],"example":"note = record.get('note', '未填写')。","answer":"为可选字段定义明确默认值并使用 get；必填字段仍应保持严格校验。","source":{"label":"第五步：迁移验收","href":"#step-5"},"updated_at":"2026-07-15","recommended":true}
+  "version": 2,
+  "lesson": {
+    "id": "python-basics-04",
+    "title": "字符串、列表、字典、集合和元组",
+    "path": "learning-paths/programming-languages/python-basics/04-strings-collections/"
+  },
+  "contexts": [
+    {"id":"overview-multiple","type":"overview","title":"一条档案变成一组记录","anchor":"#overview-multiple"},
+    {"id":"concept-choose","type":"concept","title":"先问数据要拿来做什么","anchor":"#concept-choose"},
+    {"id":"example-text-tags","type":"example","title":"字符串先把标签清理干净","anchor":"#example-text-tags"},
+    {"id":"concept-sequences","type":"concept","title":"列表会变，元组保持固定","anchor":"#concept-sequences"},
+    {"id":"example-list-dict","type":"example","title":"列表中的字典表示多条记录","anchor":"#example-list-dict"},
+    {"id":"concept-tuple-set","type":"concept","title":"集合只关心唯一成员","anchor":"#concept-tuple-set"},
+    {"id":"reproduce-v04","type":"reproduce","title":"跑起报告器 v0.4","anchor":"#reproduce-v04"},
+    {"id":"modify-records","type":"modify","title":"加入一条自己的记录","anchor":"#modify-records"},
+    {"id":"troubleshoot-containers","type":"troubleshoot","title":"先看错误是在按位置还是按字段读取","anchor":"#troubleshoot-containers"},
+    {"id":"project-v04","type":"project","title":"报告器 v0.4","anchor":"#project-v04"},
+    {"id":"deepen-copy","type":"deepen","title":"赋值、浅复制和内层共享","anchor":"#deepen-copy"},
+    {"id":"career-data-shape","type":"career","title":"为什么这样组织数据","anchor":"#career-data-shape"}
+  ],
+  "cards": [
+    {
+      "id":"multiple-result","lesson_id":"python-basics-04","context_id":"overview-multiple",
+      "question":"这节课会把报告器改成什么样？",
+      "aliases":["报告器 v0.4 增加什么","第四课的项目结果是什么","为什么要学这些容器"],
+      "keywords":["v0.4","多条记录","汇总","容器","项目"],
+      "diagnostic":"第一屏里哪些内容来自一条记录，哪些内容需要把多条记录放在一起计算？",
+      "hints":["每门课程各有状态行。","总计划、总完成和唯一标签需要遍历整组记录。"],
+      "example":"三条记录汇总为总计划 10 小时、总完成 8 小时。",
+      "answer":"v0.4 用列表中的字典保存多条记录，复用上一课函数逐条处理，并汇总总小时与唯一标签。",
+      "source":{"label":"一条档案变成一组记录","href":"#overview-multiple"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"choose-by-use","lesson_id":"python-basics-04","context_id":"concept-choose",
+      "question":"列表、字典、集合和元组应该怎么选？",
+      "aliases":["数据结构怎么选择","五种容器怎么区分","不知道用 list 还是 dict"],
+      "keywords":["选择","list","dict","set","tuple","用途"],
+      "diagnostic":"你主要按位置、字段名还是成员存在性读取？数据要不要原地修改？",
+      "hints":["有序且会增删通常先看列表，具名字段先看字典。","唯一成员用集合，固定返回结构可用元组。"],
+      "example":"多条记录用列表；每条记录的 course、hours 用字典字段。",
+      "answer":"先根据访问方式、顺序、可变性和重复规则选择，不存在对所有场景都更高级的容器。",
+      "source":{"label":"先问数据要拿来做什么","href":"#concept-choose"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"nested-shape","lesson_id":"python-basics-04","context_id":"concept-choose",
+      "question":"列表里为什么还可以放字典和列表？",
+      "aliases":["容器可以嵌套吗","列表中的字典是什么","tags 为什么又是列表"],
+      "keywords":["嵌套","列表中的字典","tags","数据形状"],
+      "diagnostic":"最外层表达多条什么，每一条又包含哪些具名字段？",
+      "hints":["外层列表负责记录数量和顺序。","内层字典负责字段名，tags 字段再保存标签列表。"],
+      "example":"`records[0][\"tags\"][0]` 从第一条记录读第一个标签。",
+      "answer":"容器可以按数据形状组合；每一层都应有明确用途，而不是为了展示复杂语法。",
+      "source":{"label":"先问数据要拿来做什么","href":"#concept-choose"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"index-slice","lesson_id":"python-basics-04","context_id":"example-text-tags",
+      "question":"索引和切片的结束位置怎么理解？",
+      "aliases":["切片为什么不包含结尾","字符串下标从几开始","最后一个字符怎么取"],
+      "keywords":["索引","切片","结束位置","0","-1"],
+      "diagnostic":"你要取一个位置，还是从起点到终点前的一段？",
+      "hints":["索引从 0 开始，-1 是最后一项。","`text[start:end]` 包含 start，不包含 end。"],
+      "example":"`\"Python\"[0:3]` 得到 `Pyt`。",
+      "answer":"单个索引读取一个位置；切片使用左闭右开的范围，结束位置本身不进入结果。",
+      "source":{"label":"字符串先把标签清理干净","href":"#example-text-tags"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"string-immutable","lesson_id":"python-basics-04","context_id":"example-text-tags",
+      "question":"为什么 strip 后原字符串没有变化？",
+      "aliases":["strip 不生效","字符串方法没改值","字符串为什么不能原地修改"],
+      "keywords":["strip","字符串","不可变","返回值"],
+      "diagnostic":"你是否把 `strip()` 返回的新字符串重新保存了？",
+      "hints":["字符串不可原地修改。","写 `name = name.strip()` 接住新值。"],
+      "example":"只调用 `name.strip()` 不会改变原来的 `name`。",
+      "answer":"字符串方法通常返回新字符串；要保留结果，必须赋给变量或直接交给后续代码。",
+      "source":{"label":"字符串先把标签清理干净","href":"#example-text-tags"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"split-join","lesson_id":"python-basics-04","context_id":"example-text-tags",
+      "question":"split 和 join 分别做什么？",
+      "aliases":["标签文本怎么拆开","字符串列表怎么连起来","join 为什么写在分隔符前面"],
+      "keywords":["split","join","标签","字符串","列表"],
+      "diagnostic":"现在是一段分隔文本，还是已经有一组字符串？",
+      "hints":["`split` 从一段文本得到字符串列表。","`separator.join(items)` 用分隔符连接一组字符串。"],
+      "example":"`\"a,b\".split(\",\")`；`\" | \".join([\"a\", \"b\"])`。",
+      "answer":"split 把文本拆成列表，join 把字符串列表连接成新文本；join 的成员必须都是字符串。",
+      "source":{"label":"字符串先把标签清理干净","href":"#example-text-tags"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"append-extend","lesson_id":"python-basics-04","context_id":"concept-sequences",
+      "question":"append 和 extend 有什么区别？",
+      "aliases":["append 列表为什么出现嵌套","怎样一次增加多个元素","列表追加怎么选"],
+      "keywords":["append","extend","列表","嵌套","追加"],
+      "diagnostic":"你要把传入值当成一个整体，还是把其中的成员逐项加入？",
+      "hints":["append 只增加一个位置。","extend 遍历传入对象，把成员逐项加入。"],
+      "example":"`tags.append([\"基础\", \"工具\"])` 会放入一个内层列表。",
+      "answer":"append 加一个整体，extend 加多个成员；先确认你期望的列表形状。",
+      "source":{"label":"列表会变，元组保持固定","href":"#concept-sequences"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"sorted-vs-sort","lesson_id":"python-basics-04","context_id":"concept-sequences",
+      "question":"为什么 items.sort() 的结果是 None？",
+      "aliases":["sorted 和 sort 区别","排序后变量变成 none","怎样排序又保留原列表"],
+      "keywords":["sorted","sort","none","原地修改","排序"],
+      "diagnostic":"你需要新列表，还是允许直接改变当前列表？",
+      "hints":["`.sort()` 原地修改，并返回 None。","`sorted(items)` 返回新列表，原输入不变。"],
+      "example":"`sorted_courses = sorted(courses)` 保留原来的 `courses`。",
+      "answer":"根据是否保留原顺序选择 sorted 或 sort；不要把原地方法的 None 当成数据。",
+      "source":{"label":"列表会变，元组保持固定","href":"#concept-sequences"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"tuple-unpack","lesson_id":"python-basics-04","context_id":"concept-sequences",
+      "question":"元组解包为什么要求数量一致？",
+      "aliases":["too many values to unpack","固定返回结果怎么接","元组怎样拆到多个变量"],
+      "keywords":["元组","解包","valueerror","数量","返回值"],
+      "diagnostic":"右边元组有几项，左边准备了几个名称？",
+      "hints":["每个位置都需要一个接收名称。","多一个或少一个都会让对应关系不明确。"],
+      "example":"`target, finished, status = (10, 8, \"进行中\")`。",
+      "answer":"序列解包按位置一一绑定，左右数量必须一致；不需要的项也应明确处理。",
+      "source":{"label":"列表会变，元组保持固定","href":"#concept-sequences"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"singleton-tuple","lesson_id":"python-basics-04","context_id":"concept-sequences",
+      "question":"只有一个值的元组为什么要写逗号？",
+      "aliases":["(Python) 为什么还是字符串","单元素元组怎么写","括号能创建元组吗"],
+      "keywords":["单元素元组","逗号","tuple","括号"],
+      "diagnostic":"用 `type()` 看看 `(\"Python\")` 和 `(\"Python\",)` 分别是什么。",
+      "hints":["括号也可以只是表达式分组。","真正创建单元素元组的是尾随逗号。"],
+      "example":"`(\"Python\",)` 是 tuple，`(\"Python\")` 是 str。",
+      "answer":"元组由逗号形成；单元素时必须保留逗号，括号主要帮助阅读。",
+      "source":{"label":"列表会变，元组保持固定","href":"#concept-sequences"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"list-of-dicts","lesson_id":"python-basics-04","context_id":"example-list-dict",
+      "question":"多条学习记录为什么用列表中的字典？",
+      "aliases":["多个字典怎么放","一条记录为什么用 dict","多记录用什么结构"],
+      "keywords":["列表中的字典","多条记录","字段","顺序"],
+      "diagnostic":"记录整体是否要逐条处理，每条内部又是否需要按字段名读取？",
+      "hints":["列表保存多条和顺序。","字典用 course、target_hours 等键说明一条记录。"],
+      "example":"`for record in records: print(record[\"course\"])`。",
+      "answer":"外层列表与内层字典分别表达“多条”和“具名字段”，结构与访问方式一致。",
+      "source":{"label":"列表中的字典表示多条记录","href":"#example-list-dict"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"required-optional-key","lesson_id":"python-basics-04","context_id":"example-list-dict",
+      "question":"字典什么时候用方括号，什么时候用 get？",
+      "aliases":["KeyError 怎么办","record get 应该怎么用","必填字段和可选字段怎么读"],
+      "keywords":["keyerror","get","必填字段","可选字段","字典"],
+      "diagnostic":"这个字段缺失是数据错误，还是产品允许的正常情况？",
+      "hints":["必填字段用方括号，让缺失尽早报错。","可选字段用 get，并提供不误导的默认值。"],
+      "example":"`record[\"course\"]`；`record.get(\"note\", \"未填写\")`。",
+      "answer":"根据字段契约读取：必填项严格失败，可选项才使用 get 与明确默认值。",
+      "source":{"label":"列表中的字典表示多条记录","href":"#example-list-dict"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"set-unique-order","lesson_id":"python-basics-04","context_id":"concept-tuple-set",
+      "question":"集合为什么会去重，而且顺序看起来会变？",
+      "aliases":["set 去重","集合顺序乱了","唯一标签怎样稳定输出"],
+      "keywords":["set","集合","去重","顺序","sorted"],
+      "diagnostic":"你是要保留原输入顺序，还是只关心有哪些不同成员？",
+      "hints":["集合只保留唯一成员。","展示和测试前用 sorted 生成稳定顺序。"],
+      "example":"`sorted(set([\"Python\", \"Python\", \"工具\"]))`。",
+      "answer":"集合表达唯一性，不应依赖显示顺序；需要稳定输出时显式排序。",
+      "source":{"label":"集合只关心唯一成员","href":"#concept-tuple-set"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"empty-set","lesson_id":"python-basics-04","context_id":"concept-tuple-set",
+      "question":"为什么空集合不能写成大括号？",
+      "aliases":["{} 是集合还是字典","空 set 怎么创建","set() 为什么要用括号"],
+      "keywords":["空集合","set()","{}","字典"],
+      "diagnostic":"用 `type({})` 看看空大括号实际创建了什么。",
+      "hints":["空大括号保留给字典。","空集合明确写 `set()`。"],
+      "example":"`type({})` 是 dict，`type(set())` 是 set。",
+      "answer":"Python 用 `{}` 表示空字典；没有成员可提示集合语法时，必须用 `set()` 创建空集合。",
+      "source":{"label":"集合只关心唯一成员","href":"#concept-tuple-set"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"set-operations","lesson_id":"python-basics-04","context_id":"concept-tuple-set",
+      "question":"集合的交集、并集和差集分别有什么用？",
+      "aliases":["& | - 分别是什么","怎样找共同标签","怎样找还缺的能力"],
+      "keywords":["交集","并集","差集","集合运算","标签"],
+      "diagnostic":"你要找两边共同拥有、合起来拥有，还是只在一边的成员？",
+      "hints":["`a & b` 取共同成员，`a | b` 合并唯一成员。","`required - current` 可表示仍缺少的成员。"],
+      "example":"当前标签与要求标签的差集可以列出缺口。",
+      "answer":"交集看重合，并集合并，差集看一边独有；运算结果仍是集合。",
+      "source":{"label":"集合只关心唯一成员","href":"#concept-tuple-set"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"reproduce-v04","lesson_id":"python-basics-04","context_id":"reproduce-v04",
+      "question":"报告器 v0.4 应该怎样运行和核对？",
+      "aliases":["多记录报告怎么复现","第四课代码怎么跑","learning_records_v04 输出什么"],
+      "keywords":["v0.4","运行","多记录","总计划","唯一标签"],
+      "diagnostic":"你是否先核对每条原始记录，再比较总和、课程顺序和去重标签？",
+      "hints":["从工作区根目录运行原来的练习文件。","逐项核对总计划 10、总完成 8、三条课程行和稳定标签。"],
+      "example":"页面固定数据版输出三条状态和四个唯一标签。",
+      "answer":"先复现固定输出，再换自己的三条记录；总和、顺序和去重结果都应能从输入解释。",
+      "source":{"label":"跑起报告器 v0.4","href":"#reproduce-v04"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"active-record","lesson_id":"python-basics-04","context_id":"modify-records",
+      "question":"这次我必须亲手改哪些数据？",
+      "aliases":["容器课主动修改什么","怎么加入自己的记录","不能只复制三条示例吗"],
+      "keywords":["主动修改","自己的记录","note","重复标签","排序"],
+      "diagnostic":"输出中是否仍然全部是示例课程和示例标签？",
+      "hints":["换成自己的三条记录并加入重复标签。","增加部分 note 字段，再用有名函数按课程生成排序副本。"],
+      "example":"缺少 note 的记录显示“未填写”，原 records 顺序保持不变。",
+      "answer":"替换真实记录，验证重复标签、可选字段和非破坏排序，并覆盖四类边界输入。",
+      "source":{"label":"加入一条自己的记录","href":"#modify-records"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"index-key-errors","lesson_id":"python-basics-04","context_id":"troubleshoot-containers",
+      "question":"IndexError 和 KeyError 应该怎样区分？",
+      "aliases":["列表越界和字典缺键区别","错误是在位置还是字段","IndexError KeyError 怎么查"],
+      "keywords":["indexerror","keyerror","位置","字段","排错"],
+      "diagnostic":"出错表达式使用数字位置，还是使用字典键？",
+      "hints":["IndexError 先检查 len 和最后有效位置。","KeyError 先检查实际键名与必填字段契约。"],
+      "example":"`records[5]` 与 `record[\"course\"]` 的失败来源不同。",
+      "answer":"沿 traceback 看访问表达式：位置越界查序列长度，键缺失查字典数据和拼写。",
+      "source":{"label":"先看错误是在按位置还是按字段读取","href":"#troubleshoot-containers"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"project-v04","lesson_id":"python-basics-04","context_id":"project-v04",
+      "question":"报告器 v0.4 比 v0.3 多了什么？",
+      "aliases":["第四课给项目加了什么","学习报告版本线怎么走","下一课为什么读 JSON"],
+      "keywords":["v0.4","项目","多记录","汇总","json"],
+      "diagnostic":"上一版函数接收的是独立数字，现在最外层数据是什么形状？",
+      "hints":["新增列表中的字典和逐条遍历。","还汇总总小时与唯一标签，并保留固定返回结构。"],
+      "example":"同一个状态函数连续处理 Python、复盘和 Git 三条记录。",
+      "answer":"v0.4 从单记录函数扩展到多记录内存模型；v0.5 将保持形状，从 JSON 文件加载数据。",
+      "source":{"label":"报告器 v0.4","href":"#project-v04"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"list-alias","lesson_id":"python-basics-04","context_id":"deepen-copy",
+      "question":"为什么修改 copied 后 records 也变了？",
+      "aliases":["列表复制后原列表变了","copied 影响 records","直接赋值是不是复制"],
+      "keywords":["列表","赋值","共享","copy","引用"],
+      "diagnostic":"你写的是 `copied = records`，还是调用了创建新外层列表的复制操作？",
+      "hints":["直接赋值只增加同一对象的另一个名字。","`records.copy()` 才创建新的外层列表。"],
+      "example":"向 same_list 追加后，records 的长度也增加。",
+      "answer":"变量赋值不会复制列表；两个名称共享同一个对象，所以任何一边的原地修改都可见。",
+      "source":{"label":"赋值、浅复制和内层共享","href":"#deepen-copy"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"shallow-copy","lesson_id":"python-basics-04","context_id":"deepen-copy",
+      "question":"为什么 copy 后修改内层字典还会影响原数据？",
+      "aliases":["浅复制是什么意思","外层复制了里面还共享","要不要总用 deepcopy"],
+      "keywords":["浅复制","内层字典","copy","共享","deepcopy"],
+      "diagnostic":"你修改的是新外层列表的位置，还是该位置仍指向的原字典？",
+      "hints":["list.copy 只复制外层位置。","原有位置里的字典仍是同一对象；先判断是否需要修改它。"],
+      "example":"`outer_copy[0][\"course\"] = ...` 会改到共享字典。",
+      "answer":"浅复制创建新外层容器，但不递归复制成员；优先避免修改共享内层，再按真实需要选择复制策略。",
+      "source":{"label":"赋值、浅复制和内层共享","href":"#deepen-copy"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"career-data-shape","lesson_id":"python-basics-04","context_id":"career-data-shape",
+      "question":"怎样向面试官解释我的数据结构选择？",
+      "aliases":["容器课怎么讲项目","为什么用列表中的字典怎么回答","怎样说明 set 和 tuple 的选择"],
+      "keywords":["面试","数据结构选择","项目","访问方式","共享"],
+      "diagnostic":"你能不能把每一层结构与读取、顺序、修改和唯一性需求对应起来？",
+      "hints":["先说明外层列表和记录字典。","再解释标签列表、临时集合、固定汇总元组，以及实际边界验证。"],
+      "example":"不是说“我会 dict”，而是说字段名避免把两组小时弄反。",
+      "answer":"沿数据用途与验证结果说明选择：访问方式、可变性、重复规则和共享风险都应能落到代码行为。",
+      "source":{"label":"为什么这样组织数据","href":"#career-data-shape"},"updated_at":"2026-07-17"
+    }
   ]
 }

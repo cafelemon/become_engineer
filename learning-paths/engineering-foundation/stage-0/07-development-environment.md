@@ -1,502 +1,339 @@
-# 开发环境
-
 <div class="be-tutor-mount" data-tutor-lesson="engineering-foundation-07" aria-hidden="true"></div>
 
-本课不先安装一堆工具，而是为你的学习工作区完成一份环境检查：版本、命令位置、PATH、依赖边界和一次错误记录。
+<section id="overview-environment-fingerprint" class="be-page-hero be-lesson-hero" data-learning-context="overview-environment-fingerprint" data-context-type="overview" markdown="1">
 
-## 五步任务路线
+<span class="be-page-eyebrow">工程基础入门 · 第八课</span>
 
-<div class="be-task-route" role="list" aria-label="本课五步任务">
-  <span role="listitem">1 记录版本</span><span role="listitem">2 定位命令</span><span role="listitem">3 理解 PATH</span><span role="listitem">4 区分依赖</span><span role="listitem">5 验证迁移</span>
+# 开发环境
+
+## 同一份代码能不能运行，先看它实际用了哪一个 Python
+
+<div class="be-git-result" role="group" aria-label="系统 Python 与项目虚拟环境 Python 的检查结果" markdown="1">
+
+```text
+系统 Python
+  版本：Python 3.11 或更高版本
+  位置：电脑上实际被命令找到的解释器
+
+项目 Python
+  位置：learning-workspace/.venv/...
+  是否处于独立环境：True
+```
+
 </div>
 
-<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+代码没有变，执行它的解释器、版本和依赖却可能不同。这节课不靠“我应该装过”来判断环境，而是在 `learning-workspace` 里建立一个项目自己的 Python 环境，并留下别人看得懂的检查记录。
 
-### 第一步：记录一个可运行版本
-
-**任务：** 在终端执行 `python3 --version`（或系统可用的 `python --version`），把命令和输出写入学习记录。**成功证据：** 版本号与执行命令成对保留。
-
-??? tip "提示一"
-    “装过 Python”不等于终端能找到可执行命令。
-??? tip "提示二"
-    若命令失败，先完整记录报错，暂时不要盲目重复安装。
+<div class="be-page-actions" markdown="1">
+[先看懂代码与环境的关系](#concept-code-runtime-dependencies){ .md-button .md-button--primary }
+[检查上一课的远程仓库](06-github-remote.md){ .md-button }
+</div>
 
 </section>
 
-<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+<div class="be-lesson-overview">
+  <div><span>课程位置</span><strong>工程基础入门 · 8 / 10</strong></div>
+  <div><span>继续使用</span><strong>learning-workspace 与 GitHub 远程仓库</strong></div>
+  <div><span>完成后留下</span><strong>.venv 与 environment-check.md</strong></div>
+</div>
 
-### 第二步：找到命令来自哪里
+## 开始前
 
-**任务：** 使用 `which python3`（Windows 可用 `where python`）查询命令位置。**成功证据：** 能说明版本输出和可执行文件路径来自同一次检查。
+- 已完成[GitHub 远程协作](06-github-remote.md)，本地 `learning-workspace` 能正常提交和推送。
+- 能在 VS Code 中打开工作区和内置终端。
+- 本课以 Python 3.11 及以上为课程基线，只使用标准库；Windows、macOS 和 Linux 均有对应命令。
+- 如果还没有 Python，本课会从官方下载入口开始；不要复制来历不明的安装脚本。
 
-??? tip "提示一"
-    系统可能安装多个同名程序，路径能解释你实际运行的是哪一个。
-??? tip "提示二"
-    没有结果时，把命令、系统和完整输出记录下来。
+!!! note "先不安装第三方包"
+    这节课只创建空的项目虚拟环境并检查 `pip` 属于哪一个 Python。真正安装课程依赖会在需要依赖的项目里进行，这样更容易知道变化来自哪里。
 
-</section>
+<section id="concept-code-runtime-dependencies" data-learning-context="concept-code-runtime-dependencies" data-context-type="concept" markdown="1">
 
-<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+## 代码、解释器和依赖不是同一件东西
 
-### 第三步：用 PATH 解释一次查找
+<div class="be-environment-flow" role="img" aria-label="源代码由 Python 解释器读取，解释器再结合项目依赖产生运行结果。">
+  <div><span>你写的文本</span><strong>项目代码</strong><small>例如 main.py</small></div>
+  <b aria-hidden="true">交给 →</b>
+  <div><span>真正执行代码的程序</span><strong>Python 解释器</strong><small>有版本，也有具体位置</small></div>
+  <b aria-hidden="true">读取 →</b>
+  <div><span>项目额外需要的代码</span><strong>第三方依赖</strong><small>安装在某个 Python 环境中</small></div>
+  <aside><span>运行结果还会受什么影响</span><strong>操作系统、当前目录、环境变量、配置和输入数据</strong></aside>
+</div>
 
-**任务：** 查看 PATH 的概念说明，并用自己的话写一句“系统如何找到 python”。**成功证据：** 能区分 PATH 是查找顺序，不是 Python 本身。
+先把三个词分开：
 
-??? tip "提示一"
-    输入命令时，Shell 会按 PATH 中的目录依次查找。
-??? tip "提示二"
-    同名命令冲突时，第二步记录的位置比猜测更可靠。
+- **项目代码**是仓库里的 `.py`、配置和数据文件，可以由 Git 传到另一台电脑。
+- **Python 解释器**是读取并执行 Python 代码的程序。它不在仓库里，必须在电脑上安装。
+- **第三方依赖**是项目额外使用的软件包。它们也不应该直接复制进 Git，而应根据依赖声明重新安装。
 
-</section>
-
-<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
-
-### 第四步：区分代码、运行时和依赖
-
-**任务：** 为一个 Python 小程序分别标注项目代码、解释器和将来可能安装的第三方依赖。**成功证据：** 不把 `.py` 文件、Python 程序和第三方库混成一个概念。
-
-??? tip "提示一"
-    解释器负责执行代码；依赖是项目额外需要的库。
-??? tip "提示二"
-    虚拟环境用于隔离不同项目的依赖，不等于复制项目代码。
-
-</section>
-
-<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
-
-### 第五步：记录一次环境问题并迁移
-
-**任务：** 任选“找不到命令”或“版本不对”的场景，写下环境、命令、输出和下一步检查。**成功证据：** 别人能据此重现或继续排查。
-
-??? tip "提示一"
-    环境问题先收集事实：系统、终端、命令、完整输出。
-??? tip "提示二"
-    下一节 Docker 会继续使用“命令 + 输出 + 判断”的验证方式。
+所以，上一课的 `clone` 只能带回仓库内容，不能替你复制本机 Python 和 `.venv`。这正是开发环境需要单独记录和重建的原因。
 
 </section>
 
-本节解决一个最常见的小白困惑：同样一段代码，为什么有的人能运行，有的人运行不了。
+<section id="example-path-chooses-command" data-learning-context="example-path-chooses-command" data-context-type="example" markdown="1">
 
-开发环境不是某个软件的名字，而是一组让程序能被编写、运行和验证的条件。你现在只需要理解最小概念：解释器、编译器、运行时、版本、环境变量、PATH、依赖和虚拟环境。
+## 输入一个命令，Shell 会去哪里找
 
-## 前置知识
-
-开始前应完成：
-
-- [学习方法](01-learning-method.md)
-- [文件系统](02-filesystem.md)
-- [终端与 Shell](03-terminal-shell.md)
-- [编辑器](04-editor.md)
-- [Markdown](05-markdown.md)
-- [本地 Git 与 .gitignore](06-git.md)
-- [GitHub 远程协作](06-github-remote.md)
-
-你需要能打开终端，能执行简单命令，能把结果记录到 Markdown 文件里。
-
-## 学习目标
-
-完成本节后，你应该能做到：
-
-- 解释解释器和编译器分别在做什么。
-- 解释版本不一致为什么会导致程序运行失败。
-- 知道 PATH 是系统寻找命令的位置清单。
-- 区分程序本身、项目代码和项目依赖。
-- 理解虚拟环境为什么能减少不同项目之间的依赖冲突。
-- 遇到“找不到命令”或“版本不对”时，能先记录检查结果。
-
-## 学习顺序
-
-按下面顺序学习：
-
-1. 先理解“代码不会自己运行”。
-2. 再区分解释器、编译器和运行时。
-3. 接着检查版本和命令位置。
-4. 然后理解环境变量和 PATH。
-5. 最后理解依赖与虚拟环境。
-
-本节不要求你安装任何新工具，也不要求你解决所有环境问题。目标是先会看、会问、会记录。
-
-## 代码不会自己运行
-
-你写在文件里的内容只是文本。电脑要真正执行它，需要某种程序来处理。
-
-例如：
+假设 PATH 的查找顺序是：
 
 ```text
-Python 代码 -> Python 解释器 -> 执行结果
-C++ 代码 -> 编译器 -> 可执行程序 -> 执行结果
-JavaScript 代码 -> 浏览器或 Node.js 运行时 -> 执行结果
+1. /usr/local/bin
+2. /usr/bin
+3. /bin
 ```
 
-所以，当你看到“代码不能运行”时，不要只盯着代码文件，还要检查：
+当你输入 `python3`，Shell 会从第一项开始寻找同名可执行程序，找到后就停止。两个目录里即使都有 Python，排在前面的那个通常会先被执行。
 
-- 运行它的工具是否存在。
-- 工具版本是否符合要求。
-- 当前目录是否正确。
-- 项目依赖是否准备好。
-- 命令是否写错。
+这也解释了一个常见现象：安装已经完成，但旧终端仍然找不到新命令。安装程序更新了 PATH，新打开的终端能读到新配置，原来的终端却还保留旧值。
 
-## 解释器、编译器和运行时
+PATH 是“去哪些目录找命令”的顺序，不是 Python 本身，也不是项目依赖。初学阶段先学会查看结果，不要为了试错随意覆盖整条 PATH。
 
-### 解释器
+</section>
 
-解释器通常是一边读取代码，一边执行代码的程序。
+<section id="reproduce-find-python" data-learning-context="reproduce-find-python" data-context-type="reproduce" markdown="1">
 
-Python 常见执行方式：
+## 找到并确认电脑上的 Python
 
-```bash
-python script.py
-```
+先在 `learning-workspace` 的 VS Code 终端执行与你系统对应的一组命令。
 
-或：
+=== "Windows PowerShell"
 
-```bash
-python3 script.py
-```
+    ```powershell
+    python --version
+    Get-Command python | Select-Object -ExpandProperty Source
+    git --version
+    ```
 
-这里的 `python` 或 `python3` 就是命令名，它背后对应 Python 解释器。
+    新安装的 Windows 环境优先使用 Python 官方 Install Manager。打开 [Python 下载页](https://www.python.org/downloads/)，安装管理器和一个稳定的 Python 3 运行时，再关闭并重新打开终端。管理多个版本时可以用 `py list` 查看现有运行时。
 
-### 编译器
+=== "macOS"
 
-编译器会先把源代码转换成另一种更适合机器运行的形式。
+    ```bash
+    python3 --version
+    command -v python3
+    git --version
+    ```
 
-C++ 常见流程是：
+    如果 `python3` 不可用，从 [Python 下载页](https://www.python.org/downloads/) 选择 macOS 安装包，完成后重新打开终端。课程不要求修改系统自带目录，也不建议用 `sudo pip` 往系统 Python 里安装课程依赖。
+
+=== "Linux"
+
+    ```bash
+    python3 --version
+    command -v python3
+    git --version
+    ```
+
+    Linux 发行版通常通过自己的包管理器提供 Python。先查看发行版官方文档并安装 Python 3、`venv` 和 `pip` 支持；不要直接照搬其他发行版的命令。
+
+应该至少得到三条事实：
+
+1. 哪个命令能启动 Python。
+2. 它的版本是否为 3.11 或更高。
+3. 这个命令实际指向哪个可执行文件。
+
+绝对路径可能含用户名或公司目录。它适合本地排错，写入公开仓库前请把私人部分改成 `<HOME>`，不要把整条 PATH、令牌或密钥贴进课程记录。
+
+</section>
+
+<section id="concept-project-environment" data-learning-context="concept-project-environment" data-context-type="concept" markdown="1">
+
+## 为什么每个项目都要有自己的 `.venv`
+
+全局 Python 像一间公用工具室。所有项目都往里面装包，今天升级项目 B 的依赖，明天就可能让项目 A 失效。
+
+虚拟环境会在项目旁边建立一套独立的 Python 入口和包目录：
 
 ```text
-main.cpp -> 编译器 -> 可执行程序 -> 运行可执行程序
+电脑上的 Python 3.13
+├── 用来创建 learning-workspace/.venv
+└── 用来创建 another-project/.venv
+
+两个 .venv 可以安装不同版本的第三方包
 ```
 
-你现在不需要掌握 C++ 编译命令，只要先知道：C++ 通常不会像 Python 那样直接运行源文件。
+`.venv` 可以删除并重建，因此上一课已经把它写进 `.gitignore`。仓库保存的是代码和依赖声明，不是某一台电脑生成的虚拟环境目录。
 
-### 运行时
+</section>
 
-运行时是程序执行时依赖的环境。
+<section id="reproduce-create-venv" data-learning-context="reproduce-create-venv" data-context-type="reproduce" markdown="1">
 
-例如：
+## 创建项目自己的 Python 环境
 
-- 浏览器可以作为前端 JavaScript 的运行时。
-- Node.js 可以作为服务端 JavaScript 的运行时。
-- Java 程序依赖 JVM 运行。
+确认终端当前位于 `learning-workspace` 根目录。下面的做法**不依赖激活脚本**，直接调用 `.venv` 里的 Python，新手更容易判断到底运行了哪一个解释器。
 
-初学时可以这样记：解释器、编译器和运行时都是“让代码变成实际行为”的工具，只是方式不同。
+=== "Windows PowerShell"
 
-## 版本
+    ```powershell
+    python -m venv .venv
+    .\.venv\Scripts\python.exe --version
+    .\.venv\Scripts\python.exe -c "import sys; print(sys.executable); print(sys.prefix != sys.base_prefix)"
+    .\.venv\Scripts\python.exe -m pip --version
+    ```
 
-同一个工具可能有多个版本。版本不同，支持的语法、功能和依赖也可能不同。
+=== "macOS / Linux"
 
-例如：
+    ```bash
+    python3 -m venv .venv
+    ./.venv/bin/python --version
+    ./.venv/bin/python -c "import sys; print(sys.executable); print(sys.prefix != sys.base_prefix)"
+    ./.venv/bin/python -m pip --version
+    ```
 
-```text
-Python 3.8
-Python 3.11
-Python 3.12
-```
+你应该看到：
 
-如果教程要求 Python 3.11，而你本机实际运行的是 Python 2 或 Python 3.8，就可能出现看不懂的新语法、依赖安装失败或运行结果不同。
+- Python 版本仍然满足 3.11 及以上。
+- `sys.executable` 的路径位于 `learning-workspace/.venv` 中。
+- `sys.prefix != sys.base_prefix` 输出 `True`，说明当前解释器属于虚拟环境。
+- `pip --version` 显示的路径同样位于 `.venv`。
 
-检查版本的常见命令：
+这里使用 `python -m pip`，意思是“让眼前这个 Python 运行它自己的 pip 模块”。它比单独输入 `pip` 更容易避免把包装到另一个 Python 环境里。
 
-```bash
-python --version
-python3 --version
-git --version
-```
+</section>
 
-不同电脑上命令结果可能不同。记录真实输出，比猜测更重要。
+<section id="example-activation-is-convenience" data-learning-context="example-activation-is-convenience" data-context-type="example" markdown="1">
 
-## 命令位置
+## 激活只是让命令变短
 
-终端输入命令后，系统会去一组目录里寻找对应程序。
+激活虚拟环境后，Shell 会把 `.venv` 的可执行目录临时放到 PATH 前面，于是可以直接输入 `python`。关闭终端或执行 `deactivate` 后，这个临时变化就会消失。
 
-macOS 或 Linux 可以尝试：
+=== "Windows PowerShell"
 
-```bash
-which python3
-which git
-```
+    ```powershell
+    .\.venv\Scripts\Activate.ps1
+    python -c "import sys; print(sys.executable)"
+    deactivate
+    ```
 
-Windows PowerShell 可以尝试：
+=== "macOS / Linux"
 
-```powershell
-where.exe python
-where.exe git
-```
+    ```bash
+    source .venv/bin/activate
+    python -c "import sys; print(sys.executable)"
+    deactivate
+    ```
 
-如果系统找不到命令，常见表现是：
+如果 Windows 因执行策略阻止 `Activate.ps1`，这不妨碍使用虚拟环境。继续写完整路径 `.\.venv\Scripts\python.exe` 即可，不必为了这一课修改全局安全策略。
 
-```text
-command not found
-```
+</section>
 
-或：
+<section id="modify-write-environment-note" data-learning-context="modify-write-environment-note" data-context-type="modify" markdown="1">
 
-```text
-'python' is not recognized as an internal or external command
-```
+## 写成你自己的环境记录
 
-这不一定表示软件没有安装，也可能表示系统不知道去哪里找它。
-
-## 环境变量和 PATH
-
-环境变量是一组给程序读取的配置。
-
-PATH 是最常见的环境变量之一。它保存了一串目录，系统会按这些目录去找命令。
-
-可以把 PATH 想成：
-
-```text
-当我输入 python3 时，请从这些地方依次找有没有叫 python3 的程序。
-```
-
-macOS 或 Linux 查看 PATH：
-
-```bash
-echo $PATH
-```
-
-Windows PowerShell 查看 PATH：
-
-```powershell
-$env:Path
-```
-
-本节只要求你知道 PATH 的作用，不要求你手动修改 PATH。随意修改 PATH 可能导致原本能用的命令失效。
-
-## 依赖
-
-依赖是项目运行时需要的外部代码或工具。
-
-例如，一个 Python 项目可能需要：
-
-```text
-Python解释器
-项目自己的 .py 文件
-第三方库
-配置文件
-数据文件
-```
-
-如果缺少第三方库，代码本身没有写错，也可能运行失败。
-
-常见错误可能长这样：
-
-```text
-ModuleNotFoundError: No module named 'requests'
-```
-
-这表示当前 Python 环境里找不到叫 `requests` 的依赖。
-
-## 虚拟环境
-
-虚拟环境是给某个项目单独准备的一套依赖空间。
-
-它解决的问题是：
-
-```text
-项目 A 需要某个库的旧版本
-项目 B 需要同一个库的新版本
-如果都装在全局环境里，就容易互相影响
-```
-
-使用虚拟环境后，可以让不同项目尽量互不干扰。
-
-本节只建立认知，不要求你马上创建虚拟环境。真正的 Python 虚拟环境操作会在 Python 起步学习。
-
-## 示例：记录一次环境检查
-
-你可以在学习记录里写成这样：
+新建 `notes/environment-check.md`，把占位内容换成你刚才看到的真实结果：
 
 ````markdown
 # 开发环境检查
 
-## Python
+- 操作系统：Windows / macOS / Linux
+- 使用的终端：PowerShell / zsh / bash / 其他
+- Python 命令：python / python3
+- Python 版本：
+- Python 位置：公开记录时将私人目录替换为 `<HOME>`
+- Git 版本：
+- 项目虚拟环境：已创建 / 尚未创建
+- `.venv` 中的 Python 版本：
+- `sys.prefix != sys.base_prefix`：
+- `.venv` 是否被 Git 忽略：
 
-命令：
+## 我遇到的问题
 
-```bash
-python3 --version
-```
-
-结果：
-
-```text
-Python 3.x.x
-```
-
-## Git
-
-命令：
-
-```bash
-git --version
-```
-
-结果：
-
-```text
-git version x.x.x
-```
-
-## 我的判断
-
-- 我能运行 `python3` 吗：
-- 我能运行 `git` 吗：
-- 我看到的版本是：
-- 我还不确定的问题是：
+- 执行的命令：
+- 完整报错：
+- 我已经确认的事实：
+- 下一项检查：
 ````
 
-重点不是你的版本一定要和别人一样，而是你能说清楚自己的环境是什么。
-
-## 实践练习
-
-### 练习 1：记录 Python 版本
-
-在终端中尝试：
+然后验证 `.venv` 没有进入 Git：
 
 ```bash
-python --version
-python3 --version
+git status --short --ignored
 ```
 
-需要产出：
+预期能看到 `!! .venv/`，而 `notes/environment-check.md` 是新的可提交文件。不要照抄示例版本号；版本不同不一定是错误，关键是它满足项目要求并且记录与实际命令一致。
 
-```text
-`python --version` 的结果是：
+</section>
 
-`python3 --version` 的结果是：
+<section id="troubleshoot-environment" data-learning-context="troubleshoot-environment" data-context-type="troubleshoot" markdown="1">
 
-我的电脑应该优先使用哪个命令：
+## 环境问题先查这五件事
 
-判断依据是：
-```
-
-如果其中一个命令失败，也要记录失败信息。
-
-### 练习 2：记录命令位置
-
-macOS 或 Linux 尝试：
-
-```bash
-which python3
-which git
-```
-
-Windows PowerShell 尝试：
-
-```powershell
-where.exe python
-where.exe git
-```
-
-需要产出：
-
-```text
-Python命令位置：
-
-Git命令位置：
-
-我能不能根据这个结果判断系统找到了哪个程序：
-```
-
-### 练习 3：解释 PATH
-
-不用修改 PATH，只记录它。
-
-macOS 或 Linux：
-
-```bash
-echo $PATH
-```
-
-Windows PowerShell：
-
-```powershell
-$env:Path
-```
-
-需要产出：
-
-```text
-PATH看起来像一串什么：
-
-PATH的作用是：
-
-我是否修改了PATH：
-```
-
-第三项应写“没有”。本节不要求修改 PATH。
-
-### 练习 4：区分项目组成
-
-看下面这个项目结构：
-
-```text
-demo-project/
-├── README.md
-├── main.py
-├── requirements.txt
-└── data/
-    └── sample.json
-```
-
-回答：
-
-```text
-项目代码文件是：
-
-说明文档是：
-
-可能记录依赖的文件是：
-
-数据文件是：
-
-运行这个项目可能还需要本机有什么工具：
-```
-
-### 练习 5：记录一个环境错误
-
-从你本机或教程中找一个环境相关错误，写成：
-
-```text
-我执行的命令：
-
-完整错误信息：
-
-我判断它属于：
-- 命令找不到
-- 版本不对
-- 当前目录不对
-- 缺少依赖
-- 其他
-
-我的判断依据：
-```
-
-不要急着修，先学会把错误描述完整。
-
-## 常见错误与排查
-
-| 错误 | 表现 | 怎么排查 |
+| 你看到的现象 | 先检查什么 | 怎样继续 |
 | --- | --- | --- |
-| 把代码文件当成可直接运行的东西 | 双击文件后没反应或打开编辑器 | 先确认它需要解释器、编译器还是运行时 |
-| 混用 `python` 和 `python3` | 同一段代码在不同命令下结果不同 | 分别运行版本检查并记录输出 |
-| 只说“环境坏了” | 无法判断问题发生在哪一步 | 记录命令、目录、版本和完整错误 |
-| 盲目修改 PATH | 原本能用的命令也失效 | 本节只查看 PATH，不修改 PATH |
-| 把依赖装到全局环境 | 后续项目互相影响 | 先理解虚拟环境，后续在 Python 起步练习 |
-| 忽略当前目录 | 命令找不到文件或配置 | 先运行 `pwd` 或观察编辑器打开的项目根目录 |
+| `python` 或 `python3` 找不到 | 安装是否完成、终端是否重开、命令拼写 | 回到官方安装说明；Windows 再检查 `py list`，macOS/Linux 检查 `command -v python3` |
+| 版本低于 3.11 | 命令位置和机器上已有的版本 | 安装受支持的 Python，再用位置命令确认没有继续命中旧版本 |
+| `No module named venv` | Python 是否由精简的 Linux 系统包提供 | 按发行版官方说明安装对应的 venv 组件，再重新创建 `.venv` |
+| `pip` 指向全局目录 | 是否直接输入了裸 `pip` | 改用 `.venv` 中的 Python 执行 `-m pip --version` |
+| 激活脚本被 PowerShell 阻止 | 完整错误和当前执行策略 | 不改策略也可以工作：直接调用 `.venv\Scripts\python.exe` |
+| `.venv` 出现在待提交文件中 | `.gitignore` 是否有 `.venv/`，环境是否建在仓库根目录 | 补回忽略规则；提交前再次运行 `git status --short --ignored` |
 
-## 完成标准
+不要只写“环境坏了”。一条能继续排查的记录至少应包含：操作系统、终端、当前目录、完整命令、完整输出和你已经确认的命令位置。
 
-完成本节需要同时满足：
+</section>
 
-- 能用自己的话解释解释器、编译器和运行时的区别。
-- 能记录 Python 和 Git 的版本检查结果。
-- 能记录至少一个命令的位置，或记录找不到命令的错误。
-- 能解释 PATH 是系统寻找命令的位置清单。
-- 能区分项目代码、依赖、配置和数据。
-- 能解释虚拟环境要解决的依赖隔离问题。
-- 能用“命令、结果、判断依据”的格式记录一个环境问题。
+<section id="deepen-path-and-interpreter" data-learning-context="deepen-path-and-interpreter" data-context-type="deepen" markdown="1">
+
+## PATH 选命令，`sys.executable` 告诉你最终选中了谁
+
+`command -v` 或 `Get-Command` 观察 Shell 的命令查找结果；`sys.executable` 则由已经运行起来的 Python 报告自己的可执行文件位置。两者放在一起，能回答两个不同问题：
+
+```text
+Shell 准备运行谁？        command -v / Get-Command
+Python 实际是谁？         sys.executable
+它是否处于虚拟环境？      sys.prefix != sys.base_prefix
+pip 属于这个 Python 吗？  python -m pip --version
+```
+
+解释器版本只是环境的一部分。以后项目还会增加 `pyproject.toml`、锁定依赖、系统库和服务配置；这节课先把最容易混淆的 Python 入口固定下来。
+
+</section>
+
+<section id="project-workspace-v08" data-learning-context="project-workspace-v08" data-context-type="project" markdown="1">
+
+## 工程学习工作台 v0.8
+
+| 上一版已经有 | 这节课增加 | 本地保留但不提交 | 下一版准备做什么 |
+| --- | --- | --- | --- |
+| 本地提交、GitHub 远程和独立 clone | 一份经过脱敏的环境检查记录 | `.venv/` 与私人绝对路径 | 读懂 Docker 如何描述另一层可复现环境 |
+
+完成检查后提交这份公开安全的记录：
+
+```bash
+git add notes/environment-check.md
+git diff --cached
+git commit -m "record development environment"
+git push
+```
+
+再确认工作区状态：
+
+```bash
+git status --short --ignored
+```
+
+应该没有未提交的普通文件，并能看到 `.venv/` 仍处于忽略状态。此时项目不是“把我的 Python 上传了”，而是留下了版本要求、检查方法和可重建的本地环境边界。
+
+</section>
+
+## 完成检查
+
+- [ ] 我能区分项目代码、Python 解释器和第三方依赖。
+- [ ] 我确认了可用的 Python 命令、版本和实际位置。
+- [ ] 我在 `learning-workspace/.venv` 创建了项目虚拟环境。
+- [ ] 我用 `.venv` 中的 Python 验证了版本、解释器位置和 `pip` 归属。
+- [ ] 我没有把 `.venv`、完整 PATH、令牌或私人绝对路径提交到 Git。
+- [ ] 我提交并推送了经过脱敏的 `notes/environment-check.md`。
+- [ ] 遇到错误时，我能留下系统、终端、目录、命令和完整输出。
+
+## 来源与版本
+
+- 适用版本：Python 3.11–3.14、Git 2.28 及以上；Windows 11 PowerShell、当前受支持的 macOS 与常见 Linux 发行版。
+- 核查日期：2026-07-17。
+- 官方资料：[Python 下载](https://www.python.org/downloads/)、[Windows 使用 Python](https://docs.python.org/3/using/windows.html)、[`venv` 文档](https://docs.python.org/3/library/venv.html)、[`sys` 文档](https://docs.python.org/3/library/sys.html)、[PyPA 虚拟环境指南](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)。
+- 验证方式：仓库测试在临时目录创建真实 `.venv`，分别调用基础解释器和虚拟环境解释器，检查 `sys.executable`、`sys.prefix`、`sys.base_prefix` 与 `pip`，全程不联网、不安装第三方包。
+- 平台说明：Windows Python Install Manager 和命令行为易变化界面，本课按 Python 3.14 官方文档核查；安装时以当前官方页面为准。
 
 ## 下一步
 
-进入 [Docker最小认知](08-docker-basics.md)。下一节会学习 Docker 解决什么问题，以及镜像、容器、端口、挂载和环境变量的基本含义。
+进入 [Docker 最小认知](08-docker-basics.md)。你已经知道代码、解释器、依赖和本地虚拟环境各自负责什么；下一节会继续追问，怎样用镜像和容器描述更完整、更一致的运行环境。

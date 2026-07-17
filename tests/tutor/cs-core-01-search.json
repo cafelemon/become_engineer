@@ -1,20 +1,137 @@
-[
-  {"query":"第一步要锁定哪些双语言基线？","step_id":"step-1","expected":"dual-language-array-baseline"},
-  {"query":"Python和C++数组实验首次输出怎么逐字比较","step_id":"step-1","expected":"dual-language-array-baseline"},
-  {"query":"序列接口和数组表示有什么区别？","step_id":"step-2","expected":"sequence-interface-vs-representation"},
-  {"query":"接口说能做什么实现说怎么存对吗","step_id":"step-2","expected":"sequence-interface-vs-representation"},
-  {"query":"重复值为什么要返回第一个匹配位置？","step_id":"step-2","expected":"first-match-contract"},
-  {"query":"两个3线性查找应该返回哪个下标","step_id":"step-2","expected":"first-match-contract"},
-  {"query":"Python 为什么主动拒绝负索引？","step_id":"step-3","expected":"python-negative-index-policy"},
-  {"query":"list的-1明明合法为什么checked_at报错","step_id":"step-3","expected":"python-negative-index-policy"},
-  {"query":"为什么不能把 Python list 直接说成传统数组？","step_id":"step-3","expected":"python-list-not-raw-array"},
-  {"query":"Python列表是否就是连续同类型int数组","step_id":"step-3","expected":"python-list-not-raw-array"},
-  {"query":"C++ vector 和 span 在实验里各负责什么？","step_id":"step-4","expected":"cpp-vector-span-ownership"},
-  {"query":"只读span是否拥有传入的数据","step_id":"step-4","expected":"cpp-vector-span-ownership"},
-  {"query":"C++ 为什么要在转 size_t 前检查负数？","step_id":"step-4","expected":"signed-index-before-size-conversion"},
-  {"query":"负索引先变成无符号巨大数字怎么办","step_id":"step-4","expected":"signed-index-before-size-conversion"},
-  {"query":"怎样安全观察数组越界失败？","step_id":"step-5","expected":"safe-out-of-range-experiment"},
-  {"query":"不能靠C++越界崩溃证明错误那要怎么测","step_id":"step-5","expected":"safe-out-of-range-experiment"},
-  {"query":"replace_at_copy 迁移验收要证明什么？","step_id":"step-6","expected":"copy-replacement-migration"},
-  {"query":"复制替换怎样证明结果正确而且原输入没变","step_id":"step-6","expected":"copy-replacement-migration"}
-]
+{
+  "lesson_id": "cs-core-01",
+  "cases": [
+    {
+      "query": "CS 第一课为什么从列表开始",
+      "expected_card": "cs-goal"
+    },
+    {
+      "query": "要先学 C++ 吗",
+      "expected_card": "cs-goal"
+    },
+    {
+      "query": "现实信息怎么变成程序数据",
+      "expected_card": "data-representation"
+    },
+    {
+      "query": "列表是不是数据本身",
+      "expected_card": "data-representation"
+    },
+    {
+      "query": "接口说能做什么实现说怎么存对吗",
+      "expected_card": "interface-implementation"
+    },
+    {
+      "query": "序列是不是数组",
+      "expected_card": "interface-implementation"
+    },
+    {
+      "query": "列表底层是不是数组",
+      "expected_card": "python-list-boundary"
+    },
+    {
+      "query": "方格图代表真实内存吗",
+      "expected_card": "python-list-boundary"
+    },
+    {
+      "query": "下标为什么从 0 开始",
+      "expected_card": "index-length"
+    },
+    {
+      "query": "len 是 4 为什么不能访问 4",
+      "expected_card": "index-length"
+    },
+    {
+      "query": "hours[-1] 为什么合法",
+      "expected_card": "negative-index"
+    },
+    {
+      "query": "负索引和边界怎么区分",
+      "expected_card": "negative-index"
+    },
+    {
+      "query": "list index out of range 怎么办",
+      "expected_card": "index-error"
+    },
+    {
+      "query": "列表越界怎么检查",
+      "expected_card": "index-error"
+    },
+    {
+      "query": "hours[2] 和找 3 一样吗",
+      "expected_card": "access-search"
+    },
+    {
+      "query": "为什么查找要逐个比较",
+      "expected_card": "access-search"
+    },
+    {
+      "query": "两个 4 应该找到哪个",
+      "expected_card": "first-match"
+    },
+    {
+      "query": "线性查找什么时候停止",
+      "expected_card": "first-match"
+    },
+    {
+      "query": "复杂度入门怎么学",
+      "expected_card": "operation-count"
+    },
+    {
+      "query": "为什么先数比较次数",
+      "expected_card": "operation-count"
+    },
+    {
+      "query": "data_representation 怎么运行",
+      "expected_card": "reproduce-example"
+    },
+    {
+      "query": "查找 3 比较几次",
+      "expected_card": "reproduce-example"
+    },
+    {
+      "query": "换数据要做什么",
+      "expected_card": "modify-data"
+    },
+    {
+      "query": "怎么证明不是照抄",
+      "expected_card": "modify-data"
+    },
+    {
+      "query": "copy 后怎么证明原数据没变",
+      "expected_card": "copy-boundary"
+    },
+    {
+      "query": "只检查新列表够吗",
+      "expected_card": "copy-boundary"
+    },
+    {
+      "query": "列表扫描对项目有什么用",
+      "expected_card": "project-records"
+    },
+    {
+      "query": "CS 起步和报告器关系",
+      "expected_card": "project-records"
+    },
+    {
+      "query": "图解和实现有什么区别",
+      "expected_card": "abstraction"
+    },
+    {
+      "query": "数组图是不是内存图",
+      "expected_card": "abstraction"
+    },
+    {
+      "query": "查找有多快怎么回答",
+      "expected_card": "career-complexity"
+    },
+    {
+      "query": "复杂度不要只报符号",
+      "expected_card": "career-complexity"
+    }
+  ],
+  "unknown": [
+    "怎样给自行车换刹车线",
+    "请推荐一首睡前儿歌"
+  ]
+}

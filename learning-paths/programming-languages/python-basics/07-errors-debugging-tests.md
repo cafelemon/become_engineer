@@ -1,389 +1,151 @@
-# 异常、基本调试和最小自动化测试
-
 <div class="be-tutor-mount" data-tutor-lesson="python-basics-07" aria-hidden="true"></div>
 
-本节为多模块学习进度报告器建立可解释失败和可重复回归：先复现，再最小修复，最后让测试固定证据。下方原有异常、调试和 `unittest` 材料保持完整，按任务卡需要查阅。
+<section id="overview-failure" class="be-page-hero be-lesson-hero" data-learning-context="overview-failure" data-context-type="overview" markdown="1">
 
-## 本节任务路线
+<span class="be-page-eyebrow">Python 起步 · 第七课 · 学习进度报告器 v1.0</span>
 
-<div class="be-task-route" role="list" aria-label="本课五步任务">
-  <span role="listitem">1 稳定复现</span><span role="listitem">2 建立边界</span><span role="listitem">3 缩小问题</span><span role="listitem">4 固化测试</span><span role="listitem">5 迁移验收</span>
+# 异常、基本调试和最小自动化测试
+
+## 程序结束了，答案却不一定对
+
+这段计算没有报错：
+
+~~~text
+错误结果：1.5（规则上限应为 1.0）
+~~~
+
+如果完成进度最多显示 100%，<code>1.5</code> 就是错误结果。解释器不会替你判断业务规则，所以最后一课要补上三件事：看懂失败、拒绝不合法输入、让测试替你守住已经修好的行为。
+
+完成后，报告器会有 14 项自动测试。正常输入返回 0，缺文件、坏 JSON 和非法记录返回 1；意外的编程错误仍保留 traceback，不会被一句“运行失败”藏起来。
+
+<div class="be-page-actions" markdown="1">
+[先分清三种问题](#concept-problem-kinds){ .md-button .md-button--primary }
+[查看阶段作品](../../../exercises/python-basics/study-progress-reporter/README.md){ .md-button }
 </div>
 
-<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+</section>
 
-## 第一步：复现一条错误结果
+<div class="be-lesson-overview">
+  <div><span>课程位置</span><strong>Python 起步 · 7 / 7</strong></div>
+  <div><span>使用环境</span><strong>Python 3.11+，标准库 unittest</strong></div>
+  <div><span>完成后留下</span><strong>报告器 v1.0、14 项测试与失败记录</strong></div>
+</div>
 
-**任务：** 对 `calculate_progress(2, 3)` 运行报告器，观察可能得到 `1.5` 的错误结果；写下规则要求的最大值 `1.0`、实际值和最小输入。
+## 开始前
 
-**即时反馈：** 程序即使没有抛异常也可能错误，复现必须包含输入、实际结果和期望结果。
+- 已完成[模块、导入和虚拟环境](06-modules-imports-venv.md)，能运行四模块报告器。
+- 能从 JSON 生成报告，并知道读取、计算、排版和入口分别在哪个模块。
+- 本课沿用同一份阶段作品，不引入第三方测试框架。
+- 建议先复制一份练习目录。故意改坏代码、修改坏 JSON 和观察红灯都在副本中完成。
+
+<section id="concept-problem-kinds" data-learning-context="concept-problem-kinds" data-context-type="concept" markdown="1">
+
+## 先看清“哪里不对”
+
+程序不对，大致有三种样子：
+
+| 现象 | 例子 | 先做什么 |
+| --- | --- | --- |
+| 解释器读不懂 | 少了冒号、括号没闭合 | 看 <code>SyntaxError</code> 指向的位置，先让文件能被解析 |
+| 运行途中失败 | 文件不存在、除以零、键缺失 | 从 traceback 最后一行读异常类型，再向上看调用链 |
+| 正常结束但结果错 | 进度显示 150% | 缩小成一组输入、实际结果和期望规则 |
+
+第三种最容易漏掉。程序退出码是 0，只能说明进程正常结束，不能证明结果符合要求。
+
+先运行这个短例子：
+
+~~~python
+--8<-- "examples/python-basics/failure_kinds.py"
+~~~
+
+~~~bash
+python site-src/examples/python-basics/failure_kinds.py
+~~~
+
+它同时展示错误结果和一个被明确拒绝的输入。二者都需要修，但处理方式不同：错误结果靠规则与测试发现；非法输入在进入计算前用条件判断和 <code>raise</code> 拒绝。
 
 </section>
 
-<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+<section id="example-traceback" data-learning-context="example-traceback" data-context-type="example" markdown="1">
 
-## 第二步：把非法输入留在边界
-
-**任务：** 为 `target_hours = 0` 写出明确校验并 `raise ValueError`；分别制造不存在文件和坏 JSON，使用窄范围 `except` 给出可解释提示。
-
-**成功标准：** 已知输入失败被说明，拼错变量等编程缺陷仍保留 traceback，不能用 `except Exception` 吞掉。
-
-</section>
-
-<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
-
-## 第三步：沿 traceback 缩小问题
-
-**任务：** 让一条记录缺少必填键或完成时间为错误类型，用 traceback 的最后一行、文件行号和调用来源定位问题；需要时用 `repr()`、`type()` 或 `breakpoint()` 观察。
-
-**主动修改：** 在修复前只改变最小一处，重新运行同一输入确认现象消失。
-
-</section>
-
-<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
-
-## 第四步：先让测试失败，再修复
-
-**任务：** 在 `tests/test_analysis.py` 用 `unittest` 写超额完成应为 `1.0` 的测试。先让实现或期望暂时不匹配，观察失败；再修复 `calculate_progress()` 并运行完整测试发现。
-
-**错误证据：** 保存红灯中的预期/实际差异，以及修复后的绿灯命令输出。文件测试使用临时目录，不污染 `data/` 或 `output/`。
-
-</section>
-
-<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
-
-## 第五步：迁移验收
-
-**任务：** 自己增加一个未在示例中出现的边界，例如空课程名、负完成时间或 UTF-8 中文；先写测试，再增加最小校验。
-
-**完成证据：** 正常、边界和失败测试均通过；输入只读、导入无副作用，成功退出码为 0，输入错误为非 0。
-
-**下一步：** Python 起步至此完成。继续进入[Python / C++ 双主修](../README.md)，将这份报告器能力迁移到后续课程与项目。
-
-</section>
-
-## 课程信息
-
-| 项目 | 内容 |
-| --- | --- |
-| 适合人群 | 已能编写多模块小程序，希望程序失败时可定位、修复后可回归验证的学习者 |
-| 前置知识 | [模块、导入和虚拟环境](06-modules-imports-venv.md)，以及此前的函数、数据结构、文件和 JSON |
-| 学习结果 | 为输入建立边界，用 traceback 和调试工具定位问题，并用 `unittest` 固化正确行为 |
-| 环境 | Python 3.11 或更高版本，仅使用标准库 |
-| 阶段作品 | [学习进度报告器](../../../exercises/python-basics/study-progress-reporter/README.md) |
-
-## 学习目标
-
-完成本节后，你应该能够：
-
-- 区分语法错误、运行时异常和没有报错的错误结果。
-- 从 traceback 中找到调用链、文件、行号、异常类型和消息。
-- 使用 `try/except/else/finally` 处理可预期失败，并主动 `raise` 非法输入。
-- 避免过宽捕获，不把程序自身缺陷伪装成正常结果。
-- 使用 `repr()`、`type()`、最小复现和 `breakpoint()` 检查运行状态。
-- 解释为什么 `assert` 不能代替用户输入校验。
-- 使用标准库 `unittest` 编写正常、边界和失败测试。
-- 让测试在修复前失败、修复后通过，并执行完整回归。
-
-## 学习顺序
-
-1. 先识别三类“程序不对”。
-2. 学会从 traceback 最后一行向上阅读。
-3. 只在输入边界捕获可以解释的异常。
-4. 使用小范围观察和断点缩小问题。
-5. 把修复前的失败转成自动化测试。
-6. 为学习进度报告器补齐校验、退出码和回归测试。
-
-## 调试不是猜测
-
-有效调试是一个可重复的证据闭环：
-
-```mermaid
-flowchart LR
-    A["稳定复现"] --> B["阅读 traceback"]
-    B --> C["缩小问题范围"]
-    C --> D["检查变量与类型"]
-    D --> E["实施最小修复"]
-    E --> F["增加自动化测试"]
-    F --> G["运行完整回归"]
-    G -->|仍失败| B
-```
-
-每一步都应产生证据。只因为“看起来应该能运行”而反复改代码，不是调试。
-
-## 三类问题要分开处理
-
-| 类型 | 例子 | 你能看到什么 | 第一动作 |
-| --- | --- | --- | --- |
-| 语法错误 | 括号未闭合、冒号缺失 | `SyntaxError` 和出错位置 | 先让解释器能够解析文件 |
-| 运行时异常 | 文件不存在、键缺失 | traceback 与异常类型 | 阅读最后一行，再追踪调用链 |
-| 错误结果 | 完成比例算成 150% | 程序正常结束但答案不对 | 构造最小输入，检查中间状态 |
-
-下面的程序可以通过语法检查，也不会抛异常，但结果不符合我们的规则：
-
-```python title="wrong_result.py"
-def calculate_progress(target_hours, finished_hours):
-    return finished_hours / target_hours
-
-
-print(calculate_progress(2, 3))
-```
+## traceback 从最后一行开始读
 
 运行：
 
-```bash
-python wrong_result.py
-```
+~~~bash
+python site-src/examples/python-basics/traceback_demo.py
+~~~
 
-输出为 `1.5`。如果规则要求最高显示 100%，就要通过测试表达这个边界，而不是等待某次人工检查碰巧发现。
+你会看到类似内容：
 
-## 阅读 traceback
-
-遇到异常时，先看最后一行：它通常给出异常类型和消息。再向上看每一层调用所在的文件、行号和函数，找到自己的代码第一次把错误数据送入下一层的位置。
-
-```text
+~~~text
 Traceback (most recent call last):
-  File "main.py", line 12, in <module>
-    print(calculate_progress(0, 2))
-  File "analysis.py", line 2, in calculate_progress
+  File ".../traceback_demo.py", line 10, in <module>
+    build_report()
+  File ".../traceback_demo.py", line 7, in build_report
+    return calculate_progress(0, 2)
+  File ".../traceback_demo.py", line 2, in calculate_progress
     return finished_hours / target_hours
 ZeroDivisionError: division by zero
-```
+~~~
 
-这里的证据是：
+阅读顺序可以很朴素：
 
-- 异常类型：`ZeroDivisionError`。
-- 直接出错位置：`analysis.py` 第 2 行。
-- 调用来源：`main.py` 第 12 行。
-- 真正需要决定的是：目标时间为零应该被拒绝，还是有单独业务含义。
+1. 最后一行告诉你发生了什么：<code>ZeroDivisionError</code>。
+2. 往上一层找到直接失败的位置：除法表达式。
+3. 再往上看是谁传入了 0：<code>build_report()</code>。
+4. 最后决定业务规则：目标小时为 0 是特殊状态，还是非法数据？
 
-不要只复制最后一句给 AI。完整调用链、最小输入和预期行为能显著提高排查质量。
+只看到“除以零”还不能决定怎样修。真正的修复取决于数据规则。本项目要求目标小时大于 0，所以校验应在 JSON 输入边界发生。
 
-## 捕获可解释的失败
+把完整 traceback、最小输入和你认为正确的结果一起交给 AI，比只复制最后一句更容易得到有用建议。建议仍要回到同一输入上验证。
 
-`try` 中只放可能失败的最小操作，`except` 按异常类型处理，`else` 放成功后才执行的逻辑，`finally` 放无论成功失败都必须执行的清理动作。
+</section>
 
-```python title="read_json_example.py"
-import json
-from pathlib import Path
+<section id="concept-boundary" data-learning-context="concept-boundary" data-context-type="concept" markdown="1">
 
+## 哪些错误应该由程序说明
 
-path = Path("data/study_records.json")
+报告器面对两类失败：
 
-try:
-    text = path.read_text(encoding="utf-8")
-    document = json.loads(text)
-except FileNotFoundError:
-    print("找不到学习记录文件")
-except json.JSONDecodeError as error:
-    print(f"JSON 格式错误：第 {error.lineno} 行，第 {error.colno} 列")
-else:
-    print(f"成功读取 {len(document['records'])} 条记录")
-finally:
-    print("读取尝试结束")
-```
+- 用户或文件带来的已知输入问题：文件不存在、JSON 语法错误、字段缺失、数值不合法。
+- 程序员写错代码：变量拼错、函数参数错、模块职责被破坏。
 
-`finally` 常用于释放必须关闭的外部资源。本例的 `Path.read_text()` 已自行完成文件关闭，保留 `finally` 只是为了观察执行顺序，不是每个 `try` 都必须拥有四个分支。
+第一类可以转成简短提示和非零退出码；第二类应该保留 traceback，方便修复。如果把所有异常都捕获，两个世界会混在一起。
 
-### 为什么不能写宽泛捕获
+<code>data_io.py</code> 先检查外部数据：
 
-```python
-try:
-    run_program()
-except Exception:
-    print("运行失败")
-```
-
-这会把拼错变量名、错误参数类型等编程缺陷也包装成模糊提示，丢失最重要的 traceback。当前报告器只捕获三类已知输入失败：文件不存在、JSON 格式错误、显式校验产生的 `ValueError`。其他错误继续暴露，便于修复。
-
-### 用 `raise` 建立数据边界
-
-外部 JSON 即使语法正确，结构也可能不符合程序约定。校验函数应尽早拒绝不合法数据：
-
-```python
-def validate_target_hours(value, record_number):
+~~~python
+def _validate_number(value, field_name, record_number):
     if isinstance(value, bool) or not isinstance(value, (int, float)):
         raise ValueError(
-            f"第 {record_number} 条记录的 target_hours 必须是数字"
+            f"第 {record_number} 条记录的 {field_name} 必须是数字"
         )
-    if value <= 0:
-        raise ValueError(
-            f"第 {record_number} 条记录的 target_hours 必须大于 0"
-        )
-```
+~~~
 
-Python 中 `bool` 是 `int` 的子类，因此这里只写 `isinstance(value, (int, float))` 会意外接受 `true`。这是需要测试固定下来的边界。
+这里特意排除布尔值。Python 中 <code>bool</code> 是 <code>int</code> 的子类，只检查数字类型会意外接受 JSON 中的 <code>true</code>。
 
-## 五种常见异常的定位方式
+同一个模块还要拒绝：
 
-| 异常 | 常见原因 | 先检查什么 | 当前作品中的处理 |
-| --- | --- | --- | --- |
-| `FileNotFoundError` | 路径或文件名错误 | 当前路径与实际文件位置 | 转成清楚的输入提示 |
-| `JSONDecodeError` | 逗号、引号或括号错误 | 错误行列附近的原文 | 报告行列位置 |
-| `KeyError` | 直接读取不存在的字典键 | 数据结构和键名 | 校验阶段主动报告缺字段 |
-| `TypeError` | 对错误类型执行操作 | `type()` 与调用参数 | 输入边界转成校验错误；编程缺陷保留 traceback |
-| `ValueError` | 类型可用但值不合法 | 数值范围和业务约束 | 显式 `raise`，入口统一提示 |
+- JSON 根结构不是对象。
+- 缺少 <code>records</code>。
+- 记录或标签不是约定类型。
+- 课程名为空。
+- 目标小时小于等于 0。
+- 完成小时小于 0。
 
-## 基本调试工具
+越早指出具体记录和字段，后面的计算越简单。
 
-### 观察真实表示和类型
+</section>
 
-`print(value)` 适合给用户看，`repr(value)` 更适合检查隐藏空格、换行和转义，`type(value)` 用于确认运行时类型。
+<section id="example-narrow-except" data-learning-context="example-narrow-except" data-context-type="example" markdown="1">
 
-```python
-course = "Python 函数\n"
-print(course)
-print(repr(course))
-print(type(course))
-```
+## 入口只接住能解释的失败
 
-### 先做最小复现
+<code>main.py</code> 的入口只处理三类已知问题：
 
-不要每次都运行全部数据。把失败压缩为一条记录、一个函数调用和一个明确预期：
-
-```python
-from analysis import calculate_progress
-
-result = calculate_progress(2, 3)
-print(repr(result), type(result))
-```
-
-### 使用 `breakpoint()`
-
-在想观察的位置加入：
-
-```python
-breakpoint()
-```
-
-运行程序后会进入 Python 调试器。起步阶段先掌握：
-
-| 命令 | 用途 |
-| --- | --- |
-| `p expression` | 查看表达式 |
-| `n` | 执行当前函数下一行 |
-| `s` | 进入当前行调用的函数 |
-| `c` | 继续运行到下一个断点 |
-| `q` | 退出调试器 |
-
-断点用于观察，不是修复。完成排查后删除临时断点，并用测试保留证据。
-
-## `assert` 不是用户输入校验
-
-```python
-assert target_hours > 0, "target_hours 必须大于 0"
-```
-
-断言适合表达开发者认为程序内部必然成立的条件，但 Python 在优化模式下可能移除断言。用户输入、权限和安全边界必须使用普通条件判断并显式抛出异常。
-
-## 使用 `unittest` 固化行为
-
-一个测试通常遵循 Arrange-Act-Assert：准备输入、执行行为、检查结果。
-
-```python title="tests/test_analysis.py"
-import unittest
-
-from analysis import calculate_progress
-
-
-class AnalysisTests(unittest.TestCase):
-    def test_progress_is_capped_for_over_completion(self):
-        # Arrange
-        target_hours = 2
-        finished_hours = 3
-
-        # Act
-        result = calculate_progress(target_hours, finished_hours)
-
-        # Assert
-        self.assertEqual(result, 1.0)
-
-
-if __name__ == "__main__":
-    unittest.main()
-```
-
-运行单个文件：
-
-```bash
-python -m unittest tests/test_analysis.py -v
-```
-
-发现并运行全部测试：
-
-```bash
-python -m unittest discover -s tests -v
-```
-
-测试名称应说明场景和预期，不要写成 `test_1`。每次修复缺陷时，先用测试稳定复现失败，再实施最小修复，最后运行全部测试检查回归。
-
-## 临时目录隔离文件测试
-
-测试不应写入真实学习数据。标准库 `tempfile.TemporaryDirectory` 会提供独立目录，并在离开上下文后清理：
-
-```python title="tests/test_input_readonly.py"
-import json
-import tempfile
-import unittest
-from pathlib import Path
-
-from data_io import load_records
-
-
-class InputReadOnlyTests(unittest.TestCase):
-    def test_input_file_is_not_modified(self):
-        with tempfile.TemporaryDirectory() as directory:
-            path = Path(directory) / "records.json"
-            path.write_text(
-                json.dumps(
-                    {
-                        "records": [
-                            {
-                                "course": "异常与测试",
-                                "target_hours": 4,
-                                "finished_hours": 2,
-                                "tags": ["Python"],
-                            }
-                        ]
-                    },
-                    ensure_ascii=False,
-                ),
-                encoding="utf-8",
-            )
-            before = path.read_bytes()
-
-            load_records(path)
-
-            self.assertEqual(path.read_bytes(), before)
-
-
-if __name__ == "__main__":
-    unittest.main()
-```
-
-## 阶段作品：学习进度报告器
-
-完整实现已经沉淀到[阶段作品目录](../../../exercises/python-basics/study-progress-reporter/README.md)。它沿用上一节的四模块结构，并新增输入校验、错误出口和测试：
-
-```mermaid
-flowchart LR
-    A["main.py\n流程与错误出口"] --> B["data_io.py\n读取与校验"]
-    A --> C["analysis.py\n计算与汇总"]
-    A --> D["reporting.py\n稳定报告文本"]
-    T["tests/\n正常、边界、失败"] -.验证.-> A
-    T -.验证.-> B
-    T -.验证.-> C
-    T -.验证.-> D
-```
-
-### 入口如何控制退出码
-
-```python title="main.py（入口片段，完整文件见阶段作品）"
-import json
-import sys
-
-
-def main(input_path, data_dir, output_path):
+~~~python
+def main(input_path=INPUT_PATH, data_dir=DATA_DIR, output_path=OUTPUT_PATH):
     try:
         run(input_path, data_dir, output_path)
     except FileNotFoundError as error:
@@ -400,118 +162,267 @@ def main(input_path, data_dir, output_path):
         print(f"输入错误：{error}", file=sys.stderr)
         return 1
     return 0
+~~~
 
+不要改成：
 
-if __name__ == "__main__":
-    raise SystemExit(main(INPUT_PATH, DATA_DIR, OUTPUT_PATH))
-```
+~~~python
+try:
+    run_program()
+except Exception:
+    print("运行失败")
+~~~
 
-课程片段强调异常边界；可复制运行的完整 `main.py`、全部业务模块、固定 JSON 和测试均在阶段作品中，避免正文与可运行代码形成两份容易漂移的实现。
+这段代码连 <code>NameError</code>、错误参数类型和其他程序缺陷也会吞掉。学习者只看到一句模糊提示，真正能定位问题的调用链反而消失。
 
-运行：
+<code>try</code> 的范围也要尽量小。成功后才做的事可以放在 <code>else</code>；无论成功失败都必须发生的清理才放进 <code>finally</code>。本项目的文件读写已经由 <code>Path.read_text()</code> 和 <code>write_text()</code> 管理关闭，不需要为了“凑齐语法”硬加 <code>finally</code>。
 
-```bash
+</section>
+
+<section id="reproduce-v10" data-learning-context="reproduce-v10" data-context-type="reproduce" markdown="1">
+
+## 跑起报告器 v1.0
+
+完整项目在[学习进度报告器目录](../../../exercises/python-basics/study-progress-reporter/README.md)。进入目录后运行：
+
+~~~bash
 cd exercises/python-basics/study-progress-reporter
 python main.py
 python -m unittest discover -s tests -v
-```
+~~~
 
-正常运行应打印报告、生成 `output/study_report.txt`，并返回退出码 `0`。缺失文件、坏 JSON 或非法记录应把说明写到标准错误并返回 `1`。
+正常运行应生成报告并返回 0。紧接着检查：
 
-## AI 协作任务
+~~~bash
+echo $?
+~~~
 
-把上一节的多模块代码和以下约束交给 AI：
+Windows PowerShell 使用：
 
-```text
-请为这个标准库 Python 程序增加输入校验和 unittest 测试。
-只捕获可以向用户解释的文件、JSON 和数据校验错误；
-不要使用 except Exception，不要引入第三方库，不要修改输入文件。
-测试必须使用临时目录，并覆盖正常、边界和失败场景。
-请逐项说明每个捕获范围和测试存在的理由。
-```
+~~~powershell
+$LASTEXITCODE
+~~~
 
-你不能直接接受结果，必须完成：
+测试输出最后应看到：
 
-1. 稳定复现一个原程序失败场景。
-2. 检查 AI 是否过宽捕获或返回了伪造的成功结果。
-3. 选择一个测试，先确认它会失败，再实施修复。
-4. 主动增加一个 AI 未提出的边界用例。
-5. 运行全部测试并审阅标准输出、标准错误和退出码。
-6. 记录任务、约束、AI 建议摘要、人工修改和验证证据。
+~~~text
+Ran 14 tests
+OK
+~~~
 
-## 核心手动检查点
+14 项测试分布在四个文件：
 
-### 检查点 1：沿 traceback 找调用链
+| 测试文件 | 它在保护什么 |
+| --- | --- |
+| <code>test_analysis.py</code> | 正常汇总、空记录、超额完成上限 |
+| <code>test_data_io.py</code> | UTF-8、输入只读、缺文件、坏 JSON、字段与范围、输出目录 |
+| <code>test_reporting.py</code> | 报告文字和空数据表现 |
+| <code>test_main.py</code> | 标准输出、标准错误、退出码与输出文件 |
 
-制造 `target_hours = 0`，记录异常最后一行、直接出错位置和调用来源。说明为什么只看“除以零”还不足以决定修复。
+单独导入四个业务模块也应该保持安静：
 
-### 检查点 2：缩小捕获范围
+~~~bash
+python -c "import analysis, data_io, reporting, main"
+~~~
 
-解释报告器为什么捕获 `FileNotFoundError`、`JSONDecodeError` 和输入校验的 `ValueError`，却不捕获所有 `TypeError` 或 `Exception`。
+这条命令不应打印报告，也不应创建 <code>output/</code>。它继续保护上一课建立的导入边界。
 
-### 检查点 3：区分校验和断言
+</section>
 
-分别为“JSON 中目标时间必须大于零”和“内部汇总结果应为四项元组”选择普通校验或断言，并说明理由。
+<section id="modify-validation" data-learning-context="modify-validation" data-context-type="modify" markdown="1">
 
-### 检查点 4：让测试真正失败
+## 自己补一条输入规则
 
-在临时副本中把超额完成的期望从 `1.0` 改成 `1.25`，运行并阅读失败差异；恢复后确认全部测试通过。使用不同长度的值还能避免极短时间内旧字节码缓存干扰这次演示。
+示例已经拒绝空课程名。请在练习副本中再选一条没有现成答案的规则，例如：
 
-### 检查点 5：证明没有副作用
+- 标签字符串不能只包含空格。
+- 完成小时不能超过某个合理的项目上限。
+- 同一份输入中课程名不能重复。
 
-分别导入四个模块，确认没有打印、文件读写或目录创建。比较程序运行前后的输入文件字节。
+先写下三件事：
 
-## 微练习
+~~~text
+输入：
+期望：
+应该在哪个模块拒绝：
+~~~
 
-1. 分别制造一个 `SyntaxError`、`KeyError` 和错误结果，写出各自的第一排查动作。
-2. 为坏 JSON 输出错误行列，但保留原始 `JSONDecodeError` 类型给测试检查。
-3. 给记录校验增加“课程名不能为空”的规则，并先写失败测试。
-4. 使用 `repr()` 找出课程名末尾的隐藏换行，再修复输入。
-5. 使用 `breakpoint()` 观察第一条记录进入汇总函数时的类型和值。
-6. 新增“`finished_hours` 不能为负数”的测试，确认错误写入标准错误且退出码非零。
-7. 使用临时目录验证报告写入，不污染仓库的 `output/`。
+然后在 <code>test_data_io.py</code> 增加测试。先运行这一个测试，确认它确实失败；再在 <code>data_io.py</code> 做最小修改，最后运行全部 14 项加上你的新测试。
 
-## 常见错误与排查
+这里先别急着追求“覆盖所有情况”。一条规则、一条失败、一处修改，足以练清楚从需求到回归的完整过程。
 
-| 现象 | 常见原因 | 检查方法 | 修复方向 |
+</section>
+
+<section id="concept-debugging" data-learning-context="concept-debugging" data-context-type="concept" markdown="1">
+
+## 调试不是轮流猜写法
+
+遇到问题时，可以按这条顺序来：
+
+~~~mermaid
+flowchart LR
+    A["固定同一输入"] --> B["读错误或错误结果"]
+    B --> C["缩小到一个函数"]
+    C --> D["看真实值与类型"]
+    D --> E["只改一处"]
+    E --> F["重跑同一输入"]
+    F --> G["补测试并跑全部"]
+~~~
+
+几个小工具已经够用：
+
+- <code>repr(value)</code>：看清末尾空格、换行和转义。
+- <code>type(value)</code>：确认运行时拿到的是字符串、数字、列表还是字典。
+- <code>breakpoint()</code>：在可疑值进入计算前停下。
+- <code>p expression</code>：在调试器里查看表达式。
+- <code>n</code>：执行当前函数下一行。
+- <code>s</code>：进入当前行调用的函数。
+- <code>c</code>：继续运行。
+- <code>q</code>：退出调试器。
+
+断点是观察工具，不是修复。排查完成后删掉临时断点，把真正需要长期保留的判断写进测试。
+
+</section>
+
+<section id="example-unittest" data-learning-context="example-unittest" data-context-type="example" markdown="1">
+
+## 第一份测试只检查一个规则
+
+~~~python
+--8<-- "examples/python-basics/test_progress_micro.py"
+~~~
+
+运行：
+
+~~~bash
+python -m unittest site-src/examples/python-basics/test_progress_micro.py -v
+~~~
+
+每个测试方法只讲一个场景：
+
+- 超额完成时，结果上限是 1.0。
+- 目标小时为 0 时，必须抛出 <code>ValueError</code>。
+
+<code>unittest</code> 会把以 <code>test</code> 开头的方法识别为测试。<code>assertEqual</code> 检查结果，<code>assertRaises</code> 检查明确异常。
+
+如果一个测试从来没见过红灯，你还不能确定它真的能抓住目标问题。在临时副本中把期望值改成 1.25，读一次失败中的 expected / actual 差异，然后恢复为 1.0。
+
+</section>
+
+<section id="troubleshoot-tests" data-learning-context="troubleshoot-tests" data-context-type="troubleshoot" markdown="1">
+
+## 测试出问题时看这几处
+
+| 现象 | 常见原因 | 怎样回来 |
+| --- | --- | --- |
+| 只显示“运行失败” | 捕获了所有 <code>Exception</code> | 改为明确异常，让未知缺陷继续抛出 |
+| 测试一直是绿的 | 没有触发目标规则 | 临时破坏期望或实现，确认它能变红 |
+| 单个测试通过，全部运行失败 | 测试共享可变状态或文件 | 每个测试独立准备数据，文件使用临时目录 |
+| 测试改坏真实 JSON | 路径指向项目 <code>data/</code> | 使用 <code>TemporaryDirectory</code> 创建输入输出 |
+| <code>assert</code> 没有运行 | Python 使用了优化模式 | 用户输入校验改用普通判断和 <code>raise</code> |
+| 错误提示出现在 stdout | 没有指定输出流 | 面向失败的提示写到 <code>sys.stderr</code> |
+| <code>main()</code> 返回 1，进程仍显示成功 | 返回值没有交给系统 | 入口使用 <code>raise SystemExit(main())</code> |
+| 测试发现导入错了另一份代码 | 当前目录或环境不对 | 检查 cwd、<code>sys.executable</code> 与导入来源 |
+
+文件测试使用 <code>tempfile.TemporaryDirectory</code>。它提供隔离目录，离开上下文后会清理；测试不需要依赖个人绝对路径，也不会污染项目输出。
+
+普通 <code>assert</code> 适合开发者内部不变量，但优化模式可能移除它。用户输入、权限和安全相关检查必须使用正常条件判断。
+
+</section>
+
+<section id="project-v10" data-learning-context="project-v10" data-context-type="project" markdown="1">
+
+## 报告器 v1.0
+
+| 上一版 | 这节课增加 | 需要保存 | 下一步 |
 | --- | --- | --- | --- |
-| 只看到“运行失败” | 捕获范围过宽 | 搜索 `except Exception` | 捕获明确异常，保留意外 traceback |
-| 测试从未失败 | 测试没有触发目标行为 | 暂时破坏实现或期望 | 先观察红灯再修复 |
-| 单独测试通过，整体失败 | 共享状态或文件污染 | 随机顺序、临时目录、独立运行 | 删除跨测试共享可变状态 |
-| 测试依赖个人目录 | 路径硬编码 | 搜索绝对路径 | 使用 `TemporaryDirectory` |
-| `assert` 没有执行 | 使用了优化模式 | 检查启动参数 | 输入校验使用普通条件和 `raise` |
-| 错误信息出现在标准输出 | 没有指定输出流 | 分别捕获 stdout/stderr | 使用 `file=sys.stderr` |
-| 返回 `1` 但进程仍是成功 | 没有把返回值交给系统 | 检查入口代码 | 使用 `raise SystemExit(main())` |
-| 测试导入时运行程序 | 缺少主入口保护 | 单独 `import main` | 把动作放入函数并保护入口 |
+| v0.6：四模块报告器 | 输入校验、明确错误出口、退出码、14 项自动测试 | 正常输出、一次 traceback、红灯与绿灯、测试命令、一次主动新增规则 | 进入 CS 起步，继续理解数据表示与操作成本 |
 
-## 完成标准
+程序现在形成一条可以检查的数据流：
 
-- 能区分语法错误、运行时异常和错误结果。
-- 能完整解释一段 traceback 的调用链和最后一行。
-- 能为可预期输入失败选择窄范围异常处理。
-- 能说明为什么不使用宽泛捕获隐藏编程错误。
-- 能用 `repr()`、`type()`、最小复现和 `breakpoint()` 检查状态。
-- 能解释 `assert` 的适用边界。
-- 能用 Arrange-Act-Assert 编写 `unittest` 测试。
-- 能使用临时目录测试文件行为。
-- 能验证正常、空数据、重复标签、超额完成和 UTF-8 中文。
-- 能验证缺失文件、坏 JSON、缺字段、错误类型和非法范围。
-- 能证明输入只读、导入无副作用、报告输出稳定。
-- 能检查成功退出码为 `0`、输入错误退出码非零。
-- 能让一个测试先失败，修复后再运行完整回归。
-- 能完成并验收[学习进度报告器](../../../exercises/python-basics/study-progress-reporter/README.md)。
+~~~mermaid
+flowchart LR
+    A["JSON 输入"] --> B["读取与校验"]
+    B --> C["计算汇总"]
+    C --> D["生成报告"]
+    D --> E["写入文件"]
+    T["14 项测试"] -.保护.-> B
+    T -.保护.-> C
+    T -.保护.-> D
+    T -.保护.-> E
+~~~
+
+提交前保存：
+
+- 一次正常运行和退出码 0。
+- 一次坏 JSON 或非法记录，以及 stderr 和退出码 1。
+- 一次测试先失败、修复后通过。
+- 你的新增规则和对应测试。
+- 输入文件运行前后字节一致的检查。
+
+这还不是大型产品，但它已经能说明：你怎样划分模块、怎样建立输入边界、怎样处理已知失败，以及怎样用测试保护重构。
+
+</section>
+
+<section id="deepen-test-design" data-learning-context="deepen-test-design" data-context-type="deepen" markdown="1">
+
+## 再深入一点：测试的是契约，不是代码行数
+
+测试不应该只是追求“每行都跑过”。更重要的是把外部可见约定固定下来：
+
+- 相同数据生成相同报告。
+- 超额完成最多显示 100%。
+- UTF-8 中文往返不乱码。
+- 输入文件不被修改。
+- 已知输入问题返回 1，并写入 stderr。
+- 未预料的编程错误不被伪装成正常输入失败。
+- 测试之间互不依赖，顺序变化仍能运行。
+
+重构后测试不变，说明外部行为还在；需求变化时先修改契约和测试，再改实现。测试不是为了证明“永远没有 bug”，而是让已经确认的规则不容易悄悄退回去。
+
+</section>
+
+<section id="career-debug-story" data-learning-context="career-debug-story" data-context-type="career" markdown="1">
+
+## 怎样讲一次真实的修复
+
+可以用四句话组织：
+
+1. **现象**：超额完成时报告显示 150%，程序没有抛异常。
+2. **定位**：把问题缩成 <code>calculate_progress(2, 3)</code>，确认计算没有上限。
+3. **修改**：用 <code>min(..., 1.0)</code>做最小修复，输入合法性仍留在读取边界。
+4. **验证**：先看到测试红灯，再让它变绿，并运行 14 项回归确认报告、文件和退出码没有倒退。
+
+如果讲文件错误，也要说明为什么只捕获明确输入异常，而不使用 <code>except Exception</code>。这里体现的是判断边界和验证能力，不是背异常名称。
+
+</section>
+
+## 完成检查
+
+- [ ] 我能区分语法错误、运行时异常和错误结果。
+- [ ] 我能从 traceback 最后一行向上解释调用链。
+- [ ] 我为已知输入问题选择了明确异常，没有捕获所有 <code>Exception</code>。
+- [ ] 我能说明 <code>repr()</code>、<code>type()</code> 和 <code>breakpoint()</code>各自看什么。
+- [ ] 我知道普通 <code>assert</code> 不能代替用户输入校验。
+- [ ] 我运行了微型测试，并亲眼看过一次红灯。
+- [ ] 我运行了阶段作品 14 项测试。
+- [ ] 我用临时目录验证文件行为，没有改坏真实输入。
+- [ ] 我确认正常退出码为 0，输入错误为 1。
+- [ ] 我新增了一条自己的输入规则和测试。
+- [ ] 我保存了正常、失败、修复和完整回归结果。
+- [ ] 我能用现象、定位、修改和验证讲清一次修复。
 
 ## 来源与版本
 
-| 来源 | 用于核查 | 版本或日期 | 状态 |
-| --- | --- | --- | --- |
-| [Python 官方教程：Errors and Exceptions](https://docs.python.org/3/tutorial/errors.html) | 语法错误、异常、traceback、捕获、抛出和清理 | Python 3 文档，2026-07-14核查 | 已验证 |
-| [Python 标准库：pdb](https://docs.python.org/3/library/pdb.html) | `breakpoint()` 与基础调试命令 | Python 3 文档，2026-07-14核查 | 已验证 |
-| [Python 标准库：unittest](https://docs.python.org/3/library/unittest.html) | 测试用例、断言和测试发现 | Python 3 文档，2026-07-14核查 | 已验证 |
-| [Python 语言参考：assert](https://docs.python.org/3/reference/simple_stmts.html#the-assert-statement) | 断言语义与优化模式边界 | Python 3 文档，2026-07-14核查 | 已验证 |
+- 适用版本：Python 3.11 及以上；课程和阶段作品只使用标准库。
+- 核查日期：2026-07-17。
+- 事实来源：[Errors and Exceptions](https://docs.python.org/3.11/tutorial/errors.html)说明语法错误、异常、traceback、指定异常捕获、<code>raise</code>和清理；[unittest](https://docs.python.org/3.11/library/unittest.html)说明测试用例、断言、发现和独立性；[pdb](https://docs.python.org/3.11/library/pdb.html)说明 <code>breakpoint()</code>与单步调试；[assert 语句](https://docs.python.org/3.11/reference/simple_stmts.html#the-assert-statement)说明优化模式下断言可被移除；[tempfile](https://docs.python.org/3.11/library/tempfile.html#tempfile.TemporaryDirectory)用于隔离文件测试。
+- 代码验证：仓库脚本检查三份微型例子、阶段作品 14 项测试、导入无副作用、正常与非法输入退出码、输入只读；自动测试不联网，也不安装第三方包。
 
 ## 下一步
 
-至此，Python 起步课程完成。默认路线继续进入 [Python / C++ 双主修](../README.md)，把 Python 推进到类型系统、工程化、并发和运行原理，同时开始 C++。
+Python 起步到这里完整收口。默认路线进入[CS 起步](../../cs-core/README.md)，先理解数据怎样表示、位置访问与扫描成本，再决定继续应用工程、系统工程或算法方向。
 
-你也已经解锁 [Python 内容分析工具](../../../projects/python-content-analysis/README.md) P1.1，可以把本阶段的路径、模块、校验和测试习惯用于真实仓库素材分析。两条路线可以并行，但项目不能替代双主修课程。
+如果你更想先强化语言，也可以进入[Python / C++ 双主修说明](../README.md)。求职目标可以同时整理[学习进度报告器项目证据](../../../exercises/career-readiness/study-progress-reporter-evidence.md)，但不要只背话术，回答必须回到代码、失败记录和测试结果。
+
+[进入 CS 起步](../../cs-core/README.md){ .md-button .md-button--primary }

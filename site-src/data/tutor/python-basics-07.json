@@ -1,15 +1,738 @@
 {
-  "version":1,
-  "lesson":{"id":"python-basics-07","title":"异常、基本调试和最小自动化测试","path":"learning-paths/programming-languages/python-basics/07-errors-debugging-tests/"},
-  "steps":[{"id":"step-1","title":"稳定复现"},{"id":"step-2","title":"建立边界"},{"id":"step-3","title":"缩小问题"},{"id":"step-4","title":"固化测试"},{"id":"step-5","title":"迁移验收"}],
-  "cards":[
-    {"id":"wrong-result","lesson_id":"python-basics-07","step_id":"step-1","question":"没有报错但结果不对怎么调试？","aliases":["程序没报错结果错了","进度超过100"],"keywords":["错误结果","调试","100","复现"],"diagnostic":"能否给出让结果出错的最小输入、实际输出和预期规则？","hints":["先压缩为一个函数调用，例如 calculate_progress(2, 3)。","记录实际 1.5 与期望 1.0，再决定最小修复。"],"example":"程序正常结束不代表业务规则正确。","answer":"先稳定复现错误结果，再观察中间值、修复最小逻辑并用测试固定规则。","source":{"label":"第一步：复现一条错误结果","href":"#step-1"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"traceback-read","lesson_id":"python-basics-07","step_id":"step-1","question":"traceback 应该从哪里开始看？","aliases":["错误栈怎么看","traceback最后一行"],"keywords":["traceback","异常","最后一行","行号"],"diagnostic":"最后一行给出的异常类型和消息是什么，调用链中哪些行属于自己的代码？","hints":["先读最后一行获得异常类型和直接原因。","再向上追踪自己的文件、行号和调用来源，找到错误数据首次进入的位置。"],"example":"ZeroDivisionError 指向 analysis.py 后，再看 main.py 如何传入 0。","answer":"最后一行定位异常，向上阅读调用链定位输入和责任边界。","source":{"label":"第一步：复现一条错误结果","href":"#step-1"},"updated_at":"2026-07-15"},
-    {"id":"raise-value-error","lesson_id":"python-basics-07","step_id":"step-2","question":"target_hours 为 0 应该怎么处理？","aliases":["目标时间为0","valueerror怎么抛出"],"keywords":["target_hours","0","valueerror","raise"],"diagnostic":"0 是合法业务输入还是必须拒绝的边界？之后是否会作为除数？","hints":["在计算前检查 value <= 0。","不合法时 raise ValueError 并写清楚字段与规则。"],"example":"if target_hours <= 0: raise ValueError('target_hours 必须大于 0')。","answer":"在输入边界显式拒绝零或负目标时间，避免后续除零和含糊结果。","source":{"label":"第二步：把非法输入留在边界","href":"#step-2"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"narrow-except","lesson_id":"python-basics-07","step_id":"step-2","question":"为什么不能使用 except Exception？","aliases":["except exception问题","捕获所有错误好吗"],"keywords":["except","exception","宽泛捕获","traceback"],"diagnostic":"你希望处理的是预期输入失败，还是也要把变量拼错等程序缺陷伪装成正常？","hints":["try 只包住可能失败的最小输入操作。","分别捕获 FileNotFoundError、JSONDecodeError、ValueError，让其他异常继续暴露。"],"example":"except Exception 会吞掉 NameError，减少修复线索。","answer":"宽泛捕获隐藏编程缺陷；只捕获可解释、可恢复的已知异常类型。","source":{"label":"第二步：把非法输入留在边界","href":"#step-2"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"repr-type","lesson_id":"python-basics-07","step_id":"step-3","question":"repr 和 type 什么时候使用？","aliases":["repr有什么用","怎么检查变量类型"],"keywords":["repr","type","调试","隐藏空格"],"diagnostic":"你怀疑的是隐藏字符/真实文本表示，还是值在运行时的类型？","hints":["repr 显示换行、空格和转义等真实表示。","type 确认对象是 str、int、dict 等哪种运行时类型。"],"example":"repr('Python\n') 显示换行；type(value) 显示 <class 'str'>。","answer":"repr 适合看隐藏文本细节，type 适合验证数据类型；二者可在最小复现中配合。","source":{"label":"第三步：沿 traceback 缩小问题","href":"#step-3"},"updated_at":"2026-07-15"},
-    {"id":"breakpoint-use","lesson_id":"python-basics-07","step_id":"step-3","question":"breakpoint 应该放在哪里？","aliases":["断点怎么用","python调试器"],"keywords":["breakpoint","断点","调试器","变量"],"diagnostic":"你想在错误发生前确认哪一行的哪些变量和值？","hints":["放在可疑值刚进入函数或计算之前的最小位置。","进入调试器后用 p expression 查看，完成排查后删除临时断点。"],"example":"在处理第一条 record 前放 breakpoint()。","answer":"断点用于观察真实运行状态，不替代测试或修复；位置应靠近可疑边界。","source":{"label":"第三步：沿 traceback 缩小问题","href":"#step-3"},"updated_at":"2026-07-15"},
-    {"id":"red-green-test","lesson_id":"python-basics-07","step_id":"step-4","question":"为什么测试要先失败再修复？","aliases":["测试先红灯","单元测试怎么验证"],"keywords":["测试","失败","红灯","unittest"],"diagnostic":"当前测试是否真的触发了目标行为，失败信息是否显示预期与实际差异？","hints":["先让错误实现或错误期望产生可读失败，证明测试有效。","再实施最小修复，运行同一测试和完整测试集。"],"example":"超额完成先失败，再确认 calculate_progress 返回 1.0。","answer":"先失败证明测试能抓住问题；修复后通过才构成可靠回归证据。","source":{"label":"第四步：先让测试失败，再修复","href":"#step-4"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"temp-directory","lesson_id":"python-basics-07","step_id":"step-5","question":"文件测试为什么要使用临时目录？","aliases":["测试会污染文件吗","temporarydirectory怎么用"],"keywords":["临时目录","测试","文件","污染"],"diagnostic":"测试是否可能改到真实 data/、output/ 或个人路径？","hints":["TemporaryDirectory 提供隔离路径，并在结束后清理。","在临时目录创建输入和输出，断言真实仓库文件未被修改。"],"example":"with tempfile.TemporaryDirectory() as directory: ...。","answer":"临时目录让测试可重复且不污染真实学习数据或仓库生成物。","source":{"label":"第五步：迁移验收","href":"#step-5"},"updated_at":"2026-07-15","recommended":true}
+  "version": 2,
+  "lesson": {
+    "id": "python-basics-07",
+    "title": "异常、基本调试和最小自动化测试",
+    "path": "learning-paths/programming-languages/python-basics/07-errors-debugging-tests/"
+  },
+  "contexts": [
+    {
+      "id": "overview-failure",
+      "type": "overview",
+      "title": "程序结束了，答案却不一定对",
+      "anchor": "#overview-failure"
+    },
+    {
+      "id": "concept-problem-kinds",
+      "type": "concept",
+      "title": "先看清哪里不对",
+      "anchor": "#concept-problem-kinds"
+    },
+    {
+      "id": "example-traceback",
+      "type": "example",
+      "title": "traceback 从最后一行开始读",
+      "anchor": "#example-traceback"
+    },
+    {
+      "id": "concept-boundary",
+      "type": "concept",
+      "title": "哪些错误应该由程序说明",
+      "anchor": "#concept-boundary"
+    },
+    {
+      "id": "example-narrow-except",
+      "type": "example",
+      "title": "入口只接住能解释的失败",
+      "anchor": "#example-narrow-except"
+    },
+    {
+      "id": "reproduce-v10",
+      "type": "reproduce",
+      "title": "跑起报告器 v1.0",
+      "anchor": "#reproduce-v10"
+    },
+    {
+      "id": "modify-validation",
+      "type": "modify",
+      "title": "自己补一条输入规则",
+      "anchor": "#modify-validation"
+    },
+    {
+      "id": "concept-debugging",
+      "type": "concept",
+      "title": "调试不是轮流猜写法",
+      "anchor": "#concept-debugging"
+    },
+    {
+      "id": "example-unittest",
+      "type": "example",
+      "title": "第一份测试只检查一个规则",
+      "anchor": "#example-unittest"
+    },
+    {
+      "id": "troubleshoot-tests",
+      "type": "troubleshoot",
+      "title": "测试出问题时看这几处",
+      "anchor": "#troubleshoot-tests"
+    },
+    {
+      "id": "project-v10",
+      "type": "project",
+      "title": "报告器 v1.0",
+      "anchor": "#project-v10"
+    },
+    {
+      "id": "deepen-test-design",
+      "type": "deepen",
+      "title": "测试的是契约，不是代码行数",
+      "anchor": "#deepen-test-design"
+    },
+    {
+      "id": "career-debug-story",
+      "type": "career",
+      "title": "怎样讲一次真实的修复",
+      "anchor": "#career-debug-story"
+    }
+  ],
+  "cards": [
+    {
+      "id": "failure-result",
+      "lesson_id": "python-basics-07",
+      "context_id": "overview-failure",
+      "question": "这节课会把报告器改到什么程度？",
+      "aliases": [
+        "报告器 v1.0 增加什么",
+        "Python 起步最后一课做什么"
+      ],
+      "keywords": [
+        "v1.0",
+        "异常",
+        "测试",
+        "退出码"
+      ],
+      "diagnostic": "正常和失败运行分别应留下什么结果？",
+      "hints": [
+        "正常输入返回 0。",
+        "已知输入错误返回 1，并由 14 项测试保护行为。"
+      ],
+      "example": "坏 JSON 写到 stderr，程序退出码为 1。",
+      "answer": "v1.0 加入输入校验、明确错误出口、退出码和自动化回归。",
+      "source": {
+        "label": "程序结束了，答案却不一定对",
+        "href": "#overview-failure"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "problem-kinds",
+      "lesson_id": "python-basics-07",
+      "context_id": "concept-problem-kinds",
+      "question": "语法错误、异常和错误结果怎样区分？",
+      "aliases": [
+        "程序不对有哪几种",
+        "没报错为什么也可能错"
+      ],
+      "keywords": [
+        "SyntaxError",
+        "异常",
+        "错误结果"
+      ],
+      "diagnostic": "解释器读不懂、运行中断，还是正常结束但违反规则？",
+      "hints": [
+        "SyntaxError 先修语法。",
+        "异常读 traceback；错误结果缩成输入、实际值和期望。"
+      ],
+      "example": "进度 1.5 是错误结果，不是运行时异常。",
+      "answer": "三类现象需要不同的第一动作，正常退出不等于业务正确。",
+      "source": {
+        "label": "先看清哪里不对",
+        "href": "#concept-problem-kinds"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "traceback-read",
+      "lesson_id": "python-basics-07",
+      "context_id": "example-traceback",
+      "question": "traceback 应该从哪里开始看？",
+      "aliases": [
+        "错误栈怎么看",
+        "traceback 最后一行怎么看"
+      ],
+      "keywords": [
+        "traceback",
+        "最后一行",
+        "调用链"
+      ],
+      "diagnostic": "最后一行给出什么异常，往上的哪些行属于自己的代码？",
+      "hints": [
+        "先读异常类型和消息。",
+        "再向上找直接失败位置与传入错误数据的调用者。"
+      ],
+      "example": "ZeroDivisionError 上方显示 calculate_progress 与 build_report。",
+      "answer": "从最后一行确认异常，再沿调用链定位数据怎样到达失败位置。",
+      "source": {
+        "label": "traceback 从最后一行开始读",
+        "href": "#example-traceback"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "minimal-reproduction",
+      "lesson_id": "python-basics-07",
+      "context_id": "example-traceback",
+      "question": "为什么要把失败缩成最小输入？",
+      "aliases": [
+        "最小复现有什么用",
+        "调试为什么只留一条记录"
+      ],
+      "keywords": [
+        "最小复现",
+        "输入",
+        "预期"
+      ],
+      "diagnostic": "能否用一个函数调用稳定重现同一现象？",
+      "hints": [
+        "移除无关记录和文件。",
+        "保留实际结果、预期规则和必要输入。"
+      ],
+      "example": "calculate_progress(0, 2) 足以复现除零。",
+      "answer": "最小复现减少干扰，让修改前后可以在同一输入上比较。",
+      "source": {
+        "label": "traceback 从最后一行开始读",
+        "href": "#example-traceback"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "data-boundary",
+      "lesson_id": "python-basics-07",
+      "context_id": "concept-boundary",
+      "question": "非法记录应该在哪里被拒绝？",
+      "aliases": [
+        "数据校验放哪个模块",
+        "为什么在 data_io 校验"
+      ],
+      "keywords": [
+        "输入边界",
+        "ValueError",
+        "data_io"
+      ],
+      "diagnostic": "外部数据第一次变成程序对象发生在哪里？",
+      "hints": [
+        "JSON 解析后立即检查文档结构。",
+        "给出记录编号、字段名和具体规则。"
+      ],
+      "example": "target_hours 小于等于 0 时在 data_io 抛 ValueError。",
+      "answer": "把外部数据的结构与范围检查留在读取边界，后续计算只处理合法记录。",
+      "source": {
+        "label": "哪些错误应该由程序说明",
+        "href": "#concept-boundary"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "bool-number",
+      "lesson_id": "python-basics-07",
+      "context_id": "concept-boundary",
+      "question": "为什么数字校验还要单独排除 bool？",
+      "aliases": [
+        "True 为什么被当成数字",
+        "isinstance bool int 是什么"
+      ],
+      "keywords": [
+        "bool",
+        "int",
+        "数字",
+        "校验"
+      ],
+      "diagnostic": "当前判断是否只写了 isinstance(value, (int, float))？",
+      "hints": [
+        "Python 的 bool 是 int 子类。",
+        "先排除 bool，再接受 int 或 float。"
+      ],
+      "example": "JSON true 解析为 True，不能当作 1 小时。",
+      "answer": "业务上的数字不一定接受语言类型层的布尔子类，必须显式固定边界。",
+      "source": {
+        "label": "哪些错误应该由程序说明",
+        "href": "#concept-boundary"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "narrow-except",
+      "lesson_id": "python-basics-07",
+      "context_id": "example-narrow-except",
+      "question": "为什么不能直接 except Exception？",
+      "aliases": [
+        "捕获所有错误好吗",
+        "except Exception 有什么问题"
+      ],
+      "keywords": [
+        "except",
+        "Exception",
+        "宽泛",
+        "traceback"
+      ],
+      "diagnostic": "你要解释的是已知输入问题，还是也想隐藏程序员写错代码？",
+      "hints": [
+        "只捕获 FileNotFoundError、JSONDecodeError 和校验 ValueError。",
+        "其他异常继续保留 traceback。"
+      ],
+      "example": "NameError 不应被包装成输入错误。",
+      "answer": "宽泛捕获会丢掉修复线索；只接住能解释、能正确响应的失败。",
+      "source": {
+        "label": "入口只接住能解释的失败",
+        "href": "#example-narrow-except"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "else-finally",
+      "lesson_id": "python-basics-07",
+      "context_id": "example-narrow-except",
+      "question": "try 的 else 和 finally 什么时候用？",
+      "aliases": [
+        "else finally 有什么区别",
+        "每个 try 都要 finally 吗"
+      ],
+      "keywords": [
+        "try",
+        "else",
+        "finally",
+        "清理"
+      ],
+      "diagnostic": "成功后才做的动作是什么，无论成败都必须清理什么？",
+      "hints": [
+        "else 放未抛异常才执行的代码。",
+        "finally 放无论成功失败都必须发生的清理。"
+      ],
+      "example": "Path.read_text 已管理文件关闭，不必硬加 finally。",
+      "answer": "按真实控制流使用语句，不为了展示语法把所有分支都凑齐。",
+      "source": {
+        "label": "入口只接住能解释的失败",
+        "href": "#example-narrow-except"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "reproduce-v10",
+      "lesson_id": "python-basics-07",
+      "context_id": "reproduce-v10",
+      "question": "报告器 v1.0 怎样完整运行？",
+      "aliases": [
+        "第七课项目怎么跑",
+        "14 项测试命令是什么"
+      ],
+      "keywords": [
+        "v1.0",
+        "unittest",
+        "14",
+        "运行"
+      ],
+      "diagnostic": "是否进入阶段作品目录，并使用当前虚拟环境解释器？",
+      "hints": [
+        "先运行 python main.py。",
+        "再运行 python -m unittest discover -s tests -v。"
+      ],
+      "example": "测试末尾应显示 Ran 14 tests 和 OK。",
+      "answer": "运行程序、检查退出码、执行 14 项测试，再验证导入无副作用。",
+      "source": {
+        "label": "跑起报告器 v1.0",
+        "href": "#reproduce-v10"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "exit-code",
+      "lesson_id": "python-basics-07",
+      "context_id": "reproduce-v10",
+      "question": "怎样查看程序退出码？",
+      "aliases": [
+        "正常返回 0 怎么看",
+        "PowerShell LASTEXITCODE 是什么"
+      ],
+      "keywords": [
+        "退出码",
+        "echo",
+        "LASTEXITCODE",
+        "stderr"
+      ],
+      "diagnostic": "你是在 POSIX shell 还是 PowerShell 中运行？",
+      "hints": [
+        "macOS/Linux 紧接着运行 echo $?。",
+        "PowerShell 查看 $LASTEXITCODE。"
+      ],
+      "example": "正常是 0，坏 JSON 和非法记录是 1。",
+      "answer": "退出码是给调用者和自动化读取的结果；错误说明同时写入 stderr。",
+      "source": {
+        "label": "跑起报告器 v1.0",
+        "href": "#reproduce-v10"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "active-rule",
+      "lesson_id": "python-basics-07",
+      "context_id": "modify-validation",
+      "question": "这次我必须亲手增加什么？",
+      "aliases": [
+        "异常课主动修改什么",
+        "怎样自己加一条校验"
+      ],
+      "keywords": [
+        "主动修改",
+        "校验",
+        "测试"
+      ],
+      "diagnostic": "你选定的输入、期望和归属模块分别是什么？",
+      "hints": [
+        "先在 test_data_io.py 写失败测试。",
+        "确认红灯后，只修改 data_io.py 的对应规则。"
+      ],
+      "example": "可选择拒绝只含空格的标签。",
+      "answer": "新增一条真实输入规则，完成测试先失败、最小修复、完整回归。",
+      "source": {
+        "label": "自己补一条输入规则",
+        "href": "#modify-validation"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "debug-tools",
+      "lesson_id": "python-basics-07",
+      "context_id": "concept-debugging",
+      "question": "repr 和 type 分别能看什么？",
+      "aliases": [
+        "repr 有什么用",
+        "怎么检查变量类型"
+      ],
+      "keywords": [
+        "repr",
+        "type",
+        "隐藏字符",
+        "类型"
+      ],
+      "diagnostic": "你怀疑隐藏字符，还是运行时对象类型？",
+      "hints": [
+        "repr 显示换行、空格和转义。",
+        "type 确认 str、int、list 或 dict。"
+      ],
+      "example": "repr('Python\\n') 会明确显示换行。",
+      "answer": "在最小复现中用 repr 看真实表示，用 type 核对对象种类。",
+      "source": {
+        "label": "调试不是轮流猜写法",
+        "href": "#concept-debugging"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "breakpoint-use",
+      "lesson_id": "python-basics-07",
+      "context_id": "concept-debugging",
+      "question": "breakpoint 应该放在哪里？",
+      "aliases": [
+        "断点怎么用",
+        "pdb 从哪里停"
+      ],
+      "keywords": [
+        "breakpoint",
+        "pdb",
+        "调试器"
+      ],
+      "diagnostic": "你想在错误发生前看哪一个值进入哪一个函数？",
+      "hints": [
+        "把断点放在可疑值刚进入计算前。",
+        "用 p、n、s、c 观察，完成后删除断点。"
+      ],
+      "example": "在第一条 record 进入 summarize_records 前停下。",
+      "answer": "断点用于观察真实状态，不替代修复与长期回归测试。",
+      "source": {
+        "label": "调试不是轮流猜写法",
+        "href": "#concept-debugging"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "unittest-basic",
+      "lesson_id": "python-basics-07",
+      "context_id": "example-unittest",
+      "question": "unittest 最小测试怎样写？",
+      "aliases": [
+        "第一份单元测试怎么写",
+        "assertEqual assertRaises 怎么用"
+      ],
+      "keywords": [
+        "unittest",
+        "TestCase",
+        "assertEqual",
+        "assertRaises"
+      ],
+      "diagnostic": "你在检查返回值，还是检查明确异常？",
+      "hints": [
+        "继承 unittest.TestCase，方法名以 test 开头。",
+        "结果用 assertEqual，异常用 assertRaises。"
+      ],
+      "example": "test_caps_over_completion 只检查上限规则。",
+      "answer": "一个测试表达一个场景和预期，测试名应让失败含义清楚。",
+      "source": {
+        "label": "第一份测试只检查一个规则",
+        "href": "#example-unittest"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "red-green",
+      "lesson_id": "python-basics-07",
+      "context_id": "example-unittest",
+      "question": "为什么要亲眼看一次测试失败？",
+      "aliases": [
+        "测试为什么先红再绿",
+        "一直绿的测试可靠吗"
+      ],
+      "keywords": [
+        "红灯",
+        "绿灯",
+        "回归"
+      ],
+      "diagnostic": "你能证明测试真的触发了想保护的规则吗？",
+      "hints": [
+        "临时改坏期望或实现。",
+        "读 expected/actual 后恢复并做最小修复。"
+      ],
+      "example": "把 1.0 临时改成 1.25，确认测试变红。",
+      "answer": "先失败证明测试能抓住问题，修复后再跑完整测试集。",
+      "source": {
+        "label": "第一份测试只检查一个规则",
+        "href": "#example-unittest"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "temp-directory",
+      "lesson_id": "python-basics-07",
+      "context_id": "troubleshoot-tests",
+      "question": "文件测试为什么使用临时目录？",
+      "aliases": [
+        "TemporaryDirectory 有什么用",
+        "测试怎样不污染 data"
+      ],
+      "keywords": [
+        "TemporaryDirectory",
+        "文件",
+        "隔离"
+      ],
+      "diagnostic": "测试会不会改到真实 data、output 或个人绝对路径？",
+      "hints": [
+        "在临时目录创建输入输出。",
+        "离开上下文后自动清理，并检查真实文件未变化。"
+      ],
+      "example": "每个文件测试拥有自己的 records.json。",
+      "answer": "临时目录让测试可重复、互相独立，并保护真实学习数据。",
+      "source": {
+        "label": "测试出问题时看这几处",
+        "href": "#troubleshoot-tests"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "test-pollution",
+      "lesson_id": "python-basics-07",
+      "context_id": "troubleshoot-tests",
+      "question": "单个测试通过、全部运行失败怎么办？",
+      "aliases": [
+        "测试之间互相影响",
+        "测试有共享状态"
+      ],
+      "keywords": [
+        "测试污染",
+        "共享状态",
+        "顺序"
+      ],
+      "diagnostic": "测试是否共用文件、全局可变对象或依赖执行顺序？",
+      "hints": [
+        "让每个测试自行准备数据。",
+        "使用 setUp/tearDown 或上下文清理资源。"
+      ],
+      "example": "不要让一个测试依赖前一个测试创建的 output。",
+      "answer": "测试必须能独立、任意组合运行；移除共享状态和顺序依赖。",
+      "source": {
+        "label": "测试出问题时看这几处",
+        "href": "#troubleshoot-tests"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "assert-boundary",
+      "lesson_id": "python-basics-07",
+      "context_id": "troubleshoot-tests",
+      "question": "为什么 assert 不能校验用户输入？",
+      "aliases": [
+        "assert 优化模式会怎样",
+        "输入校验能用 assert 吗"
+      ],
+      "keywords": [
+        "assert",
+        "优化模式",
+        "输入校验"
+      ],
+      "diagnostic": "这个条件是开发者内部不变量，还是外部输入边界？",
+      "hints": [
+        "优化模式可能移除 assert。",
+        "外部输入用普通条件和 raise。"
+      ],
+      "example": "target_hours 必须大于 0 使用 if 与 ValueError。",
+      "answer": "assert 适合调试内部假设，不适合必须始终执行的输入、安全或权限检查。",
+      "source": {
+        "label": "测试出问题时看这几处",
+        "href": "#troubleshoot-tests"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "stderr-stream",
+      "lesson_id": "python-basics-07",
+      "context_id": "troubleshoot-tests",
+      "question": "错误信息为什么写到 stderr？",
+      "aliases": [
+        "stdout stderr 怎么区分",
+        "错误提示在哪个输出流"
+      ],
+      "keywords": [
+        "stderr",
+        "stdout",
+        "错误信息"
+      ],
+      "diagnostic": "正常报告和失败说明是否需要被调用者分别处理？",
+      "hints": [
+        "正常结果留在 stdout。",
+        "错误说明用 print(..., file=sys.stderr)。"
+      ],
+      "example": "测试可以分别捕获两个流。",
+      "answer": "分离输出流让终端、脚本和测试能区分正常数据与错误说明。",
+      "source": {
+        "label": "测试出问题时看这几处",
+        "href": "#troubleshoot-tests"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "system-exit",
+      "lesson_id": "python-basics-07",
+      "context_id": "troubleshoot-tests",
+      "question": "main 返回 1 为什么进程还是成功？",
+      "aliases": [
+        "SystemExit 有什么用",
+        "返回值怎样变成退出码"
+      ],
+      "keywords": [
+        "SystemExit",
+        "main",
+        "退出码"
+      ],
+      "diagnostic": "文件末尾是否只是调用 main()，没有把返回值交给解释器？",
+      "hints": [
+        "入口使用 raise SystemExit(main())。",
+        "main 函数仍返回整数，便于单元测试。"
+      ],
+      "example": "系统接收到 0 或 1，测试可以直接调用 main。",
+      "answer": "SystemExit 把 main 返回值交给进程，同时保持业务函数可测试。",
+      "source": {
+        "label": "测试出问题时看这几处",
+        "href": "#troubleshoot-tests"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "project-v10",
+      "lesson_id": "python-basics-07",
+      "context_id": "project-v10",
+      "question": "报告器 v1.0 最终具备哪些能力？",
+      "aliases": [
+        "第七课给项目加了什么",
+        "Python 起步阶段作品完成了吗"
+      ],
+      "keywords": [
+        "项目",
+        "v1.0",
+        "14测试",
+        "错误出口"
+      ],
+      "diagnostic": "从 JSON 到报告的每层行为怎样被验证？",
+      "hints": [
+        "读取边界校验输入，入口处理已知错误。",
+        "14 项测试保护计算、文件、文字与退出码。"
+      ],
+      "example": "正常 0、输入错误 1、意外缺陷保留 traceback。",
+      "answer": "v1.0 是可运行、可排错、可回归的小型标准库项目，完成 Python 起步收口。",
+      "source": {
+        "label": "报告器 v1.0",
+        "href": "#project-v10"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "test-contract",
+      "lesson_id": "python-basics-07",
+      "context_id": "deepen-test-design",
+      "question": "测试到底应该保护什么？",
+      "aliases": [
+        "测试契约是什么意思",
+        "测试覆盖率越高越好吗"
+      ],
+      "keywords": [
+        "测试",
+        "契约",
+        "行为",
+        "覆盖"
+      ],
+      "diagnostic": "哪些外部可见行为在重构后必须保持？",
+      "hints": [
+        "固定报告、上限、UTF-8、输入只读和退出码。",
+        "测试之间还要互相独立。"
+      ],
+      "example": "重构内部模块时，相同输入仍生成相同报告。",
+      "answer": "优先保护可见契约和关键边界，不把代码行执行数量当成唯一目标。",
+      "source": {
+        "label": "测试的是契约，不是代码行数",
+        "href": "#deepen-test-design"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "career-debug-story",
+      "lesson_id": "python-basics-07",
+      "context_id": "career-debug-story",
+      "question": "面试时怎样讲一次真实修复？",
+      "aliases": [
+        "异常课怎么讲项目",
+        "调试经历怎么回答"
+      ],
+      "keywords": [
+        "求职",
+        "调试",
+        "修复",
+        "验证"
+      ],
+      "diagnostic": "能否说清现象、定位、修改和验证四部分？",
+      "hints": [
+        "先给最小输入和错误表现。",
+        "再说明边界判断、最小修复、红绿测试与完整回归。"
+      ],
+      "example": "用 150% 进度问题讲 calculate_progress 的修复。",
+      "answer": "用可复现证据讲判断过程，不只说最终改了哪一行。",
+      "source": {
+        "label": "怎样讲一次真实的修复",
+        "href": "#career-debug-story"
+      },
+      "updated_at": "2026-07-17"
+    }
   ]
 }

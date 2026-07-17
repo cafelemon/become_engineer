@@ -1,92 +1,39 @@
-[
-  {
-    "query": "怎么初始化 Git 仓库",
-    "step_id": "step-1",
-    "expected": "init"
-  },
-  {
-    "query": "git init 是什么",
-    "step_id": "step-1",
-    "expected": "init"
-  },
-  {
-    "query": "Git 练习用哪个目录",
-    "step_id": "step-1",
-    "expected": "temp"
-  },
-  {
-    "query": "不要在课程仓库练习吗",
-    "step_id": "step-1",
-    "expected": "temp"
-  },
-  {
-    "query": "Git 状态怎么看",
-    "step_id": "step-2",
-    "expected": "status"
-  },
-  {
-    "query": "未跟踪文件是什么",
-    "step_id": "step-2",
-    "expected": "status"
-  },
-  {
-    "query": "暂存区是什么",
-    "step_id": "step-3",
-    "expected": "add"
-  },
-  {
-    "query": "git add 有什么用",
-    "step_id": "step-3",
-    "expected": "add"
-  },
-  {
-    "query": "提交消息怎么写",
-    "step_id": "step-4",
-    "expected": "commit"
-  },
-  {
-    "query": "Git 怎么提交",
-    "step_id": "step-4",
-    "expected": "commit"
-  },
-  {
-    "query": "Git commit 身份错误",
-    "step_id": "step-4",
-    "expected": "identity"
-  },
-  {
-    "query": "user.name user.email 报错",
-    "step_id": "step-4",
-    "expected": "identity"
-  },
-  {
-    "query": "git log --oneline 有什么用",
-    "step_id": "step-5",
-    "expected": "log"
-  },
-  {
-    "query": "Git 历史怎么查",
-    "step_id": "step-5",
-    "expected": "log"
-  },
-  {
-    "query": "工作区暂存区历史区别",
-    "step_id": "step-5",
-    "expected": "areas"
-  },
-  {
-    "query": "Git 工作区和暂存区",
-    "step_id": "step-5",
-    "expected": "areas"
-  },
-  {
-    "query": "Windows 怎么下载 Git",
-    "step_id": "step-1",
-    "expected": "install"
-  },
-  {
-    "query": "日志文件怎么不提交",
-    "step_id": "step-2",
-    "expected": "gitignore"
-  }
-]
+{
+  "lesson_id": "engineering-foundation-06",
+  "cases": [
+    {"query": "git init 后是不是已经上传 GitHub", "context_id": "overview-local-history", "expected_card": "local-only"},
+    {"query": "为什么 git remote -v 什么都没有", "context_id": "overview-local-history", "expected_card": "local-only"},
+    {"query": "工作区暂存区和提交历史怎么区分", "context_id": "concept-three-places", "expected_card": "three-places"},
+    {"query": "暂存区到底有什么用", "context_id": "concept-three-places", "expected_card": "three-places"},
+    {"query": "status 里面两个问号什么意思", "context_id": "example-read-status", "expected_card": "status-symbols"},
+    {"query": "!! debug.log 代表什么", "context_id": "example-read-status", "expected_card": "status-symbols"},
+    {"query": "Windows 要去哪里下载 Git", "context_id": "reproduce-install-git", "expected_card": "install-version"},
+    {"query": "装完还是提示 git command not found", "context_id": "reproduce-install-git", "expected_card": "install-version"},
+    {"query": "怎么看自己现在操作的是哪个仓库", "context_id": "reproduce-initialize-workspace", "expected_card": "repo-root"},
+    {"query": "git status 出现了一堆陌生项目文件", "context_id": "reproduce-initialize-workspace", "expected_card": "repo-root"},
+    {"query": "git init -b main 是什么意思", "context_id": "reproduce-initialize-workspace", "expected_card": "init-main"},
+    {"query": "Git 不认识 init 的 -b 参数怎么办", "context_id": "reproduce-initialize-workspace", "expected_card": "init-main"},
+    {"query": "gitignore 一般要放哪些内容", "context_id": "concept-ignore-generated-files", "expected_card": "ignore-rules"},
+    {"query": "虚拟环境日志和 env 怎么不提交", "context_id": "concept-ignore-generated-files", "expected_card": "ignore-rules"},
+    {"query": "怎么查 debug.log 命中了哪条忽略规则", "context_id": "concept-ignore-generated-files", "expected_card": "check-ignore"},
+    {"query": "git check-ignore -v 是做什么的", "context_id": "concept-ignore-generated-files", "expected_card": "check-ignore"},
+    {"query": "提交提示 Author identity unknown", "context_id": "reproduce-first-commit", "expected_card": "identity"},
+    {"query": "user.name 和 user.email 要怎么配置", "context_id": "reproduce-first-commit", "expected_card": "identity"},
+    {"query": "git add 以后算不算已经提交", "context_id": "reproduce-first-commit", "expected_card": "add-commit"},
+    {"query": "怎么确认下次 commit 会包含什么", "context_id": "reproduce-first-commit", "expected_card": "add-commit"},
+    {"query": "为什么还要再做一次提交", "context_id": "modify-second-commit", "expected_card": "second-commit"},
+    {"query": "第二条提交说明应该怎么写", "context_id": "modify-second-commit", "expected_card": "second-commit"},
+    {"query": "不小心 git add 了 env 文件怎么办", "context_id": "troubleshoot-local-git", "expected_card": "staged-mistake"},
+    {"query": "怎么撤销刚才的 git add", "context_id": "troubleshoot-local-git", "expected_card": "staged-mistake"},
+    {"query": "写到 gitignore 里为什么文件还被跟踪", "context_id": "troubleshoot-local-git", "expected_card": "tracked-ignore"},
+    {"query": "已经 commit 的日志还能忽略吗", "context_id": "troubleshoot-local-git", "expected_card": "tracked-ignore"},
+    {"query": "一个文件为什么同时显示 staged 和 unstaged", "context_id": "deepen-staging-snapshot", "expected_card": "staging-snapshot"},
+    {"query": "git diff 和 git diff cached 有什么区别", "context_id": "deepen-staging-snapshot", "expected_card": "staging-snapshot"},
+    {"query": "本地 Git 课结束要保留什么", "context_id": "project-workspace-v06", "expected_card": "project-results"},
+    {"query": "下一课要继续用哪个仓库", "context_id": "project-workspace-v06", "expected_card": "project-results"}
+  ],
+  "unknown": [
+    "怎样给树莓派设置摄像头曝光参数",
+    "数据库事务的隔离级别该怎么选"
+  ]
+}

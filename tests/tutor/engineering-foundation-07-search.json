@@ -1,82 +1,49 @@
-[
-  {
-    "query": "python3 --version 报错",
-    "step_id": "step-1",
-    "expected": "version"
-  },
-  {
-    "query": "怎么查看 Python 版本",
-    "step_id": "step-1",
-    "expected": "version"
-  },
-  {
-    "query": "怎么找 Python 安装位置",
-    "step_id": "step-2",
-    "expected": "which"
-  },
-  {
-    "query": "Python 命令在哪里",
-    "step_id": "step-2",
-    "expected": "which"
-  },
-  {
-    "query": "PATH 和 Python 区别",
-    "step_id": "step-3",
-    "expected": "path"
-  },
-  {
-    "query": "PATH 有什么用",
-    "step_id": "step-3",
-    "expected": "path"
-  },
-  {
-    "query": "Python 文件为何不能运行",
-    "step_id": "step-4",
-    "expected": "interpreter"
-  },
-  {
-    "query": "解释器做什么",
-    "step_id": "step-4",
-    "expected": "interpreter"
-  },
-  {
-    "query": "项目代码和依赖区别",
-    "step_id": "step-4",
-    "expected": "dependency"
-  },
-  {
-    "query": "第三方库是什么",
-    "step_id": "step-4",
-    "expected": "dependency"
-  },
-  {
-    "query": "为什么项目要虚拟环境",
-    "step_id": "step-4",
-    "expected": "venv"
-  },
-  {
-    "query": "venv 是什么",
-    "step_id": "step-4",
-    "expected": "venv"
-  },
-  {
-    "query": "command not found 怎么办",
-    "step_id": "step-5",
-    "expected": "not-found"
-  },
-  {
-    "query": "Python 命令找不到",
-    "step_id": "step-5",
-    "expected": "not-found"
-  },
-  {
-    "query": "怎么记录开发环境",
-    "step_id": "step-5",
-    "expected": "record"
-  },
-  {
-    "query": "环境检查怎么写",
-    "step_id": "step-5",
-    "expected": "record"
-  }
-]
+{
+  "lesson_id": "engineering-foundation-07",
+  "cases": [
+    {"query":"开发环境是不是只指 Python","expected_card":"environment-parts"},
+    {"query":"同一份代码为什么换电脑不能跑","expected_card":"environment-parts"},
+    {"query":"GitHub 为什么没有把 Python 一起下载","expected_card":"clone-no-runtime"},
+    {"query":"clone 会不会带回虚拟环境","expected_card":"clone-no-runtime"},
+    {"query":"Python 和 requests 是一类东西吗","expected_card":"interpreter-vs-dependency"},
+    {"query":"项目代码解释器依赖怎么区分","expected_card":"interpreter-vs-dependency"},
+    {"query":"PATH 是 Python 的安装目录吗","expected_card":"path-search"},
+    {"query":"为什么同名 Python 会运行不同版本","expected_card":"path-search"},
+    {"query":"Python 去哪里下载才安全","expected_card":"install-python"},
+    {"query":"Windows 怎么安装 Python","expected_card":"install-python"},
+    {"query":"python 和 python3 为什么结果不同","expected_card":"version-command"},
+    {"query":"Windows 为什么推荐 python 命令","expected_card":"version-command"},
+    {"query":"如何查看 Python 可执行文件位置","expected_card":"locate-command"},
+    {"query":"Get-Command 和 command -v 是做什么的","expected_card":"locate-command"},
+    {"query":"Python 3.10 能不能继续学","expected_card":"python-baseline"},
+    {"query":"为什么要求 Python 3.11 以上","expected_card":"python-baseline"},
+    {"query":"venv 解决什么问题","expected_card":"venv-purpose"},
+    {"query":"不同项目的 Python 包为什么要隔离","expected_card":"venv-purpose"},
+    {"query":"python -m venv .venv 是什么意思","expected_card":"create-venv"},
+    {"query":"虚拟环境应该建在哪个目录","expected_card":"create-venv"},
+    {"query":"sys.prefix 不等于 sys.base_prefix 说明什么","expected_card":"verify-venv"},
+    {"query":"虚拟环境创建后怎么验证","expected_card":"verify-venv"},
+    {"query":"pip 会不会把包装错环境","expected_card":"python-m-pip"},
+    {"query":"怎么确认 pip 属于当前 Python","expected_card":"python-m-pip"},
+    {"query":"不 activate 能不能运行 .venv","expected_card":"activation"},
+    {"query":"激活虚拟环境到底改了什么","expected_card":"activation"},
+    {"query":"environment-check.md 怎么写","expected_card":"write-note"},
+    {"query":"怎么让别人看懂我的开发环境","expected_card":"write-note"},
+    {"query":"git status 里出现 .venv 怎么办","expected_card":"ignore-venv"},
+    {"query":"虚拟环境要不要 push 到 GitHub","expected_card":"ignore-venv"},
+    {"query":"终端找不到 python3","expected_card":"command-not-found"},
+    {"query":"安装 Python 后命令还是不可用","expected_card":"command-not-found"},
+    {"query":"python 版本不对怎么查","expected_card":"wrong-version"},
+    {"query":"装了 3.13 还是运行 3.10","expected_card":"wrong-version"},
+    {"query":"虚拟环境激活被执行策略阻止","expected_card":"activation-policy"},
+    {"query":"Activate.ps1 cannot be loaded","expected_card":"activation-policy"},
+    {"query":"如何确认 Python 最终运行的是谁","expected_card":"sys-executable"},
+    {"query":"sys.prefix 和 base_prefix 怎么看","expected_card":"sys-executable"},
+    {"query":"工程学习工作台 v0.8 保存什么","expected_card":"project-v08"},
+    {"query":"开发环境检查怎样提交才安全","expected_card":"project-v08"}
+  ],
+  "unknown": [
+    "怎样给单片机烧录固件",
+    "怎样搭建家庭水族箱"
+  ]
+}

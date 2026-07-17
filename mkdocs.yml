@@ -49,6 +49,8 @@ extra_css:
 extra_javascript:
   - javascripts/tutor-search.js
   - javascripts/tutor.js
+  - javascripts/python-runner.js
+  - javascripts/cs-trace.js
   - javascripts/personalization-core.js
   - javascripts/personalization.js
 

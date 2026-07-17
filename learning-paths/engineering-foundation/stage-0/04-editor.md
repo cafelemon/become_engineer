@@ -4,7 +4,7 @@
 
 <span class="be-page-eyebrow">工程基础入门 · 第四课</span>
 
-# VS Code 编辑器
+# 编辑器：从安装 VS Code 开始
 
 ## 同一份记录，从三个地方都能找到
 
@@ -37,7 +37,7 @@
 
 <figure class="be-editor-figure">
   <div class="be-editor-shot">
-    <img src="../../../assets/course/engineering-foundation/vscode-workspace.jpeg" alt="VS Code 工作区实拍图：左侧显示完整文件树，中间打开学习记录，下方终端读取保存后的同一文件。">
+    <img src="../../../../assets/course/engineering-foundation/vscode-workspace.jpeg" alt="VS Code 工作区实拍图：左侧显示完整文件树，中间打开学习记录，下方终端读取保存后的同一文件。">
     <span class="be-editor-shot__callout" data-callout="explorer">1 文件树</span>
     <span class="be-editor-shot__callout" data-callout="editor">2 编辑区</span>
     <span class="be-editor-shot__callout" data-callout="terminal">3 内置终端</span>

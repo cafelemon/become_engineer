@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "records": [
+    {
+      "course": "Python 起步",
+      "target_hours": 5,
+      "finished_hours": 3,
+      "tags": ["Python", "起步", "工具"]
+    },
+    {
+      "course": "复盘练习",
+      "target_hours": 2,
+      "finished_hours": 2,
+      "tags": ["Python", "复盘"]
+    },
+    {
+      "course": "Git 复习",
+      "target_hours": 3,
+      "finished_hours": 3,
+      "tags": ["工具", "复盘"]
+    }
+  ]
+}

@@ -1,3 +1,193 @@
-[
-  {"query":"模块怎么拆","step_id":"step-1","expected":"module-boundary"},{"query":"四个文件做什么","step_id":"step-1","expected":"module-boundary"},{"query":"两种导入区别","step_id":"step-2","expected":"import-style"},{"query":"import怎么写","step_id":"step-2","expected":"import-style"},{"query":"模块找不到","step_id":"step-2","expected":"module-not-found"},{"query":"导入本地文件失败","step_id":"step-2","expected":"module-not-found"},{"query":"导入就执行了","step_id":"step-3","expected":"main-guard"},{"query":"main guard有什么用","step_id":"step-3","expected":"main-guard"},{"query":"导入副作用检查","step_id":"step-3","expected":"import-side-effect"},{"query":"import main没有输出","step_id":"step-3","expected":"import-side-effect"},{"query":"json被遮蔽","step_id":"step-4","expected":"standard-library-shadow"},{"query":"json模块不对","step_id":"step-4","expected":"standard-library-shadow"},{"query":"venv是否生效","step_id":"step-4","expected":"venv-interpreter"},{"query":"当前python在哪","step_id":"step-4","expected":"venv-interpreter"},{"query":"venv要提交吗","step_id":"step-5","expected":"venv-gitignore"},{"query":"虚拟环境gitignore","step_id":"step-5","expected":"venv-gitignore"}
-]
+{
+  "lesson_id": "python-basics-06",
+  "cases": [
+    {
+      "query": "报告器 v0.6 增加什么",
+      "expected_card": "module-result"
+    },
+    {
+      "query": "第六课项目结果是什么",
+      "expected_card": "module-result"
+    },
+    {
+      "query": "模块怎么拆",
+      "expected_card": "module-boundary"
+    },
+    {
+      "query": "四个文件做什么",
+      "expected_card": "module-boundary"
+    },
+    {
+      "query": "一个函数一个模块吗",
+      "expected_card": "not-function-per-file"
+    },
+    {
+      "query": "模块越小越好吗",
+      "expected_card": "not-function-per-file"
+    },
+    {
+      "query": "两种导入区别",
+      "expected_card": "import-style"
+    },
+    {
+      "query": "import 怎么写",
+      "expected_card": "import-style"
+    },
+    {
+      "query": "import * 有什么问题",
+      "expected_card": "no-star-import"
+    },
+    {
+      "query": "星号导入为什么不好",
+      "expected_card": "no-star-import"
+    },
+    {
+      "query": "模块找不到就 pip install 吗",
+      "expected_card": "module-source"
+    },
+    {
+      "query": "标准库本地模块第三方怎么区分",
+      "expected_card": "module-source"
+    },
+    {
+      "query": "导入为什么会执行代码",
+      "expected_card": "import-top-level"
+    },
+    {
+      "query": "模块顶层什么时候运行",
+      "expected_card": "import-top-level"
+    },
+    {
+      "query": "if name main 有什么用",
+      "expected_card": "main-guard"
+    },
+    {
+      "query": "为什么 import main 不应启动",
+      "expected_card": "main-guard"
+    },
+    {
+      "query": "导入副作用怎么检查",
+      "expected_card": "import-side-effect"
+    },
+    {
+      "query": "import main 没有输出怎么测",
+      "expected_card": "import-side-effect"
+    },
+    {
+      "query": "第六课代码怎么跑",
+      "expected_card": "reproduce-v06"
+    },
+    {
+      "query": "v0.6 目录怎么放",
+      "expected_card": "reproduce-v06"
+    },
+    {
+      "query": "从别的目录运行为什么还能找到数据",
+      "expected_card": "project-root-file"
+    },
+    {
+      "query": "cwd 和 __file__ 怎么选",
+      "expected_card": "project-root-file"
+    },
+    {
+      "query": "模块课主动修改什么",
+      "expected_card": "active-find-json"
+    },
+    {
+      "query": "find_json_files 放哪里",
+      "expected_card": "active-find-json"
+    },
+    {
+      "query": "标准库项目需要 venv 吗",
+      "expected_card": "venv-purpose"
+    },
+    {
+      "query": "venv 到底隔离什么",
+      "expected_card": "venv-purpose"
+    },
+    {
+      "query": "python venv 怎么用",
+      "expected_card": "venv-create"
+    },
+    {
+      "query": "deactivate 是什么",
+      "expected_card": "venv-create"
+    },
+    {
+      "query": "venv 是否生效",
+      "expected_card": "venv-interpreter"
+    },
+    {
+      "query": "当前 python 在哪里",
+      "expected_card": "venv-interpreter"
+    },
+    {
+      "query": "必须 activate 才能用 venv 吗",
+      "expected_card": "venv-activation"
+    },
+    {
+      "query": "自动化脚本怎么选 python",
+      "expected_card": "venv-activation"
+    },
+    {
+      "query": "导入本地文件失败",
+      "expected_card": "module-not-found"
+    },
+    {
+      "query": "analysis 模块找不到",
+      "expected_card": "module-not-found"
+    },
+    {
+      "query": "json 被遮蔽",
+      "expected_card": "standard-library-shadow"
+    },
+    {
+      "query": "json 模块来源不对",
+      "expected_card": "standard-library-shadow"
+    },
+    {
+      "query": "循环导入怎么解决",
+      "expected_card": "circular-import"
+    },
+    {
+      "query": "两个模块互相 import",
+      "expected_card": "circular-import"
+    },
+    {
+      "query": "venv 要提交吗",
+      "expected_card": "venv-gitignore"
+    },
+    {
+      "query": "虚拟环境 gitignore",
+      "expected_card": "venv-gitignore"
+    },
+    {
+      "query": "第六课给项目加了什么",
+      "expected_card": "project-v06"
+    },
+    {
+      "query": "v0.6 项目变化",
+      "expected_card": "project-v06"
+    },
+    {
+      "query": "模块互相导入有什么问题",
+      "expected_card": "dependency-direction"
+    },
+    {
+      "query": "依赖方向怎么设计",
+      "expected_card": "dependency-direction"
+    },
+    {
+      "query": "模块课怎么讲项目",
+      "expected_card": "career-module-story"
+    },
+    {
+      "query": "为什么拆模块怎么回答",
+      "expected_card": "career-module-story"
+    }
+  ],
+  "unknown": [
+    "猫为什么总爱钻纸箱",
+    "怎样烤一块不塌的戚风蛋糕"
+  ]
+}

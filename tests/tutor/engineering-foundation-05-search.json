@@ -1,82 +1,32 @@
-[
-  {
-    "query": "一级二级标题怎么写",
-    "step_id": "step-1",
-    "expected": "heading"
-  },
-  {
-    "query": "井号标题怎么用",
-    "step_id": "step-1",
-    "expected": "heading"
-  },
-  {
-    "query": "Markdown 能有多个一级标题吗",
-    "step_id": "step-1",
-    "expected": "one-h1"
-  },
-  {
-    "query": "一个文档几个 H1",
-    "step_id": "step-1",
-    "expected": "one-h1"
-  },
-  {
-    "query": "无序有序列表区别",
-    "step_id": "step-2",
-    "expected": "list"
-  },
-  {
-    "query": "列表语法是什么",
-    "step_id": "step-2",
-    "expected": "list"
-  },
-  {
-    "query": "相对链接打不开怎么办",
-    "step_id": "step-3",
-    "expected": "link"
-  },
-  {
-    "query": "链接语法是什么",
-    "step_id": "step-3",
-    "expected": "link"
-  },
-  {
-    "query": "三个反引号有什么用",
-    "step_id": "step-4",
-    "expected": "code"
-  },
-  {
-    "query": "命令怎么写进 Markdown",
-    "step_id": "step-4",
-    "expected": "code"
-  },
-  {
-    "query": "表格第二行横线为什么",
-    "step_id": "step-5",
-    "expected": "table"
-  },
-  {
-    "query": "表格语法是什么",
-    "step_id": "step-5",
-    "expected": "table"
-  },
-  {
-    "query": "Markdown 怎么预览",
-    "step_id": "step-4",
-    "expected": "preview"
-  },
-  {
-    "query": "Markdown 渲染是什么",
-    "step_id": "step-4",
-    "expected": "preview"
-  },
-  {
-    "query": "学习记录 Markdown 验收",
-    "step_id": "step-5",
-    "expected": "readable"
-  },
-  {
-    "query": "文档如何验收",
-    "step_id": "step-5",
-    "expected": "readable"
-  }
-]
+{
+  "lesson_id": "engineering-foundation-05",
+  "cases": [
+    {"query": "Markdown 源文本和预览是什么关系？", "expected_card": "ef05-source-preview"},
+    {"query": "预览是不是另一份文件", "expected_card": "ef05-source-preview"},
+    {"query": "预览已经变了，为什么终端还读到旧内容？", "expected_card": "ef05-saved-source"},
+    {"query": "Markdown预览和终端不一样", "expected_card": "ef05-saved-source"},
+    {"query": "Markdown 一级和二级标题怎么写？", "expected_card": "ef05-headings"},
+    {"query": "一个文档要写几个一级标题", "expected_card": "ef05-headings"},
+    {"query": "什么时候用有序列表，什么时候用无序列表？", "expected_card": "ef05-lists"},
+    {"query": "减号和数字列表有什么区别", "expected_card": "ef05-lists"},
+    {"query": "从 notes 里的文件怎样链接到 practice？", "expected_card": "ef05-relative-link"},
+    {"query": "Markdown链接点开找不到 README", "expected_card": "ef05-relative-link"},
+    {"query": "命令和输出怎样写进 Markdown 代码块？", "expected_card": "ef05-code-fence"},
+    {"query": "三个反引号有什么用", "expected_card": "ef05-code-fence"},
+    {"query": "为什么 Markdown 表格第二行要写横线？", "expected_card": "ef05-gfm-table"},
+    {"query": "表格在别的平台不显示怎么办", "expected_card": "ef05-gfm-table"},
+    {"query": "整理学习记录前为什么要留一份备份？", "expected_card": "ef05-backup-restructure"},
+    {"query": "重写文档怕丢内容怎么办", "expected_card": "ef05-backup-restructure"},
+    {"query": "VS Code 怎样在旁边打开 Markdown 预览？", "expected_card": "ef05-vscode-preview"},
+    {"query": "怎么一边写一边看效果", "expected_card": "ef05-vscode-preview"},
+    {"query": "模板里的哪些内容必须换成我自己的？", "expected_card": "ef05-personalize"},
+    {"query": "怎么判断记录是真实的", "expected_card": "ef05-personalize"},
+    {"query": "为什么后面整页都变成代码样式？", "expected_card": "ef05-unclosed-fence"},
+    {"query": "页面突然全变灰了", "expected_card": "ef05-unclosed-fence"},
+    {"query": "为什么同一份 Markdown 在不同平台显示不一样？", "expected_card": "ef05-portability"},
+    {"query": "CommonMark和GFM有什么区别", "expected_card": "ef05-portability"},
+    {"query": "这份 Markdown 记录下一课会怎样继续？", "expected_card": "ef05-project-v05"},
+    {"query": "Markdown和Git怎么接起来", "expected_card": "ef05-project-v05"}
+  ],
+  "unknown": ["量子纠缠的实验怎么做", "帮我预测明天股票价格"]
+}

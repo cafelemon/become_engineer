@@ -1,263 +1,183 @@
 {
-  "version": 1,
   "lesson": {
     "id": "engineering-foundation-04",
-    "title": "编辑器",
+    "title": "编辑器：从安装 VS Code 开始",
     "path": "learning-paths/engineering-foundation/stage-0/04-editor/"
   },
-  "steps": [
-    {
-      "id": "step-1",
-      "title": "打开根目录"
-    },
-    {
-      "id": "step-2",
-      "title": "定位文件"
-    },
-    {
-      "id": "step-3",
-      "title": "修改保存"
-    },
-    {
-      "id": "step-4",
-      "title": "搜索验证"
-    },
-    {
-      "id": "step-5",
-      "title": "内置终端迁移"
-    }
+  "contexts": [
+    {"id": "overview-editor-result", "type": "overview", "title": "三个地方看到同一份内容", "anchor": "#overview-editor-result"},
+    {"id": "concept-editor-layout", "type": "concept", "title": "工作区和四个界面区域", "anchor": "#concept-editor-layout"},
+    {"id": "reproduce-install-vscode", "type": "reproduce", "title": "安装并打开 VS Code", "anchor": "#reproduce-install-vscode"},
+    {"id": "reproduce-open-workspace", "type": "reproduce", "title": "打开完整工作区", "anchor": "#reproduce-open-workspace"},
+    {"id": "example-save-file", "type": "example", "title": "修改、保存与重新打开", "anchor": "#example-save-file"},
+    {"id": "modify-search-and-read", "type": "modify", "title": "搜索和终端复核", "anchor": "#modify-search-and-read"},
+    {"id": "troubleshoot-editor-workspace", "type": "troubleshoot", "title": "从常见现象恢复", "anchor": "#troubleshoot-editor-workspace"},
+    {"id": "project-workspace-v04", "type": "project", "title": "工程学习工作台 v0.4", "anchor": "#project-workspace-v04"}
   ],
   "cards": [
     {
-      "id": "folder",
+      "id": "ef04-three-views",
       "lesson_id": "engineering-foundation-04",
-      "step_id": "step-1",
-      "question": "为何打开项目文件夹",
-      "aliases": [
-        "打开文件还是文件夹",
-        "编辑器打开根目录"
-      ],
-      "keywords": [
-        "打开文件夹",
-        "项目根目录",
-        "文件树",
-        "编辑器"
-      ],
-      "diagnostic": "当前任务是“选择“打开文件夹/打开目录”，打开学习工作区而不是单个文件。”。处理“为何打开项目文件夹”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：选择“打开文件夹/打开目录”，打开学习工作区而不是单个文件。",
-        "本步成功证据是：文件树能显示 `notes`、`practice` 和 `assets`。 打开根目录能保留文件树、搜索范围和相对路径上下文。"
-      ],
-      "example": "局部检查示例：文件树能显示 `notes`、`practice` 和 `assets`。",
-      "answer": "打开根目录能保留文件树、搜索范围和相对路径上下文。",
-      "source": {
-        "label": "打开根目录",
-        "href": "#step-1"
-      },
-      "updated_at": "2026-07-15",
+      "context_id": "overview-editor-result",
+      "question": "学完这节，我应该在屏幕上看到什么？",
+      "aliases": ["编辑器练习做到什么算完成", "为什么要从三个地方找同一个关键词"],
+      "keywords": ["保存", "搜索", "终端", "同一文件", "关键词"],
+      "diagnostic": "编辑区、工作区搜索和终端输出，现在有几个地方能看见你的关键词？",
+      "hints": ["先确认文件标签上没有未保存圆点。", "再让搜索结果和终端输出都指向 notes/learning-log.md。"],
+      "example": "在记录里加入 FIRST-SAVE-小码，保存后用工作区搜索和 Get-Content 或 cat 找到它。",
+      "answer": "保存后的文件仍有新内容，工作区搜索命中正确文件，内置终端也读出相同关键词；三处路径与内容一致。",
+      "source": {"label": "三个地方看到同一份内容", "href": "#overview-editor-result"},
+      "updated_at": "2026-07-17",
       "recommended": true
     },
     {
-      "id": "tree",
+      "id": "ef04-workspace-folder",
       "lesson_id": "engineering-foundation-04",
-      "step_id": "step-2",
-      "question": "文件树有什么用",
-      "aliases": [
-        "怎么在编辑器找文件",
-        "文件树如何定位"
-      ],
-      "keywords": [
-        "文件树",
-        "定位",
-        "目录",
-        "文件"
-      ],
-      "diagnostic": "当前任务是“展开 `notes` 并打开 `learning-log.md`。”。处理“文件树有什么用”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：展开 `notes` 并打开 `learning-log.md`。",
-        "本步成功证据是：标签页显示正确文件，文件树中也能定位它。 文件树按目录层级定位项目文件，例如 notes/learning-log.md。"
-      ],
-      "example": "局部检查示例：标签页显示正确文件，文件树中也能定位它。",
-      "answer": "文件树按目录层级定位项目文件，例如 notes/learning-log.md。",
-      "source": {
-        "label": "定位文件",
-        "href": "#step-2"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
-    },
-    {
-      "id": "tabs",
-      "lesson_id": "engineering-foundation-04",
-      "step_id": "step-2",
-      "question": "标签页和文件树区别",
-      "aliases": [
-        "编辑器标签页是什么",
-        "关闭标签会删文件吗"
-      ],
-      "keywords": [
-        "标签页",
-        "文件树",
-        "打开",
-        "切换"
-      ],
-      "diagnostic": "当前任务是“展开 `notes` 并打开 `learning-log.md`。”。处理“标签页和文件树区别”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：展开 `notes` 并打开 `learning-log.md`。",
-        "本步成功证据是：标签页显示正确文件，文件树中也能定位它。 文件树显示项目条目，标签页用于切换已打开文件；关闭标签不会删除文件。"
-      ],
-      "example": "局部检查示例：标签页显示正确文件，文件树中也能定位它。",
-      "answer": "文件树显示项目条目，标签页用于切换已打开文件；关闭标签不会删除文件。",
-      "source": {
-        "label": "定位文件",
-        "href": "#step-2"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
-    },
-    {
-      "id": "save",
-      "lesson_id": "engineering-foundation-04",
-      "step_id": "step-3",
-      "question": "为何修改后保存",
-      "aliases": [
-        "编辑器怎么确认保存",
-        "保存后怎么验证"
-      ],
-      "keywords": [
-        "保存",
-        "修改",
-        "圆点",
-        "磁盘"
-      ],
-      "diagnostic": "当前任务是“在学习记录追加一行结果，保存后关闭再打开确认内容仍在。”。处理“为何修改后保存”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：在学习记录追加一行结果，保存后关闭再打开确认内容仍在。",
-        "本步成功证据是：未保存标记消失，重新打开仍能看到新内容。 保存才会把屏幕修改写入磁盘；关闭重开可验证保存。"
-      ],
-      "example": "局部检查示例：未保存标记消失，重新打开仍能看到新内容。",
-      "answer": "保存才会把屏幕修改写入磁盘；关闭重开可验证保存。",
-      "source": {
-        "label": "修改保存",
-        "href": "#step-3"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
-    },
-    {
-      "id": "search",
-      "lesson_id": "engineering-foundation-04",
-      "step_id": "step-4",
-      "question": "怎样搜索整个工作区",
-      "aliases": [
-        "编辑器搜索没结果",
-        "搜索所有文件"
-      ],
-      "keywords": [
-        "搜索",
-        "工作区",
-        "关键词",
-        "保存"
-      ],
-      "diagnostic": "当前任务是“在工作区搜索“目标”或你写下的关键词，确认搜索范围。”。处理“怎样搜索整个工作区”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：在工作区搜索“目标”或你写下的关键词，确认搜索范围。",
-        "本步成功证据是：能说出搜索结果来自哪个文件。 使用工作区搜索；没有结果时检查拼写、保存状态和打开目录。"
-      ],
-      "example": "局部检查示例：能说出搜索结果来自哪个文件。",
-      "answer": "使用工作区搜索；没有结果时检查拼写、保存状态和打开目录。",
-      "source": {
-        "label": "搜索验证",
-        "href": "#step-4"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
-    },
-    {
-      "id": "terminal",
-      "lesson_id": "engineering-foundation-04",
-      "step_id": "step-5",
-      "question": "内置终端有什么用",
-      "aliases": [
-        "编辑器终端和系统终端一样吗",
-        "编辑器终端在哪"
-      ],
-      "keywords": [
-        "内置终端",
-        "终端",
-        "项目根目录",
-        "命令"
-      ],
-      "diagnostic": "当前任务是“打开编辑器内置终端，执行目录查看命令确认刚才保存的文件。”。处理“内置终端有什么用”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：打开编辑器内置终端，执行目录查看命令确认刚才保存的文件。",
-        "本步成功证据是：编辑器和终端看到的是同一工作区。 内置终端仍需先用 pwd 和 ls 确认实际当前目录。"
-      ],
-      "example": "局部检查示例：编辑器和终端看到的是同一工作区。",
-      "answer": "内置终端仍需先用 pwd 和 ls 确认实际当前目录。",
-      "source": {
-        "label": "内置终端迁移",
-        "href": "#step-5"
-      },
-      "updated_at": "2026-07-15",
+      "context_id": "concept-editor-layout",
+      "question": "工作区和单独打开一个文件有什么区别？",
+      "aliases": ["为什么要打开整个文件夹", "只双击 learning-log 不行吗"],
+      "keywords": ["工作区", "文件夹", "单个文件", "文件树", "项目根目录"],
+      "diagnostic": "左侧文件树顶部现在显示哪个名字？",
+      "hints": ["打开整个文件夹时，文件树会显示项目的完整结构。", "只打开单个文件时，旁边的目录、相对路径和项目设置都不容易对上。"],
+      "example": "打开 learning-workspace 后应同时看到 notes、practice 和 assets。",
+      "answer": "这节课的工作区是整个 learning-workspace 文件夹；单个文件只是其中一项内容。打开工作区后，文件树、搜索范围和终端位置才容易保持一致。",
+      "source": {"label": "工作区和四个界面区域", "href": "#concept-editor-layout"},
+      "updated_at": "2026-07-17",
       "recommended": true
     },
     {
-      "id": "wrong",
+      "id": "ef04-interface-areas",
       "lesson_id": "engineering-foundation-04",
-      "step_id": "step-1",
-      "question": "文件树为空怎么办",
-      "aliases": [
-        "打开错目录怎么办",
-        "编辑器没有文件"
-      ],
-      "keywords": [
-        "文件树",
-        "空",
-        "目录",
-        "项目根目录"
-      ],
-      "diagnostic": "当前任务是“选择“打开文件夹/打开目录”，打开学习工作区而不是单个文件。”。处理“文件树为空怎么办”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：选择“打开文件夹/打开目录”，打开学习工作区而不是单个文件。",
-        "本步成功证据是：文件树能显示 `notes`、`practice` 和 `assets`。 重新打开包含 notes、practice、assets 的工作区父目录。"
-      ],
-      "example": "局部检查示例：文件树能显示 `notes`、`practice` 和 `assets`。",
-      "answer": "重新打开包含 notes、practice、assets 的工作区父目录。",
-      "source": {
-        "label": "打开根目录",
-        "href": "#step-1"
-      },
-      "updated_at": "2026-07-15",
+      "context_id": "concept-editor-layout",
+      "question": "文件树、编辑区和内置终端分别做什么？",
+      "aliases": ["VS Code界面怎么看", "左边中间下面三块是什么"],
+      "keywords": ["文件树", "编辑区", "终端", "标签", "界面"],
+      "diagnostic": "你现在是找不到文件、想改内容，还是想运行命令？",
+      "hints": ["找文件看左侧文件树，改内容看中间编辑区。", "运行和复核命令用下方终端；标签上的圆点提醒你内容还没保存。"],
+      "example": "左侧打开 notes/learning-log.md，中间修改一行，下方终端用 cat 或 Get-Content 读取。",
+      "answer": "文件树负责定位真实文件，编辑区负责阅读和修改，文件标签帮助切换并显示保存状态，内置终端负责执行命令和复核磁盘内容。",
+      "source": {"label": "工作区和四个界面区域", "href": "#concept-editor-layout"},
+      "updated_at": "2026-07-17",
       "recommended": true
     },
     {
-      "id": "verify",
+      "id": "ef04-install-open",
       "lesson_id": "engineering-foundation-04",
-      "step_id": "step-5",
-      "question": "终端看不到保存文件",
-      "aliases": [
-        "编辑器终端找不到文件",
-        "编辑器终端如何验证"
-      ],
-      "keywords": [
-        "终端",
-        "保存",
-        "目录",
-        "验证"
-      ],
-      "diagnostic": "当前任务是“打开编辑器内置终端，执行目录查看命令确认刚才保存的文件。”。处理“终端看不到保存文件”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：打开编辑器内置终端，执行目录查看命令确认刚才保存的文件。",
-        "本步成功证据是：编辑器和终端看到的是同一工作区。 先在文件树和终端分别确认路径，再用 ls 检查同一工作区。"
-      ],
-      "example": "局部检查示例：编辑器和终端看到的是同一工作区。",
-      "answer": "先在文件树和终端分别确认路径，再用 ls 检查同一工作区。",
-      "source": {
-        "label": "内置终端迁移",
-        "href": "#step-5"
-      },
-      "updated_at": "2026-07-15",
+      "context_id": "reproduce-install-vscode",
+      "question": "安装以后在哪里找到 VS Code？",
+      "aliases": ["VS Code安装完怎么打开", "找不到 Visual Studio Code"],
+      "keywords": ["安装", "打开", "Windows键", "Spotlight", "应用程序"],
+      "diagnostic": "安装程序已经正常完成了吗？你使用 Windows、macOS 还是 Linux？",
+      "hints": ["Windows 从开始菜单搜索，macOS 按 Command+Space 搜索。", "看到左侧活动栏和中间欢迎页就可以，暂时不用安装扩展。"],
+      "example": "macOS 按 Command+Space，输入 Visual Studio Code，再按 Return。",
+      "answer": "Windows 从开始菜单搜索 Visual Studio Code；macOS 从 Spotlight 或应用程序目录打开；Linux 从应用列表打开。安装包只从 VS Code 官方页面获取。",
+      "source": {"label": "安装并打开 VS Code", "href": "#reproduce-install-vscode"},
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "ef04-workspace-trust",
+      "lesson_id": "engineering-foundation-04",
+      "context_id": "reproduce-open-workspace",
+      "question": "VS Code 问我是否信任这个文件夹，应该怎么选？",
+      "aliases": ["Restricted Mode 是什么", "工作区信任可以随便点吗"],
+      "keywords": ["信任", "Restricted Mode", "陌生项目", "安全", "工作区"],
+      "diagnostic": "这个目录是你自己创建的，还是从陌生来源下载或收到的？",
+      "hints": ["自己在前几课创建的 learning-workspace 可以确认信任。", "陌生项目先保持 Restricted Mode，确认来源和内容后再决定是否允许运行代码、任务或终端。"],
+      "example": "自己创建的练习目录可信任；刚从陌生压缩包解出的项目先不要运行命令。",
+      "answer": "信任意味着允许 VS Code 和扩展使用更多可能执行代码的功能。只信任自己创建或已经核查来源的目录；不确定时先保持 Restricted Mode。",
+      "source": {"label": "打开完整工作区", "href": "#reproduce-open-workspace"},
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "ef04-open-root",
+      "lesson_id": "engineering-foundation-04",
+      "context_id": "reproduce-open-workspace",
+      "question": "怎样确认我打开的是正确目录？",
+      "aliases": ["我是不是打开错文件夹了", "文件树为什么少了目录"],
+      "keywords": ["根目录", "打开目录", "notes", "practice", "assets"],
+      "diagnostic": "左侧文件树最上方的目录名是什么？",
+      "hints": ["正确的根目录名是 learning-workspace。", "它下面应该同时有 notes、practice 和 assets；只看见 notes 里的内容说明打开深了一层。"],
+      "example": "如果根目录显示 notes，重新选择 Open Folder，打开它的父目录 learning-workspace。",
+      "answer": "文件树顶部显示 learning-workspace，并且三个子目录同时可见，就说明打开层级正确。",
+      "source": {"label": "打开完整工作区", "href": "#reproduce-open-workspace"},
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "ef04-save-state",
+      "lesson_id": "engineering-foundation-04",
+      "context_id": "example-save-file",
+      "question": "怎么判断文件到底保存了没有？",
+      "aliases": ["标签页圆点是什么意思", "改了文件为什么终端看不到"],
+      "keywords": ["保存", "圆点", "标签", "磁盘", "重新打开"],
+      "diagnostic": "文件标签上还有圆点吗？关闭再打开后，新内容还在吗？",
+      "hints": ["屏幕上的文字已经变化，不代表磁盘文件已经变化。", "按 Ctrl/Command+S 后关闭并重新打开；新内容仍在，才确认保存成功。"],
+      "example": "保存后圆点消失，重新打开仍能看到 FIRST-SAVE-小码。",
+      "answer": "圆点消失说明执行了保存；重新打开文件或从终端读到新内容，能进一步确认修改已经写进磁盘。",
+      "source": {"label": "修改、保存与重新打开", "href": "#example-save-file"},
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "ef04-workspace-search",
+      "lesson_id": "engineering-foundation-04",
+      "context_id": "modify-search-and-read",
+      "question": "怎么在整个工作区搜索我写的内容？",
+      "aliases": ["搜索只找到当前文件怎么办", "左侧放大镜怎么用"],
+      "keywords": ["搜索", "工作区", "关键词", "Ctrl Shift F", "Command Shift F"],
+      "diagnostic": "你打开的是左侧工作区搜索，还是当前文件里的查找框？",
+      "hints": ["点击左侧放大镜，或按 Ctrl/Command+Shift+F。", "使用独特关键词，并核对结果路径是不是 notes/learning-log.md。"],
+      "example": "搜索 FIRST-SAVE-小码，结果应列出 notes/learning-log.md 和对应行。",
+      "answer": "使用左侧工作区搜索，输入独特关键词，再核对命中文件和行号。当前文件查找只检查正在打开的一个文件。",
+      "source": {"label": "搜索和终端复核", "href": "#modify-search-and-read"},
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "ef04-terminal-location",
+      "lesson_id": "engineering-foundation-04",
+      "context_id": "modify-search-and-read",
+      "question": "内置终端为什么找不到刚才的文件？",
+      "aliases": ["终端和编辑器目录不一致", "cat 或 Get-Content 提示文件不存在"],
+      "keywords": ["内置终端", "当前位置", "pwd", "Get-Location", "相对路径"],
+      "diagnostic": "先运行 pwd 或 Get-Location，终端现在位于哪个目录？",
+      "hints": ["接着列出当前目录，确认是否有 notes、practice 和 assets。", "如果不在 learning-workspace，先切换过去；再确认文件已经保存。"],
+      "example": "Get-Location → Get-ChildItem -Name → Get-Content notes\\learning-log.md。",
+      "answer": "内置终端仍按自己的当前位置解释相对路径。先确认位置，必要时切换到项目根目录，再检查文件保存状态和真实名称。",
+      "source": {"label": "搜索和终端复核", "href": "#modify-search-and-read"},
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "ef04-troubleshoot-order",
+      "lesson_id": "engineering-foundation-04",
+      "context_id": "troubleshoot-editor-workspace",
+      "question": "编辑器里找不到新内容，应该先查什么？",
+      "aliases": ["VS Code排错顺序", "搜索和终端都找不到刚写的内容"],
+      "keywords": ["排错", "打开错目录", "未保存", "搜索范围", "终端位置"],
+      "diagnostic": "你是在文件树、工作区搜索，还是终端里找不到？",
+      "hints": ["先看文件树根目录名和文件标签圆点。", "这两项正确，再检查搜索范围和终端当前位置；一次只改变一个条件。"],
+      "example": "根目录正确 → 圆点消失 → 搜索命中 → Get-Location 正确 → 终端读取。",
+      "answer": "按打开层级、保存状态、搜索范围、终端位置依次检查。每次只修一个条件，才能知道问题究竟来自哪里。",
+      "source": {"label": "从常见现象恢复", "href": "#troubleshoot-editor-workspace"},
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "ef04-project-v04",
+      "lesson_id": "engineering-foundation-04",
+      "context_id": "project-workspace-v04",
+      "question": "这个编辑器练习以后还会用到吗？",
+      "aliases": ["学 VS Code 对后面有什么用", "learning-workspace 后面还保留吗"],
+      "keywords": ["项目", "工作区", "后续课程", "Python", "Markdown"],
+      "diagnostic": "下一课准备继续修改哪一份文件？",
+      "hints": ["learning-workspace 会继续放文档、代码、图片、运行结果和排错记录。", "下一课先整理 learning-log.md，Python 起步时再在 practice 中创建代码文件。"],
+      "example": "notes 放学习记录，practice 放 Python 文件，assets 放课程截图和图解。",
+      "answer": "这个工作区会沿工程基础和 Python 起步持续演进。你不需要每节课重新选位置，也能从文件树和终端准确找到项目内容。",
+      "source": {"label": "工程学习工作台 v0.4", "href": "#project-workspace-v04"},
+      "updated_at": "2026-07-17",
       "recommended": true
     }
   ]

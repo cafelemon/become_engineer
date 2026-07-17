@@ -10,7 +10,21 @@ on:
       - "site-src/**/*.js"
       - "site-src/**/*.json"
       - "site-src/**/*.webp"
+      - "site-src/examples/**/*.py"
       - "scripts/test_personalization.cjs"
+      - "scripts/test_engineering_git_local.mjs"
+      - "scripts/test_engineering_git_remote.mjs"
+      - "scripts/test_engineering_development_environment.mjs"
+      - "scripts/test_engineering_docker_basics.mjs"
+      - "scripts/test_engineering_validation_habit.mjs"
+      - "scripts/test_python_variables_v2.mjs"
+      - "scripts/test_python_conditions_v2.mjs"
+      - "scripts/test_python_functions_v2.mjs"
+      - "scripts/test_python_collections_v2.mjs"
+      - "scripts/test_python_files_json_v2.mjs"
+      - "scripts/test_python_modules_venv_v2.mjs"
+      - "scripts/test_python_errors_tests_v2.mjs"
+      - "scripts/test_cs_data_representation_v2.mjs"
       - "scripts/test_tutor_search.cjs"
       - "tests/tutor/**"
       - "mkdocs.yml"
@@ -45,6 +59,45 @@ jobs:
 
       - name: Validate tutor knowledge base
         run: node scripts/test_tutor_search.cjs
+
+      - name: Verify local Git lesson example
+        run: node scripts/test_engineering_git_local.mjs
+
+      - name: Verify Git remote lesson example
+        run: node scripts/test_engineering_git_remote.mjs
+
+      - name: Verify development environment lesson example
+        run: node scripts/test_engineering_development_environment.mjs
+
+      - name: Verify Docker basics lesson example
+        run: node scripts/test_engineering_docker_basics.mjs
+
+      - name: Verify engineering foundation acceptance example
+        run: node scripts/test_engineering_validation_habit.mjs
+
+      - name: Verify Python variables lesson examples
+        run: node scripts/test_python_variables_v2.mjs
+
+      - name: Verify Python conditions lesson examples
+        run: node scripts/test_python_conditions_v2.mjs
+
+      - name: Verify Python functions lesson examples
+        run: node scripts/test_python_functions_v2.mjs
+
+      - name: Verify Python collections lesson examples
+        run: node scripts/test_python_collections_v2.mjs
+
+      - name: Verify Python files and JSON lesson examples
+        run: node scripts/test_python_files_json_v2.mjs
+
+      - name: Verify Python modules and virtual environment lesson examples
+        run: node scripts/test_python_modules_venv_v2.mjs
+
+      - name: Verify Python errors, debugging, and tests lesson examples
+        run: node scripts/test_python_errors_tests_v2.mjs
+
+      - name: Verify CS data representation lesson example
+        run: node scripts/test_cs_data_representation_v2.mjs
 
       - name: Build documentation strictly
         run: mkdocs build --strict

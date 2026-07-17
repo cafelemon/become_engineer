@@ -1,401 +1,397 @@
-# 本地 Git 与 .gitignore
-
 <div class="be-tutor-mount" data-tutor-lesson="engineering-foundation-06" aria-hidden="true"></div>
 
-本课先确认 Git 已安装，再在一个临时学习目录完成第一次本地闭环：初始化、忽略不应提交的文件、查看状态、暂存、提交和查看历史；不直接改动当前公开仓库。
+<section id="overview-local-history" class="be-page-hero be-lesson-hero" data-learning-context="overview-local-history" data-context-type="overview" markdown="1">
 
-## 开始前：安装并验证 Git
+<span class="be-page-eyebrow">工程基础入门 · 第六课</span>
 
-先在终端运行：
+# 本地 Git 与 .gitignore
+
+## 文件还在原处，但现在能看见它怎样一步步变成今天的样子
+
+<div class="be-git-result" role="group" aria-label="完成本课后的本地 Git 检查结果" markdown="1">
+
+```console
+$ git log -2 --format="%h %s"
+<提交标识> document Git setup
+<提交标识> record learning workspace
+
+$ git status --short --ignored
+!! debug.log
+```
+
+</div>
+
+前两行是已经保存进本地历史的版本，最后一行是明确不让 Git 收录的调试日志。整个过程都在你的电脑上完成，还没有连接 GitHub。
+
+<div class="be-page-actions" markdown="1">
+[先看懂一次提交保存了什么](#concept-three-places){ .md-button .md-button--primary }
+[返回 Markdown](05-markdown.md){ .md-button }
+</div>
+
+</section>
+
+<div class="be-lesson-overview">
+  <div><span>课程位置</span><strong>工程基础入门 · 6 / 10</strong></div>
+  <div><span>继续使用</span><strong>learning-workspace</strong></div>
+  <div><span>完成后留下</span><strong>两次本地提交和一份 .gitignore</strong></div>
+</div>
+
+## 开始前
+
+- 已经完成[终端与 Shell](03-terminal-shell.md)、[VS Code 编辑器](04-editor.md)和[Markdown](05-markdown.md)。
+- `learning-workspace` 中至少有 `notes/learning-log.md` 和 `practice/README.md`。
+- 本课使用 Git 2.28 或更新版本；示例已在 Git 2.50.1 验证。
+- 本课只建立本地历史。GitHub、`remote`、认证、`push` 和 `clone` 留到下一课。
+
+<section id="concept-three-places" data-learning-context="concept-three-places" data-context-type="concept" markdown="1">
+
+## 一次提交保存的不是整个硬盘
+
+Git 不会自动把目录里的一切都塞进历史。你先修改文件，再从这些变化中挑出这次要保存的部分，最后给它写一条说明。
+
+<div class="be-git-flow" role="img" aria-label="Git 本地流程：工作区经 git add 进入暂存区，再经 git commit 写入本地历史；未跟踪且匹配 gitignore 的文件保持在历史之外。">
+  <div><span>你正在编辑</span><strong>工作区</strong><small>notes/learning-log.md</small></div>
+  <b aria-hidden="true">git add →</b>
+  <div><span>这次准备保存</span><strong>暂存区</strong><small>被选中的文件内容</small></div>
+  <b aria-hidden="true">git commit →</b>
+  <div><span>已经保存</span><strong>本地历史</strong><small>提交标识 + 说明</small></div>
+  <aside><span>.gitignore</span><strong>debug.log 留在工作区，不进入历史</strong></aside>
+</div>
+
+先记住三个判断：
+
+- **工作区**回答“磁盘上的文件现在是什么样”。
+- **暂存区**回答“下一次提交准备收哪些内容”。
+- **提交历史**回答“以前正式保存过哪些版本”。
+
+`git add` 只把当时的文件内容放进暂存区，不等于提交；`git commit` 只保存已经暂存的内容，不会替你把所有未保存、未暂存的修改一起带走。
+
+</section>
+
+<section id="example-read-status" data-learning-context="example-read-status" data-context-type="example" markdown="1">
+
+## 先读懂一小段状态
+
+假设目录中刚创建了三个文件：
+
+```text
+learning-workspace/
+├── .gitignore
+├── debug.log
+└── notes/
+    └── learning-log.md
+```
+
+`.gitignore` 中只有一条规则：
+
+```gitignore
+*.log
+```
+
+运行：
+
+```bash
+git status --short --ignored
+```
+
+可能看到：
+
+```text
+?? .gitignore
+?? notes/
+!! debug.log
+```
+
+- `??` 表示 Git 看见了新文件，但还没有开始跟踪。
+- `!!` 表示文件匹配了忽略规则。
+- 没有输出不一定是坏事，也可能表示工作区已经干净。
+
+这里先别急着背符号。每次执行 `git add` 或 `git commit` 前后都看一次状态，很快就能把命令和变化对应起来。
+
+</section>
+
+<section id="reproduce-install-git" data-learning-context="reproduce-install-git" data-context-type="reproduce" markdown="1">
+
+## 先确认终端能找到 Git
+
+打开一个**新终端**，运行：
 
 ```bash
 git --version
 ```
 
-出现 `git version ...` 表示终端已经能找到 Git。版本号会随时间更新，不需要和截图完全一致。
+看到 `git version ...`，说明终端已经能找到 Git。版本号不必和课程一致；若低于 2.28，先更新，或者在后面的初始化命令中使用兼容写法。
 
 === "Windows"
 
-    1. 打开 [Git 官方 Windows 安装页](https://git-scm.com/install/windows)，下载维护中的安装程序。
-    2. 双击安装程序。第一次学习可以保留默认选项；不理解的 Shell、换行符和凭据选项不要随意改成教程外的配置。
-    3. 安装结束后关闭并重新打开 PowerShell，再运行 `git --version`。
+    1. 打开 [Git 官方 Windows 下载页](https://git-scm.com/download/win)。
+    2. 运行 Git for Windows 安装程序。第一次安装保留默认选项即可，不要照着来源不明的教程随意更改 Shell、换行符和凭据设置。
+    3. 安装结束后关闭旧 PowerShell，在 VS Code 中新建终端，再运行 `git --version`。
 
 === "macOS"
 
-    1. 先运行 `git --version`；部分 macOS 会提示安装 Xcode Command Line Tools。
-    2. 如果没有 Git，可按 [Git 官方 macOS 安装页](https://git-scm.com/install/mac.html)使用 `xcode-select --install`；已经使用 Homebrew 的学习者也可选择 `brew install git`。
-    3. 安装结束后重新打开终端，再运行 `git --version`。
+    1. 先在“终端”中运行 `git --version`；系统可能提示安装 Xcode Command Line Tools。
+    2. 没有出现系统提示时，可使用 [Git 官方 macOS 下载页](https://git-scm.com/download/mac)。已经在使用 Homebrew 的学习者也可以运行 `brew install git`。
+    3. 安装结束后重开终端，再检查版本。
 
 === "Linux 简要补充"
 
-    使用发行版的软件包管理器安装 Git，然后运行 `git --version`。命令因发行版不同而不同，以 [Git 官方安装入口](https://git-scm.com/install/)为准。
+    使用发行版的软件包管理器安装 Git。例如 Debian/Ubuntu 常用 `sudo apt install git`，Fedora 常用 `sudo dnf install git`。其他发行版查看 [Git 官方安装说明](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)。
 
-如果安装失败，记录系统版本、下载来源、安装步骤和完整错误；不要为了继续课程复制来源不明的一键安装脚本。
-
-## 五步任务路线
-
-<div class="be-task-route" role="list" aria-label="本课五步任务">
-  <span role="listitem">1 建立临时仓库</span><span role="listitem">2 配置忽略并看状态</span><span role="listitem">3 暂存变化</span><span role="listitem">4 配置身份并提交</span><span role="listitem">5 检查历史</span>
-</div>
-
-<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
-
-### 第一步：在临时目录初始化仓库
-
-**任务：** 新建一个只用于练习的目录，进入后执行 `git init`。**成功证据：** Git 提示已初始化仓库，目录里出现 `.git` 管理信息。
-
-??? tip "提示一"
-    不要用当前公开课程仓库练习随意提交。
-??? tip "提示二"
-    先用 `pwd` 或 `Get-Location` 确认自己进入的是临时目录。
+如果仍提示找不到 `git`，先确认安装确实完成，再重开终端。不要通过关闭安全软件或运行陌生的一键脚本来绕过安装问题。
 
 </section>
 
-<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+<section id="reproduce-initialize-workspace" data-learning-context="reproduce-initialize-workspace" data-context-type="reproduce" markdown="1">
 
-### 第二步：创建 .gitignore、记录并查看状态
+## 把学习工作区变成本地仓库
 
-**任务：** 创建 `README.md`、临时文件 `debug.log` 和 `.gitignore`，在 `.gitignore` 写入 `*.log` 后执行 `git status`。**成功证据：** Git 显示 README 和 `.gitignore`，但不把 `debug.log` 列为待提交文件。
+在 VS Code 中重新打开完整的 `learning-workspace`，然后打开内置终端。先核对当前位置和文件：
 
-??? tip "提示一"
-    `.gitignore` 只描述哪些未跟踪文件不应进入版本库；它自己通常应该提交。
-??? tip "提示二"
-    已经被 Git 跟踪的文件不会因为后来加入 `.gitignore` 就自动停止跟踪。本练习先创建忽略规则，再暂存文件。
+=== "macOS / Linux"
 
-</section>
+    ```bash
+    pwd
+    ls
+    ```
 
-<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
+=== "Windows PowerShell"
 
-### 第三步：把变化放入暂存区
+    ```powershell
+    Get-Location
+    Get-ChildItem
+    ```
 
-**任务：** 执行 `git add README.md .gitignore`，再次执行 `git status`。**成功证据：** README 和 `.gitignore` 显示为待提交，`debug.log` 仍被忽略。
+你应该看到 `notes`、`practice` 和 `assets`，当前位置的最后一段应该是 `learning-workspace`。
 
-??? tip "提示一"
-    `git add` 是选择下一次提交包含哪些变化，不是永久保存。
-??? tip "提示二"
-    先精确写文件名，理解后再使用更宽泛的路径。
+### 先确认它没有被上层仓库管理
 
-</section>
-
-<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
-
-### 第四步：创建一次有意义的提交
-
-**任务：** 先检查 `git config --global user.name` 和 `git config --global user.email`；没有结果时按下面示例换成自己的信息，再执行 `git commit -m "add learning note"`。**成功证据：** 命令成功并返回提交标识。
+运行：
 
 ```bash
-git config --global user.name "你的名字或 GitHub 用户名"
-git config --global user.email "你用于提交的邮箱"
+git rev-parse --show-toplevel
 ```
 
-用户名和邮箱会写进提交作者信息，不会自动创建 GitHub 账号，也不会把本地仓库连接到 GitHub。公开仓库可使用 GitHub 提供的 noreply 邮箱保护真实邮箱。
+- 出现 `not a git repository`：符合本课预期，可以继续初始化。
+- 输出正好是当前 `learning-workspace`：它已经是仓库，不要再次初始化，先运行 `git status` 看现状。
+- 输出的是更上层目录：先停下来。当前文件已经受另一个仓库管理，建议把 `learning-workspace` 移到“文档”等独立位置后再继续。
 
-??? tip "提示一"
-    提交消息描述这次变化做了什么，而不是写“修改”。
-??? tip "提示二"
-    若提示没有暂存内容，回到第三步重新查看状态。
-
-</section>
-
-<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
-
-### 第五步：查看历史并完成迁移
-
-**任务：** 执行 `git log --oneline`，然后在 README 追加一行并说明下一次应如何重复流程。**成功证据：** 能区分工作区、暂存区、提交历史。
-
-??? tip "提示一"
-    历史中每一行对应一次提交，不等于当前未提交的修改。
-??? tip "提示二"
-    第二次变化先 `git status`，再决定是否暂存和提交。
-
-</section>
-
-## 前置知识
-
-- 已完成 [学习方法](01-learning-method.md)。
-- 已完成 [文件系统](02-filesystem.md)。
-- 已完成 [终端与 Shell](03-terminal-shell.md)。
-- 已完成 [编辑器](04-editor.md)。
-- 已完成 [Markdown](05-markdown.md)。
-- 能打开终端、进入目录、修改并保存一个 Markdown 文件。
-
-## 学习目标
-
-学完本节后，你应该能验证 Git 安装、理解仓库、工作区、忽略规则、暂存区、提交、状态和历史，并完成一次本地 Git 提交流程。
-
-本节只讲本地 Git 最小闭环。下一课专门处理 GitHub、远程地址、认证、push 和 clone；本节不讲分支策略、Pull Request、rebase、冲突处理或 GitHub Actions。
-
-## 核心概念
-
-### 仓库
-
-Git 仓库是一个被 Git 管理历史的项目目录。
-
-普通目录只是保存当前文件；Git 仓库还能记录文件每次重要变化。
-
-初始化仓库的命令是：
+确认无误后运行：
 
 ```bash
-git init
-```
-
-入门练习请使用一个临时学习目录，不要直接在当前公开仓库里随便提交。
-
-### 工作区
-
-工作区是你正在编辑的文件状态。
-
-你修改了文件，但还没有告诉 Git 要保存这次变化时，这些变化就在工作区。
-
-查看状态的命令是：
-
-```bash
+git init -b main
+git branch --show-current
 git status
 ```
 
-### 暂存区
-
-暂存区是准备进入下一次提交的变化清单。
-
-把文件加入暂存区的命令是：
+第二条命令应输出 `main`。如果旧版本不支持 `-b`，改用：
 
 ```bash
-git add README.md
+git init
+git branch -M main
 ```
 
-也可以添加当前目录下所有变化：
+`git init` 会在根目录创建隐藏的 `.git` 管理目录。不要手工修改其中的文件，也不要把它当作普通练习目录删除。它只建立本地仓库，不会创建 GitHub 仓库；此时运行 `git remote -v` 通常没有输出。
 
-```bash
-git add .
-```
+</section>
 
-入门时建议先用具体文件名，减少误加无关文件。
+<section id="concept-ignore-generated-files" data-learning-context="concept-ignore-generated-files" data-context-type="concept" markdown="1">
 
-### 提交
+## `.gitignore` 是入口规则，不是保密工具
 
-提交是一次带说明的历史记录。
-
-提交命令是：
-
-```bash
-git commit -m "Add first learning note"
-```
-
-提交信息应该说明这次变化做了什么，而不是写“update”或“改了一下”。
-
-### 历史
-
-查看提交历史：
-
-```bash
-git log
-```
-
-如果输出太长，可以先按 `q` 退出。
-
-### .gitignore
-
-`.gitignore` 是仓库中的规则文件，用来声明缓存、日志、构建产物、密钥或本机配置等不应进入版本历史的路径。例如：
+在工作区根目录创建 `.gitignore`：
 
 ```gitignore
+# 调试和运行日志
 *.log
+
+# Python 后续课程会生成的本地环境与缓存
 .venv/
-.env
 __pycache__/
+
+# 本机配置与常见系统文件
+.env
+.DS_Store
+Thumbs.db
 ```
 
-忽略规则不是保密工具：文件一旦提交过，或内容已经被推送到远程，后来写进 `.gitignore` 不能抹掉历史。密钥和隐私文件从一开始就不要提交。
+再在根目录创建 `debug.log`，写入一句普通测试文字。**不要拿真实密码、token 或私人数据测试忽略规则。**
 
-## 学习顺序
-
-1. 新建一个临时学习目录。
-2. 初始化 Git 仓库。
-3. 创建或修改一个 Markdown 文件。
-4. 查看状态。
-5. 暂存文件。
-6. 提交一次变化。
-7. 查看提交历史。
-8. 确认日志文件被忽略。
-
-## 最小命令表
-
-| 目标 | 命令 | 说明 |
-| --- | --- | --- |
-| 初始化仓库 | `git init` | 让当前目录变成 Git 仓库 |
-| 查看状态 | `git status` | 查看哪些文件新增、修改或已暂存 |
-| 暂存文件 | `git add README.md .gitignore` | 把指定文件放入下一次提交 |
-| 提交变化 | `git commit -m "message"` | 保存一次历史记录 |
-| 查看历史 | `git log` | 查看提交记录 |
-| 验证忽略 | `git status --ignored` | 查看被忽略文件，避免误提交 |
-
-## 示例：完成一次本地提交
-
-创建一个临时学习目录，例如：
-
-```text
-git-practice/
-```
-
-进入目录后，按顺序执行：
+检查是哪条规则生效：
 
 ```bash
-git init
+git check-ignore -v debug.log
+git status --short --ignored
 ```
 
-创建一个 `README.md`，写入：
+第一条命令应指出 `.gitignore` 中的 `*.log`，第二条命令应把 `debug.log` 标为 `!!`。
+
+`.gitignore` 只影响尚未跟踪的文件。文件一旦进入提交历史，后来添加规则不会抹掉历史；密钥即使很快删除，也可能已经被复制或推送。因此正确顺序是：**先写忽略规则，再检查状态，最后暂存。**
+
+!!! note "为什么 `.gitignore` 自己要提交"
+    它描述了这个项目共同产生、共同不应提交的文件。把规则提交后，下一课克隆仓库的人也会得到同样的约束。
+
+</section>
+
+<section id="reproduce-first-commit" data-learning-context="reproduce-first-commit" data-context-type="reproduce" markdown="1">
+
+## 保存工程学习工作台的第一个版本
+
+每个提交都要有作者姓名和邮箱。为了不改动电脑上其他仓库，本课先把身份只配置在当前仓库：
+
+```bash
+git config --local user.name "你的提交署名"
+git config --local user.email "你愿意写入提交历史的邮箱"
+git config --local --list --show-origin
+```
+
+不要直接照抄占位文字。邮箱会写入提交元数据；如果以后公开到 GitHub，可在 GitHub 账号设置中查看并使用 noreply 邮箱。
+
+现在只暂存这次真正需要的文件：
+
+```bash
+git add .gitignore notes/learning-log.md practice/README.md
+git status
+git diff --cached
+```
+
+逐行检查：
+
+- `.gitignore`、学习记录和练习说明位于 `Changes to be committed`。
+- `debug.log` 没有进入暂存内容。
+- `git diff --cached` 展示的正是你准备保存的文字。
+
+确认后提交：
+
+```bash
+git commit -m "record learning workspace"
+git log -1 --format="%h %s"
+```
+
+提交成功后会出现一段短标识和 `record learning workspace`。这个标识由 Git 计算，每个人都可能不同，不需要和课程截图一致。
+
+</section>
+
+<section id="modify-second-commit" data-learning-context="modify-second-commit" data-context-type="modify" markdown="1">
+
+## 自己做第二次变化
+
+在 `notes/learning-log.md` 的 Git 记录部分补上真实信息：
 
 ```markdown
-# Git Practice
+## Git 本地记录
 
-这是我的 Git 入门练习。
+- Git 版本：替换为自己的 `git --version` 输出
+- 当前分支：main
+- 忽略检查：debug.log 匹配 `*.log`
+- 第一次提交：替换为自己的提交标识和说明
 ```
 
-再创建 `.gitignore` 并写入 `*.log`，同时创建不会提交的 `debug.log`。
-
-查看状态：
+先不要暂存，运行：
 
 ```bash
-git status
+git status --short
+git diff -- notes/learning-log.md
 ```
 
-暂存文件：
+这里看到的是工作区中的新变化。确认文字准确后再运行：
 
 ```bash
-git add README.md .gitignore
+git add notes/learning-log.md
+git diff --cached
+git commit -m "document Git setup"
+git log -2 --format="%h %s"
+git status --short --ignored
 ```
 
-再次查看状态：
+最终应该有两次提交，`debug.log` 仍显示为忽略状态。把版本号、提交标识和排错记录换成自己的内容；不要为了和示例一致而伪造输出。
 
-```bash
-git status
-```
+</section>
 
-提交：
+<section id="troubleshoot-local-git" data-learning-context="troubleshoot-local-git" data-context-type="troubleshoot" markdown="1">
 
-```bash
-git commit -m "Add Git practice README"
-```
+## 先看状态，再决定下一条命令
 
-查看历史：
-
-```bash
-git log
-```
-
-如果 `git commit` 提示你配置用户名和邮箱，回到第四步完成本机身份配置后重试。
-
-## 实践练习
-
-### 练习 1：初始化临时仓库
-
-新建一个临时学习目录，并在里面执行：
-
-```bash
-git init
-```
-
-需要产出：
-
-```text
-我的临时目录是：
-
-`git init` 后我看到了什么输出：
-```
-
-### 练习 2：查看状态
-
-创建 `README.md`、`.gitignore` 和 `debug.log`，在忽略规则写入 `*.log` 后执行：
-
-```bash
-git status
-```
-
-需要产出：
-
-```text
-Git 显示了哪些文件变化：
-
-这些变化现在是否已经提交：
-```
-
-### 练习 3：暂存文件
-
-执行：
-
-```bash
-git add README.md .gitignore
-git status
-```
-
-需要产出：
-
-```text
-暂存前文件处于什么状态：
-
-暂存后文件处于什么状态：
-```
-
-### 练习 4：提交变化
-
-执行：
-
-```bash
-git commit -m "Add first learning note"
-```
-
-需要产出：
-
-```text
-我的提交信息是：
-
-提交是否成功：
-
-如果失败，错误信息是：
-```
-
-### 练习 5：查看历史和忽略结果
-
-执行：
-
-```bash
-git log
-git status --ignored
-```
-
-需要产出：
-
-```text
-我看到的最近一次提交信息是：
-
-当前被忽略的文件是：
-
-我的判断依据是：
-```
-
-## 常见错误与排查
-
-| 错误 | 表现 | 怎么排查 |
+| 你看到什么 | 常见原因 | 怎么回来 |
 | --- | --- | --- |
-| 不在正确目录执行 Git | `git status` 显示不是仓库，或状态和预期不符 | 先运行 `pwd`，确认当前位置 |
-| 忘记 `git add` | `git commit` 提示没有要提交的内容 | 先 `git status`，再 `git add 文件名` |
-| 提交信息太模糊 | 历史里只看到 `update` | 用动词说明这次变化，比如 `Add learning note` |
-| 把无关文件一起提交 | 提交里混入缓存、数据库或私人文件 | 用具体文件名 `git add README.md`，不要一开始就依赖 `git add .` |
-| 不会退出 `git log` | 终端停在历史页面 | 按 `q` 退出 |
-| 第一次提交失败 | Git 要求配置用户名和邮箱 | 按第四步配置自己的 `user.name` 和 `user.email` 后重试 |
-| `.gitignore` 没生效 | 文件仍出现在已暂存或已跟踪列表 | 先确认规则和相对路径；已跟踪文件需单独从索引处理，不要直接删除真实文件 |
+| `not a git repository` | 当前目录不在仓库中 | 查看当前位置和文件列表，回到 `learning-workspace` |
+| `Author identity unknown` | 当前仓库没有作者信息 | 配置本课的 `user.name`、`user.email` 后重试提交 |
+| `nothing to commit` | 没有新变化，或变化还没暂存 | 运行 `git status`；有修改时再用具体路径 `git add` |
+| `debug.log` 仍是 `??` | `.gitignore` 没保存、规则没匹配 | 运行 `git check-ignore -v debug.log`，核对文件名和规则位置 |
+| `debug.log` 出现在已暂存内容中 | 文件在写规则前已经被暂存 | 运行 `git rm --cached debug.log`；它会移出暂存/索引但保留本地文件 |
+| 暂存了不该提交的普通文件 | `git add` 选多了 | 已有第一次提交后可用 `git restore --staged 文件路径`，再检查状态 |
+| `git log` 占满终端 | Git 打开了分页器 | 按 `q` 返回终端 |
+| 状态里出现完全陌生的项目文件 | 打开了错误目录或处于上层仓库 | 运行 `git rev-parse --show-toplevel`，不要继续提交 |
 
-## 完成标准
+不要用 `git add .`、`git commit -a` 或批量删除来“试试能不能恢复”。新手阶段先写具体路径，每次提交前固定看 `git status` 和 `git diff --cached`，误收文件的概率会低很多。
 
-完成本节需要同时满足：
+</section>
 
-- 能解释仓库、工作区、暂存区和提交的区别。
-- 能在临时目录中运行 `git init`。
-- 能用 `git status` 判断文件是否被修改或暂存。
-- 能用 `git add` 暂存一个指定文件。
-- 能尝试执行一次 `git commit`，并记录成功结果或失败原因。
-- 能用 `git log` 查看提交历史。
-- 能用 `.gitignore` 排除一个日志文件，并解释为什么密钥不能只依靠忽略规则保护。
+<section id="deepen-staging-snapshot" data-learning-context="deepen-staging-snapshot" data-context-type="deepen" markdown="1">
+
+## `git add` 记录的是当时那一版
+
+如果先运行 `git add notes/learning-log.md`，随后又继续编辑同一个文件，`git status` 可能同时显示它“已暂存”和“尚未暂存”。这不是 Git 重复了文件，而是暂存区保留着上一次 `git add` 时的内容，工作区又出现了更新版本。
+
+可以分别查看：
+
+```bash
+# 工作区相对暂存区又改了什么
+git diff
+
+# 暂存区相对上次提交准备保存什么
+git diff --cached
+```
+
+想把最新修改也放进同一次提交，就再次运行 `git add`；想留到下一次提交，就保持不动。暂存区的价值正在这里：一次提交可以只讲清一件事。
+
+</section>
+
+<section id="project-workspace-v06" data-learning-context="project-workspace-v06" data-context-type="project" markdown="1">
+
+## 工程学习工作台 v0.6
+
+现在工作台第一次拥有了可检查的本地历史：
+
+| 上一版已经有 | 这节课加了什么 | 新增或变化的内容 | 下一版 |
+| --- | --- | --- | --- |
+| 结构清楚的目录、Markdown 学习记录和练习说明 | 本地仓库、共同忽略规则、两次有说明的提交 | `.gitignore`、`.git/`、`notes/learning-log.md`、Git 历史 | 创建 GitHub 空仓库，配置 origin，push 后再 clone 验证 |
+
+`.git/` 由 Git 自动维护，不需要截图内部文件。请保存下面这些可以复核的结果：
+
+```bash
+git --version
+git status --short --ignored
+git log -2 --format="%h %s"
+git check-ignore -v debug.log
+```
+
+这套结果能说明：工具已安装、日志确实被忽略、历史中有两次提交，而且当前检查发生在你自己的仓库中。
+
+</section>
+
+## 完成检查
+
+- [ ] `git --version` 能在新终端中返回版本号。
+- [ ] `git rev-parse --show-toplevel` 指向自己的 `learning-workspace`。
+- [ ] 能解释工作区、暂存区和本地历史各自保存什么。
+- [ ] `.gitignore` 已提交，`debug.log` 没有进入历史。
+- [ ] `git log -2` 能看到两次由自己完成的提交。
+- [ ] 提交前实际检查过 `git status` 和 `git diff --cached`。
+- [ ] 能说明为什么 `git init` 不会自动连接 GitHub。
+
+## 来源与版本
+
+- 适用版本：Git 2.28 及以上；命令在 Git 2.50.1（Apple Git-155）复核。
+- 安装：[Pro Git：Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)。
+- 作者身份与配置层级：[Pro Git：First-Time Git Setup](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)。
+- 文件状态、暂存与提交：[Pro Git：Recording Changes to the Repository](https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository)。
+- 忽略规则：[gitignore 官方参考](https://git-scm.com/docs/gitignore)与[`git check-ignore` 官方参考](https://git-scm.com/docs/git-check-ignore)。
+- 核查日期：2026-07-17。
+- 验证方式：课程测试在隔离临时目录中初始化仓库、生成两次提交，并检查分支、暂存内容、忽略匹配与提交历史。
 
 ## 下一步
 
-进入 [GitHub 远程协作](06-github-remote.md)。下一节会把本地提交连接到 GitHub，实际执行 remote、push 和 clone。
+进入[GitHub 远程协作](06-github-remote.md)。下一节继续使用这个仓库，创建空远程仓库、检查 `origin`、完成第一次 `push`，再从另一个目录 `clone` 回来验证。
+
+**保留整个 `learning-workspace` 和两次本地提交；下一课不会重新创建仓库。**

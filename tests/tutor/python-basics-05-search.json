@@ -1,3 +1,53 @@
-[
-  {"query":"文件路径不对","step_id":"step-1","expected":"relative-path"},{"query":"data目录找不到","step_id":"step-1","expected":"relative-path"},{"query":"path拼接","step_id":"step-1","expected":"path-join"},{"query":"path斜杠怎么用","step_id":"step-1","expected":"path-join"},{"query":"json单引号报错","step_id":"step-2","expected":"json-double-quotes"},{"query":"json格式怎么写","step_id":"step-2","expected":"json-double-quotes"},{"query":"loads返回什么","step_id":"step-2","expected":"loads-records"},{"query":"json怎么变字典","step_id":"step-2","expected":"loads-records"},{"query":"输入文件被覆盖","step_id":"step-3","expected":"output-not-input"},{"query":"报告写到哪里","step_id":"step-3","expected":"output-not-input"},{"query":"中文乱码怎么办","step_id":"step-3","expected":"utf8-writing"},{"query":"encoding utf8","step_id":"step-3","expected":"utf8-writing"},{"query":"找不到json文件","step_id":"step-4","expected":"file-not-found"},{"query":"filenotfound怎么办","step_id":"step-4","expected":"file-not-found"},{"query":"坏json报错","step_id":"step-4","expected":"json-decode"},{"query":"json最后逗号","step_id":"step-4","expected":"json-decode"}
-]
+{
+  "lesson_id": "python-basics-05",
+  "cases": [
+    {"query":"报告器 v0.5 增加什么","expected_card":"file-result"},
+    {"query":"为什么要把数据放进 JSON","expected_card":"file-result"},
+    {"query":"data 目录找不到","expected_card":"relative-path"},
+    {"query":"相对路径从哪里开始","expected_card":"relative-path"},
+    {"query":"cwd 是脚本目录吗","expected_card":"cwd-vs-script"},
+    {"query":"命令位置和文件位置区别","expected_card":"cwd-vs-script"},
+    {"query":"path 拼接怎么写","expected_card":"path-join"},
+    {"query":"Windows 和 macOS 路径怎样兼容","expected_card":"path-join"},
+    {"query":"exists 为 true 就能读吗","expected_card":"path-checks"},
+    {"query":"怎样判断路径是文件还是目录","expected_card":"path-checks"},
+    {"query":"中文乱码怎么办","expected_card":"utf8-text"},
+    {"query":"encoding utf-8 有什么用","expected_card":"utf8-text"},
+    {"query":"JSON 单引号为什么报错","expected_card":"json-syntax"},
+    {"query":"True 和 null 怎么写","expected_card":"json-syntax"},
+    {"query":"文件读取和 JSON 解析区别","expected_card":"read-parse-layers"},
+    {"query":"loads 前为什么先读文本","expected_card":"read-parse-layers"},
+    {"query":"loads dumps 名字记不住","expected_card":"loads-dumps"},
+    {"query":"dumps 会写文件吗","expected_card":"loads-dumps"},
+    {"query":"JSON 中文为什么变成转义","expected_card":"ascii-indent"},
+    {"query":"indent 会改变数据吗","expected_card":"ascii-indent"},
+    {"query":"第五课代码怎么跑","expected_card":"reproduce-v05"},
+    {"query":"study_report_v05 目录怎么放","expected_card":"reproduce-v05"},
+    {"query":"输入文件被覆盖怎么办","expected_card":"input-output-boundary"},
+    {"query":"data 和 output 为什么分开","expected_card":"input-output-boundary"},
+    {"query":"文件课主动修改什么","expected_card":"active-json"},
+    {"query":"只改 JSON 怎么验证","expected_card":"active-json"},
+    {"query":"为什么本课不用 rglob","expected_card":"glob-scope"},
+    {"query":"glob 会进子目录吗","expected_card":"glob-scope"},
+    {"query":"发现文件就都处理安全吗","expected_card":"scan-not-trust"},
+    {"query":"目录扫描和输入选择区别","expected_card":"scan-not-trust"},
+    {"query":"找不到 JSON 文件","expected_card":"file-not-found"},
+    {"query":"输入路径不存在","expected_card":"file-not-found"},
+    {"query":"坏 JSON 报错","expected_card":"json-decode"},
+    {"query":"JSON 最后多了逗号","expected_card":"json-decode"},
+    {"query":"缺少 records 字段","expected_card":"missing-records-key"},
+    {"query":"JSON 解析成功为什么还失败","expected_card":"missing-records-key"},
+    {"query":"怎样创建 output","expected_card":"output-directory"},
+    {"query":"mkdir parents exist_ok 是什么","expected_card":"output-directory"},
+    {"query":"第五课给项目加了什么","expected_card":"project-v05"},
+    {"query":"下一课为什么拆模块","expected_card":"project-v05"},
+    {"query":"文件处理的边界具体指什么","expected_card":"file-boundary"},
+    {"query":"数据管道怎样分层","expected_card":"file-boundary"},
+    {"query":"文件课怎么讲项目","expected_card":"career-file-story"},
+    {"query":"怎样证明输入没有被改","expected_card":"career-file-story"}
+  ],
+  "unknown": [
+    "怎样给盆栽换土",
+    "火星上的咖啡店几点开门"
+  ]
+}

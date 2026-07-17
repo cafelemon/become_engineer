@@ -1,3 +1,51 @@
-[
-  {"query":"比较为什么是布尔值","step_id":"step-1","expected":"comparison-result"},{"query":"大于等于结果是什么","step_id":"step-1","expected":"comparison-result"},{"query":"等号和双等号区别","step_id":"step-1","expected":"equal-or-assign"},{"query":"用等号判断报错","step_id":"step-1","expected":"equal-or-assign"},{"query":"if缩进错误","step_id":"step-2","expected":"if-indent"},{"query":"indentationerror怎么办","step_id":"step-2","expected":"if-indent"},{"query":"elif不生效","step_id":"step-2","expected":"elif-order"},{"query":"多个条件判断顺序","step_id":"step-2","expected":"elif-order"},{"query":"range不包含最后一个数","step_id":"step-3","expected":"range-boundary"},{"query":"range边界","step_id":"step-3","expected":"range-boundary"},{"query":"列表怎么循环","step_id":"step-3","expected":"for-list"},{"query":"for怎么遍历清单","step_id":"step-3","expected":"for-list"},{"query":"死循环怎么办","step_id":"step-4","expected":"while-infinite"},{"query":"while一直运行","step_id":"step-4","expected":"while-infinite"},{"query":"and和or区别","step_id":"step-5","expected":"and-or-choice"},{"query":"多个条件怎么写","step_id":"step-5","expected":"and-or-choice"}
-]
+{
+  "lesson_id": "python-basics-02",
+  "cases": [
+    {"query":"第二课的项目结果是什么","expected_card":"status-result"},
+    {"query":"报告器 v0.2 增加什么","expected_card":"status-result"},
+    {"query":"比较结果为什么是布尔值","expected_card":"comparison-boolean"},
+    {"query":"大于等于返回什么","expected_card":"comparison-boolean"},
+    {"query":"为什么判断相等要写两个等号","expected_card":"assign-vs-equal"},
+    {"query":"= 和 == 区别","expected_card":"assign-vs-equal"},
+    {"query":"刚好 5 小时算完成吗","expected_card":"greater-equal-boundary"},
+    {"query":"为什么要用 >=","expected_card":"greater-equal-boundary"},
+    {"query":"if else 到底走哪一边","expected_card":"if-else-choice"},
+    {"query":"两个分支会一起运行吗","expected_card":"if-else-choice"},
+    {"query":"if 为什么要缩进","expected_card":"indent-and-colon"},
+    {"query":"冒号漏了怎么办","expected_card":"indent-and-colon"},
+    {"query":"进行中和已完成怎么都测试","expected_card":"run-both-branches"},
+    {"query":"只运行一次够吗","expected_card":"run-both-branches"},
+    {"query":"多个条件顺序怎么排","expected_card":"elif-order"},
+    {"query":"elif 不执行","expected_card":"elif-order"},
+    {"query":"两个条件都要满足怎么写","expected_card":"and-both"},
+    {"query":"达标并且运行过","expected_card":"and-both"},
+    {"query":"至少一个成立怎么写","expected_card":"or-and-not"},
+    {"query":"怎么把条件反过来","expected_card":"or-and-not"},
+    {"query":"for 怎么处理每个行动","expected_card":"for-actions"},
+    {"query":"行动为什么只出现一次","expected_card":"for-actions"},
+    {"query":"range 不包含最后一个数","expected_card":"range-boundary"},
+    {"query":"怎样输出 1 到 4","expected_card":"range-boundary"},
+    {"query":"编号从 1 开始列表为什么从 0 开始","expected_card":"number-minus-one"},
+    {"query":"actions number 减一是什么意思","expected_card":"number-minus-one"},
+    {"query":"什么时候用 while","expected_card":"while-condition"},
+    {"query":"for while 怎么选","expected_card":"while-condition"},
+    {"query":"猜对后怎么立即退出","expected_card":"break-early"},
+    {"query":"break 是退出 if 还是循环","expected_card":"break-early"},
+    {"query":"while 怎么限制次数","expected_card":"bounded-attempts"},
+    {"query":"最多三次的退出条件","expected_card":"bounded-attempts"},
+    {"query":"死循环怎么停止","expected_card":"infinite-loop"},
+    {"query":"计数器忘记更新","expected_card":"infinite-loop"},
+    {"query":"str 和 int 比较报错","expected_card":"input-before-compare"},
+    {"query":"数字输入比较前做什么","expected_card":"input-before-compare"},
+    {"query":"第二课给项目加了什么","expected_card":"project-v02"},
+    {"query":"下一课为什么要学函数","expected_card":"project-v02"},
+    {"query":"什么是短路求值","expected_card":"short-circuit"},
+    {"query":"or 左边 true 后怎样","expected_card":"short-circuit"},
+    {"query":"面试怎么讲 if 测试","expected_card":"career-branch-testing"},
+    {"query":"项目里的分支证据是什么","expected_card":"career-branch-testing"}
+  ],
+  "unknown": [
+    "怎样给盆栽换土",
+    "火星上的咖啡店几点开门"
+  ]
+}

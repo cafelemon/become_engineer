@@ -1,3 +1,49 @@
-[
-  {"query":"函数没反应","step_id":"step-1","expected":"define-call"},{"query":"def后不执行","step_id":"step-1","expected":"define-call"},{"query":"超额完成怎么计算","step_id":"step-1","expected":"remaining-zero"},{"query":"剩余时间不能负数","step_id":"step-1","expected":"remaining-zero"},{"query":"参数和实参区别","step_id":"step-2","expected":"parameter-argument"},{"query":"函数括号里的名字","step_id":"step-2","expected":"parameter-argument"},{"query":"参数顺序错了","step_id":"step-2","expected":"keyword-order"},{"query":"关键字参数怎么用","step_id":"step-2","expected":"keyword-order"},{"query":"print为什么返回none","step_id":"step-3","expected":"return-vs-print"},{"query":"return和print区别","step_id":"step-3","expected":"return-vs-print"},{"query":"return后不运行","step_id":"step-3","expected":"return-stops"},{"query":"函数提前结束","step_id":"step-3","expected":"return-stops"},{"query":"nameerror局部变量","step_id":"step-4","expected":"local-name"},{"query":"函数外访问message","step_id":"step-4","expected":"local-name"},{"query":"默认参数怎么用","step_id":"step-5","expected":"default-threshold"},{"query":"阈值不传怎么办","step_id":"step-5","expected":"default-threshold"}
-]
+{
+  "lesson_id": "python-basics-03",
+  "cases": [
+    {"query":"报告器 v0.3 增加什么","expected_card":"function-result"},
+    {"query":"第三课的项目结果是什么","expected_card":"function-result"},
+    {"query":"def 后为什么不输出","expected_card":"define-vs-call"},
+    {"query":"函数是不是定义就会运行","expected_card":"define-vs-call"},
+    {"query":"函数怎么命名","expected_card":"function-name"},
+    {"query":"为什么不用 do_it","expected_card":"function-name"},
+    {"query":"完成小时超过目标怎么办","expected_card":"calculate-progress"},
+    {"query":"进度为什么用 min","expected_card":"calculate-progress"},
+    {"query":"ZeroDivisionError 怎么办","expected_card":"positive-target"},
+    {"query":"目标为零能不能算进度","expected_card":"positive-target"},
+    {"query":"参数和实参区别","expected_card":"parameter-argument"},
+    {"query":"调用时的值叫什么","expected_card":"parameter-argument"},
+    {"query":"位置参数顺序写反","expected_card":"positional-keyword"},
+    {"query":"target 和 finished 传反了","expected_card":"positional-keyword"},
+    {"query":"prefix 不传会怎样","expected_card":"default-prefix"},
+    {"query":"默认值怎么覆盖","expected_card":"default-prefix"},
+    {"query":"return 和 print 区别","expected_card":"return-vs-print"},
+    {"query":"显示了结果为什么变量是 None","expected_card":"return-vs-print"},
+    {"query":"return 后不执行","expected_card":"return-stops"},
+    {"query":"不可达代码是什么","expected_card":"return-stops"},
+    {"query":"第三课代码怎么跑","expected_card":"reproduce-v03"},
+    {"query":"函数版报告器怎么复现","expected_card":"reproduce-v03"},
+    {"query":"函数课要主动修改什么","expected_card":"active-modification"},
+    {"query":"报告行怎样改成自己的","expected_card":"active-modification"},
+    {"query":"局部变量出了函数不能用","expected_card":"local-scope"},
+    {"query":"message 为什么 NameError","expected_card":"local-scope"},
+    {"query":"用 global 行不行","expected_card":"avoid-global"},
+    {"query":"为什么不建议全局变量","expected_card":"avoid-global"},
+    {"query":"missing required positional argument","expected_card":"missing-argument"},
+    {"query":"函数少传参数","expected_card":"missing-argument"},
+    {"query":"结果突然是 None","expected_card":"unexpected-none"},
+    {"query":"有的分支没有返回值","expected_card":"unexpected-none"},
+    {"query":"第三课给项目加了什么","expected_card":"project-v03"},
+    {"query":"下一课为什么学容器","expected_card":"project-v03"},
+    {"query":"函数契约是什么意思","expected_card":"function-contract"},
+    {"query":"怎样让函数容易测试","expected_card":"function-contract"},
+    {"query":"函数是不是越短越好","expected_card":"one-responsibility"},
+    {"query":"输入计算输出要不要全写一起","expected_card":"one-responsibility"},
+    {"query":"函数课怎么讲项目","expected_card":"career-refactor"},
+    {"query":"重构有什么验证证据","expected_card":"career-refactor"}
+  ],
+  "unknown": [
+    "怎样给盆栽换土",
+    "火星上的咖啡店几点开门"
+  ]
+}
