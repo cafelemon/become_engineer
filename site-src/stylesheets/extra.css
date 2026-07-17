@@ -1784,6 +1784,277 @@ html.be-modal-open body {
   overflow: hidden;
 }
 
+/* Curriculum architecture V2: readable without JavaScript, responsive by CSS. */
+.be-curriculum-legend {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 1rem 0 1.4rem;
+}
+
+.be-curriculum-legend > div {
+  min-width: 0;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.4rem;
+  background: var(--be-surface);
+}
+
+.be-curriculum-legend strong,
+.be-curriculum-legend > div > span {
+  display: block;
+}
+
+.be-curriculum-legend strong {
+  margin-bottom: 0.25rem;
+  color: var(--be-required);
+  font-size: 0.68rem;
+}
+
+.be-curriculum-legend > div > span {
+  color: var(--be-muted);
+  font-size: 0.62rem;
+  line-height: 1.55;
+}
+
+.be-curriculum-legend > div:nth-child(3) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  align-content: flex-start;
+}
+
+.be-curriculum-legend > div:nth-child(3) strong {
+  flex-basis: 100%;
+}
+
+.be-status,
+.be-architecture-flow [data-status] small {
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.be-status {
+  width: fit-content;
+  padding: 0.13rem 0.38rem;
+}
+
+.be-status[data-status="open"] {
+  color: var(--be-roadmap-open);
+  background: var(--be-roadmap-open-bg);
+}
+
+.be-status[data-status="relevel"],
+.be-status[data-status="building"] {
+  color: var(--be-roadmap-building);
+  background: var(--be-roadmap-building-bg);
+}
+
+.be-status[data-status="planned"] {
+  color: var(--be-roadmap-planned);
+  background: var(--be-roadmap-planned-bg);
+}
+
+.be-architecture-flow {
+  margin: 1rem 0 2rem;
+  padding: 0.9rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.55rem;
+  background: var(--be-surface);
+}
+
+.be-architecture-flow h3 {
+  margin: 0 0 0.7rem;
+  font-size: 0.72rem;
+}
+
+.be-flow-foundation {
+  padding: 0.85rem;
+  border: 1px solid var(--be-border);
+  border-top: 0.18rem solid var(--be-required);
+  border-radius: 0.45rem;
+  background: var(--be-required-bg);
+}
+
+.be-flow-sequence {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 0.38rem;
+  align-items: center;
+}
+
+.be-flow-sequence > span {
+  color: var(--be-muted);
+  font-weight: 800;
+}
+
+.be-flow-sequence a,
+.be-flow-merges a {
+  display: block;
+  min-width: 0;
+  padding: 0.65rem 0.7rem;
+  border: 1px solid var(--be-border);
+  border-left-width: 0.18rem;
+  border-radius: 0.36rem;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  text-decoration: none;
+}
+
+.be-flow-sequence strong,
+.be-flow-sequence small,
+.be-flow-merges strong,
+.be-flow-merges small {
+  display: block;
+}
+
+.be-flow-sequence strong,
+.be-flow-merges strong {
+  font-size: 0.66rem;
+}
+
+.be-flow-sequence small,
+.be-flow-merges small {
+  margin-top: 0.18rem;
+  color: var(--be-muted);
+  font-size: 0.52rem;
+  line-height: 1.45;
+}
+
+.be-architecture-flow [data-status="open"] { border-left-color: var(--be-roadmap-open); }
+.be-architecture-flow [data-status="relevel"],
+.be-architecture-flow [data-status="building"] { border-left-color: var(--be-roadmap-building); }
+.be-architecture-flow [data-status="planned"] { border-left-color: var(--be-roadmap-planned); }
+
+.be-flow-branch-label {
+  display: grid;
+  place-items: center;
+  min-height: 2.2rem;
+  color: var(--be-muted);
+  font-size: 0.58rem;
+  font-weight: 700;
+}
+
+.be-flow-branch-label::before,
+.be-flow-branch-label::after {
+  width: 1px;
+  height: 0.55rem;
+  background: var(--be-border);
+  content: "";
+}
+
+.be-flow-branches {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.be-flow-branches section {
+  min-width: 0;
+  padding: 0.75rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.42rem;
+  background: var(--md-default-bg-color);
+}
+
+.be-flow-branches section > a {
+  display: block;
+  margin-top: 0.35rem;
+  padding: 0.45rem 0.55rem;
+  border-left: 0.14rem solid var(--be-border);
+  border-radius: 0.25rem;
+  background: var(--be-surface);
+  color: var(--md-default-fg-color);
+  font-size: 0.59rem;
+  font-weight: 650;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.be-flow-branches section > a[data-status="open"] { border-left-color: var(--be-roadmap-open); }
+.be-flow-branches section > a[data-status="relevel"],
+.be-flow-branches section > a[data-status="building"] { border-left-color: var(--be-roadmap-building); }
+.be-flow-branches section > a[data-status="planned"] { border-left-color: var(--be-roadmap-planned); }
+
+.be-flow-branches section > small {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--be-muted);
+  font-size: 0.52rem;
+  line-height: 1.5;
+}
+
+.be-flow-merges {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-top: 0.65rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--be-border);
+}
+
+.be-flow-merges h3 {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+.be-architecture-flow a:hover {
+  border-color: var(--be-required);
+  color: var(--md-default-fg-color);
+  background: var(--be-surface-hover);
+}
+
+.be-architecture-flow a:focus,
+.be-architecture-flow a:focus-visible {
+  outline: 0.15rem solid var(--md-accent-fg-color);
+  outline-offset: 0.12rem;
+}
+
+.be-curriculum-v2-table {
+  width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.be-curriculum-v2-table table {
+  min-width: 72rem;
+  font-size: 0.59rem;
+}
+
+.be-curriculum-v2-table th,
+.be-curriculum-v2-table td {
+  vertical-align: top;
+}
+
+.be-curriculum-v2-table td:first-child {
+  min-width: 8.5rem;
+  color: var(--md-default-fg-color);
+  font-weight: 700;
+}
+
+.be-curriculum-v2-table td:nth-child(7),
+.be-curriculum-v2-table td:nth-child(8) {
+  min-width: 6.2rem;
+}
+
+@media screen and (max-width: 76.234375em) {
+  .be-flow-branches {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .be-flow-sequence {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  }
+
+  .be-flow-sequence > :nth-child(4) {
+    display: none;
+  }
+
+  .be-flow-sequence > :nth-child(n + 5) {
+    margin-top: 0.4rem;
+  }
+}
+
 @media screen and (max-width: 44.984375em) {
   .be-edge-flow {
     padding: 0.7rem;
@@ -1792,6 +2063,37 @@ html.be-modal-open body {
   .be-edge-flow__platforms,
   .be-edge-flow__outcomes {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .be-curriculum-legend,
+  .be-flow-branches,
+  .be-flow-merges {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .be-architecture-flow {
+    padding: 0.65rem;
+  }
+
+  .be-flow-sequence {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .be-flow-sequence > span {
+    transform: rotate(90deg);
+    text-align: center;
+  }
+
+  .be-flow-sequence > :nth-child(4) {
+    display: block;
+  }
+
+  .be-flow-sequence > :nth-child(n + 5) {
+    margin-top: 0;
+  }
+
+  .be-flow-merges h3 {
+    grid-column: auto;
   }
 
   .be-profile-route-table table,
@@ -1809,6 +2111,64 @@ html.be-modal-open body {
     display: block;
     width: 100%;
   }
+
+  .be-curriculum-v2-table {
+    overflow: visible;
+  }
+
+  .be-curriculum-v2-table table,
+  .be-curriculum-v2-table tbody,
+  .be-curriculum-v2-table tr,
+  .be-curriculum-v2-table td {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .be-curriculum-v2-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .be-curriculum-v2-table tr {
+    margin-bottom: 0.75rem;
+    border: 1px solid var(--be-border);
+    border-radius: 0.4rem;
+    background: var(--be-surface);
+  }
+
+  .be-curriculum-v2-table td {
+    display: grid;
+    grid-template-columns: minmax(5.5rem, 35%) minmax(0, 1fr);
+    gap: 0.55rem;
+    padding: 0.58rem 0.65rem;
+    border: 0;
+    border-bottom: 1px solid var(--be-border);
+    font-size: 0.62rem;
+    line-height: 1.5;
+  }
+
+  .be-curriculum-v2-table td:last-child {
+    border-bottom: 0;
+  }
+
+  .be-curriculum-v2-table td::before {
+    color: var(--be-required);
+    font-weight: 750;
+  }
+
+  .be-curriculum-v2-table td:nth-child(1)::before { content: "模块"; }
+  .be-curriculum-v2-table td:nth-child(2)::before { content: "深度"; }
+  .be-curriculum-v2-table td:nth-child(3)::before { content: "角色"; }
+  .be-curriculum-v2-table td:nth-child(4)::before { content: "关键产出"; }
+  .be-curriculum-v2-table td:nth-child(5)::before { content: "前置与解锁"; }
+  .be-curriculum-v2-table td:nth-child(6)::before { content: "用户规则"; }
+  .be-curriculum-v2-table td:nth-child(7)::before { content: "内容状态"; }
+  .be-curriculum-v2-table td:nth-child(8)::before { content: "衔接状态"; }
 
   .be-profile-route-table thead,
   .be-content-assets-table thead,

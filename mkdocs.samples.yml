@@ -1,0 +1,26 @@
+INHERIT: mkdocs.yml
+
+site_name: Become Engineer · 课程样板批次 A
+site_dir: site-samples
+
+# 评审构建需要把正式配置中的草稿恢复为可构建页面。
+draft_docs: null
+
+# 列表配置会覆盖父配置。样板环境不加载个性化导航和正式 V1 助教，
+# 避免本地画像与 step-N 观察器干扰语义上下文评审。
+extra_css:
+  - stylesheets/extra.css
+  - reviews/course-content/batch-a/assets/sample.css
+
+extra_javascript:
+  - reviews/course-content/batch-a/assets/tutor-v2-search.js
+  - reviews/course-content/batch-a/assets/tutor-v2.js
+  - reviews/course-content/batch-a/assets/python-runner.js
+  - reviews/course-content/batch-a/assets/cs-trace.js
+
+nav:
+  - 评审说明: reviews/course-content/batch-a/README.md
+  - VS Code 样板: reviews/course-content/batch-a/vscode-workspace.md
+  - Python 变量样板: reviews/course-content/batch-a/python-variables.md
+  - CS 起步样板: reviews/course-content/batch-a/cs-data-representation.md
+  - 阶段作品样板: reviews/course-content/batch-a/study-progress-reporter.md

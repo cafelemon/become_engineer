@@ -98,5 +98,6 @@ node_modules/
 dist/
 build/
 site/
+site-samples/
 .site/
 become_engineer_site/

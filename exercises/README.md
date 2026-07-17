@@ -50,6 +50,7 @@
 - [可追踪树与遍历实验](cs-core/traceable-tree-traversal-lab/README.md)：使用槽位表示、链接所有权和确定性前沿验证递归与迭代树遍历。
 - [可追踪图遍历实验](cs-core/traceable-graph-traversal-lab/README.md)：使用规范简单无向图验证邻接表示、BFS、DFS、连通分量和无向环。
 - [可追踪优先队列与最短路实验](cs-core/traceable-priority-shortest-path-lab/README.md)：使用最小堆、稳定序号和懒惰重复项验证非负权 Dijkstra。
+- [可追踪生成森林实验](cs-core/traceable-spanning-forest-lab/README.md)：使用路径压缩、确定性边序和割边前沿验证 DSU、Kruskal 与 Lazy Prim。
 
 ### LLM/Agent
 

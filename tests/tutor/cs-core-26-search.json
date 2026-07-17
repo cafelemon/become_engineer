@@ -1,0 +1,11 @@
+[
+ {"query":"Lazy Prim 固定样例有哪些计数？","step_id":"step-1","expected":"prim-fixed-baseline"},{"query":"前沿峰值和过期边几次","step_id":"step-1","expected":"prim-fixed-baseline"},
+ {"query":"Prim 选择的是全图最小边还是当前割边？","step_id":"step-2","expected":"prim-cut-edge"},{"query":"割边是什么意思","step_id":"step-2","expected":"prim-cut-edge"},
+ {"query":"访问新顶点时哪些边会压入前沿？","step_id":"step-3","expected":"prim-push-rule"},{"query":"已经访问的邻居还入队吗","step_id":"step-3","expected":"prim-push-rule"},
+ {"query":"max_frontier 在什么时候统计？","step_id":"step-3","expected":"prim-frontier-counting"},{"query":"压入后怎样更新峰值","step_id":"step-3","expected":"prim-frontier-counting"},
+ {"query":"Lazy Prim 怎样覆盖断开图和孤立点？","step_id":"step-4","expected":"prim-component-restart"},{"query":"队列空了下一步怎么办","step_id":"step-4","expected":"prim-component-restart"},
+ {"query":"怎样让 Prim 的同权前沿跨语言确定？","step_id":"step-4","expected":"prim-deterministic-order"},{"query":"同权边队列如何破平局","step_id":"step-4","expected":"prim-deterministic-order"},
+ {"query":"什么是 Lazy Prim 的过期边？","step_id":"step-5","expected":"prim-stale-edge"},{"query":"为什么弹出时两端都访问要跳过","step_id":"step-5","expected":"prim-stale-edge"},
+ {"query":"Lazy Prim 的复杂度怎样表述？","step_id":"step-5","expected":"prim-lazy-complexity"},{"query":"前沿空间最多多少","step_id":"step-5","expected":"prim-lazy-complexity"},
+ {"query":"compare_spanning_forests 为什么不比较边集？","step_id":"step-6","expected":"forest-comparison-migration"},{"query":"Kruskal和Prim必须选同样的边吗","step_id":"step-6","expected":"forest-comparison-migration"}
+]

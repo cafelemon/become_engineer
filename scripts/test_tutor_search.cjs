@@ -127,7 +127,7 @@ for (const lessonFile of courseFiles()) {
 console.log(`课程: ${lessonCount}`);
 console.log(`知识卡: ${totalCards}`);
 console.log(`固定问题: ${totalCases}`);
-if (lessonCount !== 52) fail("正式课程数量应为 52，实际为 " + lessonCount);
+if (lessonCount !== 55) fail("正式课程数量应为 55，实际为 " + lessonCount);
 if (failures.length) {
   console.error("助教知识库校验失败：");
   for (const message of failures) console.error("- " + message);

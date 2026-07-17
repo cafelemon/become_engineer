@@ -95,5 +95,4 @@ total_weight=7，edge_count=5
 
 ## 下一步
 
-进入 [Lazy Prim、割边前沿与过期边](../26-lazy-prim-cut-frontier-stale-edges/)，换成从已访问集合向外扩张的局部最小前沿。
-
+进入 [Lazy Prim、割边前沿与过期边](26-lazy-prim-cut-frontier-stale-edges.md)，换成从已访问集合向外扩张的局部最小前沿。

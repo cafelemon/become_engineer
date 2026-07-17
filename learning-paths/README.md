@@ -1,28 +1,28 @@
 # 学习路线
 
-这里按六条默认主线沉淀共同课程，并用跨主线专业领域承接特定职业和设备方向。六条主线不是六条任选路线，新学习者必须先使用统一顺序。
+这里按一棵共享能力树组织课程：先完成共同基座，再按目标进入应用工程、系统工程、算法、AI 模型、LLM 应用、Agent 工程或设备系统。求职训练叠加在相同课程和项目证据上，不复制正文。
 
 ## 开始学习
 
-- [小白统一学习路线](beginner-roadmap.md)
+- [开始学习：四类入口与共同基座](beginner-roadmap.md)
 - [完整课程地图](curriculum-map.md)
 
-统一顺序：
+共同基座：
 
-**工程基础前置 → Python 起步 → Python/C++ 双主修 → CS 最小核心 → Web 与 CS 深化并行 → AI 基础 → LLM/Agent**
+**工程基础起步 → Python 编程起步 → CS 起步 → 首个可验证项目与方向选择**
 
-这条默认路线负责共同基础。需要 MCU、嵌入式 Linux、工业控制或端侧 AI 能力的学习者，可在满足 C++、CS 与相应 AI 前置后进入[设备系统与边缘智能](device-edge-systems/README.md)；不需要时可以完整跳过。
+小白从起点进入，有基础者补具体缺口。共同基座后，C++ 只作为系统、性能与设备方向主干，C 语言只进入设备方向；不选择这些方向不会阻塞 Web、AI、LLM 或 Agent。
 
-默认路线只负责必修顺序。CS、Web、AI和LLM/Agent的推荐深化、专业选修及其前置关系，以完整课程地图和各主线入口为准。
+所有层级、前置、状态和 55 节现有课程明细，以[完整课程地图](curriculum-map.md)为唯一权威版本。
 
-## 六条主线
+## 内容入口
 
 - [工程基础](engineering-foundation/README.md)
 - [编程语言](programming-languages/README.md)
 - [Web 全栈](web-fullstack/README.md)
 - [CS 核心](cs-core/README.md)
 - [AI 基础](ai-foundation/README.md)
-- [LLM/Agent](llm-agent/README.md)
+- [LLM 应用与 Agent 工程](llm-agent/README.md)
 
 ## 跨主线专业领域
 

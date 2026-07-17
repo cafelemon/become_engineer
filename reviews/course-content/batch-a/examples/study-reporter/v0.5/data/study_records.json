@@ -1,0 +1,12 @@
+[
+  {
+    "course": "Python 起步",
+    "completed_hours": 3,
+    "target_hours": 5
+  },
+  {
+    "course": "工程基础",
+    "completed_hours": 6,
+    "target_hours": 6
+  }
+]

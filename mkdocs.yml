@@ -83,6 +83,11 @@ exclude_docs: |
   **/*.db
   **/*.db-journal
 
+# 课程内容架构样板仅用于本地评审。`mkdocs serve` 会显示草稿标记，
+# 正式 `mkdocs build` 不会生成这些页面或把它们写入搜索索引。
+draft_docs: |
+  reviews/course-content/**
+
 nav:
   - 首页:
       - README.md
@@ -150,6 +155,9 @@ nav:
           - 二叉最小堆、隐式树与堆不变量: learning-paths/cs-core/21-binary-min-heap-implicit-tree-invariant.md
           - 稳定优先队列、同优先级顺序与下溢: learning-paths/cs-core/22-stable-priority-queue-tie-order-underflow.md
           - 带权图松弛、Dijkstra 与过期队列项: learning-paths/cs-core/23-weighted-relaxation-dijkstra-stale-entries.md
+          - 并查集、按大小合并与路径压缩: learning-paths/cs-core/24-disjoint-set-union-path-compression.md
+          - Kruskal、环检测与最小生成森林: learning-paths/cs-core/25-kruskal-minimum-spanning-forest.md
+          - Lazy Prim、割边前沿与过期边: learning-paths/cs-core/26-lazy-prim-cut-frontier-stale-edges.md
   - 项目:
       - 项目说明: projects/README.md
       - 项目主干规划: projects/project-roadmap.md
@@ -164,6 +172,7 @@ nav:
           - 可追踪树与遍历实验: exercises/cs-core/traceable-tree-traversal-lab/README.md
           - 可追踪图遍历实验: exercises/cs-core/traceable-graph-traversal-lab/README.md
           - 可追踪优先队列与最短路实验: exercises/cs-core/traceable-priority-shortest-path-lab/README.md
+          - 可追踪生成森林实验: exercises/cs-core/traceable-spanning-forest-lab/README.md
       - Python 内容分析工具: projects/python-content-analysis/README.md
       - 结构化数据机器学习系统: projects/structured-data-ml-system/README.md
       - 文本分类模型演进: projects/text-classification-evolution/README.md

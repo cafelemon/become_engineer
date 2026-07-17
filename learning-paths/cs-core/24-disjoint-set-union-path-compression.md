@@ -98,5 +98,4 @@ connected(3,6)=yes
 
 ## 下一步
 
-进入 [Kruskal、环检测与最小生成森林](../25-kruskal-minimum-spanning-forest/)，用 DSU 判断一条候选边是否连接了两个不同分量。
-
+进入 [Kruskal、环检测与最小生成森林](25-kruskal-minimum-spanning-forest.md)，用 DSU 判断一条候选边是否连接了两个不同分量。
