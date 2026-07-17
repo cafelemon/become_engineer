@@ -1,82 +1,22 @@
-[
-  {
-    "query": "学习记录写什么",
-    "step_id": "step-1",
-    "expected": "record"
-  },
-  {
-    "query": "怎么开始学习记录",
-    "step_id": "step-1",
-    "expected": "record"
-  },
-  {
-    "query": "目标太大怎么办",
-    "step_id": "step-2",
-    "expected": "goal"
-  },
-  {
-    "query": "可执行目标怎么写",
-    "step_id": "step-2",
-    "expected": "goal"
-  },
-  {
-    "query": "主动练习是什么",
-    "step_id": "step-3",
-    "expected": "practice"
-  },
-  {
-    "query": "只看课算练习吗",
-    "step_id": "step-3",
-    "expected": "practice"
-  },
-  {
-    "query": "不会了怎么写问题",
-    "step_id": "step-4",
-    "expected": "question"
-  },
-  {
-    "query": "问题写不清楚",
-    "step_id": "step-4",
-    "expected": "question"
-  },
-  {
-    "query": "学习复盘怎么写",
-    "step_id": "step-5",
-    "expected": "review"
-  },
-  {
-    "query": "怎么总结学习结果",
-    "step_id": "step-5",
-    "expected": "review"
-  },
-  {
-    "query": "完成标准是什么",
-    "step_id": "step-5",
-    "expected": "evidence"
-  },
-  {
-    "query": "怎样证明完成",
-    "step_id": "step-5",
-    "expected": "evidence"
-  },
-  {
-    "query": "还没学会怎么办",
-    "step_id": "step-1",
-    "expected": "no-result"
-  },
-  {
-    "query": "暂时没结果算失败吗",
-    "step_id": "step-1",
-    "expected": "no-result"
-  },
-  {
-    "query": "下一步写继续学习吗",
-    "step_id": "step-5",
-    "expected": "next"
-  },
-  {
-    "query": "学习后做什么",
-    "step_id": "step-5",
-    "expected": "next"
-  }
-]
+{
+  "lesson_id": "engineering-foundation-01",
+  "cases": [
+    {"query":"为什么一开始就要写学习记录？","expected_card":"engineering-foundation-01-log-purpose"},
+    {"query":"学习记录有什么用","expected_card":"engineering-foundation-01-log-purpose"},
+    {"query":"学习记录到底要写哪几项？","expected_card":"engineering-foundation-01-five-lines"},
+    {"query":"五行学习循环是什么","expected_card":"engineering-foundation-01-five-lines"},
+    {"query":"怎样把学习目标写小？","expected_card":"engineering-foundation-01-small-goal"},
+    {"query":"目标太大怎么办","expected_card":"engineering-foundation-01-small-goal"},
+    {"query":"我应该用什么软件写 learning-log.md？","expected_card":"engineering-foundation-01-create-file"},
+    {"query":"没有VS Code怎么写学习记录","expected_card":"engineering-foundation-01-create-file"},
+    {"query":"怎么确认文件真的保存好了？","expected_card":"engineering-foundation-01-save-check"},
+    {"query":"为什么要关闭后重新打开","expected_card":"engineering-foundation-01-save-check"},
+    {"query":"为什么不能只复制模板？","expected_card":"engineering-foundation-01-personalize"},
+    {"query":"直接抄示例可以吗","expected_card":"engineering-foundation-01-personalize"},
+    {"query":"我只写了不会应该怎么改","expected_card":"engineering-foundation-01-vague-record"},
+    {"query":"问题写不清楚怎么办","expected_card":"engineering-foundation-01-vague-record"},
+    {"query":"这份学习记录后面还会继续用吗？","expected_card":"engineering-foundation-01-project-line"},
+    {"query":"工程学习工作台是什么","expected_card":"engineering-foundation-01-project-line"}
+  ],
+  "unknown": ["月球上的火山怎样开咖啡店", "帮我预测明天股票涨跌"]
+}

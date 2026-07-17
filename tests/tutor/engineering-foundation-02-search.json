@@ -1,82 +1,26 @@
-[
-  {
-    "query": "项目根目录是什么",
-    "step_id": "step-1",
-    "expected": "root"
-  },
-  {
-    "query": "学习工作区在哪里",
-    "step_id": "step-1",
-    "expected": "root"
-  },
-  {
-    "query": "文件夹和文件区别",
-    "step_id": "step-2",
-    "expected": "dir-file"
-  },
-  {
-    "query": "目录是什么",
-    "step_id": "step-2",
-    "expected": "dir-file"
-  },
-  {
-    "query": "文件扩展名是什么",
-    "step_id": "step-3",
-    "expected": "extension"
-  },
-  {
-    "query": "md 是什么文件",
-    "step_id": "step-3",
-    "expected": "extension"
-  },
-  {
-    "query": "相对路径怎么写",
-    "step_id": "step-4",
-    "expected": "relative"
-  },
-  {
-    "query": "notes 路径怎么写",
-    "step_id": "step-4",
-    "expected": "relative"
-  },
-  {
-    "query": "绝对路径和相对路径区别",
-    "step_id": "step-4",
-    "expected": "absolute"
-  },
-  {
-    "query": "完整文件路径是什么",
-    "step_id": "step-4",
-    "expected": "absolute"
-  },
-  {
-    "query": "文件路径错误怎么办",
-    "step_id": "step-5",
-    "expected": "not-found"
-  },
-  {
-    "query": "找不到文件怎么查",
-    "step_id": "step-5",
-    "expected": "not-found"
-  },
-  {
-    "query": "学习文件放哪里",
-    "step_id": "step-2",
-    "expected": "organize"
-  },
-  {
-    "query": "notes practice assets 区别",
-    "step_id": "step-2",
-    "expected": "organize"
-  },
-  {
-    "query": "下一课还用这个目录吗",
-    "step_id": "step-5",
-    "expected": "workspace"
-  },
-  {
-    "query": "工作区有什么用",
-    "step_id": "step-5",
-    "expected": "workspace"
-  }
-]
+{
+  "lesson_id":"engineering-foundation-02",
+  "cases":[
+    {"query":"这节课最后要把文件整理成什么样？","expected_card":"engineering-foundation-02-tree-result"},
+    {"query":"学习工作区目录树长什么样","expected_card":"engineering-foundation-02-tree-result"},
+    {"query":"文件和文件夹到底有什么区别？","expected_card":"engineering-foundation-02-file-directory"},
+    {"query":"目录和文件区别","expected_card":"engineering-foundation-02-file-directory"},
+    {"query":"什么叫项目根目录？","expected_card":"engineering-foundation-02-project-root"},
+    {"query":"learning-workspace为什么是根目录","expected_card":"engineering-foundation-02-project-root"},
+    {"query":"为什么我的文件变成了 learning-log.md.txt？","expected_card":"engineering-foundation-02-extension"},
+    {"query":"文件扩展名被隐藏了怎么办","expected_card":"engineering-foundation-02-extension"},
+    {"query":"为什么同一个相对路径换个位置就找不到了？","expected_card":"engineering-foundation-02-relative-path"},
+    {"query":"相对路径为什么依赖当前位置","expected_card":"engineering-foundation-02-relative-path"},
+    {"query":"绝对路径和相对路径有什么区别？","expected_card":"engineering-foundation-02-absolute-path"},
+    {"query":"为什么公开文档少用绝对路径","expected_card":"engineering-foundation-02-absolute-path"},
+    {"query":"不用终端怎样创建这几个文件夹？","expected_card":"engineering-foundation-02-create-folders"},
+    {"query":"Mac怎么创建learning-workspace","expected_card":"engineering-foundation-02-create-folders"},
+    {"query":"practice里的文件应该怎样写相对路径？","expected_card":"engineering-foundation-02-path-practice"},
+    {"query":"path-check.txt路径怎么写","expected_card":"engineering-foundation-02-path-practice"},
+    {"query":"路径找不到时应该先检查什么？","expected_card":"engineering-foundation-02-not-found"},
+    {"query":"文件明明在为什么找不到","expected_card":"engineering-foundation-02-not-found"},
+    {"query":"为什么要保留整个 learning-workspace？","expected_card":"engineering-foundation-02-project-next"},
+    {"query":"下一课还会用这个目录吗","expected_card":"engineering-foundation-02-project-next"}
+  ],
+  "unknown":["怎样烤一块月球形状的面包", "明天哪只股票一定上涨"]
+}

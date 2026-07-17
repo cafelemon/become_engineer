@@ -112,12 +112,14 @@ python variables_io.py
 
 满足以上标准后，完成并验收[学习进度报告器](../../../exercises/python-basics/study-progress-reporter/README.md)。这个阶段作品整合连续五节课程，但不作为新的长期项目。
 
-## 项目解锁
+## 完成后的方向选择
 
 完成 Python 起步后，可以并行进入 [Python 内容分析工具](../../../projects/python-content-analysis/README.md) 的第一个里程碑。
 
-这个项目会用 Python 处理 Markdown、JSON 和目录数据，但不会一次要求你完成全部工程化内容。CLI、日志、配置和 CI 会随着双主修与工程化课程逐步加码。
+这个项目会用 Python 处理 Markdown、JSON 和目录数据，但不会一次要求你完成全部工程化内容。CLI、日志、配置和 CI 会随着 Python 工程化课程逐步加码。
+
+默认学习顺序先进入 [CS 起步](../../cs-core/README.md)，用已经会写的 Python 程序理解数据表示、位置、操作成本、文本和网格。完成共同基座和阶段作品后，再选择 Python 核心、C++ 起步、算法或其他方向。
 
 ## 下一步
 
-尚未开始时，从[变量、基本类型、输入输出](01-variables-types-io.md)开始。完成全部课程后，默认进入 [Python / C++ 双主修](../README.md)，也可以并行启动 Python 内容分析工具 P1.1。
+尚未开始时，从[变量、基本类型、输入输出](01-variables-types-io.md)开始。完成全部课程后先验收学习进度报告器，再进入 [CS 起步](../../cs-core/README.md)；Python 核心与 C++ 不再要求机械轮换。

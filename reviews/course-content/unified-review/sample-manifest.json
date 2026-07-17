@@ -1,0 +1,156 @@
+{
+  "version": 1,
+  "status": "accepted",
+  "common_contexts": [
+    "overview",
+    "concept",
+    "example",
+    "reproduce",
+    "modify",
+    "troubleshoot",
+    "project"
+  ],
+  "optional_contexts": ["deepen", "career"],
+  "course_types": [
+    {"id": "tool-operation", "title": "工具操作"},
+    {"id": "programming-start", "title": "编程起步"},
+    {"id": "cs-concept", "title": "CS 概念"},
+    {"id": "algorithm-data-structure", "title": "算法与数据结构"},
+    {"id": "system-device", "title": "系统与设备"},
+    {"id": "ai-experiment", "title": "AI 实验"},
+    {"id": "web-llm-agent", "title": "Web／LLM／Agent 应用"},
+    {"id": "project-integration", "title": "项目整合"}
+  ],
+  "samples": [
+    {
+      "sample_id": "sample-vscode-workspace",
+      "title": "VS Code：打开第一个学习文件夹",
+      "batch": "a",
+      "course_type": "tool-operation",
+      "page": "reviews/course-content/batch-a/vscode-workspace.md",
+      "project_line": "learning-progress-reporter",
+      "runtime": "static-ui",
+      "source_status": "needs-formal-source-block"
+    },
+    {
+      "sample_id": "sample-python-variables",
+      "title": "Python：变量、基本类型与输入输出",
+      "batch": "a",
+      "course_type": "programming-start",
+      "page": "reviews/course-content/batch-a/python-variables.md",
+      "project_line": "learning-progress-reporter",
+      "runtime": "python-browser-and-local",
+      "source_status": "needs-formal-source-block"
+    },
+    {
+      "sample_id": "sample-cs-data-representation",
+      "title": "CS：数据如何在程序中表示",
+      "batch": "a",
+      "course_type": "cs-concept",
+      "page": "reviews/course-content/batch-a/cs-data-representation.md",
+      "project_line": "learning-progress-reporter",
+      "runtime": "interactive-trace",
+      "source_status": "needs-formal-source-block"
+    },
+    {
+      "sample_id": "sample-study-progress-reporter",
+      "title": "阶段作品：学习进度报告器",
+      "batch": "a",
+      "course_type": "project-integration",
+      "page": "reviews/course-content/batch-a/study-progress-reporter.md",
+      "project_line": "learning-progress-reporter",
+      "runtime": "local-project",
+      "source_status": "needs-formal-source-block"
+    },
+    {
+      "sample_id": "sample-cpp-build",
+      "title": "C++：源码怎样变成程序",
+      "batch": "b",
+      "course_type": "programming-start",
+      "page": "reviews/course-content/batch-b/cpp-build.md",
+      "project_line": "traceable-data-engine",
+      "runtime": "cpp20-local",
+      "source_status": "needs-formal-source-block"
+    },
+    {
+      "sample_id": "sample-c-memory",
+      "title": "C：变量、内存与第一次编译",
+      "batch": "b",
+      "course_type": "programming-start",
+      "page": "reviews/course-content/batch-b/c-memory.md",
+      "project_line": "device-edge-monitoring",
+      "runtime": "c17-local",
+      "source_status": "needs-formal-source-block"
+    },
+    {
+      "sample_id": "sample-bfs-shortest-path",
+      "title": "BFS：无权图中的最少步数",
+      "batch": "b",
+      "course_type": "algorithm-data-structure",
+      "page": "reviews/course-content/batch-b/bfs-shortest-path.md",
+      "project_line": "algorithm-trace-lab",
+      "runtime": "python-local-and-trace",
+      "source_status": "needs-formal-source-block"
+    },
+    {
+      "sample_id": "sample-cpp-raii",
+      "title": "C++：对象生命周期与 RAII",
+      "batch": "b",
+      "course_type": "system-device",
+      "page": "reviews/course-content/batch-b/cpp-raii.md",
+      "project_line": "traceable-data-engine",
+      "runtime": "cpp20-local",
+      "source_status": "needs-formal-source-block"
+    },
+    {
+      "sample_id": "sample-gpio-interrupts",
+      "title": "GPIO、中断与设备事件",
+      "batch": "b",
+      "course_type": "system-device",
+      "page": "reviews/course-content/batch-b/gpio-interrupts.md",
+      "project_line": "device-edge-monitoring",
+      "runtime": "c17-simulation-and-trace",
+      "source_status": "needs-formal-source-block"
+    },
+    {
+      "sample_id": "sample-web-local-api",
+      "title": "Web：浏览器怎样拿到学习数据",
+      "batch": "c",
+      "course_type": "web-llm-agent",
+      "page": "reviews/course-content/batch-c/web-local-api.md",
+      "project_line": "engineering-learning-workbench",
+      "runtime": "fastapi-and-browser",
+      "source_status": "visible-and-verified"
+    },
+    {
+      "sample_id": "sample-ai-reproducible-experiment",
+      "title": "AI：第一次训练与验证",
+      "batch": "c",
+      "course_type": "ai-experiment",
+      "page": "reviews/course-content/batch-c/ai-reproducible-experiment.md",
+      "project_line": "reproducible-ml-system",
+      "runtime": "python-local-synthetic-data",
+      "source_status": "visible-and-verified"
+    },
+    {
+      "sample_id": "sample-llm-structured-output",
+      "title": "LLM：把一句话变成可靠数据",
+      "batch": "c",
+      "course_type": "web-llm-agent",
+      "page": "reviews/course-content/batch-c/llm-structured-output.md",
+      "project_line": "intelligent-learning-assistant",
+      "runtime": "offline-first-optional-deepseek",
+      "source_status": "visible-and-verified"
+    },
+    {
+      "sample_id": "sample-agent-read-only-tool",
+      "title": "Agent：安全查询一门课程",
+      "batch": "c",
+      "course_type": "web-llm-agent",
+      "page": "reviews/course-content/batch-c/agent-read-only-tool.md",
+      "project_line": "intelligent-learning-assistant",
+      "runtime": "offline-first-optional-deepseek",
+      "source_status": "visible-and-verified"
+    }
+  ]
+}

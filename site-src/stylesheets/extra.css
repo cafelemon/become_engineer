@@ -122,6 +122,273 @@
   margin: 0;
 }
 
+/* Formal V2 filesystem lesson: static directory and path diagrams. */
+.be-fs-tree {
+  display: grid;
+  gap: 0.7rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.55rem;
+  background: var(--be-surface);
+}
+
+/* Formal V2 editor lesson: screenshot callouts and workspace relationship. */
+.be-editor-results,
+.be-editor-layout {
+  display: grid;
+  gap: 0.7rem;
+  margin: 1rem 0;
+}
+
+.be-editor-results {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.be-editor-results span,
+.be-editor-layout > div {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.55rem;
+  background: var(--be-surface);
+}
+
+.be-editor-results span {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.be-editor-results b {
+  color: var(--be-nav-section-color);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+}
+
+.be-editor-figure {
+  margin: 1rem 0 1.5rem;
+  padding: 0.75rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.7rem;
+  background: #111827;
+  overflow: hidden;
+}
+
+.be-editor-shot {
+  position: relative;
+}
+
+.be-editor-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.4rem;
+}
+
+.be-editor-shot__callout {
+  position: absolute;
+  padding: 0.32rem 0.55rem;
+  border-radius: 0.4rem;
+  color: #fff;
+  background: rgba(68, 88, 199, 0.96);
+  box-shadow: 0 0.25rem 0.8rem rgba(0, 0, 0, 0.28);
+  font-size: clamp(0.55rem, 1.7vw, 0.82rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.be-editor-shot__callout[data-callout="explorer"] { top: 10%; left: 3%; }
+.be-editor-shot__callout[data-callout="editor"] { top: 7%; left: 36%; }
+.be-editor-shot__callout[data-callout="terminal"] { top: 65%; left: 37%; background: rgba(8, 127, 104, 0.96); }
+.be-editor-shot__callout[data-callout="saved"] { top: 2%; right: 17%; background: rgba(166, 93, 0, 0.96); }
+
+.be-editor-figure figcaption {
+  padding: 0.7rem 0.2rem 0;
+  color: #dbe4ff;
+  font-size: 0.76rem;
+}
+
+.be-editor-layout {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.be-editor-layout h3 {
+  margin: 0 0 0.3rem;
+  font-size: 0.94rem;
+}
+
+.be-editor-layout p {
+  margin: 0;
+  color: var(--be-muted);
+}
+
+.be-editor-check {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.75rem;
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  border-left: 0.2rem solid var(--be-deepen);
+  border-radius: 0.4rem;
+  background: var(--be-deepen-bg);
+}
+
+.be-editor-check strong {
+  color: var(--be-deepen);
+}
+
+.be-fs-tree__root,
+.be-fs-tree__branches > div,
+.be-path-equation > div {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+  padding: 0.72rem 0.8rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.42rem;
+  background: var(--md-default-bg-color);
+}
+
+.be-fs-tree__root {
+  justify-self: center;
+  min-width: min(100%, 16rem);
+  border-color: var(--be-required);
+  background: var(--be-required-bg);
+  text-align: center;
+}
+
+.be-fs-tree__branches {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+  position: relative;
+  padding-top: 0.75rem;
+}
+
+.be-fs-tree__branches::before {
+  position: absolute;
+  top: 0;
+  right: 16.6%;
+  left: 16.6%;
+  border-top: 2px solid var(--be-border);
+  content: "";
+}
+
+.be-fs-tree__branches > div {
+  position: relative;
+}
+
+.be-fs-tree__branches > div::before {
+  position: absolute;
+  top: -0.78rem;
+  left: 50%;
+  height: 0.78rem;
+  border-left: 2px solid var(--be-border);
+  content: "";
+}
+
+.be-fs-tree span,
+.be-path-equation span {
+  color: var(--be-muted);
+  font-size: 0.62rem;
+}
+
+.be-fs-tree strong,
+.be-path-equation strong {
+  overflow-wrap: anywhere;
+  color: var(--md-default-fg-color);
+  font-size: 0.72rem;
+}
+
+.be-path-equation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.3fr) auto minmax(0, 1fr);
+  gap: 0.55rem;
+  align-items: center;
+  margin: 1rem 0 1.25rem;
+}
+
+.be-path-equation > b {
+  color: var(--be-required);
+  font-size: 1rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 44.984375em) {
+  .be-fs-tree__branches,
+  .be-path-equation {
+    grid-template-columns: 1fr;
+  }
+
+  .be-fs-tree__branches {
+    padding-top: 0;
+  }
+
+  .be-fs-tree__branches::before,
+  .be-fs-tree__branches > div::before {
+    display: none;
+  }
+}
+
+/* Formal V2 terminal lesson: terminal, shell, and operating-system flow. */
+.be-terminal-model {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr) auto);
+  gap: 0.45rem;
+  align-items: center;
+  margin: 1rem 0 1.25rem;
+  padding: 0.9rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.55rem;
+  background: var(--be-surface);
+}
+
+.be-terminal-model > div {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+  min-height: 4.1rem;
+  align-content: center;
+  padding: 0.65rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.42rem;
+  background: var(--md-default-bg-color);
+  text-align: center;
+}
+
+.be-terminal-model > div:first-child,
+.be-terminal-model > div:nth-of-type(2) {
+  border-color: var(--be-required);
+  background: var(--be-required-bg);
+}
+
+.be-terminal-model span,
+.be-terminal-model small {
+  color: var(--be-muted);
+  font-size: 0.58rem;
+  line-height: 1.4;
+}
+
+.be-terminal-model strong {
+  overflow-wrap: anywhere;
+  font-size: 0.68rem;
+}
+
+.be-terminal-model > b {
+  color: var(--be-required);
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 56.234375em) {
+  .be-terminal-model {
+    grid-template-columns: 1fr;
+  }
+
+  .be-terminal-model > b {
+    transform: rotate(90deg);
+    text-align: center;
+  }
+}
+
 /* Device and edge-intelligence route: dependency map without runtime JS. */
 .be-edge-flow {
   display: grid;
@@ -668,9 +935,21 @@
   .be-layer-grid,
   .be-domain-grid,
   .be-repo-panel,
-  .be-lesson-overview {
+  .be-lesson-overview,
+  .be-editor-results,
+  .be-editor-layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .be-editor-figure {
+    margin-right: -0.35rem;
+    margin-left: -0.35rem;
+    padding: 0.35rem;
+  }
+
+  .be-editor-shot__callout {
+    padding: 0.24rem 0.38rem;
   }
 
   .be-page-actions .md-button,

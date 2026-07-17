@@ -114,50 +114,57 @@ nav:
           - 文件、路径、JSON 和简单目录操作: learning-paths/programming-languages/python-basics/05-files-json-paths.md
           - 模块、导入和虚拟环境: learning-paths/programming-languages/python-basics/06-modules-imports-venv.md
           - 异常、基本调试和最小自动化测试: learning-paths/programming-languages/python-basics/07-errors-debugging-tests.md
-      - C++ 核心语言:
-          - 课程说明: learning-paths/programming-languages/cpp-core/README.md
-          - 从源文件到可执行程序: learning-paths/programming-languages/cpp-core/01-build-types-io.md
-          - 函数、声明与程序组织: learning-paths/programming-languages/cpp-core/02-functions-declarations-program-organization.md
-          - 头文件、源文件与最小 CMake 工程: learning-paths/programming-languages/cpp-core/03-headers-sources-cmake.md
-          - STL 容器、迭代器与基础算法: learning-paths/programming-languages/cpp-core/04-stl-containers-iterators-algorithms.md
-          - 对象、引用、指针、生命周期与 RAII: learning-paths/programming-languages/cpp-core/05-objects-references-pointers-lifetime-raii.md
-      - Python 核心语言:
-          - 课程说明: learning-paths/programming-languages/python-core/README.md
-          - 类型提示、接口与静态检查认知: learning-paths/programming-languages/python-core/01-type-hints-interfaces-static-checking.md
-          - 可维护函数接口、协议与模块边界: learning-paths/programming-languages/python-core/02-maintainable-function-interfaces-protocols-modules.md
-          - 容器协议、迭代器与生成器: learning-paths/programming-languages/python-core/03-iterables-iterators-generators.md
-          - 数据模型、数据类与上下文管理: learning-paths/programming-languages/python-core/04-data-model-dataclasses-context-managers.md
-          - 装饰器、闭包与自定义上下文管理器: learning-paths/programming-languages/python-core/05-decorators-closures-custom-context-managers.md
-          - 包结构、可安装入口与 CLI: learning-paths/programming-languages/python-core/06-package-structure-installable-cli.md
-          - TOML 配置、日志与诊断: learning-paths/programming-languages/python-core/07-toml-configuration-logging-diagnostics.md
-      - CS 核心:
+      - CS 起步:
           - 课程说明: learning-paths/cs-core/README.md
           - 序列接口、数组表示与安全边界: learning-paths/cs-core/01-sequence-interface-array-representation-boundaries.md
           - 操作计数、增长率与渐近复杂度: learning-paths/cs-core/02-operation-count-growth-asymptotic-complexity.md
           - 字符串、UTF-8 字节与码点边界: learning-paths/cs-core/03-string-utf8-byte-code-point-boundaries.md
           - 二维网格、行优先布局与坐标边界: learning-paths/cs-core/04-two-dimensional-grid-row-major-layout.md
-          - 动态数组容量、扩容成本与摊还分析: learning-paths/cs-core/05-dynamic-array-capacity-amortized-cost.md
-          - 单链表、节点链接与所有权: learning-paths/cs-core/06-singly-linked-list-nodes-ownership.md
-          - 栈、LIFO 接口与空栈边界: learning-paths/cs-core/07-stack-lifo-interface-underflow.md
-          - 队列、FIFO 与首尾不变量: learning-paths/cs-core/08-queue-fifo-head-tail-invariants.md
-          - 哈希函数、键相等与冲突: learning-paths/cs-core/09-hash-function-key-equality-collisions.md
-          - 分离链接、负载因子与扩容: learning-paths/cs-core/10-separate-chaining-load-factor-rehash.md
-          - 集合去重、频次映射与稳定输出: learning-paths/cs-core/11-set-frequency-map-deterministic-output.md
-          - 有序查找、半开区间与左右边界: learning-paths/cs-core/12-ordered-search-half-open-boundaries.md
-          - 插入排序、选择排序与稳定性: learning-paths/cs-core/13-insertion-selection-sort-stability.md
-          - 自底向上归并排序与稳定复杂度: learning-paths/cs-core/14-bottom-up-merge-sort-stable-complexity.md
-          - 二叉树形状、链接所有权与槽位表示: learning-paths/cs-core/15-binary-tree-shape-linked-ownership.md
-          - 递归深度优先遍历、基线条件与调用深度: learning-paths/cs-core/16-recursive-dfs-traversal-call-frames.md
-          - 迭代 DFS、BFS 与层级前沿: learning-paths/cs-core/17-iterative-dfs-bfs-frontier-levels.md
-          - 简单无向图、邻接表示与输入边界: learning-paths/cs-core/18-undirected-graph-adjacency-representations.md
-          - BFS、无权距离与最短路径: learning-paths/cs-core/19-bfs-unweighted-distances-shortest-paths.md
-          - DFS、连通分量与无向环检测: learning-paths/cs-core/20-dfs-connected-components-undirected-cycles.md
-          - 二叉最小堆、隐式树与堆不变量: learning-paths/cs-core/21-binary-min-heap-implicit-tree-invariant.md
-          - 稳定优先队列、同优先级顺序与下溢: learning-paths/cs-core/22-stable-priority-queue-tie-order-underflow.md
-          - 带权图松弛、Dijkstra 与过期队列项: learning-paths/cs-core/23-weighted-relaxation-dijkstra-stale-entries.md
-          - 并查集、按大小合并与路径压缩: learning-paths/cs-core/24-disjoint-set-union-path-compression.md
-          - Kruskal、环检测与最小生成森林: learning-paths/cs-core/25-kruskal-minimum-spanning-forest.md
-          - Lazy Prim、割边前沿与过期边: learning-paths/cs-core/26-lazy-prim-cut-frontier-stale-edges.md
+      - C++：起步与核心:
+          - 课程说明: learning-paths/programming-languages/cpp-core/README.md
+          - C++ 起步:
+              - 从源文件到可执行程序: learning-paths/programming-languages/cpp-core/01-build-types-io.md
+              - 函数、声明与程序组织: learning-paths/programming-languages/cpp-core/02-functions-declarations-program-organization.md
+          - C++ 核心:
+              - 头文件、源文件与最小 CMake 工程: learning-paths/programming-languages/cpp-core/03-headers-sources-cmake.md
+              - STL 容器、迭代器与基础算法: learning-paths/programming-languages/cpp-core/04-stl-containers-iterators-algorithms.md
+              - 对象、引用、指针、生命周期与 RAII: learning-paths/programming-languages/cpp-core/05-objects-references-pointers-lifetime-raii.md
+      - Python：核心与工程化:
+          - 课程说明: learning-paths/programming-languages/python-core/README.md
+          - Python 核心:
+              - 类型提示、接口与静态检查认知: learning-paths/programming-languages/python-core/01-type-hints-interfaces-static-checking.md
+              - 可维护函数接口、协议与模块边界: learning-paths/programming-languages/python-core/02-maintainable-function-interfaces-protocols-modules.md
+              - 容器协议、迭代器与生成器: learning-paths/programming-languages/python-core/03-iterables-iterators-generators.md
+              - 数据模型、数据类与上下文管理: learning-paths/programming-languages/python-core/04-data-model-dataclasses-context-managers.md
+              - 装饰器、闭包与自定义上下文管理器: learning-paths/programming-languages/python-core/05-decorators-closures-custom-context-managers.md
+          - Python 工程化:
+              - 包结构、可安装入口与 CLI: learning-paths/programming-languages/python-core/06-package-structure-installable-cli.md
+              - TOML 配置、日志与诊断: learning-paths/programming-languages/python-core/07-toml-configuration-logging-diagnostics.md
+      - 算法与数据结构:
+          - 共同算法与数据结构基础:
+              - 动态数组容量、扩容成本与摊还分析: learning-paths/cs-core/05-dynamic-array-capacity-amortized-cost.md
+              - 单链表、节点链接与所有权: learning-paths/cs-core/06-singly-linked-list-nodes-ownership.md
+              - 栈、LIFO 接口与空栈边界: learning-paths/cs-core/07-stack-lifo-interface-underflow.md
+              - 队列、FIFO 与首尾不变量: learning-paths/cs-core/08-queue-fifo-head-tail-invariants.md
+              - 哈希函数、键相等与冲突: learning-paths/cs-core/09-hash-function-key-equality-collisions.md
+              - 分离链接、负载因子与扩容: learning-paths/cs-core/10-separate-chaining-load-factor-rehash.md
+              - 集合去重、频次映射与稳定输出: learning-paths/cs-core/11-set-frequency-map-deterministic-output.md
+              - 有序查找、半开区间与左右边界: learning-paths/cs-core/12-ordered-search-half-open-boundaries.md
+              - 插入排序、选择排序与稳定性: learning-paths/cs-core/13-insertion-selection-sort-stability.md
+              - 自底向上归并排序与稳定复杂度: learning-paths/cs-core/14-bottom-up-merge-sort-stable-complexity.md
+              - 二叉树形状、链接所有权与槽位表示: learning-paths/cs-core/15-binary-tree-shape-linked-ownership.md
+              - 递归深度优先遍历、基线条件与调用深度: learning-paths/cs-core/16-recursive-dfs-traversal-call-frames.md
+              - 迭代 DFS、BFS 与层级前沿: learning-paths/cs-core/17-iterative-dfs-bfs-frontier-levels.md
+              - 简单无向图、邻接表示与输入边界: learning-paths/cs-core/18-undirected-graph-adjacency-representations.md
+              - BFS、无权距离与最短路径: learning-paths/cs-core/19-bfs-unweighted-distances-shortest-paths.md
+              - DFS、连通分量与无向环检测: learning-paths/cs-core/20-dfs-connected-components-undirected-cycles.md
+          - 算法核心:
+              - 二叉最小堆、隐式树与堆不变量: learning-paths/cs-core/21-binary-min-heap-implicit-tree-invariant.md
+              - 稳定优先队列、同优先级顺序与下溢: learning-paths/cs-core/22-stable-priority-queue-tie-order-underflow.md
+              - 带权图松弛、Dijkstra 与过期队列项: learning-paths/cs-core/23-weighted-relaxation-dijkstra-stale-entries.md
+              - 并查集、按大小合并与路径压缩: learning-paths/cs-core/24-disjoint-set-union-path-compression.md
+              - Kruskal、环检测与最小生成森林: learning-paths/cs-core/25-kruskal-minimum-spanning-forest.md
+              - Lazy Prim、割边前沿与过期边: learning-paths/cs-core/26-lazy-prim-cut-frontier-stale-edges.md
   - 项目:
       - 项目说明: projects/README.md
       - 项目主干规划: projects/project-roadmap.md

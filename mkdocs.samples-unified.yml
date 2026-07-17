@@ -1,0 +1,44 @@
+INHERIT: mkdocs.yml
+
+site_name: Become Engineer · 十三个样板统一评审
+site_dir: site-samples-unified
+
+draft_docs: null
+
+extra_css:
+  - stylesheets/extra.css
+  - reviews/course-content/batch-a/assets/sample.css
+  - reviews/course-content/batch-b/assets/sample-b.css
+  - reviews/course-content/batch-c/assets/sample-c.css
+  - reviews/course-content/unified-review/assets/unified-review.css
+
+extra_javascript:
+  - javascripts/tutor-search.js
+  - javascripts/tutor.js
+  - reviews/course-content/unified-review/assets/tutor-v2-candidate.js
+  - reviews/course-content/batch-a/assets/python-runner.js
+  - reviews/course-content/batch-a/assets/cs-trace.js
+  - reviews/course-content/batch-b/assets/system-traces.js
+  - reviews/course-content/batch-c/assets/intelligent-traces.js
+
+nav:
+  - 统一评审:
+      - 评审总览: reviews/course-content/unified-review/README.md
+      - 候选统一基线: reviews/course-content/unified-review/baseline-candidate.md
+      - 差异与后续修订: reviews/course-content/unified-review/gap-register.md
+  - 共同入口:
+      - VS Code: reviews/course-content/batch-a/vscode-workspace.md
+      - Python 变量: reviews/course-content/batch-a/python-variables.md
+      - CS 数据表示: reviews/course-content/batch-a/cs-data-representation.md
+      - 学习进度报告器: reviews/course-content/batch-a/study-progress-reporter.md
+  - 系统、算法与设备:
+      - C++ 构建: reviews/course-content/batch-b/cpp-build.md
+      - C 与内存: reviews/course-content/batch-b/c-memory.md
+      - BFS: reviews/course-content/batch-b/bfs-shortest-path.md
+      - 生命周期与 RAII: reviews/course-content/batch-b/cpp-raii.md
+      - GPIO 与中断: reviews/course-content/batch-b/gpio-interrupts.md
+  - Web 与智能方向:
+      - Web 本地 API: reviews/course-content/batch-c/web-local-api.md
+      - AI 训练与验证: reviews/course-content/batch-c/ai-reproducible-experiment.md
+      - LLM 结构化输出: reviews/course-content/batch-c/llm-structured-output.md
+      - Agent 只读工具: reviews/course-content/batch-c/agent-read-only-tool.md

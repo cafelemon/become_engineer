@@ -62,13 +62,15 @@
   function initTraceDemos() {
     document.querySelectorAll("[data-trace-demo]").forEach(function (root) {
       if (root.dataset.ready === "true") return;
-      root.dataset.ready = "true";
-      const steps = JSON.parse(root.querySelector("script[type='application/json']").textContent);
+      const source = root.querySelector("script[type='application/json']");
       const stage = root.querySelector("[data-trace-stage]");
       const position = root.querySelector("[data-trace-position]");
       const previous = root.querySelector("[data-trace-previous]");
       const next = root.querySelector("[data-trace-next]");
       const reset = root.querySelector("[data-trace-reset]");
+      if (!source || !stage || !position || !previous || !next || !reset) return;
+      root.dataset.ready = "true";
+      const steps = JSON.parse(source.textContent);
       let index = 0;
       function render() {
         const step = steps[index];

@@ -1,4 +1,4 @@
 interface:
   display_name: "Become Engineer 课程生产"
-  short_description: "创建任务驱动课程、小码助教、检索验收与原创求职训练。"
-  default_prompt: "使用 $become-engineer-course-authoring 为 Become Engineer 新建或重构一节正式课程。"
+  short_description: "按 V2 课型创建、迁移并验证正式课程内容与小码助教"
+  default_prompt: "Use $become-engineer-course-authoring to create or migrate a Become Engineer lesson with the V2 semantic structure and compatible Xiaoma tutor data."

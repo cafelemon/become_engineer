@@ -1,264 +1,185 @@
 {
-  "version": 1,
   "lesson": {
     "id": "engineering-foundation-03",
     "title": "终端与 Shell",
     "path": "learning-paths/engineering-foundation/stage-0/03-terminal-shell/"
   },
-  "steps": [
-    {
-      "id": "step-1",
-      "title": "打开终端"
-    },
-    {
-      "id": "step-2",
-      "title": "确认位置"
-    },
-    {
-      "id": "step-3",
-      "title": "查看内容"
-    },
-    {
-      "id": "step-4",
-      "title": "进入并读取"
-    },
-    {
-      "id": "step-5",
-      "title": "记录错误"
-    }
+  "contexts": [
+    {"id":"overview-terminal-result","type":"overview","title":"终端只读检查结果","anchor":"#overview-terminal-result"},
+    {"id":"concept-terminal-shell","type":"concept","title":"终端、Shell 与提示符","anchor":"#concept-terminal-shell"},
+    {"id":"reproduce-open-terminal","type":"reproduce","title":"找到并打开终端","anchor":"#reproduce-open-terminal"},
+    {"id":"example-command-anatomy","type":"example","title":"命令、参数与选项","anchor":"#example-command-anatomy"},
+    {"id":"reproduce-enter-workspace","type":"reproduce","title":"进入学习工作区","anchor":"#reproduce-enter-workspace"},
+    {"id":"modify-read-record","type":"modify","title":"从两个位置读取记录","anchor":"#modify-read-record"},
+    {"id":"troubleshoot-terminal-errors","type":"troubleshoot","title":"终端错误与恢复","anchor":"#troubleshoot-terminal-errors"},
+    {"id":"deepen-command-status","type":"deepen","title":"输出与命令状态","anchor":"#deepen-command-status"},
+    {"id":"project-workspace-v03","type":"project","title":"工程学习工作台 v0.3","anchor":"#project-workspace-v03"}
   ],
   "cards": [
     {
-      "id": "terminal",
-      "lesson_id": "engineering-foundation-03",
-      "step_id": "step-1",
-      "question": "终端是什么",
-      "aliases": [
-        "终端是干什么的",
-        "Shell 是什么"
-      ],
-      "keywords": [
-        "终端",
-        "命令",
-        "shell",
-        "窗口"
-      ],
-      "diagnostic": "当前任务是“打开系统或编辑器内置终端，进入上一课创建的学习工作区。”。处理“终端是什么”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：打开系统或编辑器内置终端，进入上一课创建的学习工作区。",
-        "本步成功证据是：提示符回到可输入状态，没有报错。 终端是文字交互窗口；Shell 读取命令并执行。"
-      ],
-      "example": "局部检查示例：提示符回到可输入状态，没有报错。",
-      "answer": "终端是文字交互窗口；Shell 读取命令并执行。",
-      "source": {
-        "label": "打开终端",
-        "href": "#step-1"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": true
+      "id":"engineering-foundation-03-result",
+      "lesson_id":"engineering-foundation-03",
+      "context_id":"overview-terminal-result",
+      "question":"这节课最后要在终端看到什么？",
+      "aliases":["终端课怎样算完成", "第一次用终端要做到什么"],
+      "keywords":["当前位置", "三个目录", "learning-log.md", "只读检查"],
+      "diagnostic":"你现在能从终端说出自己在哪里，并列出当前目录吗？",
+      "hints":["先让终端显示 learning-workspace 的完整位置。", "再列出 assets、notes、practice，并读取 learning-log.md 第一行。"],
+      "example":"Get-Location → Get-ChildItem -Name → Get-Content notes\\learning-log.md -TotalCount 1。",
+      "answer":"完成时应看到 learning-workspace 的真实路径、三个子目录，以及学习记录第一行；还要留下一次错误和恢复记录。",
+      "source":{"label":"不点文件夹，也能找到上一课的记录","href":"#overview-terminal-result"},
+      "updated_at":"2026-07-17",
+      "recommended":true
     },
     {
-      "id": "cd",
-      "lesson_id": "engineering-foundation-03",
-      "step_id": "step-1",
-      "question": "cd 如何进入目录",
-      "aliases": [
-        "怎么进入学习目录",
-        "cd 怎么用"
-      ],
-      "keywords": [
-        "cd",
-        "进入目录",
-        "路径",
-        "工作区"
-      ],
-      "diagnostic": "当前任务是“打开系统或编辑器内置终端，进入上一课创建的学习工作区。”。处理“cd 如何进入目录”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：打开系统或编辑器内置终端，进入上一课创建的学习工作区。",
-        "本步成功证据是：提示符回到可输入状态，没有报错。 使用 `cd 目标路径` 进入工作区，路径有空格时使用引号。"
-      ],
-      "example": "局部检查示例：提示符回到可输入状态，没有报错。",
-      "answer": "使用 `cd 目标路径` 进入工作区，路径有空格时使用引号。",
-      "source": {
-        "label": "打开终端",
-        "href": "#step-1"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": true
+      "id":"engineering-foundation-03-terminal-shell",
+      "lesson_id":"engineering-foundation-03",
+      "context_id":"concept-terminal-shell",
+      "question":"终端和 Shell 到底有什么区别？",
+      "aliases":["终端是什么", "PowerShell和Windows Terminal是一个东西吗"],
+      "keywords":["终端", "Shell", "PowerShell", "Windows Terminal", "zsh"],
+      "diagnostic":"你说的是屏幕上的窗口，还是负责解释命令的程序？",
+      "hints":["终端负责接收输入和显示结果。", "PowerShell、zsh、bash 这类 Shell 在终端里解释并执行命令。"],
+      "example":"Windows Terminal 是窗口应用，其中一个标签可以运行 PowerShell；macOS Terminal 默认通常运行 zsh。",
+      "answer":"终端是文字交互窗口，Shell 是窗口里读取和解释命令的程序。一个终端可以承载不同 Shell。",
+      "source":{"label":"终端是窗口，Shell 负责理解命令","href":"#concept-terminal-shell"},
+      "updated_at":"2026-07-17",
+      "recommended":true
     },
     {
-      "id": "pwd",
-      "lesson_id": "engineering-foundation-03",
-      "step_id": "step-2",
-      "question": "怎样确认当前目录",
-      "aliases": [
-        "pwd 是什么",
-        "当前目录怎么查"
-      ],
-      "keywords": [
-        "pwd",
-        "当前目录",
-        "位置",
-        "get-location"
-      ],
-      "diagnostic": "当前任务是“执行 `pwd`（PowerShell 可用 `Get-Location`）。”。处理“怎样确认当前目录”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：执行 `pwd`（PowerShell 可用 `Get-Location`）。",
-        "本步成功证据是：输出与学习工作区位置一致。 macOS/Linux 常用 pwd；PowerShell 可用 Get-Location。"
-      ],
-      "example": "局部检查示例：输出与学习工作区位置一致。",
-      "answer": "macOS/Linux 常用 pwd；PowerShell 可用 Get-Location。",
-      "source": {
-        "label": "确认位置",
-        "href": "#step-2"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
+      "id":"engineering-foundation-03-prompt",
+      "lesson_id":"engineering-foundation-03",
+      "context_id":"concept-terminal-shell",
+      "question":"终端里的美元符号和 PS 大于号要输入吗？",
+      "aliases":["$需要复制吗", "PS>是命令的一部分吗"],
+      "keywords":["提示符", "$", "PS>", "复制命令", "闪烁光标"],
+      "diagnostic":"你复制的是命令本身，还是把示例前面的提示符也带上了？",
+      "hints":["$、% 和 PS> 通常表示 Shell 正在等你输入。", "只输入提示符后面的命令，再按 Enter 或 Return。"],
+      "example":"页面显示 `$ pwd` 时，实际只输入 `pwd`。",
+      "answer":"不要输入提示符。它属于终端显示，不是命令的一部分；提示符重新出现通常说明上一条命令已经结束。",
+      "source":{"label":"终端是窗口，Shell 负责理解命令","href":"#concept-terminal-shell"},
+      "updated_at":"2026-07-17",
+      "recommended":true
     },
     {
-      "id": "ls",
-      "lesson_id": "engineering-foundation-03",
-      "step_id": "step-3",
-      "question": "怎样查看目录内容",
-      "aliases": [
-        "ls 命令有什么用",
-        "怎么列出文件"
-      ],
-      "keywords": [
-        "ls",
-        "dir",
-        "查看",
-        "目录内容"
-      ],
-      "diagnostic": "当前任务是“执行 `ls`（PowerShell 可用 `dir`），找到 `notes`、`practice`、`assets`。”。处理“怎样查看目录内容”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：执行 `ls`（PowerShell 可用 `dir`），找到 `notes`、`practice`、`assets`。",
-        "本步成功证据是：输出与文件树一致。 macOS/Linux 用 ls；PowerShell 可用 dir 查看当前目录条目。"
-      ],
-      "example": "局部检查示例：输出与文件树一致。",
-      "answer": "macOS/Linux 用 ls；PowerShell 可用 dir 查看当前目录条目。",
-      "source": {
-        "label": "查看内容",
-        "href": "#step-3"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
+      "id":"engineering-foundation-03-open",
+      "lesson_id":"engineering-foundation-03",
+      "context_id":"reproduce-open-terminal",
+      "question":"我在电脑哪里打开终端？",
+      "aliases":["Windows找不到Terminal怎么办", "Mac终端在哪里"],
+      "keywords":["打开终端", "Windows键", "PowerShell", "Spotlight", "实用工具"],
+      "diagnostic":"你现在使用 Windows、macOS，还是 Linux？",
+      "hints":["Windows 先搜索 Terminal，找不到就搜索 PowerShell。", "macOS 用 Command+Space 搜 Terminal，或从应用程序的实用工具打开。"],
+      "example":"macOS：Command+Space → 输入 Terminal → Return。",
+      "answer":"Windows 11 从开始菜单搜索 Terminal 或 PowerShell；macOS 从 Spotlight 或“应用程序 → 实用工具”打开 Terminal。",
+      "source":{"label":"先把终端找到并打开","href":"#reproduce-open-terminal"},
+      "updated_at":"2026-07-17",
+      "recommended":true
     },
     {
-      "id": "parent",
-      "lesson_id": "engineering-foundation-03",
-      "step_id": "step-4",
-      "question": "cd .. 是什么",
-      "aliases": [
-        "怎么返回上一级目录",
-        ".. 代表什么"
-      ],
-      "keywords": [
-        "cd",
-        "父目录",
-        "返回",
-        "上一级"
-      ],
-      "diagnostic": "当前任务是“进入 `notes`，用 `cat learning-log.md`（PowerShell 可用 `Get-Content learning-log.md`）读取文件，然后用 `cd ..` 回到父目录。”。处理“cd .. 是什么”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：进入 `notes`，用 `cat learning-log.md`（PowerShell 可用 `Get-Content learning-log.md`）读取文件，然后用 `cd ..` 回到父目录。",
-        "本步成功证据是：能解释 `.`、`..` 和当前目录的关系。 `..` 表示父目录，`cd ..` 会返回上一级。"
-      ],
-      "example": "局部检查示例：能解释 `.`、`..` 和当前目录的关系。",
-      "answer": "`..` 表示父目录，`cd ..` 会返回上一级。",
-      "source": {
-        "label": "进入并读取",
-        "href": "#step-4"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
+      "id":"engineering-foundation-03-command-parts",
+      "lesson_id":"engineering-foundation-03",
+      "context_id":"example-command-anatomy",
+      "question":"命令、参数和选项怎样区分？",
+      "aliases":["一条命令每部分是什么意思", "路径有空格为什么要加引号"],
+      "keywords":["命令", "参数", "选项", "引号", "空格"],
+      "diagnostic":"先用空格把整行分开，第一部分是不是要执行的命令名？",
+      "hints":["命令名说明做什么，参数常指向操作对象。", "选项改变细节；路径含空格时用一对引号把它包成一个参数。"],
+      "example":"Get-Content 是命令，notes\\learning-log.md 是文件参数，-TotalCount 1 表示只读第一行。",
+      "answer":"命令名决定动作，参数提供目标，选项调整行为。Shell 通常按空格分词，因此含空格的单个路径需要成对引号。",
+      "source":{"label":"一条命令里有什么","href":"#example-command-anatomy"},
+      "updated_at":"2026-07-17",
+      "recommended":false
     },
     {
-      "id": "cat",
-      "lesson_id": "engineering-foundation-03",
-      "step_id": "step-4",
-      "question": "怎样读取文本文件",
-      "aliases": [
-        "cat 命令是什么",
-        "终端怎么打开 md 文件"
-      ],
-      "keywords": [
-        "cat",
-        "get-content",
-        "读取",
-        "文件"
-      ],
-      "diagnostic": "当前任务是“进入 `notes`，用 `cat learning-log.md`（PowerShell 可用 `Get-Content learning-log.md`）读取文件，然后用 `cd ..` 回到父目录。”。处理“怎样读取文本文件”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：进入 `notes`，用 `cat learning-log.md`（PowerShell 可用 `Get-Content learning-log.md`）读取文件，然后用 `cd ..` 回到父目录。",
-        "本步成功证据是：能解释 `.`、`..` 和当前目录的关系。 macOS/Linux 用 cat 文件名；PowerShell 用 Get-Content 文件名。"
-      ],
-      "example": "局部检查示例：能解释 `.`、`..` 和当前目录的关系。",
-      "answer": "macOS/Linux 用 cat 文件名；PowerShell 用 Get-Content 文件名。",
-      "source": {
-        "label": "进入并读取",
-        "href": "#step-4"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
+      "id":"engineering-foundation-03-location",
+      "lesson_id":"engineering-foundation-03",
+      "context_id":"reproduce-enter-workspace",
+      "question":"怎样确认终端现在在哪个目录？",
+      "aliases":["pwd是什么", "Get-Location有什么用"],
+      "keywords":["当前目录", "pwd", "Get-Location", "位置", "路径"],
+      "diagnostic":"你已经让终端打印当前位置，还是只根据提示符猜测？",
+      "hints":["macOS／Linux 输入 pwd。", "PowerShell 输入 Get-Location；输出应以 learning-workspace 结尾。"],
+      "example":"Get-Location 返回 C:\\Users\\小码\\Documents\\learning-workspace。",
+      "answer":"macOS／Linux 使用 pwd，PowerShell 使用 Get-Location。操作相对路径前先确认输出与预期项目根目录一致。",
+      "source":{"label":"进入学习工作区","href":"#reproduce-enter-workspace"},
+      "updated_at":"2026-07-17",
+      "recommended":true
     },
     {
-      "id": "error",
-      "lesson_id": "engineering-foundation-03",
-      "step_id": "step-5",
-      "question": "终端报错怎么办",
-      "aliases": [
-        "终端报错是不是坏了",
-        "命令失败怎么办"
-      ],
-      "keywords": [
-        "报错",
-        "命令",
-        "终端",
-        "失败"
-      ],
-      "diagnostic": "当前任务是“有意执行一个错误文件名，记录命令、报错和正确修复方式。”。处理“终端报错怎么办”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：有意执行一个错误文件名，记录命令、报错和正确修复方式。",
-        "本步成功证据是：能区分命令失败与终端损坏。 命令错误是执行结果，不表示终端损坏；保留命令、输出和当前目录。"
-      ],
-      "example": "局部检查示例：能区分命令失败与终端损坏。",
-      "answer": "命令错误是执行结果，不表示终端损坏；保留命令、输出和当前目录。",
-      "source": {
-        "label": "记录错误",
-        "href": "#step-5"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": true
+      "id":"engineering-foundation-03-enter-workspace",
+      "lesson_id":"engineering-foundation-03",
+      "context_id":"reproduce-enter-workspace",
+      "question":"cd之后为什么还是找不到学习工作区？",
+      "aliases":["怎么进入learning-workspace", "Set-Location提示路径不存在"],
+      "keywords":["cd", "Set-Location", "learning-workspace", "$HOME", "OneDrive"],
+      "diagnostic":"你的工作区真的在示例中的 Documents，还是被放到桌面、下载或 OneDrive？",
+      "hints":["回文件管理器确认真实完整路径，不要反复猜。", "把实际路径放进一对引号，再用 cd 或 Set-Location 进入。"],
+      "example":"Set-Location \"$HOME\\Documents\\learning-workspace\" 只是示例；若文档位于 OneDrive，要换成实际路径。",
+      "answer":"示例路径不一定等于你的实际位置。先确认工作区保存在哪里，再把完整路径作为 cd／Set-Location 的参数。",
+      "source":{"label":"进入学习工作区","href":"#reproduce-enter-workspace"},
+      "updated_at":"2026-07-17",
+      "recommended":true
     },
     {
-      "id": "shell",
-      "lesson_id": "engineering-foundation-03",
-      "step_id": "step-3",
-      "question": "ls 和 dir 区别",
-      "aliases": [
-        "PowerShell 怎么查看目录",
-        "不同 Shell 命令"
-      ],
-      "keywords": [
-        "ls",
-        "dir",
-        "powershell",
-        "shell"
-      ],
-      "diagnostic": "当前任务是“执行 `ls`（PowerShell 可用 `dir`），找到 `notes`、`practice`、`assets`。”。处理“ls 和 dir 区别”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：执行 `ls`（PowerShell 可用 `dir`），找到 `notes`、`practice`、`assets`。",
-        "本步成功证据是：输出与文件树一致。 同一目的在不同 Shell 中有不同常用命令，先确认当前环境。"
-      ],
-      "example": "局部检查示例：输出与文件树一致。",
-      "answer": "同一目的在不同 Shell 中有不同常用命令，先确认当前环境。",
-      "source": {
-        "label": "查看内容",
-        "href": "#step-3"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
+      "id":"engineering-foundation-03-read-two-places",
+      "lesson_id":"engineering-foundation-03",
+      "context_id":"modify-read-record",
+      "question":"为什么两条不同路径能读到同一个文件？",
+      "aliases":["进入notes后路径为什么变短", "终端怎样读取learning-log.md"],
+      "keywords":["相对路径", "notes", "Get-Content", "head", "同一文件"],
+      "diagnostic":"两次读取时的当前目录分别是什么？",
+      "hints":["从项目根目录需要写 notes 这一层。", "进入 notes 后只写文件名；文件本身没有移动或复制。"],
+      "example":"根目录读 notes/learning-log.md；notes 内读 learning-log.md。",
+      "answer":"相对路径会和当前目录组合。当前目录不同，写法可以不同，但最终解析到的仍是同一个文件。",
+      "source":{"label":"从两个位置读取同一份记录","href":"#modify-read-record"},
+      "updated_at":"2026-07-17",
+      "recommended":false
+    },
+    {
+      "id":"engineering-foundation-03-errors",
+      "lesson_id":"engineering-foundation-03",
+      "context_id":"troubleshoot-terminal-errors",
+      "question":"终端报错是不是说明终端坏了？",
+      "aliases":["命令失败怎么办", "引号没闭合怎么退出"],
+      "keywords":["报错", "命令失败", "Ctrl+C", "引号", "路径不存在"],
+      "diagnostic":"错误后提示符有没有重新出现，还是 Shell 正在等待你补完命令？",
+      "hints":["提示符回来时，通常只是上一条命令失败。", "若因为引号没闭合一直等待，按 Ctrl+C 取消，再重新输入完整命令。"],
+      "example":"Get-Content notes\\not-exist.md 失败后，改用真实文件名重新运行。",
+      "answer":"多数情况下坏的是这条命令的路径或写法，不是终端。保留错误原文，确认当前位置和文件名，再用正确命令恢复。",
+      "source":{"label":"看到报错，先别关窗口","href":"#troubleshoot-terminal-errors"},
+      "updated_at":"2026-07-17",
+      "recommended":true
+    },
+    {
+      "id":"engineering-foundation-03-status",
+      "lesson_id":"engineering-foundation-03",
+      "context_id":"deepen-command-status",
+      "question":"命令没有任何输出是成功还是失败？",
+      "aliases":["没有输出是不是没执行", "怎样看上一条命令状态"],
+      "keywords":["没有输出", "退出状态", "echo $?", "$?", "提示符"],
+      "diagnostic":"提示符是否已经返回，有没有错误信息？",
+      "hints":["有些成功命令本来就不打印内容。", "同时看错误、提示符和状态；macOS／Linux 可用 echo $?，PowerShell 可看 $?。"],
+      "example":"空目录运行 ls 可能没有条目输出，但提示符会返回。",
+      "answer":"单看有没有文字无法判断。命令可能成功但没有输出；应结合错误信息、提示符是否返回和 Shell 保存的状态。",
+      "source":{"label":"没有输出，不等于没有执行","href":"#deepen-command-status"},
+      "updated_at":"2026-07-17",
+      "recommended":false
+    },
+    {
+      "id":"engineering-foundation-03-project",
+      "lesson_id":"engineering-foundation-03",
+      "context_id":"project-workspace-v03",
+      "question":"这些终端命令和后面的项目有什么关系？",
+      "aliases":["工程学习工作台v0.3加了什么", "为什么要保存终端错误"],
+      "keywords":["工程学习工作台", "命令记录", "排错", "VS Code", "项目证据"],
+      "diagnostic":"你有没有保存真实当前位置、关键输出和一次错误原文？",
+      "hints":["这些信息能证明命令在哪个目录运行。", "后面 VS Code、Git、环境和测试失败时，也要用同样方式保留命令与输出。"],
+      "example":"v0.3 保存 Get-Location、三个目录列表、学习记录第一行和一次路径错误。",
+      "answer":"终端记录是后续项目的排错基础。它把“运行不了”变成可复现的目录、命令、输出和错误。",
+      "source":{"label":"工程学习工作台 v0.3","href":"#project-workspace-v03"},
+      "updated_at":"2026-07-17",
+      "recommended":true
     }
   ]
 }

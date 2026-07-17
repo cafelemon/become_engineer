@@ -1,366 +1,259 @@
-# 文件系统
-
 <div class="be-tutor-mount" data-tutor-lesson="engineering-foundation-02" aria-hidden="true"></div>
 
-本课的产出不是背定义，而是在你的学习工作区创建一棵可解释的目录树，并能写出其中任意文件的路径。
+<section id="overview-workspace-tree" class="be-page-hero be-lesson-hero" data-learning-context="overview-workspace-tree" data-context-type="overview" markdown="1">
 
-## 五步任务路线
+<span class="be-page-eyebrow">工程基础入门 · 第二课</span>
 
-<div class="be-task-route" role="list" aria-label="本课五步任务">
-  <span role="listitem">1 定位工作区</span><span role="listitem">2 创建目录</span><span role="listitem">3 放入文件</span><span role="listitem">4 写出路径</span><span role="listitem">5 检查迁移</span>
+# 文件系统
+
+## 把上一课的文件放到找得到的位置
+
+上一课留下的 `learning-log.md` 不能一直孤零零地躺在桌面或下载目录里。今天把它整理成下面这棵目录树：
+
+<div class="be-fs-tree" role="img" aria-label="学习工作区目录树：根目录 learning-workspace 下有 notes、practice 和 assets 三个目录，learning-log.md 位于 notes 中。">
+  <div class="be-fs-tree__root"><span>项目根目录</span><strong>📁 learning-workspace</strong></div>
+  <div class="be-fs-tree__branches" aria-hidden="true">
+    <div><strong>📂 notes</strong><span>└─ 📄 learning-log.md</span></div>
+    <div><strong>📁 practice</strong><span>后面放代码</span></div>
+    <div><strong>📁 assets</strong><span>后面放图片</span></div>
+  </div>
 </div>
 
-<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
-
-### 第一步：定位学习工作区
-
-**任务：** 找到你保存学习记录的位置，确认它是这次练习的项目根目录。**成功证据：** 能说出该目录的名称和位置。
-
-??? tip "提示一"
-    项目根目录是本次学习文件共同归属的最外层目录。
-??? tip "提示二"
-    不要把练习散放在下载目录或桌面多个位置。
-
-</section>
-
-<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
-
-### 第二步：创建可读目录结构
-
-**任务：** 在工作区创建 `notes`、`practice` 和 `assets` 三个目录。**成功证据：** 在文件管理器或编辑器文件树中能看见三层级条目。
-
-??? tip "提示一"
-    目录用于组织文件，不是文件本身。
-??? tip "提示二"
-    名称使用清楚、稳定的英文小写或你能持续使用的命名方式。
-
-</section>
-
-<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
-
-### 第三步：把记录放进正确位置
-
-**任务：** 把上一课的 `learning-log.md` 放入 `notes`，或在其中新建同名文件。**成功证据：** 能解释文件名和扩展名分别是什么。
-
-??? tip "提示一"
-    `learning-log.md` 的 `.md` 表示 Markdown 文档。
-??? tip "提示二"
-    移动后重新打开一次，确认不是只创建了快捷方式。
-
-</section>
-
-<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
-
-### 第四步：分别写出相对与绝对路径
-
-**任务：** 从项目根目录写出 `notes/learning-log.md` 的相对路径；再查看系统显示的完整位置。**成功证据：** 两种路径都能对应同一文件。
-
-??? tip "提示一"
-    相对路径从当前工作位置开始写。
-??? tip "提示二"
-    绝对路径从磁盘根或用户目录开始，通常更长。
-
-</section>
-
-<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
-
-### 第五步：故意判断一个错误路径
-
-**任务：** 写一个不存在的路径并说明它错在目录名、文件名还是起点。然后为下一课保留工作区。**成功证据：** 能用“当前目录 + 相对路径”解释错误。
-
-??? tip "提示一"
-    先确认路径中的每一级目录是否真实存在。
-??? tip "提示二"
-    下一课会在这个工作区中用终端查看这些文件。
-
-</section>
-
-## 前置知识
-
-- 已完成 [学习方法](01-learning-method.md)。
-- 能写一份包含目标、操作、结果、问题和下一步的学习记录。
-
-## 学习目标
-
-学完本节后，你应该能解释文件、目录、扩展名、项目根目录、相对路径和绝对路径，并能判断一个文件应该放在项目的哪个位置。
-
-本节不讲终端命令。你只需要先把“文件在哪里”这件事想清楚。
-
-## 核心概念
-
-### 文件
-
-文件是电脑里保存内容的基本单位。比如：
+完成后，你应该能从项目根目录写出这条路径：
 
 ```text
-README.md
-notes.txt
-main.py
-photo.png
+notes/learning-log.md
 ```
 
-文件名通常由两部分组成：
+<div class="be-page-actions" markdown="1">
+[先看懂这棵树](#concept-file-directory){ .md-button .md-button--primary }
+[返回上一课](01-learning-method.md){ .md-button }
+</div>
+
+</section>
+
+<div class="be-lesson-overview">
+  <div><span>课程位置</span><strong>工程基础入门 · 2 / 10</strong></div>
+  <div><span>带上什么</span><strong>learning-log.md</strong></div>
+  <div><span>完成后留下</span><strong>一棵可解释的目录树</strong></div>
+</div>
+
+<section id="concept-file-directory" data-learning-context="concept-file-directory" data-context-type="concept" markdown="1">
+
+## 文件装内容，目录管位置
+
+先把三个容易混在一起的词分开：
+
+| 名称 | 例子 | 它负责什么 |
+| --- | --- | --- |
+| 文件 | `learning-log.md` | 保存文字、代码、图片或数据 |
+| 目录（文件夹） | `notes/` | 收纳文件，也可以继续收纳子目录 |
+| 项目根目录 | `learning-workspace/` | 这一组学习文件共同归属的最外层目录 |
+
+在目录树里，缩进表示“装在里面”：
 
 ```text
-名字.扩展名
+learning-workspace/       ← 最外层，项目根目录
+└── notes/                ← learning-workspace 里的目录
+    └── learning-log.md   ← notes 里的文件
 ```
 
-例如 `README.md` 中：
+`notes` 不一定永远是目录，`learning-log.md` 也不是因为有点号就自动成为文件。真正的区别由文件系统记录；目录树里的图标、缩进和实际打开行为比名字更可靠。
 
-- `README` 是名字。
-- `.md` 是扩展名。
+</section>
 
-扩展名常用来提示文件类型：
+<section id="example-name-extension" data-learning-context="example-name-extension" data-context-type="example" markdown="1">
 
-| 扩展名 | 常见含义 |
+## `.md` 是扩展名，不是文件内容
+
+文件名常写成“名字＋扩展名”：
+
+```text
+learning-log .md
+└── 名字     └── 扩展名
+```
+
+扩展名给人和软件一个类型提示：
+
+| 扩展名 | 常见内容 |
 | --- | --- |
 | `.md` | Markdown 文档 |
 | `.txt` | 普通文本 |
-| `.py` | Python 代码 |
+| `.py` | Python 源代码 |
 | `.json` | JSON 数据 |
-| `.png` | 图片 |
+| `.png` | PNG 图片 |
 
-扩展名不是绝对保证，但它是阅读项目时的重要线索。
+它只是提示，不会自动转换内容。把 `photo.png` 改名成 `photo.txt`，图片数据并不会因此变成文字。
 
-### 目录
+!!! tip "先让系统显示扩展名"
+    Windows 11 在文件资源管理器选择“查看 → 显示 → 文件扩展名”。macOS 在 Finder 选择“Finder → 设置 → 高级 → 显示所有文件扩展名”。这样更容易发现 `learning-log.md.txt` 这类问题。
 
-目录也常被叫做文件夹。它用来组织文件和其他目录。
+</section>
 
-一个项目可能长这样：
+<section id="concept-path-start" data-learning-context="concept-path-start" data-context-type="concept" markdown="1">
 
-```text
-become_engineer/
-├── README.md
-├── docs/
-│   └── 00_overview.md
-└── learning-paths/
-    └── engineering-foundation/
-```
+## 路径一定有起点
 
-这里：
+路径是从某个起点走到目标的一串名字。相对路径之所以“相对”，就是因为它省略了固定起点。
 
-- `become_engineer/` 是一个目录。
-- `README.md` 是一个文件。
-- `docs/` 是一个目录。
-- `00_overview.md` 是 `docs/` 目录里的文件。
+<div class="be-path-equation" role="img" aria-label="从项目根目录 learning-workspace 出发，沿相对路径 notes/learning-log.md，到达学习记录文件。">
+  <div><span>当前所在位置</span><strong>learning-workspace/</strong></div>
+  <b aria-hidden="true">＋</b>
+  <div><span>相对路径</span><strong>notes/learning-log.md</strong></div>
+  <b aria-hidden="true">＝</b>
+  <div><span>找到的目标</span><strong>📄 学习记录</strong></div>
+</div>
 
-结尾带 `/` 的名字通常表示目录，比如 `docs/`。不带 `/` 且带扩展名的名字通常表示文件，比如 `README.md`。
-
-### 项目根目录
-
-项目根目录是一个项目最外层的目录。
-
-在上面的例子中：
+如果当前位置改成 `notes/`，同一个文件的相对路径会缩短成：
 
 ```text
-become_engineer/
+learning-log.md
 ```
 
-就是项目根目录。
+绝对路径则从系统的固定起点写起，例如：
 
-很多说明文档会说“在项目根目录下创建文件”。意思是在项目最外层创建，而不是随便找一个子目录。
+=== "Windows"
 
-### 路径
+    ```text
+    C:\Users\你的用户名\Documents\learning-workspace\notes\learning-log.md
+    ```
 
-路径用来描述文件或目录的位置。
+=== "macOS / Linux"
 
-例如：
+    ```text
+    /Users/你的用户名/Documents/learning-workspace/notes/learning-log.md
+    ```
+
+公开提问、文档和截图里，我更建议使用从项目根目录出发的相对路径。它容易复用，也不会把你的用户名和私人目录带出去。
+
+</section>
+
+<section id="reproduce-build-workspace" data-learning-context="reproduce-build-workspace" data-context-type="reproduce" markdown="1">
+
+## 亲手建出这棵目录树
+
+这一课不要求会终端，使用系统文件管理器就可以。
+
+=== "Windows 11"
+
+    1. 按 `Windows + E` 打开文件资源管理器。
+    2. 进入“文档”或你准备长期保存学习文件的位置。
+    3. 选择“新建 → 文件夹”，命名为 `learning-workspace`。
+    4. 打开它，依次新建 `notes`、`practice`、`assets` 三个文件夹。
+    5. 把上一课的 `learning-log.md` 拖进 `notes`。
+
+=== "macOS"
+
+    1. 点击 Dock 中的 Finder（笑脸图标）。
+    2. 进入“文稿”或你准备长期保存学习文件的位置。
+    3. 选择“文件 → 新建文件夹”，也可以按 `Shift + Command + N`，命名为 `learning-workspace`。
+    4. 打开它，依次新建 `notes`、`practice`、`assets` 三个文件夹。
+    5. 把上一课的 `learning-log.md` 拖进 `notes`。
+
+完成后逐层点开，确认下面四项都是真的：
+
+- 最外层名字是 `learning-workspace`。
+- 三个子目录处在同一层。
+- `learning-log.md` 只在 `notes` 里面。
+- 双击这个文件仍能看到上一课写的内容。
+
+</section>
+
+<section id="modify-read-paths" data-learning-context="modify-read-paths" data-context-type="modify" markdown="1">
+
+## 换一个文件，再读一次路径
+
+在 `practice` 目录中新建一个普通文本文件，名字由你决定，例如：
 
 ```text
-docs/00_overview.md
+path-check.txt
 ```
 
-它表示：
+然后完成三次判断：
+
+1. 从 `learning-workspace/` 出发，它的相对路径是什么？
+2. 从 `practice/` 出发，它的相对路径又是什么？
+3. 如果写成 `notes/path-check.txt`，系统应该去哪里找？那里真的有这个文件吗？
+
+参考答案先别急着展开：
+
+??? question "对照路径"
+    从项目根目录出发是 `practice/path-check.txt`；从 `practice/` 出发是 `path-check.txt`。`notes/path-check.txt` 会指向 `notes` 里的同名文件，但我们并没有把它放在那里，所以目标不存在。
+
+把三次判断补进 `notes/learning-log.md`。这次不要只写答案，也写清每条路径的起点。
+
+</section>
+
+<section id="troubleshoot-path-missing" data-learning-context="troubleshoot-path-missing" data-context-type="troubleshoot" markdown="1">
+
+## 路径找不到，按层级往下查
+
+假设你想打开：
 
 ```text
-docs 目录里的 00_overview.md 文件
+notes/learning-log.md
 ```
 
-再看一个更深的例子：
+却发现文件不存在。先不要到处搜索，按下面顺序检查：
 
-```text
-learning-paths/engineering-foundation/stage-0/02-filesystem.md
-```
+1. **起点对吗？** 当前打开的是 `learning-workspace/`，还是它的父目录或 `notes/`？
+2. **每一级都存在吗？** 先找 `notes`，再进入它找文件。
+3. **名字完全一致吗？** 检查大小写、连字符和空格。
+4. **扩展名完整吗？** 留意 `learning-log.md.txt` 或隐藏扩展名。
+5. **移动的是真文件吗？** 重新打开，确认内容仍在。
 
-它表示：
-
-```text
-learning-paths 目录
-  -> engineering-foundation 目录
-    -> stage-0 目录
-      -> 02-filesystem.md 文件
-```
-
-### 绝对路径
-
-绝对路径从电脑里的固定起点开始描述位置。
-
-macOS 或 Linux 上常见长这样：
-
-```text
-/Users/your-name/Desktop/become_engineer/README.md
-```
-
-Windows 上常见长这样：
-
-```text
-C:\Users\your-name\Desktop\become_engineer\README.md
-```
-
-绝对路径的特点是：不管你现在在哪个目录，它都能从系统固定起点找到目标。
-
-公开文档中通常不写个人电脑上的绝对路径，因为它会暴露私人路径，也不适合别人复用。
-
-### 相对路径
-
-相对路径从“当前位置”开始描述位置。
-
-如果当前位置是项目根目录 `become_engineer/`，那么：
-
-```text
-README.md
-docs/00_overview.md
-learning-paths/engineering-foundation/README.md
-```
-
-都是相对路径。
-
-相对路径的特点是：它依赖当前位置。当前位置变了，同一个相对路径可能指向不同位置，或者找不到目标。
-
-## 学习顺序
-
-1. 先区分文件和目录。
-2. 再看扩展名，判断文件大概是什么类型。
-3. 找到项目根目录。
-4. 用路径描述一个文件的位置。
-5. 判断路径是绝对路径还是相对路径。
-
-## 示例：读懂一个项目结构
-
-看到这个结构：
-
-```text
-my-project/
-├── README.md
-├── notes/
-│   └── day-1.md
-└── data/
-    └── sample.json
-```
-
-可以这样解释：
-
-- 项目根目录是 `my-project/`。
-- `README.md` 在项目根目录下。
-- `day-1.md` 在 `notes/` 目录下。
-- `sample.json` 在 `data/` 目录下。
-- `notes/day-1.md` 是从项目根目录出发的相对路径。
-
-## 实践练习
-
-### 练习 1：标出文件和目录
-
-看下面的结构，写出哪些是目录，哪些是文件。
-
-```text
-study-demo/
-├── README.md
-├── docs/
-│   └── plan.md
-├── notes/
-│   └── stage-0.md
-└── data/
-    └── example.json
-```
-
-需要产出：
-
-```text
-目录：
-- 
-
-文件：
-- 
-```
-
-### 练习 2：写出路径含义
-
-解释下面三个路径分别表示什么。
-
-```text
-README.md
-docs/plan.md
-notes/stage-0.md
-```
-
-需要写成类似这样：
-
-```text
-docs/plan.md 表示 docs 目录里的 plan.md 文件。
-```
-
-### 练习 3：判断相对路径和绝对路径
-
-判断下面哪些是相对路径，哪些是绝对路径。
-
-```text
-README.md
-docs/00_overview.md
-/Users/your-name/Desktop/become_engineer/README.md
-C:\Users\your-name\Desktop\become_engineer\README.md
-learning-paths/engineering-foundation/README.md
-```
-
-需要产出：
-
-```text
-相对路径：
-- 
-
-绝对路径：
-- 
-```
-
-### 练习 4：设计一个学习目录
-
-设计一个自己的学习目录结构，至少包含：
-
-- 一个项目根目录。
-- 一个 `README.md`。
-- 一个放学习记录的目录。
-- 一个放资料索引的目录。
-
-示例格式：
-
-```text
-my-learning/
-├── README.md
-├── notes/
-│   └── stage-0.md
-└── resources/
-    └── index.md
-```
-
-## 常见错误与排查
-
-| 错误 | 表现 | 怎么排查 |
+| 现象 | 常见原因 | 回到正确状态 |
 | --- | --- | --- |
-| 分不清文件和目录 | 把 `docs/` 当成文件，或把 `README.md` 当成目录 | 看是否带 `/`，再看是否有扩展名 |
-| 不知道项目根目录 | 文件随便放，后面找不到 | 找最外层项目目录，通常里面有 `README.md` |
-| 把绝对路径写进公开文档 | 文档里出现自己的电脑用户名或桌面路径 | 改成从项目根目录出发的相对路径 |
-| 相对路径依赖当前位置 | 同一个路径在不同位置解释不同 | 先说清“当前位置是哪里” |
-| 只看文件名不看扩展名 | 不知道文件大概是什么类型 | 先看 `.md`、`.py`、`.json` 等后缀 |
+| 看见三个目录，但看不到 `learning-log.md` | 文件还留在原位置 | 回原位置找到文件，再移动到 `notes` |
+| 文件显示成 `learning-log.md.txt` | 系统曾隐藏扩展名 | 显示扩展名后谨慎改回正确文件名 |
+| `notes/learning-log.md` 找不到 | 当前起点不是项目根目录 | 先确认当前打开的最外层目录 |
+| 双击后内容为空 | 移动了另一个同名文件 | 用上一课的内容或备份恢复，再删除重复文件 |
 
-## 完成标准
+排路径问题时，一次只核对一级。随意拖动多个文件，通常只会让位置更难判断。
 
-完成本节需要同时满足：
+</section>
 
-- 能说清文件、目录和扩展名的区别。
-- 能指出一个项目结构中的项目根目录。
-- 能解释至少 3 个路径的含义。
-- 能区分相对路径和绝对路径。
-- 能设计一个简单学习目录结构，并说明每个目录的用途。
+<section id="project-workspace-v02" data-learning-context="project-workspace-v02" data-context-type="project" markdown="1">
+
+## 工程学习工作台 v0.2
+
+上一课只有一份学习记录；现在它有了稳定的家：
+
+| 原来有什么 | 这节课增加什么 | 保存什么 | 下一课怎样继续 |
+| --- | --- | --- | --- |
+| `learning-log.md` | 项目根目录与三个用途明确的子目录 | 完整目录树、两条路径判断 | 在终端里进入目录并读取文件 |
+
+请保留整个 `learning-workspace`，不要只交一张截图。后续代码、运行结果、图片和 Git 记录都会进入这同一个工作区。
+
+</section>
+
+## 完成检查
+
+- [ ] 能用自己的话区分文件、目录和项目根目录。
+- [ ] 已显示文件扩展名，并确认文件不是 `learning-log.md.txt`。
+- [ ] `learning-workspace` 下有 `notes`、`practice` 和 `assets`。
+- [ ] `notes/learning-log.md` 能重新打开，内容没有丢失。
+- [ ] 能说明同一个相对路径为什么依赖当前位置。
+- [ ] 已创建自选文件，并从两个起点写出它的路径。
+
+## 来源与版本
+
+- 适用环境：Windows 11 文件资源管理器；当前受支持 macOS 的 Finder。Linux 可使用桌面环境自带文件管理器完成同等操作。
+- Windows 界面依据：[Microsoft Support：File Explorer in Windows](https://support.microsoft.com/en-US/Windows/Experience/FileExplorer/file-explorer-in-windows)。
+- macOS 界面依据：[Apple Support：Organize files in folders on Mac](https://support.apple.com/guide/mac-help/mh26885/mac)；[Show or hide filename extensions on Mac](https://support.apple.com/guide/mac-help/mchlp2304/mac)。
+- 验证方式：逐层打开目录、显示扩展名，并重新打开两个练习文件核对内容。
+- 核查日期：2026-07-17。
 
 ## 下一步
 
-进入 [终端与 Shell](03-terminal-shell.md)。下一节会开始用命令进入目录、查看文件和运行简单命令。
+进入[终端与 Shell](03-terminal-shell.md)。下一节不再只靠鼠标点目录，而是用命令确认当前位置、列出文件，并读取刚才保存的学习记录。
+
+<div class="be-next-panel" markdown="1">
+
+<span class="be-panel-label">完成本课后</span>
+
+**保留整个 `learning-workspace`，下一课会从终端重新找到它。**
+
+[进入下一课：终端与 Shell](03-terminal-shell.md){ .md-button .md-button--primary }
+
+</div>

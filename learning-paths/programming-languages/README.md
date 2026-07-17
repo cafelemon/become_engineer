@@ -1,72 +1,69 @@
-# 编程语言
+# 编程语言路线
 
-## 定位
+编程语言是做项目的工具，也是理解程序怎样运行的入口。这里不再要求所有人机械地同时学习 Python 和 C++：先用 Python 建立共同编程基础，再完成 CS 起步；之后根据方向选择 Python 核心、C++ 起步，或两条都学。
 
-编程语言线以 Python 和 C++ 为双主修，Java作为完整补充路线。JavaScript/TypeScript主要在Web阶段学习。目标不是学完语法表，而是从零建立编程能力，再逐步获得阅读代码、设计接口、调试程序、构建项目、分析性能和进入专业领域的能力。
+## 所有人先完成什么
 
-## 适合人群
+1. [工程基础起步](../engineering-foundation/stage-0/README.md)：能找到文件、使用终端和编辑器，并保存 Git 记录。
+2. [Python 编程起步](python-basics/README.md)：从最小脚本做到一个有输入、文件、模块、异常和测试的小程序。
+3. [CS 起步](../cs-core/README.md)：从程序里已经见过的数据开始理解表示、位置、操作成本、文本和网格。
+4. 完成学习进度报告器阶段作品，再选择接下来的方向。
 
-- 需要选择主力语言的人。
-- 想同时覆盖工程开发、系统理解和 AI 应用的人。
-- 想把语言学习和项目实践结合起来的人。
+这段共同基座不要求 C++。学习者先获得一次完整的“写出来—运行—出错—修好—测试”经验，再决定是否进入更深的语言与系统内容。
 
-## 阶段划分
+## 方向怎样选择
 
-1. [Python 起步](python-basics/README.md)：从最小脚本推进到包含函数、数据结构、文件、模块、异常和测试的小型程序。
-2. 核心语言：沿[Python核心语言](python-core/README.md)和[C++核心语言](cpp-core/README.md)深入类型、接口、数据模型、对象生命周期、STL与泛型；先完成构建与类型配对，再按能力主题继续推进。
-3. 工程化：掌握项目结构、依赖、配置、日志、测试、调试、构建和文档。
-4. 并发与网络：学习 Python 的线程、进程和异步，以及 C++ 的并发、内存模型、网络和协议处理。
-5. 运行原理与性能：理解 Python 解释器、GIL和扩展边界，以及 C++ 内存布局、未定义行为和性能分析。
-6. 领域应用：在Web、数据、AI、工业控制、实时通信和系统项目中持续深化。
-7. Java 补充：语法、面向对象、集合、JVM、构建、测试和后端生态。
-8. Web语言：JavaScript与TypeScript在Web主线中展开。
-
-## 双主修能力阶梯
-
-| 层级 | Python 能力 | C++ 能力 | 主要产出 |
+| 方向 | 课程入口 | 适合谁 | 当前开放内容 |
 | --- | --- | --- | --- |
-| 入门 | 语法、函数、数据结构、文件、模块、异常和最小测试 | 在 Python 建立共同编程概念后开始类型、控制流、函数和编译 | 可独立运行和检查的小程序 |
-| 进阶 | 类型提示、数据模型、迭代器、生成器、装饰器和上下文管理 | 类、生命周期、RAII、STL、迭代器、算法、模板和现代 C++ | 职责清楚的多模块程序 |
-| 工程化 | 包结构、CLI、配置、日志、测试、依赖管理和发布认知 | CMake、多文件工程、测试、调试、静态分析和错误处理 | 可构建、可测试、可复现的项目 |
-| 深入 | 线程、进程、异步、网络、解释器、GIL、性能和扩展边界 | 并发、原子操作、内存模型、网络、系统接口和性能分析 | 有测量证据的并发、网络或性能实验 |
-| 领域应用 | 自动化、Web、数据和AI | 系统组件、工业控制、实时通信和本地推理 | 跨课程项目中的真实模块 |
+| 应用工程 | [Python 核心与工程化](python-core/README.md) | Web、自动化、数据、AI、LLM/Agent，以及希望把 Python 项目做规范的人 | Python 核心 5 节、工程化 2 节 |
+| 系统工程 | [C++ 起步与核心](cpp-core/README.md) | 系统、性能、设备软件、本地推理，以及希望理解编译和资源管理的人 | C++ 起步 2 节、核心 3 节 |
+| 算法 | [算法与数据结构](../cs-core/README.md) | 想提高问题求解、实现能力或准备技术机考的人 | 共同基础 16 节、核心 6 节 |
+| 设备系统 | [设备系统与边缘智能](../device-edge-systems/README.md) | MCU、RTOS、Linux/BSP、工业控制和边缘智能方向 | C 语言与设备课程仍在规划 |
 
-“精通”不作为看完某个章节后的标签。学习者需要在多个项目中反复设计、实现、测试、调试和复盘，才能逐步接近熟练与深入。
+选择一条方向不会锁住其他内容。应用方向可以补 C++，系统方向也可以继续 Python；区别只是默认顺序和项目重点不同。
 
-## 推荐学习顺序
+## 六级深度
 
-1. 先用Python掌握变量、控制流、函数、数据结构和调试。
-2. 完成Python起步后先用[从源文件到可执行程序](cpp-core/01-build-types-io.md)启动C++，再完成Python[类型提示、接口与静态检查认知](python-core/01-type-hints-interfaces-static-checking.md)、C++[函数、声明与程序组织](cpp-core/02-functions-declarations-program-organization.md)、Python[可维护函数接口、协议与模块边界](python-core/02-maintainable-function-interfaces-protocols-modules.md)、C++[头文件、源文件与最小CMake工程](cpp-core/03-headers-sources-cmake.md)、[STL容器、迭代器与基础算法](cpp-core/04-stl-containers-iterators-algorithms.md)、Python[容器协议、迭代器与生成器](python-core/03-iterables-iterators-generators.md)、C++[对象、引用、指针、生命周期与RAII](cpp-core/05-objects-references-pointers-lifetime-raii.md)、Python[数据模型、数据类与上下文管理](python-core/04-data-model-dataclasses-context-managers.md)、[装饰器与自定义上下文管理器](python-core/05-decorators-closures-custom-context-managers.md)、[包结构与 CLI](python-core/06-package-structure-installable-cli.md)和[TOML 配置与日志](python-core/07-toml-configuration-logging-diagnostics.md)，不要求机械轮流。
-3. 核心语言和基础工程化达到验收后进入CS最小核心，不等待所有高级主题学完。
-4. 在Web、AI和设备系统等项目中继续学习并发、网络、运行原理、性能和领域接口。
-5. Java在双主修基础后作为完整补充路线。
-6. JavaScript/TypeScript在Web阶段进入，不与前期双主修争抢起步时间。
+每种语言和方向都按同一套深度描述，但不要求每条路线平均铺满：
 
-## 当前项目映射
+1. **起步**：能安装工具、运行第一个程序、读懂最常见错误。
+2. **基础**：掌握常用语法、数据和控制结构，能修改一个小程序。
+3. **核心**：理解语言模型、接口、对象、容器和关键抽象。
+4. **工程化**：建立包或构建结构、测试、配置、日志、调试和发布认知。
+5. **深化**：进入并发、网络、运行时、内存模型、性能和工程权衡。
+6. **专业／求职**：把能力用于岗位项目、故障排查、机考与项目表达。
 
-- Python：[Python 内容分析工具](../../projects/python-content-analysis/README.md)
-- Python 数据与 AI：[结构化数据机器学习系统](../../projects/structured-data-ml-system/README.md)
-- Python/C++ 设备系统：MCU/RTOS、嵌入式 Linux/BSP 和工业控制已纳入跨主线专业领域，课程、硬件和项目目录尚未建设。
-- C++本地推理：`llama.cpp` 只作为后期部署与性能方向，不代替C++课程。
-- Java：来源已登记，作为补充主流语言建设。
+“看完语法”不等于掌握一门语言。能独立修改、定位错误、解释关键选择，并在项目中重复使用，才算真正进入下一层。
 
-## 进入与离开条件
+## 现有课程怎样分层
 
-- 进入条件：工程基础前置验收完成。
-- Python 起步入口：[课程说明](python-basics/README.md)。
-- Python深化入口：[Python核心语言](python-core/README.md)。
-- C++解锁：Python起步完成，能够独立编写、检查和维护一个小型程序；当前入口为[C++核心语言](cpp-core/README.md)。
-- CS最小核心解锁：Python可完成带测试和错误处理的小工具，C++可完成CMake多文件程序并使用STL和RAII。
-- 设备系统共同基础解锁：完成 C++ 基础工程化，以及操作系统、并发、网络、数据类型和序列化基础；边缘智能另需 AI 基础。
+### Python
 
-完整能力树见[设备系统与边缘智能](../device-edge-systems/README.md)。
+- [Python 起步](python-basics/README.md)：7 节，共同编程入口。
+- [Python 核心](python-core/README.md)：前 5 节，覆盖类型、协议、迭代器、数据模型、装饰器与资源边界。
+- Python 工程化：后 2 节，覆盖包、CLI、TOML、日志和可诊断执行。
 
-详细顺序见[小白统一学习路线](../beginner-roadmap.md)。
+### C++
 
-## 对应入口
+- [C++ 起步](cpp-core/README.md)：现有第 1、2 课，覆盖源码到程序、类型、输入输出、函数和第一次程序组织。
+- C++ 核心：现有第 3–5 课，覆盖 CMake、STL、对象、生命周期和 RAII。
+- 系统编程、并发、网络与性能仍是后续深化模块。
 
-- 资源：../../resources/README.md
-- 评测：../../reviews/README.md
-- 笔记：../../notes/README.md
-- 练习：../../exercises/README.md
-- 项目：../../projects/README.md
+### 其他语言
+
+- C 语言用于设备系统方向，必须从编译、内存和设备事件起步；当前只有评审样板，尚未开放正式课程。
+- Java 是后续完整补充路线，不作为共同基座前置。
+- JavaScript／TypeScript 在 Web 起步阶段进入，不与 Python 起步争抢学习时间。
+
+## 项目线
+
+- Python 起步持续演进[学习进度报告器](../../exercises/python-basics/study-progress-reporter/README.md)。
+- Python 核心与 C++ 课程共享[双语言学习进度报告器](../../exercises/programming-languages/study-progress-reporters/README.md)，用同一数据和输出契约比较不同语言。
+- CS 与算法进入可追踪数据结构和图算法实验，保存状态轨迹、操作计数、测试和错误复盘。
+- Web、AI、LLM/Agent 和设备方向在共同基座之后建立各自长期项目，不强行拼成一个超级项目。
+
+## 下一步
+
+尚未学过编程，从[Python 变量、基本类型与输入输出](python-basics/01-variables-types-io.md)开始。完成 Python 起步后进入[CS 起步](../cs-core/README.md)，完成共同基座和阶段作品，再选择 Python、C++、算法或其他方向。
+
+完整前置、状态与规划模块见[完整课程地图](../curriculum-map.md)。
