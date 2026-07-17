@@ -1,265 +1,243 @@
 {
-  "version": 1,
+  "version": 2,
   "lesson": {
     "id": "engineering-foundation-07",
     "title": "开发环境",
     "path": "learning-paths/engineering-foundation/stage-0/07-development-environment/"
   },
-  "steps": [
-    {
-      "id": "step-1",
-      "title": "记录版本"
-    },
-    {
-      "id": "step-2",
-      "title": "定位命令"
-    },
-    {
-      "id": "step-3",
-      "title": "理解 PATH"
-    },
-    {
-      "id": "step-4",
-      "title": "区分依赖"
-    },
-    {
-      "id": "step-5",
-      "title": "验证迁移"
-    }
+  "contexts": [
+    {"id":"overview-environment-fingerprint","type":"overview","title":"同一份代码为什么会用到不同环境","anchor":"#overview-environment-fingerprint"},
+    {"id":"concept-code-runtime-dependencies","type":"concept","title":"代码、解释器与依赖","anchor":"#concept-code-runtime-dependencies"},
+    {"id":"example-path-chooses-command","type":"example","title":"PATH 怎样选择命令","anchor":"#example-path-chooses-command"},
+    {"id":"reproduce-find-python","type":"reproduce","title":"找到电脑上的 Python","anchor":"#reproduce-find-python"},
+    {"id":"concept-project-environment","type":"concept","title":"项目为什么使用虚拟环境","anchor":"#concept-project-environment"},
+    {"id":"reproduce-create-venv","type":"reproduce","title":"创建项目虚拟环境","anchor":"#reproduce-create-venv"},
+    {"id":"example-activation-is-convenience","type":"example","title":"激活只是让命令变短","anchor":"#example-activation-is-convenience"},
+    {"id":"modify-write-environment-note","type":"modify","title":"写自己的环境记录","anchor":"#modify-write-environment-note"},
+    {"id":"troubleshoot-environment","type":"troubleshoot","title":"根据现象排查环境","anchor":"#troubleshoot-environment"},
+    {"id":"deepen-path-and-interpreter","type":"deepen","title":"确认 Python 最终选中了谁","anchor":"#deepen-path-and-interpreter"},
+    {"id":"project-workspace-v08","type":"project","title":"工程学习工作台 v0.8","anchor":"#project-workspace-v08"}
   ],
   "cards": [
     {
-      "id": "version",
-      "lesson_id": "engineering-foundation-07",
-      "step_id": "step-1",
-      "question": "怎样检查 Python 版本",
-      "aliases": [
-        "python3 --version 报错",
-        "怎么查看 Python 版本"
-      ],
-      "keywords": [
-        "python",
-        "版本",
-        "python3",
-        "检查"
-      ],
-      "diagnostic": "当前任务是“在终端执行 `python3 --version`（或系统可用的 `python --version`），把命令和输出写入学习记录。”。处理“怎样检查 Python 版本”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：在终端执行 `python3 --version`（或系统可用的 `python --version`），把命令和输出写入学习记录。",
-        "本步成功证据是：版本号与执行命令成对保留。 执行 python3 --version；Windows 可使用 python --version，并记录完整输出。"
-      ],
-      "example": "局部检查示例：版本号与执行命令成对保留。",
-      "answer": "执行 python3 --version；Windows 可使用 python --version，并记录完整输出。",
-      "source": {
-        "label": "记录版本",
-        "href": "#step-1"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": true
+      "id":"environment-parts","lesson_id":"engineering-foundation-07","context_id":"overview-environment-fingerprint",
+      "question":"开发环境到底包括哪些东西",
+      "aliases":["开发环境是不是只指 Python","同一份代码为什么换电脑不能跑"],
+      "keywords":["开发环境","代码","解释器","版本","依赖","操作系统"],
+      "diagnostic":"你现在遇到的是命令找不到、版本不同、缺少依赖，还是代码本身报错？先把现象分到一个位置。",
+      "hints":["先别把所有问题都叫作“环境坏了”。代码、解释器、依赖、目录和配置是不同环节。","把操作系统、终端、当前目录、执行命令和完整输出写下来，通常就能排除一半猜测。"],
+      "example":"仓库里有 `main.py`，不等于另一台电脑已经有满足版本要求的 Python 和第三方包。",
+      "answer":"开发环境是让代码能够被编写、运行和验证的一组条件，至少包括操作系统、终端、解释器或编译器、版本、命令查找路径、项目依赖、配置和当前目录。",
+      "source":{"label":"同一份代码为什么会用到不同环境","href":"#overview-environment-fingerprint"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "which",
-      "lesson_id": "engineering-foundation-07",
-      "step_id": "step-2",
-      "question": "which 和 where 用途",
-      "aliases": [
-        "怎么找 Python 安装位置",
-        "Python 命令在哪里"
-      ],
-      "keywords": [
-        "which",
-        "where",
-        "路径",
-        "python"
-      ],
-      "diagnostic": "当前任务是“使用 `which python3`（Windows 可用 `where python`）查询命令位置。”。处理“which 和 where 用途”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：使用 `which python3`（Windows 可用 `where python`）查询命令位置。",
-        "本步成功证据是：能说明版本输出和可执行文件路径来自同一次检查。 macOS/Linux 用 which python3；Windows 用 where python 查找实际命令位置。"
-      ],
-      "example": "局部检查示例：能说明版本输出和可执行文件路径来自同一次检查。",
-      "answer": "macOS/Linux 用 which python3；Windows 用 where python 查找实际命令位置。",
-      "source": {
-        "label": "定位命令",
-        "href": "#step-2"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
+      "id":"clone-no-runtime","lesson_id":"engineering-foundation-07","context_id":"concept-code-runtime-dependencies",
+      "question":"clone 之后为什么还不能直接运行",
+      "aliases":["GitHub 为什么没有把 Python 一起下载","clone 会不会带回虚拟环境"],
+      "keywords":["clone","GitHub","Python","虚拟环境","代码","依赖"],
+      "diagnostic":"先看新目录里有代码和依赖声明，还是也真的出现了本机的 Python 可执行程序与 `.venv`。",
+      "hints":["Git 复制的是被跟踪的仓库内容，不会复制电脑上安装的软件。","`.venv/` 应被忽略；在新电脑上要根据项目要求重新创建环境和安装依赖。"],
+      "example":"`git clone` 带回 `README.md` 和 `.py` 文件，但不会带回 `/usr/bin/python3` 或本机 `.venv`。",
+      "answer":"clone 只恢复仓库中的代码和历史。解释器、系统工具和被忽略的虚拟环境必须在目标电脑上安装或重建。",
+      "source":{"label":"代码、解释器与依赖","href":"#concept-code-runtime-dependencies"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "path",
-      "lesson_id": "engineering-foundation-07",
-      "step_id": "step-3",
-      "question": "PATH 是什么",
-      "aliases": [
-        "PATH 和 Python 区别",
-        "PATH 有什么用"
-      ],
-      "keywords": [
-        "PATH",
-        "环境变量",
-        "命令",
-        "查找"
-      ],
-      "diagnostic": "当前任务是“查看 PATH 的概念说明，并用自己的话写一句“系统如何找到 python”。”。处理“PATH 是什么”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：查看 PATH 的概念说明，并用自己的话写一句“系统如何找到 python”。",
-        "本步成功证据是：能区分 PATH 是查找顺序，不是 Python 本身。 PATH 是 Shell 查找可执行命令的目录顺序，不是 Python 本身。"
-      ],
-      "example": "局部检查示例：能区分 PATH 是查找顺序，不是 Python 本身。",
-      "answer": "PATH 是 Shell 查找可执行命令的目录顺序，不是 Python 本身。",
-      "source": {
-        "label": "理解 PATH",
-        "href": "#step-3"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
+      "id":"interpreter-vs-dependency","lesson_id":"engineering-foundation-07","context_id":"concept-code-runtime-dependencies",
+      "question":"Python 解释器和第三方依赖有什么区别",
+      "aliases":["Python 和 requests 是一类东西吗","项目代码解释器依赖怎么区分"],
+      "keywords":["解释器","第三方依赖","包","代码","Python"],
+      "diagnostic":"你说的是执行 `.py` 文件的程序，还是程序中额外导入的软件包？",
+      "hints":["Python 解释器负责读取和执行代码；依赖是代码运行时额外使用的软件包。","依赖安装到某一个 Python 环境中，因此“装过包”还要问装到了哪一个解释器。"],
+      "example":"Python 能运行 `main.py`；`requests` 则是这个程序可能额外使用的第三方包。",
+      "answer":"解释器是执行代码的程序，依赖是项目额外需要的代码。一个电脑可以有多个解释器，每个环境里的依赖也可以不同。",
+      "source":{"label":"代码、解释器与依赖","href":"#concept-code-runtime-dependencies"},"updated_at":"2026-07-17","recommended":false
     },
     {
-      "id": "interpreter",
-      "lesson_id": "engineering-foundation-07",
-      "step_id": "step-4",
-      "question": "解释器和运行时是什么",
-      "aliases": [
-        "Python 文件为何不能运行",
-        "解释器做什么"
-      ],
-      "keywords": [
-        "解释器",
-        "运行时",
-        "python",
-        "代码"
-      ],
-      "diagnostic": "当前任务是“为一个 Python 小程序分别标注项目代码、解释器和将来可能安装的第三方依赖。”。处理“解释器和运行时是什么”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：为一个 Python 小程序分别标注项目代码、解释器和将来可能安装的第三方依赖。",
-        "本步成功证据是：不把 `.py` 文件、Python 程序和第三方库混成一个概念。 Python 解释器读取并执行 .py 源码；源码文件不会自行运行。"
-      ],
-      "example": "局部检查示例：不把 `.py` 文件、Python 程序和第三方库混成一个概念。",
-      "answer": "Python 解释器读取并执行 .py 源码；源码文件不会自行运行。",
-      "source": {
-        "label": "区分依赖",
-        "href": "#step-4"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
+      "id":"path-search","lesson_id":"engineering-foundation-07","context_id":"example-path-chooses-command",
+      "question":"PATH 到底有什么用",
+      "aliases":["PATH 是 Python 的安装目录吗","为什么同名 Python 会运行不同版本"],
+      "keywords":["PATH","命令","查找顺序","版本","同名"],
+      "diagnostic":"先确认你想知道的是 PATH 的内容，还是当前命令最终命中了哪个可执行文件。",
+      "hints":["PATH 是一组目录及其查找顺序，不是 Python 本身。","Shell 通常从前往后找同名可执行程序，先找到的那一个会被运行。"],
+      "example":"如果 `/usr/local/bin` 排在 `/usr/bin` 前面，两个目录都有 `python3` 时通常先用前者。",
+      "answer":"PATH 告诉 Shell 去哪些目录按什么顺序查找命令。它能影响 `python` 最终指向哪个安装，但不等于 Python 安装本身。",
+      "source":{"label":"PATH 怎样选择命令","href":"#example-path-chooses-command"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "dependency",
-      "lesson_id": "engineering-foundation-07",
-      "step_id": "step-4",
-      "question": "依赖是什么",
-      "aliases": [
-        "项目代码和依赖区别",
-        "第三方库是什么"
-      ],
-      "keywords": [
-        "依赖",
-        "代码",
-        "第三方库",
-        "项目"
-      ],
-      "diagnostic": "当前任务是“为一个 Python 小程序分别标注项目代码、解释器和将来可能安装的第三方依赖。”。处理“依赖是什么”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：为一个 Python 小程序分别标注项目代码、解释器和将来可能安装的第三方依赖。",
-        "本步成功证据是：不把 `.py` 文件、Python 程序和第三方库混成一个概念。 项目代码由你维护；依赖是项目需要的外部库。"
-      ],
-      "example": "局部检查示例：不把 `.py` 文件、Python 程序和第三方库混成一个概念。",
-      "answer": "项目代码由你维护；依赖是项目需要的外部库。",
-      "source": {
-        "label": "区分依赖",
-        "href": "#step-4"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
+      "id":"install-python","lesson_id":"engineering-foundation-07","context_id":"reproduce-find-python",
+      "question":"电脑没有 Python 应该从哪里安装",
+      "aliases":["Python 去哪里下载才安全","Windows 怎么安装 Python"],
+      "keywords":["安装","下载","python.org","Windows","macOS","Linux"],
+      "diagnostic":"你使用 Windows、macOS 还是 Linux？安装入口和验证命令并不完全相同。",
+      "hints":["Windows 和 macOS 优先从 python.org 官方下载页开始；Linux 先看发行版官方包管理说明。","安装后关闭并重新打开终端，再执行版本和命令位置检查。"],
+      "example":"Windows 新环境可使用官方 Python Install Manager；macOS 可使用 python.org 的 macOS 安装包。",
+      "answer":"从 Python 官方下载页或 Linux 发行版官方仓库安装受支持的 Python 3，不运行来历不明的脚本。完成后用课程中的平台命令核对版本和实际位置。",
+      "source":{"label":"找到电脑上的 Python","href":"#reproduce-find-python"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "venv",
-      "lesson_id": "engineering-foundation-07",
-      "step_id": "step-4",
-      "question": "虚拟环境有什么用",
-      "aliases": [
-        "为什么项目要虚拟环境",
-        "venv 是什么"
-      ],
-      "keywords": [
-        "虚拟环境",
-        "依赖",
-        "隔离",
-        "venv"
-      ],
-      "diagnostic": "当前任务是“为一个 Python 小程序分别标注项目代码、解释器和将来可能安装的第三方依赖。”。处理“虚拟环境有什么用”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：为一个 Python 小程序分别标注项目代码、解释器和将来可能安装的第三方依赖。",
-        "本步成功证据是：不把 `.py` 文件、Python 程序和第三方库混成一个概念。 虚拟环境隔离不同项目的依赖，减少版本相互影响。"
-      ],
-      "example": "局部检查示例：不把 `.py` 文件、Python 程序和第三方库混成一个概念。",
-      "answer": "虚拟环境隔离不同项目的依赖，减少版本相互影响。",
-      "source": {
-        "label": "区分依赖",
-        "href": "#step-4"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
+      "id":"version-command","lesson_id":"engineering-foundation-07","context_id":"reproduce-find-python",
+      "question":"我应该用 python 还是 python3",
+      "aliases":["python 和 python3 为什么结果不同","Windows 为什么推荐 python 命令"],
+      "keywords":["python","python3","py","版本","命令"],
+      "diagnostic":"把两个可用命令的版本和位置分别查出来，不要先凭系统名称猜。",
+      "hints":["当前 Windows 官方安装管理器推荐 `python`；macOS 和 Linux 课程命令使用 `python3`。","真正可靠的判断是版本满足项目要求，而且位置与后续创建环境时使用的命令一致。"],
+      "example":"macOS 上 `python3 --version` 可用而 `python --version` 失败，并不妨碍继续课程。",
+      "answer":"使用本机能稳定找到且满足 Python 3.11+ 的命令。Windows 新环境优先 `python`，macOS/Linux 通常使用 `python3`，并把选择写进环境记录。",
+      "source":{"label":"找到电脑上的 Python","href":"#reproduce-find-python"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "not-found",
-      "lesson_id": "engineering-foundation-07",
-      "step_id": "step-5",
-      "question": "找不到命令怎么排查",
-      "aliases": [
-        "command not found 怎么办",
-        "Python 命令找不到"
-      ],
-      "keywords": [
-        "找不到命令",
-        "command not found",
-        "PATH",
-        "环境"
-      ],
-      "diagnostic": "当前任务是“任选“找不到命令”或“版本不对”的场景，写下环境、命令、输出和下一步检查。”。处理“找不到命令怎么排查”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：任选“找不到命令”或“版本不对”的场景，写下环境、命令、输出和下一步检查。",
-        "本步成功证据是：别人能据此重现或继续排查。 先记录系统、终端、命令和完整输出，再检查拼写、安装位置与 PATH。"
-      ],
-      "example": "局部检查示例：别人能据此重现或继续排查。",
-      "answer": "先记录系统、终端、命令和完整输出，再检查拼写、安装位置与 PATH。",
-      "source": {
-        "label": "验证迁移",
-        "href": "#step-5"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": true
+      "id":"locate-command","lesson_id":"engineering-foundation-07","context_id":"reproduce-find-python",
+      "question":"怎么知道 python 命令实际指向哪里",
+      "aliases":["如何查看 Python 可执行文件位置","Get-Command 和 command -v 是做什么的"],
+      "keywords":["Get-Command","command -v","位置","可执行文件","python"],
+      "diagnostic":"你是在 Windows PowerShell，还是 macOS/Linux 的 Shell 中？",
+      "hints":["Windows PowerShell 使用 `Get-Command python`；macOS/Linux 使用 `command -v python3`。","如果结果包含私人用户名，公开记录前保留结构并把私人前缀替换为 `<HOME>`。"],
+      "example":"`command -v python3` 显示 `/usr/local/bin/python3`，说明 Shell 会从这个位置启动程序。",
+      "answer":"使用平台对应的位置查询命令，再结合版本输出记录实际解释器。只看“安装过”无法证明终端当前命中了哪个 Python。",
+      "source":{"label":"找到电脑上的 Python","href":"#reproduce-find-python"},"updated_at":"2026-07-17","recommended":false
     },
     {
-      "id": "record",
-      "lesson_id": "engineering-foundation-07",
-      "step_id": "step-5",
-      "question": "环境问题怎样记录",
-      "aliases": [
-        "怎么记录开发环境",
-        "环境检查怎么写"
-      ],
-      "keywords": [
-        "环境",
-        "记录",
-        "版本",
-        "命令",
-        "输出"
-      ],
-      "diagnostic": "当前任务是“任选“找不到命令”或“版本不对”的场景，写下环境、命令、输出和下一步检查。”。处理“环境问题怎样记录”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：任选“找不到命令”或“版本不对”的场景，写下环境、命令、输出和下一步检查。",
-        "本步成功证据是：别人能据此重现或继续排查。 记录系统/终端、命令、版本或报错输出、判断和下一次具体检查。"
-      ],
-      "example": "局部检查示例：别人能据此重现或继续排查。",
-      "answer": "记录系统/终端、命令、版本或报错输出、判断和下一次具体检查。",
-      "source": {
-        "label": "验证迁移",
-        "href": "#step-5"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": true
+      "id":"python-baseline","lesson_id":"engineering-foundation-07","context_id":"reproduce-find-python",
+      "question":"课程需要哪个 Python 版本",
+      "aliases":["Python 3.10 能不能继续学","为什么要求 Python 3.11 以上"],
+      "keywords":["Python 3.11","版本要求","3.10","课程基线"],
+      "diagnostic":"先把 `--version` 的完整结果写出来，再与课程基线比较。",
+      "hints":["Become Engineer 现有 Python 项目以 3.11 及以上为公开运行基线。","版本更高通常可以继续，但仍要以具体项目的 `pyproject.toml` 和测试结果为准。"],
+      "example":"`Python 3.11.9` 满足 `>=3.11`；`Python 3.10.x` 不满足。",
+      "answer":"本课程组使用 Python 3.11–3.14。低于 3.11 时先安装受支持版本；使用更高版本时也要运行项目测试确认兼容。",
+      "source":{"label":"找到电脑上的 Python","href":"#reproduce-find-python"},"updated_at":"2026-07-17","recommended":false
+    },
+    {
+      "id":"venv-purpose","lesson_id":"engineering-foundation-07","context_id":"concept-project-environment",
+      "question":"为什么每个项目都要单独建虚拟环境",
+      "aliases":["venv 解决什么问题","不同项目的 Python 包为什么要隔离"],
+      "keywords":["venv","虚拟环境","隔离","依赖","项目"],
+      "diagnostic":"你担心的是不同项目需要不同包版本，还是不知道环境应该放在哪里？",
+      "hints":["虚拟环境为一个项目提供独立的解释器入口和包安装位置。","它可以删除重建，所以放在项目根目录并通过 `.gitignore` 排除。"],
+      "example":"项目 A 和项目 B 各有 `.venv`，即使依赖版本不同也不会直接写进同一个全局目录。",
+      "answer":"每个项目单独使用 `.venv`，能减少依赖版本互相影响，并让“这个项目实际使用哪个 Python”更容易检查和重建。",
+      "source":{"label":"项目为什么使用虚拟环境","href":"#concept-project-environment"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"create-venv","lesson_id":"engineering-foundation-07","context_id":"reproduce-create-venv",
+      "question":"怎么在项目里创建 .venv",
+      "aliases":["python -m venv .venv 是什么意思","虚拟环境应该建在哪个目录"],
+      "keywords":["python -m venv",".venv","创建","项目根目录"],
+      "diagnostic":"先确认终端位于 `learning-workspace` 根目录，并且基础 Python 版本满足要求。",
+      "hints":["Windows 执行 `python -m venv .venv`；macOS/Linux 执行 `python3 -m venv .venv`。","完成后不要只看文件夹是否出现，还要直接调用 `.venv` 中的 Python 检查版本。"],
+      "example":"macOS/Linux 可执行 `./.venv/bin/python --version`，Windows 可执行 `.\\.venv\\Scripts\\python.exe --version`。",
+      "answer":"在项目根目录用基础解释器运行标准库模块 `venv`。命令会创建 `.venv`，随后应直接调用其中的 Python 验证。",
+      "source":{"label":"创建项目虚拟环境","href":"#reproduce-create-venv"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"verify-venv","lesson_id":"engineering-foundation-07","context_id":"reproduce-create-venv",
+      "question":"怎么证明现在用的是 .venv 里的 Python",
+      "aliases":["sys.prefix 不等于 sys.base_prefix 说明什么","虚拟环境创建后怎么验证"],
+      "keywords":["sys.executable","sys.prefix","sys.base_prefix","True","虚拟环境"],
+      "diagnostic":"你是否直接调用了 `.venv` 里的 Python，并看过它自己报告的路径？",
+      "hints":["`sys.executable` 应位于当前项目的 `.venv` 目录。","虚拟环境中 `sys.prefix != sys.base_prefix` 应为 `True`。"],
+      "example":"`.venv/bin/python -c \"import sys; print(sys.executable); print(sys.prefix != sys.base_prefix)\"`。",
+      "answer":"同时检查 `.venv` 中的可执行文件路径和 `sys.prefix != sys.base_prefix`。两项一致，比只看终端提示符更可靠。",
+      "source":{"label":"创建项目虚拟环境","href":"#reproduce-create-venv"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"python-m-pip","lesson_id":"engineering-foundation-07","context_id":"reproduce-create-venv",
+      "question":"为什么不用 pip 而要写 python -m pip",
+      "aliases":["pip 会不会把包装错环境","怎么确认 pip 属于当前 Python"],
+      "keywords":["python -m pip","pip","依赖","环境","路径"],
+      "diagnostic":"先运行 `pip --version` 或 `.venv` Python 的 `-m pip --version`，看路径属于哪里。",
+      "hints":["裸 `pip` 也要经过 PATH 查找，可能来自另一个 Python。","`当前Python -m pip` 明确要求眼前这个解释器运行自己的 pip 模块。"],
+      "example":"`./.venv/bin/python -m pip --version` 的输出路径应包含 `learning-workspace/.venv`。",
+      "answer":"`python -m pip` 把包管理器和指定解释器绑在一起，能减少“代码用环境 A、依赖却装进环境 B”的错误。",
+      "source":{"label":"创建项目虚拟环境","href":"#reproduce-create-venv"},"updated_at":"2026-07-17","recommended":false
+    },
+    {
+      "id":"activation","lesson_id":"engineering-foundation-07","context_id":"example-activation-is-convenience",
+      "question":"虚拟环境一定要激活才能用吗",
+      "aliases":["不 activate 能不能运行 .venv","激活虚拟环境到底改了什么"],
+      "keywords":["activate","激活","PATH","完整路径","deactivate"],
+      "diagnostic":"你是无法激活，还是想确认激活和创建是不是同一件事？",
+      "hints":["创建产生环境目录；激活只是临时把该目录的命令放到 PATH 前面。","不能激活时，直接使用 `.venv` 里 Python 的完整路径仍然有效。"],
+      "example":"未激活也能运行 `./.venv/bin/python --version`。",
+      "answer":"不一定。激活是命令行便利功能，不是使用虚拟环境的必要条件；直接调用 `.venv` 中的 Python 更明确。",
+      "source":{"label":"激活只是让命令变短","href":"#example-activation-is-convenience"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"write-note","lesson_id":"engineering-foundation-07","context_id":"modify-write-environment-note",
+      "question":"环境检查记录应该写哪些内容",
+      "aliases":["environment-check.md 怎么写","怎么让别人看懂我的开发环境"],
+      "keywords":["environment-check.md","环境记录","版本","命令","报错"],
+      "diagnostic":"先确认记录是只在本地保存，还是准备提交到可能公开的仓库。",
+      "hints":["至少写操作系统、终端、Python 命令与版本、Git 版本、虚拟环境状态和一次问题记录。","公开前把用户名和私人目录替换为 `<HOME>`，删除完整 PATH、令牌和密钥。"],
+      "example":"写“Python 命令：python3；版本：3.11.9；位置：<HOME>/...；.venv 已创建”。",
+      "answer":"记录能重现判断的事实，同时保持公开安全。命令、版本、是否隔离和完整错误有用；私人绝对路径和密钥不应提交。",
+      "source":{"label":"写自己的环境记录","href":"#modify-write-environment-note"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"ignore-venv","lesson_id":"engineering-foundation-07","context_id":"modify-write-environment-note",
+      "question":"为什么 .venv 不能提交到 Git",
+      "aliases":["git status 里出现 .venv 怎么办","虚拟环境要不要 push 到 GitHub"],
+      "keywords":[".venv","Git",".gitignore","push","生成目录"],
+      "diagnostic":"运行 `git status --short --ignored`，看看 `.venv` 是 `!!` 还是普通未跟踪文件。",
+      "hints":["`.venv` 体积大、与平台相关，而且可以重建。","确保 `.gitignore` 有 `.venv/`，提交前再检查状态。"],
+      "example":"`!! .venv/` 表示目录已被 Git 忽略，环境记录仍可单独提交。",
+      "answer":"虚拟环境是本机生成物，不是可靠的跨平台依赖声明。忽略它，提交代码、环境要求和以后加入的依赖声明。",
+      "source":{"label":"写自己的环境记录","href":"#modify-write-environment-note"},"updated_at":"2026-07-17","recommended":false
+    },
+    {
+      "id":"command-not-found","lesson_id":"engineering-foundation-07","context_id":"troubleshoot-environment",
+      "question":"python command not found 怎么办",
+      "aliases":["终端找不到 python3","安装 Python 后命令还是不可用"],
+      "keywords":["command not found","python3","安装","PATH","重开终端"],
+      "diagnostic":"你使用什么系统，执行了哪个命令，终端给出的完整错误是什么？",
+      "hints":["先确认官方安装完成并重开终端，再使用平台对应的位置查询命令。","Windows 查看 `py list` 与执行别名；macOS/Linux 查看 `command -v python3`，不要先覆盖 PATH。"],
+      "example":"安装后旧终端仍报错，新开终端能找到命令，说明旧进程没有读到新 PATH。",
+      "answer":"按“安装状态—重开终端—命令拼写—位置查询—PATH”顺序检查，并保存完整输出。不要连续重复安装或随意重写 PATH。",
+      "source":{"label":"根据现象排查环境","href":"#troubleshoot-environment"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"wrong-version","lesson_id":"engineering-foundation-07","context_id":"troubleshoot-environment",
+      "question":"明明安装了新 Python 为什么还是旧版本",
+      "aliases":["python 版本不对怎么查","装了 3.13 还是运行 3.10"],
+      "keywords":["旧版本","新版本","位置","PATH","python"],
+      "diagnostic":"把旧命令和你认为的新命令的版本、位置分别查出来。",
+      "hints":["同名可执行文件可能同时存在，PATH 前面的那个会先被选择。","不要删除系统文件；先使用明确命令或完整路径创建项目 `.venv`。"],
+      "example":"`python3 --version` 与 `command -v python3` 要成对记录，单独看安装器界面不够。",
+      "answer":"版本不对通常是命令仍命中旧解释器。用位置查询和 `sys.executable` 确认实际程序，再用目标版本重新创建 `.venv`。",
+      "source":{"label":"根据现象排查环境","href":"#troubleshoot-environment"},"updated_at":"2026-07-17","recommended":false
+    },
+    {
+      "id":"activation-policy","lesson_id":"engineering-foundation-07","context_id":"troubleshoot-environment",
+      "question":"PowerShell 不让运行 Activate.ps1 怎么办",
+      "aliases":["虚拟环境激活被执行策略阻止","Activate.ps1 cannot be loaded"],
+      "keywords":["PowerShell","Activate.ps1","执行策略","激活","Windows"],
+      "diagnostic":"先确认 `.venv` 是否已经创建成功，以及完整路径调用 Python 是否可用。",
+      "hints":["激活失败不等于虚拟环境损坏。","直接执行 `.\\.venv\\Scripts\\python.exe`，不必为了本课改变全局执行策略。"],
+      "example":"`.\\.venv\\Scripts\\python.exe --version` 能运行，就可以继续验证环境。",
+      "answer":"绕过激活脚本，直接调用虚拟环境中的 Python。执行策略属于系统安全配置，不应在不了解影响时为方便而全局放宽。",
+      "source":{"label":"根据现象排查环境","href":"#troubleshoot-environment"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"sys-executable","lesson_id":"engineering-foundation-07","context_id":"deepen-path-and-interpreter",
+      "question":"sys.executable 和 command -v 有什么不同",
+      "aliases":["如何确认 Python 最终运行的是谁","sys.prefix 和 base_prefix 怎么看"],
+      "keywords":["sys.executable","command -v","Get-Command","sys.prefix","base_prefix"],
+      "diagnostic":"你要观察 Shell 准备选谁，还是已经运行的 Python 自己是谁？",
+      "hints":["`command -v`／`Get-Command` 观察 Shell 的查找结果。","`sys.executable` 由已运行的 Python 报告自身；prefix 对比再判断是否属于虚拟环境。"],
+      "example":"PATH 查询与 `sys.executable` 都指向 `.venv`，并且 prefix 不同，三项互相印证。",
+      "answer":"前者回答命令查找，后者回答实际解释器。排查复杂环境时把两者和 `sys.prefix != sys.base_prefix` 一起看。",
+      "source":{"label":"确认 Python 最终选中了谁","href":"#deepen-path-and-interpreter"},"updated_at":"2026-07-17","recommended":false
+    },
+    {
+      "id":"project-v08","lesson_id":"engineering-foundation-07","context_id":"project-workspace-v08",
+      "question":"这节课应该提交哪些文件",
+      "aliases":["工程学习工作台 v0.8 保存什么","开发环境检查怎样提交才安全"],
+      "keywords":["v0.8","environment-check.md","提交",".venv","脱敏"],
+      "diagnostic":"先运行 Git 状态，区分要提交的环境记录和必须留在本机的 `.venv`。",
+      "hints":["提交经过脱敏的 `notes/environment-check.md`。","确认 `.venv/` 显示为忽略状态，暂存后用 `git diff --cached` 再检查一次。"],
+      "example":"提交信息可写 `record development environment`，之后 push 到上一课配置的远程仓库。",
+      "answer":"提交公开安全的环境摘要，不提交 `.venv`、完整 PATH、私人绝对路径或凭据。保存提交和推送结果，供下一课继续使用。",
+      "source":{"label":"工程学习工作台 v0.8","href":"#project-workspace-v08"},"updated_at":"2026-07-17","recommended":true
     }
   ]
 }

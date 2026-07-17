@@ -1,0 +1,10 @@
+name = input("请输入昵称：")
+course = input("请输入当前课程：")
+weekly_hours_text = input("请输入本周计划小时：")
+weekly_hours = int(weekly_hours_text)
+
+print("学习档案")
+print("昵称：", name)
+print("课程：", course)
+print("本周计划：", weekly_hours, "小时")
+print("下周建议：", weekly_hours + 1, "小时")

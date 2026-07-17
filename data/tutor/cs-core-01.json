@@ -1,104 +1,538 @@
 {
-  "version": 1,
-  "lesson": {"id": "cs-core-01", "title": "序列接口、数组表示与安全边界", "path": "learning-paths/cs-core/01-sequence-interface-array-representation-boundaries/"},
-  "steps": [
-    {"id": "step-1", "title": "固定数组基线"},
-    {"id": "step-2", "title": "序列操作接口"},
-    {"id": "step-3", "title": "Python 检查式访问"},
-    {"id": "step-4", "title": "C++ 连续容器迁移"},
-    {"id": "step-5", "title": "安全越界实验"},
-    {"id": "step-6", "title": "复制修改迁移验收"}
+  "version": 2,
+  "lesson": {
+    "id": "cs-core-01",
+    "title": "序列接口、数组表示与安全边界",
+    "path": "learning-paths/cs-core/01-sequence-interface-array-representation-boundaries/"
+  },
+  "contexts": [
+    {
+      "id": "overview-data",
+      "type": "overview",
+      "title": "一组数字，两种找法",
+      "anchor": "#overview-data"
+    },
+    {
+      "id": "concept-representation",
+      "type": "concept",
+      "title": "程序怎样记住四天的学习时间",
+      "anchor": "#concept-representation"
+    },
+    {
+      "id": "concept-interface",
+      "type": "concept",
+      "title": "先说能做什么，再问底层怎样存",
+      "anchor": "#concept-interface"
+    },
+    {
+      "id": "concept-index",
+      "type": "concept",
+      "title": "下标从 0 开始",
+      "anchor": "#concept-index"
+    },
+    {
+      "id": "example-access",
+      "type": "example",
+      "title": "已知位置，直接取值",
+      "anchor": "#example-access"
+    },
+    {
+      "id": "troubleshoot-boundary",
+      "type": "troubleshoot",
+      "title": "长度是 4，为什么不能访问下标 4",
+      "anchor": "#troubleshoot-boundary"
+    },
+    {
+      "id": "reproduce-scan",
+      "type": "reproduce",
+      "title": "不知道位置，就一个个找",
+      "anchor": "#reproduce-scan"
+    },
+    {
+      "id": "concept-cost",
+      "type": "concept",
+      "title": "先数动作，再谈复杂度",
+      "anchor": "#concept-cost"
+    },
+    {
+      "id": "modify-data",
+      "type": "modify",
+      "title": "换一组数，再做一次",
+      "anchor": "#modify-data"
+    },
+    {
+      "id": "project-records",
+      "type": "project",
+      "title": "把报告器当成一组数据来看",
+      "anchor": "#project-records"
+    },
+    {
+      "id": "deepen-abstraction",
+      "type": "deepen",
+      "title": "图很有用，但别把图当成实现",
+      "anchor": "#deepen-abstraction"
+    },
+    {
+      "id": "career-complexity",
+      "type": "career",
+      "title": "被问到这个查找有多快时",
+      "anchor": "#career-complexity"
+    }
   ],
   "cards": [
     {
-      "id": "dual-language-array-baseline", "lesson_id": "cs-core-01", "step_id": "step-1",
-      "question": "第一步要锁定哪些双语言基线？", "aliases": ["数组实验首次输出是什么", "Python和C++基线怎么比", "Python和C++数组实验首次输出怎么逐字比较"],
-      "keywords": ["基线", "标准输出", "7 3 9 3", "index=2", "首次匹配"],
-      "diagnostic": "两边是否使用相同固定数据，并同时确认位置访问、首次匹配和退出状态？",
-      "hints": ["先运行两个程序，不改代码，保存完整标准输出。", "确认数据为 7,3,9,3，index=2 得到 9，target=3 首次位置为 1，再逐字比较。"],
-      "example": "局部证据：两个进程都返回 0，`diff` 没有输出。",
-      "answer": "基线锁定固定数据、检查式访问结果、首次匹配位置、比较次数和完整文本，后续迁移只能扩展实现，不能悄悄改契约。",
-      "source": {"label": "第一步：运行固定数组基线", "href": "#step-1"}, "updated_at": "2026-07-16", "recommended": true
+      "id": "cs-goal",
+      "lesson_id": "cs-core-01",
+      "context_id": "overview-data",
+      "question": "这节 CS 课为什么从四个数开始？",
+      "aliases": [
+        "CS 第一课为什么从列表开始",
+        "要先学 C++ 吗"
+      ],
+      "keywords": [
+        "CS",
+        "起步",
+        "数据",
+        "访问",
+        "扫描"
+      ],
+      "diagnostic": "你能读懂 hours = [2, 5, 3, 4] 吗？",
+      "hints": [
+        "先观察已知位置访问。",
+        "再比较只知道目标值时怎样寻找位置。"
+      ],
+      "example": "hours[2] 与查找值 3 解决不同问题。",
+      "answer": "借四个数理解表示、位置、扫描、边界和动作次数，不要求 C++。",
+      "source": {
+        "label": "一组数字，两种找法",
+        "href": "#overview-data"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
     },
     {
-      "id": "sequence-interface-vs-representation", "lesson_id": "cs-core-01", "step_id": "step-2",
-      "question": "序列接口和数组表示有什么区别？", "aliases": ["接口和数据结构实现怎么分", "序列是不是数组"],
-      "keywords": ["序列接口", "表示", "数据结构", "操作", "实现"],
-      "diagnostic": "你是在描述需要支持的操作，还是在描述元素如何拥有和存储？",
-      "hints": ["接口先列长度、按位置读取、顺序扫描和复制替换。", "Python Sequence 与 C++ span 可以表达相似只读操作，但具体拥有方式和内存语义不同。"],
-      "example": "局部对照：同一 get-at 操作可由 Python list 或 C++ vector/span 支持。",
-      "answer": "接口说明能做什么，表示说明如何存储并实现操作；先固定接口才能公平比较不同结构的成本。",
-      "source": {"label": "第二步：把需求写成序列接口", "href": "#step-2"}, "updated_at": "2026-07-16", "recommended": true
+      "id": "data-representation",
+      "lesson_id": "cs-core-01",
+      "context_id": "concept-representation",
+      "question": "数据和数据表示有什么区别？",
+      "aliases": [
+        "现实信息怎么变成程序数据",
+        "列表是不是数据本身"
+      ],
+      "keywords": [
+        "数据",
+        "表示",
+        "现实信息",
+        "列表"
+      ],
+      "diagnostic": "先用一句话描述四天时长，再把它写成 Python。",
+      "hints": [
+        "数据是想表达的信息。",
+        "表示是程序组织这些信息的具体方式。"
+      ],
+      "example": "四天时长变成四个整数，再写成 [2,5,3,4]。",
+      "answer": "现实信息是数据，Python 列表是其中一种程序表示。",
+      "source": {
+        "label": "程序怎样记住四天的学习时间",
+        "href": "#concept-representation"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
     },
     {
-      "id": "first-match-contract", "lesson_id": "cs-core-01", "step_id": "step-2",
-      "question": "重复值为什么要返回第一个匹配位置？", "aliases": ["两个3返回哪个下标", "线性查找重复值契约"],
-      "keywords": ["重复值", "第一个匹配", "位置", "契约", "线性查找"],
-      "diagnostic": "调用者能否从函数名和测试确定遇到第一个匹配后是否继续扫描？",
-      "hints": ["固定样例中 3 出现两次，预期下标是 1。", "在首次相等时立即返回，并用重复值测试锁定行为。"],
-      "example": "`[7,3,9,3]` 查找 3 返回 index=1。",
-      "answer": "明确首次匹配可以让两种语言共享稳定语义，也为下一课的比较次数提供停止条件。",
-      "source": {"label": "第二步：把需求写成序列接口", "href": "#step-2"}, "updated_at": "2026-07-16"
+      "id": "interface-implementation",
+      "lesson_id": "cs-core-01",
+      "context_id": "concept-interface",
+      "question": "序列接口和具体实现有什么区别？",
+      "aliases": [
+        "接口说能做什么实现说怎么存对吗",
+        "序列是不是数组"
+      ],
+      "keywords": [
+        "接口",
+        "实现",
+        "表示",
+        "操作"
+      ],
+      "diagnostic": "你是在列需要的操作，还是在描述底层存储？",
+      "hints": [
+        "接口先说长度、访问、遍历和复制。",
+        "实现再回答怎样存储和支持这些操作。"
+      ],
+      "example": "Python list 与其他结构可以提供部分相似接口。",
+      "answer": "接口规定能做什么，表示与实现决定怎样完成以及成本。",
+      "source": {
+        "label": "先说能做什么，再问底层怎样存",
+        "href": "#concept-interface"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
     },
     {
-      "id": "python-negative-index-policy", "lesson_id": "cs-core-01", "step_id": "step-3",
-      "question": "Python 为什么主动拒绝负索引？", "aliases": ["list负索引不是合法吗", "跨语言索引边界", "list的-1明明合法为什么checked_at报错"],
-      "keywords": ["Python", "负索引", "IndexError", "跨语言", "边界"],
-      "diagnostic": "当前目标是保留 Python 原生便利语义，还是建立 Python/C++ 共用的索引契约？",
-      "hints": ["Python 的 -1 合法，但 C++ 没有相同约定。", "本实验收窄为 0 <= index < len，先检查再访问；不是宣称 Python 负索引本身错误。"],
-      "example": "`checked_at([7], -1)` 必须抛出 IndexError。",
-      "answer": "主动拒绝负索引让两种语言使用同一边界条件推理，避免接口因语言默认行为分叉。",
-      "source": {"label": "第三步：实现 Python 检查式访问", "href": "#step-3"}, "updated_at": "2026-07-16", "recommended": true
+      "id": "python-list-boundary",
+      "lesson_id": "cs-core-01",
+      "context_id": "concept-interface",
+      "question": "Python list 是连续内存数组吗？",
+      "aliases": [
+        "列表底层是不是数组",
+        "方格图代表真实内存吗"
+      ],
+      "keywords": [
+        "Python",
+        "list",
+        "连续内存",
+        "方格图"
+      ],
+      "diagnostic": "当前方格是在讲下标，还是在证明内存布局？",
+      "hints": [
+        "它只表示顺序与下标。",
+        "Python list 还隐藏对象引用、扩容等实现细节。"
+      ],
+      "example": "hours[2] 是语言接口，不是内存图。",
+      "answer": "不能直接等同；本课依赖公开序列语义，不擅自推断原始值布局。",
+      "source": {
+        "label": "先说能做什么，再问底层怎样存",
+        "href": "#concept-interface"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
     },
     {
-      "id": "python-list-not-raw-array", "lesson_id": "cs-core-01", "step_id": "step-3",
-      "question": "为什么不能把 Python list 直接说成传统数组？", "aliases": ["Python列表是不是连续同类型数组", "list和C数组差异"],
-      "keywords": ["Python list", "传统数组", "同类型", "连续内存", "序列"],
-      "diagnostic": "当前结论来自 Python 公开序列语义，还是擅自推断了对象引用和内存布局？",
-      "hints": ["课程只依赖 list 的可变序列接口，不依赖具体解释器布局。", "把连续同类型元素的结论留给明确满足该要求的 C++ 容器或数组类型。"],
-      "example": "可以说 list 支持按位置读写；不要据此声称它存放连续 int 值。",
-      "answer": "Python list 的公开契约是可变序列；课程应区分抽象操作与实现布局，避免用类比替代事实。",
-      "source": {"label": "第三步：实现 Python 检查式访问", "href": "#step-3"}, "updated_at": "2026-07-16"
+      "id": "index-length",
+      "lesson_id": "cs-core-01",
+      "context_id": "concept-index",
+      "question": "为什么长度 4 的列表最大非负下标是 3？",
+      "aliases": [
+        "下标为什么从 0 开始",
+        "len 是 4 为什么不能访问 4"
+      ],
+      "keywords": [
+        "下标",
+        "长度",
+        "len",
+        "范围"
+      ],
+      "diagnostic": "把四个元素对应下标完整写一遍。",
+      "hints": [
+        "它们是 0、1、2、3。",
+        "n 个元素的非负有效范围是 0 到 n-1。"
+      ],
+      "example": "len(hours)=4，条件是 0 <= index < 4。",
+      "answer": "长度表示元素数量，不是最后一个有效下标。",
+      "source": {
+        "label": "下标从 0 开始",
+        "href": "#concept-index"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
     },
     {
-      "id": "cpp-vector-span-ownership", "lesson_id": "cs-core-01", "step_id": "step-4",
-      "question": "C++ vector 和 span 在实验里各负责什么？", "aliases": ["span拥有数据吗", "为什么参数用只读span"],
-      "keywords": ["vector", "span", "只读视图", "拥有", "连续容器"],
-      "diagnostic": "函数是否需要拥有或改变输入，还是只需要查看调用者提供的连续元素？",
-      "hints": ["vector 持有元素和生命周期，span 只描述一段连续视图。", "读取和查找接收 span<const int>；复制修改创建新 vector，不让 span 超过原数据寿命。"],
-      "example": "局部签名：`checked_at(std::span<const int>, ptrdiff_t)`。",
-      "answer": "vector 管理存储，span 提供非拥有只读边界；二者分工让输入意图和复制行为可见。",
-      "source": {"label": "第四步：迁移到 C++ 连续容器", "href": "#step-4"}, "updated_at": "2026-07-16", "recommended": true
+      "id": "negative-index",
+      "lesson_id": "cs-core-01",
+      "context_id": "concept-index",
+      "question": "Python 的负下标算越界吗？",
+      "aliases": [
+        "hours[-1] 为什么合法",
+        "负索引和边界怎么区分"
+      ],
+      "keywords": [
+        "负下标",
+        "Python",
+        "最后一项"
+      ],
+      "diagnostic": "你是在使用 Python 原生序列，还是另行定义更窄接口？",
+      "hints": [
+        "Python -1 表示最后一项。",
+        "跨语言接口可以主动只允许非负位置，但要明确说明。"
+      ],
+      "example": "hours[-1] 得到 4。",
+      "answer": "负下标是 Python 合法语义；是否收窄属于接口选择。",
+      "source": {
+        "label": "下标从 0 开始",
+        "href": "#concept-index"
+      },
+      "updated_at": "2026-07-17"
     },
     {
-      "id": "signed-index-before-size-conversion", "lesson_id": "cs-core-01", "step_id": "step-4",
-      "question": "C++ 为什么要在转 size_t 前检查负数？", "aliases": ["负索引转无符号会怎样", "ptrdiff_t边界顺序"],
-      "keywords": ["size_t", "ptrdiff_t", "负数", "无符号", "边界检查"],
-      "diagnostic": "负索引是否已经被转换成巨大无符号值，导致错误信息和比较难以理解？",
-      "hints": ["接口先接收可表达负数的 ptrdiff_t。", "先判断 index < 0，再与 size 比较，确认合法后才转 size_t。"],
-      "example": "不要先写 `auto i = static_cast<size_t>(index)` 再检查负数。",
-      "answer": "先检查有符号输入可以保留调用者错误的真实含义，并避免无符号转换掩盖负数边界。",
-      "source": {"label": "第四步：迁移到 C++ 连续容器", "href": "#step-4"}, "updated_at": "2026-07-16"
+      "id": "index-error",
+      "lesson_id": "cs-core-01",
+      "context_id": "troubleshoot-boundary",
+      "question": "遇到 IndexError 先看哪里？",
+      "aliases": [
+        "list index out of range 怎么办",
+        "列表越界怎么检查"
+      ],
+      "keywords": [
+        "IndexError",
+        "out",
+        "of",
+        "range",
+        "len"
+      ],
+      "diagnostic": "当前下标与列表长度分别是多少？",
+      "hints": [
+        "检查 0 <= index < len 是否成立。",
+        "再确认原意是改位置还是补数据。"
+      ],
+      "example": "len=4、index=4 不满足 index < 4。",
+      "answer": "先用真实下标和长度核对范围，不要只把数字减一碰运气。",
+      "source": {
+        "label": "长度是 4，为什么不能访问下标 4",
+        "href": "#troubleshoot-boundary"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
     },
     {
-      "id": "safe-out-of-range-experiment", "lesson_id": "cs-core-01", "step_id": "step-5",
-      "question": "怎样安全观察数组越界失败？", "aliases": ["为什么不能直接越界崩溃", "越界实验怎么做"],
-      "keywords": ["越界", "IndexError", "out_of_range", "未定义行为", "单元测试"],
-      "diagnostic": "失败是否通过已定义异常路径触发，还是依赖偶然崩溃或读取垃圾值？",
-      "hints": ["只调用检查式接口，覆盖 -1、size 和空序列。", "Python 断言 IndexError，C++ 断言 out_of_range；不执行未检查的越界 operator[]。"],
-      "example": "局部恢复：测试捕获异常后继续运行其他用例。",
-      "answer": "受控异常是稳定证据；未定义行为可能崩溃、看似成功或破坏状态，不能用于教学验收。",
-      "source": {"label": "第五步：安全观察负索引和越界", "href": "#step-5"}, "updated_at": "2026-07-16", "recommended": true
+      "id": "access-search",
+      "lesson_id": "cs-core-01",
+      "context_id": "reproduce-scan",
+      "question": "按下标访问和顺序查找有什么不同？",
+      "aliases": [
+        "hours[2] 和找 3 一样吗",
+        "为什么查找要逐个比较"
+      ],
+      "keywords": [
+        "下标访问",
+        "顺序查找",
+        "位置"
+      ],
+      "diagnostic": "题目已经告诉程序目标在哪个位置了吗？",
+      "hints": [
+        "知道下标时直接读取。",
+        "只知道目标值时，从前往后比较直到找到或结束。"
+      ],
+      "example": "hours[2] 直接得 3；查找 3 比较 2、5、3。",
+      "answer": "二者解决不同问题：一个使用位置，一个寻找位置。",
+      "source": {
+        "label": "不知道位置，就一个个找",
+        "href": "#reproduce-scan"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
     },
     {
-      "id": "copy-replacement-migration", "lesson_id": "cs-core-01", "step_id": "step-6",
-      "question": "replace_at_copy 迁移验收要证明什么？", "aliases": ["复制修改要测哪些边界", "怎样证明原输入没变"],
-      "keywords": ["replace_at_copy", "副本", "原输入", "迁移验收", "首尾"],
-      "diagnostic": "测试是否同时检查返回副本和调用后原输入，而不是只看新值？",
-      "hints": ["先保存原输入，调用后断言返回值符合替换。", "再次断言原输入完全相同，并复用负索引、size 和空序列边界。"],
-      "example": "原 `[7,3,9]` 替换 index=1 后返回 `[7,8,9]`，原值仍是 `[7,3,9]`。",
-      "answer": "迁移通过需要结果正确、输入不变和边界一致三类证据，两种语言都不能偷偷原地修改。",
-      "source": {"label": "第六步：完成复制修改迁移验收", "href": "#step-6"}, "updated_at": "2026-07-16", "recommended": true
+      "id": "first-match",
+      "lesson_id": "cs-core-01",
+      "context_id": "reproduce-scan",
+      "question": "重复值为什么返回第一次出现的位置？",
+      "aliases": [
+        "两个 4 应该找到哪个",
+        "线性查找什么时候停止"
+      ],
+      "keywords": [
+        "首次匹配",
+        "重复值",
+        "停止"
+      ],
+      "diagnostic": "函数是否在第一次相等时立即返回？",
+      "hints": [
+        "固定第一次匹配能让行为明确。",
+        "比较次数也由停止位置确定。"
+      ],
+      "example": "[1,4,4,7,2] 查 4 返回下标 1。",
+      "answer": "本课的查找契约是首次匹配；找到即停止。",
+      "source": {
+        "label": "不知道位置，就一个个找",
+        "href": "#reproduce-scan"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "operation-count",
+      "lesson_id": "cs-core-01",
+      "context_id": "concept-cost",
+      "question": "还没学 O 记号，怎么理解程序快不快？",
+      "aliases": [
+        "复杂度入门怎么学",
+        "为什么先数比较次数"
+      ],
+      "keywords": [
+        "操作成本",
+        "比较次数",
+        "复杂度"
+      ],
+      "diagnostic": "这个过程一直在重复哪个动作？",
+      "hints": [
+        "先数当前值与目标是否相等的比较。",
+        "再看数据变多时最好和最坏要重复多少次。"
+      ],
+      "example": "4 个元素中查不存在的 9 要比较 4 次。",
+      "answer": "先说输入、重复动作、停止条件和最坏次数，再用复杂度符号简写规律。",
+      "source": {
+        "label": "先数动作，再谈复杂度",
+        "href": "#concept-cost"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "reproduce-example",
+      "lesson_id": "cs-core-01",
+      "context_id": "reproduce-scan",
+      "question": "固定扫描例子应该看到什么？",
+      "aliases": [
+        "data_representation 怎么运行",
+        "查找 3 比较几次"
+      ],
+      "keywords": [
+        "运行",
+        "输出",
+        "扫描",
+        "IndexError"
+      ],
+      "diagnostic": "是否从仓库根目录运行课程给出的 Python 文件？",
+      "hints": [
+        "先预测下标 2 和查找结果。",
+        "再核对未找到次数与 IndexError。"
+      ],
+      "example": "查找 3 返回下标 2、3 次；查找 9 比较 4 次。",
+      "answer": "固定例子同时验证访问、首次匹配、未找到和单项越界。",
+      "source": {
+        "label": "不知道位置，就一个个找",
+        "href": "#reproduce-scan"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "modify-data",
+      "lesson_id": "cs-core-01",
+      "context_id": "modify-data",
+      "question": "换一组数据以后要检查什么？",
+      "aliases": [
+        "换数据要做什么",
+        "怎么证明不是照抄"
+      ],
+      "keywords": [
+        "新数据",
+        "预测",
+        "比较次数"
+      ],
+      "diagnostic": "数据和目标值都换了吗？",
+      "hints": [
+        "运行前写下首尾值、目标下标和比较次数。",
+        "再运行核对，猜错时区分下标与扫描次数。"
+      ],
+      "example": "[1,4,4,7,2] 查 7：下标 3，比较 4 次。",
+      "answer": "换数据与目标，先预测再核对，并覆盖目标不存在。",
+      "source": {
+        "label": "换一组数，再做一次",
+        "href": "#modify-data"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "copy-boundary",
+      "lesson_id": "cs-core-01",
+      "context_id": "modify-data",
+      "question": "复制修改为什么还要检查原列表？",
+      "aliases": [
+        "copy 后怎么证明原数据没变",
+        "只检查新列表够吗"
+      ],
+      "keywords": [
+        "复制",
+        "原输入",
+        "修改"
+      ],
+      "diagnostic": "测试是否同时查看副本与原输入？",
+      "hints": [
+        "用 hours.copy() 建立外层副本。",
+        "修改副本后再次打印原列表。"
+      ],
+      "example": "copied[0]=8 后 hours 仍从 1 开始。",
+      "answer": "复制函数的契约既包括返回结果，也包括原输入保持不变。",
+      "source": {
+        "label": "换一组数，再做一次",
+        "href": "#modify-data"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "project-records",
+      "lesson_id": "cs-core-01",
+      "context_id": "project-records",
+      "question": "这些概念怎样进入学习进度报告器？",
+      "aliases": [
+        "列表扫描对项目有什么用",
+        "CS 起步和报告器关系"
+      ],
+      "keywords": [
+        "项目",
+        "报告器",
+        "多条记录",
+        "汇总"
+      ],
+      "diagnostic": "报告器对 records 做了哪些读取和遍历？",
+      "hints": [
+        "汇总时逐条扫描记录。",
+        "已知位置访问、查找课程和空记录也都有边界。"
+      ],
+      "example": "记录从 3 条变 30 条时汇总循环执行 30 次。",
+      "answer": "把项目视为记录集合，列出表示、操作和最坏检查项数。",
+      "source": {
+        "label": "把报告器当成一组数据来看",
+        "href": "#project-records"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "abstraction",
+      "lesson_id": "cs-core-01",
+      "context_id": "deepen-abstraction",
+      "question": "为什么不能把方格图当成真实内存？",
+      "aliases": [
+        "图解和实现有什么区别",
+        "数组图是不是内存图"
+      ],
+      "keywords": [
+        "抽象",
+        "图解",
+        "内存",
+        "实现"
+      ],
+      "diagnostic": "这张图证明了哪些事实，又隐藏了什么？",
+      "hints": [
+        "它证明顺序和下标关系。",
+        "它没有证明 Python 整数原始值连续存放。"
+      ],
+      "example": "接口可先可靠使用，内存与扩容留到相应课程。",
+      "answer": "功能图帮助理解公开行为，底层结论必须有额外事实支持。",
+      "source": {
+        "label": "图很有用，但别把图当成实现",
+        "href": "#deepen-abstraction"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "career-complexity",
+      "lesson_id": "cs-core-01",
+      "context_id": "career-complexity",
+      "question": "面试时怎样说明顺序查找成本？",
+      "aliases": [
+        "查找有多快怎么回答",
+        "复杂度不要只报符号"
+      ],
+      "keywords": [
+        "求职",
+        "复杂度",
+        "最坏"
+      ],
+      "diagnostic": "能否说清输入、比较动作、停止条件和最坏情况？",
+      "hints": [
+        "输入是 n 个值，从头比较。",
+        "最好第一次命中，最坏看完 n 项。"
+      ],
+      "example": "已知下标读取与未知目标查找不能用同一结论。",
+      "answer": "先讲过程和前提，再给增长结论，避免脱离问题只背符号。",
+      "source": {
+        "label": "被问到这个查找有多快时",
+        "href": "#career-complexity"
+      },
+      "updated_at": "2026-07-17"
     }
   ]
 }

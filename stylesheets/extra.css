@@ -122,6 +122,705 @@
   margin: 0;
 }
 
+/* Formal V2 filesystem lesson: static directory and path diagrams. */
+.be-fs-tree {
+  display: grid;
+  gap: 0.7rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.55rem;
+  background: var(--be-surface);
+}
+
+/* Formal V2 editor lesson: screenshot callouts and workspace relationship. */
+.be-editor-results,
+.be-editor-layout {
+  display: grid;
+  gap: 0.7rem;
+  margin: 1rem 0;
+}
+
+.be-editor-results {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.be-editor-results span,
+.be-editor-layout > div {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.55rem;
+  background: var(--be-surface);
+}
+
+.be-editor-results span {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.be-editor-results b {
+  color: var(--be-nav-section-color);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+}
+
+.be-editor-figure {
+  margin: 1rem 0 1.5rem;
+  padding: 0.75rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.7rem;
+  background: #111827;
+  overflow: hidden;
+}
+
+.be-editor-shot {
+  position: relative;
+}
+
+.be-editor-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.4rem;
+}
+
+.be-editor-shot__callout {
+  position: absolute;
+  padding: 0.32rem 0.55rem;
+  border-radius: 0.4rem;
+  color: #fff;
+  background: rgba(68, 88, 199, 0.96);
+  box-shadow: 0 0.25rem 0.8rem rgba(0, 0, 0, 0.28);
+  font-size: clamp(0.55rem, 1.7vw, 0.82rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.be-editor-shot__callout[data-callout="explorer"] { top: 10%; left: 3%; }
+.be-editor-shot__callout[data-callout="editor"] { top: 7%; left: 36%; }
+.be-editor-shot__callout[data-callout="terminal"] { top: 65%; left: 37%; background: rgba(8, 127, 104, 0.96); }
+.be-editor-shot__callout[data-callout="saved"] { top: 2%; right: 17%; background: rgba(166, 93, 0, 0.96); }
+
+.be-editor-figure figcaption {
+  padding: 0.7rem 0.2rem 0;
+  color: #dbe4ff;
+  font-size: 0.76rem;
+}
+
+.be-editor-layout {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.be-editor-layout h3 {
+  margin: 0 0 0.3rem;
+  font-size: 0.94rem;
+}
+
+.be-editor-layout p {
+  margin: 0;
+  color: var(--be-muted);
+}
+
+.be-editor-check {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.75rem;
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  border-left: 0.2rem solid var(--be-deepen);
+  border-radius: 0.4rem;
+  background: var(--be-deepen-bg);
+}
+
+.be-editor-check strong {
+  color: var(--be-deepen);
+}
+
+/* Formal V2 Markdown lesson: source and rendered preview of the same text. */
+.be-markdown-compare {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.be-markdown-compare > div {
+  min-width: 0;
+  padding: 0.8rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.55rem;
+  background: var(--md-default-bg-color);
+}
+
+.be-markdown-compare > div > span {
+  display: block;
+  margin-bottom: 0.55rem;
+  color: var(--be-muted);
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+.be-markdown-compare__source pre,
+.be-markdown-preview-card pre {
+  margin: 0;
+  font-size: 0.62rem;
+  line-height: 1.5;
+}
+
+.be-markdown-preview-card {
+  min-height: 100%;
+  padding: 0.9rem;
+  border-left: 0.18rem solid var(--be-nav-section-color);
+  border-radius: 0.35rem;
+  background: var(--be-surface);
+}
+
+.be-markdown-preview-card > strong {
+  display: block;
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.be-markdown-preview-card h3 {
+  margin: 0.8rem 0 0.35rem;
+  font-size: 0.8rem;
+}
+
+.be-markdown-preview-card ul {
+  margin: 0.35rem 0 0.75rem;
+  padding-left: 1rem;
+  font-size: 0.67rem;
+}
+
+/* Formal V2 engineering lessons: terminal results and compact system flows. */
+.be-git-result,
+.be-tool-result {
+  margin: 1rem 0;
+  padding: 0.15rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.55rem;
+  background: var(--md-code-bg-color);
+  box-shadow: inset 0.18rem 0 0 var(--be-nav-section-color);
+}
+
+.be-git-result pre,
+.be-tool-result pre {
+  margin: 0;
+  border-radius: 0.45rem;
+  font-size: 0.7rem;
+}
+
+.be-git-flow,
+.be-environment-flow,
+.be-docker-flow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 0.6rem;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.be-git-flow > div,
+.be-git-flow > aside,
+.be-environment-flow > div,
+.be-environment-flow > aside,
+.be-docker-flow > div,
+.be-docker-flow > aside {
+  display: grid;
+  gap: 0.18rem;
+  min-width: 0;
+  padding: 0.75rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.5rem;
+  background: var(--be-surface);
+}
+
+.be-git-flow > div > span,
+.be-git-flow > aside > span,
+.be-environment-flow > div > span,
+.be-environment-flow > aside > span,
+.be-docker-flow > div > span,
+.be-docker-flow > aside > span {
+  color: var(--be-muted);
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+.be-git-flow > div > strong,
+.be-git-flow > aside > strong,
+.be-environment-flow > div > strong,
+.be-environment-flow > aside > strong,
+.be-docker-flow > div > strong,
+.be-docker-flow > aside > strong {
+  color: var(--md-typeset-color);
+  font-size: 0.82rem;
+}
+
+.be-git-flow > div > small,
+.be-environment-flow > div > small,
+.be-docker-flow > div > small {
+  overflow-wrap: anywhere;
+  color: var(--be-muted);
+}
+
+.be-git-flow > b,
+.be-environment-flow > b,
+.be-docker-flow > b {
+  color: var(--be-nav-section-color);
+  font-size: 0.68rem;
+  white-space: nowrap;
+}
+
+.be-git-flow > aside,
+.be-environment-flow > aside,
+.be-docker-flow > aside {
+  grid-column: 1 / -1;
+  border-left: 0.18rem solid var(--be-deepen);
+  background: var(--be-deepen-bg);
+}
+
+/* Formal V2 validation lesson: reasoning chain and explicit check states. */
+.be-validation-cycle,
+.be-validation-status {
+  display: grid;
+  gap: 0.65rem;
+  margin: 1rem 0;
+}
+
+.be-validation-cycle {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.be-validation-cycle article,
+.be-validation-status article {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+  padding: 0.75rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.5rem;
+  background: var(--be-surface);
+}
+
+.be-validation-cycle b {
+  color: var(--be-nav-section-color);
+  font-size: 0.64rem;
+}
+
+.be-validation-cycle span,
+.be-validation-status strong {
+  color: var(--md-typeset-color);
+  font-size: 0.78rem;
+}
+
+.be-validation-cycle small,
+.be-validation-status span {
+  color: var(--be-muted);
+  font-size: 0.66rem;
+}
+
+.be-validation-status {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.be-validation-status article[data-state="success"] {
+  border-top: 0.18rem solid var(--be-deepen);
+}
+
+.be-validation-status article[data-state="failure"] {
+  border-top: 0.18rem solid var(--be-elective);
+}
+
+.be-validation-status article[data-state="unverified"] {
+  border-top: 0.18rem solid var(--be-muted);
+}
+
+/* Formal V2 Python lessons: values, input conversion, and an optional browser runner. */
+.be-variable-model,
+.be-python-input-flow,
+.be-function-flow,
+.be-collection-model,
+.be-file-data-flow {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.55rem;
+  background: var(--be-surface);
+}
+
+.be-variable-model > div,
+.be-python-input-flow > div,
+.be-function-flow > div,
+.be-collection-model > article,
+.be-file-data-flow > div {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 7.5rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.45rem;
+  background: var(--md-default-bg-color);
+  text-align: center;
+}
+
+.be-variable-model span,
+.be-python-input-flow span,
+.be-function-flow span,
+.be-collection-model span,
+.be-file-data-flow span {
+  color: var(--be-muted);
+  font-size: 0.62rem;
+}
+
+.be-variable-model strong,
+.be-python-input-flow strong,
+.be-function-flow strong,
+.be-collection-model strong,
+.be-file-data-flow strong {
+  color: var(--be-nav-section-color);
+  font-size: 0.78rem;
+}
+
+.be-variable-model > b,
+.be-python-input-flow > b,
+.be-function-flow > b,
+.be-collection-model > b,
+.be-file-data-flow > b {
+  color: var(--be-nav-section-color);
+  font-size: 0.9rem;
+}
+
+.be-python-runner {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #3b4a66;
+  border-radius: 0.55rem;
+  background: #111827;
+  color: #eef2ff;
+}
+
+.be-module-map {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin: 1rem 0;
+}
+
+.be-module-map article {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.85rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.5rem;
+  background: var(--be-surface);
+  text-align: center;
+}
+
+.be-module-map__entry {
+  grid-column: 1 / -1;
+  border-top: 0.18rem solid var(--be-nav-section-color) !important;
+}
+
+.be-module-map span,
+.be-module-map small {
+  color: var(--be-muted);
+}
+
+.be-module-map strong {
+  color: var(--be-nav-section-color);
+}
+
+.be-python-runner__fallback {
+  margin: 0;
+  color: #cbd5e1;
+}
+
+.be-python-runner[data-ready="true"] .be-python-runner__fallback {
+  display: none;
+}
+
+.be-python-runner__toolbar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.65rem;
+}
+
+.be-python-runner__toolbar strong {
+  color: #fff;
+}
+
+.be-python-runner__status {
+  color: #a9b8d5;
+  font-size: 0.64rem;
+  text-align: right;
+}
+
+.be-python-runner textarea {
+  display: block;
+  width: 100%;
+  min-height: 12rem;
+  padding: 0.8rem;
+  border: 1px solid #3b4a66;
+  border-radius: 0.45rem;
+  resize: vertical;
+  color: #e8edff;
+  background: #0b1020;
+  font: 0.68rem/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.be-python-runner__actions {
+  display: flex;
+  gap: 0.55rem;
+  margin: 0.7rem 0;
+}
+
+.be-python-runner button {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #8ea0ff;
+  border-radius: 0.4rem;
+  color: #fff;
+  background: #30439f;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.be-python-runner button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.be-python-runner button:hover:not(:disabled) {
+  background: #3d52b9;
+}
+
+.be-python-runner__output {
+  min-height: 3.5rem;
+  margin: 0;
+  padding: 0.75rem;
+  border-radius: 0.45rem;
+  white-space: pre-wrap;
+  background: #050816;
+  color: #d8f7e7;
+}
+
+.be-python-runner__output[data-kind="error"] {
+  color: #ffb4bd;
+}
+
+.be-python-runner button:focus-visible,
+.be-python-runner textarea:focus-visible {
+  outline: 0.16rem solid #b9c4ff;
+  outline-offset: 0.12rem;
+}
+
+.be-control-flow {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.9fr) 1.1rem repeat(2, minmax(8rem, 1fr));
+  gap: 0.65rem;
+  align-items: stretch;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.55rem;
+  background: var(--be-surface);
+}
+
+.be-control-flow > article {
+  display: grid;
+  align-content: center;
+  gap: 0.25rem;
+  min-width: 0;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.45rem;
+  background: var(--md-default-bg-color);
+}
+
+.be-control-flow > article[data-branch="true"] {
+  border-top: 0.18rem solid var(--be-deepen);
+}
+
+.be-control-flow > article[data-branch="false"] {
+  border-top: 0.18rem solid var(--be-elective);
+}
+
+.be-control-flow span,
+.be-control-flow small {
+  color: var(--be-muted);
+  font-size: 0.62rem;
+}
+
+.be-control-flow strong {
+  color: var(--be-nav-section-color);
+  font-size: 0.76rem;
+}
+
+.be-control-flow > b {
+  align-self: center;
+  color: var(--be-nav-section-color);
+  text-align: center;
+}
+
+.be-fs-tree__root,
+.be-fs-tree__branches > div,
+.be-path-equation > div {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+  padding: 0.72rem 0.8rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.42rem;
+  background: var(--md-default-bg-color);
+}
+
+.be-fs-tree__root {
+  justify-self: center;
+  min-width: min(100%, 16rem);
+  border-color: var(--be-required);
+  background: var(--be-required-bg);
+  text-align: center;
+}
+
+.be-fs-tree__branches {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+  position: relative;
+  padding-top: 0.75rem;
+}
+
+.be-fs-tree__branches::before {
+  position: absolute;
+  top: 0;
+  right: 16.6%;
+  left: 16.6%;
+  border-top: 2px solid var(--be-border);
+  content: "";
+}
+
+.be-fs-tree__branches > div {
+  position: relative;
+}
+
+.be-fs-tree__branches > div::before {
+  position: absolute;
+  top: -0.78rem;
+  left: 50%;
+  height: 0.78rem;
+  border-left: 2px solid var(--be-border);
+  content: "";
+}
+
+.be-fs-tree span,
+.be-path-equation span {
+  color: var(--be-muted);
+  font-size: 0.62rem;
+}
+
+.be-fs-tree strong,
+.be-path-equation strong {
+  overflow-wrap: anywhere;
+  color: var(--md-default-fg-color);
+  font-size: 0.72rem;
+}
+
+.be-path-equation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.3fr) auto minmax(0, 1fr);
+  gap: 0.55rem;
+  align-items: center;
+  margin: 1rem 0 1.25rem;
+}
+
+.be-path-equation > b {
+  color: var(--be-required);
+  font-size: 1rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 44.984375em) {
+  .be-fs-tree__branches,
+  .be-path-equation {
+    grid-template-columns: 1fr;
+  }
+
+  .be-fs-tree__branches {
+    padding-top: 0;
+  }
+
+  .be-fs-tree__branches::before,
+  .be-fs-tree__branches > div::before {
+    display: none;
+  }
+}
+
+/* Formal V2 terminal lesson: terminal, shell, and operating-system flow. */
+.be-terminal-model {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr) auto);
+  gap: 0.45rem;
+  align-items: center;
+  margin: 1rem 0 1.25rem;
+  padding: 0.9rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.55rem;
+  background: var(--be-surface);
+}
+
+.be-terminal-model > div {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+  min-height: 4.1rem;
+  align-content: center;
+  padding: 0.65rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.42rem;
+  background: var(--md-default-bg-color);
+  text-align: center;
+}
+
+.be-terminal-model > div:first-child,
+.be-terminal-model > div:nth-of-type(2) {
+  border-color: var(--be-required);
+  background: var(--be-required-bg);
+}
+
+.be-terminal-model span,
+.be-terminal-model small {
+  color: var(--be-muted);
+  font-size: 0.58rem;
+  line-height: 1.4;
+}
+
+.be-terminal-model strong {
+  overflow-wrap: anywhere;
+  font-size: 0.68rem;
+}
+
+.be-terminal-model > b {
+  color: var(--be-required);
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 56.234375em) {
+  .be-terminal-model {
+    grid-template-columns: 1fr;
+  }
+
+  .be-terminal-model > b {
+    transform: rotate(90deg);
+    text-align: center;
+  }
+}
+
 /* Device and edge-intelligence route: dependency map without runtime JS. */
 .be-edge-flow {
   display: grid;
@@ -668,9 +1367,73 @@
   .be-layer-grid,
   .be-domain-grid,
   .be-repo-panel,
-  .be-lesson-overview {
+  .be-lesson-overview,
+  .be-editor-results,
+  .be-editor-layout,
+  .be-markdown-compare,
+  .be-git-flow,
+  .be-environment-flow,
+  .be-docker-flow,
+  .be-validation-cycle,
+  .be-validation-status,
+  .be-variable-model,
+  .be-python-input-flow,
+  .be-function-flow,
+  .be-collection-model,
+  .be-file-data-flow,
+  .be-control-flow {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .be-variable-model > b,
+  .be-python-input-flow > b,
+  .be-function-flow > b,
+  .be-collection-model > b,
+  .be-file-data-flow > b,
+  .be-control-flow > b {
+    transform: rotate(90deg);
+    text-align: center;
+  }
+
+  .be-python-runner__toolbar {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  .be-module-map {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .be-module-map__entry {
+    grid-column: auto;
+  }
+
+  .be-python-runner__status {
+    text-align: left;
+  }
+
+  .be-git-flow > b,
+  .be-environment-flow > b,
+  .be-docker-flow > b {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+
+  .be-git-flow > aside,
+  .be-environment-flow > aside,
+  .be-docker-flow > aside {
+    grid-column: 1;
+  }
+
+  .be-editor-figure {
+    margin-right: -0.35rem;
+    margin-left: -0.35rem;
+    padding: 0.35rem;
+  }
+
+  .be-editor-shot__callout {
+    padding: 0.24rem 0.38rem;
   }
 
   .be-page-actions .md-button,
@@ -735,7 +1498,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .be-roadmap-stage,
-  .be-domain-grid a {
+  .be-domain-grid a,
+  .be-python-runner button {
     transition: none;
   }
 
@@ -2345,5 +3109,160 @@ html.be-modal-open body {
   .be-assessment-mount .be-tutor-sprite {
     animation: none !important;
     background-position-x: 0 !important;
+  }
+}
+
+/* Formal V2 CS start: data representation, indexed access, and scan trace. */
+.be-representation-ladder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin: 1.2rem 0;
+  padding: 1.2rem;
+  border-radius: 0.8rem;
+  background: var(--be-surface);
+}
+
+.be-representation-ladder > span {
+  min-width: 7rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.65rem;
+  background: var(--md-default-bg-color);
+  text-align: center;
+  font-size: 0.78rem;
+}
+
+.be-representation-ladder > i {
+  color: var(--be-nav-section-color);
+  font-size: 1.25rem;
+  font-style: normal;
+}
+
+.be-representation-ladder b {
+  color: var(--be-nav-section-color);
+}
+
+.be-array-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(4rem, 1fr));
+  gap: 0.6rem;
+  margin: 1.1rem 0;
+}
+
+.be-array-row div,
+.be-scan-demo__cell {
+  overflow: hidden;
+  border: 2px solid var(--be-border);
+  border-radius: 0.65rem;
+  background: var(--md-default-bg-color);
+  text-align: center;
+}
+
+.be-array-row span,
+.be-scan-demo__cell span {
+  display: block;
+  padding: 0.3rem;
+  color: var(--be-muted);
+  background: var(--be-surface);
+  font-size: 0.7rem;
+}
+
+.be-array-row strong,
+.be-scan-demo__cell strong {
+  display: block;
+  padding: 0.65rem;
+  font-size: 1.25rem;
+}
+
+.be-scan-demo {
+  margin: 1.1rem 0;
+  padding: 1rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.8rem;
+  background: var(--md-default-bg-color);
+}
+
+.be-scan-demo__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.be-scan-demo__cells {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(3.5rem, 1fr));
+  gap: 0.6rem;
+}
+
+.be-scan-demo__cell[data-state="visited"] {
+  border-color: var(--be-elective);
+}
+
+.be-scan-demo__cell[data-state="current"] {
+  border-color: var(--be-nav-section-color);
+  box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--be-nav-section-color) 18%, transparent);
+}
+
+.be-scan-demo__cell[data-state="found"] {
+  border-color: var(--be-deepen);
+  background: color-mix(in srgb, var(--be-deepen) 13%, var(--md-default-bg-color));
+}
+
+.be-scan-demo__message {
+  min-height: 2.5em;
+  color: var(--be-muted);
+}
+
+.be-scan-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.be-scan-demo button {
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--be-nav-section-color);
+  border-radius: 0.45rem;
+  color: var(--be-nav-section-color);
+  background: var(--md-default-bg-color);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.be-scan-demo button:hover {
+  background: var(--be-surface-hover);
+}
+
+.be-scan-demo button:focus-visible {
+  outline: 0.18rem solid color-mix(in srgb, var(--be-nav-section-color) 65%, white);
+  outline-offset: 0.12rem;
+}
+
+@media (max-width: 54rem) {
+  .be-representation-ladder {
+    flex-wrap: wrap;
+  }
+
+  .be-representation-ladder > i {
+    transform: rotate(90deg);
+  }
+}
+
+@media (max-width: 44.984375em) {
+  .be-array-row,
+  .be-scan-demo__cells {
+    grid-template-columns: repeat(4, minmax(3rem, 1fr));
+    gap: 0.35rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .be-scan-demo__cell {
+    transition: none !important;
+    animation: none !important;
   }
 }

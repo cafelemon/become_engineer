@@ -1,15 +1,728 @@
 {
-  "version":1,
-  "lesson":{"id":"python-basics-06","title":"模块、导入和虚拟环境","path":"learning-paths/programming-languages/python-basics/06-modules-imports-venv/"},
-  "steps":[{"id":"step-1","title":"划分职责"},{"id":"step-2","title":"导入能力"},{"id":"step-3","title":"保护入口"},{"id":"step-4","title":"验证环境"},{"id":"step-5","title":"迁移验收"}],
-  "cards":[
-    {"id":"module-boundary","lesson_id":"python-basics-06","step_id":"step-1","question":"报告器应该怎样拆分模块？","aliases":["模块怎么拆","四个文件做什么"],"keywords":["模块","职责","analysis","data_io"],"diagnostic":"当前哪部分负责读写、计算、排版和启动？每部分能否用一句动词描述？","hints":["按职责而不是按函数数量拆分：data_io、analysis、reporting、main。","让 main 编排，业务模块不要反向导入 main。"],"example":"analysis.py 只计算进度；reporting.py 只生成报告文本。","answer":"围绕单一职责划分模块，并保持依赖从入口指向能力模块。","source":{"label":"第一步：按职责拆出四个文件","href":"#step-1"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"import-style","lesson_id":"python-basics-06","step_id":"step-2","question":"import 和 from import 怎么选择？","aliases":["两种导入区别","import怎么写"],"keywords":["import","from","模块","来源"],"diagnostic":"调用点是否需要清楚显示函数来自哪个模块，还是只导入少量不重名名称？","hints":["import analysis 后用 analysis.calculate_progress，来源清楚。","from reporting import build_report 较短，但名称来源更隐蔽。"],"example":"import analysis; analysis.calculate_progress(record)。","answer":"两种写法都可用；优先让来源和职责容易读懂，避免 import *。","source":{"label":"第二步：让入口显式导入能力","href":"#step-2"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"module-not-found","lesson_id":"python-basics-06","step_id":"step-2","question":"ModuleNotFoundError 怎么排查？","aliases":["模块找不到","导入本地文件失败"],"keywords":["modulenotfounderror","导入","文件名","目录"],"diagnostic":"缺失的是本地模块、标准库还是第三方依赖？运行命令是否在示例根目录？","hints":["本地模块先检查 .py 文件名、导入名和当前目录。","标准库可能被同名文件遮蔽；不要立刻安装未知包。"],"example":"analysis.py 对应 import analysis。","answer":"按模块来源分类检查；本课本地模块从项目根目录运行时最容易定位。","source":{"label":"第二步：让入口显式导入能力","href":"#step-2"},"updated_at":"2026-07-15"},
-    {"id":"main-guard","lesson_id":"python-basics-06","step_id":"step-3","question":"为什么 import main 会自动运行程序？","aliases":["导入就执行了","main guard有什么用"],"keywords":["__main__","导入","副作用","main"],"diagnostic":"main() 调用是否写在 if __name__ == '__main__' 保护之外？","hints":["导入模块会执行顶层语句。","把启动动作放入 main()，仅在直接运行文件时调用它。"],"example":"if __name__ == '__main__':\n    main()。","answer":"没有入口保护时顶层调用会在导入时执行；主入口保护让模块可安全复用。","source":{"label":"第三步：阻止导入时启动程序","href":"#step-3"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"import-side-effect","lesson_id":"python-basics-06","step_id":"step-3","question":"怎样验证导入没有副作用？","aliases":["导入副作用检查","import main没有输出"],"keywords":["导入","副作用","输出","目录"],"diagnostic":"单独导入模块时是否产生打印、读取文件、写文件或创建 output 目录？","hints":["运行 python3 -c 'import main'，观察标准输出与文件系统。","只有定义、常量和导入留在顶层；动作由入口显式调用。"],"example":"导入 analysis.py 不应生成报告文件。","answer":"单独导入每个模块并检查无输出/无写入，证明启动流程没有泄漏到顶层。","source":{"label":"第三步：阻止导入时启动程序","href":"#step-3"},"updated_at":"2026-07-15"},
-    {"id":"standard-library-shadow","lesson_id":"python-basics-06","step_id":"step-4","question":"本地 json.py 为什么会导致奇怪错误？","aliases":["json被遮蔽","json模块不对"],"keywords":["json.py","遮蔽","标准库","导入"],"diagnostic":"项目目录是否有 json.py、sys.py、pathlib.py 等与标准库同名的文件？","hints":["Python 搜索本地目录时可能先找到你的同名文件。","重命名本地文件，清理缓存，并用 json.__file__ 检查来源。"],"example":"不要把练习文件命名为 json.py。","answer":"本地同名文件会遮蔽预期标准库模块；使用有业务含义且不冲突的模块名。","source":{"label":"第四步：故意制造环境或导入错误","href":"#step-4"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"venv-interpreter","lesson_id":"python-basics-06","step_id":"step-4","question":"怎样确认正在使用虚拟环境？","aliases":["venv是否生效","当前python在哪"],"keywords":["venv","sys.executable","pip","解释器"],"diagnostic":"激活前后 python -c 'import sys; print(sys.executable)' 和 python -m pip --version 分别显示什么？","hints":["不要只看命令提示符，直接检查解释器路径和 pip 归属。","使用 python -m pip 保证 pip 与当前 python 配对。"],"example":"激活后 sys.executable 应指向项目 .venv 内的解释器。","answer":"通过 sys.executable 与 python -m pip --version 验证；激活只是让终端默认选择该解释器。","source":{"label":"第四步：故意制造环境或导入错误","href":"#step-4"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"venv-gitignore","lesson_id":"python-basics-06","step_id":"step-5","question":"为什么 .venv 不应该提交到 Git？","aliases":["venv要提交吗","虚拟环境gitignore"],"keywords":[".venv","gitignore","git","环境"],"diagnostic":".venv 是源码还是可由环境配置重新创建的本地产物？","hints":["虚拟环境包含平台相关解释器与安装文件，体积大且不可移植。","用 .gitignore 忽略 .venv，只提交依赖和运行说明。"],"example":".gitignore 中加入 .venv/。","answer":".venv 是本地可再生环境，不是项目源代码；应忽略并用明确依赖方式复现。","source":{"label":"第五步：迁移验收","href":"#step-5"},"updated_at":"2026-07-15"}
+  "version": 2,
+  "lesson": {
+    "id": "python-basics-06",
+    "title": "模块、导入和虚拟环境",
+    "path": "learning-paths/programming-languages/python-basics/06-modules-imports-venv/"
+  },
+  "contexts": [
+    {
+      "id": "overview-modules",
+      "type": "overview",
+      "title": "输出没变，程序已经分工",
+      "anchor": "#overview-modules"
+    },
+    {
+      "id": "concept-boundaries",
+      "type": "concept",
+      "title": "按变化原因拆，不按函数数量拆",
+      "anchor": "#concept-boundaries"
+    },
+    {
+      "id": "example-imports",
+      "type": "example",
+      "title": "导入模块，还是导入一个名称",
+      "anchor": "#example-imports"
+    },
+    {
+      "id": "concept-import-time",
+      "type": "concept",
+      "title": "导入会执行模块顶层语句",
+      "anchor": "#concept-import-time"
+    },
+    {
+      "id": "example-main-guard",
+      "type": "example",
+      "title": "直接运行时才启动",
+      "anchor": "#example-main-guard"
+    },
+    {
+      "id": "reproduce-v06",
+      "type": "reproduce",
+      "title": "跑起四模块报告器",
+      "anchor": "#reproduce-v06"
+    },
+    {
+      "id": "modify-module",
+      "type": "modify",
+      "title": "给数据模块加一个小能力",
+      "anchor": "#modify-module"
+    },
+    {
+      "id": "concept-venv",
+      "type": "concept",
+      "title": "虚拟环境让解释器归属可确认",
+      "anchor": "#concept-venv"
+    },
+    {
+      "id": "troubleshoot-imports",
+      "type": "troubleshoot",
+      "title": "导入失败时先分清是哪一类",
+      "anchor": "#troubleshoot-imports"
+    },
+    {
+      "id": "project-v06",
+      "type": "project",
+      "title": "报告器 v0.6",
+      "anchor": "#project-v06"
+    },
+    {
+      "id": "deepen-dependencies",
+      "type": "deepen",
+      "title": "依赖方向决定修改范围",
+      "anchor": "#deepen-dependencies"
+    },
+    {
+      "id": "career-module-story",
+      "type": "career",
+      "title": "被问到为什么要拆模块时",
+      "anchor": "#career-module-story"
+    }
+  ],
+  "cards": [
+    {
+      "id": "module-result",
+      "lesson_id": "python-basics-06",
+      "context_id": "overview-modules",
+      "question": "这节课会把报告器改成什么样？",
+      "aliases": [
+        "报告器 v0.6 增加什么",
+        "第六课项目结果是什么"
+      ],
+      "keywords": [
+        "v0.6",
+        "四模块",
+        "报告器"
+      ],
+      "diagnostic": "运行输出是否变化，内部拆成了哪些文件？",
+      "hints": [
+        "报告内容保持不变。",
+        "读取、计算、排版和入口分别进入四个模块。"
+      ],
+      "example": "同一份 JSON 仍生成同一份报告。",
+      "answer": "v0.6 重构内部结构：行为不变、职责分开、导入无副作用。",
+      "source": {
+        "label": "输出没变，程序已经分工",
+        "href": "#overview-modules"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "module-boundary",
+      "lesson_id": "python-basics-06",
+      "context_id": "concept-boundaries",
+      "question": "报告器应该怎样拆分模块？",
+      "aliases": [
+        "模块怎么拆",
+        "四个文件做什么"
+      ],
+      "keywords": [
+        "模块",
+        "职责",
+        "边界"
+      ],
+      "diagnostic": "读写、计算、排版和启动能否分别用一个动词说明？",
+      "hints": [
+        "按变化原因分组，不按函数数量分。",
+        "让 main 编排，能力模块不反向依赖入口。"
+      ],
+      "example": "进度规则放 analysis.py，报告标题放 reporting.py。",
+      "answer": "拆为数据边界、业务计算、文本表现和唯一入口，数据用参数和返回值传递。",
+      "source": {
+        "label": "按变化原因拆，不按函数数量拆",
+        "href": "#concept-boundaries"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "not-function-per-file",
+      "lesson_id": "python-basics-06",
+      "context_id": "concept-boundaries",
+      "question": "是不是每个函数都要单独放一个文件？",
+      "aliases": [
+        "一个函数一个模块吗",
+        "模块越小越好吗"
+      ],
+      "keywords": [
+        "函数",
+        "模块",
+        "变化原因"
+      ],
+      "diagnostic": "这些函数是否总因同一种需求一起变化？",
+      "hints": [
+        "文件数量不是目标。",
+        "把职责紧密、变化原因相同的函数留在同一模块。"
+      ],
+      "example": "load_records 与 write_report 都属于数据边界。",
+      "answer": "模块大小由职责和变化原因决定，不是机械地一个函数一个文件。",
+      "source": {
+        "label": "按变化原因拆，不按函数数量拆",
+        "href": "#concept-boundaries"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "import-style",
+      "lesson_id": "python-basics-06",
+      "context_id": "example-imports",
+      "question": "import 和 from import 怎么选择？",
+      "aliases": [
+        "两种导入区别",
+        "import 怎么写"
+      ],
+      "keywords": [
+        "import",
+        "from",
+        "来源"
+      ],
+      "diagnostic": "调用处是否需要长期看清名称来自哪个模块？",
+      "hints": [
+        "import module 会保留模块前缀。",
+        "from module import name 适合少量、不易重名的名称。"
+      ],
+      "example": "analysis.summarize_records(records) 能直接看出来源。",
+      "answer": "两种都可用；优先让来源清楚，并避免名称冲突。",
+      "source": {
+        "label": "导入模块，还是导入一个名称",
+        "href": "#example-imports"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "no-star-import",
+      "lesson_id": "python-basics-06",
+      "context_id": "example-imports",
+      "question": "为什么不建议使用 import 星号？",
+      "aliases": [
+        "import * 有什么问题",
+        "星号导入为什么不好"
+      ],
+      "keywords": [
+        "import",
+        "星号",
+        "名称",
+        "覆盖"
+      ],
+      "diagnostic": "读代码时能否看出每个名称来自哪里？",
+      "hints": [
+        "星号会带入一组不明显的名称。",
+        "它可能覆盖当前名称，也让检查更困难。"
+      ],
+      "example": "明确写 from reporting import build_report。",
+      "answer": "正式代码显式导入实际使用的名称，不用星号隐藏来源。",
+      "source": {
+        "label": "导入模块，还是导入一个名称",
+        "href": "#example-imports"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "module-source",
+      "lesson_id": "python-basics-06",
+      "context_id": "example-imports",
+      "question": "ModuleNotFoundError 出现后要先安装包吗？",
+      "aliases": [
+        "模块找不到就 pip install 吗",
+        "标准库本地模块第三方怎么区分"
+      ],
+      "keywords": [
+        "ModuleNotFoundError",
+        "标准库",
+        "本地模块",
+        "第三方"
+      ],
+      "diagnostic": "缺失名称属于标准库、本地文件还是第三方依赖？",
+      "hints": [
+        "json 和 pathlib 是标准库。",
+        "analysis 是本地模块；确认第三方后才考虑安装。"
+      ],
+      "example": "analysis.py 与 main.py 同级时可以 import analysis。",
+      "answer": "先按来源分类排查文件名、运行位置与环境，不要直接联网安装。",
+      "source": {
+        "label": "导入模块，还是导入一个名称",
+        "href": "#example-imports"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "import-top-level",
+      "lesson_id": "python-basics-06",
+      "context_id": "concept-import-time",
+      "question": "为什么只写 import 就出现了打印？",
+      "aliases": [
+        "导入为什么会执行代码",
+        "模块顶层什么时候运行"
+      ],
+      "keywords": [
+        "导入",
+        "顶层语句",
+        "执行"
+      ],
+      "diagnostic": "打印在函数体里，还是直接写在模块顶层？",
+      "hints": [
+        "第一次导入会执行模块顶层语句。",
+        "函数体只有被调用时才运行。"
+      ],
+      "example": "welcome.py 顶层 print 会在 import welcome 时输出。",
+      "answer": "导入会执行顶层代码；业务动作应由入口显式调用。",
+      "source": {
+        "label": "导入会执行模块顶层语句",
+        "href": "#concept-import-time"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "main-guard",
+      "lesson_id": "python-basics-06",
+      "context_id": "example-main-guard",
+      "question": "main guard 到底保护了什么？",
+      "aliases": [
+        "if name main 有什么用",
+        "为什么 import main 不应启动"
+      ],
+      "keywords": [
+        "__name__",
+        "__main__",
+        "入口保护"
+      ],
+      "diagnostic": "main() 调用是否位于入口保护中？",
+      "hints": [
+        "直接运行时 __name__ 是 __main__。",
+        "作为模块导入时名称是 main，启动调用不会发生。"
+      ],
+      "example": "if __name__ == '__main__': main()。",
+      "answer": "入口保护区分直接执行与导入复用，避免导入时启动报告流程。",
+      "source": {
+        "label": "直接运行时才启动",
+        "href": "#example-main-guard"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "import-side-effect",
+      "lesson_id": "python-basics-06",
+      "context_id": "example-main-guard",
+      "question": "怎样证明导入真的没有副作用？",
+      "aliases": [
+        "导入副作用怎么检查",
+        "import main 没有输出怎么测"
+      ],
+      "keywords": [
+        "导入",
+        "副作用",
+        "输出目录"
+      ],
+      "diagnostic": "单独导入时是否打印、读写文件或创建 output？",
+      "hints": [
+        "运行 python -c 导入四个模块。",
+        "同时检查标准输出和文件系统。"
+      ],
+      "example": "python -c \"import analysis, data_io, reporting, main\" 应保持安静。",
+      "answer": "用实际导入与文件检查验证，不能只凭 main guard 下结论。",
+      "source": {
+        "label": "直接运行时才启动",
+        "href": "#example-main-guard"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "reproduce-v06",
+      "lesson_id": "python-basics-06",
+      "context_id": "reproduce-v06",
+      "question": "四模块版本应该怎样运行？",
+      "aliases": [
+        "第六课代码怎么跑",
+        "v0.6 目录怎么放"
+      ],
+      "keywords": [
+        "v0.6",
+        "运行",
+        "四模块"
+      ],
+      "diagnostic": "四个 py 文件与 data 目录是否按示例放置？",
+      "hints": [
+        "复制四个模块和 JSON。",
+        "从项目目录用虚拟环境解释器运行 main.py。"
+      ],
+      "example": "报告文字应与 v0.5 逐字一致。",
+      "answer": "按目录复现后对照输出，并做一次无副作用导入。",
+      "source": {
+        "label": "跑起四模块报告器",
+        "href": "#reproduce-v06"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "project-root-file",
+      "lesson_id": "python-basics-06",
+      "context_id": "reproduce-v06",
+      "question": "为什么用 __file__ 找项目目录？",
+      "aliases": [
+        "从别的目录运行为什么还能找到数据",
+        "cwd 和 __file__ 怎么选"
+      ],
+      "keywords": [
+        "__file__",
+        "cwd",
+        "项目根目录"
+      ],
+      "diagnostic": "输入应跟随终端位置，还是固定跟随项目文件？",
+      "hints": [
+        "Path(__file__).resolve() 得到脚本位置。",
+        "parent 可作为这个小项目的稳定根目录。"
+      ],
+      "example": "从临时目录运行 main.py 仍读取脚本旁边的 data。",
+      "answer": "项目数据属于脚本目录，所以用 __file__ 固定根；用户当前目录才用 cwd。",
+      "source": {
+        "label": "跑起四模块报告器",
+        "href": "#reproduce-v06"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "active-find-json",
+      "lesson_id": "python-basics-06",
+      "context_id": "modify-module",
+      "question": "这次我需要亲手改什么？",
+      "aliases": [
+        "模块课主动修改什么",
+        "find_json_files 放哪里"
+      ],
+      "keywords": [
+        "主动修改",
+        "find_json_files",
+        "data_io"
+      ],
+      "diagnostic": "查找规则与显示文件清单分别属于哪个职责？",
+      "hints": [
+        "在 data_io.py 新增 find_json_files。",
+        "main.py 决定何时调用并显示。"
+      ],
+      "example": "返回 sorted(data_dir.glob('*.json'))。",
+      "answer": "增加受限 JSON 发现能力，并用修改题验证职责选择。",
+      "source": {
+        "label": "给数据模块加一个小能力",
+        "href": "#modify-module"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "venv-purpose",
+      "lesson_id": "python-basics-06",
+      "context_id": "concept-venv",
+      "question": "没有第三方包为什么还要建虚拟环境？",
+      "aliases": [
+        "标准库项目需要 venv 吗",
+        "venv 到底隔离什么"
+      ],
+      "keywords": [
+        "venv",
+        "解释器",
+        "隔离"
+      ],
+      "diagnostic": "你能否确认项目实际使用哪个 Python 和安装位置？",
+      "hints": [
+        "venv 提供项目自己的解释器入口。",
+        "本课练习确认环境归属，不是为了多装包。"
+      ],
+      "example": "sys.executable 应指向项目 .venv。",
+      "answer": "虚拟环境让解释器与依赖归属可确认，为后续依赖留下可重建边界。",
+      "source": {
+        "label": "虚拟环境让解释器归属可确认",
+        "href": "#concept-venv"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "venv-create",
+      "lesson_id": "python-basics-06",
+      "context_id": "concept-venv",
+      "question": "虚拟环境怎样创建和退出？",
+      "aliases": [
+        "python venv 怎么用",
+        "deactivate 是什么"
+      ],
+      "keywords": [
+        "python",
+        "-m",
+        "venv",
+        "activate",
+        "deactivate"
+      ],
+      "diagnostic": "你使用 Windows 还是 macOS/Linux 终端？",
+      "hints": [
+        "运行 python -m venv .venv。",
+        "按平台激活，完成后运行 deactivate。"
+      ],
+      "example": "macOS/Linux 使用 source .venv/bin/activate。",
+      "answer": "用当前 Python 创建环境；激活只影响当前终端的命令选择。",
+      "source": {
+        "label": "虚拟环境让解释器归属可确认",
+        "href": "#concept-venv"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "venv-interpreter",
+      "lesson_id": "python-basics-06",
+      "context_id": "concept-venv",
+      "question": "怎样确认虚拟环境真的生效？",
+      "aliases": [
+        "venv 是否生效",
+        "当前 python 在哪里"
+      ],
+      "keywords": [
+        "sys.executable",
+        "pip",
+        "解释器"
+      ],
+      "diagnostic": "你只看提示符，还是检查了解释器与 pip 路径？",
+      "hints": [
+        "打印 sys.executable。",
+        "再运行 python -m pip --version。"
+      ],
+      "example": "路径应落在项目 .venv 中。",
+      "answer": "以解释器和 pip 的实际路径为准，不只依赖终端前缀。",
+      "source": {
+        "label": "虚拟环境让解释器归属可确认",
+        "href": "#concept-venv"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "venv-activation",
+      "lesson_id": "python-basics-06",
+      "context_id": "concept-venv",
+      "question": "不激活虚拟环境也能运行吗？",
+      "aliases": [
+        "必须 activate 才能用 venv 吗",
+        "自动化脚本怎么选 python"
+      ],
+      "keywords": [
+        "激活",
+        "直接路径",
+        "自动化"
+      ],
+      "diagnostic": "你是否可以直接指定 .venv 中的解释器？",
+      "hints": [
+        "激活只是调整当前终端 PATH。",
+        "脚本可直接运行环境内解释器。"
+      ],
+      "example": ".venv/bin/python main.py。",
+      "answer": "可以；直接路径在自动化中更明确，也不依赖当前 shell 状态。",
+      "source": {
+        "label": "虚拟环境让解释器归属可确认",
+        "href": "#concept-venv"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "module-not-found",
+      "lesson_id": "python-basics-06",
+      "context_id": "troubleshoot-imports",
+      "question": "本地模块导入失败先查什么？",
+      "aliases": [
+        "导入本地文件失败",
+        "analysis 模块找不到"
+      ],
+      "keywords": [
+        "ModuleNotFoundError",
+        "本地模块",
+        "目录"
+      ],
+      "diagnostic": "analysis.py 是否与 main.py 同级，名称是否一致？",
+      "hints": [
+        "核对扩展名、拼写和大小写。",
+        "从项目目录运行，不要先修改 sys.path。"
+      ],
+      "example": "analysis.py 对应 import analysis。",
+      "answer": "先修正文件位置、名称和入口；本课结构不需要 PYTHONPATH 绕路。",
+      "source": {
+        "label": "导入失败时先分清是哪一类",
+        "href": "#troubleshoot-imports"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "standard-library-shadow",
+      "lesson_id": "python-basics-06",
+      "context_id": "troubleshoot-imports",
+      "question": "本地 json.py 为什么会把标准库弄坏？",
+      "aliases": [
+        "json 被遮蔽",
+        "json 模块来源不对"
+      ],
+      "keywords": [
+        "json.py",
+        "遮蔽",
+        "标准库"
+      ],
+      "diagnostic": "项目目录是否存在与标准库同名的文件？",
+      "hints": [
+        "打印 json.__file__ 检查来源。",
+        "重命名本地文件并清理缓存。"
+      ],
+      "example": "不要把练习文件命名为 json.py。",
+      "answer": "模块搜索可能先找到本地同名文件，应使用不冲突的业务名称。",
+      "source": {
+        "label": "导入失败时先分清是哪一类",
+        "href": "#troubleshoot-imports"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "circular-import",
+      "lesson_id": "python-basics-06",
+      "context_id": "troubleshoot-imports",
+      "question": "partially initialized module 是什么意思？",
+      "aliases": [
+        "循环导入怎么解决",
+        "两个模块互相 import"
+      ],
+      "keywords": [
+        "循环导入",
+        "partially",
+        "initialized",
+        "依赖"
+      ],
+      "diagnostic": "两个能力模块是否互相导入，或反向导入 main？",
+      "hints": [
+        "先画出依赖箭头。",
+        "让计算返回数据、排版接收数据，由 main 组合。"
+      ],
+      "example": "analysis 不导入 reporting，reporting 也不导入 analysis。",
+      "answer": "常见原因是循环导入；重新划分职责并保持单向依赖。",
+      "source": {
+        "label": "导入失败时先分清是哪一类",
+        "href": "#troubleshoot-imports"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "venv-gitignore",
+      "lesson_id": "python-basics-06",
+      "context_id": "troubleshoot-imports",
+      "question": "为什么 .venv 不应该提交到 Git？",
+      "aliases": [
+        "venv 要提交吗",
+        "虚拟环境 gitignore"
+      ],
+      "keywords": [
+        "venv",
+        "gitignore",
+        "可重建"
+      ],
+      "diagnostic": "它是源代码，还是平台相关、可以重建的环境？",
+      "hints": [
+        "环境体积大且不可移植。",
+        "忽略 .venv，提交版本、依赖和创建命令。"
+      ],
+      "example": ".gitignore 写入 .venv/ 与 __pycache__/。",
+      "answer": "虚拟环境是本地可再生产物，不属于源码。",
+      "source": {
+        "label": "导入失败时先分清是哪一类",
+        "href": "#troubleshoot-imports"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "project-v06",
+      "lesson_id": "python-basics-06",
+      "context_id": "project-v06",
+      "question": "报告器 v0.6 比上一版多了什么？",
+      "aliases": [
+        "第六课给项目加了什么",
+        "v0.6 项目变化"
+      ],
+      "keywords": [
+        "项目",
+        "v0.6",
+        "重构"
+      ],
+      "diagnostic": "业务输出是否变化，内部结构与运行位置怎样变化？",
+      "hints": [
+        "四个模块保持同一报告。",
+        "项目根目录稳定、导入无副作用，并能验证环境。"
+      ],
+      "example": "修改标题只碰 reporting，进度规则只碰 analysis。",
+      "answer": "v0.6 成为职责清楚、可测试、可从任意 cwd 运行的模块化报告器。",
+      "source": {
+        "label": "报告器 v0.6",
+        "href": "#project-v06"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "dependency-direction",
+      "lesson_id": "python-basics-06",
+      "context_id": "deepen-dependencies",
+      "question": "为什么模块依赖要保持单向？",
+      "aliases": [
+        "模块互相导入有什么问题",
+        "依赖方向怎么设计"
+      ],
+      "keywords": [
+        "依赖方向",
+        "单向",
+        "修改范围"
+      ],
+      "diagnostic": "修改一个规则时是否被迫进入多个无关模块？",
+      "hints": [
+        "计算返回数据，排版接收数据。",
+        "入口安排调用，能力模块不反向控制入口。"
+      ],
+      "example": "main 指向三个能力模块，没有回指。",
+      "answer": "单向依赖减少循环加载和连锁修改，让模块能独立导入与测试。",
+      "source": {
+        "label": "依赖方向决定修改范围",
+        "href": "#deepen-dependencies"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "career-module-story",
+      "lesson_id": "python-basics-06",
+      "context_id": "career-module-story",
+      "question": "面试时怎样讲这次模块化重构？",
+      "aliases": [
+        "模块课怎么讲项目",
+        "为什么拆模块怎么回答"
+      ],
+      "keywords": [
+        "求职",
+        "重构",
+        "模块",
+        "回归"
+      ],
+      "diagnostic": "你能否说清原问题、设计、风险和验证结果？",
+      "hints": [
+        "先说明职责混杂。",
+        "再说明单向依赖、入口保护、任意 cwd 和相同输出验证。"
+      ],
+      "example": "不要只说文件更多，要说修改范围和回归结果。",
+      "answer": "按问题—设计—风险—验证来讲这次重构。",
+      "source": {
+        "label": "被问到为什么要拆模块时",
+        "href": "#career-module-story"
+      },
+      "updated_at": "2026-07-17"
+    }
   ]
 }

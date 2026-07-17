@@ -1,16 +1,266 @@
 {
-  "version":1,
-  "lesson":{"id":"python-basics-05","title":"文件、路径、JSON 和简单目录操作","path":"learning-paths/programming-languages/python-basics/05-files-json-paths/"},
-  "steps":[{"id":"step-1","title":"确认路径"},{"id":"step-2","title":"读取 JSON"},{"id":"step-3","title":"写出报告"},{"id":"step-4","title":"定位坏数据"},{"id":"step-5","title":"迁移验收"}],
-  "cards":[
-    {"id":"relative-path","lesson_id":"python-basics-05","step_id":"step-1","question":"相对路径为什么找不到文件？","aliases":["文件路径不对","data目录找不到"],"keywords":["相对路径","cwd","路径","文件"],"diagnostic":"运行命令时的 Path.cwd() 是什么，data/study_records.json 是否在这个目录下？","hints":["相对路径从当前工作目录开始，不一定从 Python 文件所在目录开始。","先进入示例根目录运行，并打印 input_path.exists() 验证。"],"example":"Path('data') / 'study_records.json' 依赖当前工作目录。","answer":"确认运行目录、文件名和目录树；在示例根目录启动并用 Path 检查存在性。","source":{"label":"第一步：建立受控目录边界","href":"#step-1"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"path-join","lesson_id":"python-basics-05","step_id":"step-1","question":"Path 怎样组合目录和文件名？","aliases":["path拼接","path斜杠怎么用"],"keywords":["path","组合","目录","文件名"],"diagnostic":"目录和文件名是否是两个独立概念，还是已经写成一整段不确定的文本？","hints":["先创建 Path('data')。","使用 / 运算符追加 'study_records.json'，避免手动拼系统分隔符。"],"example":"input_path = Path('data') / 'study_records.json'。","answer":"使用 pathlib.Path 和 / 组合路径，代码更清楚并可跨平台处理分隔符。","source":{"label":"第一步：建立受控目录边界","href":"#step-1"},"updated_at":"2026-07-15"},
-    {"id":"json-double-quotes","lesson_id":"python-basics-05","step_id":"step-2","question":"JSON 为什么必须使用双引号？","aliases":["json单引号报错","json格式怎么写"],"keywords":["json","双引号","单引号","格式"],"diagnostic":"该文件是 JSON 文本，还是 Python 字典代码？","hints":["JSON 标准要求对象键和字符串使用双引号。","true/false/null 也是 JSON 固定写法，解析后才变为 Python 值。"],"example":"{\"course\": \"Python\"} 是 JSON；{'course': 'Python'} 不是。","answer":"JSON 有独立语法，不能直接把 Python 字典、True 或单引号复制进去。","source":{"label":"第二步：把 JSON 变成报告器记录","href":"#step-2"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"loads-records","lesson_id":"python-basics-05","step_id":"step-2","question":"json.loads 解析后得到什么？","aliases":["loads返回什么","json怎么变字典"],"keywords":["json.loads","解析","字典","records"],"diagnostic":"JSON 根节点是对象还是数组，代码准备从哪个键读取记录？","hints":["json.loads 接收文本并返回对应 Python 对象。","本课根对象是字典，records 键对应记录列表。"],"example":"document = json.loads(text); records = document['records']。","answer":"loads 将 JSON 文本转为 Python 字典、列表、字符串、数字、布尔值和 None 等对象。","source":{"label":"第二步：把 JSON 变成报告器记录","href":"#step-2"},"updated_at":"2026-07-15"},
-    {"id":"output-not-input","lesson_id":"python-basics-05","step_id":"step-3","question":"怎样避免覆盖输入 JSON？","aliases":["输入文件被覆盖","报告写到哪里"],"keywords":["输出","输入","覆盖","output"],"diagnostic":"输入路径和输出路径现在是否指向同一个文件或同一个目录？","hints":["输入固定在 data/，生成内容固定在 output/。","写入前打印目标路径，并检查 write_text 只使用 output/study_report.txt。"],"example":"report_path = Path('output') / 'study_report.txt'。","answer":"建立 data 只读、output 可生成的目录边界，绝不将输入路径传给写入操作。","source":{"label":"第三步：生成独立输出","href":"#step-3"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"utf8-writing","lesson_id":"python-basics-05","step_id":"step-3","question":"中文文件读写为什么要指定 UTF-8？","aliases":["中文乱码怎么办","encoding utf8"],"keywords":["utf-8","中文","编码","乱码"],"diagnostic":"读取和写入时是否使用了相同的明确 encoding 参数？","hints":["文本是字节与字符的转换，编码不一致会导致乱码或解码错误。","本课 read_text 和 write_text 都明确使用 encoding='utf-8'。"],"example":"path.write_text('学习报告', encoding='utf-8')。","answer":"显式 UTF-8 让中文和不同系统环境的文本处理一致、可复现。","source":{"label":"第三步：生成独立输出","href":"#step-3"},"updated_at":"2026-07-15"},
-    {"id":"file-not-found","lesson_id":"python-basics-05","step_id":"step-4","question":"FileNotFoundError 应该先检查什么？","aliases":["找不到json文件","filenotfound怎么办"],"keywords":["filenotfounderror","找不到","文件","路径"],"diagnostic":"错误路径完整显示什么？当前目录和文件名与实际目录树是否一致？","hints":["不要先猜编码或 JSON 语法；该错误发生在打开文件之前。","打印 Path.cwd()、input_path 和 input_path.exists() 再修正路径。"],"example":"先恢复正确 data/study_records.json，再进入 JSON 解析。","answer":"FileNotFoundError 是路径定位失败，先核对工作目录、文件名与路径状态。","source":{"label":"第四步：故意制造两种读取失败","href":"#step-4"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"json-decode","lesson_id":"python-basics-05","step_id":"step-4","question":"JSONDecodeError 怎么定位？","aliases":["坏json报错","json最后逗号"],"keywords":["jsondecodeerror","json","逗号","行列"],"diagnostic":"异常消息给出的行号和列号附近是否有尾随逗号、单引号或括号不匹配？","hints":["文件已成功读到文本，失败发生在 json.loads 解析。","跳到提示行列附近，最小化修正语法后再运行。"],"example":"{\"course\": \"Python\",} 的最后逗号无效。","answer":"使用 JSONDecodeError 提供的行列定位语法，修复 JSON 本身，而不是改业务逻辑。","source":{"label":"第四步：故意制造两种读取失败","href":"#step-4"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"glob-scope","lesson_id":"python-basics-05","step_id":"step-5","question":"glob 和 rglob 应该怎样选择？","aliases":["glob扫描json","为什么不用rglob"],"keywords":["glob","rglob","扫描","数据目录"],"diagnostic":"你只需要 data 目录当前层的 JSON，还是有明确、受控的子目录结构需要递归？","hints":["本课使用 data_dir.glob('*.json')，范围清楚且结果可排序。","rglob 会递归子目录，可能扫描隐私、无关或大量文件，使用前必须限制根目录。"],"example":"sorted(data_dir.glob('*.json')) 只匹配 data 目录当前层。","answer":"默认使用范围最小的 glob；只有明确需要且扫描根目录受控时才使用 rglob。","source":{"label":"第五步：迁移验收","href":"#step-5"},"updated_at":"2026-07-15","recommended":true}
+  "version": 2,
+  "lesson": {
+    "id": "python-basics-05",
+    "title": "文件、路径、JSON 和简单目录操作",
+    "path": "learning-paths/programming-languages/python-basics/05-files-json-paths/"
+  },
+  "contexts": [
+    {"id":"overview-file-flow","type":"overview","title":"改数据，不再改程序","anchor":"#overview-file-flow"},
+    {"id":"concept-cwd-path","type":"concept","title":"相对路径从当前工作目录出发","anchor":"#concept-cwd-path"},
+    {"id":"example-path","type":"example","title":"Path 把路径当成路径处理","anchor":"#example-path"},
+    {"id":"concept-text-json","type":"concept","title":"文件先读成文本，JSON 再变成对象","anchor":"#concept-text-json"},
+    {"id":"example-json-micro","type":"example","title":"先在一段短文本里看解析","anchor":"#example-json-micro"},
+    {"id":"reproduce-v05","type":"reproduce","title":"跑起报告器 v0.5","anchor":"#reproduce-v05"},
+    {"id":"modify-json","type":"modify","title":"只改 JSON，再跑一次","anchor":"#modify-json"},
+    {"id":"concept-glob","type":"concept","title":"只扫描任务允许的目录","anchor":"#concept-glob"},
+    {"id":"troubleshoot-file-layers","type":"troubleshoot","title":"同样是读不了，失败位置并不一样","anchor":"#troubleshoot-file-layers"},
+    {"id":"project-v05","type":"project","title":"报告器 v0.5","anchor":"#project-v05"},
+    {"id":"deepen-file-boundary","type":"deepen","title":"读写边界比一行代码重要","anchor":"#deepen-file-boundary"},
+    {"id":"career-file-story","type":"career","title":"怎样保证文件处理安全","anchor":"#career-file-story"}
+  ],
+  "cards": [
+    {
+      "id":"file-result","lesson_id":"python-basics-05","context_id":"overview-file-flow",
+      "question":"这节课会把报告器改成什么样？",
+      "aliases":["报告器 v0.5 增加什么","第五课的项目结果是什么","为什么要把数据放进 JSON"],
+      "keywords":["v0.5","json","输入","输出","报告器"],
+      "diagnostic":"这一版修改记录时还需要改 Python 文件吗？输入与输出分别放在哪？",
+      "hints":["记录来自 `data/study_records.json`。","报告写到 `output/study_report.txt`，程序逻辑保持不变。"],
+      "example":"只把 finished_hours 从 3 改为 5，状态和总完成会随 JSON 变化。",
+      "answer":"v0.5 把数据与程序分开：读取 JSON，复用汇总逻辑，再把 UTF-8 报告写到独立输出目录。",
+      "source":{"label":"改数据，不再改程序","href":"#overview-file-flow"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"relative-path","lesson_id":"python-basics-05","context_id":"concept-cwd-path",
+      "question":"相对路径为什么突然找不到文件？",
+      "aliases":["data 目录找不到","同一个脚本换个位置运行就失败","相对路径从哪里开始"],
+      "keywords":["相对路径","cwd","当前工作目录","找不到","data"],
+      "diagnostic":"运行命令时终端站在哪个目录，`Path.cwd()` 输出什么？",
+      "hints":["相对路径从当前工作目录解释。","先进入 `practice/python-basics`，再检查输入路径是否存在。"],
+      "example":"站在仓库根目录与练习目录运行，`Path(\"data\")` 指向不同位置。",
+      "answer":"核对命令执行位置与目录树；本课统一从练习目录运行，不把相对路径误认为脚本目录。",
+      "source":{"label":"相对路径从当前工作目录出发","href":"#concept-cwd-path"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"cwd-vs-script","lesson_id":"python-basics-05","context_id":"concept-cwd-path",
+      "question":"当前工作目录和 Python 文件所在目录是一回事吗？",
+      "aliases":["cwd 是脚本目录吗","为什么不直接用 __file__","命令位置和文件位置区别"],
+      "keywords":["cwd","脚本目录","__file__","运行位置"],
+      "diagnostic":"你是在哪个终端目录发出命令，脚本文件又实际存在哪里？",
+      "hints":["当前工作目录属于运行进程。","脚本可以从别的目录被启动；下一课拆模块时再用 `__file__` 固定根目录。"],
+      "example":"`python practice/python-basics/learning_profile.py` 不会自动把 cwd 改到脚本旁边。",
+      "answer":"二者可以不同；相对路径默认依据 cwd，而脚本位置需要明确取得。",
+      "source":{"label":"相对路径从当前工作目录出发","href":"#concept-cwd-path"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"path-join","lesson_id":"python-basics-05","context_id":"example-path",
+      "question":"Path 怎样组合目录和文件名？",
+      "aliases":["path 拼接怎么写","Windows 和 macOS 路径怎样兼容","Path 斜杠是什么意思"],
+      "keywords":["path","组合","斜杠","跨平台","文件名"],
+      "diagnostic":"你是不是在字符串里手工拼 `/` 或反斜杠？",
+      "hints":["先写 `data_dir = Path(\"data\")`。","用 `data_dir / \"study_records.json\"` 组合。"],
+      "example":"`Path(\"output\") / \"study_report.txt\"`。",
+      "answer":"使用 Path 的 `/` 运算组合路径，让含义清楚，并交给 pathlib 处理系统差异。",
+      "source":{"label":"Path 把路径当成路径处理","href":"#example-path"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"path-checks","lesson_id":"python-basics-05","context_id":"example-path",
+      "question":"exists、is_file 和 is_dir 有什么区别？",
+      "aliases":["怎样判断路径是文件还是目录","exists 为 true 就能读吗","Path 状态怎么查"],
+      "keywords":["exists","is_file","is_dir","路径状态"],
+      "diagnostic":"你只关心路径存在，还是还要求它必须是普通文件？",
+      "hints":["exists 只回答是否存在。","is_file 与 is_dir 继续判断现有路径类型。"],
+      "example":"输入路径存在但实际是目录时，`is_file()` 会是 False。",
+      "answer":"按需求检查具体类型；这些检查帮助诊断，但权限或后续变化仍可能让读取失败。",
+      "source":{"label":"Path 把路径当成路径处理","href":"#example-path"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"utf8-text","lesson_id":"python-basics-05","context_id":"concept-text-json",
+      "question":"中文文件为什么要明确写 UTF-8？",
+      "aliases":["中文乱码怎么办","encoding utf-8 有什么用","不同系统编码为什么不同"],
+      "keywords":["utf-8","编码","中文","乱码","read_text"],
+      "diagnostic":"读取与写入两边是否使用同一明确编码？",
+      "hints":["文件保存的是字节，程序需要按编码解释成字符。","read_text 和 write_text 都写 `encoding=\"utf-8\"`。"],
+      "example":"`input_path.read_text(encoding=\"utf-8\")`。",
+      "answer":"显式 UTF-8 避免依赖操作系统默认编码，让中文输入输出更稳定可复现。",
+      "source":{"label":"文件先读成文本，JSON 再变成对象","href":"#concept-text-json"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"json-syntax","lesson_id":"python-basics-05","context_id":"concept-text-json",
+      "question":"JSON 为什么不能直接照抄 Python 字典？",
+      "aliases":["JSON 单引号为什么报错","True 和 null 怎么写","JSON 格式有哪些区别"],
+      "keywords":["json","双引号","true","null","字典"],
+      "diagnostic":"当前文件是 JSON 文本，还是 Python 源代码？",
+      "hints":["JSON 的键和字符串使用双引号。","JSON 写 `true/false/null`，解析后才是 `True/False/None`。"],
+      "example":"`{\"active\": true, \"note\": null}` 是合法 JSON。",
+      "answer":"JSON 有独立语法；不要混入 Python 的单引号、True、None 或尾随逗号。",
+      "source":{"label":"文件先读成文本，JSON 再变成对象","href":"#concept-text-json"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"read-parse-layers","lesson_id":"python-basics-05","context_id":"concept-text-json",
+      "question":"read_text 和 json.loads 分别做什么？",
+      "aliases":["文件读取和 JSON 解析区别","loads 前为什么先读文本","JSON 怎么变成字典"],
+      "keywords":["read_text","json.loads","文本","解析","字典"],
+      "diagnostic":"程序现在还在处理磁盘字节，还是已经拿到一段字符串？",
+      "hints":["read_text 按编码得到 str。","json.loads 理解这段 str 的 JSON 结构并返回 Python 对象。"],
+      "example":"`text = path.read_text(...); document = json.loads(text)`。",
+      "answer":"读取与解析是两个边界；分开后能区分文件问题与 JSON 语法问题。",
+      "source":{"label":"文件先读成文本，JSON 再变成对象","href":"#concept-text-json"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"loads-dumps","lesson_id":"python-basics-05","context_id":"example-json-micro",
+      "question":"json.loads 和 json.dumps 怎样区分？",
+      "aliases":["loads dumps 名字记不住","字典怎么转回 JSON 文本","dumps 会写文件吗"],
+      "keywords":["json.loads","json.dumps","字符串","序列化"],
+      "diagnostic":"你现在是从 JSON 字符串得到对象，还是从对象生成 JSON 字符串？",
+      "hints":["loads 读取字符串内容并解析。","dumps 生成字符串；它不会自动写文件。"],
+      "example":"`record = json.loads(text)`；`text = json.dumps(record)`。",
+      "answer":"loads 是 JSON 文本到 Python 对象，dumps 是 Python 对象到 JSON 文本；文件读写仍由 Path 负责。",
+      "source":{"label":"先在一段短文本里看解析","href":"#example-json-micro"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"ascii-indent","lesson_id":"python-basics-05","context_id":"example-json-micro",
+      "question":"ensure_ascii=False 和 indent=2 有什么作用？",
+      "aliases":["JSON 中文为什么变成转义","怎样让 JSON 好读","indent 会改变数据吗"],
+      "keywords":["ensure_ascii","indent","中文","格式化","json.dumps"],
+      "diagnostic":"你要改变数据内容，还是只想改变生成文本的显示形式？",
+      "hints":["ensure_ascii=False 让中文直接出现。","indent=2 增加缩进与换行，便于阅读。"],
+      "example":"两项参数都用于 `json.dumps(record, ...)`。",
+      "answer":"它们调整 JSON 文本表现，不会把字典中的字段改成另一种业务数据。",
+      "source":{"label":"先在一段短文本里看解析","href":"#example-json-micro"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"reproduce-v05","lesson_id":"python-basics-05","context_id":"reproduce-v05",
+      "question":"报告器 v0.5 应该怎样运行？",
+      "aliases":["第五课代码怎么跑","文件版报告怎么复现","study_report_v05 目录怎么放"],
+      "keywords":["v0.5","运行","data","output","终端"],
+      "diagnostic":"你是否建立了 data、output 和脚本的同级结构，并先进入练习目录？",
+      "hints":["保存课程给出的 JSON 和 Python 文件。","从练习目录运行，再打开 output/study_report.txt 对照终端。"],
+      "example":"终端先显示发现的 JSON，再显示报告与相对输出路径。",
+      "answer":"按约定目录运行，核对终端与文件一致、中文正常且输入内容未被改变。",
+      "source":{"label":"跑起报告器 v0.5","href":"#reproduce-v05"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"input-output-boundary","lesson_id":"python-basics-05","context_id":"reproduce-v05",
+      "question":"怎样避免程序覆盖输入 JSON？",
+      "aliases":["输入文件被覆盖怎么办","报告应该写到哪里","data 和 output 为什么分开"],
+      "keywords":["输入只读","覆盖","data","output","write_text"],
+      "diagnostic":"写入函数接收的路径是否可能与 input_path 相同？",
+      "hints":["输入只从 data 读取。","生成文件只写到 output，并在写前打印或检查目标路径。"],
+      "example":"`output_path = Path(\"output\") / \"study_report.txt\"`。",
+      "answer":"用目录与变量名称明确区分输入输出，并测试运行前后输入字节一致。",
+      "source":{"label":"跑起报告器 v0.5","href":"#reproduce-v05"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"active-json","lesson_id":"python-basics-05","context_id":"modify-json",
+      "question":"这次我必须亲手改哪些文件？",
+      "aliases":["文件课主动修改什么","只改 JSON 怎么验证","怎样加入 archive.json"],
+      "keywords":["主动修改","json","finished_hours","空记录","archive"],
+      "diagnostic":"你是否只改数据文件就看到了状态和总完成变化？",
+      "hints":["换成自己的三条记录，并测试空列表、中文与重复标签。","再增加 archive.json，确认扫描发现它但主流程仍读指定输入。"],
+      "example":"Python 文件不动，只把 finished_hours 从 3 改为 5。",
+      "answer":"通过只改 JSON 验证数据与逻辑分离，并覆盖空记录、中文、重复标签和多个文件。",
+      "source":{"label":"只改 JSON，再跑一次","href":"#modify-json"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"glob-scope","lesson_id":"python-basics-05","context_id":"concept-glob",
+      "question":"glob 和 rglob 应该怎样选择？",
+      "aliases":["为什么本课不用 rglob","怎样只扫描 data 下的 JSON","glob 会进子目录吗"],
+      "keywords":["glob","rglob","扫描范围","json","递归"],
+      "diagnostic":"任务只需要当前层文件，还是有明确且受控的子目录需要递归？",
+      "hints":["`glob(\"*.json\")` 只看当前层。","rglob 会递归，使用前必须限制根目录与排除范围。"],
+      "example":"`sorted(data_dir.glob(\"*.json\"))` 给出稳定的当前层文件名。",
+      "answer":"默认选择满足任务的最小范围；只有真实递归需求并完成边界设计后才用 rglob。",
+      "source":{"label":"只扫描任务允许的目录","href":"#concept-glob"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"scan-not-trust","lesson_id":"python-basics-05","context_id":"concept-glob",
+      "question":"扫描到多个 JSON 后可以全部自动读取吗？",
+      "aliases":["发现文件就都处理安全吗","archive.json 会不会变成主输入","目录扫描和输入选择区别"],
+      "keywords":["扫描","可信输入","多个 json","主输入","边界"],
+      "diagnostic":"这些文件是否都符合相同数据契约，并且都属于本次任务？",
+      "hints":["发现路径只说明文件名匹配。","主流程仍应明确选择输入，并验证结构。"],
+      "example":"archive.json 可以出现在清单里，但程序只加载 study_records.json。",
+      "answer":"扫描结果不自动等于可信数据；输入选择、结构校验和处理范围必须另行明确。",
+      "source":{"label":"只扫描任务允许的目录","href":"#concept-glob"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"file-not-found","lesson_id":"python-basics-05","context_id":"troubleshoot-file-layers",
+      "question":"FileNotFoundError 应该先检查什么？",
+      "aliases":["找不到 JSON 文件","filenotfound 怎么办","输入路径不存在"],
+      "keywords":["filenotfounderror","路径","cwd","文件名","不存在"],
+      "diagnostic":"异常显示的路径是什么，当前目录与真实目录树是否一致？",
+      "hints":["这时还没有读到 JSON 文本。","打印 cwd、input_path 和 exists，核对拼写与运行目录。"],
+      "example":"恢复正确的 `data/study_records.json` 后再谈解析。",
+      "answer":"把它当作路径定位失败：先检查执行位置、目录与文件名，不要先修改 JSON 语法。",
+      "source":{"label":"同样是读不了，失败位置并不一样","href":"#troubleshoot-file-layers"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"json-decode","lesson_id":"python-basics-05","context_id":"troubleshoot-file-layers",
+      "question":"JSONDecodeError 应该怎样定位？",
+      "aliases":["坏 JSON 报错","JSON 最后多了逗号","JSON 行列怎么看"],
+      "keywords":["jsondecodeerror","行号","列号","尾随逗号","语法"],
+      "diagnostic":"异常给出的行列附近是否有单引号、尾随逗号、括号不匹配或 Python 值？",
+      "hints":["文件已经成功读成文本。","跳到报错行列附近，最小修复 JSON 语法再运行。"],
+      "example":"`{\"records\": [],}` 的最后逗号无效。",
+      "answer":"依据 JSONDecodeError 的行列修复文本语法，不要把问题误判成路径或业务计算。",
+      "source":{"label":"同样是读不了，失败位置并不一样","href":"#troubleshoot-file-layers"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"missing-records-key","lesson_id":"python-basics-05","context_id":"troubleshoot-file-layers",
+      "question":"JSON 合法但出现 KeyError records 是怎么回事？",
+      "aliases":["缺少 records 字段","JSON 解析成功为什么还失败","KeyError records 怎么修"],
+      "keywords":["keyerror","records","字段","数据结构","解析成功"],
+      "diagnostic":"根对象实际有哪些键，它是否符合程序约定的文档形状？",
+      "hints":["JSON 语法合法只说明能解析。","程序还要求根对象包含 records 列表。"],
+      "example":"`{\"version\": 1}` 合法，但没有报告器需要的 records。",
+      "answer":"这是数据契约问题；修正输入结构或明确校验，不要用 get 默默返回空数据。",
+      "source":{"label":"同样是读不了，失败位置并不一样","href":"#troubleshoot-file-layers"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"output-directory","lesson_id":"python-basics-05","context_id":"troubleshoot-file-layers",
+      "question":"输出目录不存在时应该怎么办？",
+      "aliases":["write_text 找不到父目录","怎样创建 output","mkdir parents exist_ok 是什么"],
+      "keywords":["output","mkdir","parents","exist_ok","写入"],
+      "diagnostic":"输出文件的父目录现在存在吗？它是否是允许程序创建的目录？",
+      "hints":["取得 `output_path.parent`。","调用 `mkdir(parents=True, exist_ok=True)` 后再写文件。"],
+      "example":"已有 output 时 exist_ok=True 不把它当成错误。",
+      "answer":"在明确的输出边界内先创建父目录，再写文件；不要为了省事扩大到不受控路径。",
+      "source":{"label":"同样是读不了，失败位置并不一样","href":"#troubleshoot-file-layers"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"project-v05","lesson_id":"python-basics-05","context_id":"project-v05",
+      "question":"报告器 v0.5 比 v0.4 多了什么？",
+      "aliases":["第五课给项目加了什么","学习报告版本线怎么走","下一课为什么拆模块"],
+      "keywords":["v0.5","项目","json","文件","模块"],
+      "diagnostic":"上一版记录从哪里来，这一版又经过哪些读写边界？",
+      "hints":["输入从 data 下 JSON 读取。","报告写到 output，正常与失败路径都有记录。"],
+      "example":"不改 Python，只改 JSON 就能更新报告。",
+      "answer":"v0.5 建立文件数据闭环；v0.6 会保持行为，把读取、分析、报告和入口拆成模块。",
+      "source":{"label":"报告器 v0.5","href":"#project-v05"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"file-boundary","lesson_id":"python-basics-05","context_id":"deepen-file-boundary",
+      "question":"文件处理的边界具体指什么？",
+      "aliases":["为什么读写路径要有约定","文件代码很短还有什么要设计","数据管道怎样分层"],
+      "keywords":["读写边界","输入","输出","编码","数据管道"],
+      "diagnostic":"程序从哪里读、允许写到哪里、用什么编码、期待什么结构，是否都能说清？",
+      "hints":["把定位、读取、解析、处理和输出分开。","为每一层写清允许范围与失败信息。"],
+      "example":"data 只读、output 可生成、主输入明确、扫描范围受限。",
+      "answer":"边界是路径、编码、结构、权限与失败约定；这些约定决定短小读写代码是否安全可复现。",
+      "source":{"label":"读写边界比一行代码重要","href":"#deepen-file-boundary"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"career-file-story","lesson_id":"python-basics-05","context_id":"career-file-story",
+      "question":"怎样向面试官说明文件处理是可靠的？",
+      "aliases":["文件课怎么讲项目","怎样证明输入没有被改","JSON 项目有哪些验证证据"],
+      "keywords":["面试","文件处理","输入只读","失败路径","验证"],
+      "diagnostic":"你能否说明数据来源、每层处理、输出位置，以及实际跑过的失败场景？",
+      "hints":["讲清 Path、UTF-8、data/output 分离和最小扫描。","再给出输入前后对比、缺失文件、坏 JSON 与缺字段证据。"],
+      "example":"不是只说会读 JSON，而是说明错误发生在哪一层。",
+      "answer":"用数据流、边界约定和正常/失败证据说明可靠性，避免把一个 read_text 包装成大型项目。",
+      "source":{"label":"怎样保证文件处理安全","href":"#career-file-story"},"updated_at":"2026-07-17"
+    }
   ]
 }

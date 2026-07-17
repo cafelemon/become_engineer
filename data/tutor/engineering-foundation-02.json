@@ -1,265 +1,169 @@
 {
-  "version": 1,
   "lesson": {
     "id": "engineering-foundation-02",
     "title": "文件系统",
     "path": "learning-paths/engineering-foundation/stage-0/02-filesystem/"
   },
-  "steps": [
-    {
-      "id": "step-1",
-      "title": "定位工作区"
-    },
-    {
-      "id": "step-2",
-      "title": "创建目录"
-    },
-    {
-      "id": "step-3",
-      "title": "放入文件"
-    },
-    {
-      "id": "step-4",
-      "title": "写出路径"
-    },
-    {
-      "id": "step-5",
-      "title": "检查迁移"
-    }
+  "contexts": [
+    {"id":"overview-workspace-tree","type":"overview","title":"学习工作区目录树","anchor":"#overview-workspace-tree"},
+    {"id":"concept-file-directory","type":"concept","title":"文件、目录和根目录","anchor":"#concept-file-directory"},
+    {"id":"example-name-extension","type":"example","title":"文件名与扩展名","anchor":"#example-name-extension"},
+    {"id":"concept-path-start","type":"concept","title":"相对路径的起点","anchor":"#concept-path-start"},
+    {"id":"reproduce-build-workspace","type":"reproduce","title":"建立学习工作区","anchor":"#reproduce-build-workspace"},
+    {"id":"modify-read-paths","type":"modify","title":"换个文件读路径","anchor":"#modify-read-paths"},
+    {"id":"troubleshoot-path-missing","type":"troubleshoot","title":"路径找不到时排查","anchor":"#troubleshoot-path-missing"},
+    {"id":"project-workspace-v02","type":"project","title":"工程学习工作台 v0.2","anchor":"#project-workspace-v02"}
   ],
   "cards": [
     {
-      "id": "root",
-      "lesson_id": "engineering-foundation-02",
-      "step_id": "step-1",
-      "question": "什么是项目根目录",
-      "aliases": [
-        "项目根目录是什么",
-        "学习工作区在哪里"
-      ],
-      "keywords": [
-        "项目根目录",
-        "工作区",
-        "目录",
-        "位置"
-      ],
-      "diagnostic": "当前任务是“找到你保存学习记录的位置，确认它是这次练习的项目根目录。”。处理“什么是项目根目录”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：找到你保存学习记录的位置，确认它是这次练习的项目根目录。",
-        "本步成功证据是：能说出该目录的名称和位置。 项目根目录是本次学习文件共同归属的外层目录。"
-      ],
-      "example": "局部检查示例：能说出该目录的名称和位置。",
-      "answer": "项目根目录是本次学习文件共同归属的外层目录。",
-      "source": {
-        "label": "定位工作区",
-        "href": "#step-1"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": true
+      "id":"engineering-foundation-02-tree-result",
+      "lesson_id":"engineering-foundation-02",
+      "context_id":"overview-workspace-tree",
+      "question":"这节课最后要把文件整理成什么样？",
+      "aliases":["文件系统课做完是什么样", "学习工作区目录树长什么样"],
+      "keywords":["learning-workspace", "notes", "practice", "assets", "目录树"],
+      "diagnostic":"你现在的 learning-log.md 放在哪里，旁边还有哪些文件夹？",
+      "hints":["先建立 learning-workspace 作为最外层目录。", "它下面并列放 notes、practice、assets，再把 learning-log.md 放入 notes。"],
+      "example":"learning-workspace/notes/learning-log.md，同时保留空的 practice/ 和 assets/。",
+      "answer":"最终是一棵以 learning-workspace 为根的目录树：notes 放学习记录，practice 留给代码，assets 留给图片；learning-log.md 位于 notes 中。",
+      "source":{"label":"把上一课的文件放到找得到的位置","href":"#overview-workspace-tree"},
+      "updated_at":"2026-07-17",
+      "recommended":true
     },
     {
-      "id": "dir-file",
-      "lesson_id": "engineering-foundation-02",
-      "step_id": "step-2",
-      "question": "目录和文件区别",
-      "aliases": [
-        "文件夹和文件区别",
-        "目录是什么"
-      ],
-      "keywords": [
-        "目录",
-        "文件",
-        "文件夹",
-        "结构"
-      ],
-      "diagnostic": "当前任务是“在工作区创建 `notes`、`practice` 和 `assets` 三个目录。”。处理“目录和文件区别”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：在工作区创建 `notes`、`practice` 和 `assets` 三个目录。",
-        "本步成功证据是：在文件管理器或编辑器文件树中能看见三层级条目。 目录用于组织条目，文件保存具体内容。"
-      ],
-      "example": "局部检查示例：在文件管理器或编辑器文件树中能看见三层级条目。",
-      "answer": "目录用于组织条目，文件保存具体内容。",
-      "source": {
-        "label": "创建目录",
-        "href": "#step-2"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
+      "id":"engineering-foundation-02-file-directory",
+      "lesson_id":"engineering-foundation-02",
+      "context_id":"concept-file-directory",
+      "question":"文件和文件夹到底有什么区别？",
+      "aliases":["目录和文件区别", "文件夹是文件吗"],
+      "keywords":["文件", "目录", "文件夹", "内容", "收纳"],
+      "diagnostic":"你双击这个条目后，是看到里面的其他条目，还是由软件打开具体内容？",
+      "hints":["目录主要负责组织位置，它还能包含文件和子目录。", "文件保存具体内容，通常由相应软件打开。"],
+      "example":"notes 是目录，里面可以放 learning-log.md；learning-log.md 是保存文字的文件。",
+      "answer":"目录也叫文件夹，用来组织文件和其他目录；文件用来保存具体内容。图标和实际打开行为比名字里有没有点号更可靠。",
+      "source":{"label":"文件装内容，目录管位置","href":"#concept-file-directory"},
+      "updated_at":"2026-07-17",
+      "recommended":true
     },
     {
-      "id": "extension",
-      "lesson_id": "engineering-foundation-02",
-      "step_id": "step-3",
-      "question": "md 扩展名意思",
-      "aliases": [
-        "文件扩展名是什么",
-        "md 是什么文件"
-      ],
-      "keywords": [
-        "扩展名",
-        "md",
-        "文件名",
-        "markdown"
-      ],
-      "diagnostic": "当前任务是“把上一课的 `learning-log.md` 放入 `notes`，或在其中新建同名文件。”。处理“md 扩展名意思”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：把上一课的 `learning-log.md` 放入 `notes`，或在其中新建同名文件。",
-        "本步成功证据是：能解释文件名和扩展名分别是什么。 `.md` 是 Markdown 文档的常用扩展名。"
-      ],
-      "example": "局部检查示例：能解释文件名和扩展名分别是什么。",
-      "answer": "`.md` 是 Markdown 文档的常用扩展名。",
-      "source": {
-        "label": "放入文件",
-        "href": "#step-3"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
+      "id":"engineering-foundation-02-project-root",
+      "lesson_id":"engineering-foundation-02",
+      "context_id":"concept-file-directory",
+      "question":"什么叫项目根目录？",
+      "aliases":["项目根目录在哪里", "learning-workspace为什么是根目录"],
+      "keywords":["项目根目录", "最外层", "learning-workspace", "共同归属"],
+      "diagnostic":"notes、practice 和 assets 共同装在哪个最外层目录里？",
+      "hints":["根目录不是整个磁盘的根，而是这个项目约定的最外层。", "在本课中，三个子目录都直接属于 learning-workspace。"],
+      "example":"learning-workspace/ 是项目根目录，notes/ 是它的子目录。",
+      "answer":"项目根目录是这一组项目文件共同归属的最外层目录。本课约定 learning-workspace 为根，后续命令和相对路径都从这里开始说明。",
+      "source":{"label":"文件装内容，目录管位置","href":"#concept-file-directory"},
+      "updated_at":"2026-07-17",
+      "recommended":true
     },
     {
-      "id": "relative",
-      "lesson_id": "engineering-foundation-02",
-      "step_id": "step-4",
-      "question": "什么是相对路径",
-      "aliases": [
-        "相对路径怎么写",
-        "notes 路径怎么写"
-      ],
-      "keywords": [
-        "相对路径",
-        "路径",
-        "当前目录",
-        "notes"
-      ],
-      "diagnostic": "当前任务是“从项目根目录写出 `notes/learning-log.md` 的相对路径；再查看系统显示的完整位置。”。处理“什么是相对路径”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：从项目根目录写出 `notes/learning-log.md` 的相对路径；再查看系统显示的完整位置。",
-        "本步成功证据是：两种路径都能对应同一文件。 相对路径从当前目录或项目根目录开始，例如 notes/learning-log.md。"
-      ],
-      "example": "局部检查示例：两种路径都能对应同一文件。",
-      "answer": "相对路径从当前目录或项目根目录开始，例如 notes/learning-log.md。",
-      "source": {
-        "label": "写出路径",
-        "href": "#step-4"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
+      "id":"engineering-foundation-02-extension",
+      "lesson_id":"engineering-foundation-02",
+      "context_id":"example-name-extension",
+      "question":"为什么我的文件变成了 learning-log.md.txt？",
+      "aliases":["md后面为什么还有txt", "文件扩展名被隐藏了怎么办"],
+      "keywords":["扩展名", "md.txt", "隐藏扩展名", "文件名"],
+      "diagnostic":"系统当前有没有显示完整文件扩展名？",
+      "hints":["先在文件管理器或 Finder 打开显示扩展名的设置。", "看到完整名字后，再确认真正的最后一个扩展名是什么。"],
+      "example":"learning-log.md.txt 的实际扩展名是 .txt；显示扩展名后谨慎改为 learning-log.md。",
+      "answer":"常见原因是系统曾隐藏已知扩展名，你输入 .md 时原来的 .txt 仍然存在。先显示所有扩展名，再检查并修改完整文件名。",
+      "source":{"label":".md 是扩展名，不是文件内容","href":"#example-name-extension"},
+      "updated_at":"2026-07-17",
+      "recommended":true
     },
     {
-      "id": "absolute",
-      "lesson_id": "engineering-foundation-02",
-      "step_id": "step-4",
-      "question": "什么是绝对路径",
-      "aliases": [
-        "绝对路径和相对路径区别",
-        "完整文件路径是什么"
-      ],
-      "keywords": [
-        "绝对路径",
-        "相对路径",
-        "磁盘",
-        "路径"
-      ],
-      "diagnostic": "当前任务是“从项目根目录写出 `notes/learning-log.md` 的相对路径；再查看系统显示的完整位置。”。处理“什么是绝对路径”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：从项目根目录写出 `notes/learning-log.md` 的相对路径；再查看系统显示的完整位置。",
-        "本步成功证据是：两种路径都能对应同一文件。 绝对路径从固定根位置描述文件，不依赖当前目录。"
-      ],
-      "example": "局部检查示例：两种路径都能对应同一文件。",
-      "answer": "绝对路径从固定根位置描述文件，不依赖当前目录。",
-      "source": {
-        "label": "写出路径",
-        "href": "#step-4"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
+      "id":"engineering-foundation-02-relative-path",
+      "lesson_id":"engineering-foundation-02",
+      "context_id":"concept-path-start",
+      "question":"为什么同一个相对路径换个位置就找不到了？",
+      "aliases":["相对路径为什么依赖当前位置", "notes/learning-log.md从哪里开始"],
+      "keywords":["相对路径", "当前位置", "起点", "notes", "找不到"],
+      "diagnostic":"你写这条路径时，当前所在位置到底是 learning-workspace 还是 notes？",
+      "hints":["相对路径省略了固定根位置，必须和当前起点一起解释。", "从 learning-workspace 出发写 notes/learning-log.md；从 notes 出发只写 learning-log.md。"],
+      "example":"在 notes 里面再写 notes/learning-log.md，会变成寻找 notes/notes/learning-log.md。",
+      "answer":"因为相对路径从当前位置开始拼接。起点改变后，同一串名字会指向另一个位置，甚至指向不存在的目录。",
+      "source":{"label":"路径一定有起点","href":"#concept-path-start"},
+      "updated_at":"2026-07-17",
+      "recommended":true
     },
     {
-      "id": "not-found",
-      "lesson_id": "engineering-foundation-02",
-      "step_id": "step-5",
-      "question": "路径找不到怎么排查",
-      "aliases": [
-        "文件路径错误怎么办",
-        "找不到文件怎么查"
-      ],
-      "keywords": [
-        "找不到",
-        "路径",
-        "目录",
-        "文件名"
-      ],
-      "diagnostic": "当前任务是“写一个不存在的路径并说明它错在目录名、文件名还是起点。然后为下一课保留工作区。”。处理“路径找不到怎么排查”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：写一个不存在的路径并说明它错在目录名、文件名还是起点。然后为下一课保留工作区。",
-        "本步成功证据是：能用“当前目录 + 相对路径”解释错误。 从路径起点开始逐级核对目录名、文件名和扩展名。"
-      ],
-      "example": "局部检查示例：能用“当前目录 + 相对路径”解释错误。",
-      "answer": "从路径起点开始逐级核对目录名、文件名和扩展名。",
-      "source": {
-        "label": "检查迁移",
-        "href": "#step-5"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": true
+      "id":"engineering-foundation-02-absolute-path",
+      "lesson_id":"engineering-foundation-02",
+      "context_id":"concept-path-start",
+      "question":"绝对路径和相对路径有什么区别？",
+      "aliases":["完整路径是什么", "为什么公开文档少用绝对路径"],
+      "keywords":["绝对路径", "相对路径", "固定起点", "用户名", "隐私"],
+      "diagnostic":"你的路径是从 C:\\ 或 /Users 这类系统固定位置开始，还是从项目根目录开始？",
+      "hints":["绝对路径包含系统固定起点，不依赖当前目录。", "相对路径更短、更容易给别人复用，也不会顺手暴露本机用户名。"],
+      "example":"C:\\Users\\小码\\Documents\\learning-workspace\\notes\\learning-log.md 是绝对路径；notes/learning-log.md 是项目内相对路径。",
+      "answer":"绝对路径从系统固定起点描述位置；相对路径从当前目录描述位置。公开项目通常优先写项目内相对路径。",
+      "source":{"label":"路径一定有起点","href":"#concept-path-start"},
+      "updated_at":"2026-07-17",
+      "recommended":false
     },
     {
-      "id": "organize",
-      "lesson_id": "engineering-foundation-02",
-      "step_id": "step-2",
-      "question": "学习文件怎样整理",
-      "aliases": [
-        "学习文件放哪里",
-        "notes practice assets 区别"
-      ],
-      "keywords": [
-        "整理",
-        "notes",
-        "practice",
-        "assets",
-        "目录"
-      ],
-      "diagnostic": "当前任务是“在工作区创建 `notes`、`practice` 和 `assets` 三个目录。”。处理“学习文件怎样整理”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：在工作区创建 `notes`、`practice` 和 `assets` 三个目录。",
-        "本步成功证据是：在文件管理器或编辑器文件树中能看见三层级条目。 按用途稳定组织：notes 放记录，practice 放练习，assets 放素材。"
-      ],
-      "example": "局部检查示例：在文件管理器或编辑器文件树中能看见三层级条目。",
-      "answer": "按用途稳定组织：notes 放记录，practice 放练习，assets 放素材。",
-      "source": {
-        "label": "创建目录",
-        "href": "#step-2"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
+      "id":"engineering-foundation-02-create-folders",
+      "lesson_id":"engineering-foundation-02",
+      "context_id":"reproduce-build-workspace",
+      "question":"不用终端怎样创建这几个文件夹？",
+      "aliases":["Windows怎么新建学习工作区", "Mac怎么创建learning-workspace"],
+      "keywords":["文件资源管理器", "Finder", "新建文件夹", "Windows", "macOS"],
+      "diagnostic":"你现在使用 Windows 文件资源管理器，还是 macOS Finder？",
+      "hints":["先在文档或文稿中建立最外层 learning-workspace。", "打开它后，再并列建立 notes、practice 和 assets。"],
+      "example":"macOS 使用“文件 → 新建文件夹”或 Shift+Command+N；Windows 选择“新建 → 文件夹”。",
+      "answer":"使用系统文件管理器即可。先建立 learning-workspace，再进入它建立三个并列子目录，最后把 learning-log.md 拖入 notes。",
+      "source":{"label":"亲手建出这棵目录树","href":"#reproduce-build-workspace"},
+      "updated_at":"2026-07-17",
+      "recommended":true
     },
     {
-      "id": "workspace",
-      "lesson_id": "engineering-foundation-02",
-      "step_id": "step-5",
-      "question": "为什么保留工作区",
-      "aliases": [
-        "下一课还用这个目录吗",
-        "工作区有什么用"
-      ],
-      "keywords": [
-        "工作区",
-        "下一课",
-        "终端",
-        "保留"
-      ],
-      "diagnostic": "当前任务是“写一个不存在的路径并说明它错在目录名、文件名还是起点。然后为下一课保留工作区。”。处理“为什么保留工作区”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：写一个不存在的路径并说明它错在目录名、文件名还是起点。然后为下一课保留工作区。",
-        "本步成功证据是：能用“当前目录 + 相对路径”解释错误。 稳定工作区让后续终端、编辑器和 Git 操作可连续验证。"
-      ],
-      "example": "局部检查示例：能用“当前目录 + 相对路径”解释错误。",
-      "answer": "稳定工作区让后续终端、编辑器和 Git 操作可连续验证。",
-      "source": {
-        "label": "检查迁移",
-        "href": "#step-5"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": true
+      "id":"engineering-foundation-02-path-practice",
+      "lesson_id":"engineering-foundation-02",
+      "context_id":"modify-read-paths",
+      "question":"practice里的文件应该怎样写相对路径？",
+      "aliases":["path-check.txt路径怎么写", "换个文件怎样判断路径"],
+      "keywords":["practice", "path-check.txt", "相对路径", "主动修改"],
+      "diagnostic":"你准备从项目根目录写，还是已经进入 practice 目录？",
+      "hints":["从项目根目录出发，要把 practice 这一层写出来。", "从 practice 里面出发，只需要写文件名。"],
+      "example":"learning-workspace 下写 practice/path-check.txt；practice 里面写 path-check.txt。",
+      "answer":"答案取决于起点：从项目根目录写 practice/path-check.txt，从 practice 目录内写 path-check.txt。记录答案时要把起点一起写清。",
+      "source":{"label":"换一个文件，再读一次路径","href":"#modify-read-paths"},
+      "updated_at":"2026-07-17",
+      "recommended":false
+    },
+    {
+      "id":"engineering-foundation-02-not-found",
+      "lesson_id":"engineering-foundation-02",
+      "context_id":"troubleshoot-path-missing",
+      "question":"路径找不到时应该先检查什么？",
+      "aliases":["文件明明在为什么找不到", "路径错误怎么逐层排查"],
+      "keywords":["路径找不到", "逐层检查", "起点", "扩展名", "同名文件"],
+      "diagnostic":"先说清当前起点和完整路径，再看第一级目录是否真的存在。",
+      "hints":["从起点开始，一次只核对一级目录名。", "目录都对以后，再检查完整文件名、大小写和扩展名。"],
+      "example":"learning-workspace → notes → learning-log.md；如果第一步已在 notes，就不要再重复 notes。",
+      "answer":"先确认起点，再从左到右逐级检查目录，最后检查文件名和扩展名。不要一边排查一边随意移动多个文件。",
+      "source":{"label":"路径找不到，按层级往下查","href":"#troubleshoot-path-missing"},
+      "updated_at":"2026-07-17",
+      "recommended":true
+    },
+    {
+      "id":"engineering-foundation-02-project-next",
+      "lesson_id":"engineering-foundation-02",
+      "context_id":"project-workspace-v02",
+      "question":"为什么要保留整个 learning-workspace？",
+      "aliases":["下一课还会用这个目录吗", "工程学习工作台后面怎么继续"],
+      "keywords":["工程学习工作台", "下一课", "终端", "Git", "连续项目"],
+      "diagnostic":"你的 learning-log.md、practice 和 assets 现在是否都在同一个根目录里？",
+      "hints":["下一课会在终端里进入这个目录并读取文件。", "后面 VS Code、Git 和验证脚本也会围绕同一个工作区继续增加内容。"],
+      "example":"v0.1 只有学习记录；v0.2 增加目录结构；v0.3 用终端重新找到它。",
+      "answer":"因为后续课程不是重新做一套散落练习，而是在同一工作区持续增加代码、记录、图片和版本历史。",
+      "source":{"label":"工程学习工作台 v0.2","href":"#project-workspace-v02"},
+      "updated_at":"2026-07-17",
+      "recommended":true
     }
   ]
 }

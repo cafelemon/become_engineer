@@ -1,17 +1,255 @@
 {
-  "version": 1,
-  "lesson": {"id": "python-basics-02", "title": "条件、循环、布尔逻辑", "path": "learning-paths/programming-languages/python-basics/02-conditions-loops-boolean/"},
-  "steps": [
-    {"id": "step-1", "title": "比较进度"}, {"id": "step-2", "title": "写出分支"}, {"id": "step-3", "title": "检查清单"}, {"id": "step-4", "title": "限制尝试"}, {"id": "step-5", "title": "迁移验收"}
+  "version": 2,
+  "lesson": {
+    "id": "python-basics-02",
+    "title": "条件、循环、布尔逻辑",
+    "path": "learning-paths/programming-languages/python-basics/02-conditions-loops-boolean/"
+  },
+  "contexts": [
+    {"id":"overview-status","type":"overview","title":"档案开始会判断了","anchor":"#overview-status"},
+    {"id":"concept-boolean","type":"concept","title":"条件先回答一个问题","anchor":"#concept-boolean"},
+    {"id":"example-if","type":"example","title":"if 按结果选一条路","anchor":"#example-if"},
+    {"id":"reproduce-v02","type":"reproduce","title":"跑起报告器 v0.2","anchor":"#reproduce-v02"},
+    {"id":"modify-status","type":"modify","title":"给状态再加一档","anchor":"#modify-status"},
+    {"id":"concept-logic","type":"concept","title":"两个条件怎样合在一起","anchor":"#concept-logic"},
+    {"id":"example-for-range","type":"example","title":"for 逐项处理行动清单","anchor":"#example-for-range"},
+    {"id":"reproduce-while","type":"reproduce","title":"while 适合还没结束就继续","anchor":"#reproduce-while"},
+    {"id":"troubleshoot-flow","type":"troubleshoot","title":"走错时先看条件和缩进","anchor":"#troubleshoot-flow"},
+    {"id":"project-v02","type":"project","title":"报告器 v0.2","anchor":"#project-v02"},
+    {"id":"deepen-short-circuit","type":"deepen","title":"再深入一点：短路求值","anchor":"#deepen-short-circuit"},
+    {"id":"career-branch-story","type":"career","title":"怎样说明分支经过检查","anchor":"#career-branch-story"}
   ],
   "cards": [
-    {"id":"comparison-result","lesson_id":"python-basics-02","step_id":"step-1","question":"比较运算为什么得到 True 或 False？","aliases":["比较结果是什么","大于等于为什么是布尔值","大于等于结果是什么"],"keywords":["比较","大于等于","true","false","布尔"],"diagnostic":"把 target_hours 和 finished_hours 的值以及比较表达式实际输出写出来。","hints":["比较运算不是计算差值，而是在判断关系是否成立。","试着分别运行 5 >= 8、8 >= 8 和 10 >= 8。"],"example":"finished_hours >= target_hours 的结果只能是 True 或 False。","answer":"比较表达式产生布尔值，if 根据这个布尔值选择分支。","source":{"label":"第一步：比较两组学习时间","href":"#step-1"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"equal-or-assign","lesson_id":"python-basics-02","step_id":"step-1","question":"为什么判断相等要写 == 而不是 =？","aliases":["等号和双等号区别","用等号判断报错"],"keywords":["==","=","判断","赋值"],"diagnostic":"这行代码是在给名字保存值，还是在询问两个值是否相同？","hints":["单个等号用于赋值。","比较两个值是否相等时使用双等号。"],"example":"score = 60 是赋值；score == 60 是比较。","answer":"= 改变变量绑定，== 产生 True 或 False 供条件使用。","source":{"label":"第一步：比较两组学习时间","href":"#step-1"},"updated_at":"2026-07-15"},
-    {"id":"if-indent","lesson_id":"python-basics-02","step_id":"step-2","question":"if 下面为什么必须缩进？","aliases":["if缩进错误","indentationerror怎么办"],"keywords":["if","缩进","indentationerror","冒号"],"diagnostic":"if 条件行末是否有冒号，下一行是否使用一致的四个空格？","hints":["Python 用缩进界定属于分支的代码块。","先保留 if 行的冒号，再把分支内每一行统一缩进四格。"],"example":"if done:\n    print(\"完成\")","answer":"缩进告诉 Python 哪些语句只在条件成立时执行；混用或缺失缩进会导致语法错误。","source":{"label":"第二步：让报告器给出不同状态","href":"#step-2"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"elif-order","lesson_id":"python-basics-02","step_id":"step-2","question":"elif 分支为什么没有执行？","aliases":["elif不生效","多个条件判断顺序"],"keywords":["elif","分支","顺序","条件"],"diagnostic":"上面的 if 是否已经为 True，或较宽的条件是否挡住了后面的条件？","hints":["if/elif 从上到下判断，命中一个分支就停止。","把更具体、更严格的条件放在更宽条件之前。"],"example":"先判断 score >= 90，再判断 score >= 60。","answer":"后续 elif 只在前面条件均不成立时检查，调整条件顺序并覆盖各分支测试。","source":{"label":"第二步：让报告器给出不同状态","href":"#step-2"},"updated_at":"2026-07-15"},
-    {"id":"range-boundary","lesson_id":"python-basics-02","step_id":"step-3","question":"range(1, 4) 为什么没有 4？","aliases":["range不包含最后一个数","range边界"],"keywords":["range","边界","循环","4"],"diagnostic":"把 range(1, 4) 的每个输出逐行打印，最后一行是什么？","hints":["range 的结束值不包含在结果中。","若要包含 4，结束值应写成 5。"],"example":"list(range(1, 4)) 是 [1, 2, 3]。","answer":"range 使用左闭右开区间；它包含起点、不包含结束值。","source":{"label":"第三步：循环打印行动清单","href":"#step-3"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"for-list","lesson_id":"python-basics-02","step_id":"step-3","question":"for 循环怎样逐项打印列表？","aliases":["列表怎么循环","for怎么遍历清单"],"keywords":["for","列表","遍历","清单"],"diagnostic":"列表变量保存的是多项内容，循环变量想代表其中的哪一项？","hints":["for task in tasks 会依次把每个元素交给 task。","循环体只打印当前 task，不要重复打印整个列表。"],"example":"for task in tasks:\n    print('-', task)","answer":"用 for 加一个清晰的循环变量遍历列表，每轮处理一个元素。","source":{"label":"第三步：循环打印行动清单","href":"#step-3"},"updated_at":"2026-07-15"},
-    {"id":"while-infinite","lesson_id":"python-basics-02","step_id":"step-4","question":"while 循环停不下来怎么办？","aliases":["死循环怎么办","while一直运行"],"keywords":["while","死循环","计数器","ctrlc"],"diagnostic":"循环条件依赖的变量在循环体中是否真的改变？","hints":["先用 Ctrl+C 安全停止，再检查条件和更新语句。","每轮让 count 增加，或在明确成功条件下使用 break。"],"example":"count = count + 1 必须在 while 循环体内。","answer":"死循环通常是退出条件永远成立；补上状态更新或明确的 break，并重新用小次数验证。","source":{"label":"第四步：故意制造一次循环错误","href":"#step-4"},"updated_at":"2026-07-15","recommended":true},
-    {"id":"and-or-choice","lesson_id":"python-basics-02","step_id":"step-5","question":"什么时候使用 and，什么时候使用 or？","aliases":["and和or区别","多个条件怎么写"],"keywords":["and","or","条件","布尔逻辑"],"diagnostic":"你的状态要求两个条件都满足，还是任一条件满足即可？","hints":["两个条件都必须成立时用 and。","至少一个条件成立即可时用 or，并用真值组合验证。"],"example":"finished >= target and ran_program。","answer":"and 要求两边为真，or 只要求至少一边为真；为每种组合运行测试而非只读表达式。","source":{"label":"第五步：迁移验收","href":"#step-5"},"updated_at":"2026-07-15","recommended":true}
+    {
+      "id":"status-result","lesson_id":"python-basics-02","context_id":"overview-status",
+      "question":"这节课会把学习档案改成什么样？",
+      "aliases":["第二课的项目结果是什么","报告器 v0.2 增加什么","为什么这节课学条件和循环"],
+      "keywords":["结果","状态","v0.2","行动","复盘"],
+      "diagnostic":"先看第一屏：程序除了打印档案，还多显示了哪些会随数据变化的内容？",
+      "hints":["留意状态、剩余小时和行动编号。","本课让同一份数据能选择分支并重复处理一组行动。"],
+      "example":"完成 3/5 小时时显示“进行中”和“还需 2 小时”。",
+      "answer":"v0.2 给学习档案增加状态判断、剩余小时、行动清单和复盘条件；下一课再把这些判断整理成函数。",
+      "source":{"label":"档案开始会判断了","href":"#overview-status"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"comparison-boolean","lesson_id":"python-basics-02","context_id":"concept-boolean",
+      "question":"比较运算为什么会得到 True 或 False？",
+      "aliases":["比较结果为什么是布尔值","大于等于返回什么","条件的结果是什么"],
+      "keywords":["比较","布尔值","true","false",">="],
+      "diagnostic":"把比较式左右两边的实际数字写出来，再问“这个关系成立吗”。",
+      "hints":["比较不是在计算差值，而是在回答一个关系问题。","关系成立得到 True，不成立得到 False。"],
+      "example":"3 >= 5 是 False；5 >= 5 是 True。",
+      "answer":"比较表达式产生布尔值，`if` 再根据这个值选择要执行的代码块。",
+      "source":{"label":"条件先回答一个问题","href":"#concept-boolean"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"assign-vs-equal","lesson_id":"python-basics-02","context_id":"concept-boolean",
+      "question":"单等号和双等号有什么区别？",
+      "aliases":["为什么判断相等要写两个等号","用等号比较为什么报错","= 和 == 区别"],
+      "keywords":["=","==","赋值","相等","比较"],
+      "diagnostic":"这行代码是在保存一个值，还是在询问两个值是否相等？",
+      "hints":["`=` 用于赋值。","`==` 用于比较，并产生 True 或 False。"],
+      "example":"`status = \"已完成\"` 是赋值；`status == \"已完成\"` 是比较。",
+      "answer":"单等号改变名称绑定的值，双等号只比较两个值是否相等。",
+      "source":{"label":"条件先回答一个问题","href":"#concept-boolean"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"greater-equal-boundary","lesson_id":"python-basics-02","context_id":"concept-boolean",
+      "question":"为什么达标判断用大于等于而不是大于？",
+      "aliases":["刚好 5 小时算完成吗","为什么要用 >=","等号边界怎么测"],
+      "keywords":[">=",">","边界","达标","相等"],
+      "diagnostic":"计划是 5 小时，刚好完成 5 小时时应该进入哪个状态？",
+      "hints":["`>` 会排除刚好相等。","把 3、5、7 三组数据都跑一遍。"],
+      "example":"5 >= 5 为 True，而 5 > 5 为 False。",
+      "answer":"“达到计划”包含刚好相等，因此使用 `>=`；相等值是这条规则最重要的边界输入。",
+      "source":{"label":"条件先回答一个问题","href":"#concept-boolean"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"if-else-choice","lesson_id":"python-basics-02","context_id":"example-if",
+      "question":"if 和 else 会不会都执行？",
+      "aliases":["if else 到底走哪一边","两个分支会一起运行吗","条件分支怎么选"],
+      "keywords":["if","else","分支","选择","执行"],
+      "diagnostic":"先写出 if 条件本次是 True 还是 False。",
+      "hints":["条件为 True 时执行 if 代码块。","条件为 False 时才执行 else；同一次只走一边。"],
+      "example":"3 >= 5 为 False，所以状态只会设为“进行中”。",
+      "answer":"一组 `if/else` 在一次执行中只选择一个分支；要验证两边，需要换数据分别运行。",
+      "source":{"label":"if 按结果选一条路","href":"#example-if"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"indent-and-colon","lesson_id":"python-basics-02","context_id":"example-if",
+      "question":"if 后面的冒号和缩进分别做什么？",
+      "aliases":["if 为什么要缩进","冒号漏了怎么办","IndentationError 怎么看"],
+      "keywords":["if","冒号","缩进","indentationerror","代码块"],
+      "diagnostic":"检查条件行末有没有冒号，下一行是否统一缩进四个空格。",
+      "hints":["冒号说明后面跟着一个代码块。","缩进决定哪些语句属于这个分支。"],
+      "example":"`if done:` 下一行写四个空格再写 `print(\"完成\")`。",
+      "answer":"Python 用冒号引出代码块，用缩进表达代码块范围；缺失或混乱都会让结构无法解析。",
+      "source":{"label":"if 按结果选一条路","href":"#example-if"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"run-both-branches","lesson_id":"python-basics-02","context_id":"reproduce-v02",
+      "question":"怎么证明两个分支都真的跑过？",
+      "aliases":["只运行一次够吗","进行中和已完成怎么都测试","分支结果怎样保存"],
+      "keywords":["分支","运行","测试","进行中","已完成"],
+      "diagnostic":"当前数据只会进入一条路；你有没有准备一组让条件为 False、另一组让它为 True 的输入？",
+      "hints":["先用完成 3/5 小时得到“进行中”。","再用 5/5 小时得到“已完成”，保存两次输出。"],
+      "example":"`finished_hours = 3` 与 `finished_hours = 5` 覆盖两条路。",
+      "answer":"为每条分支选一组能触发它的数据并实际运行，不能只靠阅读代码判断。",
+      "source":{"label":"跑起报告器 v0.2","href":"#reproduce-v02"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"elif-order","lesson_id":"python-basics-02","context_id":"modify-status",
+      "question":"为什么 elif 永远进不去？",
+      "aliases":["多个条件顺序怎么排","三档状态判断不对","elif 不执行"],
+      "keywords":["elif","顺序","条件","三档","命中"],
+      "diagnostic":"上面的条件是不是已经把这组数据接住了？",
+      "hints":["`if/elif/else` 从上往下检查。","把更具体、更严格的条件放在较宽条件之前。"],
+      "example":"先判断 `finished >= target`，再判断 `finished > 0`。",
+      "answer":"前面的条件命中后，后面的 `elif` 不再检查；调整顺序并用 0、3、5 分别覆盖三档。",
+      "source":{"label":"给状态再加一档","href":"#modify-status"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"and-both","lesson_id":"python-basics-02","context_id":"concept-logic",
+      "question":"什么时候应该使用 and？",
+      "aliases":["and 为什么要求两个条件","两个条件都要满足怎么写","达标并且运行过"],
+      "keywords":["and","同时","都满足","布尔逻辑"],
+      "diagnostic":"你的规则是不是要求两件事同时成立？",
+      "hints":["分别给两个条件起名字。","只有两边都是 True，`and` 的结果才是 True。"],
+      "example":"`hours_done and ran_program` 表示小时达标且运行过程序。",
+      "answer":"当规则要求所有条件同时成立时使用 `and`，并用真假组合检查结果。",
+      "source":{"label":"两个条件怎样合在一起","href":"#concept-logic"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"or-and-not","lesson_id":"python-basics-02","context_id":"concept-logic",
+      "question":"or 和 not 分别在什么时候用？",
+      "aliases":["and or not 怎么区分","至少一个成立怎么写","怎么把条件反过来"],
+      "keywords":["or","not","至少一个","取反","布尔"],
+      "diagnostic":"这条规则是“任意一个就够”，还是要表达原条件不成立？",
+      "hints":["至少一个条件成立用 `or`。","把一个布尔结果反过来用 `not`。"],
+      "example":"`coded or reviewed`；`not ready_for_review`。",
+      "answer":"`or` 只要求至少一边为真；`not` 把真变假、假变真。先用清楚的布尔变量表达意图。",
+      "source":{"label":"两个条件怎样合在一起","href":"#concept-logic"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"for-actions","lesson_id":"python-basics-02","context_id":"example-for-range",
+      "question":"for 怎样把行动清单逐项打印？",
+      "aliases":["列表怎么循环","for 怎么处理每个行动","行动为什么只出现一次"],
+      "keywords":["for","列表","行动","逐项","循环"],
+      "diagnostic":"循环的每一轮想处理清单里的一个值，还是整张清单？",
+      "hints":["让 `for` 依次产生编号。","每轮只读取当前编号对应的那一项。"],
+      "example":"`for number in range(...): print(number, actions[number - 1])`。",
+      "answer":"`for` 会依次取出可迭代对象中的值；这段代码每轮打印一个编号和一项行动。",
+      "source":{"label":"for 逐项处理行动清单","href":"#example-for-range"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"range-boundary","lesson_id":"python-basics-02","context_id":"example-for-range",
+      "question":"range(1, 4) 为什么没有 4？",
+      "aliases":["range 不包含最后一个数","range 边界怎么看","怎样输出 1 到 4"],
+      "keywords":["range","结束值","边界","1","4"],
+      "diagnostic":"把 `range(1, 4)` 实际打印出来，最后一个值是多少？",
+      "hints":["`range` 包含起点。","结束值不包含在结果中；要得到 4，结束值写 5。"],
+      "example":"`list(range(1, 4))` 是 `[1, 2, 3]`。",
+      "answer":"`range(start, stop)` 使用左闭右开范围，包含 start、不包含 stop。",
+      "source":{"label":"for 逐项处理行动清单","href":"#example-for-range"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"number-minus-one","lesson_id":"python-basics-02","context_id":"example-for-range",
+      "question":"为什么读取 actions 时要写 number - 1？",
+      "aliases":["编号从 1 开始列表为什么从 0 开始","actions number 减一是什么意思","编号和下标怎么对应"],
+      "keywords":["number","-1","下标","编号","列表"],
+      "diagnostic":"给人看的第一项编号是 1，而 Python 列表的第一个位置是多少？",
+      "hints":["这段输出编号从 1 开始。","列表位置从 0 开始，因此用 `number - 1` 对齐。"],
+      "example":"编号 1 对应 `actions[0]`。",
+      "answer":"人的显示编号与列表位置起点不同，减一把 1、2、3 映射到 0、1、2。列表会在后续课程深入。",
+      "source":{"label":"for 逐项处理行动清单","href":"#example-for-range"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"while-condition","lesson_id":"python-basics-02","context_id":"reproduce-while",
+      "question":"while 和 for 的区别是什么？",
+      "aliases":["什么时候用 while","知道次数还要用 while 吗","for while 怎么选"],
+      "keywords":["while","for","条件","次数","循环"],
+      "diagnostic":"你是要逐项处理一组已有数据，还是只知道“条件仍成立就继续”？",
+      "hints":["遍历一组值通常先考虑 `for`。","结束由不断变化的条件决定时，`while` 更直接。"],
+      "example":"行动清单用 `for`；最多三次且可能提前猜对用 `while`。",
+      "answer":"`for` 擅长遍历已有序列，`while` 在条件为真时重复；两者都必须有清楚的结束方式。",
+      "source":{"label":"while 适合还没结束就继续","href":"#reproduce-while"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"break-early","lesson_id":"python-basics-02","context_id":"reproduce-while",
+      "question":"break 在猜对以后做了什么？",
+      "aliases":["猜对后怎么立即退出","break 是退出 if 还是循环","为什么第二次猜对不再问"],
+      "keywords":["break","退出","循环","猜对","提前"],
+      "diagnostic":"`break` 当前位于哪一层循环里面？",
+      "hints":["它不会只跳过一行。","它会立即结束当前这一层循环，继续执行循环后面的代码。"],
+      "example":"第二次猜中后执行 `break`，不会出现第三次提示。",
+      "answer":"`break` 立即离开当前循环；本例用它在成功时提前结束剩余尝试。",
+      "source":{"label":"while 适合还没结束就继续","href":"#reproduce-while"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"bounded-attempts","lesson_id":"python-basics-02","context_id":"reproduce-while",
+      "question":"怎样保证猜词程序最多只问三次？",
+      "aliases":["while 怎么限制次数","第三次以后怎么停止","最多三次的退出条件"],
+      "keywords":["三次","attempt","限制","while","停止"],
+      "diagnostic":"每轮开始前检查什么，猜错后又更新了什么？",
+      "hints":["条件写成 `attempt <= 3`。","每次猜错后把 attempt 加一；猜对则 break。"],
+      "example":"尝试次数依次为 1、2、3，下一次变成 4 后条件为 False。",
+      "answer":"把上限直接写进 `while` 条件，并确保每轮更新计数器；再分别验证提前成功和三次耗尽。",
+      "source":{"label":"while 适合还没结束就继续","href":"#reproduce-while"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"infinite-loop","lesson_id":"python-basics-02","context_id":"troubleshoot-flow",
+      "question":"while 一直运行停不下来怎么办？",
+      "aliases":["死循环怎么停止","Ctrl+C 后检查什么","计数器忘记更新"],
+      "keywords":["while","死循环","ctrl+c","计数器","更新"],
+      "diagnostic":"循环条件依赖的变量在循环体里有没有真的改变？",
+      "hints":["先按 `Ctrl+C` 停止当前程序。","检查计数器更新是否在循环体内，或成功路径是否能执行 break。"],
+      "example":"漏掉 `attempt = attempt + 1` 时，`attempt <= 3` 会一直为真。",
+      "answer":"安全停止后找到让条件一直为真的原因，补上状态更新或退出路径，再用小次数重新验证。",
+      "source":{"label":"走错时先看条件和缩进","href":"#troubleshoot-flow"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"input-before-compare","lesson_id":"python-basics-02","context_id":"troubleshoot-flow",
+      "question":"为什么输入的小时数不能直接和整数比较？",
+      "aliases":["str 和 int 比较报错","input 后判断 TypeError","数字输入比较前做什么"],
+      "keywords":["input","str","int","比较","typeerror"],
+      "diagnostic":"用 `type()` 看看 input 返回的值和目标小时分别是什么类型。",
+      "hints":["`input()` 返回字符串。","先用 `int()` 得到整数，再进入大小比较。"],
+      "example":"`finished_hours = int(input(...))` 后再写 `finished_hours >= weekly_hours`。",
+      "answer":"顺序比较要求可比较的值；把合法数字文本转换成整数后再判断，非法文本会在转换处给出 ValueError。",
+      "source":{"label":"走错时先看条件和缩进","href":"#troubleshoot-flow"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"project-v02","lesson_id":"python-basics-02","context_id":"project-v02",
+      "question":"报告器 v0.2 比 v0.1 多了什么？",
+      "aliases":["第二课给项目加了什么","学习档案版本线怎么走","下一课为什么要学函数"],
+      "keywords":["v0.2","项目","状态","行动","函数"],
+      "diagnostic":"把上一版只打印数据的行为，与现在会判断和循环的行为逐项对比。",
+      "hints":["新增三档状态、剩余小时和行动清单。","还要保存提前退出与次数耗尽两种循环结果。"],
+      "example":"v0.1 只有变量和输出；v0.2 根据完成小时选择状态。",
+      "answer":"v0.2 增加控制流，让档案能选择分支、组合条件和逐项处理行动；v0.3 会把重复逻辑提成函数。",
+      "source":{"label":"报告器 v0.2","href":"#project-v02"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"short-circuit","lesson_id":"python-basics-02","context_id":"deepen-short-circuit",
+      "question":"and 和 or 为什么有时不计算右边？",
+      "aliases":["什么是短路求值","and 左边 false 后怎样","or 左边 true 后怎样"],
+      "keywords":["短路求值","and","or","右边","条件"],
+      "diagnostic":"只看左边的值，整个表达式的结果是不是已经能确定？",
+      "hints":["`and` 左边为 False 时，整体不可能为真。","`or` 左边为 True 时，整体已经为真。"],
+      "example":"`False and other_check` 不需要计算 `other_check`。",
+      "answer":"布尔运算从左到右短路：结果已确定时跳过右侧。起步阶段仍应把条件拆成清楚的变量。",
+      "source":{"label":"再深入一点：短路求值","href":"#deepen-short-circuit"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"career-branch-testing","lesson_id":"python-basics-02","context_id":"career-branch-story",
+      "question":"怎样向别人说明我的条件分支是对的？",
+      "aliases":["面试怎么讲 if 测试","项目里的分支证据是什么","条件循环怎么讲求职故事"],
+      "keywords":["面试","分支","测试","边界","证据"],
+      "diagnostic":"你是否列出了每条分支和最容易漏掉的边界输入？",
+      "hints":["状态判断用 0、3、5、7 覆盖未开始、进行中、相等边界和超过目标。","循环同时验证提前 break 和次数耗尽。"],
+      "example":"说明输入、命中分支、实际输出和边界选择，而不是只说“我会 if”。",
+      "answer":"用分支清单、代表输入、真实运行结果和边界理由说明验证过程；这种方法会延伸到接口状态和自动化测试。",
+      "source":{"label":"怎样说明分支经过检查","href":"#career-branch-story"},"updated_at":"2026-07-17"
+    }
   ]
 }

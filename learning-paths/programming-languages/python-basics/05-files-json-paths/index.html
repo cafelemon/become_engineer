@@ -499,6 +499,8 @@
       
         
       
+        
+      
     
     
     
@@ -1168,7 +1170,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        本节任务路线
+        改数据，不再改程序
       
     </span>
   </a>
@@ -1179,18 +1181,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：建立受控目录边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#json_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第二步：把 JSON 变成报告器记录
+        开始前
       
     </span>
   </a>
@@ -1201,7 +1192,29 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：生成独立输出
+        相对路径从当前工作目录出发
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Path 把路径当成路径处理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        文件先读成文本，JSON 再变成对象
       
     </span>
   </a>
@@ -1212,7 +1225,29 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：故意制造两种读取失败
+        先在一段短文本里看解析
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        跑起报告器 v0.5
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        只改 JSON，再跑一次
       
     </span>
   </a>
@@ -1223,7 +1258,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：迁移验收
+        只扫描任务允许的目录
       
     </span>
   </a>
@@ -1234,7 +1269,18 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        同样是“读不了”，失败位置并不一样
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v05_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        报告器 v0.5
       
     </span>
   </a>
@@ -1245,7 +1291,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        前置知识
+        再深入一点：读写边界比一行代码重要
       
     </span>
   </a>
@@ -1256,7 +1302,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        学习目标
+        被问到“怎样保证文件处理安全”时
       
     </span>
   </a>
@@ -1267,7 +1313,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        学习顺序
+        完成检查
       
     </span>
   </a>
@@ -1278,533 +1324,6 @@
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        数据怎样流过程序
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        当前工作目录和路径
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="当前工作目录和路径">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        当前工作目录
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        相对路径和绝对路径
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        项目根目录
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#path" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        使用 Path 表示路径
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="使用 Path 表示路径">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        判断路径状态
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#utf-8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        读取和写入 UTF-8 文本
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="读取和写入 UTF-8 文本">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        读取文本
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        写入文本
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#json_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        JSON 是文本格式
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#json-python" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        从 JSON 文本得到 Python 数据
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="从 JSON 文本得到 Python 数据">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#jsonloads" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        使用 json.loads 解析字符串
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#jsondumps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        使用 json.dumps 生成字符串
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        扫描受限目录
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="扫描受限目录">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#glob" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        glob 扫描当前目录层级
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rglob" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        rglob 递归扫描
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        四个不同的失败位置
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#json_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        可复现实例：从 JSON 生成学习报告
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="可复现实例：从 JSON 生成学习报告">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        目录结构
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#json_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        JSON 输入
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完整程序
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        运行命令
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        预期终端输出
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        验证场景
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai-json" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI 协作任务：把内存数据迁移到 JSON
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AI 协作任务：把内存数据迁移到 JSON">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        可复用任务描述
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        人工审阅要求
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        核心手动检查点
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="核心手动检查点">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点 1：路径从哪里开始
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-json" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点 2：追踪 JSON 类型
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点 3：判断失败层次
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点 4：验证输入只读
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点 5：限制递归扫描
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        微练习
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="微练习">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        练习 1：判断相对路径
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2utf-8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        练习 2：UTF-8 文本读写
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3json" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        练习 3：JSON 类型映射
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        练习 4：修改数据重新生成报告
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-json" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        练习 5：扫描 JSON 文件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        练习 6：定位两种失败
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常见错误与排查
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完成标准
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         来源与版本
       
     </span>
@@ -1813,7 +1332,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_32" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -1917,8 +1436,6 @@
       
         
       
-        
-      
     
     
     
@@ -1934,14 +1451,14 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../cpp-core/" class="md-nav__link ">
+            <a href="../../../cs-core/" class="md-nav__link ">
               
   
   
   <span class="md-ellipsis">
     
   
-    C++ 核心语言
+    CS 起步
   
 
     
@@ -1963,13 +1480,258 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    C++ 核心语言
+    CS 起步
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
               
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs-core/01-sequence-interface-array-representation-boundaries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    序列接口、数组表示与安全边界
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs-core/02-operation-count-growth-asymptotic-complexity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    操作计数、增长率与渐近复杂度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs-core/03-string-utf8-byte-code-point-boundaries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    字符串、UTF-8 字节与码点边界
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs-core/04-two-dimensional-grid-row-major-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二维网格、行优先布局与坐标边界
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../cpp-core/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C++：起步与核心
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C++：起步与核心
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4_2" id="__nav_2_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C++ 起步
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C++ 起步
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -2026,6 +1788,72 @@
   
 
               
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4_3" id="__nav_2_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C++ 核心
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C++ 核心
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -2119,6 +1947,14 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
               
                 
   
@@ -2135,6 +1971,67 @@
         
       
         
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../python-core/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python：核心与工程化
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python：核心与工程化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
       
         
       
@@ -2157,18 +2054,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_2" >
         
           
-          <div class="md-nav__link md-nav__container">
-            <a href="../../python-core/" class="md-nav__link ">
-              
+          <label class="md-nav__link" for="__nav_2_5_2" id="__nav_2_5_2_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
     
   
-    Python 核心语言
+    Python 核心
   
 
     
@@ -2176,27 +2072,19 @@
   
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5_2">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Python 核心语言
+    Python 核心
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
             
               
                 
@@ -2338,6 +2226,70 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5_3" id="__nav_2_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 工程化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 工程化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
               
                 
   
@@ -2402,6 +2354,14 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
               
                 
   
@@ -2412,28 +2372,60 @@
     
       
         
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
           
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法与数据结构
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    算法与数据结构
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
       
         
       
@@ -2478,18 +2470,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_1" >
         
           
-          <div class="md-nav__link md-nav__container">
-            <a href="../../../cs-core/" class="md-nav__link ">
-              
+          <label class="md-nav__link" for="__nav_2_6_1" id="__nav_2_6_1_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
     
   
-    CS 核心
+    共同算法与数据结构基础
   
 
     
@@ -2497,139 +2488,19 @@
   
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6_1">
             <span class="md-nav__icon md-icon"></span>
             
   
-    CS 核心
+    共同算法与数据结构基础
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cs-core/01-sequence-interface-array-representation-boundaries/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    序列接口、数组表示与安全边界
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cs-core/02-operation-count-growth-asymptotic-complexity/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    操作计数、增长率与渐近复杂度
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cs-core/03-string-utf8-byte-code-point-boundaries/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    字符串、UTF-8 字节与码点边界
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cs-core/04-two-dimensional-grid-row-major-layout/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    二维网格、行优先布局与坐标边界
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -3079,6 +2950,78 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6_2" id="__nav_2_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法核心
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    算法核心
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
               
                 
   
@@ -3242,6 +3185,14 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -3951,7 +3902,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        本节任务路线
+        改数据，不再改程序
       
     </span>
   </a>
@@ -3962,18 +3913,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：建立受控目录边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#json_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第二步：把 JSON 变成报告器记录
+        开始前
       
     </span>
   </a>
@@ -3984,7 +3924,29 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：生成独立输出
+        相对路径从当前工作目录出发
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Path 把路径当成路径处理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        文件先读成文本，JSON 再变成对象
       
     </span>
   </a>
@@ -3995,7 +3957,29 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：故意制造两种读取失败
+        先在一段短文本里看解析
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        跑起报告器 v0.5
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        只改 JSON，再跑一次
       
     </span>
   </a>
@@ -4006,7 +3990,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：迁移验收
+        只扫描任务允许的目录
       
     </span>
   </a>
@@ -4017,7 +4001,18 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        同样是“读不了”，失败位置并不一样
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v05_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        报告器 v0.5
       
     </span>
   </a>
@@ -4028,7 +4023,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        前置知识
+        再深入一点：读写边界比一行代码重要
       
     </span>
   </a>
@@ -4039,7 +4034,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        学习目标
+        被问到“怎样保证文件处理安全”时
       
     </span>
   </a>
@@ -4050,7 +4045,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        学习顺序
+        完成检查
       
     </span>
   </a>
@@ -4061,533 +4056,6 @@
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        数据怎样流过程序
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        当前工作目录和路径
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="当前工作目录和路径">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        当前工作目录
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        相对路径和绝对路径
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        项目根目录
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#path" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        使用 Path 表示路径
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="使用 Path 表示路径">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        判断路径状态
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#utf-8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        读取和写入 UTF-8 文本
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="读取和写入 UTF-8 文本">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        读取文本
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        写入文本
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#json_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        JSON 是文本格式
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#json-python" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        从 JSON 文本得到 Python 数据
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="从 JSON 文本得到 Python 数据">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#jsonloads" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        使用 json.loads 解析字符串
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#jsondumps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        使用 json.dumps 生成字符串
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        扫描受限目录
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="扫描受限目录">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#glob" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        glob 扫描当前目录层级
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rglob" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        rglob 递归扫描
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        四个不同的失败位置
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#json_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        可复现实例：从 JSON 生成学习报告
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="可复现实例：从 JSON 生成学习报告">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        目录结构
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#json_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        JSON 输入
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完整程序
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        运行命令
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        预期终端输出
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        验证场景
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai-json" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI 协作任务：把内存数据迁移到 JSON
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AI 协作任务：把内存数据迁移到 JSON">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        可复用任务描述
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        人工审阅要求
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        核心手动检查点
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="核心手动检查点">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点 1：路径从哪里开始
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-json" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点 2：追踪 JSON 类型
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点 3：判断失败层次
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点 4：验证输入只读
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点 5：限制递归扫描
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        微练习
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="微练习">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        练习 1：判断相对路径
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2utf-8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        练习 2：UTF-8 文本读写
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3json" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        练习 3：JSON 类型映射
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        练习 4：修改数据重新生成报告
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-json" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        练习 5：扫描 JSON 文件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        练习 6：定位两种失败
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常见错误与排查
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完成标准
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         来源与版本
       
     </span>
@@ -4596,7 +4064,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_32" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -4626,856 +4094,341 @@
   
 
 
-<h1 id="json">文件、路径、JSON 和简单目录操作<a class="headerlink" href="#json" title="Permanent link">&para;</a></h1>
 <div class="be-tutor-mount" data-tutor-lesson="python-basics-05" aria-hidden="true"></div>
 
-<p>本节让 <code>study_records.py</code> 从受控的 <code>data/study_records.json</code> 读取记录，并只把报告写到 <code>output/</code>。先完成一次安全读写闭环；下方完整路径、编码和 JSON 说明作为操作时的参考。</p>
-<h2 id="_1">本节任务路线<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="be-task-route" role="list" aria-label="本课五步任务">
-  <span role="listitem">1 确认路径</span><span role="listitem">2 读取 JSON</span><span role="listitem">3 写出报告</span><span role="listitem">4 定位坏数据</span><span role="listitem">5 迁移验收</span>
+<section class="be-page-hero be-lesson-hero" data-context-type="overview" data-learning-context="overview-file-flow" id="overview-file-flow">
+<p><span class="be-page-eyebrow">Python 起步 · 第五课 · 学习进度报告器 v0.5</span></p>
+<h1 id="json">文件、路径、JSON 和简单目录操作<a class="headerlink" href="#json" title="Permanent link">&para;</a></h1>
+<h2 id="_1">改数据，不再改程序<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>上一版把三条记录直接写在 <code>.py</code> 文件里。这一版把它们移到 <code>data/study_records.json</code>，程序读取后生成：</p>
+<div class="highlight"><pre><span></span><code>发现 JSON：study_records.json
+学习进度报告
+总计划：10 小时
+总完成：8 小时
+课程状态：
+- Python 起步: 60%，还需 2 小时
+- 复盘练习: 100%，已完成
+- Git 复习: 100%，已完成
+唯一标签：Python, 复盘, 工具, 起步
+报告文件：output/study_report.txt
+</code></pre></div>
+<p>只改 JSON 中的完成小时，再运行程序，报告会跟着变化；Python 代码不需要动。输入放在 <code>data/</code>，生成结果放在 <code>output/</code>，两边不会互相覆盖。</p>
+<div class="be-page-actions">
+<p><a class="md-button md-button--primary" href="#concept-cwd-path">先看文件怎样进入程序</a>
+<a class="md-button" href="../../../../exercises/python-basics/study-progress-reporter/">查看阶段作品</a></p>
+</div>
+</section>
+<div class="be-lesson-overview">
+  <div><span>课程位置</span><strong>Python 起步 · 5 / 7</strong></div>
+  <div><span>使用环境</span><strong>Python 3.11+，pathlib 与 json</strong></div>
+  <div><span>完成后留下</span><strong>JSON 输入、文本报告与失败记录</strong></div>
 </div>
 
-<section class="be-task-step" data-step-id="step-1" id="step-1">
-<h2 id="_2">第一步：建立受控目录边界<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p><strong>任务：</strong> 在报告器根目录创建 <code>data/</code> 和 <code>output/</code>，在代码中用 <code>Path("data") / "study_records.json"</code> 组成输入路径，并打印 <code>Path.cwd()</code> 与 <code>input_path.exists()</code>。</p>
-<p><strong>即时反馈：</strong> 从示例根目录运行时，当前目录与输入文件状态都清楚；不扫描个人目录，也不写入输入目录。</p>
-</section>
-<section class="be-task-step" data-step-id="step-2" id="step-2">
-<h2 id="json_1">第二步：把 JSON 变成报告器记录<a class="headerlink" href="#json_1" title="Permanent link">&para;</a></h2>
-<p><strong>任务：</strong> 创建含三条记录的 <code>data/study_records.json</code>，使用 UTF-8、<code>read_text()</code> 和 <code>json.loads()</code> 读取 <code>records</code>，调用上一节逻辑输出每条状态。</p>
-<p><strong>主动修改：</strong> 只改 JSON 中一条完成时间，不改 Python 文件，确认报告随数据变化。</p>
-<details class="tip">
-<summary>提示</summary>
-<p>JSON 使用双引号、<code>true/false/null</code>；解析后才是 Python 的字典、列表、<code>True/False/None</code>。</p>
-</details>
-</section>
-<section class="be-task-step" data-step-id="step-3" id="step-3">
-<h2 id="_3">第三步：生成独立输出<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p><strong>任务：</strong> 使用 <code>output_dir.mkdir(parents=True, exist_ok=True)</code> 创建输出目录，将报告写到 <code>output/study_report.txt</code>，明确指定 <code>encoding="utf-8"</code>。</p>
-<p><strong>成功标准：</strong> 输入 JSON 在运行前后字节不变，输出文件包含中文和三条记录摘要。</p>
-</section>
-<section class="be-task-step" data-step-id="step-4" id="step-4">
-<h2 id="_4">第四步：故意制造两种读取失败<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p><strong>任务：</strong> 先把输入文件名拼错，记录 <code>FileNotFoundError</code>；恢复路径后在 JSON 最后多写一个逗号，记录 <code>JSONDecodeError</code> 的行列。</p>
-<p><strong>错误证据：</strong> 分别指出失败发生在路径定位还是 JSON 解析，不要用空 <code>except</code> 隐藏 traceback。</p>
-</section>
-<section class="be-task-step" data-step-id="step-5" id="step-5">
-<h2 id="_5">第五步：迁移验收<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p><strong>任务：</strong> 在 <code>data/</code> 加入第二个 JSON 文件，用 <code>glob("*.json")</code> 输出排序后的文件名；保留只读取预期记录文件的主流程。</p>
-<p><strong>完成证据：</strong> 验证中文、空记录、多个 JSON、坏 JSON 和输入只读；说明为什么本节不使用无范围的 <code>rglob()</code>。</p>
-<p><strong>下一步：</strong> 进入<a href="../06-modules-imports-venv/">模块、导入和虚拟环境</a>，按职责拆分已能工作的报告器。</p>
-</section>
-<p>上一节的学习进度报告器已经能处理多条记录，但数据仍然写死在 Python 代码中。每次调整课程时间或标签都要修改程序，这会把“数据变化”和“程序变化”混在一起。</p>
-<p>本节把课程记录移到 JSON 文件：程序先定位文件，再读取 UTF-8 文本，把 JSON 文本解析成 Python 数据结构，最后生成一份单独的文本报告。你将第一次完成“输入文件只读、处理逻辑独立、结果写到输出目录”的小型数据处理闭环。</p>
-<h2 id="_6">课程信息<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_2">开始前<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
-<li>课程类型：编程课。</li>
-<li>所属主线：编程语言。</li>
-<li>课程层级：Python 起步必修。</li>
-<li>运行环境：Python 3.11 或更高版本，仅使用标准库。</li>
-<li>阶段作品：让学习进度报告器读取外部 JSON，并生成文本报告。</li>
-<li>事实核查：2026-07-14，依据 Python 3 官方教程、<code>pathlib</code> 和 <code>json</code> 文档。</li>
+<li>已完成<a href="../04-strings-collections/">字符串、列表、字典、集合和元组</a>，能解释列表中的字典是什么形状。</li>
+<li>能在终端用 <code>pwd</code>/<code>Get-Location</code> 和 <code>ls</code>/<code>Get-ChildItem</code> 确认当前位置与文件。</li>
+<li>继续在 <code>practice/python-basics/</code> 中演进报告器，新建 <code>data/</code> 和 <code>output/</code> 两个子目录。</li>
+<li>页面上的 JSON 小例子可以直接运行；真正的文件读写必须在本地终端完成。</li>
 </ul>
-<h2 id="_7">前置知识<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p>开始前应完成：</p>
-<ul>
-<li><a href="../03-functions-parameters-returns-scope/">函数、参数、返回值和作用域</a>。</li>
-<li><a href="../04-strings-collections/">字符串、列表、字典、集合和元组</a>。</li>
-<li>能使用字典表示一条记录，使用列表保存多条记录。</li>
-<li>能在终端进入指定目录并运行 Python 文件。</li>
-<li>能根据 traceback 找到错误类型和出错行。</li>
-</ul>
-<p>开始前先确认：你能解释为什么课程记录属于数据，而汇总进度、生成状态和输出报告属于程序逻辑。</p>
-<h2 id="_8">学习目标<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<p>完成本节后，你应该能做到：</p>
-<ul>
-<li>区分当前工作目录、相对路径、绝对路径和项目根目录。</li>
-<li>使用 <code>pathlib.Path</code> 组合路径，并判断路径代表文件还是目录。</li>
-<li>明确指定 UTF-8 编码读取和写入文本。</li>
-<li>说明 JSON 文本与 Python 数据结构之间的对应关系。</li>
-<li>使用 <code>json.loads()</code> 解析文本，使用 <code>json.dumps()</code> 生成 JSON 文本。</li>
-<li>使用 <code>glob()</code> 扫描当前目录中的指定类型文件。</li>
-<li>说明 <code>rglob()</code> 会递归进入子目录，并在使用前限制扫描根目录和文件模式。</li>
-<li>区分文件定位、文本读取、JSON 解析和字段访问四个失败位置。</li>
-<li>审阅 AI 生成的文件代码，检查路径假设、编码、扫描范围和覆盖输入的风险。</li>
-</ul>
-<h2 id="_9">学习顺序<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<ol>
-<li>先理解程序从哪个目录解释相对路径。</li>
-<li>使用 <code>Path</code> 表示和组合路径。</li>
-<li>读取与写入 UTF-8 文本。</li>
-<li>理解 JSON 语法和类型映射。</li>
-<li>把 JSON 文本解析为列表和字典。</li>
-<li>使用 <code>glob()</code> 扫描受限目录。</li>
-<li>完成从 JSON 输入到文本报告的阶段作品。</li>
-<li>制造缺失文件、坏 JSON 和缺少字段三类失败，判断故障层次。</li>
-</ol>
-<h2 id="_10">数据怎样流过程序<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<p>下面的图回答一个问题：磁盘上的 JSON 文件怎样变成最终报告？</p>
-<pre class="mermaid"><code>flowchart LR
-    A["data 数据目录"] --&gt; B["Path 定位输入文件"]
-    B --&gt; C["按 UTF-8 读取文本"]
-    C --&gt; D["json.loads 解析"]
-    D --&gt; E["Python 列表与字典"]
-    E --&gt; F["汇总函数"]
-    F --&gt; G["报告字符串"]
-    G --&gt; H["output 输出目录"]</code></pre>
-<p>每条箭头都是一个可以单独验证的边界。文件不存在时，程序还没有读到文本；JSON 语法错误时，文本已经读到，但还没有得到 Python 数据；字段缺失时，解析已经成功，问题出在数据结构不符合程序约定。</p>
-<h2 id="_11">当前工作目录和路径<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
-<h3 id="_12">当前工作目录<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<p>当前工作目录是你执行命令时所在的目录。相对路径从这里开始解释，而不是自动从 <code>.py</code> 文件所在位置开始。</p>
-<p>假设目录结构是：</p>
-<div class="highlight"><pre><span></span><code>python-learning/
+<section data-context-type="concept" data-learning-context="concept-cwd-path" id="concept-cwd-path">
+<h2 id="_3">相对路径从当前工作目录出发<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>先建立下面的目录：</p>
+<div class="highlight"><pre><span></span><code>practice/python-basics/
 ├── data/
 │   └── study_records.json
-└── study_records_from_json.py
+├── output/
+└── learning_profile.py
 </code></pre></div>
-<p>先进入 <code>python-learning/</code>：</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>python-learning
-python3<span class="w"> </span>study_records_from_json.py
-</code></pre></div>
-<p>此时 <code>data/study_records.json</code> 会从 <code>python-learning/</code> 下查找。如果你站在它的父目录运行：</p>
-<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>python-learning/study_records_from_json.py
-</code></pre></div>
-<p>程序的当前工作目录仍然是父目录，<code>data/study_records.json</code> 很可能找不到。本课程统一要求从示例根目录运行；使用 <code>__file__</code> 定位脚本目录会在模块与项目结构课程中学习。</p>
-<p>用 Python 观察当前工作目录：</p>
+<p>程序中写：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">())</span>
+<span class="n">input_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;study_records.json&quot;</span>
 </code></pre></div>
-<p>不要把输出中的个人绝对路径写进公开代码或文档。学习记录可以写“当前目录是示例根目录”，不需要公开用户名和磁盘位置。</p>
-<h3 id="_13">相对路径和绝对路径<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-
-<span class="n">relative_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;study_records.json&quot;</span>
-<span class="n">absolute_path</span> <span class="o">=</span> <span class="n">relative_path</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">relative_path</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">relative_path</span><span class="o">.</span><span class="n">is_absolute</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">absolute_path</span><span class="o">.</span><span class="n">is_absolute</span><span class="p">())</span>
+<p><code>Path("data")</code> 是相对路径。它从<strong>运行命令时所在的当前工作目录</strong>开始解释，不会自动寻找 <code>.py</code> 文件所在目录。</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;当前目录：&quot;</span><span class="p">,</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;输入路径：&quot;</span><span class="p">,</span> <span class="n">input_path</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;是否存在：&quot;</span><span class="p">,</span> <span class="n">input_path</span><span class="o">.</span><span class="n">exists</span><span class="p">())</span>
 </code></pre></div>
-<p>相对路径便于在不同计算机上复现；绝对路径说明文件在当前机器上的完整位置。不要把某台机器的绝对路径硬编码为公开示例。</p>
-<h3 id="_14">项目根目录<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<p>项目根目录不是 Python 的特殊语法，而是团队约定的执行起点。它通常包含入口程序、数据目录、配置或说明文件。</p>
-<p>本节约定：</p>
-<div class="highlight"><pre><span></span><code>python-learning/                 # 示例根目录
-├── data/                        # 只读输入
-├── output/                      # 程序生成的输出
-└── study_records_from_json.py   # 程序入口
-</code></pre></div>
-<p>所有命令都从 <code>python-learning/</code> 执行。明确执行起点，可以避免“代码一样，换个目录就找不到文件”的混乱。</p>
-<h2 id="path">使用 Path 表示路径<a class="headerlink" href="#path" title="Permanent link">&para;</a></h2>
-<p><code>Path</code> 会根据当前操作系统使用合适的路径规则。组合子路径时使用 <code>/</code>，不需要手动拼接 <code>/</code> 或 <code>\\</code>。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-
-<span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<p>如果你先进入 <code>practice/python-basics/</code> 再运行 <code>python learning_profile.py</code>，这条路径会指向预期文件。若站在上一级目录运行同一个脚本，相对路径的起点变了，文件就可能找不到。</p>
+<p>这里先统一从练习目录运行。用 <code>__file__</code> 固定项目根目录会在下一课拆分模块时加入，现在先把“命令站在哪里”这件事看清楚。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-path" id="example-path">
+<h2 id="path"><code>Path</code> 把路径当成路径处理<a class="headerlink" href="#path" title="Permanent link">&para;</a></h2>
+<p>不要手工拼接 <code>/</code> 或 <code>\\</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
 <span class="n">input_path</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="s2">&quot;study_records.json&quot;</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">input_path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">input_path</span><span class="o">.</span><span class="n">suffix</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">input_path</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">input_path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>       <span class="c1"># study_records.json</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">input_path</span><span class="o">.</span><span class="n">suffix</span><span class="p">)</span>     <span class="c1"># .json</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">input_path</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>     <span class="c1"># data</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">input_path</span><span class="o">.</span><span class="n">is_file</span><span class="p">())</span>
 </code></pre></div>
-<p>预期含义：</p>
+<p><code>Path</code> 会使用当前操作系统合适的路径规则。常用检查各自回答不同问题：</p>
 <table>
 <thead>
 <tr>
-<th>表达式</th>
-<th>结果</th>
-<th>含义</th>
+<th>写法</th>
+<th>回答的问题</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>input_path.name</code></td>
-<td><code>study_records.json</code></td>
-<td>最后一段文件名</td>
+<td><code>path.exists()</code></td>
+<td>这个路径现在存在吗</td>
 </tr>
 <tr>
-<td><code>input_path.suffix</code></td>
-<td><code>.json</code></td>
-<td>文件扩展名</td>
+<td><code>path.is_file()</code></td>
+<td>它存在，并且是普通文件吗</td>
 </tr>
 <tr>
-<td><code>input_path.parent</code></td>
-<td><code>data</code></td>
-<td>父路径</td>
+<td><code>path.is_dir()</code></td>
+<td>它存在，并且是目录吗</td>
+</tr>
+<tr>
+<td><code>path.resolve()</code></td>
+<td>以当前目录为起点，它的绝对位置是什么</td>
 </tr>
 </tbody>
 </table>
-<h3 id="_15">判断路径状态<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">input_path</span><span class="o">.</span><span class="n">exists</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">input_path</span><span class="o">.</span><span class="n">is_file</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data_dir</span><span class="o">.</span><span class="n">is_dir</span><span class="p">())</span>
-</code></pre></div>
-<ul>
-<li><code>exists()</code> 判断路径是否存在。</li>
-<li><code>is_file()</code> 判断现有路径是否是普通文件。</li>
-<li><code>is_dir()</code> 判断现有路径是否是目录。</li>
-</ul>
-<p>这些检查可以帮助定位问题，但不能替代后续异常处理。路径可能在检查后发生变化，权限也可能阻止读取；本节先观察失败，后续再设计恢复策略。</p>
-<h2 id="utf-8">读取和写入 UTF-8 文本<a class="headerlink" href="#utf-8" title="Permanent link">&para;</a></h2>
-<h3 id="_16">读取文本<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<p>这些检查适合排错，但不是读取成功的保证。真正读取时仍可能遇到权限、编码或文件变化；后面的异常课程会设计恢复方式。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-text-json" id="concept-text-json">
+<h2 id="json_1">文件先读成文本，JSON 再变成对象<a class="headerlink" href="#json_1" title="Permanent link">&para;</a></h2>
+<p>完整数据流分成几步：</p>
+<div aria-label="程序用 Path 定位 data 下的 JSON 文件，按 UTF-8 读取成字符串，再用 json.loads 解析为列表和字典，交给汇总函数生成报告字符串，最后写到 output 目录。" class="be-file-data-flow" role="img">
+<div><span>磁盘路径</span><strong>data/study_records.json</strong></div>
+  <b aria-hidden="true">→</b>
+  <div><span>读取 UTF-8</span><strong>str 文本</strong></div>
+  <b aria-hidden="true">→</b>
+  <div><span>解析 JSON</span><strong>dict + list</strong></div>
+  <b aria-hidden="true">→</b>
+  <div><span>汇总与格式化</span><strong>报告字符串</strong></div>
+  <b aria-hidden="true">→</b>
+  <div><span>写入 UTF-8</span><strong>output/study_report.txt</strong></div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
-<span class="n">input_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;study_records.json&quot;</span>
 <span class="n">text</span> <span class="o">=</span> <span class="n">input_path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+<span class="n">document</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">document</span><span class="p">[</span><span class="s2">&quot;records&quot;</span><span class="p">]</span>
 </code></pre></div>
-<p><code>read_text()</code> 返回字符串。明确写出 <code>encoding="utf-8"</code>，可以减少不同操作系统默认编码造成的差异。</p>
-<p>如果文件不存在，读取时会出现 <code>FileNotFoundError</code>。如果路径实际是目录，可能出现 <code>IsADirectoryError</code>。如果字节不能按指定编码解码，可能出现 <code>UnicodeDecodeError</code>。</p>
-<h3 id="_17">写入文本<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<p>输出应写到专用目录，不覆盖输入文件：</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-
-<span class="n">output_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;output&quot;</span><span class="p">)</span>
-<span class="n">output_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">report_path</span> <span class="o">=</span> <span class="n">output_dir</span> <span class="o">/</span> <span class="s2">&quot;study_report.txt&quot;</span>
-<span class="n">report_path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="s2">&quot;学习进度报告</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
-</code></pre></div>
-<ul>
-<li><code>parents=True</code> 允许在需要时一并创建缺少的父目录。</li>
-<li><code>exist_ok=True</code> 表示目录已经存在时不把它当成错误。</li>
-<li><code>write_text()</code> 默认覆盖同名文件，所以路径必须明确指向允许生成的输出文件。</li>
-</ul>
-<p>本节的安全边界是：读取 <code>data/</code>，只向 <code>output/</code> 写入生成结果。不要让 AI 把输入路径和输出路径设成同一个文件。</p>
-<h2 id="json_2">JSON 是文本格式<a class="headerlink" href="#json_2" title="Permanent link">&para;</a></h2>
-<p>JSON 是一种文本数据格式，不是 Python 代码。下面是一份合法 JSON：</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;records&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;course&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Python 起步&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;target_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;finished_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>JSON 与 Python 写法相似，但不能混用：</p>
+<p><code>read_text()</code> 只负责把文件字节按 UTF-8 解码成字符串；<code>json.loads()</code> 才负责理解 JSON 语法并建立 Python 对象。两步分开后，错误发生在哪一层会更容易判断。</p>
+<p>JSON 与 Python 看起来相近，但不是同一种语言：</p>
 <table>
 <thead>
 <tr>
-<th>JSON</th>
+<th>JSON 写法</th>
 <th>解析后的 Python</th>
-<th>注意</th>
+<th>容易写错的地方</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>对象 <code>{}</code></td>
-<td>字典 <code>dict</code></td>
-<td>JSON 对象的键是字符串</td>
+<td><code>dict</code></td>
+<td>键和字符串必须用双引号</td>
 </tr>
 <tr>
 <td>数组 <code>[]</code></td>
-<td>列表 <code>list</code></td>
-<td>保留元素顺序</td>
-</tr>
-<tr>
-<td>字符串</td>
-<td><code>str</code></td>
-<td>JSON 字符串和键使用双引号</td>
-</tr>
-<tr>
-<td>整数</td>
-<td><code>int</code></td>
-<td>例如 <code>10</code></td>
-</tr>
-<tr>
-<td>小数</td>
-<td><code>float</code></td>
-<td>例如 <code>8.5</code></td>
+<td><code>list</code></td>
+<td>末项后不能保留逗号</td>
 </tr>
 <tr>
 <td><code>true</code> / <code>false</code></td>
 <td><code>True</code> / <code>False</code></td>
-<td>大小写不同</td>
+<td>JSON 使用小写</td>
 </tr>
 <tr>
 <td><code>null</code></td>
 <td><code>None</code></td>
-<td>名称不同</td>
+<td>JSON 不写 <code>None</code></td>
 </tr>
 </tbody>
 </table>
-<p>常见的无效 JSON：</p>
-<div class="highlight"><pre><span></span><code>{&#39;course&#39;: &#39;Python&#39;}       # 使用了单引号
-{&quot;course&quot;: &quot;Python&quot;,}     # 最后多了逗号
-{&quot;active&quot;: True}          # 使用了 Python 的 True
+<p>标准 JSON 不支持注释。需要说明字段时，把说明写在课程文档，或使用含义清楚的数据字段。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-json-micro" id="example-json-micro">
+<h2 id="_4">先在一段短文本里看解析<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>下面的程序不读文件，只把一段固定 JSON 文本转成 Python 字典，再重新生成 JSON 文本：</p>
+<div class="highlight"><pre><span></span><code>
 </code></pre></div>
-<p>标准 JSON 不支持注释。需要说明字段时，把说明写进课程文档，或者增加含义明确的数据字段。</p>
-<h2 id="json-python">从 JSON 文本得到 Python 数据<a class="headerlink" href="#json-python" title="Permanent link">&para;</a></h2>
-<h3 id="jsonloads">使用 json.loads 解析字符串<a class="headerlink" href="#jsonloads" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-
-<span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;{&quot;course&quot;: &quot;Python&quot;, &quot;hours&quot;: 3}&#39;</span>
-<span class="n">record</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">record</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">&quot;course&quot;</span><span class="p">])</span>
+<div class="be-python-runner" data-python-runner="data-python-runner" data-python-source="../../../../examples/python-basics/json_text_micro.py">
+<p class="be-python-runner__fallback">页面运行器正在准备。若它没有出现，请把上面的代码复制到本地文件运行。</p>
+</div>
+<p><code>json.loads(text)</code> 中的 <code>s</code> 可以先记成 string：输入是一段字符串。<code>json.dumps(record)</code> 同样返回字符串，并不会自动写文件。</p>
+<p><code>ensure_ascii=False</code> 让中文直接显示，<code>indent=2</code> 让嵌套结构更容易阅读。它们改变的是输出形式，不改变字典里的业务含义。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-v05" id="reproduce-v05">
+<h2 id="v05">跑起报告器 v0.5<a class="headerlink" href="#v05" title="Permanent link">&para;</a></h2>
+<p>把下面的 JSON 保存到 <code>data/study_records.json</code>：</p>
+<div class="highlight"><pre><span></span><code>
 </code></pre></div>
-<p><code>loads</code> 中的 <code>s</code> 可以帮助记忆：它接收一个 JSON 字符串。解析成功后，才能使用字典和列表操作读取字段。</p>
-<p>如果文本不是合法 JSON，会出现 <code>json.JSONDecodeError</code>。这和文件不存在不是同一类问题：出现解析错误，通常说明文件已经读取成功，但内容语法不合法。</p>
-<h3 id="jsondumps">使用 json.dumps 生成字符串<a class="headerlink" href="#jsondumps" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-
-<span class="n">summary</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;course_count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="s2">&quot;completed&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="s2">&quot;基础&quot;</span><span class="p">],</span>
-<span class="p">}</span>
-
-<span class="n">text</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">summary</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<p>把程序保存为 <code>learning_profile.py</code>：</p>
+<div class="highlight"><pre><span></span><code>
 </code></pre></div>
-<ul>
-<li><code>ensure_ascii=False</code> 让中文直接显示，而不是转成 Unicode 转义序列。</li>
-<li><code>indent=2</code> 生成便于阅读的缩进。</li>
-<li><code>dumps()</code> 返回字符串，不会自动写入文件。</li>
-</ul>
-<p>如果需要保存，再使用 <code>write_text()</code>：</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-
-<span class="n">output_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;output&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;summary.json&quot;</span>
-<span class="n">output_path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">output_path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">text</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<p>先进入练习目录，再运行：</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows PowerShell</label><label for="__tabbed_1_2">macOS / Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nb">Set-Location</span> <span class="p">.\</span><span class="n">practice</span><span class="p">\</span><span class="n">python-basics</span>
+<span class="p">..\..\.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="p">.\</span><span class="n">learning_profile</span><span class="p">.</span><span class="n">py</span>
+<span class="nb">Get-Content</span> <span class="p">.\</span><span class="n">output</span><span class="p">\</span><span class="n">study_report</span><span class="p">.</span><span class="n">txt</span>
 </code></pre></div>
-<h2 id="_18">扫描受限目录<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
-<h3 id="glob">glob 扫描当前目录层级<a class="headerlink" href="#glob" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-
-<span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>./practice/python-basics
+../../.venv/bin/python<span class="w"> </span>./learning_profile.py
+cat<span class="w"> </span>./output/study_report.txt
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>如果你的虚拟环境不在示例中的相对位置，先用上一阶段学过的命令找到实际解释器，不要照抄一条不属于自己目录的绝对路径。</p>
+<p>运行后检查三件事：终端报告与输出文件一致；中文没有乱码；<code>data/study_records.json</code> 没有被程序改写。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-json" id="modify-json">
+<h2 id="json_2">只改 JSON，再跑一次<a class="headerlink" href="#json_2" title="Permanent link">&para;</a></h2>
+<p>保持 Python 文件不动，完成这些修改：</p>
+<ol>
+<li>把三条记录换成自己的课程、小时和标签。</li>
+<li>只修改一条 <code>finished_hours</code>，确认状态、总完成和输出文件同时变化。</li>
+<li>把 <code>records</code> 暂时改为空列表，确认报告显示 0 小时、暂无课程和无标签。</li>
+<li>恢复数据，再加入中文课程名与重复标签，确认 UTF-8 和去重行为不变。</li>
+</ol>
+<p>接着在 <code>data/</code> 新建 <code>archive.json</code>，内容可以先是 <code>{}</code>。<code>glob("*.json")</code> 应按排序显示两个文件，但主流程仍只读取明确的 <code>study_records.json</code>。扫描到文件不等于所有文件都应该被当成主输入。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-glob" id="concept-glob">
+<h2 id="_5">只扫描任务允许的目录<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.json&quot;</span><span class="p">)):</span>
     <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 </code></pre></div>
-<p><code>glob("*.json")</code> 只匹配 <code>data/</code> 当前层级中的 JSON 路径。使用 <code>sorted()</code> 后，输出顺序稳定，便于测试和比较。</p>
-<h3 id="rglob">rglob 递归扫描<a class="headerlink" href="#rglob" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data_dir</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.json&quot;</span><span class="p">)):</span>
-    <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-</code></pre></div>
-<p><code>rglob()</code> 会进入所有匹配的子目录。它不是“更高级所以总该使用”的版本：扫描范围越大，运行越慢，也越容易读到缓存、生成文件、私人资料或本来不属于任务的目录。</p>
-<p>递归前至少回答：</p>
-<ol>
-<li>扫描根目录是否明确且足够小？</li>
-<li>文件模式是否限定为真正需要的类型？</li>
-<li>是否会进入输出目录、隐藏目录或私人素材目录？</li>
-<li>程序只读取文件，还是会修改扫描到的内容？</li>
-</ol>
-<p>本节完整示例使用 <code>glob("*.json")</code>，不递归扫描。Python 内容分析工具进入正式项目后，再设计排除规则和递归边界。</p>
-<h2 id="_19">四个不同的失败位置<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
+<p><code>glob("*.json")</code> 只查看 <code>data/</code> 当前层的 JSON 路径；<code>sorted()</code> 让显示与测试顺序稳定。</p>
+<p><code>rglob("*.json")</code> 会递归进入子目录。它不是更省事的默认选择：根目录过大时，可能扫到输出、缓存、本地素材或私人文件。本课没有递归需求，所以不用它。</p>
+<p>如果以后确实需要递归，先明确扫描根目录、扩展名、排除目录、是否只读和最大范围。文件操作的第一条安全原则，是让程序碰到的范围与任务一样小。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-file-layers" id="troubleshoot-file-layers">
+<h2 id="_6">同样是“读不了”，失败位置并不一样<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>层次</th>
-<th>操作</th>
-<th>典型错误</th>
-<th>说明</th>
+<th>失败位置</th>
+<th>常见错误</th>
+<th>已经完成到哪一步</th>
+<th>先检查什么</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>路径定位</td>
-<td>找到输入路径</td>
-<td>路径指向错误位置</td>
-<td>常见原因是当前工作目录不对</td>
+<td><code>FileNotFoundError</code></td>
+<td>还没读到文本</td>
+<td>当前目录、实际文件名、完整路径</td>
 </tr>
 <tr>
-<td>文本读取</td>
-<td><code>read_text()</code></td>
-<td><code>FileNotFoundError</code>、<code>UnicodeDecodeError</code></td>
-<td>还没有得到可解析的 JSON 文本</td>
+<td>文件读取</td>
+<td><code>IsADirectoryError</code>、<code>UnicodeDecodeError</code></td>
+<td>找到了路径，但没得到正确字符串</td>
+<td>路径类型、实际编码</td>
 </tr>
 <tr>
 <td>JSON 解析</td>
-<td><code>json.loads()</code></td>
 <td><code>JSONDecodeError</code></td>
-<td>文件已读到，但 JSON 语法错误</td>
+<td>文本已经读到</td>
+<td>报错行列附近的引号、逗号、括号与 true/null</td>
 </tr>
 <tr>
 <td>字段访问</td>
-<td><code>document["records"]</code></td>
-<td><code>KeyError</code></td>
-<td>JSON 合法，但数据结构不符合程序约定</td>
-</tr>
-</tbody>
-</table>
-<p>看到错误时，不要立即让 AI 加一层宽泛的 <code>try/except</code>。先根据 traceback 判断失败发生在哪一步，再决定应该修路径、编码、JSON 语法还是数据字段。</p>
-<h2 id="json_3">可复现实例：从 JSON 生成学习报告<a class="headerlink" href="#json_3" title="Permanent link">&para;</a></h2>
-<h3 id="_20">目录结构<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
-<p>在自己的练习目录中建立：</p>
-<div class="highlight"><pre><span></span><code>python-learning/
-├── data/
-│   └── study_records.json
-└── study_records_from_json.py
-</code></pre></div>
-<p><code>output/</code> 不需要提前创建，程序会在成功处理数据后创建它。</p>
-<h3 id="json_4">JSON 输入<a class="headerlink" href="#json_4" title="Permanent link">&para;</a></h3>
-<p><strong>文件：<code>data/study_records.json</code></strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;records&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;course&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;  Python 起步  &quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;target_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;finished_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;基础&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Python&quot;</span><span class="p">]</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;course&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;工程基础入门&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;target_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;finished_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;基础&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;工具&quot;</span><span class="p">]</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;course&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CS 最小核心&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;target_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;finished_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;CS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;算法&quot;</span><span class="p">]</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="_21">完整程序<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
-<p><strong>文件：<code>study_records_from_json.py</code></strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-
-
-<span class="n">DATA_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
-<span class="n">INPUT_PATH</span> <span class="o">=</span> <span class="n">DATA_DIR</span> <span class="o">/</span> <span class="s2">&quot;study_records.json&quot;</span>
-<span class="n">OUTPUT_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;output&quot;</span><span class="p">)</span>
-<span class="n">OUTPUT_PATH</span> <span class="o">=</span> <span class="n">OUTPUT_DIR</span> <span class="o">/</span> <span class="s2">&quot;study_report.txt&quot;</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">find_json_files</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;返回目录当前层级中排序后的 JSON 文件。&quot;&quot;&quot;</span>
-    <span class="n">json_files</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">directory</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.json&quot;</span><span class="p">)):</span>
-        <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
-            <span class="n">json_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">json_files</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">load_records</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;读取 JSON 文本，并返回 records 列表。&quot;&quot;&quot;</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
-    <span class="n">document</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">document</span><span class="p">[</span><span class="s2">&quot;records&quot;</span><span class="p">]</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">calculate_progress</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;计算单条记录的完成百分比，并限制在 0 到 100。&quot;&quot;&quot;</span>
-    <span class="n">target_hours</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;target_hours&quot;</span><span class="p">]</span>
-    <span class="n">finished_hours</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;finished_hours&quot;</span><span class="p">]</span>
-
-    <span class="k">if</span> <span class="n">target_hours</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mf">0.0</span>
-
-    <span class="n">progress</span> <span class="o">=</span> <span class="n">finished_hours</span> <span class="o">/</span> <span class="n">target_hours</span> <span class="o">*</span> <span class="mi">100</span>
-    <span class="k">if</span> <span class="n">progress</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mf">100.0</span>
-    <span class="k">if</span> <span class="n">progress</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mf">0.0</span>
-    <span class="k">return</span> <span class="n">progress</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">build_status</span><span class="p">(</span><span class="n">target_hours</span><span class="p">,</span> <span class="n">progress</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;根据目标和进度返回学习状态。&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">target_hours</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;目标无效&quot;</span>
-    <span class="k">if</span> <span class="n">progress</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;目标已完成&quot;</span>
-    <span class="k">if</span> <span class="n">progress</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;接近目标&quot;</span>
-    <span class="k">return</span> <span class="s2">&quot;继续推进&quot;</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">normalize_tags</span><span class="p">(</span><span class="n">tags</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;清理标签文本并返回去重集合。&quot;&quot;&quot;</span>
-    <span class="n">unique_tags</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-
-    <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">:</span>
-        <span class="n">clean_tag</span> <span class="o">=</span> <span class="n">tag</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">clean_tag</span><span class="p">:</span>
-            <span class="n">unique_tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">clean_tag</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">unique_tags</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">summarize_records</span><span class="p">(</span><span class="n">records</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;汇总多条学习记录，不修改输入列表和字典。&quot;&quot;&quot;</span>
-    <span class="n">total_target</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="n">total_finished</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="n">completed_courses</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">unique_tags</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-    <span class="n">report_rows</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
-        <span class="n">course_name</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;course&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-        <span class="n">target_hours</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;target_hours&quot;</span><span class="p">]</span>
-        <span class="n">finished_hours</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;finished_hours&quot;</span><span class="p">]</span>
-        <span class="n">progress</span> <span class="o">=</span> <span class="n">calculate_progress</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
-        <span class="n">status</span> <span class="o">=</span> <span class="n">build_status</span><span class="p">(</span><span class="n">target_hours</span><span class="p">,</span> <span class="n">progress</span><span class="p">)</span>
-
-        <span class="n">total_target</span> <span class="o">=</span> <span class="n">total_target</span> <span class="o">+</span> <span class="n">target_hours</span>
-        <span class="n">total_finished</span> <span class="o">=</span> <span class="n">total_finished</span> <span class="o">+</span> <span class="n">finished_hours</span>
-
-        <span class="k">if</span> <span class="n">progress</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
-            <span class="n">completed_courses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">course_name</span><span class="p">)</span>
-
-        <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">normalize_tags</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">&quot;tags&quot;</span><span class="p">]):</span>
-            <span class="n">unique_tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
-
-        <span class="n">report_rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-            <span class="p">{</span>
-                <span class="s2">&quot;course&quot;</span><span class="p">:</span> <span class="n">course_name</span><span class="p">,</span>
-                <span class="s2">&quot;progress&quot;</span><span class="p">:</span> <span class="n">progress</span><span class="p">,</span>
-                <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">status</span><span class="p">,</span>
-            <span class="p">}</span>
-        <span class="p">)</span>
-
-    <span class="n">summary</span> <span class="o">=</span> <span class="p">(</span><span class="n">total_target</span><span class="p">,</span> <span class="n">total_finished</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">completed_courses</span><span class="p">))</span>
-    <span class="n">sorted_tags</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">unique_tags</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">report_rows</span><span class="p">,</span> <span class="n">summary</span><span class="p">,</span> <span class="n">completed_courses</span><span class="p">,</span> <span class="n">sorted_tags</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">build_report</span><span class="p">(</span><span class="n">json_files</span><span class="p">,</span> <span class="n">report_rows</span><span class="p">,</span> <span class="n">summary</span><span class="p">,</span> <span class="n">completed_courses</span><span class="p">,</span> <span class="n">sorted_tags</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;生成可以打印和写入文件的完整报告字符串。&quot;&quot;&quot;</span>
-    <span class="n">total_target</span><span class="p">,</span> <span class="n">total_finished</span><span class="p">,</span> <span class="n">completed_count</span> <span class="o">=</span> <span class="n">summary</span>
-    <span class="n">file_names</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">json_files</span><span class="p">:</span>
-        <span class="n">file_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-
-    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;学习进度报告&quot;</span><span class="p">)</span>
-    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;发现 JSON 文件：</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">json_files</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;数据文件：&quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">file_names</span><span class="p">))</span>
-
-    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">report_rows</span><span class="p">:</span>
-        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;course&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">：</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;progress&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%｜</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="p">)</span>
-
-    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;总计划时间：</span><span class="si">{</span><span class="n">total_target</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> 小时&quot;</span><span class="p">)</span>
-    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;总完成时间：</span><span class="si">{</span><span class="n">total_finished</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> 小时&quot;</span><span class="p">)</span>
-    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;已完成课程数：</span><span class="si">{</span><span class="n">completed_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;已完成课程：&quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">completed_courses</span><span class="p">))</span>
-    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;唯一标签：&quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sorted_tags</span><span class="p">))</span>
-
-    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-    <span class="n">json_files</span> <span class="o">=</span> <span class="n">find_json_files</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">)</span>
-    <span class="n">records</span> <span class="o">=</span> <span class="n">load_records</span><span class="p">(</span><span class="n">INPUT_PATH</span><span class="p">)</span>
-    <span class="n">report_rows</span><span class="p">,</span> <span class="n">summary</span><span class="p">,</span> <span class="n">completed_courses</span><span class="p">,</span> <span class="n">sorted_tags</span> <span class="o">=</span> <span class="n">summarize_records</span><span class="p">(</span>
-        <span class="n">records</span>
-    <span class="p">)</span>
-    <span class="n">report</span> <span class="o">=</span> <span class="n">build_report</span><span class="p">(</span>
-        <span class="n">json_files</span><span class="p">,</span>
-        <span class="n">report_rows</span><span class="p">,</span>
-        <span class="n">summary</span><span class="p">,</span>
-        <span class="n">completed_courses</span><span class="p">,</span>
-        <span class="n">sorted_tags</span><span class="p">,</span>
-    <span class="p">)</span>
-
-    <span class="n">OUTPUT_DIR</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">OUTPUT_PATH</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">report</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;报告已写入：</span><span class="si">{</span><span class="n">OUTPUT_PATH</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-
-<span class="n">main</span><span class="p">()</span>
-</code></pre></div>
-<p>完整示例重复了一部分上一节函数，是为了让当前文件能够独立运行。下一节学习模块和导入后，再把这些职责拆到多个文件中。</p>
-<h3 id="_22">运行命令<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
-<p>从 <code>python-learning/</code> 执行。</p>
-<p>macOS 或 Linux：</p>
-<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>study_records_from_json.py
-</code></pre></div>
-<p>Windows：</p>
-<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="n">study_records_from_json</span><span class="p">.</span><span class="n">py</span>
-</code></pre></div>
-<h3 id="_23">预期终端输出<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>学习进度报告
-发现 JSON 文件：1
-数据文件：study_records.json
-- Python 起步：80.0%｜接近目标
-- 工程基础入门：100.0%｜目标已完成
-- CS 最小核心：25.0%｜继续推进
-总计划时间：30.0 小时
-总完成时间：20.0 小时
-已完成课程数：1
-已完成课程：工程基础入门
-唯一标签：cs, python, 基础, 工具, 算法
-报告已写入：output/study_report.txt
-</code></pre></div>
-<p><code>output/study_report.txt</code> 的内容与上面报告主体相同，但不包含最后一行“报告已写入”。文件以换行结束。</p>
-<h3 id="_24">验证场景<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>场景</th>
-<th>输入变化</th>
-<th>应观察到的结果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>正常数据</td>
-<td>使用完整示例</td>
-<td>读取三条记录，生成终端输出和文本报告</td>
-</tr>
-<tr>
-<td>空记录</td>
-<td>把 <code>records</code> 改成 <code>[]</code></td>
-<td>明细为空，汇总时间和数量均为0</td>
-</tr>
-<tr>
-<td>重复标签</td>
-<td>保留示例中的重复 <code>Python</code></td>
-<td>输出标签只出现一次</td>
-</tr>
-<tr>
-<td>多个 JSON 文件</td>
-<td>在 <code>data/</code> 增加另一个合法 JSON</td>
-<td>扫描数量增加，主输入仍只读取指定文件</td>
-</tr>
-<tr>
-<td>中文内容</td>
-<td>保留中文课程名和标签</td>
-<td>终端与输出文件中的中文可读</td>
-</tr>
-<tr>
-<td>缺失文件</td>
-<td>暂时改名 <code>study_records.json</code></td>
-<td><code>read_text()</code> 处出现 <code>FileNotFoundError</code></td>
-</tr>
-<tr>
-<td>坏 JSON</td>
-<td>删除一个双引号或增加尾随逗号</td>
-<td><code>json.loads()</code> 处出现 <code>JSONDecodeError</code></td>
-</tr>
-<tr>
-<td>缺少必填字段</td>
-<td>删除 <code>records</code> 或记录中的字段</td>
-<td>字段访问处出现对应 <code>KeyError</code></td>
-</tr>
-</tbody>
-</table>
-<p>语法检查：</p>
-<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>py_compile<span class="w"> </span>study_records_from_json.py
-</code></pre></div>
-<p>运行后还要检查：</p>
-<div class="highlight"><pre><span></span><code>data/study_records.json      内容与运行前相同
-output/study_report.txt      已创建，内容与预期一致
-</code></pre></div>
-<h2 id="ai-json">AI 协作任务：把内存数据迁移到 JSON<a class="headerlink" href="#ai-json" title="Permanent link">&para;</a></h2>
-<p>AI 可以帮助生成目录结构、JSON 样例和文件读写代码，但必须给它清楚的读写边界。</p>
-<h3 id="_25">可复用任务描述<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>请把现有 Python 学习进度报告器从硬编码列表改为读取 JSON。
-约束：Python 3.11及以上，仅使用 json 和 pathlib 等标准库；
-从示例根目录运行；输入固定为 data/study_records.json；
-只能读取 data/，只能写入 output/study_report.txt；不得覆盖输入；
-使用 UTF-8；使用 glob(&quot;*.json&quot;)展示数据目录中的 JSON 文件；
-不要使用类、第三方库、try/except、__file__或复杂路径封装；
-请给出目录结构、完整代码、示例 JSON、预期输出和失败检查顺序。
-</code></pre></div>
-<h3 id="_26">人工审阅要求<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
-<ol>
-<li>确认 AI 说明了命令从哪个目录执行。</li>
-<li>确认所有文本读写都显式使用 UTF-8。</li>
-<li>确认输入和输出路径不同，程序不会覆盖原始 JSON。</li>
-<li>确认扫描根目录固定为 <code>data/</code>，模式限定为 <code>*.json</code>。</li>
-<li>确认程序没有因为“方便”递归扫描整个个人目录或仓库。</li>
-<li>确认 JSON 使用双引号、<code>true</code>、<code>false</code> 和 <code>null</code>，没有混入 Python 语法。</li>
-<li>主动把报告输出目录改为 <code>reports/</code>，重新运行并确认输入不变。</li>
-</ol>
-<p>学习记录：</p>
-<div class="highlight"><pre><span></span><code>任务目标与输入输出：
-当前工作目录约定：
-AI 给出的路径和扫描范围：
-我修正的编码或覆盖风险：
-我主动修改的输出位置或字段：
-运行命令和结果：
-输入文件运行前后是否一致：
-一次失败及其所属层次：
-仍未验证的风险：
-</code></pre></div>
-<h2 id="_27">核心手动检查点<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h2>
-<h3 id="1">检查点 1：路径从哪里开始<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
-<p>画出以下命令执行时的当前工作目录，并分别判断 <code>Path("data/study_records.json")</code> 指向哪里：</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>python-learning
-python3<span class="w"> </span>study_records_from_json.py
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>..
-python3<span class="w"> </span>python-learning/study_records_from_json.py
-</code></pre></div>
-<p>不能只回答“第二个会报错”，还要说明相对路径从当前工作目录开始解释。</p>
-<h3 id="2-json">检查点 2：追踪 JSON 类型<a class="headerlink" href="#2-json" title="Permanent link">&para;</a></h3>
-<p>对完整示例手动写出下面表达式的类型和值：</p>
-<div class="highlight"><pre><span></span><code><span class="nb">type</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">document</span><span class="p">[</span><span class="s2">&quot;records&quot;</span><span class="p">])</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">document</span><span class="p">[</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">document</span><span class="p">[</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;tags&quot;</span><span class="p">])</span>
-</code></pre></div>
-<h3 id="3">检查点 3：判断失败层次<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
-<p>为以下现象标记失败层次：路径定位、文本读取、JSON解析或字段访问。</p>
-<ul>
-<li>文件名拼错。</li>
-<li>JSON 最后多了逗号。</li>
-<li>根对象没有 <code>records</code>。</li>
-<li>文件不是 UTF-8，但使用 UTF-8 解码。</li>
-</ul>
-<h3 id="4">检查点 4：验证输入只读<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
-<p>运行程序前后分别读取 <code>data/study_records.json</code>，确认内容没有变化。然后找到代码中唯一写入文件的位置，说明它为什么不会覆盖输入。</p>
-<h3 id="5">检查点 5：限制递归扫描<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
-<p>解释为什么 <code>Path.home().rglob("*.json")</code> 不适合作为本节示例。答案至少应涉及扫描范围、隐私、性能和误读文件中的两项。</p>
-<h2 id="_28">微练习<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h2>
-<h3 id="1_1">练习 1：判断相对路径<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
-<p>给出当前目录和三个相对路径，画出它们最终指向的目录树位置。再用 <code>Path.cwd()</code> 和 <code>resolve()</code>验证判断，学习记录中不要公开个人绝对路径。</p>
-<h3 id="2utf-8">练习 2：UTF-8 文本读写<a class="headerlink" href="#2utf-8" title="Permanent link">&para;</a></h3>
-<p>读取一个包含中文的文本文件，把行数和字符数写入 <code>output/text_summary.txt</code>。验证原文件未变化，输出文件可以正常显示中文。</p>
-<h3 id="3json">练习 3：JSON 类型映射<a class="headerlink" href="#3json" title="Permanent link">&para;</a></h3>
-<p>建立包含字符串、数字、布尔值、<code>null</code>、数组和对象的 JSON。解析后逐项打印 Python 类型，记录 JSON 名称与 Python 类型的对应关系。</p>
-<h3 id="4_1">练习 4：修改数据重新生成报告<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
-<p>只修改 <code>study_records.json</code> 中一条记录的完成时间，不改 Python 文件。重新运行并确认报告变化，解释这如何体现数据与程序逻辑分离。</p>
-<h3 id="5-json">练习 5：扫描 JSON 文件<a class="headerlink" href="#5-json" title="Permanent link">&para;</a></h3>
-<p>在 <code>data/</code> 中增加两个 JSON 文件和一个文本文件。使用 <code>glob("*.json")</code> 输出排序后的文件名，确认文本文件不会进入结果。</p>
-<h3 id="6">练习 6：定位两种失败<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
-<p>先让输入路径指向不存在的文件，记录 <code>FileNotFoundError</code>；修复路径后再制造坏 JSON，记录 <code>JSONDecodeError</code>。比较两次 traceback 的出错函数和失败阶段。</p>
-<h2 id="_29">常见错误与排查<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>现象</th>
-<th>常见原因</th>
-<th>检查方法</th>
-<th>当前课程中的修复</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>FileNotFoundError</code></td>
-<td>当前工作目录或文件名不对</td>
-<td>打印 <code>Path.cwd()</code>，核对目录树和输入路径</td>
-<td>从示例根目录运行，修正相对路径</td>
-</tr>
-<tr>
-<td><code>IsADirectoryError</code></td>
-<td>把目录当文件读取</td>
-<td>使用 <code>is_file()</code> 和 <code>is_dir()</code> 判断</td>
-<td>指向具体文件</td>
-</tr>
-<tr>
-<td><code>UnicodeDecodeError</code></td>
-<td>文件编码与读取编码不一致</td>
-<td>核对文件实际编码</td>
-<td>将练习数据保存为UTF-8，并显式指定编码</td>
-</tr>
-<tr>
-<td><code>JSONDecodeError</code></td>
-<td>单引号、尾随逗号或括号不匹配</td>
-<td>查看错误行列，使用最小 JSON 复现</td>
-<td>修正 JSON 语法</td>
-</tr>
-<tr>
 <td><code>KeyError: 'records'</code></td>
-<td>JSON 根对象缺少约定字段</td>
-<td>打印并检查根对象的键</td>
-<td>补齐数据结构，不要静默忽略必填字段</td>
+<td>JSON 已经成功解析</td>
+<td>根结构和必填字段</td>
 </tr>
 <tr>
-<td>输出中文变成转义序列</td>
-<td><code>json.dumps()</code> 使用默认设置</td>
-<td>检查序列化参数</td>
-<td>使用 <code>ensure_ascii=False</code></td>
-</tr>
-<tr>
-<td>在父目录运行后找不到 <code>data/</code></td>
-<td>相对路径按当前工作目录解释</td>
-<td>比较命令位置和 <code>Path.cwd()</code></td>
-<td>进入示例根目录后运行</td>
-</tr>
-<tr>
-<td>输入文件被覆盖</td>
-<td>输入路径和输出路径相同</td>
-<td>对比两个常量和运行前后内容</td>
-<td>输出限定到 <code>output/</code></td>
-</tr>
-<tr>
-<td>扫描到不相关文件</td>
-<td>根目录过大或使用递归模式</td>
-<td>打印扫描根目录和匹配模式</td>
-<td>使用明确的 <code>data/</code> 和 <code>*.json</code></td>
+<td>输出写入</td>
+<td><code>PermissionError</code>、父目录不存在</td>
+<td>报告可能已经生成</td>
+<td>输出目录、权限和写入路径</td>
 </tr>
 </tbody>
 </table>
-<p>本节不使用 <code>try/except</code> 隐藏这些错误。先读懂 traceback 并修正原因；异常捕获、错误消息和恢复策略会在后续课程中系统学习。</p>
-<h2 id="_30">完成标准<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h2>
-<p>完成本节需要同时满足：</p>
-<ul>
-<li>能解释当前工作目录、相对路径、绝对路径和示例根目录的区别。</li>
-<li>能使用 <code>Path</code> 组合路径，并使用 <code>exists()</code>、<code>is_file()</code> 和 <code>is_dir()</code> 检查状态。</li>
-<li>能明确使用 UTF-8 读取和写入文本。</li>
-<li>能说出 JSON 与 Python 常用类型的对应关系。</li>
-<li>能使用 <code>json.loads()</code> 解析文本，使用 <code>json.dumps()</code> 生成可读中文 JSON。</li>
-<li>能使用 <code>glob("*.json")</code> 获得排序后的文件列表。</li>
-<li>能说明何时才应该使用 <code>rglob()</code>，以及递归前需要限制什么。</li>
-<li>能运行完整示例，从 JSON 读取三条记录并生成文本报告。</li>
-<li>能验证空记录、重复标签、多个 JSON 文件和中文内容。</li>
-<li>能制造并区分 <code>FileNotFoundError</code>、<code>JSONDecodeError</code> 和 <code>KeyError</code>。</li>
-<li>能证明输入 JSON 在程序运行前后没有变化。</li>
-<li>能审阅一次 AI 文件重构，修正至少一个路径、编码、扫描或覆盖风险。</li>
-<li>能主动修改一个输出路径或报告字段，并重新运行验证。</li>
-</ul>
-<h2 id="_31">来源与版本<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h2>
+<p>请亲手复现两次：先把输入文件名写错，读完 <code>FileNotFoundError</code> 中的路径；恢复后在 JSON 最后一项后多写一个逗号，读 <code>JSONDecodeError</code> 的行号与列号。</p>
+<p>本课先保留完整 traceback，不加宽泛 <code>except Exception:</code>。下一阶段会学习怎样只处理预期错误，同时让真正的编程缺陷继续暴露。</p>
+</section>
+<section data-context-type="project" data-learning-context="project-v05" id="project-v05">
+<h2 id="v05_1">报告器 v0.5<a class="headerlink" href="#v05_1" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>来源</th>
-<th>用于核查</th>
-<th>版本或日期</th>
-<th>状态</th>
+<th>上一版</th>
+<th>这节课增加</th>
+<th>涉及文件</th>
+<th>需要保存</th>
+<th>下一版</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files">Python 官方教程：Reading and Writing Files</a></td>
-<td>文本文件读取、写入和编码</td>
-<td>Python 3 文档，2026-07-14核查</td>
-<td>已验证</td>
-</tr>
-<tr>
-<td><a href="https://docs.python.org/3/library/pathlib.html">Python 标准库：pathlib</a></td>
-<td>路径组合、查询、扫描、目录和文本操作</td>
-<td>Python 3 文档，2026-07-14核查</td>
-<td>已验证</td>
-</tr>
-<tr>
-<td><a href="https://docs.python.org/3/library/json.html">Python 标准库：json</a></td>
-<td>JSON解析、序列化、类型映射和错误</td>
-<td>Python 3 文档，2026-07-14核查</td>
-<td>已验证</td>
+<td>v0.4：多条记录写在程序里</td>
+<td>JSON 输入、受控路径、UTF-8 文本输出和目录扫描</td>
+<td><code>learning_profile.py</code>、<code>data/study_records.json</code>、<code>output/study_report.txt</code></td>
+<td>正常报告、输入只读对比、缺失文件与坏 JSON traceback</td>
+<td>按职责拆分模块</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_32">下一步<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h2>
-<p>下一步进入<a href="../06-modules-imports-venv/">模块、导入和虚拟环境</a>。学习进度报告器会把当前单文件中的读取、汇总和报告职责拆分到多个模块，并建立可重复的运行环境；异常处理和自动化测试仍在之后单独学习。</p>
+<p>提交时通常保留输入样例和程序；生成的报告是否入库取决于项目约定。本练习可以先保留一份结果作为学习记录，同时在日志中说明它由哪个输入生成：</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>practice/python-basics/learning_profile.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>practice/python-basics/data/study_records.json<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>practice/python-basics/output/study_report.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>notes/learning-log.md
+git<span class="w"> </span>diff<span class="w"> </span>--cached
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;load study records from json&quot;</span>
+git<span class="w"> </span>status<span class="w"> </span>--short
+</code></pre></div>
+<p>不要提交包含个人隐私、访问令牌或真实企业数据的 JSON。公开练习只使用自己可以公开的教学数据。</p>
+</section>
+<section data-context-type="deepen" data-learning-context="deepen-file-boundary" id="deepen-file-boundary">
+<h2 id="_7">再深入一点：读写边界比一行代码重要<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p><code>read_text()</code> 和 <code>write_text()</code> 很短，但程序是否可靠取决于几个明确约定：从哪里运行、允许读哪个目录、允许写哪个目录、采用什么编码、输入是什么结构、失败时保留什么信息。</p>
+<p>本课坚持三条边界：</p>
+<ul>
+<li><code>data/</code> 是输入，程序不覆盖它。</li>
+<li><code>output/</code> 是生成结果，写入前明确创建目录。</li>
+<li>主流程只读取指定文件，目录扫描只用于观察，不把任意 JSON 自动当成可信输入。</li>
+</ul>
+<p>以后换成数据库、HTTP 接口或对象存储时，这种“定位—读取—解析—校验—处理—输出”的分层仍然存在。</p>
+</section>
+<section data-context-type="career" data-learning-context="career-file-story" id="career-file-story">
+<h2 id="_8">被问到“怎样保证文件处理安全”时<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>可以说明你把输入和输出目录分开，路径使用 <code>Path</code> 组合并从约定工作目录运行，读写明确使用 UTF-8；正常流程只读取指定记录文件，扫描范围限制在 <code>data/*.json</code>；验证时比较输入前后内容，并分别复现缺失文件、坏 JSON 与缺失字段。</p>
+<p>这仍然是一个小项目，但它已经具备数据处理程序最重要的叙事：数据从哪里来，经过哪些边界，失败发生在哪一层，结果写到哪里，以及怎样证明输入没有被破坏。</p>
+</section>
+<h2 id="_9">完成检查<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说明相对路径为什么受当前工作目录影响。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我使用 <code>Path</code> 组合路径，并检查过 name、suffix、parent 和 is_file。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我明确使用 UTF-8 读取 JSON、写出报告。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能区分 JSON 文本与解析后的列表、字典和布尔值。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我只修改 JSON 就让报告结果发生了变化。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我确认输入文件在运行前后内容一致，输出只写到 <code>output/</code>。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我用受限 <code>glob("*.json")</code> 查看文件，并解释为什么本课不用 <code>rglob()</code>。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我分别复现并定位了 <code>FileNotFoundError</code> 与 <code>JSONDecodeError</code>。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我验证了空记录、中文、重复标签和多个 JSON 文件。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我提交了报告器 v0.5、公开教学数据与学习记录。</li>
+</ul>
+<h2 id="_10">来源与版本<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<ul>
+<li>适用版本：Python 3.11 及以上；示例只使用标准库 <code>pathlib</code> 与 <code>json</code>。</li>
+<li>核查日期：2026-07-17。</li>
+<li>事实来源：<a href="https://docs.python.org/3.11/library/pathlib.html">pathlib 文档</a>说明 <code>Path</code>、文本读写、目录创建与 glob 行为；<a href="https://docs.python.org/3.11/library/json.html">json 文档</a>说明 Python/JSON 类型映射、<code>loads()</code>、<code>dumps()</code> 与 <code>JSONDecodeError</code>。</li>
+<li>代码验证：仓库脚本在临时目录中检查 UTF-8 往返、输入只读、受限扫描、输出文件、缺失输入和坏 JSON；自动测试不联网，也不安装第三方包。</li>
+</ul>
+<h2 id="_11">下一步<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>程序已经能读写文件，但所有职责还挤在一个文件里。下一课进入<a href="../06-modules-imports-venv/">模块、导入和虚拟环境</a>，把读取、分析、报告和入口拆开，并让运行位置不再依赖当前工作目录。</p>
+<p><a class="md-button md-button--primary" href="../06-modules-imports-venv/">进入下一课</a></p>
 
 
 
@@ -5579,6 +4532,10 @@ python3<span class="w"> </span>python-learning/study_records_from_json.py
         <script src="../../../../javascripts/tutor-search.js"></script>
       
         <script src="../../../../javascripts/tutor.js"></script>
+      
+        <script src="../../../../javascripts/python-runner.js"></script>
+      
+        <script src="../../../../javascripts/cs-trace.js"></script>
       
         <script src="../../../../javascripts/personalization-core.js"></script>
       

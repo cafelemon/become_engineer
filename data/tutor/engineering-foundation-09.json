@@ -1,266 +1,253 @@
 {
-  "version": 1,
+  "version": 2,
   "lesson": {
     "id": "engineering-foundation-09",
     "title": "验证习惯",
     "path": "learning-paths/engineering-foundation/stage-0/09-validation-habit/"
   },
-  "steps": [
-    {
-      "id": "step-1",
-      "title": "选择目标"
-    },
-    {
-      "id": "step-2",
-      "title": "记录环境"
-    },
-    {
-      "id": "step-3",
-      "title": "验证成功"
-    },
-    {
-      "id": "step-4",
-      "title": "最小复现失败"
-    },
-    {
-      "id": "step-5",
-      "title": "阶段验收"
-    }
+  "contexts": [
+    {"id":"overview-stage-result","type":"overview","title":"我做过还不够，要能说明现在是什么状态","anchor":"#overview-stage-result"},
+    {"id":"concept-claim-evidence-judgment","type":"concept","title":"一次检查怎样变成可靠判断","anchor":"#concept-claim-evidence-judgment"},
+    {"id":"example-three-statuses","type":"example","title":"通过、失败、未检查不是一回事","anchor":"#example-three-statuses"},
+    {"id":"reproduce-stage-check","type":"reproduce","title":"给工作台做一次阶段检查","anchor":"#reproduce-stage-check"},
+    {"id":"example-minimal-failure","type":"example","title":"故意写错一次文件名，再恢复","anchor":"#example-minimal-failure"},
+    {"id":"modify-write-acceptance","type":"modify","title":"写成你自己的阶段验收","anchor":"#modify-write-acceptance"},
+    {"id":"troubleshoot-validation","type":"troubleshoot","title":"阶段检查卡住时逐项处理","anchor":"#troubleshoot-validation"},
+    {"id":"deepen-manual-to-automated","type":"deepen","title":"手工检查以后怎样长成自动化测试","anchor":"#deepen-manual-to-automated"},
+    {"id":"career-handoff-story","type":"career","title":"求职时这个小工作台能说明什么","anchor":"#career-handoff-story"},
+    {"id":"project-workspace-v10","type":"project","title":"工程学习工作台 v1.0","anchor":"#project-workspace-v10"}
   ],
   "cards": [
     {
-      "id": "goal",
-      "lesson_id": "engineering-foundation-09",
-      "step_id": "step-1",
-      "question": "什么是可验证目标",
-      "aliases": [
-        "怎么选择验证目标",
-        "验证目标怎么写"
-      ],
-      "keywords": [
-        "验证",
-        "目标",
-        "证据",
-        "检查"
-      ],
-      "diagnostic": "当前任务是“从前八课选择一个已有产出，例如“终端能读取 learning-log.md”或“Git 仓库有一次提交”。”。处理“什么是可验证目标”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：从前八课选择一个已有产出，例如“终端能读取 learning-log.md”或“Git 仓库有一次提交”。",
-        "本步成功证据是：目标能用命令或文件状态检查，不是“感觉会了”。 可验证目标能通过命令、文件状态或输出判断，而非主观感觉。"
-      ],
-      "example": "局部检查示例：目标能用命令或文件状态检查，不是“感觉会了”。",
-      "answer": "可验证目标能通过命令、文件状态或输出判断，而非主观感觉。",
-      "source": {
-        "label": "选择目标",
-        "href": "#step-1"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": true
+      "id":"what-is-validation","lesson_id":"engineering-foundation-09","context_id":"concept-claim-evidence-judgment",
+      "question":"验证和随便试一下有什么区别",
+      "aliases":["什么才算真的检查过","为什么不能只说应该可以"],
+      "keywords":["验证","检查","主张","结果","判断"],
+      "diagnostic":"你现在是否写清了要确认的主张，以及什么结果算通过？",
+      "hints":["随便试一下通常只有动作，没有事先写下判断条件。","可靠检查会留下环境、操作、实际结果和判断，失败时还有下一步。"],
+      "example":"“Git 应该没问题”改成“运行 `git log -1 --oneline`，能看到最近提交”。",
+      "answer":"验证是用可重复的操作和实际结果判断一个明确主张；它不要求结果一定通过，但要求别人看得懂怎样得出结论。",
+      "source":{"label":"一次检查怎样变成可靠判断","href":"#concept-claim-evidence-judgment"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "environment",
-      "lesson_id": "engineering-foundation-09",
-      "step_id": "step-2",
-      "question": "验证记录环境写什么",
-      "aliases": [
-        "验证操作怎么记录",
-        "验证时记录目录吗"
-      ],
-      "keywords": [
-        "环境",
-        "操作",
-        "目录",
-        "命令",
-        "记录"
-      ],
-      "diagnostic": "当前任务是“在验证记录中写下系统/目录、执行命令或编辑器动作。”。处理“验证记录环境写什么”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：在验证记录中写下系统/目录、执行命令或编辑器动作。",
-        "本步成功证据是：他人知道在哪里、怎样重复你的检查。 记录当前目录、工具/版本和原始命令或明确操作。"
-      ],
-      "example": "局部检查示例：他人知道在哪里、怎样重复你的检查。",
-      "answer": "记录当前目录、工具/版本和原始命令或明确操作。",
-      "source": {
-        "label": "记录环境",
-        "href": "#step-2"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
+      "id":"write-claim","lesson_id":"engineering-foundation-09","context_id":"concept-claim-evidence-judgment",
+      "question":"一个能检查的主张应该怎么写",
+      "aliases":["怎么把学习目标写成检查项","验证前要先写什么"],
+      "keywords":["主张","目标","检查项","条件","明确"],
+      "diagnostic":"这句话能否由一个文件、命令、输出或界面状态直接判断？",
+      "hints":["把“我会 Git”缩小为当前要确认的一件事。","写出对象和条件，例如“当前仓库至少有 3 次提交”。"],
+      "example":"“`.venv` 不会进入提交”可以用忽略状态和 Git 索引检查。",
+      "answer":"主张要具体到能由一次或一组有限操作判断。它应包含对象和成立条件，而不是“我感觉会了”一类主观描述。",
+      "source":{"label":"一次检查怎样变成可靠判断","href":"#concept-claim-evidence-judgment"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "success",
-      "lesson_id": "engineering-foundation-09",
-      "step_id": "step-3",
-      "question": "成功为何也要记录",
-      "aliases": [
-        "验证成功证据是什么",
-        "成功结果怎么写"
-      ],
-      "keywords": [
-        "成功",
-        "证据",
-        "输出",
-        "结果"
-      ],
-      "diagnostic": "当前任务是“执行验证并原样记录关键输出、文件状态或截图说明。”。处理“成功为何也要记录”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：执行验证并原样记录关键输出、文件状态或截图说明。",
-        "本步成功证据是：输出能支撑“成功”这个判断。 成功记录提供可比较证据；先写输出事实，再写判断。"
-      ],
-      "example": "局部检查示例：输出能支撑“成功”这个判断。",
-      "answer": "成功记录提供可比较证据；先写输出事实，再写判断。",
-      "source": {
-        "label": "验证成功",
-        "href": "#step-3"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
+      "id":"result-vs-judgment","lesson_id":"engineering-foundation-09","context_id":"concept-claim-evidence-judgment",
+      "question":"实际结果和最后判断有什么区别",
+      "aliases":["为什么输出和结论要分开写","检查记录里的结果应该写什么"],
+      "keywords":["实际结果","判断","输出","事实","结论"],
+      "diagnostic":"你的记录里有没有先保留命令输出，再说明它为什么支持结论？",
+      "hints":["结果是看到的原始事实，例如路径、状态符号或错误文字。","判断是把事实与事先写下的条件比较，得到通过、失败或未检查。"],
+      "example":"结果是“prefix 对比为 True”；判断是“项目 Python 属于虚拟环境”。",
+      "answer":"结果回答“发生了什么”，判断回答“这足以说明什么”。分开写可以让别人复核你的推理，而不是只能接受一句结论。",
+      "source":{"label":"一次检查怎样变成可靠判断","href":"#concept-claim-evidence-judgment"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "judgment",
-      "lesson_id": "engineering-foundation-09",
-      "step_id": "step-3",
-      "question": "结果和判断区别",
-      "aliases": [
-        "验证记录怎么写结果判断",
-        "结果和结论区别"
-      ],
-      "keywords": [
-        "结果",
-        "判断",
-        "验证",
-        "事实"
-      ],
-      "diagnostic": "当前任务是“执行验证并原样记录关键输出、文件状态或截图说明。”。处理“结果和判断区别”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：执行验证并原样记录关键输出、文件状态或截图说明。",
-        "本步成功证据是：输出能支撑“成功”这个判断。 结果是可观察事实；判断是这些事实支持的结论。"
-      ],
-      "example": "局部检查示例：输出能支撑“成功”这个判断。",
-      "answer": "结果是可观察事实；判断是这些事实支持的结论。",
-      "source": {
-        "label": "验证成功",
-        "href": "#step-3"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
+      "id":"three-statuses","lesson_id":"engineering-foundation-09","context_id":"example-three-statuses",
+      "question":"通过、失败和未检查怎么区分",
+      "aliases":["没运行到底算失败还是未检查","检查报错是不是整个阶段都失败"],
+      "keywords":["通过","失败","未检查","状态","运行"],
+      "diagnostic":"这项检查是否真的执行过，结果是否符合事先写下的条件？",
+      "hints":["执行且符合条件是通过；执行但不符合是失败。","没有运行或依据不足就是未检查，不能写成通过。"],
+      "example":"Docker 没安装时，Engine 可用性标未检查；Docker 概念解释仍可单独通过。",
+      "answer":"先看是否执行，再看结果是否匹配。一个检查失败只说明该主张暂不成立，不等于其他检查和整个项目都失效。",
+      "source":{"label":"通过、失败、未检查不是一回事","href":"#example-three-statuses"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "repro",
-      "lesson_id": "engineering-foundation-09",
-      "step_id": "step-4",
-      "question": "什么是最小复现",
-      "aliases": [
-        "怎么做安全失败实验",
-        "最小复现怎么写"
-      ],
-      "keywords": [
-        "最小复现",
-        "失败",
-        "错误",
-        "步骤"
-      ],
-      "diagnostic": "当前任务是“设计一个不会破坏工作区的失败，如错误文件名或错误路径，记录输入、报错、恢复动作。”。处理“什么是最小复现”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：设计一个不会破坏工作区的失败，如错误文件名或错误路径，记录输入、报错、恢复动作。",
-        "本步成功证据是：别人按同样步骤能看到同类失败。 最小复现只保留触发问题的最少步骤，并避免破坏真实工作区。"
-      ],
-      "example": "局部检查示例：别人按同样步骤能看到同类失败。",
-      "answer": "最小复现只保留触发问题的最少步骤，并避免破坏真实工作区。",
-      "source": {
-        "label": "最小复现失败",
-        "href": "#step-4"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
+      "id":"required-vs-optional","lesson_id":"engineering-foundation-09","context_id":"example-three-statuses",
+      "question":"Docker 没安装会不会不能进入 Python",
+      "aliases":["哪些阶段检查是必需的哪些是可选的","Docker Engine 未检查算不算工程基础没完成"],
+      "keywords":["Docker","必需项","可选项","Python 起步","阻断"],
+      "diagnostic":"你没有完成的是 Docker 概念与命令阅读，还是可选的 Engine 真实运行？",
+      "hints":["目录、关键文件、Git、远程关系和项目 Python 是本阶段必需项。","能解释 CLI、Engine、镜像和容器是必需的；Engine 安装和运行仍可选。"],
+      "example":"记录“Docker Engine：未检查；概念与命令阅读：通过”仍可以进入 Python。",
+      "answer":"不会。课程明确把 Docker Engine 真实运行列为可选，只要必需工程能力和 Docker 最小认知完成，就不应被安装条件阻断。",
+      "source":{"label":"通过、失败、未检查不是一回事","href":"#example-three-statuses"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "failure",
-      "lesson_id": "engineering-foundation-09",
-      "step_id": "step-4",
-      "question": "失败记录包含什么",
-      "aliases": [
-        "报错怎么记录才有用",
-        "错误记录怎么写"
-      ],
-      "keywords": [
-        "失败",
-        "报错",
-        "输入",
-        "输出",
-        "恢复"
-      ],
-      "diagnostic": "当前任务是“设计一个不会破坏工作区的失败，如错误文件名或错误路径，记录输入、报错、恢复动作。”。处理“失败记录包含什么”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：设计一个不会破坏工作区的失败，如错误文件名或错误路径，记录输入、报错、恢复动作。",
-        "本步成功证据是：别人按同样步骤能看到同类失败。 保留环境、触发命令、完整错误、恢复动作，让他人可复现。"
-      ],
-      "example": "局部检查示例：别人按同样步骤能看到同类失败。",
-      "answer": "保留环境、触发命令、完整错误、恢复动作，让他人可复现。",
-      "source": {
-        "label": "最小复现失败",
-        "href": "#step-4"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
+      "id":"project-root","lesson_id":"engineering-foundation-09","context_id":"reproduce-stage-check",
+      "question":"怎样证明我现在就在项目根目录",
+      "aliases":["git rev-parse --show-toplevel 是做什么的","当前目录和 Git 根目录怎么对比"],
+      "keywords":["项目根目录","git rev-parse","show-toplevel","pwd","Get-Location"],
+      "diagnostic":"把当前目录和 Git 报告的仓库根目录分别查出来，它们是否指向同一工作区？",
+      "hints":["先用 `pwd` 或 `Get-Location` 看当前目录。","再用 `git rev-parse --show-toplevel` 让 Git 报告仓库根目录。"],
+      "example":"两条路径都以同一个 `learning-workspace` 结束，说明当前位置正确。",
+      "answer":"同时检查 Shell 当前目录和 Git 根目录。两者一致，比只看终端提示符或 VS Code 标题更可靠。",
+      "source":{"label":"给工作台做一次阶段检查","href":"#reproduce-stage-check"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "unverified",
-      "lesson_id": "engineering-foundation-09",
-      "step_id": "step-5",
-      "question": "未验证算失败吗",
-      "aliases": [
-        "未验证状态怎么标记",
-        "没检查能算完成吗"
-      ],
-      "keywords": [
-        "未验证",
-        "状态",
-        "验收",
-        "完成"
-      ],
-      "diagnostic": "当前任务是“对照本页的工程基础验收记录，填入已完成、待复查和下一步。”。处理“未验证算失败吗”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：对照本页的工程基础验收记录，填入已完成、待复查和下一步。",
-        "本步成功证据是：每项状态都有对应的可检查证据。 未验证不等于失败，但不能标已完成；应标待复查并写下一步。"
-      ],
-      "example": "局部检查示例：每项状态都有对应的可检查证据。",
-      "answer": "未验证不等于失败，但不能标已完成；应标待复查并写下一步。",
-      "source": {
-        "label": "阶段验收",
-        "href": "#step-5"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": true
+      "id":"key-files","lesson_id":"engineering-foundation-09","context_id":"reproduce-stage-check",
+      "question":"阶段检查必须确认哪些文件",
+      "aliases":["learning-log 和 practice README 怎么检查","文件不存在时能不能重新建个空文件"],
+      "keywords":["learning-log.md","practice/README.md","Test-Path","test -f","文件"],
+      "diagnostic":"你检查的是前课真实留下的文件，还是准备新建一个同名空文件？",
+      "hints":["至少确认 `notes/learning-log.md` 和 `practice/README.md` 存在。","文件丢失时先查路径和提交历史，不新建空文件冒充原产出。"],
+      "example":"PowerShell 用 `Test-Path`，macOS/Linux 用 `test -f ... && echo ...`。",
+      "answer":"确认贯穿前课的学习记录和练习说明仍存在。缺失时应从路径、Git 历史或远程副本恢复，而不是只满足文件名。",
+      "source":{"label":"给工作台做一次阶段检查","href":"#reproduce-stage-check"},"updated_at":"2026-07-17","recommended":false
     },
     {
-      "id": "accept",
-      "lesson_id": "engineering-foundation-09",
-      "step_id": "step-5",
-      "question": "工程基础验收如何完成",
-      "aliases": [
-        "九课学完怎么检查",
-        "阶段验收怎么写"
-      ],
-      "keywords": [
-        "工程基础",
-        "验收",
-        "九课",
-        "证据"
-      ],
-      "diagnostic": "当前任务是“对照本页的工程基础验收记录，填入已完成、待复查和下一步。”。处理“工程基础验收如何完成”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：对照本页的工程基础验收记录，填入已完成、待复查和下一步。",
-        "本步成功证据是：每项状态都有对应的可检查证据。 汇总前八课的文件、命令和记录证据，逐项标已完成、待复查和下一步。"
-      ],
-      "example": "局部检查示例：每项状态都有对应的可检查证据。",
-      "answer": "汇总前八课的文件、命令和记录证据，逐项标已完成、待复查和下一步。",
-      "source": {
-        "label": "阶段验收",
-        "href": "#step-5"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": true
+      "id":"git-status","lesson_id":"engineering-foundation-09","context_id":"reproduce-stage-check",
+      "question":"git status 有新验收文件是不是失败了",
+      "aliases":["为什么工作区不干净也可以继续验收","git status --short --ignored 应该怎么看"],
+      "keywords":["git status","新文件","工作区","ignored","验收文件"],
+      "diagnostic":"状态变化是否正是你刚创建的 `stage-0-acceptance.md`，还是出现了意外文件？",
+      "hints":["写验收记录的过程中出现未跟踪或已修改文件是正常现象。","先确认变化符合预期，完成提交后再检查是否收口。"],
+      "example":"`?? notes/stage-0-acceptance.md` 说明新文件尚未暂存，不表示 Git 损坏。",
+      "answer":"不是。状态命令报告差异，不要求任何时候都空白。判断重点是变化是否由你产生、是否安全，阶段提交后再确认没有意外普通修改。",
+      "source":{"label":"给工作台做一次阶段检查","href":"#reproduce-stage-check"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"git-history","lesson_id":"engineering-foundation-09","context_id":"reproduce-stage-check",
+      "question":"怎么检查至少有三次 Git 提交",
+      "aliases":["git log --oneline -3 应该看到什么","提交历史少于三条怎么办"],
+      "keywords":["git log","三次提交","历史","oneline","commit"],
+      "diagnostic":"你是否先确认了仓库根目录，再查看当前仓库的历史？",
+      "hints":["`git log --oneline -3` 最多显示最近 3 条提交。","少于 3 条时先确认没有打开错误仓库，再检查哪些前课变化尚未形成有意义的提交。"],
+      "example":"三行不同提交 ID 和说明表示当前分支至少有三次历史记录。",
+      "answer":"在正确仓库运行 `git log --oneline -3`。不足时不要制造空提交，回看实际文件变化并补上真正有内容的提交。",
+      "source":{"label":"给工作台做一次阶段检查","href":"#reproduce-stage-check"},"updated_at":"2026-07-17","recommended":false
+    },
+    {
+      "id":"ignored-venv","lesson_id":"engineering-foundation-09","context_id":"reproduce-stage-check",
+      "question":"怎么确认 .venv 仍然没有进入 Git",
+      "aliases":[".venv 显示什么才算被忽略","虚拟环境出现在普通待提交文件中怎么办"],
+      "keywords":[".venv","gitignore","ignored","git status","虚拟环境"],
+      "diagnostic":"`git status --short --ignored` 中 `.venv/` 是 `!!`，还是普通未跟踪或已跟踪状态？",
+      "hints":["`!! .venv/` 表示忽略规则生效。","普通待提交状态需要回到 Git 课检查 `.gitignore` 和它是否已被跟踪。"],
+      "example":"阶段提交只能加入验收记录，不应把 `.venv` 一起暂存。",
+      "answer":"使用带 ignored 的状态检查，并在 staged diff 中再次确认。`.venv` 是本机可重建环境，不属于仓库内容。",
+      "source":{"label":"给工作台做一次阶段检查","href":"#reproduce-stage-check"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"remote-check","lesson_id":"engineering-foundation-09","context_id":"reproduce-stage-check",
+      "question":"怎样确认 origin 配好了又不泄露私人地址",
+      "aliases":["git remote get-url origin 输出要不要贴进记录","阶段验收怎么检查 GitHub 远程"],
+      "keywords":["origin","git remote get-url","GitHub","远程 URL","脱敏"],
+      "diagnostic":"你只需要证明 origin 已配置，还是正在本地排查具体 URL？",
+      "hints":["本地运行 `git remote get-url origin` 确认配置。","公开记录写“已配置”和使用的 HTTPS/SSH 类型即可，私人仓库地址与凭据不要原样粘贴。"],
+      "example":"记录“origin：已配置，HTTPS；独立 clone：已验证”，不必公开仓库完整地址。",
+      "answer":"在本地读取 origin，再保存最少判断信息。远程 URL 用于本地排错，不等于必须进入公开阶段报告。",
+      "source":{"label":"给工作台做一次阶段检查","href":"#reproduce-stage-check"},"updated_at":"2026-07-17","recommended":false
+    },
+    {
+      "id":"venv-check","lesson_id":"engineering-foundation-09","context_id":"reproduce-stage-check",
+      "question":"怎么再次证明项目 Python 属于 .venv",
+      "aliases":["prefix 对比为什么应该是 True","阶段验收要不要激活虚拟环境"],
+      "keywords":[".venv","sys.prefix","sys.base_prefix","True","Python"],
+      "diagnostic":"你是否直接调用项目 `.venv` 里的 Python，而不是依赖终端提示符？",
+      "hints":["用平台对应的 `.venv` Python 完整路径运行检查。","版本应满足课程要求，并且 `sys.prefix != sys.base_prefix` 输出 True。"],
+      "example":"未激活环境也能执行 `./.venv/bin/python -c ...` 完成判断。",
+      "answer":"直接调用 `.venv` 中的解释器，检查版本和 prefix 对比。不要求激活，因为完整路径已经明确选择了项目 Python。",
+      "source":{"label":"给工作台做一次阶段检查","href":"#reproduce-stage-check"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"docker-check","lesson_id":"engineering-foundation-09","context_id":"reproduce-stage-check",
+      "question":"阶段验收为什么用 docker version 而不是只看 --version",
+      "aliases":["Docker Client 正常 Server 失败怎么登记","Docker 可选项到底检查什么"],
+      "keywords":["docker version","docker --version","Client","Server","可选项"],
+      "diagnostic":"你要确认 CLI 存在，还是要确认 Engine 也可以连接？",
+      "hints":["`docker --version` 只显示 CLI 版本。","`docker version` 正常时包含 Client 和 Server；Server 失败就按实际状态记录。"],
+      "example":"CLI 已安装、Server 无法连接，可以写成“Engine 检查失败”，但不阻断 Python。",
+      "answer":"Engine 可用性需要 Client/Server 链路，不能由 CLI 版本单独证明。本阶段仍把 Engine 真实运行列为可选。",
+      "source":{"label":"给工作台做一次阶段检查","href":"#reproduce-stage-check"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"minimal-reproduction","lesson_id":"engineering-foundation-09","context_id":"example-minimal-failure",
+      "question":"最小复现是不是要故意改坏项目",
+      "aliases":["怎样安全练习一次失败和恢复","错误文件名练习到底在验证什么"],
+      "keywords":["最小复现","错误文件名","安全","恢复","失败"],
+      "diagnostic":"这个练习是否会删除、覆盖或提交真实内容？",
+      "hints":["课程只读取一个不存在的路径，不修改真实文件。","保留错误后改用正确路径，确认可以恢复。"],
+      "example":"先读取 `does-not-exist.md` 看到找不到，再读取 `learning-log.md`。",
+      "answer":"不需要破坏项目。好的最小复现只留下触发问题的最少条件，并且有明确、可验证的恢复路径。",
+      "source":{"label":"故意写错一次文件名，再恢复","href":"#example-minimal-failure"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"failure-record","lesson_id":"engineering-foundation-09","context_id":"example-minimal-failure",
+      "question":"一条有用的失败记录至少写什么",
+      "aliases":["报错记录为什么不能只写失败了","怎样让别人复现我的错误"],
+      "keywords":["失败记录","错误命令","完整错误","原因","恢复结果"],
+      "diagnostic":"你的记录能否让别人知道在哪里、执行什么、看到什么，以及如何恢复？",
+      "hints":["保留错误命令和完整错误，不能只写“打不开”。","再写原因判断、恢复动作和恢复后的实际结果。"],
+      "example":"记录错误路径、ENOENT 或平台错误文字、正确路径和恢复输出。",
+      "answer":"至少包含环境、触发命令、完整错误、预期与实际、原因判断、恢复动作和恢复结果。原因不确定时也要明确写“尚待确认”。",
+      "source":{"label":"故意写错一次文件名，再恢复","href":"#example-minimal-failure"},"updated_at":"2026-07-17","recommended":false
+    },
+    {
+      "id":"acceptance-file","lesson_id":"engineering-foundation-09","context_id":"modify-write-acceptance",
+      "question":"stage-0-acceptance.md 应该怎么填",
+      "aliases":["工程基础阶段验收表要写哪些列","进入 Python 前要汇总什么"],
+      "keywords":["stage-0-acceptance.md","阶段验收","主张","状态","下一步"],
+      "diagnostic":"你是否把命令实际结果填入模板，而不是复制课程里的占位文字？",
+      "hints":["每行写主张、必需/可选、状态、关键结果和判断。","最后保留一次失败恢复，以及进入 Python 前仍需补上的必需项。"],
+      "example":"Docker Engine 可写“可选／未检查／本机未安装／不阻断 Python”。",
+      "answer":"用自己的真实检查替换模板。必需项未完成要留下具体下一步；可选项可以未检查，但必须说明当前事实。",
+      "source":{"label":"写成你自己的阶段验收","href":"#modify-write-acceptance"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"advance-one-status","lesson_id":"engineering-foundation-09","context_id":"modify-write-acceptance",
+      "question":"为什么还要把一个失败或未检查推进一步",
+      "aliases":["验收表写完就算完成了吗","怎样把检查结果变成实际改进"],
+      "keywords":["推进状态","重新检查","修复","更新记录","改进"],
+      "diagnostic":"你的表里是否有一项可以安全补上或重新验证？",
+      "hints":["选择一个具体缺口，例如错误目录、缺失记录或 `.venv` 检查。","完成修复后必须重新运行原检查，用新结果更新状态。"],
+      "example":"prefix 原先为 False，改用 `.venv` Python 后为 True，再把状态更新为通过。",
+      "answer":"验收不是抄写现状。推进一项并回归，可以证明你会根据结果行动，而不是只会制作一张看起来完整的表。",
+      "source":{"label":"写成你自己的阶段验收","href":"#modify-write-acceptance"},"updated_at":"2026-07-17","recommended":false
+    },
+    {
+      "id":"privacy-review","lesson_id":"engineering-foundation-09","context_id":"troubleshoot-validation",
+      "question":"阶段验收记录哪些内容不能公开",
+      "aliases":["远程 URL 和绝对路径能不能提交","怎样给验收记录脱敏"],
+      "keywords":["脱敏","私人路径","远程 URL","账号","令牌","环境变量"],
+      "diagnostic":"文件中是否包含用户名、公司目录、内部地址、账号、令牌或整段环境输出？",
+      "hints":["只保留支持判断的最少片段。","私人路径和仓库改成 `<HOME>`、`<REPOSITORY>`，凭据直接删除并在泄露时轮换。"],
+      "example":"写“origin 已配置，HTTPS”，不粘贴含私人仓库名的完整地址。",
+      "answer":"不要公开私人绝对路径、账号、完整远程地址、环境变量、内部域名和任何凭据。脱敏后再用 staged diff 复核。",
+      "source":{"label":"阶段检查卡住时逐项处理","href":"#troubleshoot-validation"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"manual-to-test","lesson_id":"engineering-foundation-09","context_id":"deepen-manual-to-automated",
+      "question":"手工验证和自动化测试是什么关系",
+      "aliases":["以后写测试是不是不用人工判断了","断言和现在的通过条件有什么关系"],
+      "keywords":["手工验证","自动化测试","断言","回归","CI"],
+      "diagnostic":"你现在的检查是否已经有明确主张、操作和判断条件？",
+      "hints":["测试代码把重复操作自动执行，断言把判断条件写进程序。","选择什么值得检查，以及失败是否说明真实风险，仍需要人判断。"],
+      "example":"“提交数至少为 3”以后可由脚本读取历史并断言，而不是每次手工数。",
+      "answer":"自动化延续同一结构：主张变测试名，操作变代码，条件变断言，结果变报告。它提高重复效率，但不会自动保证检查目标正确。",
+      "source":{"label":"手工检查以后怎样长成自动化测试","href":"#deepen-manual-to-automated"},"updated_at":"2026-07-17","recommended":false
+    },
+    {
+      "id":"career-story","lesson_id":"engineering-foundation-09","context_id":"career-handoff-story",
+      "question":"这么小的学习工作台求职时能讲吗",
+      "aliases":["怎样讲工程基础项目才不夸大","面试怎么证明自己有基本工程习惯"],
+      "keywords":["求职","项目叙事","工程习惯","提交历史","故障复盘"],
+      "diagnostic":"你能否打开真实文件、提交和错误记录回答追问？",
+      "hints":["把它称为持续迭代的学习工作区，不包装成生产平台。","用一个具体问题说明怎样检查、失败、恢复和回归。"],
+      "example":"展示 `.gitignore`、环境记录和一次错误路径恢复，比说“熟悉工程化”更具体。",
+      "answer":"可以，但要诚实限定范围。它能说明你会组织文件、使用版本历史、隔离环境、记录失败并完成阶段交接，而不是证明你有大型生产经验。",
+      "source":{"label":"求职时这个小工作台能说明什么","href":"#career-handoff-story"},"updated_at":"2026-07-17","recommended":false
+    },
+    {
+      "id":"project-v10","lesson_id":"engineering-foundation-09","context_id":"project-workspace-v10",
+      "question":"工程学习工作台 v1.0 最后要提交什么",
+      "aliases":["工程基础最后一次提交怎么做","阶段收口后怎样确认工作区干净"],
+      "keywords":["v1.0","stage-0-acceptance.md","git diff --cached","commit","push"],
+      "diagnostic":"验收文件是否填写真实结果并完成脱敏，staged diff 是否只包含预期内容？",
+      "hints":["只暂存 `notes/stage-0-acceptance.md`，先看 staged diff。","提交并 push 后，再看 ignored 状态和最新一条提交。"],
+      "example":"提交信息写 `complete engineering foundation`，随后运行 `git log -1 --oneline`。",
+      "answer":"提交经过脱敏的阶段验收记录，然后检查工作区没有意外普通修改、`.venv` 仍被忽略、最新提交正确。push 失败时保留本地提交并单独排查远程。",
+      "source":{"label":"工程学习工作台 v1.0","href":"#project-workspace-v10"},"updated_at":"2026-07-17","recommended":true
     }
   ]
 }

@@ -1,265 +1,137 @@
 {
-  "version": 1,
   "lesson": {
     "id": "engineering-foundation-01",
     "title": "学习方法",
     "path": "learning-paths/engineering-foundation/stage-0/01-learning-method/"
   },
-  "steps": [
-    {
-      "id": "step-1",
-      "title": "建立记录"
-    },
-    {
-      "id": "step-2",
-      "title": "缩小目标"
-    },
-    {
-      "id": "step-3",
-      "title": "主动操作"
-    },
-    {
-      "id": "step-4",
-      "title": "保留问题"
-    },
-    {
-      "id": "step-5",
-      "title": "复盘迁移"
-    }
+  "contexts": [
+    {"id":"overview-learning-log","type":"overview","title":"第一份学习记录","anchor":"#overview-learning-log"},
+    {"id":"concept-learning-loop","type":"concept","title":"五行学习循环","anchor":"#concept-learning-loop"},
+    {"id":"example-small-goal","type":"example","title":"把目标写小","anchor":"#example-small-goal"},
+    {"id":"reproduce-first-log","type":"reproduce","title":"写下第一份记录","anchor":"#reproduce-first-log"},
+    {"id":"modify-own-log","type":"modify","title":"改成自己的记录","anchor":"#modify-own-log"},
+    {"id":"troubleshoot-vague-log","type":"troubleshoot","title":"修正模糊记录","anchor":"#troubleshoot-vague-log"},
+    {"id":"project-learning-workspace","type":"project","title":"工程学习工作台","anchor":"#project-learning-workspace"}
   ],
   "cards": [
     {
-      "id": "record",
+      "id": "engineering-foundation-01-log-purpose",
       "lesson_id": "engineering-foundation-01",
-      "step_id": "step-1",
-      "question": "学习记录写什么",
-      "aliases": [
-        "学习记录写什么",
-        "怎么开始学习记录"
-      ],
-      "keywords": [
-        "学习记录",
-        "目标",
-        "操作",
-        "结果",
-        "问题",
-        "下一步"
-      ],
-      "diagnostic": "当前任务是“新建 `learning-log.md`，写下今天学习工程基础的目标、操作、结果、问题和下一步五个小标题。”。处理“学习记录写什么”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：新建 `learning-log.md`，写下今天学习工程基础的目标、操作、结果、问题和下一步五个小标题。",
-        "本步成功证据是：文件能保存并重新打开。 写下目标、操作、结果、问题和下一步，让别人能检查。"
-      ],
-      "example": "局部检查示例：文件能保存并重新打开。",
-      "answer": "写下目标、操作、结果、问题和下一步，让别人能检查。",
-      "source": {
-        "label": "建立记录",
-        "href": "#step-1"
-      },
-      "updated_at": "2026-07-15",
+      "context_id": "overview-learning-log",
+      "question": "为什么一开始就要写学习记录？",
+      "aliases": ["学习记录有什么用", "不写学习记录可以吗"],
+      "keywords": ["学习记录", "作用", "继续", "复盘"],
+      "diagnostic": "如果明天再学，你现在能说清自己做到哪里、卡在哪里吗？",
+      "hints": ["记录不是为了写长篇总结，而是为了接上下一次学习。", "只要保留目标、做过的操作、结果、问题和下一步，信息就够用了。"],
+      "example": "写下“文件重开后内容仍在；下一步找完整路径”，明天就知道该从文件系统开始。",
+      "answer": "学习记录把一次学习变成可以继续的过程。它帮你分清计划和实际结果，也让错误、问题与下一步不再只靠记忆。",
+      "source": {"label":"第一份学习记录","href":"#overview-learning-log"},
+      "updated_at": "2026-07-17",
       "recommended": true
     },
     {
-      "id": "goal",
+      "id": "engineering-foundation-01-five-lines",
       "lesson_id": "engineering-foundation-01",
-      "step_id": "step-2",
-      "question": "怎样拆小目标",
-      "aliases": [
-        "目标太大怎么办",
-        "可执行目标怎么写"
-      ],
-      "keywords": [
-        "目标",
-        "拆小",
-        "任务",
-        "标准"
-      ],
-      "diagnostic": "当前任务是“把“学会工程基础”改成一个今天可检查的动作，例如“在编辑器里完成并保存 learning-log.md”。”。处理“怎样拆小目标”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：把“学会工程基础”改成一个今天可检查的动作，例如“在编辑器里完成并保存 learning-log.md”。",
-        "本步成功证据是：目标包含对象和可观察结果。 把目标改成一次可完成的动作和可观察结果。"
-      ],
-      "example": "局部检查示例：目标包含对象和可观察结果。",
-      "answer": "把目标改成一次可完成的动作和可观察结果。",
-      "source": {
-        "label": "缩小目标",
-        "href": "#step-2"
-      },
-      "updated_at": "2026-07-15",
+      "context_id": "concept-learning-loop",
+      "question": "学习记录到底要写哪几项？",
+      "aliases": ["学习记录写什么", "五行学习循环是什么"],
+      "keywords": ["目标", "操作", "结果", "问题", "下一步"],
+      "diagnostic": "你现在缺的是哪一项：准备做什么、做了什么，还是接下来做什么？",
+      "hints": ["先写五个标题：目标、操作、结果、问题、下一步。", "每项一两句话就行，重点是明天还能看懂。"],
+      "example": "目标：保存文件；操作：新建并保存；结果：重开后内容仍在；问题：不知道路径；下一步：学习目录。",
+      "answer": "写目标、操作、结果、问题和下一步。目标说明准备完成什么，操作和结果记录真实发生的事，问题与下一步负责把学习接下去。",
+      "source": {"label":"五行就够了","href":"#concept-learning-loop"},
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "engineering-foundation-01-small-goal",
+      "lesson_id": "engineering-foundation-01",
+      "context_id": "example-small-goal",
+      "question": "怎样把学习目标写小？",
+      "aliases": ["目标太大怎么办", "可执行的学习目标怎么写"],
+      "keywords": ["目标", "拆小", "对象", "动作", "结束条件"],
+      "diagnostic": "你写的目标能在今天结束前判断完成或没完成吗？",
+      "hints": ["先把“学会一门技术”缩成一个具体对象。", "再补上亲自要做的动作，以及看到什么算结束。"],
+      "example": "“学 Git”改成“运行 git status，并根据输出判断有没有尚未提交的修改”。",
+      "answer": "写清对象、动作和结束条件。一个目标如果今天无法完成，或做完后无法判断，就继续把它拆小。",
+      "source": {"label":"目标要小到今天能判断","href":"#example-small-goal"},
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "engineering-foundation-01-create-file",
+      "lesson_id": "engineering-foundation-01",
+      "context_id": "reproduce-first-log",
+      "question": "我应该用什么软件写 learning-log.md？",
+      "aliases": ["没有VS Code怎么写学习记录", "learning-log.md怎么新建"],
+      "keywords": ["编辑器", "记事本", "VS Code", "新建文件", "learning-log.md"],
+      "diagnostic": "你现在电脑上能打开哪一种文本编辑工具？",
+      "hints": ["先用系统自带的文本工具也可以，不需要等到装好 VS Code。", "保存时确认文件名是 learning-log.md，不要在后面多出 .txt。"],
+      "example": "在文本编辑器里新建文件，保存为 learning-log.md，再关闭并重新打开。",
+      "answer": "任何能编辑纯文本的软件都可以。第四课会专门使用 VS Code，这一课先保证文件能保存和重新打开。",
+      "source": {"label":"写下第一份记录","href":"#reproduce-first-log"},
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "engineering-foundation-01-save-check",
+      "lesson_id": "engineering-foundation-01",
+      "context_id": "reproduce-first-log",
+      "question": "怎么确认文件真的保存好了？",
+      "aliases": ["屏幕有内容算保存了吗", "为什么要关闭后重新打开"],
+      "keywords": ["保存", "磁盘", "重新打开", "内容不见"],
+      "diagnostic": "你只是看见编辑器里有内容，还是已经关闭并重新打开过文件？",
+      "hints": ["先按 Ctrl+S 或 Command+S。", "关闭文件再重新打开；刚写的内容仍在，才说明它已经写进磁盘。"],
+      "example": "新增一行“第一次保存”，保存、关闭、重开后还能看到这行。",
+      "answer": "屏幕上的内容可能还没有写进磁盘。保存后关闭并重新打开，或者以后从终端读取到相同内容，才能确认文件真的保存了。",
+      "source": {"label":"写下第一份记录","href":"#reproduce-first-log"},
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "engineering-foundation-01-personalize",
+      "lesson_id": "engineering-foundation-01",
+      "context_id": "modify-own-log",
+      "question": "为什么不能只复制模板？",
+      "aliases": ["直接抄示例可以吗", "学习记录必须改什么"],
+      "keywords": ["复制", "模板", "主动修改", "自己的记录"],
+      "diagnostic": "记录里的目标、操作和下一步，真的是你今天做过和准备做的事吗？",
+      "hints": ["模板只负责提供结构，不能替你记录真实过程。", "至少改标题、目标、已经做过的操作和下一步。"],
+      "example": "把“完成第一份记录”改成“找到 Python 文件并运行一次”，再写下真实输出。",
+      "answer": "只复制模板无法帮助你继续学习。把它改成自己的目标、操作、结果和下一步，记录才会提供真实反馈。",
+      "source": {"label":"改成你今天真正要做的事","href":"#modify-own-log"},
+      "updated_at": "2026-07-17",
       "recommended": false
     },
     {
-      "id": "practice",
+      "id": "engineering-foundation-01-vague-record",
       "lesson_id": "engineering-foundation-01",
-      "step_id": "step-3",
-      "question": "什么是主动练习",
-      "aliases": [
-        "主动练习是什么",
-        "只看课算练习吗"
-      ],
-      "keywords": [
-        "主动",
-        "操作",
-        "练习",
-        "输出"
-      ],
-      "diagnostic": "当前任务是“完成一个实际动作：创建文件、输入内容、保存并重新打开。把命令或点击动作写入“操作”。”。处理“什么是主动练习”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：完成一个实际动作：创建文件、输入内容、保存并重新打开。把命令或点击动作写入“操作”。",
-        "本步成功证据是：记录的是你做过的事，不是概念抄写。 亲自创建、修改或验证一个产出，并观察结果。"
-      ],
-      "example": "局部检查示例：记录的是你做过的事，不是概念抄写。",
-      "answer": "亲自创建、修改或验证一个产出，并观察结果。",
-      "source": {
-        "label": "主动操作",
-        "href": "#step-3"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
-    },
-    {
-      "id": "question",
-      "lesson_id": "engineering-foundation-01",
-      "step_id": "step-4",
-      "question": "问题如何记录",
-      "aliases": [
-        "不会了怎么写问题",
-        "问题写不清楚"
-      ],
-      "keywords": [
-        "问题",
-        "现象",
-        "操作",
-        "排查"
-      ],
-      "diagnostic": "当前任务是“写下一个尚未确定的问题，例如“文件保存在哪里？”或“为什么要记录输出？”。”。处理“问题如何记录”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：写下一个尚未确定的问题，例如“文件保存在哪里？”或“为什么要记录输出？”。",
-        "本步成功证据是：问题能被别人理解和继续排查。 补充发生位置、已做操作和看到的现象。"
-      ],
-      "example": "局部检查示例：问题能被别人理解和继续排查。",
-      "answer": "补充发生位置、已做操作和看到的现象。",
-      "source": {
-        "label": "保留问题",
-        "href": "#step-4"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": false
-    },
-    {
-      "id": "review",
-      "lesson_id": "engineering-foundation-01",
-      "step_id": "step-5",
-      "question": "学习复盘写什么",
-      "aliases": [
-        "学习复盘怎么写",
-        "怎么总结学习结果"
-      ],
-      "keywords": [
-        "复盘",
-        "结果",
-        "下一步",
-        "目标"
-      ],
-      "diagnostic": "当前任务是“在“下一步”写下将用这份记录验证的下一件事：创建一个目录、查看路径或打开终端。”。处理“学习复盘写什么”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：在“下一步”写下将用这份记录验证的下一件事：创建一个目录、查看路径或打开终端。",
-        "本步成功证据是：他人只看记录也知道你完成了什么、下一步做什么。 对照目标与结果，保留问题，写出下一次具体动作。"
-      ],
-      "example": "局部检查示例：他人只看记录也知道你完成了什么、下一步做什么。",
-      "answer": "对照目标与结果，保留问题，写出下一次具体动作。",
-      "source": {
-        "label": "复盘迁移",
-        "href": "#step-5"
-      },
-      "updated_at": "2026-07-15",
+      "context_id": "troubleshoot-vague-log",
+      "question": "我只写了“不会”，应该怎么改？",
+      "aliases": ["问题写不清楚怎么办", "学习记录太模糊怎么改"],
+      "keywords": ["不会", "模糊", "现象", "排错", "问题"],
+      "diagnostic": "当时你在做哪一步，已经做了什么，最后看到了什么？",
+      "hints": ["先补上发生问题的位置和操作。", "再照抄关键现象或错误，不需要马上知道原因。"],
+      "example": "“不会保存”改成“关闭编辑器后内容不见了；关闭前没有按 Ctrl+S”。",
+      "answer": "把“不会”改成具体位置、已做操作和看到的现象。问题越具体，下一次越容易复现和排查。",
+      "source": {"label":"记录写了，为什么还是接不上","href":"#troubleshoot-vague-log"},
+      "updated_at": "2026-07-17",
       "recommended": true
     },
     {
-      "id": "evidence",
+      "id": "engineering-foundation-01-project-line",
       "lesson_id": "engineering-foundation-01",
-      "step_id": "step-5",
-      "question": "完成证据是什么",
-      "aliases": [
-        "完成标准是什么",
-        "怎样证明完成"
-      ],
-      "keywords": [
-        "完成",
-        "证据",
-        "标准",
-        "判断"
-      ],
-      "diagnostic": "当前任务是“在“下一步”写下将用这份记录验证的下一件事：创建一个目录、查看路径或打开终端。”。处理“完成证据是什么”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：在“下一步”写下将用这份记录验证的下一件事：创建一个目录、查看路径或打开终端。",
-        "本步成功证据是：他人只看记录也知道你完成了什么、下一步做什么。 用已保存文件、命令输出或明确状态作为证据。"
-      ],
-      "example": "局部检查示例：他人只看记录也知道你完成了什么、下一步做什么。",
-      "answer": "用已保存文件、命令输出或明确状态作为证据。",
-      "source": {
-        "label": "复盘迁移",
-        "href": "#step-5"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": true
-    },
-    {
-      "id": "no-result",
-      "lesson_id": "engineering-foundation-01",
-      "step_id": "step-1",
-      "question": "没有理解怎么办",
-      "aliases": [
-        "还没学会怎么办",
-        "暂时没结果算失败吗"
-      ],
-      "keywords": [
-        "失败",
-        "学习",
-        "结果",
-        "记录"
-      ],
-      "diagnostic": "当前任务是“新建 `learning-log.md`，写下今天学习工程基础的目标、操作、结果、问题和下一步五个小标题。”。处理“没有理解怎么办”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：新建 `learning-log.md`，写下今天学习工程基础的目标、操作、结果、问题和下一步五个小标题。",
-        "本步成功证据是：文件能保存并重新打开。 先完成当前最小操作并记录问题；未理解全部概念不等于失败。"
-      ],
-      "example": "局部检查示例：文件能保存并重新打开。",
-      "answer": "先完成当前最小操作并记录问题；未理解全部概念不等于失败。",
-      "source": {
-        "label": "建立记录",
-        "href": "#step-1"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": true
-    },
-    {
-      "id": "next",
-      "lesson_id": "engineering-foundation-01",
-      "step_id": "step-5",
-      "question": "下一步怎么写",
-      "aliases": [
-        "下一步写继续学习吗",
-        "学习后做什么"
-      ],
-      "keywords": [
-        "下一步",
-        "行动",
-        "迁移",
-        "任务"
-      ],
-      "diagnostic": "当前任务是“在“下一步”写下将用这份记录验证的下一件事：创建一个目录、查看路径或打开终端。”。处理“下一步怎么写”时，你实际看到的文件、命令输出或错误是什么？",
-      "hints": [
-        "先按本步执行：在“下一步”写下将用这份记录验证的下一件事：创建一个目录、查看路径或打开终端。",
-        "本步成功证据是：他人只看记录也知道你完成了什么、下一步做什么。 下一步应是可立即执行的动作，例如创建 notes 目录。"
-      ],
-      "example": "局部检查示例：他人只看记录也知道你完成了什么、下一步做什么。",
-      "answer": "下一步应是可立即执行的动作，例如创建 notes 目录。",
-      "source": {
-        "label": "复盘迁移",
-        "href": "#step-5"
-      },
-      "updated_at": "2026-07-15",
+      "context_id": "project-learning-workspace",
+      "question": "这份学习记录后面还会继续用吗？",
+      "aliases": ["learning-log.md后面有什么用", "工程学习工作台是什么"],
+      "keywords": ["工程学习工作台", "后续课程", "learning-log.md", "项目"],
+      "diagnostic": "你已经把 learning-log.md 保存下来了吗？",
+      "hints": ["下一课会把它放进清楚的目录。", "后面还会从终端找到它、在 VS Code 修改它，并用 Git 记录变化。"],
+      "example": "现在只有 learning-log.md；后续逐步增加 notes、practice、assets 和验证脚本。",
+      "answer": "会。它是工程学习工作台里的第一份文件，后续课程会围绕同一个工作区继续增加目录、命令、版本记录和验证。",
+      "source": {"label":"工程学习工作台从这里开始","href":"#project-learning-workspace"},
+      "updated_at": "2026-07-17",
       "recommended": true
     }
   ]
