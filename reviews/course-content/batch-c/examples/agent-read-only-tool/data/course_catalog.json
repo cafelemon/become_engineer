@@ -1,0 +1,23 @@
+[
+  {
+    "course_id": "python-basics-01",
+    "title": "变量、基本类型与输入输出",
+    "status": "已开放",
+    "prerequisites": ["工程基础入门"],
+    "url": "/become_engineer/learning-paths/programming-languages/python-basics/01-variables-types-io/"
+  },
+  {
+    "course_id": "cs-core-19",
+    "title": "BFS、无权距离与最短路径",
+    "status": "已开放待重分层",
+    "prerequisites": ["队列", "无向图"],
+    "url": "/become_engineer/learning-paths/cs-core/19-bfs-unweighted-distances-shortest-paths/"
+  },
+  {
+    "course_id": "agent-tool-calling",
+    "title": "Agent：安全调用一个只读工具",
+    "status": "样板待评审",
+    "prerequisites": ["Python 工程化", "Web/API", "LLM 结构化输出"],
+    "url": "/become_engineer/reviews/course-content/batch-c/agent-read-only-tool/"
+  }
+]

@@ -99,5 +99,9 @@ dist/
 build/
 site/
 site-samples/
+site-samples-*/
 .site/
 become_engineer_site/
+
+# Batch C reproducible experiment output
+reviews/course-content/batch-c/examples/ai-experiment/synthetic_study_sessions.csv

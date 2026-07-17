@@ -6,9 +6,9 @@
 
 <span class="be-sample-kicker">项目整合样板 · Python 起步 v1.0</span>
 
-## 七节课，不是七个互不相关的练习
+## 从三行输出，长成一个完整的小程序
 
-你从三行学习档案开始，逐步得到一个能读取 JSON、校验数据、汇总进度、生成报告并通过 14 项测试的小型程序。每一版都能运行，每一课只增加一个可解释的能力。
+第一课的程序只会打印昵称、课程和计划时间。七节课以后，它已经能读取 JSON、检查数据、汇总进度、生成报告，并通过 14 项测试。中间没有突然跳到“最终答案”，每一版都能单独运行。
 
 ```text
 学习进度报告
@@ -29,7 +29,7 @@
 
 <section id="concept-version-line" class="be-sample-learning-unit" data-learning-context="concept-version-line" data-context-type="concept" markdown="1">
 
-## 版本线：每一课都回答“这次增加了什么”
+## 看看它每一版多会了什么
 
 <div class="be-version-line" role="list" aria-label="学习进度报告器从 v0.1 到 v1.0 的七个里程碑">
   <article role="listitem"><b>v0.1</b><span>变量与输出</span><small>一条学习档案</small></article>
@@ -38,16 +38,16 @@
   <article role="listitem"><b>v0.4</b><span>容器</span><small>多条学习记录</small></article>
   <article role="listitem"><b>v0.5</b><span>文件与 JSON</span><small>数据和代码分离</small></article>
   <article role="listitem"><b>v0.6</b><span>模块与环境</span><small>职责拆分</small></article>
-  <article role="listitem"><b>v1.0</b><span>异常与测试</span><small>稳定失败和回归证据</small></article>
+  <article role="listitem"><b>v1.0</b><span>异常与测试</span><small>错误能说明白，修改后能回归</small></article>
 </div>
 
-这条线不是说第一课就要理解最终架构，而是让学习者始终知道：当前版本能做什么、限制在哪里、下一课为什么值得学。
+第一课当然不需要理解最终的模块结构。版本线只是帮你随时回答三个问题：现在能做什么，还缺什么，下一课为什么要学。
 
 </section>
 
 <section id="example-milestones" class="be-sample-learning-unit" data-learning-context="example-milestones" data-context-type="example" markdown="1">
 
-## 三个可运行快照：亲眼看见程序长大
+## 跑三个版本，看看程序怎么长大
 
 === "v0.1：只有变量"
 
@@ -79,15 +79,15 @@
     python3 reviews/course-content/batch-a/examples/study-reporter/v0.5/main.py
     ```
 
-比较时不要只数代码行。请回答：数据放在哪里、计算放在哪里、改变一条记录要修改代码还是数据文件。
+运行以后，别只比较代码变长了多少。看看数据放在哪里、计算放在哪里，以及修改一条学习记录时还需不需要改代码。
 
 </section>
 
 <section id="reproduce-final" class="be-sample-learning-unit" data-learning-context="reproduce-final" data-context-type="reproduce" markdown="1">
 
-## 复现最终版本：运行结果与测试证据
+## 把最终版本跑起来
 
-正式作品仍位于既有目录，本样板不复制或修改它：
+正式作品就在原来的练习目录里。进入目录后依次运行主程序和测试：
 
 ```bash
 cd exercises/python-basics/study-progress-reporter
@@ -95,7 +95,7 @@ python3 main.py
 python3 -m unittest discover -s tests -v
 ```
 
-成功证据：
+正常情况下，你会看到：
 
 - 主程序返回退出码 `0`。
 - 终端打印汇总，并生成 `output/study_report.txt`。
@@ -103,15 +103,15 @@ python3 -m unittest discover -s tests -v
 - 输入文件运行前后保持一致。
 
 <div class="be-sample-check" role="status">
-  <strong>不要只保存“测试通过”四个字</strong>
-  <span>保留命令、测试数量、关键输出和本次运行日期，别人才能复现。</span>
+  <strong>把这次运行记完整</strong>
+  <span>留下命令、测试数量、关键输出和运行日期。以后自己回看，或者让别人复现，都会轻松很多。</span>
 </div>
 
 </section>
 
 <section id="concept-architecture" class="be-sample-learning-unit" data-learning-context="concept-architecture" data-context-type="concept" markdown="1">
 
-## 最终结构：每个模块只有一个主要理由会发生变化
+## 四个模块，各管一件事
 
 ```mermaid
 flowchart LR
@@ -127,30 +127,30 @@ flowchart LR
     TESTS -. 验证 .-> MAIN
 ```
 
-这不是为了“文件越多越专业”。拆分的价值是：读取格式变化时主要检查 `data_io.py`，报告文字变化时主要检查 `reporting.py`，每部分都能独立测试。
+文件拆开以后，修改会更有方向：输入格式变了，先看 `data_io.py`；报告文字要调整，先看 `reporting.py`。拆模块是为了让变化落在该去的地方，不是为了显得项目更大。
 
 </section>
 
 <section id="troubleshoot-evidence" class="be-sample-learning-unit" data-learning-context="troubleshoot-evidence" data-context-type="troubleshoot" markdown="1">
 
-## 失败不是附录：它是项目可信度的一部分
+## 故意弄错一次，再把它修回来
 
-在临时副本中任选一个实验，不要破坏固定样例：
+复制一份项目，从下面任选一个实验。别直接改坏固定样例：
 
-| 受控变化 | 预期现象 | 恢复后必须证明 |
+| 故意怎么改 | 应该出现什么 | 修好后再检查什么 |
 | --- | --- | --- |
 | 暂时改名输入文件 | 标准错误说明找不到文件，返回非零退出码 | 恢复文件名后主程序重新成功 |
 | 删除 JSON 中一个逗号 | 报告 JSON 解析位置 | 恢复语法后 14 项测试通过 |
 | 把 `target_hours` 改成 0 | 结构校验拒绝非法范围 | 改回正数后报告内容正确 |
 | 故意改错测试期望 | 测试先失败并显示差异 | 恢复期望后回归全绿 |
 
-失败记录至少包括：触发条件、实际错误、定位依据、最小修复和回归结果。
+记录不必写成长报告，五项就够：你改了什么、实际报了什么错、靠什么找到原因、最小修复是什么、测试是否重新通过。
 
 </section>
 
 <section id="modify-project" class="be-sample-learning-unit" data-learning-context="modify-project" data-context-type="modify" markdown="1">
 
-## 迁移修改：增加一个状态，但保持旧契约
+## 再加一个“已暂停”状态
 
 在临时副本中为学习记录增加 `paused` 布尔字段：
 
@@ -159,29 +159,29 @@ flowchart LR
 - 汇总总计划和总完成的规则不改变。
 - 至少新增一个测试，并先看到它在功能实现前失败。
 
-这里不提供完整实现。验收重点不是写出一个 `if`，而是你能否说明数据契约放在哪里校验、报告逻辑放在哪里、哪些旧测试证明没有破坏既有功能。
+这里故意不放完整答案。动手前先想清楚：字段应该在哪里检查，状态应该在哪里计算，报告文字又属于哪个模块。改完以后，旧测试仍然要全部通过。
 
 </section>
 
 <section id="career-story" class="be-sample-learning-unit" data-learning-context="career-story" data-context-type="career" markdown="1">
 
-## 求职叙事：用证据说清一个小项目
+## 面试时，怎样把这个小项目讲清楚
 
 <div class="be-story-chain" aria-label="项目表达从问题到改进的五段链条">
   <span><b>问题</b>学习记录散落，无法稳定汇总</span>
   <span><b>设计</b>JSON 数据、分层模块、稳定文本契约</span>
   <span><b>失败</b>缺失文件、坏 JSON、非法字段</span>
-  <span><b>验证</b>退出码、标准错误、14 项回归测试</span>
+  <span><b>验证</b>退出码、错误输出、14 项自动化测试</span>
   <span><b>改进</b>下一阶段加入 CLI、日志、配置与 CI</span>
 </div>
 
-面试时不要夸大为“生产级平台”。更可信的表达是：这是一个学习阶段作品，你能解释数据流、模块边界、失败策略、测试证据和下一步工程化方向。
+我不建议把它包装成“生产级平台”，那样反而经不起追问。就诚实地说这是一个持续迭代的学习项目，然后拿代码说明数据怎样流动、模块为什么这样拆、错误怎样处理、测试怎样保护修改。
 
 </section>
 
 <section id="project-next" class="be-sample-project-panel" data-learning-context="project-next" data-context-type="project" markdown="1">
 
-## 项目出口：完成不是停止，而是获得选择权
+## 这个项目还能往哪里走
 
 | 方向 | 可以怎样继续演进 |
 | --- | --- |
@@ -191,7 +191,7 @@ flowchart LR
 | 算法与 CS | 为查找、排序和汇总建立可追踪实验 |
 | AI / Agent | 在可靠数据和评估基础上增加智能分析与工具调用 |
 
-阶段作品的真正价值，是把多节课的知识变成一份能运行、能解释、能失败、能验证、还能继续演进的共同对象。
+做到 `v1.0` 以后，你手里已经有了一个可以继续改的程序。接下来无论走 Web、系统、算法还是 AI，都可以沿用这份数据和已经建立的测试习惯，不必重新从空文件开始。
 
 </section>
 
@@ -199,7 +199,7 @@ flowchart LR
     先运行主程序，再展示一个失败场景，最后运行全部测试。不要一开始逐文件讲代码。
 
 ??? note "深入理解：测试不是为了追求数量"
-    14 项只是当前覆盖。判断质量要看正常、边界、失败和副作用是否被验证，以及失败信息能否定位问题。
+    14 只是当前的测试数量，数量本身不代表质量。更值得看的是：正常情况、边界情况和失败情况有没有覆盖，测试失败时能不能看出哪里出了问题。
 
 ??? success "求职训练：项目追问自检"
     准备回答：为什么用 JSON、为什么拆模块、为什么不捕获所有异常、怎样证明输入没被修改、需求变化时先改哪个测试。
@@ -209,8 +209,7 @@ flowchart LR
 - [ ] 能沿版本线说明每一课给项目增加了什么。
 - [ ] 能运行三个小型快照和正式 `v1.0`。
 - [ ] 能画出或复述最终数据流与模块职责。
-- [ ] 完成一次失败实验并保留回归证据。
+- [ ] 故意制造一次错误，修复后重新跑过全部测试。
 - [ ] 能用“问题—设计—失败—验证—改进”讲清项目，不夸大经历。
 
 [回到批次 A 评审说明](README.md){ .md-button .md-button--primary }
-

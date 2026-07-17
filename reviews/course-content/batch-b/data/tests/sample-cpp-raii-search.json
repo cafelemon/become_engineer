@@ -1,0 +1,10 @@
+{"lesson_id":"sample-cpp-raii","cases":[
+  {"query":"这三行进入和离开说明什么？","expected_card":"raii-result"},{"query":"对象什么时候销毁","expected_card":"raii-result"},
+  {"query":"怎么判断谁拥有一个对象？","expected_card":"raii-owner"},{"query":"引用是不是拥有对象","expected_card":"raii-owner"},
+  {"query":"析构函数什么时候自动调用？","expected_card":"raii-destructor"},{"query":"局部对象怎么销毁","expected_card":"raii-destructor"},
+  {"query":"为什么没有写 close 也能关闭文件？","expected_card":"raii-file"},{"query":"ofstream会自动关闭吗","expected_card":"raii-file"},
+  {"query":"RAII 会不会把文件打开失败也处理掉？","expected_card":"raii-error"},{"query":"RAII是不是不用检查错误","expected_card":"raii-error"},
+  {"query":"给审计文件加字段后要检查什么？","expected_card":"raii-change"},{"query":"文件内容和返回值都要看吗","expected_card":"raii-change"},
+  {"query":"悬空引用为什么不能运行看看？","expected_card":"raii-dangling"},{"query":"没崩溃是不是就安全","expected_card":"raii-dangling"},
+  {"query":"RAII 给报告器带来了什么？","expected_card":"raii-project"},{"query":"报告器审计导出价值","expected_card":"raii-project"}
+],"unknown":["BFS怎么恢复最短路径","如何训练RAG检索器"]}

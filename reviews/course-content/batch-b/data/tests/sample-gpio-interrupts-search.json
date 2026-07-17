@@ -1,0 +1,12 @@
+{"lesson_id":"sample-gpio-interrupts","cases":[
+  {"query":"按一下按钮，程序里经过了什么？","expected_card":"gpio-result"},{"query":"按键怎么到主循环","expected_card":"gpio-result"},
+  {"query":"电平和边沿有什么区别？","expected_card":"gpio-level-edge"},{"query":"上升沿是什么意思","expected_card":"gpio-level-edge"},
+  {"query":"为什么中断函数里不直接打印？","expected_card":"gpio-isr-short"},{"query":"ISR为什么要短","expected_card":"gpio-isr-short"},
+  {"query":"这个 C 程序算真正的中断吗？","expected_card":"gpio-fake-hal"},{"query":"假HAL是什么意思","expected_card":"gpio-fake-hal"},
+  {"query":"为什么事件取走一次后就没有了？","expected_card":"gpio-once"},{"query":"事件怎么清除","expected_card":"gpio-once"},
+  {"query":"换引脚时只改一个数字就够吗？","expected_card":"gpio-change"},{"query":"GPIO改成7要改哪里","expected_card":"gpio-change"},
+  {"query":"真机按一次为什么可能出现多次事件？","expected_card":"gpio-bounce"},{"query":"按键抖动是什么","expected_card":"gpio-bounce"},
+  {"query":"加 volatile 就能解决并发问题吗？","expected_card":"gpio-volatile"},{"query":"volatile是不是线程安全","expected_card":"gpio-volatile"},
+  {"query":"设备事件记录器下一步还能加什么？","expected_card":"gpio-project"},{"query":"v0.2后面怎么演进","expected_card":"gpio-project"},
+  {"query":"这个仿真到底证明了什么？","expected_card":"gpio-boundary"},{"query":"仿真能不能代替开发板","expected_card":"gpio-boundary"}
+],"unknown":["C++模板偏特化是什么","数据库事务隔离级别"]}

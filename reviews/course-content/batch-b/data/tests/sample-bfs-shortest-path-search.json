@@ -1,0 +1,11 @@
+{"lesson_id":"sample-bfs-shortest-path","cases":[
+  {"query":"A 到 E 为什么是三步？","expected_card":"bfs-result"},{"query":"A到E最短路径是什么","expected_card":"bfs-result"},
+  {"query":"BFS 为什么要用队列？","expected_card":"bfs-queue"},{"query":"队列和BFS什么关系","expected_card":"bfs-queue"},
+  {"query":"parent 记录下来有什么用？","expected_card":"bfs-parent"},{"query":"父节点怎么恢复路径","expected_card":"bfs-parent"},
+  {"query":"目标不可达时应该返回什么？","expected_card":"bfs-unreachable"},{"query":"A到F为什么是空列表","expected_card":"bfs-unreachable"},
+  {"query":"这段 BFS 代码怎么运行？","expected_card":"bfs-run"},{"query":"bfs_demo.py运行命令","expected_card":"bfs-run"},
+  {"query":"加上 C-E 后为什么变成两步？","expected_card":"bfs-change-edge"},{"query":"无向边为什么两边都要加","expected_card":"bfs-change-edge"},
+  {"query":"为什么入队时就要标记？","expected_card":"bfs-mark-enqueue"},{"query":"D为什么会进队两次","expected_card":"bfs-mark-enqueue"},
+  {"query":"带权图为什么不能直接用 BFS？","expected_card":"bfs-weight"},{"query":"BFS最短路有什么条件","expected_card":"bfs-weight"},
+  {"query":"这个小例子和正式图实验怎么接？","expected_card":"bfs-project"},{"query":"双语言图遍历实验","expected_card":"bfs-project"}
+],"unknown":["C++虚函数表怎么实现","GPIO上拉电阻怎么选"]}

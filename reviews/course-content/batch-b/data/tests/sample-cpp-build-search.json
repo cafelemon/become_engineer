@@ -1,0 +1,10 @@
+{"lesson_id":"sample-cpp-build","cases":[
+  {"query":"这节课最后会跑出什么？","expected_card":"cpp-output"},{"query":"C++第一课做什么","expected_card":"cpp-output"},
+  {"query":"为什么 cpp 文件不能直接运行？","expected_card":"cpp-pipeline"},{"query":"源码怎么变成程序","expected_card":"cpp-pipeline"},
+  {"query":"main 和 return 0 是干什么的？","expected_card":"cpp-main"},{"query":"return 0什么意思","expected_card":"cpp-main"},
+  {"query":"终端说找不到 clang++ 怎么办？","expected_card":"cpp-compiler"},{"query":"编译器没安装怎么办","expected_card":"cpp-compiler"},
+  {"query":"为什么我改了代码，输出还是旧的？","expected_card":"cpp-rebuild"},{"query":"是不是要重新编译","expected_card":"cpp-rebuild"},
+  {"query":"2.5 放进 int 为什么会报错？","expected_card":"cpp-narrowing"},{"query":"花括号初始化报错","expected_card":"cpp-narrowing"},
+  {"query":"链接错误和编译错误怎么区分？","expected_card":"cpp-linker"},{"query":"undefined reference是什么意思","expected_card":"cpp-linker"},
+  {"query":"这张状态卡后面会怎么长大？","expected_card":"cpp-project"},{"query":"状态卡和RAII什么关系","expected_card":"cpp-project"}
+],"unknown":["如何训练图像分类模型","今天北京天气怎么样"]}

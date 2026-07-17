@@ -1,0 +1,121 @@
+.be-data-flow,
+.be-model-flow,
+.be-tool-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 1.2rem 0;
+}
+
+.be-data-flow > div,
+.be-model-flow > div,
+.be-tool-flow > div {
+  position: relative;
+  min-width: 0;
+  padding: 0.9rem;
+  border: 1px solid var(--be-sample-line);
+  border-radius: 0.7rem;
+  background: var(--be-sample-panel);
+  text-align: center;
+}
+
+.be-data-flow strong,
+.be-model-flow strong,
+.be-tool-flow strong { display: block; color: var(--be-sample-primary); }
+.be-data-flow span,
+.be-model-flow span,
+.be-tool-flow span { display: block; margin-top: 0.35rem; color: var(--be-sample-muted); font-size: 0.74rem; }
+
+.be-data-flow > div:not(:last-child)::after,
+.be-model-flow > div:not(:last-child)::after,
+.be-tool-flow > div:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: -0.58rem;
+  z-index: 2;
+  color: var(--be-sample-primary);
+  font-weight: 900;
+  transform: translateY(-50%);
+}
+
+.be-live-demo,
+.be-fixture-demo,
+.be-metric-board {
+  margin: 1.2rem 0;
+  padding: 1rem;
+  border: 1px solid var(--be-sample-line);
+  border-radius: 0.8rem;
+  background: var(--md-default-bg-color);
+}
+
+.be-live-demo__controls,
+.be-fixture-demo__controls,
+.be-trace-controls { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-bottom: 0.8rem; }
+
+.be-live-demo button,
+.be-fixture-demo button,
+.be-trace-controls button {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--be-sample-primary);
+  border-radius: 0.5rem;
+  color: var(--be-sample-primary-dark);
+  background: var(--md-default-bg-color);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 750;
+}
+
+.be-live-demo button:focus-visible,
+.be-fixture-demo button:focus-visible,
+.be-trace-controls button:focus-visible { outline: 0.18rem solid var(--be-sample-primary); outline-offset: 0.12rem; }
+
+.be-api-result,
+.be-fixture-result,
+.be-trace-stage {
+  min-height: 7rem;
+  padding: 0.9rem;
+  border-radius: 0.65rem;
+  background: var(--be-sample-soft);
+}
+
+.be-api-result[data-kind="success"] { border-left: 0.28rem solid var(--be-sample-success); }
+.be-api-result[data-kind="error"] { border-left: 0.28rem solid #c95663; }
+.be-api-result strong,
+.be-fixture-result strong,
+.be-trace-stage strong { display: block; margin-bottom: 0.45rem; color: var(--be-sample-primary); }
+.be-api-result pre,
+.be-fixture-result pre,
+.be-trace-stage pre { margin: 0.6rem 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+
+.be-metric-board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; }
+.be-metric-board > div { padding: 0.85rem; border: 1px solid var(--be-sample-line); border-radius: 0.65rem; background: var(--be-sample-panel); }
+.be-metric-board b { display: block; color: var(--be-sample-primary); font-size: 1.35rem; }
+.be-metric-board span { color: var(--be-sample-muted); font-size: 0.72rem; }
+
+.be-confusion-grid { display: grid; grid-template-columns: 7rem repeat(2, minmax(5rem, 1fr)); gap: 0.35rem; max-width: 30rem; margin: 1rem auto; text-align: center; }
+.be-confusion-grid > span { padding: 0.7rem; border-radius: 0.45rem; background: var(--be-sample-panel); }
+.be-confusion-grid .is-value { border: 1px solid var(--be-sample-line); color: var(--be-sample-primary); font-weight: 800; }
+
+.be-synthetic-note { padding: 0.9rem 1rem; border-left: 0.28rem solid var(--be-sample-warning); border-radius: 0.45rem; background: color-mix(in srgb, var(--be-sample-warning) 9%, var(--md-default-bg-color)); }
+
+@media (max-width: 52rem) {
+  .be-data-flow,
+  .be-model-flow,
+  .be-tool-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .be-data-flow > div::after,
+  .be-model-flow > div::after,
+  .be-tool-flow > div::after { display: none; }
+}
+
+@media (max-width: 35rem) {
+  .be-data-flow,
+  .be-model-flow,
+  .be-tool-flow,
+  .be-metric-board { grid-template-columns: 1fr; }
+  .be-confusion-grid { grid-template-columns: 5.5rem repeat(2, minmax(4rem, 1fr)); font-size: 0.72rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .be-live-demo *, .be-fixture-demo *, .be-trace-stage * { transition: none !important; }
+}

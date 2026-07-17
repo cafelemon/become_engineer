@@ -1,0 +1,10 @@
+{"lesson_id":"sample-c-memory","cases":[
+  {"query":"第一节 C 课会做出什么？","expected_card":"c-output"},{"query":"设备事件记录器是什么","expected_card":"c-output"},
+  {"query":"变量和值、地址有什么区别？","expected_card":"c-variable-address"},{"query":"地址每次为什么不一样","expected_card":"c-variable-address"},
+  {"query":"为什么用 uint8_t 和 uint32_t？","expected_card":"c-fixed-width"},{"query":"固定宽度整数有什么用","expected_card":"c-fixed-width"},
+  {"query":"struct 为什么要把三个字段放一起？","expected_card":"c-struct"},{"query":"DeviceEvent怎么理解","expected_card":"c-struct"},
+  {"query":"C 程序应该用 clang 还是 clang++？","expected_card":"c-compile"},{"query":"C语言用什么编译器命令","expected_card":"c-compile"},
+  {"query":"PRIu32 这一段为什么这么写？","expected_card":"c-format"},{"query":"uint32_t怎么printf","expected_card":"c-format"},
+  {"query":"为什么这里只看地址，不讲指针运算？","expected_card":"c-pointer-scope"},{"query":"&event是什么意思","expected_card":"c-pointer-scope"},
+  {"query":"这条手写事件怎么接到 GPIO？","expected_card":"c-project"},{"query":"v0.1怎么升级到v0.2","expected_card":"c-project"}
+],"unknown":["怎么部署 Kubernetes 集群","这段 SQL 如何加索引"]}

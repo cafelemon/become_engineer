@@ -1,0 +1,10 @@
+{"lesson_id":"sample-llm-structured-output","cases":[
+  {"query":"为什么要把一句话变成 JSON？","expected_card":"llm-result"},{"query":"结构化输出有什么用","expected_card":"llm-result"},
+  {"query":"开了 JSON 模式为什么还要校验？","expected_card":"llm-boundary"},{"query":"能不能直接相信模型","expected_card":"llm-boundary"},
+  {"query":"extra=forbid 是干什么的？","expected_card":"llm-schema"},{"query":"为什么拒绝多余字段","expected_card":"llm-schema"},
+  {"query":"没有 API Key 能学这节课吗？","expected_card":"llm-offline"},{"query":"不调用DeepSeek可以吗","expected_card":"llm-offline"},
+  {"query":"换一种说法后怎么判断结果对不对？","expected_card":"llm-modify"},{"query":"兴趣学算法怎么写JSON","expected_card":"llm-modify"},
+  {"query":"模型返回空内容怎么办？","expected_card":"llm-empty"},{"query":"DeepSeek空响应怎么处理","expected_card":"llm-empty"},
+  {"query":"数字写成文字为什么不自动转换？","expected_card":"llm-type"},{"query":"weekly_hours是字符串怎么办","expected_card":"llm-type"},
+  {"query":"这和智能学习助手有什么关系？","expected_card":"llm-project"},{"query":"后面怎么接Agent","expected_card":"llm-project"}
+],"unknown":["怎么焊接电路板","归并排序怎么写"]}

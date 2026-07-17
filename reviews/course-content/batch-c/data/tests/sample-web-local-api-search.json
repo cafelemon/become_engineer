@@ -1,0 +1,10 @@
+{"lesson_id":"sample-web-local-api","cases":[
+  {"query":"这节课最后会在浏览器看到什么？","expected_card":"web-result"},{"query":"Web第一课做什么","expected_card":"web-result"},
+  {"query":"浏览器怎么找到 Python 函数？","expected_card":"web-http"},{"query":"HTTP和FastAPI怎么连起来","expected_card":"web-http"},
+  {"query":"为什么 API 要先约好字段？","expected_card":"web-contract"},{"query":"接口契约是什么","expected_card":"web-contract"},
+  {"query":"Uvicorn 要怎么启动？","expected_card":"web-start"},{"query":"8780端口怎么开","expected_card":"web-start"},
+  {"query":"怎么加入我自己的学习记录？","expected_card":"web-add-record"},{"query":"修改SUMMARIES","expected_card":"web-add-record"},
+  {"query":"页面说连接不上 API 怎么办？","expected_card":"web-connection"},{"query":"Failed to fetch怎么办","expected_card":"web-connection"},
+  {"query":"404 和 422 有什么区别？","expected_card":"web-status"},{"query":"为什么返回422","expected_card":"web-status"},
+  {"query":"Web 版和终端报告器是什么关系？","expected_card":"web-project"},{"query":"报告器为什么加API","expected_card":"web-project"}
+],"unknown":["怎么训练卷积神经网络","北京明天天气怎么样"]}

@@ -1,0 +1,22 @@
+{
+  "lesson_id": "sample-python-variables",
+  "cases": [
+    {"query": "这节课最后会跑出什么？", "expected_card": "sample-python-profile-result"},
+    {"query": "Python第一课的产出是什么", "expected_card": "sample-python-profile-result"},
+    {"query": "变量和值到底是什么关系？", "expected_card": "sample-python-variable-value"},
+    {"query": "变量是不是盒子", "expected_card": "sample-python-variable-value"},
+    {"query": "str、int、float、bool 怎么区分？", "expected_card": "sample-python-four-types"},
+    {"query": "True为什么没有引号", "expected_card": "sample-python-four-types"},
+    {"query": "浏览器运行器和本地 Python 有什么区别？", "expected_card": "sample-python-browser-runner"},
+    {"query": "运行器加载失败怎么办", "expected_card": "sample-python-browser-runner"},
+    {"query": "我应该把哪些地方改成自己的？", "expected_card": "sample-python-active-change"},
+    {"query": "只复制运行算完成吗", "expected_card": "sample-python-active-change"},
+    {"query": "为什么我输入 5，Python 还说它是文字？", "expected_card": "sample-python-input-string"},
+    {"query": "input为什么返回str", "expected_card": "sample-python-input-string"},
+    {"query": "ValueError 应该怎么看？", "expected_card": "sample-python-valueerror"},
+    {"query": "int five为什么报错", "expected_card": "sample-python-valueerror"},
+    {"query": "这份小档案后面会怎么长大？", "expected_card": "sample-python-project-v01"},
+    {"query": "v0.1和最终项目的关系", "expected_card": "sample-python-project-v01"}
+  ],
+  "unknown": ["怎么训练一只鲸鱼", "今天火星天气如何"]
+}

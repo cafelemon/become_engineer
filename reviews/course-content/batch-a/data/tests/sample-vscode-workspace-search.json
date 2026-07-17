@@ -1,0 +1,22 @@
+{
+  "lesson_id": "sample-vscode-workspace",
+  "cases": [
+    {"query": "学完后，我应该看到什么？", "expected_card": "sample-vscode-result-evidence"},
+    {"query": "编辑器学完要证明什么", "expected_card": "sample-vscode-result-evidence"},
+    {"query": "工作区和单个文件有什么区别？", "expected_card": "sample-vscode-workspace-model"},
+    {"query": "为什么要打开文件夹", "expected_card": "sample-vscode-workspace-model"},
+    {"query": "安装后在哪里找到 VS Code？", "expected_card": "sample-vscode-install-find"},
+    {"query": "VS Code安装完怎么打开", "expected_card": "sample-vscode-install-find"},
+    {"query": "怎样确认打开的是正确目录？", "expected_card": "sample-vscode-open-root"},
+    {"query": "我是不是打开错文件夹了", "expected_card": "sample-vscode-open-root"},
+    {"query": "怎么判断文件有没有保存？", "expected_card": "sample-vscode-save-state"},
+    {"query": "标签页圆点是什么意思", "expected_card": "sample-vscode-save-state"},
+    {"query": "内置终端为什么找不到刚才的文件？", "expected_card": "sample-vscode-terminal-location"},
+    {"query": "终端和编辑器目录不一致", "expected_card": "sample-vscode-terminal-location"},
+    {"query": "编辑器里找不到内容应该先查什么？", "expected_card": "sample-vscode-troubleshoot-order"},
+    {"query": "VS Code排错顺序", "expected_card": "sample-vscode-troubleshoot-order"},
+    {"query": "这个编辑器练习和后续项目有什么关系？", "expected_card": "sample-vscode-project-value"},
+    {"query": "learning-workspace后面还用吗", "expected_card": "sample-vscode-project-value"}
+  ],
+  "unknown": ["量子纠缠如何证明", "帮我预测明天股票价格"]
+}

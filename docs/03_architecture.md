@@ -168,7 +168,8 @@ become_engineer/
 - 阶段作品连接连续 3–6 节课程；长期项目按应用、系统、AI、LLM/Agent 和设备方向演进，不建立强行覆盖所有分支的单一项目。
 - 目标助教上下文从固定 `step_id` 扩展为概念、例子、复现、修改、排错、项目、深化和求职等语义锚点；具体 schema 在样板通过后定稿。
 - 升级必须兼容现有 `lesson_id + step_id` 知识库，未迁移课程、无 JavaScript 页面和直接 URL 不得失效。
-- 样板使用独立评审环境，不进入正式课程树、搜索、课程计数或个性化规则。
+- 三批样板分别使用 `reviews/course-content/batch-a|b|c/` 与独立 MkDocs 配置构成评审环境；正式构建通过 `draft_docs` 排除整个 `reviews/course-content/`，不进入课程树、搜索、课程计数或个性化规则。
+- 批次 C 将可运行代码与静态页面分离：FastAPI 和 scikit-learn 仅存在于独立评审依赖，LLM／Agent 默认读取离线样本；DeepSeek 适配器延迟加载，只读本机环境变量，不参与自动测试或生产构建。
 - 本阶段不修改 `docs/08_content_standard.md`、模板、Skill、助教运行时、课程登记或导航。
 
 ## 知识库助教 V1

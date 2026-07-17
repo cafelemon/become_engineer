@@ -1,0 +1,24 @@
+{
+  "lesson_id": "sample-study-progress-reporter",
+  "cases": [
+    {"query": "这个阶段作品最终能做什么？", "expected_card": "sample-project-final-result"},
+    {"query": "学习进度报告器有什么功能", "expected_card": "sample-project-final-result"},
+    {"query": "为什么要把 v0.1 到 v1.0 都留下来？", "expected_card": "sample-project-version-purpose"},
+    {"query": "版本线有什么学习价值", "expected_card": "sample-project-version-purpose"},
+    {"query": "三个版本应该怎么比较？", "expected_card": "sample-project-snapshots"},
+    {"query": "不要只比较代码行数是什么意思", "expected_card": "sample-project-snapshots"},
+    {"query": "怎样确认最终版本真的能跑？", "expected_card": "sample-project-run-tests"},
+    {"query": "只说测试通过够吗", "expected_card": "sample-project-run-tests"},
+    {"query": "为什么要拆成四个 Python 模块？", "expected_card": "sample-project-module-boundary"},
+    {"query": "文件越多越专业吗", "expected_card": "sample-project-module-boundary"},
+    {"query": "故意试错以后要记些什么？", "expected_card": "sample-project-failure-evidence"},
+    {"query": "怎么做故障复盘", "expected_card": "sample-project-failure-evidence"},
+    {"query": "增加 paused 字段时先改哪里？", "expected_card": "sample-project-paused-change"},
+    {"query": "怎样保持旧数据兼容", "expected_card": "sample-project-paused-change"},
+    {"query": "面试时这个小项目该怎么讲？", "expected_card": "sample-project-career-story"},
+    {"query": "如何避免夸大项目", "expected_card": "sample-project-career-story"},
+    {"query": "完成报告器后可以走哪些方向？", "expected_card": "sample-project-next-path"},
+    {"query": "项目下一步怎么选", "expected_card": "sample-project-next-path"}
+  ],
+  "unknown": ["怎么种植热带水果", "宇宙尽头是什么"]
+}

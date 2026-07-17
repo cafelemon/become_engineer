@@ -1,0 +1,118 @@
+.be-build-pipeline,
+.be-memory-strip,
+.be-lifetime-strip,
+.be-gpio-flow {
+  display: grid;
+  gap: 0.65rem;
+  margin: 1.2rem 0;
+}
+
+.be-build-pipeline { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.be-build-pipeline > div,
+.be-memory-strip > div,
+.be-lifetime-strip > div,
+.be-gpio-flow > div {
+  position: relative;
+  min-width: 0;
+  padding: 0.9rem;
+  border: 1px solid var(--be-sample-line);
+  border-radius: 0.7rem;
+  background: var(--be-sample-panel);
+  text-align: center;
+}
+.be-build-pipeline strong,
+.be-memory-strip strong,
+.be-lifetime-strip strong,
+.be-gpio-flow strong { display: block; color: var(--be-sample-primary); }
+.be-build-pipeline span,
+.be-memory-strip span,
+.be-lifetime-strip span,
+.be-gpio-flow span { display: block; margin-top: 0.35rem; color: var(--be-sample-muted); font-size: 0.75rem; }
+.be-build-pipeline > div:not(:last-child)::after,
+.be-gpio-flow > div:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: -0.58rem;
+  z-index: 2;
+  color: var(--be-sample-primary);
+  font-weight: 900;
+  transform: translateY(-50%);
+}
+
+.be-memory-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.be-memory-strip code { font-size: 0.9rem; }
+.be-lifetime-strip { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.be-lifetime-strip [data-state="alive"] { border-top: 0.28rem solid var(--be-sample-success); }
+.be-lifetime-strip [data-state="borrow"] { border-top: 0.28rem solid var(--be-sample-primary); }
+.be-lifetime-strip [data-state="dead"] { border-top: 0.28rem solid #c95663; }
+.be-gpio-flow { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.be-trace-demo {
+  margin: 1.2rem 0;
+  padding: 1rem;
+  border: 1px solid var(--be-sample-line);
+  border-radius: 0.8rem;
+  background: var(--md-default-bg-color);
+}
+.be-trace-demo__stage {
+  min-height: 7.5rem;
+  padding: 1rem;
+  border-radius: 0.7rem;
+  background: var(--be-sample-soft);
+}
+.be-trace-demo__stage strong { display: block; margin-bottom: 0.55rem; color: var(--be-sample-primary); }
+.be-trace-demo__state { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; }
+.be-trace-demo__state span {
+  min-width: 0;
+  padding: 0.65rem;
+  border: 1px solid var(--be-sample-line);
+  border-radius: 0.55rem;
+  background: var(--md-default-bg-color);
+  overflow-wrap: anywhere;
+}
+.be-trace-demo__controls { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 0.8rem; }
+.be-trace-demo__controls button {
+  padding: 0.48rem 0.8rem;
+  border: 1px solid var(--be-sample-primary);
+  border-radius: 0.5rem;
+  color: var(--be-sample-primary);
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+.be-trace-demo__controls button:focus-visible { outline: 0.18rem solid var(--be-sample-primary); outline-offset: 0.12rem; }
+.be-trace-demo__controls button:disabled { opacity: 0.45; cursor: default; }
+.be-trace-demo__position { margin-left: auto; align-self: center; color: var(--be-sample-muted); font-size: 0.78rem; }
+.be-hardware-line {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.2rem 0;
+}
+.be-hardware-line > div { padding: 1rem; border-radius: 0.75rem; }
+.be-hardware-line__sim { border: 1px solid var(--be-sample-success); background: color-mix(in srgb, var(--be-sample-success) 8%, var(--md-default-bg-color)); }
+.be-hardware-line__real { border: 1px solid var(--be-sample-warning); background: color-mix(in srgb, var(--be-sample-warning) 8%, var(--md-default-bg-color)); }
+
+@media (max-width: 52rem) {
+  .be-build-pipeline,
+  .be-lifetime-strip,
+  .be-gpio-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .be-build-pipeline > div::after,
+  .be-gpio-flow > div::after { display: none; }
+}
+
+@media (max-width: 35rem) {
+  .be-build-pipeline,
+  .be-memory-strip,
+  .be-lifetime-strip,
+  .be-gpio-flow,
+  .be-trace-demo__state,
+  .be-hardware-line { grid-template-columns: 1fr; }
+  .be-trace-demo__position { width: 100%; margin-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .be-trace-demo * { scroll-behavior: auto !important; transition: none !important; }
+}

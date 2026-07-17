@@ -1,0 +1,23 @@
+INHERIT: mkdocs.yml
+
+site_name: Become Engineer · 课程样板批次 C
+site_dir: site-samples-c
+
+draft_docs: null
+
+extra_css:
+  - stylesheets/extra.css
+  - reviews/course-content/batch-a/assets/sample.css
+  - reviews/course-content/batch-c/assets/sample-c.css
+
+extra_javascript:
+  - reviews/course-content/batch-a/assets/tutor-v2-search.js
+  - reviews/course-content/batch-c/assets/tutor-v2.js
+  - reviews/course-content/batch-c/assets/intelligent-traces.js
+
+nav:
+  - 评审说明: reviews/course-content/batch-c/README.md
+  - Web 起步: reviews/course-content/batch-c/web-local-api.md
+  - AI 实验: reviews/course-content/batch-c/ai-reproducible-experiment.md
+  - LLM 结构化输出: reviews/course-content/batch-c/llm-structured-output.md
+  - Agent 工具调用: reviews/course-content/batch-c/agent-read-only-tool.md

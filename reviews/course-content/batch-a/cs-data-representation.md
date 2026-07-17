@@ -6,9 +6,9 @@
 
 <span class="be-sample-kicker">CS 概念样板 · 不要求 C++</span>
 
-## 同一组学习小时，程序为什么能“按位置取值”也能“逐个查找”？
+## 一组数字，两种找法
 
-我们从 `[2, 5, 3, 4]` 出发，不实现容器、不背复杂度符号。先看清数据怎样表示、操作怎样发生、边界怎样失败，再数一数程序实际做了几次比较。
+今天只研究 `[2, 5, 3, 4]` 这四个数。知道位置时，程序可以直接取值；只知道要找什么时，它可能得一个个看过去。先把这两件事看明白，暂时不用背复杂度符号。
 
 <div class="be-sample-actions" markdown="1">
 [先看表示过程](#concept-representation){ .md-button .md-button--primary }
@@ -19,9 +19,9 @@
 
 <section id="concept-representation" class="be-sample-learning-unit" data-learning-context="concept-representation" data-context-type="concept" markdown="1">
 
-## 数据与表示不是一回事
+## 程序怎样记住四天的学习时间
 
-“四天分别学习了 2、5、3、4 小时”是现实信息。程序需要一种明确表示，才能保存和操作它：
+“四天分别学习了 2、5、3、4 小时”是一条现实信息。要让程序保存并处理它，我们可以写成：
 
 ```python
 hours = [2, 5, 3, 4]
@@ -37,14 +37,14 @@ hours = [2, 5, 3, 4]
   <span>允许的操作<br><b>访问、扫描</b></span>
 </div>
 
-!!! abstract "本课的第一个 CS 观点"
-    选择一种数据表示，也就选择了一组容易执行的操作和需要处理的边界。
+!!! abstract "先记住这个关系"
+    数据怎样组织，会影响程序怎样读取它、怎样查找它，以及哪些位置可能出错。
 
 </section>
 
 <section id="concept-index" class="be-sample-learning-unit" data-learning-context="concept-index" data-context-type="concept" markdown="1">
 
-## 位置从 0 开始：下标是程序中的地址标签
+## 下标从 0 开始
 
 <div class="be-array-row" aria-label="列表值和下标对照">
   <div><span>下标 0</span><strong>2</strong></div>
@@ -58,16 +58,16 @@ hours = [2, 5, 3, 4]
 print(hours[2])
 ```
 
-程序已经知道“位置 2”，所以可以直接取得值 `3`。这和“我不知道 3 在哪里，请帮我找”是两类不同问题。
+这里已经明确告诉程序“取下标 2”，所以它可以直接拿到值 `3`。如果问题变成“帮我找出 3 在哪里”，程序就得先寻找位置了。
 
-!!! note "Python `list` 的准确边界"
-    本图解释的是语言层的顺序和下标，不声称 Python `list` 是“连续存放同类型原始值的数组”。它保存对象引用并隐藏了很多实现细节；底层内存会在后续系统课程展开。
+!!! note "这张图不是内存布局图"
+    方格只是帮助理解顺序和下标。Python 的 `list` 保存的是对象引用，还隐藏了扩容等实现细节；真实的内存结构会留到后面的系统课程。
 
 </section>
 
 <section id="example-access" class="be-sample-learning-unit" data-learning-context="example-access" data-context-type="example" markdown="1">
 
-## 微型例子：已知位置时，程序做了什么
+## 已知位置，直接取值
 
 先预测下面三行：
 
@@ -81,13 +81,13 @@ print(len(hours))
 ??? question "预测后再展开"
     依次输出 `2`、`4`、`4`。`-1` 表示最后一个位置，`len(hours)` 是元素数量，不是最后一个有效下标。
 
-把 `hours[0]` 改成 `hours[4]`，会发生什么？不要先运行，先用“元素数量”和“有效下标范围”解释。
+如果把 `hours[0]` 改成 `hours[4]`，会发生什么？先别运行，把四个有效下标写出来再回答。
 
 </section>
 
 <section id="troubleshoot-boundary" class="be-sample-learning-unit" data-learning-context="troubleshoot-boundary" data-context-type="troubleshoot" markdown="1">
 
-## 边界实验：为什么长度是 4，却没有下标 4
+## 长度是 4，为什么不能访问下标 4
 
 四个元素的有效下标是 `0、1、2、3`。访问 `hours[4]` 会触发：
 
@@ -95,7 +95,7 @@ print(len(hours))
 IndexError: list index out of range
 ```
 
-恢复时不要直接“减一试试”，而是先写出边界：
+遇到这个错误时，别只把数字减一碰碰运气。先检查有效范围：
 
 ```python
 0 <= index < len(hours)
@@ -110,11 +110,11 @@ IndexError: list index out of range
 
 </section>
 
-<section id="example-scan" class="be-sample-learning-unit" data-learning-context="example-scan" data-context-type="example" markdown="1">
+<section id="example-scan" class="be-sample-learning-unit" data-learning-context="example-scan" data-context-type="reproduce" markdown="1">
 
-## 不知道位置时：程序只能按规则寻找
+## 不知道位置，就一个个找
 
-下面的播放器查找目标值 `3`。每点一次“下一次比较”，程序访问一个位置并判断是否命中。
+下面要找的是 `3`。每点一次“下一次比较”，程序就看一个位置，直到找到目标为止。开始前先猜一下：要比较几次？
 
 <div class="be-scan-demo" data-scan-demo data-values="2,5,3,4" data-target="3">
   <div class="be-scan-demo__header">
@@ -122,7 +122,7 @@ IndexError: list index out of range
     <span>比较次数 <strong data-scan-count>0</strong></span>
   </div>
   <div class="be-scan-demo__cells" data-scan-cells aria-live="polite"></div>
-  <p class="be-scan-demo__message" data-scan-message>还没有开始。先预测要比较几次。</p>
+  <p class="be-scan-demo__message" data-scan-message>还没开始。先猜一猜要比较几次。</p>
   <div class="be-scan-demo__controls">
     <button type="button" data-scan-prev>上一次</button>
     <button type="button" data-scan-next>下一次比较</button>
@@ -142,7 +142,7 @@ IndexError: list index out of range
 
 <section id="concept-cost" class="be-sample-learning-unit" data-learning-context="concept-cost" data-context-type="concept" markdown="1">
 
-## 第一个操作成本模型：先数动作，再学习符号
+## 先数动作，再谈复杂度
 
 对同一组数据：
 
@@ -150,7 +150,7 @@ IndexError: list index out of range
 - 查找值 `3`：比较了三次才找到。
 - 查找不存在的值 `9`：必须比较四次才能确认不存在。
 
-现在还不需要背 `O(1)` 或 `O(n)`。先形成更可靠的习惯：**说清输入是什么、程序重复了哪个动作、最坏情况下会重复多少次。**
+现在不急着背 `O(1)` 或 `O(n)`。我更建议你先说清三件事：输入有多大，程序在重复什么动作，最坏时要重复多少次。符号只是把这些规律写得更短。
 
 ```python
 target = 3
@@ -164,7 +164,7 @@ for index, value in enumerate(hours):
 
 <section id="modify-data" class="be-sample-learning-unit" data-learning-context="modify-data" data-context-type="modify" markdown="1">
 
-## 轮到你修改：让预测先于运行
+## 换一组数，再做一次
 
 任选一组新的学习小时和目标值，例如：
 
@@ -180,17 +180,17 @@ target = 7
 3. 顺序扫描需要比较几次。
 4. 如果目标改成 `9`，最坏要比较几次。
 
-再把数据填入自己的 Python 文件，通过实际输出验证。预测错了不等于失败；不能解释为什么错，才说明模型还没有建立。
+写完预测再运行代码核对。猜错很正常，重要的是回头看看：是下标数错了，还是查找过程少算了一步。
 
 </section>
 
 <section id="project-records" class="be-sample-project-panel" data-learning-context="project-records" data-context-type="project" markdown="1">
 
-## 回到项目：一条记录为什么会变成多条记录
+## 报告器为什么需要多条记录
 
 学习进度报告器 `v0.1` 只有一条档案。后续加入多门课程时，需要把多条记录组织起来，并执行汇总、查找和排序。
 
-| 本课概念 | 项目里的真实问题 |
+| 今天学到的 | 放进项目后解决什么 |
 | --- | --- |
 | 顺序表示 | 多条课程记录以固定顺序进入报告 |
 | 下标访问 | 读取某个已知位置的记录 |
@@ -198,7 +198,7 @@ target = 7
 | 边界 | 空记录、错误位置和目标不存在 |
 | 操作成本 | 数据增加后，重复工作会怎样变化 |
 
-本课没有提前实现高级数据结构，而是让你在遇到项目需求时知道：表示方式、操作和成本是连在一起的。
+等报告器开始管理多门课程，这些问题就会真正出现：记录怎样排、怎样找、空数据怎么办、数据多了以后要做多少次工作。后面的数据结构会继续回答这些问题。
 
 </section>
 
@@ -206,10 +206,10 @@ target = 7
     日常说“第一个”通常从 1 开始，Python 下标从 0 开始。读代码时优先说“下标 0”，不要把它混成“第 0 个”。
 
 ??? note "深入理解：抽象会隐藏实现"
-    Python `list` 给你统一的下标、追加和遍历接口。后续课程会比较动态数组、链表、哈希等表示怎样改变操作成本。
+    Python `list` 已经替我们处理了很多底层细节，所以现在用起来很顺手。以后比较动态数组、链表和哈希时，我们会把这些被隐藏的取舍重新打开来看。
 
-??? success "求职训练：复杂度回答从证据开始"
-    面试中不要只报一个符号。先说明数据规模、核心重复动作、最好／最坏情况，再给复杂度结论和替代结构。
+??? success "面试时怎样回答复杂度"
+    别一上来只报一个符号。先说明数据规模和重复动作，再讲最好、最坏情况，最后给出复杂度结论。如果还有余力，再补充可以换什么结构。
 
 ## 完成检查
 
@@ -221,4 +221,3 @@ target = 7
 - [ ] 能说明这些概念将怎样进入学习进度报告器。
 
 下一页：[学习进度报告器阶段作品](study-progress-reporter.md)。
-

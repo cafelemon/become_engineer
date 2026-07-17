@@ -1,0 +1,10 @@
+{"lesson_id":"sample-agent-read-only-tool","cases":[
+  {"query":"回答里的课程状态从哪来的？","expected_card":"agent-result"},{"query":"模型是不是自己猜的","expected_card":"agent-result"},
+  {"query":"模型会直接执行工具吗？","expected_card":"agent-loop"},{"query":"谁真正调用函数","expected_card":"agent-loop"},
+  {"query":"为什么工具只收 course_id？","expected_card":"agent-tool"},{"query":"参数为什么这么少","expected_card":"agent-tool"},
+  {"query":"没有 DeepSeek Key 能跑 Agent 吗？","expected_card":"agent-offline"},{"query":"不联网能看工具调用吗","expected_card":"agent-offline"},
+  {"query":"怎么给课程目录加一门课？","expected_card":"agent-catalog"},{"query":"修改course_catalog","expected_card":"agent-catalog"},
+  {"query":"模型要调用 read_file 为什么要拒绝？","expected_card":"agent-unknown"},{"query":"能不能让Agent读任意文件","expected_card":"agent-unknown"},
+  {"query":"多传一个 path 字段为什么不行？","expected_card":"agent-extra"},{"query":"额外参数怎么处理","expected_card":"agent-extra"},
+  {"query":"会调一个工具就算完整 Agent 吗？","expected_card":"agent-project"},{"query":"这是不是自主Agent","expected_card":"agent-project"}
+],"unknown":["怎么配置PWM占空比","红黑树怎么旋转"]}

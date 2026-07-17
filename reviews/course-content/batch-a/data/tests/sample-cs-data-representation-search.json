@@ -1,0 +1,24 @@
+{
+  "lesson_id": "sample-cs-data-representation",
+  "cases": [
+    {"query": "这节 CS 课为什么从四个数开始？", "expected_card": "sample-cs-goal"},
+    {"query": "要先学C++吗", "expected_card": "sample-cs-goal"},
+    {"query": "数据和数据表示有什么区别？", "expected_card": "sample-cs-data-vs-representation"},
+    {"query": "列表是不是数据本身", "expected_card": "sample-cs-data-vs-representation"},
+    {"query": "Python list 是连续内存数组吗？", "expected_card": "sample-cs-python-list-boundary"},
+    {"query": "这张方格图代表真实内存吗", "expected_card": "sample-cs-python-list-boundary"},
+    {"query": "为什么长度 4 的列表最大下标是 3？", "expected_card": "sample-cs-index-length"},
+    {"query": "len是4为什么不能访问4", "expected_card": "sample-cs-index-length"},
+    {"query": "遇到 IndexError 先看哪里？", "expected_card": "sample-cs-index-error"},
+    {"query": "列表越界怎么检查", "expected_card": "sample-cs-index-error"},
+    {"query": "按下标访问和顺序查找有什么不同？", "expected_card": "sample-cs-access-vs-search"},
+    {"query": "为什么查找要逐个比较", "expected_card": "sample-cs-access-vs-search"},
+    {"query": "还没学 O 记号，怎么理解程序快不快？", "expected_card": "sample-cs-count-cost"},
+    {"query": "为什么先数比较次数", "expected_card": "sample-cs-count-cost"},
+    {"query": "换一组数据以后要检查什么？", "expected_card": "sample-cs-transfer-data"},
+    {"query": "换一组数据要做什么", "expected_card": "sample-cs-transfer-data"},
+    {"query": "这些 CS 概念怎样进入学习进度报告器？", "expected_card": "sample-cs-project-records"},
+    {"query": "列表扫描对项目有什么用", "expected_card": "sample-cs-project-records"}
+  ],
+  "unknown": ["怎么修理汽车发动机", "给我写一首情诗"]
+}

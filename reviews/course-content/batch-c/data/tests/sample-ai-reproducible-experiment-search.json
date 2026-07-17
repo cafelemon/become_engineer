@@ -1,0 +1,10 @@
+{"lesson_id":"sample-ai-reproducible-experiment","cases":[
+  {"query":"这节 AI 课真正要学什么？","expected_card":"ai-result"},{"query":"第一节机器学习做什么","expected_card":"ai-result"},
+  {"query":"合成学习数据能说明真实规律吗？","expected_card":"ai-synthetic"},{"query":"能不能用来评价学习者","expected_card":"ai-synthetic"},
+  {"query":"为什么训练集和验证集要分开？","expected_card":"ai-split"},{"query":"训练验证区别","expected_card":"ai-split"},
+  {"query":"为什么先做一个很笨的基线？","expected_card":"ai-baseline"},{"query":"DummyClassifier有什么用","expected_card":"ai-baseline"},
+  {"query":"随机种子 42 是干什么的？","expected_card":"ai-seed"},{"query":"random_state有什么用","expected_card":"ai-seed"},
+  {"query":"改生成规则以后分数变了说明什么？","expected_card":"ai-modify"},{"query":"修改0.38有什么影响","expected_card":"ai-modify"},
+  {"query":"分数突然满分是不是模型变强了？","expected_card":"ai-leakage"},{"query":"什么是数据泄漏","expected_card":"ai-leakage"},
+  {"query":"这个小实验怎么长成机器学习项目？","expected_card":"ai-project"},{"query":"和结构化数据项目什么关系","expected_card":"ai-project"}
+],"unknown":["怎么画网页导航栏","SPI总线时钟是多少"]}

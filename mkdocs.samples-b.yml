@@ -1,0 +1,28 @@
+INHERIT: mkdocs.yml
+
+site_name: Become Engineer · 课程样板批次 B
+site_dir: site-samples-b
+
+# 正式站点会排除 reviews/；评审构建需要把样板恢复为可访问页面。
+draft_docs: null
+
+# 批次 A 的视觉文件已经通过评审，本批次只叠加系统、算法和设备图解。
+extra_css:
+  - stylesheets/extra.css
+  - reviews/course-content/batch-a/assets/sample.css
+  - reviews/course-content/batch-b/assets/sample-b.css
+
+# 不加载正式个性化导航和 V1 助教，避免正式状态干扰样板评审。
+extra_javascript:
+  - reviews/course-content/batch-a/assets/tutor-v2-search.js
+  - reviews/course-content/batch-b/assets/tutor-v2.js
+  - reviews/course-content/batch-a/assets/python-runner.js
+  - reviews/course-content/batch-b/assets/system-traces.js
+
+nav:
+  - 评审说明: reviews/course-content/batch-b/README.md
+  - C++ 起步: reviews/course-content/batch-b/cpp-build.md
+  - C 起步: reviews/course-content/batch-b/c-memory.md
+  - BFS: reviews/course-content/batch-b/bfs-shortest-path.md
+  - 生命周期与 RAII: reviews/course-content/batch-b/cpp-raii.md
+  - GPIO 与中断: reviews/course-content/batch-b/gpio-interrupts.md
