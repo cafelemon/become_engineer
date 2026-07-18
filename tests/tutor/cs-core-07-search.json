@@ -1,20 +1,27 @@
-[
-  { "query": "栈模式的固定输出要证明什么？", "step_id": "step-1", "expected": "stack-output-baseline" },
-  { "query": "stack首次成功为什么要先核对linked基线", "step_id": "step-1", "expected": "stack-output-baseline" },
-  { "query": "栈的 LIFO 契约是什么？", "step_id": "step-2", "expected": "lifo-contract" },
-  { "query": "后进先出时最后push的元素何时pop", "step_id": "step-2", "expected": "lifo-contract" },
-  { "query": "为什么栈接口不等于某一种底层容器？", "step_id": "step-2", "expected": "stack-interface-representation" },
-  { "query": "栈就是数组还是链表吗", "step_id": "step-2", "expected": "stack-interface-representation" },
-  { "query": "为什么把链表头作为栈顶？", "step_id": "step-3", "expected": "head-as-stack-top" },
-  { "query": "链式栈push pop peek为何都是Theta1", "step_id": "step-3", "expected": "head-as-stack-top" },
-  { "query": "peek 为什么不能改变栈？", "step_id": "step-3", "expected": "peek-no-mutation" },
-  { "query": "查看栈顶之后size减少是什么错误", "step_id": "step-3", "expected": "peek-no-mutation" },
-  { "query": "怎样追踪一串压栈和弹栈状态？", "step_id": "step-4", "expected": "stack-state-trace" },
-  { "query": "push7 push3 pop push9最后栈顶到栈底是什么", "step_id": "step-4", "expected": "stack-state-trace" },
-  { "query": "空栈 pop 和 peek 应怎样失败？", "step_id": "step-5", "expected": "stack-underflow" },
-  { "query": "栈下溢为什么不能返回0哨兵", "step_id": "step-5", "expected": "stack-underflow" },
-  { "query": "怎样证明栈下溢没有破坏状态？", "step_id": "step-5", "expected": "stack-failure-invariant" },
-  { "query": "异常以后怎样验证空栈仍然可以使用", "step_id": "step-5", "expected": "stack-failure-invariant" },
-  { "query": "drain_stack 迁移任务要验收什么？", "step_id": "step-6", "expected": "drain-stack-migration" },
-  { "query": "排空栈返回逆序时怎样保证输入不变", "step_id": "step-6", "expected": "drain-stack-migration" }
-]
+{
+  "lesson_id":"cs-core-07",
+  "cases":[
+    {"query":"栈报告里的 top、pop 和 remaining 说明了什么？","expected_card":"stack-output"},{"query":"为什么最后push的9先出来","expected_card":"stack-output"},
+    {"query":"栈的 LIFO 契约到底是什么？","expected_card":"lifo-contract"},{"query":"last in first out是什么","expected_card":"lifo-contract"},
+    {"query":"push、pop、peek 分别会不会改变栈？","expected_card":"stack-core-operations"},{"query":"栈三个核心操作区别","expected_card":"stack-core-operations"},
+    {"query":"栈就是数组或链表中的一种吗？","expected_card":"interface-vs-representation"},{"query":"std stack为何叫适配器","expected_card":"interface-vs-representation"},
+    {"query":"push 7、push 3、pop、push 9 后栈是什么？","expected_card":"stack-state-trace"},{"query":"最后top to bottom是什么","expected_card":"stack-state-trace"},
+    {"query":"为什么栈轨迹要明确写 top-to-bottom？","expected_card":"top-to-bottom-direction"},{"query":"序列左边是栈顶还是栈底","expected_card":"top-to-bottom-direction"},
+    {"query":"为什么链式栈把链表头作为栈顶？","expected_card":"head-as-stack-top"},{"query":"为什么不把top放链表尾","expected_card":"head-as-stack-top"},
+    {"query":"链式栈 push 和 pop 分别怎样重连？","expected_card":"push-pop-links"},{"query":"pop以后top指向哪里","expected_card":"push-pop-links"},
+    {"query":"peek 为什么不能先 pop 再 push 回去？","expected_card":"peek-no-mutation"},{"query":"查看栈顶怎样保持状态","expected_card":"peek-no-mutation"},
+    {"query":"链式栈最重要的结构和计数规则是什么？","expected_card":"stack-invariants"},{"query":"top为空和size0什么关系","expected_card":"stack-invariants"},
+    {"query":"链式栈小程序应该怎样运行和核对？","expected_card":"run-stack-micro"},{"query":"linked_stack_trace怎么跑","expected_card":"run-stack-micro"},
+    {"query":"为什么栈课还要重跑 linked 和 queue？","expected_card":"bilingual-stack-regression"},{"query":"Python C++栈报告怎样对照","expected_card":"bilingual-stack-regression"},
+    {"query":"栈里有两个相同的 4，需要合并吗？","expected_card":"duplicate-stack-trace"},{"query":"重复值压栈怎样处理","expected_card":"duplicate-stack-trace"},
+    {"query":"drain_stack 应该返回什么顺序？","expected_card":"drain-stack"},{"query":"7 3 9 drain结果","expected_card":"drain-stack"},
+    {"query":"drain_stack 为什么不能修改调用方输入？","expected_card":"drain-input-unchanged"},{"query":"输入列表被清空了怎么办","expected_card":"drain-input-unchanged"},
+    {"query":"空栈 pop 和 peek 应该怎样失败？","expected_card":"stack-underflow"},{"query":"栈下溢为什么不能返回0","expected_card":"stack-underflow"},
+    {"query":"怎样证明下溢没有把栈弄坏？","expected_card":"underflow-preserves-state"},{"query":"异常以后栈还能用吗","expected_card":"underflow-preserves-state"},
+    {"query":"第一次 pop 返回 7 而不是 9，应该查哪里？","expected_card":"fix-stack-order"},{"query":"to list输出成入栈顺序","expected_card":"fix-stack-order"},
+    {"query":"这节课给可追踪线性结构实验增加了什么？","expected_card":"project-linear-stack"},{"query":"栈怎样复用上一课链表","expected_card":"project-linear-stack"},
+    {"query":"哪些问题真的适合用栈？","expected_card":"stack-use-cases"},{"query":"撤销和括号匹配为何用LIFO","expected_card":"stack-use-cases"},
+    {"query":"面试里怎样把栈的接口和实现讲完整？","expected_card":"career-stack"},{"query":"栈面试别只说后进先出","expected_card":"career-stack"}
+  ],
+  "unknown":["怎么挑选适合雨天穿的鞋","烤箱第一次使用如何去味"]
+}

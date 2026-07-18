@@ -1,227 +1,76 @@
-# Python 数据模型、数据类与上下文管理
-
 <div class="be-tutor-mount" data-tutor-lesson="python-core-04" aria-hidden="true"></div>
 
-> **任务先行：** 把双语言学习进度报告器从“字典里装字段”升级为“对象自己表达状态和行为”，再用 `with` 写出审计快照。先看到报告与文件，再解释数据类、对象方法和上下文管理协议。
+<section id="overview-object" class="be-page-hero be-lesson-hero" data-learning-context="overview-object" data-context-type="overview" markdown="1">
 
-## 任务路线
+<span class="be-page-eyebrow">Python 核心 · 第四课 · 让数据拥有自己的行为</span>
 
-<div class="be-task-route" role="list" aria-label="本课五步任务"><span role="listitem">1 基线</span><span role="listitem">2 数据类</span><span role="listitem">3 方法</span><span role="listitem">4 失败实验</span><span role="listitem">5 with</span></div>
+# Python 数据模型、数据类与上下文管理
 
-<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+## 同一条记录，哪种写法更像它本来的样子
 
-## 第一步：运行字典模型基线
+~~~python
+print(record["course_name"])
+print(record.course_name)
+print(record.progress)
+~~~
 
-运行 mypy、unittest 和报告器，确认已有 `TypedDict` 版本的类型检查、13 类行为和标准输出。**可观察结果：** 报告仍以“学习进度报告”开头，总体进度为 `87.1%`。
+字典能保存字段；对象还能说明这些字段之间怎样计算、怎样修改、怎样复制。最后一行的 `progress` 不是额外保存的数据，而是对象根据计划和完成小时算出的结果。
 
-</section>
+这节课还会把记录写进审计文件。文件只在 `with` 代码块里打开，离开时由 Python 负责关闭。
 
-<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
-
-## 第二步：把记录迁移为数据类对象
-
-使用 `@dataclass` 定义 `StudyRecord` 和 `StudySummary`，把 `record["course_name"]` 改为 `record.course_name`。**成功标准：** 构造、汇总、排序、筛选与报告测试全部通过，公开报告一字不变。
-
-</section>
-
-<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
-
-## 第三步：让对象提供进度、状态、复制和修改行为
-
-为 `StudyRecord` 增加 `progress`、`status`、`clone()` 和 `add_completed_hours()`。主动把 Python 起步从 `7.5` 小时更新到 `10.0` 小时。**成功标准：** 原对象状态变为“已完成”，复制对象的标签修改不会污染原对象。
+<div class="be-page-actions" markdown="1">
+[看看数据类替你写了什么](#concept-dataclass){ .md-button .md-button--primary }
+[运行完整小例子](#reproduce-record-audit){ .md-button }
+</div>
 
 </section>
 
-<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+<div class="be-lesson-overview">
+  <div><span>课程位置</span><strong>Python 核心 · 4 / 5</strong></div>
+  <div><span>前置</span><strong>类型提示、函数接口、迭代器、文件与异常</strong></div>
+  <div><span>完成后留下</span><strong>有行为的学习记录、隔离的副本与审计文件</strong></div>
+</div>
 
-## 第四步：触发可变默认值失败并修复
+## 开始前
 
-临时把 `tags` 写成共享列表默认值，观察数据类在类定义阶段拒绝这个危险默认值；恢复 `field(default_factory=list)`。**验收：** 两个新建对象拥有不同标签列表，不通过垃圾回收或偶然运行结果判断正确性。
+- 能读懂带类型标注的类和函数。
+- 知道 `Iterable` 可能是列表，也可能是只能消费一次的生成器。
+- 能用 `unittest` 检查正常路径和失败路径。
+- 本课只用 Python 3.11 标准库；不要求先学 C++ 对象或 RAII。
 
-</section>
+<section id="concept-object-boundary" data-learning-context="concept-object-boundary" data-context-type="concept" markdown="1">
 
-<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+## 字典描述形状，对象还可以承担行为
 
-## 第五步：用 with 导出审计快照并迁移验收
+上一课使用 `TypedDict` 描述学习记录：
 
-实现 `write_audit_snapshot()`，用 `with output_path.open(...)` 管理文件。验证成功文件和缺失父目录两条路径。**迁移任务：** 独立增加审计状态列或一种对象方法，同时保持 Python/C++ 主报告逐字一致。
-
-</section>
-
-上一节 C++ 课程用引用、非拥有指针和 `std::ofstream` 建立了对象与资源边界。Python 不要求学习者机械翻译 C++ 写法：本节用数据类表达对象，用普通引用语义调用方法，并用 `with` 管理文件资源。
-
-## 课程信息
-
-| 项目 | 内容 |
-| --- | --- |
-| 适合人群 | 已完成 Python 迭代器课程与 C++ RAII 课程，需要从结构化字典进入对象设计的学习者 |
-| 前置知识 | `TypedDict`、类型提示、函数、模块、迭代器、文件与异常、mypy、unittest |
-| 可观察产出 | 数据类报告器、对象方法测试、审计快照文件和稳定的双语言主报告 |
-| 环境 | Python 3.11 及以上，仅使用标准库；mypy strict 与 unittest |
-| 阶段作品 | [双语言学习进度报告器](../../../exercises/programming-languages/study-progress-reporters/README.md) |
-| 事实核查 | Python 3.11.15 官方文档，2026-07-15 核查 |
-
-## 学习目标
-
-完成本节后，你应该能够：
-
-- 说明类、实例、属性和方法在当前报告器中的具体作用。
-- 使用 `@dataclass` 生成初始化、显示和相等比较所需的基础行为。
-- 使用 `field(default_factory=list)` 避免多个实例共享可变默认值。
-- 把属于记录自身的进度、状态、复制和更新行为放回对象。
-- 用 `with` 管理文件的进入与退出，并区分资源释放和错误处理。
-- 审阅 AI 是否引入共享列表、浅复制污染、吞掉异常或改变报告契约。
-
-## 第一步：保存可回归的字典模型基线
-
-从阶段作品的 Python 目录执行：
-
-```bash
-python -m mypy --strict .
-python -m unittest discover -s tests -v
-python main.py
-```
-
-迁移前后的核心证据都应包含下面这段输出：
-
-```text
-学习进度报告
-总计划：35.0 小时
-总完成：30.5 小时
-总体进度：87.1%
-```
-
-原来的 `TypedDict` 只为字典访问提供静态形状：
-
-```python
-class StudyRecord(TypedDict):
+~~~python
+class StudyRecordDict(TypedDict):
     course_name: str
     target_hours: float
     completed_hours: float
     tags: list[str]
-```
+~~~
 
-运行时仍然是普通字典，字段读取使用 `record["course_name"]`。数据类迁移的目标不是减少几个括号，而是让“记录是什么、能做什么、如何复制”集中在一个对象边界里。
+它告诉 mypy 有哪些键，但运行时仍是普通字典。计算进度、更新小时和复制标签的代码只能散落在外部函数中。
 
-## 第二步：用数据类建立对象边界
+数据类把同一组字段变成实例：
 
-在 `models.py` 中定义记录：
-
-```python
-from __future__ import annotations
-
-from dataclasses import dataclass, field, replace
-
-
-@dataclass
-class StudyRecord:
-    course_name: str
-    target_hours: float
-    completed_hours: float
-    tags: list[str] = field(default_factory=list)
-```
-
-`@dataclass` 会根据类型标注生成常用初始化、显示和相等比较行为。它仍然是普通 Python 类；类型标注不会自动验证网络或 JSON 输入，也不会自动让可变字段变成不可变。
-
-样例数据从字典字面量变成显式实例：
-
-```python
-def sample_records() -> list[StudyRecord]:
-    return [
-        StudyRecord("Python 起步", 10.0, 7.5, ["python", "基础"]),
-        StudyRecord("C++ 核心", 12.0, 12.0, ["cpp", "基础"]),
-        StudyRecord("算法练习", 8.0, 4.0, ["算法", "基础", "基础"]),
-        StudyRecord("工程复盘", 5.0, 7.0, ["工程", "复盘"]),
-    ]
-```
-
-汇总结果也可以是数据类：
-
-```python
-@dataclass
-class StudySummary:
-    total_target_hours: float
-    total_completed_hours: float
-    status_counts: dict[str, int]
-    unique_tags: set[str]
-```
-
-迁移时逐类替换访问方式：
-
-| 字典模型 | 数据类对象 |
-| --- | --- |
-| `record["course_name"]` | `record.course_name` |
-| `summary["status_counts"]` | `summary.status_counts` |
-| 字典字面量 | `StudyRecord(...)` |
-| 手工复制所有键 | 对象的 `clone()` |
-
-不要一次删除所有旧访问再猜哪里遗漏。每迁移一个模块就运行 mypy；它会把仍在下标访问对象的位置列出来。
-
-## 第三步：把与记录相关的行为放回对象
-
-进度和状态直接依赖记录字段，放在对象上能让调用者只表达意图：
-
-```python
-@property
-def progress(self) -> float:
-    if self.target_hours <= 0.0:
-        return 0.0
-    raw_progress = self.completed_hours / self.target_hours
-    return min(max(raw_progress, 0.0), 1.0)
-
-@property
-def status(self) -> str:
-    return "已完成" if self.completed_hours >= self.target_hours else "进行中"
-```
-
-`property` 让只读计算仍通过 `record.progress` 访问。它不是缓存：每次读取都会根据当前字段重新计算。
-
-对象修改方法表达“修改这一条已存在的记录”：
-
-```python
-def add_completed_hours(self, additional_hours: float) -> None:
-    self.completed_hours += additional_hours
-```
-
-主动修改与验收：
-
-```python
-record = StudyRecord("Python 起步", 10.0, 7.5)
-assert record.progress == 0.75
-assert record.status == "进行中"
-
+~~~python
+record = StudyRecord("Python 起步", 10.0, 7.5, ["python"])
+print(record.course_name)
 record.add_completed_hours(2.5)
-assert record.completed_hours == 10.0
-assert record.status == "已完成"
-```
+~~~
 
-筛选函数承诺返回独立记录，因此只复制对象外壳不够；`tags` 列表也要复制：
+这不是说“所有函数都应该塞进类”。只依赖一条记录、并且能用记录自己的字段讲清楚的行为，才适合放回对象。跨多条记录的排序、汇总和报告生成仍留在独立模块。
 
-```python
-def clone(self) -> StudyRecord:
-    return replace(self, tags=list(self.tags))
-```
+</section>
 
-这是一层针对当前模型的复制。未来若字段里再放入字典或嵌套对象，需要重新审查复制边界，不能把 `replace()` 当作通用深复制。
+<section id="concept-dataclass" data-learning-context="concept-dataclass" data-context-type="concept" markdown="1">
 
-## 第四步：安全观察可变默认值失败
+## 数据类替你补齐重复代码
 
-下面的类定义是失败实验，只在临时文件或交互环境中运行：
-
-```python
-from dataclasses import dataclass
-
-
-@dataclass
-class BadRecord:
-    tags: list[str] = []
-```
-
-Python 3.11 的数据类会拒绝这个可变默认值并提示使用 `default_factory`。即使在非数据类代码中绕过了检查，共享列表也会让一个实例的修改出现在另一个实例里。
-
-恢复安全写法：
-
-```python
+~~~python
 from dataclasses import dataclass, field
 
 
@@ -231,121 +80,298 @@ class StudyRecord:
     target_hours: float
     completed_hours: float
     tags: list[str] = field(default_factory=list)
-```
+~~~
 
-测试必须观察两个实例：
+`@dataclass` 会根据字段生成常用的初始化、显示和相等比较方法：
 
-```python
+~~~python
+first = StudyRecord("Python", 10.0, 7.5)
+second = StudyRecord("Python", 10.0, 7.5)
+
+print(first)
+print(first == second)  # True
+~~~
+
+它仍然是普通 Python 类。字段后的类型标注供静态工具检查，不会自动拒绝来自 JSON 或网络的错误值；外部输入仍要在进入对象之前验证。
+
+</section>
+
+<section id="example-properties-methods" data-learning-context="example-properties-methods" data-context-type="example" markdown="1">
+
+## 进度是属性，增加小时是动作
+
+进度和状态都能从当前字段算出，不必再保存一份可能过期的值：
+
+~~~python
+@property
+def progress(self) -> float:
+    if self.target_hours <= 0.0:
+        return 0.0
+    raw = self.completed_hours / self.target_hours
+    return min(max(raw, 0.0), 1.0)
+
+@property
+def status(self) -> str:
+    return "已完成" if self.completed_hours >= self.target_hours else "进行中"
+~~~
+
+`record.progress` 看起来像字段，读取时却会重新计算。它不是缓存。
+
+修改已经完成的小时数是一项动作，用方法表达更清楚：
+
+~~~python
+def add_completed_hours(self, additional_hours: float) -> None:
+    if additional_hours < 0.0:
+        raise ValueError("增加的小时数不能为负数")
+    self.completed_hours += additional_hours
+~~~
+
+这里增加了负数检查，因为方法不该让记录从 7.5 小时倒退到 5 小时。若业务真的需要撤销记录，应给它单独命名，而不是偷偷复用“增加”。
+
+</section>
+
+<section id="troubleshoot-mutable-default" data-learning-context="troubleshoot-mutable-default" data-context-type="troubleshoot" markdown="1">
+
+## 空列表为什么不能直接写在字段后面
+
+故意试一次错的：
+
+~~~python
+@dataclass
+class BadRecord:
+    tags: list[str] = []
+~~~
+
+Python 3.11 会在定义数据类时拒绝这个写法，并提示使用 `default_factory`。原因是列表会被复用，多条记录可能拿到同一个对象。
+
+~~~python
+tags: list[str] = field(default_factory=list)
+~~~
+
+`default_factory=list` 会在每次创建实例时调用一次 `list()`：
+
+~~~python
 first = StudyRecord("Python", 10.0, 7.5)
 second = StudyRecord("C++", 12.0, 12.0)
 first.tags.append("基础")
+
 assert second.tags == []
-```
+~~~
 
-`default_factory` 每次构造实例都会调用一次 `list`，所以两个对象得到不同列表。这个结论由对象行为测试证明，不依赖内存地址截图。
+这里检查的是两个对象是否互不影响，不需要拿内存地址截图来证明。
 
-## 第五步：用 with 管理审计文件
+</section>
 
-与 C++ 课程保持同一审计格式：标题后每行包含课程名、计划小时和完成小时。接口接受任何 `Iterable[StudyRecord]` 和明确的 `Path`：
+<section id="concept-copy-boundary" data-learning-context="concept-copy-boundary" data-context-type="concept" markdown="1">
 
-```python
-from collections.abc import Iterable
-from pathlib import Path
+## 复制对象时，里面的列表也要单独处理
+
+`dataclasses.replace()` 会新建一层对象，但不会自动深复制里面的列表：
+
+~~~python
+from dataclasses import replace
 
 
+def clone(self) -> StudyRecord:
+    return replace(self, tags=list(self.tags))
+~~~
+
+如果只写 `replace(self)`，原记录和副本仍指向同一个 `tags`。显式复制列表以后，下面的检查才会通过：
+
+~~~python
+original = StudyRecord("Python", 10.0, 7.5, ["基础"])
+copied = original.clone()
+copied.tags.append("重点")
+
+assert original.tags == ["基础"]
+~~~
+
+这只是针对当前模型的一层复制。以后字段里再出现字典或嵌套对象，要重新决定哪些内容共享、哪些内容隔离，不能把 `replace()` 当成通用深复制。
+
+</section>
+
+<section id="concept-with-protocol" data-learning-context="concept-with-protocol" data-context-type="concept" markdown="1">
+
+## with 把打开和关闭放在同一个范围里
+
+~~~python
+with output_path.open("w", encoding="utf-8") as output:
+    output.write("学习审计快照\n")
+    output.write("Python 起步\t10\t7.5\n")
+~~~
+
+`with` 进入代码块时取得文件对象，离开代码块时执行退出逻辑。正常写完会关闭；块内抛出异常也会先走退出流程，再决定异常是否继续传播。
+
+~~~mermaid
+flowchart LR
+    A["调用 open()"] --> B["进入 with，得到 output"]
+    B --> C["在代码块内写入"]
+    C --> D{"正常结束或发生异常"}
+    D --> E["退出 with，关闭文件"]
+    E --> F["继续后续代码或传播异常"]
+~~~
+
+上下文管理负责资源何时释放；它不会替业务决定“写失败以后返回什么”。本课的审计函数捕获 `OSError` 并返回 `False`，这是接口约定，不是 `with` 自动完成的事。
+
+</section>
+
+<section id="reproduce-record-audit" data-learning-context="reproduce-record-audit" data-context-type="reproduce" markdown="1">
+
+## 跑一遍对象和文件的完整过程
+
+~~~python
+--8<-- "examples/python-core/dataclasses_contexts.py"
+~~~
+
+~~~bash
+.venv/bin/python -m mypy --strict site-src/examples/python-core/dataclasses_contexts.py
+python site-src/examples/python-core/dataclasses_contexts.py
+~~~
+
+你应该看到：
+
+~~~text
+before=75.0% 进行中
+after=100.0% 已完成
+original_tags=['基础']
+copied_tags=['基础', '重点']
+audit_ok=True
+audit_closed=True
+missing_parent=False
+~~~
+
+`original_tags` 和 `copied_tags` 不同，说明副本的列表已经隔离；`audit_closed=True` 说明离开 `with` 后文件确实关闭；缺失父目录稳定走失败分支。
+
+</section>
+
+<section id="troubleshoot-audit-failure" data-learning-context="troubleshoot-audit-failure" data-context-type="troubleshoot" markdown="1">
+
+## 文件没有生成，先看路径和返回值
+
+审计函数只处理预期的文件系统错误：
+
+~~~python
 def write_audit_snapshot(
     records: Iterable[StudyRecord], output_path: Path
 ) -> bool:
     snapshot = [record.clone() for record in records]
     try:
         with output_path.open("w", encoding="utf-8") as output:
-            output.write("学习审计快照\n")
-            for record in snapshot:
-                output.write(
-                    f"{record.course_name}\t{record.target_hours:g}\t"
-                    f"{record.completed_hours:g}\n"
-                )
+            ...
     except OSError:
         return False
     return True
-```
+~~~
 
-`with` 会调用上下文管理器的进入和退出协议。文件离开代码块时关闭，即使块内发生异常也会执行退出逻辑；`try/except OSError` 仍然负责把打开或写入失败转换为本课程约定的 `False`。
+用临时目录分别测试：
 
-成功路径使用临时目录验证真实内容：
+- `root / "audit.txt"`：父目录存在，文件应写成。
+- `root / "missing" / "audit.txt"`：不要创建 `missing`，函数应返回 `False`。
 
-```python
-with TemporaryDirectory() as directory:
-    audit_path = Path(directory) / "audit.txt"
-    assert write_audit_snapshot(sample_records(), audit_path)
-    assert "Python 起步\t10\t7.5" in audit_path.read_text(encoding="utf-8")
-```
+不要依赖“把目录权限改坏”做测试，不同系统和用户权限会让结果漂移。也不要捕获所有 `Exception`，那会把拼写错误、类型错误等程序缺陷一起藏起来。
 
-失败路径不能先创建父目录：
+</section>
 
-```python
-with TemporaryDirectory() as directory:
-    missing_path = Path(directory) / "missing" / "audit.txt"
-    assert not write_audit_snapshot(sample_records(), missing_path)
-```
+<section id="modify-remaining-progress" data-learning-context="modify-remaining-progress" data-context-type="modify" markdown="1">
 
-本函数返回布尔值是为了与 C++ 阶段作品保持简单对照。真实应用通常还需要记录具体路径和错误原因；不要在更复杂系统中无条件吞掉所有 `OSError`。
+## 增加“还差多少”
 
-### 迁移验收
+给 `StudyRecord` 增加一个只读属性：
 
-独立完成下面任意一项：
+~~~python
+@property
+def remaining_progress(self) -> float:
+    ...
+~~~
 
-1. 为审计快照增加状态列，并让 Python 与 C++ 审计格式保持一致。
-2. 为 `StudyRecord` 增加一个不突破 `0.0` 到 `1.0` 的剩余进度属性及边界测试。
-3. 让调用者在导出失败时打印明确路径，但主报告标准输出仍保持原契约。
+先写四组检查，再补实现：
 
-完成后依次运行 mypy、unittest、Python 应用和 C++ 应用，并比较两份主报告。
+| 计划小时 | 完成小时 | 应得到 |
+| ---: | ---: | ---: |
+| 10 | 7.5 | `0.25` |
+| 10 | 10 | `0.0` |
+| 10 | 12 | `0.0` |
+| 0 | 0 | `1.0` 或项目另行说明的明确约定 |
 
-## AI 协作任务
+前三组不应出现负数。零计划怎样解释没有唯一答案，但你的代码、测试和页面说明必须一致。完成后再给审计快照增加状态列，确认主报告文本没有跟着改变。
 
-可以让 AI 提供字典到数据类的迁移清单和测试候选，但必须人工检查：
+</section>
 
-- 是否把所有下标访问迁移为对象属性，而没有用 `Any` 绕过 mypy。
-- 是否给 `tags` 使用了 `default_factory`，复制时是否复制了列表。
-- 是否把所有函数机械搬成方法，造成对象职责膨胀。
-- 是否在 `with` 之外继续使用已关闭文件。
-- 是否过宽捕获 `Exception`，或改变双语言主报告文本。
+<section id="project-reporter-objects" data-learning-context="project-reporter-objects" data-context-type="project" markdown="1">
 
-可复用提示：
+## 回到学习进度报告器
 
-```text
-请把一个包含 course_name、target_hours、completed_hours 和 tags 的 TypedDict
-迁移为 Python 3.11 dataclass。必须保留现有报告字符串和 Iterable 输入能力，
-tags 不能在实例间共享；请列出需要修改的访问点、测试和失败风险，不要使用 Any 或 ignore。
-```
+当前正式项目已经使用 `StudyRecord` 和 `StudySummary` 数据类，并有 30 项测试。检查这条关系：
 
-## 常见错误与排查
+~~~text
+外部数据
+  -> 在输入边界验证并创建 StudyRecord
+  -> 对象提供 progress / status / clone / add_completed_hours
+  -> analysis.py 负责多记录汇总和筛选
+  -> reporting.py 保持公开报告文字
+~~~
 
-| 现象 | 可能原因 | 检查与修复 |
-| --- | --- | --- |
-| mypy 提示对象不可下标 | 仍在使用 `record["..."]` | 改为属性访问，并检查汇总对象也已迁移 |
-| 两条记录意外共享标签 | 使用了共享可变默认值 | 改为 `field(default_factory=list)` 并测试两个实例 |
-| 筛选后修改影响原输入 | `clone()` 只复制对象外壳 | 使用 `replace(self, tags=list(self.tags))` |
-| 审计文件为空或未生成 | 路径错误、父目录不存在或写入失败 | 检查布尔返回值和具体路径，覆盖成功/失败测试 |
-| 主报告与 C++ 不一致 | 数据访问或格式化规则被顺便修改 | 回到固定字符串测试，只迁移模型边界 |
+项目的审计写入还比本课小例子多走了一步：它先取得临时路径，写完后再替换正式文件。这是下一课的自定义上下文管理器内容。此处只需找到内层 `with pending_path.open(...)`，说明文件对象仍然怎样被关闭；不要为了配合本课而把项目退回直接覆盖正式文件的旧版本。
 
-## 完成证据
+在项目目录运行：
 
-- mypy strict 无问题，13 个及以上 unittest 全部通过。
-- 报告器接受列表、元组和单次迭代器，惰性筛选行为保持不变。
-- 两个默认构造对象不共享 `tags`，克隆对象的标签修改不污染原对象。
-- 审计成功与缺失父目录失败都有真实文件测试。
-- Python 与 C++ 应用的主报告逐字一致。
+~~~bash
+python -m mypy --strict .
+PYTHONPATH=src python -m unittest discover -s tests -v
+python main.py
+~~~
+
+确认 30 项测试通过，主报告仍以“学习进度报告”开头，总体进度保持 `87.1%`，审计成功和缺失父目录失败都有测试。
+
+</section>
+
+<section id="deepen-data-model" data-learning-context="deepen-data-model" data-context-type="deepen" markdown="1">
+
+## dataclass 没有替你设计对象
+
+数据类减少了样板代码，却不会回答这些问题：
+
+- 哪些字段可以修改，哪些应只读。
+- 两个对象相等到底意味着什么。
+- 复制时哪些嵌套值共享，哪些隔离。
+- 外部数据在哪里验证。
+- 一个行为属于单条记录，还是跨记录服务。
+
+对象设计的重点仍是职责和约束。`frozen=True`、`slots=True`、自定义 `__post_init__()` 和手写上下文管理协议都有适用场景，但不应在没有问题需要解决时一次堆进来。
+
+</section>
+
+<section id="career-object-evidence" data-learning-context="career-object-evidence" data-context-type="career" markdown="1">
+
+## 讲对象化时，别只说“代码更优雅”
+
+更有说服力的项目表达是：
+
+> 我把报告器的记录从类型化字典迁移成数据类。单记录的进度、状态、复制和修改由对象负责，跨记录汇总仍留在分析模块。测试覆盖了可变默认值隔离、克隆列表隔离、零计划边界、审计写入成功和缺失父目录失败；迁移前后公开报告保持一致。
+
+这段话能让人追问设计、失败路径和验证方法。只说“使用了 dataclass 和 with”只能列出技术名词，不能说明你解决了什么。
+
+</section>
+
+## 完成检查
+
+- [ ] 我能说明 `TypedDict` 与数据类各自提供什么。
+- [ ] 我知道 `@dataclass` 生成哪些常用方法，也知道它不负责运行时输入验证。
+- [ ] 我把只依赖单条记录的进度和状态放回对象，没有把所有函数都搬进去。
+- [ ] 我用两个实例证明 `default_factory` 不共享列表。
+- [ ] 我修改副本的标签后，原对象保持不变。
+- [ ] 我能解释 `with` 负责资源释放，`try/except` 负责接口的错误约定。
+- [ ] 我跑过独立例子，并看到成功写入、文件关闭和缺失父目录失败。
+- [ ] 我完成了 `remaining_progress` 及边界测试。
+- [ ] 我没有把当前正式项目退回旧版本，30 项测试仍然通过。
 
 ## 来源与版本
 
-| 来源 | 用于核查 | 版本或日期 |
-| --- | --- | --- |
-| [Python 数据类](https://docs.python.org/3.11/library/dataclasses.html) | `@dataclass`、`field`、`replace` 与可变默认值 | Python 3.11.15，2026-07-15 核查 |
-| [Python 数据模型](https://docs.python.org/3.11/reference/datamodel.html) | 类、实例、属性、特殊方法和上下文管理器 | Python 3.11.15，2026-07-15 核查 |
-| [with 语句](https://docs.python.org/3.11/reference/compound_stmts.html#the-with-statement) | 进入、退出与异常传播顺序 | Python 3.11.15，2026-07-15 核查 |
-| [contextlib](https://docs.python.org/3.11/library/contextlib.html) | 上下文管理器类型与后续扩展边界 | Python 3.11.15，2026-07-15 核查 |
+- 适用版本：Python 3.11 及以上；mypy 2.2.0 严格模式。
+- 核查日期：2026-07-17。
+- 事实来源：[Python `dataclasses`](https://docs.python.org/3.11/library/dataclasses.html)用于生成方法、`field()`、`replace()` 和可变默认值；[Python 数据模型](https://docs.python.org/3.11/reference/datamodel.html)用于类、实例、属性和上下文管理协议；[Python `with` 语句](https://docs.python.org/3.11/reference/compound_stmts.html#the-with-statement)用于进入、退出和异常传播顺序；[`contextlib`](https://docs.python.org/3.11/library/contextlib.html)只用于说明下一课的扩展方向。
+- 代码验证：仓库脚本覆盖数据类相等与显示、属性和方法、可变默认值隔离、克隆隔离、审计成功、文件关闭、缺失父目录失败、严格 mypy 和正式项目 30 项测试；不联网。
 
 ## 下一步
 
-对象与资源的双语言基础配对已经完成。下一节进入 **[装饰器、闭包与自定义上下文管理器](05-decorators-closures-custom-context-managers.md)**，解释函数包装、`contextmanager()` 和自定义资源边界；本节不提前实现 `__enter__`、`__exit__`、`ExitStack` 或异步上下文管理。
+进入[装饰器、闭包与自定义上下文管理器](05-decorators-closures-custom-context-managers.md)，给函数加上可组合的调用追踪，并把“先写临时文件，成功后再替换”封装成清楚的资源边界。

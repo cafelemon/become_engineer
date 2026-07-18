@@ -1,20 +1,161 @@
-[
-  {"query":"网格课开始前要锁定哪些基线？","step_id":"step-1","expected":"grid-output-baseline"},
-  {"query":"为什么新增grid模式不能改默认和text报告","step_id":"step-1","expected":"grid-output-baseline"},
-  {"query":"扁平网格的形状契约是什么？","step_id":"step-2","expected":"grid-shape-contract"},
-  {"query":"rows乘columns为什么必须等于数据长度","step_id":"step-2","expected":"grid-shape-contract"},
-  {"query":"行优先网格怎样把坐标映射为下标？","step_id":"step-3","expected":"row-major-formula"},
-  {"query":"2x3网格一行二列的flat index是多少","step_id":"step-3","expected":"row-major-formula"},
-  {"query":"网格坐标要拒绝哪些边界输入？","step_id":"step-3","expected":"grid-coordinate-boundary"},
-  {"query":"负坐标和row等于rows为什么都非法","step_id":"step-3","expected":"grid-coordinate-boundary"},
-  {"query":"Python 重复行引用为什么危险？","step_id":"step-4","expected":"repeated-row-alias"},
-  {"query":"二维列表改一个格子为什么另一行也改变","step_id":"step-4","expected":"repeated-row-alias"},
-  {"query":"为什么 C++ 网格使用扁平 span？","step_id":"step-5","expected":"flat-contiguous-representation"},
-  {"query":"C++20不用mdspan怎样表示连续二维网格","step_id":"step-5","expected":"flat-contiguous-representation"},
-  {"query":"C++ 为什么要在 rows 乘 columns 前检查溢出？","step_id":"step-5","expected":"grid-shape-overflow"},
-  {"query":"size_t形状乘法回绕应该怎样预防","step_id":"step-5","expected":"grid-shape-overflow"},
-  {"query":"行扫描的 visits 应怎样计数？","step_id":"step-6","expected":"row-scan-trace"},
-  {"query":"sum grid row为什么访问次数等于列数","step_id":"step-6","expected":"row-scan-trace"},
-  {"query":"修改网格形状后要重新验收哪些不变量？","step_id":"step-6","expected":"grid-migration-invariant"},
-  {"query":"从2x3迁移到3x2后应该测试什么","step_id":"step-6","expected":"grid-migration-invariant"}
-]
+{
+  "lesson_id": "cs-core-04",
+  "cases": [
+    {
+      "query": "第 2 行第 3 列为什么写成坐标 (1, 2)？",
+      "expected_card": "grid-coordinate-zero"
+    },
+    {
+      "query": "人眼第二行第三列在程序里为什么是一和二",
+      "expected_card": "grid-coordinate-zero"
+    },
+    {
+      "query": "为什么同一组值换个形状，坐标含义就变了？",
+      "expected_card": "grid-shape-meaning"
+    },
+    {
+      "query": "六个数字改成三行两列为什么位置解释不同",
+      "expected_card": "grid-shape-meaning"
+    },
+    {
+      "query": "为什么形状也要作为接口的一部分？",
+      "expected_card": "grid-shape-contract"
+    },
+    {
+      "query": "二维函数为什么要传rows和columns",
+      "expected_card": "grid-shape-contract"
+    },
+    {
+      "query": "什么叫行优先布局？",
+      "expected_card": "grid-row-major"
+    },
+    {
+      "query": "row major到底怎样排列",
+      "expected_card": "grid-row-major"
+    },
+    {
+      "query": "row * columns + column 这个公式是怎么来的？",
+      "expected_card": "grid-formula-derive"
+    },
+    {
+      "query": "二维坐标转一维下标为什么这样算",
+      "expected_card": "grid-formula-derive"
+    },
+    {
+      "query": "行优先是二维数据唯一的存法吗？",
+      "expected_card": "grid-layout-choice"
+    },
+    {
+      "query": "网格一定要row major吗",
+      "expected_card": "grid-layout-choice"
+    },
+    {
+      "query": "互动网格应该怎么看？",
+      "expected_card": "grid-explorer-use"
+    },
+    {
+      "query": "点网格以后三个数字分别是什么",
+      "expected_card": "grid-explorer-use"
+    },
+    {
+      "query": "为什么要先验证 rows * columns 等于值的数量？",
+      "expected_card": "grid-shape-validation"
+    },
+    {
+      "query": "形状不匹配为什么不能先访问第一个值",
+      "expected_card": "grid-shape-validation"
+    },
+    {
+      "query": "行列坐标分别怎样检查边界？",
+      "expected_card": "grid-coordinate-boundary"
+    },
+    {
+      "query": "二维下标越界条件怎么写",
+      "expected_card": "grid-coordinate-boundary"
+    },
+    {
+      "query": "空网格形状合法，为什么 (0, 0) 还是不能访问？",
+      "expected_card": "grid-empty"
+    },
+    {
+      "query": "0x0为什么能通过形状检查却没有第一个格子",
+      "expected_card": "grid-empty"
+    },
+    {
+      "query": "为什么 checked_grid_at 不只返回一个值？",
+      "expected_card": "grid-cell-result"
+    },
+    {
+      "query": "GridCell为什么还保存坐标和flat index",
+      "expected_card": "grid-cell-result"
+    },
+    {
+      "query": "扫描一整行为什么访问次数等于列数？",
+      "expected_card": "grid-row-scan"
+    },
+    {
+      "query": "sum_grid_row的visits怎么算",
+      "expected_card": "grid-row-scan"
+    },
+    {
+      "query": "为什么修改一格会让 Python 三行一起变？",
+      "expected_card": "grid-alias"
+    },
+    {
+      "query": "二维列表改一行其他行也跟着改",
+      "expected_card": "grid-alias"
+    },
+    {
+      "query": "怎样创建互不影响的多行列表？",
+      "expected_card": "grid-independent-rows"
+    },
+    {
+      "query": "Python二维列表正确初始化怎么写",
+      "expected_card": "grid-independent-rows"
+    },
+    {
+      "query": "把 2×3 改成 3×2 后应该先检查什么？",
+      "expected_card": "grid-reshape"
+    },
+    {
+      "query": "同一组值换形状怎样手算",
+      "expected_card": "grid-reshape"
+    },
+    {
+      "query": "学习进度报告器怎样接入矩阵视图？",
+      "expected_card": "grid-project-view"
+    },
+    {
+      "query": "项目里二维网格用在哪里",
+      "expected_card": "grid-project-view"
+    },
+    {
+      "query": "扁平列表和嵌套列表该怎么选？",
+      "expected_card": "grid-flat-vs-nested"
+    },
+    {
+      "query": "二维数据为什么不直接全用list of lists",
+      "expected_card": "grid-flat-vs-nested"
+    },
+    {
+      "query": "为什么这节共同 CS 起步不讲 C++ span 和 mdspan？",
+      "expected_card": "grid-cpp-deferred"
+    },
+    {
+      "query": "C++二维视图安排到哪里",
+      "expected_card": "grid-cpp-deferred"
+    },
+    {
+      "query": "面试里遇到二维数据，应该先问什么？",
+      "expected_card": "grid-career-contract"
+    },
+    {
+      "query": "网格题开场怎样澄清需求",
+      "expected_card": "grid-career-contract"
+    }
+  ],
+  "unknown": [
+    "怎样给盆栽选择肥料",
+    "请帮我写一首生日歌"
+  ]
+}

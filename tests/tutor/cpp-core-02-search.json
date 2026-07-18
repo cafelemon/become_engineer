@@ -1,82 +1,25 @@
-[
-  {
-    "query": "函数化状态卡如何验证没有改变行为？",
-    "step_id": "step-1",
-    "expected": "function-run"
-  },
-  {
-    "query": "重构后怎么验证",
-    "step_id": "step-1",
-    "expected": "function-run"
-  },
-  {
-    "query": "函数声明和定义有什么区别？",
-    "step_id": "step-2",
-    "expected": "declaration-definition"
-  },
-  {
-    "query": "声明定义区别",
-    "step_id": "step-2",
-    "expected": "declaration-definition"
-  },
-  {
-    "query": "返回值和打印输出有什么区别？",
-    "step_id": "step-2",
-    "expected": "return-side-effect"
-  },
-  {
-    "query": "return和cout区别",
-    "step_id": "step-2",
-    "expected": "return-side-effect"
-  },
-  {
-    "query": "什么时候使用 const std::string& 参数？",
-    "step_id": "step-3",
-    "expected": "const-reference"
-  },
-  {
-    "query": "const引用有什么用",
-    "step_id": "step-3",
-    "expected": "const-reference"
-  },
-  {
-    "query": "按值参数为什么不会修改调用者变量？",
-    "step_id": "step-3",
-    "expected": "value-copy"
-  },
-  {
-    "query": "按值传递修改没生效",
-    "step_id": "step-3",
-    "expected": "value-copy"
-  },
-  {
-    "query": "调用前没有声明为什么会报错？",
-    "step_id": "step-4",
-    "expected": "missing-declaration"
-  },
-  {
-    "query": "函数未声明",
-    "step_id": "step-4",
-    "expected": "missing-declaration"
-  },
-  {
-    "query": "函数重载二义性怎么处理？",
-    "step_id": "step-4",
-    "expected": "overload-ambiguous"
-  },
-  {
-    "query": "重载ambiguous",
-    "step_id": "step-4",
-    "expected": "overload-ambiguous"
-  },
-  {
-    "query": "如何为状态卡增加纯计算函数？",
-    "step_id": "step-5",
-    "expected": "function-migration"
-  },
-  {
-    "query": "新增函数迁移",
-    "step_id": "step-5",
-    "expected": "function-migration"
-  }
-]
+{
+  "lesson_id":"cpp-core-02",
+  "cases":[
+    {"query":"为什么拆了函数，输出还应该一样？","expected_card":"function-same-output"},{"query":"重构后为什么行为不变","expected_card":"function-same-output"},
+    {"query":"main 函数是不是越短越好？","expected_card":"function-responsibility"},{"query":"main应该负责什么","expected_card":"function-responsibility"},
+    {"query":"函数声明、定义和调用有什么区别？","expected_card":"declaration-definition"},{"query":"函数原型是什么","expected_card":"declaration-definition"},
+    {"query":"为什么调用前必须先看到声明？","expected_card":"visible-declaration"},{"query":"函数定义在后面为什么报错","expected_card":"visible-declaration"},
+    {"query":"从函数声明里应该读出什么？","expected_card":"function-interface"},{"query":"参数顺序为什么重要","expected_card":"function-interface"},
+    {"query":"为什么只改返回类型不能重载？","expected_card":"return-only-overload"},{"query":"返回值不同算重载吗","expected_card":"return-only-overload"},
+    {"query":"按值参数为什么改不到调用者变量？","expected_card":"value-parameter"},{"query":"按值传递修改没生效","expected_card":"value-parameter"},
+    {"query":"什么时候用 const std::string&？","expected_card":"const-reference"},{"query":"string按值还是引用","expected_card":"const-reference"},
+    {"query":"return 和 cout 到底有什么区别？","expected_card":"return-vs-output"},{"query":"打印能不能代替返回","expected_card":"return-vs-output"},
+    {"query":"非 void 函数少一条 return 怎么修？","expected_card":"missing-return"},{"query":"control reaches end是什么意思","expected_card":"missing-return"},
+    {"query":"函数里的局部变量离开函数后去哪了？","expected_card":"local-scope"},{"query":"局部作用域是什么","expected_card":"local-scope"},
+    {"query":"为什么不让函数直接读全局变量？","expected_card":"global-state"},{"query":"函数真实输入怎么找","expected_card":"global-state"},
+    {"query":"重载二义性应该怎么处理？","expected_card":"overload-ambiguity"},{"query":"show(1)选哪个","expected_card":"overload-ambiguity"},
+    {"query":"函数化以后要回归哪些场景？","expected_card":"function-regression"},{"query":"输入矩阵有哪些","expected_card":"function-regression"},
+    {"query":"怎样把状态改成进行中、刚好完成、超额完成？","expected_card":"modify-status"},{"query":"新增reached_goal函数","expected_card":"modify-status"},
+    {"query":"声明和定义参数不一致为什么会链接失败？","expected_card":"signature-mismatch"},{"query":"声明double定义int会怎样","expected_card":"signature-mismatch"},
+    {"query":"这节课给 C++ 报告器加了什么？","expected_card":"function-project"},{"query":"下一课为什么拆文件","expected_card":"function-project"},
+    {"query":"函数拆得越多越好吗？","expected_card":"function-quality"},{"query":"怎样判断拆分过度","expected_card":"function-quality"},
+    {"query":"面试里怎样讲这次函数重构？","expected_card":"career-refactor"},{"query":"函数拆分有什么求职证据","expected_card":"career-refactor"}
+  ],
+  "unknown":["怎样为阳台选择耐阴花卉","去海边旅行需要带哪些衣服"]
+}

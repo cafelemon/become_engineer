@@ -1,20 +1,25 @@
-[
-  { "query": "hash固定输出怎么看", "step_id": "step-1", "expected": "hash-baseline" },
-  { "query": "为什么要先回归queue基线", "step_id": "step-1", "expected": "hash-baseline" },
-  { "query": "相同哈希就一定相等吗", "step_id": "step-2", "expected": "hash-equality-contract" },
-  { "query": "相等键为何必须同哈希", "step_id": "step-2", "expected": "hash-equality-contract" },
-  { "query": "教学哈希为什么不能代表标准容器实现？", "step_id": "step-2", "expected": "teaching-hash-boundary" },
-  { "query": "教学哈希和标准容器实现边界", "step_id": "step-2", "expected": "teaching-hash-boundary" },
-  { "query": "bucket_index怎样保证不越界", "step_id": "step-3", "expected": "bucket-index-range" },
-  { "query": "取模后的桶索引范围", "step_id": "step-3", "expected": "bucket-index-range" },
-  { "query": "chain_before为什么插入前记录", "step_id": "step-4", "expected": "collision-chain-before" },
-  { "query": "BucketEvent碰撞怎么计算", "step_id": "step-4", "expected": "collision-chain-before" },
-  { "query": "为什么桶链保持输入顺序", "step_id": "step-4", "expected": "collision-order" },
-  { "query": "冲突操作计数怎样可复现", "step_id": "step-4", "expected": "collision-order" },
-  { "query": "非法桶数和负键怎样安全失败？", "step_id": "step-5", "expected": "invalid-hash-input" },
-  { "query": "负键为什么主动拒绝", "step_id": "step-5", "expected": "invalid-hash-input" },
-  { "query": "list放进set为什么TypeError", "step_id": "step-5", "expected": "unhashable-python-key" },
-  { "query": "不可哈希的Python键", "step_id": "step-5", "expected": "unhashable-python-key" },
-  { "query": "怎样找到第一个冲突", "step_id": "step-6", "expected": "first-collision-migration" },
-  { "query": "first_collision没有碰撞返回什么", "step_id": "step-6", "expected": "first-collision-migration" }
-]
+{
+  "lesson_id":"cs-core-09",
+  "cases":[
+    {"query":"1、5、9 为什么都进入桶 1？","expected_card":"hash-output"},{"query":"四个桶里1 5 9为什么碰撞","expected_card":"hash-output"},
+    {"query":"哈希查找为什么还要在桶内比较键？","expected_card":"hash-routing"},{"query":"已经有bucket还比什么","expected_card":"hash-routing"},
+    {"query":"四个桶最终分别保存什么？","expected_card":"bucket-layout"},{"query":"为什么桶0和3为空","expected_card":"bucket-layout"},
+    {"query":"相等键为什么必须得到相同哈希？","expected_card":"equality-implies-hash"},{"query":"相等键不同桶会怎样","expected_card":"equality-implies-hash"},
+    {"query":"相同哈希是否说明两个键相等？","expected_card":"same-hash-not-equal"},{"query":"同桶就是同一个键吗","expected_card":"same-hash-not-equal"},
+    {"query":"发生哈希冲突是不是程序出错了？","expected_card":"collision-normal"},{"query":"collision需要避免到零吗","expected_card":"collision-normal"},
+    {"query":"为什么不能说 Python dict 也固定使用 key % bucket_count？","expected_card":"teaching-hash-boundary"},{"query":"unordered map哈希算法固定吗","expected_card":"teaching-hash-boundary"},
+    {"query":"bucket_index 的合法结果范围是什么？","expected_card":"bucket-index-range"},{"query":"取模结果最大是多少","expected_card":"bucket-index-range"},
+    {"query":"为什么教学接口拒绝零桶数和负键？","expected_card":"invalid-hash-input"},{"query":"负键为什么主动报错","expected_card":"invalid-hash-input"},
+    {"query":"chain_before 为什么必须在插入前记录？","expected_card":"chain-before"},{"query":"第一项链长为何是0","expected_card":"chain-before"},
+    {"query":"为什么不能先排序再生成冲突事件？","expected_card":"input-order"},{"query":"排序会影响first collision吗","expected_card":"input-order"},
+    {"query":"哈希桶小程序应该怎样运行和核对？","expected_card":"run-hash-micro"},{"query":"hash_bucket_trace怎么跑","expected_card":"run-hash-micro"},
+    {"query":"为什么哈希课还要回归 table 和 applications？","expected_card":"bilingual-hash-regression"},{"query":"哈希三种模式为何一起测试","expected_card":"bilingual-hash-regression"},
+    {"query":"桶数从 4 改成 3 或 5，会改变什么？","expected_card":"compare-bucket-counts"},{"query":"桶更多就一定没冲突吗","expected_card":"compare-bucket-counts"},
+    {"query":"first_collision 应该返回什么？","expected_card":"first-collision"},{"query":"没有冲突返回什么","expected_card":"first-collision"},
+    {"query":"Python 列表为什么不能作为 set 元素？","expected_card":"unhashable-list"},{"query":"unhashable list是什么意思","expected_card":"unhashable-list"},
+    {"query":"这节课给可追踪哈希实验建立了什么？","expected_card":"project-hash"},{"query":"桶事件怎样接下一课","expected_card":"project-hash"},
+    {"query":"为什么不能直接说哈希查找永远 O(1)？","expected_card":"hash-performance-conditions"},{"query":"平均常量需要哪些条件","expected_card":"hash-performance-conditions"},
+    {"query":"面试里怎样把哈希和冲突讲完整？","expected_card":"career-hash"},{"query":"如何解释相等和同哈希","expected_card":"career-hash"}
+  ],
+  "unknown":["怎样给新买的窗帘除味","夏天骑行需要带多少水"]
+}

@@ -1,255 +1,611 @@
 {
-  "version": 1,
+  "version": 2,
   "lesson": {
     "id": "python-core-02",
     "title": "可维护函数接口、协议与模块边界",
     "path": "learning-paths/programming-languages/python-core/02-maintainable-function-interfaces-protocols-modules/"
   },
-  "steps": [
+  "contexts": [
     {
-      "id": "step-1",
-      "title": "开始任务"
+      "id": "overview-interface",
+      "type": "overview",
+      "title": "同一份报告，换一个出口",
+      "anchor": "#overview-interface"
     },
     {
-      "id": "step-2",
-      "title": "主动修改"
+      "id": "concept-signature",
+      "type": "concept",
+      "title": "签名要让调用者看懂意图",
+      "anchor": "#concept-signature"
     },
     {
-      "id": "step-3",
-      "title": "按需知识"
+      "id": "troubleshoot-default-value",
+      "type": "troubleshoot",
+      "title": "默认列表为什么记住了上一次调用",
+      "anchor": "#troubleshoot-default-value"
     },
     {
-      "id": "step-4",
-      "title": "排错实验"
+      "id": "concept-data-flow",
+      "type": "concept",
+      "title": "返回值让数据流看得见",
+      "anchor": "#concept-data-flow"
     },
     {
-      "id": "step-5",
-      "title": "迁移验收"
+      "id": "concept-protocol",
+      "type": "concept",
+      "title": "Protocol 只描述能做什么",
+      "anchor": "#concept-protocol"
+    },
+    {
+      "id": "concept-dependency-direction",
+      "type": "concept",
+      "title": "具体选择留在入口，业务代码只依赖协议",
+      "anchor": "#concept-dependency-direction"
+    },
+    {
+      "id": "example-module-public",
+      "type": "example",
+      "title": "下划线和 __all__ 是公开约定，不是门锁",
+      "anchor": "#example-module-public"
+    },
+    {
+      "id": "reproduce-replace-writer",
+      "type": "reproduce",
+      "title": "用两个 writer 跑同一段流程",
+      "anchor": "#reproduce-replace-writer"
+    },
+    {
+      "id": "troubleshoot-interface",
+      "type": "troubleshoot",
+      "title": "三种错误发生在不同阶段",
+      "anchor": "#troubleshoot-interface"
+    },
+    {
+      "id": "modify-new-writer",
+      "type": "modify",
+      "title": "增加一份带前缀的输出",
+      "anchor": "#modify-new-writer"
+    },
+    {
+      "id": "project-reporter-interface",
+      "type": "project",
+      "title": "审阅当前报告器的依赖箭头",
+      "anchor": "#project-reporter-interface"
+    },
+    {
+      "id": "deepen-interface-size",
+      "type": "deepen",
+      "title": "接口越抽象，不一定越好",
+      "anchor": "#deepen-interface-size"
+    },
+    {
+      "id": "career-interface-evidence",
+      "type": "career",
+      "title": "用一次替换证明设计，而不是只画图",
+      "anchor": "#career-interface-evidence"
     }
   ],
   "cards": [
     {
-      "id": "interface-run",
+      "id": "interface-replace",
       "lesson_id": "python-core-02",
-      "step_id": "step-1",
-      "question": "可替换输出报告器如何验证？",
+      "context_id": "overview-interface",
+      "question": "为什么输出方式可以替换而分析代码不用改？",
       "aliases": [
-        "报告器接口测试",
-        "可替换输出怎么运行"
+        "同一份报告怎么既打印又放进测试列表",
+        "替换writer为什么不动核心逻辑"
       ],
       "keywords": [
-        "报告器",
         "输出",
-        "mypy",
-        "测试"
+        "替换",
+        "writer",
+        "分析"
       ],
-      "diagnostic": "你是否分别运行具体输出和内存输出测试？",
+      "diagnostic": "分析函数是否直接调用了 print 或文件 API？",
       "hints": [
-        "运行程序确认用户可见输出，再用内存输出验证核心逻辑。",
-        "运行真实输出流程，再运行使用内存输出对象的测试；两者应共享同一分析结果。"
+        "核心函数先返回报告文本。",
+        "应用只依赖 ReportWriter 协议，入口决定传终端还是内存实现。"
       ],
-      "example": "局部示例：测试可把报告行收集进列表，而命令行版本仍把同一行写到终端。",
-      "answer": "mypy 与 unittest 都通过，说明接口与行为同时受检。",
+      "example": "终端 writer 与内存 writer 接收同一字符串。",
+      "answer": "把副作用放在边界后，核心分析不认识具体输出方式，所以替换出口不需要改业务逻辑。",
       "source": {
-        "label": "第一步：运行可替换输出的报告器",
-        "href": "#step-1"
+        "label": "同一份报告，换一个出口",
+        "href": "#overview-interface"
       },
-      "updated_at": "2026-07-15",
+      "updated_at": "2026-07-17",
       "recommended": true
     },
     {
-      "id": "parameter-kinds",
+      "id": "interface-signature",
       "lesson_id": "python-core-02",
-      "step_id": "step-2",
-      "question": "位置参数和仅限关键字参数怎么选？",
+      "context_id": "concept-signature",
+      "question": "函数签名怎样让调用意图更清楚？",
       "aliases": [
-        "斜杠星号参数",
-        "keyword only"
+        "两个相邻float参数怎么避免传反",
+        "参数名和星号有什么用"
       ],
       "keywords": [
+        "函数签名",
+        "调用意图",
         "参数",
-        "关键字",
-        "签名",
-        "调用"
+        "关键字"
       ],
-      "diagnostic": "调用时该选项的含义是否容易被位置顺序误解？",
+      "diagnostic": "调用位置只看数字时，能否知道每个值代表什么？",
       "hints": [
-        "稳定、短小的核心值可位置传递；含义容易混淆的选项用仅限关键字。",
-        "把易混淆的开关改为仅限关键字，在调用点明确写出参数名，比较可读性。"
+        "给参数起准确名称。",
+        "容易含糊的选项放在 * 之后，要求按关键字传入。"
       ],
-      "example": "局部示例：`def render(title: str, *, include_details: bool) -> str:` 必须以 `include_details=True` 调用。",
-      "answer": "让签名表达意图，并在调用点用清晰关键字。",
+      "example": "progress_limit=1.0 比第三个位置参数 1.0 更清楚。",
+      "answer": "签名应让调用者直接读出参数角色，并用调用方式约束容易混淆的选项。",
       "source": {
-        "label": "第二步：读出一个函数接口",
-        "href": "#step-2"
+        "label": "签名要让调用者看懂意图",
+        "href": "#concept-signature"
       },
-      "updated_at": "2026-07-15"
+      "updated_at": "2026-07-17",
+      "recommended": true
     },
     {
-      "id": "mutable-default",
+      "id": "interface-parameter-kinds",
       "lesson_id": "python-core-02",
-      "step_id": "step-4",
-      "question": "为什么不能把可变对象当默认参数？",
+      "context_id": "concept-signature",
+      "question": "斜杠和星号把参数分成哪几类？",
       "aliases": [
-        "默认列表陷阱",
-        "mutable default"
+        "Python位置专用和关键字专用参数怎么看",
+        "/与*在函数签名里是什么意思"
       ],
       "keywords": [
-        "默认参数",
-        "列表",
-        "共享状态"
+        "斜杠",
+        "星号",
+        "位置参数",
+        "关键字参数"
       ],
-      "diagnostic": "默认对象是在每次调用创建，还是函数定义时创建？",
+      "diagnostic": "参数位于 / 之前、/ 与 * 之间，还是 * 之后？",
       "hints": [
-        "默认参数只求值一次；可变列表/字典会在调用之间共享。",
-        "连续两次调用使用默认列表的函数，观察第二次是否看到第一次留下的内容；随后改用 None。"
+        "/ 之前只能按位置。",
+        "* 之后只能按关键字，中间两种方式都可。"
       ],
-      "example": "局部示例：`def add_tag(tag: str, tags: list[str] | None = None) -> list[str]:`。",
-      "answer": "用 None 作为默认值，在函数体内创建新容器。",
+      "example": "writer 位于 * 之后，所以调用要写 writer=remember。",
+      "answer": "/ 和 * 定义调用方式；它们适合表达名称是否属于公开契约及是否必须显式说明角色。",
       "source": {
-        "label": "第四步：复现接口失败",
-        "href": "#step-4"
+        "label": "签名要让调用者看懂意图",
+        "href": "#concept-signature"
       },
-      "updated_at": "2026-07-15"
+      "updated_at": "2026-07-17",
+      "recommended": true
     },
     {
-      "id": "protocol",
+      "id": "interface-mutable-default",
       "lesson_id": "python-core-02",
-      "step_id": "step-3",
-      "question": "Protocol 和 Callable 分别什么时候用？",
+      "context_id": "troubleshoot-default-value",
+      "question": "为什么默认列表会记住上一次调用？",
       "aliases": [
-        "Protocol和Callable区别",
-        "结构化兼容"
+        "可变默认参数为什么共享状态",
+        "history等于空列表有什么坑"
       ],
       "keywords": [
-        "Protocol",
-        "Callable",
-        "接口",
-        "回调"
+        "默认列表",
+        "共享",
+        "状态",
+        "函数定义"
       ],
-      "diagnostic": "你只需要一个简单调用签名，还是需要命名的多项能力？",
+      "diagnostic": "这个空列表是在每次调用时创建，还是函数定义时创建？",
       "hints": [
-        "简单回调用 Callable；需要清晰命名或多成员约束时使用 Protocol。",
-        "为输出边界写一个满足同一调用签名的最小对象，并把它传入应用流程。"
+        "默认值在函数定义执行时求值一次。",
+        "省略参数的多次调用拿到同一个列表对象。"
       ],
-      "example": "局部示例：`class Output(Protocol):\\n    def write(self, text: str) -> None: ...`。",
-      "answer": "普通实现无需继承 Protocol，只要结构满足接口即可。",
+      "example": "remember_course('Python') 后再调用 CS 会得到两个项目。",
+      "answer": "可变默认对象会跨调用共享；若想每次新建，使用 None 哨兵并在函数体内创建。",
       "source": {
-        "label": "第三步：替换边界而非核心逻辑",
-        "href": "#step-3"
+        "label": "默认列表为什么记住了上一次调用",
+        "href": "#troubleshoot-default-value"
       },
-      "updated_at": "2026-07-15"
+      "updated_at": "2026-07-17",
+      "recommended": false
     },
     {
-      "id": "dependency-direction",
+      "id": "interface-default-fix",
       "lesson_id": "python-core-02",
-      "step_id": "step-3",
-      "question": "为什么业务模块不应该反向导入 main？",
+      "context_id": "troubleshoot-default-value",
+      "question": "怎样安全地让每次调用都有新列表？",
       "aliases": [
-        "循环导入",
-        "依赖方向"
+        "None哨兵怎样修复默认列表",
+        "可变默认参数正确写法"
       ],
       "keywords": [
-        "模块",
-        "依赖",
-        "main",
-        "循环导入"
+        "None",
+        "哨兵",
+        "新列表",
+        "修复"
       ],
-      "diagnostic": "核心分析是否只依赖数据模型和接口，而非具体应用入口？",
+      "diagnostic": "函数能否区分调用者没传列表和明确传入已有列表？",
       "hints": [
-        "反向依赖会制造循环与隐藏耦合，降低测试替换能力。",
-        "从业务模块的 import 列表开始检查：它应依赖模型和协议，而不是反向 import 应用入口。"
+        "参数写成 list[str] | None = None。",
+        "函数体用 [] if history is None else history。"
       ],
-      "example": "局部示例：`main.py` 装配 `ConsoleOutput`；分析模块只接收 `Output` 参数。",
-      "answer": "让 main 负责装配具体依赖，业务模块保持向内依赖。",
+      "example": "两次省略 history 的调用分别得到独立列表。",
+      "answer": "None 哨兵把未提供参数与已有列表分开；每次缺省调用在函数体内创建新对象。",
       "source": {
-        "label": "第三步：替换边界而非核心逻辑",
-        "href": "#step-3"
+        "label": "默认列表为什么记住了上一次调用",
+        "href": "#troubleshoot-default-value"
       },
-      "updated_at": "2026-07-15"
+      "updated_at": "2026-07-17",
+      "recommended": false
     },
     {
-      "id": "protocol-failure",
+      "id": "interface-return-value",
       "lesson_id": "python-core-02",
-      "step_id": "step-4",
-      "question": "回调不满足 Protocol 怎么排查？",
+      "context_id": "concept-data-flow",
+      "question": "为什么核心函数优先返回值而不是直接打印？",
       "aliases": [
-        "Protocol不匹配",
-        "mypy协议错误"
+        "业务计算直接print有什么问题",
+        "返回字符串为什么更好测试"
       ],
       "keywords": [
-        "Protocol",
-        "mypy",
-        "参数",
-        "返回"
-      ],
-      "diagnostic": "实现的参数种类、名称和返回类型是否与协议兼容？",
-      "hints": [
-        "结构化检查会比较调用契约，不只比较函数名。",
-        "让实现的参数或返回类型暂时与协议不同，运行 mypy 后逐项对照协议签名恢复兼容。"
-      ],
-      "example": "局部示例：协议要求 `write(self, text: str) -> None` 时，`write(self, value: int) -> int` 不兼容。",
-      "answer": "从协议签名逐项比较实现，修复参数种类和返回类型。",
-      "source": {
-        "label": "第四步：复现接口失败",
-        "href": "#step-4"
-      },
-      "updated_at": "2026-07-15"
-    },
-    {
-      "id": "public-boundary",
-      "lesson_id": "python-core-02",
-      "step_id": "step-3",
-      "question": "__all__ 和下划线是安全权限吗？",
-      "aliases": [
-        "__all__安全吗",
-        "下划线私有"
-      ],
-      "keywords": [
-        "__all__",
-        "下划线",
-        "公开接口"
-      ],
-      "diagnostic": "你是想表达维护约定，还是阻止恶意访问？",
-      "hints": [
-        "它们表达公开 API 约定，不是运行时安全边界。",
-        "只从模块公开名称导入报告函数，再确认 `__all__` 不会阻止 Python 访问下划线内部名称。"
-      ],
-      "example": "局部示例：`__all__ = [\"render_report\"]` 表达稳定入口，不等同于安全隔离。",
-      "answer": "把稳定名称列为公开，测试不要依赖内部实现细节。",
-      "source": {
-        "label": "第三步：替换边界而非核心逻辑",
-        "href": "#step-3"
-      },
-      "updated_at": "2026-07-15"
-    },
-    {
-      "id": "interface-migration",
-      "lesson_id": "python-core-02",
-      "step_id": "step-5",
-      "question": "如何新增输出实现而不修改核心分析？",
-      "aliases": [
-        "新增报告输出",
-        "接口迁移验收"
-      ],
-      "keywords": [
-        "迁移",
-        "输出",
-        "Protocol",
+        "返回值",
+        "print",
+        "数据流",
         "测试"
       ],
-      "diagnostic": "新输出实现是否满足现有协议，并由 main 在边界装配？",
+      "diagnostic": "调用者是否需要继续处理结果，测试是否要捕获终端？",
       "hints": [
-        "先实现同一输出接口，再把它传给应用流程。",
-        "新增输出实现后，先用内存输出断言生成的行，再从 `main` 选择该实现，不改分析模块。"
+        "返回值让输出写在签名里。",
+        "打印和文件写入交给独立边界后，核心函数可直接断言结果。"
       ],
-      "example": "局部示例：`class ConsoleOutput: def write(self, text: str) -> None: print(text)`。",
-      "answer": "用内存输出和具体输出分别测试，确保业务模块无反向导入。",
+      "example": "build_report() -> str 比修改全局 latest_report 更清楚。",
+      "answer": "返回值让数据流可见，减少全局状态和终端副作用对复用与测试的干扰。",
       "source": {
-        "label": "第五步：迁移验收与下一步",
-        "href": "#step-5"
+        "label": "返回值让数据流看得见",
+        "href": "#concept-data-flow"
       },
-      "updated_at": "2026-07-15"
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "interface-protocol",
+      "lesson_id": "python-core-02",
+      "context_id": "concept-protocol",
+      "question": "Protocol 为什么不要求具体函数继承它？",
+      "aliases": [
+        "结构化子类型是什么意思",
+        "普通函数怎样满足ReportWriter"
+      ],
+      "keywords": [
+        "Protocol",
+        "结构化子类型",
+        "继承",
+        "函数"
+      ],
+      "diagnostic": "具体函数的调用签名是否与协议的 __call__ 兼容？",
+      "hints": [
+        "Protocol 按成员结构检查兼容性。",
+        "普通函数只要接收 str 并返回 None，就能满足 ReportWriter。"
+      ],
+      "example": "print_report 没继承 ReportWriter 也可赋给 writer。",
+      "answer": "结构化协议关注能做什么，不要求名义继承；mypy 根据签名判断兼容。",
+      "source": {
+        "label": "Protocol 只描述能做什么",
+        "href": "#concept-protocol"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "interface-callable",
+      "lesson_id": "python-core-02",
+      "context_id": "concept-protocol",
+      "question": "简单 Callable 和命名 Protocol 该怎么选？",
+      "aliases": [
+        "什么时候用Callable什么时候用Protocol",
+        "每个回调都要建协议吗"
+      ],
+      "keywords": [
+        "Callable",
+        "Protocol",
+        "回调",
+        "选择"
+      ],
+      "diagnostic": "这个回调只是一次简单签名，还是稳定业务角色？",
+      "hints": [
+        "单一简单签名用 Callable 更直接。",
+        "需要业务名称、参数种类或未来扩展时再用 Protocol。"
+      ],
+      "example": "Callable[[str], None] 足够表达普通一次性输出函数。",
+      "answer": "按复杂度和稳定角色选择，不能为了显得架构化给每个函数创建协议。",
+      "source": {
+        "label": "Protocol 只描述能做什么",
+        "href": "#concept-protocol"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "interface-dependency",
+      "lesson_id": "python-core-02",
+      "context_id": "concept-dependency-direction",
+      "question": "为什么业务模块不应该反向导入 CLI？",
+      "aliases": [
+        "核心代码导入入口会怎样",
+        "依赖箭头为什么从入口指向业务"
+      ],
+      "keywords": [
+        "依赖方向",
+        "CLI",
+        "业务模块",
+        "入口"
+      ],
+      "diagnostic": "谁负责选择具体输入输出，谁只负责计算？",
+      "hints": [
+        "CLI 是最外层组装者，可以导入应用与具体输出。",
+        "核心回头导入 CLI 容易循环依赖，也会绑定运行方式。"
+      ],
+      "example": "cli -> application -> analysis，不应出现 analysis -> cli。",
+      "answer": "具体选择留在外层入口，内层业务只依赖稳定数据和协议，依赖方向更清楚。",
+      "source": {
+        "label": "具体选择留在入口，业务代码只依赖协议",
+        "href": "#concept-dependency-direction"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "interface-cycle",
+      "lesson_id": "python-core-02",
+      "context_id": "troubleshoot-interface",
+      "question": "循环导入出现 partially initialized module 怎么办？",
+      "aliases": [
+        "Python循环导入怎样修",
+        "不是移动import一行而是怎么改依赖"
+      ],
+      "keywords": [
+        "循环导入",
+        "partially initialized",
+        "依赖图"
+      ],
+      "diagnostic": "依赖图中是否形成 cli -> application -> analysis -> cli 的环？",
+      "hints": [
+        "先画出完整导入方向，找到核心对入口的反向依赖。",
+        "把稳定接口移到内层模块，由入口负责具体组装。"
+      ],
+      "example": "analysis 不再导入 cli 的 print 函数，环就会断开。",
+      "answer": "循环导入常是依赖方向问题；重组边界比随意延迟 import 更可靠。",
+      "source": {
+        "label": "三种错误发生在不同阶段",
+        "href": "#troubleshoot-interface"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "interface-public",
+      "lesson_id": "python-core-02",
+      "context_id": "example-module-public",
+      "question": "前导下划线和 __all__ 能阻止别人导入吗？",
+      "aliases": [
+        "Python模块私有名称是不是权限控制",
+        "__all__有什么作用"
+      ],
+      "keywords": [
+        "下划线",
+        "__all__",
+        "公开接口",
+        "权限"
+      ],
+      "diagnostic": "调用者是否仍可显式写 from module import _name？",
+      "hints": [
+        "前导下划线是内部实现约定。",
+        "__all__记录公开名称并影响 import *，但不是访问控制。"
+      ],
+      "example": "显式导入 _calculate_progress 仍然可能成功。",
+      "answer": "它们帮助表达和审阅公共 API，不提供安全隔离；真实权限属于操作系统或服务授权。",
+      "source": {
+        "label": "下划线和 __all__ 是公开约定，不是门锁",
+        "href": "#example-module-public"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "interface-reproduce",
+      "lesson_id": "python-core-02",
+      "context_id": "reproduce-replace-writer",
+      "question": "两个 writer 的例子怎样运行和检查？",
+      "aliases": [
+        "可替换输出示例命令是什么",
+        "终端内存writer怎样验证"
+      ],
+      "keywords": [
+        "运行",
+        "mypy",
+        "writer",
+        "内存"
+      ],
+      "diagnostic": "是否先跑 mypy，再核对两种 writer 收到相同报告？",
+      "hints": [
+        "严格检查 interfaces_protocols.py。",
+        "运行后查看 memory_count=1、memory_matches=True 和 fresh_defaults=True。"
+      ],
+      "example": "终端显示报告，内存列表保存同一字符串。",
+      "answer": "静态检查证明协议签名一致，运行输出证明替换行为和默认值修复成立。",
+      "source": {
+        "label": "用两个 writer 跑同一段流程",
+        "href": "#reproduce-replace-writer"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "interface-wrong-writer",
+      "lesson_id": "python-core-02",
+      "context_id": "troubleshoot-interface",
+      "question": "回调不满足 ReportWriter 时 mypy 会报什么？",
+      "aliases": [
+        "bytes参数int返回为什么不是writer",
+        "错误协议实现怎样发现"
+      ],
+      "keywords": [
+        "错误回调",
+        "bytes",
+        "int",
+        "mypy"
+      ],
+      "diagnostic": "协议要求的参数和返回类型分别是什么？",
+      "hints": [
+        "ReportWriter 接收 str 并返回 None。",
+        "接收 bytes、返回 int 的函数不能赋给该协议。"
+      ],
+      "example": "wrong_writer(report: bytes) -> int 与协议两端都不兼容。",
+      "answer": "mypy 会在组装或赋值位置报告不兼容，避免错误输出端进入应用流程。",
+      "source": {
+        "label": "三种错误发生在不同阶段",
+        "href": "#troubleshoot-interface"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "interface-keyword-failure",
+      "lesson_id": "python-core-02",
+      "context_id": "troubleshoot-interface",
+      "question": "writer 为什么必须写成关键字参数？",
+      "aliases": [
+        "run_report第二个位置参数为什么失败",
+        "writer=remember为什么更清楚"
+      ],
+      "keywords": [
+        "writer",
+        "关键字专用",
+        "TypeError",
+        "调用"
+      ],
+      "diagnostic": "writer 是否位于函数签名的 * 之后？",
+      "hints": [
+        "* 后的参数不能按位置传入。",
+        "写 writer=remember 能让调用点直接显示这个函数的角色。"
+      ],
+      "example": "run_report(records, remember) 失败，run_report(records, writer=remember) 正确。",
+      "answer": "关键字专用约束减少含糊调用；mypy 和运行时都能拒绝违反签名的用法。",
+      "source": {
+        "label": "三种错误发生在不同阶段",
+        "href": "#troubleshoot-interface"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "interface-new-writer",
+      "lesson_id": "python-core-02",
+      "context_id": "modify-new-writer",
+      "question": "增加带前缀输出时哪些代码不该改？",
+      "aliases": [
+        "新writer如何不污染报告正文",
+        "加学习记录前缀应该放在哪"
+      ],
+      "keywords": [
+        "新writer",
+        "前缀",
+        "边界",
+        "报告正文"
+      ],
+      "diagnostic": "前缀属于业务报告内容，还是具体展示方式？",
+      "hints": [
+        "保持 build_report 和分析函数不变。",
+        "只新增兼容 ReportWriter 的边界函数，并在入口替换。"
+      ],
+      "example": "prefixed_writer 先打印前缀，再打印原报告字符串。",
+      "answer": "输出装饰属于边界，不应渗入统计与报告正文；替换后旧报告契约仍需测试。",
+      "source": {
+        "label": "增加一份带前缀的输出",
+        "href": "#modify-new-writer"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "interface-project",
+      "lesson_id": "python-core-02",
+      "context_id": "project-reporter-interface",
+      "question": "当前报告器的模块依赖应该怎样审阅？",
+      "aliases": [
+        "学习进度报告器依赖图怎么画",
+        "models analysis reporting cli谁依赖谁"
+      ],
+      "keywords": [
+        "报告器",
+        "模块",
+        "依赖图",
+        "回归"
+      ],
+      "diagnostic": "模型和分析模块是否导入了 CLI 或具体终端输出？",
+      "hints": [
+        "models 在内层；analysis 只依赖模型与标准库。",
+        "reporting 不导入 CLI，CLI 负责参数、组装和退出码。"
+      ],
+      "example": "测试可直接调用 build_report，不必启动完整命令。",
+      "answer": "审阅依赖方向、运行 mypy 和 30 项测试，证明当前最终项目没有因早期课程迁移而倒退。",
+      "source": {
+        "label": "审阅当前报告器的依赖箭头",
+        "href": "#project-reporter-interface"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "interface-abstraction",
+      "lesson_id": "python-core-02",
+      "context_id": "deepen-interface-size",
+      "question": "接口是不是越抽象越好？",
+      "aliases": [
+        "模块和协议越多越专业吗",
+        "小程序需不需要很多架构层"
+      ],
+      "keywords": [
+        "抽象",
+        "协议",
+        "模块",
+        "克制"
+      ],
+      "diagnostic": "这个抽象是否隔离真实变化或明显改善测试？",
+      "hints": [
+        "一次简单回调可能只需 Callable。",
+        "只有稳定角色或变化边界才值得命名协议和独立模块。"
+      ],
+      "example": "一行函数拆成单独模块不一定提高可维护性。",
+      "answer": "抽象应服务变化隔离、可读性和测试；目录数量和设计模式数量不是质量指标。",
+      "source": {
+        "label": "接口越抽象，不一定越好",
+        "href": "#deepen-interface-size"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "interface-career",
+      "lesson_id": "python-core-02",
+      "context_id": "career-interface-evidence",
+      "question": "怎样用代码证明模块边界设计有价值？",
+      "aliases": [
+        "项目面试如何讲接口协议",
+        "不只画架构图还要给什么证据"
+      ],
+      "keywords": [
+        "求职",
+        "代码证明",
+        "接口",
+        "替换"
+      ],
+      "diagnostic": "能否在不改核心逻辑时换一个输出实现并通过测试？",
+      "hints": [
+        "展示终端与内存 writer 的替换。",
+        "补 mypy 协议检查、报告一致和输入不变测试。"
+      ],
+      "example": "替换输出端不改分析函数，报告正文一字不变。",
+      "answer": "可运行替换和回归证据比抽象架构图更有说服力，同时要说明为何没有过度设计。",
+      "source": {
+        "label": "用一次替换证明设计，而不是只画图",
+        "href": "#career-interface-evidence"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
     }
   ]
 }

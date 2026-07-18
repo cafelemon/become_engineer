@@ -1,82 +1,153 @@
-[
-  {
-    "query": "惰性学习报告器如何观察生成时机？",
-    "step_id": "step-1",
-    "expected": "lazy-run"
-  },
-  {
-    "query": "生成器什么时候执行",
-    "step_id": "step-1",
-    "expected": "lazy-run"
-  },
-  {
-    "query": "Iterable 和 Iterator 有什么区别？",
-    "step_id": "step-1",
-    "expected": "iterable-iterator"
-  },
-  {
-    "query": "可迭代对象和迭代器",
-    "step_id": "step-1",
-    "expected": "iterable-iterator"
-  },
-  {
-    "query": "生成器函数为什么要用 yield？",
-    "step_id": "step-2",
-    "expected": "generator-function"
-  },
-  {
-    "query": "yield有什么用",
-    "step_id": "step-2",
-    "expected": "generator-function"
-  },
-  {
-    "query": "列表推导式和生成器表达式怎么选？",
-    "step_id": "step-2",
-    "expected": "generator-expression"
-  },
-  {
-    "query": "列表推导和生成器区别",
-    "step_id": "step-2",
-    "expected": "generator-expression"
-  },
-  {
-    "query": "为什么无限或长迭代要用 islice 限制？",
-    "step_id": "step-3",
-    "expected": "islice-boundary"
-  },
-  {
-    "query": "islice怎么用",
-    "step_id": "step-3",
-    "expected": "islice-boundary"
-  },
-  {
-    "query": "为什么第二次遍历迭代器没有结果？",
-    "step_id": "step-4",
-    "expected": "double-consume"
-  },
-  {
-    "query": "迭代器第二次为空",
-    "step_id": "step-4",
-    "expected": "double-consume"
-  },
-  {
-    "query": "Iterable、Iterator 和 Sequence 应该怎样写进类型签名？",
-    "step_id": "step-4",
-    "expected": "sequence-interface"
-  },
-  {
-    "query": "迭代类型注解",
-    "step_id": "step-4",
-    "expected": "sequence-interface"
-  },
-  {
-    "query": "如何新增惰性报告视图并验收？",
-    "step_id": "step-5",
-    "expected": "lazy-migration"
-  },
-  {
-    "query": "生成器迁移任务",
-    "step_id": "step-5",
-    "expected": "lazy-migration"
-  }
-]
+{
+  "lesson_id": "python-core-03",
+  "cases": [
+    {
+      "query": "为什么第一次遍历有值，第二次却空了？",
+      "expected_card": "iter-exhausted"
+    },
+    {
+      "query": "同一个iterator第二次list为什么是空列表",
+      "expected_card": "iter-exhausted"
+    },
+    {
+      "query": "for 循环怎样知道没有下一个值了？",
+      "expected_card": "iter-for-stop"
+    },
+    {
+      "query": "StopIteration在for循环里做什么",
+      "expected_card": "iter-for-stop"
+    },
+    {
+      "query": "next() 的默认值有什么用？",
+      "expected_card": "iter-next-default"
+    },
+    {
+      "query": "怎样避免手动next耗尽时报异常",
+      "expected_card": "iter-next-default"
+    },
+    {
+      "query": "列表和列表迭代器有什么区别？",
+      "expected_card": "iter-container-role"
+    },
+    {
+      "query": "容器与iterator分别保存什么",
+      "expected_card": "iter-container-role"
+    },
+    {
+      "query": "生成器函数什么时候真正执行？",
+      "expected_card": "iter-generator-timing"
+    },
+    {
+      "query": "调用有yield的函数为什么没打印",
+      "expected_card": "iter-generator-timing"
+    },
+    {
+      "query": "yield 之后局部变量和位置去哪了？",
+      "expected_card": "iter-yield-state"
+    },
+    {
+      "query": "生成器暂停后怎么继续",
+      "expected_card": "iter-yield-state"
+    },
+    {
+      "query": "列表推导式和生成器表达式怎么选？",
+      "expected_card": "iter-eager-lazy"
+    },
+    {
+      "query": "方括号和圆括号推导有什么差别",
+      "expected_card": "iter-eager-lazy"
+    },
+    {
+      "query": "Iterable、Iterator 和 Sequence 应该怎样选？",
+      "expected_card": "iter-type-choice"
+    },
+    {
+      "query": "三个容器协议的区别",
+      "expected_card": "iter-type-choice"
+    },
+    {
+      "query": "为什么同一个生成器做总和后计数会变成 0？",
+      "expected_card": "iter-double-consume"
+    },
+    {
+      "query": "broken_summary为什么对列表对生成器结果不同",
+      "expected_card": "iter-double-consume"
+    },
+    {
+      "query": "什么时候把 Iterable 转成 list 是合理的？",
+      "expected_card": "iter-materialize"
+    },
+    {
+      "query": "物化是不是一定不好",
+      "expected_card": "iter-materialize"
+    },
+    {
+      "query": "zip(strict=True) 为什么比普通 zip 更安全？",
+      "expected_card": "iter-tools"
+    },
+    {
+      "query": "两个列表长度不一致为什么要报错",
+      "expected_card": "iter-tools"
+    },
+    {
+      "query": "为什么无限生成器必须配 islice？",
+      "expected_card": "iter-islice"
+    },
+    {
+      "query": "natural_numbers为什么不能直接list",
+      "expected_card": "iter-islice"
+    },
+    {
+      "query": "惰性筛选例子里的 events 应该怎么看？",
+      "expected_card": "iter-reproduce"
+    },
+    {
+      "query": "before为空after_first只有Python说明什么",
+      "expected_card": "iter-reproduce"
+    },
+    {
+      "query": "怎样实现惰性的未完成课程筛选？",
+      "expected_card": "iter-new-view"
+    },
+    {
+      "query": "iter_incomplete应该怎么写",
+      "expected_card": "iter-new-view"
+    },
+    {
+      "query": "报告器为什么只在 build_report 入口物化一次？",
+      "expected_card": "iter-project"
+    },
+    {
+      "query": "项目生成器在哪里转list",
+      "expected_card": "iter-project"
+    },
+    {
+      "query": "报告器的迭代边界要用哪些测试证明？",
+      "expected_card": "iter-project-tests"
+    },
+    {
+      "query": "项目惰性行为怎么验收",
+      "expected_card": "iter-project-tests"
+    },
+    {
+      "query": "惰性计算为什么也会把异常推迟？",
+      "expected_card": "iter-lazy-failure"
+    },
+    {
+      "query": "生成器创建成功为什么next才报错",
+      "expected_card": "iter-lazy-failure"
+    },
+    {
+      "query": "项目里怎样讲清生成器的价值和取舍？",
+      "expected_card": "iter-career"
+    },
+    {
+      "query": "求职怎么表达惰性处理",
+      "expected_card": "iter-career"
+    }
+  ],
+  "unknown": [
+    "怎样给宠物猫梳毛",
+    "推荐一部周末电影"
+  ]
+}

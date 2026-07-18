@@ -1,20 +1,26 @@
-[
-  { "query": "单链表课开始前要锁定什么输出？", "step_id": "step-1", "expected": "linked-output-baseline" },
-  { "query": "linked模式首次成功要核对哪些结果", "step_id": "step-1", "expected": "linked-output-baseline" },
-  { "query": "单链表的节点和链接不变量是什么？", "step_id": "step-2", "expected": "node-link-invariant" },
-  { "query": "head为空和size等于可达节点数是什么意思", "step_id": "step-2", "expected": "node-link-invariant" },
-  { "query": "链表头部插入和删除为什么是常量时间？", "step_id": "step-3", "expected": "head-operations-cost" },
-  { "query": "push_front和pop_front为什么不用遍历", "step_id": "step-3", "expected": "head-operations-cost" },
-  { "query": "链表查找的 visits 怎样计算？", "step_id": "step-4", "expected": "linked-find-trace" },
-  { "query": "缺失目标时find要访问多少节点", "step_id": "step-4", "expected": "linked-find-trace" },
-  { "query": "为什么不能说链表插入永远是 O(1)？", "step_id": "step-4", "expected": "insertion-complexity-condition" },
-  { "query": "先查找位置再插入为什么可能是Theta n", "step_id": "step-4", "expected": "insertion-complexity-condition" },
-  { "query": "C++ 单链表为什么使用 unique_ptr 所有权链？", "step_id": "step-5", "expected": "unique-ownership-chain" },
-  { "query": "head和next怎样唯一拥有并释放节点", "step_id": "step-5", "expected": "unique-ownership-chain" },
-  { "query": "C++ 链表为什么禁止复制但允许移动？", "step_id": "step-5", "expected": "move-only-list" },
-  { "query": "move-only链表移动后源对象应该是什么状态", "step_id": "step-5", "expected": "move-only-list" },
-  { "query": "空链表 pop_front 应怎样安全失败？", "step_id": "step-5", "expected": "empty-list-underflow" },
-  { "query": "空表下溢为什么不能直接解引用head", "step_id": "step-5", "expected": "empty-list-underflow" },
-  { "query": "remove_first 迁移任务要验收什么？", "step_id": "step-6", "expected": "remove-first-migration" },
-  { "query": "删除首个重复值和缺失值要怎样测试", "step_id": "step-6", "expected": "remove-first-migration" }
-]
+{
+  "lesson_id":"cs-core-06",
+  "cases":[
+    {"query":"页首五行链表输出分别说明了什么？","expected_card":"linked-output"},{"query":"删掉7以后为什么还有3和9","expected_card":"linked-output"},
+    {"query":"数组和单链表最根本的表示差别是什么？","expected_card":"array-vs-linked"},{"query":"链表节点必须在内存里挨着吗","expected_card":"array-vs-linked"},
+    {"query":"head、value 和 next 各自负责什么？","expected_card":"node-head-next"},{"query":"head为空代表什么","expected_card":"node-head-next"},
+    {"query":"怎样判断一次链表修改没有把结构弄坏？","expected_card":"list-invariants"},{"query":"size为什么要等于可达节点数","expected_card":"list-invariants"},
+    {"query":"push_front 和 pop_front 为什么是 Θ(1)？","expected_card":"head-operations"},{"query":"pop front要不要遍历","expected_card":"head-operations"},
+    {"query":"为什么不能笼统地说链表插入永远 O(1)？","expected_card":"position-known-cost"},{"query":"先找位置再插入要多久","expected_card":"position-known-cost"},
+    {"query":"本课的链表 append 为什么是 Θ(n)？","expected_card":"append-no-tail"},{"query":"没有tail pointer怎样追加","expected_card":"append-no-tail"},
+    {"query":"链表 find 返回的 visits 怎样计算？","expected_card":"find-visits"},{"query":"查找3为什么visits是2","expected_card":"find-visits"},
+    {"query":"为什么 find 和 remove_first 都只处理第一个匹配？","expected_card":"first-match"},{"query":"重复值为什么不全处理","expected_card":"first-match"},
+    {"query":"Python 节点引用和 C++ unique_ptr 能当成同一种所有权吗？","expected_card":"python-cpp-ownership"},{"query":"两种语言节点生命周期差在哪","expected_card":"python-cpp-ownership"},
+    {"query":"C++ 单链表为什么用 unique_ptr 形成拥有链？","expected_card":"unique-ptr-chain"},{"query":"为什么不用裸指针拥有节点","expected_card":"unique-ptr-chain"},
+    {"query":"C++ 链表为什么禁止复制但允许移动？","expected_card":"move-only-list"},{"query":"移动后源对象应该怎样","expected_card":"move-only-list"},
+    {"query":"单链表小例子应该怎样运行和核对？","expected_card":"run-linked-micro"},{"query":"singly linked trace怎么跑","expected_card":"run-linked-micro"},
+    {"query":"为什么链表课还要回归 stack 和 queue 模式？","expected_card":"bilingual-linear-regression"},{"query":"Python C++三种报告为何都比","expected_card":"bilingual-linear-regression"},
+    {"query":"remove_first 应该覆盖哪些情况？","expected_card":"remove-first"},{"query":"删除缺失值能不能改变链表","expected_card":"remove-first"},
+    {"query":"空链表 pop_front 应该怎样安全失败？","expected_card":"empty-underflow"},{"query":"下溢后状态怎样检查","expected_card":"empty-underflow"},
+    {"query":"删除节点后链表少一大段，最可能哪里接错了？","expected_card":"broken-links"},{"query":"previous current next怎样重连","expected_card":"broken-links"},
+    {"query":"这节课给可追踪线性结构实验留下了什么？","expected_card":"project-linear"},{"query":"链表项目怎样接栈和队列","expected_card":"project-linear"},
+    {"query":"增加 tail 指针为什么能加快 append，又带来什么麻烦？","expected_card":"tail-pointer-tradeoff"},{"query":"head tail需要保持哪些规则","expected_card":"tail-pointer-tradeoff"},
+    {"query":"面试里怎样把链表插入复杂度讲完整？","expected_card":"career-linked"},{"query":"链表面试别只背O1","expected_card":"career-linked"}
+  ],
+  "unknown":["怎样给阳台薄荷安排浇水","周末短途露营要带哪些餐具"]
+}

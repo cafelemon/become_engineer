@@ -84,7 +84,10 @@ for (const lesson of registry.lessons) {
 assert.equal(migration.version, 1, "课程迁移台账版本必须为 1");
 assert.equal(migration.registry, "site-src/data/curriculum/v2.json", "迁移台账引用了错误的课程登记");
 assert.equal(migration.content_standard, "docs/08_content_standard.md", "迁移台账引用了错误的内容规范");
-assert.equal(migration.current_schema, "mixed-v1-v2", "正式课程迁移期间必须声明 V1/V2 混合协议");
+assert.ok(
+  ["mixed-v1-v2", "v2-with-v1-compatibility"].includes(migration.current_schema),
+  "正式课程必须声明迁移期混合协议或完成后的 V2 兼容协议"
+);
 assert.equal(migration.target_schema, "v2", "正式课程目标协议声明必须为 V2");
 
 unique(migration.batches.map((item) => item.id), "迁移批次 ID");
@@ -158,6 +161,10 @@ for (const item of migration.lessons) {
   } else {
     assert.ok(hasSteps, `${item.id} 尚未迁移却提前切换了 V2 知识库`);
   }
+}
+
+if (migration.lessons.every((item) => item.migration_status === "已迁移")) {
+  assert.equal(migration.current_schema, "v2-with-v1-compatibility", "全部课程迁移后应声明 V2 正式内容与 V1 运行时兼容");
 }
 
 const mapSource = fs.readFileSync(path.join(root, registry.authority), "utf8");

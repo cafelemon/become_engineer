@@ -1,23 +1,631 @@
 {
-  "version": 1,
-  "lesson": {"id": "cs-core-04", "title": "二维网格、行优先布局与坐标边界", "path": "learning-paths/cs-core/04-two-dimensional-grid-row-major-layout/"},
-  "steps": [
-    {"id":"step-1","title":"运行文本基线"},
-    {"id":"step-2","title":"定义网格形状"},
-    {"id":"step-3","title":"实现行优先坐标映射"},
-    {"id":"step-4","title":"复现 Python 重复行引用"},
-    {"id":"step-5","title":"完成 C++ 连续视图"},
-    {"id":"step-6","title":"迁移行扫描验收"}
+  "version": 2,
+  "lesson": {
+    "id": "cs-core-04",
+    "title": "二维网格、行优先布局与坐标边界",
+    "path": "learning-paths/cs-core/04-two-dimensional-grid-row-major-layout/"
+  },
+  "contexts": [
+    {
+      "id": "overview-grid-coordinate",
+      "type": "overview",
+      "title": "点一下第 2 行第 3 列",
+      "anchor": "#overview-grid-coordinate"
+    },
+    {
+      "id": "concept-grid-shape",
+      "type": "concept",
+      "title": "数据没变，形状可以改变意思",
+      "anchor": "#concept-grid-shape"
+    },
+    {
+      "id": "concept-row-major",
+      "type": "concept",
+      "title": "一行放完，再放下一行",
+      "anchor": "#concept-row-major"
+    },
+    {
+      "id": "example-grid-explorer",
+      "type": "example",
+      "title": "点一格，核对一次换算",
+      "anchor": "#example-grid-explorer"
+    },
+    {
+      "id": "concept-grid-boundary",
+      "type": "concept",
+      "title": "先检查形状，再检查坐标",
+      "anchor": "#concept-grid-boundary"
+    },
+    {
+      "id": "reproduce-grid-code",
+      "type": "reproduce",
+      "title": "把坐标和检查写进代码",
+      "anchor": "#reproduce-grid-code"
+    },
+    {
+      "id": "troubleshoot-grid-alias",
+      "type": "troubleshoot",
+      "title": "为什么改一格，三行一起变了",
+      "anchor": "#troubleshoot-grid-alias"
+    },
+    {
+      "id": "modify-grid-shape",
+      "type": "modify",
+      "title": "把 2 × 3 改成 3 × 2",
+      "anchor": "#modify-grid-shape"
+    },
+    {
+      "id": "project-study-grid",
+      "type": "project",
+      "title": "给学习进度报告器加一张矩阵视图",
+      "anchor": "#project-study-grid"
+    },
+    {
+      "id": "deepen-grid-representation",
+      "type": "deepen",
+      "title": "扁平列表和嵌套列表各有用途",
+      "anchor": "#deepen-grid-representation"
+    },
+    {
+      "id": "career-grid-contract",
+      "type": "career",
+      "title": "看到二维数据，先问清约定",
+      "anchor": "#career-grid-contract"
+    }
   ],
   "cards": [
-    {"id":"grid-output-baseline","lesson_id":"cs-core-04","step_id":"step-1","question":"网格课开始前要锁定哪些基线？","aliases":["为什么先运行text模式","新增grid模式如何不破坏旧输出"],"keywords":["baseline","text","grid","默认报告","兼容"],"diagnostic":"默认、baseline 和 text 输出是否仍与上一版本逐字一致？","hints":["先运行已有三种入口并保存输出。","grid 必须是新的显式模式，不能拼入默认报告。"],"example":"无参数仍以“可追踪数组实验”开头，grid 才以“二维网格”开头。","answer":"先冻结旧契约，才能证明新增的是独立网格能力而不是兼容性回归。","source":{"label":"第一步：运行文本基线","href":"#step-1"},"updated_at":"2026-07-16","recommended":true},
-    {"id":"grid-shape-contract","lesson_id":"cs-core-04","step_id":"step-2","question":"扁平网格的形状契约是什么？","aliases":["rows columns和数据长度什么关系","空网格怎样表示"],"keywords":["rows","columns","shape","长度","乘积"],"diagnostic":"rows 乘 columns 是否恰好等于扁平数据长度？","hints":["形状在访问坐标前统一校验。","0x0 可以配空数据；非零形状必须有完全匹配的元素数。"],"example":"2x3 必须对应6个元素。","answer":"形状是解释扁平序列的必要元数据；乘积不匹配时坐标映射没有可信语义，应受控失败。","source":{"label":"第二步：定义网格形状","href":"#step-2"},"updated_at":"2026-07-16","recommended":true},
-    {"id":"row-major-formula","lesson_id":"cs-core-04","step_id":"step-3","question":"行优先网格怎样把坐标映射为下标？","aliases":["row major公式是什么","2x3的1行2列在哪里"],"keywords":["row major","row * columns + column","flat_index","坐标映射"],"diagnostic":"公式使用的是总列数，且先检查 row 和 column 边界了吗？","hints":["完整行占 columns 个位置。","合法坐标的下标为 row * columns + column。"],"example":"2x3 网格的 (1,2) 映射到 1*3+2=5。","answer":"行优先布局把每行连续排列，公式明确了二维接口与一维存储之间的契约。","source":{"label":"第三步：实现行优先坐标映射","href":"#step-3"},"updated_at":"2026-07-16","recommended":true},
-    {"id":"grid-coordinate-boundary","lesson_id":"cs-core-04","step_id":"step-3","question":"网格坐标要拒绝哪些边界输入？","aliases":["负坐标为什么不能像Python索引","row等于rows合法吗"],"keywords":["负坐标","越界","row","column","受控失败"],"diagnostic":"实现是否拒绝负值、row >= rows 和 column >= columns？","hints":["Python 接口主动拒绝负坐标，不沿用负索引语义。","先验证坐标，再计算扁平下标。"],"example":"2x3 中 (-1,0)、(2,0)、(0,3) 都失败。","answer":"坐标边界采用跨语言一致的非负半开区间，避免 Python 与 C++ 表现分叉。","source":{"label":"第三步：实现行优先坐标映射","href":"#step-3"},"updated_at":"2026-07-16"},
-    {"id":"repeated-row-alias","lesson_id":"cs-core-04","step_id":"step-4","question":"Python 重复行引用为什么危险？","aliases":["[[0]*3]*2有什么问题","改一格为什么另一行也变","二维列表改一个格子为什么另一行也改变"],"keywords":["重复行引用","alias","浅复制","多维列表","Python"],"diagnostic":"多行是否指向同一个内部 list 对象？","hints":["列表乘法复制的是引用，不会为每行深拷贝。","使用列表推导逐行创建，或采用本课的单一扁平列表。"],"example":"rows = [[0] * 3 for _ in range(2)]。","answer":"共享行对象会让一次修改传播到多行；实验显式复现后改用独立行或扁平表示。","source":{"label":"第四步：复现 Python 重复行引用","href":"#step-4"},"updated_at":"2026-07-16","recommended":true},
-    {"id":"flat-contiguous-representation","lesson_id":"cs-core-04","step_id":"step-5","question":"为什么 C++ 网格使用扁平 span？","aliases":["为什么不用vector vector","C++20没有mdspan怎么办"],"keywords":["std::span","扁平连续","只读视图","C++20","mdspan"],"diagnostic":"业务函数是否只借用连续数据，并把 rows、columns 明确传入？","hints":["std::span<const int> 不拥有数据，适合只读同步调用。","C++20 用扁平视图和显式形状，不引入 C++23 mdspan。"],"example":"checked_grid_at(std::span<const int>, rows, columns, row, column)。","answer":"扁平 span 保留连续存储证据，同时把形状和生命周期边界暴露在接口上。","source":{"label":"第五步：完成 C++ 连续视图","href":"#step-5"},"updated_at":"2026-07-16","recommended":true},
-    {"id":"grid-shape-overflow","lesson_id":"cs-core-04","step_id":"step-5","question":"C++ 为什么要在 rows 乘 columns 前检查溢出？","aliases":["形状乘法溢出怎么防","乘积等于size为什么还不够"],"keywords":["乘法溢出","size_t","max","shape","C++"],"diagnostic":"是否在乘法前判断 columns > max / rows，而不是乘完才比较？","hints":["无符号整数溢出会回绕，结果可能伪装成小尺寸。","rows 非零时先用 max / rows 给出安全上界。"],"example":"rows > 0 且 columns > max_size / rows 时立即失败。","answer":"先验证乘法可表示，才能相信形状乘积和数据长度比较。","source":{"label":"第五步：完成 C++ 连续视图","href":"#step-5"},"updated_at":"2026-07-16"},
-    {"id":"row-scan-trace","lesson_id":"cs-core-04","step_id":"step-6","question":"行扫描的 visits 应怎样计数？","aliases":["sum_grid_row访问几次","空列行扫描怎么算","sum grid row为什么访问次数等于列数"],"keywords":["RowTrace","visits","行扫描","columns","total"],"diagnostic":"每个目标行元素是否恰好访问一次，并同时累计 total 和 visits？","hints":["从该行起始扁平下标开始连续扫描 columns 个位置。","合法行的 visits 等于 columns；0列时为0。"],"example":"2x3 第一行求和6，visits=3。","answer":"访问计数把行求和的正确性与线性工作量绑定，便于双语言确定性验收。","source":{"label":"第六步：迁移行扫描验收","href":"#step-6"},"updated_at":"2026-07-16","recommended":true},
-    {"id":"grid-migration-invariant","lesson_id":"cs-core-04","step_id":"step-6","question":"修改网格形状后要重新验收哪些不变量？","aliases":["迁移不同rows columns怎么测","网格复制修改验收","从2x3迁移到3x2后应该测试什么"],"keywords":["迁移验收","形状不变量","首尾坐标","输入不变","双语言"],"diagnostic":"新形状是否仍满足乘积、边界、下标公式和访问次数契约？","hints":["覆盖首尾合法坐标与四类失败边界。","比较 Python/C++ 结果，并确认只读操作不修改输入。"],"example":"把2x3改为3x2后，末格 (2,1) 仍映射下标5。","answer":"迁移验收不只看示例值，还要重新证明形状、坐标、访问次数和输入不变。","source":{"label":"第六步：迁移行扫描验收","href":"#step-6"},"updated_at":"2026-07-16"}
+    {
+      "id": "grid-coordinate-zero",
+      "lesson_id": "cs-core-04",
+      "context_id": "overview-grid-coordinate",
+      "question": "第 2 行第 3 列为什么写成坐标 (1, 2)？",
+      "aliases": [
+        "人眼第二行第三列在程序里为什么是一和二",
+        "二维坐标是不是也从零开始"
+      ],
+      "keywords": [
+        "坐标",
+        "第2行",
+        "第3列",
+        "从0开始"
+      ],
+      "diagnostic": "你现在说的是人眼的序号，还是程序使用的下标？",
+      "hints": [
+        "列表下标从 0 开始，二维坐标的行和列也沿用这个约定。",
+        "人眼第 2 行减 1 得 row=1，第 3 列减 1 得 column=2。"
+      ],
+      "example": "第 2 行第 3 列对应 (1, 2)。",
+      "answer": "程序坐标从 0 开始，所以人眼看到的第 2 行第 3 列写作 (1, 2)。",
+      "source": {
+        "label": "点一下第 2 行第 3 列",
+        "href": "#overview-grid-coordinate"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "grid-shape-meaning",
+      "lesson_id": "cs-core-04",
+      "context_id": "concept-grid-shape",
+      "question": "为什么同一组值换个形状，坐标含义就变了？",
+      "aliases": [
+        "六个数字改成三行两列为什么位置解释不同",
+        "数据不变形状为什么重要"
+      ],
+      "keywords": [
+        "形状",
+        "2x3",
+        "3x2",
+        "含义"
+      ],
+      "diagnostic": "你是否同时记录了每行有几个值？",
+      "hints": [
+        "一维列表只保存顺序，不会自己说明哪里换行。",
+        "columns 改变后，同一 flat index 会被分到不同的 row 和 column。"
+      ],
+      "example": "[2,5,3,4,1,2] 既可解释为 2×3，也可解释为 3×2。",
+      "answer": "形状决定每行长度，因此也决定一维位置对应哪个二维坐标。值没变，解释契约变了。",
+      "source": {
+        "label": "数据没变，形状可以改变意思",
+        "href": "#concept-grid-shape"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "grid-shape-contract",
+      "lesson_id": "cs-core-04",
+      "context_id": "concept-grid-shape",
+      "question": "为什么形状也要作为接口的一部分？",
+      "aliases": [
+        "二维函数为什么要传rows和columns",
+        "一维列表不能自己知道几行几列吗"
+      ],
+      "keywords": [
+        "形状",
+        "接口",
+        "rows",
+        "columns"
+      ],
+      "diagnostic": "只给一维 values 时，程序能否唯一推断行列数？",
+      "hints": [
+        "长度 6 可以组成 1×6、2×3、3×2 或 6×1。",
+        "把 rows 和 columns 明确传入，并验证乘积等于值的数量。"
+      ],
+      "example": "len(values)=6 不能唯一确定网格形状。",
+      "answer": "一维值序列不包含换行信息，因此形状必须由接口明确提供并校验。",
+      "source": {
+        "label": "数据没变，形状可以改变意思",
+        "href": "#concept-grid-shape"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "grid-row-major",
+      "lesson_id": "cs-core-04",
+      "context_id": "concept-row-major",
+      "question": "什么叫行优先布局？",
+      "aliases": [
+        "row major到底怎样排列",
+        "为什么先放完一行再放下一行"
+      ],
+      "keywords": [
+        "行优先",
+        "布局",
+        "顺序",
+        "row major"
+      ],
+      "diagnostic": "观察扁平列表中第 0 行的值是否连续放在最前面。",
+      "hints": [
+        "行优先先保存第 0 行的所有列，再保存第 1 行。",
+        "因此到第 row 行前已经越过 row * columns 个值。"
+      ],
+      "example": "2×3 网格按行优先排列为第0行三个值，接着第1行三个值。",
+      "answer": "行优先是一种布局约定：逐行保存，每行内部再按列排列。",
+      "source": {
+        "label": "一行放完，再放下一行",
+        "href": "#concept-row-major"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "grid-formula-derive",
+      "lesson_id": "cs-core-04",
+      "context_id": "concept-row-major",
+      "question": "row * columns + column 这个公式是怎么来的？",
+      "aliases": [
+        "二维坐标转一维下标为什么这样算",
+        "我不想死背网格公式"
+      ],
+      "keywords": [
+        "公式",
+        "row",
+        "columns",
+        "column",
+        "flat index"
+      ],
+      "diagnostic": "先数到目标行之前已经完整跨过多少行、每行多少格。",
+      "hints": [
+        "前 row 行各有 columns 个值，共 row * columns 个。",
+        "进入目标行后，再向右移动 column 个位置。"
+      ],
+      "example": "(1,2) 在每行3列时是 1*3+2=5。",
+      "answer": "公式来自两段移动：跨过前面的完整行，再在当前行中向右走到目标列。",
+      "source": {
+        "label": "一行放完，再放下一行",
+        "href": "#concept-row-major"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "grid-layout-choice",
+      "lesson_id": "cs-core-04",
+      "context_id": "concept-row-major",
+      "question": "行优先是二维数据唯一的存法吗？",
+      "aliases": [
+        "网格一定要row major吗",
+        "列优先可不可以"
+      ],
+      "keywords": [
+        "行优先",
+        "列优先",
+        "约定",
+        "布局"
+      ],
+      "diagnostic": "写入和读取双方是否使用了同一套坐标映射？",
+      "hints": [
+        "行优先只是常见选择，列优先和其他布局也存在。",
+        "关键是接口明确布局，并让所有组件遵守同一约定。"
+      ],
+      "example": "同一坐标在不同行列布局下可能落到不同位置。",
+      "answer": "行优先不是唯一存法；它是本课明确采用的契约。",
+      "source": {
+        "label": "一行放完，再放下一行",
+        "href": "#concept-row-major"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "grid-explorer-use",
+      "lesson_id": "cs-core-04",
+      "context_id": "example-grid-explorer",
+      "question": "互动网格应该怎么看？",
+      "aliases": [
+        "点网格以后三个数字分别是什么",
+        "坐标演示怎么用"
+      ],
+      "keywords": [
+        "互动",
+        "坐标",
+        "下标",
+        "值"
+      ],
+      "diagnostic": "你是否先选一格，再对照坐标、flat index 和 value？",
+      "hints": [
+        "先自己用公式计算一维下标。",
+        "再点击同一格，核对页面展示的坐标、下标和值。"
+      ],
+      "example": "点击 CS·周三会看到 (1,2)、5 和 2。",
+      "answer": "互动网格把二维坐标、映射后的一维下标和最终值放在同一处，适合逐格核对。",
+      "source": {
+        "label": "点一格，核对一次换算",
+        "href": "#example-grid-explorer"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "grid-shape-validation",
+      "lesson_id": "cs-core-04",
+      "context_id": "concept-grid-boundary",
+      "question": "为什么要先验证 rows * columns 等于值的数量？",
+      "aliases": [
+        "形状不匹配为什么不能先访问第一个值",
+        "六个格子只有五个数据怎么办"
+      ],
+      "keywords": [
+        "形状校验",
+        "长度",
+        "乘积",
+        "坏数据"
+      ],
+      "diagnostic": "声称 2×3 却只有 5 个值时，这还是一个完整网格吗？",
+      "hints": [
+        "合法坐标只能说明坐标形式没越界，不能修复缺失的数据。",
+        "先拒绝坏形状，后续所有坐标访问才建立在同一契约上。"
+      ],
+      "example": "2×3 需要恰好 6 个值。",
+      "answer": "形状校验是整个网格的前提，必须在读取任何单元格之前完成。",
+      "source": {
+        "label": "先检查形状，再检查坐标",
+        "href": "#concept-grid-boundary"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "grid-coordinate-boundary",
+      "lesson_id": "cs-core-04",
+      "context_id": "concept-grid-boundary",
+      "question": "行列坐标分别怎样检查边界？",
+      "aliases": [
+        "二维下标越界条件怎么写",
+        "负行负列为什么不能访问"
+      ],
+      "keywords": [
+        "边界",
+        "row",
+        "column",
+        "越界"
+      ],
+      "diagnostic": "是否分别比较 row 与 rows、column 与 columns？",
+      "hints": [
+        "合法行满足 0 <= row < rows。",
+        "合法列满足 0 <= column < columns，两个条件都成立才能访问。"
+      ],
+      "example": "2×3 网格合法行是0和1，合法列是0、1、2。",
+      "answer": "行列有各自的上界，必须分别检查；负数和等于上界都越界。",
+      "source": {
+        "label": "先检查形状，再检查坐标",
+        "href": "#concept-grid-boundary"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "grid-empty",
+      "lesson_id": "cs-core-04",
+      "context_id": "concept-grid-boundary",
+      "question": "空网格形状合法，为什么 (0, 0) 还是不能访问？",
+      "aliases": [
+        "0x0为什么能通过形状检查却没有第一个格子",
+        "空容器能不能取零号位置"
+      ],
+      "keywords": [
+        "空网格",
+        "0x0",
+        "访问",
+        "合法"
+      ],
+      "diagnostic": "形状合法和某个坐标可访问是不是同一件事？",
+      "hints": [
+        "0*0 等于空列表长度，所以形状可以合法。",
+        "但合法行要求 0 <= row < 0，不存在任何满足条件的 row。"
+      ],
+      "example": "rows=0、columns=0、values=[] 是合法空形状。",
+      "answer": "容器本身合法不代表它包含元素；空网格没有任何可访问坐标。",
+      "source": {
+        "label": "先检查形状，再检查坐标",
+        "href": "#concept-grid-boundary"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "grid-cell-result",
+      "lesson_id": "cs-core-04",
+      "context_id": "reproduce-grid-code",
+      "question": "为什么 checked_grid_at 不只返回一个值？",
+      "aliases": [
+        "GridCell为什么还保存坐标和flat index",
+        "访问网格返回结果对象有什么用"
+      ],
+      "keywords": [
+        "GridCell",
+        "返回值",
+        "坐标",
+        "追踪"
+      ],
+      "diagnostic": "排错时你是否需要知道这个值来自哪个坐标和一维位置？",
+      "hints": [
+        "只返回 value 会丢掉映射过程。",
+        "GridCell 同时保留 row、column、flat_index 和 value，测试更容易核对。"
+      ],
+      "example": "GridCell(1,2,5,2) 说明坐标和存储位置的完整关系。",
+      "answer": "返回结构化结果能保留来源信息，方便测试、日志和后续可视化。",
+      "source": {
+        "label": "把坐标和检查写进代码",
+        "href": "#reproduce-grid-code"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "grid-row-scan",
+      "lesson_id": "cs-core-04",
+      "context_id": "reproduce-grid-code",
+      "question": "扫描一整行为什么访问次数等于列数？",
+      "aliases": [
+        "sum_grid_row的visits怎么算",
+        "一行三列为什么正好访问三次"
+      ],
+      "keywords": [
+        "行扫描",
+        "visits",
+        "列数",
+        "操作计数"
+      ],
+      "diagnostic": "循环是否从这一行的起点走到起点加 columns，但不包含终点？",
+      "hints": [
+        "一行恰好有 columns 个位置。",
+        "若每个位置只读取一次，访问次数就恰好等于 columns。"
+      ],
+      "example": "2×3 网格扫描任意合法行都访问3次。",
+      "answer": "行扫描的输入规模是列数；逐格一次读取时，visits 与 columns 相等。",
+      "source": {
+        "label": "把坐标和检查写进代码",
+        "href": "#reproduce-grid-code"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "grid-alias",
+      "lesson_id": "cs-core-04",
+      "context_id": "troubleshoot-grid-alias",
+      "question": "为什么修改一格会让 Python 三行一起变？",
+      "aliases": [
+        "二维列表改一行其他行也跟着改",
+        "列表乘法为什么共享行"
+      ],
+      "keywords": [
+        "重复行",
+        "引用",
+        "列表乘法",
+        "一起变"
+      ],
+      "diagnostic": "打印 id(grid[0])、id(grid[1]) 和 id(grid[2]) 是否相同？",
+      "hints": [
+        "[[0]*2]*3 复制的是对同一个内层列表的引用。",
+        "因此任何一行的元素修改都会通过同一个对象反映到三行。"
+      ],
+      "example": "三个外层位置指向同一个 [0,0] 列表。",
+      "answer": "外层乘法重复了引用，没有创建三份独立可变行。",
+      "source": {
+        "label": "为什么改一格，三行一起变了",
+        "href": "#troubleshoot-grid-alias"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "grid-independent-rows",
+      "lesson_id": "cs-core-04",
+      "context_id": "troubleshoot-grid-alias",
+      "question": "怎样创建互不影响的多行列表？",
+      "aliases": [
+        "Python二维列表正确初始化怎么写",
+        "怎么避免重复行引用"
+      ],
+      "keywords": [
+        "列表推导",
+        "独立行",
+        "初始化"
+      ],
+      "diagnostic": "每次迭代是否都新建了一次内层列表？",
+      "hints": [
+        "使用 [[0] * columns for _ in range(rows)]。",
+        "列表推导的每次循环都会执行内层表达式，产生新的行对象。"
+      ],
+      "example": "[[0]*2 for _ in range(3)] 创建三份独立行。",
+      "answer": "需要可变的独立行时使用列表推导，不要用外层乘法重复同一个行对象。",
+      "source": {
+        "label": "为什么改一格，三行一起变了",
+        "href": "#troubleshoot-grid-alias"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "grid-reshape",
+      "lesson_id": "cs-core-04",
+      "context_id": "modify-grid-shape",
+      "question": "把 2×3 改成 3×2 后应该先检查什么？",
+      "aliases": [
+        "同一组值换形状怎样手算",
+        "改rows columns后公式怎么核对"
+      ],
+      "keywords": [
+        "改形状",
+        "3x2",
+        "预测",
+        "核对"
+      ],
+      "diagnostic": "先画出每行两个值的新网格了吗？",
+      "hints": [
+        "新的 columns=2，因此每两个值换一行。",
+        "再用 row*2+column 计算坐标，不要沿用原来的每行3列。"
+      ],
+      "example": "3×2 中最后一个值位于 (2,1)，下标仍为5。",
+      "answer": "先重画形状，再用新的列数换算；一维顺序不变，二维坐标会变化。",
+      "source": {
+        "label": "把 2 × 3 改成 3 × 2",
+        "href": "#modify-grid-shape"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "grid-project-view",
+      "lesson_id": "cs-core-04",
+      "context_id": "project-study-grid",
+      "question": "学习进度报告器怎样接入矩阵视图？",
+      "aliases": [
+        "项目里二维网格用在哪里",
+        "学习记录怎么做课程乘指标表"
+      ],
+      "keywords": [
+        "报告器",
+        "矩阵视图",
+        "计划",
+        "完成",
+        "剩余"
+      ],
+      "diagnostic": "你能否把课程作为行、计划完成剩余作为三列？",
+      "hints": [
+        "先做独立诊断函数，不改现有主报告。",
+        "用扁平 metrics 加 rows、columns，并测试读取、坏形状和原记录不变。"
+      ],
+      "example": "两门课程三项指标可表示为2×3矩阵。",
+      "answer": "矩阵视图适合比较课程和指标，但应先作为独立函数演进，保持 v1.0 主报告契约稳定。",
+      "source": {
+        "label": "给学习进度报告器加一张矩阵视图",
+        "href": "#project-study-grid"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "grid-flat-vs-nested",
+      "lesson_id": "cs-core-04",
+      "context_id": "deepen-grid-representation",
+      "question": "扁平列表和嵌套列表该怎么选？",
+      "aliases": [
+        "二维数据为什么不直接全用list of lists",
+        "flat list有什么好处"
+      ],
+      "keywords": [
+        "扁平列表",
+        "嵌套列表",
+        "锯齿行",
+        "选择"
+      ],
+      "diagnostic": "你的接口更重视统一形状和映射，还是允许每行长度不同？",
+      "hints": [
+        "扁平列表加形状让长度和坐标映射更明确。",
+        "嵌套列表更接近行结构，也允许锯齿行，但要防共享引用。"
+      ],
+      "example": "规则矩阵常适合扁平值加形状；不规则行适合嵌套列表。",
+      "answer": "两者没有绝对优劣，应根据是否需要规则形状、连续顺序和独立行来选择。",
+      "source": {
+        "label": "扁平列表和嵌套列表各有用途",
+        "href": "#deepen-grid-representation"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "grid-cpp-deferred",
+      "lesson_id": "cs-core-04",
+      "context_id": "deepen-grid-representation",
+      "question": "为什么这节共同 CS 起步不讲 C++ span 和 mdspan？",
+      "aliases": [
+        "C++二维视图安排到哪里",
+        "为什么删掉无符号溢出细节"
+      ],
+      "keywords": [
+        "C++",
+        "span",
+        "mdspan",
+        "后续"
+      ],
+      "diagnostic": "当前目标是理解二维表示，还是同时学习 C++ 生命周期和视图类型？",
+      "hints": [
+        "共同入口只要求 Python 起步，不应让语言底层细节成为前置。",
+        "C++ 连续视图、乘法溢出和 mdspan 会在 C++/系统方向结合真实工具链学习。"
+      ],
+      "example": "本课保留形状、映射和边界三项共同概念。",
+      "answer": "C++ 细节没有被否定，而是放回更合适的系统方向，避免共同 CS 起步突然抬高门槛。",
+      "source": {
+        "label": "扁平列表和嵌套列表各有用途",
+        "href": "#deepen-grid-representation"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "grid-career-contract",
+      "lesson_id": "cs-core-04",
+      "context_id": "career-grid-contract",
+      "question": "面试里遇到二维数据，应该先问什么？",
+      "aliases": [
+        "网格题开场怎样澄清需求",
+        "二维数组接口要确认哪些约定"
+      ],
+      "keywords": [
+        "面试",
+        "形状",
+        "布局",
+        "边界",
+        "约定"
+      ],
+      "diagnostic": "题目是否明确行列含义、布局、空输入和失败方式？",
+      "hints": [
+        "先确认行列代表什么、是否从0开始以及数据布局。",
+        "再确认空网格、锯齿行、越界行为和要执行的操作范围。"
+      ],
+      "example": "先澄清契约，再写 shape 校验、坐标边界和映射公式。",
+      "answer": "可靠回答先把形状、布局、边界和操作说清，再实现并用首尾、空输入和坏形状测试。",
+      "source": {
+        "label": "看到二维数据，先问清约定",
+        "href": "#career-grid-contract"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    }
   ]
 }

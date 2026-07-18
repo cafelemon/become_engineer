@@ -1,20 +1,25 @@
-[
-  {"query":"容量课开始前要锁定哪些输出？","step_id":"step-1","expected":"capacity-output-baseline"},
-  {"query":"为什么新增capacity不能改变grid和默认报告","step_id":"step-1","expected":"capacity-output-baseline"},
-  {"query":"动态数组的 size 和 capacity 有什么区别？","step_id":"step-2","expected":"size-capacity-distinction"},
-  {"query":"元素数量和已分配容量为什么不能混用","step_id":"step-2","expected":"size-capacity-distinction"},
-  {"query":"一次追加事件怎样记录成本？","step_id":"step-3","expected":"append-event-cost"},
-  {"query":"扩容追加的copies和steps应该怎么算","step_id":"step-3","expected":"append-event-cost"},
-  {"query":"实验的确定性倍增规则是什么？","step_id":"step-4","expected":"deterministic-doubling"},
-  {"query":"初始容量0时为什么按1 2 4 8增长","step_id":"step-4","expected":"deterministic-doubling"},
-  {"query":"追加的最坏成本和摊还成本为什么不同？","step_id":"step-4","expected":"amortized-vs-worst"},
-  {"query":"单次扩容Theta n为何一串追加摊还是常量","step_id":"step-4","expected":"amortized-vs-worst"},
-  {"query":"为什么不能断言 Python list 或 C++ vector 的具体扩容倍数？","step_id":"step-5","expected":"standard-growth-boundary"},
-  {"query":"vector标准是否保证容量每次翻倍","step_id":"step-5","expected":"standard-growth-boundary"},
-  {"query":"预留足够容量会怎样改变模拟结果？","step_id":"step-5","expected":"reserve-effect"},
-  {"query":"initial capacity够用时为何复制次数是0","step_id":"step-5","expected":"reserve-effect"},
-  {"query":"容量倍增为什么还要检查整数溢出？","step_id":"step-5","expected":"capacity-overflow-boundary"},
-  {"query":"size_t capacity乘2回绕怎样安全失败","step_id":"step-5","expected":"capacity-overflow-boundary"},
-  {"query":"迁移不同初始容量要验收什么？","step_id":"step-6","expected":"initial-capacity-migration"},
-  {"query":"从容量0改到2和5后哪些不变量必须保持","step_id":"step-6","expected":"initial-capacity-migration"}
-]
+{
+  "lesson_id":"cs-core-05",
+  "cases":[
+    {"query":"五次追加的 total_steps 为什么是 12？","expected_card":"capacity-total-twelve"},{"query":"1 2 3 1 5为什么加起来12","expected_card":"capacity-total-twelve"},
+    {"query":"动态数组的 size 和 capacity 有什么区别？","expected_card":"size-capacity"},{"query":"reserve以后size会变吗","expected_card":"size-capacity"},
+    {"query":"容量模拟器最基本的不变量是什么？","expected_card":"capacity-invariant"},{"query":"size能不能大于capacity","expected_card":"capacity-invariant"},
+    {"query":"为什么第 4 次追加没有复制旧元素？","expected_card":"grow-only-when-full"},{"query":"容量什么时候才增长","expected_card":"grow-only-when-full"},
+    {"query":"一次追加的 copies 和 steps 应该怎样计算？","expected_card":"append-cost-model"},{"query":"steps为什么是copies加1","expected_card":"append-cost-model"},
+    {"query":"课程模拟器的容量为什么按 1、2、4、8 增长？","expected_card":"deterministic-doubling"},{"query":"初始容量0怎样倍增","expected_card":"deterministic-doubling"},
+    {"query":"为什么追加既可能是 Θ(n)，又说摊还是 Θ(1)？","expected_card":"worst-vs-amortized"},{"query":"append到底O1还是On","expected_card":"worst-vs-amortized"},
+    {"query":"摊还分析是不是多运行几次取平均？","expected_card":"amortized-not-average"},{"query":"摊还需要概率吗","expected_card":"amortized-not-average"},
+    {"query":"1+2+4+8 为什么仍然是 Θ(n)？","expected_card":"geometric-copy-sum"},{"query":"扩容多次会不会变成n平方","expected_card":"geometric-copy-sum"},
+    {"query":"动态数组小例子应该怎样运行和核对？","expected_card":"run-growth-micro"},{"query":"小程序输出不等于12怎么办","expected_card":"run-growth-micro"},
+    {"query":"为什么除了 capacity，还要重跑另外三种模式？","expected_card":"bilingual-array-regression"},{"query":"数组实验旧模式为什么回归","expected_card":"bilingual-array-regression"},
+    {"query":"初始容量 0、2、5 应该得到什么差别？","expected_card":"initial-capacity-cases"},{"query":"预留5为何total steps是5","expected_card":"initial-capacity-cases"},
+    {"query":"vector reserve 会不会创建元素或保证永不扩容？","expected_card":"reserve-behavior"},{"query":"预留容量超过后会怎样","expected_card":"reserve-behavior"},
+    {"query":"为什么不能测试真实 vector 容量必须是 1、2、4、8？","expected_card":"library-growth-not-fixed"},{"query":"C++标准保证两倍扩容吗","expected_card":"library-growth-not-fixed"},
+    {"query":"别人说 append 就是 O(1)，我该怎样补充？","expected_card":"fix-cost-claim"},{"query":"最坏和摊还限定词","expected_card":"fix-cost-claim"},
+    {"query":"C++ 容量乘 2 为什么要先检查溢出？","expected_card":"capacity-overflow"},{"query":"size_t回绕怎么办","expected_card":"capacity-overflow"},
+    {"query":"这节课给可追踪数组实验增加了什么？","expected_card":"project-array-capacity"},{"query":"capacity模式怎样接前四课","expected_card":"project-array-capacity"},
+    {"query":"为什么增长因子不是越大越好？","expected_card":"space-time-tradeoff"},{"query":"扩容少和浪费空间怎么权衡","expected_card":"space-time-tradeoff"},
+    {"query":"面试里怎样把动态数组摊还分析讲完整？","expected_card":"career-amortized"},{"query":"vector扩容求职表达","expected_card":"career-amortized"}
+  ],
+  "unknown":["如何给室内绿植选择补光灯","第一次做手冲咖啡怎样调水温"]
+}

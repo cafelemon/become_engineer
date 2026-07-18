@@ -1,95 +1,42 @@
 {
-  "version": 1,
-  "lesson": { "id": "cs-core-08", "title": "队列、FIFO 与首尾不变量", "path": "learning-paths/cs-core/08-queue-fifo-head-tail-invariants/" },
-  "steps": [
-    { "id": "step-1", "title": "运行栈基线与队列模式" },
-    { "id": "step-2", "title": "定义 FIFO 和首尾不变量" },
-    { "id": "step-3", "title": "实现常量时间入队与出队" },
-    { "id": "step-4", "title": "验证完整状态转换" },
-    { "id": "step-5", "title": "对照标准容器并安全失败" },
-    { "id": "step-6", "title": "迁移 serve_until_empty" }
+  "version":2,
+  "lesson":{"id":"cs-core-08","title":"队列、FIFO 与首尾不变量","path":"learning-paths/cs-core/08-queue-fifo-head-tail-invariants/"},
+  "contexts":[
+    {"id":"overview-queue-output","type":"overview","title":"7 最早排队所以先离开","anchor":"#overview-queue-output"},
+    {"id":"concept-fifo-contract","type":"concept","title":"队尾进队首出","anchor":"#concept-fifo-contract"},
+    {"id":"example-queue-trace","type":"example","title":"从空到单元素再回到空","anchor":"#example-queue-trace"},
+    {"id":"concept-endpoint-invariants","type":"concept","title":"首尾不变量","anchor":"#concept-endpoint-invariants"},
+    {"id":"concept-owning-head-observing-tail","type":"concept","title":"拥有头与观察尾","anchor":"#concept-owning-head-observing-tail"},
+    {"id":"concept-constant-operations","type":"concept","title":"尾入口换来常量入队","anchor":"#concept-constant-operations"},
+    {"id":"example-last-dequeue","type":"example","title":"最后一次出队","anchor":"#example-last-dequeue"},
+    {"id":"reproduce-queue-micro","type":"reproduce","title":"运行完整首尾转换","anchor":"#reproduce-queue-micro"},
+    {"id":"reproduce-bilingual-queue","type":"reproduce","title":"核对双语言三种模式","anchor":"#reproduce-bilingual-queue"},
+    {"id":"modify-queue-state","type":"modify","title":"换值记录首尾","anchor":"#modify-queue-state"},
+    {"id":"modify-serve-until-empty","type":"modify","title":"保持输入顺序服务到空","anchor":"#modify-serve-until-empty"},
+    {"id":"troubleshoot-underflow","type":"troubleshoot","title":"空队列安全失败","anchor":"#troubleshoot-underflow"},
+    {"id":"troubleshoot-endpoints","type":"troubleshoot","title":"首尾与顺序排查","anchor":"#troubleshoot-endpoints"},
+    {"id":"project-linear-v03","type":"project","title":"线性结构小闭环","anchor":"#project-linear-v03"},
+    {"id":"deepen-standard-queues","type":"deepen","title":"标准队列与手写实现","anchor":"#deepen-standard-queues"},
+    {"id":"career-queue-evidence","type":"career","title":"讲完整首尾边界","anchor":"#career-queue-evidence"}
   ],
-  "cards": [
-    {
-      "id": "queue-output-baseline", "lesson_id": "cs-core-08", "step_id": "step-1",
-      "question": "队列模式的固定输出要证明什么？", "aliases": ["queue首次成功是什么", "为什么先核对stack输出"],
-      "keywords": ["queue", "基线", "front", "back", "dequeue"],
-      "diagnostic": "入队 7、3、9 后首尾是否为7和9，首次出队是否为7？",
-      "hints": ["先确认 stack 模式未回归。", "再核对 remaining 为3, 9。"],
-      "example": "front=7，back=9，size=3。", "answer": "固定报告同时证明旧模式兼容和新队列的 FIFO 行为。",
-      "source": { "label": "第一步：运行栈基线与队列模式", "href": "#step-1" }, "updated_at": "2026-07-16", "recommended": true
-    },
-    {
-      "id": "fifo-contract", "lesson_id": "cs-core-08", "step_id": "step-2",
-      "question": "队列的 FIFO 契约是什么？", "aliases": ["先进先出怎么理解", "enqueue和dequeue在哪两端"],
-      "keywords": ["FIFO", "先进先出", "enqueue", "dequeue", "顺序"],
-      "diagnostic": "最早 enqueue 的未删除元素是否总由下一次 dequeue 返回？",
-      "hints": ["从尾部入队。", "从头部出队。"],
-      "example": "入队7、3、9，出队顺序仍是7、3、9。", "answer": "FIFO 规定服务顺序；队列接口不要求某一种具体底层容器。",
-      "source": { "label": "第二步：定义 FIFO 和首尾不变量", "href": "#step-2" }, "updated_at": "2026-07-16", "recommended": true
-    },
-    {
-      "id": "queue-endpoint-invariant", "lesson_id": "cs-core-08", "step_id": "step-2",
-      "question": "链式队列的 head 和 tail 不变量是什么？", "aliases": ["空队列首尾状态", "单元素时头尾指向哪里"],
-      "keywords": ["head", "tail", "不变量", "空队列", "单元素"],
-      "diagnostic": "空时首尾是否都为空，非空时 tail 是否指向最后节点？",
-      "hints": ["单元素时 head 和 tail 指向同一节点。", "size 必须等于从 head 可达的节点数。"],
-      "example": "删除最后节点后不能只清 head，还要清 tail。", "answer": "首尾必须一起描述队列边界，任何操作后都要保持空与非空两组条件。",
-      "source": { "label": "第二步：定义 FIFO 和首尾不变量", "href": "#step-2" }, "updated_at": "2026-07-16", "recommended": true
-    },
-    {
-      "id": "queue-constant-operations", "lesson_id": "cs-core-08", "step_id": "step-3",
-      "question": "维护尾指针为什么让入队成为常量时间？", "aliases": ["链式队列enqueue为何不用遍历", "dequeue复杂度"],
-      "keywords": ["尾指针", "enqueue", "dequeue", "Theta(1)", "遍历"],
-      "diagnostic": "入队是否直接重连 tail.next，出队是否直接移动 head？",
-      "hints": ["tail 已定位最后节点。", "头出尾入都只修改常量个链接。"],
-      "example": "队列有300个节点也无需从head寻找尾部。", "answer": "额外维护尾位置换来常量入队，头位置则提供常量出队。",
-      "source": { "label": "第三步：实现常量时间入队与出队", "href": "#step-3" }, "updated_at": "2026-07-16", "recommended": true
-    },
-    {
-      "id": "non-owning-tail", "lesson_id": "cs-core-08", "step_id": "step-3",
-      "question": "C++ 队列的 tail 为什么只是非拥有观察指针？", "aliases": ["tail会不会释放节点", "队列为何不能有两条所有权链"],
-      "keywords": ["tail", "非拥有", "观察指针", "unique_ptr", "所有权"],
-      "diagnostic": "节点是否只由 head 链拥有，tail 是否仅定位最后节点？",
-      "hints": ["head 的 unique_ptr 链负责生命周期。", "tail 不 delete，也不形成第二个 unique_ptr。"],
-      "example": "移动队列时转移 head，并把 tail 位置交给目标对象。", "answer": "单一拥有链避免重复释放，tail 只提供快速访问且必须随生命周期变化同步。",
-      "source": { "label": "第三步：实现常量时间入队与出队", "href": "#step-3" }, "updated_at": "2026-07-16"
-    },
-    {
-      "id": "singleton-tail-reset", "lesson_id": "cs-core-08", "step_id": "step-4",
-      "question": "删除队列最后一个元素时为什么必须清空 tail？", "aliases": ["出队单元素后的尾指针", "出队单元素后尾指针不重置有什么风险", "悬空tail怎样产生"],
-      "keywords": ["最后元素", "tail重置", "悬空指针", "singleton", "empty"],
-      "diagnostic": "dequeue 后 head 为空时是否同步令 tail 为空？",
-      "hints": ["旧尾节点已由 unique_ptr 释放。", "保留旧地址会让 back 或下次入队访问失效对象。"],
-      "example": "出队唯一的7后，head=null、tail=null、size=0。", "answer": "尾指针不拥有节点；最后节点释放后必须立即重置，才能恢复空队列不变量。",
-      "source": { "label": "第四步：验证完整状态转换", "href": "#step-4" }, "updated_at": "2026-07-16", "recommended": true
-    },
-    {
-      "id": "queue-reuse-after-empty", "lesson_id": "cs-core-08", "step_id": "step-4",
-      "question": "怎样验证队列清空后还能重新使用？", "aliases": ["空到单元素再到空的测试", "重新入队为何重要"],
-      "keywords": ["重新入队", "状态转换", "empty", "head", "tail"],
-      "diagnostic": "清空后再次 enqueue 是否同时恢复 head 和 tail？",
-      "hints": ["不要只断言 empty。", "再入队一个新值并检查 front、back、size。"],
-      "example": "清空7后入队9，front=back=9且size=1。", "answer": "重新执行成功操作能暴露残留尾指针和未恢复不变量的问题。",
-      "source": { "label": "第四步：验证完整状态转换", "href": "#step-4" }, "updated_at": "2026-07-16"
-    },
-    {
-      "id": "queue-standard-boundary", "lesson_id": "cs-core-08", "step_id": "step-5",
-      "question": "为什么 Python 队列不应使用 list.pop(0)？", "aliases": ["deque和list头部删除差异", "std queue是不是具体容器"],
-      "keywords": ["list.pop(0)", "deque", "std::queue", "容器适配器", "移动成本"],
-      "diagnostic": "删除首元素是否会移动后续 list 元素？",
-      "hints": ["collections.deque 公开两端近似常量操作。", "std::queue 是接口适配器，不等于某一种表示。"],
-      "example": "本实验链式头出尾入，不用 list.pop(0)。", "answer": "列表头删为线性移动成本；应选择满足首尾操作复杂度的结构或适配器。",
-      "source": { "label": "第五步：对照标准容器并安全失败", "href": "#step-5" }, "updated_at": "2026-07-16", "recommended": true
-    },
-    {
-      "id": "serve-queue-migration", "lesson_id": "cs-core-08", "step_id": "step-6",
-      "question": "serve_until_empty 迁移任务要验收什么？", "aliases": ["排空队列怎样保持FIFO", "队列迁移为何保护输入"],
-      "keywords": ["serve_until_empty", "迁移验收", "FIFO", "输入不变", "空输入"],
-      "diagnostic": "是否按输入顺序入队并按 dequeue 顺序完整收集，且未修改源序列？",
-      "hints": ["输出应与输入顺序相同。", "覆盖空、单元素、重复值和一般序列。"],
-      "example": "[7,3,9] 返回[7,3,9]，源列表保持不变。", "answer": "迁移通过标准是完整 FIFO 输出、原输入不变并覆盖所有首尾边界。",
-      "source": { "label": "第六步：迁移 serve_until_empty", "href": "#step-6" }, "updated_at": "2026-07-16", "recommended": true
-    }
+  "cards":[
+    {"id":"queue-output","lesson_id":"cs-core-08","context_id":"overview-queue-output","question":"队列报告为什么先出 7 而不是 9？","aliases":["front7 back9怎样看","queue固定输出说明什么"],"keywords":["queue","front","back","dequeue","FIFO"],"diagnostic":"最早入队且还没有离开的值是哪一个？","hints":["7最先enqueue。","dequeue从队首取值，9留在队尾。"],"example":"front=7、back=9、dequeue=7、remaining=3,9。","answer":"报告固定了FIFO：最早进入的7先离开，剩余服务顺序仍是3、9。","source":{"label":"7 最早排队所以 7 先离开","href":"#overview-queue-output"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"fifo-contract","lesson_id":"cs-core-08","context_id":"concept-fifo-contract","question":"队列的 FIFO 契约是什么？","aliases":["先进先出怎么理解","enqueue和dequeue在哪两端"],"keywords":["FIFO","先进先出","enqueue","dequeue","顺序"],"diagnostic":"下一次dequeue是否总返回最早尚未服务的值？","hints":["从队尾入队。","从队首出队。"],"example":"入队7、3、9，出队顺序仍是7、3、9。","answer":"FIFO规定最早进入的未删除元素最先返回；它约束服务顺序，不限制底层表示。","source":{"label":"队尾进队首出","href":"#concept-fifo-contract"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"queue-operations","lesson_id":"cs-core-08","context_id":"concept-fifo-contract","question":"enqueue、dequeue、front、back 分别做什么？","aliases":["队列四个核心操作区别","front back会不会删除"],"keywords":["enqueue","dequeue","front","back","只读"],"diagnostic":"操作是在队尾添加、队首删除，还是只观察端点？","hints":["enqueue和dequeue修改结构。","front和back只读，不改变size。"],"example":"front返回7后size仍是3。","answer":"enqueue尾部添加，dequeue头部删除并返回；front/back分别只读首尾。","source":{"label":"队尾进队首出","href":"#concept-fifo-contract"},"updated_at":"2026-07-17"},
+    {"id":"queue-state-trace","lesson_id":"cs-core-08","context_id":"example-queue-trace","question":"空队列入队第一个值时，head 和 tail 怎样变化？","aliases":["单元素队列首尾指向哪里","enqueue7后front back是什么"],"keywords":["空队列","单元素","head","tail","enqueue"],"diagnostic":"队列原来没有首尾，谁同时成为第一个和最后一个节点？","hints":["新节点成为head。","同一个新节点也成为tail。"],"example":"enqueue7后front=back=7、size=1。","answer":"第一次入队要同时设置head和tail，两者指向唯一节点。","source":{"label":"从空到单元素再回到空","href":"#example-queue-trace"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"endpoint-invariants","lesson_id":"cs-core-08","context_id":"concept-endpoint-invariants","question":"链式队列的首尾不变量有哪些？","aliases":["空队列和多元素首尾规则","tail next为什么必须为空"],"keywords":["head","tail","不变量","size","tail.next"],"diagnostic":"空、单元素和多元素三种状态是否分别一致？","hints":["空时首尾都空；单元素时首尾同节点。","多元素时tail指向最后节点且next为空。"],"example":"从head可达3个节点时size必须是3。","answer":"首尾、可达链和size要同步；tail始终定位最后节点，空队列绝不能残留旧tail。","source":{"label":"首尾必须一起讲","href":"#concept-endpoint-invariants"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"owning-head-observing-tail","lesson_id":"cs-core-08","context_id":"concept-owning-head-observing-tail","question":"C++ 队列为什么 head 拥有节点，tail 只观察？","aliases":["tail为什么不是第二个unique ptr","谁负责释放队列节点"],"keywords":["head_","tail_","unique_ptr","非拥有","所有权"],"diagnostic":"节点生命周期是否只沿一条unique_ptr链管理？","hints":["head_的拥有链负责释放。","tail_只保存最后位置，不delete节点。"],"example":"tail_是Node*，指向head_链中的最后节点。","answer":"单一拥有链避免重复释放；非拥有tail只优化定位，但必须随节点生命周期同步更新。","source":{"label":"C++ 中头拥有尾只负责定位","href":"#concept-owning-head-observing-tail"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"queue-constant-operations","lesson_id":"cs-core-08","context_id":"concept-constant-operations","question":"维护 tail 为什么让 enqueue 变成 Θ(1)？","aliases":["链式队列入队为何不遍历","队列四项操作复杂度"],"keywords":["tail","enqueue","dequeue","Theta(1)","遍历"],"diagnostic":"是否能直接找到最后节点，而不用从head走到尾？","hints":["tail已定位链尾。","入队接tail.next，出队移动head。"],"example":"长度300也只重连固定几个指针。","answer":"额外尾入口省去线性定位，使enqueue、dequeue、front、back均为Θ(1)，代价是维护更多不变量。","source":{"label":"多保存一个尾入口换来常量入队","href":"#concept-constant-operations"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"last-dequeue-tail-reset","lesson_id":"cs-core-08","context_id":"example-last-dequeue","question":"删除最后一个元素时为什么必须清空 tail？","aliases":["出队单元素后tail不清有什么风险","悬空尾指针怎样产生"],"keywords":["最后元素","tail","悬空指针","head为空","重置"],"diagnostic":"旧唯一节点释放后，tail是否还保存它的地址？","hints":["dequeue先让head变空。","发现head为空就立即令tail为空。"],"example":"出队唯一的7后head=null、tail=null、size=0。","answer":"tail不拥有节点；唯一节点释放后保留旧地址会悬空，所以必须同步恢复空队列状态。","source":{"label":"最后一次出队要多做一件事","href":"#example-last-dequeue"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"run-queue-micro","lesson_id":"cs-core-08","context_id":"reproduce-queue-micro","question":"链式队列小程序要重点核对哪三种状态？","aliases":["linked_queue_trace怎么跑","清空后重新入队怎么看"],"keywords":["linked_queue_trace.py","单元素","清空","复用","运行"],"diagnostic":"是否观察到单元素、清空和再次入队时首尾同步？","hints":["先看front=back=7。","再看空时都None，复用时都9。"],"example":".venv/bin/python site-src/examples/algorithm-foundation/linked_queue_trace.py。","answer":"重点核对首尾同为7、同为空、同为9三个节点转换，size分别为1、0、1。","source":{"label":"跑一遍完整首尾转换","href":"#reproduce-queue-micro"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"bilingual-queue-regression","lesson_id":"cs-core-08","context_id":"reproduce-bilingual-queue","question":"队列课为什么仍要回归 linked 和 stack？","aliases":["三种线性模式为何都测试","Python C++队列报告怎样比"],"keywords":["linked","stack","queue","回归","双语言"],"diagnostic":"三种模式是否共享入口、构建和节点基础？","hints":["队列改动不能破坏前两课。","两种语言三份输出都逐字比较。"],"example":"linked、stack、queue测试和stdout全部一致。","answer":"全模式回归保护线性结构项目的连续契约，双语言对照确保首尾规则没有实现分歧。","source":{"label":"在正式项目里核对三种模式","href":"#reproduce-bilingual-queue"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"duplicate-queue-state","lesson_id":"cs-core-08","context_id":"modify-queue-state","question":"队列里两个相同的 4 会合并吗？","aliases":["重复值排队怎样处理","第一次dequeue哪个4"],"keywords":["重复值","FIFO","enqueue4","dequeue","顺序"],"diagnostic":"两次入队是否代表两个独立的到达事件？","hints":["队列不负责去重。","先进入的4先离开。"],"example":"enqueue4两次后size=2，dequeue一次仍剩一个4。","answer":"值相同不改变到达顺序；两个4是独立队列项，按FIFO逐个离开。","source":{"label":"换一串值把首尾都记下来","href":"#modify-queue-state"},"updated_at":"2026-07-17"},
+    {"id":"serve-until-empty","lesson_id":"cs-core-08","context_id":"modify-serve-until-empty","question":"serve_until_empty 应该返回什么顺序？","aliases":["排空队列结果为什么和输入相同","7 3 9服务顺序"],"keywords":["serve_until_empty","FIFO","输出顺序","排空","输入"],"diagnostic":"是否按输入顺序入队，再从队首逐个收集？","hints":["最早输入的值先dequeue。","空输入返回空。"],"example":"[7,3,9]返回[7,3,9]。","answer":"FIFO排空顺序与入队顺序相同；重复值和单元素也保持各自到达次序。","source":{"label":"serve_until_empty 保持输入顺序","href":"#modify-serve-until-empty"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"queue-input-unchanged","lesson_id":"cs-core-08","context_id":"modify-serve-until-empty","question":"serve_until_empty 为什么不能直接删输入列表？","aliases":["队列排空怎样保护调用方输入","为什么不用list pop0"],"keywords":["输入不变","list.pop(0)","副作用","调用方","队列"],"diagnostic":"函数是在自己建立的队列上操作，还是修改调用方容器？","hints":["遍历输入并enqueue到独立队列。","只dequeue独立队列，前后比较源输入。"],"example":"返回[7,3,9]后source仍是[7,3,9]。","answer":"输入只读能避免隐藏副作用；同时list.pop(0)还会移动后续元素，不适合作为本课队列实现。","source":{"label":"serve_until_empty 保持输入顺序","href":"#modify-serve-until-empty"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"queue-underflow","lesson_id":"cs-core-08","context_id":"troubleshoot-underflow","question":"空队列 dequeue、front、back 应怎样失败？","aliases":["队列下溢异常是什么","空首尾能不能返回0"],"keywords":["空队列","dequeue","front","back","IndexError","out_of_range"],"diagnostic":"接口是否在读取节点前明确拒绝，而不是返回合法哨兵？","hints":["Python抛IndexError。","C++抛std::out_of_range，三次失败均不改状态。"],"example":"失败后size=0，随后enqueue7仍正常。","answer":"三项操作都必须在读取前抛明确异常；空队列没有可伪造的默认端点值。","source":{"label":"空队列的三种读取都要拒绝","href":"#troubleshoot-underflow"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"fix-queue-endpoints","lesson_id":"cs-core-08","context_id":"troubleshoot-endpoints","question":"清空后 back 还能读到旧值，应该查哪里？","aliases":["残留tail怎么修","队列空了尾指针还在"],"keywords":["back","旧值","tail","清空","悬空"],"diagnostic":"删除最后节点时是否检测head为空并同步清tail？","hints":["tail不拥有旧节点。","最后一次dequeue后必须设置tail=None或nullptr。"],"example":"head变空时立刻tail=null。","answer":"问题通常是最后出队漏重置tail；修复后还要测试清空再入队，确认没有残留状态。","source":{"label":"队列顺序或首尾不对时","href":"#troubleshoot-endpoints"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"project-linear-queue","lesson_id":"cs-core-08","context_id":"project-linear-v03","question":"队列课怎样完成线性结构的小闭环？","aliases":["线性结构项目v03是什么","链表栈队列怎样连起来"],"keywords":["单链表","栈","队列","小闭环","项目"],"diagnostic":"三种结构是否共享节点知识，又保留不同接口与测试？","hints":["链表展示链接和查找。","栈收窄为LIFO，队列增加首尾形成FIFO。"],"example":"共同保证双语言输出、下溢、移动和输入不变。","answer":"项目用同一节点基础比较通用链表、单端栈和双端点队列，让表示复用但接口不混淆。","source":{"label":"线性结构实验完成第一个小闭环","href":"#project-linear-v03"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"standard-queue-boundary","lesson_id":"cs-core-08","context_id":"deepen-standard-queues","question":"正式项目有 deque 和 std::queue，为什么还手写链式队列？","aliases":["标准库队列和教学实现怎样取舍","list pop0为什么慢"],"keywords":["collections.deque","std::queue","手写实现","复杂度","标准库"],"diagnostic":"目标是在业务中重复造轮子，还是看清首尾和所有权机制？","hints":["业务优先标准库。","手写实验用于理解tail优化、失效和状态转换。"],"example":"学完实现后，Python业务通常选collections.deque。","answer":"教学实现揭示机制和边界；生产代码通常选择经过验证、契约明确的标准容器。","source":{"label":"标准库已经有队列为什么还要写一遍","href":"#deepen-standard-queues"},"updated_at":"2026-07-17"},
+    {"id":"career-queue","lesson_id":"cs-core-08","context_id":"career-queue-evidence","question":"面试里怎样把链式队列讲完整？","aliases":["队列面试别只说先进先出","如何解释非拥有tail"],"keywords":["面试","FIFO","head","tail","Theta(1)","测试证据"],"diagnostic":"回答是否覆盖顺序、复杂度、所有权和最后节点边界？","hints":["先用7、3、9说明FIFO。","再讲头拥有尾观察、常量操作和最后出队清尾。"],"example":"FIFO → 尾入头出 → head拥有/tail观察 → 边界回归。","answer":"把接口、优化代价、资源语义和空—单—多状态测试串起来，才能说明队列实现真正闭合。","source":{"label":"讲队列时别漏掉最后一次出队","href":"#career-queue-evidence"},"updated_at":"2026-07-17","recommended":true}
   ]
 }

@@ -1,11 +1,23 @@
-[
-  { "query": "elementary 基线证明什么？", "step_id": "step-1", "expected": "elementary-baseline" }, { "query": "3A和3C顺序有什么差异", "step_id": "step-1", "expected": "elementary-baseline" },
-  { "query": "排序稳定性到底是什么？", "step_id": "step-2", "expected": "stability-contract" }, { "query": "有序但不稳定矛盾吗", "step_id": "step-2", "expected": "stability-contract" },
-  { "query": "为什么测试排序要给重复键加标签？", "step_id": "step-2", "expected": "tagged-values-evidence" }, { "query": "TaggedValue有什么用", "step_id": "step-2", "expected": "tagged-values-evidence" },
-  { "query": "插入排序的 comparisons 和 shifts 怎么数？", "step_id": "step-3", "expected": "insertion-trace" }, { "query": "固定插入排序为何5次比较", "step_id": "step-3", "expected": "insertion-trace" },
-  { "query": "插入排序为什么只能严格越过？", "step_id": "step-3", "expected": "strict-move-stability" }, { "query": "相等时为什么停止移动", "step_id": "step-3", "expected": "strict-move-stability" },
-  { "query": "选择排序的 comparisons 和 swaps 怎么数？", "step_id": "step-4", "expected": "selection-trace" }, { "query": "自交换算swap吗", "step_id": "step-4", "expected": "selection-trace" },
-  { "query": "标准选择排序为什么可能不稳定？", "step_id": "step-5", "expected": "selection-instability" }, { "query": "3C为什么会跑到3A前", "step_id": "step-5", "expected": "selection-instability" },
-  { "query": "排序实验为什么必须返回副本？", "step_id": "step-5", "expected": "input-copy-contract" }, { "query": "怎样验证原输入不变", "step_id": "step-5", "expected": "input-copy-contract" },
-  { "query": "稳定降序迁移为什么不能反转升序结果？", "step_id": "step-6", "expected": "descending-migration" }, { "query": "插入排序降序怎样验收", "step_id": "step-6", "expected": "descending-migration" }
-]
+{
+  "lesson_id":"cs-core-13",
+  "cases":[
+    {"query":"两种结果都升序，为什么只有插入排序稳定？","expected_card":"elementary-output"},{"query":"3A和3C顺序为什么不同","expected_card":"elementary-output"},
+    {"query":"排序稳定性到底要求什么？","expected_card":"stability-contract"},{"query":"有序但不稳定矛盾吗","expected_card":"stability-contract"},
+    {"query":"为什么重复键还要加 A、C 标签？","expected_card":"tagged-evidence"},{"query":"TaggedValue标签参与比较吗","expected_card":"tagged-evidence"},
+    {"query":"插入排序的 comparisons 和 shifts 分别数什么？","expected_card":"insertion-counts"},{"query":"放回current算shift吗","expected_card":"insertion-counts"},
+    {"query":"插入排序相等时为什么必须停止移动？","expected_card":"strict-insertion"},{"query":"插入排序怎样保持3A在3C前","expected_card":"strict-insertion"},
+    {"query":"四项选择排序为什么固定比较 6 次？","expected_card":"selection-counts"},{"query":"自己和自己算swap吗","expected_card":"selection-counts"},
+    {"query":"两种排序从哪一轮开始出现稳定性差异？","expected_card":"pass-trace"},{"query":"3C什么时候跑到3A前","expected_card":"pass-trace"},
+    {"query":"选择排序为什么会破坏没有直接比较的相等元素顺序？","expected_card":"selection-instability"},{"query":"选择排序不稳定反例","expected_card":"selection-instability"},
+    {"query":"基础排序轨迹脚本怎样运行和核对？","expected_card":"run-elementary"},{"query":"elementary_sort_trace怎么跑","expected_card":"run-elementary"},
+    {"query":"为什么排序课仍要回归 search 和 merge？","expected_card":"bilingual-elementary"},{"query":"elementary为何测试三种模式","expected_card":"bilingual-elementary"},
+    {"query":"稳定降序为什么不能反转升序结果？","expected_card":"stable-descending"},{"query":"反转会怎样破坏标签顺序","expected_card":"stable-descending"},
+    {"query":"基础排序需要哪些边界数据？","expected_card":"boundary-data"},{"query":"已排序和逆序能看出什么","expected_card":"boundary-data"},
+    {"query":"插入排序标签倒序时先检查什么？","expected_card":"fix-stability"},{"query":"插入条件含等号有什么问题","expected_card":"fix-stability"},
+    {"query":"排序函数为什么要返回副本而不是改输入？","expected_card":"input-copy"},{"query":"怎样验证原列表没变","expected_card":"input-copy"},
+    {"query":"阶段作品第二课增加了哪些证据？","expected_card":"project-elementary"},{"query":"排序课怎样接归并","expected_card":"project-elementary"},
+    {"query":"为什么插入排序不总是做同样多的操作？","expected_card":"elementary-cost"},{"query":"二分插入能变nlogn吗","expected_card":"elementary-cost"},
+    {"query":"面试里怎样用一个反例讲清排序稳定性？","expected_card":"career-stability"},{"query":"选择排序反例怎样讲","expected_card":"career-stability"}
+  ],
+  "unknown":["怎样挑一把适合办公的椅子","烘干机的滤网多久清理一次"]
+}

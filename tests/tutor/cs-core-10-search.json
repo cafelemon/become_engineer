@@ -1,20 +1,26 @@
-[
-  { "query": "哈希表首次成功怎么看", "step_id": "step-1", "expected": "table-baseline" },
-  { "query": "13插入为何触发扩容搬移", "step_id": "step-1", "expected": "table-baseline" },
-  { "query": "分离链接怎样保存冲突键", "step_id": "step-2", "expected": "separate-chaining-layout" },
-  { "query": "分离链接哈希表怎样保存冲突键？", "step_id": "step-2", "expected": "separate-chaining-layout" },
-  { "query": "size是桶数还是键值对数", "step_id": "step-2", "expected": "map-size-invariant" },
-  { "query": "哈希表 size 统计什么？", "step_id": "step-2", "expected": "map-size-invariant" },
-  { "query": "相同键更新会扩容吗", "step_id": "step-3", "expected": "put-update-contract" },
-  { "query": "put inserted no是什么意思", "step_id": "step-3", "expected": "put-update-contract" },
-  { "query": "get comparisons怎么算", "step_id": "step-4", "expected": "lookup-comparisons" },
-  { "query": "缺失查询比较几次", "step_id": "step-4", "expected": "lookup-comparisons" },
-  { "query": "负载等于1会扩容吗", "step_id": "step-5", "expected": "load-factor-boundary" },
-  { "query": "什么时候触发rehash", "step_id": "step-5", "expected": "load-factor-boundary" },
-  { "query": "扩容为什么必须重新映射旧键？", "step_id": "step-5", "expected": "rehash-movement" },
-  { "query": "扩容moved数量是什么", "step_id": "step-5", "expected": "rehash-movement" },
-  { "query": "哈希表最坏情况也是O1吗", "step_id": "step-5", "expected": "hash-complexity-conditions" },
-  { "query": "期望常量成本需要哪些条件", "step_id": "step-5", "expected": "hash-complexity-conditions" },
-  { "query": "erase删除缺失键怎样保持状态", "step_id": "step-6", "expected": "erase-migration" },
-  { "query": "哈希表删除比较次数怎么验收", "step_id": "step-6", "expected": "erase-migration" }
-]
+{
+  "lesson_id":"cs-core-10",
+  "cases":[
+    {"query":"为什么插入 13 时才从 4 桶扩成 8 桶？","expected_card":"table-output"},{"query":"第五个键为什么触发rehash","expected_card":"table-output"},
+    {"query":"分离链接怎样保存落在同一桶的键？","expected_card":"separate-chaining"},{"query":"冲突键怎样放在一个bucket里","expected_card":"separate-chaining"},
+    {"query":"size 和 bucket_count 分别数什么？","expected_card":"size-bucket-count"},{"query":"空桶算size吗","expected_card":"size-bucket-count"},
+    {"query":"负载因子是不是非空桶的比例？","expected_card":"load-factor"},{"query":"所有键挤一个桶负载会变吗","expected_card":"load-factor"},
+    {"query":"put 为什么要先查旧键再判断扩容？","expected_card":"put-flow"},{"query":"负载检查应该放在哪里","expected_card":"put-flow"},
+    {"query":"更新已有键时哪些状态必须保持不变？","expected_card":"update-existing"},{"query":"inserted false代表什么","expected_card":"update-existing"},
+    {"query":"查询的 comparisons 到底数哪些操作？","expected_card":"lookup-comparisons"},{"query":"桶号计算算不算comparisons","expected_card":"lookup-comparisons"},
+    {"query":"缺失查询为什么可能比较整条桶链？","expected_card":"missing-comparisons"},{"query":"get不存在的键比较几次","expected_card":"missing-comparisons"},
+    {"query":"负载恰好等于 1.0 时会扩容吗？","expected_card":"load-boundary"},{"query":"rehash边界是大于还是大于等于","expected_card":"load-boundary"},
+    {"query":"扩容时为什么不能直接复制旧桶号？","expected_card":"rehash-remap"},{"query":"键5扩容后为什么换桶","expected_card":"rehash-remap"},
+    {"query":"rehash 里的 moved 应该等于多少？","expected_card":"moved-count"},{"query":"moved为什么是4不是5","expected_card":"moved-count"},
+    {"query":"五次插入小程序要怎样运行和核对？","expected_card":"run-table-micro"},{"query":"hash_table_growth怎么跑","expected_card":"run-table-micro"},
+    {"query":"双语言表模式为什么还要回归 hash 和 applications？","expected_card":"bilingual-table-regression"},{"query":"table课为何运行三种模式","expected_card":"bilingual-table-regression"},
+    {"query":"怎样验证负载 1.0 时更新旧键不会扩容？","expected_card":"update-at-boundary"},{"query":"两桶满载更新已有键","expected_card":"update-at-boundary"},
+    {"query":"删除桶链里的键要验证哪些位置？","expected_card":"erase-chain"},{"query":"erase头中尾怎么测","expected_card":"erase-chain"},
+    {"query":"删除不存在的键时为什么要检查状态完全不变？","expected_card":"erase-missing"},{"query":"erase missing应该返回什么","expected_card":"erase-missing"},
+    {"query":"扩容后旧键查不到，应该先查什么？","expected_card":"fix-rehash"},{"query":"rehash后get失败怎么排查","expected_card":"fix-rehash"},
+    {"query":"这一课给可追踪哈希实验加了什么？","expected_card":"project-hash-table"},{"query":"桶事件怎样升级成哈希表","expected_card":"project-hash-table"},
+    {"query":"控制负载后，哈希操作就一定是 O(1) 吗？","expected_card":"complexity-conditions"},{"query":"rehash是不是常量时间","expected_card":"complexity-conditions"},
+    {"query":"面试里怎样用一个例子讲清 rehash？","expected_card":"career-rehash"},{"query":"哈希表扩容怎么讲有证据","expected_card":"career-rehash"}
+  ],
+  "unknown":["怎样挑选适合阳台的绿植","第一次烤面包要设多少温度"]
+}

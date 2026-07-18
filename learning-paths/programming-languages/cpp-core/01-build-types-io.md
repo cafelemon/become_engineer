@@ -1,753 +1,443 @@
-# 从源文件到可执行程序：编译、类型与输入输出
-
 <div class="be-tutor-mount" data-tutor-lesson="cpp-core-01" aria-hidden="true"></div>
 
-> **任务先行：** 本课把单文件“学习状态卡”从源代码构建成可执行程序。先获得一次可验证输出，再用类型、输入与诊断改善它；后面的说明用于解释你已经做过的操作。
+<section id="overview-cpp-output" class="be-page-hero be-lesson-hero" data-learning-context="overview-cpp-output" data-context-type="overview" markdown="1">
 
-## 任务路线
+<span class="be-page-eyebrow">C++ 起步 · 第一课 · 学习进度报告器 C++ v0.1</span>
 
-<div class="be-task-route" role="list" aria-label="本课五步任务">
-  <span role="listitem">1 构建</span><span role="listitem">2 输出</span><span role="listitem">3 类型</span><span role="listitem">4 诊断</span><span role="listitem">5 迁移</span>
+# 从源文件到可执行程序：编译、类型与输入输出
+
+## 先跑出一张状态卡
+
+~~~text
+学习状态卡
+姓名：小林
+课程：C++ 起步
+本周计划：5 小时
+是否完成：false
+~~~
+
+Python 脚本可以直接交给解释器；这份 C++ 源码还不能运行。它要先经过编译和链接，变成适合当前电脑的可执行程序。第一课就把这条路走完整。
+
+<div class="be-page-actions" markdown="1">
+[先看源码怎样变成程序](#concept-build-pipeline){ .md-button .md-button--primary }
+[检查本机编译器](#reproduce-toolchain){ .md-button }
 </div>
 
-<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
-
-## 第一步：得到第一个可执行状态卡
-
-按“完整示例：学习状态卡”创建 `study_status.cpp` 和 `build/`，用 `clang++` 或 `g++` 的 C++20 命令构建后运行。**可观察结果：** `build/study_status`（Windows 为 `.exe`）存在并输出状态卡。保留终端中的编译命令和输出。
-
-??? tip "提示"
-    先执行 `clang++ --version` 或 `g++ --version`；使用 C++ 驱动程序而不是 `clang` 或 `gcc`。
-
 </section>
 
-<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
+<div class="be-lesson-overview">
+  <div><span>课程位置</span><strong>C++ 起步 · 1 / 2</strong></div>
+  <div><span>前置</span><strong>终端、编辑器、Python 起步与 CS 起步</strong></div>
+  <div><span>完成后留下</span><strong>一个 C++20 状态卡、构建产物和排错记录</strong></div>
+</div>
 
-## 第二步：主动修改一项学习状态
+## 开始前
 
-修改状态卡的姓名、计划小时或完成小时，重新编译运行并确认输出改变。**最少知识：** 对象先声明并以花括号初始化；文本使用 `std::string`。不要只改源码，必须重新构建可执行文件。
+- 能在终端进入练习目录并创建 `build/`。
+- 知道变量可以保存文字、整数、小数和真假值。
+- 本课不要求先懂类、指针、模板或 CMake。
+- 示例以 C++20 为基线；macOS 使用 Clang，Linux 可用 GCC，Windows 可用 MSVC。
 
-??? tip "提示"
-    完成计算后不应再变的局部结果可加 `const`，让编译器保护意图。
+<section id="concept-build-pipeline" data-learning-context="concept-build-pipeline" data-context-type="concept" markdown="1">
 
-</section>
-
-<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
-
-## 第三步：让程序读取并检查输入
-
-按完整示例输入姓名和学习小时，分别尝试合法数字与带空格的姓名。**成功标准：** 你能说出标准输入、标准输出、标准错误各自出现在哪里，并观察正常退出码为零。
-
-??? tip "提示"
-    混用 `>>` 和 `getline()` 时，先处理残留换行；具体做法在“标准输入、输出和错误”一节。
-
-</section>
-
-<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
-
-## 第四步：故意制造一个编译诊断
-
-把 `int hours{2.5};` 临时放入程序并构建，记录花括号窄化诊断；随后删除或改为有业务理由的显式转换。**验收：** 能区分这类编译错误与链接错误、运行期输入错误。
-
-??? tip "提示"
-    修复不是关闭警告；先读出错行、值的类型和想保留的信息。
-
-</section>
-
-<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
-
-## 第五步：迁移验收与下一步
-
-独立增加一个状态字段（例如本周目标），选择正确类型、输出它并在严格警告下重新构建。确认生成文件只在 `build/`。完成后进入下一课，把状态卡拆成职责清楚的函数。
-
-</section>
-
-## 课程信息
-
-| 项目 | 内容 |
-| --- | --- |
-| 适合人群 | 已完成 Python 起步，第一次系统学习现代 C++ 的学习者 |
-| 前置知识 | 终端、编辑器、Git、验证习惯，以及 Python 的变量、条件、输入输出和错误处理 |
-| 学习结果 | 能说明 C++ 程序如何构建，使用静态类型编写单文件程序，并依据编译诊断修正问题 |
-| 语言基线 | C++20 |
-| 本地验证 | Apple Clang 21；Linux可使用GCC，Windows可使用MSVC |
-| 实践产出 | 单文件“学习状态卡”、构建产物说明和一次诊断修复记录 |
-
-## 为什么第一课先讲构建
-
-Python 通常由解释器直接运行脚本：
-
-```bash
-python main.py
-```
-
-C++ 源文件不能直接交给操作系统运行。你需要先选择语言标准，让编译器检查和翻译代码，再由链接器组合成当前平台能够执行的程序。
-
-如果只记住“按一下运行按钮”，后面遇到头文件、多个源文件、第三方库或链接失败时，就很难判断问题发生在哪一层。因此第一课不只写 `Hello World`，而是建立完整的构建和诊断模型。
-
-## 前置检查
-
-### macOS 或 Linux
-
-先检查至少一个 C++ 编译器：
-
-```bash
-clang++ --version
-```
-
-或者：
-
-```bash
-g++ --version
-```
-
-只看到 `clang` 或 `gcc` 还不够。课程命令使用 C++ 驱动程序 `clang++` 或 `g++`，它会按 C++ 方式编译并在链接时加入对应标准库。
-
-### Windows
-
-安装包含“使用 C++ 的桌面开发”工作负载的 Visual Studio Build Tools 或 Visual Studio，然后打开 **Developer PowerShell for VS 2022**：
-
-```powershell
-cl
-```
-
-普通 PowerShell 找不到 `cl`，不一定表示没有安装；先确认是否在 Visual Studio 开发者终端中。
-
-### 记录环境证据
-
-学习记录至少保留：
-
-```text
-操作系统：
-编译器命令：
-编译器版本：
-本节标准：C++20
-```
-
-不要公开个人绝对路径、账号名称或完整系统环境变量。
-
-## 学习目标
-
-完成本节后，你应该能够：
-
-- 画出源文件、翻译单元、目标文件、链接器和可执行文件的关系。
-- 解释一条编译命令中的标准、警告、输入和输出参数。
-- 区分 `#include`、`main()`、语句、代码块和返回值。
-- 使用基础类型、`std::string`、`const`和受约束的`auto`。
-- 区分声明、初始化、赋值、隐式转换和显式转换。
-- 用花括号初始化阻止常见窄化。
-- 使用 `sizeof` 和 `std::numeric_limits` 观察当前实现，而不是背诵类型大小。
-- 使用标准输入、标准输出和标准错误。
-- 区分编译错误、链接错误、运行错误和错误结果。
-- 编译运行学习状态卡，并验证正常与非法输入的退出码。
-
-## 源文件怎样变成程序
-
-下面的图回答一个问题：**编译错误和链接错误为什么不是同一类问题？**
+## 源文件不会自己运行
 
 ```mermaid
 flowchart LR
-    A["study_status.cpp\n源文件"] --> B["预处理\n展开 include 等指令"]
-    B --> C["翻译单元\n编译器实际处理的内容"]
-    C --> D["编译\n语法与类型检查、生成机器代码"]
-    D --> E["study_status.o / .obj\n目标文件"]
-    E --> F["链接\n解析跨文件与库中的符号"]
-    F --> G["study_status / .exe\n可执行程序"]
+    A["study_status.cpp\n你写的源文件"] --> B["编译\n检查语法和类型"]
+    B --> C["study_status.o / .obj\n目标文件"]
+    C --> D["链接\n接上所需实现和库"]
+    D --> E["study_status / .exe\n操作系统能运行"]
 ```
 
-现实中的 C++ 标准描述了更细的翻译阶段。起步时先掌握这条可操作主线：
+先把两种失败分清：
 
-- **预处理**处理 `#include` 等预处理指令。
-- **编译**检查语法和类型，并把一个翻译单元生成目标代码。
-- **链接**把目标文件和所需库组合起来，解析函数与对象的符号引用。
-- **运行**由操作系统加载可执行文件；此时输入错误或业务错误才会出现。
+- **编译错误**发生在某个源文件的语法或类型检查阶段，通常能看到文件名和行号。
+- **链接错误**发生在组合目标文件时，例如程序声明了函数，却没有找到它的实现。
 
-### 分开执行编译和链接
+第一次构建可以用一条命令同时完成编译和链接。程序跑通后，我们再把两段拆开观察。
 
-建立练习目录：
+</section>
 
-```text
-cpp-learning/
-├── build/
-└── study_status.cpp
-```
+<section id="example-first-program" data-learning-context="example-first-program" data-context-type="example" markdown="1">
 
-在练习目录运行：
+## 先读懂一个小程序
 
-```bash
-clang++ -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wshadow \
-  -c study_status.cpp -o build/study_status.o
-clang++ build/study_status.o -o build/study_status
-```
-
-GCC 把 `clang++` 换成 `g++` 即可。
-
-第一条命令中的 `-c` 表示只编译、不链接，所以得到目标文件。第二条命令只负责链接。平时也可以合并为一条：
-
-```bash
-clang++ -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wshadow \
-  study_status.cpp -o build/study_status
-```
-
-参数含义：
-
-| 参数 | 作用 |
-| --- | --- |
-| `-std=c++20` | 明确使用 C++20，不依赖编译器默认标准 |
-| `-Wall -Wextra` | 开启一组常用诊断 |
-| `-Wpedantic` | 提示不符合所选 ISO C++ 标准的扩展 |
-| `-Wconversion` | 关注可能改变值的隐式转换 |
-| `-Wshadow` | 提示内层名称遮蔽外层名称 |
-| `-c` | 只编译到目标文件，不执行链接 |
-| `-o` | 指定输出文件位置和名称 |
-
-警告集合并不等于形式化证明，但它们能更早暴露可疑代码。不要为“界面干净”直接关闭不理解的警告。
-
-### Windows MSVC
-
-在 Developer PowerShell 中先创建输出目录：
-
-```powershell
-New-Item -ItemType Directory -Force build
-```
-
-分开编译和链接：
-
-```powershell
-cl /std:c++20 /W4 /EHsc /permissive- /c study_status.cpp /Fo:build\study_status.obj
-link build\study_status.obj /OUT:build\study_status.exe
-```
-
-合并构建：
-
-```powershell
-cl /std:c++20 /W4 /EHsc /permissive- study_status.cpp /Fe:build\study_status.exe
-```
-
-`/W4` 是 MSVC 的高常规警告级别；`/permissive-` 强化标准一致性；`/EHsc` 设置常用的 C++ 异常处理模型。本节没有主动抛异常，但固定该命令有利于后续课程保持一致。
-
-## 最小程序不只是几行字符
-
-```cpp title="minimal.cpp"
-#include <iostream>
-
-int main() {
-    std::cout << "Hello, C++20!\n";
-    return 0;
-}
-```
-
-逐行理解：
-
-- `#include <iostream>` 让当前翻译单元获得标准流相关声明。
-- `int main()` 是程序入口，返回 `int` 形式的进程状态。
-- `{}` 形成函数体代码块。
-- 每条表达式语句以分号结束。
-- `std::cout` 使用限定名，明确 `cout` 来自 `std` 命名空间。
-- `\n` 输出换行；它不会像 `std::endl` 那样额外强制刷新缓冲区。
-- `return 0` 表示程序正常完成。`main` 到达末尾也等价于返回零，但课程先显式写出意图。
-
-起步阶段不要使用：
-
-```cpp
-using namespace std;
-```
-
-它会把整个 `std` 命名空间的名称引入当前作用域。小程序看似省字，代码变大后却可能制造名称冲突并隐藏来源。课程统一使用 `std::`。
-
-## 静态类型：名称在使用前有明确类型
-
-Python 变量名可以在不同时间绑定到不同类型的对象；C++ 对象的类型在声明后不会因为后续赋值而改变。
-
-```cpp
-int planned_hours{10};
-double completed_hours{7.5};
-bool completed{false};
-char grade{'A'};
-std::string learner{"Lin Yue"};
-```
-
-| 类型 | 当前用途 | 注意边界 |
-| --- | --- | --- |
-| `int` | 整数数量 | 可表示范围与实现相关，可能溢出 |
-| `double` | 带小数的近似数值 | 不是十进制精确存储，不用于要求精确金额的设计 |
-| `bool` | `true` 或 `false` | 输入输出时默认常表现为 `1` 或 `0` |
-| `char` | 一个字符代码单元 | 不等于“任意一个中文字符” |
-| `std::string` | 字符串对象 | 来自 `<string>`，不是基础内置类型 |
-
-### 声明、初始化和赋值
-
-```cpp
-int planned_hours{10};     // 声明对象并初始化
-planned_hours = 12;        // 给已经存在的对象赋新值
-const int minimum_hours{1};
-```
-
-`const` 表示通过这个名称不能再修改对象：
-
-```cpp
-minimum_hours = 2;  // 编译错误
-```
-
-优先在“计算完成后不应再变化”的局部结果上使用 `const`，让编译器帮助守住意图。
-
-### 花括号初始化与窄化
-
-```cpp
-int hours{2.5};
-```
-
-这段代码应被诊断为错误，因为 `2.5` 转成 `int` 会丢失小数部分，而花括号初始化禁止这种窄化。
-
-下面的旧式写法可能只产生警告，甚至在较弱诊断下悄悄得到 `2`：
-
-```cpp
-int hours = 2.5;
-```
-
-本课程默认优先使用花括号初始化。需要转换时，先确认业务含义，再显式表达：
-
-```cpp
-const double measured_hours{2.5};
-const int whole_hours{static_cast<int>(measured_hours)};
-```
-
-`static_cast<int>` 没有让信息丢失变安全，它只是让“我知道这里正在转换”进入代码和审查范围。
-
-### `auto` 不是动态类型
-
-```cpp
-const auto progress{0.75};
-```
-
-编译器从初始化表达式推导出 `progress` 是 `const double`。它在运行时不会变成字符串。
-
-起步阶段只在右侧能够清楚表达类型时使用 `auto`，不要用它隐藏尚未理解的复杂类型。基础类型练习中仍应主动写出类型并解释选择。
-
-## 不要背诵当前机器的类型大小
-
-C++ 规定了类型之间的一些最小关系和范围要求，但常见整数类型的精确字节数并非在所有实现上都相同。用程序观察当前编译器和目标平台：
-
-```cpp title="inspect_types.cpp"
-#include <iostream>
-#include <limits>
-
-int main() {
-    std::cout << "sizeof(int): " << sizeof(int) << '\n';
-    std::cout << "int min: " << std::numeric_limits<int>::min() << '\n';
-    std::cout << "int max: " << std::numeric_limits<int>::max() << '\n';
-    std::cout << "sizeof(double): " << sizeof(double) << '\n';
-    return 0;
-}
-```
-
-`sizeof` 的结果单位是 `sizeof(char)` 所定义的字节单位。把实际输出写入学习记录，但不要把当前机器结果写成所有平台的永恒结论。
-
-## 标准输入、输出和错误
-
-C++ 标准流中，本节使用：
-
-- `std::cin`：标准输入。
-- `std::cout`：正常结果。
-- `std::cerr`：错误说明。
-
-读取单个以空白分隔的数据：
-
-```cpp
-double planned_hours{};
-std::cin >> planned_hours;
-```
-
-读取包含空格的一整行：
-
-```cpp
-std::string learner{};
-std::getline(std::cin, learner);
-```
-
-### 为什么混用 `>>` 和 `getline()` 会读到空行
-
-格式化读取通常把换行留在输入缓冲区。紧接着调用 `getline()` 时，它会把这个换行当作一行的结尾：
-
-```cpp
-double planned_hours{};
-std::string learner{};
-
-std::cin >> planned_hours;
-std::getline(std::cin, learner);  // 可能立即得到空字符串
-```
-
-在确认前一次读取成功后，可以忽略到本行末尾：
-
-```cpp
-#include <limits>
-
-std::cin.ignore(
-    std::numeric_limits<std::streamsize>::max(),
-    '\n'
-);
-std::getline(std::cin, learner);
-```
-
-完整示例先读取姓名整行，再读取数字，因此不需要这一步。选择更简单的输入顺序，也是一种设计。
-
-## 完整示例：学习状态卡
-
-### 环境与文件
-
-- Python不是运行依赖。
-- C++20编译器：本地使用 Apple Clang 21。
-- 文件：`study_status.cpp`。
-- 构建产物：`build/study_status`，Windows为`build\study_status.exe`。
-- 第三方依赖：无。
-
-### 完整代码
-
-```cpp title="study_status.cpp"
-#include <iomanip>
+~~~cpp
 #include <iostream>
 #include <string>
 
 int main() {
-    std::string learner{};
-    double planned_hours{};
-    double completed_hours{};
+    const std::string course{"C++ 起步"};
+    const int planned_hours{5};
+    const bool finished{false};
 
-    std::cout << "请输入学习者姓名：";
-    std::getline(std::cin, learner);
-
-    std::cout << "请输入计划学习时间：";
-    std::cin >> planned_hours;
-
-    std::cout << "请输入已完成时间：";
-    std::cin >> completed_hours;
-
-    if (!std::cin) {
-        std::cerr << "输入错误：学习时间必须是数字。\n";
-        return 1;
-    }
-    if (learner.empty()) {
-        std::cerr << "输入错误：姓名不能为空。\n";
-        return 1;
-    }
-    if (planned_hours <= 0.0) {
-        std::cerr << "输入错误：计划学习时间必须大于 0。\n";
-        return 1;
-    }
-    if (completed_hours < 0.0) {
-        std::cerr << "输入错误：已完成时间不能小于 0。\n";
-        return 1;
-    }
-
-    const double raw_progress{completed_hours / planned_hours};
-    const double displayed_progress{
-        raw_progress > 1.0 ? 1.0 : raw_progress
-    };
-    const bool is_completed{completed_hours >= planned_hours};
-
-    std::cout << std::fixed << std::setprecision(1);
-    std::cout << "\n学习状态卡\n";
-    std::cout << "姓名：" << learner << '\n';
-    std::cout << "计划：" << planned_hours << " 小时\n";
-    std::cout << "完成：" << completed_hours << " 小时\n";
-    std::cout << "进度：" << displayed_progress * 100.0 << "%\n";
-    std::cout << "状态：" << (is_completed ? "已完成" : "进行中") << '\n';
+    std::cout << "学习状态卡\n";
+    std::cout << "课程：" << course << '\n';
+    std::cout << "本周计划：" << planned_hours << " 小时\n";
+    std::cout << "是否完成：" << std::boolalpha << finished << '\n';
     return 0;
 }
-```
+~~~
 
-### 编译
+现在不用背每个符号，先找到几件熟悉的事：
 
-macOS/Linux：
+- `main()` 是这个命令行程序开始执行的位置。
+- `std::string`、`int` 和 `bool` 分别保存文字、整数和真假值。
+- `const` 表示初始化以后不再修改。
+- `std::cout` 把正常结果写到标准输出。
+- `return 0` 把“正常结束”交给操作系统。
 
-```bash
+课程统一写 `std::cout`，不使用 `using namespace std;`。多写几个字符，换来名称来源清楚，也避免以后遇到不必要的名字冲突。
+
+</section>
+
+<section id="concept-static-types" data-learning-context="concept-static-types" data-context-type="concept" markdown="1">
+
+## 类型在编译时就要说清楚
+
+Python 名称可以先后绑定不同类型的对象。C++ 对象一旦声明，类型就固定了：
+
+~~~cpp
+std::string learner{"小林"};
+int planned_hours{5};
+double completed_hours{2.5};
+bool finished{false};
+char level{'A'};
+~~~
+
+类型不是为了增加仪式感。编译器会据此检查赋值、计算和函数调用，也会决定对象需要怎样表示。
+
+| 数据含义 | 起步时常用类型 | 例子 |
+| --- | --- | --- |
+| 一段文字 | `std::string` | 课程名、姓名 |
+| 整数 | `int` | 练习次数 |
+| 带小数的数 | `double` | 学习小时、进度 |
+| 真或假 | `bool` | 是否完成 |
+| 单个字符 | `char` | 等级标记 |
+
+类型大小会受实现和平台影响。本课不背“某种类型永远多少字节”，需要时用 `sizeof` 和 `std::numeric_limits` 观察当前环境。
+
+</section>
+
+<section id="concept-initialize-assign" data-learning-context="concept-initialize-assign" data-context-type="concept" markdown="1">
+
+## 初始化和赋值不是同一件事
+
+~~~cpp
+int planned_hours{5}; // 创建对象并给初值
+planned_hours = 6;    // 对已有对象赋新值
+~~~
+
+花括号初始化能拦住一些会丢失信息的转换：
+
+~~~cpp
+int hours{2.5}; // 编译失败：小数不能悄悄丢掉
+~~~
+
+先问自己是否需要保留小数。需要就改成 `double`；确实要取整时，再明确舍入规则和转换位置。不要为了让错误消失而关闭诊断。
+
+`auto` 也不是动态类型：
+
+~~~cpp
+const auto progress{0.75}; // 编译时推导为 double
+~~~
+
+它只是让编译器从初始化表达式推导类型，之后类型仍然固定。
+
+</section>
+
+<section id="concept-streams-exit" data-learning-context="concept-streams-exit" data-context-type="concept" markdown="1">
+
+## 输入、正常结果和错误各走一条路
+
+| 通道 | C++ 对象 | 这里放什么 |
+| --- | --- | --- |
+| 标准输入 | `std::cin` | 学习者输入的姓名和小时 |
+| 标准输出 | `std::cout` | 正常状态卡 |
+| 标准错误 | `std::cerr` | 无法继续时的说明 |
+| 进程状态 | `main()` 返回值 | 0 成功，非 0 失败 |
+
+完整示例先读姓名，再读计划小时：
+
+~~~cpp
+std::string learner{};
+std::getline(std::cin, learner);
+
+double planned_hours{};
+if (!(std::cin >> planned_hours)) {
+    std::cerr << "计划小时必须是数字\n";
+    return 1;
+}
+~~~
+
+姓名使用 `getline()`，因此 `Lin Yue` 不会只剩 `Lin`。输入流读取失败时，不继续拿无效数据计算，也不假装程序成功。
+
+</section>
+
+<section id="reproduce-toolchain" data-learning-context="reproduce-toolchain" data-context-type="reproduce" markdown="1">
+
+## 先确认电脑里有编译器
+
+=== "macOS"
+
+    打开“终端”，运行：
+
+    ~~~bash
+    xcode-select --install
+    clang++ --version
+    ~~~
+
+    如果安装命令提示工具已经存在，继续检查版本即可。
+
+=== "Windows"
+
+    安装 Visual Studio 2022 Build Tools，选择“使用 C++ 的桌面开发”。安装完成后，从开始菜单打开 **Developer PowerShell for VS 2022**：
+
+    ~~~powershell
+    cl
+    ~~~
+
+    普通 PowerShell 找不到 `cl` 时，先别重复安装，确认打开的是开发者终端。
+
+=== "Linux"
+
+    Ubuntu／Debian 可以安装 GCC 工具链：
+
+    ~~~bash
+    sudo apt update
+    sudo apt install build-essential
+    g++ --version
+    ~~~
+
+记录操作系统、编译器命令和版本。不要公开用户名、绝对私人路径或整份环境变量。
+
+</section>
+
+<section id="reproduce-build-run" data-learning-context="reproduce-build-run" data-context-type="reproduce" markdown="1">
+
+## 编译并运行完整状态卡
+
+下载或复制[课程完整示例](../../../examples/cpp-start/study_status.cpp)，放进自己的练习目录：
+
+~~~text
+cpp-learning/
+├── build/
+└── study_status.cpp
+~~~
+
+macOS／Linux：
+
+~~~bash
 mkdir -p build
 clang++ -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wshadow \
   study_status.cpp -o build/study_status
-```
+./build/study_status
+~~~
 
-如果使用 GCC：
+Linux 使用 GCC 时，把 `clang++` 换成 `g++`。Windows 开发者终端：
 
-```bash
-mkdir -p build
-g++ -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wshadow \
-  study_status.cpp -o build/study_status
-```
-
-Windows Developer PowerShell：
-
-```powershell
+~~~powershell
 New-Item -ItemType Directory -Force build
 cl /std:c++20 /W4 /EHsc /permissive- study_status.cpp /Fe:build\study_status.exe
-```
-
-编译命令成功时不应出现警告。不同编译器的提示文字可以不同，判断依据是：命令退出码、警告或错误内容，以及目标文件是否按预期生成。
-
-### 运行与预期输出
-
-macOS/Linux：
-
-```bash
-./build/study_status
-```
-
-Windows：
-
-```powershell
 .\build\study_status.exe
-```
+~~~
 
-输入：
+输入姓名和计划小时。你应该看到完整状态卡；随后检查退出码：
 
-```text
-Lin Yue
-10
-7.5
-```
-
-预期关键输出：
-
-```text
-学习状态卡
-姓名：Lin Yue
-计划：10.0 小时
-完成：7.5 小时
-进度：75.0%
-状态：进行中
-```
-
-提示文字和输入可能出现在同一行，这是终端交互的正常表现。验收时比较关键字段，不要求复制后的换行位置完全相同。
-
-### 检查退出码
-
-macOS/Linux在程序结束后运行：
-
-```bash
+~~~bash
 echo $?
-```
+~~~
 
-PowerShell：
+PowerShell 使用 `$LASTEXITCODE`。正常输入应为 0，非法输入应为非 0。
 
-```powershell
-$LASTEXITCODE
-```
+</section>
 
-正常输入应为 `0`，课程定义的非法输入应为 `1`。
+<section id="example-build-flags" data-learning-context="example-build-flags" data-context-type="example" markdown="1">
 
-## 五类失败不要混在一起
+## 这条命令每一段都在做事
 
-| 阶段 | 例子 | 典型证据 | 修复方向 |
-| --- | --- | --- | --- |
-| 编译错误 | 缺分号、类型不匹配、窄化 | 编译器文件、行列和诊断 | 修正语法或类型关系 |
-| 链接错误 | 只有函数声明，没有定义 | undefined symbol / unresolved external | 提供定义或修正链接输入 |
-| 运行错误 | 非法内存访问、未处理异常 | 非零退出、崩溃或运行时报告 | 构造最小输入并检查状态 |
-| 输入错误 | 用户输入文字代替数字 | 流进入失败状态 | 检查输入并向标准错误说明 |
-| 错误结果 | 整数除法得到零 | 程序正常结束但输出错误 | 写边界样例并检查中间类型 |
+| 参数 | 作用 |
+| --- | --- |
+| `-std=c++20` | 明确选择 C++20，不依赖编译器默认标准 |
+| `-Wall -Wextra` | 打开一组常用诊断 |
+| `-Wpedantic` | 提示不符合所选标准的扩展 |
+| `-Wconversion` | 关注可能改变值的隐式转换 |
+| `-Wshadow` | 提示内层名称遮蔽外层名称 |
+| `-o build/study_status` | 指定输出文件，不把生成物散在源码旁边 |
 
-### 编译错误：窄化
+这些警告不能证明程序正确，却能更早暴露可疑代码。先读懂诊断，再决定怎样修。
 
-```cpp title="narrowing_error.cpp"
-int main() {
-    int hours{2.5};
-    return hours;
-}
-```
+</section>
 
-编译器应在生成目标文件前拒绝它。
+<section id="reproduce-split-build" data-learning-context="reproduce-split-build" data-context-type="reproduce" markdown="1">
 
-### 链接错误：声明存在，定义缺失
+## 把编译和链接拆开看一次
 
-```cpp title="link_error.cpp"
-double calculate_progress(double planned, double completed);
+~~~bash
+clang++ -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wshadow \
+  -c study_status.cpp -o build/study_status.o
+clang++ build/study_status.o -o build/study_status
+~~~
 
-int main() {
-    const double progress{calculate_progress(10.0, 5.0)};
-    return progress > 0.0 ? 0 : 1;
-}
-```
+第一条命令带 `-c`，只生成目标文件；第二条才得到可执行程序。`.o` 或 `.obj` 是构建中间产物，不是这节课最终交付的程序。
 
-编译器能够理解调用形式，所以单独使用 `-c` 可以成功：
+MSVC 对应命令：
 
-```bash
-clang++ -std=c++20 -Wall -Wextra -Wpedantic -c link_error.cpp -o build/link_error.o
-```
+~~~powershell
+cl /std:c++20 /W4 /EHsc /permissive- /c study_status.cpp /Fo:build\study_status.obj
+link build\study_status.obj /OUT:build\study_status.exe
+~~~
 
-链接时找不到函数定义：
+观察 `build/` 在两条命令之后分别多了什么，这比只记术语更容易形成判断。
 
-```bash
-clang++ build/link_error.o -o build/link_error
-```
+</section>
 
-不要把链接失败误判为 C++ 语法错误。
+<section id="modify-status-card" data-learning-context="modify-status-card" data-context-type="modify" markdown="1">
 
-### 错误结果：整数除法先发生
+## 把状态卡改成自己的
 
-```cpp
+完成三处修改：
+
+1. 把课程名改成当前正在学的内容。
+2. 增加 `completed_hours`，输出已完成小时。
+3. 增加一个自选字段，例如“本周重点”或“是否复盘”。
+
+改之前先写下预期输出。保存源码后重新编译，再运行。C++ 可执行文件不会因为源码保存了就自动更新；如果屏幕还是旧内容，先确认是否重新编译、是否运行了正确路径。
+
+再换一组姓名和小时做一次，确认代码没有只适合第一组数据。
+
+</section>
+
+<section id="troubleshoot-narrowing" data-learning-context="troubleshoot-narrowing" data-context-type="troubleshoot" markdown="1">
+
+## 故意让花括号拦下一次窄化
+
+临时加入：
+
+~~~cpp
+const int planned_hours{2.5};
+~~~
+
+编译器应拒绝这段代码。先找到第一条指向自己源码的诊断，读文件名、行号、来源类型和目标类型。然后根据数据含义选择 `double` 或真正合适的整数值。
+
+另一个容易漏掉的问题是整数除法：
+
+~~~cpp
 const int completed{3};
 const int planned{4};
-const double progress{completed / planned};
-```
+const double progress{completed / planned}; // 先算出整数 0
+~~~
 
-除法两侧都是 `int`，先得到整数 `0`，之后才转成 `double`。需要浮点结果时显式表达：
+需要小数结果时，在除法发生前转换：
 
-```cpp
+~~~cpp
 const double progress{
     static_cast<double>(completed) / static_cast<double>(planned)
 };
-```
+~~~
 
-## AI 协作任务
+</section>
 
-### 可复用提示模板
+<section id="troubleshoot-link-input" data-learning-context="troubleshoot-link-input" data-context-type="troubleshoot" markdown="1">
 
-```text
-请使用C++20生成一个单文件学习状态卡程序。
-使用std::限定名，不使用using namespace std；
-使用花括号初始化和const表达不变结果；
-检查文本为空、数字读取失败、计划时间不大于零和完成时间为负数；
-错误写入std::cerr并返回非零退出码；
-不要引入类、指针、容器、异常框架、CMake或第三方库。
-同时给出Clang/GCC严格警告编译命令，并解释每个参数。
-```
+## 链接失败和输入失败，不要混在一起修
 
-### 人工审阅清单
+下面的文件能通过编译，却会在链接时失败：
 
-不能直接接受 AI 结果。逐项检查：
+~~~cpp
+int build_plan();
 
-- 是否显式选择 C++20，而不是依赖编译器默认值。
-- 是否开启警告，并真正阅读编译输出。
-- 是否错误使用 `using namespace std;`。
-- 每个变量的类型是否符合数据含义。
-- 是否出现隐式窄化、整数除法或未检查的输入流。
-- 是否把错误写到 `std::cerr` 并返回非零退出码。
-- 是否引入了当前无法解释的类、模板或第三方依赖。
+int main() {
+    return build_plan();
+}
+~~~
 
-然后主动把“超额完成时进度显示100%”改成“同时额外显示超出小时数”，重新编译并验证正常、刚好完成和超额完成三种输入。
+~~~bash
+clang++ -c link_error.cpp -o build/link_error.o
+clang++ build/link_error.o -o build/link_error
+~~~
 
-学习记录保留任务、约束、AI产出摘要、人工修改、实际命令和验证结果，不需要公开完整私人对话。
+链接器找不到 `build_plan()` 的定义。补上定义或链接包含定义的目标文件才是修复；改函数拼写只在声明和调用确实不一致时有用。
 
-## 核心手动检查点
+运行期再验证三种输入：空姓名、小时位置输入文字、计划小时为 0。它们不属于编译或链接失败，应该由程序检查，写入 `std::cerr` 并返回非零状态。
 
-### 检查点 1：追踪构建产物
+| 屏幕上看到什么 | 更可能在哪一段 | 先检查什么 |
+| --- | --- | --- |
+| `command not found` | 工具链尚未可用 | 安装是否完成、终端是否正确 |
+| 文件名、行号和类型信息 | 编译 | 第一条指向自己源码的错误 |
+| `undefined reference`／`unresolved external` | 链接 | 声明是否有对应定义并参与链接 |
+| 输出仍是旧内容 | 构建或运行路径 | 是否重新编译、是否跑错文件 |
+| 程序启动后拒绝数据 | 运行期输入检查 | stderr 和退出码 |
 
-分别执行只编译和链接命令。记录每一步前后 `build/` 出现了什么文件，并解释 `.o` 或 `.obj` 为什么还不能直接作为最终程序交付。
+</section>
 
-### 检查点 2：预测窄化诊断
+<section id="project-cpp-v01" data-learning-context="project-cpp-v01" data-context-type="project" markdown="1">
 
-在运行编译器前，判断以下三行是否成立以及最终类型：
+## C++ 报告器从这里起步
 
-```cpp
-double a{2};
-int b{2.5};
-const auto c{2.5};
-```
+这节课只有一个源文件和一张状态卡。后面四节会继续演进同一条作品线：
 
-再用实际诊断验证，不用 AI 的文字结论代替编译。
+| 课程 | 程序会增加什么 | 一直保持什么 |
+| --- | --- | --- |
+| 函数与程序组织 | 拆出计算、校验和输出函数 | 严格警告、明确输入输出 |
+| 头文件、源文件与 CMake | 库、应用、测试分开构建 | 命令可重复、生成物隔离 |
+| STL 容器与算法 | 处理多条记录、排序和筛选 | 数据契约与报告文字稳定 |
+| 对象、生命周期与 RAII | 借用记录、安全写审计文件 | 主报告不被附加功能污染 |
 
-### 检查点 3：区分编译和链接错误
+最终版本位于[双语言学习进度报告器](../../../exercises/programming-languages/study-progress-reporters/README.md)。当前正式项目已经长到后面的形态，本课的单文件程序是便于起步和回放的早期快照，不会反过来删减最终项目。
 
-运行课程中的 `link_error.cpp`。确认 `-c` 成功、链接失败，并在诊断中找到缺失的符号名称。
+</section>
 
-### 检查点 4：观察而非背诵类型大小
+<section id="deepen-types-build" data-learning-context="deepen-types-build" data-context-type="deepen" markdown="1">
 
-运行 `inspect_types.cpp`，记录当前平台输出。说明为什么不能从一次输出推导所有操作系统与编译器。
+## 再深入一点：编译器替你守住什么
 
-### 检查点 5：修复残留换行
+静态类型和严格诊断能在程序运行前发现一部分问题，但它们不会替你判断业务含义：
 
-把学习状态卡改成先读数字、后读姓名，稳定复现空姓名问题；再使用 `ignore()` 修复，并解释每个参数。
+- `double` 能保存负数，不代表负学习小时合理。
+- 编译成功不代表输入处理、计算和输出正确。
+- 没有警告不代表没有未覆盖的失败路径。
+- `sizeof(int)` 的一次结果不能代表所有平台。
 
-### 检查点 6：验证退出码
+可靠的最小闭环是：明确类型和约束，编译无警告，运行正常与非法输入，再检查输出和退出码。
 
-依次输入正常数据、计划时间零、负完成时间和非数字。记录标准输出、标准错误和退出码，确认失败不是伪装成成功。
+</section>
 
-## 微练习
+<section id="career-build-story" data-learning-context="career-build-story" data-context-type="career" markdown="1">
 
-### 练习 1：完整构建链
+## 面试里别只说“我会 C++”
 
-分别生成目标文件和可执行文件，再使用合并命令构建。比较三条命令的输入和输出。
+这节课可以留下四样很朴素、也很可信的材料：源码、完整编译命令、一次编译或链接失败的修复记录、正常与非法输入的退出码。
 
-### 练习 2：阅读编译诊断
+讲述时可以按这个顺序：程序最初要做什么，源码怎样构建，遇到哪一层失败，你依据什么诊断，修完以后怎样证明没有把失败伪装成成功。比罗列语法关键词更能说明你会使用工具解决问题。
 
-删除一处分号，保存完整诊断，指出文件、行列和错误消息；修复后重新编译且不留下警告。
+</section>
 
-### 练习 3：制造链接失败
+## 完成检查
 
-运行 `link_error.cpp`，证明编译和链接具有不同成功状态，再写一句自己的判断规则。
-
-### 练习 4：转换与整数除法
-
-分别计算 `3 / 4` 和显式转换后的结果，输出中间类型和最终值。
-
-### 练习 5：包含空格的姓名
-
-输入 `Lin Yue`，比较 `std::cin >> learner` 与 `std::getline()` 的结果，说明哪一种符合需求。
-
-### 练习 6：非法输入矩阵
-
-至少验证姓名为空、数字位置输入文字、计划时间为零、负完成时间和超额完成。记录退出码与关键输出。
-
-## 阶段作品线索
-
-“学习状态卡”只是连续课程的起点，本节不创建独立练习或项目目录。后续配对课程会逐步加入：
-
-- Python 类型提示与接口检查。
-- C++ 函数、声明和程序组织。
-- Python/C++ 对相同输入规则的行为对照。
-- 自动化运行与测试证据。
-
-连续3-6节形成有意义的可复现能力后，再决定沉淀为阶段作品。不会恢复“一课一个项目”。
-
-## 常见错误与排查
-
-| 现象 | 常见原因 | 检查方法 | 当前修复 |
-| --- | --- | --- | --- |
-| `command not found: clang++` | 未安装工具链或命令不在PATH | 记录命令和系统 | 按平台官方方式安装编译器 |
-| Windows找不到`cl` | 未使用开发者终端 | 打开Developer PowerShell | 在已配置环境中重试 |
-| 编译器不认识C++20参数 | 工具链过旧 | 查看版本和官方支持表 | 升级工具链，不改成预览语法 |
-| 输出目录不存在 | 尚未创建`build/` | 查看目录 | 先创建专用构建目录 |
-| `expected ';'` | 语句末尾漏分号 | 查看第一条相关诊断 | 修复最早错误后重新编译 |
-| narrowing conversion | 花括号发现值可能丢失 | 比较源类型和目标类型 | 保留精度或显式转换并说明理由 |
-| undefined symbol | 声明存在但定义未参与链接 | 找诊断中的符号名 | 增加定义或正确目标文件 |
-| 姓名只读取第一个词 | 使用了格式化提取 | 输入含空格姓名 | 使用`getline()` |
-| `getline()`立即得到空行 | 上次格式化读取留下换行 | 检查读取顺序 | 调整顺序或正确调用`ignore()` |
-| 进度意外为0 | 发生整数除法 | 查看两侧操作数类型 | 在除法前转换为`double` |
-| 非法输入仍返回0 | 只打印错误未改变返回值 | 检查退出码 | 错误路径返回非零 |
-| `build/`出现在Git状态 | 构建产物未忽略 | 使用`git check-ignore` | 在练习目录忽略`build/` |
-
-## 完成标准
-
-- 能解释从源文件到可执行程序的主要步骤。
-- 能分开执行编译与链接，并说明目标文件的作用。
-- 能解释课程编译命令中每个关键参数。
-- 能识别 `#include`、`main()`、语句、作用域和返回值。
-- 能为整数、小数、布尔、字符和文本选择基本类型。
-- 能区分初始化与赋值，使用 `const` 表达不变结果。
-- 能预测一个花括号窄化错误，并说明显式转换的代价。
-- 能解释 `auto` 仍是静态类型推导。
-- 能使用 `sizeof` 和 `numeric_limits` 观察当前实现。
-- 能正确读取包含空格的文本，并解释残留换行问题。
-- 能区分编译、链接、运行、输入和结果错误。
-- 能在严格警告下无警告编译学习状态卡。
-- 能验证正常、空姓名、非数字、零计划、负完成和超额完成。
-- 能确认正常退出码为0、非法输入退出码非零。
-- 能审阅AI代码并主动修改一项行为后重新验证。
-- 能证明生成文件只存在于专用构建目录且不会进入Git。
+- [ ] 能在正确终端看到 C++ 编译器版本。
+- [ ] 能解释源文件、目标文件、链接和可执行程序的顺序。
+- [ ] 能用 C++20 和严格警告编译、运行状态卡。
+- [ ] 能为文字、整数、小数和真假值选择基础类型。
+- [ ] 能解释初始化、赋值、`const`、`auto` 和窄化的区别。
+- [ ] 能分别使用标准输入、标准输出、标准错误和退出码。
+- [ ] 能修改字段、重新编译，并用另一组数据验证。
+- [ ] 能区分工具未找到、编译错误、链接错误和运行期输入失败。
+- [ ] 能证明生成文件只在 `build/`，不会误入 Git。
 
 ## 来源与版本
 
-| 来源 | 用于核查 | 核查日期 | 状态 |
-| --- | --- | --- | --- |
-| [Standard C++：Get Started](https://isocpp.org/get-started) | 主流平台编译器入口 | 2026-07-14 | 已核查 |
-| [C++工作草案仓库](https://github.com/cplusplus/draft) | 翻译、初始化、类型和程序入口的规范边界 | 2026-07-14 | 已核查 |
-| [Clang命令行参考](https://clang.llvm.org/docs/ClangCommandLineReference.html) | Clang标准、编译和诊断参数 | 2026-07-14 | 已核查 |
-| [GCC语言标准说明](https://gcc.gnu.org/onlinedocs/gcc/Standards.html) | GCC的C++20标准选择 | 2026-07-14 | 已核查 |
-| [GCC警告选项](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html) | 常用警告与pedantic诊断 | 2026-07-14 | 已核查 |
-| [Microsoft C++构建系统](https://learn.microsoft.com/en-us/cpp/build/projects-and-build-systems-cpp?view=msvc-170) | MSVC编译、目标文件和链接流程 | 2026-07-14 | 已核查 |
-| [MSVC `/std`](https://learn.microsoft.com/en-us/cpp/build/reference/std-specify-language-standard-version?view=msvc-170) | `/std:c++20` | 2026-07-14 | 已核查 |
-| [MSVC警告级别](https://learn.microsoft.com/en-us/cpp/build/reference/compiler-option-warning-level?view=msvc-170) | `/W4`口径 | 2026-07-14 | 已核查 |
+| 来源 | 用于核查 | 核查日期 |
+| --- | --- | --- |
+| [Standard C++：Get Started](https://isocpp.org/get-started) | 主流平台工具链入口 | 2026-07-17 |
+| [C++ working draft](https://github.com/cplusplus/draft) | 程序入口、初始化、类型和翻译边界 | 2026-07-17 |
+| [Clang command line reference](https://clang.llvm.org/docs/ClangCommandLineReference.html) | 标准选择、编译与诊断参数 | 2026-07-17 |
+| [GCC language standards](https://gcc.gnu.org/onlinedocs/gcc/Standards.html) | GCC 的 C++20 选择 | 2026-07-17 |
+| [GCC warning options](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html) | 常用警告口径 | 2026-07-17 |
+| [Microsoft C++ build systems](https://learn.microsoft.com/en-us/cpp/build/projects-and-build-systems-cpp?view=msvc-170) | MSVC 编译、目标文件和链接 | 2026-07-17 |
+| [MSVC `/std`](https://learn.microsoft.com/en-us/cpp/build/reference/std-specify-language-standard-version?view=msvc-170) | `/std:c++20` | 2026-07-17 |
 
 ## 下一步
 
-下一节进入与本课配对的 **Python 类型提示、接口与静态检查认知**。你会比较 Python 运行时类型与静态分析、为现有函数补充类型契约，并理解它与 C++ 静态类型的相同点和根本差异。
-
-完成这组配对后，再回到 C++ 学习函数声明、定义、参数、返回值和程序组织。
+下一节进入[函数、声明与程序组织](02-functions-declarations-program-organization.md)。状态卡会拆出校验、计算和输出函数；你会第一次清楚地区分声明、定义、参数、返回值和局部作用域。

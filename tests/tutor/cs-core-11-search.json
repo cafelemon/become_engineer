@@ -1,20 +1,25 @@
-[
-  { "query": "集合应用首次成功怎么看", "step_id": "step-1", "expected": "applications-baseline" },
-  { "query": "首个重复值为何visits是3", "step_id": "step-1", "expected": "applications-baseline" },
-  { "query": "集合与映射分别解决什么问题？", "step_id": "step-2", "expected": "set-map-difference" },
-  { "query": "判重和频次计数用什么", "step_id": "step-2", "expected": "set-map-difference" },
-  { "query": "unordered是不是每次都随机", "step_id": "step-2", "expected": "unordered-not-random" },
-  { "query": "为什么不能依赖一次遍历顺序", "step_id": "step-2", "expected": "unordered-not-random" },
-  { "query": "first_duplicate访问次数怎么算", "step_id": "step-3", "expected": "first-duplicate-trace" },
-  { "query": "first_duplicate 的访问次数怎样计算？", "step_id": "step-3", "expected": "first-duplicate-trace" },
-  { "query": "频次映射为什么最后要按键排序？", "step_id": "step-4", "expected": "frequency-map-sorting" },
-  { "query": "负数频次如何按键排序", "step_id": "step-4", "expected": "frequency-map-sorting" },
-  { "query": "频次与去重为什么不能修改输入？", "step_id": "step-4", "expected": "input-immutability" },
-  { "query": "如何验证输入不变", "step_id": "step-4", "expected": "input-immutability" },
-  { "query": "unordered_map跨语言输出不一致怎么办", "step_id": "step-5", "expected": "stable-output-boundary" },
-  { "query": "怎样建立跨语言稳定输出？", "step_id": "step-5", "expected": "stable-output-boundary" },
-  { "query": "列表当字典键TypeError后怎么恢复", "step_id": "step-5", "expected": "unhashable-failure" },
-  { "query": "不可哈希失败能输出半成品吗", "step_id": "step-5", "expected": "unhashable-failure" },
-  { "query": "deduplicate_preserving_order怎么验收", "step_id": "step-6", "expected": "stable-dedup-migration" },
-  { "query": "为什么集合外还要输出列表", "step_id": "step-6", "expected": "stable-dedup-migration" }
-]
+{
+  "lesson_id":"cs-core-11",
+  "cases":[
+    {"query":"为什么首重复是 7，而且 visits 是 3？","expected_card":"application-output"},{"query":"7为什么第三次访问才算重复","expected_card":"application-output"},
+    {"query":"什么时候只用集合就够了？","expected_card":"set-membership"},{"query":"只判断见没见过用什么","expected_card":"set-membership"},
+    {"query":"为什么统计频次不能只用集合？","expected_card":"map-frequency"},{"query":"seen能不能保存出现次数","expected_card":"map-frequency"},
+    {"query":"无序容器是不是每次都会随机换顺序？","expected_card":"unordered-not-random"},{"query":"set某次顺序稳定能依赖吗","expected_card":"unordered-not-random"},
+    {"query":"怎样让 Python 和 C++ 输出顺序一致？","expected_card":"explicit-order"},{"query":"unordered map顺序不同怎么办","expected_card":"explicit-order"},
+    {"query":"一次扫描里 seen、unique 和 counts 各怎样变化？","expected_card":"scan-state"},{"query":"重复值还要不要增加频次","expected_card":"scan-state"},
+    {"query":"没有重复时 visits 应该是多少？","expected_card":"first-duplicate-visits"},{"query":"空输入visits是多少","expected_card":"first-duplicate-visits"},
+    {"query":"频次为什么在计数后还要排序？","expected_card":"frequency-sorting"},{"query":"dict计数完不能直接打印吗","expected_card":"frequency-sorting"},
+    {"query":"稳定输出为什么不能靠原地排序输入？","expected_card":"input-unchanged"},{"query":"怎样验证输入不变","expected_card":"input-unchanged"},
+    {"query":"保序去重为什么既要集合又要列表？","expected_card":"two-state-dedup"},{"query":"set转list不行吗","expected_card":"two-state-dedup"},
+    {"query":"逐项扫描小程序应该怎样运行和核对？","expected_card":"run-applications-micro"},{"query":"set_frequency_trace怎么跑","expected_card":"run-applications-micro"},
+    {"query":"为什么应用课仍要回归 hash 和 table？","expected_card":"bilingual-applications"},{"query":"applications为何测试三种模式","expected_card":"bilingual-applications"},
+    {"query":"负数和零会改变去重算法吗？","expected_card":"negative-zero-data"},{"query":"换成-1和0怎样预测","expected_card":"negative-zero-data"},
+    {"query":"完全没有重复时三个结果是什么？","expected_card":"no-duplicate-case"},{"query":"所有值只出现一次怎么办","expected_card":"no-duplicate-case"},
+    {"query":"频次或唯一值顺序不稳定，先改哪里？","expected_card":"fix-output-order"},{"query":"Python C++频次顺序不同","expected_card":"fix-output-order"},
+    {"query":"Python 列表为什么不能直接作为集合元素？","expected_card":"unhashable-key"},{"query":"列表当dict键TypeError","expected_card":"unhashable-key"},
+    {"query":"哈希实验第三课完成了什么？","expected_card":"project-hash-applications"},{"query":"三课闭环怎样形成","expected_card":"project-hash-applications"},
+    {"query":"去重和频次为什么说是期望线性？","expected_card":"cost-and-memory"},{"query":"频次排序增加什么成本","expected_card":"cost-and-memory"},
+    {"query":"面试里怎样解释集合应用而不只说用了 set？","expected_card":"career-output-design"},{"query":"频次统计求职表达","expected_card":"career-output-design"}
+  ],
+  "unknown":["下雨天适合穿什么鞋","怎样清理咖啡机里的水垢"]
+}

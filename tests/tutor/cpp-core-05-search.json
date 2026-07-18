@@ -1,20 +1,25 @@
-[
-  {"query": "RAII 课程开始前如何验证报告器基线？", "step_id": "step-1", "expected": "raii-baseline-run"},
-  {"query": "报告器基线怎么运行", "step_id": "step-1", "expected": "raii-baseline-run"},
-  {"query": "按值传递为什么不会修改原始记录？", "step_id": "step-1", "expected": "value-copy-boundary"},
-  {"query": "StudyRecord副本", "step_id": "step-1", "expected": "value-copy-boundary"},
-  {"query": "如何通过引用更新学习记录的完成小时？", "step_id": "step-2", "expected": "reference-mutation"},
-  {"query": "引用修改记录", "step_id": "step-2", "expected": "reference-mutation"},
-  {"query": "什么时候使用 const StudyRecord&？", "step_id": "step-2", "expected": "const-reference-choice"},
-  {"query": "只读引用", "step_id": "step-2", "expected": "const-reference-choice"},
-  {"query": "找不到课程记录时函数应该返回什么？", "step_id": "step-3", "expected": "nullable-find-pointer"},
-  {"query": "查不到记录返回什么", "step_id": "step-3", "expected": "nullable-find-pointer"},
-  {"query": "find_record_by_name 返回的指针需要 delete 吗？", "step_id": "step-3", "expected": "pointer-not-owner"},
-  {"query": "裸指针所有权", "step_id": "step-3", "expected": "pointer-not-owner"},
-  {"query": "为什么不能返回局部对象的引用？", "step_id": "step-4", "expected": "dangling-local-reference"},
-  {"query": "悬空引用原因", "step_id": "step-4", "expected": "dangling-local-reference"},
-  {"query": "vector 增长后为什么不能继续使用旧指针？", "step_id": "step-4", "expected": "vector-position-lifetime"},
-  {"query": "push_back后指针失效", "step_id": "step-4", "expected": "vector-position-lifetime"},
-  {"query": "如何用 RAII 写审计快照并处理文件打开失败？", "step_id": "step-5", "expected": "ofstream-raii-audit"},
-  {"query": "ofstream自动关闭", "step_id": "step-5", "expected": "ofstream-raii-audit"}
-]
+{
+  "lesson_id":"cpp-core-05",
+  "cases":[
+    {"query":"进入、离开、写入这三行分别说明什么？","expected_card":"raii-three-lines"},{"query":"RAII课程最后会看到什么","expected_card":"raii-three-lines"},
+    {"query":"怎样判断一个引用还能不能安全使用？","expected_card":"owner-and-lifetime"},{"query":"借用能活多久","expected_card":"owner-and-lifetime"},
+    {"query":"构造函数和析构函数会在什么时候运行？","expected_card":"scope-note-order"},{"query":"对象离开作用域会怎样","expected_card":"scope-note-order"},
+    {"query":"按值传递什么时候反而是合适的？","expected_card":"value-copy-use"},{"query":"为什么排序函数按值接收","expected_card":"value-copy-use"},
+    {"query":"什么时候应该写 const StudyRecord&？","expected_card":"const-reference"},{"query":"const引用会不会复制","expected_card":"const-reference"},
+    {"query":"为什么函数里变成 9.0，容器里却还是 7.5？","expected_card":"reference-mutation"},{"query":"StudyRecord参数少了&","expected_card":"reference-mutation"},
+    {"query":"查不到课程记录时为什么返回 nullptr？","expected_card":"nullable-pointer"},{"query":"引用能表达没有对象吗","expected_card":"nullable-pointer"},
+    {"query":"find_record_by_name 返回的指针需要 delete 吗？","expected_card":"pointer-not-owner"},{"query":"容器元素地址谁释放","expected_card":"pointer-not-owner"},
+    {"query":"为什么 push_back 后旧指针可能不能用了？","expected_card":"vector-address-invalid"},{"query":"容器还在指针为什么坏了","expected_card":"vector-address-invalid"},
+    {"query":"怎样同时验证 RAII 小例子的成功和失败？","expected_card":"micro-success-failure"},{"query":"缺失目录失败怎么测","expected_card":"micro-success-failure"},
+    {"query":"为什么不能返回局部对象的引用？","expected_card":"dangling-local"},{"query":"悬空引用怎么修","expected_card":"dangling-local"},
+    {"query":"RAII 的核心到底是什么？","expected_card":"raii-meaning"},{"query":"资源获取即初始化怎么理解","expected_card":"raii-meaning"},
+    {"query":"ofstream 会自动关闭，为什么还要检查状态？","expected_card":"ofstream-checks"},{"query":"文件打开成功和写入成功怎么查","expected_card":"ofstream-checks"},
+    {"query":"正式报告器的 RAII 功能要验证哪些路径？","expected_card":"formal-raii-regression"},{"query":"CTest要覆盖哪些对象资源行为","expected_card":"formal-raii-regression"},
+    {"query":"怎样给审计文件加状态列，又不改主报告？","expected_card":"modify-audit-status"},{"query":"审计新增字段怎么回归","expected_card":"modify-audit-status"},
+    {"query":"审计函数返回 true，但马上读取内容不完整怎么办？","expected_card":"file-output-failure"},{"query":"文件还没关闭就读取","expected_card":"file-output-failure"},
+    {"query":"C++ 核心最后一课给报告器补了什么？","expected_card":"project-cpp-v05"},{"query":"对象和RAII怎样进入阶段作品","expected_card":"project-cpp-v05"},
+    {"query":"这节课为什么没有为了 RAII 使用智能指针？","expected_card":"smart-pointer-not-ritual"},{"query":"RAII是不是必须unique_ptr","expected_card":"smart-pointer-not-ritual"},
+    {"query":"面试里怎样把 RAII 讲得不像背定义？","expected_card":"career-raii"},{"query":"生命周期求职证据","expected_card":"career-raii"}
+  ],
+  "unknown":["怎样判断咖啡豆烘焙深浅","周末露营如何选择睡袋温标"]
+}

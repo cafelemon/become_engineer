@@ -1,112 +1,51 @@
-# Python 装饰器、闭包与自定义上下文管理器
-
 <div class="be-tutor-mount" data-tutor-lesson="python-core-05" aria-hidden="true"></div>
 
-> **任务先行：** 给双语言学习进度报告器增加一个可选的调用追踪器，并把审计导出升级为“先写临时文件，成功后再发布”。先观察事件和文件，再解释函数对象、闭包、装饰器与上下文管理协议。
+<section id="overview-safe-boundary" class="be-page-hero be-lesson-hero" data-learning-context="overview-safe-boundary" data-context-type="overview" markdown="1">
 
-## 任务路线
+<span class="be-page-eyebrow">Python 核心 · 第五课 · 给函数加一道不打扰业务的边界</span>
 
-<div class="be-task-route" role="list" aria-label="本课五步任务"><span role="listitem">1 基线</span><span role="listitem">2 包装</span><span role="listitem">3 类型</span><span role="listitem">4 失败实验</span><span role="listitem">5 分阶段提交</span></div>
+# Python 装饰器、闭包与自定义上下文管理器
 
-<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+## 写到一半失败，旧文件为什么还在
 
-## 第一步：运行对象与审计基线
+~~~text
+写入前：已发布内容
+块内失败：RuntimeError
+写入后：已发布内容
+临时文件：不存在
+~~~
 
-运行 mypy、unittest 和报告器，确认上一课的对象方法、审计成功/失败路径和主报告契约。**可观察结果：** 从上一课提交开始应有 13 项测试；完成本课后的仓库版本有 16 项测试，报告总体进度仍为 `87.1%`。
+程序没有直接碰正式文件，而是先写旁边的临时文件。只有整个代码块正常结束，临时文件才会替换正式文件；中途失败就清理。
 
-</section>
+同一个项目还可以给某次函数调用加上“开始、完成、失败”事件，却不改原函数的参数、返回值和主报告。
 
-<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
-
-## 第二步：把函数包装过程改写成装饰器
-
-先把函数传给包装函数并接收新函数，再用 `@trace_calls(events.append)` 表达同一过程。**主动修改：** 用追踪器包装 `write_audit_snapshot()`，观察开始和完成事件，但不把事件写进主报告。
-
-</section>
-
-<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
-
-## 第三步：让闭包保持配置，让类型和元数据保持原样
-
-使用闭包保存 `event_sink`，用 `ParamSpec` 与 `TypeVar` 转发原函数签名和返回类型，并用 `functools.wraps` 保留名称、文档与 `__wrapped__`。**成功标准：** mypy strict 通过，包装后的函数仍接受原参数并返回原类型。
+<div class="be-page-actions" markdown="1">
+[先看函数怎样被包装](#concept-function-object){ .md-button .md-button--primary }
+[运行追踪与分阶段写入](#reproduce-trace-stage){ .md-button }
+</div>
 
 </section>
 
-<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
+<div class="be-lesson-overview">
+  <div><span>课程位置</span><strong>Python 核心 · 5 / 5</strong></div>
+  <div><span>前置</span><strong>函数、作用域、生成器、异常、with 和类型提示</strong></div>
+  <div><span>完成后留下</span><strong>可选调用追踪与失败不破坏旧文件的审计导出</strong></div>
+</div>
 
-## 第四步：观察元数据丢失与异常传播
+## 开始前
 
-在临时实验中移除 `@wraps(function)`，观察函数名变成 `wrapper`；再让被包装函数抛出 `ValueError`。**恢复标准：** 名称和文档恢复，事件记录失败类型，原异常继续传播而不是被吞掉。
+- 能把函数传给另一个函数，并读懂嵌套函数。
+- 知道生成器在 `yield` 处暂停，异常会继续传播。
+- 已经用过文件对象自带的 `with`。
+- 本课只使用 Python 3.11 标准库，不引入日志框架。
 
-</section>
+<section id="concept-function-object" data-learning-context="concept-function-object" data-context-type="concept" markdown="1">
 
-<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
+## 装饰器之前，先看普通函数包装
 
-## 第五步：用自定义上下文管理器分阶段发布审计文件
+Python 中，函数本身也是值：
 
-实现 `staged_output_path()`：块内只写同目录临时文件，正常退出后替换正式文件，失败时清理临时文件。**迁移验收：** 在不改变两个公开函数签名和主报告文本的前提下，独立增加一种可追踪事件或一种发布前校验。
-
-</section>
-
-上一课已经会使用文件自带的 `with`。本课继续回答两个工程问题：怎样给不同函数复用同一段调用边界，以及怎样把“进入、执行、成功提交、失败清理”封装成自己的上下文管理器。
-
-## 课程信息
-
-| 项目 | 内容 |
-| --- | --- |
-| 适合人群 | 已完成 Python 数据类与原生文件上下文管理，需要理解函数包装和自定义资源边界的学习者 |
-| 前置知识 | 函数、作用域、类型提示、生成器、异常、数据类、`with`、mypy、unittest |
-| 可观察产出 | 类型安全调用追踪器、分阶段审计文件发布、异常与清理回归测试 |
-| 环境 | Python 3.11 及以上，仅使用标准库；mypy strict 与 unittest |
-| 阶段作品 | [双语言学习进度报告器](../../../exercises/programming-languages/study-progress-reporters/README.md) |
-| 事实核查 | Python 3.11.15 官方文档，2026-07-15 核查 |
-
-## 学习目标
-
-完成本节后，你应该能够：
-
-- 说明函数为什么可以被传递、返回和重新绑定，以及 `@decorator` 在定义时完成了什么。
-- 用闭包保存装饰器配置，不依赖全局可变状态。
-- 用 `ParamSpec`、`TypeVar` 和 `wraps` 保持调用契约与函数元数据。
-- 设计不会吞掉异常、不会改变业务返回值的边界装饰器。
-- 用 `@contextmanager` 把进入、提交与失败清理组织为可复用资源边界。
-- 判断装饰器、显式函数调用和显式 `with` 各自适合的范围。
-
-## 第一步：保存上一课的可回归基线
-
-从阶段作品的 Python 目录执行：
-
-```bash
-python -m mypy --strict .
-python -m unittest discover -s tests -v
-python main.py
-```
-
-如果你从上一课的提交开始，应先看到 13 项测试通过。当前仓库包含本课完成代码，因此会看到 16 项测试。无论从哪个状态开始，主报告都必须保持：
-
-```text
-学习进度报告
-总计划：35.0 小时
-总完成：30.5 小时
-总体进度：87.1%
-```
-
-审计导出仍保持公开接口：
-
-```python
-def write_audit_snapshot(
-    records: Iterable[StudyRecord], output_path: Path
-) -> bool:
-    ...
-```
-
-本课不能把追踪事件打印到标准输出，也不能把返回值改成事件对象。装饰器和上下文管理器只增强边界，不接管原来的业务契约。
-
-## 第二步：先看函数包装，再使用装饰语法
-
-Python 函数是对象。函数名可以指向函数对象，函数对象可以作为参数传入，也可以作为返回值返回：
-
-```python
+~~~python
 from collections.abc import Callable
 
 
@@ -122,161 +61,137 @@ def finish() -> str:
 
 
 traced_finish = announce(finish)
-assert traced_finish() == "开始 -> 完成"
-```
+print(traced_finish())
+~~~
 
-装饰语法表达的是同一类重新绑定：
+`announce()` 接收原函数，返回一个新函数。`@announce` 只是把这种重新绑定写得更紧凑：
 
-```python
+~~~python
 @announce
 def finish() -> str:
     return "完成"
-```
+~~~
 
-可以近似理解为：
+可以近似读成 `finish = announce(finish)`。装饰发生在解释器执行函数定义时；真正的 `wrapper()` 函数体仍要等调用时才运行。
 
-```python
-def finish() -> str:
-    return "完成"
+</section>
 
+<section id="concept-closure" data-learning-context="concept-closure" data-context-type="concept" markdown="1">
 
-finish = announce(finish)
-```
+## 外层函数结束了，内层函数仍记得配置
 
-装饰器表达式在函数定义执行时求值，不是等第一次调用函数才创建包装器。真正的 `wrapper()` 函数体仍在每次调用时执行。
+~~~python
+def trace_calls(event_sink: EventSink) -> Decorator:
+    def decorate(function: Callable[P, R]) -> Callable[P, R]:
+        def wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
+            event_sink(f"开始:{function.__name__}")
+            return function(*args, **kwargs)
+        return wrapper
+    return decorate
+~~~
 
-本课不永久装饰报告器函数，而是在需要观察的调用点显式组合：
+`trace_calls(events.append)` 早已返回，但之后调用包装函数时，`wrapper` 仍能找到 `event_sink` 和 `function`。这两个来自外层作用域的名称被闭包保留下来。
 
-```python
-events: list[str] = []
-traced_writer = trace_calls(events.append)(write_audit_snapshot)
-success = traced_writer(sample_records(), audit_path)
+每个调用者都能传自己的事件去向，不需要模块级全局列表：
 
-assert success
-assert events == [
-    "开始:write_audit_snapshot",
-    "完成:write_audit_snapshot",
-]
-```
+~~~python
+first_events: list[str] = []
+second_events: list[str] = []
 
-这样主程序没有全局事件列表，也不会因为导入模块就自动启用追踪。
+first_trace = trace_calls(first_events.append)
+second_trace = trace_calls(second_events.append)
+~~~
 
-## 第三步：用闭包、ParamSpec 和 wraps 保持契约
+闭包不是“把所有变量复制一份”。它保存的是对自由变量的关联；若捕获的是可变对象，后续修改仍然可见。
 
-新建 `instrumentation.py`：
+</section>
 
-```python
+<section id="concept-decorator-contract" data-learning-context="concept-decorator-contract" data-context-type="concept" markdown="1">
+
+## 包装以后，调用方式不能变宽成一团雾
+
+~~~python
 from collections.abc import Callable
-from functools import wraps
-from typing import ParamSpec, TypeAlias, TypeVar
-
+from typing import ParamSpec, TypeVar
 
 P = ParamSpec("P")
 R = TypeVar("R")
-EventSink: TypeAlias = Callable[[str], None]
+~~~
+
+`ParamSpec` 代表原函数的整组位置参数和关键字参数；`TypeVar` 把原返回类型连接到包装函数：
+
+~~~python
+def decorate(function: Callable[P, R]) -> Callable[P, R]:
+    def wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
+        result = function(*args, **kwargs)
+        return result
+    return wrapper
+~~~
+
+若写成 `Callable[..., object]`，mypy 只能知道“它大概能被调用”，却很难继续检查参数名和返回类型。类型变量有用的前提是实现确实原样转发 `args`、`kwargs` 和结果。
+
+</section>
+
+<section id="example-wraps-metadata" data-learning-context="example-wraps-metadata" data-context-type="example" markdown="1">
+
+## wraps 把原函数的名字和说明带回来
+
+新建的包装函数默认叫 `wrapper`，文档也来自包装器。加上：
+
+~~~python
+from functools import wraps
 
 
-def trace_calls(
-    event_sink: EventSink,
-) -> Callable[[Callable[P, R]], Callable[P, R]]:
-    """Return a decorator that records deterministic call events."""
-
-    def decorate(function: Callable[P, R]) -> Callable[P, R]:
-        @wraps(function)
-        def wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
-            event_sink(f"开始:{function.__name__}")
-            try:
-                result = function(*args, **kwargs)
-            except Exception as error:
-                event_sink(
-                    f"失败:{function.__name__}:{type(error).__name__}"
-                )
-                raise
-            event_sink(f"完成:{function.__name__}")
-            return result
-
-        return wrapper
-
-    return decorate
-```
-
-从外向内读这段代码：
-
-1. `trace_calls()` 接收事件去向，返回真正的装饰器。
-2. `decorate()` 接收被包装函数，返回 `wrapper()`。
-3. `wrapper()` 调用原函数，并保持其返回值或异常。
-4. 内层函数仍能读取 `event_sink` 和 `function`，这两个自由变量形成闭包。
-
-`ParamSpec` 表示原函数的整组参数，`TypeVar` 表示返回类型。因此传入 `Callable[P, R]`，仍然返回 `Callable[P, R]`。这比 `Callable[..., object]` 更能帮助 mypy 检查调用者有没有传错参数。
-
-`@wraps(function)` 会复制名称、限定名、注解和文档等元数据，并提供指向原函数的 `__wrapped__`。它不会替你保证业务逻辑正确，参数与返回值仍要由 `wrapper()` 原样转发。
-
-主动修改与验收：
-
-```python
-events: list[str] = []
-
-
-@trace_calls(events.append)
-def join_text(left: str, right: str = "!") -> str:
-    """Join two pieces of text."""
-    return left + right
-
-
-assert join_text("完成", right="。") == "完成。"
-assert join_text.__name__ == "join_text"
-assert join_text.__doc__ == "Join two pieces of text."
-assert events == ["开始:join_text", "完成:join_text"]
-```
-
-## 第四步：安全观察元数据丢失和异常传播
-
-### 失败实验一：临时移除 wraps
-
-只在临时分支或练习文件中移除这一行：
-
-```python
 @wraps(function)
-```
+def wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
+    ...
+~~~
 
-重新运行元数据测试，应看到名称断言失败：
+再检查：
 
-```text
-AssertionError: 'wrapper' != 'join_text'
-```
+~~~python
+assert traced.__name__ == original.__name__
+assert traced.__doc__ == original.__doc__
+assert traced.__wrapped__ is original
+~~~
 
-恢复 `@wraps(function)` 后，名称、文档和 `__wrapped__` 测试重新通过。
+`wraps` 处理运行时元数据；`ParamSpec` 和 `TypeVar` 服务静态类型检查。两边都需要，但它们都不会自动保证业务结果正确。
 
-### 失败实验二：原函数抛出异常
+</section>
 
-```python
-events: list[str] = []
+<section id="troubleshoot-exception" data-learning-context="troubleshoot-exception" data-context-type="troubleshoot" markdown="1">
 
+## 记录失败以后，原异常还要继续走
 
-@trace_calls(events.append)
-def fail_export() -> None:
-    raise ValueError("审计数据无效")
-```
+~~~python
+try:
+    result = function(*args, **kwargs)
+except Exception as error:
+    event_sink(f"失败:{function.__name__}:{type(error).__name__}")
+    raise
+~~~
 
-测试必须同时证明两件事：记录失败事件，并继续抛出原异常。
+追踪器可以观察异常类型，但不能把失败悄悄变成 `None`。测试要同时证明事件出现、原异常继续传播：
 
-```python
+~~~python
 with self.assertRaisesRegex(ValueError, "审计数据无效"):
     fail_export()
 
-self.assertEqual(
-    events,
-    ["开始:fail_export", "失败:fail_export:ValueError"],
-)
-```
+assert events == [
+    "开始:fail_export",
+    "失败:fail_export:ValueError",
+]
+~~~
 
-如果包装器捕获异常后只记录、不 `raise`，调用者会误以为任务成功。边界代码可以观察失败，但不能未经明确协议就把失败变成成功。
+这里捕获 `Exception` 是为了记录所有普通业务异常，紧接着使用裸 `raise` 原样传播；它和上一课“捕获 `OSError` 并转换成 `False`”的目的不同。
 
-## 第五步：用 contextmanager 分阶段提交文件
+</section>
 
-直接写正式文件时，进程或写入错误可能留下不完整内容。新建 `resources.py`，让块内先写同目录临时文件：
+<section id="concept-contextmanager" data-learning-context="concept-contextmanager" data-context-type="concept" markdown="1">
 
-```python
+## yield 的前后，正好对应进入和退出
+
+~~~python
 from collections.abc import Iterator
 from contextlib import contextmanager
 from pathlib import Path
@@ -284,122 +199,188 @@ from pathlib import Path
 
 @contextmanager
 def staged_output_path(output_path: Path) -> Iterator[Path]:
-    """Yield a sibling temporary path and replace the final file on success."""
-
     pending_path = output_path.with_name(f".{output_path.name}.tmp")
     try:
         yield pending_path
         pending_path.replace(output_path)
     finally:
         pending_path.unlink(missing_ok=True)
-```
+~~~
 
-`@contextmanager` 把一个只产生一次值的生成器函数适配成上下文管理器：
+~~~mermaid
+flowchart TD
+    A["进入：算出同目录临时路径"] --> B["yield：调用者写临时文件"]
+    B --> C{"代码块正常结束吗"}
+    C -->|是| D["replace：发布正式文件"]
+    C -->|否| E["跳过发布，异常继续传播"]
+    D --> F["finally：清理临时路径"]
+    E --> F
+~~~
 
-- `yield` 之前对应进入阶段。
-- `yield` 的值绑定到 `as` 后面的名称。
-- 正常离开代码块后继续执行 `yield` 后的提交代码。
-- 块内抛出异常时，异常会在 `yield` 位置重新进入生成器；`finally` 仍然清理临时文件。
+`@contextmanager` 把只 `yield` 一次的生成器函数适配成上下文管理器。块内异常会回到 `yield` 位置；这里没有捕获它，所以跳过 `replace()`，执行 `finally` 后继续抛给调用者。
 
-报告器只改变内部写入路径，公开接口不变：
+</section>
 
-```python
-def write_audit_snapshot(
-    records: Iterable[StudyRecord], output_path: Path
-) -> bool:
-    snapshot = [record.clone() for record in records]
-    try:
-        with staged_output_path(output_path) as pending_path:
-            with pending_path.open("w", encoding="utf-8") as output:
-                output.write("学习审计快照\n")
-                for record in snapshot:
-                    output.write(
-                        f"{record.course_name}\t{record.target_hours:g}\t"
-                        f"{record.completed_hours:g}\n"
-                    )
-    except OSError:
-        return False
-    return True
-```
+<section id="example-staged-write" data-learning-context="example-staged-write" data-context-type="example" markdown="1">
 
-失败测试先准备一份已经发布的内容，再在块内写入临时内容并主动抛错：
+## 正式路径只在最后一刻被替换
 
-```python
-output_path.write_text("已发布内容\n", encoding="utf-8")
-pending_path = output_path.with_name(f".{output_path.name}.tmp")
+~~~python
+with staged_output_path(output_path) as pending_path:
+    with pending_path.open("w", encoding="utf-8") as output:
+        output.write("学习审计快照\n")
+~~~
 
-with self.assertRaisesRegex(RuntimeError, "模拟块内失败"):
-    with staged_output_path(output_path) as staged_path:
-        staged_path.write_text("未完成内容\n", encoding="utf-8")
-        raise RuntimeError("模拟块内失败")
+这两个 `with` 各管一件事：
 
-assert output_path.read_text(encoding="utf-8") == "已发布内容\n"
-assert not pending_path.exists()
-```
+- 内层文件上下文保证临时文件关闭。
+- 外层自定义上下文决定正常结束后发布，失败后清理。
 
-这里的“成功后替换”改善了当前单文件场景，但不是数据库事务：它不同时提交多个文件，也不承诺跨文件系统原子性。临时文件必须与目标位于同一目录，且目标目录仍要具备写权限。
+临时文件放在目标同一目录，避免跨文件系统移动带来的额外不确定性。这个做法适合单文件发布，但不是数据库事务，也不能同时原子提交多份文件。
 
-### 迁移验收
+</section>
 
-独立完成下面任意一项，不直接复制完整答案：
+<section id="reproduce-trace-stage" data-learning-context="reproduce-trace-stage" data-context-type="reproduce" markdown="1">
 
-1. 为 `trace_calls()` 增加一种不包含参数值的确定性事件，同时保持原返回类型。
-2. 在提交临时文件前验证第一行必须是“学习审计快照”，验证失败时保留旧文件。
-3. 为分阶段发布增加自定义临时文件后缀，但不能使用全局状态，也不能改变 `write_audit_snapshot()` 签名。
+## 亲手看见成功事件和失败清理
 
-完成后运行 16 项 unittest、mypy strict、Python/C++ 应用对照和审计文件测试。
+~~~python
+--8<-- "examples/python-core/decorators_contextmanagers.py"
+~~~
 
-## AI 协作任务
+~~~bash
+.venv/bin/python -m mypy --strict site-src/examples/python-core/decorators_contextmanagers.py
+python site-src/examples/python-core/decorators_contextmanagers.py
+~~~
 
-可以让 AI 提供装饰器类型标注和资源清理候选，但必须人工检查：
+你应该看到：
 
-- 是否使用 `Any` 或 `Callable[..., object]` 掩盖了原函数签名。
-- 是否忘记返回原函数结果、忘记转发关键字参数或忘记使用 `wraps`。
-- 是否捕获异常后静默返回，改变了调用者看到的成功/失败语义。
-- 是否在块内成功前覆盖正式文件，或在失败后留下临时文件。
-- 是否把事件写入全局列表或标准输出，破坏测试隔离和主报告契约。
+~~~text
+result=完成。
+events=['开始:join_text', '完成:join_text']
+name=join_text
+failure=ValueError
+failure_events=['开始:fail_export', '失败:fail_export:ValueError']
+published=新审计内容
+preserved=旧审计内容
+pending_exists=False
+~~~
 
-可复用提示：
+最后两行最重要：块内失败后旧内容仍在，临时文件已经清理。
 
-```text
-请为 Python 3.11 设计一个类型安全的调用追踪装饰器工厂和一个生成器式
-上下文管理器。装饰器必须用 ParamSpec、TypeVar 和 wraps 保留原调用契约，
-事件写入调用者提供的 sink；上下文管理器必须先写同目录临时文件，成功后
-替换目标，失败时清理并继续传播异常。不要使用 Any、全局状态或第三方库。
-```
+</section>
 
-## 常见错误与排查
+<section id="modify-publish-check" data-learning-context="modify-publish-check" data-context-type="modify" markdown="1">
 
-| 现象 | 可能原因 | 检查与修复 |
+## 发布前检查第一行
+
+在 `yield pending_path` 之后、`replace()` 之前增加检查：临时文件第一行必须是“学习审计快照”。不符合就抛出 `ValueError`。
+
+先写三组测试：
+
+1. 正确标题可以替换旧文件。
+2. 错误标题保留旧文件，并清理临时文件。
+3. 空文件同样拒绝发布。
+
+不要在上下文管理器里解析整份业务数据；这次只加一个发布前的最小不变量。若以后校验规则变复杂，应把验证函数独立出来，再由上下文管理器调用。
+
+</section>
+
+<section id="troubleshoot-staged-file" data-learning-context="troubleshoot-staged-file" data-context-type="troubleshoot" markdown="1">
+
+## 临时文件还在，或者旧文件被覆盖了
+
+按执行顺序检查：
+
+| 现象 | 常见原因 | 修复位置 |
 | --- | --- | --- |
-| 包装后的函数不能接收关键字参数 | 没有转发 `**kwargs` | 使用 `P.args`、`P.kwargs` 并原样调用原函数 |
-| mypy 把包装结果推断成宽泛可调用对象 | 使用了 `Callable[..., object]` | 用 `ParamSpec` 和返回值 `TypeVar` 连接输入与输出 |
-| 函数名显示为 `wrapper` | 缺少 `@wraps(function)` | 恢复 wraps 并检查名称、文档和 `__wrapped__` |
-| 失败事件出现但测试没有抛错 | 包装器吞掉异常 | 记录后使用裸 `raise` 继续传播原异常 |
-| 审计失败后旧文件被破坏 | 直接写正式路径或提前替换 | 块内只写临时路径，正常退出后再 `replace()` |
-| 目录中残留 `.tmp` 文件 | 清理不在 `finally` 中 | 将 `unlink(missing_ok=True)` 放到退出清理阶段 |
+| 块内失败后旧文件变了 | 代码块写的是正式路径 | 只打开 `pending_path` |
+| 失败后留下 `.tmp` | 清理不在 `finally` | 把 `unlink(missing_ok=True)` 放进退出清理 |
+| 失败仍发布新文件 | `replace()` 放在 `yield` 前或异常被吞掉 | 只在正常返回后执行替换 |
+| 多次调用互相覆盖临时文件 | 固定临时名不支持并发 | 当前单进程课程先写清限制，后续再设计唯一临时名 |
 
-## 完成证据
+不要把单进程测试通过说成已经解决并发发布。当前实现有意保持简单，适合学习和本项目的串行 CLI。
 
-- mypy strict 对 8 个 Python 源文件无问题，16 项及以上 unittest 全部通过。
-- 装饰器保持位置参数、关键字参数、返回值、名称、文档和原函数引用。
-- 成功事件顺序确定；失败事件包含异常类型，原异常继续传播。
-- 审计首次写入和覆盖旧文件成功，缺失父目录返回 `False`。
-- 块内失败后旧文件不变、临时文件被清理。
-- Python 与 C++ 主报告逐字一致，标准输出中没有追踪事件。
+</section>
+
+<section id="project-reporter-boundaries" data-learning-context="project-reporter-boundaries" data-context-type="project" markdown="1">
+
+## 回到学习进度报告器
+
+项目里两项能力都是可选边界，不侵入报告核心：
+
+~~~text
+调用者显式组合 trace_calls(events.append)(write_audit_snapshot)
+    -> 记录开始 / 完成 / 失败
+    -> 原参数、返回值和异常不变
+
+write_audit_snapshot()
+    -> staged_output_path() 给出临时路径
+    -> 文件 with 写入并关闭
+    -> 正常退出后替换正式文件
+~~~
+
+追踪器没有永久装饰 `build_report()`，事件也不写标准输出。这样 30 项测试、Python/C++ 主报告和 CLI 契约都不受影响。
+
+~~~bash
+python -m mypy --strict .
+PYTHONPATH=src python -m unittest discover -s tests -v
+python main.py
+~~~
+
+重点检查成功事件、失败事件、元数据、异常传播、首次写入、覆盖旧文件、块内失败保留旧文件和临时文件清理。
+
+</section>
+
+<section id="deepen-wrapper-choice" data-learning-context="deepen-wrapper-choice" data-context-type="deepen" markdown="1">
+
+## 不是什么都要用装饰器
+
+装饰器适合多个函数共享、并且不改变核心业务语义的调用边界，例如追踪、权限或重试。若只有一个调用点，显式函数调用可能更容易读；若资源有清楚的进入和退出范围，`with` 比隐式装饰更直观。
+
+继续深化时还会遇到：
+
+- 多层装饰器的应用顺序。
+- 同步与异步函数的不同包装方式。
+- `ContextDecorator`、类式 `__enter__` / `__exit__`。
+- 多资源动态管理的 `ExitStack`。
+
+这些能力等到真实问题出现再引入。本课先保证单层包装和单文件发布能被完整测试。
+
+</section>
+
+<section id="career-boundary-evidence" data-learning-context="career-boundary-evidence" data-context-type="career" markdown="1">
+
+## 讲装饰器时，说清楚它没有改变什么
+
+项目表达可以是：
+
+> 我实现了一个 `ParamSpec` 与 `TypeVar` 保持调用契约的追踪装饰器，事件写入调用者提供的 sink；失败事件记录异常类型，但原异常继续传播。审计导出使用生成器式上下文管理器先写同目录临时文件，正常退出才替换正式文件。测试证明块内失败后旧文件不变、临时文件清理，主报告和公开函数签名保持稳定。
+
+这比“我会写装饰器”更能说明你理解抽象边界、失败语义和回归验证。
+
+</section>
+
+## 完成检查
+
+- [ ] 我能把 `@decorator` 还原成普通函数传递和重新绑定。
+- [ ] 我能说明装饰发生在定义时，包装函数体执行在调用时。
+- [ ] 我知道闭包怎样保留事件去向和原函数。
+- [ ] 我能区分 `ParamSpec`、`TypeVar` 与 `wraps` 各自解决的问题。
+- [ ] 我证明包装函数保留参数、返回值、名称、文档和 `__wrapped__`。
+- [ ] 我记录失败事件后继续传播原异常。
+- [ ] 我能沿着 `yield` 前后解释进入、发布和清理。
+- [ ] 我跑过独立例子，并观察旧文件保护和临时文件清理。
+- [ ] 我完成发布前首行检查及三组测试。
+- [ ] 我运行正式项目 30 项测试，主报告没有追踪事件。
 
 ## 来源与版本
 
-| 来源 | 用于核查 | 版本或日期 |
-| --- | --- | --- |
-| [函数定义](https://docs.python.org/3.11/reference/compound_stmts.html#function-definitions) | 装饰器求值、应用顺序和函数对象绑定 | Python 3.11.15，2026-07-15 核查 |
-| [functools.wraps](https://docs.python.org/3.11/library/functools.html#functools.wraps) | 包装函数元数据与 `__wrapped__` | Python 3.11.15，2026-07-15 核查 |
-| [typing.ParamSpec](https://docs.python.org/3.11/library/typing.html#typing.ParamSpec) | 装饰器参数转发的静态类型关系 | Python 3.11.15，2026-07-15 核查 |
-| [contextlib.contextmanager](https://docs.python.org/3.11/library/contextlib.html#contextlib.contextmanager) | 生成器式上下文管理器与异常回到 `yield` | Python 3.11.15，2026-07-15 核查 |
-| [上下文管理器类型](https://docs.python.org/3.11/library/stdtypes.html#context-manager-types) | `__enter__`、`__exit__`、异常传播和抑制边界 | Python 3.11.15，2026-07-15 核查 |
-
-本地素材库中的装饰器笔记只用于识别闭包、装饰时机和参数转发等新手易错点；课程定义、类型方案和上下文语义均以以上官方资料与实际测试为准，原始素材不进入公开站点。
+- 适用版本：Python 3.11 及以上；mypy 2.2.0 严格模式。
+- 核查日期：2026-07-17。
+- 事实来源：[Python 函数定义](https://docs.python.org/3.11/reference/compound_stmts.html#function-definitions)用于装饰器求值与应用；[`functools.wraps`](https://docs.python.org/3.11/library/functools.html#functools.wraps)用于包装函数元数据；[`typing.ParamSpec`](https://docs.python.org/3.11/library/typing.html#typing.ParamSpec)用于参数转发类型关系；[`contextlib.contextmanager`](https://docs.python.org/3.11/library/contextlib.html#contextlib.contextmanager)用于生成器式上下文管理器；[上下文管理器类型](https://docs.python.org/3.11/library/stdtypes.html#context-manager-types)用于进入、退出与异常传播。
+- 代码验证：仓库脚本覆盖函数对象、定义时装饰、闭包隔离、参数与返回类型、元数据、成功与失败事件、异常传播、首次发布、旧文件保护、临时文件清理、严格 mypy 和正式项目 30 项测试；不联网。
 
 ## 下一步
 
-Python 核心语言的函数、对象、迭代和资源边界已经形成一条连续成果线。下一节进入 [包结构、可安装入口与 CLI](06-package-structure-installable-cli.md)，把当前多模块报告器组织为可以从命令行稳定运行的最小工具；本节不提前引入配置、日志、`ContextDecorator`、`ExitStack` 或异步上下文管理。
+进入[包结构、可安装入口与 CLI](06-package-structure-installable-cli.md)，把多模块报告器安装成命令行工具，并检查从源码、模块入口和控制台脚本启动时是否得到同一行为。

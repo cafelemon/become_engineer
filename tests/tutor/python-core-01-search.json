@@ -1,82 +1,161 @@
-[
-  {
-    "query": "类型化学习报告器怎么运行和检查？",
-    "step_id": "step-1",
-    "expected": "typed-run"
-  },
-  {
-    "query": "mypy和测试怎么运行",
-    "step_id": "step-1",
-    "expected": "typed-run"
-  },
-  {
-    "query": "类型注解会自动拦截运行时错误吗？",
-    "step_id": "step-1",
-    "expected": "annotation-runtime"
-  },
-  {
-    "query": "注解会检查吗",
-    "step_id": "step-1",
-    "expected": "annotation-runtime"
-  },
-  {
-    "query": "函数类型契约应该标注什么？",
-    "step_id": "step-2",
-    "expected": "function-contract"
-  },
-  {
-    "query": "函数参数返回类型",
-    "step_id": "step-2",
-    "expected": "function-contract"
-  },
-  {
-    "query": "TypedDict 适合解决什么问题？",
-    "step_id": "step-2",
-    "expected": "typeddict"
-  },
-  {
-    "query": "TypedDict是什么",
-    "step_id": "step-2",
-    "expected": "typeddict"
-  },
-  {
-    "query": "object、Any 和 cast 的风险有什么不同？",
-    "step_id": "step-3",
-    "expected": "object-any-cast"
-  },
-  {
-    "query": "object Any cast区别",
-    "step_id": "step-3",
-    "expected": "object-any-cast"
-  },
-  {
-    "query": "为什么 JSON 边界需要运行时校验？",
-    "step_id": "step-3",
-    "expected": "json-validation"
-  },
-  {
-    "query": "JSON类型检查",
-    "step_id": "step-3",
-    "expected": "json-validation"
-  },
-  {
-    "query": "mypy 报错后应该先看什么？",
-    "step_id": "step-4",
-    "expected": "mypy-failure"
-  },
-  {
-    "query": "mypy错误怎么看",
-    "step_id": "step-4",
-    "expected": "mypy-failure"
-  },
-  {
-    "query": "如何增加类型化字段并验收？",
-    "step_id": "step-5",
-    "expected": "type-migration"
-  },
-  {
-    "query": "新增TypedDict字段",
-    "step_id": "step-5",
-    "expected": "type-migration"
-  }
-]
+{
+  "lesson_id": "python-core-01",
+  "cases": [
+    {
+      "query": "mypy 为什么能在程序运行前发现错误？",
+      "expected_card": "types-early-error"
+    },
+    {
+      "query": "类型检查器为什么不用执行代码也能报错",
+      "expected_card": "types-early-error"
+    },
+    {
+      "query": "mypy、运行时校验和 unittest 有什么分工？",
+      "expected_card": "types-three-layers"
+    },
+    {
+      "query": "三层检查为什么不能只留一个",
+      "expected_card": "types-three-layers"
+    },
+    {
+      "query": "类型注解会自动拦截错误参数吗？",
+      "expected_card": "types-annotation-runtime"
+    },
+    {
+      "query": "给参数标float后传字符串为什么还能进函数",
+      "expected_card": "types-annotation-runtime"
+    },
+    {
+      "query": "函数类型契约应该标出什么？",
+      "expected_card": "types-function-contract"
+    },
+    {
+      "query": "函数参数返回值和None怎么标",
+      "expected_card": "types-function-contract"
+    },
+    {
+      "query": "为什么可能找不到时要写 str | None？",
+      "expected_card": "types-optional-none"
+    },
+    {
+      "query": "None为什么要放进返回类型",
+      "expected_card": "types-optional-none"
+    },
+    {
+      "query": "容器类型和 TypeAlias 应该怎么用？",
+      "expected_card": "types-container-alias"
+    },
+    {
+      "query": "list dict tuple标注和类型别名",
+      "expected_card": "types-container-alias"
+    },
+    {
+      "query": "TypedDict 适合解决什么问题？",
+      "expected_card": "types-typeddict"
+    },
+    {
+      "query": "TypedDict是什么",
+      "expected_card": "types-typeddict"
+    },
+    {
+      "query": "为什么只读参数常用 Sequence 而不是 list？",
+      "expected_card": "types-sequence"
+    },
+    {
+      "query": "函数只遍历记录为什么不要求列表",
+      "expected_card": "types-sequence"
+    },
+    {
+      "query": "object 为什么适合放在 JSON 信任边界？",
+      "expected_card": "types-object"
+    },
+    {
+      "query": "未知外部数据为什么先标object",
+      "expected_card": "types-object"
+    },
+    {
+      "query": "Any 为什么不能拿来让 mypy 安静？",
+      "expected_card": "types-any"
+    },
+    {
+      "query": "Any有什么风险",
+      "expected_card": "types-any"
+    },
+    {
+      "query": "cast() 会在运行时转换或检查值吗？",
+      "expected_card": "types-cast"
+    },
+    {
+      "query": "cast字符串是不是等于str转换",
+      "expected_card": "types-cast"
+    },
+    {
+      "query": "类型契约例子应该怎样运行和检查？",
+      "expected_card": "types-reproduce"
+    },
+    {
+      "query": "mypy严格模式和Python例子怎么跑",
+      "expected_card": "types-reproduce"
+    },
+    {
+      "query": "为什么 JSON 边界需要运行时校验？",
+      "expected_card": "types-json-validation"
+    },
+    {
+      "query": "JSON类型检查",
+      "expected_card": "types-json-validation"
+    },
+    {
+      "query": "mypy 报错后应该先看什么？",
+      "expected_card": "types-mypy-diagnostic"
+    },
+    {
+      "query": "mypy错误怎么看",
+      "expected_card": "types-mypy-diagnostic"
+    },
+    {
+      "query": "坏 JSON 字段为什么可能通过 mypy？",
+      "expected_card": "types-runtime-failure"
+    },
+    {
+      "query": "target_hours写ten为什么静态检查不知道",
+      "expected_card": "types-runtime-failure"
+    },
+    {
+      "query": "新增 TypedDict 字段时为什么不能只改一行？",
+      "expected_card": "types-modify-field"
+    },
+    {
+      "query": "新增类型化字段还要改哪些地方",
+      "expected_card": "types-modify-field"
+    },
+    {
+      "query": "为什么当前报告器不能退回 TypedDict 版本？",
+      "expected_card": "types-project-current"
+    },
+    {
+      "query": "课程例子和正式项目版本不一样怎么办",
+      "expected_card": "types-project-current"
+    },
+    {
+      "query": "类型为什么应该表达需要的能力？",
+      "expected_card": "types-capability"
+    },
+    {
+      "query": "接口越具体越好吗",
+      "expected_card": "types-capability"
+    },
+    {
+      "query": "项目里怎样讲清类型化工作的价值？",
+      "expected_card": "types-career"
+    },
+    {
+      "query": "求职时怎么表达Python类型提示成果",
+      "expected_card": "types-career"
+    }
+  ],
+  "unknown": [
+    "怎样修理漏水的水龙头",
+    "推荐一款露营帐篷"
+  ]
+}

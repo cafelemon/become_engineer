@@ -1,892 +1,399 @@
-# 类型提示、接口与静态检查认知
-
 <div class="be-tutor-mount" data-tutor-lesson="python-core-01" aria-hidden="true"></div>
 
-> **任务先行：** 给已有学习进度报告器加上能被检查的类型契约。先让它正常运行，再让 `mypy --strict` 告诉你接口哪里不一致。
+<section id="overview-types" class="be-page-hero be-lesson-hero" data-learning-context="overview-types" data-context-type="overview" markdown="1">
 
-## 任务路线
+<span class="be-page-eyebrow">Python 核心 · 第一课 · 把接口说清楚</span>
 
-<div class="be-task-route" role="list" aria-label="本课五步任务"><span role="listitem">1 运行</span><span role="listitem">2 标注</span><span role="listitem">3 校验</span><span role="listitem">4 诊断</span><span role="listitem">5 迁移</span></div>
+# 类型提示、接口与静态检查认知
 
-<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
+## 程序还没运行，检查器先发现了一处错误
 
-## 第一步：运行类型化报告器
-
-按“安装、检查和运行”创建环境、运行报告器和测试。**可观察结果：** 正常业务输出仍成立；类型提示本身不会改变 Python 的运行行为。
-
-</section>
-
-<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
-
-## 第二步：给一个边界补充准确契约
-
-为一个函数的参数与返回值补类型，或为固定 JSON 记录使用既有 `TypedDict`。**成功标准：** 标注表达真实数据形状，而不是用 `Any` 绕过检查。
-
-</section>
-
-<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
-
-## 第三步：在静态与运行时两层验证
-
-执行 `mypy --strict` 与 unittest；从 JSON 边界以 `object` 开始，经过运行时检查后再构造 `StudyRecord`。记录两类工具各自报告什么。
-
-</section>
-
-<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
-
-## 第四步：故意让检查器失败
-
-复现错误参数、`TypedDict` 缺字段或错误返回类型中的一项，确认 mypy 非零退出，然后修复。**验收：** 知道注解不会自动拦截运行期错误。
-
-</section>
-
-<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
-
-## 第五步：迁移验收与下一步
-
-独立为报告器增加一个可选字段或类型别名，保留运行时校验与测试，并让严格检查通过。下一课将类型契约扩展为可维护函数接口和模块边界。
-
-</section>
-
-## 课程信息
-
-| 项目 | 内容 |
-| --- | --- |
-| 适合人群 | 已完成Python起步和C++构建与类型课程，希望提高Python接口可维护性的学习者 |
-| 前置知识 | 函数、容器、JSON、模块、异常、unittest，以及C++静态类型和编译诊断的基本认知 |
-| 学习结果 | 能用类型提示表达接口，用mypy严格检查代码，同时保留外部数据的运行时校验和自动化测试 |
-| 运行时基线 | Python 3.11及以上 |
-| 检查工具 | mypy 2.2.0，`--strict`模式 |
-| 实践产出 | 学习进度报告器的完整类型化副本、静态检查与运行测试证据 |
-
-## 为什么类型提示不是“把Python改成C++”
-
-上一节 C++ 代码在生成目标文件前就会由编译器检查类型。Python的类型提示采用不同模型：
-
-- Python运行时仍然根据对象的实际类型执行程序。
-- 函数注解通常不会自动拒绝错误参数。
-- mypy在不运行程序的情况下分析代码，并报告可能违反类型契约的位置。
-- 外部JSON即使“静态检查通过”，运行时仍可能缺字段、类型错误或格式损坏。
-- 自动化测试仍然负责验证具体行为和边界结果。
-
-本节的目标不是追求“所有地方都有注解”，而是让模块之间的接口更清楚，让错误尽可能在运行前暴露，同时不伪造安全感。
-
-## 学习目标
-
-完成本节后，你应该能够：
-
-- 区分运行时类型、类型提示、静态检查和运行时校验。
-- 为函数参数、返回值、局部变量和常用容器添加准确标注。
-- 使用`X | None`表达可能缺失，而不是用模糊注释说明。
-- 使用`TypeAlias`缩短复杂但重复的接口类型。
-- 使用`TypedDict`描述固定键结构，理解它在运行时仍是普通字典。
-- 使用`Sequence`表达只需读取、不要求调用者必须传入列表。
-- 区分`object`与`Any`，控制动态类型的传播范围。
-- 说明`cast()`只影响静态检查，不执行运行时转换或校验。
-- 在JSON边界先校验未知对象，再构造类型化数据。
-- 使用`mypy --strict`、运行程序和`unittest`形成三层证据。
-
-## 三层检查各自负责什么
-
-下面的图回答：**静态检查通过后，为什么仍然需要校验JSON和运行测试？**
-
-```mermaid
-flowchart LR
-    A["JSON文本\n外部输入"] --> B["json.loads\n动态结果"]
-    B --> C["object边界\n不假设结构"]
-    C --> D["isinstance与业务规则\n运行时校验"]
-    D --> E["StudyRecord\n类型化数据"]
-    E --> F["类型化分析函数"]
-    F --> G["报告输出"]
-
-    M["mypy --strict\n检查代码接口"] -.检查.-> C
-    M -.检查.-> E
-    M -.检查.-> F
-    T["unittest\n检查实际行为"] -.运行.-> D
-    T -.运行.-> G
-```
-
-| 检查层 | 能发现什么 | 不能证明什么 |
-| --- | --- | --- |
-| 类型提示与mypy | 错误参数、错误返回、缺少TypedDict字段、未标注接口 | JSON实际内容正确、算法结果正确 |
-| 运行时校验 | 文件中的真实值是否符合结构和范围规则 | 所有代码路径都正确、未来修改不回归 |
-| 自动化测试 | 给定场景的真实输出、异常和副作用 | 没有覆盖到的所有输入都正确 |
-
-三层相互补充，不能相互替代。
-
-## Python与C++类型检查对照
-
-| 问题 | Python + mypy | C++ |
-| --- | --- | --- |
-| 类型主要何时检查 | 独立静态分析步骤 | 编译过程的一部分 |
-| 不运行检查器会怎样 | 注解通常不阻止程序启动 | 类型错误通常阻止目标文件生成 |
-| 注解是否改变值 | 通常不会 | 声明决定对象类型和部分运行行为 |
-| 错误类型能否在运行时进入函数 | 可以，除非代码主动校验 | 能通过接口的值受编译期类型规则限制 |
-| 外部文本或JSON | 仍需解析和运行时校验 | 同样需要解析和运行时校验 |
-| 检查产物 | 诊断信息，不生成程序 | 诊断以及目标文件/可执行程序 |
-
-共同点是：接口越准确，调用者越容易发现错误。根本差异是：mypy不是Python解释器，也不参与生成可执行机器代码。
-
-## 最小函数类型契约
-
-```python title="minimal_types.py"
-def calculate_progress(target_hours: float, finished_hours: float) -> float:
-    return min(finished_hours / target_hours, 1.0)
+~~~python
+def calculate_progress(target_hours: float, completed_hours: float) -> float:
+    return completed_hours / target_hours
 
 
-progress: float = calculate_progress(10.0, 7.5)
-print(progress)
-```
-
-函数签名表达：两个参数应当能作为`float`使用，结果是`float`。Python中`int`通常可以用于要求`float`的静态位置，但字符串不可以：
-
-```python
 calculate_progress("10", 7.5)
-```
+~~~
 
-mypy会报告参数类型不兼容。不过直接运行这行代码时，失败来自函数中的除法，而不是注解自动拦截调用。
+Python 解释器会等到除法发生时才报错；mypy 可以在运行前指出：第一个参数承诺是 <code>float</code>，这里却传入了 <code>str</code>。
 
-### 注解不会自动执行校验
+~~~text
+Argument 1 to "calculate_progress" has incompatible type "str"; expected "float"
+~~~
 
-```python title="annotations_are_not_guards.py"
+类型提示不会把 Python 变成另一门语言。它更像写给调用者和检查器的一份接口说明：这里需要什么、会返回什么、哪些值可能缺失。
+
+<div class="be-page-actions" markdown="1">
+[先分清三层检查](#concept-three-checks){ .md-button .md-button--primary }
+[运行类型契约例子](#reproduce-type-contracts){ .md-button }
+</div>
+
+</section>
+
+<div class="be-lesson-overview">
+  <div><span>课程位置</span><strong>Python 核心 · 1 / 5</strong></div>
+  <div><span>前置</span><strong>Python 起步、JSON、异常和 unittest</strong></div>
+  <div><span>完成后留下</span><strong>严格类型检查、JSON 校验和报告器接口清单</strong></div>
+</div>
+
+## 开始前
+
+- 能运行多文件 Python 程序和 `unittest`。
+- 知道外部 JSON 可能缺字段、写错类型或根本不是合法 JSON。
+- 已完成 CS 起步，能把“数据怎样表示”和“接口允许哪些操作”分开考虑。
+- 本课不要求先学 C++；以后并行学习时，再比较两种语言的检查时机。
+
+<section id="concept-three-checks" data-learning-context="concept-three-checks" data-context-type="concept" markdown="1">
+
+## 静态检查、运行时校验和测试各管一段
+
+先看学习记录从文件走到报告的路径：
+
+~~~mermaid
+flowchart LR
+    A["JSON 文件"] --> B["json.loads"]
+    B --> C["object：先不相信结构"]
+    C --> D["isinstance 与业务规则"]
+    D --> E["StudyRecord"]
+    E --> F["统计与报告"]
+    M["mypy --strict"] -.检查代码接口.-> C
+    M -.检查代码接口.-> E
+    M -.检查代码接口.-> F
+    T["unittest"] -.运行真实场景.-> D
+    T -.运行真实场景.-> F
+~~~
+
+| 工具 | 擅长发现 | 不能替你证明 |
+| --- | --- | --- |
+| 类型提示与 mypy | 错参数、错返回值、漏字段、未处理的 `None` | 文件里的真实 JSON 一定正确 |
+| 运行时校验 | 本次输入的结构、类型和业务范围 | 其他代码路径以后不会回归 |
+| 自动化测试 | 固定场景的输出、异常和副作用 | 没覆盖的所有输入都正确 |
+
+三层不能互相替代。mypy 通过不等于数据可信，测试通过也不等于接口表达清楚。
+
+</section>
+
+<section id="concept-annotations" data-learning-context="concept-annotations" data-context-type="concept" markdown="1">
+
+## 注解不是门卫
+
+这段代码虽然标了 <code>float</code>，运行时仍会把字符串原样传进去：
+
+~~~python
 def echo_hours(hours: float) -> float:
     return hours
 
 
-result = echo_hours("five")  # 运行时仍会进入函数
+result = echo_hours("five")
 print(result, type(result))
-```
+~~~
 
-Python解释器会打印字符串及其类型。mypy会在运行前报告错误参数。这正是“运行时行为”和“静态契约”的区别。
+直接运行会打印：
 
-## 常用类型写法
+~~~text
+five <class 'str'>
+~~~
 
-### 容器
+mypy 会报告调用和返回契约不一致，但 Python 解释器通常不会根据函数注解自动拦截调用。若输入来自用户、文件或网络，仍要在运行时检查。
 
-```python
-course_names: list[str] = ["Python", "C++"]
-hours_by_course: dict[str, float] = {"Python": 8.0, "C++": 6.0}
+类型提示的价值在于把预期写进代码，让编辑器、检查器、评审者和未来的你更早看见冲突，而不是替代所有防御代码。
+
+</section>
+
+<section id="example-common-types" data-learning-context="example-common-types" data-context-type="example" markdown="1">
+
+## 先写出真实可能性
+
+常见容器可以直接标出元素类型：
+
+~~~python
+course_names: list[str] = ["Python", "CS"]
+hours_by_course: dict[str, float] = {"Python": 8.0, "CS": 6.0}
 unique_tags: set[str] = {"语言", "工程"}
 point: tuple[float, float] = (3.0, 4.0)
 history: tuple[str, ...] = ("起步", "类型", "工程化")
-```
+~~~
 
-`tuple[float, float]`表示恰好两个位置；`tuple[str, ...]`表示任意长度且每项都是字符串。
+<code>tuple[float, float]</code> 表示恰好两个位置；<code>tuple[str, ...]</code> 表示任意长度、每项都是字符串。
 
-### 可能缺失的值
+可能找不到时，把 <code>None</code> 写出来：
 
-```python
+~~~python
 def find_course(name: str) -> str | None:
-    if name == "python":
+    if name.casefold() == "python":
         return "Python"
     return None
-```
 
-调用者必须处理`None`：
 
-```python
 course = find_course("python")
 if course is not None:
     print(course.upper())
-```
+~~~
 
-不要因为“实际数据里通常存在”就省略`None`。类型契约应该表达真实可能性。
+调用者看到 <code>str | None</code> 就知道必须处理缺失情况，不必等到某次 <code>None.upper()</code> 才发现。
 
-### 类型别名
+复杂类型反复出现时，可以在 Python 3.11 中使用 <code>TypeAlias</code>：
 
-Python 3.11使用`TypeAlias`显式标记别名：
-
-```python
+~~~python
 from typing import TypeAlias
 
-Summary: TypeAlias = tuple[
-    float,
-    float,
-    tuple[str, ...],
-    tuple[str, ...],
-]
-```
+ProgressRow: TypeAlias = tuple[str, float, str]
+~~~
 
-别名提高可读性，但不会创建新的运行时类型。Python 3.12引入的`type Summary = ...`不作为本课程基线。
+别名改善可读性，但不会创建新的运行时类。
 
-## 用`TypedDict`表达固定字典结构
+</section>
 
-```python
+<section id="concept-typeddict-sequence" data-learning-context="concept-typeddict-sequence" data-context-type="concept" markdown="1">
+
+## 固定字典用 TypedDict，只读输入用 Sequence
+
+学习记录仍是普通字典，但键名固定：
+
+~~~python
 from typing import TypedDict
 
 
 class StudyRecord(TypedDict):
-    course: str
+    course_name: str
     target_hours: float
-    finished_hours: float
+    completed_hours: float
     tags: list[str]
-```
+~~~
 
-静态检查器会检查已知构造位置是否缺少字段或字段类型错误：
+mypy 能检查源码里看得见的构造位置：
 
-```python
+~~~python
 record: StudyRecord = {
-    "course": "Python类型",
-    "target_hours": 6.0,
-    "finished_hours": 4.0,
-    # 缺少 tags，mypy应报告错误
+    "course_name": "Python 核心",
+    "target_hours": 10.0,
+    "completed_hours": 4.0,
+    # 漏了 tags，静态检查会报告错误
 }
-```
+~~~
 
-但`TypedDict`在运行时仍是普通`dict`：
+但运行时 <code>type(record)</code> 仍然是 <code>dict</code>。<code>TypedDict</code> 不会自动检查 <code>json.loads()</code> 的返回值。
 
-```python
-print(type(record))  # <class 'dict'>
-```
+如果函数只需要读取一组记录，不要把接口写死为 <code>list</code>：
 
-它不会自动检查`json.loads()`返回的数据。外部数据必须先通过运行时校验。
-
-## 使用`Sequence`表达需要的能力
-
-如果函数只遍历记录、不增加删除元素，就不必要求调用者一定传入`list`：
-
-```python
+~~~python
 from collections.abc import Sequence
 
 
-def total_hours(values: Sequence[float]) -> float:
-    return sum(values)
-```
+def total_completed(records: Sequence[StudyRecord]) -> float:
+    return sum(record["completed_hours"] for record in records)
+~~~
 
-列表和元组都能满足这个只读接口：
+列表和元组都能满足这个接口。<code>Sequence</code> 表达“需要长度、索引和遍历”，并不声称对象在运行时绝对不可变。
 
-```python
-total_hours([2.0, 3.0])
-total_hours((2.0, 3.0))
-```
+</section>
 
-`Sequence`不保证对象在运行时绝对不可变；它表达的是当前函数只依赖读取、索引和长度等序列能力，不应调用`append()`。
+<section id="concept-object-any-cast" data-learning-context="concept-object-any-cast" data-context-type="concept" markdown="1">
 
-## `object`、`Any`和`cast()`
+## object 会逼你检查，Any 会让检查器让路
 
-### `object`：未知，但使用前必须缩窄
+<code>object</code> 表示“现在还不知道是什么”。使用前必须缩小类型：
 
-```python
+~~~python
 def normalize_name(value: object) -> str:
     if not isinstance(value, str):
-        raise ValueError("name必须是字符串")
+        raise ValueError("course_name 必须是字符串")
     return value.strip()
-```
+~~~
 
-所有Python对象都兼容`object`，但不能在未经检查时任意调用字符串方法。`isinstance()`同时提供运行时校验，并帮助静态检查器把类型从`object`缩窄到`str`。
+<code>Any</code> 则会让大部分静态检查退出：
 
-### `Any`：暂时退出类型检查
-
-```python
+~~~python
 from typing import Any
 
 
 def unsafe_name(value: Any) -> str:
-    return value.strip().not_a_real_method()
-```
+    return value.strip().method_that_does_not_exist()
+~~~
 
-`Any`与几乎所有类型双向兼容，错误操作可能继续传播而不被报告。它适合无法类型化的动态边界，但不应成为省事的默认类型。
+这段明显可疑的调用也可能一路传播。动态库边界有时不得不用 <code>Any</code>，但应尽快把它收窄，不能用来让错误列表变成零。
 
-### `cast()`：只告诉检查器，不检查运行时
+<code>cast()</code> 只告诉检查器“请把它当作某类型”，不会转换或验证值：
 
-```python
+~~~python
 from typing import cast
 
 value: object = 42
 name = cast(str, value)
-print(name.upper())
-```
+print(name.upper())  # 运行时仍然失败
+~~~
 
-`cast(str, value)`不会把整数转换成字符串，也不会执行`isinstance()`。这个程序仍会在运行时失败。只有已经通过其他证据确认类型、而检查器无法推导时，才考虑使用`cast()`。
+同样，<code># type: ignore</code> 只是压住诊断。先问清接口是否写错、边界是否缺校验，再考虑极少数检查器确实无法推导的情况。
 
-同样，`# type: ignore`只是压制诊断。课程示例不使用它来获得“零错误”截图。
+</section>
 
-## 可复现实例：类型化学习进度报告器
+<section id="reproduce-type-contracts" data-learning-context="reproduce-type-contracts" data-context-type="reproduce" markdown="1">
 
-### 环境与依赖
+## 从 object 收窄成可信记录
 
-- Python 3.11或更高版本。
-- 运行代码只使用标准库。
-- 开发检查依赖固定版本`mypy==2.2.0`。
-- 从示例根目录运行命令。
+完整例子模拟 <code>json.loads()</code> 之后的未知对象，逐层检查，再构造 <code>StudyRecord</code>：
 
-### 目录结构
+~~~python
+--8<-- "examples/python-core/type_contracts.py"
+~~~
 
-```text
-typed-reporter/
-├── data/
-│   └── study_records.json
-├── tests/
-│   └── test_typed_reporter.py
-├── analysis.py
-├── data_io.py
-├── main.py
-├── models.py
-└── requirements-dev.txt
-```
+先运行静态检查：
 
-### 开发依赖
+~~~bash
+.venv/bin/python -m mypy --strict site-src/examples/python-core/type_contracts.py
+~~~
 
-```text title="requirements-dev.txt"
-mypy==2.2.0
-```
+再运行程序：
 
-### 数据模型
+~~~bash
+python site-src/examples/python-core/type_contracts.py
+~~~
 
-```python title="models.py"
-from typing import TypeAlias, TypedDict
+你应该看到：
 
+~~~text
+course=Python 核心
+progress=40.0%
+total_completed=10.0
+tuple_input=6.0
+~~~
 
-class StudyRecord(TypedDict):
-    course: str
-    target_hours: float
-    finished_hours: float
-    tags: list[str]
+严格检查证明代码接口前后一致；程序输出证明这组运行时数据通过校验并得到预期结果。两份结果缺一不可。
 
+</section>
 
-Summary: TypeAlias = tuple[
-    float,
-    float,
-    tuple[str, ...],
-    tuple[str, ...],
-]
-```
+<section id="troubleshoot-mypy-json" data-learning-context="troubleshoot-mypy-json" data-context-type="troubleshoot" markdown="1">
 
-### 类型化分析
+## 让两种错误各自出现一次
 
-```python title="analysis.py"
-from collections.abc import Sequence
+第一种错误写在源码里：
 
-from models import StudyRecord, Summary
-
-
-def calculate_progress(target_hours: float, finished_hours: float) -> float:
-    return min(finished_hours / target_hours, 1.0)
-
-
-def build_status(target_hours: float, finished_hours: float) -> str:
-    if finished_hours >= target_hours:
-        return "已完成"
-    return f"还需 {target_hours - finished_hours:g} 小时"
-
-
-def normalize_tags(records: Sequence[StudyRecord]) -> tuple[str, ...]:
-    tags: set[str] = set()
-    for record in records:
-        tags.update(record["tags"])
-    return tuple(sorted(tags))
-
-
-def summarize_records(records: Sequence[StudyRecord]) -> Summary:
-    total_target = 0.0
-    total_finished = 0.0
-    course_lines: list[str] = []
-
-    for record in records:
-        target = record["target_hours"]
-        finished = record["finished_hours"]
-        total_target += target
-        total_finished += finished
-        progress = calculate_progress(target, finished)
-        status = build_status(target, finished)
-        course_lines.append(
-            f'- {record["course"]}: {progress:.0%}，{status}'
-        )
-
-    return (
-        total_target,
-        total_finished,
-        tuple(course_lines),
-        normalize_tags(records),
-    )
-```
-
-### JSON边界与运行时校验
-
-```python title="data_io.py"
-import json
-from pathlib import Path
-
-from models import StudyRecord
-
-
-def _as_string_key_dict(value: object, context: str) -> dict[str, object]:
-    if not isinstance(value, dict):
-        raise ValueError(f"{context}必须是对象")
-
-    result: dict[str, object] = {}
-    for key, item in value.items():
-        if not isinstance(key, str):
-            raise ValueError(f"{context}的键必须是字符串")
-        result[key] = item
-    return result
-
-
-def _required(mapping: dict[str, object], field: str, context: str) -> object:
-    if field not in mapping:
-        raise ValueError(f"{context}缺少{field}字段")
-    return mapping[field]
-
-
-def _number(value: object, field: str, record_number: int) -> float:
-    if isinstance(value, bool) or not isinstance(value, (int, float)):
-        raise ValueError(f"第{record_number}条记录的{field}必须是数字")
-    return float(value)
-
-
-def _tags(value: object, record_number: int) -> list[str]:
-    if not isinstance(value, list):
-        raise ValueError(f"第{record_number}条记录的tags必须是列表")
-
-    validated: list[str] = []
-    for tag in value:
-        if not isinstance(tag, str):
-            raise ValueError(
-                f"第{record_number}条记录的tags必须只包含字符串"
-            )
-        validated.append(tag)
-    return validated
-
-
-def _record(value: object, record_number: int) -> StudyRecord:
-    context = f"第{record_number}条记录"
-    mapping = _as_string_key_dict(value, context)
-
-    course = _required(mapping, "course", context)
-    if not isinstance(course, str) or not course.strip():
-        raise ValueError(f"{context}的course必须是非空字符串")
-
-    target = _number(
-        _required(mapping, "target_hours", context),
-        "target_hours",
-        record_number,
-    )
-    finished = _number(
-        _required(mapping, "finished_hours", context),
-        "finished_hours",
-        record_number,
-    )
-    tags = _tags(_required(mapping, "tags", context), record_number)
-
-    if target <= 0.0:
-        raise ValueError(f"{context}的target_hours必须大于0")
-    if finished < 0.0:
-        raise ValueError(f"{context}的finished_hours不能小于0")
-
-    return StudyRecord(
-        course=course,
-        target_hours=target,
-        finished_hours=finished,
-        tags=tags,
-    )
-
-
-def validate_document(document: object) -> list[StudyRecord]:
-    root = _as_string_key_dict(document, "JSON根结构")
-    records = _required(root, "records", "JSON根结构")
-    if not isinstance(records, list):
-        raise ValueError("records必须是列表")
-
-    validated: list[StudyRecord] = []
-    for index, record in enumerate(records, start=1):
-        validated.append(_record(record, index))
-    return validated
-
-
-def load_records(path: Path) -> list[StudyRecord]:
-    text = path.read_text(encoding="utf-8")
-    document: object = json.loads(text)
-    return validate_document(document)
-```
-
-`json.loads()`的类型信息无法证明实际JSON结构。代码立刻把结果收进`object`边界，然后逐层检查并重新构造`StudyRecord`，没有使用`cast()`假装数据已经可信。
-
-### 程序入口
-
-```python title="main.py"
-import json
-import sys
-from pathlib import Path
-from typing import Final
-
-from analysis import summarize_records
-from data_io import load_records
-from models import Summary
-
-
-PROJECT_ROOT: Final = Path(__file__).resolve().parent
-INPUT_PATH: Final = PROJECT_ROOT / "data" / "study_records.json"
-
-
-def build_report(summary: Summary) -> str:
-    total_target, total_finished, course_lines, tags = summary
-    lines = [
-        "学习进度报告",
-        f"总计划：{total_target:g} 小时",
-        f"总完成：{total_finished:g} 小时",
-        "课程状态：",
-    ]
-    lines.extend(course_lines or ("- 暂无记录",))
-    lines.append(f'唯一标签：{", ".join(tags) if tags else "无"}')
-    return "\n".join(lines) + "\n"
-
-
-def run(input_path: Path = INPUT_PATH) -> str:
-    records = load_records(input_path)
-    report = build_report(summarize_records(records))
-    print(report, end="")
-    return report
-
-
-def main(input_path: Path = INPUT_PATH) -> int:
-    try:
-        run(input_path)
-    except FileNotFoundError as error:
-        print(f"输入错误：找不到文件 {error.filename}", file=sys.stderr)
-        return 1
-    except json.JSONDecodeError as error:
-        print(
-            f"输入错误：JSON格式无效，第{error.lineno}行，"
-            f"第{error.colno}列",
-            file=sys.stderr,
-        )
-        return 1
-    except ValueError as error:
-        print(f"输入错误：{error}", file=sys.stderr)
-        return 1
-    return 0
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())
-```
-
-### 固定JSON样例
-
-```json title="data/study_records.json"
-{
-  "records": [
-    {
-      "course": "Python类型",
-      "target_hours": 6,
-      "finished_hours": 4,
-      "tags": ["Python", "类型"]
-    },
-    {
-      "course": "C++构建",
-      "target_hours": 5,
-      "finished_hours": 5,
-      "tags": ["C++", "类型"]
-    }
-  ]
-}
-```
-
-### 最小回归测试
-
-```python title="tests/test_typed_reporter.py"
-import json
-import tempfile
-import unittest
-from pathlib import Path
-
-from analysis import summarize_records
-from data_io import load_records
-from main import build_report, main
-
-
-class TypedReporterTests(unittest.TestCase):
-    def write_document(self, directory: str, document: object) -> Path:
-        path = Path(directory) / "records.json"
-        path.write_text(
-            json.dumps(document, ensure_ascii=False),
-            encoding="utf-8",
-        )
-        return path
-
-    def test_report_matches_existing_behavior(self) -> None:
-        with tempfile.TemporaryDirectory() as directory:
-            path = self.write_document(
-                directory,
-                {
-                    "records": [
-                        {
-                            "course": "Python类型",
-                            "target_hours": 6,
-                            "finished_hours": 4,
-                            "tags": ["Python", "类型"],
-                        },
-                        {
-                            "course": "C++构建",
-                            "target_hours": 5,
-                            "finished_hours": 5,
-                            "tags": ["C++", "类型"],
-                        },
-                    ]
-                },
-            )
-
-            report = build_report(summarize_records(load_records(path)))
-
-            self.assertEqual(
-                report,
-                "学习进度报告\n"
-                "总计划：11 小时\n"
-                "总完成：9 小时\n"
-                "课程状态：\n"
-                "- Python类型: 67%，还需 2 小时\n"
-                "- C++构建: 100%，已完成\n"
-                "唯一标签：C++, Python, 类型\n",
-            )
-
-    def test_input_is_not_modified(self) -> None:
-        with tempfile.TemporaryDirectory() as directory:
-            path = self.write_document(directory, {"records": []})
-            before = path.read_bytes()
-            load_records(path)
-            self.assertEqual(path.read_bytes(), before)
-
-    def test_bad_field_type_is_rejected_at_runtime(self) -> None:
-        with tempfile.TemporaryDirectory() as directory:
-            path = self.write_document(
-                directory,
-                {
-                    "records": [
-                        {
-                            "course": "Python类型",
-                            "target_hours": "six",
-                            "finished_hours": 4,
-                            "tags": ["Python"],
-                        }
-                    ]
-                },
-            )
-            with self.assertRaisesRegex(ValueError, "target_hours必须是数字"):
-                load_records(path)
-
-    def test_invalid_document_returns_nonzero(self) -> None:
-        with tempfile.TemporaryDirectory() as directory:
-            path = self.write_document(directory, {"records": "not-a-list"})
-            self.assertEqual(main(path), 1)
-
-
-if __name__ == "__main__":
-    unittest.main()
-```
-
-## 安装、检查和运行
-
-创建隔离环境：
-
-```bash
-python3 -m venv .venv
-```
-
-macOS/Linux：
-
-```bash
-.venv/bin/python -m pip install -r requirements-dev.txt
-.venv/bin/python -m mypy --version
-.venv/bin/python -m mypy --strict .
-.venv/bin/python -m unittest discover -s tests -v
-.venv/bin/python main.py
-```
-
-Windows PowerShell：
-
-```powershell
-.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
-.venv\Scripts\python.exe -m mypy --version
-.venv\Scripts\python.exe -m mypy --strict .
-.venv\Scripts\python.exe -m unittest discover -s tests -v
-.venv\Scripts\python.exe main.py
-```
-
-预期静态检查结果：
-
-```text
-Success: no issues found in 5 source files
-```
-
-文件数量可能因mypy版本和发现规则略有不同；验收依据是零错误和退出码`0`。
-
-预期程序关键输出：
-
-```text
-学习进度报告
-总计划：11 小时
-总完成：9 小时
-课程状态：
-- Python类型: 67%，还需 2 小时
-- C++构建: 100%，已完成
-唯一标签：C++, Python, 类型
-```
-
-## 让静态检查真正失败
-
-### 错误参数
-
-在临时文件`type_errors.py`中加入：
-
-```python title="type_errors.py"
-from analysis import calculate_progress
-
-
-calculate_progress("10", 5.0)
-```
-
-运行：
-
-```bash
-.venv/bin/python -m mypy --strict type_errors.py
-```
-
-mypy应报告第一个参数期望`float`、实际是`str`，并返回非零退出码。
-
-### TypedDict缺字段
-
-```python
-from models import StudyRecord
-
-
-record: StudyRecord = {
-    "course": "Python类型",
-    "target_hours": 5.0,
-    "finished_hours": 2.0,
-}
-```
-
-静态检查应指出缺少`tags`。这只能检查源码中可见的构造位置，不能检查运行时读取的JSON。
-
-### 错误返回类型
-
-```python
+~~~python
 def progress_label(progress: float) -> str:
     return progress
-```
+~~~
 
-检查器应指出函数承诺返回`str`，实际返回`float`。
+mypy 应指出函数承诺返回 <code>str</code>，实际返回 <code>float</code>，并以非零状态结束。阅读诊断时别只看“失败”，至少找出文件、行号、错误类别、期望类型和实际类型。
 
-修复或删除临时错误文件后，重新运行整个目录的严格检查和全部测试。
+第二种错误来自运行数据：
 
-## AI协作任务
+~~~python
+raw: object = {
+    "course_name": "Python 核心",
+    "target_hours": "ten",
+    "completed_hours": 4.0,
+    "tags": ["python"],
+}
+~~~
 
-### 可复用提示模板
+这段变量故意标成 <code>object</code>，静态检查无法也不该猜测 JSON 内部一定正确。<code>validate_record(raw)</code> 必须在运行时拒绝字符串形式的目标小时。
 
-```text
-请为这个Python 3.11多模块程序补充类型提示，并使其通过mypy --strict。
-外部JSON必须从object边界开始并执行运行时校验；
-使用TypedDict表达已验证记录，使用Sequence表达只读输入；
-不要用Any、cast、# type: ignore或assert跳过问题；
-不要改变业务输出、输入只读行为和现有异常边界。
-请列出每个接口的输入、输出、是否修改数据，以及仍需运行时测试的风险。
-```
+修复源码错误后重跑 mypy；修复输入错误后重跑程序与测试。不要用 <code>Any</code>、<code>cast()</code> 或忽略注释把两类问题盖住。
 
-### 人工审阅清单
+</section>
 
-- AI是否把`json.loads()`结果直接标成`StudyRecord`。
-- 是否用`Any`让诊断消失，而不是缩小动态边界。
-- 是否在没有运行证据时使用`cast()`。
-- 是否用`assert`替代用户数据校验。
-- 是否添加了没有语义价值的重复注解。
-- 是否把只读参数错误标成必须是`list`。
-- 类型化前后报告、错误信息和输入只读行为是否一致。
+<section id="modify-type-contract" data-learning-context="modify-type-contract" data-context-type="modify" markdown="1">
 
-主动修改一项规则：允许调用者向分析函数传入元组形式的记录序列，并用mypy和测试证明`Sequence`接口有效。
+## 增加一条可选备注
 
-## 核心手动检查点
+给独立例子增加：
 
-### 检查点1：证明注解不拦截运行
+~~~python
+weekly_note: str | None
+~~~
 
-运行`annotations_are_not_guards.py`，记录实际输出；再运行mypy，比较运行时与静态检查的不同结论。
+这不是只改 <code>TypedDict</code> 一行。你还需要同步：
 
-### 检查点2：阅读一条完整诊断
+1. 运行时校验：字段缺失时是否允许，存在时是否必须为字符串。
+2. 构造位置：每条 <code>StudyRecord</code> 都要满足新契约。
+3. 输出行为：有备注时显示，没有时保持原报告不变。
+4. 测试：至少覆盖字符串、<code>None</code> 和错误数字三种输入。
 
-制造字符串参数错误，指出文件、行列、错误类型、期望类型和实际类型。不要只记录“mypy失败”。
+完成后让 mypy、正常运行和错误输入测试都通过。若只是把字段标成 <code>Any</code>，这次练习就没有解决问题。
 
-### 检查点3：追踪类型缩窄
+</section>
 
-从`document: object`开始，逐行说明`isinstance()`之后检查器知道了什么，以及业务范围检查为何仍需自己编写。
+<section id="project-reporter-types" data-learning-context="project-reporter-types" data-context-type="project" markdown="1">
 
-### 检查点4：识别`TypedDict`边界
+## 给报告器画一张接口清单
 
-分别测试源码中缺字段的`StudyRecord`和JSON中缺字段的对象。说明前者由mypy发现，后者必须由运行时校验发现。
+仓库里的双语言学习进度报告器已经继续演进到数据类、生成器、上下文管理、CLI 和配置版本。本课**不要把当前项目倒退回 TypedDict**；独立例子代表类型化阶段的历史快照，正式项目只做回归和接口审计。
 
-### 检查点5：删除逃生口
+从当前 Python 项目选择四个公开边界，写下：
 
-让AI生成一个使用`Any`、`cast()`或`type: ignore`的修复，再把逃生口删除，使用真实校验或准确签名解决诊断。
+| 边界 | 输入 | 输出 | 谁负责运行时校验 | 是否修改输入 |
+| --- | --- | --- | --- | --- |
+| `summarize()` | `Iterable[StudyRecord]` | `StudySummary` | 调用前的数据入口 | 否 |
+| `build_report()` | `Iterable[StudyRecord]` | `str` | 已接收可信对象 | 否 |
+| `write_audit_snapshot()` | 记录与 `Path` | `bool` | 文件系统操作 | 否 |
+| `main()` | CLI 参数 | 退出码 | CLI 和配置边界 | 否 |
 
-### 检查点6：与C++对照
+然后运行项目当前的严格检查和全部测试，确认本课的接口理解没有破坏最终版本：
 
-说明C++窄化错误、Python错误参数诊断分别发生在哪个阶段；如果跳过mypy，两者的结果有什么差异。
+~~~bash
+cd exercises/programming-languages/study-progress-reporters/python
+../../../../.venv/bin/python -m mypy --strict .
+../../../../.venv/bin/python -m unittest discover -s tests -v
+~~~
 
-## 微练习
+路径以仓库根目录的虚拟环境为例；如果你在项目内另建环境，使用那个环境里的 Python。
 
-1. 为三个已有函数补齐参数和返回类型，运行严格检查。
-2. 使用`str | None`表示可选课程名，并在调用位置完成缩窄。
-3. 分别用`list[str]`和`tuple[str, ...]`表达可变与固定输出。
-4. 构造缺少`tags`的`StudyRecord`，阅读静态诊断并修复。
-5. 构造字段类型错误的JSON，证明运行时校验仍然生效。
-6. 把一个`Any`参数改为`object`，补齐必要的`isinstance()`检查。
-7. 证明`cast(str, 42)`不会执行字符串转换。
-8. 故意返回错误类型，确认mypy失败；修复后运行全部检查和测试。
+</section>
 
-## 阶段作品线索
+<section id="deepen-structural-types" data-learning-context="deepen-structural-types" data-context-type="deepen" markdown="1">
 
-本节的类型化报告器只存在于课程正文，不创建新练习目录，也不修改Python起步阶段作品。它与上一节C++学习状态卡共同积累以下能力：
+## 类型应该表达需要的能力
 
-- 两种语言的类型契约和检查时机对照。
-- 相同学习数据场景下的输入边界。
-- 静态检查、运行校验和测试证据。
-- 后续函数接口和多文件组织的基础。
+把参数写成 <code>list[StudyRecord]</code> 往往只是照着当前调用者抄类型。更好的问题是：函数真正需要什么？
 
-完成C++函数组织和后续Python接口课程后，再判断是否形成双语言阶段作品。
+- 只遍历一次：后续会学习 <code>Iterable</code>。
+- 需要多次遍历、长度和下标：<code>Sequence</code> 更准确。
+- 需要修改列表：才要求 <code>list</code> 或更具体的可变接口。
+- 只需要某个方法：后续会使用 <code>Protocol</code> 描述结构化能力。
 
-## 常见错误与排查
+越宽泛的接口不一定越好，越具体也不一定越安全。合适的接口应该刚好表达实现真正依赖的能力，同时让不必要的调用无法发生。
 
-| 现象 | 常见原因 | 检查方法 | 修复方向 |
-| --- | --- | --- | --- |
-| `No module named mypy` | 安装到了其他解释器 | 检查`sys.executable`和pip归属 | 使用当前虚拟环境的`python -m pip` |
-| mypy显示版本不一致 | 未按课程固定版本安装 | 运行`python -m mypy --version` | 重新安装`requirements-dev.txt` |
-| 大量`no-untyped-def` | 函数接口未标注 | 从公开模块边界开始 | 补充真实参数和返回类型 |
-| 加注解后程序仍接受错误值 | 把注解误当运行时校验 | 直接运行错误调用 | 在外部边界主动校验 |
-| JSON通过mypy但运行失败 | 直接信任动态数据 | 检查`json.loads()`后的路径 | 从`object`逐层验证 |
-| `Any`让错误全部消失 | 类型检查被绕过 | 搜索`Any`传播路径 | 缩小边界并改用`object` |
-| `cast()`后运行崩溃 | cast没有运行时转换 | 查看实际`type()` | 使用真实转换或`isinstance()` |
-| `TypedDict`运行时没有校验 | 它运行时只是dict | 打印`type(record)` | 保留独立校验函数 |
-| `Sequence`中不能`append` | 接口只承诺读取能力 | 检查函数职责 | 需要修改时明确复制或改接口 |
-| `type`语句出现语法错误 | 使用Python 3.11运行3.12语法 | 查看Python版本 | 使用`TypeAlias`兼容写法 |
-| 为通过检查添加`type: ignore` | 没有解决真实类型矛盾 | 删除ignore重新检查 | 修正签名、数据或校验逻辑 |
-| mypy通过但测试失败 | 静态契约不等于行为正确 | 阅读测试差异 | 修复业务行为并回归 |
+类型检查也有边界：它不能证明除数不为零、小时数一定非负、路径一定存在或报告百分比一定算对。这些仍属于业务规则与运行测试。
 
-## 完成标准
+</section>
 
-- 能区分Python运行时类型、类型提示和mypy静态检查。
-- 能说明Python与C++类型检查发生阶段的根本差异。
-- 能为函数、容器、可选值和复杂返回结果添加准确类型。
-- 能使用`TypeAlias`和`TypedDict`表达接口，不把它们误认为运行时校验器。
-- 能使用`Sequence`表达只读能力边界。
-- 能解释`object`、`Any`和`cast()`的不同风险。
-- 能从`object`开始校验JSON，并构造真正的`StudyRecord`。
-- 能使完整示例通过`mypy --strict`且零错误。
-- 能故意制造参数、缺字段和返回类型错误，并确认检查器非零退出。
-- 能通过unittest验证正常报告、输入只读和运行时错误字段。
-- 能证明类型化前后正常业务结果保持一致。
-- 能审阅AI标注，删除至少一个不必要的类型逃生口。
-- 能说明为什么静态检查、运行时校验和测试必须同时保留。
+<section id="career-type-evidence" data-learning-context="career-type-evidence" data-context-type="career" markdown="1">
+
+## “加了类型提示”还不算完整成果
+
+项目表达时，比“我给 Python 代码加了注解”更有价值的是说明你解决了哪类接口问题：
+
+> 我把外部 JSON 先收进 `object` 边界，经过字段和业务规则校验后才构造内部类型；模块接口使用 `Sequence`、`Iterable` 和明确返回类型，通过 mypy 严格模式、运行测试和错误输入测试分别验证静态契约与真实行为。类型化前后主报告保持一致。
+
+若被追问“mypy 通过后为什么还要校验 JSON”，可以直接回答：静态检查分析的是代码里的类型关系，不会替我检查某次运行读到的外部内容；外部数据必须在信任边界执行运行时校验。
+
+这里不要夸大成“消灭了所有类型错误”。更准确的说法是：缩小了动态数据传播范围，让一部分接口冲突提前暴露，并保留了运行时和测试层的防线。
+
+</section>
+
+## 完成检查
+
+- [ ] 我能解释类型提示、mypy、运行时校验和 unittest 的分工。
+- [ ] 我亲自证明过函数注解不会自动拦截错误参数。
+- [ ] 我能写出容器、`X | None` 和 `TypeAlias` 的准确例子。
+- [ ] 我知道 `TypedDict` 在运行时仍是普通字典。
+- [ ] 我能说明何时用 `Sequence`，而不是把所有输入都写成 `list`。
+- [ ] 我能区分 `object`、`Any` 和 `cast()`，没有用它们掩盖错误。
+- [ ] 我运行了严格 mypy 检查和类型契约例子。
+- [ ] 我分别复现了一次静态错误和一次坏 JSON 运行错误。
+- [ ] 我增加了可选备注，并同步校验、构造、输出和测试。
+- [ ] 我为当前报告器写下接口清单，并确认最终项目回归通过。
 
 ## 来源与版本
 
-| 来源 | 用于核查 | 版本或日期 | 状态 |
-| --- | --- | --- | --- |
-| [Python 3.11 `typing`](https://docs.python.org/3.11/library/typing.html) | TypeAlias、TypedDict、Any、object和容器类型 | Python 3.11文档，2026-07-14核查 | 已验证 |
-| [Python类型系统规范](https://typing.python.org/en/latest/spec/type-system.html) | 类型提示目标、动态类型与运行时检查边界 | 2026-07-14核查 | 已验证 |
-| [mypy入门](https://mypy.readthedocs.io/en/stable/getting_started.html) | 安装、运行和渐进类型检查 | mypy 2.2文档，2026-07-14核查 | 已验证 |
-| [mypy命令行](https://mypy.readthedocs.io/en/stable/command_line.html) | `--strict`与退出行为 | mypy 2.2文档，2026-07-14核查 | 已验证 |
-| [mypy类型缩窄](https://mypy.readthedocs.io/en/stable/type_narrowing.html) | `isinstance()`后的类型缩窄 | mypy 2.2文档，2026-07-14核查 | 已验证 |
-| [mypy TypedDict](https://mypy.readthedocs.io/en/stable/typed_dict.html) | 固定字典结构和字段检查 | mypy 2.2文档，2026-07-14核查 | 已验证 |
-| [mypy 2.2.0 PyPI](https://pypi.org/project/mypy/2.2.0/) | 固定工具版本和Python 3.11兼容性 | 2026-07-14核查 | 已验证 |
+- 适用版本：Python 3.11 及以上；mypy 2.2.0 严格模式。
+- 核查日期：2026-07-17。
+- 事实来源：[Python `typing` 文档](https://docs.python.org/3.11/library/typing.html)用于类型提示、`TypedDict`、`TypeAlias`、`Any`、`cast()`和运行时边界；[Python `collections.abc`](https://docs.python.org/3.11/library/collections.abc.html)用于 `Sequence` 等容器接口；[mypy 类型提示速查](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html)与[严格配置](https://mypy.readthedocs.io/en/stable/config_file.html)用于静态检查行为和命令。
+- 代码验证：仓库脚本运行严格 mypy、正常记录、元组输入、坏字段、缺字段、布尔数字拒绝、输入不变和静态错误退出码；不联网。
 
 ## 下一步
 
-第一组“构建与类型”配对完成。下一节回到 C++，学习[函数、声明与程序组织](../cpp-core/02-functions-declarations-program-organization.md)：区分声明和定义，理解参数、返回值、作用域与重载，并把单文件学习状态卡拆成职责清楚的函数，为后续头文件、源文件和CMake做准备。
+进入[可维护函数接口、协议与模块边界](02-maintainable-function-interfaces-protocols-modules.md)，把单个类型标注扩展成模块之间可替换、可测试的公开接口。
+
+[进入下一课](02-maintainable-function-interfaces-protocols-modules.md){ .md-button .md-button--primary }

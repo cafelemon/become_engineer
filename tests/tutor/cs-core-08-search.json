@@ -1,20 +1,24 @@
-[
-  { "query": "队列模式的固定输出要证明什么？", "step_id": "step-1", "expected": "queue-output-baseline" },
-  { "query": "queue首次成功为何要先核对stack输出", "step_id": "step-1", "expected": "queue-output-baseline" },
-  { "query": "队列的 FIFO 契约是什么？", "step_id": "step-2", "expected": "fifo-contract" },
-  { "query": "先进先出时enqueue和dequeue分别在哪一端", "step_id": "step-2", "expected": "fifo-contract" },
-  { "query": "链式队列的 head 和 tail 不变量是什么？", "step_id": "step-2", "expected": "queue-endpoint-invariant" },
-  { "query": "空队列和单元素队列的首尾各指向哪里", "step_id": "step-2", "expected": "queue-endpoint-invariant" },
-  { "query": "维护尾指针为什么让入队成为常量时间？", "step_id": "step-3", "expected": "queue-constant-operations" },
-  { "query": "链式队列enqueue为何不需要从头遍历", "step_id": "step-3", "expected": "queue-constant-operations" },
-  { "query": "C++ 队列的 tail 为什么只是非拥有观察指针？", "step_id": "step-3", "expected": "non-owning-tail" },
-  { "query": "tail为何不能形成第二条unique_ptr所有权链", "step_id": "step-3", "expected": "non-owning-tail" },
-  { "query": "删除队列最后一个元素时为什么必须清空 tail？", "step_id": "step-4", "expected": "singleton-tail-reset" },
-  { "query": "出队单元素后尾指针不重置有什么风险", "step_id": "step-4", "expected": "singleton-tail-reset" },
-  { "query": "怎样验证队列清空后还能重新使用？", "step_id": "step-4", "expected": "queue-reuse-after-empty" },
-  { "query": "重新入队怎样暴露残留tail问题", "step_id": "step-4", "expected": "queue-reuse-after-empty" },
-  { "query": "为什么 Python 队列不应使用 list.pop(0)？", "step_id": "step-5", "expected": "queue-standard-boundary" },
-  { "query": "deque和list头部删除的复杂度有什么差异", "step_id": "step-5", "expected": "queue-standard-boundary" },
-  { "query": "serve_until_empty 迁移任务要验收什么？", "step_id": "step-6", "expected": "serve-queue-migration" },
-  { "query": "排空队列怎样保持FIFO并保护原输入", "step_id": "step-6", "expected": "serve-queue-migration" }
-]
+{
+  "lesson_id":"cs-core-08",
+  "cases":[
+    {"query":"队列报告为什么先出 7 而不是 9？","expected_card":"queue-output"},{"query":"front7 back9怎样看","expected_card":"queue-output"},
+    {"query":"队列的 FIFO 契约是什么？","expected_card":"fifo-contract"},{"query":"enqueue和dequeue在哪两端","expected_card":"fifo-contract"},
+    {"query":"enqueue、dequeue、front、back 分别做什么？","expected_card":"queue-operations"},{"query":"front back会不会删除","expected_card":"queue-operations"},
+    {"query":"空队列入队第一个值时，head 和 tail 怎样变化？","expected_card":"queue-state-trace"},{"query":"单元素队列首尾指向哪里","expected_card":"queue-state-trace"},
+    {"query":"链式队列的首尾不变量有哪些？","expected_card":"endpoint-invariants"},{"query":"tail next为什么必须为空","expected_card":"endpoint-invariants"},
+    {"query":"C++ 队列为什么 head 拥有节点，tail 只观察？","expected_card":"owning-head-observing-tail"},{"query":"tail为什么不是第二个unique ptr","expected_card":"owning-head-observing-tail"},
+    {"query":"维护 tail 为什么让 enqueue 变成 Θ(1)？","expected_card":"queue-constant-operations"},{"query":"链式队列入队为何不遍历","expected_card":"queue-constant-operations"},
+    {"query":"删除最后一个元素时为什么必须清空 tail？","expected_card":"last-dequeue-tail-reset"},{"query":"悬空尾指针怎样产生","expected_card":"last-dequeue-tail-reset"},
+    {"query":"链式队列小程序要重点核对哪三种状态？","expected_card":"run-queue-micro"},{"query":"linked_queue_trace怎么跑","expected_card":"run-queue-micro"},
+    {"query":"队列课为什么仍要回归 linked 和 stack？","expected_card":"bilingual-queue-regression"},{"query":"Python C++队列报告怎样比","expected_card":"bilingual-queue-regression"},
+    {"query":"队列里两个相同的 4 会合并吗？","expected_card":"duplicate-queue-state"},{"query":"第一次dequeue哪个4","expected_card":"duplicate-queue-state"},
+    {"query":"serve_until_empty 应该返回什么顺序？","expected_card":"serve-until-empty"},{"query":"7 3 9服务顺序","expected_card":"serve-until-empty"},
+    {"query":"serve_until_empty 为什么不能直接删输入列表？","expected_card":"queue-input-unchanged"},{"query":"为什么不用list pop0","expected_card":"queue-input-unchanged"},
+    {"query":"空队列 dequeue、front、back 应怎样失败？","expected_card":"queue-underflow"},{"query":"队列下溢异常是什么","expected_card":"queue-underflow"},
+    {"query":"清空后 back 还能读到旧值，应该查哪里？","expected_card":"fix-queue-endpoints"},{"query":"队列空了尾指针还在","expected_card":"fix-queue-endpoints"},
+    {"query":"队列课怎样完成线性结构的小闭环？","expected_card":"project-linear-queue"},{"query":"链表栈队列怎样连起来","expected_card":"project-linear-queue"},
+    {"query":"正式项目有 deque 和 std::queue，为什么还手写链式队列？","expected_card":"standard-queue-boundary"},{"query":"标准库队列和教学实现怎样取舍","expected_card":"standard-queue-boundary"},
+    {"query":"面试里怎样把链式队列讲完整？","expected_card":"career-queue"},{"query":"如何解释非拥有tail","expected_card":"career-queue"}
+  ],
+  "unknown":["怎样判断西瓜是否成熟","通勤背包需要多大容量"]
+}

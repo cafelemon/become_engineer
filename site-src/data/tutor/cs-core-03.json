@@ -1,23 +1,701 @@
 {
-  "version": 1,
-  "lesson": {"id": "cs-core-03", "title": "字符串、UTF-8 字节与码点边界", "path": "learning-paths/cs-core/03-string-utf8-byte-code-point-boundaries/"},
-  "steps": [
-    {"id":"step-1","title":"锁定旧报告并运行文本模式"},
-    {"id":"step-2","title":"区分文本、字节和码点"},
-    {"id":"step-3","title":"严格 UTF-8 扫描"},
-    {"id":"step-4","title":"Python 与 C++ 字符串视图"},
-    {"id":"step-5","title":"非法与截断序列"},
-    {"id":"step-6","title":"扫描分类迁移验收"}
+  "version": 2,
+  "lesson": {
+    "id": "cs-core-03",
+    "title": "字符串、UTF-8 字节与码点边界",
+    "path": "learning-paths/cs-core/03-string-utf8-byte-code-point-boundaries/"
+  },
+  "contexts": [
+    {
+      "id": "overview-text-units",
+      "type": "overview",
+      "title": "A工🧪的长度到底是 3 还是 8",
+      "anchor": "#overview-text-units"
+    },
+    {
+      "id": "concept-text-codepoint-byte",
+      "type": "concept",
+      "title": "文本、码点和字节不是一回事",
+      "anchor": "#concept-text-codepoint-byte"
+    },
+    {
+      "id": "concept-python-boundary",
+      "type": "concept",
+      "title": "Python 把编码边界写得很清楚",
+      "anchor": "#concept-python-boundary"
+    },
+    {
+      "id": "example-count-units",
+      "type": "example",
+      "title": "先预测四组长度",
+      "anchor": "#example-count-units"
+    },
+    {
+      "id": "reproduce-text-trace",
+      "type": "reproduce",
+      "title": "把单位写进结果里",
+      "anchor": "#reproduce-text-trace"
+    },
+    {
+      "id": "concept-grapheme",
+      "type": "concept",
+      "title": "码点数也不一定等于看起来几个字",
+      "anchor": "#concept-grapheme"
+    },
+    {
+      "id": "troubleshoot-invalid-utf8",
+      "type": "troubleshoot",
+      "title": "字节不完整时，不要悄悄猜",
+      "anchor": "#troubleshoot-invalid-utf8"
+    },
+    {
+      "id": "modify-new-text",
+      "type": "modify",
+      "title": "换成你自己的文本",
+      "anchor": "#modify-new-text"
+    },
+    {
+      "id": "project-report-text",
+      "type": "project",
+      "title": "检查报告器的文本边界",
+      "anchor": "#project-report-text"
+    },
+    {
+      "id": "deepen-normalization",
+      "type": "deepen",
+      "title": "看起来相同，不代表字节相同",
+      "anchor": "#deepen-normalization"
+    },
+    {
+      "id": "career-text-boundary",
+      "type": "career",
+      "title": "遇到截断到 20 个字符时先追问",
+      "anchor": "#career-text-boundary"
+    }
   ],
   "cards": [
-    {"id":"utf8-output-baseline","lesson_id":"cs-core-03","step_id":"step-1","question":"文本课开始前要锁定哪些输出？","aliases":["UTF-8模式基线是什么","为什么默认报告不能改","为什么新增UTF-8模式不能改默认数组报告"],"keywords":["baseline","text","默认报告","逐字一致","回归"],"diagnostic":"无参数报告是否仍与 V2.1 完全相同，text 模式是否独立输出？","hints":["先运行无参数和 baseline 两种入口。","再分别比较 Python/C++ 的 text 输出，新增内容不要拼进旧报告。"],"example":"旧报告仍从“可追踪数组实验”开始，text 从“UTF-8 扫描”开始。","answer":"独立模式让后续课程增加证据而不破坏前两课冻结的默认契约。","source":{"label":"第一步：锁定旧报告并运行文本模式","href":"#step-1"},"updated_at":"2026-07-16","recommended":true},
-    {"id":"text-byte-codepoint-units","lesson_id":"cs-core-03","step_id":"step-2","question":"字节、Unicode 码点和文本有什么区别？","aliases":["字符串长度单位怎么说明","为什么A工试管是8字节3码点"],"keywords":["字节","码点","文本","UTF-8","长度单位"],"diagnostic":"当前数字描述编码后的字节，还是编码前的 Unicode 码点？","hints":["Python str 是 Unicode 码点序列，encode 后才是 bytes。","UTF-8 是变宽编码；同一文本的字节数可以大于码点数。"],"example":"A 占1字节，工占3字节，🧪占4字节，共8字节3码点。","answer":"长度必须带计数单位；本课不把码点进一步等同于字形簇或屏幕宽度。","source":{"label":"第二步：区分文本、字节和码点","href":"#step-2"},"updated_at":"2026-07-16","recommended":true},
-    {"id":"python-str-bytes-boundary","lesson_id":"cs-core-03","step_id":"step-2","question":"Python str 和 bytes 应怎样分工？","aliases":["什么时候encode UTF-8","bytes为什么不是文本"],"keywords":["Python","str","bytes","encode","decode"],"diagnostic":"函数收到的是已经解码的文本，还是仍需验证编码的原始字节？","hints":["str 用于 Unicode 文本操作，bytes 用于编码后的二进制序列。","本实验接收 bytes，以 strict UTF-8 decode 验证后再统计码点。"],"example":"data = text.encode('utf-8')；data.decode('utf-8', errors='strict')。","answer":"显式编码边界能避免把二进制内容误当文本，也能让非法 UTF-8 走受控失败。","source":{"label":"第二步：区分文本、字节和码点","href":"#step-2"},"updated_at":"2026-07-16"},
-    {"id":"strict-utf8-scan","lesson_id":"cs-core-03","step_id":"step-3","question":"严格 UTF-8 扫描需要验证什么？","aliases":["C++ UTF-8验证步骤","起始字节和续字节怎么检查"],"keywords":["严格扫描","起始字节","续字节","宽度","验证"],"diagnostic":"实现是否先确定宽度、检查剩余长度，再读取所有续字节？","hints":["起始字节决定1到4字节宽度，续字节必须在80到BF。","还要检查最短表示、代理项和 U+10FFFF 上限。"],"example":"E5 B7 A5 是合法三字节序列；E5 B7 是截断。","answer":"完整验证顺序既保证 Unicode 合法性，也避免 C++ 在失败输入上越界读取。","source":{"label":"第三步：实现严格 UTF-8 扫描","href":"#step-3"},"updated_at":"2026-07-16","recommended":true},
-    {"id":"string-view-lifetime","lesson_id":"cs-core-03","step_id":"step-4","question":"C++ string_view 的生命周期边界是什么？","aliases":["string_view会拥有字符串吗","为什么不能返回临时字符串视图"],"keywords":["string_view","生命周期","非拥有","临时字符串","悬空"],"diagnostic":"视图引用的源字符串是否在整个读取期间仍然存在？","hints":["string_view 只保存指针和长度，不复制也不延长源对象生命。","把它作为同步只读参数；返回计数值，不保存或返回输入视图。"],"example":"调用者持有 std::string data；analyze_utf8(data) 只在调用期借用。","answer":"源存储先销毁会留下悬空视图；非拥有接口必须让生命周期关系可见。","source":{"label":"第四步：对照 Python 与 C++ 字符串视图","href":"#step-4"},"updated_at":"2026-07-16","recommended":true},
-    {"id":"malformed-utf8-families","lesson_id":"cs-core-03","step_id":"step-5","question":"非法 UTF-8 要覆盖哪些失败族？","aliases":["UTF-8失败测试矩阵","截断代理项超范围怎么测"],"keywords":["非法UTF-8","截断","代理项","超范围","错误续字节"],"diagnostic":"测试是否只覆盖一个坏字节，遗漏结构不同的非法序列？","hints":["至少覆盖孤立续字节、错误续字节、过长编码和截断。","再覆盖代理项编码与超过 U+10FFFF 的四字节序列。"],"example":"80、C2 41、C0 AF、ED A0 80、F4 90 80 80、E5 B7。","answer":"不同失败族对应不同验证条件；全部使用固定字节和异常断言，不靠崩溃观察。","source":{"label":"第五步：触发非法与截断序列","href":"#step-5"},"updated_at":"2026-07-16","recommended":true},
-    {"id":"overlong-surrogate-boundary","lesson_id":"cs-core-03","step_id":"step-5","question":"续字节正确为什么仍可能是非法 UTF-8？","aliases":["过长编码是什么","代理项为什么不能UTF-8编码"],"keywords":["过长编码","surrogate","最短表示","U+10FFFF","非法码点"],"diagnostic":"实现是否只检查了10开头的续字节，却没有验证解出的码点范围？","hints":["同一码点必须使用允许的最短字节宽度。","D800到DFFF是代理项范围，UTF-8 也不能编码超过10FFFF的值。"],"example":"C0 AF 试图用两字节表示 ASCII 斜杠，应拒绝。","answer":"字节形状正确只是必要条件，解码后的码点还必须符合 Unicode 标量值约束。","source":{"label":"第五步：触发非法与截断序列","href":"#step-5"},"updated_at":"2026-07-16"},
-    {"id":"utf8-trace-invariant","lesson_id":"cs-core-03","step_id":"step-6","question":"Utf8Trace 应满足什么计数不变量？","aliases":["ascii加multibyte等于什么","UTF-8追踪如何自检","ascii加multibyte为什么等于code point总数"],"keywords":["Utf8Trace","不变量","ascii_count","multibyte_count","code_point_count"],"diagnostic":"分类计数是否覆盖每个已验证码点且没有重复？","hints":["每个合法码点只进入 ASCII 或多字节一类。","因此 ascii_count + multibyte_count 必须等于 code_point_count。"],"example":"A工🧪：1 + 2 = 3。","answer":"不变量把分类逻辑与总码点数绑定，能发现漏计或重复计数。","source":{"label":"第六步：完成扫描分类迁移验收","href":"#step-6"},"updated_at":"2026-07-16","recommended":true},
-    {"id":"codepoint-not-grapheme","lesson_id":"cs-core-03","step_id":"step-6","question":"为什么码点数不能直接叫用户字符数？","aliases":["emoji算几个字符","码点和字形簇有什么区别"],"keywords":["码点","字形簇","用户字符","emoji","组合字符"],"diagnostic":"输入是否可能由多个码点组合成一个用户感知单元？","hints":["组合附加符、旗帜和连接 emoji 都可能含多个码点。","本课只承诺码点统计，字形簇留给后续 Unicode 专题。"],"example":"报告字段明确写 code_points，不写 characters。","answer":"使用准确名称可以阻止基础扫描结论越界成完整文本排版或语言学能力。","source":{"label":"第六步：完成扫描分类迁移验收","href":"#step-6"},"updated_at":"2026-07-16"}
+    {
+      "id": "text-length-units",
+      "lesson_id": "cs-core-03",
+      "context_id": "overview-text-units",
+      "question": "A工🧪的长度为什么既是 3 又是 8？",
+      "aliases": [
+        "同一段文字为什么有两个长度",
+        "字符串长度到底看哪个"
+      ],
+      "keywords": [
+        "A工🧪",
+        "长度",
+        "3",
+        "8",
+        "单位"
+      ],
+      "diagnostic": "你现在数的是 Python 文本中的码点，还是 UTF-8 编码后的字节？",
+      "hints": [
+        "Python len(str) 数这段文本中的码点。",
+        "encode('utf-8') 后再 len() 数字节：A 为1，工为3，🧪为4。"
+      ],
+      "example": "3 个码点编码成 1+3+4=8 个 UTF-8 字节。",
+      "answer": "两个结果的计数单位不同，所以都正确。处理长度限制、截断和存储前必须先写明单位。",
+      "source": {
+        "label": "A工🧪的长度到底是 3 还是 8",
+        "href": "#overview-text-units"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "text-complexity-unit",
+      "lesson_id": "cs-core-03",
+      "context_id": "overview-text-units",
+      "question": "文本课和上一课的输入规模有什么关系？",
+      "aliases": [
+        "为什么字符串长度要先说单位",
+        "文本里的 n 表示什么"
+      ],
+      "keywords": [
+        "输入规模",
+        "n",
+        "文本",
+        "码点",
+        "字节"
+      ],
+      "diagnostic": "你的 n 指码点数、UTF-8 字节数，还是用户看到的字形数？",
+      "hints": [
+        "上一课要求先定义 n，这一课只是把同一原则放到文本上。",
+        "不同单位会改变循环次数、空间限制和边界位置，所以结论要带单位。"
+      ],
+      "example": "扫描 Python str 的 n 可以是码点数；扫描原始 UTF-8 数据的 n 是字节数。",
+      "answer": "复杂度分析与文本边界都依赖清晰的输入规模。单位换了，操作模型和安全边界也要重新说明。",
+      "source": {
+        "label": "A工🧪的长度到底是 3 还是 8",
+        "href": "#overview-text-units"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "text-codepoint-byte",
+      "lesson_id": "cs-core-03",
+      "context_id": "concept-text-codepoint-byte",
+      "question": "文本、Unicode 码点和 UTF-8 字节有什么区别？",
+      "aliases": [
+        "码点和字节是不是一回事",
+        "Unicode 和 UTF8 怎么分"
+      ],
+      "keywords": [
+        "文本",
+        "Unicode",
+        "码点",
+        "UTF-8",
+        "字节"
+      ],
+      "diagnostic": "你描述的是抽象内容、字符编号，还是编码后的传输单元？",
+      "hints": [
+        "码点是 Unicode 分配的编号，例如工是 U+5DE5。",
+        "UTF-8 把码点编码成 1 到 4 个字节，文本是我们真正要表达的内容。"
+      ],
+      "example": "U+5DE5 在 UTF-8 中是 E5 B7 A5。",
+      "answer": "文本、码点和字节处在不同层次。明确层次能避免把编码长度误当文本长度。",
+      "source": {
+        "label": "文本、码点和字节不是一回事",
+        "href": "#concept-text-codepoint-byte"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "text-utf8-width",
+      "lesson_id": "cs-core-03",
+      "context_id": "concept-text-codepoint-byte",
+      "question": "为什么中文和 emoji 占的 UTF-8 字节更多？",
+      "aliases": [
+        "工为什么三个字节",
+        "emoji为什么四个字节"
+      ],
+      "keywords": [
+        "中文",
+        "emoji",
+        "变宽编码",
+        "三字节",
+        "四字节"
+      ],
+      "diagnostic": "你是否把 UTF-8 当成每个码点固定一个字节？",
+      "hints": [
+        "UTF-8 是变宽编码，ASCII 范围占1字节。",
+        "工的码点使用3字节，🧪位于更高范围使用4字节。"
+      ],
+      "example": "A=41；工=E5 B7 A5；🧪=F0 9F A7 AA。",
+      "answer": "UTF-8 根据码点范围使用 1 到 4 字节，因此码点数与字节数通常不能互换。",
+      "source": {
+        "label": "文本、码点和字节不是一回事",
+        "href": "#concept-text-codepoint-byte"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "text-str-bytes",
+      "lesson_id": "cs-core-03",
+      "context_id": "concept-python-boundary",
+      "question": "Python 的 str 和 bytes 应该怎么分工？",
+      "aliases": [
+        "bytes为什么不是文本",
+        "什么时候用str什么时候用bytes",
+        "文件原始字节和程序里的Unicode文本怎么区分"
+      ],
+      "keywords": [
+        "Python",
+        "str",
+        "bytes",
+        "文本",
+        "二进制"
+      ],
+      "diagnostic": "数据已经解码成 Unicode 文本，还是仍处于文件或网络字节层？",
+      "hints": [
+        "str 用于 Unicode 文本操作，bytes 保存原始字节。",
+        "跨文件或网络边界时明确编码；进入业务逻辑后尽量使用 str。"
+      ],
+      "example": "read_text(encoding='utf-8') 返回 str；read_bytes() 返回 bytes。",
+      "answer": "str 与 bytes 分开能让编码边界显式可见，避免二进制内容被误当文本处理。",
+      "source": {
+        "label": "Python 把编码边界写得很清楚",
+        "href": "#concept-python-boundary"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "text-encode-decode",
+      "lesson_id": "cs-core-03",
+      "context_id": "concept-python-boundary",
+      "question": "encode 和 decode 的方向总记反怎么办？",
+      "aliases": [
+        "文本怎样变成UTF8字节",
+        "字节怎样还原成字符串",
+        "字符串变字节和字节还原字符串分别用什么"
+      ],
+      "keywords": [
+        "encode",
+        "decode",
+        "方向",
+        "文本到字节",
+        "字节到文本"
+      ],
+      "diagnostic": "当前变量是 str 还是 bytes，下一层需要哪一种？",
+      "hints": [
+        "encode：str 按编码规则变成 bytes。",
+        "decode：bytes 按编码规则解释成 str；记住文本写出去要编码，字节读进来要解码。"
+      ],
+      "example": "data=text.encode('utf-8'); text=data.decode('utf-8')。",
+      "answer": "从类型出发判断方向最可靠：str.encode() 产生 bytes，bytes.decode() 产生 str。",
+      "source": {
+        "label": "Python 把编码边界写得很清楚",
+        "href": "#concept-python-boundary"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "text-limit-contract",
+      "lesson_id": "cs-core-03",
+      "context_id": "concept-python-boundary",
+      "question": "最多 20 个字符为什么是个含糊需求？",
+      "aliases": [
+        "字符串长度限制要写什么单位",
+        "20字符对中文emoji怎么算"
+      ],
+      "keywords": [
+        "长度限制",
+        "20字符",
+        "码点",
+        "字节",
+        "契约"
+      ],
+      "diagnostic": "限制来自界面、协议字节数、数据库列，还是产品想看到的字形数？",
+      "hints": [
+        "20 个码点和 20 个 UTF-8 字节允许的中文、emoji 数量不同。",
+        "把单位、截断位置和错误处理写进接口契约。"
+      ],
+      "example": "20字节最多放5个四字节emoji，但可以放20个ASCII字母。",
+      "answer": "字符不是足够精确的单位。需求至少要区分码点、编码字节和用户感知字形。",
+      "source": {
+        "label": "Python 把编码边界写得很清楚",
+        "href": "#concept-python-boundary"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "text-predict-counts",
+      "lesson_id": "cs-core-03",
+      "context_id": "example-count-units",
+      "question": "四组文本的码点数和字节数怎样预测？",
+      "aliases": [
+        "ABC工emoji分别多长",
+        "运行例子前怎么手算UTF8长度"
+      ],
+      "keywords": [
+        "预测",
+        "ABC",
+        "工",
+        "🧪",
+        "长度表"
+      ],
+      "diagnostic": "你能先按码点个数数，再按每个码点的 UTF-8 宽度相加吗？",
+      "hints": [
+        "ABC 是3码点3字节；工是1码点3字节。",
+        "🧪是1码点4字节；A工🧪是3码点8字节。"
+      ],
+      "example": "A工🧪：1+3+4=8 字节。",
+      "answer": "先分清两种单位，再逐个码点相加，可以在运行前得到可核对的预测。",
+      "source": {
+        "label": "先预测四组长度",
+        "href": "#example-count-units"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "text-hex-display",
+      "lesson_id": "cs-core-03",
+      "context_id": "example-count-units",
+      "question": "data.hex() 显示的是字符串吗？",
+      "aliases": [
+        "十六进制输出还是bytes吗",
+        "hex空格有什么用"
+      ],
+      "keywords": [
+        "hex",
+        "十六进制",
+        "bytes",
+        "显示",
+        "调试"
+      ],
+      "diagnostic": "你是在查看字节的可读表示，还是把十六进制文字当成原始数据？",
+      "hints": [
+        "原变量仍是 bytes。",
+        "hex() 只把每个字节格式化成两位十六进制文本，方便人工核对。"
+      ],
+      "example": "三个字节 e5 b7 a5 调用 hex(' ') 后仍显示为 e5 b7 a5。",
+      "answer": "hex 输出是调试视图，不改变原始字节，也不等于解码后的 Unicode 文本。",
+      "source": {
+        "label": "先预测四组长度",
+        "href": "#example-count-units"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "text-trace-fields",
+      "lesson_id": "cs-core-03",
+      "context_id": "reproduce-text-trace",
+      "question": "为什么 TextTrace 不直接叫 length？",
+      "aliases": [
+        "结果字段为什么要带单位",
+        "utf8 trace应该保存什么"
+      ],
+      "keywords": [
+        "TextTrace",
+        "字段命名",
+        "code_points",
+        "utf8_bytes",
+        "单位"
+      ],
+      "diagnostic": "调用者看到 length 时，能确定它数的是码点还是字节吗？",
+      "hints": [
+        "分别使用 code_points 和 utf8_bytes。",
+        "再保留 ascii_count、multibyte_count 和 utf8_hex，让分类与编码可核对。"
+      ],
+      "example": "TextTrace(code_points=3, utf8_bytes=8, ...)。",
+      "answer": "把单位写进字段名能减少跨模块误解，也让测试直接断言各自的契约。",
+      "source": {
+        "label": "把单位写进结果里",
+        "href": "#reproduce-text-trace"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "text-trace-invariant",
+      "lesson_id": "cs-core-03",
+      "context_id": "reproduce-text-trace",
+      "question": "ASCII 加多字节码点为什么等于总码点数？",
+      "aliases": [
+        "TextTrace怎么自检",
+        "分类计数的不变量是什么"
+      ],
+      "keywords": [
+        "不变量",
+        "ascii_count",
+        "multibyte_count",
+        "code_points",
+        "分类"
+      ],
+      "diagnostic": "每个码点是否恰好进入 ASCII 或非 ASCII 两类中的一类？",
+      "hints": [
+        "ord(character)<=0x7F 进入 ASCII 类。",
+        "其余码点进入 multibyte 类，两类无重叠且覆盖全部码点。"
+      ],
+      "example": "A工🧪：1+2=3。",
+      "answer": "两类构成完整且互斥的划分，因此计数之和必须等于总码点数，可用于发现漏计或重复。",
+      "source": {
+        "label": "把单位写进结果里",
+        "href": "#reproduce-text-trace"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "text-codepoint-grapheme",
+      "lesson_id": "cs-core-03",
+      "context_id": "concept-grapheme",
+      "question": "为什么码点数不一定等于看起来几个字？",
+      "aliases": [
+        "emoji算几个字符",
+        "码点和字形簇有什么区别"
+      ],
+      "keywords": [
+        "码点",
+        "字形簇",
+        "组合字符",
+        "emoji",
+        "用户看到"
+      ],
+      "diagnostic": "文本是否包含组合重音、旗帜、肤色修饰或连接 emoji？",
+      "hints": [
+        "一个字形簇可以由多个码点共同显示。",
+        "Python len(str) 数码点，不执行完整的 Unicode 字形簇分段。"
+      ],
+      "example": "e加U+0301有2个码点，界面通常显示成一个é。",
+      "answer": "码点是编码层单位，字形簇更接近用户感知字符。字段和需求应明确需要哪一层。",
+      "source": {
+        "label": "码点数也不一定等于看起来几个字",
+        "href": "#concept-grapheme"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "text-strict-decode",
+      "lesson_id": "cs-core-03",
+      "context_id": "troubleshoot-invalid-utf8",
+      "question": "UTF-8 字节被截断时应该怎样处理？",
+      "aliases": [
+        "e5 b7为什么解码失败",
+        "缺少UTF8尾字节怎么办"
+      ],
+      "keywords": [
+        "截断",
+        "UnicodeDecodeError",
+        "strict",
+        "缺字节",
+        "失败"
+      ],
+      "diagnostic": "输入是否缺少当前码点需要的后续字节？",
+      "hints": [
+        "使用 errors='strict' 解码，让 Python 抛出 UnicodeDecodeError。",
+        "记录字节位置和原因，修复输入或传输；不要从数组外继续读。"
+      ],
+      "example": "工需要 e5 b7 a5，只有 e5 b7 时必须失败。",
+      "answer": "严格失败能保持数据完整性和边界安全。截断字节无法可靠还原原码点，不应该猜测。",
+      "source": {
+        "label": "字节不完整时，不要悄悄猜",
+        "href": "#troubleshoot-invalid-utf8"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "text-error-policy",
+      "lesson_id": "cs-core-03",
+      "context_id": "troubleshoot-invalid-utf8",
+      "question": "errors=ignore 和 replace 为什么不能证明输入合法？",
+      "aliases": [
+        "忽略解码错误可以吗",
+        "替换符号会丢数据吗"
+      ],
+      "keywords": [
+        "errors ignore",
+        "errors replace",
+        "严格解码",
+        "丢数据",
+        "替换符"
+      ],
+      "diagnostic": "当前目标是尽量展示内容，还是验证原始字节严格合法？",
+      "hints": [
+        "ignore 会跳过坏字节，replace 会插入替换符。",
+        "两种策略都改变了结果；校验输入时应使用 strict 并处理异常。"
+      ],
+      "example": "在 abc 后追加孤立字节 80，再用 ignore 解码会只得到 abc，却不能说明原字节合法。",
+      "answer": "宽松策略适合某些恢复场景，不适合作为合法性证明。校验和协议边界需要严格失败。",
+      "source": {
+        "label": "字节不完整时，不要悄悄猜",
+        "href": "#troubleshoot-invalid-utf8"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "text-invalid-families",
+      "lesson_id": "cs-core-03",
+      "context_id": "troubleshoot-invalid-utf8",
+      "question": "除了截断，还应该测试哪些非法 UTF-8？",
+      "aliases": [
+        "非法UTF8测试矩阵有哪些",
+        "孤立续字节过长编码怎么测"
+      ],
+      "keywords": [
+        "非法UTF8",
+        "孤立续字节",
+        "过长编码",
+        "超范围",
+        "测试矩阵"
+      ],
+      "diagnostic": "测试是否只覆盖缺尾字节，遗漏其他结构错误？",
+      "hints": [
+        "至少加入孤立续字节、过长编码和超过 U+10FFFF。",
+        "所有输入都用固定 bytes 构造，并断言 UnicodeDecodeError。"
+      ],
+      "example": "80、c0 af、f4 90 80 80 都应严格失败。",
+      "answer": "不同坏数据触发不同编码约束。覆盖多个失败族才能证明代码没有只修一个样例。",
+      "source": {
+        "label": "字节不完整时，不要悄悄猜",
+        "href": "#troubleshoot-invalid-utf8"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "text-own-sample",
+      "lesson_id": "cs-core-03",
+      "context_id": "modify-new-text",
+      "question": "换自己的文本后应该检查什么？",
+      "aliases": [
+        "主动修改不能只换字符串吗",
+        "中英文emoji样例怎么验收"
+      ],
+      "keywords": [
+        "主动修改",
+        "自己的文本",
+        "预测",
+        "往返",
+        "组合字符"
+      ],
+      "diagnostic": "你是否在运行前预测码点、字节和分类计数，并保存一次猜错原因？",
+      "hints": [
+        "选择同时含 ASCII、中文和 emoji 的短文本。",
+        "先预测再运行，核对 encode/decode 往返；最后换组合字符观察码点与字形差异。"
+      ],
+      "example": "week 3：完成✅，记录 code_points、utf8_bytes、ascii 和 multibyte。",
+      "answer": "主动修改的重点是迁移判断方法，不是只改一行输入。预测、实际结果和修正理由都应留下。",
+      "source": {
+        "label": "换成你自己的文本",
+        "href": "#modify-new-text"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "text-project-boundary",
+      "lesson_id": "cs-core-03",
+      "context_id": "project-report-text",
+      "question": "报告器里的文本编码发生在哪里？",
+      "aliases": [
+        "项目怎么连接UTF8课程",
+        "JSON昵称从字节到str的路径"
+      ],
+      "keywords": [
+        "报告器",
+        "JSON",
+        "read_text",
+        "write_text",
+        "编码边界"
+      ],
+      "diagnostic": "你能指出文件字节何时解码成 str，以及输出文本何时重新编码吗？",
+      "hints": [
+        "read_text(encoding='utf-8') 在读取时解码，JSON 解析后字段是 str。",
+        "write_text(encoding='utf-8') 在写出时编码；分别记录两侧失败。"
+      ],
+      "example": "UTF-8 JSON字节 → read_text → str → json.loads → 昵称str → write_text → UTF-8输出字节。",
+      "answer": "项目清单让每个组件的类型和编码责任可见，避免跨层时默认猜测。",
+      "source": {
+        "label": "检查报告器的文本边界",
+        "href": "#project-report-text"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "text-project-counts",
+      "lesson_id": "cs-core-03",
+      "context_id": "project-report-text",
+      "question": "报告器需要把字节数写进主输出吗？",
+      "aliases": [
+        "项目这课必须改报告文字吗",
+        "文本计数放测试还是正式报告"
+      ],
+      "keywords": [
+        "主输出",
+        "诊断",
+        "测试",
+        "字节数",
+        "项目契约"
+      ],
+      "diagnostic": "字节数是用户真正需要的功能，还是本课用于验证边界的诊断信息？",
+      "hints": [
+        "先保持 v1.0 主报告契约不变。",
+        "把昵称和课程名的码点/字节计数放进测试或单独诊断输出，除非产品需求明确需要展示。"
+      ],
+      "example": "测试断言中文昵称的 len(str) 与 len(encode) 不同，但正式报告仍只显示昵称。",
+      "answer": "课程增量不等于每课都改用户输出。诊断证据可以独立存在，避免为教学破坏稳定契约。",
+      "source": {
+        "label": "检查报告器的文本边界",
+        "href": "#project-report-text"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "text-normalization",
+      "lesson_id": "cs-core-03",
+      "context_id": "deepen-normalization",
+      "question": "看起来一样的文本为什么字节可能不同？",
+      "aliases": [
+        "两个é为什么不相等",
+        "Unicode规范化是做什么的"
+      ],
+      "keywords": [
+        "规范化",
+        "é",
+        "组合附加符",
+        "字节不同",
+        "等价"
+      ],
+      "diagnostic": "一个文本使用预组合码点，另一个是否由基础字母加组合符组成？",
+      "hints": [
+        "é 可表示为 U+00E9，也可表示为 e 加 U+0301。",
+        "规范化可统一某些等价形式，但是否采用要由搜索、标识或安全契约决定。"
+      ],
+      "example": "len('é')=1，len('é')=2，UTF-8 字节也不同。",
+      "answer": "视觉相似不保证码点或字节相同。规范化是业务和安全决策，不能在密码或签名数据上随手改变输入。",
+      "source": {
+        "label": "看起来相同，不代表字节相同",
+        "href": "#deepen-normalization"
+      },
+      "updated_at": "2026-07-17"
+    },
+    {
+      "id": "text-career-truncate",
+      "lesson_id": "cs-core-03",
+      "context_id": "career-text-boundary",
+      "question": "怎样安全回答截断到 20 个字符？",
+      "aliases": [
+        "面试问字符串截断怎么说",
+        "不能直接切前20字节吗",
+        "为什么不能直接切UTF8前20个字节"
+      ],
+      "keywords": [
+        "截断",
+        "20字符",
+        "码点边界",
+        "字形簇",
+        "需求追问"
+      ],
+      "diagnostic": "限制单位和目标层级是否已经明确？",
+      "hints": [
+        "先问是20码点、20字节还是20个用户感知字形。",
+        "按字节限制时仍要在完整码点边界截断；按用户字符时需要字形簇工具与多语言测试。"
+      ],
+      "example": "不能把UTF-8字节直接切到第20个位置，否则可能截断一个三或四字节码点。",
+      "answer": "可靠方案从澄清单位开始，再选择保持合法编码和用户语义的截断方法，并补边界测试。",
+      "source": {
+        "label": "遇到截断到 20 个字符时先追问",
+        "href": "#career-text-boundary"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "text-cpp-deferred",
+      "lesson_id": "cs-core-03",
+      "context_id": "deepen-normalization",
+      "question": "为什么共同 CS 起步不手写 C++ UTF-8 扫描器？",
+      "aliases": [
+        "C++字符串视图放到哪里学",
+        "这里为什么只用Python"
+      ],
+      "keywords": [
+        "C++",
+        "UTF-8扫描器",
+        "共同基座",
+        "系统方向",
+        "前置"
+      ],
+      "diagnostic": "当前目标是建立所有学习者都需要的文本单位，还是研究 C++ 字节所有权和生命周期？",
+      "hints": [
+        "共同基座先用 Python 严格编码解码理解码点、字节和失败边界。",
+        "C++ 手写验证、string_view 和生命周期依赖语言与系统前置，会在系统方向深化。"
+      ],
+      "example": "先能解释3码点8字节，再在C++方向实现逐字节状态机。",
+      "answer": "分层不是删掉深度，而是把深度放到合适前置之后，避免所有学习者在概念入口被系统细节阻塞。",
+      "source": {
+        "label": "看起来相同，不代表字节相同",
+        "href": "#deepen-normalization"
+      },
+      "updated_at": "2026-07-17"
+    }
   ]
 }

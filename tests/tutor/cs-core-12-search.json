@@ -1,11 +1,24 @@
-[
-  { "query": "search 基线要锁定哪些结果？", "step_id": "step-1", "expected": "search-baseline" }, { "query": "目标3的固定输出是什么", "step_id": "step-1", "expected": "search-baseline" },
-  { "query": "SortedValues 为什么构造时复制并验证？", "step_id": "step-2", "expected": "sorted-values-contract" }, { "query": "修改原列表会影响查找吗", "step_id": "step-2", "expected": "sorted-values-contract" },
-  { "query": "有序验证成本算进二分比较次数吗？", "step_id": "step-2", "expected": "validation-cost-boundary" }, { "query": "一次性成本和查询成本怎么分", "step_id": "step-2", "expected": "validation-cost-boundary" },
-  { "query": "线性查找怎样统计首次命中？", "step_id": "step-3", "expected": "linear-search-trace" }, { "query": "缺失目标比较几次", "step_id": "step-3", "expected": "linear-search-trace" },
-  { "query": "二分为什么使用 [left,right)？", "step_id": "step-4", "expected": "half-open-invariant" }, { "query": "空区间怎样表示", "step_id": "step-4", "expected": "half-open-invariant" },
-  { "query": "lower_bound 与 upper_bound 有什么区别？", "step_id": "step-4", "expected": "bound-semantics" }, { "query": "第一个大于等于和第一个大于", "step_id": "step-4", "expected": "bound-semantics" },
-  { "query": "无序输入为什么要在构造时失败？", "step_id": "step-5", "expected": "unsorted-safe-failure" }, { "query": "二分能直接查无序数据吗", "step_id": "step-5", "expected": "unsorted-safe-failure" },
-  { "query": "边界查找返回序列长度合法吗？", "step_id": "step-5", "expected": "empty-and-end-boundary" }, { "query": "空序列边界返回什么", "step_id": "step-5", "expected": "empty-and-end-boundary" },
-  { "query": "equal_range 迁移任务验收什么？", "step_id": "step-6", "expected": "equal-range-migration" }, { "query": "缺失目标equal_range是什么", "step_id": "step-6", "expected": "equal-range-migration" }
-]
+{
+  "lesson_id":"cs-core-12",
+  "cases":[
+    {"query":"为什么目标 3 的 lower 是 1、upper 是 4？","expected_card":"search-output"},{"query":"三个3的区间为什么是1到4","expected_card":"search-output"},
+    {"query":"SortedValues 为什么要复制输入？","expected_card":"sorted-copy"},{"query":"改原列表会影响二分吗","expected_card":"sorted-copy"},
+    {"query":"有序验证成本为什么不算进二分 comparisons？","expected_card":"validation-cost"},{"query":"验证和查询成本怎样分开","expected_card":"validation-cost"},
+    {"query":"线性查找遇到重复值会返回哪个位置？","expected_card":"linear-first-match"},{"query":"重复值线性查找继续扫吗","expected_card":"linear-first-match"},
+    {"query":"线性查找缺失目标要比较几次？","expected_card":"linear-missing"},{"query":"空序列linear comparisons是多少","expected_card":"linear-missing"},
+    {"query":"为什么二分候选区间写成 [left,right)？","expected_card":"half-open-invariant"},{"query":"left等于right表示什么","expected_card":"half-open-invariant"},
+    {"query":"二分循环为什么有时会卡住不结束？","expected_card":"interval-progress"},{"query":"left=middle为什么死循环","expected_card":"interval-progress"},
+    {"query":"lower_bound 和 upper_bound 到底差在哪里？","expected_card":"lower-upper-semantics"},{"query":"左右边界只差哪个等号","expected_card":"lower-upper-semantics"},
+    {"query":"目标 3 的 lower 和 upper 为什么都比较三轮？","expected_card":"bound-rounds"},{"query":"左右边界三轮轨迹怎样读","expected_card":"bound-rounds"},
+    {"query":"边界返回序列长度 n 为什么合法？","expected_card":"end-position"},{"query":"lower返回len是不是越界","expected_card":"end-position"},
+    {"query":"左右边界轨迹脚本怎样运行和核对？","expected_card":"run-bound-micro"},{"query":"binary_bounds_trace怎么跑","expected_card":"run-bound-micro"},
+    {"query":"为什么查找课还要回归 elementary 和 merge？","expected_card":"bilingual-search"},{"query":"search为何运行三种模式","expected_card":"bilingual-search"},
+    {"query":"为什么要分别查询首项、重复值、间隙和末尾外？","expected_card":"four-targets"},{"query":"查5和查10能发现什么","expected_card":"four-targets"},
+    {"query":"equal_range 怎样由两次边界查找组成？","expected_card":"equal-range"},{"query":"缺失目标equal range是什么","expected_card":"equal-range"},
+    {"query":"二分为什么不能直接用于无序输入？","expected_card":"unsorted-input"},{"query":"无序数据二分偶然找到算正确吗","expected_card":"unsorted-input"},
+    {"query":"可追踪查找与排序实验第一课建立了什么？","expected_card":"project-search"},{"query":"边界课怎样接后两课排序","expected_card":"project-search"},
+    {"query":"二分找到位置后，插入为什么仍可能是 O(n)？","expected_card":"search-costs"},{"query":"查找logn为什么插入线性","expected_card":"search-costs"},
+    {"query":"面试里怎样证明自己的二分不是背模板？","expected_card":"career-bounds"},{"query":"左右边界求职表达","expected_card":"career-bounds"}
+  ],
+  "unknown":["怎样给卧室选择遮光窗帘","第一次养猫要准备什么"]
+}

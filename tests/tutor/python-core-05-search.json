@@ -1,20 +1,24 @@
-[
-  {"query": "装饰器课程开始前要锁定什么基线？", "step_id": "step-1", "expected": "decorator-baseline-contract"},
-  {"query": "包装函数前保存哪些结果", "step_id": "step-1", "expected": "decorator-baseline-contract"},
-  {"query": "装饰器和手工包装函数是什么关系？", "step_id": "step-2", "expected": "function-value-wrapper"},
-  {"query": "@decorator等价于什么", "step_id": "step-2", "expected": "function-value-wrapper"},
-  {"query": "装饰器是在定义函数时还是调用时执行？", "step_id": "step-2", "expected": "decorator-definition-time"},
-  {"query": "为什么没调用函数就装饰了", "step_id": "step-2", "expected": "decorator-definition-time"},
-  {"query": "trace_calls 为什么需要闭包？", "step_id": "step-3", "expected": "closure-event-sink"},
-  {"query": "event_sink怎么被记住", "step_id": "step-3", "expected": "closure-event-sink"},
-  {"query": "ParamSpec、TypeVar 和 wraps 各自保留什么？", "step_id": "step-3", "expected": "paramspec-wraps-contract"},
-  {"query": "包装后mypy类型怎么不丢", "step_id": "step-3", "expected": "paramspec-wraps-contract"},
-  {"query": "为什么包装后函数名变成 wrapper？", "step_id": "step-4", "expected": "wraps-metadata-failure"},
-  {"query": "缺少wraps会怎样", "step_id": "step-4", "expected": "wraps-metadata-failure"},
-  {"query": "装饰器记录失败后为什么还要 raise？", "step_id": "step-4", "expected": "decorator-exception-propagation"},
-  {"query": "怎样记录异常又继续抛出", "step_id": "step-4", "expected": "decorator-exception-propagation"},
-  {"query": "staged_output_path 怎样保证失败时不覆盖旧文件？", "step_id": "step-5", "expected": "staged-contextmanager-boundary"},
-  {"query": "contextmanager怎么清理tmp", "step_id": "step-5", "expected": "staged-contextmanager-boundary"},
-  {"query": "装饰器与上下文管理器迁移任务怎样验收？", "step_id": "step-5", "expected": "decorator-context-migration"},
-  {"query": "新增发布校验怎么证明", "step_id": "step-5", "expected": "decorator-context-migration"}
-]
+{
+  "lesson_id":"python-core-05",
+  "cases":[
+    {"query":"写到一半失败，为什么旧文件没有被破坏？","expected_card":"boundary-old-file"},{"query":"临时文件发布解决了什么","expected_card":"boundary-old-file"},
+    {"query":"装饰器和普通包装函数是什么关系？","expected_card":"function-wrapper"},{"query":"@decorator近似等于什么","expected_card":"function-wrapper"},
+    {"query":"装饰器在定义时执行还是调用时执行？","expected_card":"decorator-time"},{"query":"wrapper什么时候真正运行","expected_card":"decorator-time"},
+    {"query":"外层函数返回以后，wrapper 为什么还记得 event_sink？","expected_card":"closure-remembers"},{"query":"闭包怎样保存装饰器配置","expected_card":"closure-remembers"},
+    {"query":"为什么不直接用全局事件列表？","expected_card":"closure-no-global"},{"query":"闭包怎样让测试互不影响","expected_card":"closure-no-global"},
+    {"query":"ParamSpec 和 TypeVar 分别保留什么？","expected_card":"decorator-types"},{"query":"为什么不用Callable省略号object","expected_card":"decorator-types"},
+    {"query":"为什么包装后函数名变成 wrapper？","expected_card":"wraps-metadata"},{"query":"缺少wraps会丢什么","expected_card":"wraps-metadata"},
+    {"query":"记录失败事件以后为什么还要 raise？","expected_card":"exception-reraise"},{"query":"怎样记录异常又原样传播","expected_card":"exception-reraise"},
+    {"query":"@contextmanager 里 yield 前后分别做什么？","expected_card":"contextmanager-yield"},{"query":"生成器怎样变成上下文管理器","expected_card":"contextmanager-yield"},
+    {"query":"块内抛异常时 replace 和 finally 谁会执行？","expected_card":"contextmanager-cleanup"},{"query":"异常会被自定义with吞掉吗","expected_card":"contextmanager-cleanup"},
+    {"query":"为什么审计写入要嵌套两个 with？","expected_card":"staged-two-with"},{"query":"内外两个上下文各管什么","expected_card":"staged-two-with"},
+    {"query":"临时文件替换就等于数据库事务吗？","expected_card":"staged-not-transaction"},{"query":"replace能不能同时原子提交多个文件","expected_card":"staged-not-transaction"},
+    {"query":"这个例子运行后最该看哪几行？","expected_card":"reproduce-boundary"},{"query":"pending_exists为False证明什么","expected_card":"reproduce-boundary"},
+    {"query":"发布前第一行检查应该放在哪里？","expected_card":"modify-first-line"},{"query":"错误标题怎样阻止replace","expected_card":"modify-first-line"},
+    {"query":"失败后还留下 .tmp 文件怎么查？","expected_card":"staged-troubleshoot"},{"query":"临时文件清理应该写在哪","expected_card":"staged-troubleshoot"},
+    {"query":"为什么项目不永久装饰 build_report？","expected_card":"project-explicit-trace"},{"query":"追踪事件会不会污染主报告","expected_card":"project-explicit-trace"},
+    {"query":"什么时候用装饰器，什么时候直接调用函数或 with？","expected_card":"deepen-choose-tool"},{"query":"显式调用为什么有时更好","expected_card":"deepen-choose-tool"},
+    {"query":"面试里怎样讲装饰器和分阶段写入？","expected_card":"career-boundary"},{"query":"不能只说我会装饰器该说什么","expected_card":"career-boundary"}
+  ],
+  "unknown":["如何给木星云层安装文件锁","古代陶器如何配置异步装饰器"]
+}

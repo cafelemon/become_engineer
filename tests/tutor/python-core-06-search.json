@@ -1,20 +1,24 @@
-[
-  {"query": "包结构迁移前要锁定哪些基线？", "step_id": "step-1", "expected": "package-baseline-contract"},
-  {"query": "为什么先保存16项测试和87.1%", "step_id": "step-1", "expected": "package-baseline-contract"},
-  {"query": "src 布局解决什么问题？", "step_id": "step-2", "expected": "src-layout-boundary"},
-  {"query": "源码放src为什么必须先安装", "step_id": "step-2", "expected": "src-layout-boundary"},
-  {"query": "分发名、导入包名和命令名有什么区别？", "step_id": "step-2", "expected": "package-naming-layers"},
-  {"query": "连字符和下划线分别放哪里", "step_id": "step-2", "expected": "package-naming-layers"},
-  {"query": "editable install 和 wheel 验证各证明什么？", "step_id": "step-3", "expected": "editable-install-entry"},
-  {"query": "pip install -e以后为什么还要测wheel", "step_id": "step-3", "expected": "editable-install-entry"},
-  {"query": "python -m 和控制台脚本怎样保持一致？", "step_id": "step-3", "expected": "module-console-equivalence"},
-  {"query": "__main__.py应该调用谁", "step_id": "step-3", "expected": "module-console-equivalence"},
-  {"query": "argparse CLI 层应该负责什么？", "step_id": "step-4", "expected": "argparse-subcommand-boundary"},
-  {"query": "report和audit子命令为什么让main接收argv", "step_id": "step-4", "expected": "argparse-subcommand-boundary"},
-  {"query": "为什么直接运行 cli.py 会导入失败？", "step_id": "step-5", "expected": "direct-file-import-failure"},
-  {"query": "直接执行包内文件遇到ModuleNotFoundError怎么恢复", "step_id": "step-5", "expected": "direct-file-import-failure"},
-  {"query": "为什么导入包时不能启动 CLI？", "step_id": "step-5", "expected": "import-side-effect-boundary"},
-  {"query": "__init__里打印报告有什么问题", "step_id": "step-5", "expected": "import-side-effect-boundary"},
-  {"query": "包与 CLI 迁移任务怎样验收？", "step_id": "step-6", "expected": "package-cli-migration"},
-  {"query": "新增筛选参数后要保存哪些证据", "step_id": "step-6", "expected": "package-cli-migration"}
-]
+{
+  "lesson_id":"python-core-06",
+  "cases":[
+    {"query":"为什么要离开项目目录再运行命令？","expected_card":"package-outside-run"},{"query":"项目目录外运行证明什么","expected_card":"package-outside-run"},
+    {"query":"模块、包、分发项目和命令有什么区别？","expected_card":"package-four-layers"},{"query":"一个py文件就是包吗","expected_card":"package-four-layers"},
+    {"query":"连字符和下划线分别用在哪里？","expected_card":"package-name-map"},{"query":"为什么pip名字和import名字不同","expected_card":"package-name-map"},
+    {"query":"src 布局解决了什么问题？","expected_card":"src-layout-purpose"},{"query":"src布局为什么必须先安装","expected_card":"src-layout-purpose"},
+    {"query":"为什么不直接把 src 加进 sys.path？","expected_card":"src-no-syspath"},{"query":"测试里手工塞源码路径行不行","expected_card":"src-no-syspath"},
+    {"query":"[project.scripts] 右边的字符串是什么意思？","expected_card":"pyproject-script"},{"query":"study-progress命令是谁生成的","expected_card":"pyproject-script"},
+    {"query":"dependencies 什么时候可以写成空列表？","expected_card":"pyproject-empty-deps"},{"query":"只用标准库是不是没有运行依赖","expected_card":"pyproject-empty-deps"},
+    {"query":"python -m 和控制台命令怎样保持一致？","expected_card":"entrypoint-one-main"},{"query":"__main__.py应该写多少逻辑","expected_card":"entrypoint-one-main"},
+    {"query":"CLI 层应该负责什么？","expected_card":"cli-role"},{"query":"为什么main接收argv","expected_card":"cli-role"},
+    {"query":"忘记子命令参数时该先看什么？","expected_card":"cli-help"},{"query":"report和audit有哪些参数","expected_card":"cli-help"},
+    {"query":"为什么直接运行 cli.py 会导入失败？","expected_card":"direct-file-failure"},{"query":"ModuleNotFoundError应该怎么恢复","expected_card":"direct-file-failure"},
+    {"query":"为什么导入包时不能自动打印报告？","expected_card":"quiet-import"},{"query":"怎样检查导入副作用","expected_card":"quiet-import"},
+    {"query":"怎样证明 wheel 真的可以安装运行？","expected_card":"wheel-clean-install"},{"query":"项目目录外smoke test怎么做","expected_card":"wheel-clean-install"},
+    {"query":"新增 --status 筛选要测哪些情况？","expected_card":"status-filter"},{"query":"只看进行中课程怎么不破坏默认报告","expected_card":"status-filter"},
+    {"query":"当前学习进度报告器已经具备哪些包化能力？","expected_card":"project-package-current"},{"query":"正式项目要跑多少测试","expected_card":"project-package-current"},
+    {"query":"editable 安装成功为什么还要测试 wheel？","expected_card":"editable-wheel"},{"query":"wheel漏包怎么发现","expected_card":"editable-wheel"},
+    {"query":"本地 wheel 能安装就等于生产发布完成吗？","expected_card":"package-not-production"},{"query":"包化课程覆盖供应链安全吗","expected_card":"package-not-production"},
+    {"query":"面试里怎样讲包结构和 CLI 改造？","expected_card":"career-package"},{"query":"包化项目有哪些求职证据","expected_card":"career-package"}
+  ],
+  "unknown":["如何给海底火山绘制珊瑚图","古代鲸鱼使用什么颜色的雨伞"]
+}

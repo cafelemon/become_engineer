@@ -1,20 +1,161 @@
-[
-  {"query":"增加增长表前要锁定什么基线？","step_id":"step-1","expected":"growth-output-baseline"},
-  {"query":"如何防止旧报告漂移","step_id":"step-1","expected":"growth-output-baseline"},
-  {"query":"复杂度分析为什么先定义 n 和基本操作？","step_id":"step-2","expected":"input-size-basic-operation"},
-  {"query":"n代表元素数还是数值大小操作计数口径怎么定","step_id":"step-2","expected":"input-size-basic-operation"},
-  {"query":"n 等于 0 时三类操作怎样计数？","step_id":"step-2","expected":"zero-size-boundary"},
-  {"query":"空序列的常量访问为什么记录为0","step_id":"step-2","expected":"zero-size-boundary"},
-  {"query":"线性查找的比较次数怎样追踪？","step_id":"step-3","expected":"linear-search-comparison-trace"},
-  {"query":"SearchTrace找到第一个匹配后是否继续比较","step_id":"step-3","expected":"linear-search-comparison-trace"},
-  {"query":"线性查找最好和最坏输入怎样构造？","step_id":"step-3","expected":"linear-search-cases"},
-  {"query":"目标在开头末尾或缺失分别比较多少次","step_id":"step-3","expected":"linear-search-cases"},
-  {"query":"增长表三列公式分别是什么？","step_id":"step-4","expected":"deterministic-growth-table"},
-  {"query":"n等于8时常量线性两两比较是多少","step_id":"step-4","expected":"deterministic-growth-table"},
-  {"query":"O、Ω 和 Θ 有什么区别？","step_id":"step-4","expected":"big-o-omega-theta"},
-  {"query":"Big O是不是精确等式什么时候应该写Theta","step_id":"step-4","expected":"big-o-omega-theta"},
-  {"query":"为什么计时不能替代操作计数测试？","step_id":"step-5","expected":"timing-noise-boundary"},
-  {"query":"timeit结果波动能不能断言必须小于1毫秒","step_id":"step-5","expected":"timing-noise-boundary"},
-  {"query":"相邻增长迁移为什么最多比较 n-1 次？","step_id":"step-6","expected":"adjacent-increase-migration"},
-  {"query":"空序列单元素比较几次","step_id":"step-6","expected":"adjacent-increase-migration"}
-]
+{
+  "lesson_id": "cs-core-02",
+  "cases": [
+    {
+      "query": "为什么不直接背 O(n)，还要先数操作？",
+      "expected_card": "growth-why-count"
+    },
+    {
+      "query": "复杂度为什么要先看操作次数而不是背结论",
+      "expected_card": "growth-why-count"
+    },
+    {
+      "query": "复杂度里的 n 到底表示什么？",
+      "expected_card": "growth-input-size"
+    },
+    {
+      "query": "这里的输入规模 n 是列表元素数量吗",
+      "expected_card": "growth-input-size"
+    },
+    {
+      "query": "基本操作应该怎么选？",
+      "expected_card": "growth-basic-operation"
+    },
+    {
+      "query": "操作计数到底是在数读取还是比较",
+      "expected_card": "growth-basic-operation"
+    },
+    {
+      "query": "空列表的操作次数为什么是 0？",
+      "expected_card": "growth-empty-input"
+    },
+    {
+      "query": "n等于0时常量访问还是一次吗",
+      "expected_card": "growth-empty-input"
+    },
+    {
+      "query": "列表变长后，按已知下标读取为什么还是 1 次？",
+      "expected_card": "growth-indexed-read"
+    },
+    {
+      "query": "位置已经知道时为什么是常量增长",
+      "expected_card": "growth-indexed-read"
+    },
+    {
+      "query": "查找不存在的值为什么最坏比较 n 次？",
+      "expected_card": "growth-linear-scan"
+    },
+    {
+      "query": "目标缺失为什么要扫描全部元素",
+      "expected_card": "growth-linear-scan"
+    },
+    {
+      "query": "两两比较为什么是 n(n-1)/2？",
+      "expected_card": "growth-pair-formula"
+    },
+    {
+      "query": "四个元素为什么只有六个不同元素对",
+      "expected_card": "growth-pair-formula"
+    },
+    {
+      "query": "增长播放器应该怎么看？",
+      "expected_card": "growth-player-reading"
+    },
+    {
+      "query": "点下一组时应该观察哪三列怎样变化",
+      "expected_card": "growth-player-reading"
+    },
+    {
+      "query": "1、n 和 n(n-1)/2 分别是什么增长？",
+      "expected_card": "growth-theta-patterns"
+    },
+    {
+      "query": "常量线性平方三种增长怎么区分",
+      "expected_card": "growth-theta-patterns"
+    },
+    {
+      "query": "为什么 n(n-1)/2 可以写成 Θ(n²)？",
+      "expected_card": "growth-ignore-terms"
+    },
+    {
+      "query": "二分之一和减掉的n为什么不影响平方量级",
+      "expected_card": "growth-ignore-terms"
+    },
+    {
+      "query": "O、Ω 和 Θ 有什么区别？",
+      "expected_card": "growth-bounds-meaning"
+    },
+    {
+      "query": "Big O是上界那Theta和Omega分别是什么",
+      "expected_card": "growth-bounds-meaning"
+    },
+    {
+      "query": "最好情况和最坏情况为什么要分开说？",
+      "expected_card": "growth-best-worst"
+    },
+    {
+      "query": "目标在第一项和目标不存在比较次数一样吗",
+      "expected_card": "growth-best-worst"
+    },
+    {
+      "query": "为什么一次计时不能证明复杂度？",
+      "expected_card": "growth-timing-noise"
+    },
+    {
+      "query": "timeit这次更快能说明它是O1吗",
+      "expected_card": "growth-timing-noise"
+    },
+    {
+      "query": "两层循环就一定是 O(n²) 吗？",
+      "expected_card": "growth-nested-loop"
+    },
+    {
+      "query": "看到两个for循环为什么不能直接写平方复杂度",
+      "expected_card": "growth-nested-loop"
+    },
+    {
+      "query": "相邻增长为什么只比较 n-1 次？",
+      "expected_card": "growth-adjacent"
+    },
+    {
+      "query": "空列表单元素和五个元素的相邻比较分别几次",
+      "expected_card": "growth-adjacent"
+    },
+    {
+      "query": "报告器的成本清单应该写什么？",
+      "expected_card": "growth-project-list"
+    },
+    {
+      "query": "学习进度报告器怎样连接到复杂度课程",
+      "expected_card": "growth-project-list"
+    },
+    {
+      "query": "同样是 Θ(n)，真实速度为什么还会不同？",
+      "expected_card": "growth-model-boundary"
+    },
+    {
+      "query": "复杂度一样为什么实际运行一个更快",
+      "expected_card": "growth-model-boundary"
+    },
+    {
+      "query": "时间复杂度和空间复杂度要分开吗？",
+      "expected_card": "growth-space-cost"
+    },
+    {
+      "query": "复制整个输入会增加哪一种复杂度",
+      "expected_card": "growth-space-cost"
+    },
+    {
+      "query": "面试里怎样解释一段代码的复杂度？",
+      "expected_card": "growth-career-answer"
+    },
+    {
+      "query": "复杂度题只报O(n)为什么不够",
+      "expected_card": "growth-career-answer"
+    }
+  ],
+  "unknown": [
+    "怎样给自行车换刹车线",
+    "请推荐一首睡前儿歌"
+  ]
+}

@@ -94,5 +94,5 @@ console.log(JSON.stringify({
   required_contexts: requiredContexts.length,
   course_types: courseTypes.length,
   modes: 3,
-  formal_migration: false
+  formal_migration: true
 }, null, 2));

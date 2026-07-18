@@ -1,11 +1,15 @@
-[
-  { "query": "DSU 固定样例有哪些关键计数？", "step_id": "step-1", "expected": "dsu-fixed-baseline" }, { "query": "find5访问和压缩几次", "step_id": "step-1", "expected": "dsu-fixed-baseline" },
-  { "query": "并查集父数组是不是原图中的边？", "step_id": "step-2", "expected": "dsu-parent-forest" }, { "query": "parent数组能还原图路径吗", "step_id": "step-2", "expected": "dsu-parent-forest" },
-  { "query": "零元素和单元素并查集怎样定义？", "step_id": "step-2", "expected": "dsu-empty-single" }, { "query": "空并查集有几个分量", "step_id": "step-2", "expected": "dsu-empty-single" },
-  { "query": "find 的 visits 与 compressions 怎样计数？", "step_id": "step-3", "expected": "dsu-find-counting" }, { "query": "根算不算find访问", "step_id": "step-3", "expected": "dsu-find-counting" },
-  { "query": "按大小合并和平局规则是什么？", "step_id": "step-4", "expected": "dsu-union-by-size" }, { "query": "两棵同样大的树谁当根", "step_id": "step-4", "expected": "dsu-union-by-size" },
-  { "query": "重复 union 已连通元素会发生什么？", "step_id": "step-4", "expected": "dsu-repeated-union" }, { "query": "同根合并会减少分量吗", "step_id": "step-4", "expected": "dsu-repeated-union" },
-  { "query": "为什么 DSU 复杂度写成摊还 O(alpha(n))？", "step_id": "step-4", "expected": "dsu-amortized-complexity" }, { "query": "并查集是不是每次严格O1", "step_id": "step-4", "expected": "dsu-amortized-complexity" },
-  { "query": "越界与错误挂接实验怎样安全恢复？", "step_id": "step-5", "expected": "dsu-failure-safety" }, { "query": "find负索引怎么处理", "step_id": "step-5", "expected": "dsu-failure-safety" },
-  { "query": "groups 迁移任务怎样验收？", "step_id": "step-6", "expected": "dsu-groups-migration" }, { "query": "并查集分组输出怎么排序", "step_id": "step-6", "expected": "dsu-groups-migration" }
-]
+{"lesson_id":"cs-core-24","cases":[
+  {"query":"find(5) 为什么访问 3 次，只压缩 1 次？","expected_card":"dsu-output"},{"query":"5到根0经过哪些位置","expected_card":"dsu-output"},
+  {"query":"并查集的 parent 数组是原图中的边吗？","expected_card":"dsu-parent-forest"},{"query":"父数组能不能恢复图路径","expected_card":"dsu-parent-forest"},
+  {"query":"并查集怎样判断一个元素是根？","expected_card":"dsu-root"},{"query":"根为什么指向自己","expected_card":"dsu-root"},
+  {"query":"visits 和 compressions 应该怎样计数？","expected_card":"dsu-find-count"},{"query":"根算不算find访问","expected_card":"dsu-find-count"},
+  {"query":"路径压缩后再 find(5)，还要访问几次？","expected_card":"dsu-second-find"},{"query":"第二次查询为什么不是一次","expected_card":"dsu-second-find"},
+  {"query":"按大小合并为什么只能把根挂到根？","expected_card":"dsu-union-size"},{"query":"size记录在哪个位置","expected_card":"dsu-union-size"},
+  {"query":"两棵树同样大时谁留下当根？","expected_card":"dsu-tie"},{"query":"union 1 0为什么根还是0","expected_card":"dsu-tie"},
+  {"query":"已经连通的两个元素再次 union 会怎样？","expected_card":"dsu-repeated"},{"query":"重复合并会不会减少分量","expected_card":"dsu-repeated"},
+  {"query":"groups() 怎样保证输出稳定又不漏元素？","expected_card":"dsu-groups"},{"query":"每个成员应该出现几次","expected_card":"dsu-groups"},
+  {"query":"Python 的 find(-1) 为什么必须主动拒绝？","expected_card":"dsu-failure"},{"query":"并查集越界后状态应该怎样","expected_card":"dsu-failure"},
+  {"query":"生成森林实验 v0.1 为 Kruskal 准备了什么？","expected_card":"dsu-project"},{"query":"下一课怎样用同根判断环","expected_card":"dsu-project"},
+  {"query":"并查集为什么说接近常量，却写 O(alpha(n))？","expected_card":"dsu-cost"},{"query":"并查集每次操作是不是严格O1","expected_card":"dsu-cost"},
+  {"query":"并查集双语言实验为什么还要跑 Kruskal 和 Prim？","expected_card":"dsu-bilingual"},{"query":"DSU迁移怎样防止后两课回归","expected_card":"dsu-bilingual"}
+],"unknown":["怎样挑选咖啡滤杯","卧室窗帘选什么颜色"]}

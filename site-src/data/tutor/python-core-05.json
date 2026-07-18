@@ -1,149 +1,112 @@
 {
-  "version": 1,
-  "lesson": {
-    "id": "python-core-05",
-    "title": "Python 装饰器、闭包与自定义上下文管理器",
-    "path": "learning-paths/programming-languages/python-core/05-decorators-closures-custom-context-managers/"
-  },
-  "steps": [
-    {"id": "step-1", "title": "对象与审计基线"},
-    {"id": "step-2", "title": "函数包装与装饰语法"},
-    {"id": "step-3", "title": "闭包、类型与元数据"},
-    {"id": "step-4", "title": "元数据与异常失败实验"},
-    {"id": "step-5", "title": "分阶段审计文件提交"}
+  "version":2,
+  "lesson":{"id":"python-core-05","title":"Python 装饰器、闭包与自定义上下文管理器","path":"learning-paths/programming-languages/python-core/05-decorators-closures-custom-context-managers/"},
+  "contexts":[
+    {"id":"overview-safe-boundary","type":"overview","title":"写到一半失败，旧文件为什么还在","anchor":"#overview-safe-boundary"},
+    {"id":"concept-function-object","type":"concept","title":"装饰器之前，先看普通函数包装","anchor":"#concept-function-object"},
+    {"id":"concept-closure","type":"concept","title":"外层函数结束了，内层函数仍记得配置","anchor":"#concept-closure"},
+    {"id":"concept-decorator-contract","type":"concept","title":"包装以后，调用方式不能变宽成一团雾","anchor":"#concept-decorator-contract"},
+    {"id":"example-wraps-metadata","type":"example","title":"wraps 把原函数的名字和说明带回来","anchor":"#example-wraps-metadata"},
+    {"id":"troubleshoot-exception","type":"troubleshoot","title":"记录失败以后，原异常还要继续走","anchor":"#troubleshoot-exception"},
+    {"id":"concept-contextmanager","type":"concept","title":"yield 的前后，正好对应进入和退出","anchor":"#concept-contextmanager"},
+    {"id":"example-staged-write","type":"example","title":"正式路径只在最后一刻被替换","anchor":"#example-staged-write"},
+    {"id":"reproduce-trace-stage","type":"reproduce","title":"亲手看见成功事件和失败清理","anchor":"#reproduce-trace-stage"},
+    {"id":"modify-publish-check","type":"modify","title":"发布前检查第一行","anchor":"#modify-publish-check"},
+    {"id":"troubleshoot-staged-file","type":"troubleshoot","title":"临时文件还在，或者旧文件被覆盖了","anchor":"#troubleshoot-staged-file"},
+    {"id":"project-reporter-boundaries","type":"project","title":"回到学习进度报告器","anchor":"#project-reporter-boundaries"},
+    {"id":"deepen-wrapper-choice","type":"deepen","title":"不是什么都要用装饰器","anchor":"#deepen-wrapper-choice"},
+    {"id":"career-boundary-evidence","type":"career","title":"讲装饰器时，说清楚它没有改变什么","anchor":"#career-boundary-evidence"}
   ],
-  "cards": [
+  "cards":[
     {
-      "id": "decorator-baseline-contract",
-      "lesson_id": "python-core-05",
-      "step_id": "step-1",
-      "question": "装饰器课程开始前要锁定什么基线？",
-      "aliases": ["本课开始先跑什么", "包装函数前保存哪些结果"],
-      "keywords": ["基线", "13项测试", "mypy", "主报告"],
-      "diagnostic": "你是否同时保存了类型检查、测试数量、主报告文本和审计成功/失败结果？",
-      "hints": ["从上一课提交开始先运行 mypy、unittest 和两个语言的应用。", "锁定 `build_report()`、`write_audit_snapshot()` 的签名和总体进度 87.1%，后续增强不能改变这些契约。"],
-      "example": "局部示例：完成本课后测试从上一课的 13 项增加到 16 项，但主报告文本不变。",
-      "answer": "先保存行为和接口基线，才能区分装饰器或上下文重构造成的回归。",
-      "source": {"label": "第一步：保存上一课的可回归基线", "href": "#step-1"},
-      "updated_at": "2026-07-15",
-      "recommended": true
+      "id":"boundary-old-file","lesson_id":"python-core-05","context_id":"overview-safe-boundary",
+      "question":"写到一半失败，为什么旧文件没有被破坏？","aliases":["审计失败后旧内容怎么还在","临时文件发布解决了什么"],"keywords":["旧文件","失败","临时文件","发布"],
+      "diagnostic":"代码块写入的是正式路径，还是目标旁边的临时路径？","hints":["正式路径在写入阶段保持不动。","只有代码块正常结束才 replace；失败时清理临时文件。"],"example":"先写 .audit.txt.tmp，成功后再替换 audit.txt。","answer":"分阶段写入把未完成内容与已发布文件隔离，失败不会提前触碰正式文件。","source":{"label":"写到一半失败，旧文件为什么还在","href":"#overview-safe-boundary"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "function-value-wrapper",
-      "lesson_id": "python-core-05",
-      "step_id": "step-2",
-      "question": "装饰器和手工包装函数是什么关系？",
-      "aliases": ["函数作为值怎么包装", "@decorator等价于什么"],
-      "keywords": ["函数对象", "包装", "重新绑定", "decorator"],
-      "diagnostic": "你能否先把原函数传给包装函数，并把返回的新函数绑定到另一个名称？",
-      "hints": ["函数对象可以作为参数和返回值，不需要先使用 @ 语法。", "先写 `traced = announce(original)`；理解后再把同一过程写成 `@announce`。"],
-      "example": "局部示例：`finish = announce(finish)` 近似表达 `@announce` 的重新绑定。",
-      "answer": "装饰器接收函数并返回替代对象；@ 语法让这个重新绑定发生在函数定义执行时。",
-      "source": {"label": "第二步：先看函数包装，再使用装饰语法", "href": "#step-2"},
-      "updated_at": "2026-07-15",
-      "recommended": true
+      "id":"function-wrapper","lesson_id":"python-core-05","context_id":"concept-function-object",
+      "question":"装饰器和普通包装函数是什么关系？","aliases":["@decorator近似等于什么","函数怎样作为参数和返回值"],"keywords":["装饰器","包装函数","重新绑定","函数对象"],
+      "diagnostic":"你能否先写 traced = announce(original) 并调用新函数？","hints":["函数对象可以传入，也可以从另一个函数返回。","@announce 近似把函数定义后的名称重新绑定为 announce(finish)。"],"example":"finish = announce(finish)。","answer":"装饰器本质上接收一个对象并返回替代对象；@ 语法把重新绑定放在定义旁边。","source":{"label":"装饰器之前，先看普通函数包装","href":"#concept-function-object"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "decorator-definition-time",
-      "lesson_id": "python-core-05",
-      "step_id": "step-2",
-      "question": "装饰器是在定义函数时还是调用时执行？",
-      "aliases": ["装饰发生时间", "为什么没调用函数就装饰了"],
-      "keywords": ["定义时", "调用时", "装饰器表达式", "wrapper"],
-      "diagnostic": "你区分的是装饰器表达式求值，还是包装函数体每次运行的时机？",
-      "hints": ["解释器执行函数定义时会求值装饰器，并把结果绑定到原函数名。", "包装器的创建发生在定义阶段；`wrapper()` 函数体仍在每次调用时执行。"],
-      "example": "局部示例：模块导入时完成 `finish = announce(finish)`，调用 `finish()` 时才运行 wrapper 内容。",
-      "answer": "定义时完成装饰和名称绑定，调用时才执行返回的包装函数体。",
-      "source": {"label": "第二步：先看函数包装，再使用装饰语法", "href": "#step-2"},
-      "updated_at": "2026-07-15"
+      "id":"decorator-time","lesson_id":"python-core-05","context_id":"concept-function-object",
+      "question":"装饰器在定义时执行还是调用时执行？","aliases":["为什么函数没调用就已经装饰了","wrapper什么时候真正运行"],"keywords":["定义时","调用时","装饰器","wrapper"],
+      "diagnostic":"你问的是装饰器表达式求值，还是 wrapper 函数体执行？","hints":["解释器执行函数定义时求值装饰器并重新绑定名称。","返回的 wrapper 函数体仍在每次调用时运行。"],"example":"模块导入时完成 finish = announce(finish)，调用 finish() 才进入 wrapper。","answer":"装饰和名称绑定发生在定义阶段；包装后的业务调用发生在调用阶段。","source":{"label":"装饰器之前，先看普通函数包装","href":"#concept-function-object"},"updated_at":"2026-07-17"
     },
     {
-      "id": "closure-event-sink",
-      "lesson_id": "python-core-05",
-      "step_id": "step-3",
-      "question": "trace_calls 为什么需要闭包？",
-      "aliases": ["event_sink怎么被记住", "闭包保存装饰器配置"],
-      "keywords": ["闭包", "event_sink", "自由变量", "全局状态"],
-      "diagnostic": "wrapper 运行时是否仍要访问外层调用已经结束后的 event_sink 和 function？",
-      "hints": ["内层函数引用外层作用域的名称，这些自由变量随返回的函数一起保留。", "让调用者把 `events.append` 传给工厂，每个包装器拥有自己的事件去向，不需要模块级列表。"],
-      "example": "局部示例：`trace_calls(events.append)` 返回的装饰器会记住这个 append 方法。",
-      "answer": "闭包让配置与被包装函数进入 wrapper 的环境，同时避免共享全局可变状态。",
-      "source": {"label": "第三步：用闭包、ParamSpec 和 wraps 保持契约", "href": "#step-3"},
-      "updated_at": "2026-07-15",
-      "recommended": true
+      "id":"closure-remembers","lesson_id":"python-core-05","context_id":"concept-closure",
+      "question":"外层函数返回以后，wrapper 为什么还记得 event_sink？","aliases":["闭包怎样保存装饰器配置","自由变量为什么没有消失"],"keywords":["闭包","event_sink","自由变量","作用域"],
+      "diagnostic":"内层函数是否引用了外层作用域中的 event_sink 和 function？","hints":["内层函数引用的外层名称构成自由变量。","返回的函数保留这些关联，所以后续调用仍能访问。"],"example":"trace_calls(events.append) 返回后，wrapper 仍向该列表写事件。","answer":"闭包把代码和它需要的外层环境连接起来；捕获可变对象时，后续修改仍然可见。","source":{"label":"外层函数结束了，内层函数仍记得配置","href":"#concept-closure"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "paramspec-wraps-contract",
-      "lesson_id": "python-core-05",
-      "step_id": "step-3",
-      "question": "ParamSpec、TypeVar 和 wraps 各自保留什么？",
-      "aliases": ["装饰器怎样保持原函数签名", "包装后mypy类型怎么不丢"],
-      "keywords": ["ParamSpec", "TypeVar", "wraps", "签名", "mypy"],
-      "diagnostic": "当前问题是静态参数/返回类型丢失，还是运行时名称和文档丢失？",
-      "hints": ["ParamSpec 转发整组参数，TypeVar 连接原函数和包装函数的返回类型。", "wraps 复制名称、文档和注解等运行时元数据；wrapper 仍要原样转发 args、kwargs 和返回值。"],
-      "example": "局部示例：输入 `Callable[P, R]`，返回 `Callable[P, R]`。",
-      "answer": "类型变量服务静态检查，wraps 服务元数据；二者都不能替代正确的调用转发。",
-      "source": {"label": "第三步：用闭包、ParamSpec 和 wraps 保持契约", "href": "#step-3"},
-      "updated_at": "2026-07-15",
-      "recommended": true
+      "id":"closure-no-global","lesson_id":"python-core-05","context_id":"concept-closure",
+      "question":"为什么不直接用全局事件列表？","aliases":["event sink为什么由调用者传入","闭包怎样让测试互不影响"],"keywords":["全局状态","事件","隔离","测试"],
+      "diagnostic":"两个不同调用者是否需要各自收集事件？","hints":["全局列表让不同测试和调用共享状态。","把 sink 作为配置传入，每个闭包拥有自己的事件去向。"],"example":"first_trace 和 second_trace 分别记入不同列表。","answer":"依赖由调用者提供更容易隔离、替换和测试，也不会污染主报告。","source":{"label":"外层函数结束了，内层函数仍记得配置","href":"#concept-closure"},"updated_at":"2026-07-17"
     },
     {
-      "id": "wraps-metadata-failure",
-      "lesson_id": "python-core-05",
-      "step_id": "step-4",
-      "question": "为什么包装后函数名变成 wrapper？",
-      "aliases": ["函数文档被装饰器弄丢了", "缺少wraps会怎样"],
-      "keywords": ["wrapper", "__name__", "__doc__", "__wrapped__", "wraps"],
-      "diagnostic": "包装器内部是否使用了 `@wraps(function)`，测试是否检查名称和文档？",
-      "hints": ["返回的是新定义的 wrapper 函数，它默认拥有自己的名称和文档。", "在 wrapper 定义上恢复 `@wraps(function)`，再检查 `__name__`、`__doc__` 和 `__wrapped__`。"],
-      "example": "局部示例：移除 wraps 后 `join_text.__name__` 会成为 `wrapper`。",
-      "answer": "wraps 使用 update_wrapper 更新包装函数元数据，并保留到原函数的引用。",
-      "source": {"label": "第四步：安全观察元数据丢失和异常传播", "href": "#step-4"},
-      "updated_at": "2026-07-15",
-      "recommended": true
+      "id":"decorator-types","lesson_id":"python-core-05","context_id":"concept-decorator-contract",
+      "question":"ParamSpec 和 TypeVar 分别保留什么？","aliases":["装饰器怎样保留原函数签名","为什么不用Callable省略号object"],"keywords":["ParamSpec","TypeVar","Callable","签名"],
+      "diagnostic":"你要连接的是整组参数，还是原函数和包装函数的返回类型？","hints":["ParamSpec 转发位置参数和关键字参数。","TypeVar R 让输入 Callable[P,R] 与输出 Callable[P,R] 保持同一返回类型。"],"example":"wrapper(*args: P.args, **kwargs: P.kwargs) -> R。","answer":"ParamSpec 描述调用形状，TypeVar 连接返回类型；实现还必须原样转发。","source":{"label":"包装以后，调用方式不能变宽成一团雾","href":"#concept-decorator-contract"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "decorator-exception-propagation",
-      "lesson_id": "python-core-05",
-      "step_id": "step-4",
-      "question": "装饰器记录失败后为什么还要 raise？",
-      "aliases": ["包装器不能吞异常", "怎样记录异常又继续抛出"],
-      "keywords": ["异常", "raise", "失败事件", "抑制"],
-      "diagnostic": "调用者是否依赖异常判断失败，而包装器却捕获后静默返回了 None？",
-      "hints": ["追踪器负责观察，不应未经协议改变业务函数的失败语义。", "在 `except Exception as error` 中记录类型，然后使用裸 `raise` 继续传播同一个异常。"],
-      "example": "局部示例：事件为 `失败:fail_export:ValueError`，测试仍进入 `assertRaises`。",
-      "answer": "记录和抑制是不同决策；本课只记录，原异常必须继续交给调用者处理。",
-      "source": {"label": "第四步：安全观察元数据丢失和异常传播", "href": "#step-4"},
-      "updated_at": "2026-07-15"
+      "id":"wraps-metadata","lesson_id":"python-core-05","context_id":"example-wraps-metadata",
+      "question":"为什么包装后函数名变成 wrapper？","aliases":["缺少wraps会丢什么","怎样保留原函数文档和__wrapped__"],"keywords":["wraps","wrapper","__name__","__doc__"],
+      "diagnostic":"wrapper 定义上是否有 @wraps(function)？","hints":["返回的新函数默认拥有 wrapper 自己的名称和文档。","@wraps 复制常用元数据并设置 __wrapped__。"],"example":"恢复 wraps 后 traced.__name__ 与 original.__name__ 一致。","answer":"wraps 修复运行时元数据；它不替代 ParamSpec，也不保证业务转发正确。","source":{"label":"wraps 把原函数的名字和说明带回来","href":"#example-wraps-metadata"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "staged-contextmanager-boundary",
-      "lesson_id": "python-core-05",
-      "step_id": "step-5",
-      "question": "staged_output_path 怎样保证失败时不覆盖旧文件？",
-      "aliases": ["临时文件成功后再替换", "contextmanager怎么清理tmp"],
-      "keywords": ["staged_output_path", "contextmanager", "临时文件", "replace", "finally"],
-      "diagnostic": "块内写入的是正式路径还是同目录临时路径，replace 是否只出现在 yield 后？",
-      "hints": ["yield 给调用者临时路径；只有代码块正常返回，才继续执行 replace。", "把临时文件删除放在 finally，块内异常时跳过 replace，但仍执行清理。"],
-      "example": "局部示例：`with staged_output_path(path) as pending_path:` 后只打开 pending_path。",
-      "answer": "旧文件在成功提交前不被触碰；异常继续传播，finally 删除未完成临时文件。",
-      "source": {"label": "第五步：用 contextmanager 分阶段提交文件", "href": "#step-5"},
-      "updated_at": "2026-07-15",
-      "recommended": true
+      "id":"exception-reraise","lesson_id":"python-core-05","context_id":"troubleshoot-exception",
+      "question":"记录失败事件以后为什么还要 raise？","aliases":["装饰器吞掉异常会怎样","怎样记录异常又原样传播"],"keywords":["异常","raise","失败事件","传播"],
+      "diagnostic":"调用者是否依赖原异常判断业务失败？","hints":["追踪器只负责观察，不应把失败改成成功返回。","记录异常类型后使用裸 raise 传播同一个异常。"],"example":"事件出现的同时，assertRaises(ValueError) 仍应通过。","answer":"记录和抑制是两项不同决策；本课保留原函数的失败语义。","source":{"label":"记录失败以后，原异常还要继续走","href":"#troubleshoot-exception"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "decorator-context-migration",
-      "lesson_id": "python-core-05",
-      "step_id": "step-5",
-      "question": "装饰器与上下文管理器迁移任务怎样验收？",
-      "aliases": ["本课迁移任务做什么", "新增发布校验怎么证明"],
-      "keywords": ["迁移", "验收", "事件", "发布校验", "主报告"],
-      "diagnostic": "你的修改是否新增一个可观察行为，同时保持公开签名、旧文件保护和主报告文本？",
-      "hints": ["从确定性事件、发布前首行校验或自定义临时后缀中选择一项。", "补成功和失败测试，再运行 mypy、16 项测试、双语言应用对照和临时文件检查。"],
-      "example": "局部示例：发布前拒绝首行错误的临时文件，并断言旧审计内容不变。",
-      "answer": "验收必须同时包含主动变化、失败恢复、契约回归和命令证据。",
-      "source": {"label": "第五步：用 contextmanager 分阶段提交文件", "href": "#step-5"},
-      "updated_at": "2026-07-15"
+      "id":"contextmanager-yield","lesson_id":"python-core-05","context_id":"concept-contextmanager",
+      "question":"@contextmanager 里 yield 前后分别做什么？","aliases":["生成器怎样变成上下文管理器","块内异常会回到yield哪里"],"keywords":["contextmanager","yield","进入","退出"],
+      "diagnostic":"代码属于进入准备、交给调用者，还是正常退出后的提交？","hints":["yield 前是进入准备，yield 的值绑定到 as 后的名称。","正常退出继续执行 yield 后代码；异常会在 yield 处重新进入生成器。"],"example":"先 yield pending_path，正常结束后才 pending_path.replace(output_path)。","answer":"单次 yield 把生成器分成进入和退出两半；finally 适合无论如何都要清理的内容。","source":{"label":"yield 的前后，正好对应进入和退出","href":"#concept-contextmanager"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"contextmanager-cleanup","lesson_id":"python-core-05","context_id":"concept-contextmanager",
+      "question":"块内抛异常时 replace 和 finally 谁会执行？","aliases":["contextmanager失败后为什么只清理不发布","异常会被自定义with吞掉吗"],"keywords":["replace","finally","异常","清理"],
+      "diagnostic":"异常是否在生成器内被捕获并抑制？","hints":["异常回到 yield 处，正常路径的下一句 replace 会被跳过。","finally 仍执行；没有抑制异常，所以清理后继续传播。"],"example":"失败时旧文件保持不变，pending_path 被 unlink。","answer":"当前实现失败时跳过发布、执行清理并继续抛错。","source":{"label":"yield 的前后，正好对应进入和退出","href":"#concept-contextmanager"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"staged-two-with","lesson_id":"python-core-05","context_id":"example-staged-write",
+      "question":"为什么审计写入要嵌套两个 with？","aliases":["内外两个上下文各管什么","staged_output_path里为什么还要open"],"keywords":["嵌套with","文件关闭","发布","资源"],
+      "diagnostic":"你能否分别指出文件对象和发布流程的生命周期？","hints":["内层文件 with 负责写入与关闭临时文件。","外层自定义 with 负责正常发布或失败清理。"],"example":"先退出 pending_path.open，随后外层 replace 正式文件。","answer":"两个上下文各有单一职责：一个管理文件资源，一个管理发布状态。","source":{"label":"正式路径只在最后一刻被替换","href":"#example-staged-write"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"staged-not-transaction","lesson_id":"python-core-05","context_id":"example-staged-write",
+      "question":"临时文件替换就等于数据库事务吗？","aliases":["replace能不能同时原子提交多个文件","同目录临时文件有什么限制"],"keywords":["事务","原子","多文件","replace"],
+      "diagnostic":"你处理的是一个同目录文件，还是多个资源和并发写入？","hints":["当前方案只保护单文件发布。","它不提供跨多文件事务，也没有解决并发调用使用同一临时名。"],"example":"串行 CLI 写一个 audit.txt 适用；多进程并发需要重新设计。","answer":"不要把局部改进夸大成通用事务保证；写清使用范围和未解决问题。","source":{"label":"正式路径只在最后一刻被替换","href":"#example-staged-write"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"reproduce-boundary","lesson_id":"python-core-05","context_id":"reproduce-trace-stage",
+      "question":"这个例子运行后最该看哪几行？","aliases":["装饰器上下文示例怎么运行","pending_exists为False证明什么"],"keywords":["运行","事件","preserved","pending_exists"],
+      "diagnostic":"严格 mypy 是否先通过，输出是否包含成功和失败两条路径？","hints":["先看成功事件与函数名，再看失败事件和 ValueError。","最后确认 preserved=旧审计内容、pending_exists=False。"],"example":"python site-src/examples/python-core/decorators_contextmanagers.py。","answer":"这些行共同证明契约保持、异常传播、旧文件保护和失败清理。","source":{"label":"亲手看见成功事件和失败清理","href":"#reproduce-trace-stage"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"modify-first-line","lesson_id":"python-core-05","context_id":"modify-publish-check",
+      "question":"发布前第一行检查应该放在哪里？","aliases":["错误标题怎样阻止replace","空临时文件怎么拒绝发布"],"keywords":["第一行","校验","replace","空文件"],
+      "diagnostic":"临时文件是否已经关闭，但正式文件还没有被替换？","hints":["检查放在 yield 返回以后、replace 以前。","错误标题或空文件抛 ValueError，finally 负责清理。"],"example":"读取 pending_path 第一行，必须等于 学习审计快照。","answer":"在提交点前检查最小不变量，并用正确、错误、空文件三组测试锁定行为。","source":{"label":"发布前检查第一行","href":"#modify-publish-check"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"staged-troubleshoot","lesson_id":"python-core-05","context_id":"troubleshoot-staged-file",
+      "question":"失败后还留下 .tmp 文件怎么查？","aliases":["旧文件为什么被未完成内容覆盖","临时文件清理应该写在哪"],"keywords":["tmp","finally","旧文件","排错"],
+      "diagnostic":"unlink 是否位于无论正常还是异常都会执行的 finally？","hints":["先确认块内只写 pending_path。","再确认 replace 在正常路径，unlink 在 finally。"],"example":"失败测试同时断言旧文本不变和 pending_path.exists() 为 False。","answer":"按写入路径、替换位置和 finally 清理顺序检查，不要只看函数返回值。","source":{"label":"临时文件还在，或者旧文件被覆盖了","href":"#troubleshoot-staged-file"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"project-explicit-trace","lesson_id":"python-core-05","context_id":"project-reporter-boundaries",
+      "question":"为什么项目不永久装饰 build_report？","aliases":["trace_calls为什么在调用点显式组合","追踪事件会不会污染主报告"],"keywords":["项目","显式组合","build_report","主报告"],
+      "diagnostic":"所有调用都需要追踪，还是只有人工观察时才启用？","hints":["当前追踪是可选诊断，不属于报告业务。","在调用点组合 writer，避免导入模块就启用全局事件或标准输出。"],"example":"trace_calls(events.append)(write_audit_snapshot)。","answer":"显式组合让功能可选、状态由调用者拥有，并保持 30 项测试与主报告契约。","source":{"label":"回到学习进度报告器","href":"#project-reporter-boundaries"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"deepen-choose-tool","lesson_id":"python-core-05","context_id":"deepen-wrapper-choice",
+      "question":"什么时候用装饰器，什么时候直接调用函数或 with？","aliases":["不是什么都适合装饰器","显式调用为什么有时更好"],"keywords":["装饰器","with","显式调用","选择"],
+      "diagnostic":"你复用的是调用边界、单个操作，还是有明确进入退出的资源？","hints":["多函数共享且不改业务语义的边界适合装饰器。","单调用点优先显式函数；资源范围优先 with。"],"example":"追踪可用装饰器，临时文件发布用 with，单次校验可直接调用函数。","answer":"选择让控制流最清楚的工具，不以语法高级程度判断设计质量。","source":{"label":"不是什么都要用装饰器","href":"#deepen-wrapper-choice"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"career-boundary","lesson_id":"python-core-05","context_id":"career-boundary-evidence",
+      "question":"面试里怎样讲装饰器和分阶段写入？","aliases":["不能只说我会装饰器该说什么","这节项目如何形成求职表达"],"keywords":["面试","装饰器","上下文管理","验证"],
+      "diagnostic":"你能否说明增强了什么、保持了什么、失败时怎样恢复？","hints":["说明 ParamSpec、sink 和异常传播怎样保持调用契约。","说明临时路径、正常 replace、失败清理和旧文件不变的测试。"],"example":"强调主报告和公开签名未改变，30 项测试通过。","answer":"用边界、失败语义和回归证据讲设计，而不是只罗列 decorator、closure、contextmanager。","source":{"label":"讲装饰器时，说清楚它没有改变什么","href":"#career-boundary-evidence"},"updated_at":"2026-07-17","recommended":true
     }
   ]
 }

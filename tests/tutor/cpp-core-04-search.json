@@ -1,82 +1,25 @@
-[
-  {
-    "query": "多记录学习报告器如何验证？",
-    "step_id": "step-1",
-    "expected": "report-run"
-  },
-  {
-    "query": "报告器怎么运行",
-    "step_id": "step-1",
-    "expected": "report-run"
-  },
-  {
-    "query": "什么时候应该使用 std::vector？",
-    "step_id": "step-2",
-    "expected": "choose-vector"
-  },
-  {
-    "query": "vector适用场景",
-    "step_id": "step-2",
-    "expected": "choose-vector"
-  },
-  {
-    "query": "map 和 set 分别解决什么问题？",
-    "step_id": "step-2",
-    "expected": "map-set"
-  },
-  {
-    "query": "map和set区别",
-    "step_id": "step-2",
-    "expected": "map-set"
-  },
-  {
-    "query": "为什么 STL 范围使用 [begin, end)？",
-    "step_id": "step-3",
-    "expected": "half-open-range"
-  },
-  {
-    "query": "end不是最后元素",
-    "step_id": "step-3",
-    "expected": "half-open-range"
-  },
-  {
-    "query": "find_if 和 count_if 分别什么时候用？",
-    "step_id": "step-3",
-    "expected": "algorithm-choice"
-  },
-  {
-    "query": "find_if和count_if区别",
-    "step_id": "step-3",
-    "expected": "algorithm-choice"
-  },
-  {
-    "query": "vector 迭代器为什么会失效？",
-    "step_id": "step-4",
-    "expected": "iterator-invalid"
-  },
-  {
-    "query": "push_back后迭代器",
-    "step_id": "step-4",
-    "expected": "iterator-invalid"
-  },
-  {
-    "query": "sort 比较器为什么不能使用 <=？",
-    "step_id": "step-4",
-    "expected": "sort-comparator"
-  },
-  {
-    "query": "sort用小于等于",
-    "step_id": "step-4",
-    "expected": "sort-comparator"
-  },
-  {
-    "query": "如何给报告器增加统计而不修改输入？",
-    "step_id": "step-5",
-    "expected": "algorithm-migration"
-  },
-  {
-    "query": "报告器新增统计",
-    "step_id": "step-5",
-    "expected": "algorithm-migration"
-  }
-]
+{
+  "lesson_id": "cpp-core-04",
+  "cases": [
+    {"query":"这一课最后的多记录报告长什么样？","expected_card":"stl-report-output"},{"query":"STL这节会做出什么","expected_card":"stl-report-output"},
+    {"query":"记录数量会变化时，为什么先考虑 vector？","expected_card":"choose-vector"},{"query":"动态记录容器怎么选","expected_card":"choose-vector"},
+    {"query":"set、map 和 unordered_map 应该怎样区分？","expected_card":"set-map-unordered"},{"query":"有序与无序关联容器怎么选","expected_card":"set-map-unordered"},
+    {"query":"为什么先用 struct 表示一条学习记录？","expected_card":"study-record-aggregate"},{"query":"多个字段怎样组成一条记录","expected_card":"study-record-aggregate"},
+    {"query":"为什么 STL 使用 [begin, end) 这样的范围？","expected_card":"half-open-range"},{"query":"半开区间有什么好处","expected_card":"half-open-range"},
+    {"query":"为什么不能解引用 end()？","expected_card":"end-not-element"},{"query":"end是不是最后一个元素","expected_card":"end-not-element"},
+    {"query":"vector 的 size 和 capacity 有什么区别？","expected_card":"vector-size-capacity"},{"query":"reserve以后元素数量变吗","expected_card":"vector-size-capacity"},
+    {"query":"push_back 之后旧迭代器为什么可能失效？","expected_card":"iterator-invalidation"},{"query":"vector扩容后旧位置还能用吗","expected_card":"iterator-invalidation"},
+    {"query":"find_if 和 count_if 分别什么时候用？","expected_card":"find-count-choice"},{"query":"找第一条还是统计数量","expected_card":"find-count-choice"},
+    {"query":"transform 为什么需要输出位置？","expected_card":"transform-output"},{"query":"transform第三个参数是什么","expected_card":"transform-output"},
+    {"query":"accumulate 的初始值为什么会影响结果类型？","expected_card":"accumulate-initial-type"},{"query":"accumulate写0还是0.0","expected_card":"accumulate-initial-type"},
+    {"query":"报告器为什么先复制再排序？","expected_card":"sort-copy"},{"query":"怎样排序又保留输入顺序","expected_card":"sort-copy"},
+    {"query":"sort 的比较器为什么不能写 <=？","expected_card":"strict-comparator"},{"query":"比较器要严格弱序是什么意思","expected_card":"strict-comparator"},
+    {"query":"为什么正式报告更适合用 map 而不是依赖 unordered_map 的遍历顺序？","expected_card":"stable-map-output"},{"query":"关联统计怎样固定输出","expected_card":"stable-map-output"},
+    {"query":"复杂度为什么不能直接说成运行几毫秒？","expected_card":"complexity-growth"},{"query":"复杂度和实际耗时区别","expected_card":"complexity-growth"},
+    {"query":"怎样确认 C++ 和 Python 报告器真的保持一致？","expected_card":"bilingual-parity"},{"query":"两个实现通过各自测试就够吗","expected_card":"bilingual-parity"},
+    {"query":"怎样给报告增加未完成课程数，又不改坏原始记录？","expected_card":"modify-statistic"},{"query":"统计未完成数量","expected_card":"modify-statistic"},
+    {"query":"这一课给学习进度报告器加了哪些能力？","expected_card":"project-stl"},{"query":"C++报告器v0.4是什么","expected_card":"project-stl"},
+    {"query":"面试里怎样证明自己不是只会背 STL 接口？","expected_card":"career-stl"},{"query":"容器算法面试证据","expected_card":"career-stl"}
+  ],
+  "unknown": ["阳台种番茄应该多久浇一次水","怎样选择适合远足的防水鞋"]
+}

@@ -1,11 +1,22 @@
-[
-  { "query": "merge 基线要锁定哪些证据？", "step_id": "step-1", "expected": "merge-baseline" }, { "query": "固定归并输出几轮", "step_id": "step-1", "expected": "merge-baseline" },
-  { "query": "怎样合并两个已有序的段？", "step_id": "step-2", "expected": "merge-two-runs" }, { "query": "一侧耗尽后怎么办", "step_id": "step-2", "expected": "merge-two-runs" },
-  { "query": "归并的 comparisons 和 writes 怎么统计？", "step_id": "step-2", "expected": "merge-counts" }, { "query": "剩余复制算比较吗", "step_id": "step-2", "expected": "merge-counts" },
-  { "query": "相等键为什么必须先取左段？", "step_id": "step-3", "expected": "left-first-stability" }, { "query": "3L和3R谁先输出", "step_id": "step-3", "expected": "left-first-stability" },
-  { "query": "自底向上归并的宽度怎样变化？", "step_id": "step-4", "expected": "bottom-up-passes" }, { "query": "为什么按1 2 4合并", "step_id": "step-4", "expected": "bottom-up-passes" },
-  { "query": "奇数长度归并如何避免丢尾项？", "step_id": "step-4", "expected": "odd-tail-boundary" }, { "query": "最后没有完整右段怎么办", "step_id": "step-4", "expected": "odd-tail-boundary" },
-  { "query": "迭代归并为什么是 Theta(n log n)？", "step_id": "step-4", "expected": "merge-complexity" }, { "query": "不用递归也能nlogn吗", "step_id": "step-4", "expected": "merge-complexity" },
-  { "query": "相等时右侧优先会造成什么失败？", "step_id": "step-5", "expected": "right-first-failure" }, { "query": "怎样复现归并不稳定", "step_id": "step-5", "expected": "right-first-failure" },
-  { "query": "稳定降序归并迁移验收什么？", "step_id": "step-6", "expected": "merge-descending-migration" }, { "query": "为什么不能反转或改递归", "step_id": "step-6", "expected": "merge-descending-migration" }
-]
+{
+  "lesson_id":"cs-core-14",
+  "cases":[
+    {"query":"四项输入为什么只需要 width=1 和 width=2 两轮？","expected_card":"merge-output"},{"query":"passes为什么是2","expected_card":"merge-output"},
+    {"query":"怎样用两个游标合并有序段？","expected_card":"merge-two-runs"},{"query":"一侧耗尽后怎么办","expected_card":"merge-two-runs"},
+    {"query":"归并的 comparisons 和 writes 分别怎样统计？","expected_card":"merge-counts"},{"query":"尾部复制算比较吗","expected_card":"merge-counts"},
+    {"query":"相等键为什么必须先取左段？","expected_card":"left-first"},{"query":"3L和3R谁先输出","expected_card":"left-first"},
+    {"query":"自底向上归并的 width 怎样变化和停止？","expected_card":"bottom-up-width"},{"query":"为什么宽度按1 2 4翻倍","expected_card":"bottom-up-width"},
+    {"query":"为什么固定样例是 5 次比较、8 次写入？","expected_card":"pass-counts"},{"query":"每轮四项为什么写8次","expected_card":"pass-counts"},
+    {"query":"五项数据最后没有右段时怎么办？","expected_card":"odd-tail"},{"query":"孤立尾段如何处理","expected_card":"odd-tail"},
+    {"query":"宽度快照脚本怎样运行和核对？","expected_card":"run-merge"},{"query":"bottom_up_merge_trace怎么跑","expected_card":"run-merge"},
+    {"query":"归并课为什么还要回归 search 和 elementary？","expected_card":"bilingual-merge"},{"query":"查找排序闭环怎样回归","expected_card":"bilingual-merge"},
+    {"query":"稳定降序归并怎样修改才不会反转同键标签？","expected_card":"stable-descending"},{"query":"2A和2C降序谁在前","expected_card":"stable-descending"},
+    {"query":"五项输入主要验证归并的哪个边界？","expected_card":"five-items"},{"query":"为什么要测奇数长度","expected_card":"five-items"},
+    {"query":"归并后相等标签反转，先检查哪个分支？","expected_card":"fix-right-first"},{"query":"3R跑到3L前怎么修","expected_card":"fix-right-first"},
+    {"query":"归并循环不结束或尾项丢失分别查什么？","expected_card":"fix-loop-tail"},{"query":"width死循环怎么修","expected_card":"fix-loop-tail"},
+    {"query":"查找与排序组三课最终形成什么能力？","expected_card":"project-search-sort"},{"query":"三课闭环有哪些证据","expected_card":"project-search-sort"},
+    {"query":"不用递归，归并排序为什么仍是 Theta(n log n)？","expected_card":"merge-complexity"},{"query":"迭代归并复杂度怎么推","expected_card":"merge-complexity"},
+    {"query":"面试里怎样用固定快照讲清归并排序？","expected_card":"career-merge"},{"query":"复杂度不要只背结论怎么讲","expected_card":"career-merge"}
+  ],
+  "unknown":["怎样选择适合旅行的行李箱","冰箱冷藏室应该设置几度"]
+}

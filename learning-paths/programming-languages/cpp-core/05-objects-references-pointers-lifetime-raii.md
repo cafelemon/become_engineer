@@ -1,151 +1,122 @@
-# C++ 对象、引用、指针、生命周期与 RAII
-
 <div class="be-tutor-mount" data-tutor-lesson="cpp-core-05" aria-hidden="true"></div>
 
-> **任务先行：** 为双语言学习进度报告器增加“更新一条记录、可能查不到记录、导出审计快照”三种能力。你会在同一个小程序里观察值复制、借用、生命周期和资源自动释放，而不是先背概念。
+<section id="overview-raii-output" class="be-page-hero be-lesson-hero" data-learning-context="overview-raii-output" data-context-type="overview" markdown="1">
 
-## 任务路线
+<span class="be-lesson-kicker">C++ 核心 · 第三课 · 双语言学习进度报告器</span>
 
-<div class="be-task-route" role="list" aria-label="本课五步任务"><span role="listitem">1 基线</span><span role="listitem">2 引用</span><span role="listitem">3 指针</span><span role="listitem">4 生命周期</span><span role="listitem">5 RAII</span></div>
+# C++ 对象、引用、指针、生命周期与 RAII
 
-<section id="step-1" class="be-task-step" data-step-id="step-1" markdown="1">
-
-## 第一步：运行对象与复制的基线
-
-构建并运行现有报告器。它会创建多个 `StudyRecord` 对象，再把对象序列传给汇总、排序和筛选函数。**可观察结果：** CTest 通过，标准输出仍是既有的学习进度报告。
-
-</section>
-
-<section id="step-2" class="be-task-step" data-step-id="step-2" markdown="1">
-
-## 第二步：用引用修改原来的记录
-
-实现 `add_completed_hours(StudyRecord& record, double additional_hours)`，把 Python 起步的完成小时从 `7.5` 改为 `9.0`。**成功标准：** 调用者容器中的对象真的改变；你能说明若参数没有 `&`，改变的是一份副本。
-
-</section>
-
-<section id="step-3" class="be-task-step" data-step-id="step-3" markdown="1">
-
-## 第三步：用非拥有指针表达“可能找不到”
-
-实现按课程名查找记录的函数。找到时返回指向容器元素的指针，找不到时返回 `nullptr`；调用者必须先检查再解引用。**成功标准：** 测试同时覆盖找到和找不到，且没有把这个指针当作需要 `delete` 的所有者。
-
-</section>
-
-<section id="step-4" class="be-task-step" data-step-id="step-4" markdown="1">
-
-## 第四步：分析生命周期，而不运行未定义行为
-
-阅读一个会返回局部对象引用的反例，使用编译器诊断和作用域图说明为什么它不安全。改用按值返回或由调用者拥有的对象。**验收：** 不执行悬空引用或悬空指针，不用“本机恰好没崩溃”证明正确。
-
-</section>
-
-<section id="step-5" class="be-task-step" data-step-id="step-5" markdown="1">
-
-## 第五步：用 RAII 导出审计快照并迁移验收
-
-使用作用域内的 `std::ofstream` 写出可选审计文件；打开失败时返回 `false`，离开函数时文件自动关闭。独立新增一条记录或一个导出字段，再运行 CTest。**成功标准：** 审计文件包含标题和记录，失败路径可观察，主报告标准输出不变。
-
-</section>
-
-上一组课程已经让报告器可以处理多条记录、排序、筛选和汇总。本节继续使用那份成果，但只增加内部能力：对象如何在容器中存在，函数如何借用对象，何时可以使用地址，以及文件资源如何随作用域自动释放。
-
-## 课程信息
-
-| 项目 | 内容 |
-| --- | --- |
-| 适合人群 | 已完成 C++ STL 与 Python 容器/迭代课程，准备理解对象、借用和资源边界的学习者 |
-| 前置知识 | C++20、`std::vector`、函数参数、`const&`、CMake、CTest |
-| 可观察产出 | 可修改记录、可空查找、审计快照文件和稳定的主报告输出 |
-| 环境 | C++20、CMake 3.20 及以上、仅使用标准库 |
-| 阶段作品 | [双语言学习进度报告器](../../../exercises/programming-languages/study-progress-reporters/README.md) |
-| 事实核查 | 2026-07-15，依据 C++ 工作草案的对象生命周期、引用、文件流与资源管理章节 |
-
-## 学习目标
-
-完成本节后，你应该能够：
-
-- 把 `StudyRecord` 视作拥有状态的对象，并区分对象本身、复制品和引用。
-- 根据“必定存在”与“可能不存在”选择引用或可空非拥有指针。
-- 说明返回局部对象引用、保存容器可能失效位置为何危险。
-- 用作用域解释对象与文件流的开始和结束，不手写 `close()` 或 `delete` 来替代所有权设计。
-- 使用 `std::ofstream` 的 RAII 行为处理成功和打开失败两条路径。
-- 审阅 AI 代码中的空指针解引用、悬空引用、错误所有权和未检查文件错误。
-
-## 第一步：确认现有对象与复制边界
-
-从阶段作品的 C++ 目录运行：
-
-```bash
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
-cmake --build build --config Debug
-ctest --test-dir build --build-config Debug --output-on-failure
-./build/study_report_app
-```
-
-预期先看到 `All study report tests passed.`，再看到既有报告：
+## 函数结束时，文件也该收好
 
 ```text
-学习进度报告
-总计划：35.0 小时
-总完成：30.5 小时
-总体进度：87.1%
+进入：write_audit
+离开：write_audit
+写入：成功
 ```
 
-`StudyRecord` 是一个对象类型；`sample_records()` 按值返回一个 `vector`，调用者拿到自己的记录序列。`sort_by_progress(std::vector<StudyRecord> records)` 也按值接收参数，所以排序的是副本，测试据此验证原始输入不变。
+这三行把对象的一生打印了出来：进入作用域时构造，离开时析构。文件流也遵守这条时间线。我们仍然检查打开和写入是否成功，但不用在每条返回路径前手工补一遍清理代码。
+
+[跟着生命周期走一遍](#concept-object-lifetime){ .md-button .md-button--primary }
+[直接编译小例子](#reproduce-raii-scope){ .md-button }
+
+<div class="be-lesson-facts" markdown="1">
+<span>课程位置<strong>C++ 核心 · 3 / 3</strong></span>
+<span>前置<strong>STL、引用、CMake 与 CTest</strong></span>
+<span>完成后留下<strong>对象借用、可空查找、审计文件和失败测试</strong></span>
+</div>
+
+</section>
+
+## 开始前
+
+- 上一课的多记录报告器能够从全新目录构建，并且 CTest 通过。
+- 已经知道按值参数会复制输入，`const&` 可以表达只读借用。
+- 本课只讨论栈上对象、容器元素和文件流，不提前展开手写内存分配、智能指针实现或继承体系。
+
+<section id="concept-object-lifetime" data-learning-context="concept-object-lifetime" data-context-type="concept" markdown="1">
+
+## 先问：谁拥有它，它能活多久
+
+<div class="be-lifetime-strip" role="img" aria-label="对象构造、被临时借用、继续使用、离开作用域并析构的时间线">
+  <div data-state="alive"><strong>构造</strong><span>对象开始存活</span></div>
+  <div data-state="borrow"><strong>借用</strong><span>引用或指针临时访问</span></div>
+  <div data-state="alive"><strong>使用</strong><span>拥有者仍在作用域内</span></div>
+  <div data-state="dead"><strong>析构</strong><span>作用域结束，不再访问</span></div>
+</div>
+
+对象的生命周期是它可以被安全使用的时间范围。引用和非拥有指针不会替对象续命；它们只是暂时指向别人拥有的对象。
+
+在报告器里，`std::vector<StudyRecord>` 拥有记录。函数参数可以复制记录、只读借用记录或修改同一条记录，但必须先把这三种意图分清楚。
+
+</section>
+
+<section id="example-scope-note" data-learning-context="example-scope-note" data-context-type="example" markdown="1">
+
+## 用一个会报到的对象看作用域
 
 ```cpp
-struct StudyRecord {
-    std::string course_name;
-    double target_hours;
-    double completed_hours;
-    std::vector<std::string> tags;
+class ScopeNote {
+public:
+    explicit ScopeNote(std::string name) : name_{std::move(name)} {
+        std::cout << "进入：" << name_ << '\n';
+    }
+
+    ~ScopeNote() {
+        std::cout << "离开：" << name_ << '\n';
+    }
+
+private:
+    std::string name_;
 };
-
-std::vector<StudyRecord> sort_by_progress(std::vector<StudyRecord> records);
 ```
 
-这里的“按值”不是总能避免的坏事：当函数需要修改自己的工作副本而不影响调用者时，它正好表达了需求。下一步才处理“必须修改原对象”的场景。
+构造函数在对象建立时运行，析构函数在对象离开作用域时运行。`ScopeNote` 只打印时间顺序；真实资源类会在这两个位置取得和释放文件、锁或内存。
 
-## 第二步：引用表示确定存在、可修改的借用
+</section>
 
-在 `include/study/study_report.hpp` 增加声明：
+<section id="concept-value-reference-pointer" data-learning-context="concept-value-reference-pointer" data-context-type="concept" markdown="1">
+
+## 值、引用和指针表达三种不同关系
+
+| 写法 | 这节课里的意思 | 调用者要注意什么 |
+| --- | --- | --- |
+| `StudyRecord record` | 函数得到一份副本 | 修改副本不会改变原对象 |
+| `const StudyRecord& record` | 必定存在的只读借用 | 拥有者必须仍然存活 |
+| `StudyRecord& record` | 必定存在的可修改借用 | 修改会反映到原对象 |
+| `StudyRecord* record` | 可能为空的非拥有借用 | 先判空，不 `delete` |
+
+按值并不低级。上一课的 `sort_by_progress(std::vector<StudyRecord> records)` 故意复制整组记录，因为函数要排序自己的工作副本，同时保留调用者的原始顺序。
+
+</section>
+
+<section id="example-reference-mutation" data-learning-context="example-reference-mutation" data-context-type="example" markdown="1">
+
+## 确定存在、需要修改时，用引用
 
 ```cpp
-void add_completed_hours(StudyRecord& record, double additional_hours);
-```
-
-在 `src/study_report.cpp` 增加实现：
-
-```cpp
-void add_completed_hours(StudyRecord& record, double additional_hours) {
+void add_completed_hours(
+    StudyRecord& record,
+    double additional_hours
+) {
     record.completed_hours += additional_hours;
 }
 ```
 
-`StudyRecord&` 是别名：调用这个函数不会复制记录，`record` 直接指向调用者已经拥有的对象。引用适合本节的两个条件同时成立时：对象必须存在，函数需要修改它。
-
-在测试中主动完成修改：
+测试不能只看函数内部打印了什么，要回到调用者拥有的容器检查：
 
 ```cpp
-std::vector<study::StudyRecord> mutable_records{study::sample_records()};
-study::add_completed_hours(mutable_records.front(), 1.5);
-expect_close(
-    mutable_records.front().completed_hours, 9.0,
-    "reference mutation should update the original record"
-);
+std::vector<StudyRecord> records{sample_records()};
+add_completed_hours(records.front(), 1.5);
+expect_close(records.front().completed_hours, 9.0);
 ```
 
-如果函数签名写成 `StudyRecord record`，`completed_hours` 会在副本上增加，容器第一个元素仍是 `7.5`。不要仅凭函数内部打印的数字判断；检查调用者容器才是本任务的成功证据。
+如果参数少了 `&`，函数仍能编译，也可能在内部显示 `9.0`，但容器里的原对象还是 `7.5`。这类错误靠调用者侧断言最容易抓住。
 
-### 提示
+</section>
 
-1. 先找出需要改变的是“函数局部变量”还是“调用者已有对象”。
-2. 只有后者才在参数类型后加 `&`；如果不应修改对象，则使用 `const StudyRecord&`。
+<section id="example-nullable-pointer" data-learning-context="example-nullable-pointer" data-context-type="example" markdown="1">
 
-## 第三步：指针表示可选的非拥有观察
-
-按名字查找时，记录不一定存在。引用不能自然表达“没有对象”，本节使用非拥有指针：
+## 可能找不到时，用可空的非拥有指针
 
 ```cpp
 StudyRecord* find_record_by_name(
@@ -158,81 +129,87 @@ StudyRecord* find_record_by_name(
             return record.course_name == course_name;
         }
     )};
+
     return iterator == records.end() ? nullptr : &*iterator;
 }
 ```
 
-这个指针只借用 `records` 中已有对象：
-
-- 找到时，`&*iterator` 是元素地址；它不是 `new` 的返回值，调用者**绝不能** `delete`。
-- 找不到时，返回 `nullptr`；调用者先判断再使用。
-- 只要 `records` 被销毁，或发生会使 `vector` 重新分配的增长，过去取得的位置就可能失效。此后不要继续保存或解引用它。
-
-安全调用方式：
+找到时，返回的是容器元素的地址；所有权仍属于 `records`，所以调用者不能 `delete`。找不到时返回 `nullptr`：
 
 ```cpp
-if (study::StudyRecord* record{
-        study::find_record_by_name(mutable_records, "Python 起步")
-    }) {
-    study::add_completed_hours(*record, 0.5);
+if (StudyRecord* record{find_record_by_name(records, "Python 起步")}) {
+    add_completed_hours(*record, 0.5);
 }
 ```
 
-`if` 的条件把“是否存在”放在解引用之前。找不到不是异常：测试应明确断言 `find_record_by_name(records, "不存在") == nullptr`。
+这里先用裸指针讲清“可能没有”和“非拥有”。若接口更适合返回迭代器、索引或 `std::optional<std::reference_wrapper<T>>`，可以在后续工程中重新权衡。
 
-## 第四步：生命周期是对象可被安全使用的时间范围
+</section>
 
-不要编译或调用下面的反例：
+<section id="concept-container-invalidation" data-learning-context="concept-container-invalidation" data-context-type="concept" markdown="1">
+
+## 容器还活着，不代表旧地址一直有效
+
+`find_record_by_name()` 返回的地址指向 `vector` 元素。只要发生可能重新分配的增长，元素就可能被搬到新存储，过去取得的引用、指针和迭代器都可能失效。
 
 ```cpp
-// 错误示例：函数结束时 local 已经销毁。
-const study::StudyRecord& invalid_record() {
-    study::StudyRecord local{"临时", 1.0, 1.0, {}};
+StudyRecord* found{find_record_by_name(records, "Python 起步")};
+records.push_back(new_record);  // 可能重新分配
+// 不要继续使用 found；需要时重新查找。
+```
+
+我更建议让借用保持短暂：查到以后立即使用，不跨越容器结构变化，也不把地址长期保存在另一个对象里。
+
+</section>
+
+<section id="reproduce-raii-scope" data-learning-context="reproduce-raii-scope" data-context-type="reproduce" markdown="1">
+
+## 编译并观察成功和失败
+
+```bash
+mkdir -p /tmp/be-cpp-raii
+c++ -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wshadow \
+  site-src/examples/cpp-core/raii_scope.cpp \
+  -o /tmp/be-cpp-raii/raii_scope
+
+cd /tmp/be-cpp-raii
+./raii_scope audit.txt
+cat audit.txt
+```
+
+再给它一个不存在的父目录：
+
+```bash
+./raii_scope missing/audit.txt
+echo $?
+```
+
+第二次会打印“写入：失败”并返回 `1`，但 `ScopeNote` 仍会离开作用域。RAII 负责清理已经取得的资源，不负责把打开失败变成成功。
+
+</section>
+
+<section id="troubleshoot-dangling" data-learning-context="troubleshoot-dangling" data-context-type="troubleshoot" markdown="1">
+
+## 不要运行悬空引用来“看看会不会崩”
+
+```cpp
+const StudyRecord& bad_record() {
+    StudyRecord local{"临时", 1.0, 1.0, {}};
     return local;
 }
 ```
 
-`local` 的生命周期从声明开始，在函数离开时结束。返回引用不会延长局部对象生命周期；后续读取它是未定义行为。编译器可能给出“返回局部变量引用”的警告，也可能在某些构建设置下没有阻止你。两种情况都不能把它变成正确代码。
+函数结束后 `local` 已经销毁，返回的引用指向不再存活的对象。后续读取属于未定义行为：这台电脑上恰好没崩，也不能证明正确。
 
-本课的安全替代是按值返回：
+把反例保存在临时文件，用严格警告编译并阅读诊断即可。安全替代通常是按值返回，或者由调用者先拥有对象，再把引用短暂传进函数。
 
-```cpp
-study::StudyRecord make_record() {
-    return {"临时", 1.0, 1.0, {}};
-}
-```
+</section>
 
-这里的返回对象由调用者接收和拥有；现代 C++ 会应用返回值优化或移动，正确性不依赖你手工规避每一次复制。需要借用时，调用者必须保证被借用对象仍活着；需要长期拥有时，先明确谁拥有对象，再选择值成员、容器或智能指针，而不是把裸指针当所有权工具。
+<section id="concept-raii-file" data-learning-context="concept-raii-file" data-context-type="concept" markdown="1">
 
-```mermaid
-flowchart LR
-    A["records 容器拥有 StudyRecord"] --> B["引用或裸指针临时借用"]
-    B --> C{"容器和元素仍存活吗"}
-    C -- "是" --> D["可以在约定范围内读取或修改"]
-    C -- "否" --> E["位置已失效：不可解引用"]
-    F["作用域内 ofstream"] --> G["函数离开"] --> H["析构并关闭文件"]
-```
-
-## 第五步：RAII 让文件资源跟随作用域
-
-“RAII”指资源获取即初始化：对象构造时取得资源，对象离开作用域时由析构函数释放资源。对文件流而言，`std::ofstream` 在函数结束时会自动关闭文件；我们仍然需要检查它是否成功打开，以及写入是否成功。
-
-在头文件加入：
+## `ofstream` 把文件关闭交给析构
 
 ```cpp
-#include <filesystem>
-
-bool write_audit_snapshot(
-    const std::vector<StudyRecord>& records,
-    const std::filesystem::path& output_path
-);
-```
-
-实现如下：
-
-```cpp
-#include <fstream>
-
 bool write_audit_snapshot(
     const std::vector<StudyRecord>& records,
     const std::filesystem::path& output_path
@@ -252,84 +229,116 @@ bool write_audit_snapshot(
 }
 ```
 
-这里没有显式 `output.close()`：无论函数从正常写入、`return false` 还是未来异常路径离开，局部 `output` 都会离开作用域并析构。RAII 不是“忽略错误”，而是把资源释放交给对象生命周期，同时把打开/写入结果作为普通可测试的返回值。
+函数没有显式调用 `close()`。正常返回、提前返回或未来的异常路径离开时，局部 `output` 都会析构。错误检查仍然保留：构造后检查能否打开，写完再检查流状态。
 
-在 `tests/study_report_tests.cpp` 验证成功和失败：
+</section>
 
-```cpp
-const std::filesystem::path audit_path{"study_report_audit_test.txt"};
-std::filesystem::remove(audit_path);
-expect_true(study::write_audit_snapshot(records, audit_path), "audit snapshot should open and write a file");
+<section id="reproduce-formal-project" data-learning-context="reproduce-formal-project" data-context-type="reproduce" markdown="1">
 
-std::ifstream audit_input{audit_path};
-std::string audit_contents{
-    (std::istreambuf_iterator<char>{audit_input}),
-    std::istreambuf_iterator<char>{}
-};
-expect_true(audit_contents.find("学习审计快照") != std::string::npos, "audit header");
-std::filesystem::remove(audit_path);
+## 回到正式报告器验证完整契约
 
-expect_true(
-    !study::write_audit_snapshot(records, "/missing-directory/study-report.txt"),
-    "unopenable audit path should report failure"
-);
+```bash
+cd exercises/programming-languages/study-progress-reporters/cpp
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
+cmake --build build --config Debug
+ctest --test-dir build --build-config Debug --output-on-failure
+./build/study_report_app
 ```
 
-### 迁移验收
+CTest 会检查五件事：引用修改了原记录、查找同时覆盖命中和未命中、审计文件包含标题与记录、缺失目录返回失败、主报告文字仍和 Python 版本一致。
 
-独立完成下面任意一项，再运行构建、CTest 和应用：
+Windows 使用 Visual Studio 多配置生成器时，应用通常位于 `build/Debug/study_report_app.exe`，并在构建和测试命令中保留 `--config Debug`。
 
-1. 在审计快照增加一列状态，并证明主报告标准输出没有变化。
-2. 新增一条学习记录，使用 `find_record_by_name` 找到它后通过引用更新完成时间。
-3. 为不存在的课程名增加一条清晰日志，但不得解引用 `nullptr`。
+</section>
 
-提交或学习记录中至少保留：运行命令、CTest 输出、审计文件的一行证据、失败路径说明和你选择引用/指针的理由。
+<section id="modify-audit-field" data-learning-context="modify-audit-field" data-context-type="modify" markdown="1">
 
-## AI 协作任务
+## 给审计文件增加状态列
 
-可以让 AI 为 `find_record_by_name` 或审计测试提供候选实现，但必须逐项人工审阅：
+在审计快照每条记录末尾增加 `build_status(record)`，然后补两类检查：
 
-- 返回的是借用位置还是新分配的对象？谁负责释放？
-- 找不到时是否明确返回 `nullptr`，调用方是否先检查？
-- 是否把容器增长后可能失效的位置长期保存？
-- 是否检查文件打开和写入结果？
-- 是否改变了 `build_report` 的既有标准输出？
+1. 审计文件里同时出现“已完成”和“进行中”。
+2. `build_report(records)` 的完整标准输出与修改前逐字相同。
 
-可复用提示：
+审计输出和主报告是两个接口。给一个接口加字段，不应顺手改变另一个接口；这也是把调试文字留在文件、而不是打印到 stdout 的原因。
+
+</section>
+
+<section id="troubleshoot-file-output" data-learning-context="troubleshoot-file-output" data-context-type="troubleshoot" markdown="1">
+
+## 文件没出现时，从路径和流状态查起
+
+| 现象 | 先看哪里 | 怎样恢复 |
+| --- | --- | --- |
+| 返回 `false`，没有文件 | 父目录、权限、打开状态 | 建立正确目录，保留失败返回 |
+| 文件存在但内容不全 | 写入后的流状态 | 检查磁盘或编码错误，不只检查打开成功 |
+| 测试偶尔读到旧内容 | 流还没离开作用域 | 在读取前结束输出流作用域 |
+| 主报告测试变化 | 审计文字混进 stdout | 审计只写文件，保持主报告契约 |
+| 查到记录后结果异常 | 指针为空或位置已失效 | 先判空；修改容器后重新查找 |
+
+</section>
+
+<section id="project-cpp-v05" data-learning-context="project-cpp-v05" data-context-type="project" markdown="1">
+
+## 双语言报告器完成 C++ 核心层
 
 ```text
-请为 C++20 学习进度报告器提出一个“按名称查找记录”的实现。
-约束：返回值表达可能找不到；不得转移容器元素所有权；调用者不应 delete；
-请给出一个找到、一个找不到和一个生命周期风险的测试建议，并说明验证命令。
+学习记录容器拥有 StudyRecord
+├── 值副本：排序，不改原输入
+├── 引用：确定存在时原地更新
+├── 非拥有指针：查找可能失败
+└── ofstream：可选审计快照，离开作用域自动关闭
 ```
 
-## 常见错误与排查
+从第一课的一张状态卡到现在，C++ 版本已经经历编译链、函数接口、多文件 CMake、STL 多记录处理和 RAII 资源管理。Python 与 C++ 的主报告仍逐字一致，但内部用各自语言更自然的方式实现。
 
-| 现象 | 可能原因 | 检查与修复 |
-| --- | --- | --- |
-| 修改函数运行了但容器数据没变 | 参数按值复制 | 将需要修改的参数改为 `StudyRecord&`，并在调用者检查结果 |
-| 解引用时崩溃或结果异常 | 没有检查 `nullptr` | 先判断指针，再使用 `*pointer` 或 `pointer->field` |
-| 保存的位置随后不能用 | 容器销毁或重新分配 | 缩短借用范围；修改容器后重新查找 |
-| 文件没有生成 | 路径不存在或无权限 | 检查 `std::ofstream` 状态，返回 `false` 并记录路径 |
-| 主报告测试失败 | 审计功能混入标准输出 | 审计只写文件，保留 `build_report` 既有字符串契约 |
+[查看双语言阶段作品](../../../exercises/programming-languages/study-progress-reporters/README.md){ .md-button .md-button--primary }
 
-## 完成证据
+</section>
 
-- CMake 以 C++20 和严格警告完成构建，CTest 通过。
-- 你能展示按引用修改调用者对象的测试证据。
-- 你能展示找到和找不到记录两条指针路径，并解释为什么不 `delete`。
-- 你能解释局部对象结束后为何不能返回其引用，且没有运行未定义行为。
-- 审计文件成功写出，错误路径返回失败，主报告输出保持不变。
+<section id="deepen-ownership-tools" data-learning-context="deepen-ownership-tools" data-context-type="deepen" markdown="1">
+
+## RAII 不只用在文件
+
+`std::vector` 管理动态存储，`std::lock_guard` 管理互斥锁，智能指针管理动态对象。共同点不是“自动”二字，而是把释放责任绑定到一个拥有资源的对象。
+
+这节课没有使用 `new`、`delete` 或智能指针，因为当前记录本来就由值和容器拥有。不要为了展示工具而制造额外所有权问题；真正出现共享、转移或多态所有权时再选择相应类型。
+
+</section>
+
+<section id="career-raii-evidence" data-learning-context="career-raii-evidence" data-context-type="career" markdown="1">
+
+## 讲 RAII 时，把失败路径也讲出来
+
+求职表达可以沿着这条线说：
+
+- 报告器需要可选审计文件，但主报告输出不能变化。
+- 用局部 `ofstream` 绑定文件生命周期，同时检查打开和写入状态。
+- 用失败路径证明缺失目录返回 `false`，旧功能仍通过 CTest。
+- 查找函数返回非拥有指针，调用方判空，容器变化后不复用旧位置。
+
+这样的叙述说明你理解所有权、接口和验证，而不只是记住“RAII 会自动释放”。
+
+</section>
+
+## 完成检查
+
+- [ ] 能用作用域说明对象何时构造、何时析构。
+- [ ] 能解释值副本、只读引用、可修改引用和可空非拥有指针的区别。
+- [ ] 能验证按引用修改，以及查找命中和未命中两条路径。
+- [ ] 不运行悬空引用来判断它是否安全，也不对容器元素地址调用 `delete`。
+- [ ] 审计文件成功写出，错误路径返回失败，主报告输出保持不变。
+- [ ] 能从全新构建目录通过严格编译和 CTest。
 
 ## 来源与版本
 
 | 来源 | 用于核查 | 版本或日期 |
 | --- | --- | --- |
-| [C++ 工作草案：对象生命周期](https://eel.is/c++draft/basic.life) | 对象创建、销毁与生命周期边界 | C++20 教学基线，2026-07-15 核查 |
-| [C++ 工作草案：引用](https://eel.is/c++draft/dcl.ref) | 引用语义和绑定规则 | 2026-07-15 核查 |
-| [C++ 工作草案：文件流](https://eel.is/c++draft/fstreams) | `std::ofstream` 与文件资源 | 2026-07-15 核查 |
-| [C++ Core Guidelines：资源管理](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#S-resource) | RAII、所有权与资源边界 | 2026-07-15 核查 |
+| [C++ 工作草案：对象生命周期](https://eel.is/c++draft/basic.life) | 对象创建、销毁与生命周期 | C++20 教学基线，2026-07-17 核查 |
+| [C++ 工作草案：引用](https://eel.is/c++draft/dcl.ref) | 引用绑定与生命周期关系 | 2026-07-17 核查 |
+| [C++ 工作草案：文件流](https://eel.is/c++draft/fstreams) | `std::ofstream` 与文件资源 | 2026-07-17 核查 |
+| [C++ Core Guidelines：资源管理](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#S-resource) | RAII、所有权和资源责任 | 2026-07-17 核查 |
 
 ## 下一步
 
-对象与资源能力已经建立到可验证的基础层。下一节进入 Python **[数据模型、数据类与上下文管理](../python-core/04-data-model-dataclasses-context-managers.md)**，用对象方法和 `with` 对照本课的借用、RAII 与审计契约。
+C++ 起步与核心已经连成一条完整入口。接下来进入[共同算法与数据结构基础](../../cs-core/README.md)，继续使用人工轨迹、操作计数和边界测试；也可以对照 Python 的[数据类与上下文管理](../python-core/04-data-model-dataclasses-context-managers.md)，比较两种语言怎样表达对象和资源范围。

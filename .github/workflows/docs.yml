@@ -11,6 +11,9 @@ on:
       - "site-src/**/*.json"
       - "site-src/**/*.webp"
       - "site-src/examples/**/*.py"
+      - "site-src/examples/**/*.cpp"
+      - "site-src/examples/**/*.hpp"
+      - "site-src/examples/**/CMakeLists.txt"
       - "scripts/test_personalization.cjs"
       - "scripts/test_engineering_git_local.mjs"
       - "scripts/test_engineering_git_remote.mjs"
@@ -25,6 +28,43 @@ on:
       - "scripts/test_python_modules_venv_v2.mjs"
       - "scripts/test_python_errors_tests_v2.mjs"
       - "scripts/test_cs_data_representation_v2.mjs"
+      - "scripts/test_cs_operation_growth_v2.mjs"
+      - "scripts/test_cs_text_units_v2.mjs"
+      - "scripts/test_cs_grid_coordinates_v2.mjs"
+      - "scripts/test_python_core_types_v2.mjs"
+      - "scripts/test_python_core_interfaces_v2.mjs"
+      - "scripts/test_python_core_iterators_v2.mjs"
+      - "scripts/test_python_core_dataclasses_v2.mjs"
+      - "scripts/test_python_core_decorators_v2.mjs"
+      - "scripts/test_python_engineering_package_cli_v2.mjs"
+      - "scripts/test_python_engineering_config_diagnostics_v2.mjs"
+      - "scripts/test_cpp_start_build_v2.mjs"
+      - "scripts/test_cpp_start_functions_v2.mjs"
+      - "scripts/test_cpp_core_cmake_v2.mjs"
+      - "scripts/test_cpp_core_stl_v2.mjs"
+      - "scripts/test_cpp_core_raii_v2.mjs"
+      - "scripts/test_cs_dynamic_array_v2.mjs"
+      - "scripts/test_cs_singly_linked_v2.mjs"
+      - "scripts/test_cs_linked_stack_v2.mjs"
+      - "scripts/test_cs_linked_queue_v2.mjs"
+      - "scripts/test_cs_hash_collisions_v2.mjs"
+      - "scripts/test_cs_hash_table_v2.mjs"
+      - "scripts/test_cs_set_frequency_v2.mjs"
+      - "scripts/test_cs_ordered_search_v2.mjs"
+      - "scripts/test_cs_elementary_sort_v2.mjs"
+      - "scripts/test_cs_bottom_up_merge_v2.mjs"
+      - "scripts/test_cs_binary_tree_shape_v2.mjs"
+      - "scripts/test_cs_recursive_dfs_v2.mjs"
+      - "scripts/test_cs_tree_frontier_v2.mjs"
+      - "scripts/test_cs_undirected_graph_v2.mjs"
+      - "scripts/test_cs_bfs_v2.mjs"
+      - "scripts/test_cs_full_graph_dfs_v2.mjs"
+      - "scripts/test_cs_min_heap_v2.mjs"
+      - "scripts/test_cs_stable_priority_queue_v2.mjs"
+      - "scripts/test_cs_dijkstra_v2.mjs"
+      - "scripts/test_cs_dsu_v2.mjs"
+      - "scripts/test_cs_kruskal_v2.mjs"
+      - "scripts/test_cs_lazy_prim_v2.mjs"
       - "scripts/test_tutor_search.cjs"
       - "tests/tutor/**"
       - "mkdocs.yml"
@@ -98,6 +138,117 @@ jobs:
 
       - name: Verify CS data representation lesson example
         run: node scripts/test_cs_data_representation_v2.mjs
+
+      - name: Verify CS operation growth lesson example
+        run: node scripts/test_cs_operation_growth_v2.mjs
+
+      - name: Verify CS text units lesson example
+        run: node scripts/test_cs_text_units_v2.mjs
+
+      - name: Verify CS grid coordinates lesson example
+        run: node scripts/test_cs_grid_coordinates_v2.mjs
+
+      - name: Verify Python core type contracts lesson example
+        run: node scripts/test_python_core_types_v2.mjs
+
+      - name: Verify Python core interfaces lesson example
+        run: node scripts/test_python_core_interfaces_v2.mjs
+
+      - name: Verify Python core iterators lesson example
+        run: node scripts/test_python_core_iterators_v2.mjs
+
+      - name: Verify Python core dataclasses lesson example
+        run: node scripts/test_python_core_dataclasses_v2.mjs
+
+      - name: Verify Python core decorators lesson example
+        run: node scripts/test_python_core_decorators_v2.mjs
+
+      - name: Verify Python packaging and CLI lesson
+        run: node scripts/test_python_engineering_package_cli_v2.mjs
+
+      - name: Verify Python configuration and diagnostics lesson
+        run: node scripts/test_python_engineering_config_diagnostics_v2.mjs
+
+      - name: Verify C++ build and types lesson
+        run: node scripts/test_cpp_start_build_v2.mjs
+
+      - name: Verify C++ functions and program organization lesson
+        run: node scripts/test_cpp_start_functions_v2.mjs
+
+      - name: Verify C++ headers, sources, and CMake lesson
+        run: node scripts/test_cpp_core_cmake_v2.mjs
+
+      - name: Verify C++ STL containers and algorithms lesson
+        run: node scripts/test_cpp_core_stl_v2.mjs
+
+      - name: Verify C++ object lifetime and RAII lesson
+        run: node scripts/test_cpp_core_raii_v2.mjs
+
+      - name: Verify dynamic array capacity and amortized cost lesson
+        run: node scripts/test_cs_dynamic_array_v2.mjs
+
+      - name: Verify singly linked list and ownership lesson
+        run: node scripts/test_cs_singly_linked_v2.mjs
+
+      - name: Verify linked stack and LIFO lesson
+        run: node scripts/test_cs_linked_stack_v2.mjs
+
+      - name: Verify linked queue and FIFO lesson
+        run: node scripts/test_cs_linked_queue_v2.mjs
+
+      - name: Verify hash function and collision lesson
+        run: node scripts/test_cs_hash_collisions_v2.mjs
+
+      - name: Verify separate chaining and rehash lesson
+        run: node scripts/test_cs_hash_table_v2.mjs
+
+      - name: Verify set, frequency, and stable output lesson
+        run: node scripts/test_cs_set_frequency_v2.mjs
+
+      - name: Verify ordered search and bound lesson
+        run: node scripts/test_cs_ordered_search_v2.mjs
+
+      - name: Verify elementary sorting and stability lesson
+        run: node scripts/test_cs_elementary_sort_v2.mjs
+
+      - name: Verify bottom-up merge sort lesson
+        run: node scripts/test_cs_bottom_up_merge_v2.mjs
+
+      - name: Verify binary tree shape lesson
+        run: node scripts/test_cs_binary_tree_shape_v2.mjs
+
+      - name: Verify recursive DFS lesson
+        run: node scripts/test_cs_recursive_dfs_v2.mjs
+
+      - name: Verify tree frontier lesson
+        run: node scripts/test_cs_tree_frontier_v2.mjs
+
+      - name: Verify undirected graph lesson
+        run: node scripts/test_cs_undirected_graph_v2.mjs
+
+      - name: Verify BFS shortest-path lesson
+        run: node scripts/test_cs_bfs_v2.mjs
+
+      - name: Verify full-graph DFS lesson
+        run: node scripts/test_cs_full_graph_dfs_v2.mjs
+
+      - name: Verify binary min-heap lesson
+        run: node scripts/test_cs_min_heap_v2.mjs
+
+      - name: Verify stable priority queue lesson
+        run: node scripts/test_cs_stable_priority_queue_v2.mjs
+
+      - name: Verify Dijkstra lesson
+        run: node scripts/test_cs_dijkstra_v2.mjs
+
+      - name: Verify disjoint-set lesson
+        run: node scripts/test_cs_dsu_v2.mjs
+
+      - name: Verify Kruskal lesson
+        run: node scripts/test_cs_kruskal_v2.mjs
+
+      - name: Verify Lazy Prim lesson
+        run: node scripts/test_cs_lazy_prim_v2.mjs
 
       - name: Build documentation strictly
         run: mkdocs build --strict

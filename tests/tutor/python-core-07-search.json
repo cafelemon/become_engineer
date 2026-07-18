@@ -1,20 +1,25 @@
-[
-  {"query": "stdout、stderr 和退出码各表达什么？", "step_id": "step-1", "expected": "stream-exit-baseline"},
-  {"query": "业务结果诊断信息和进程状态怎么分", "step_id": "step-1", "expected": "stream-exit-baseline"},
-  {"query": "为什么配置只通过 --config 显式读取？", "step_id": "step-2", "expected": "explicit-toml-loading"},
-  {"query": "tomllib为什么用二进制打开且不自动找配置", "step_id": "step-2", "expected": "explicit-toml-loading"},
-  {"query": "TOML 解析成功后为什么还要校验？", "step_id": "step-3", "expected": "toml-business-validation"},
-  {"query": "tag等于3或出现未知字段应该怎样", "step_id": "step-3", "expected": "toml-business-validation"},
-  {"query": "配置优先级如何固定和测试？", "step_id": "step-3", "expected": "config-precedence-contract"},
-  {"query": "命令行TOML默认值谁覆盖谁", "step_id": "step-3", "expected": "config-precedence-contract"},
-  {"query": "为什么使用命名 logger 而不是到处 basicConfig？", "step_id": "step-4", "expected": "named-logger-boundary"},
-  {"query": "库模块配置root日志导致handler重复怎么办", "step_id": "step-4", "expected": "named-logger-boundary"},
-  {"query": "开启 INFO 日志后怎样保证报告不变？", "step_id": "step-4", "expected": "stdout-stderr-separation"},
-  {"query": "日志为什么进stderr且默认成功安静", "step_id": "step-4", "expected": "stdout-stderr-separation"},
-  {"query": "坏 TOML 和未知字段怎样失败？", "step_id": "step-5", "expected": "malformed-config-failure"},
-  {"query": "TOMLDecodeError为什么返回1并写stderr", "step_id": "step-5", "expected": "malformed-config-failure"},
-  {"query": "审计写入失败怎样保护旧文件？", "step_id": "step-5", "expected": "audit-failure-contract"},
-  {"query": "缺失父目录后不能留下tmp且退出码为1", "step_id": "step-5", "expected": "audit-failure-contract"},
-  {"query": "新增配置项怎样完成迁移验收？", "step_id": "step-6", "expected": "config-logging-migration"},
-  {"query": "配置项默认值CLI覆盖错误类型要测哪些", "step_id": "step-6", "expected": "config-logging-migration"}
-]
+{
+  "lesson_id":"python-core-07",
+  "cases":[
+    {"query":"stdout、stderr 和退出码为什么要分开？","expected_card":"diagnostic-three-channels"},{"query":"三种输出分别给谁看","expected_card":"diagnostic-three-channels"},
+    {"query":"默认成功运行时三个通道应该是什么？","expected_card":"stream-contract"},{"query":"默认report为什么stderr为空","expected_card":"stream-contract"},
+    {"query":"退出码 0、1、2 在本项目里各表示什么？","expected_card":"exit-code-meaning"},{"query":"业务失败为什么不是2","expected_card":"exit-code-meaning"},
+    {"query":"为什么只通过 --config 显式读取配置？","expected_card":"explicit-config"},{"query":"为什么不自动找当前目录配置","expected_card":"explicit-config"},
+    {"query":"tomllib 为什么用 rb 打开文件？","expected_card":"tomllib-binary"},{"query":"TOML文件为何二进制读取","expected_card":"tomllib-binary"},
+    {"query":"TOML 解析成功后为什么还要业务校验？","expected_card":"parse-vs-validation"},{"query":"tag等于3为什么语法对却配置错","expected_card":"parse-vs-validation"},
+    {"query":"为什么不把数字 tag 自动转成字符串？","expected_card":"strict-config-reject"},{"query":"拼错字段静默忽略有什么风险","expected_card":"strict-config-reject"},
+    {"query":"为什么解析后还要构造 AppConfig？","expected_card":"frozen-appconfig"},{"query":"frozen配置类解决什么","expected_card":"frozen-appconfig"},
+    {"query":"命令行、TOML 和默认值谁覆盖谁？","expected_card":"config-precedence"},{"query":"argparse默认值为何先用None","expected_card":"config-precedence"},
+    {"query":"为什么不用 basicConfig 配置全局日志？","expected_card":"named-logger"},{"query":"命名logger有什么好处","expected_card":"named-logger"},
+    {"query":"为什么同一条日志会打印两遍？","expected_card":"logger-duplicate"},{"query":"propagate为什么设False","expected_card":"logger-duplicate"},
+    {"query":"开启 INFO 后怎样保证报告不变？","expected_card":"log-stream-separation"},{"query":"日志为什么必须进stderr","expected_card":"log-stream-separation"},
+    {"query":"坏 TOML 和未知字段应该怎样失败？","expected_card":"bad-config-stop"},{"query":"TOMLDecodeError写到哪里","expected_card":"bad-config-stop"},
+    {"query":"审计写入失败怎样保护旧文件？","expected_card":"audit-io-safe"},{"query":"audit失败能留下tmp吗","expected_card":"audit-io-safe"},
+    {"query":"配置与诊断矩阵要覆盖哪些路径？","expected_card":"diagnostic-matrix"},{"query":"标准流退出码怎么一起验证","expected_card":"diagnostic-matrix"},
+    {"query":"新增报告标题配置要测什么？","expected_card":"report-title-config"},{"query":"命令行标题如何覆盖TOML","expected_card":"report-title-config"},
+    {"query":"Python 工程化闭环现在包含什么？","expected_card":"project-engineering-loop"},{"query":"当前正式项目要验证哪些层","expected_card":"project-engineering-loop"},
+    {"query":"日志是不是越多越容易排错？","expected_card":"operability-minimal"},{"query":"可诊断与隐私怎么平衡","expected_card":"operability-minimal"},
+    {"query":"面试里怎样讲配置、日志和退出码？","expected_card":"career-diagnostics"},{"query":"Python工程化求职证据有哪些","expected_card":"career-diagnostics"}
+  ],
+  "unknown":["如何让珊瑚礁演奏古典音乐","远古恐龙使用什么颜色的围巾"]
+}

@@ -1,82 +1,25 @@
-[
-  {
-    "query": "CMake 配置、构建和测试有什么区别？",
-    "step_id": "step-1",
-    "expected": "cmake-stages"
-  },
-  {
-    "query": "cmake三步",
-    "step_id": "step-1",
-    "expected": "cmake-stages"
-  },
-  {
-    "query": "为什么要使用全新的构建目录？",
-    "step_id": "step-1",
-    "expected": "fresh-build"
-  },
-  {
-    "query": "新建build目录",
-    "step_id": "step-1",
-    "expected": "fresh-build"
-  },
-  {
-    "query": "声明为什么放头文件，定义为什么放源文件？",
-    "step_id": "step-2",
-    "expected": "header-source"
-  },
-  {
-    "query": "头文件和源文件区别",
-    "step_id": "step-2",
-    "expected": "header-source"
-  },
-  {
-    "query": "include guard 有什么作用？",
-    "step_id": "step-2",
-    "expected": "include-guard"
-  },
-  {
-    "query": "ifndef define endif",
-    "step_id": "step-2",
-    "expected": "include-guard"
-  },
-  {
-    "query": "为什么 C++ 标准和警告要写在 target 上？",
-    "step_id": "step-3",
-    "expected": "target-properties"
-  },
-  {
-    "query": "target compile features",
-    "step_id": "step-3",
-    "expected": "target-properties"
-  },
-  {
-    "query": "undefined reference 或 unresolved external 怎么办？",
-    "step_id": "step-4",
-    "expected": "undefined-reference"
-  },
-  {
-    "query": "链接找不到符号",
-    "step_id": "step-4",
-    "expected": "undefined-reference"
-  },
-  {
-    "query": "如何检查头文件是否自包含？",
-    "step_id": "step-4",
-    "expected": "header-self-contained"
-  },
-  {
-    "query": "头文件自包含",
-    "step_id": "step-4",
-    "expected": "header-self-contained"
-  },
-  {
-    "query": "多文件状态卡的迁移验收包括什么？",
-    "step_id": "step-5",
-    "expected": "cmake-migration"
-  },
-  {
-    "query": "多文件工程验收",
-    "step_id": "step-5",
-    "expected": "cmake-migration"
-  }
-]
+{
+  "lesson_id":"cpp-core-03",
+  "cases":[
+    {"query":"CMake 为什么要跑配置、构建、测试三步？","expected_card":"cmake-three-results"},{"query":"配置成功是不是就完成了","expected_card":"cmake-three-results"},
+    {"query":"为什么应用和测试都链接同一个库？","expected_card":"shared-library-target"},{"query":"测试为什么不复制实现","expected_card":"shared-library-target"},
+    {"query":"声明为什么放头文件，定义为什么放源文件？","expected_card":"header-vs-source"},{"query":"hpp和cpp怎么分","expected_card":"header-vs-source"},
+    {"query":"源文件为什么先包含自己的头文件？","expected_card":"own-header-first"},{"query":"自己头文件放第一条","expected_card":"own-header-first"},
+    {"query":"怎样检查头文件是否自包含？","expected_card":"header-self-contained"},{"query":"头文件缺string怎么看","expected_card":"header-self-contained"},
+    {"query":"include guard 到底防什么？","expected_card":"include-guard"},{"query":"ifndef define endif是什么","expected_card":"include-guard"},
+    {"query":"源文件明明存在，为什么还会 undefined reference？","expected_card":"definition-missing-duplicate"},{"query":"定义没参与目标","expected_card":"definition-missing-duplicate"},
+    {"query":"配置成功后为什么编译还会失败？","expected_card":"cmake-stage-diagnosis"},{"query":"configure不是compile吗","expected_card":"cmake-stage-diagnosis"},
+    {"query":"CMake 的 PUBLIC 和 PRIVATE 怎么选？","expected_card":"public-private"},{"query":"include目录为什么PUBLIC","expected_card":"public-private"},
+    {"query":"为什么 C++20 和警告要配置在 target 上？","expected_card":"target-properties"},{"query":"不要用全局CMAKE_CXX_FLAGS","expected_card":"target-properties"},
+    {"query":"为什么测试程序构建了，ctest 却说没有测试？","expected_card":"ctest-registration"},{"query":"add_executable和add_test区别","expected_card":"ctest-registration"},
+    {"query":"为什么验收要用全新的构建目录？","expected_card":"fresh-build-tree"},{"query":"旧CMake缓存会怎样","expected_card":"fresh-build-tree"},
+    {"query":"Windows 为什么常在 Debug 目录找程序？","expected_card":"multi-config"},{"query":"study_status_app.exe在哪里","expected_card":"multi-config"},
+    {"query":"怎样看 CMake 实际执行了哪些编译命令？","expected_card":"verbose-incremental"},{"query":"修改头文件为什么重编译","expected_card":"verbose-incremental"},
+    {"query":"新增状态规则时为什么先改测试？","expected_card":"test-first-change"},{"query":"先让CTest失败有什么用","expected_card":"test-first-change"},
+    {"query":"找不到头文件和找不到符号要怎么分？","expected_card":"include-symbol-failure"},{"query":"header not found和undefined reference","expected_card":"include-symbol-failure"},
+    {"query":"CTest 失败后为什么一定要用 output-on-failure？","expected_card":"ctest-failure"},{"query":"测试改回去还要重跑吗","expected_card":"ctest-failure"},
+    {"query":"这节课给报告器增加了什么工程能力？","expected_card":"cmake-project-line"},{"query":"下一课如何接STL","expected_card":"cmake-project-line"},
+    {"query":"面试里怎样证明自己真的懂 CMake？","expected_card":"career-cmake"},{"query":"会写CMakeLists有哪些证据","expected_card":"career-cmake"}
+  ],
+  "unknown":["如何给长途骑行规划补给点","在家烤面包怎样判断发酵完成"]
+}

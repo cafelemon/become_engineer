@@ -1,82 +1,51 @@
-[
-  {
-    "query": "为什么要用 clang++ 或 g++ 而不是 clang？",
-    "step_id": "step-1",
-    "expected": "compiler-driver"
-  },
-  {
-    "query": "clang++和clang区别",
-    "step_id": "step-1",
-    "expected": "compiler-driver"
-  },
-  {
-    "query": "编译和链接有什么区别？",
-    "step_id": "step-1",
-    "expected": "compile-link"
-  },
-  {
-    "query": "链接错误和编译错误",
-    "step_id": "step-1",
-    "expected": "compile-link"
-  },
-  {
-    "query": "花括号初始化为什么拒绝 2.5 赋给 int？",
-    "step_id": "step-2",
-    "expected": "brace-narrowing"
-  },
-  {
-    "query": "int hours 2.5报错",
-    "step_id": "step-2",
-    "expected": "brace-narrowing"
-  },
-  {
-    "query": "auto 是动态类型吗？",
-    "step_id": "step-2",
-    "expected": "auto-static"
-  },
-  {
-    "query": "auto类型什么时候确定",
-    "step_id": "step-2",
-    "expected": "auto-static"
-  },
-  {
-    "query": "为什么 getline 读到空字符串？",
-    "step_id": "step-3",
-    "expected": "getline-newline"
-  },
-  {
-    "query": "cin后getline为空",
-    "step_id": "step-3",
-    "expected": "getline-newline"
-  },
-  {
-    "query": "程序退出码如何检查？",
-    "step_id": "step-3",
-    "expected": "exit-code"
-  },
-  {
-    "query": "如何查看退出码",
-    "step_id": "step-3",
-    "expected": "exit-code"
-  },
-  {
-    "query": "C++ 编译诊断应该怎么看？",
-    "step_id": "step-4",
-    "expected": "diagnostic-read"
-  },
-  {
-    "query": "看不懂编译错误",
-    "step_id": "step-4",
-    "expected": "diagnostic-read"
-  },
-  {
-    "query": "状态卡新增字段应该怎么验收？",
-    "step_id": "step-5",
-    "expected": "build-migration"
-  },
-  {
-    "query": "cpp新增学习字段",
-    "step_id": "step-5",
-    "expected": "build-migration"
-  }
-]
+{
+  "lesson_id": "cpp-core-01",
+  "cases": [
+    {"query":"C++ 第一课最后会做出什么？","expected_card":"cpp-first-output"},
+    {"query":"这节课会跑出什么","expected_card":"cpp-first-output"},
+    {"query":"为什么 cpp 文件不能直接运行？","expected_card":"cpp-build-pipeline"},
+    {"query":"源码怎么变成程序","expected_card":"cpp-build-pipeline"},
+    {"query":"编译错误和链接错误怎么区分？","expected_card":"cpp-compile-link"},
+    {"query":"undefined reference是什么意思","expected_card":"cpp-compile-link"},
+    {"query":"main 和 return 0 是干什么的？","expected_card":"cpp-main-return"},
+    {"query":"main函数是什么","expected_card":"cpp-main-return"},
+    {"query":"C++ 的静态类型是什么意思？","expected_card":"cpp-static-types"},
+    {"query":"变量类型能不能变","expected_card":"cpp-static-types"},
+    {"query":"int 一定是 4 字节吗？","expected_card":"cpp-type-size"},
+    {"query":"C++类型大小要不要背","expected_card":"cpp-type-size"},
+    {"query":"const 和花括号初始化分别解决什么？","expected_card":"cpp-const-init"},
+    {"query":"大括号初始化有什么用","expected_card":"cpp-const-init"},
+    {"query":"auto 是不是动态类型？","expected_card":"cpp-auto-static"},
+    {"query":"auto类型会变吗","expected_card":"cpp-auto-static"},
+    {"query":"cout、cerr 和退出码为什么要分开？","expected_card":"cpp-streams"},
+    {"query":"正常输出和错误输出怎么分","expected_card":"cpp-streams"},
+    {"query":"为什么姓名要用 getline？","expected_card":"cpp-getline"},
+    {"query":"姓名有空格怎么读","expected_card":"cpp-getline"},
+    {"query":"终端说找不到 clang++ 或 cl 怎么办？","expected_card":"cpp-compiler-install"},
+    {"query":"编译器没安装怎么办","expected_card":"cpp-compiler-install"},
+    {"query":"C++ 程序的退出码怎么查看？","expected_card":"cpp-exit-code"},
+    {"query":"PowerShell怎么看退出码","expected_card":"cpp-exit-code"},
+    {"query":"Wall、Wextra 和 Werror 有什么用？","expected_card":"cpp-warning-flags"},
+    {"query":"为什么要开严格警告","expected_card":"cpp-warning-flags"},
+    {"query":"目标文件为什么还不能直接交付？","expected_card":"cpp-object-file"},
+    {"query":"obj文件和exe区别","expected_card":"cpp-object-file"},
+    {"query":"为什么改了源码，输出还是旧的？","expected_card":"cpp-rebuild"},
+    {"query":"是不是要重新编译","expected_card":"cpp-rebuild"},
+    {"query":"2.5 放进 int 为什么会报错？","expected_card":"cpp-narrowing"},
+    {"query":"花括号初始化报错","expected_card":"cpp-narrowing"},
+    {"query":"为什么 3 除以 4 得到 0？","expected_card":"cpp-integer-division"},
+    {"query":"C++整数除法","expected_card":"cpp-integer-division"},
+    {"query":"输入字母以后程序该怎么处理？","expected_card":"cpp-invalid-input"},
+    {"query":"cin读取失败怎么判断","expected_card":"cpp-invalid-input"},
+    {"query":"这张状态卡后面会怎么长大？","expected_card":"cpp-project-line"},
+    {"query":"状态卡和RAII什么关系","expected_card":"cpp-project-line"},
+    {"query":"编译没有警告就说明程序正确吗？","expected_card":"cpp-compiler-limits"},
+    {"query":"静态类型能保证什么","expected_card":"cpp-compiler-limits"},
+    {"query":"这节 C++ 课能留下什么求职材料？","expected_card":"cpp-career-evidence"},
+    {"query":"构建过程怎么面试表达","expected_card":"cpp-career-evidence"}
+  ],
+  "unknown": [
+    "如何给室内植物配置浇水计划",
+    "怎样挑选一台适合摄影的显示器"
+  ]
+}

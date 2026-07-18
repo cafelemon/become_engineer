@@ -1,11 +1,15 @@
-[
-  { "query": "Dijkstra 固定样例的路径和计数是什么？", "step_id": "step-1", "expected": "dijkstra-fixed-baseline" }, { "query": "0到5最短路怎么走", "step_id": "step-1", "expected": "dijkstra-fixed-baseline" },
-  { "query": "本课 WeightedGraph 接受和拒绝哪些边？", "step_id": "step-2", "expected": "weighted-graph-contract" }, { "query": "零权边允许吗", "step_id": "step-2", "expected": "weighted-graph-contract" },
-  { "query": "怎样让带权图轨迹跨语言可复现？", "step_id": "step-2", "expected": "weighted-deterministic-order" }, { "query": "交换边输入顺序为什么结果不变", "step_id": "step-2", "expected": "weighted-deterministic-order" },
-  { "query": "Dijkstra 为什么只在候选距离严格更小时松弛？", "step_id": "step-3", "expected": "dijkstra-strict-relaxation" }, { "query": "等距路线要更新父节点吗", "step_id": "step-3", "expected": "dijkstra-strict-relaxation" },
-  { "query": "edge_checks 和 relaxations 有什么区别？", "step_id": "step-3", "expected": "dijkstra-relaxation-count" }, { "query": "为什么16次检查只有8次松弛", "step_id": "step-3", "expected": "dijkstra-relaxation-count" },
-  { "query": "没有 decrease-key 时怎样处理旧距离队列项？", "step_id": "step-4", "expected": "dijkstra-stale-entry" }, { "query": "stale entry为什么要跳过", "step_id": "step-4", "expected": "dijkstra-stale-entry" },
-  { "query": "懒惰重复项 Dijkstra 的复杂度怎样表述？", "step_id": "step-4", "expected": "dijkstra-lazy-complexity" }, { "query": "为什么不是E加VlogV", "step_id": "step-4", "expected": "dijkstra-lazy-complexity" },
-  { "query": "负权和遗漏过期检查分别会造成什么问题？", "step_id": "step-5", "expected": "dijkstra-negative-stale-failure" }, { "query": "Dijkstra能处理负边吗", "step_id": "step-5", "expected": "dijkstra-negative-stale-failure" },
-  { "query": "vertices_within_distance 迁移怎样验收？", "step_id": "step-6", "expected": "dijkstra-within-migration" }, { "query": "距离4以内有哪些顶点", "step_id": "step-6", "expected": "dijkstra-within-migration" }
-]
+{"lesson_id":"cs-core-23","cases":[
+  {"query":"从 0 到 5 的最短路线为什么是 0,2,1,3,4,5？","expected_card":"dijkstra-output"},{"query":"0到5总代价是多少","expected_card":"dijkstra-output"},
+  {"query":"本课的带权图允许零权边吗？","expected_card":"weighted-contract"},{"query":"带权图拒绝哪些边","expected_card":"weighted-contract"},
+  {"query":"交换边的输入顺序，为什么轨迹不该变化？","expected_card":"weighted-determinism"},{"query":"邻接表为什么要排序","expected_card":"weighted-determinism"},
+  {"query":"松弛为什么必须用 candidate < old？","expected_card":"strict-relaxation"},{"query":"等距路线要不要更新父节点","expected_card":"strict-relaxation"},
+  {"query":"顶点 1 的距离为什么从 4 变成 3？","expected_card":"relax-improvement"},{"query":"顶点3为什么从6改成4","expected_card":"relax-improvement"},
+  {"query":"Dijkstra 为什么要求所有边权非负？","expected_card":"dijkstra-proof"},{"query":"负权为什么会破坏Dijkstra","expected_card":"dijkstra-proof"},
+  {"query":"旧距离为什么不从优先队列里直接删掉？","expected_card":"stale-entry"},{"query":"没有decrease-key怎么办","expected_card":"stale-entry"},
+  {"query":"短轨迹里的三个过期项分别是什么？","expected_card":"dijkstra-trace"},{"query":"为什么stale_pops等于3","expected_card":"dijkstra-trace"},
+  {"query":"Dijkstra 双语言实验要锁定哪些结果？","expected_card":"dijkstra-bilingual"},{"query":"为什么还要回归heap和queue","expected_card":"dijkstra-bilingual"},
+  {"query":"零权边和等距路线应该怎样处理？","expected_card":"zero-equal"},{"query":"两条同长度路径父节点选谁","expected_card":"zero-equal"},
+  {"query":"距离不超过 4 的顶点为什么是 0,2,1,3？","expected_card":"within-distance"},{"query":"负距离上限怎么办","expected_card":"within-distance"},
+  {"query":"最短路实验 v1.0 把哪三层能力连起来了？","expected_card":"dijkstra-project"},{"query":"Dijkstra阶段作品包含什么","expected_card":"dijkstra-project"},
+  {"query":"懒惰重复项 Dijkstra 的复杂度为什么写 log E？","expected_card":"dijkstra-cost"},{"query":"为什么不能套decrease-key复杂度","expected_card":"dijkstra-cost"}
+],"unknown":["怎样换自行车刹车片","今晚做什么家常菜"]}

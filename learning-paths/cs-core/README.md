@@ -9,7 +9,7 @@
 ## 在共享能力树中的位置
 
 - 进入条件：Python 起步完成；C++ 不是进入 CS 起步的强制前置。
-- 当前 26 节均可访问，目录已经分为三层：前 4 课是 CS 起步，第 5–20 课是共同算法与数据结构基础，第 21–26 课是算法核心。正文仍按迁移台账逐批升级，因此暂时标记为“已开放待重分层”。
+- 当前 26 节均可访问，目录已经分为三层：前 4 课是 CS 起步，第 5–20 课是共同算法与数据结构基础，第 21–26 课是算法核心。26 节均已完成 V2 迁移，URL 和稳定课程标识保持不变。
 - 操作系统、网络与数据库核心尚未建设；系统工程和设备方向会另外要求 C++ 或 C 语言前置。
 - 算法深化与求职机考按方向和画像叠加，不阻塞应用、AI 模型或 LLM 应用方向。
 - 完整关系见[完整课程地图](../curriculum-map.md)。
@@ -24,15 +24,15 @@
 ## 已开放课程和层级
 
 - **CS 起步（1–4）**：从 Python 数据进入表示、位置、操作成本、文本和网格；迁移后不要求 C++ 或底层实现前置。
-- **共同算法与数据结构基础（5–20）**：动态结构、链表、栈队列、哈希、查找排序、树、递归、BFS 和 DFS。
-- **算法核心（21–26）**：堆、稳定优先队列、Dijkstra、并查集、Kruskal 和 Lazy Prim。
+- **共同算法与数据结构基础（5–20）**：动态结构、链表、栈队列、哈希、查找排序、树、递归、BFS 和 DFS；16 节已全部迁移，一般图实验 v1.0 已完成全图 DFS、连通分量和无向环收口。
+- **算法核心（21–26）**：堆、稳定优先队列、Dijkstra、并查集、Kruskal 和 Lazy Prim；生成森林实验 v1.0 已完成双算法对照。
 
 | 顺序 | 课程 | 连续成果 |
 | --- | --- | --- |
-| 1 | [序列接口、数组表示与安全边界](01-sequence-interface-array-representation-boundaries.md) | 双语言检查式访问、首次匹配和复制修改 |
+| 1 | [序列接口、数组表示与安全边界](01-sequence-interface-array-representation-boundaries.md) | 用 Python 观察数据表示、按位置读取、逐项查找和操作次数 |
 | 2 | [操作计数、增长率与渐近复杂度](02-operation-count-growth-asymptotic-complexity.md) | 常量、线性、平方增长表与相邻增长迁移 |
-| 3 | [字符串、UTF-8 字节与码点边界](03-string-utf8-byte-code-point-boundaries.md) | 严格 UTF-8 扫描、分类计数与非法输入恢复 |
-| 4 | [二维网格、行优先布局与坐标边界](04-two-dimensional-grid-row-major-layout.md) | 扁平网格、坐标映射与行扫描追踪 |
+| 3 | [字符串、UTF-8 字节与码点边界](03-string-utf8-byte-code-point-boundaries.md) | 码点与 UTF-8 字节对照、严格解码与文本边界清单 |
+| 4 | [二维网格、行优先布局与坐标边界](04-two-dimensional-grid-row-major-layout.md) | Python 坐标映射、行扫描与学习数据矩阵视图 |
 | 5 | [动态数组容量、扩容成本与摊还分析](05-dynamic-array-capacity-amortized-cost.md) | 确定性扩容事件、预留容量与摊还证明 |
 | 6 | [单链表、节点链接与所有权](06-singly-linked-list-nodes-ownership.md) | 单一拥有链、访问追踪与首个匹配删除 |
 | 7 | [栈、LIFO 接口与空栈边界](07-stack-lifo-interface-underflow.md) | 链式栈、受控下溢与完整排空迁移 |
@@ -56,7 +56,7 @@
 | 25 | [Kruskal、环检测与最小生成森林](25-kruskal-minimum-spanning-forest.md) | 确定边序、DSU 环拒绝与断开图森林 |
 | 26 | [Lazy Prim、割边前沿与过期边](26-lazy-prim-cut-frontier-stale-edges.md) | 割边堆、分量重启与双算法对照 |
 
-前五课共用[可追踪数组实验](../../exercises/cs-core/traceable-array-lab/README.md)，完成序列表示闭环；第 6 至 8 课共用[可追踪线性结构实验](../../exercises/cs-core/traceable-linear-structures-lab/README.md)，完成节点所有权、LIFO 与 FIFO 基础闭环；第 9 至 11 课共用[可追踪哈希实验](../../exercises/cs-core/traceable-hash-lab/README.md)，完成哈希、分离链接与集合应用基础闭环；第 12 至 14 课共用[可追踪查找与排序实验](../../exercises/cs-core/traceable-search-sort-lab/README.md)，完成有序边界、基础比较排序和稳定归并闭环；第 15 至 17 课共用[可追踪树与遍历实验](../../exercises/cs-core/traceable-tree-traversal-lab/README.md)，完成树形、递归 DFS 与显式前沿闭环；第 18 至 20 课共用[可追踪图遍历实验](../../exercises/cs-core/traceable-graph-traversal-lab/README.md)，完成简单无向图表示、无权 BFS 与全图 DFS 闭环；第 21 至 23 课共用[可追踪优先队列与最短路实验](../../exercises/cs-core/traceable-priority-shortest-path-lab/README.md)，完成最小堆、稳定优先队列与非负权 Dijkstra 闭环；第 24 至 26 课共用[可追踪生成森林实验](../../exercises/cs-core/traceable-spanning-forest-lab/README.md)，完成 DSU、Kruskal 与 Lazy Prim 闭环。当前 CS 主干处于建设中；系统、网络和数据库正文尚未开放。
+前四课先从学习进度报告器已经产生的数据出发，解释表示、位置、操作成本、文本和网格，不要求先学 C++。第 5 至 20 课已经完成六组连续成果：第 5 课的[可追踪数组实验](../../exercises/cs-core/traceable-array-lab/README.md)，第 6 至 8 课的[可追踪线性结构实验](../../exercises/cs-core/traceable-linear-structures-lab/README.md)，第 9 至 11 课的[可追踪哈希实验](../../exercises/cs-core/traceable-hash-lab/README.md)，第 12 至 14 课的[可追踪查找与排序实验](../../exercises/cs-core/traceable-search-sort-lab/README.md)，第 15 至 17 课的[可追踪树与遍历实验](../../exercises/cs-core/traceable-tree-traversal-lab/README.md)，以及第 18 至 20 课的[可追踪图遍历实验](../../exercises/cs-core/traceable-graph-traversal-lab/README.md)。第 21 至 23 课共用[可追踪优先队列与最短路实验](../../exercises/cs-core/traceable-priority-shortest-path-lab/README.md)，第 24 至 26 课共用[可追踪生成森林实验](../../exercises/cs-core/traceable-spanning-forest-lab/README.md)。当前 CS 主干处于建设中；系统、网络和数据库正文尚未开放。
 
 ## 后续还要补齐的 CS 能力
 
@@ -126,7 +126,7 @@
 
 ## 推荐学习顺序
 
-1. 当前可以学习 26 节现有课程和八条双语言实验成果线；新手先完成前四课，正文迁移期间关注课程地图中的状态提示。
+1. 当前可以学习 26 节现有课程和八条实验成果线；新手先完成已经迁移的前四课，再根据方向进入应用工程或共同算法基础。
 2. 完成 CS 起步后进入共同算法基础，操作系统、网络和数据库核心会作为独立主干建设。
 3. 完成共同基座后，按方向选择算法核心、Web、系统工程或其他主干；求职画像再叠加机考与复盘。
 4. 在真实项目遇到性能、网络、数据库和架构问题时回到相应深化模块。
