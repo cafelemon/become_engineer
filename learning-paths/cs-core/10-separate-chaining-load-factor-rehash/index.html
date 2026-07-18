@@ -2488,10 +2488,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        前四个键没有扩容，第五个 13 为什么搬了四项
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        开始前
       
     </span>
   </a>
@@ -2502,7 +2513,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：运行哈希基线与表模式
+        每个桶保存一条键值对链
       
     </span>
   </a>
@@ -2513,7 +2524,18 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：建立桶链结构
+        三个数字不要混在一起
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#put" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        put 先找旧键，再决定是否扩容
       
     </span>
   </a>
@@ -2524,7 +2546,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：实现插入与更新
+        更新不等于再插入一个键
       
     </span>
   </a>
@@ -2535,7 +2557,18 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：追踪查询比较次数
+        比较次数只数桶内键比较
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        恰好 1.0 不扩容，严格超过才扩容
       
     </span>
   </a>
@@ -2546,18 +2579,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：观察负载因子与扩容
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#erase" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第六步：完成 erase 迁移验收
+        桶数变化以后，旧桶号不能照搬
       
     </span>
   </a>
@@ -2568,7 +2590,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        运行五次插入轨迹
       
     </span>
   </a>
@@ -2579,7 +2601,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        插入与扩容链路
+        回到双语言阶段作品
       
     </span>
   </a>
@@ -2590,18 +2612,7 @@
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        运行与输出
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI 协作任务
+        在负载边界上更新已有键
       
     </span>
   </a>
@@ -2612,7 +2623,7 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        删除时也要记录比较了几次
       
     </span>
   </a>
@@ -2623,7 +2634,7 @@
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
-        完成证据
+        扩容后查不到旧键
       
     </span>
   </a>
@@ -2634,7 +2645,7 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        来源与版本
+        哈希实验开始保存键值并改变容量
       
     </span>
   </a>
@@ -2643,6 +2654,50 @@
       
         <li class="md-nav__item">
   <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        受控负载仍不等于没有长链
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-rehash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用第 5 个键讲清 rehash
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -3890,10 +3945,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        前四个键没有扩容，第五个 13 为什么搬了四项
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        开始前
       
     </span>
   </a>
@@ -3904,7 +3970,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：运行哈希基线与表模式
+        每个桶保存一条键值对链
       
     </span>
   </a>
@@ -3915,7 +3981,18 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：建立桶链结构
+        三个数字不要混在一起
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#put" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        put 先找旧键，再决定是否扩容
       
     </span>
   </a>
@@ -3926,7 +4003,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：实现插入与更新
+        更新不等于再插入一个键
       
     </span>
   </a>
@@ -3937,7 +4014,18 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：追踪查询比较次数
+        比较次数只数桶内键比较
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        恰好 1.0 不扩容，严格超过才扩容
       
     </span>
   </a>
@@ -3948,18 +4036,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：观察负载因子与扩容
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#erase" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第六步：完成 erase 迁移验收
+        桶数变化以后，旧桶号不能照搬
       
     </span>
   </a>
@@ -3970,7 +4047,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        运行五次插入轨迹
       
     </span>
   </a>
@@ -3981,7 +4058,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        插入与扩容链路
+        回到双语言阶段作品
       
     </span>
   </a>
@@ -3992,18 +4069,7 @@
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        运行与输出
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI 协作任务
+        在负载边界上更新已有键
       
     </span>
   </a>
@@ -4014,7 +4080,7 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        删除时也要记录比较了几次
       
     </span>
   </a>
@@ -4025,7 +4091,7 @@
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
-        完成证据
+        扩容后查不到旧键
       
     </span>
   </a>
@@ -4036,7 +4102,7 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        来源与版本
+        哈希实验开始保存键值并改变容量
       
     </span>
   </a>
@@ -4045,6 +4111,50 @@
       
         <li class="md-nav__item">
   <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        受控负载仍不等于没有长链
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-rehash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用第 5 个键讲清 rehash
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -4074,175 +4184,251 @@
   
 
 
-<h1 id="_1">分离链接、负载因子与扩容<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <div class="be-tutor-mount" data-tutor-lesson="cs-core-10" aria-hidden="true"></div>
 
-<blockquote>
-<p><strong>任务先行：</strong> 实现可追踪分离链接哈希表，用键比较次数、负载因子和搬移数证明每次操作发生了什么。</p>
-</blockquote>
-<h2 id="_2">任务路线<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<div class="be-task-route" role="list" aria-label="本课六步任务"><span role="listitem">1 哈希基线</span><span role="listitem">2 桶链结构</span><span role="listitem">3 插入更新</span><span role="listitem">4 查询计数</span><span role="listitem">5 负载扩容</span><span role="listitem">6 删除迁移</span></div>
-
-<section class="be-task-step" data-step-id="step-1" id="step-1">
-<h2 id="_3">第一步：运行哈希基线与表模式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>先保存 <code>hash</code> 报告，再运行 <code>table</code>。<strong>当前任务：</strong>确认前四个键填满 4 个桶容量边界，第五个新键触发 4→8。<strong>成功证据：</strong>搬移数为 4，所有旧键扩容后仍可查询。</p>
+<section class="be-page-hero be-lesson-hero" data-context-type="overview" data-learning-context="overview-table-output" id="overview-table-output">
+<p><span class="be-lesson-kicker">共同算法基础 · 第 6 课 · 可追踪哈希实验</span></p>
+<h1 id="_1">分离链接、负载因子与扩容<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="13">前四个键没有扩容，第五个 13 为什么搬了四项<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>put 1  bucket=1 comparisons=0 rehash=-
+put 5  bucket=1 comparisons=1 rehash=-
+put 9  bucket=1 comparisons=2 rehash=-
+put 2  bucket=2 comparisons=0 rehash=-
+put 13 bucket=5 comparisons=1 rehash=4-&gt;8 moved=4
+size=5 buckets=8 load=0.625
+</code></pre></div>
+<p>表里有 4 个键、4 个桶时，负载正好是 1.0，还没有超过本项目的阈值。第 5 个新键准备加入时，表先把桶数翻到 8，并用新桶数重新计算四个旧键的位置；这就是 rehash。</p>
+<p><a class="md-button md-button--primary" href="#example-put-flow">看懂插入和扩容分支</a>
+<a class="md-button" href="#reproduce-table-micro">直接运行小例子</a></p>
+<div class="be-lesson-facts">
+<p><span>课程位置<strong>共同算法基础 · 6 / 16</strong></span><span>前置<strong>桶路由、键相等与冲突事件</strong></span><span>完成后留下<strong>比较次数、扩容轨迹和删除回归</strong></span></p>
+</div>
 </section>
-<section class="be-task-step" data-step-id="step-2" id="step-2">
-<h2 id="_4">第二步：建立桶链结构<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>每个桶保存按插入顺序排列的键值对。<strong>主动修改：</strong>把 1、5、9 放入 4 桶表。<strong>成功证据：</strong>它们在桶 1 的顺序为 1→5→9，大小只统计键值对而不是桶。</p>
+<h2 id="_2">开始前<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>能解释同桶不等于键相等，并读懂 <code>chain_before</code>。</li>
+<li>知道 <code>size</code> 是元素数，<code>bucket_count</code> 是桶数。</li>
+<li>本项目固定最大负载 1.0、桶数翻倍；它们是公开实验规则，不是标准库默认值。</li>
+</ul>
+<section data-context-type="concept" data-learning-context="concept-separate-chaining" id="concept-separate-chaining">
+<h2 id="_3">每个桶保存一条键值对链<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>上一课桶里只有键；现在每项变成 <code>(key, value)</code>。1、5、9 在四桶表中仍进入桶 1：</p>
+<div class="highlight"><pre><span></span><code>bucket 1: (1,10) -&gt; (5,50) -&gt; (9,90)
+</code></pre></div>
+<p>查找先算桶号，再沿链比较完整键。键相同就命中对应值；键不同即使同桶也继续向后。</p>
 </section>
-<section class="be-task-step" data-step-id="step-3" id="step-3">
-<h2 id="_5">第三步：实现插入与更新<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p><code>put</code> 先在当前桶比较键；命中则更新值，不增加大小、不预先扩容。<strong>当前任务：</strong>连续写入 <code>5=50</code>、<code>5=55</code>。<strong>成功证据：</strong>第二次返回 <code>inserted=no</code>，大小不变，查询得到 55。</p>
+<section data-context-type="concept" data-learning-context="concept-size-buckets-load" id="concept-size-buckets-load">
+<h2 id="_4">三个数字不要混在一起<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>size</code>：不同键的数量。</li>
+<li><code>bucket_count</code>：桶的数量，包括空桶。</li>
+<li><code>load_factor = size / bucket_count</code>。</li>
+</ul>
+<p>4 个桶保存 3 个键时，<code>size=3</code>、<code>bucket_count=4</code>、<code>load_factor=0.75</code>。负载不是“非空桶占比”；三个键即使都挤在一个桶，负载仍是 0.75。</p>
 </section>
-<section class="be-task-step" data-step-id="step-4" id="step-4">
-<h2 id="_6">第四步：追踪查询比较次数<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<p>从桶链头部逐项比较，命中即停止；缺失则比较完整条链。<strong>主动修改：</strong>分别查询 1、9、13。<strong>成功证据：</strong>报告能区分桶索引成本和键相等比较次数，不把整个操作简写为固定一步。</p>
+<section data-context-type="example" data-learning-context="example-put-flow" id="example-put-flow">
+<h2 id="put"><code>put</code> 先找旧键，再决定是否扩容<a class="headerlink" href="#put" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TD
+    P["put(key, value)"] --&gt; B["计算当前桶"]
+    B --&gt; F{"链中找到相等键？"}
+    F -- "是" --&gt; U["只更新 value\nsize 不变"]
+    F -- "否" --&gt; L{"插入后负载 &gt; 1.0？"}
+    L -- "否" --&gt; I["追加新键值\nsize + 1"]
+    L -- "是" --&gt; R["桶数翻倍\n重映射全部旧键"]
+    R --&gt; N["重新计算新键桶号"]
+    N --&gt; I</code></pre>
+<p>更新路径必须在负载检查前结束，否则改写已有值也可能无端触发扩容。</p>
 </section>
-<section class="be-task-step" data-step-id="step-5" id="step-5">
-<h2 id="_7">第五步：观察负载因子与扩容<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p>本实验最大负载因子固定为 1.0。新键使 <code>(size+1)/bucket_count &gt; 1.0</code> 时桶数翻倍并重新映射旧键。<strong>安全边界：</strong>更新已有键不能触发扩容。<strong>成功证据：</strong>单次搬移为 <code>Θ(n)</code>，但扩容后每个键可查询且大小不变。</p>
+<section data-context-type="concept" data-learning-context="concept-update-vs-insert" id="concept-update-vs-insert">
+<h2 id="_5">更新不等于再插入一个键<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>连续执行 <code>put(5, 50)</code>、<code>put(5, 55)</code>：第二次在桶链中找到键 5，只替换值，返回 <code>inserted=false</code>。<code>size</code> 不增加，也不检查“再放一个键会不会超负载”。</p>
+<p>测试同时核对 <code>get(5)==55</code>、大小不变和桶数量不变，避免只看返回标记。</p>
 </section>
-<section class="be-task-step" data-step-id="step-6" id="step-6">
-<h2 id="erase">第六步：完成 <code>erase</code> 迁移验收<a class="headerlink" href="#erase" title="Permanent link">&para;</a></h2>
-<p>在目标桶按顺序比较并删除首个相等键。<strong>约束：</strong>不提供完整答案；返回删除结果、桶号和比较次数。<strong>成功证据：</strong>头中尾删除、缺失删除、全冲突桶和失败不变性全部通过。</p>
-</section>
-<h2 id="_8">课程信息<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<section data-context-type="example" data-learning-context="example-comparisons" id="example-comparisons">
+<h2 id="_6">比较次数只数桶内键比较<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>在桶链 <code>(1,10) -&gt; (5,50) -&gt; (9,90)</code> 中：</p>
 <table>
 <thead>
 <tr>
-<th>项目</th>
-<th>内容</th>
+<th>操作</th>
+<th>比较过程</th>
+<th style="text-align: right;">comparisons</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>前置</td>
-<td><a href="../09-hash-function-key-equality-collisions/">哈希函数、键相等与冲突</a></td>
+<td><code>get(1)</code></td>
+<td>1 命中</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr>
-<td>阶段作品</td>
-<td><a href="../../../exercises/cs-core/traceable-hash-lab/">可追踪哈希实验</a></td>
+<td><code>get(9)</code></td>
+<td>1、5、9 命中</td>
+<td style="text-align: right;">3</td>
 </tr>
 <tr>
-<td>核心契约</td>
-<td><code>TraceableHashMap</code> 的插入、更新、查询、删除、负载和排序快照</td>
-</tr>
-<tr>
-<td>复杂度边界</td>
-<td>期望常量成本需要分布与负载假设；最坏仍为 <code>Θ(n)</code></td>
-</tr>
-<tr>
-<td>事实核查</td>
-<td>算法讲义与标准容器要求，2026-07-16</td>
+<td><code>get(13)</code></td>
+<td>1、5、9 都不等</td>
+<td style="text-align: right;">3</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_9">插入与扩容链路<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart TD
-    P["put(key, value)"] --&gt; S{"当前桶找到相等键？"}
-    S --&gt;|是| U["更新值，不改变 size"]
-    S --&gt;|否| L{"插入后负载 &gt; 1.0？"}
-    L --&gt;|否| I["追加到当前桶链"]
-    L --&gt;|是| R["桶数翻倍并搬移旧键"]
-    R --&gt; N["重新计算新键桶号"]
-    N --&gt; I</code></pre>
-<h2 id="_10">运行与输出<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>traceable_hash_lab<span class="w"> </span>table
+<p>桶索引计算和键相等比较是两类成本。本项目把后者单独记录，便于看见冲突链变长后的影响。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-load-boundary" id="concept-load-boundary">
+<h2 id="10">恰好 1.0 不扩容，严格超过才扩容<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<p>判断的是新键插入后的负载：</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">size</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="n">bucket_count</span> <span class="o">*</span> <span class="mf">1.0</span><span class="p">:</span>
+    <span class="n">rehash</span><span class="p">(</span><span class="n">bucket_count</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<p>四桶表的第 4 个不同键使负载等于 1.0，不扩容；第 5 个不同键会变成 1.25，因此先扩到 8 桶。已有键更新不进入这段判断。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-rehash-movement" id="example-rehash-movement">
+<h2 id="_7">桶数变化以后，旧桶号不能照搬<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<div aria-label="四桶扩展到八桶后，键1仍在桶1，键5移到桶5，键9在桶1，键2在桶2，然后键13进入桶5" class="be-rehash-trace" role="img">
+<div><strong>key 1</strong><span>1 → 1</span></div>
+<div><strong>key 5</strong><span>1 → 5</span></div>
+<div><strong>key 9</strong><span>1 → 1</span></div>
+<div><strong>key 2</strong><span>2 → 2</span></div>
+<div data-new="true"><strong>key 13</strong><span>new → 5</span></div>
+</div>
+<p><code>5 % 4 == 1</code>，但 <code>5 % 8 == 5</code>。扩容必须遍历全部旧键，用新桶数重新路由；<code>moved=4</code> 记录这次线性搬移。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-table-micro" id="reproduce-table-micro">
+<h2 id="_8">运行五次插入轨迹<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>.venv/bin/python<span class="w"> </span>site-src/examples/algorithm-foundation/hash_table_growth.py
+</code></pre></div>
+<p>运行前预测每次比较次数和第 5 次的目标桶。最后应得到 <code>size=5 buckets=8 load=0.625</code>。若 moved 不是 4，先检查扩容发生在新键真正插入之前还是之后。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-bilingual-table" id="reproduce-bilingual-table">
+<h2 id="_9">回到双语言阶段作品<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/cs-core/traceable-hash-lab/python
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>-v
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>src<span class="w"> </span>tests
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>traceable_hash_lab<span class="w"> </span>table
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/cs-core/traceable-hash-lab/cpp
+cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Debug
+cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>--config<span class="w"> </span>Debug
+ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class="w"> </span>--build-config<span class="w"> </span>Debug<span class="w"> </span>--output-on-failure
 ./build/traceable_hash_lab<span class="w"> </span>table
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>分离链接哈希表
-put 1=10：inserted=yes，bucket=1，comparisons=0
-put 5=50：inserted=yes，bucket=1，comparisons=1
-put 9=90：inserted=yes，bucket=1，comparisons=2
-put 2=20：inserted=yes，bucket=2，comparisons=0
-put 13=130：inserted=yes，bucket=5，comparisons=1，rehash=4-&gt;8，moved=4
-get 9：value=90，bucket=1，comparisons=2
-size=5，buckets=8，load_factor=0.625
-</code></pre></div>
-<p>负载因子是 <code>size / bucket_count</code>，不是“已使用桶数量”的比例。较低负载也不能保证没有冲突；如果键集中到同一桶，查询仍可能扫描整条链。因此只能在哈希分布和负载受控的假设下讨论期望常量成本。</p>
-<h2 id="ai">AI 协作任务<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h2>
-<p>可让 AI 列出扩容前后桶表，但学习者必须复算每个桶号、键比较次数和搬移数，并确认更新路径在负载检查之前结束。</p>
-<h2 id="_11">常见错误与排查<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>三种模式全部回归，Python 与 C++ 输出逐字一致。扩容后还要逐个查询 1、5、9、2、13，不能只检查桶数变成 8。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-update-boundary" id="modify-update-boundary">
+<h2 id="_10">在负载边界上更新已有键<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>建立 2 桶表，依次放入 <code>0=0</code>、<code>2=20</code>，此时负载正好 1.0。再执行 <code>put(2, 22)</code>：</p>
+<ul>
+<li>应返回 <code>inserted=false</code>。</li>
+<li><code>size</code> 仍为 2。</li>
+<li>桶数仍为 2。</li>
+<li><code>get(2)</code> 返回 22。</li>
+</ul>
+<p>这组数据专门检查更新路径是否错误地落入扩容分支。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-erase" id="modify-erase">
+<h2 id="_11">删除时也要记录比较了几次<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p><code>erase(key)</code> 只访问目标桶，按顺序比较并删除相等键，返回 <code>removed、bucket、comparisons</code>。</p>
+<p>请覆盖桶链头、中、尾和缺失键。删除成功只让 <code>size</code> 减 1；缺失删除必须保持桶链、大小和值快照不变。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-rehash" id="troubleshoot-rehash">
+<h2 id="_12">扩容后查不到旧键<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>现象</th>
-<th>原因</th>
-<th>检查与恢复</th>
+<th>常见原因</th>
+<th>改法</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>更新后大小加一</td>
-<td>未先比较完整键</td>
-<td>命中时只替换值</td>
+<td>键 5 仍留在桶 1</td>
+<td>复制了旧桶号</td>
+<td>对每个旧键重新 <code>% new_bucket_count</code></td>
 </tr>
 <tr>
 <td>恰好负载 1.0 就扩容</td>
-<td>使用了 <code>&gt;=</code></td>
-<td>仅在插入后 <code>&gt; 1.0</code> 扩容</td>
+<td>使用 <code>&gt;=</code></td>
+<td>项目规则是严格 <code>&gt;</code></td>
 </tr>
 <tr>
-<td>扩容后查不到旧键</td>
-<td>只复制桶号未重算</td>
-<td>用新桶数重新映射每个键</td>
+<td>更新 5 导致扩容</td>
+<td>先做负载判断</td>
+<td>先查找并更新，命中立即返回</td>
 </tr>
 <tr>
-<td>比较次数不稳定</td>
-<td>桶链顺序不固定</td>
-<td>保持插入和搬移顺序</td>
+<td><code>moved</code> 多一项</td>
+<td>把新键也算成旧项</td>
+<td>搬移数等于扩容前 <code>size</code></td>
 </tr>
 <tr>
-<td>声称所有操作最坏 O(1)</td>
-<td>忽略全冲突链</td>
-<td>明确最坏 <code>Θ(n)</code></td>
+<td>比较次数忽高忽低</td>
+<td>搬移时改变链顺序</td>
+<td>保持确定性遍历与追加顺序</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_12">完成证据<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
-<ul>
-<li>插入、更新、成功与缺失查询的比较次数精确。</li>
-<li>负载边界、4→8 扩容和搬移 4 项可复现。</li>
-<li>扩容后所有键值和大小正确。</li>
-<li><code>erase</code> 成功、缺失和状态不变性通过。</li>
-<li>Python 与 C++ <code>table</code> 输出逐字一致。</li>
+</section>
+<section data-context-type="project" data-learning-context="project-hash-v02" id="project-hash-v02">
+<h2 id="_13">哈希实验开始保存键值并改变容量<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>上一版：键 → 桶事件 → 冲突链
+这一版：键值链 → put/get/erase → 比较次数
+                     ↘ load_factor → rehash → moved
+</code></pre></div>
+<p>表实现没有冒充标准库容器。它把插入、更新、缺失、负载和搬移写成可回放事件，为下一课的集合、频次和稳定输出提供底层理解。</p>
+<p><a class="md-button md-button--primary" href="../../../exercises/cs-core/traceable-hash-lab/">查看可追踪哈希实验</a></p>
+</section>
+<section data-context-type="deepen" data-learning-context="deepen-complexity" id="deepen-complexity">
+<h2 id="_14">受控负载仍不等于没有长链<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p>负载因子限制平均每桶元素数，却不能单独保证分布均匀。若许多键都落到一个桶，查询仍可能比较 <code>n</code> 次；rehash 单次也要搬移 <code>n</code> 个旧键。</p>
+<p>因此插入、查询、删除的期望常量成本依赖哈希分布和负载假设，最坏仍可达 <code>Θ(n)</code>。讨论性能时要把分析口径说清楚。</p>
+</section>
+<section data-context-type="career" data-learning-context="career-table-evidence" id="career-table-evidence">
+<h2 id="5-rehash">用第 5 个键讲清 rehash<a class="headerlink" href="#5-rehash" title="Permanent link">&para;</a></h2>
+<p>可以从四桶已有四键说起：负载等于 1.0，不扩容；插入第 5 个不同键会超过阈值，于是扩成 8 桶并重新计算四个旧键的位置。键 5 从桶 1 移到桶 5，是最直观的证据。</p>
+<p>再补充已有键更新不会增大 <code>size</code>，缺失删除不改状态，以及长冲突链和单次搬移的最坏线性成本。这样既说明算法，也说明接口边界。</p>
+</section>
+<h2 id="_15">完成检查<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能区分 <code>size</code>、<code>bucket_count</code>、非空桶数和 <code>load_factor</code>。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 更新已有键只改值，不增大表、不触发扩容。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能按桶链顺序计算成功与缺失查询的比较次数。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能解释为什么第 4 个键不扩容、第 5 个新键触发 4→8。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> rehash 对全部旧键重新计算桶号，并保持所有值可查询。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>erase</code> 覆盖头中尾与缺失，失败不改变状态。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Python 类型检查与单元测试、C++ 构建与 CTest、三种双语言报告全部通过。</li>
 </ul>
-<h2 id="_13">来源与版本<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<h2 id="_16">来源与版本<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>来源</th>
-<th>用途</th>
-<th>核查日期</th>
+<th>用于核查</th>
+<th>版本或日期</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/mit6_006s20_lec4/">MIT 6.006 哈希讲义</a></td>
 <td>分离链接、负载与性能假设</td>
-<td>2026-07-16</td>
+<td>2020 课程，2026-07-17 核查</td>
 </tr>
 <tr>
 <td><a href="https://www.opendatastructures.org/ods-python.pdf">Open Data Structures</a></td>
 <td>桶链与扩容分析</td>
-<td>2026-07-16</td>
+<td>2026-07-17 核查</td>
 </tr>
 <tr>
 <td><a href="https://eel.is/c++draft/unord.req.general">C++ 无序关联容器要求</a></td>
-<td>平均/最坏复杂度与桶接口</td>
-<td>2026-07-16</td>
-</tr>
-<tr>
-<td><a href="https://eel.is/c++draft/container.requirements">C++ 容器要求</a></td>
-<td>容器操作契约与失效边界</td>
-<td>2026-07-16</td>
+<td>平均、最坏复杂度与桶接口</td>
+<td>C++20 教学基线，2026-07-17 核查</td>
 </tr>
 </tbody>
 </table>
-<p>本课的 1.0 阈值和倍增规则只属于阶段作品；没有把 Java、Python 或 C++ 某一实现的默认阈值、树化或增长策略当作标准保证。</p>
-<h2 id="_14">下一步<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
-<p>进入<a href="../11-set-frequency-map-deterministic-output/">集合去重、频次映射与稳定输出</a>，把哈希结构用于可验证的数据处理任务。</p>
+<p>本课的 1.0 阈值和倍增规则只属于阶段作品；没有把 Java、Python 或 C++ 某个实现的默认阈值和增长策略当成标准保证。</p>
+<h2 id="_17">下一步<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<p>进入<a href="../11-set-frequency-map-deterministic-output/">集合去重、频次映射与稳定输出</a>，把哈希能力用于首个重复、保序去重和频次统计。</p>
 
 
 

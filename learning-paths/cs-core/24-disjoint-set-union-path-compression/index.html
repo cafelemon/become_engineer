@@ -2952,10 +2952,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        5 原来要走两级父节点，查询后只走一级
       
     </span>
   </a>
@@ -2963,10 +2963,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dijkstra-dsu" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：锁定 Dijkstra 与 DSU 基线
+        开始前
       
     </span>
   </a>
@@ -2977,18 +2977,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：建立父节点森林
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#find" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第三步：追踪 find 路径
+        每个元素只保存一个父下标
       
     </span>
   </a>
@@ -2999,7 +2988,29 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：实现按大小合并
+        同一片父森林的四个位置
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#find" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        find 先找根，再压平走过的路径
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        再查一次 5，计数会变
       
     </span>
   </a>
@@ -3010,7 +3021,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：执行越界与错误挂接实验
+        合并时只挂根，而且小树挂到大树
       
     </span>
   </a>
@@ -3018,10 +3029,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#groups" class="md-nav__link">
+  <a href="#union10-0" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第六步：完成 groups 迁移验收
+        union(1,0) 的根仍是 0
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#540" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        打印 5→4→0 的压缩过程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        运行 Python 和 C++ 生成森林实验
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从 0 个、1 个元素开始试
       
     </span>
   </a>
@@ -3032,7 +3076,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        固定输出
+        把父森林整理成确定分组
       
     </span>
   </a>
@@ -3043,7 +3087,40 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        根乱了、分量少了或压缩计数偏大
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可追踪生成森林实验 v0.1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O(α(n)) 是一串操作的摊还界限
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#540_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用 5→4→0 讲并查集最清楚
       
     </span>
   </a>
@@ -3054,7 +3131,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        来源与版本
+        完成检查
       
     </span>
   </a>
@@ -3063,6 +3140,17 @@
       
         <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -3846,10 +3934,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        5 原来要走两级父节点，查询后只走一级
       
     </span>
   </a>
@@ -3857,10 +3945,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dijkstra-dsu" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：锁定 Dijkstra 与 DSU 基线
+        开始前
       
     </span>
   </a>
@@ -3871,18 +3959,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：建立父节点森林
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#find" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第三步：追踪 find 路径
+        每个元素只保存一个父下标
       
     </span>
   </a>
@@ -3893,7 +3970,29 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：实现按大小合并
+        同一片父森林的四个位置
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#find" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        find 先找根，再压平走过的路径
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        再查一次 5，计数会变
       
     </span>
   </a>
@@ -3904,7 +4003,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：执行越界与错误挂接实验
+        合并时只挂根，而且小树挂到大树
       
     </span>
   </a>
@@ -3912,10 +4011,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#groups" class="md-nav__link">
+  <a href="#union10-0" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第六步：完成 groups 迁移验收
+        union(1,0) 的根仍是 0
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#540" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        打印 5→4→0 的压缩过程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        运行 Python 和 C++ 生成森林实验
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从 0 个、1 个元素开始试
       
     </span>
   </a>
@@ -3926,7 +4058,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        固定输出
+        把父森林整理成确定分组
       
     </span>
   </a>
@@ -3937,7 +4069,40 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        根乱了、分量少了或压缩计数偏大
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可追踪生成森林实验 v0.1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O(α(n)) 是一串操作的摊还界限
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#540_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用 5→4→0 讲并查集最清楚
       
     </span>
   </a>
@@ -3948,7 +4113,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        来源与版本
+        完成检查
       
     </span>
   </a>
@@ -3957,6 +4122,17 @@
       
         <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -3986,111 +4162,202 @@
   
 
 
-<h1 id="_1">并查集、按大小合并与路径压缩<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <div class="be-tutor-mount" data-tutor-lesson="cs-core-24" aria-hidden="true"></div>
 
-<blockquote>
-<p><strong>任务先行：</strong> 把 7 个元素维护成一片父节点森林，用按大小合并控制树高，再用完整路径压缩缩短后续查询路径。</p>
-</blockquote>
-<h2 id="_2">任务路线<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<div class="be-task-route" role="list" aria-label="本课六步任务"><span role="listitem">1 锁定基线</span><span role="listitem">2 父森林</span><span role="listitem">3 追踪 find</span><span role="listitem">4 按大小 union</span><span role="listitem">5 错误挂接</span><span role="listitem">6 分组迁移</span></div>
-
-<section class="be-task-step" data-step-id="step-1" id="step-1">
-<h2 id="dijkstra-dsu">第一步：锁定 Dijkstra 与 DSU 基线<a class="headerlink" href="#dijkstra-dsu" title="Permanent link">&para;</a></h2>
-<p>先回归上一课 <code>dijkstra</code>，再运行 <code>dsu</code>。记录 <code>parents_before_find</code>、<code>find(5)</code> 的三次访问和一次真实压缩。<strong>成功证据：</strong>六次合并后只剩一个分量，Python 与 C++ 输出逐字一致。</p>
-</section>
-<section class="be-task-step" data-step-id="step-2" id="step-2">
-<h2 id="_3">第二步：建立父节点森林<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>初始化 <code>parent[i]=i</code>、<code>size[i]=1</code>。根用“父节点就是自己”表示；父数组是集合维护结构，不是原图边，也不能还原图中的具体路径。</p>
-<pre class="mermaid"><code>flowchart LR
-    E5["元素 5"] --&gt; R4["父 4"] --&gt; R0["根 0"]
-    E6["元素 6"] --&gt; R4
-    R0 --&gt; R0</code></pre>
-<p><strong>主动修改：</strong>把元素数改为 0 和 1。空集合有 0 个分量；单元素的 <code>find(0)</code> 访问起点兼根一次。</p>
-</section>
-<section class="be-task-step" data-step-id="step-3" id="step-3">
-<h2 id="find">第三步：追踪 <code>find</code> 路径<a class="headerlink" href="#find" title="Permanent link">&para;</a></h2>
-<p>迭代向上收集从起点到根的完整路径，再把根之前的槽位直接指向根。<code>visits</code> 包含起点和根；<code>compressions</code> 只统计父值实际变化的槽位。样例路径 <code>5→4→0</code> 因 <code>4</code> 已指向 <code>0</code>，所以只修改 <code>5</code>。</p>
-</section>
-<section class="be-task-step" data-step-id="step-4" id="step-4">
-<h2 id="_4">第四步：实现按大小合并<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>先分别 <code>find</code> 两端。不同根时把小树根挂到大树根；大小相同时由编号较小的根保留代表身份。重复合并不改变父数组、大小或分量数。多次 <code>find/union</code> 的摊还复杂度为 <code>O(α(n))</code>，不是每次最坏严格常量。</p>
-</section>
-<section class="be-task-step" data-step-id="step-5" id="step-5">
-<h2 id="_5">第五步：执行越界与错误挂接实验<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>查询 <code>-1</code> 或 <code>element_count</code>。<strong>预期失败：</strong>Python 抛 <code>IndexError</code>，C++ 的范围检查抛 <code>out_of_range</code>，状态不变。再临时把任意元素而不是根挂到另一元素，观察大小只对根有效、路径可能异常增长；恢复“只挂根”不变量。</p>
-</section>
-<section class="be-task-step" data-step-id="step-6" id="step-6">
-<h2 id="groups">第六步：完成 <code>groups</code> 迁移验收<a class="headerlink" href="#groups" title="Permanent link">&para;</a></h2>
-<p>对每个元素运行 <code>find</code>，按代表编号排序分组，组内成员按编号排序。覆盖零元素、单元素、多个分量、重复合并和压缩后分组。<strong>验收：</strong>分组不依赖原始 union 输入顺序，所有成员恰好出现一次。</p>
-</section>
-<h2 id="_6">固定输出<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>可追踪并查集
-elements=7
-unions：0-1, 2-3, 0-2, 4-5, 5-6, 3-6
-merged=6，components=1
-parents_before_find：0, 0, 0, 0, 0, 4, 4
+<section class="be-page-hero be-lesson-hero" data-context-type="overview" data-learning-context="overview-dsu-output" id="overview-dsu-output">
+<p><span class="be-lesson-kicker">算法核心 · 第 4 课 · 可追踪生成森林实验</span></p>
+<h1 id="_1">并查集、按大小合并与路径压缩<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="5">5 原来要走两级父节点，查询后只走一级<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>parents_before_find：0, 0, 0, 0, 0, 4, 4
 find(5)：root=0，visits=3，compressed=1
 parents_after_find：0, 0, 0, 0, 0, 0, 4
 connected(3,6)=yes
 </code></pre></div>
-<h2 id="_7">常见错误与排查<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>查询 5 时依次访问 <code>5→4→0</code>，根是 0。查询结束后，5 直接指向 0；4 本来就指向 0，不需要重复写。下一次查询 5，只访问 <code>5→0</code>。</p>
+<p><a class="md-button md-button--primary" href="#example-parent-forest">看懂父森林</a>
+<a class="md-button" href="#reproduce-dsu-trace">运行路径压缩</a></p>
+<div class="be-lesson-facts">
+<p><span>课程位置<strong>算法核心 · 4 / 6</strong></span><span>前置<strong>树、连通分量与数组下标</strong></span><span>完成后留下<strong>确定性并查集、压缩轨迹与分组接口</strong></span></p>
+</div>
+</section>
+<h2 id="_2">开始前<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>知道根节点可以代表一棵树，多个根构成森林。</li>
+<li>能区分“两个元素属于同一组”和“原图中两点之间的具体路径”。</li>
+<li>本课先建立集合维护结构；下一课再把它用于 Kruskal 环检测。</li>
+</ul>
+<section data-context-type="concept" data-learning-context="concept-parent-forest" id="concept-parent-forest">
+<h2 id="_3">每个元素只保存一个父下标<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>初始化时 <code>parent[i]=i</code>、<code>size[i]=1</code>，每个元素各自是一棵单节点树。根的父节点等于自己；沿父下标向上走，最终到达集合代表。</p>
+<p>父数组不是原图的边表。<code>parent[5]=4</code> 只说明 5 通过集合维护结构到达代表，不能证明原图一定有一条 <code>5—4</code> 边，也不能用它恢复原图路径。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-parent-forest" id="example-parent-forest">
+<h2 id="_4">同一片父森林的四个位置<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<div aria-label="元素 5 到根 0 的父森林与压缩" class="be-dsu-forest">
+<div><strong>元素 5</strong><code>parent[5] = 4</code><span>查询起点</span></div>
+<div><strong>元素 4</strong><code>parent[4] = 0</code><span>中间父节点</span></div>
+<div><strong>根 0</strong><code>parent[0] = 0</code><span>集合代表</span></div>
+<div data-compressed="true"><strong>压缩以后</strong><code>parent[5] = 0</code><span>后续少走一级</span></div>
+</div>
+<p>元素 6 仍可以保持 <code>6→4→0</code>，因为本次只查询了 5。路径压缩修改查询路径上的槽位，不会无缘无故扫描整棵树。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-find-compression" id="concept-find-compression">
+<h2 id="find"><code>find</code> 先找根，再压平走过的路径<a class="headerlink" href="#find" title="Permanent link">&para;</a></h2>
+<p>迭代 <code>find(5)</code> 先收集完整路径 <code>[5,4,0]</code>，然后把根以前的元素直接指向 0。</p>
+<ul>
+<li><code>visits</code> 包含起点和根，所以是 3。</li>
+<li><code>compressions</code> 只统计父值真正改变的槽位。</li>
+<li>5 从 4 改为 0，计 1 次；4 已经是 0，不计写入。</li>
+</ul>
+<p>越界检查必须在读取父数组以前完成。Python 要主动拒绝负下标，不能让 <code>-1</code> 被解释成末尾元素。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-find-again" id="example-find-again">
+<h2 id="5_1">再查一次 5，计数会变<a class="headerlink" href="#5_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>第一次：path=5→4→0，visits=3，compressions=1
+第二次：path=5→0，  visits=2，compressions=0
+</code></pre></div>
+<p>第二次没有新的父值变化，但查询仍访问起点和根。不要把“压缩后很快”误写成“每次只访问一次”。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-union-by-size" id="concept-union-by-size">
+<h2 id="_5">合并时只挂根，而且小树挂到大树<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p><code>union(a,b)</code> 先分别 <code>find</code> 两端。若根不同，比较根记录的 <code>size</code>，把较小树的根挂到较大树的根，并让分量数减一。</p>
+<p>只能挂根：大小只对根有效，把任意内部元素挂过去会破坏集合大小和树形推理。若两棵树一样大，本项目让编号较小的根留下，保证 Python/C++ 和不同参数顺序得到同一代表。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-union-tie" id="example-union-tie">
+<h2 id="union10-0"><code>union(1,0)</code> 的根仍是 0<a class="headerlink" href="#union10-0" title="Permanent link">&para;</a></h2>
+<p>两个单元素集合大小都是 1，按平局规则保留较小根 0。<code>union(3,2)</code> 保留 2；随后把两棵大小为 2 的树合并，仍保留较小根 0。</p>
+<p>再次 <code>union(3,1)</code> 时两端已经同根：返回“未合并”，父数组、根大小和分量数不再变化。只有真实连接两个不同分量时才减分量数。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-dsu-trace" id="reproduce-dsu-trace">
+<h2 id="540">打印 <code>5→4→0</code> 的压缩过程<a class="headerlink" href="#540" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>.venv/bin/python<span class="w"> </span>site-src/examples/algorithm-core/dsu_compression_trace.py
+</code></pre></div>
+<p>你应该看到 <code>visits=3 compressions=1</code>，以及父数组中只有位置 5 从 4 变成 0。根 0 的集合大小仍是 7。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-bilingual-dsu" id="reproduce-bilingual-dsu">
+<h2 id="python-c">运行 Python 和 C++ 生成森林实验<a class="headerlink" href="#python-c" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/cs-core/traceable-spanning-forest-lab/python
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>-v
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>src<span class="w"> </span>tests
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>traceable_spanning_forest_lab<span class="w"> </span>dsu
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/cs-core/traceable-spanning-forest-lab/cpp
+cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Debug
+cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>--config<span class="w"> </span>Debug
+ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class="w"> </span>--build-config<span class="w"> </span>Debug<span class="w"> </span>--output-on-failure
+./build/traceable_spanning_forest_lab<span class="w"> </span>dsu
+</code></pre></div>
+<p>同时回归 <code>kruskal</code> 和 <code>prim</code>，三种模式的 Python/C++ 标准输出必须逐字一致。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-small-repeated" id="modify-small-repeated">
+<h2 id="0-1">从 0 个、1 个元素开始试<a class="headerlink" href="#0-1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>DisjointSet(0)</code> 有 0 个分量，<code>groups()</code> 返回空。</li>
+<li><code>DisjointSet(1)</code> 有 1 个分量，<code>find(0)</code> 访问一次。</li>
+<li>对已经连通的两点重复 <code>union</code>，分量数不变。</li>
+<li>查询 <code>-1</code> 或 <code>element_count</code>，受控失败且父数组不变。</li>
+</ul>
+<p>这里先别急着用大数据。最小规模最容易暴露空数组、负下标和重复合并错误。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-groups" id="modify-groups">
+<h2 id="_6">把父森林整理成确定分组<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>实现 <code>groups()</code>：对每个元素调用 <code>find</code>，按根聚合；分组按代表编号排序，成员也按编号排序。</p>
+<p>用两个分量、一个孤立元素和重复合并检查结果。每个元素必须恰好出现一次；改变 <code>union</code> 参数顺序后，按大小与平局规则仍应给出相同分组。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-dsu" id="troubleshoot-dsu">
+<h2 id="_7">根乱了、分量少了或压缩计数偏大<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>现象</th>
-<th>原因</th>
-<th>恢复</th>
+<th>常见原因</th>
+<th>改法</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>父数组被当作图路径</td>
-<td>混淆集合结构与原图</td>
-<td>只把它解释为代表关系</td>
+<td>把父数组当作原图路径</td>
+<td>混淆维护结构与输入图</td>
+<td>只把父链解释为代表关系</td>
 </tr>
 <tr>
-<td>平局时结果跨语言不同</td>
-<td>没有稳定合并规则</td>
-<td>同大小保留较小根</td>
+<td>平局根跨语言不同</td>
+<td>没有确定规则</td>
+<td>同大小保留编号较小根</td>
 </tr>
 <tr>
-<td>压缩计数偏大</td>
-<td>把所有路径槽位都算写入</td>
-<td>只计父值真实变化</td>
+<td>压缩次数等于路径长度</td>
+<td>把读取也算写入</td>
+<td>只统计父值真实变化</td>
 </tr>
 <tr>
 <td>重复合并减少分量数</td>
-<td>未先比较两端根</td>
+<td>同根后仍继续修改</td>
 <td>同根立即返回未合并</td>
+</tr>
+<tr>
+<td>树越来越高</td>
+<td>大树挂到小树或挂内部节点</td>
+<td>比根大小，只把根相连</td>
+</tr>
+<tr>
+<td>Python <code>find(-1)</code> 没报错</td>
+<td>沿用了负下标语义</td>
+<td>访问数组前显式检查范围</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_8">来源与版本<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+</section>
+<section data-context-type="project" data-learning-context="project-forest-v01" id="project-forest-v01">
+<h2 id="v01">可追踪生成森林实验 v0.1<a class="headerlink" href="#v01" title="Permanent link">&para;</a></h2>
+<p>第一版建立父森林、按大小合并、确定平局、完整路径压缩、精确访问／写入计数和稳定分组。下一课 Kruskal 会逐条拿候选边的两个端点做 <code>union</code>：合并成功就接纳，已经同根就拒绝成环边。</p>
+<p><a class="md-button md-button--primary" href="../../../exercises/cs-core/traceable-spanning-forest-lab/">查看阶段作品</a></p>
+</section>
+<section data-context-type="deepen" data-learning-context="deepen-dsu-cost" id="deepen-dsu-cost">
+<h2 id="on"><code>O(α(n))</code> 是一串操作的摊还界限<a class="headerlink" href="#on" title="Permanent link">&para;</a></h2>
+<p>单次 <code>find</code> 仍可能沿父链访问多个节点。按大小合并控制树高，路径压缩又让走过的节点靠近根，两者共同让一系列操作的摊还代价达到 <code>O(α(n))</code>。</p>
+<p>反阿克曼函数增长极慢，因此工程里常说“接近常量”；但它不等于宣称每次操作的最坏情况严格是 <code>O(1)</code>。</p>
+</section>
+<section data-context-type="career" data-learning-context="career-dsu-evidence" id="career-dsu-evidence">
+<h2 id="540_1">用 <code>5→4→0</code> 讲并查集最清楚<a class="headerlink" href="#540_1" title="Permanent link">&para;</a></h2>
+<p>先解释父数组只表示集合代表，再走一次 <code>find(5)</code>：访问三个位置，只发生一次真实写入。接着说按大小合并、同大小较小根留下，以及重复合并为什么不减分量。</p>
+<p>最后补 <code>O(α(n))</code> 是摊还结论，并说明下一课如何用同根判断环。这样结构、优化、计数和用途就连起来了。</p>
+</section>
+<h2 id="_8">完成检查<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能解释父森林、根和分量数，不把父数组当原图路径。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>find</code> 记录完整路径，只统计真实压缩写入。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>union</code> 只连接根，小树挂大树，同大小保留较小根。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 重复合并、越界、空集合和单元素都有确定行为。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>groups()</code> 让所有元素恰好出现一次并稳定排序。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能正确表述 <code>O(α(n))</code> 的摊还含义。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Python 类型检查、C++ CTest 与三种双语言报告全部通过。</li>
+</ul>
+<h2 id="_9">来源与版本<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>来源</th>
-<th>用途</th>
-<th>核查日期</th>
+<th>用于核查</th>
+<th>版本或日期</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://algs4.cs.princeton.edu/15uf/">Princeton Union-Find</a></td>
 <td>父森林、加权合并与路径压缩</td>
-<td>2026-07-16</td>
+<td>2026-07-18 核查</td>
 </tr>
 <tr>
-<td><a href="https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/4a7fdddff3bc419c70bb470106a1663a_MIT6_046JS15_lec12.pdf">MIT 6.046 MST</a></td>
-<td>DSU 在 Kruskal 中的角色</td>
-<td>2026-07-16</td>
+<td><a href="https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/4a7fdddff3bc419c70bb470106a1663a_MIT6_046JS15_lec12.pdf">MIT 6.046 Minimum Spanning Trees</a></td>
+<td>并查集在 Kruskal 中的用途</td>
+<td>2026-07-18 核查</td>
 </tr>
 </tbody>
 </table>
-<p>本地 JavaGuide 材料只用于审计术语和误区，不复制 Java 模板、图片、推荐题或面试题。</p>
-<h2 id="_9">下一步<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<p>进入 <a href="../25-kruskal-minimum-spanning-forest/">Kruskal、环检测与最小生成森林</a>，用 DSU 判断一条候选边是否连接了两个不同分量。</p>
+<p>本课不进入可撤销并查集、持久化并查集、带权并查集或动态连通性；它们需要额外状态与不同的复杂度讨论。</p>
+<h2 id="_10">下一步<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>进入<a href="../25-kruskal-minimum-spanning-forest/">Kruskal、环检测与最小生成森林</a>，用并查集决定每条候选边是连接分量还是形成环。</p>
 
 
 

@@ -1963,7 +1963,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        同一份报告，换一个出口
       
     </span>
   </a>
@@ -1974,7 +1974,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：运行可替换输出的报告器
+        开始前
       
     </span>
   </a>
@@ -1985,7 +1985,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：读出一个函数接口
+        签名要让调用者看懂意图
       
     </span>
   </a>
@@ -1996,7 +1996,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：替换边界而非核心逻辑
+        默认列表为什么记住了上一次调用
       
     </span>
   </a>
@@ -2007,7 +2007,18 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：复现接口失败
+        返回值让数据流看得见
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocol 只描述“能做什么”
       
     </span>
   </a>
@@ -2018,7 +2029,29 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：迁移验收与下一步
+        具体选择留在入口，业务代码只依赖协议
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#all" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下划线和 all 是公开约定，不是门锁
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用两个 writer 跑同一段流程
       
     </span>
   </a>
@@ -2029,7 +2062,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        三种错误发生在不同阶段
       
     </span>
   </a>
@@ -2040,7 +2073,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        为什么类型标注还不够
+        增加一份带前缀的输出
       
     </span>
   </a>
@@ -2051,7 +2084,7 @@
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        前置检查
+        审阅当前报告器的依赖箭头
       
     </span>
   </a>
@@ -2062,7 +2095,7 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        学习目标
+        接口越抽象，不一定越好
       
     </span>
   </a>
@@ -2073,7 +2106,7 @@
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
-        先看依赖方向
+        用一次替换证明设计，而不是只画图
       
     </span>
   </a>
@@ -2084,546 +2117,15 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        让函数签名表达调用意图
+        完成检查
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="让函数签名表达调用意图">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        三种参数种类
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pythonc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python签名与C++声明对照
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        默认参数只求值一次
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        输入类型表达需要的能力
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        返回值优先暴露数据流
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#callableprotocol" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Callable与可调用Protocol
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Callable与可调用Protocol">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#callable" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        简单回调使用Callable
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        为接口命名时使用回调协议
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        选择对照
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        模块公开接口不是权限系统
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完整示例：可替换输出的学习报告器
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="完整示例：可替换输出的学习报告器">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        目录结构
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        开发依赖
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        数据模型
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        输出协议
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        业务分析
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        报告生成
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        应用流程
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#json" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        JSON读取与运行时校验
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        程序入口与具体输出
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#json_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        固定JSON样例
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        分析测试
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        可替换输出测试
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_32" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        数据边界测试
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_33" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        安装、检查和运行
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_34" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        让接口检查真正失败
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="让接口检查真正失败">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_35" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        位置参数违反签名
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_36" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        回调不满足协议
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_37" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        循环导入
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_38" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        显式访问内部名称
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI协作任务
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AI协作任务">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_39" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        可复用提示模板
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_40" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        人工审阅清单
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_41" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        核心手动检查点
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="核心手动检查点">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点1：复现默认值共享
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点2：强制说明参数含义
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点3：追踪依赖方向
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点4：证明结构化兼容
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点5：制造协议错误
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点6：验证公开约定边界
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点7：替换输出端
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_42" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        微练习
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_43" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        阶段作品线索
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_44" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常见错误与排查
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_45" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完成标准
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_46" class="md-nav__link">
     <span class="md-ellipsis">
       
         来源与版本
@@ -2634,7 +2136,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_47" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -4413,7 +3915,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        同一份报告，换一个出口
       
     </span>
   </a>
@@ -4424,7 +3926,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：运行可替换输出的报告器
+        开始前
       
     </span>
   </a>
@@ -4435,7 +3937,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：读出一个函数接口
+        签名要让调用者看懂意图
       
     </span>
   </a>
@@ -4446,7 +3948,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：替换边界而非核心逻辑
+        默认列表为什么记住了上一次调用
       
     </span>
   </a>
@@ -4457,7 +3959,18 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：复现接口失败
+        返回值让数据流看得见
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocol 只描述“能做什么”
       
     </span>
   </a>
@@ -4468,7 +3981,29 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：迁移验收与下一步
+        具体选择留在入口，业务代码只依赖协议
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#all" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下划线和 all 是公开约定，不是门锁
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用两个 writer 跑同一段流程
       
     </span>
   </a>
@@ -4479,7 +4014,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        三种错误发生在不同阶段
       
     </span>
   </a>
@@ -4490,7 +4025,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        为什么类型标注还不够
+        增加一份带前缀的输出
       
     </span>
   </a>
@@ -4501,7 +4036,7 @@
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        前置检查
+        审阅当前报告器的依赖箭头
       
     </span>
   </a>
@@ -4512,7 +4047,7 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        学习目标
+        接口越抽象，不一定越好
       
     </span>
   </a>
@@ -4523,7 +4058,7 @@
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
-        先看依赖方向
+        用一次替换证明设计，而不是只画图
       
     </span>
   </a>
@@ -4534,546 +4069,15 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        让函数签名表达调用意图
+        完成检查
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="让函数签名表达调用意图">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        三种参数种类
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pythonc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python签名与C++声明对照
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        默认参数只求值一次
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        输入类型表达需要的能力
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        返回值优先暴露数据流
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#callableprotocol" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Callable与可调用Protocol
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Callable与可调用Protocol">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#callable" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        简单回调使用Callable
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        为接口命名时使用回调协议
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        选择对照
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        模块公开接口不是权限系统
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完整示例：可替换输出的学习报告器
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="完整示例：可替换输出的学习报告器">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        目录结构
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        开发依赖
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        数据模型
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        输出协议
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        业务分析
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        报告生成
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        应用流程
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#json" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        JSON读取与运行时校验
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        程序入口与具体输出
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#json_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        固定JSON样例
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        分析测试
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        可替换输出测试
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_32" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        数据边界测试
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_33" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        安装、检查和运行
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_34" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        让接口检查真正失败
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="让接口检查真正失败">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_35" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        位置参数违反签名
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_36" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        回调不满足协议
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_37" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        循环导入
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_38" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        显式访问内部名称
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI协作任务
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AI协作任务">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_39" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        可复用提示模板
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_40" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        人工审阅清单
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_41" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        核心手动检查点
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="核心手动检查点">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点1：复现默认值共享
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点2：强制说明参数含义
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点3：追踪依赖方向
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点4：证明结构化兼容
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点5：制造协议错误
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点6：验证公开约定边界
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点7：替换输出端
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_42" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        微练习
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_43" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        阶段作品线索
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_44" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常见错误与排查
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_45" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完成标准
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_46" class="md-nav__link">
     <span class="md-ellipsis">
       
         来源与版本
@@ -5084,7 +4088,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_47" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -5114,266 +4118,105 @@
   
 
 
-<h1 id="_1">可维护函数接口、协议与模块边界<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <div class="be-tutor-mount" data-tutor-lesson="python-core-02" aria-hidden="true"></div>
 
-<blockquote>
-<p><strong>任务先行：</strong> 让学习报告器可以替换输出方式而不破坏核心分析。先跑通现有报告，再把依赖改成清晰、可检查的接口。</p>
-</blockquote>
-<h2 id="_2">任务路线<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<div class="be-task-route" role="list" aria-label="本课五步任务"><span role="listitem">1 运行</span><span role="listitem">2 接口</span><span role="listitem">3 替换</span><span role="listitem">4 诊断</span><span role="listitem">5 迁移</span></div>
+<section class="be-page-hero be-lesson-hero" data-context-type="overview" data-learning-context="overview-interface" id="overview-interface">
+<p><span class="be-page-eyebrow">Python 核心 · 第二课 · 让边界可以替换</span></p>
+<h1 id="_1">可维护函数接口、协议与模块边界<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">同一份报告，换一个出口<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>程序正常运行时把报告打印到终端；测试时把同一段文字放进列表。分析和格式化代码不必知道结果最终去了哪里。</p>
+<div class="highlight"><pre><span></span><code>终端输出：接口学习报告 / 总完成：6.0 小时
+内存输出：[&#39;接口学习报告\n总完成：6.0 小时&#39;]
+</code></pre></div>
+<p>这节课不追求更多模块，而是让每个模块只知道自己真正需要知道的事：业务计算返回数据，报告函数返回文字，入口选择具体输出方式。</p>
+<div class="be-page-actions">
+<p><a class="md-button md-button--primary" href="#concept-dependency-direction">先看依赖方向</a>
+<a class="md-button" href="#reproduce-replace-writer">运行可替换输出</a></p>
+</div>
+</section>
+<div class="be-lesson-overview">
+  <div><span>课程位置</span><strong>Python 核心 · 2 / 5</strong></div>
+  <div><span>前置</span><strong>类型契约、函数、模块、mypy 与 unittest</strong></div>
+  <div><span>完成后留下</span><strong>可替换输出、依赖图和接口失败记录</strong></div>
+</div>
 
-<section class="be-task-step" data-step-id="step-1" id="step-1">
-<h2 id="_3">第一步：运行可替换输出的报告器<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>按“安装、检查和运行”执行程序、mypy 与测试。<strong>可观察结果：</strong> 应用流程可用具体输出运行，测试可用内存输出验证，核心分析不直接打印。</p>
-</section>
-<section class="be-task-step" data-step-id="step-2" id="step-2">
-<h2 id="_4">第二步：读出一个函数接口<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>选择一个函数，说明位置参数、仅限关键字参数、输入能力与返回值；再在调用点用显式关键字传入一项有歧义的选项。<strong>成功标准：</strong> 函数签名让调用意图可读。</p>
-</section>
-<section class="be-task-step" data-step-id="step-3" id="step-3">
-<h2 id="_5">第三步：替换边界而非核心逻辑<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>为既有输出协议写一个最小兼容实现，运行同一份分析并比较结果。<strong>最少知识：</strong> <code>Protocol</code> 表达需要的能力，普通函数或对象可按结构兼容，无需继承。</p>
-</section>
-<section class="be-task-step" data-step-id="step-4" id="step-4">
-<h2 id="_6">第四步：复现接口失败<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<p>选择位置参数违反签名、回调不满足协议、循环导入或共享可变默认参数中的一项，复现并恢复。记录错误发生在类型检查、导入还是运行阶段。</p>
-</section>
-<section class="be-task-step" data-step-id="step-5" id="step-5">
-<h2 id="_7">第五步：迁移验收与下一步<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p>独立增加一种报告输出或一个仅限关键字选项，保持业务模块不反向导入 <code>main</code>，并通过已有测试。下一课处理可迭代输入与惰性生成。</p>
-</section>
-<h2 id="_8">课程信息<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>适合人群</td>
-<td>已完成 Python 类型提示和 C++ 函数组织，希望让多模块程序更容易替换与测试的学习者</td>
-</tr>
-<tr>
-<td>前置知识</td>
-<td>Python函数、模块、类型提示、<code>TypedDict</code>、<code>Sequence</code>、mypy、unittest，以及C++声明和函数职责</td>
-</tr>
-<tr>
-<td>学习结果</td>
-<td>能设计表达真实约束的函数签名，使用可调用协议隔离输出，并保持模块公开接口与依赖方向清楚</td>
-</tr>
-<tr>
-<td>运行时基线</td>
-<td>Python 3.11及以上</td>
-</tr>
-<tr>
-<td>检查工具</td>
-<td>mypy 2.2.0，<code>--strict</code>模式</td>
-</tr>
-<tr>
-<td>实践产出</td>
-<td>可替换输出的多模块学习报告器、静态检查、自动化测试和一次依赖审阅记录</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_9">为什么类型标注还不够<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<p>上一节已经能写出带类型的函数，但“类型正确”不等于“接口容易维护”。下面这些函数都能添加类型提示，却仍可能制造问题：</p>
+<h2 id="_3">开始前<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
-<li>两个相邻的<code>float</code>参数含义相似，调用时容易颠倒。</li>
-<li>默认列表被多次调用共享，结果依赖历史调用顺序。</li>
-<li>分析函数直接打印，测试必须捕获终端输出。</li>
-<li>业务模块导入<code>main.py</code>中的具体函数，形成反向依赖。</li>
-<li>其他模块开始使用本来只供内部实现的辅助函数。</li>
+<li>已完成上一课，能区分静态检查、运行时校验和测试。</li>
+<li>能读懂函数参数、返回值、<code>Sequence</code> 和 <code>TypedDict</code>。</li>
+<li>知道 Python 模块就是可以导入的 <code>.py</code> 文件。</li>
+<li>本课继续使用学习进度报告器，不要求 C++ 前置。</li>
 </ul>
-<p>本节把接口看成一份协作契约：调用者需要知道提供什么、能够得到什么、哪些参数必须说出名字，以及实现可以替换到什么程度。</p>
-<h2 id="_10">前置检查<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<p>确认当前解释器与检查器：</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>--version
-python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--version
-</code></pre></div>
-<p>如果当前环境还没有固定版本的mypy，在课程临时目录创建虚拟环境后安装：</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
-.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">mypy</span><span class="o">==</span><span class="m">2</span>.2.0
-</code></pre></div>
-<p>Windows PowerShell使用：</p>
-<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="n">-m</span> <span class="n">venv</span> <span class="p">.</span><span class="n">venv</span>
-<span class="p">.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">mypy</span><span class="p">==</span><span class="n">2</span><span class="p">.</span><span class="n">2</span><span class="p">.</span><span class="n">0</span>
-</code></pre></div>
-<p>开始前还应能解释：</p>
-<ul>
-<li>类型提示为什么不会自动校验JSON。</li>
-<li>C++声明如何把参数与返回类型暴露给调用者。</li>
-<li>为什么业务计算函数不应该偷偷读取终端。</li>
-</ul>
-<p>缺少前两项时回看<a href="../01-type-hints-interfaces-static-checking/">类型提示、接口与静态检查认知</a>；缺少最后一项时回看C++<a href="../../cpp-core/02-functions-declarations-program-organization/">函数、声明与程序组织</a>。</p>
-<h2 id="_11">学习目标<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
-<p>完成本节后，你应该能够：</p>
-<ul>
-<li>区分位置参数、位置或关键字参数和仅限关键字参数。</li>
-<li>用参数名称与<code>*</code>减少含义相近参数的误用。</li>
-<li>解释默认值何时求值，并修复可变默认参数共享状态。</li>
-<li>根据函数所需能力选择<code>Sequence</code>等抽象输入，而不是机械要求<code>list</code>。</li>
-<li>用返回值交付结果，不依赖输出参数或可变全局状态。</li>
-<li>区分简单<code>Callable</code>和有名称、可扩展的回调<code>Protocol</code>。</li>
-<li>让普通函数在不继承协议的情况下满足结构化接口。</li>
-<li>使用下划线和<code>__all__</code>表达模块公开边界，同时说明它们不是权限控制。</li>
-<li>画出入口、应用、业务和具体输出之间的单向依赖。</li>
-<li>使用内存输出替换终端输出，而不修改业务流程。</li>
-</ul>
-<h2 id="_12">先看依赖方向<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
-<p>下面的图回答一个问题：<strong>谁应该知道具体输出到哪里？</strong></p>
-<pre class="mermaid"><code>flowchart LR
-    M["main：组装与程序入口"] --&gt; D["data_io：读取并校验JSON"]
-    M --&gt; A["application：组织用例"]
-    M --&gt; O["print_report：具体终端输出"]
-    A --&gt; N["analysis：纯业务计算"]
-    A --&gt; R["reporting：生成报告文本"]
-    A --&gt; P["ports：ReportWriter协议"]
-    O -."结构上满足".-&gt; P</code></pre>
-<p>读图时注意箭头方向：</p>
-<ul>
-<li><code>main</code>知道具体输入和输出，负责把它们组装起来。</li>
-<li><code>application</code>只依赖<code>ReportWriter</code>协议，不导入<code>main</code>里的<code>print_report</code>。</li>
-<li><code>analysis</code>和<code>reporting</code>不知道终端、文件或测试内存列表。</li>
-<li>测试可以传入另一个满足协议的函数，核心模块无需修改。</li>
-</ul>
-<p>这不是框架式“依赖注入”。它只是把一个函数作为参数传入另一个函数。</p>
-<h2 id="_13">让函数签名表达调用意图<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
-<h3 id="_14">三种参数种类<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">example</span><span class="p">(</span>
-    <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="o">/</span><span class="p">,</span>
-    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<section data-context-type="concept" data-learning-context="concept-signature" id="concept-signature">
+<h2 id="_4">签名要让调用者看懂意图<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>两个相邻数字即使类型相同，也可能很容易传反：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">summarize</span><span class="p">(</span>
+    <span class="n">completed_hours</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">target_hours</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
-    <span class="n">limit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">limit</span><span class="si">}</span><span class="s2">)&quot;</span>
+    <span class="n">progress_limit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">completed_hours</span> <span class="o">/</span> <span class="n">target_hours</span><span class="p">,</span> <span class="n">progress_limit</span><span class="p">)</span>
 </code></pre></div>
+<p>星号后面的参数只能按名称传入：</p>
+<div class="highlight"><pre><span></span><code><span class="n">summarize</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="n">progress_limit</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+</code></pre></div>
+<p><code>progress_limit=1.0</code> 在调用位置一眼就能看出含义；若只写第三个位置参数 <code>1.0</code>，读者还要回头找定义。</p>
+<p>Python 签名中常见三类参数：</p>
 <table>
 <thead>
 <tr>
 <th>位置</th>
-<th>调用规则</th>
-<th>适用情况</th>
+<th>调用方式</th>
+<th>适合</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>/</code>之前</td>
-<td>只能按位置传入</td>
-<td>参数名称不属于公开契约，或回调只关心位置</td>
+<td><code>/</code> 之前</td>
+<td>只能按位置</td>
+<td>参数名不属于公开契约的回调</td>
 </tr>
 <tr>
-<td><code>/</code>和<code>*</code>之间</td>
-<td>可按位置或关键字传入</td>
+<td><code>/</code> 与 <code>*</code> 之间</td>
+<td>位置或关键字</td>
 <td>普通常用参数</td>
 </tr>
 <tr>
-<td><code>*</code>之后</td>
-<td>只能按关键字传入</td>
-<td>布尔开关、比例、标题等需要在调用点说明含义的选项</td>
+<td><code>*</code> 之后</td>
+<td>只能按关键字</td>
+<td>布尔开关、限制、输出端等需要说出名字的选项</td>
 </tr>
 </tbody>
 </table>
-<p>本节重点使用仅限关键字参数：</p>
-<div class="highlight"><pre><span></span><code><span class="n">summary</span> <span class="o">=</span> <span class="n">summarize_records</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">progress_limit</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-</code></pre></div>
-<p>对应签名：</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">summarize_records</span><span class="p">(</span>
-    <span class="n">records</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">StudyRecord</span><span class="p">],</span>
-    <span class="o">*</span><span class="p">,</span>
-    <span class="n">progress_limit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">StudySummary</span><span class="p">:</span>
-    <span class="o">...</span>
-</code></pre></div>
-<p><code>*</code>阻止下面这种不够清楚的调用：</p>
-<div class="highlight"><pre><span></span><code><span class="n">summarize_records</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
-</code></pre></div>
-<p>这里的目标不是让签名更复杂，而是让调用位置能直接看出<code>1.0</code>代表进度显示上限。</p>
-<h3 id="pythonc">Python签名与C++声明对照<a class="headerlink" href="#pythonc" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>问题</th>
-<th>Python函数签名</th>
-<th>C++函数声明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>参数名称是否影响调用</td>
-<td>关键字参数会使用名称</td>
-<td>普通调用主要按参数位置与类型</td>
-</tr>
-<tr>
-<td>默认参数</td>
-<td>运行时函数对象保存默认值</td>
-<td>默认实参通常写在可见声明中</td>
-</tr>
-<tr>
-<td>类型约束</td>
-<td>注解由mypy等工具检查</td>
-<td>编译器参与检查和重载决议</td>
-</tr>
-<tr>
-<td>调用方式约束</td>
-<td><code>/</code>与<code>*</code>区分位置和关键字</td>
-<td>课程当前按位置传参</td>
-</tr>
-<tr>
-<td>实现能否在后面</td>
-<td>函数定义执行后名称才可用</td>
-<td>可先声明、后定义</td>
-</tr>
-</tbody>
-</table>
-<p>两门语言都需要稳定接口，但检查阶段、参数规则和运行模型不同，不能只做语法替换。</p>
-<h2 id="_15">默认参数只求值一次<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
-<p>下面的函数有隐藏状态：</p>
-<div class="highlight"><span class="filename">mutable_default_problem.py</span><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">remember_course</span><span class="p">(</span>
-    <span class="n">course</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">history</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<p>规则不是越多越好。只在调用容易含糊、或参数角色必须明确时使用位置专用与关键字专用约束。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-default-value" id="troubleshoot-default-value">
+<h2 id="_5">默认列表为什么记住了上一次调用<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>先故意写一次有问题的版本：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">remember_course</span><span class="p">(</span><span class="n">course</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">history</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
     <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">course</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">history</span>
 
 
 <span class="nb">print</span><span class="p">(</span><span class="n">remember_course</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">remember_course</span><span class="p">(</span><span class="s2">&quot;C++&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">remember_course</span><span class="p">(</span><span class="s2">&quot;CS&quot;</span><span class="p">))</span>
 </code></pre></div>
-<p>第二次输出不是新的单项列表，而会包含第一次调用的内容。默认列表在函数定义执行时创建一次，后续省略该参数的调用共享同一个对象。</p>
-<p>需要“每次调用创建新列表”时，使用<code>None</code>作为哨兵：</p>
-<div class="highlight"><span class="filename">mutable_default_fixed.py</span><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">remember_course</span><span class="p">(</span>
+<p>第二次会得到 <code>['Python', 'CS']</code>。默认列表在函数定义时创建一次，省略参数的多次调用会共享它。</p>
+<p>如果想让每次调用都有新列表，用 <code>None</code> 作为哨兵：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">remember_course</span><span class="p">(</span>
     <span class="n">course</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">history</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-    <span class="n">current_history</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">history</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">history</span>
-    <span class="n">current_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">course</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">current_history</span>
-
-
-<span class="nb">print</span><span class="p">(</span><span class="n">remember_course</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">remember_course</span><span class="p">(</span><span class="s2">&quot;C++&quot;</span><span class="p">))</span>
+    <span class="n">current</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">history</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">history</span>
+    <span class="n">current</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">course</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">current</span>
 </code></pre></div>
-<p>可变默认值不是永远禁止。有意实现缓存时可能需要共享状态，但这必须是清楚、可测试的设计。本节不使用默认参数保存缓存。</p>
-<h2 id="_16">输入类型表达需要的能力<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
-<p>如果函数只遍历记录，不追加、删除或排序原集合，参数不必要求<code>list</code>：</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">total_hours</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
-</code></pre></div>
-<p>调用者可以提供列表或元组：</p>
-<div class="highlight"><pre><span></span><code><span class="n">total_hours</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">])</span>
-<span class="n">total_hours</span><span class="p">((</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">))</span>
-</code></pre></div>
-<p>这叫“按所需能力设计接口”：函数承诺读取一个有顺序、可取长度的数据序列，没有承诺要修改它。</p>
-<p>不要盲目选择最抽象的类型。如果函数确实要原地追加，就应该明确要求可变容器，或者更稳妥地复制后返回新结果。</p>
-<h2 id="_17">返回值优先暴露数据流<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
-<p>不推荐使用隐藏全局状态：</p>
+<p>有意缓存时可以共享状态，但必须清楚写出并测试。普通函数不要让默认参数悄悄变成跨调用全局变量。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-data-flow" id="concept-data-flow">
+<h2 id="_6">返回值让数据流看得见<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>下面的函数把结果藏在全局变量里：</p>
 <div class="highlight"><pre><span></span><code><span class="n">latest_report</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 
 
@@ -5381,21 +4224,15 @@ python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </s
     <span class="k">global</span> <span class="n">latest_report</span>
     <span class="n">latest_report</span> <span class="o">=</span> <span class="s2">&quot;学习报告&quot;</span>
 </code></pre></div>
-<p>调用者看不到真实输出，测试还会受到执行顺序影响。优先返回结果：</p>
+<p>调用者只看签名，不知道真正结果在哪里；测试还会受执行顺序影响。更清楚的写法是返回结果：</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">build_report</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">return</span> <span class="s2">&quot;学习报告&quot;</span>
 </code></pre></div>
-<p>如果还需要输出到终端或文件，再把结果交给独立输出接口。返回值让核心数据流可见，也更容易测试。</p>
-<h2 id="callableprotocol"><code>Callable</code>与可调用<code>Protocol</code><a class="headerlink" href="#callableprotocol" title="Permanent link">&para;</a></h2>
-<h3 id="callable">简单回调使用<code>Callable</code><a class="headerlink" href="#callable" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">deliver</span><span class="p">(</span><span class="n">report</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">writer</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="kc">None</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="n">writer</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
-</code></pre></div>
-<p><code>Callable[[str], None]</code>适合表达“接收一个字符串且不返回结果”的简单调用能力。</p>
-<h3 id="_18">为接口命名时使用回调协议<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>需要打印、写文件或发送网络请求时，再由边界代码处理这个字符串。核心函数越少依赖终端、文件和全局状态，就越容易单独测试，也越容易复用。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-protocol" id="concept-protocol">
+<h2 id="protocol">Protocol 只描述“能做什么”<a class="headerlink" href="#protocol" title="Permanent link">&para;</a></h2>
+<p>简单回调可以使用 <code>Callable[[str], None]</code>。当这个角色会长期出现在项目中，给它一个名字更容易读：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Protocol</span>
 
 
@@ -5403,752 +4240,152 @@ python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </s
     <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="o">...</span>
 </code></pre></div>
-<p>普通函数只要签名兼容，就能满足协议：</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">print_report</span><span class="p">(</span><span class="n">report</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+<p>普通函数不需要继承协议，只要签名兼容即可：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">print_report</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
 
 <span class="n">writer</span><span class="p">:</span> <span class="n">ReportWriter</span> <span class="o">=</span> <span class="n">print_report</span>
 </code></pre></div>
-<p><code>print_report</code>没有继承<code>ReportWriter</code>。mypy按照成员结构检查它是否具有兼容的<code>__call__</code>能力，这就是结构化子类型。</p>
-<p>协议中的<code>report</code>被声明为位置专用参数。这样具体函数可以使用自己的参数名，而不会因为名称不同破坏回调兼容性。</p>
-<h3 id="_19">选择对照<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>需求</th>
-<th><code>Callable</code></th>
-<th>可调用<code>Protocol</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>单一简单签名</td>
-<td>足够直接</td>
-<td>可以但略重</td>
-</tr>
-<tr>
-<td>需要给业务角色命名</td>
-<td>类型本身不说明角色</td>
-<td><code>ReportWriter</code>能表达用途</td>
-</tr>
-<tr>
-<td>复杂参数种类或重载</td>
-<td>表达能力有限</td>
-<td>可以精确声明<code>__call__</code></td>
-</tr>
-<tr>
-<td>要求显式继承</td>
-<td>不需要</td>
-<td>也不需要</td>
-</tr>
-<tr>
-<td>自动运行时校验</td>
-<td>不提供</td>
-<td>默认也不提供</td>
-</tr>
-</tbody>
-</table>
-<p>本节使用<code>Protocol</code>，因为“报告输出端口”是稳定的业务角色。不要为每个普通函数都创建协议。</p>
-<h2 id="_20">模块公开接口不是权限系统<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
-<p>模块中的下划线名称表达“内部实现”约定：</p>
+<p>mypy 按结构判断这个函数能否接收一个字符串并返回 <code>None</code>。这种方式叫结构化子类型。</p>
+<p><code>Protocol</code> 默认不会自动在运行时校验对象。它解决的是静态接口表达，不是权限、安全或外部输入验证。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-dependency-direction" id="concept-dependency-direction">
+<h2 id="_7">具体选择留在入口，业务代码只依赖协议<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+    CLI["cli：入口与组装"] --&gt; APP["application：组织流程"]
+    CLI --&gt; PRINT["print_writer：终端输出"]
+    APP --&gt; ANALYSIS["analysis：统计"]
+    APP --&gt; REPORT["reporting：生成文本"]
+    APP --&gt; PORT["ports：ReportWriter"]
+    PRINT -.结构兼容.-&gt; PORT</code></pre>
+<ul>
+<li>入口知道今天要从哪里读、写到哪里。</li>
+<li>应用流程只知道有一个 <code>ReportWriter</code>，不导入具体终端函数。</li>
+<li>分析和报告模块不认识终端、文件或测试列表。</li>
+<li>测试传入内存 writer，即可观察输出而不捕获标准输出。</li>
+</ul>
+<p>如果 <code>analysis.py</code> 反向导入 <code>cli.py</code> 的打印函数，很容易形成循环导入，也让业务计算被具体运行方式绑住。依赖箭头应从入口指向核心，而不是核心回头寻找入口。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-module-public" id="example-module-public">
+<h2 id="all">下划线和 <strong>all</strong> 是公开约定，不是门锁<a class="headerlink" href="#all" title="Permanent link">&para;</a></h2>
+<p>模块可以用前导下划线表达内部实现：</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_progress</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="o">...</span>
 </code></pre></div>
-<p><code>__all__</code>可以列出模块希望公开的名称：</p>
+<p>也可以用 <code><strong>all</strong></code> 列出希望公开的名字：</p>
 <div class="highlight"><pre><span></span><code><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;summarize_records&quot;</span><span class="p">]</span>
 </code></pre></div>
-<table>
-<thead>
-<tr>
-<th>机制</th>
-<th>主要作用</th>
-<th>不能保证什么</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>前导下划线</td>
-<td>告诉读者和工具这是非公开实现</td>
-<td>不能阻止显式访问</td>
-</tr>
-<tr>
-<td><code>__all__</code></td>
-<td>定义<code>from module import *</code>的公开名称集合，记录公共API</td>
-<td>不能阻止<code>from module import _name</code></td>
-</tr>
-<tr>
-<td>操作系统权限、认证授权</td>
-<td>控制真实资源访问</td>
-<td>不是本节模块命名约定</td>
-</tr>
-</tbody>
-</table>
-<p>课程代码不使用<code>import *</code>。<code>__all__</code>在这里主要承担“公共接口清单”和审阅提示，不能把它描述成安全边界。</p>
-<h2 id="_21">完整示例：可替换输出的学习报告器<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
-<h3 id="_22">目录结构<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>typed-study-reporter/
-├── data/
-│   └── study_records.json
-├── tests/
-│   ├── test_analysis.py
-│   ├── test_application.py
-│   └── test_data_io.py
-├── analysis.py
-├── application.py
-├── data_io.py
-├── main.py
-├── models.py
-├── ports.py
-├── reporting.py
-└── requirements-dev.txt
+<p>它们帮助读者、文档工具和 <code>from module import *</code> 理解公开接口，但无法阻止别人显式导入内部名称。Python 模块里的命名约定不是认证授权系统。</p>
+<p>课程代码不使用 <code>import *</code>。<code><strong>all</strong></code> 在这里主要是一张公共 API 清单；真正的文件权限、账号权限和服务授权属于另一层问题。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-replace-writer" id="reproduce-replace-writer">
+<h2 id="writer">用两个 writer 跑同一段流程<a class="headerlink" href="#writer" title="Permanent link">&para;</a></h2>
+<p>完整例子包含关键字专用参数、结构化协议、返回值和内存输出：</p>
+<div class="highlight"><pre><span></span><code>
 </code></pre></div>
-<p>所有命令从<code>typed-study-reporter/</code>目录执行。示例运行时只使用标准库；mypy是开发检查依赖。</p>
-<h3 id="_23">开发依赖<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">requirements-dev.txt</span><pre><span></span><code>mypy==2.2.0
+<p>先检查，再运行：</p>
+<div class="highlight"><pre><span></span><code>.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>site-src/examples/python-core/interfaces_protocols.py
+python<span class="w"> </span>site-src/examples/python-core/interfaces_protocols.py
 </code></pre></div>
-<h3 id="_24">数据模型<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">models.py</span><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypedDict</span>
-
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;StudyRecord&quot;</span><span class="p">,</span> <span class="s2">&quot;StudySummary&quot;</span><span class="p">]</span>
-
-
-<span class="k">class</span><span class="w"> </span><span class="nc">StudyRecord</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
-    <span class="n">course</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">target_hours</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">finished_hours</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-
-
-<span class="k">class</span><span class="w"> </span><span class="nc">StudySummary</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
-    <span class="n">target_hours</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">finished_hours</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">progress</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">completed_courses</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">course_count</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">tags</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+<p>你应该看到：</p>
+<div class="highlight"><pre><span></span><code>terminal:
+接口学习报告
+总完成：6.0 小时
+memory_count=1
+memory_matches=True
+fresh_defaults=True
 </code></pre></div>
-<h3 id="_25">输出协议<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">ports.py</span><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Protocol</span>
-
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ReportWriter&quot;</span><span class="p">]</span>
-
-
-<span class="k">class</span><span class="w"> </span><span class="nc">ReportWriter</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="o">...</span>
+<p>终端 writer 和内存 writer 接收的是同一段报告；<code>run_report()</code> 还返回文本，让调用者可以继续处理。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-interface" id="troubleshoot-interface">
+<h2 id="_8">三种错误发生在不同阶段<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p><strong>位置参数违反签名：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">run_report</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">remember</span><span class="p">)</span>
 </code></pre></div>
-<p>协议只描述应用层需要的一个能力：接收完整报告。它不知道输出端是终端、文件还是测试内存。</p>
-<h3 id="_26">业务分析<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">analysis.py</span><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">StudyRecord</span><span class="p">,</span> <span class="n">StudySummary</span>
-
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;summarize_records&quot;</span><span class="p">]</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">_calculate_progress</span><span class="p">(</span>
-    <span class="n">target_hours</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-    <span class="n">finished_hours</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-    <span class="o">*</span><span class="p">,</span>
-    <span class="n">progress_limit</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">target_hours</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mf">0.0</span>
-    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">finished_hours</span> <span class="o">/</span> <span class="n">target_hours</span><span class="p">,</span> <span class="n">progress_limit</span><span class="p">)</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">summarize_records</span><span class="p">(</span>
-    <span class="n">records</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">StudyRecord</span><span class="p">],</span>
-    <span class="o">*</span><span class="p">,</span>
-    <span class="n">progress_limit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">StudySummary</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">progress_limit</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;progress_limit must be greater than zero&quot;</span><span class="p">)</span>
-
-    <span class="n">target_hours</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">&quot;target_hours&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">records</span><span class="p">)</span>
-    <span class="n">finished_hours</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">&quot;finished_hours&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">records</span><span class="p">)</span>
-    <span class="n">completed_courses</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
-        <span class="n">record</span><span class="p">[</span><span class="s2">&quot;finished_hours&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;target_hours&quot;</span><span class="p">]</span>
-        <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">records</span>
-    <span class="p">)</span>
-    <span class="n">tags</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">({</span><span class="n">tag</span> <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">records</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;tags&quot;</span><span class="p">]}))</span>
-
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="n">target_hours</span><span class="p">,</span>
-        <span class="s2">&quot;finished_hours&quot;</span><span class="p">:</span> <span class="n">finished_hours</span><span class="p">,</span>
-        <span class="s2">&quot;progress&quot;</span><span class="p">:</span> <span class="n">_calculate_progress</span><span class="p">(</span>
-            <span class="n">target_hours</span><span class="p">,</span>
-            <span class="n">finished_hours</span><span class="p">,</span>
-            <span class="n">progress_limit</span><span class="o">=</span><span class="n">progress_limit</span><span class="p">,</span>
-        <span class="p">),</span>
-        <span class="s2">&quot;completed_courses&quot;</span><span class="p">:</span> <span class="n">completed_courses</span><span class="p">,</span>
-        <span class="s2">&quot;course_count&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">records</span><span class="p">),</span>
-        <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="n">tags</span><span class="p">,</span>
-    <span class="p">}</span>
-</code></pre></div>
-<p><code>_calculate_progress</code>是内部实现。其他模块只调用公开的<code>summarize_records</code>，避免把拆分细节变成跨模块依赖。</p>
-<h3 id="_27">报告生成<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">reporting.py</span><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">StudySummary</span>
-
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;build_report&quot;</span><span class="p">]</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">build_report</span><span class="p">(</span>
-    <span class="n">summary</span><span class="p">:</span> <span class="n">StudySummary</span><span class="p">,</span>
-    <span class="o">*</span><span class="p">,</span>
-    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;学习进度报告&quot;</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-        <span class="p">(</span>
-            <span class="n">title</span><span class="p">,</span>
-            <span class="sa">f</span><span class="s2">&quot;课程数量：</span><span class="si">{</span><span class="n">summary</span><span class="p">[</span><span class="s1">&#39;course_count&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-            <span class="sa">f</span><span class="s2">&quot;已完成课程：</span><span class="si">{</span><span class="n">summary</span><span class="p">[</span><span class="s1">&#39;completed_courses&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-            <span class="sa">f</span><span class="s2">&quot;计划时间：</span><span class="si">{</span><span class="n">summary</span><span class="p">[</span><span class="s1">&#39;target_hours&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> 小时&quot;</span><span class="p">,</span>
-            <span class="sa">f</span><span class="s2">&quot;完成时间：</span><span class="si">{</span><span class="n">summary</span><span class="p">[</span><span class="s1">&#39;finished_hours&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> 小时&quot;</span><span class="p">,</span>
-            <span class="sa">f</span><span class="s2">&quot;总进度：</span><span class="si">{</span><span class="n">summary</span><span class="p">[</span><span class="s1">&#39;progress&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100.0</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">,</span>
-            <span class="sa">f</span><span class="s2">&quot;标签：</span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">summary</span><span class="p">[</span><span class="s1">&#39;tags&#39;</span><span class="p">])</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="s1">&#39;无&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
-    <span class="p">)</span>
-</code></pre></div>
-<p>生成函数只返回字符串，不自行打印或写文件。</p>
-<h3 id="_28">应用流程<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">application.py</span><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">summarize_records</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">StudyRecord</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ports</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReportWriter</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">reporting</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_report</span>
-
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;run_report&quot;</span><span class="p">]</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">run_report</span><span class="p">(</span>
-    <span class="n">records</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">StudyRecord</span><span class="p">],</span>
-    <span class="o">*</span><span class="p">,</span>
-    <span class="n">writer</span><span class="p">:</span> <span class="n">ReportWriter</span><span class="p">,</span>
-    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;学习进度报告&quot;</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="n">summary</span> <span class="o">=</span> <span class="n">summarize_records</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">progress_limit</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-    <span class="n">report</span> <span class="o">=</span> <span class="n">build_report</span><span class="p">(</span><span class="n">summary</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
-    <span class="n">writer</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">report</span>
-</code></pre></div>
-<p><code>writer</code>必须按关键字传入。应用流程依赖协议而不是具体<code>print()</code>，同时返回报告，方便调用者继续使用结果。</p>
-<h3 id="json">JSON读取与运行时校验<a class="headerlink" href="#json" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">data_io.py</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">StudyRecord</span>
-
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;load_records&quot;</span><span class="p">]</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">_require_number</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2"> must be a number&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">_require_tags</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span>
-        <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">value</span>
-    <span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;tags must be a list of strings&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">_validate_record</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">StudyRecord</span><span class="p">:</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;records[</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">] must be an object&quot;</span><span class="p">)</span>
-
-    <span class="n">course</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;course&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">course</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">course</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;records[</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">].course must be a non-empty string&quot;</span><span class="p">)</span>
-
-    <span class="n">target_hours</span> <span class="o">=</span> <span class="n">_require_number</span><span class="p">(</span>
-        <span class="n">value</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;target_hours&quot;</span><span class="p">),</span>
-        <span class="sa">f</span><span class="s2">&quot;records[</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">].target_hours&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="n">finished_hours</span> <span class="o">=</span> <span class="n">_require_number</span><span class="p">(</span>
-        <span class="n">value</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;finished_hours&quot;</span><span class="p">),</span>
-        <span class="sa">f</span><span class="s2">&quot;records[</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">].finished_hours&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="k">if</span> <span class="n">target_hours</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;records[</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">].target_hours must be greater than zero&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">finished_hours</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;records[</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">].finished_hours cannot be negative&quot;</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="s2">&quot;course&quot;</span><span class="p">:</span> <span class="n">course</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
-        <span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="n">target_hours</span><span class="p">,</span>
-        <span class="s2">&quot;finished_hours&quot;</span><span class="p">:</span> <span class="n">finished_hours</span><span class="p">,</span>
-        <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="n">_require_tags</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tags&quot;</span><span class="p">)),</span>
-    <span class="p">}</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">load_records</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">StudyRecord</span><span class="p">]:</span>
-    <span class="n">document</span><span class="p">:</span> <span class="nb">object</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">document</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;JSON root must be an object&quot;</span><span class="p">)</span>
-
-    <span class="n">raw_records</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">raw_records</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;records must be a list&quot;</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="p">[</span>
-        <span class="n">_validate_record</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">record</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">raw_records</span><span class="p">)</span>
-    <span class="p">]</span>
-</code></pre></div>
-<p>协议不能证明外部JSON可信，因此校验仍从<code>object</code>开始。类型接口和运行时边界承担不同职责。</p>
-<h3 id="_29">程序入口与具体输出<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">main.py</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">application</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_report</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">data_io</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_records</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">print_report</span><span class="p">(</span><span class="n">report</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="n">data_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/study_records.json&quot;</span><span class="p">)</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">records</span> <span class="o">=</span> <span class="n">load_records</span><span class="p">(</span><span class="n">data_path</span><span class="p">)</span>
-        <span class="n">run_report</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="n">print_report</span><span class="p">)</span>
-    <span class="k">except</span> <span class="p">(</span><span class="ne">OSError</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">)</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;无法生成报告：</span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
-        <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="mi">0</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
-</code></pre></div>
-<p>只有入口模块知道具体终端输出函数。<code>application.py</code>不会反向导入<code>main.py</code>。</p>
-<h3 id="json_1">固定JSON样例<a class="headerlink" href="#json_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">data/study_records.json</span><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;records&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;course&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Python 类型提示&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;target_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;finished_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;类型&quot;</span><span class="p">]</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;course&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;C++ 函数组织&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;target_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;finished_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">7.5</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;C++&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;函数&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;类型&quot;</span><span class="p">]</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="_30">分析测试<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">tests/test_analysis.py</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">unittest</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">summarize_records</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">StudyRecord</span>
-
-
-<span class="k">class</span><span class="w"> </span><span class="nc">SummarizeRecordsTests</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">test_accepts_tuple_and_summarizes_records</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">records</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">StudyRecord</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="p">{</span>
-                <span class="s2">&quot;course&quot;</span><span class="p">:</span> <span class="s2">&quot;Python&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">,</span>
-                <span class="s2">&quot;finished_hours&quot;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">,</span>
-                <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;类型&quot;</span><span class="p">,</span> <span class="s2">&quot;Python&quot;</span><span class="p">],</span>
-            <span class="p">},</span>
-            <span class="p">{</span>
-                <span class="s2">&quot;course&quot;</span><span class="p">:</span> <span class="s2">&quot;C++&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span>
-                <span class="s2">&quot;finished_hours&quot;</span><span class="p">:</span> <span class="mf">12.0</span><span class="p">,</span>
-                <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;类型&quot;</span><span class="p">,</span> <span class="s2">&quot;C++&quot;</span><span class="p">],</span>
-            <span class="p">},</span>
-        <span class="p">)</span>
-
-        <span class="n">summary</span> <span class="o">=</span> <span class="n">summarize_records</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">progress_limit</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">summary</span><span class="p">[</span><span class="s2">&quot;course_count&quot;</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">summary</span><span class="p">[</span><span class="s2">&quot;completed_courses&quot;</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">summary</span><span class="p">[</span><span class="s2">&quot;progress&quot;</span><span class="p">],</span> <span class="mf">1.0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">summary</span><span class="p">[</span><span class="s2">&quot;tags&quot;</span><span class="p">],</span> <span class="p">(</span><span class="s2">&quot;C++&quot;</span><span class="p">,</span> <span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;类型&quot;</span><span class="p">))</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">test_empty_records_have_zero_progress</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">summary</span> <span class="o">=</span> <span class="n">summarize_records</span><span class="p">((),</span> <span class="n">progress_limit</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">summary</span><span class="p">[</span><span class="s2">&quot;course_count&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">summary</span><span class="p">[</span><span class="s2">&quot;progress&quot;</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">test_rejects_invalid_progress_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="s2">&quot;progress_limit&quot;</span><span class="p">):</span>
-            <span class="n">summarize_records</span><span class="p">((),</span> <span class="n">progress_limit</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
-</code></pre></div>
-<p>元组能够通过，证明分析函数只依赖<code>Sequence</code>提供的读取能力。</p>
-<h3 id="_31">可替换输出测试<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">tests/test_application.py</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">unittest</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">application</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_report</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">StudyRecord</span>
-
-
-<span class="k">class</span><span class="w"> </span><span class="nc">RunReportTests</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">test_uses_in_memory_writer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">records</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">StudyRecord</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="s2">&quot;course&quot;</span><span class="p">:</span> <span class="s2">&quot;Python&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span>
-                <span class="s2">&quot;finished_hours&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
-                <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;接口&quot;</span><span class="p">],</span>
-            <span class="p">}</span>
-        <span class="p">]</span>
-        <span class="n">written_reports</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-
-        <span class="k">def</span><span class="w"> </span><span class="nf">remember</span><span class="p">(</span><span class="n">report</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">written_reports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
-
-        <span class="n">report</span> <span class="o">=</span> <span class="n">run_report</span><span class="p">(</span>
-            <span class="n">records</span><span class="p">,</span>
-            <span class="n">writer</span><span class="o">=</span><span class="n">remember</span><span class="p">,</span>
-            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;接口学习报告&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">written_reports</span><span class="p">,</span> <span class="p">[</span><span class="n">report</span><span class="p">])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="s2">&quot;接口学习报告&quot;</span><span class="p">,</span> <span class="n">report</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="s2">&quot;总进度：50.0%&quot;</span><span class="p">,</span> <span class="n">report</span><span class="p">)</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
-</code></pre></div>
-<p>测试没有修改<code>application.py</code>，只是传入另一个普通函数。mypy会检查<code>remember</code>是否满足<code>ReportWriter</code>。</p>
-<h3 id="_32">数据边界测试<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">tests/test_data_io.py</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">unittest</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">data_io</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_records</span>
-
-
-<span class="k">class</span><span class="w"> </span><span class="nc">LoadRecordsTests</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">test_loads_valid_utf8_json</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">          &quot;records&quot;: [</span>
-<span class="s2">            {</span>
-<span class="s2">              &quot;course&quot;: &quot;接口设计&quot;,</span>
-<span class="s2">              &quot;target_hours&quot;: 4,</span>
-<span class="s2">              &quot;finished_hours&quot;: 2,</span>
-<span class="s2">              &quot;tags&quot;: [&quot;Python&quot;]</span>
-<span class="s2">            }</span>
-<span class="s2">          ]</span>
-<span class="s2">        }&quot;&quot;&quot;</span>
-        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">directory</span><span class="p">:</span>
-            <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;records.json&quot;</span>
-            <span class="n">path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
-
-            <span class="n">records</span> <span class="o">=</span> <span class="n">load_records</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">records</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;course&quot;</span><span class="p">],</span> <span class="s2">&quot;接口设计&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">records</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;target_hours&quot;</span><span class="p">],</span> <span class="mf">4.0</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">test_rejects_boolean_as_number</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">          &quot;records&quot;: [</span>
-<span class="s2">            {</span>
-<span class="s2">              &quot;course&quot;: &quot;接口设计&quot;,</span>
-<span class="s2">              &quot;target_hours&quot;: true,</span>
-<span class="s2">              &quot;finished_hours&quot;: 2,</span>
-<span class="s2">              &quot;tags&quot;: []</span>
-<span class="s2">            }</span>
-<span class="s2">          ]</span>
-<span class="s2">        }&quot;&quot;&quot;</span>
-        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">directory</span><span class="p">:</span>
-            <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;records.json&quot;</span>
-            <span class="n">path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
-
-            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="s2">&quot;target_hours&quot;</span><span class="p">):</span>
-                <span class="n">load_records</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
-</code></pre></div>
-<h2 id="_33">安装、检查和运行<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h2>
-<p>创建隔离环境并安装开发工具：</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
-.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-dev.txt
-</code></pre></div>
-<p>Windows PowerShell：</p>
-<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="n">-m</span> <span class="n">venv</span> <span class="p">.</span><span class="n">venv</span>
-<span class="p">.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">-r</span> <span class="n">requirements-dev</span><span class="p">.</span><span class="n">txt</span>
-</code></pre></div>
-<p>严格检查全部模块与测试：</p>
-<div class="highlight"><pre><span></span><code>.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>.
-</code></pre></div>
-<p>预期关键输出：</p>
-<div class="highlight"><pre><span></span><code>Success: no issues found in 10 source files
-</code></pre></div>
-<p>运行测试：</p>
-<div class="highlight"><pre><span></span><code>.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>-v
-</code></pre></div>
-<p>预期为6个测试全部通过。实际输出会列出每个测试名并以<code>OK</code>结束。</p>
-<p>运行程序：</p>
-<div class="highlight"><pre><span></span><code>.venv/bin/python<span class="w"> </span>main.py
-</code></pre></div>
-<p>预期关键输出：</p>
-<div class="highlight"><pre><span></span><code>学习进度报告
-课程数量：2
-已完成课程：1
-计划时间：18.0 小时
-完成时间：15.5 小时
-总进度：86.1%
-标签：C++, Python, 函数, 类型
-</code></pre></div>
-<p>检查导入副作用。这里临时禁止解释器写入字节码缓存，避免把正常的<code>__pycache__</code>与业务模块副作用混在一起：</p>
-<div class="highlight"><pre><span></span><code><span class="nv">PYTHONDONTWRITEBYTECODE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>.venv/bin/python<span class="w"> </span>-c<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="s2">&quot;import analysis, application, data_io, main, models, ports, reporting&quot;</span>
-</code></pre></div>
-<p>命令应安静结束，不打印报告、不读取JSON，也不创建业务输出。正常运行Python时，解释器可能创建<code>__pycache__</code>；它是可再生字节码缓存，不代表模块启动了主流程。</p>
-<h2 id="_34">让接口检查真正失败<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h2>
-<h3 id="_35">位置参数违反签名<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">bad_keyword_only.py</span><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">summarize_records</span>
-
-<span class="n">summarize_records</span><span class="p">((),</span> <span class="mf">1.0</span><span class="p">)</span>
-</code></pre></div>
-<p>mypy应报告位置参数过多；直接运行也会抛出<code>TypeError</code>。修复为<code>progress_limit=1.0</code>。</p>
-<h3 id="_36">回调不满足协议<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">bad_writer.py</span><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">application</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_report</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">wrong_writer</span><span class="p">(</span><span class="n">report</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<p><code>writer</code> 位于星号之后，mypy 和运行时都会拒绝这个位置参数。正确调用是 <code>writer=remember</code>。</p>
+<p><strong>回调不满足协议：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">wrong_writer</span><span class="p">(</span><span class="n">report</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
-
-
-<span class="n">run_report</span><span class="p">((),</span> <span class="n">writer</span><span class="o">=</span><span class="n">wrong_writer</span><span class="p">)</span>
 </code></pre></div>
-<p>参数和返回类型都不符合<code>ReportWriter</code>，严格检查应失败。不要用<code>cast()</code>伪装兼容，应修正函数签名或另写适配函数。</p>
-<h3 id="_37">循环导入<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
-<p>如果<code>application.py</code>为了获得<code>print_report</code>而导入<code>main.py</code>，同时<code>main.py</code>又导入<code>application.py</code>，模块初始化顺序会形成环。修复方式是保持具体输出在入口层，并通过<code>writer</code>参数传入，而不是把导入语句藏进函数内部绕过设计问题。</p>
-<h3 id="_38">显式访问内部名称<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h3>
-<p>即使<code>analysis.__all__</code>只包含<code>summarize_records</code>，下面的代码仍可能运行：</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">_calculate_progress</span>
+<p>它接收 <code>bytes</code>、返回 <code>int</code>，与 <code>ReportWriter</code> 不兼容。mypy 应在组装位置指出问题。</p>
+<p><strong>循环导入：</strong></p>
+<div class="highlight"><pre><span></span><code>cli -&gt; application -&gt; analysis -&gt; cli
 </code></pre></div>
-<p>这证明<code>__all__</code>不是访问控制。正确修复是让其他模块依赖公开函数；真正敏感资源使用权限、认证和隔离机制保护。</p>
-<h2 id="ai">AI协作任务<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h2>
-<h3 id="_39">可复用提示模板<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>请使用Python 3.11和mypy严格模式重构一个多模块学习报告器。
-要求：
-1. 用仅限关键字参数表达progress_limit、writer和title；
-2. 业务分析接收Sequence，不修改输入；
-3. 使用可调用Protocol命名ReportWriter，普通函数无需继承即可满足；
-4. main负责注入具体终端输出，application不得导入main；
-5. 公开模块使用__all__列出公共接口，内部辅助函数使用前导下划线；
-6. 保持JSON运行时校验、mypy严格检查和unittest；
-7. 不使用Any、cast、type: ignore、依赖注入框架或第三方运行库。
-请给出完整文件、依赖图、测试、失败样例和验证命令。
+<p>Python 可能提示“partially initialized module”，也可能暴露尚未创建的名称。恢复方式不是随意移动一行 import，而是重新画依赖图：核心模块不应导入入口里的具体实现；把稳定接口移到更内层的模块，由入口完成组装。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-new-writer" id="modify-new-writer">
+<h2 id="_9">增加一份带前缀的输出<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>写一个新的兼容函数：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">prefixed_writer</span><span class="p">(</span><span class="n">report</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[学习记录]&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="_40">人工审阅清单<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h3>
-<ul>
-<li>是否使用<code>[]</code>或<code>{}</code>作为默认参数并在函数中修改。</li>
-<li>含义相近的选项是否被设计成难读的位置参数。</li>
-<li>参数类型是否要求了函数并不需要的修改能力。</li>
-<li>是否用<code>Any</code>、<code>cast()</code>或<code># type: ignore</code>掩盖协议不匹配。</li>
-<li>协议是否只保留应用层真正使用的调用能力。</li>
-<li><code>application</code>是否反向导入<code>main</code>或某个具体输出实现。</li>
-<li>其他模块是否直接使用下划线内部函数。</li>
-<li>更换为内存输出后，业务结果与终端输出是否一致。</li>
-</ul>
-<p>主动修改：新增一个<code>write_uppercase(report: str, /) -&gt; None</code>输出函数，将其注入<code>run_report</code>。不得修改<code>analysis.py</code>、<code>reporting.py</code>和<code>application.py</code>，并重新运行mypy与测试。</p>
-<h2 id="_41">核心手动检查点<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h2>
-<h3 id="1">检查点1：复现默认值共享<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
-<p>运行<code>mutable_default_problem.py</code>两次调用，记录两个结果和对象身份。修复后证明省略<code>history</code>的两次调用不再共享列表。</p>
-<h3 id="2">检查点2：强制说明参数含义<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
-<p>尝试把<code>progress_limit</code>按位置传入，分别记录mypy诊断和运行时<code>TypeError</code>。改为关键字后重新检查。</p>
-<h3 id="3">检查点3：追踪依赖方向<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
-<p>从<code>main.main()</code>开始，依次写出数据读取、应用流程、分析、报告生成和输出函数。确认没有任何业务模块反向导入入口。</p>
-<h3 id="4">检查点4：证明结构化兼容<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
-<p>不要让<code>remember()</code>继承<code>ReportWriter</code>。直接传入测试，说明mypy依据哪个<code>__call__</code>签名判断它兼容。</p>
-<h3 id="5">检查点5：制造协议错误<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
-<p>运行<code>bad_writer.py</code>的严格检查，从诊断中指出期望参数、实际参数和返回类型差异，再用真实兼容函数修复。</p>
-<h3 id="6">检查点6：验证公开约定边界<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
-<p>查看<code>analysis.__all__</code>，再显式导入<code>_calculate_progress</code>。解释为什么“可以访问”不等于“应该跨模块依赖”，也不等于安全漏洞已经被阻止。</p>
-<h3 id="7">检查点7：替换输出端<a class="headerlink" href="#7" title="Permanent link">&para;</a></h3>
-<p>分别注入终端输出和内存输出，确认生成的报告字符串相同。说明为什么替换输出不需要修改应用和分析逻辑。</p>
-<h2 id="_42">微练习<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h2>
+<p>不修改 <code>build_report()</code> 和 <code>run_report()</code>，只在组装处替换 writer。然后再写一个内存版本，把前缀和报告一起保存到列表，确认：</p>
 <ol>
-<li>把两个含义相近的可选位置参数改成仅限关键字参数。</li>
-<li>复现可变默认列表共享，并使用<code>None</code>修复。</li>
-<li>把只遍历列表的函数参数从<code>list[T]</code>收窄为所需的<code>Sequence[T]</code>能力。</li>
-<li>把依赖全局报告变量的函数改成返回字符串。</li>
-<li>使用<code>Callable[[str], None]</code>表达简单输出，再改为有名称的<code>ReportWriter</code>协议。</li>
-<li>让两个参数名不同但位置专用的普通函数通过同一回调协议检查。</li>
-<li>为一个模块补充<code>__all__</code>，证明显式内部导入仍可发生。</li>
-<li>制造<code>application -&gt; main -&gt; application</code>循环，再通过参数注入恢复单向依赖。</li>
-<li>使用内存输出测试报告，不捕获<code>stdout</code>。</li>
+<li>两个 writer 都通过 mypy 协议检查。</li>
+<li>报告正文一字不变。</li>
+<li>前缀只属于输出边界，没有渗入业务函数。</li>
+<li>原始记录没有被修改。</li>
 </ol>
-<h2 id="_43">阶段作品线索<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h2>
-<p>双主修目前累计完成四节配对内容：</p>
+<p>如果为了加前缀而给分析函数增加 <code>print()</code>，说明边界放错了位置。</p>
+</section>
+<section data-context-type="project" data-learning-context="project-reporter-interface" id="project-reporter-interface">
+<h2 id="_10">审阅当前报告器的依赖箭头<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>当前双语言学习进度报告器已经有 <code>analysis.py</code>、<code>reporting.py</code>、<code>resources.py</code>、<code>cli.py</code> 等模块。不要为了复现课程重新拆一套正式代码，先完成一份依赖审阅：</p>
 <ul>
-<li>C++已经建立构建、静态类型和单文件函数接口。</li>
-<li>Python已经建立类型边界、多模块接口与可替换输出。</li>
+<li><code>models</code> 不导入业务或 CLI。</li>
+<li><code>analysis</code> 只依赖模型与标准库。</li>
+<li><code>reporting</code> 依赖分析结果和模型，不导入 CLI。</li>
+<li><code>cli</code> 负责读取参数、选择输出和返回退出码。</li>
+<li>测试可以直接调用核心函数，不需要启动完整命令行。</li>
 </ul>
-<p>本轮仍不新建阶段作品。Python已经进入多模块，而C++仍是单文件；现在沉淀会得到结构不对称、很快又要迁移的产物。下一节完成C++头文件、源文件和最小CMake工程后，再评估双语言阶段作品，使两边都能展示接口、实现、构建和测试证据。</p>
-<h2 id="_44">常见错误与排查<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>现象</th>
-<th>常见原因</th>
-<th>检查方法</th>
-<th>修复方向</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>第二次调用出现旧数据</td>
-<td>修改了可变默认参数</td>
-<td>打印对象身份并重复调用</td>
-<td>使用<code>None</code>并在函数内创建新对象</td>
-</tr>
-<tr>
-<td>位置调用难以阅读</td>
-<td>多个同类型选项没有名称</td>
-<td>查看调用点能否解释每个值</td>
-<td>使用仅限关键字参数</td>
-</tr>
-<tr>
-<td>元组被mypy拒绝</td>
-<td>参数不必要地写成<code>list</code></td>
-<td>检查函数是否真的修改输入</td>
-<td>改为<code>Sequence</code>等所需能力</td>
-</tr>
-<tr>
-<td>协议实现被拒绝</td>
-<td>参数名称、种类或返回类型不兼容</td>
-<td>对照<code>__call__</code>与实际函数</td>
-<td>使用位置专用参数或修正真实签名</td>
-</tr>
-<tr>
-<td>mypy通过但运行输入失败</td>
-<td>把协议或注解当运行时校验</td>
-<td>检查JSON进入系统的位置</td>
-<td>保留从<code>object</code>开始的运行校验</td>
-</tr>
-<tr>
-<td>导入模块就打印报告</td>
-<td>顶层执行了主流程</td>
-<td>单独运行<code>python -c "import ..."</code></td>
-<td>把执行放入<code>main()</code>保护</td>
-</tr>
-<tr>
-<td>partially initialized module</td>
-<td>模块互相导入形成初始化环</td>
-<td>画出导入方向</td>
-<td>上移协议、通过参数传入具体实现</td>
-</tr>
-<tr>
-<td>内部函数成为外部依赖</td>
-<td>调用者忽略下划线和公开入口</td>
-<td>搜索跨模块导入</td>
-<td>改用公开函数并补充测试</td>
-</tr>
-<tr>
-<td><code>__all__</code>未阻止显式导入</td>
-<td>把导出约定误当权限</td>
-<td>运行显式导入实验</td>
-<td>使用真正安全机制保护敏感资源</td>
-</tr>
-<tr>
-<td>为通过检查使用<code>Any</code></td>
-<td>接口矛盾被绕过</td>
-<td>搜索动态类型传播路径</td>
-<td>修正协议、签名或运行时校验</td>
-</tr>
-<tr>
-<td>测试必须捕获终端</td>
-<td>业务函数直接打印</td>
-<td>查看输出副作用位置</td>
-<td>注入输出函数或返回结果</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_45">完成标准<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h2>
+<p>运行当前项目的 mypy 和全部测试，记录公开报告仍然一致。然后只在测试中写一个内存 writer 原型，验证“输出方式可替换”这个设计，不修改现有 CLI 的公开行为。</p>
+<p>这节课给项目增加的不是更多文件，而是一张能解释的依赖图和一次可替换边界验证。下一课会继续把输入从固定序列扩展到一次性迭代器。</p>
+</section>
+<section data-context-type="deepen" data-learning-context="deepen-interface-size" id="deepen-interface-size">
+<h2 id="_11">接口越抽象，不一定越好<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>如果只传一个简单回调，<code>Callable[[str], None]</code> 已经够用；若“报告输出”是长期业务角色，需要位置参数约束、重载或更多方法，命名 <code>Protocol</code> 才值得。</p>
+<p>同样，参数类型也应按真实操作选择：</p>
 <ul>
-<li>能解释三种参数种类及<code>/</code>和<code>*</code>的作用。</li>
-<li>能为含义相近的选项设计仅限关键字参数。</li>
-<li>能复现并修复可变默认参数共享状态。</li>
-<li>能根据读取或修改能力选择合适的参数类型。</li>
-<li>能使用返回值替代输出参数和隐藏全局状态。</li>
-<li>能区分简单<code>Callable</code>和可调用<code>Protocol</code>的适用范围。</li>
-<li>能让普通函数不继承协议也通过结构化检查。</li>
-<li>能制造并解释一个协议签名不匹配错误。</li>
-<li>能说明下划线与<code>__all__</code>是公开约定而不是安全边界。</li>
-<li>能画出示例的单向依赖，且业务模块不反向导入<code>main</code>。</li>
-<li>能使用内存输出测试应用流程，不修改核心模块。</li>
-<li>完整示例能通过mypy严格检查和6个unittest。</li>
-<li>所有模块单独导入时不打印、不读取业务数据、不创建业务输出；检查时能够区分解释器字节码缓存。</li>
-<li>能审阅AI接口设计，拒绝至少一个隐藏状态、过宽协议或反向依赖。</li>
+<li>单次遍历：<code>Iterable</code>。</li>
+<li>需要长度和索引：<code>Sequence</code>。</li>
+<li>必须原地修改：明确可变接口或具体容器。</li>
 </ul>
-<h2 id="_46">来源与版本<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>来源</th>
-<th>用于核查</th>
-<th>版本或日期</th>
-<th>状态</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://docs.python.org/3.11/tutorial/controlflow.html#more-on-defining-functions">Python 3.11函数定义教程</a></td>
-<td>默认参数、关键字参数、<code>/</code>与<code>*</code></td>
-<td>Python 3.11.15，2026-07-14核查</td>
-<td>已核查</td>
-</tr>
-<tr>
-<td><a href="https://docs.python.org/3.11/reference/simple_stmts.html#the-import-statement">Python 3.11 import语句参考</a></td>
-<td><code>__all__</code>和公开名称语义</td>
-<td>Python 3.11.15，2026-07-14核查</td>
-<td>已核查</td>
-</tr>
-<tr>
-<td><a href="https://typing.python.org/en/latest/spec/protocol.html">Python类型系统规范：Protocols</a></td>
-<td>结构化类型和协议规则</td>
-<td>2026-07-14核查</td>
-<td>已核查</td>
-</tr>
-<tr>
-<td><a href="https://peps.python.org/pep-0544/">PEP 544</a></td>
-<td>Protocol设计目标与运行时边界</td>
-<td>Final，2026-07-14核查</td>
-<td>已核查</td>
-</tr>
-<tr>
-<td><a href="https://mypy.readthedocs.io/en/stable/protocols.html">mypy Protocol文档</a></td>
-<td>回调协议、参数名称和种类兼容</td>
-<td>mypy 2.2文档，2026-07-14核查</td>
-<td>已核查</td>
-</tr>
-<tr>
-<td><a href="https://mypy.readthedocs.io/en/stable/builtin_types.html">mypy内置类型</a></td>
-<td><code>Sequence</code>只读能力口径</td>
-<td>mypy 2.2文档，2026-07-14核查</td>
-<td>已核查</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_47">下一步<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h2>
-<p>双主修第二组“函数与程序组织”配对完成。下一节回到C++学习<a href="../../cpp-core/03-headers-sources-cmake/">头文件、源文件与最小CMake工程</a>：把稳定的函数声明放入头文件、实现放入源文件，建立多翻译单元、包含保护和可重复构建的最小工程。</p>
+<p>不要为每个函数都造协议，也不要为了看起来“架构化”把一个小程序拆成十几个只含一行的模块。边界的价值来自变化隔离和测试便利，而不是目录数量。</p>
+</section>
+<section data-context-type="career" data-learning-context="career-interface-evidence" id="career-interface-evidence">
+<h2 id="_12">用一次替换证明设计，而不是只画图<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>项目介绍可以这样组织：</p>
+<blockquote>
+<p>报告统计与文本生成保持纯函数，应用流程只依赖一个 <code>ReportWriter</code> 协议；CLI 负责组装终端输出，测试传入内存 writer。替换输出方式不修改核心分析，mypy 验证回调签名，单元测试证明报告正文和输入只读契约保持不变。</p>
+</blockquote>
+<p>如果被追问“为什么不用直接 print”，回答应落到变化和测试：直接打印会把业务结果与终端副作用绑在一起；返回字符串并把 writer 放在边界后，核心可以单独测试，输出也能替换。</p>
+<p>同时说明克制：这个项目只有一个输出方法时，<code>Callable</code> 也能完成；使用命名协议是为了让业务角色和后续扩展更清楚，不是为了堆设计模式。</p>
+</section>
+<h2 id="_13">完成检查<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能用 <code>/</code> 与 <code>*</code> 解释三类参数调用方式。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我复现并修复了可变默认列表共享状态。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说明为什么核心计算优先返回值，而不是修改全局变量或直接打印。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我知道简单 <code>Callable</code> 与命名 <code>Protocol</code> 各自适合什么情况。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我用终端和内存 writer 跑过同一份报告流程。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我分别观察了位置参数、错误回调和循环导入的失败阶段。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我知道前导下划线与 <code>__all__</code> 不是权限控制。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我增加了新 writer，没有修改报告正文和分析函数。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我为当前报告器画出入口、应用、分析、报告和输出的依赖方向。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能用代码替换、mypy 和测试证明接口设计，而不只展示架构图。</li>
+</ul>
+<h2 id="_14">来源与版本<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<ul>
+<li>适用版本：Python 3.11 及以上；mypy 2.2.0 严格模式。</li>
+<li>核查日期：2026-07-17。</li>
+<li>事实来源：<a href="https://docs.python.org/3.11/reference/compound_stmts.html#function-definitions">Python 函数定义</a>用于参数种类与默认值求值；<a href="https://docs.python.org/3.11/library/typing.html#typing.Protocol">Python <code>typing.Protocol</code></a>用于结构化接口；<a href="https://docs.python.org/3.11/reference/import.html">Python 导入系统</a>用于模块加载和循环导入边界；<a href="https://docs.python.org/3.11/tutorial/modules.html#importing-from-a-package">Python <code>__all__</code></a>用于公开名称约定。</li>
+<li>代码验证：仓库脚本运行严格 mypy、终端与内存 writer、关键字专用参数、可变默认值修复、错误协议非零退出，以及正式报告器 mypy、测试和依赖方向检查；不联网。</li>
+</ul>
+<h2 id="_15">下一步<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>进入<a href="../03-iterables-iterators-generators/">容器协议、迭代器与生成器</a>，比较可重复遍历的序列与只能向前消费一次的迭代器。</p>
+<p><a class="md-button md-button--primary" href="../03-iterables-iterators-generators/">进入下一课</a></p>
 
 
 

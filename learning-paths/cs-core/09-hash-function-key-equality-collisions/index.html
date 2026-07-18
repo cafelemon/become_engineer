@@ -2460,10 +2460,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#159-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1、5、9 不相等，为什么都去了桶 1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        开始前
       
     </span>
   </a>
@@ -2474,7 +2485,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：锁定队列与哈希基线
+        哈希先决定去哪个桶
       
     </span>
   </a>
@@ -2485,18 +2496,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：定义哈希与键相等契约
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bucket_index" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第三步：实现 bucket_index
+        四个桶里真正保存了什么
       
     </span>
   </a>
@@ -2507,7 +2507,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：追踪冲突链
+        相等键必须同哈希，反过来不成立
       
     </span>
   </a>
@@ -2518,18 +2518,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：执行安全失败实验
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#first_collision" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第六步：完成 first_collision 迁移验收
+        取模规则只属于这个可复现实验
       
     </span>
   </a>
@@ -2540,7 +2529,18 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        桶索引必须先通过输入检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chain_before" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        chain_before 记录插入前已有多少候选
       
     </span>
   </a>
@@ -2551,7 +2551,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        键如何进入桶
+        不要为了好看先把键排序
       
     </span>
   </a>
@@ -2562,18 +2562,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        运行与输出
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI 协作任务
+        运行一份完整桶轨迹
       
     </span>
   </a>
@@ -2584,7 +2573,7 @@
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        在正式项目里对照三种模式
       
     </span>
   </a>
@@ -2595,7 +2584,7 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        完成证据
+        换桶数以后，冲突会跟着变
       
     </span>
   </a>
@@ -2606,7 +2595,7 @@
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
-        来源与版本
+        找到输入顺序里的第一次冲突
       
     </span>
   </a>
@@ -2615,6 +2604,83 @@
       
         <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        除零和负索引不该成为报错方式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 列表为什么不能放进 set
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可追踪哈希实验从桶事件开始
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “哈希查找 O(1)”需要条件
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        讲哈希时，先把单向契约说准
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -3890,10 +3956,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#159-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1、5、9 不相等，为什么都去了桶 1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        开始前
       
     </span>
   </a>
@@ -3904,7 +3981,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：锁定队列与哈希基线
+        哈希先决定去哪个桶
       
     </span>
   </a>
@@ -3915,18 +3992,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：定义哈希与键相等契约
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bucket_index" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第三步：实现 bucket_index
+        四个桶里真正保存了什么
       
     </span>
   </a>
@@ -3937,7 +4003,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：追踪冲突链
+        相等键必须同哈希，反过来不成立
       
     </span>
   </a>
@@ -3948,18 +4014,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：执行安全失败实验
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#first_collision" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第六步：完成 first_collision 迁移验收
+        取模规则只属于这个可复现实验
       
     </span>
   </a>
@@ -3970,7 +4025,18 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        桶索引必须先通过输入检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chain_before" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        chain_before 记录插入前已有多少候选
       
     </span>
   </a>
@@ -3981,7 +4047,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        键如何进入桶
+        不要为了好看先把键排序
       
     </span>
   </a>
@@ -3992,18 +4058,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        运行与输出
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI 协作任务
+        运行一份完整桶轨迹
       
     </span>
   </a>
@@ -4014,7 +4069,7 @@
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        在正式项目里对照三种模式
       
     </span>
   </a>
@@ -4025,7 +4080,7 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        完成证据
+        换桶数以后，冲突会跟着变
       
     </span>
   </a>
@@ -4036,7 +4091,7 @@
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
-        来源与版本
+        找到输入顺序里的第一次冲突
       
     </span>
   </a>
@@ -4045,6 +4100,83 @@
       
         <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        除零和负索引不该成为报错方式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 列表为什么不能放进 set
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可追踪哈希实验从桶事件开始
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “哈希查找 O(1)”需要条件
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        讲哈希时，先把单向契约说准
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -4074,174 +4206,250 @@
   
 
 
-<h1 id="_1">哈希函数、键相等与冲突<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <div class="be-tutor-mount" data-tutor-lesson="cs-core-09" aria-hidden="true"></div>
 
-<blockquote>
-<p><strong>任务先行：</strong> 用公开的取模教学哈希把非负整数键映射到桶，并把“同桶”与“相等”分开验证。</p>
-</blockquote>
-<h2 id="_2">任务路线<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<div class="be-task-route" role="list" aria-label="本课六步任务"><span role="listitem">1 双基线</span><span role="listitem">2 哈希契约</span><span role="listitem">3 桶索引</span><span role="listitem">4 冲突追踪</span><span role="listitem">5 安全失败</span><span role="listitem">6 首冲突迁移</span></div>
-
-<section class="be-task-step" data-step-id="step-1" id="step-1">
-<h2 id="_3">第一步：锁定队列与哈希基线<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>先运行上一课 <code>queue</code>，再运行新实验 <code>hash</code>。<strong>当前任务：</strong>保存两份标准输出。<strong>成功证据：</strong>旧队列报告不变，新报告把 <code>1,5,9</code> 映射到桶 1，并显示第二次插入开始发生冲突。</p>
+<section class="be-page-hero be-lesson-hero" data-context-type="overview" data-learning-context="overview-hash-output" id="overview-hash-output">
+<p><span class="be-lesson-kicker">共同算法基础 · 第 5 课 · 可追踪哈希实验</span></p>
+<h1 id="_1">哈希函数、键相等与冲突<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="159-1">1、5、9 不相等，为什么都去了桶 1<a class="headerlink" href="#159-1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>key | bucket | chain_before | collision
+1   | 1      | 0            | no
+5   | 1      | 1            | yes
+9   | 1      | 2            | yes
+2   | 2      | 0            | no
+</code></pre></div>
+<p>本课先用四个桶和一条公开规则：<code>bucket = key % 4</code>。1、5、9 除以 4 的余数都是 1，所以进入同一个桶；它们仍是三个不同的键。哈希先缩小查找范围，桶内还要继续比较完整键。</p>
+<p><a class="md-button md-button--primary" href="#example-bucket-layout">看四个桶怎样装值</a>
+<a class="md-button" href="#reproduce-hash-micro">直接运行小例子</a></p>
+<div class="be-lesson-facts">
+<p><span>课程位置<strong>共同算法基础 · 5 / 16</strong></span>
+<span>前置<strong>线性查找、链表与确定性操作轨迹</strong></span>
+<span>完成后留下<strong>桶事件、冲突证据和双语言回归</strong></span></p>
+</div>
 </section>
-<section class="be-task-step" data-step-id="step-2" id="step-2">
-<h2 id="_4">第二步：定义哈希与键相等契约<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>本实验固定 <code>hash(key) = key % bucket_count</code>。相等键必须得到相同哈希；相同哈希只说明候选桶相同，仍须比较键。<strong>主动修改：</strong>列出键 1、5、9、2 在 4 个桶中的结果。<strong>成功证据：</strong>能解释 1 与 5 不相等但发生冲突。</p>
+<h2 id="_2">开始前<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>能解释链表查找为什么要逐个比较，并读懂 <code>visits</code>。</li>
+<li>知道取模结果会落在固定余数范围。</li>
+<li>本课使用非负整数键和公开教学规则；标准库内部实现不在本课猜测范围内。</li>
+</ul>
+<section data-context-type="concept" data-learning-context="concept-hash-routing" id="concept-hash-routing">
+<h2 id="_3">哈希先决定去哪个桶<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>完整键
+  → hash / bucket_index
+  → 候选桶
+  → 桶内逐键比较
+  → 找到相等键，或确认缺失
+</code></pre></div>
+<p>如果有 100 个键和 10 个桶，理想情况下不必每次比较全部 100 个键，而是先去一个更小的候选集合。能否真的更快，取决于哈希分布、桶数量、负载和冲突处理；不能只凭“用了哈希”就宣布每次一定常量时间。</p>
 </section>
-<section class="be-task-step" data-step-id="step-3" id="step-3">
-<h2 id="bucket_index">第三步：实现 <code>bucket_index</code><a class="headerlink" href="#bucket_index" title="Permanent link">&para;</a></h2>
-<p>检查桶数为正、键非负，再返回余数。<strong>当前任务：</strong>为首桶、末桶和大键补测试。<strong>成功证据：</strong>返回值始终满足 <code>0 &lt;= bucket &lt; bucket_count</code>，不靠数组越界发现输入错误。</p>
+<section data-context-type="example" data-learning-context="example-bucket-layout" id="example-bucket-layout">
+<h2 id="_4">四个桶里真正保存了什么<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<div aria-label="四个哈希桶中，桶0为空，桶1按顺序保存1、5、9，桶2保存2，桶3为空" class="be-hash-buckets" role="img">
+<div><strong>桶 0</strong><code>[]</code><span>空</span></div>
+<div data-collision="true"><strong>桶 1</strong><code>[1, 5, 9]</code><span>两次冲突</span></div>
+<div><strong>桶 2</strong><code>[2]</code><span>无冲突</span></div>
+<div><strong>桶 3</strong><code>[]</code><span>空</span></div>
+</div>
+<p>桶 1 保留输入顺序。插入 5 前，链里已经有 1；插入 9 前，链里已经有 1、5。下一课会把这种“每桶一条小链”升级成支持增删改查的分离链接哈希表。</p>
 </section>
-<section class="be-task-step" data-step-id="step-4" id="step-4">
-<h2 id="_5">第四步：追踪冲突链<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p><code>BucketEvent</code> 保存键、桶号、插入前链长和是否冲突。<strong>主动修改：</strong>把输入改为 <code>[0,4,8]</code>。<strong>成功证据：</strong>三项都进入桶 0，<code>chain_before</code> 依次为 0、1、2；原输入顺序保持不变。</p>
+<section data-context-type="concept" data-learning-context="concept-equality-contract" id="concept-equality-contract">
+<h2 id="_5">相等键必须同哈希，反过来不成立<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>哈希容器依赖这条契约：</p>
+<div class="highlight"><pre><span></span><code>key_a == key_b  ⇒  hash(key_a) == hash(key_b)
+</code></pre></div>
+<p>若两个相等键被送到不同桶，容器可能永远找不到已经保存的键。但相同哈希只代表候选桶相同：</p>
+<div class="highlight"><pre><span></span><code>1 % 4 == 5 % 4 == 1
+1 != 5
+</code></pre></div>
+<p>所以冲突不是“两个键相等”，也不是程序故障；它是有限桶空间中必须处理的正常情况。</p>
 </section>
-<section class="be-task-step" data-step-id="step-5" id="step-5">
-<h2 id="_6">第五步：执行安全失败实验<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<p>分别传入 0、负桶数和负键；Python 再尝试把列表放入原生 <code>set</code>。<strong>恢复标准：</strong>教学接口抛 <code>ValueError</code>／<code>std::invalid_argument</code>，Python 不可哈希列表抛 <code>TypeError</code>；失败发生在状态修改前。</p>
+<section data-context-type="concept" data-learning-context="concept-teaching-hash" id="concept-teaching-hash">
+<h2 id="_6">取模规则只属于这个可复现实验<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>课程固定：</p>
+<div class="highlight"><pre><span></span><code><span class="n">bucket</span> <span class="o">=</span> <span class="n">key</span> <span class="o">%</span> <span class="n">bucket_count</span>
+</code></pre></div>
+<p>这样 Python 与 C++ 能对同一组整数生成完全一致的桶号和冲突事件。它不表示 Python <code>dict/set</code>、C++ <code>unordered_map</code>，或其他语言的标准容器必须使用这条算法。</p>
+<p>正式代码依赖标准库承诺的行为、复杂度条件和键契约；教学实验则可以对自己公开的规则写精确断言。</p>
 </section>
-<section class="be-task-step" data-step-id="step-6" id="step-6">
-<h2 id="first_collision">第六步：完成 <code>first_collision</code> 迁移验收<a class="headerlink" href="#first_collision" title="Permanent link">&para;</a></h2>
-<p>按输入顺序返回第一个 <code>collision=True</code> 的事件，没有冲突则返回空值。<strong>约束：</strong>不提供完整答案；必须复用追踪契约。<strong>成功证据：</strong>覆盖空输入、无冲突、首个冲突和多重冲突。</p>
+<section data-context-type="concept" data-learning-context="concept-bucket-index" id="concept-bucket-index">
+<h2 id="_7">桶索引必须先通过输入检查<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p><code>bucket_index(key, bucket_count)</code> 的合法结果满足：</p>
+<div class="highlight"><pre><span></span><code>0 &lt;= bucket &lt; bucket_count
+</code></pre></div>
+<p>本实验先拒绝 <code>bucket_count &lt;= 0</code>，避免除零和不存在的桶；再拒绝负键，让 Python 与 C++ 不受负数余数规则差异影响。只有检查通过以后才执行取模。</p>
+<p>这种限制是教学接口的公开选择，不是说真实哈希表不能支持负整数键。</p>
 </section>
-<h2 id="_7">课程信息<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<section data-context-type="example" data-learning-context="example-collision-events" id="example-collision-events">
+<h2 id="chain_before"><code>chain_before</code> 记录插入前已有多少候选<a class="headerlink" href="#chain_before" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>项目</th>
-<th>内容</th>
+<th style="text-align: right;">key</th>
+<th style="text-align: right;">bucket</th>
+<th style="text-align: right;">插入前链长</th>
+<th>collision</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>前置</td>
-<td><a href="../08-queue-fifo-head-tail-invariants/">队列、FIFO 与首尾不变量</a></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td>no</td>
 </tr>
 <tr>
-<td>环境</td>
-<td>Python 3.11+、C++20、CMake 3.20+；纯标准库</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td>yes</td>
 </tr>
 <tr>
-<td>阶段作品</td>
-<td><a href="../../../exercises/cs-core/traceable-hash-lab/">可追踪哈希实验</a></td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td>yes</td>
 </tr>
 <tr>
-<td>可观察产出</td>
-<td>桶号、冲突前链长、确定性桶链和受控失败</td>
-</tr>
-<tr>
-<td>事实核查</td>
-<td>本地误区审计与官方资料，2026-07-16</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_8">键如何进入桶<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart LR
-    K["非负整数键"] --&gt; H["教学哈希 key % bucket_count"]
-    H --&gt; B["桶索引"]
-    B --&gt; C["桶内冲突链"]
-    C --&gt; E{"键相等？"}
-    E --&gt;|是| M["同一个键"]
-    E --&gt;|否| X["只是发生冲突"]</code></pre>
-<h2 id="_9">运行与输出<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>traceable_hash_lab<span class="w"> </span><span class="nb">hash</span>
+<p>事件必须在追加键之前读取链长，否则第一项会错误地从 1 开始。<code>collision</code> 等价于 <code>chain_before &gt; 0</code>；它说明新键进入了非空桶，还没有说明桶里存在相等键。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-input-order" id="concept-input-order">
+<h2 id="_8">不要为了好看先把键排序<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p><code>first_collision</code> 问的是输入过程里第一次冲突发生在哪里。若把 <code>[9, 1, 5]</code> 先排成 <code>[1, 5, 9]</code>，桶内容看似相同，事件顺序和第一个冲突键却变了。</p>
+<p>本项目按输入顺序追加，桶链、事件和首个冲突都因此可重复。展示结果若需要排序，应在单独的输出层完成，不能偷偷改变操作历史。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-hash-micro" id="reproduce-hash-micro">
+<h2 id="_9">运行一份完整桶轨迹<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>.venv/bin/python<span class="w"> </span>site-src/examples/algorithm-foundation/hash_bucket_trace.py
+</code></pre></div>
+<p>运行前手算 <code>1、5、9、2</code> 在 4 个桶中的余数，再预测每行 <code>chain_before</code>。最后应看到：</p>
+<div class="highlight"><pre><span></span><code>buckets=0:[] 1:[1, 5, 9] 2:[2] 3:[]
+</code></pre></div>
+<p>小程序先记录事件再插入，适合从输出回到代码逐行核对。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-bilingual-hash" id="reproduce-bilingual-hash">
+<h2 id="_10">在正式项目里对照三种模式<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/cs-core/traceable-hash-lab/python
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>-v
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>src<span class="w"> </span>tests
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>traceable_hash_lab<span class="w"> </span><span class="nb">hash</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/cs-core/traceable-hash-lab/cpp
+cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Debug
+cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>--config<span class="w"> </span>Debug
+ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class="w"> </span>--build-config<span class="w"> </span>Debug<span class="w"> </span>--output-on-failure
 ./build/traceable_hash_lab<span class="w"> </span><span class="nb">hash</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>可追踪哈希实验
-bucket_count=4
-key | bucket | chain_before | collision
-1 | 1 | 0 | no
-5 | 1 | 1 | yes
-9 | 1 | 2 | yes
-2 | 2 | 0 | no
-buckets：0=[] 1=[1, 5, 9] 2=[2] 3=[]
-</code></pre></div>
-<p>这个取模函数是课程公开模型，不是 Python 或 C++ 标准容器的实现声明。真实容器还会组合键类型的哈希、桶策略和实现细节；课程只用固定模型建立可复现的冲突证据。</p>
-<h2 id="ai">AI 协作任务<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h2>
-<p>可让 AI 生成边界测试或解释冲突，但学习者必须逐项确认：桶数检查先于取模、负键被主动拒绝、同桶不等于相等、事件中的链长发生在插入之前。</p>
-<h2 id="_10">常见错误与排查<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>现象</th>
-<th>原因</th>
-<th>检查与恢复</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>除零或索引异常</td>
-<td>未先验证桶数</td>
-<td>在取模前拒绝非正桶数</td>
-</tr>
-<tr>
-<td>把冲突键覆盖</td>
-<td>把同桶误当相等</td>
-<td>桶内继续比较完整键</td>
-</tr>
-<tr>
-<td>负键跨语言结果混乱</td>
-<td>直接依赖余数差异</td>
-<td>教学接口统一拒绝负键</td>
-</tr>
-<tr>
-<td>链长晚一位</td>
-<td>先插入再记录</td>
-<td>先记录 <code>chain_before</code></td>
-</tr>
-<tr>
-<td>声称标准库也用取模</td>
-<td>混淆模型与实现</td>
-<td>只把它称为确定性教学哈希</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_11">完成证据<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p><code>hash</code>、<code>table</code>、<code>applications</code> 三种模式都要通过，Python 与 C++ 的报告逐字一致。后两种模式提前存在，是为了保护接下来两课的项目契约。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-new-buckets" id="modify-new-buckets">
+<h2 id="_11">换桶数以后，冲突会跟着变<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>固定键 <code>[1, 5, 9, 2]</code>，分别使用 3、4、5 个桶：</p>
+<ol>
+<li>先手算每个键的桶号。</li>
+<li>再预测第一个冲突键。</li>
+<li>调用 <code>trace_bucket_inserts</code> 和 <code>first_collision</code> 核对。</li>
+<li>比较桶数变化是否改变键相等关系。</li>
+</ol>
+<p>桶布局会变，键本身是否相等不会变。桶更多也不保证没有冲突，只是这组小数据可能分散得更开。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-first-collision" id="modify-first-collision">
+<h2 id="_12">找到输入顺序里的第一次冲突<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p><code>first_collision(keys, bucket_count)</code> 返回第一个 <code>collision=True</code> 的完整事件；没有冲突时返回 <code>None</code>／空 <code>optional</code>。</p>
+<p>请覆盖：</p>
 <ul>
-<li>Python 与 C++ <code>hash</code> 输出逐字一致。</li>
-<li>非正桶数与负键均受控失败。</li>
-<li>桶索引范围、链长和首个冲突有精确测试。</li>
-<li>能解释“相等推出同哈希，反向不成立”。</li>
-<li><code>first_collision</code> 完成空值和顺序验收。</li>
+<li>空输入。</li>
+<li><code>[0, 1, 2]</code> 与 4 个桶，没有冲突。</li>
+<li><code>[1, 5, 9]</code> 与 4 个桶，首个冲突是键 5。</li>
+<li>多次冲突但仍只返回第一项。</li>
 </ul>
-<h2 id="_12">来源与版本<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>直接复用事件追踪，别另写一套稍有不同的冲突规则。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-invalid-input" id="troubleshoot-invalid-input">
+<h2 id="_13">除零和负索引不该成为报错方式<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>桶数为 0 或负数、键为负数时，Python 抛 <code>ValueError</code>，C++ 抛 <code>std::invalid_argument</code>。错误发生在取模和桶修改之前。</p>
+<p>先验证、再计算，得到的是稳定的接口错误；依赖除零、数组越界或负索引得到的是语言偶然行为，跨语言报告也无法对齐。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-unhashable-key" id="troubleshoot-unhashable-key">
+<h2 id="python-set">Python 列表为什么不能放进 <code>set</code><a class="headerlink" href="#python-set" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nb">set</span><span class="p">()</span><span class="o">.</span><span class="n">add</span><span class="p">([])</span>  <span class="c1"># TypeError: unhashable type: &#39;list&#39;</span>
+</code></pre></div>
+<p>列表可以原地修改。一个键进入哈希容器后若哈希值随内容变化，容器可能再也到不了原来的桶。Python 因此不让可变列表直接作为集合元素；不可变元组只有在其成员也可哈希时才可哈希。</p>
+</section>
+<section data-context-type="project" data-learning-context="project-hash-v01" id="project-hash-v01">
+<h2 id="_14">可追踪哈希实验从桶事件开始<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>整数键序列
+  → bucket_index
+  → BucketEvent(key, bucket, chain_before, collision)
+  → 确定性桶链
+  → first_collision
+  → Python / C++ 同一份报告
+</code></pre></div>
+<p>这版还不是完整哈希表。它先把路由、冲突和输入顺序变成可检查的事件，下一课再在同一规则上增加键值、更新、查询、删除、负载和扩容。</p>
+<p><a class="md-button md-button--primary" href="../../../exercises/cs-core/traceable-hash-lab/">查看可追踪哈希实验</a></p>
+</section>
+<section data-context-type="deepen" data-learning-context="deepen-performance-conditions" id="deepen-performance-conditions">
+<h2 id="o1">“哈希查找 O(1)”需要条件<a class="headerlink" href="#o1" title="Permanent link">&para;</a></h2>
+<p>若哈希分布合理、负载受控，桶内候选通常较少，查找可以达到期望常量时间。最坏情况下，许多键集中到同一个桶，仍可能退化为线性比较。</p>
+<p>所以性能讨论至少要说明：平均、期望还是最坏；哈希质量如何；负载因子多大；冲突怎样处理。下一课会用可见的比较次数和扩容事件继续补齐这些条件。</p>
+</section>
+<section data-context-type="career" data-learning-context="career-hash-evidence" id="career-hash-evidence">
+<h2 id="_15">讲哈希时，先把单向契约说准<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>可以用 1 和 5 说明：相等键必须得到相同哈希，但相同哈希不代表键相等；同桶以后仍要比较完整键。再用 <code>chain_before</code> 说明冲突是怎样被记录的。</p>
+<p>如果继续问复杂度，就补充合理分布和受控负载下的期望性能，以及全部键落在同桶时的最坏线性情况。最后展示负桶数、负键、不可哈希列表和双语言测试，答案才有可复核的边界。</p>
+</section>
+<h2 id="_16">完成检查<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能手算 1、5、9、2 在 4 个桶中的位置与插入前链长。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能解释相等键必须同哈希，但同哈希不代表相等。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能区分课程取模规则和标准库实现。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 桶数与键在计算前完成校验，错误不修改状态。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>first_collision</code> 覆盖空、无冲突、首个冲突和多重冲突。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说明为什么输入顺序影响事件，但不影响键相等关系。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Python 类型检查与单元测试、C++ 构建与 CTest、三种双语言报告全部通过。</li>
+</ul>
+<h2 id="_17">来源与版本<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>来源</th>
-<th>用途</th>
-<th>核查日期</th>
+<th>用于核查</th>
+<th>版本或日期</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/mit6_006s20_lec4/">MIT 6.006 哈希讲义</a></td>
-<td>哈希、冲突和期望性能条件</td>
-<td>2026-07-16</td>
+<td>哈希、冲突与期望性能条件</td>
+<td>2020 课程，2026-07-17 核查</td>
 </tr>
 <tr>
 <td><a href="https://www.opendatastructures.org/ods-python.pdf">Open Data Structures</a></td>
 <td>哈希表表示与冲突处理</td>
-<td>2026-07-16</td>
+<td>2026-07-17 核查</td>
 </tr>
 <tr>
-<td><a href="https://docs.python.org/3.11/reference/datamodel.html">Python 数据模型</a></td>
+<td><a href="https://docs.python.org/3.11/reference/datamodel.html#object.__hash__">Python 数据模型</a></td>
 <td>可哈希对象与相等契约</td>
-<td>2026-07-16</td>
+<td>Python 3.11，2026-07-17 核查</td>
 </tr>
 <tr>
 <td><a href="https://eel.is/c++draft/unord.req.general">C++ 无序关联容器要求</a></td>
-<td>等价键、哈希与桶接口边界</td>
-<td>2026-07-16</td>
+<td>等价键、哈希与桶接口</td>
+<td>C++20 教学基线，2026-07-17 核查</td>
 </tr>
 </tbody>
 </table>
-<p>本地 JavaGuide 哈希页只用于检查冲突、负载与扩容的概念候选和过度概括；课程没有复制正文、图片、题目，也没有把 Java <code>HashMap</code> 的阈值或树化规则写成通用事实。</p>
-<h2 id="_13">下一步<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
-<p>进入<a href="../10-separate-chaining-load-factor-rehash/">分离链接、负载因子与扩容</a>，把静态桶链升级为可插入、更新、查询和删除的表。</p>
+<p>本地 JavaGuide 哈希页只用于检查冲突、负载和扩容的常见说法；桶规则、事件、代码和测试均由本项目独立编写。</p>
+<h2 id="_18">下一步<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<p>进入<a href="../10-separate-chaining-load-factor-rehash/">分离链接、负载因子与扩容</a>，把静态桶链升级为支持插入、更新、查询和删除的键值表。</p>
 
 
 

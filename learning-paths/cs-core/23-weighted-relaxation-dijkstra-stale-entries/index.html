@@ -2924,10 +2924,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#0-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从 0 到 5，不是边最少，而是总代价最小
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        开始前
       
     </span>
   </a>
@@ -2938,7 +2949,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：运行优先队列与带权图基线
+        边权是经过一条边的代价
       
     </span>
   </a>
@@ -2949,7 +2960,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：验证非负权简单无向图
+        三条边，只有第一条合法
       
     </span>
   </a>
@@ -2960,7 +2971,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：实现严格松弛
+        松弛：问一条边能不能带来更短路线
       
     </span>
   </a>
@@ -2968,10 +2979,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dijkstra_1" class="md-nav__link">
+  <a href="#1-3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：用稳定最小队列执行 Dijkstra
+        顶点 1 和 3 都被改短了一次
       
     </span>
   </a>
@@ -2982,7 +2993,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：触发负权和遗漏过期检查实验
+        为什么弹出的最小当前距离可以确定下来
       
     </span>
   </a>
@@ -2990,10 +3001,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#vertices_within_distance" class="md-nav__link">
+  <a href="#decrease-key" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第六步：完成 vertices_within_distance 迁移验收
+        不做 decrease-key，就允许新旧条目并存
       
     </span>
   </a>
@@ -3004,7 +3015,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        固定输出
+        打印松弛和三个过期项
       
     </span>
   </a>
@@ -3015,7 +3026,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        运行双语言完整实验
       
     </span>
   </a>
@@ -3026,7 +3037,18 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        来源与版本
+        加一条零权边，再造一条等距路线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        找出总代价不超过 4 的顶点
       
     </span>
   </a>
@@ -3035,6 +3057,72 @@
       
         <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        距离不对、计数变大或路径漂移
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可追踪优先队列与最短路实验 v1.0
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        复杂度要和真实实现对上
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-3-dijkstra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用“4 改成 3”讲清 Dijkstra
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -3846,10 +3934,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#0-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从 0 到 5，不是边最少，而是总代价最小
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        开始前
       
     </span>
   </a>
@@ -3860,7 +3959,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：运行优先队列与带权图基线
+        边权是经过一条边的代价
       
     </span>
   </a>
@@ -3871,7 +3970,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：验证非负权简单无向图
+        三条边，只有第一条合法
       
     </span>
   </a>
@@ -3882,7 +3981,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：实现严格松弛
+        松弛：问一条边能不能带来更短路线
       
     </span>
   </a>
@@ -3890,10 +3989,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dijkstra_1" class="md-nav__link">
+  <a href="#1-3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：用稳定最小队列执行 Dijkstra
+        顶点 1 和 3 都被改短了一次
       
     </span>
   </a>
@@ -3904,7 +4003,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：触发负权和遗漏过期检查实验
+        为什么弹出的最小当前距离可以确定下来
       
     </span>
   </a>
@@ -3912,10 +4011,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#vertices_within_distance" class="md-nav__link">
+  <a href="#decrease-key" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第六步：完成 vertices_within_distance 迁移验收
+        不做 decrease-key，就允许新旧条目并存
       
     </span>
   </a>
@@ -3926,7 +4025,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        固定输出
+        打印松弛和三个过期项
       
     </span>
   </a>
@@ -3937,7 +4036,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        运行双语言完整实验
       
     </span>
   </a>
@@ -3948,7 +4047,18 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        来源与版本
+        加一条零权边，再造一条等距路线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        找出总代价不超过 4 的顶点
       
     </span>
   </a>
@@ -3957,6 +4067,72 @@
       
         <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        距离不对、计数变大或路径漂移
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可追踪优先队列与最短路实验 v1.0
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        复杂度要和真实实现对上
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-3-dijkstra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用“4 改成 3”讲清 Dijkstra
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -3986,54 +4162,13 @@
   
 
 
-<h1 id="dijkstra">带权图松弛、Dijkstra 与过期队列项<a class="headerlink" href="#dijkstra" title="Permanent link">&para;</a></h1>
 <div class="be-tutor-mount" data-tutor-lesson="cs-core-23" aria-hidden="true"></div>
 
-<blockquote>
-<p><strong>任务先行：</strong> 在非负权简单无向图上维护暂定距离，用稳定最小队列按距离取点，并安全跳过被更短路线替代的旧队列项。</p>
-</blockquote>
-<h2 id="_1">任务路线<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="be-task-route" role="list" aria-label="本课六步任务"><span role="listitem">1 加权基线</span><span role="listitem">2 验证图</span><span role="listitem">3 严格松弛</span><span role="listitem">4 Dijkstra</span><span role="listitem">5 负权与过期项</span><span role="listitem">6 距离范围迁移</span></div>
-
-<section class="be-task-step" data-step-id="step-1" id="step-1">
-<h2 id="_2">第一步：运行优先队列与带权图基线<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>先运行 <code>queue</code> 再运行 <code>dijkstra</code>。<strong>当前任务：</strong>记录从 0 出发的确定顺序、距离、父节点和队列计数。<strong>成功证据：</strong>顶点 6 保持不可达，0 到 5 的路径为 <code>0,2,1,3,4,5</code>，总代价 8。</p>
-</section>
-<section class="be-task-step" data-step-id="step-2" id="step-2">
-<h2 id="_3">第二步：验证非负权简单无向图<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>构造函数复制并规范化端点，邻接表按邻居编号排序。允许零权边；拒绝负权、自环、重复无向边和越界端点。距离范围固定到有符号 64 位，不能用溢出后的值继续比较。</p>
-<p><strong>主动修改：</strong>交换边输入顺序。<strong>成功证据：</strong>规范化邻接顺序和最终轨迹保持不变。</p>
-</section>
-<section class="be-task-step" data-step-id="step-3" id="step-3">
-<h2 id="_4">第三步：实现严格松弛<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>对边 <code>u—v(w)</code> 计算 <code>candidate=distance[u]+w</code>。只有目标未知或候选严格更小时才更新距离、父节点并压入新项；相等候选不覆盖第一次父节点。</p>
-<p><strong>成功证据：</strong>样例中顶点 1 先得到 4，随后经 2 改进为 3；顶点 3 从 6 改进为 4，共产生 8 次成功松弛。</p>
-</section>
-<section class="be-task-step" data-step-id="step-4" id="step-4">
-<h2 id="dijkstra_1">第四步：用稳定最小队列执行 Dijkstra<a class="headerlink" href="#dijkstra_1" title="Permanent link">&para;</a></h2>
-<p>队列项为 <code>(distance, sequence, vertex)</code>。每次弹出当前最小暂定距离；若与距离表一致，就固定本次顶点并扫描邻接表。非负权保证未处理路线不能再从后方产生更短的已弹出距离。</p>
-<pre class="mermaid"><code>flowchart LR
-    P["弹出最小距离项"] --&gt; C{"等于当前距离?"}
-    C -- 否 --&gt; S["stale_pops + 1"]
-    C -- 是 --&gt; E["扫描邻接边"]
-    E --&gt; R{"candidate 更短?"}
-    R -- 是 --&gt; Q["更新并压入新项"]
-    R -- 否 --&gt; P
-    Q --&gt; P
-    S --&gt; P</code></pre>
-<p>本课懒惰重复项实现至多保留 <code>O(E)</code> 个队列项，时间写作 <code>O((V+E) log E)</code>、额外空间 <code>O(V+E)</code>；不要套用带原地 <code>decrease-key</code> 堆的界限。</p>
-</section>
-<section class="be-task-step" data-step-id="step-5" id="step-5">
-<h2 id="_5">第五步：触发负权和遗漏过期检查实验<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>加入权重 -1 的边。<strong>预期失败：</strong>图构造立即拒绝，不运行 Dijkstra。恢复非负权后，临时删除“弹出距离等于当前距离”检查；旧的 4、6、10 会再次扫描邻接表，使边检查和处理状态重复。恢复检查后固定样例为 3 个 <code>stale_pops</code>、16 次边检查。</p>
-</section>
-<section class="be-task-step" data-step-id="step-6" id="step-6">
-<h2 id="vertices_within_distance">第六步：完成 <code>vertices_within_distance</code> 迁移验收<a class="headerlink" href="#vertices_within_distance" title="Permanent link">&para;</a></h2>
-<p>返回按 Dijkstra 固定顺序、距离不超过上限的顶点。<strong>验收：</strong>样例起点 0、上限 4 返回 <code>0,2,1,3</code>；覆盖上限 0、零权边、不可达点和负上限。负上限受控失败，输入图与边序列保持不变。</p>
-</section>
-<h2 id="_6">固定输出<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<section class="be-page-hero be-lesson-hero" data-context-type="overview" data-learning-context="overview-dijkstra-output" id="overview-dijkstra-output">
+<p><span class="be-lesson-kicker">算法核心 · 第 3 课 · 可追踪优先队列与最短路实验</span></p>
+<h1 id="dijkstra">带权图松弛、Dijkstra 与过期队列项<a class="headerlink" href="#dijkstra" title="Permanent link">&para;</a></h1>
+<h2 id="0-5">从 0 到 5，不是边最少，而是总代价最小<a class="headerlink" href="#0-5" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>非负权最短路
-start=0
 settled：0, 2, 1, 3, 4, 5
 distances：0, 3, 1, 4, 7, 8, unreachable
 parents：none, 2, 0, 1, 3, 4, none
@@ -4041,73 +4176,199 @@ edge_checks=16，relaxations=8
 queue_pushes=9，stale_pops=3，max_frontier=4
 path 0-&gt;5：0, 2, 1, 3, 4, 5，distance=8
 </code></pre></div>
-<h2 id="_7">常见错误与排查<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>顶点 1 一开始通过 <code>0—1</code> 得到距离 4，随后发现 <code>0—2—1</code> 只要 3。新距离写进表并重新入队，旧的距离 4 不会消失；它稍后弹出时会被认作过期项，直接跳过。</p>
+<p><a class="md-button md-button--primary" href="#example-relax-improvement">看一次距离改进</a>
+<a class="md-button" href="#reproduce-dijkstra-trace">运行松弛轨迹</a></p>
+<div class="be-lesson-facts">
+<p><span>课程位置<strong>算法核心 · 3 / 6</strong></span><span>前置<strong>带权图、稳定最小优先队列</strong></span><span>完成后留下<strong>非负权最短路、父链与过期项证据</strong></span></p>
+</div>
+</section>
+<h2 id="_1">开始前<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>能区分 BFS 的“边数最少”和带权图的“权重总和最小”。</li>
+<li>会使用稳定最小优先队列的 <code>push</code>、<code>peek</code>、<code>pop</code>。</li>
+<li>本课处理简单无向非负权图；负权最短路属于另一类算法。</li>
+</ul>
+<section data-context-type="concept" data-learning-context="concept-weighted-graph" id="concept-weighted-graph">
+<h2 id="_2">边权是经过一条边的代价<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>边 <code>(u, v, w)</code> 表示从 u 到 v 的代价为 w。无向图会把同一条边放进两个顶点的邻接表，但输入里只允许出现一次无向端点对。</p>
+<p>本课允许零权边，拒绝负权、自环、反向重复边和越界端点。构造时复制输入、把端点整理为 <code>(min(u,v), max(u,v))</code>，并按邻居编号排序，这样交换输入顺序也不会改变 Python/C++ 轨迹。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-weighted-contract" id="example-weighted-contract">
+<h2 id="_3">三条边，只有第一条合法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>(0, 1, 0)   合法：零权不等于负权
+(0, 1, -1)  拒绝：Dijkstra 的非负权前提被破坏
+(1, 0, 2)   拒绝：若 (0,1,4) 已存在，这是重复无向边
+</code></pre></div>
+<p>距离使用有符号 64 位范围。计算 <code>distance + weight</code> 以前先检查剩余空间，不能让溢出后的负数参与“更短”比较。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-relaxation" id="concept-relaxation">
+<h2 id="_4">松弛：问一条边能不能带来更短路线<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>已知从起点到 u 的距离，检查边 <code>u—v(w)</code>：</p>
+<div class="highlight"><pre><span></span><code>candidate = distance[u] + w
+如果 distance[v] 未知，或 candidate &lt; distance[v]：
+    distance[v] = candidate
+    parent[v] = u
+    把 (candidate, sequence, v) 压入队列
+</code></pre></div>
+<p>这里必须是严格小于。相等候选没有改进距离，不覆盖第一次记录的父节点，路径便不会随重复扫描顺序漂移。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-relax-improvement" id="example-relax-improvement">
+<h2 id="1-3">顶点 1 和 3 都被改短了一次<a class="headerlink" href="#1-3" title="Permanent link">&para;</a></h2>
+<div aria-label="Dijkstra 距离改进与过期项轨迹" class="be-relax-trace">
+<div><strong>先看 0→1</strong><code>∞ → 4</code><span>压入 (4,1)</span></div>
+<div><strong>再走 0→2→1</strong><code>4 → 3</code><span>压入新的 (3,1)</span></div>
+<div><strong>顶点 3</strong><code>6 → 4</code><span>更短项再次入队</span></div>
+<div data-stale="true"><strong>旧的 1</strong><code>queued 4 ≠ current 3</code><span>过期，跳过</span></div>
+<div data-stale="true"><strong>旧的 3</strong><code>queued 6 ≠ current 4</code><span>过期，跳过</span></div>
+</div>
+<p>项目还会跳过顶点 4 的旧距离 10，因为当前距离已经改为 7。三个旧项都留在堆里，但不会再次扫描邻接边。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-dijkstra-invariant" id="concept-dijkstra-invariant">
+<h2 id="_5">为什么弹出的最小当前距离可以确定下来<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>队列每次给出尚待处理的最小暂定距离 d。假设还有一条未处理路线能把它变得更短，那条路线进入当前顶点前，必然先经过某个尚未处理顶点；非负权意味着到那个顶点的距离不可能大于整条更短路线，也就应当比 d 更早弹出，产生矛盾。</p>
+<p>这个结论依赖所有边权非负。负权可能让一条后出现的边把已经处理的距离继续拉低，所以不能只给现有实现打个补丁。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-stale-entry" id="example-stale-entry">
+<h2 id="decrease-key">不做 <code>decrease-key</code>，就允许新旧条目并存<a class="headerlink" href="#decrease-key" title="Permanent link">&para;</a></h2>
+<p>Python <code>heapq</code> 和 C++ <code>priority_queue</code> 都不直接提供本项目需要的原地降权接口。更简单的做法是：每次改进都压入新条目，弹出时检查：</p>
+<div class="highlight"><pre><span></span><code><span class="n">distance</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">vertex</span> <span class="o">=</span> <span class="n">heappop</span><span class="p">(</span><span class="n">frontier</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">distances</span><span class="p">[</span><span class="n">vertex</span><span class="p">]</span> <span class="o">!=</span> <span class="n">distance</span><span class="p">:</span>
+    <span class="n">stale_pops</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">continue</span>
+</code></pre></div>
+<p>检查必须在扫描邻接表之前。删掉它，最终距离也许仍然正确，但旧的 4、6、10 会重复扫描边，计数和处理语义都被破坏。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-dijkstra-trace" id="reproduce-dijkstra-trace">
+<h2 id="_6">打印松弛和三个过期项<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>.venv/bin/python<span class="w"> </span>site-src/examples/algorithm-core/dijkstra_relaxation_trace.py
+</code></pre></div>
+<p>先找 <code>relax 2-&gt;1: 4-&gt;3</code> 和 <code>relax 1-&gt;3: 6-&gt;4</code>，再找三个 <code>stale</code>。最后应得到 <code>settled=0,2,1,3,4,5</code>，顶点 6 显示 <code>unreachable</code>。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-bilingual-dijkstra" id="reproduce-bilingual-dijkstra">
+<h2 id="_7">运行双语言完整实验<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/cs-core/traceable-priority-shortest-path-lab/python
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>-v
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>src<span class="w"> </span>tests
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>traceable_priority_shortest_path_lab<span class="w"> </span>dijkstra
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/cs-core/traceable-priority-shortest-path-lab/cpp
+cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Debug
+cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>--config<span class="w"> </span>Debug
+ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class="w"> </span>--build-config<span class="w"> </span>Debug<span class="w"> </span>--output-on-failure
+./build/traceable_priority_shortest_path_lab<span class="w"> </span>dijkstra
+</code></pre></div>
+<p>同时回归 <code>heap</code> 与 <code>queue</code>。最小堆、稳定队列、Dijkstra 三层报告必须继续逐字一致。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-zero-equal" id="modify-zero-equal">
+<h2 id="_8">加一条零权边，再造一条等距路线<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>用四个顶点建立 <code>(0,1,0)</code>、<code>(0,2,1)</code>、<code>(1,2,1)</code>。顶点 2 先通过 <code>0—2</code> 得到距离 1，随后 <code>0—1—2</code> 也是 1；因为候选没有严格变小，父节点仍是 0。</p>
+<p>把条件临时改成 <code>candidate &lt;= old</code>，观察父节点如何被等距路线覆盖。恢复严格小于，再交换输入边顺序，距离、父节点和处理顺序都应保持稳定。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-within-distance" id="modify-within-distance">
+<h2 id="4">找出总代价不超过 4 的顶点<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>完成 <code>vertices_within_distance(graph, start, max_distance)</code>。样例从 0 出发应按确定顺序返回 <code>0,2,1,3</code>，而不是按顶点编号重新排序。</p>
+<p>再检查上限 0、零权边、不可达顶点和负上限。负上限直接拒绝；函数不修改图、边序列或调用者输入。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-dijkstra" id="troubleshoot-dijkstra">
+<h2 id="_9">距离不对、计数变大或路径漂移<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>现象</th>
-<th>原因</th>
-<th>恢复</th>
+<th>常见原因</th>
+<th>改法</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>负权图仍运行</td>
-<td>遗漏算法前置条件</td>
-<td>构造时拒绝负权</td>
+<td>负权图仍然运行</td>
+<td>没有守住算法前提</td>
+<td>构造图时拒绝负权</td>
 </tr>
 <tr>
-<td>边检查数过大</td>
-<td>过期项仍扫描邻接表</td>
-<td>先比较弹出距离与当前距离</td>
+<td>边检查明显变多</td>
+<td>过期项又扫描邻接表</td>
+<td>弹出后先比较当前距离</td>
 </tr>
 <tr>
-<td>等距路径反复变化</td>
-<td>使用小于等于松弛</td>
+<td>等距路径反复改父节点</td>
+<td>使用 <code>&lt;=</code> 松弛</td>
 <td>只接受严格更短候选</td>
 </tr>
 <tr>
-<td>不可达点显示巨大整数</td>
-<td>使用哨兵冒充距离</td>
-<td>使用 <code>None</code> / <code>optional</code></td>
+<td>不可达点打印巨大整数</td>
+<td>用哨兵冒充未知</td>
+<td>Python 用 <code>None</code>，C++ 用 <code>optional</code></td>
 </tr>
 <tr>
-<td>C++ 距离变负</td>
+<td>C++ 距离突然变负</td>
 <td>有符号加法溢出</td>
-<td>相加前检查剩余范围</td>
+<td>相加前检查 <code>MAX - weight</code></td>
+</tr>
+<tr>
+<td>输入重排改变轨迹</td>
+<td>邻接顺序不统一</td>
+<td>规范端点并排序邻接表</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_8">来源与版本<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+</section>
+<section data-context-type="project" data-learning-context="project-priority-v10" id="project-priority-v10">
+<h2 id="v10">可追踪优先队列与最短路实验 v1.0<a class="headerlink" href="#v10" title="Permanent link">&para;</a></h2>
+<p>这组项目从整数最小堆开始，加入稳定任务队列，最后接上非负权图、严格松弛、过期项、父链恢复与范围查询。现在既能解释容器不变量，也能证明容器怎样服务一个完整图算法。</p>
+<p><a class="md-button md-button--primary" href="../../../exercises/cs-core/traceable-priority-shortest-path-lab/">查看阶段作品</a></p>
+</section>
+<section data-context-type="deepen" data-learning-context="deepen-dijkstra-cost" id="deepen-dijkstra-cost">
+<h2 id="_10">复杂度要和真实实现对上<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>邻接表让每条无向边最多被两端各检查一次。懒惰重复项实现每次成功松弛都可能增加一个队列项，总项数是 <code>O(E)</code>；每次堆操作为 <code>O(log E)</code>。</p>
+<p>因此本实现时间写作 <code>O((V+E) log E)</code>，额外空间 <code>O(V+E)</code>。若使用支持原地 <code>decrease-key</code> 的堆，可以得到另一种常见界限，但不能拿它替代当前代码的分析。</p>
+</section>
+<section data-context-type="career" data-learning-context="career-dijkstra-evidence" id="career-dijkstra-evidence">
+<h2 id="4-3-dijkstra">用“4 改成 3”讲清 Dijkstra<a class="headerlink" href="#4-3-dijkstra" title="Permanent link">&para;</a></h2>
+<p>先说前提：简单无向非负权图。接着用顶点 1 从 4 改成 3 展示松弛，再解释旧的 <code>(4,1)</code> 为什么留在队列、弹出时如何识别过期。</p>
+<p>最后给出父链、不可达点、严格小于和复杂度。比起背一段模板，这条具体轨迹更容易证明你理解算法为什么成立、实现为什么这样写。</p>
+</section>
+<h2 id="_11">完成检查<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能区分边数最少的 BFS 与权重和最小的 Dijkstra。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 带权图拒绝负权、自环、重复边、越界和溢出。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 松弛只在候选严格更小时更新距离、父节点并入队。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能解释新旧队列项并存和弹出时的过期检查。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能从父节点恢复 <code>0→5</code>，并正确处理顶点 6 不可达。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>vertices_within_distance</code> 保留确定顺序和原输入。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Python 类型检查、C++ CTest 与三种双语言报告全部通过。</li>
+</ul>
+<h2 id="_12">来源与版本<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>来源</th>
-<th>用途</th>
-<th>核查日期</th>
+<th>用于核查</th>
+<th>版本或日期</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/d819e7f4568aced8d5b59e03db6c7b67_MIT6_006S20_lec13.pdf">MIT 6.006 Dijkstra</a></td>
-<td>非负权条件、松弛顺序与复杂度对照</td>
-<td>2026-07-16</td>
+<td>非负权前提、松弛与正确性</td>
+<td>2026-07-18 核查</td>
 </tr>
 <tr>
-<td><a href="https://docs.python.org/3.11/library/heapq.html">Python 3.11 <code>heapq</code></a></td>
-<td>重复压入与过期项模式</td>
-<td>2026-07-16</td>
+<td><a href="https://docs.python.org/3.11/library/heapq.html">Python <code>heapq</code></a></td>
+<td>最小堆、平局序号与重复项实现</td>
+<td>Python 3.11，2026-07-18 核查</td>
 </tr>
 <tr>
 <td><a href="https://eel.is/c++draft/priority.queue">C++ <code>priority_queue</code></a></td>
-<td>无直接降权接口的容器适配器</td>
-<td>2026-07-16</td>
+<td>容器适配器与比较器接口</td>
+<td>2026-07-18 核查</td>
 </tr>
 </tbody>
 </table>
-<p>本地材料只用于检查带权最短路、Dijkstra 与普通 BFS 的适用条件；不复制题面，也不进入 Bellman-Ford、Floyd-Warshall 或正式面试训练。</p>
-<h2 id="_9">下一步<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<p>堆、优先队列与非负权最短路闭环完成。下一课进入 <a href="../24-disjoint-set-union-path-compression/">并查集、按大小合并与路径压缩</a>；负权最短路和有向图算法仍未开放。</p>
+<p>本课不进入负权最短路、有向图、全源最短路或可原地降权的索引堆；这些内容需要不同的接口、证明和测试。</p>
+<h2 id="_13">下一步<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>进入<a href="../24-disjoint-set-union-path-compression/">并查集、按大小合并与路径压缩</a>，用父森林回答两个顶点是否已经连通。</p>
 
 
 

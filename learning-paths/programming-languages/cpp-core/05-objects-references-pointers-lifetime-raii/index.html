@@ -1760,7 +1760,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        函数结束时，文件也该收好
       
     </span>
   </a>
@@ -1771,7 +1771,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：运行对象与复制的基线
+        开始前
       
     </span>
   </a>
@@ -1782,7 +1782,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：用引用修改原来的记录
+        先问：谁拥有它，它能活多久
       
     </span>
   </a>
@@ -1793,7 +1793,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：用非拥有指针表达“可能找不到”
+        用一个会报到的对象看作用域
       
     </span>
   </a>
@@ -1804,18 +1804,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：分析生命周期，而不运行未定义行为
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#raii" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第五步：用 RAII 导出审计快照并迁移验收
+        值、引用和指针表达三种不同关系
       
     </span>
   </a>
@@ -1826,7 +1815,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        确定存在、需要修改时，用引用
       
     </span>
   </a>
@@ -1837,7 +1826,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        学习目标
+        可能找不到时，用可空的非拥有指针
       
     </span>
   </a>
@@ -1848,7 +1837,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：确认现有对象与复制边界
+        容器还活着，不代表旧地址一直有效
       
     </span>
   </a>
@@ -1859,27 +1848,32 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：引用表示确定存在、可修改的借用
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="第二步：引用表示确定存在、可修改的借用">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        提示
+        编译并观察成功和失败
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        不要运行悬空引用来“看看会不会崩”
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ofstream" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ofstream 把文件关闭交给析构
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1887,7 +1881,7 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：指针表示可选的非拥有观察
+        回到正式报告器验证完整契约
       
     </span>
   </a>
@@ -1898,7 +1892,40 @@
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：生命周期是对象可被安全使用的时间范围
+        给审计文件增加状态列
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        文件没出现时，从路径和流状态查起
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        双语言报告器完成 C++ 核心层
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#raii" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RAII 不只用在文件
       
     </span>
   </a>
@@ -1909,35 +1936,7 @@
   <a href="#raii_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：RAII 让文件资源跟随作用域
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="第五步：RAII 让文件资源跟随作用域">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        迁移验收
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI 协作任务
+        讲 RAII 时，把失败路径也讲出来
       
     </span>
   </a>
@@ -1948,7 +1947,7 @@
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        完成检查
       
     </span>
   </a>
@@ -1959,17 +1958,6 @@
   <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
-        完成证据
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         来源与版本
       
     </span>
@@ -1978,7 +1966,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -3960,7 +3948,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        函数结束时，文件也该收好
       
     </span>
   </a>
@@ -3971,7 +3959,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：运行对象与复制的基线
+        开始前
       
     </span>
   </a>
@@ -3982,7 +3970,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：用引用修改原来的记录
+        先问：谁拥有它，它能活多久
       
     </span>
   </a>
@@ -3993,7 +3981,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：用非拥有指针表达“可能找不到”
+        用一个会报到的对象看作用域
       
     </span>
   </a>
@@ -4004,18 +3992,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：分析生命周期，而不运行未定义行为
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#raii" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第五步：用 RAII 导出审计快照并迁移验收
+        值、引用和指针表达三种不同关系
       
     </span>
   </a>
@@ -4026,7 +4003,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        确定存在、需要修改时，用引用
       
     </span>
   </a>
@@ -4037,7 +4014,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        学习目标
+        可能找不到时，用可空的非拥有指针
       
     </span>
   </a>
@@ -4048,7 +4025,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：确认现有对象与复制边界
+        容器还活着，不代表旧地址一直有效
       
     </span>
   </a>
@@ -4059,27 +4036,32 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：引用表示确定存在、可修改的借用
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="第二步：引用表示确定存在、可修改的借用">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        提示
+        编译并观察成功和失败
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        不要运行悬空引用来“看看会不会崩”
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ofstream" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ofstream 把文件关闭交给析构
+      
+    </span>
+  </a>
   
 </li>
       
@@ -4087,7 +4069,7 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：指针表示可选的非拥有观察
+        回到正式报告器验证完整契约
       
     </span>
   </a>
@@ -4098,7 +4080,40 @@
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：生命周期是对象可被安全使用的时间范围
+        给审计文件增加状态列
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        文件没出现时，从路径和流状态查起
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        双语言报告器完成 C++ 核心层
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#raii" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RAII 不只用在文件
       
     </span>
   </a>
@@ -4109,35 +4124,7 @@
   <a href="#raii_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：RAII 让文件资源跟随作用域
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="第五步：RAII 让文件资源跟随作用域">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        迁移验收
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI 协作任务
+        讲 RAII 时，把失败路径也讲出来
       
     </span>
   </a>
@@ -4148,7 +4135,7 @@
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        完成检查
       
     </span>
   </a>
@@ -4159,17 +4146,6 @@
   <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
-        完成证据
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         来源与版本
       
     </span>
@@ -4178,7 +4154,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -4208,131 +4184,113 @@
   
 
 
-<h1 id="c-raii">C++ 对象、引用、指针、生命周期与 RAII<a class="headerlink" href="#c-raii" title="Permanent link">&para;</a></h1>
 <div class="be-tutor-mount" data-tutor-lesson="cpp-core-05" aria-hidden="true"></div>
 
-<blockquote>
-<p><strong>任务先行：</strong> 为双语言学习进度报告器增加“更新一条记录、可能查不到记录、导出审计快照”三种能力。你会在同一个小程序里观察值复制、借用、生命周期和资源自动释放，而不是先背概念。</p>
-</blockquote>
-<h2 id="_1">任务路线<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="be-task-route" role="list" aria-label="本课五步任务"><span role="listitem">1 基线</span><span role="listitem">2 引用</span><span role="listitem">3 指针</span><span role="listitem">4 生命周期</span><span role="listitem">5 RAII</span></div>
+<section class="be-page-hero be-lesson-hero" data-context-type="overview" data-learning-context="overview-raii-output" id="overview-raii-output">
+<p><span class="be-lesson-kicker">C++ 核心 · 第三课 · 双语言学习进度报告器</span></p>
+<h1 id="c-raii">C++ 对象、引用、指针、生命周期与 RAII<a class="headerlink" href="#c-raii" title="Permanent link">&para;</a></h1>
+<h2 id="_1">函数结束时，文件也该收好<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>进入：write_audit
+离开：write_audit
+写入：成功
+</code></pre></div>
+<p>这三行把对象的一生打印了出来：进入作用域时构造，离开时析构。文件流也遵守这条时间线。我们仍然检查打开和写入是否成功，但不用在每条返回路径前手工补一遍清理代码。</p>
+<p><a class="md-button md-button--primary" href="#concept-object-lifetime">跟着生命周期走一遍</a>
+<a class="md-button" href="#reproduce-raii-scope">直接编译小例子</a></p>
+<div class="be-lesson-facts">
+<p><span>课程位置<strong>C++ 核心 · 3 / 3</strong></span>
+<span>前置<strong>STL、引用、CMake 与 CTest</strong></span>
+<span>完成后留下<strong>对象借用、可空查找、审计文件和失败测试</strong></span></p>
+</div>
+</section>
+<h2 id="_2">开始前<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>上一课的多记录报告器能够从全新目录构建，并且 CTest 通过。</li>
+<li>已经知道按值参数会复制输入，<code>const&amp;</code> 可以表达只读借用。</li>
+<li>本课只讨论栈上对象、容器元素和文件流，不提前展开手写内存分配、智能指针实现或继承体系。</li>
+</ul>
+<section data-context-type="concept" data-learning-context="concept-object-lifetime" id="concept-object-lifetime">
+<h2 id="_3">先问：谁拥有它，它能活多久<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div aria-label="对象构造、被临时借用、继续使用、离开作用域并析构的时间线" class="be-lifetime-strip" role="img">
+<div data-state="alive"><strong>构造</strong><span>对象开始存活</span></div>
+<div data-state="borrow"><strong>借用</strong><span>引用或指针临时访问</span></div>
+<div data-state="alive"><strong>使用</strong><span>拥有者仍在作用域内</span></div>
+<div data-state="dead"><strong>析构</strong><span>作用域结束，不再访问</span></div>
+</div>
+<p>对象的生命周期是它可以被安全使用的时间范围。引用和非拥有指针不会替对象续命；它们只是暂时指向别人拥有的对象。</p>
+<p>在报告器里，<code>std::vector&lt;StudyRecord&gt;</code> 拥有记录。函数参数可以复制记录、只读借用记录或修改同一条记录，但必须先把这三种意图分清楚。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-scope-note" id="example-scope-note">
+<h2 id="_4">用一个会报到的对象看作用域<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ScopeNote</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="n">ScopeNote</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">name_</span><span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">name</span><span class="p">)}</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;进入：&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">name_</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-<section class="be-task-step" data-step-id="step-1" id="step-1">
-<h2 id="_2">第一步：运行对象与复制的基线<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>构建并运行现有报告器。它会创建多个 <code>StudyRecord</code> 对象，再把对象序列传给汇总、排序和筛选函数。<strong>可观察结果：</strong> CTest 通过，标准输出仍是既有的学习进度报告。</p>
+<span class="w">    </span><span class="o">~</span><span class="n">ScopeNote</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;离开：&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">name_</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name_</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>构造函数在对象建立时运行，析构函数在对象离开作用域时运行。<code>ScopeNote</code> 只打印时间顺序；真实资源类会在这两个位置取得和释放文件、锁或内存。</p>
 </section>
-<section class="be-task-step" data-step-id="step-2" id="step-2">
-<h2 id="_3">第二步：用引用修改原来的记录<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>实现 <code>add_completed_hours(StudyRecord&amp; record, double additional_hours)</code>，把 Python 起步的完成小时从 <code>7.5</code> 改为 <code>9.0</code>。<strong>成功标准：</strong> 调用者容器中的对象真的改变；你能说明若参数没有 <code>&amp;</code>，改变的是一份副本。</p>
-</section>
-<section class="be-task-step" data-step-id="step-3" id="step-3">
-<h2 id="_4">第三步：用非拥有指针表达“可能找不到”<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>实现按课程名查找记录的函数。找到时返回指向容器元素的指针，找不到时返回 <code>nullptr</code>；调用者必须先检查再解引用。<strong>成功标准：</strong> 测试同时覆盖找到和找不到，且没有把这个指针当作需要 <code>delete</code> 的所有者。</p>
-</section>
-<section class="be-task-step" data-step-id="step-4" id="step-4">
-<h2 id="_5">第四步：分析生命周期，而不运行未定义行为<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>阅读一个会返回局部对象引用的反例，使用编译器诊断和作用域图说明为什么它不安全。改用按值返回或由调用者拥有的对象。<strong>验收：</strong> 不执行悬空引用或悬空指针，不用“本机恰好没崩溃”证明正确。</p>
-</section>
-<section class="be-task-step" data-step-id="step-5" id="step-5">
-<h2 id="raii">第五步：用 RAII 导出审计快照并迁移验收<a class="headerlink" href="#raii" title="Permanent link">&para;</a></h2>
-<p>使用作用域内的 <code>std::ofstream</code> 写出可选审计文件；打开失败时返回 <code>false</code>，离开函数时文件自动关闭。独立新增一条记录或一个导出字段，再运行 CTest。<strong>成功标准：</strong> 审计文件包含标题和记录，失败路径可观察，主报告标准输出不变。</p>
-</section>
-<p>上一组课程已经让报告器可以处理多条记录、排序、筛选和汇总。本节继续使用那份成果，但只增加内部能力：对象如何在容器中存在，函数如何借用对象，何时可以使用地址，以及文件资源如何随作用域自动释放。</p>
-<h2 id="_6">课程信息<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<section data-context-type="concept" data-learning-context="concept-value-reference-pointer" id="concept-value-reference-pointer">
+<h2 id="_5">值、引用和指针表达三种不同关系<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>项目</th>
-<th>内容</th>
+<th>写法</th>
+<th>这节课里的意思</th>
+<th>调用者要注意什么</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>适合人群</td>
-<td>已完成 C++ STL 与 Python 容器/迭代课程，准备理解对象、借用和资源边界的学习者</td>
+<td><code>StudyRecord record</code></td>
+<td>函数得到一份副本</td>
+<td>修改副本不会改变原对象</td>
 </tr>
 <tr>
-<td>前置知识</td>
-<td>C++20、<code>std::vector</code>、函数参数、<code>const&amp;</code>、CMake、CTest</td>
+<td><code>const StudyRecord&amp; record</code></td>
+<td>必定存在的只读借用</td>
+<td>拥有者必须仍然存活</td>
 </tr>
 <tr>
-<td>可观察产出</td>
-<td>可修改记录、可空查找、审计快照文件和稳定的主报告输出</td>
+<td><code>StudyRecord&amp; record</code></td>
+<td>必定存在的可修改借用</td>
+<td>修改会反映到原对象</td>
 </tr>
 <tr>
-<td>环境</td>
-<td>C++20、CMake 3.20 及以上、仅使用标准库</td>
-</tr>
-<tr>
-<td>阶段作品</td>
-<td><a href="../../../../exercises/programming-languages/study-progress-reporters/">双语言学习进度报告器</a></td>
-</tr>
-<tr>
-<td>事实核查</td>
-<td>2026-07-15，依据 C++ 工作草案的对象生命周期、引用、文件流与资源管理章节</td>
+<td><code>StudyRecord* record</code></td>
+<td>可能为空的非拥有借用</td>
+<td>先判空，不 <code>delete</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="_7">学习目标<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p>完成本节后，你应该能够：</p>
-<ul>
-<li>把 <code>StudyRecord</code> 视作拥有状态的对象，并区分对象本身、复制品和引用。</li>
-<li>根据“必定存在”与“可能不存在”选择引用或可空非拥有指针。</li>
-<li>说明返回局部对象引用、保存容器可能失效位置为何危险。</li>
-<li>用作用域解释对象与文件流的开始和结束，不手写 <code>close()</code> 或 <code>delete</code> 来替代所有权设计。</li>
-<li>使用 <code>std::ofstream</code> 的 RAII 行为处理成功和打开失败两条路径。</li>
-<li>审阅 AI 代码中的空指针解引用、悬空引用、错误所有权和未检查文件错误。</li>
-</ul>
-<h2 id="_8">第一步：确认现有对象与复制边界<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<p>从阶段作品的 C++ 目录运行：</p>
-<div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Debug
-cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>--config<span class="w"> </span>Debug
-ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class="w"> </span>--build-config<span class="w"> </span>Debug<span class="w"> </span>--output-on-failure
-./build/study_report_app
-</code></pre></div>
-<p>预期先看到 <code>All study report tests passed.</code>，再看到既有报告：</p>
-<div class="highlight"><pre><span></span><code>学习进度报告
-总计划：35.0 小时
-总完成：30.5 小时
-总体进度：87.1%
-</code></pre></div>
-<p><code>StudyRecord</code> 是一个对象类型；<code>sample_records()</code> 按值返回一个 <code>vector</code>，调用者拿到自己的记录序列。<code>sort_by_progress(std::vector&lt;StudyRecord&gt; records)</code> 也按值接收参数，所以排序的是副本，测试据此验证原始输入不变。</p>
-<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">StudyRecord</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">course_name</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">target_hours</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">completed_hours</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tags</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sort_by_progress</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">records</span><span class="p">);</span>
-</code></pre></div>
-<p>这里的“按值”不是总能避免的坏事：当函数需要修改自己的工作副本而不影响调用者时，它正好表达了需求。下一步才处理“必须修改原对象”的场景。</p>
-<h2 id="_9">第二步：引用表示确定存在、可修改的借用<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<p>在 <code>include/study/study_report.hpp</code> 增加声明：</p>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">add_completed_hours</span><span class="p">(</span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">additional_hours</span><span class="p">);</span>
-</code></pre></div>
-<p>在 <code>src/study_report.cpp</code> 增加实现：</p>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">add_completed_hours</span><span class="p">(</span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">additional_hours</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<p>按值并不低级。上一课的 <code>sort_by_progress(std::vector&lt;StudyRecord&gt; records)</code> 故意复制整组记录，因为函数要排序自己的工作副本，同时保留调用者的原始顺序。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-reference-mutation" id="example-reference-mutation">
+<h2 id="_6">确定存在、需要修改时，用引用<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">add_completed_hours</span><span class="p">(</span>
+<span class="w">    </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">additional_hours</span>
+<span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">record</span><span class="p">.</span><span class="n">completed_hours</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">additional_hours</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>StudyRecord&amp;</code> 是别名：调用这个函数不会复制记录，<code>record</code> 直接指向调用者已经拥有的对象。引用适合本节的两个条件同时成立时：对象必须存在，函数需要修改它。</p>
-<p>在测试中主动完成修改：</p>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">study</span><span class="o">::</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mutable_records</span><span class="p">{</span><span class="n">study</span><span class="o">::</span><span class="n">sample_records</span><span class="p">()};</span>
-<span class="n">study</span><span class="o">::</span><span class="n">add_completed_hours</span><span class="p">(</span><span class="n">mutable_records</span><span class="p">.</span><span class="n">front</span><span class="p">(),</span><span class="w"> </span><span class="mf">1.5</span><span class="p">);</span>
-<span class="n">expect_close</span><span class="p">(</span>
-<span class="w">    </span><span class="n">mutable_records</span><span class="p">.</span><span class="n">front</span><span class="p">().</span><span class="n">completed_hours</span><span class="p">,</span><span class="w"> </span><span class="mf">9.0</span><span class="p">,</span>
-<span class="w">    </span><span class="s">&quot;reference mutation should update the original record&quot;</span>
-<span class="p">);</span>
+<p>测试不能只看函数内部打印了什么，要回到调用者拥有的容器检查：</p>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">records</span><span class="p">{</span><span class="n">sample_records</span><span class="p">()};</span>
+<span class="n">add_completed_hours</span><span class="p">(</span><span class="n">records</span><span class="p">.</span><span class="n">front</span><span class="p">(),</span><span class="w"> </span><span class="mf">1.5</span><span class="p">);</span>
+<span class="n">expect_close</span><span class="p">(</span><span class="n">records</span><span class="p">.</span><span class="n">front</span><span class="p">().</span><span class="n">completed_hours</span><span class="p">,</span><span class="w"> </span><span class="mf">9.0</span><span class="p">);</span>
 </code></pre></div>
-<p>如果函数签名写成 <code>StudyRecord record</code>，<code>completed_hours</code> 会在副本上增加，容器第一个元素仍是 <code>7.5</code>。不要仅凭函数内部打印的数字判断；检查调用者容器才是本任务的成功证据。</p>
-<h3 id="_10">提示<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<ol>
-<li>先找出需要改变的是“函数局部变量”还是“调用者已有对象”。</li>
-<li>只有后者才在参数类型后加 <code>&amp;</code>；如果不应修改对象，则使用 <code>const StudyRecord&amp;</code>。</li>
-</ol>
-<h2 id="_11">第三步：指针表示可选的非拥有观察<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
-<p>按名字查找时，记录不一定存在。引用不能自然表达“没有对象”，本节使用非拥有指针：</p>
+<p>如果参数少了 <code>&amp;</code>，函数仍能编译，也可能在内部显示 <code>9.0</code>，但容器里的原对象还是 <code>7.5</code>。这类错误靠调用者侧断言最容易抓住。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-nullable-pointer" id="example-nullable-pointer">
+<h2 id="_7">可能找不到时，用可空的非拥有指针<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="n">StudyRecord</span><span class="o">*</span><span class="w"> </span><span class="nf">find_record_by_name</span><span class="p">(</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">records</span><span class="p">,</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">course_name</span>
@@ -4343,58 +4301,56 @@ ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class=
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">course_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">course_name</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">)};</span>
+
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">end</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nb">nullptr</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="o">&amp;*</span><span class="n">iterator</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>这个指针只借用 <code>records</code> 中已有对象：</p>
-<ul>
-<li>找到时，<code>&amp;*iterator</code> 是元素地址；它不是 <code>new</code> 的返回值，调用者<strong>绝不能</strong> <code>delete</code>。</li>
-<li>找不到时，返回 <code>nullptr</code>；调用者先判断再使用。</li>
-<li>只要 <code>records</code> 被销毁，或发生会使 <code>vector</code> 重新分配的增长，过去取得的位置就可能失效。此后不要继续保存或解引用它。</li>
-</ul>
-<p>安全调用方式：</p>
-<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">study</span><span class="o">::</span><span class="n">StudyRecord</span><span class="o">*</span><span class="w"> </span><span class="n">record</span><span class="p">{</span>
-<span class="w">        </span><span class="n">study</span><span class="o">::</span><span class="n">find_record_by_name</span><span class="p">(</span><span class="n">mutable_records</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Python 起步&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">study</span><span class="o">::</span><span class="n">add_completed_hours</span><span class="p">(</span><span class="o">*</span><span class="n">record</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);</span>
+<p>找到时，返回的是容器元素的地址；所有权仍属于 <code>records</code>，所以调用者不能 <code>delete</code>。找不到时返回 <code>nullptr</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">StudyRecord</span><span class="o">*</span><span class="w"> </span><span class="n">record</span><span class="p">{</span><span class="n">find_record_by_name</span><span class="p">(</span><span class="n">records</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Python 起步&quot;</span><span class="p">)})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">add_completed_hours</span><span class="p">(</span><span class="o">*</span><span class="n">record</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>if</code> 的条件把“是否存在”放在解引用之前。找不到不是异常：测试应明确断言 <code>find_record_by_name(records, "不存在") == nullptr</code>。</p>
-<h2 id="_12">第四步：生命周期是对象可被安全使用的时间范围<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
-<p>不要编译或调用下面的反例：</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 错误示例：函数结束时 local 已经销毁。</span>
-<span class="k">const</span><span class="w"> </span><span class="n">study</span><span class="o">::</span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="nf">invalid_record</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">study</span><span class="o">::</span><span class="n">StudyRecord</span><span class="w"> </span><span class="n">local</span><span class="p">{</span><span class="s">&quot;临时&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="p">{}};</span>
+<p>这里先用裸指针讲清“可能没有”和“非拥有”。若接口更适合返回迭代器、索引或 <code>std::optional&lt;std::reference_wrapper&lt;T&gt;&gt;</code>，可以在后续工程中重新权衡。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-container-invalidation" id="concept-container-invalidation">
+<h2 id="_8">容器还活着，不代表旧地址一直有效<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p><code>find_record_by_name()</code> 返回的地址指向 <code>vector</code> 元素。只要发生可能重新分配的增长，元素就可能被搬到新存储，过去取得的引用、指针和迭代器都可能失效。</p>
+<div class="highlight"><pre><span></span><code><span class="n">StudyRecord</span><span class="o">*</span><span class="w"> </span><span class="n">found</span><span class="p">{</span><span class="n">find_record_by_name</span><span class="p">(</span><span class="n">records</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Python 起步&quot;</span><span class="p">)};</span>
+<span class="n">records</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">new_record</span><span class="p">);</span><span class="w">  </span><span class="c1">// 可能重新分配</span>
+<span class="c1">// 不要继续使用 found；需要时重新查找。</span>
+</code></pre></div>
+<p>我更建议让借用保持短暂：查到以后立即使用，不跨越容器结构变化，也不把地址长期保存在另一个对象里。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-raii-scope" id="reproduce-raii-scope">
+<h2 id="_9">编译并观察成功和失败<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>/tmp/be-cpp-raii
+c++<span class="w"> </span>-std<span class="o">=</span>c++20<span class="w"> </span>-Wall<span class="w"> </span>-Wextra<span class="w"> </span>-Wpedantic<span class="w"> </span>-Wconversion<span class="w"> </span>-Wshadow<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>site-src/examples/cpp-core/raii_scope.cpp<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-o<span class="w"> </span>/tmp/be-cpp-raii/raii_scope
+
+<span class="nb">cd</span><span class="w"> </span>/tmp/be-cpp-raii
+./raii_scope<span class="w"> </span>audit.txt
+cat<span class="w"> </span>audit.txt
+</code></pre></div>
+<p>再给它一个不存在的父目录：</p>
+<div class="highlight"><pre><span></span><code>./raii_scope<span class="w"> </span>missing/audit.txt
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
+</code></pre></div>
+<p>第二次会打印“写入：失败”并返回 <code>1</code>，但 <code>ScopeNote</code> 仍会离开作用域。RAII 负责清理已经取得的资源，不负责把打开失败变成成功。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-dangling" id="troubleshoot-dangling">
+<h2 id="_10">不要运行悬空引用来“看看会不会崩”<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="nf">bad_record</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">StudyRecord</span><span class="w"> </span><span class="n">local</span><span class="p">{</span><span class="s">&quot;临时&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="p">{}};</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">local</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>local</code> 的生命周期从声明开始，在函数离开时结束。返回引用不会延长局部对象生命周期；后续读取它是未定义行为。编译器可能给出“返回局部变量引用”的警告，也可能在某些构建设置下没有阻止你。两种情况都不能把它变成正确代码。</p>
-<p>本课的安全替代是按值返回：</p>
-<div class="highlight"><pre><span></span><code><span class="n">study</span><span class="o">::</span><span class="n">StudyRecord</span><span class="w"> </span><span class="nf">make_record</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;临时&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="p">{}};</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>这里的返回对象由调用者接收和拥有；现代 C++ 会应用返回值优化或移动，正确性不依赖你手工规避每一次复制。需要借用时，调用者必须保证被借用对象仍活着；需要长期拥有时，先明确谁拥有对象，再选择值成员、容器或智能指针，而不是把裸指针当所有权工具。</p>
-<pre class="mermaid"><code>flowchart LR
-    A["records 容器拥有 StudyRecord"] --&gt; B["引用或裸指针临时借用"]
-    B --&gt; C{"容器和元素仍存活吗"}
-    C -- "是" --&gt; D["可以在约定范围内读取或修改"]
-    C -- "否" --&gt; E["位置已失效：不可解引用"]
-    F["作用域内 ofstream"] --&gt; G["函数离开"] --&gt; H["析构并关闭文件"]</code></pre>
-<h2 id="raii_1">第五步：RAII 让文件资源跟随作用域<a class="headerlink" href="#raii_1" title="Permanent link">&para;</a></h2>
-<p>“RAII”指资源获取即初始化：对象构造时取得资源，对象离开作用域时由析构函数释放资源。对文件流而言，<code>std::ofstream</code> 在函数结束时会自动关闭文件；我们仍然需要检查它是否成功打开，以及写入是否成功。</p>
-<p>在头文件加入：</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;filesystem&gt;</span>
-
-<span class="kt">bool</span><span class="w"> </span><span class="nf">write_audit_snapshot</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">records</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span><span class="w"> </span><span class="n">output_path</span>
-<span class="p">);</span>
-</code></pre></div>
-<p>实现如下：</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fstream&gt;</span>
-
-<span class="kt">bool</span><span class="w"> </span><span class="nf">write_audit_snapshot</span><span class="p">(</span>
+<p>函数结束后 <code>local</code> 已经销毁，返回的引用指向不再存活的对象。后续读取属于未定义行为：这台电脑上恰好没崩，也不能证明正确。</p>
+<p>把反例保存在临时文件，用严格警告编译并阅读诊断即可。安全替代通常是按值返回，或者由调用者先拥有对象，再把引用短暂传进函数。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-raii-file" id="concept-raii-file">
+<h2 id="ofstream"><code>ofstream</code> 把文件关闭交给析构<a class="headerlink" href="#ofstream" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">write_audit_snapshot</span><span class="p">(</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">records</span><span class="p">,</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span><span class="w"> </span><span class="n">output_path</span>
 <span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -4412,93 +4368,104 @@ ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class=
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">(</span><span class="n">output</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>这里没有显式 <code>output.close()</code>：无论函数从正常写入、<code>return false</code> 还是未来异常路径离开，局部 <code>output</code> 都会离开作用域并析构。RAII 不是“忽略错误”，而是把资源释放交给对象生命周期，同时把打开/写入结果作为普通可测试的返回值。</p>
-<p>在 <code>tests/study_report_tests.cpp</code> 验证成功和失败：</p>
-<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">audit_path</span><span class="p">{</span><span class="s">&quot;study_report_audit_test.txt&quot;</span><span class="p">};</span>
-<span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">remove</span><span class="p">(</span><span class="n">audit_path</span><span class="p">);</span>
-<span class="n">expect_true</span><span class="p">(</span><span class="n">study</span><span class="o">::</span><span class="n">write_audit_snapshot</span><span class="p">(</span><span class="n">records</span><span class="p">,</span><span class="w"> </span><span class="n">audit_path</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;audit snapshot should open and write a file&quot;</span><span class="p">);</span>
-
-<span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="n">audit_input</span><span class="p">{</span><span class="n">audit_path</span><span class="p">};</span>
-<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">audit_contents</span><span class="p">{</span>
-<span class="w">    </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">istreambuf_iterator</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="p">{</span><span class="n">audit_input</span><span class="p">}),</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istreambuf_iterator</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="p">{}</span>
-<span class="p">};</span>
-<span class="n">expect_true</span><span class="p">(</span><span class="n">audit_contents</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;学习审计快照&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">::</span><span class="n">npos</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;audit header&quot;</span><span class="p">);</span>
-<span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">remove</span><span class="p">(</span><span class="n">audit_path</span><span class="p">);</span>
-
-<span class="n">expect_true</span><span class="p">(</span>
-<span class="w">    </span><span class="o">!</span><span class="n">study</span><span class="o">::</span><span class="n">write_audit_snapshot</span><span class="p">(</span><span class="n">records</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/missing-directory/study-report.txt&quot;</span><span class="p">),</span>
-<span class="w">    </span><span class="s">&quot;unopenable audit path should report failure&quot;</span>
-<span class="p">);</span>
+<p>函数没有显式调用 <code>close()</code>。正常返回、提前返回或未来的异常路径离开时，局部 <code>output</code> 都会析构。错误检查仍然保留：构造后检查能否打开，写完再检查流状态。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-formal-project" id="reproduce-formal-project">
+<h2 id="_11">回到正式报告器验证完整契约<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/programming-languages/study-progress-reporters/cpp
+cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Debug
+cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>--config<span class="w"> </span>Debug
+ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class="w"> </span>--build-config<span class="w"> </span>Debug<span class="w"> </span>--output-on-failure
+./build/study_report_app
 </code></pre></div>
-<h3 id="_13">迁移验收<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<p>独立完成下面任意一项，再运行构建、CTest 和应用：</p>
+<p>CTest 会检查五件事：引用修改了原记录、查找同时覆盖命中和未命中、审计文件包含标题与记录、缺失目录返回失败、主报告文字仍和 Python 版本一致。</p>
+<p>Windows 使用 Visual Studio 多配置生成器时，应用通常位于 <code>build/Debug/study_report_app.exe</code>，并在构建和测试命令中保留 <code>--config Debug</code>。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-audit-field" id="modify-audit-field">
+<h2 id="_12">给审计文件增加状态列<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>在审计快照每条记录末尾增加 <code>build_status(record)</code>，然后补两类检查：</p>
 <ol>
-<li>在审计快照增加一列状态，并证明主报告标准输出没有变化。</li>
-<li>新增一条学习记录，使用 <code>find_record_by_name</code> 找到它后通过引用更新完成时间。</li>
-<li>为不存在的课程名增加一条清晰日志，但不得解引用 <code>nullptr</code>。</li>
+<li>审计文件里同时出现“已完成”和“进行中”。</li>
+<li><code>build_report(records)</code> 的完整标准输出与修改前逐字相同。</li>
 </ol>
-<p>提交或学习记录中至少保留：运行命令、CTest 输出、审计文件的一行证据、失败路径说明和你选择引用/指针的理由。</p>
-<h2 id="ai">AI 协作任务<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h2>
-<p>可以让 AI 为 <code>find_record_by_name</code> 或审计测试提供候选实现，但必须逐项人工审阅：</p>
-<ul>
-<li>返回的是借用位置还是新分配的对象？谁负责释放？</li>
-<li>找不到时是否明确返回 <code>nullptr</code>，调用方是否先检查？</li>
-<li>是否把容器增长后可能失效的位置长期保存？</li>
-<li>是否检查文件打开和写入结果？</li>
-<li>是否改变了 <code>build_report</code> 的既有标准输出？</li>
-</ul>
-<p>可复用提示：</p>
-<div class="highlight"><pre><span></span><code>请为 C++20 学习进度报告器提出一个“按名称查找记录”的实现。
-约束：返回值表达可能找不到；不得转移容器元素所有权；调用者不应 delete；
-请给出一个找到、一个找不到和一个生命周期风险的测试建议，并说明验证命令。
-</code></pre></div>
-<h2 id="_14">常见错误与排查<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p>审计输出和主报告是两个接口。给一个接口加字段，不应顺手改变另一个接口；这也是把调试文字留在文件、而不是打印到 stdout 的原因。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-file-output" id="troubleshoot-file-output">
+<h2 id="_13">文件没出现时，从路径和流状态查起<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>现象</th>
-<th>可能原因</th>
-<th>检查与修复</th>
+<th>先看哪里</th>
+<th>怎样恢复</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>修改函数运行了但容器数据没变</td>
-<td>参数按值复制</td>
-<td>将需要修改的参数改为 <code>StudyRecord&amp;</code>，并在调用者检查结果</td>
+<td>返回 <code>false</code>，没有文件</td>
+<td>父目录、权限、打开状态</td>
+<td>建立正确目录，保留失败返回</td>
 </tr>
 <tr>
-<td>解引用时崩溃或结果异常</td>
-<td>没有检查 <code>nullptr</code></td>
-<td>先判断指针，再使用 <code>*pointer</code> 或 <code>pointer-&gt;field</code></td>
+<td>文件存在但内容不全</td>
+<td>写入后的流状态</td>
+<td>检查磁盘或编码错误，不只检查打开成功</td>
 </tr>
 <tr>
-<td>保存的位置随后不能用</td>
-<td>容器销毁或重新分配</td>
-<td>缩短借用范围；修改容器后重新查找</td>
+<td>测试偶尔读到旧内容</td>
+<td>流还没离开作用域</td>
+<td>在读取前结束输出流作用域</td>
 </tr>
 <tr>
-<td>文件没有生成</td>
-<td>路径不存在或无权限</td>
-<td>检查 <code>std::ofstream</code> 状态，返回 <code>false</code> 并记录路径</td>
+<td>主报告测试变化</td>
+<td>审计文字混进 stdout</td>
+<td>审计只写文件，保持主报告契约</td>
 </tr>
 <tr>
-<td>主报告测试失败</td>
-<td>审计功能混入标准输出</td>
-<td>审计只写文件，保留 <code>build_report</code> 既有字符串契约</td>
+<td>查到记录后结果异常</td>
+<td>指针为空或位置已失效</td>
+<td>先判空；修改容器后重新查找</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_15">完成证据<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+</section>
+<section data-context-type="project" data-learning-context="project-cpp-v05" id="project-cpp-v05">
+<h2 id="c">双语言报告器完成 C++ 核心层<a class="headerlink" href="#c" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>学习记录容器拥有 StudyRecord
+├── 值副本：排序，不改原输入
+├── 引用：确定存在时原地更新
+├── 非拥有指针：查找可能失败
+└── ofstream：可选审计快照，离开作用域自动关闭
+</code></pre></div>
+<p>从第一课的一张状态卡到现在，C++ 版本已经经历编译链、函数接口、多文件 CMake、STL 多记录处理和 RAII 资源管理。Python 与 C++ 的主报告仍逐字一致，但内部用各自语言更自然的方式实现。</p>
+<p><a class="md-button md-button--primary" href="../../../../exercises/programming-languages/study-progress-reporters/">查看双语言阶段作品</a></p>
+</section>
+<section data-context-type="deepen" data-learning-context="deepen-ownership-tools" id="deepen-ownership-tools">
+<h2 id="raii">RAII 不只用在文件<a class="headerlink" href="#raii" title="Permanent link">&para;</a></h2>
+<p><code>std::vector</code> 管理动态存储，<code>std::lock_guard</code> 管理互斥锁，智能指针管理动态对象。共同点不是“自动”二字，而是把释放责任绑定到一个拥有资源的对象。</p>
+<p>这节课没有使用 <code>new</code>、<code>delete</code> 或智能指针，因为当前记录本来就由值和容器拥有。不要为了展示工具而制造额外所有权问题；真正出现共享、转移或多态所有权时再选择相应类型。</p>
+</section>
+<section data-context-type="career" data-learning-context="career-raii-evidence" id="career-raii-evidence">
+<h2 id="raii_1">讲 RAII 时，把失败路径也讲出来<a class="headerlink" href="#raii_1" title="Permanent link">&para;</a></h2>
+<p>求职表达可以沿着这条线说：</p>
 <ul>
-<li>CMake 以 C++20 和严格警告完成构建，CTest 通过。</li>
-<li>你能展示按引用修改调用者对象的测试证据。</li>
-<li>你能展示找到和找不到记录两条指针路径，并解释为什么不 <code>delete</code>。</li>
-<li>你能解释局部对象结束后为何不能返回其引用，且没有运行未定义行为。</li>
-<li>审计文件成功写出，错误路径返回失败，主报告输出保持不变。</li>
+<li>报告器需要可选审计文件，但主报告输出不能变化。</li>
+<li>用局部 <code>ofstream</code> 绑定文件生命周期，同时检查打开和写入状态。</li>
+<li>用失败路径证明缺失目录返回 <code>false</code>，旧功能仍通过 CTest。</li>
+<li>查找函数返回非拥有指针，调用方判空，容器变化后不复用旧位置。</li>
 </ul>
-<h2 id="_16">来源与版本<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<p>这样的叙述说明你理解所有权、接口和验证，而不只是记住“RAII 会自动释放”。</p>
+</section>
+<h2 id="_14">完成检查<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能用作用域说明对象何时构造、何时析构。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能解释值副本、只读引用、可修改引用和可空非拥有指针的区别。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能验证按引用修改，以及查找命中和未命中两条路径。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 不运行悬空引用来判断它是否安全，也不对容器元素地址调用 <code>delete</code>。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 审计文件成功写出，错误路径返回失败，主报告输出保持不变。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能从全新构建目录通过严格编译和 CTest。</li>
+</ul>
+<h2 id="_15">来源与版本<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -4510,28 +4477,28 @@ ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class=
 <tbody>
 <tr>
 <td><a href="https://eel.is/c++draft/basic.life">C++ 工作草案：对象生命周期</a></td>
-<td>对象创建、销毁与生命周期边界</td>
-<td>C++20 教学基线，2026-07-15 核查</td>
+<td>对象创建、销毁与生命周期</td>
+<td>C++20 教学基线，2026-07-17 核查</td>
 </tr>
 <tr>
 <td><a href="https://eel.is/c++draft/dcl.ref">C++ 工作草案：引用</a></td>
-<td>引用语义和绑定规则</td>
-<td>2026-07-15 核查</td>
+<td>引用绑定与生命周期关系</td>
+<td>2026-07-17 核查</td>
 </tr>
 <tr>
 <td><a href="https://eel.is/c++draft/fstreams">C++ 工作草案：文件流</a></td>
 <td><code>std::ofstream</code> 与文件资源</td>
-<td>2026-07-15 核查</td>
+<td>2026-07-17 核查</td>
 </tr>
 <tr>
 <td><a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#S-resource">C++ Core Guidelines：资源管理</a></td>
-<td>RAII、所有权与资源边界</td>
-<td>2026-07-15 核查</td>
+<td>RAII、所有权和资源责任</td>
+<td>2026-07-17 核查</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_17">下一步<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
-<p>对象与资源能力已经建立到可验证的基础层。下一节进入 Python <strong><a href="../../python-core/04-data-model-dataclasses-context-managers/">数据模型、数据类与上下文管理</a></strong>，用对象方法和 <code>with</code> 对照本课的借用、RAII 与审计契约。</p>
+<h2 id="_16">下一步<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<p>C++ 起步与核心已经连成一条完整入口。接下来进入<a href="../../../cs-core/">共同算法与数据结构基础</a>，继续使用人工轨迹、操作计数和边界测试；也可以对照 Python 的<a href="../../python-core/04-data-model-dataclasses-context-managers/">数据类与上下文管理</a>，比较两种语言怎样表达对象和资源范围。</p>
 
 
 

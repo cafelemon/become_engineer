@@ -1935,7 +1935,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        程序还没运行，检查器先发现了一处错误
       
     </span>
   </a>
@@ -1946,7 +1946,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：运行类型化报告器
+        开始前
       
     </span>
   </a>
@@ -1957,7 +1957,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：给一个边界补充准确契约
+        静态检查、运行时校验和测试各管一段
       
     </span>
   </a>
@@ -1968,7 +1968,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：在静态与运行时两层验证
+        注解不是门卫
       
     </span>
   </a>
@@ -1979,7 +1979,40 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：故意让检查器失败
+        先写出真实可能性
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typeddict-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        固定字典用 TypedDict，只读输入用 Sequence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#object-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        object 会逼你检查，Any 会让检查器让路
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从 object 收窄成可信记录
       
     </span>
   </a>
@@ -1990,7 +2023,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：迁移验收与下一步
+        让两种错误各自出现一次
       
     </span>
   </a>
@@ -2001,18 +2034,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pythonc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        为什么类型提示不是“把Python改成C++”
+        增加一条可选备注
       
     </span>
   </a>
@@ -2023,7 +2045,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        学习目标
+        给报告器画一张接口清单
       
     </span>
   </a>
@@ -2034,18 +2056,7 @@
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        三层检查各自负责什么
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pythonc_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python与C++类型检查对照
+        类型应该表达需要的能力
       
     </span>
   </a>
@@ -2056,497 +2067,26 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        最小函数类型契约
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="最小函数类型契约">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        注解不会自动执行校验
+        “加了类型提示”还不算完整成果
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成检查
+      
+    </span>
+  </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常用类型写法
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="常用类型写法">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        容器
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        可能缺失的值
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        类型别名
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#typeddict" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        用TypedDict表达固定字典结构
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sequence" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        使用Sequence表达需要的能力
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#objectanycast" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        object、Any和cast()
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="object、Any和cast()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#object" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        object：未知，但使用前必须缩窄
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#any" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Any：暂时退出类型检查
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cast" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        cast()：只告诉检查器，不检查运行时
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        可复现实例：类型化学习进度报告器
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="可复现实例：类型化学习进度报告器">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        环境与依赖
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        目录结构
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        开发依赖
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        数据模型
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        类型化分析
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#json" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        JSON边界与运行时校验
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        程序入口
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#json_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        固定JSON样例
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        最小回归测试
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        安装、检查和运行
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        让静态检查真正失败
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="让静态检查真正失败">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        错误参数
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#typeddict_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TypedDict缺字段
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        错误返回类型
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI协作任务
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AI协作任务">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        可复用提示模板
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        人工审阅清单
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        核心手动检查点
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="核心手动检查点">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点1：证明注解不拦截运行
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点2：阅读一条完整诊断
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点3：追踪类型缩窄
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4typeddict" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点4：识别TypedDict边界
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点5：删除逃生口
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6c" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点6：与C++对照
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_32" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        微练习
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_33" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        阶段作品线索
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_34" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常见错误与排查
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_35" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完成标准
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_36" class="md-nav__link">
     <span class="md-ellipsis">
       
         来源与版本
@@ -2557,7 +2097,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_37" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -4364,7 +3904,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        程序还没运行，检查器先发现了一处错误
       
     </span>
   </a>
@@ -4375,7 +3915,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：运行类型化报告器
+        开始前
       
     </span>
   </a>
@@ -4386,7 +3926,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：给一个边界补充准确契约
+        静态检查、运行时校验和测试各管一段
       
     </span>
   </a>
@@ -4397,7 +3937,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：在静态与运行时两层验证
+        注解不是门卫
       
     </span>
   </a>
@@ -4408,7 +3948,40 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：故意让检查器失败
+        先写出真实可能性
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typeddict-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        固定字典用 TypedDict，只读输入用 Sequence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#object-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        object 会逼你检查，Any 会让检查器让路
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从 object 收窄成可信记录
       
     </span>
   </a>
@@ -4419,7 +3992,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：迁移验收与下一步
+        让两种错误各自出现一次
       
     </span>
   </a>
@@ -4430,18 +4003,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pythonc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        为什么类型提示不是“把Python改成C++”
+        增加一条可选备注
       
     </span>
   </a>
@@ -4452,7 +4014,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        学习目标
+        给报告器画一张接口清单
       
     </span>
   </a>
@@ -4463,18 +4025,7 @@
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        三层检查各自负责什么
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pythonc_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python与C++类型检查对照
+        类型应该表达需要的能力
       
     </span>
   </a>
@@ -4485,497 +4036,26 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        最小函数类型契约
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="最小函数类型契约">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        注解不会自动执行校验
+        “加了类型提示”还不算完整成果
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成检查
+      
+    </span>
+  </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常用类型写法
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="常用类型写法">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        容器
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        可能缺失的值
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        类型别名
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#typeddict" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        用TypedDict表达固定字典结构
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sequence" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        使用Sequence表达需要的能力
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#objectanycast" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        object、Any和cast()
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="object、Any和cast()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#object" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        object：未知，但使用前必须缩窄
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#any" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Any：暂时退出类型检查
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cast" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        cast()：只告诉检查器，不检查运行时
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        可复现实例：类型化学习进度报告器
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="可复现实例：类型化学习进度报告器">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        环境与依赖
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        目录结构
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        开发依赖
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        数据模型
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        类型化分析
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#json" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        JSON边界与运行时校验
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        程序入口
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#json_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        固定JSON样例
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        最小回归测试
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        安装、检查和运行
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        让静态检查真正失败
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="让静态检查真正失败">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        错误参数
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#typeddict_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TypedDict缺字段
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        错误返回类型
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI协作任务
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AI协作任务">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        可复用提示模板
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        人工审阅清单
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        核心手动检查点
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="核心手动检查点">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点1：证明注解不拦截运行
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点2：阅读一条完整诊断
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点3：追踪类型缩窄
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4typeddict" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点4：识别TypedDict边界
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点5：删除逃生口
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6c" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检查点6：与C++对照
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_32" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        微练习
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_33" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        阶段作品线索
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_34" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常见错误与排查
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_35" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完成标准
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_36" class="md-nav__link">
     <span class="md-ellipsis">
       
         来源与版本
@@ -4986,7 +4066,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_37" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -5016,911 +4096,329 @@
   
 
 
-<h1 id="_1">类型提示、接口与静态检查认知<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <div class="be-tutor-mount" data-tutor-lesson="python-core-01" aria-hidden="true"></div>
 
-<blockquote>
-<p><strong>任务先行：</strong> 给已有学习进度报告器加上能被检查的类型契约。先让它正常运行，再让 <code>mypy --strict</code> 告诉你接口哪里不一致。</p>
-</blockquote>
-<h2 id="_2">任务路线<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<div class="be-task-route" role="list" aria-label="本课五步任务"><span role="listitem">1 运行</span><span role="listitem">2 标注</span><span role="listitem">3 校验</span><span role="listitem">4 诊断</span><span role="listitem">5 迁移</span></div>
+<section class="be-page-hero be-lesson-hero" data-context-type="overview" data-learning-context="overview-types" id="overview-types">
+<p><span class="be-page-eyebrow">Python 核心 · 第一课 · 把接口说清楚</span></p>
+<h1 id="_1">类型提示、接口与静态检查认知<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">程序还没运行，检查器先发现了一处错误<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">calculate_progress</span><span class="p">(</span><span class="n">target_hours</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">completed_hours</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">completed_hours</span> <span class="o">/</span> <span class="n">target_hours</span>
 
-<section class="be-task-step" data-step-id="step-1" id="step-1">
-<h2 id="_3">第一步：运行类型化报告器<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>按“安装、检查和运行”创建环境、运行报告器和测试。<strong>可观察结果：</strong> 正常业务输出仍成立；类型提示本身不会改变 Python 的运行行为。</p>
+
+<span class="n">calculate_progress</span><span class="p">(</span><span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">)</span>
+</code></pre></div>
+<p>Python 解释器会等到除法发生时才报错；mypy 可以在运行前指出：第一个参数承诺是 <code>float</code>，这里却传入了 <code>str</code>。</p>
+<div class="highlight"><pre><span></span><code>Argument 1 to &quot;calculate_progress&quot; has incompatible type &quot;str&quot;; expected &quot;float&quot;
+</code></pre></div>
+<p>类型提示不会把 Python 变成另一门语言。它更像写给调用者和检查器的一份接口说明：这里需要什么、会返回什么、哪些值可能缺失。</p>
+<div class="be-page-actions">
+<p><a class="md-button md-button--primary" href="#concept-three-checks">先分清三层检查</a>
+<a class="md-button" href="#reproduce-type-contracts">运行类型契约例子</a></p>
+</div>
 </section>
-<section class="be-task-step" data-step-id="step-2" id="step-2">
-<h2 id="_4">第二步：给一个边界补充准确契约<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>为一个函数的参数与返回值补类型，或为固定 JSON 记录使用既有 <code>TypedDict</code>。<strong>成功标准：</strong> 标注表达真实数据形状，而不是用 <code>Any</code> 绕过检查。</p>
-</section>
-<section class="be-task-step" data-step-id="step-3" id="step-3">
-<h2 id="_5">第三步：在静态与运行时两层验证<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>执行 <code>mypy --strict</code> 与 unittest；从 JSON 边界以 <code>object</code> 开始，经过运行时检查后再构造 <code>StudyRecord</code>。记录两类工具各自报告什么。</p>
-</section>
-<section class="be-task-step" data-step-id="step-4" id="step-4">
-<h2 id="_6">第四步：故意让检查器失败<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<p>复现错误参数、<code>TypedDict</code> 缺字段或错误返回类型中的一项，确认 mypy 非零退出，然后修复。<strong>验收：</strong> 知道注解不会自动拦截运行期错误。</p>
-</section>
-<section class="be-task-step" data-step-id="step-5" id="step-5">
-<h2 id="_7">第五步：迁移验收与下一步<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p>独立为报告器增加一个可选字段或类型别名，保留运行时校验与测试，并让严格检查通过。下一课将类型契约扩展为可维护函数接口和模块边界。</p>
-</section>
-<h2 id="_8">课程信息<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>适合人群</td>
-<td>已完成Python起步和C++构建与类型课程，希望提高Python接口可维护性的学习者</td>
-</tr>
-<tr>
-<td>前置知识</td>
-<td>函数、容器、JSON、模块、异常、unittest，以及C++静态类型和编译诊断的基本认知</td>
-</tr>
-<tr>
-<td>学习结果</td>
-<td>能用类型提示表达接口，用mypy严格检查代码，同时保留外部数据的运行时校验和自动化测试</td>
-</tr>
-<tr>
-<td>运行时基线</td>
-<td>Python 3.11及以上</td>
-</tr>
-<tr>
-<td>检查工具</td>
-<td>mypy 2.2.0，<code>--strict</code>模式</td>
-</tr>
-<tr>
-<td>实践产出</td>
-<td>学习进度报告器的完整类型化副本、静态检查与运行测试证据</td>
-</tr>
-</tbody>
-</table>
-<h2 id="pythonc">为什么类型提示不是“把Python改成C++”<a class="headerlink" href="#pythonc" title="Permanent link">&para;</a></h2>
-<p>上一节 C++ 代码在生成目标文件前就会由编译器检查类型。Python的类型提示采用不同模型：</p>
+<div class="be-lesson-overview">
+  <div><span>课程位置</span><strong>Python 核心 · 1 / 5</strong></div>
+  <div><span>前置</span><strong>Python 起步、JSON、异常和 unittest</strong></div>
+  <div><span>完成后留下</span><strong>严格类型检查、JSON 校验和报告器接口清单</strong></div>
+</div>
+
+<h2 id="_3">开始前<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Python运行时仍然根据对象的实际类型执行程序。</li>
-<li>函数注解通常不会自动拒绝错误参数。</li>
-<li>mypy在不运行程序的情况下分析代码，并报告可能违反类型契约的位置。</li>
-<li>外部JSON即使“静态检查通过”，运行时仍可能缺字段、类型错误或格式损坏。</li>
-<li>自动化测试仍然负责验证具体行为和边界结果。</li>
+<li>能运行多文件 Python 程序和 <code>unittest</code>。</li>
+<li>知道外部 JSON 可能缺字段、写错类型或根本不是合法 JSON。</li>
+<li>已完成 CS 起步，能把“数据怎样表示”和“接口允许哪些操作”分开考虑。</li>
+<li>本课不要求先学 C++；以后并行学习时，再比较两种语言的检查时机。</li>
 </ul>
-<p>本节的目标不是追求“所有地方都有注解”，而是让模块之间的接口更清楚，让错误尽可能在运行前暴露，同时不伪造安全感。</p>
-<h2 id="_9">学习目标<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<p>完成本节后，你应该能够：</p>
-<ul>
-<li>区分运行时类型、类型提示、静态检查和运行时校验。</li>
-<li>为函数参数、返回值、局部变量和常用容器添加准确标注。</li>
-<li>使用<code>X | None</code>表达可能缺失，而不是用模糊注释说明。</li>
-<li>使用<code>TypeAlias</code>缩短复杂但重复的接口类型。</li>
-<li>使用<code>TypedDict</code>描述固定键结构，理解它在运行时仍是普通字典。</li>
-<li>使用<code>Sequence</code>表达只需读取、不要求调用者必须传入列表。</li>
-<li>区分<code>object</code>与<code>Any</code>，控制动态类型的传播范围。</li>
-<li>说明<code>cast()</code>只影响静态检查，不执行运行时转换或校验。</li>
-<li>在JSON边界先校验未知对象，再构造类型化数据。</li>
-<li>使用<code>mypy --strict</code>、运行程序和<code>unittest</code>形成三层证据。</li>
-</ul>
-<h2 id="_10">三层检查各自负责什么<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<p>下面的图回答：<strong>静态检查通过后，为什么仍然需要校验JSON和运行测试？</strong></p>
+<section data-context-type="concept" data-learning-context="concept-three-checks" id="concept-three-checks">
+<h2 id="_4">静态检查、运行时校验和测试各管一段<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>先看学习记录从文件走到报告的路径：</p>
 <pre class="mermaid"><code>flowchart LR
-    A["JSON文本\n外部输入"] --&gt; B["json.loads\n动态结果"]
-    B --&gt; C["object边界\n不假设结构"]
-    C --&gt; D["isinstance与业务规则\n运行时校验"]
-    D --&gt; E["StudyRecord\n类型化数据"]
-    E --&gt; F["类型化分析函数"]
-    F --&gt; G["报告输出"]
-
-    M["mypy --strict\n检查代码接口"] -.检查.-&gt; C
-    M -.检查.-&gt; E
-    M -.检查.-&gt; F
-    T["unittest\n检查实际行为"] -.运行.-&gt; D
-    T -.运行.-&gt; G</code></pre>
+    A["JSON 文件"] --&gt; B["json.loads"]
+    B --&gt; C["object：先不相信结构"]
+    C --&gt; D["isinstance 与业务规则"]
+    D --&gt; E["StudyRecord"]
+    E --&gt; F["统计与报告"]
+    M["mypy --strict"] -.检查代码接口.-&gt; C
+    M -.检查代码接口.-&gt; E
+    M -.检查代码接口.-&gt; F
+    T["unittest"] -.运行真实场景.-&gt; D
+    T -.运行真实场景.-&gt; F</code></pre>
 <table>
 <thead>
 <tr>
-<th>检查层</th>
-<th>能发现什么</th>
-<th>不能证明什么</th>
+<th>工具</th>
+<th>擅长发现</th>
+<th>不能替你证明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>类型提示与mypy</td>
-<td>错误参数、错误返回、缺少TypedDict字段、未标注接口</td>
-<td>JSON实际内容正确、算法结果正确</td>
+<td>类型提示与 mypy</td>
+<td>错参数、错返回值、漏字段、未处理的 <code>None</code></td>
+<td>文件里的真实 JSON 一定正确</td>
 </tr>
 <tr>
 <td>运行时校验</td>
-<td>文件中的真实值是否符合结构和范围规则</td>
-<td>所有代码路径都正确、未来修改不回归</td>
+<td>本次输入的结构、类型和业务范围</td>
+<td>其他代码路径以后不会回归</td>
 </tr>
 <tr>
 <td>自动化测试</td>
-<td>给定场景的真实输出、异常和副作用</td>
-<td>没有覆盖到的所有输入都正确</td>
+<td>固定场景的输出、异常和副作用</td>
+<td>没覆盖的所有输入都正确</td>
 </tr>
 </tbody>
 </table>
-<p>三层相互补充，不能相互替代。</p>
-<h2 id="pythonc_1">Python与C++类型检查对照<a class="headerlink" href="#pythonc_1" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>问题</th>
-<th>Python + mypy</th>
-<th>C++</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>类型主要何时检查</td>
-<td>独立静态分析步骤</td>
-<td>编译过程的一部分</td>
-</tr>
-<tr>
-<td>不运行检查器会怎样</td>
-<td>注解通常不阻止程序启动</td>
-<td>类型错误通常阻止目标文件生成</td>
-</tr>
-<tr>
-<td>注解是否改变值</td>
-<td>通常不会</td>
-<td>声明决定对象类型和部分运行行为</td>
-</tr>
-<tr>
-<td>错误类型能否在运行时进入函数</td>
-<td>可以，除非代码主动校验</td>
-<td>能通过接口的值受编译期类型规则限制</td>
-</tr>
-<tr>
-<td>外部文本或JSON</td>
-<td>仍需解析和运行时校验</td>
-<td>同样需要解析和运行时校验</td>
-</tr>
-<tr>
-<td>检查产物</td>
-<td>诊断信息，不生成程序</td>
-<td>诊断以及目标文件/可执行程序</td>
-</tr>
-</tbody>
-</table>
-<p>共同点是：接口越准确，调用者越容易发现错误。根本差异是：mypy不是Python解释器，也不参与生成可执行机器代码。</p>
-<h2 id="_11">最小函数类型契约<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
-<div class="highlight"><span class="filename">minimal_types.py</span><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">calculate_progress</span><span class="p">(</span><span class="n">target_hours</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">finished_hours</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">finished_hours</span> <span class="o">/</span> <span class="n">target_hours</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
-
-
-<span class="n">progress</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">calculate_progress</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">progress</span><span class="p">)</span>
-</code></pre></div>
-<p>函数签名表达：两个参数应当能作为<code>float</code>使用，结果是<code>float</code>。Python中<code>int</code>通常可以用于要求<code>float</code>的静态位置，但字符串不可以：</p>
-<div class="highlight"><pre><span></span><code><span class="n">calculate_progress</span><span class="p">(</span><span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">)</span>
-</code></pre></div>
-<p>mypy会报告参数类型不兼容。不过直接运行这行代码时，失败来自函数中的除法，而不是注解自动拦截调用。</p>
-<h3 id="_12">注解不会自动执行校验<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">annotations_are_not_guards.py</span><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">echo_hours</span><span class="p">(</span><span class="n">hours</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<p>三层不能互相替代。mypy 通过不等于数据可信，测试通过也不等于接口表达清楚。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-annotations" id="concept-annotations">
+<h2 id="_5">注解不是门卫<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>这段代码虽然标了 <code>float</code>，运行时仍会把字符串原样传进去：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">echo_hours</span><span class="p">(</span><span class="n">hours</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">hours</span>
 
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">echo_hours</span><span class="p">(</span><span class="s2">&quot;five&quot;</span><span class="p">)</span>  <span class="c1"># 运行时仍会进入函数</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">echo_hours</span><span class="p">(</span><span class="s2">&quot;five&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
 </code></pre></div>
-<p>Python解释器会打印字符串及其类型。mypy会在运行前报告错误参数。这正是“运行时行为”和“静态契约”的区别。</p>
-<h2 id="_13">常用类型写法<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
-<h3 id="_14">容器<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">course_names</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;C++&quot;</span><span class="p">]</span>
-<span class="n">hours_by_course</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Python&quot;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">,</span> <span class="s2">&quot;C++&quot;</span><span class="p">:</span> <span class="mf">6.0</span><span class="p">}</span>
+<p>直接运行会打印：</p>
+<div class="highlight"><pre><span></span><code>five &lt;class &#39;str&#39;&gt;
+</code></pre></div>
+<p>mypy 会报告调用和返回契约不一致，但 Python 解释器通常不会根据函数注解自动拦截调用。若输入来自用户、文件或网络，仍要在运行时检查。</p>
+<p>类型提示的价值在于把预期写进代码，让编辑器、检查器、评审者和未来的你更早看见冲突，而不是替代所有防御代码。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-common-types" id="example-common-types">
+<h2 id="_6">先写出真实可能性<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>常见容器可以直接标出元素类型：</p>
+<div class="highlight"><pre><span></span><code><span class="n">course_names</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;CS&quot;</span><span class="p">]</span>
+<span class="n">hours_by_course</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Python&quot;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">,</span> <span class="s2">&quot;CS&quot;</span><span class="p">:</span> <span class="mf">6.0</span><span class="p">}</span>
 <span class="n">unique_tags</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;语言&quot;</span><span class="p">,</span> <span class="s2">&quot;工程&quot;</span><span class="p">}</span>
 <span class="n">point</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span>
 <span class="n">history</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;起步&quot;</span><span class="p">,</span> <span class="s2">&quot;类型&quot;</span><span class="p">,</span> <span class="s2">&quot;工程化&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p><code>tuple[float, float]</code>表示恰好两个位置；<code>tuple[str, ...]</code>表示任意长度且每项都是字符串。</p>
-<h3 id="_15">可能缺失的值<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p><code>tuple[float, float]</code> 表示恰好两个位置；<code>tuple[str, ...]</code> 表示任意长度、每项都是字符串。</p>
+<p>可能找不到时，把 <code>None</code> 写出来：</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">find_course</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;python&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">casefold</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;python&quot;</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;Python&quot;</span>
     <span class="k">return</span> <span class="kc">None</span>
-</code></pre></div>
-<p>调用者必须处理<code>None</code>：</p>
-<div class="highlight"><pre><span></span><code><span class="n">course</span> <span class="o">=</span> <span class="n">find_course</span><span class="p">(</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
+
+
+<span class="n">course</span> <span class="o">=</span> <span class="n">find_course</span><span class="p">(</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">course</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">course</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
 </code></pre></div>
-<p>不要因为“实际数据里通常存在”就省略<code>None</code>。类型契约应该表达真实可能性。</p>
-<h3 id="_16">类型别名<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<p>Python 3.11使用<code>TypeAlias</code>显式标记别名：</p>
+<p>调用者看到 <code>str | None</code> 就知道必须处理缺失情况，不必等到某次 <code>None.upper()</code> 才发现。</p>
+<p>复杂类型反复出现时，可以在 Python 3.11 中使用 <code>TypeAlias</code>：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypeAlias</span>
 
-<span class="n">Summary</span><span class="p">:</span> <span class="n">TypeAlias</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">[</span>
-    <span class="nb">float</span><span class="p">,</span>
-    <span class="nb">float</span><span class="p">,</span>
-    <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
-    <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
-<span class="p">]</span>
+<span class="n">ProgressRow</span><span class="p">:</span> <span class="n">TypeAlias</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
 </code></pre></div>
-<p>别名提高可读性，但不会创建新的运行时类型。Python 3.12引入的<code>type Summary = ...</code>不作为本课程基线。</p>
-<h2 id="typeddict">用<code>TypedDict</code>表达固定字典结构<a class="headerlink" href="#typeddict" title="Permanent link">&para;</a></h2>
+<p>别名改善可读性，但不会创建新的运行时类。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-typeddict-sequence" id="concept-typeddict-sequence">
+<h2 id="typeddict-sequence">固定字典用 TypedDict，只读输入用 Sequence<a class="headerlink" href="#typeddict-sequence" title="Permanent link">&para;</a></h2>
+<p>学习记录仍是普通字典，但键名固定：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypedDict</span>
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">StudyRecord</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
-    <span class="n">course</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">course_name</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">target_hours</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">finished_hours</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">completed_hours</span><span class="p">:</span> <span class="nb">float</span>
     <span class="n">tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 </code></pre></div>
-<p>静态检查器会检查已知构造位置是否缺少字段或字段类型错误：</p>
+<p>mypy 能检查源码里看得见的构造位置：</p>
 <div class="highlight"><pre><span></span><code><span class="n">record</span><span class="p">:</span> <span class="n">StudyRecord</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;course&quot;</span><span class="p">:</span> <span class="s2">&quot;Python类型&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="mf">6.0</span><span class="p">,</span>
-    <span class="s2">&quot;finished_hours&quot;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span>
-    <span class="c1"># 缺少 tags，mypy应报告错误</span>
+    <span class="s2">&quot;course_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Python 核心&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span>
+    <span class="s2">&quot;completed_hours&quot;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span>
+    <span class="c1"># 漏了 tags，静态检查会报告错误</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>但<code>TypedDict</code>在运行时仍是普通<code>dict</code>：</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">record</span><span class="p">))</span>  <span class="c1"># &lt;class &#39;dict&#39;&gt;</span>
-</code></pre></div>
-<p>它不会自动检查<code>json.loads()</code>返回的数据。外部数据必须先通过运行时校验。</p>
-<h2 id="sequence">使用<code>Sequence</code>表达需要的能力<a class="headerlink" href="#sequence" title="Permanent link">&para;</a></h2>
-<p>如果函数只遍历记录、不增加删除元素，就不必要求调用者一定传入<code>list</code>：</p>
+<p>但运行时 <code>type(record)</code> 仍然是 <code>dict</code>。<code>TypedDict</code> 不会自动检查 <code>json.loads()</code> 的返回值。</p>
+<p>如果函数只需要读取一组记录，不要把接口写死为 <code>list</code>：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">total_hours</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">total_completed</span><span class="p">(</span><span class="n">records</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">StudyRecord</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">&quot;completed_hours&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">records</span><span class="p">)</span>
 </code></pre></div>
-<p>列表和元组都能满足这个只读接口：</p>
-<div class="highlight"><pre><span></span><code><span class="n">total_hours</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">])</span>
-<span class="n">total_hours</span><span class="p">((</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">))</span>
-</code></pre></div>
-<p><code>Sequence</code>不保证对象在运行时绝对不可变；它表达的是当前函数只依赖读取、索引和长度等序列能力，不应调用<code>append()</code>。</p>
-<h2 id="objectanycast"><code>object</code>、<code>Any</code>和<code>cast()</code><a class="headerlink" href="#objectanycast" title="Permanent link">&para;</a></h2>
-<h3 id="object"><code>object</code>：未知，但使用前必须缩窄<a class="headerlink" href="#object" title="Permanent link">&para;</a></h3>
+<p>列表和元组都能满足这个接口。<code>Sequence</code> 表达“需要长度、索引和遍历”，并不声称对象在运行时绝对不可变。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-object-any-cast" id="concept-object-any-cast">
+<h2 id="object-any">object 会逼你检查，Any 会让检查器让路<a class="headerlink" href="#object-any" title="Permanent link">&para;</a></h2>
+<p><code>object</code> 表示“现在还不知道是什么”。使用前必须缩小类型：</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">normalize_name</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;name必须是字符串&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;course_name 必须是字符串&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 </code></pre></div>
-<p>所有Python对象都兼容<code>object</code>，但不能在未经检查时任意调用字符串方法。<code>isinstance()</code>同时提供运行时校验，并帮助静态检查器把类型从<code>object</code>缩窄到<code>str</code>。</p>
-<h3 id="any"><code>Any</code>：暂时退出类型检查<a class="headerlink" href="#any" title="Permanent link">&para;</a></h3>
+<p><code>Any</code> 则会让大部分静态检查退出：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">unsafe_name</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">not_a_real_method</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">method_that_does_not_exist</span><span class="p">()</span>
 </code></pre></div>
-<p><code>Any</code>与几乎所有类型双向兼容，错误操作可能继续传播而不被报告。它适合无法类型化的动态边界，但不应成为省事的默认类型。</p>
-<h3 id="cast"><code>cast()</code>：只告诉检查器，不检查运行时<a class="headerlink" href="#cast" title="Permanent link">&para;</a></h3>
+<p>这段明显可疑的调用也可能一路传播。动态库边界有时不得不用 <code>Any</code>，但应尽快把它收窄，不能用来让错误列表变成零。</p>
+<p><code>cast()</code> 只告诉检查器“请把它当作某类型”，不会转换或验证值：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">cast</span>
 
 <span class="n">value</span><span class="p">:</span> <span class="nb">object</span> <span class="o">=</span> <span class="mi">42</span>
 <span class="n">name</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>  <span class="c1"># 运行时仍然失败</span>
 </code></pre></div>
-<p><code>cast(str, value)</code>不会把整数转换成字符串，也不会执行<code>isinstance()</code>。这个程序仍会在运行时失败。只有已经通过其他证据确认类型、而检查器无法推导时，才考虑使用<code>cast()</code>。</p>
-<p>同样，<code># type: ignore</code>只是压制诊断。课程示例不使用它来获得“零错误”截图。</p>
-<h2 id="_17">可复现实例：类型化学习进度报告器<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
-<h3 id="_18">环境与依赖<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Python 3.11或更高版本。</li>
-<li>运行代码只使用标准库。</li>
-<li>开发检查依赖固定版本<code>mypy==2.2.0</code>。</li>
-<li>从示例根目录运行命令。</li>
-</ul>
-<h3 id="_19">目录结构<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>typed-reporter/
-├── data/
-│   └── study_records.json
-├── tests/
-│   └── test_typed_reporter.py
-├── analysis.py
-├── data_io.py
-├── main.py
-├── models.py
-└── requirements-dev.txt
+<p>同样，<code># type: ignore</code> 只是压住诊断。先问清接口是否写错、边界是否缺校验，再考虑极少数检查器确实无法推导的情况。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-type-contracts" id="reproduce-type-contracts">
+<h2 id="object">从 object 收窄成可信记录<a class="headerlink" href="#object" title="Permanent link">&para;</a></h2>
+<p>完整例子模拟 <code>json.loads()</code> 之后的未知对象，逐层检查，再构造 <code>StudyRecord</code>：</p>
+<div class="highlight"><pre><span></span><code>
 </code></pre></div>
-<h3 id="_20">开发依赖<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">requirements-dev.txt</span><pre><span></span><code>mypy==2.2.0
+<p>先运行静态检查：</p>
+<div class="highlight"><pre><span></span><code>.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>site-src/examples/python-core/type_contracts.py
 </code></pre></div>
-<h3 id="_21">数据模型<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">models.py</span><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypeAlias</span><span class="p">,</span> <span class="n">TypedDict</span>
-
-
-<span class="k">class</span><span class="w"> </span><span class="nc">StudyRecord</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
-    <span class="n">course</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">target_hours</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">finished_hours</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-
-
-<span class="n">Summary</span><span class="p">:</span> <span class="n">TypeAlias</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">[</span>
-    <span class="nb">float</span><span class="p">,</span>
-    <span class="nb">float</span><span class="p">,</span>
-    <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
-    <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
-<span class="p">]</span>
+<p>再运行程序：</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>site-src/examples/python-core/type_contracts.py
 </code></pre></div>
-<h3 id="_22">类型化分析<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">analysis.py</span><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">StudyRecord</span><span class="p">,</span> <span class="n">Summary</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">calculate_progress</span><span class="p">(</span><span class="n">target_hours</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">finished_hours</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">finished_hours</span> <span class="o">/</span> <span class="n">target_hours</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">build_status</span><span class="p">(</span><span class="n">target_hours</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">finished_hours</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">finished_hours</span> <span class="o">&gt;=</span> <span class="n">target_hours</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;已完成&quot;</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;还需 </span><span class="si">{</span><span class="n">target_hours</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">finished_hours</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2"> 小时&quot;</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">normalize_tags</span><span class="p">(</span><span class="n">records</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">StudyRecord</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
-    <span class="n">tags</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
-        <span class="n">tags</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">&quot;tags&quot;</span><span class="p">])</span>
-    <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">tags</span><span class="p">))</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">summarize_records</span><span class="p">(</span><span class="n">records</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">StudyRecord</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Summary</span><span class="p">:</span>
-    <span class="n">total_target</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="n">total_finished</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="n">course_lines</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
-        <span class="n">target</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;target_hours&quot;</span><span class="p">]</span>
-        <span class="n">finished</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;finished_hours&quot;</span><span class="p">]</span>
-        <span class="n">total_target</span> <span class="o">+=</span> <span class="n">target</span>
-        <span class="n">total_finished</span> <span class="o">+=</span> <span class="n">finished</span>
-        <span class="n">progress</span> <span class="o">=</span> <span class="n">calculate_progress</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">finished</span><span class="p">)</span>
-        <span class="n">status</span> <span class="o">=</span> <span class="n">build_status</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">finished</span><span class="p">)</span>
-        <span class="n">course_lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s1">&#39;- </span><span class="si">{</span><span class="n">record</span><span class="p">[</span><span class="s2">&quot;course&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">progress</span><span class="si">:</span><span class="s1">.0%</span><span class="si">}</span><span class="s1">，</span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s1">&#39;</span>
-        <span class="p">)</span>
-
-    <span class="k">return</span> <span class="p">(</span>
-        <span class="n">total_target</span><span class="p">,</span>
-        <span class="n">total_finished</span><span class="p">,</span>
-        <span class="nb">tuple</span><span class="p">(</span><span class="n">course_lines</span><span class="p">),</span>
-        <span class="n">normalize_tags</span><span class="p">(</span><span class="n">records</span><span class="p">),</span>
-    <span class="p">)</span>
+<p>你应该看到：</p>
+<div class="highlight"><pre><span></span><code>course=Python 核心
+progress=40.0%
+total_completed=10.0
+tuple_input=6.0
 </code></pre></div>
-<h3 id="json">JSON边界与运行时校验<a class="headerlink" href="#json" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">data_io.py</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">StudyRecord</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">_as_string_key_dict</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">object</span><span class="p">]:</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">context</span><span class="si">}</span><span class="s2">必须是对象&quot;</span><span class="p">)</span>
-
-    <span class="n">result</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">object</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">context</span><span class="si">}</span><span class="s2">的键必须是字符串&quot;</span><span class="p">)</span>
-        <span class="n">result</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span>
-    <span class="k">return</span> <span class="n">result</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">_required</span><span class="p">(</span><span class="n">mapping</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">object</span><span class="p">],</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">field</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mapping</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">context</span><span class="si">}</span><span class="s2">缺少</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2">字段&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">mapping</span><span class="p">[</span><span class="n">field</span><span class="p">]</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">_number</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">record_number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;第</span><span class="si">{</span><span class="n">record_number</span><span class="si">}</span><span class="s2">条记录的</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2">必须是数字&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">_tags</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">record_number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;第</span><span class="si">{</span><span class="n">record_number</span><span class="si">}</span><span class="s2">条记录的tags必须是列表&quot;</span><span class="p">)</span>
-
-    <span class="n">validated</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;第</span><span class="si">{</span><span class="n">record_number</span><span class="si">}</span><span class="s2">条记录的tags必须只包含字符串&quot;</span>
-            <span class="p">)</span>
-        <span class="n">validated</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">validated</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">_record</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">record_number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">StudyRecord</span><span class="p">:</span>
-    <span class="n">context</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;第</span><span class="si">{</span><span class="n">record_number</span><span class="si">}</span><span class="s2">条记录&quot;</span>
-    <span class="n">mapping</span> <span class="o">=</span> <span class="n">_as_string_key_dict</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-
-    <span class="n">course</span> <span class="o">=</span> <span class="n">_required</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="s2">&quot;course&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">course</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">course</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">context</span><span class="si">}</span><span class="s2">的course必须是非空字符串&quot;</span><span class="p">)</span>
-
-    <span class="n">target</span> <span class="o">=</span> <span class="n">_number</span><span class="p">(</span>
-        <span class="n">_required</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="s2">&quot;target_hours&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">),</span>
-        <span class="s2">&quot;target_hours&quot;</span><span class="p">,</span>
-        <span class="n">record_number</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="n">finished</span> <span class="o">=</span> <span class="n">_number</span><span class="p">(</span>
-        <span class="n">_required</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="s2">&quot;finished_hours&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">),</span>
-        <span class="s2">&quot;finished_hours&quot;</span><span class="p">,</span>
-        <span class="n">record_number</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="n">tags</span> <span class="o">=</span> <span class="n">_tags</span><span class="p">(</span><span class="n">_required</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">),</span> <span class="n">record_number</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">target</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">context</span><span class="si">}</span><span class="s2">的target_hours必须大于0&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">finished</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">context</span><span class="si">}</span><span class="s2">的finished_hours不能小于0&quot;</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">StudyRecord</span><span class="p">(</span>
-        <span class="n">course</span><span class="o">=</span><span class="n">course</span><span class="p">,</span>
-        <span class="n">target_hours</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
-        <span class="n">finished_hours</span><span class="o">=</span><span class="n">finished</span><span class="p">,</span>
-        <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span>
-    <span class="p">)</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">validate_document</span><span class="p">(</span><span class="n">document</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">StudyRecord</span><span class="p">]:</span>
-    <span class="n">root</span> <span class="o">=</span> <span class="n">_as_string_key_dict</span><span class="p">(</span><span class="n">document</span><span class="p">,</span> <span class="s2">&quot;JSON根结构&quot;</span><span class="p">)</span>
-    <span class="n">records</span> <span class="o">=</span> <span class="n">_required</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;records&quot;</span><span class="p">,</span> <span class="s2">&quot;JSON根结构&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;records必须是列表&quot;</span><span class="p">)</span>
-
-    <span class="n">validated</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">StudyRecord</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">record</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="n">validated</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_record</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">index</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">validated</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">load_records</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">StudyRecord</span><span class="p">]:</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
-    <span class="n">document</span><span class="p">:</span> <span class="nb">object</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">validate_document</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
-</code></pre></div>
-<p><code>json.loads()</code>的类型信息无法证明实际JSON结构。代码立刻把结果收进<code>object</code>边界，然后逐层检查并重新构造<code>StudyRecord</code>，没有使用<code>cast()</code>假装数据已经可信。</p>
-<h3 id="_23">程序入口<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">main.py</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Final</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">summarize_records</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">data_io</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_records</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Summary</span>
-
-
-<span class="n">PROJECT_ROOT</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span>
-<span class="n">INPUT_PATH</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">PROJECT_ROOT</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;study_records.json&quot;</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">build_report</span><span class="p">(</span><span class="n">summary</span><span class="p">:</span> <span class="n">Summary</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="n">total_target</span><span class="p">,</span> <span class="n">total_finished</span><span class="p">,</span> <span class="n">course_lines</span><span class="p">,</span> <span class="n">tags</span> <span class="o">=</span> <span class="n">summary</span>
-    <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">&quot;学习进度报告&quot;</span><span class="p">,</span>
-        <span class="sa">f</span><span class="s2">&quot;总计划：</span><span class="si">{</span><span class="n">total_target</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2"> 小时&quot;</span><span class="p">,</span>
-        <span class="sa">f</span><span class="s2">&quot;总完成：</span><span class="si">{</span><span class="n">total_finished</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2"> 小时&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;课程状态：&quot;</span><span class="p">,</span>
-    <span class="p">]</span>
-    <span class="n">lines</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">course_lines</span> <span class="ow">or</span> <span class="p">(</span><span class="s2">&quot;- 暂无记录&quot;</span><span class="p">,))</span>
-    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;唯一标签：</span><span class="si">{</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tags</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">tags</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">&quot;无&quot;</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="n">input_path</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">INPUT_PATH</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="n">records</span> <span class="o">=</span> <span class="n">load_records</span><span class="p">(</span><span class="n">input_path</span><span class="p">)</span>
-    <span class="n">report</span> <span class="o">=</span> <span class="n">build_report</span><span class="p">(</span><span class="n">summarize_records</span><span class="p">(</span><span class="n">records</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">report</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">input_path</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">INPUT_PATH</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">run</span><span class="p">(</span><span class="n">input_path</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;输入错误：找不到文件 </span><span class="si">{</span><span class="n">error</span><span class="o">.</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
-        <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;输入错误：JSON格式无效，第</span><span class="si">{</span><span class="n">error</span><span class="o">.</span><span class="n">lineno</span><span class="si">}</span><span class="s2">行，&quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;第</span><span class="si">{</span><span class="n">error</span><span class="o">.</span><span class="n">colno</span><span class="si">}</span><span class="s2">列&quot;</span><span class="p">,</span>
-            <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;输入错误：</span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
-        <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="mi">0</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
-</code></pre></div>
-<h3 id="json_1">固定JSON样例<a class="headerlink" href="#json_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">data/study_records.json</span><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;records&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;course&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Python类型&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;target_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;finished_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;类型&quot;</span><span class="p">]</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;course&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;C++构建&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;target_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;finished_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;C++&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;类型&quot;</span><span class="p">]</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="_24">最小回归测试<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">tests/test_typed_reporter.py</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">unittest</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">summarize_records</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">data_io</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_records</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">main</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_report</span><span class="p">,</span> <span class="n">main</span>
-
-
-<span class="k">class</span><span class="w"> </span><span class="nc">TypedReporterTests</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">write_document</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">document</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;records.json&quot;</span>
-        <span class="n">path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span>
-            <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">document</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
-            <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="n">path</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">test_report_matches_existing_behavior</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">directory</span><span class="p">:</span>
-            <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_document</span><span class="p">(</span>
-                <span class="n">directory</span><span class="p">,</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;records&quot;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span>
-                            <span class="s2">&quot;course&quot;</span><span class="p">:</span> <span class="s2">&quot;Python类型&quot;</span><span class="p">,</span>
-                            <span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
-                            <span class="s2">&quot;finished_hours&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-                            <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;类型&quot;</span><span class="p">],</span>
-                        <span class="p">},</span>
-                        <span class="p">{</span>
-                            <span class="s2">&quot;course&quot;</span><span class="p">:</span> <span class="s2">&quot;C++构建&quot;</span><span class="p">,</span>
-                            <span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-                            <span class="s2">&quot;finished_hours&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-                            <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;C++&quot;</span><span class="p">,</span> <span class="s2">&quot;类型&quot;</span><span class="p">],</span>
-                        <span class="p">},</span>
-                    <span class="p">]</span>
-                <span class="p">},</span>
-            <span class="p">)</span>
-
-            <span class="n">report</span> <span class="o">=</span> <span class="n">build_report</span><span class="p">(</span><span class="n">summarize_records</span><span class="p">(</span><span class="n">load_records</span><span class="p">(</span><span class="n">path</span><span class="p">)))</span>
-
-            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
-                <span class="n">report</span><span class="p">,</span>
-                <span class="s2">&quot;学习进度报告</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;总计划：11 小时</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;总完成：9 小时</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;课程状态：</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;- Python类型: 67%，还需 2 小时</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;- C++构建: 100%，已完成</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;唯一标签：C++, Python, 类型</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-            <span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">test_input_is_not_modified</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">directory</span><span class="p">:</span>
-            <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_document</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;records&quot;</span><span class="p">:</span> <span class="p">[]})</span>
-            <span class="n">before</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">read_bytes</span><span class="p">()</span>
-            <span class="n">load_records</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">read_bytes</span><span class="p">(),</span> <span class="n">before</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">test_bad_field_type_is_rejected_at_runtime</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">directory</span><span class="p">:</span>
-            <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_document</span><span class="p">(</span>
-                <span class="n">directory</span><span class="p">,</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;records&quot;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span>
-                            <span class="s2">&quot;course&quot;</span><span class="p">:</span> <span class="s2">&quot;Python类型&quot;</span><span class="p">,</span>
-                            <span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="s2">&quot;six&quot;</span><span class="p">,</span>
-                            <span class="s2">&quot;finished_hours&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-                            <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">],</span>
-                        <span class="p">}</span>
-                    <span class="p">]</span>
-                <span class="p">},</span>
-            <span class="p">)</span>
-            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="s2">&quot;target_hours必须是数字&quot;</span><span class="p">):</span>
-                <span class="n">load_records</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">test_invalid_document_returns_nonzero</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">directory</span><span class="p">:</span>
-            <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_document</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;records&quot;</span><span class="p">:</span> <span class="s2">&quot;not-a-list&quot;</span><span class="p">})</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">main</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
-</code></pre></div>
-<h2 id="_25">安装、检查和运行<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h2>
-<p>创建隔离环境：</p>
-<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
-</code></pre></div>
-<p>macOS/Linux：</p>
-<div class="highlight"><pre><span></span><code>.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-dev.txt
-.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--version
-.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>.
-.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>-v
-.venv/bin/python<span class="w"> </span>main.py
-</code></pre></div>
-<p>Windows PowerShell：</p>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">-r</span> <span class="n">requirements-dev</span><span class="p">.</span><span class="n">txt</span>
-<span class="p">.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-m</span> <span class="n">mypy</span> <span class="p">-</span><span class="n">-version</span>
-<span class="p">.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-m</span> <span class="n">mypy</span> <span class="p">-</span><span class="n">-strict</span> <span class="p">.</span>
-<span class="p">.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-m</span> <span class="n">unittest</span> <span class="n">discover</span> <span class="n">-s</span> <span class="n">tests</span> <span class="n">-v</span>
-<span class="p">.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">main</span><span class="p">.</span><span class="n">py</span>
-</code></pre></div>
-<p>预期静态检查结果：</p>
-<div class="highlight"><pre><span></span><code>Success: no issues found in 5 source files
-</code></pre></div>
-<p>文件数量可能因mypy版本和发现规则略有不同；验收依据是零错误和退出码<code>0</code>。</p>
-<p>预期程序关键输出：</p>
-<div class="highlight"><pre><span></span><code>学习进度报告
-总计划：11 小时
-总完成：9 小时
-课程状态：
-- Python类型: 67%，还需 2 小时
-- C++构建: 100%，已完成
-唯一标签：C++, Python, 类型
-</code></pre></div>
-<h2 id="_26">让静态检查真正失败<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
-<h3 id="_27">错误参数<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
-<p>在临时文件<code>type_errors.py</code>中加入：</p>
-<div class="highlight"><span class="filename">type_errors.py</span><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_progress</span>
-
-
-<span class="n">calculate_progress</span><span class="p">(</span><span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
-</code></pre></div>
-<p>运行：</p>
-<div class="highlight"><pre><span></span><code>.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>type_errors.py
-</code></pre></div>
-<p>mypy应报告第一个参数期望<code>float</code>、实际是<code>str</code>，并返回非零退出码。</p>
-<h3 id="typeddict_1">TypedDict缺字段<a class="headerlink" href="#typeddict_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">StudyRecord</span>
-
-
-<span class="n">record</span><span class="p">:</span> <span class="n">StudyRecord</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;course&quot;</span><span class="p">:</span> <span class="s2">&quot;Python类型&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>
-    <span class="s2">&quot;finished_hours&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>静态检查应指出缺少<code>tags</code>。这只能检查源码中可见的构造位置，不能检查运行时读取的JSON。</p>
-<h3 id="_28">错误返回类型<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<p>严格检查证明代码接口前后一致；程序输出证明这组运行时数据通过校验并得到预期结果。两份结果缺一不可。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-mypy-json" id="troubleshoot-mypy-json">
+<h2 id="_7">让两种错误各自出现一次<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>第一种错误写在源码里：</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">progress_label</span><span class="p">(</span><span class="n">progress</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">progress</span>
 </code></pre></div>
-<p>检查器应指出函数承诺返回<code>str</code>，实际返回<code>float</code>。</p>
-<p>修复或删除临时错误文件后，重新运行整个目录的严格检查和全部测试。</p>
-<h2 id="ai">AI协作任务<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h2>
-<h3 id="_29">可复用提示模板<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>请为这个Python 3.11多模块程序补充类型提示，并使其通过mypy --strict。
-外部JSON必须从object边界开始并执行运行时校验；
-使用TypedDict表达已验证记录，使用Sequence表达只读输入；
-不要用Any、cast、# type: ignore或assert跳过问题；
-不要改变业务输出、输入只读行为和现有异常边界。
-请列出每个接口的输入、输出、是否修改数据，以及仍需运行时测试的风险。
+<p>mypy 应指出函数承诺返回 <code>str</code>，实际返回 <code>float</code>，并以非零状态结束。阅读诊断时别只看“失败”，至少找出文件、行号、错误类别、期望类型和实际类型。</p>
+<p>第二种错误来自运行数据：</p>
+<div class="highlight"><pre><span></span><code><span class="n">raw</span><span class="p">:</span> <span class="nb">object</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;course_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Python 核心&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="s2">&quot;ten&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;completed_hours&quot;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span>
+    <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">],</span>
+<span class="p">}</span>
 </code></pre></div>
-<h3 id="_30">人工审阅清单<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
-<ul>
-<li>AI是否把<code>json.loads()</code>结果直接标成<code>StudyRecord</code>。</li>
-<li>是否用<code>Any</code>让诊断消失，而不是缩小动态边界。</li>
-<li>是否在没有运行证据时使用<code>cast()</code>。</li>
-<li>是否用<code>assert</code>替代用户数据校验。</li>
-<li>是否添加了没有语义价值的重复注解。</li>
-<li>是否把只读参数错误标成必须是<code>list</code>。</li>
-<li>类型化前后报告、错误信息和输入只读行为是否一致。</li>
-</ul>
-<p>主动修改一项规则：允许调用者向分析函数传入元组形式的记录序列，并用mypy和测试证明<code>Sequence</code>接口有效。</p>
-<h2 id="_31">核心手动检查点<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h2>
-<h3 id="1">检查点1：证明注解不拦截运行<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
-<p>运行<code>annotations_are_not_guards.py</code>，记录实际输出；再运行mypy，比较运行时与静态检查的不同结论。</p>
-<h3 id="2">检查点2：阅读一条完整诊断<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
-<p>制造字符串参数错误，指出文件、行列、错误类型、期望类型和实际类型。不要只记录“mypy失败”。</p>
-<h3 id="3">检查点3：追踪类型缩窄<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
-<p>从<code>document: object</code>开始，逐行说明<code>isinstance()</code>之后检查器知道了什么，以及业务范围检查为何仍需自己编写。</p>
-<h3 id="4typeddict">检查点4：识别<code>TypedDict</code>边界<a class="headerlink" href="#4typeddict" title="Permanent link">&para;</a></h3>
-<p>分别测试源码中缺字段的<code>StudyRecord</code>和JSON中缺字段的对象。说明前者由mypy发现，后者必须由运行时校验发现。</p>
-<h3 id="5">检查点5：删除逃生口<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
-<p>让AI生成一个使用<code>Any</code>、<code>cast()</code>或<code>type: ignore</code>的修复，再把逃生口删除，使用真实校验或准确签名解决诊断。</p>
-<h3 id="6c">检查点6：与C++对照<a class="headerlink" href="#6c" title="Permanent link">&para;</a></h3>
-<p>说明C++窄化错误、Python错误参数诊断分别发生在哪个阶段；如果跳过mypy，两者的结果有什么差异。</p>
-<h2 id="_32">微练习<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h2>
+<p>这段变量故意标成 <code>object</code>，静态检查无法也不该猜测 JSON 内部一定正确。<code>validate_record(raw)</code> 必须在运行时拒绝字符串形式的目标小时。</p>
+<p>修复源码错误后重跑 mypy；修复输入错误后重跑程序与测试。不要用 <code>Any</code>、<code>cast()</code> 或忽略注释把两类问题盖住。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-type-contract" id="modify-type-contract">
+<h2 id="_8">增加一条可选备注<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>给独立例子增加：</p>
+<div class="highlight"><pre><span></span><code><span class="n">weekly_note</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
+</code></pre></div>
+<p>这不是只改 <code>TypedDict</code> 一行。你还需要同步：</p>
 <ol>
-<li>为三个已有函数补齐参数和返回类型，运行严格检查。</li>
-<li>使用<code>str | None</code>表示可选课程名，并在调用位置完成缩窄。</li>
-<li>分别用<code>list[str]</code>和<code>tuple[str, ...]</code>表达可变与固定输出。</li>
-<li>构造缺少<code>tags</code>的<code>StudyRecord</code>，阅读静态诊断并修复。</li>
-<li>构造字段类型错误的JSON，证明运行时校验仍然生效。</li>
-<li>把一个<code>Any</code>参数改为<code>object</code>，补齐必要的<code>isinstance()</code>检查。</li>
-<li>证明<code>cast(str, 42)</code>不会执行字符串转换。</li>
-<li>故意返回错误类型，确认mypy失败；修复后运行全部检查和测试。</li>
+<li>运行时校验：字段缺失时是否允许，存在时是否必须为字符串。</li>
+<li>构造位置：每条 <code>StudyRecord</code> 都要满足新契约。</li>
+<li>输出行为：有备注时显示，没有时保持原报告不变。</li>
+<li>测试：至少覆盖字符串、<code>None</code> 和错误数字三种输入。</li>
 </ol>
-<h2 id="_33">阶段作品线索<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h2>
-<p>本节的类型化报告器只存在于课程正文，不创建新练习目录，也不修改Python起步阶段作品。它与上一节C++学习状态卡共同积累以下能力：</p>
-<ul>
-<li>两种语言的类型契约和检查时机对照。</li>
-<li>相同学习数据场景下的输入边界。</li>
-<li>静态检查、运行校验和测试证据。</li>
-<li>后续函数接口和多文件组织的基础。</li>
-</ul>
-<p>完成C++函数组织和后续Python接口课程后，再判断是否形成双语言阶段作品。</p>
-<h2 id="_34">常见错误与排查<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h2>
+<p>完成后让 mypy、正常运行和错误输入测试都通过。若只是把字段标成 <code>Any</code>，这次练习就没有解决问题。</p>
+</section>
+<section data-context-type="project" data-learning-context="project-reporter-types" id="project-reporter-types">
+<h2 id="_9">给报告器画一张接口清单<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>仓库里的双语言学习进度报告器已经继续演进到数据类、生成器、上下文管理、CLI 和配置版本。本课<strong>不要把当前项目倒退回 TypedDict</strong>；独立例子代表类型化阶段的历史快照，正式项目只做回归和接口审计。</p>
+<p>从当前 Python 项目选择四个公开边界，写下：</p>
 <table>
 <thead>
 <tr>
-<th>现象</th>
-<th>常见原因</th>
-<th>检查方法</th>
-<th>修复方向</th>
+<th>边界</th>
+<th>输入</th>
+<th>输出</th>
+<th>谁负责运行时校验</th>
+<th>是否修改输入</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>No module named mypy</code></td>
-<td>安装到了其他解释器</td>
-<td>检查<code>sys.executable</code>和pip归属</td>
-<td>使用当前虚拟环境的<code>python -m pip</code></td>
+<td><code>summarize()</code></td>
+<td><code>Iterable[StudyRecord]</code></td>
+<td><code>StudySummary</code></td>
+<td>调用前的数据入口</td>
+<td>否</td>
 </tr>
 <tr>
-<td>mypy显示版本不一致</td>
-<td>未按课程固定版本安装</td>
-<td>运行<code>python -m mypy --version</code></td>
-<td>重新安装<code>requirements-dev.txt</code></td>
+<td><code>build_report()</code></td>
+<td><code>Iterable[StudyRecord]</code></td>
+<td><code>str</code></td>
+<td>已接收可信对象</td>
+<td>否</td>
 </tr>
 <tr>
-<td>大量<code>no-untyped-def</code></td>
-<td>函数接口未标注</td>
-<td>从公开模块边界开始</td>
-<td>补充真实参数和返回类型</td>
+<td><code>write_audit_snapshot()</code></td>
+<td>记录与 <code>Path</code></td>
+<td><code>bool</code></td>
+<td>文件系统操作</td>
+<td>否</td>
 </tr>
 <tr>
-<td>加注解后程序仍接受错误值</td>
-<td>把注解误当运行时校验</td>
-<td>直接运行错误调用</td>
-<td>在外部边界主动校验</td>
-</tr>
-<tr>
-<td>JSON通过mypy但运行失败</td>
-<td>直接信任动态数据</td>
-<td>检查<code>json.loads()</code>后的路径</td>
-<td>从<code>object</code>逐层验证</td>
-</tr>
-<tr>
-<td><code>Any</code>让错误全部消失</td>
-<td>类型检查被绕过</td>
-<td>搜索<code>Any</code>传播路径</td>
-<td>缩小边界并改用<code>object</code></td>
-</tr>
-<tr>
-<td><code>cast()</code>后运行崩溃</td>
-<td>cast没有运行时转换</td>
-<td>查看实际<code>type()</code></td>
-<td>使用真实转换或<code>isinstance()</code></td>
-</tr>
-<tr>
-<td><code>TypedDict</code>运行时没有校验</td>
-<td>它运行时只是dict</td>
-<td>打印<code>type(record)</code></td>
-<td>保留独立校验函数</td>
-</tr>
-<tr>
-<td><code>Sequence</code>中不能<code>append</code></td>
-<td>接口只承诺读取能力</td>
-<td>检查函数职责</td>
-<td>需要修改时明确复制或改接口</td>
-</tr>
-<tr>
-<td><code>type</code>语句出现语法错误</td>
-<td>使用Python 3.11运行3.12语法</td>
-<td>查看Python版本</td>
-<td>使用<code>TypeAlias</code>兼容写法</td>
-</tr>
-<tr>
-<td>为通过检查添加<code>type: ignore</code></td>
-<td>没有解决真实类型矛盾</td>
-<td>删除ignore重新检查</td>
-<td>修正签名、数据或校验逻辑</td>
-</tr>
-<tr>
-<td>mypy通过但测试失败</td>
-<td>静态契约不等于行为正确</td>
-<td>阅读测试差异</td>
-<td>修复业务行为并回归</td>
+<td><code>main()</code></td>
+<td>CLI 参数</td>
+<td>退出码</td>
+<td>CLI 和配置边界</td>
+<td>否</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_35">完成标准<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h2>
+<p>然后运行项目当前的严格检查和全部测试，确认本课的接口理解没有破坏最终版本：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/programming-languages/study-progress-reporters/python
+../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>.
+../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>-v
+</code></pre></div>
+<p>路径以仓库根目录的虚拟环境为例；如果你在项目内另建环境，使用那个环境里的 Python。</p>
+</section>
+<section data-context-type="deepen" data-learning-context="deepen-structural-types" id="deepen-structural-types">
+<h2 id="_10">类型应该表达需要的能力<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>把参数写成 <code>list[StudyRecord]</code> 往往只是照着当前调用者抄类型。更好的问题是：函数真正需要什么？</p>
 <ul>
-<li>能区分Python运行时类型、类型提示和mypy静态检查。</li>
-<li>能说明Python与C++类型检查发生阶段的根本差异。</li>
-<li>能为函数、容器、可选值和复杂返回结果添加准确类型。</li>
-<li>能使用<code>TypeAlias</code>和<code>TypedDict</code>表达接口，不把它们误认为运行时校验器。</li>
-<li>能使用<code>Sequence</code>表达只读能力边界。</li>
-<li>能解释<code>object</code>、<code>Any</code>和<code>cast()</code>的不同风险。</li>
-<li>能从<code>object</code>开始校验JSON，并构造真正的<code>StudyRecord</code>。</li>
-<li>能使完整示例通过<code>mypy --strict</code>且零错误。</li>
-<li>能故意制造参数、缺字段和返回类型错误，并确认检查器非零退出。</li>
-<li>能通过unittest验证正常报告、输入只读和运行时错误字段。</li>
-<li>能证明类型化前后正常业务结果保持一致。</li>
-<li>能审阅AI标注，删除至少一个不必要的类型逃生口。</li>
-<li>能说明为什么静态检查、运行时校验和测试必须同时保留。</li>
+<li>只遍历一次：后续会学习 <code>Iterable</code>。</li>
+<li>需要多次遍历、长度和下标：<code>Sequence</code> 更准确。</li>
+<li>需要修改列表：才要求 <code>list</code> 或更具体的可变接口。</li>
+<li>只需要某个方法：后续会使用 <code>Protocol</code> 描述结构化能力。</li>
 </ul>
-<h2 id="_36">来源与版本<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>来源</th>
-<th>用于核查</th>
-<th>版本或日期</th>
-<th>状态</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://docs.python.org/3.11/library/typing.html">Python 3.11 <code>typing</code></a></td>
-<td>TypeAlias、TypedDict、Any、object和容器类型</td>
-<td>Python 3.11文档，2026-07-14核查</td>
-<td>已验证</td>
-</tr>
-<tr>
-<td><a href="https://typing.python.org/en/latest/spec/type-system.html">Python类型系统规范</a></td>
-<td>类型提示目标、动态类型与运行时检查边界</td>
-<td>2026-07-14核查</td>
-<td>已验证</td>
-</tr>
-<tr>
-<td><a href="https://mypy.readthedocs.io/en/stable/getting_started.html">mypy入门</a></td>
-<td>安装、运行和渐进类型检查</td>
-<td>mypy 2.2文档，2026-07-14核查</td>
-<td>已验证</td>
-</tr>
-<tr>
-<td><a href="https://mypy.readthedocs.io/en/stable/command_line.html">mypy命令行</a></td>
-<td><code>--strict</code>与退出行为</td>
-<td>mypy 2.2文档，2026-07-14核查</td>
-<td>已验证</td>
-</tr>
-<tr>
-<td><a href="https://mypy.readthedocs.io/en/stable/type_narrowing.html">mypy类型缩窄</a></td>
-<td><code>isinstance()</code>后的类型缩窄</td>
-<td>mypy 2.2文档，2026-07-14核查</td>
-<td>已验证</td>
-</tr>
-<tr>
-<td><a href="https://mypy.readthedocs.io/en/stable/typed_dict.html">mypy TypedDict</a></td>
-<td>固定字典结构和字段检查</td>
-<td>mypy 2.2文档，2026-07-14核查</td>
-<td>已验证</td>
-</tr>
-<tr>
-<td><a href="https://pypi.org/project/mypy/2.2.0/">mypy 2.2.0 PyPI</a></td>
-<td>固定工具版本和Python 3.11兼容性</td>
-<td>2026-07-14核查</td>
-<td>已验证</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_37">下一步<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h2>
-<p>第一组“构建与类型”配对完成。下一节回到 C++，学习<a href="../../cpp-core/02-functions-declarations-program-organization/">函数、声明与程序组织</a>：区分声明和定义，理解参数、返回值、作用域与重载，并把单文件学习状态卡拆成职责清楚的函数，为后续头文件、源文件和CMake做准备。</p>
+<p>越宽泛的接口不一定越好，越具体也不一定越安全。合适的接口应该刚好表达实现真正依赖的能力，同时让不必要的调用无法发生。</p>
+<p>类型检查也有边界：它不能证明除数不为零、小时数一定非负、路径一定存在或报告百分比一定算对。这些仍属于业务规则与运行测试。</p>
+</section>
+<section data-context-type="career" data-learning-context="career-type-evidence" id="career-type-evidence">
+<h2 id="_11">“加了类型提示”还不算完整成果<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>项目表达时，比“我给 Python 代码加了注解”更有价值的是说明你解决了哪类接口问题：</p>
+<blockquote>
+<p>我把外部 JSON 先收进 <code>object</code> 边界，经过字段和业务规则校验后才构造内部类型；模块接口使用 <code>Sequence</code>、<code>Iterable</code> 和明确返回类型，通过 mypy 严格模式、运行测试和错误输入测试分别验证静态契约与真实行为。类型化前后主报告保持一致。</p>
+</blockquote>
+<p>若被追问“mypy 通过后为什么还要校验 JSON”，可以直接回答：静态检查分析的是代码里的类型关系，不会替我检查某次运行读到的外部内容；外部数据必须在信任边界执行运行时校验。</p>
+<p>这里不要夸大成“消灭了所有类型错误”。更准确的说法是：缩小了动态数据传播范围，让一部分接口冲突提前暴露，并保留了运行时和测试层的防线。</p>
+</section>
+<h2 id="_12">完成检查<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能解释类型提示、mypy、运行时校验和 unittest 的分工。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我亲自证明过函数注解不会自动拦截错误参数。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能写出容器、<code>X | None</code> 和 <code>TypeAlias</code> 的准确例子。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我知道 <code>TypedDict</code> 在运行时仍是普通字典。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说明何时用 <code>Sequence</code>，而不是把所有输入都写成 <code>list</code>。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能区分 <code>object</code>、<code>Any</code> 和 <code>cast()</code>，没有用它们掩盖错误。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我运行了严格 mypy 检查和类型契约例子。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我分别复现了一次静态错误和一次坏 JSON 运行错误。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我增加了可选备注，并同步校验、构造、输出和测试。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我为当前报告器写下接口清单，并确认最终项目回归通过。</li>
+</ul>
+<h2 id="_13">来源与版本<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<ul>
+<li>适用版本：Python 3.11 及以上；mypy 2.2.0 严格模式。</li>
+<li>核查日期：2026-07-17。</li>
+<li>事实来源：<a href="https://docs.python.org/3.11/library/typing.html">Python <code>typing</code> 文档</a>用于类型提示、<code>TypedDict</code>、<code>TypeAlias</code>、<code>Any</code>、<code>cast()</code>和运行时边界；<a href="https://docs.python.org/3.11/library/collections.abc.html">Python <code>collections.abc</code></a>用于 <code>Sequence</code> 等容器接口；<a href="https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html">mypy 类型提示速查</a>与<a href="https://mypy.readthedocs.io/en/stable/config_file.html">严格配置</a>用于静态检查行为和命令。</li>
+<li>代码验证：仓库脚本运行严格 mypy、正常记录、元组输入、坏字段、缺字段、布尔数字拒绝、输入不变和静态错误退出码；不联网。</li>
+</ul>
+<h2 id="_14">下一步<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p>进入<a href="../02-maintainable-function-interfaces-protocols-modules/">可维护函数接口、协议与模块边界</a>，把单个类型标注扩展成模块之间可替换、可测试的公开接口。</p>
+<p><a class="md-button md-button--primary" href="../02-maintainable-function-interfaces-protocols-modules/">进入下一课</a></p>
 
 
 

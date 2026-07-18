@@ -1,41 +1,651 @@
 {
-  "version": 1,
-  "lesson": {"id": "cs-core-02", "title": "操作计数、增长率与渐近复杂度", "path": "learning-paths/cs-core/02-operation-count-growth-asymptotic-complexity/"},
-  "steps": [
-    {"id": "step-1", "title": "双语言输出基线"},
-    {"id": "step-2", "title": "输入规模与基本操作"},
-    {"id": "step-3", "title": "线性查找计数"},
-    {"id": "step-4", "title": "确定性增长表"},
-    {"id": "step-5", "title": "计时噪声实验"},
-    {"id": "step-6", "title": "相邻增长迁移验收"}
+  "version": 2,
+  "lesson": {
+    "id": "cs-core-02",
+    "title": "操作计数、增长率与渐近复杂度",
+    "path": "learning-paths/cs-core/02-operation-count-growth-asymptotic-complexity/"
+  },
+  "contexts": [
+    {
+      "id": "overview-growth",
+      "type": "overview",
+      "title": "数据翻一倍，工作也只翻一倍吗",
+      "anchor": "#overview-growth"
+    },
+    {
+      "id": "concept-count",
+      "type": "concept",
+      "title": "先说清楚 n 和动作",
+      "anchor": "#concept-count"
+    },
+    {
+      "id": "example-three-costs",
+      "type": "example",
+      "title": "同一组数据，三种工作量",
+      "anchor": "#example-three-costs"
+    },
+    {
+      "id": "reproduce-growth",
+      "type": "reproduce",
+      "title": "让输入连续翻倍",
+      "anchor": "#reproduce-growth"
+    },
+    {
+      "id": "concept-asymptotic",
+      "type": "concept",
+      "title": "从次数提取增长规律",
+      "anchor": "#concept-asymptotic"
+    },
+    {
+      "id": "example-bounds",
+      "type": "example",
+      "title": "O、Ω 和 Θ 各自说什么",
+      "anchor": "#example-bounds"
+    },
+    {
+      "id": "troubleshoot-timing",
+      "type": "troubleshoot",
+      "title": "计时变快，不等于复杂度变了",
+      "anchor": "#troubleshoot-timing"
+    },
+    {
+      "id": "modify-adjacent",
+      "type": "modify",
+      "title": "数一数相邻增长",
+      "anchor": "#modify-adjacent"
+    },
+    {
+      "id": "project-report-operations",
+      "type": "project",
+      "title": "给报告器补一张成本清单",
+      "anchor": "#project-report-operations"
+    },
+    {
+      "id": "deepen-cost-model",
+      "type": "deepen",
+      "title": "模型有用，也有边界",
+      "anchor": "#deepen-cost-model"
+    },
+    {
+      "id": "career-explain-cost",
+      "type": "career",
+      "title": "被问到复杂度时，先讲过程",
+      "anchor": "#career-explain-cost"
+    }
   ],
   "cards": [
     {
-      "id":"growth-output-baseline","lesson_id":"cs-core-02","step_id":"step-1","question":"增加增长表前要锁定什么基线？","aliases":["第二课基线是什么","如何防止旧报告漂移"],"keywords":["增长表","基线","旧输出","双语言","回归"],"diagnostic":"新增复杂度输出是否改动了上一课的数据、索引和首次匹配四行？","hints":["先运行两边测试并保存上一课报告。","新增内容只能接在空行之后；对完整字符串和旧前缀分别断言。"],"example":"局部证据：数据、index=2、target=3 行保持逐字相同。","answer":"先锁定旧输出和测试，才能证明本课只新增增长证据，没有改变上一课行为。","source":{"label":"第一步：锁定双语言输出基线","href":"#step-1"},"updated_at":"2026-07-16","recommended":true
+      "id": "growth-why-count",
+      "context_id": "overview-growth",
+      "question": "为什么不直接背 O(n)，还要先数操作？",
+      "aliases": [
+        "复杂度为什么先看次数",
+        "背结论不行吗"
+      ],
+      "keywords": [
+        "先数操作",
+        "复杂度",
+        "增长",
+        "次数",
+        "规律"
+      ],
+      "diagnostic": "你现在能说清 n 代表什么，以及代码在重复哪一种动作吗？",
+      "hints": [
+        "先比较 n 为 4 和 8 时，读取、扫描、两两比较各是多少。",
+        "只有先固定输入规模和重复动作，O、Theta 才不是脱离代码的字母。"
+      ],
+      "example": "n 从 4 到 8：读取 1→1，扫描 4→8，两两比较 6→28。",
+      "answer": "操作计数把代码过程变成可核对的整数，再由多组整数提取增长趋势。直接背符号容易漏掉输入、动作和停止条件。",
+      "source": {
+        "label": "数据翻一倍，工作也只翻一倍吗",
+        "href": "#overview-growth"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true,
+      "lesson_id": "cs-core-02"
     },
     {
-      "id":"input-size-basic-operation","lesson_id":"cs-core-02","step_id":"step-2","question":"复杂度分析为什么先定义 n 和基本操作？","aliases":["n到底表示什么","操作计数口径怎么定"],"keywords":["输入规模","基本操作","n","模型","计数口径"],"diagnostic":"当前 n 是元素数、数值大小还是文本字节数，计数的是访问、比较还是指令？","hints":["本实验把 n 定义为序列元素数。","分别数合法下标读取、元素与目标比较、元素对比较；改变口径就要重新说明 T(n)。"],"example":"缺失目标扫描的基本操作是一次相等比较。","answer":"只有固定输入规模和基本操作，T(n) 才可重复推导、测试和跨语言比较。","source":{"label":"第二步：定义输入规模和基本操作","href":"#step-2"},"updated_at":"2026-07-16","recommended":true
+      "id": "growth-input-size",
+      "context_id": "concept-count",
+      "question": "复杂度里的 n 到底表示什么？",
+      "aliases": [
+        "n 是固定数字吗",
+        "输入规模怎么定义"
+      ],
+      "keywords": [
+        "n",
+        "输入规模",
+        "元素数量",
+        "定义",
+        "列表"
+      ],
+      "diagnostic": "当前问题处理的是元素个数、文本字节数，还是数值本身的大小？",
+      "hints": [
+        "本课把 n 定义为列表元素数量。",
+        "换到字符串或图时，n 的含义可能改变，所以每次分析都要重新说明。"
+      ],
+      "example": "hours=[2,5,3,4] 时，n=len(hours)=4。",
+      "answer": "n 是输入规模的符号，不是固定常数。本课表示列表元素数；具体问题必须先写清它测量什么。",
+      "source": {
+        "label": "先说清楚 n 和动作",
+        "href": "#concept-count"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true,
+      "lesson_id": "cs-core-02"
     },
     {
-      "id":"zero-size-boundary","lesson_id":"cs-core-02","step_id":"step-2","question":"n 等于 0 时三类操作怎样计数？","aliases":["空序列增长行是多少","常量访问空输入为什么不是1"],"keywords":["n=0","空序列","边界","常量访问","0次"],"diagnostic":"空序列是否真的执行了合法位置访问或比较？","hints":["没有合法元素，检查式访问不能执行。","本实验记录常量访问、线性扫描、两两比较均为 0；增长表正文从正规模开始。"],"example":"GrowthRow(0, 0, 0, 0)。","answer":"渐近分类关注大规模，但实现仍要给空输入明确、可测试的边界语义。","source":{"label":"第二步：定义输入规模和基本操作","href":"#step-2"},"updated_at":"2026-07-16"
+      "id": "growth-basic-operation",
+      "context_id": "concept-count",
+      "question": "基本操作应该怎么选？",
+      "aliases": [
+        "到底在数访问还是比较",
+        "操作计数口径怎么定"
+      ],
+      "keywords": [
+        "基本操作",
+        "访问",
+        "比较",
+        "计数口径",
+        "模型"
+      ],
+      "diagnostic": "你要解释的是按位置读取、查找目标，还是检查元素对？",
+      "hints": [
+        "选择与问题核心工作直接相关、可以重复计数的动作。",
+        "本课分别数指定位置读取、元素与目标比较、元素对比较；换动作就要重新说明。"
+      ],
+      "example": "缺失目标扫描把一次 value==target 记作一次比较。",
+      "answer": "基本操作由要分析的问题决定。先命名动作并保持口径一致，得到的 T(n) 才能复现和比较。",
+      "source": {
+        "label": "先说清楚 n 和动作",
+        "href": "#concept-count"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true,
+      "lesson_id": "cs-core-02"
     },
     {
-      "id":"linear-search-comparison-trace","lesson_id":"cs-core-02","step_id":"step-3","question":"线性查找的比较次数怎样追踪？","aliases":["找到后还要继续数吗","SearchTrace记录什么"],"keywords":["线性查找","comparisons","SearchTrace","首次匹配","比较次数"],"diagnostic":"比较计数是在每次相等判断前增加，并在首次匹配时立即返回吗？","hints":["每检查一个元素就把 comparisons 加一。","匹配时立即返回位置和当前次数；扫描结束返回 None 和总次数。"],"example":"[7,3,9,3] 查找 3 返回 index=1、comparisons=2。","answer":"SearchTrace 同时表达正确性和成本，首次返回规则保证重复值不会多算后续元素。","source":{"label":"第三步：追踪线性查找比较次数","href":"#step-3"},"updated_at":"2026-07-16","recommended":true
+      "id": "growth-empty-input",
+      "context_id": "concept-count",
+      "question": "空列表的操作次数为什么是 0？",
+      "aliases": [
+        "n 等于 0 怎么算",
+        "空输入的常量访问还是 1 吗",
+        "n等于0时常量访问还是一次吗"
+      ],
+      "keywords": [
+        "空列表",
+        "n=0",
+        "边界",
+        "零次",
+        "合法位置"
+      ],
+      "diagnostic": "空列表里真的发生了合法位置读取或元素比较吗？",
+      "hints": [
+        "没有元素，就没有合法下标和元素对。",
+        "本课把读取、扫描、两两比较都记 0；这是实现边界，不改变正规模的渐近结论。"
+      ],
+      "example": "growth_row(0) 得到 0、0、0。",
+      "answer": "常量时间不等于任何输入都强行执行一次。空列表没有可读元素，本课的受检操作没有发生，所以记 0。",
+      "source": {
+        "label": "先说清楚 n 和动作",
+        "href": "#concept-count"
+      },
+      "updated_at": "2026-07-17",
+      "lesson_id": "cs-core-02"
     },
     {
-      "id":"linear-search-cases","lesson_id":"cs-core-02","step_id":"step-3","question":"线性查找最好和最坏输入怎样构造？","aliases":["开头末尾缺失比较几次","为什么缺失目标是n次"],"keywords":["最好情况","最坏情况","开头","末尾","缺失"],"diagnostic":"目标位于哪里，或者是否根本不存在？","hints":["目标在首位只比较 1 次。","目标在末尾或不存在时必须检查全部 n 个元素；说明你分析的是哪种情况。"],"example":"长度4：查7为1次，查3为2次，查4为4次。","answer":"输入位置决定实际比较次数；最坏线性扫描是 n 次，不能把最好情况和最坏情况混成一个无条件数字。","source":{"label":"第三步：追踪线性查找比较次数","href":"#step-3"},"updated_at":"2026-07-16"
+      "id": "growth-indexed-read",
+      "context_id": "example-three-costs",
+      "question": "列表变长后，按已知下标读取为什么还是 1 次？",
+      "aliases": [
+        "已知位置为什么是常量增长",
+        "数组读取一定 O1 吗"
+      ],
+      "keywords": [
+        "已知下标",
+        "读取",
+        "一次",
+        "常量",
+        "合法位置"
+      ],
+      "diagnostic": "程序是否已经拿到合法位置，并使用支持按位置读取的序列接口？",
+      "hints": [
+        "这一操作没有从头查找，而是直接指定一个位置。",
+        "结论有前提：位置已知且合法；找到这个位置的成本要另算。"
+      ],
+      "example": "hours[2] 在 n=4、8、32 的表中都只记一次指定位置读取。",
+      "answer": "在本课接口模型下，已知合法下标只触发一次指定位置读取，因此增长是 Θ(1)。它不表示所有列表操作都是常量时间。",
+      "source": {
+        "label": "同一组数据，三种工作量",
+        "href": "#example-three-costs"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true,
+      "lesson_id": "cs-core-02"
     },
     {
-      "id":"deterministic-growth-table","lesson_id":"cs-core-02","step_id":"step-4","question":"增长表三列公式分别是什么？","aliases":["常量线性平方怎么生成","n翻倍三列如何变化"],"keywords":["增长表","1","n","n(n-1)/2","平方"],"diagnostic":"表格是否来自精确公式和整数测试，而不是手填或计时猜测？","hints":["正规模检查式访问为1，缺失扫描为n。","不同元素两两比较为 n(n-1)/2；用 4、8、16、32 生成。"],"example":"n=8 时三列是 1、8、28。","answer":"确定性公式让 Python 与 C++ 可逐行对照，并直接观察输入翻倍时的增长差异。","source":{"label":"第四步：生成三类确定性增长表","href":"#step-4"},"updated_at":"2026-07-16","recommended":true
+      "id": "growth-linear-scan",
+      "context_id": "example-three-costs",
+      "question": "查找不存在的值为什么最坏比较 n 次？",
+      "aliases": [
+        "线性扫描为什么是 n",
+        "目标缺失要看到哪里",
+        "目标缺失为什么要扫描全部元素"
+      ],
+      "keywords": [
+        "线性扫描",
+        "目标不存在",
+        "最坏",
+        "n 次",
+        "比较"
+      ],
+      "diagnostic": "在看完最后一项之前，程序能可靠确认目标不存在吗？",
+      "hints": [
+        "目标可能藏在任何尚未检查的位置。",
+        "缺失目标没有提前停止机会，因此 n 个元素都要各比较一次。"
+      ],
+      "example": "[2,5,3,4] 查找 9 要比较 4 次。",
+      "answer": "为了证明目标不存在，线性扫描必须检查全部 n 项，所以最坏精确比较 n 次，增长为 Θ(n)。",
+      "source": {
+        "label": "同一组数据，三种工作量",
+        "href": "#example-three-costs"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true,
+      "lesson_id": "cs-core-02"
     },
     {
-      "id":"big-o-omega-theta","lesson_id":"cs-core-02","step_id":"step-4","question":"O、Ω 和 Θ 有什么区别？","aliases":["Big O是不是精确等式","什么时候写Theta"],"keywords":["O","Omega","Theta","上界","下界","同阶"],"diagnostic":"你是在给上界、下界，还是同时证明同阶增长？","hints":["O 是渐近上界，Ω 是渐近下界。","同时满足上下界时写 Θ；缺失扫描精确 n 次，因此 Θ(n) 比只写 O(n) 信息更完整。"],"example":"n(n-1)/2 的主导增长是 Θ(n²)。","answer":"三个符号描述界而非秒数；Theta 表示同阶，Big O 不能被随意当成精确运行时间。","source":{"label":"第四步：生成三类确定性增长表","href":"#step-4"},"updated_at":"2026-07-16","recommended":true
+      "id": "growth-pair-formula",
+      "context_id": "example-three-costs",
+      "question": "两两比较为什么是 n(n-1)/2？",
+      "aliases": [
+        "四个数为什么只有六对",
+        "元素对数量怎么推"
+      ],
+      "keywords": [
+        "两两比较",
+        "元素对",
+        "n(n-1)/2",
+        "组合",
+        "六对"
+      ],
+      "diagnostic": "你是否排除了自己与自己，以及同一对的反向重复？",
+      "hints": [
+        "第一个元素和后面 n-1 个比，第二个和后面 n-2 个比，一直加到 1。",
+        "(n-1)+(n-2)+...+1 等于 n(n-1)/2。"
+      ],
+      "example": "n=4：3+2+1=6；n=8：7+6+...+1=28。",
+      "answer": "只保留不同元素的无序对，每对恰好出现一次，数量就是从 1 到 n-1 的和，即 n(n-1)/2。",
+      "source": {
+        "label": "同一组数据，三种工作量",
+        "href": "#example-three-costs"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true,
+      "lesson_id": "cs-core-02"
     },
     {
-      "id":"timing-noise-boundary","lesson_id":"cs-core-02","step_id":"step-5","question":"为什么计时不能替代操作计数测试？","aliases":["timeit结果波动怎么办","能不能断言运行必须小于1毫秒"],"keywords":["timeit","计时噪声","阈值","环境","操作计数"],"diagnostic":"失败来自算法结果错误，还是后台任务、缓存、解释器和测量顺序造成的耗时波动？","hints":["重复计时并记录环境，只把结果当辅助观察。","正确性测试断言返回值和精确操作次数，不设置机器相关毫秒阈值。"],"example":"交换测试顺序或重复运行，耗时可能变化但 comparisons 不变。","answer":"真实时间包含许多模型外因素；计数提供稳定证据，计时负责提醒实际实现仍受环境影响。","source":{"label":"第五步：用计时实验观察噪声","href":"#step-5"},"updated_at":"2026-07-16","recommended":true
+      "id": "growth-player-reading",
+      "context_id": "reproduce-growth",
+      "question": "增长播放器应该怎么看？",
+      "aliases": [
+        "点下一组要观察什么",
+        "为什么 n 翻倍后两两比较不只是翻倍"
+      ],
+      "keywords": [
+        "增长播放器",
+        "输入翻倍",
+        "1 8 28",
+        "趋势",
+        "下一组"
+      ],
+      "diagnostic": "你是在比较当前绝对值，还是比较输入翻倍后每列变成上一组的多少倍？",
+      "hints": [
+        "依次记录 n=4、8、16、32 时的三列整数。",
+        "读取保持 1，扫描随 n 翻倍；两两比较逐渐接近四倍增长。"
+      ],
+      "example": "n=8 时是 1、8、28；n=16 时是 1、16、120。",
+      "answer": "播放器用同一组规模展示三条增长线。重点是随 n 翻倍的变化方式，而不是把某个数字孤立记住。",
+      "source": {
+        "label": "让输入连续翻倍",
+        "href": "#reproduce-growth"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true,
+      "lesson_id": "cs-core-02"
     },
     {
-      "id":"adjacent-increase-migration","lesson_id":"cs-core-02","step_id":"step-6","question":"相邻增长迁移为什么最多比较 n-1 次？","aliases":["count_adjacent_increases复杂度","空序列单元素比较几次"],"keywords":["相邻增长","n-1","比较次数","迁移验收","Theta(n)"],"diagnostic":"循环是否从第二个元素开始，每个元素只与前一个比较一次？","hints":["长度 n 只有 n-1 对相邻位置。","空和单元素比较0次；递增、下降和重复值都断言增长数与 comparisons。"],"example":"[1,1,2] 增长1次、比较2次。","answer":"单次从左到右覆盖每个相邻对且不重复，比较次数 max(n-1,0)，因此正规模增长属于 Θ(n)。","source":{"label":"第六步：完成相邻增长计数迁移验收","href":"#step-6"},"updated_at":"2026-07-16","recommended":true
+      "id": "growth-theta-patterns",
+      "context_id": "concept-asymptotic",
+      "question": "1、n 和 n(n-1)/2 分别是什么增长？",
+      "aliases": [
+        "常量线性平方怎么区分",
+        "三条增长规律是什么"
+      ],
+      "keywords": [
+        "Theta1",
+        "Thetan",
+        "Thetan2",
+        "常量",
+        "线性",
+        "平方"
+      ],
+      "diagnostic": "输入翻倍时，次数保持不变、约翻倍，还是约变四倍？",
+      "hints": [
+        "1 不变，对应 Θ(1)；n 同比例增长，对应 Θ(n)。",
+        "n(n-1)/2 的 n² 项最终主导，对应 Θ(n²)。"
+      ],
+      "example": "n 从 16 到 32：扫描 16→32，两两比较 120→496。",
+      "answer": "三者分别是常量、线性和平方量级：Θ(1)、Θ(n)、Θ(n²)。精确整数仍用于测试，符号用于描述大规模趋势。",
+      "source": {
+        "label": "从次数提取增长规律",
+        "href": "#concept-asymptotic"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true,
+      "lesson_id": "cs-core-02"
+    },
+    {
+      "id": "growth-ignore-terms",
+      "context_id": "concept-asymptotic",
+      "question": "为什么 n(n-1)/2 可以写成 Θ(n²)？",
+      "aliases": [
+        "减掉 n 为什么还是平方",
+        "常数二分之一去哪了",
+        "二分之一和减掉的n为什么不影响平方量级"
+      ],
+      "keywords": [
+        "主导项",
+        "低阶项",
+        "固定倍数",
+        "n²",
+        "渐近"
+      ],
+      "diagnostic": "你是在计算精确次数，还是描述 n 继续变大时的主导增长？",
+      "hints": [
+        "先展开为 n²/2-n/2。",
+        "精确测试保留整个公式；渐近分类忽略固定倍数和较低阶项，所以主导项是 n²。"
+      ],
+      "example": "n=32 的精确次数是 496，不是 1024；两者仍同属平方量级。",
+      "answer": "Theta 描述增长同阶，不是精确等式。n²/2 最终压过 n/2，固定系数不改变平方增长类别。",
+      "source": {
+        "label": "从次数提取增长规律",
+        "href": "#concept-asymptotic"
+      },
+      "updated_at": "2026-07-17",
+      "lesson_id": "cs-core-02"
+    },
+    {
+      "id": "growth-bounds-meaning",
+      "context_id": "example-bounds",
+      "question": "O、Ω 和 Θ 有什么区别？",
+      "aliases": [
+        "Big O 和 Theta 一样吗",
+        "上界下界同阶怎么分"
+      ],
+      "keywords": [
+        "Big O",
+        "Omega",
+        "Theta",
+        "上界",
+        "下界",
+        "同阶"
+      ],
+      "diagnostic": "你要表达的是最多增长到什么量级、至少到什么量级，还是上下界都匹配？",
+      "hints": [
+        "O 是渐近上界，Ω 是渐近下界。",
+        "上下界都是同一个 g(n) 时写 Θ(g(n))，信息最完整。"
+      ],
+      "example": "缺失扫描精确 n 次，因此既是 O(n) 又是 Ω(n)，合起来是 Θ(n)。",
+      "answer": "O、Ω、Θ 分别描述上界、下界和同阶界。它们不是秒数，也不直接等于某一次运行的精确操作数。",
+      "source": {
+        "label": "O、Ω 和 Θ 各自说什么",
+        "href": "#example-bounds"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true,
+      "lesson_id": "cs-core-02"
+    },
+    {
+      "id": "growth-best-worst",
+      "context_id": "example-bounds",
+      "question": "最好情况和最坏情况为什么要分开说？",
+      "aliases": [
+        "目标在开头和缺失复杂度一样吗",
+        "线性查找到底比较几次",
+        "目标在第一项和目标不存在比较次数一样吗"
+      ],
+      "keywords": [
+        "最好情况",
+        "最坏情况",
+        "提前停止",
+        "线性查找",
+        "输入位置"
+      ],
+      "diagnostic": "目标位于第一项、最后一项，还是根本不存在？",
+      "hints": [
+        "首次匹配会提前停止，所以目标在开头只比较一次。",
+        "目标在末尾或缺失时要检查全部 n 项；结论必须带上当前情形。"
+      ],
+      "example": "长度 5：查第一项 1 次，查末项或缺失 5 次。",
+      "answer": "实际次数取决于输入排列与目标位置。区分最好和最坏，才能让复杂度结论的前提清楚。",
+      "source": {
+        "label": "O、Ω 和 Θ 各自说什么",
+        "href": "#example-bounds"
+      },
+      "updated_at": "2026-07-17",
+      "lesson_id": "cs-core-02"
+    },
+    {
+      "id": "growth-timing-noise",
+      "context_id": "troubleshoot-timing",
+      "question": "为什么一次计时不能证明复杂度？",
+      "aliases": [
+        "timeit 更快就是 O1 吗",
+        "运行时间波动怎么办"
+      ],
+      "keywords": [
+        "timeit",
+        "计时",
+        "波动",
+        "复杂度",
+        "机器环境"
+      ],
+      "diagnostic": "你改变了输入规模并观察增长，还是只看某次运行用了多少秒？",
+      "hints": [
+        "单次耗时同时受语言、机器、缓存和后台任务影响。",
+        "用整数操作次数验证增长模型；计时只作辅助观察，不设机器相关正确性阈值。"
+      ],
+      "example": "交换两段测试顺序，耗时可能变，comparisons 仍然可精确断言。",
+      "answer": "复杂度描述输入变大时的趋势，一次秒数只反映某个环境下的一次测量，不能单独推出渐近类别。",
+      "source": {
+        "label": "计时变快，不等于复杂度变了",
+        "href": "#troubleshoot-timing"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true,
+      "lesson_id": "cs-core-02"
+    },
+    {
+      "id": "growth-nested-loop",
+      "context_id": "troubleshoot-timing",
+      "question": "两层循环就一定是 O(n²) 吗？",
+      "aliases": [
+        "嵌套循环怎么判断复杂度",
+        "看到两个 for 就写平方吗",
+        "看到两个for循环为什么不能直接写平方复杂度"
+      ],
+      "keywords": [
+        "嵌套循环",
+        "两层循环",
+        "n²",
+        "固定次数",
+        "提前停止"
+      ],
+      "diagnostic": "内层循环的次数也随 n 增长吗，还是固定次数或被所有外层共同分摊？",
+      "hints": [
+        "先写出每层真正执行多少次，不能只数语法层数。",
+        "若内层固定执行 3 次，总次数是 3n；若两层都遍历 n，才可能是平方。"
+      ],
+      "example": "for item in values: 重复三次固定检查，计数是 3n，仍为 Θ(n)。",
+      "answer": "循环层数只是线索。复杂度由实际重复次数决定，固定内层、提前停止或双指针移动都可能不是 Θ(n²)。",
+      "source": {
+        "label": "计时变快，不等于复杂度变了",
+        "href": "#troubleshoot-timing"
+      },
+      "updated_at": "2026-07-17",
+      "lesson_id": "cs-core-02"
+    },
+    {
+      "id": "growth-adjacent",
+      "context_id": "modify-adjacent",
+      "question": "相邻增长为什么只比较 n-1 次？",
+      "aliases": [
+        "count adjacent increases 怎么写",
+        "空列表和单元素比较几次"
+      ],
+      "keywords": [
+        "相邻增长",
+        "n-1",
+        "比较次数",
+        "空列表",
+        "单元素"
+      ],
+      "diagnostic": "循环是否从第二项开始，每项只与前一项比较一次？",
+      "hints": [
+        "n 个位置之间只有 n-1 条相邻缝隙。",
+        "空和单元素没有相邻对，比较 0 次；不要访问 values[-1] 冒充前一项。"
+      ],
+      "example": "[1,4,4,7,2] 有 4 对，增长 2 次、比较 4 次。",
+      "answer": "从下标 1 扫到 n-1，每个位置恰好产生一次与前项的比较，所以是 max(n-1,0)，增长为 Θ(n)。",
+      "source": {
+        "label": "数一数相邻增长",
+        "href": "#modify-adjacent"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true,
+      "lesson_id": "cs-core-02"
+    },
+    {
+      "id": "growth-project-list",
+      "context_id": "project-report-operations",
+      "question": "报告器的成本清单应该写什么？",
+      "aliases": [
+        "项目怎么连接复杂度",
+        "学习进度报告器要改哪些内容"
+      ],
+      "keywords": [
+        "报告器",
+        "成本清单",
+        "项目",
+        "汇总",
+        "课程查找"
+      ],
+      "diagnostic": "你能在 analysis.py 里指出真实存在的读取、汇总或查找代码吗？",
+      "hints": [
+        "只记录项目真实操作：输入规模、重复动作、最坏次数和增长趋势。",
+        "为逐项课程查找增加比较计数或测试辅助函数，用开头、末尾、缺失三种输入证明。"
+      ],
+      "example": "汇总 n 条记录读取 n 次小时字段，最坏 Θ(n)。",
+      "answer": "成本清单把课程概念落回现有项目。不要为了填表虚构功能；每个结论都要能指向代码和固定测试。",
+      "source": {
+        "label": "给报告器补一张成本清单",
+        "href": "#project-report-operations"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true,
+      "lesson_id": "cs-core-02"
+    },
+    {
+      "id": "growth-model-boundary",
+      "context_id": "deepen-cost-model",
+      "question": "同样是 Θ(n)，真实速度为什么还会不同？",
+      "aliases": [
+        "复杂度一样为什么一个更快",
+        "渐近模型忽略了什么",
+        "复杂度一样为什么实际运行一个更快"
+      ],
+      "keywords": [
+        "模型边界",
+        "常数",
+        "运行时",
+        "缓存",
+        "真实速度"
+      ],
+      "diagnostic": "你比较的是增长类别，还是某种语言、数据与机器上的实际实现？",
+      "hints": [
+        "Theta 忽略固定倍数和低阶项，只描述输入继续变大后的主导趋势。",
+        "语言运行时、内存访问、缓存和数据分布仍会影响真实耗时，需要另做测量。"
+      ],
+      "example": "两个 Θ(n) 扫描可能每项分别做 1 次和 20 次工作，小输入上速度会明显不同。",
+      "answer": "渐近模型压缩了实现细节，适合比较扩展趋势，却不替代基准测试和具体环境分析。",
+      "source": {
+        "label": "模型有用，也有边界",
+        "href": "#deepen-cost-model"
+      },
+      "updated_at": "2026-07-17",
+      "lesson_id": "cs-core-02"
+    },
+    {
+      "id": "growth-space-cost",
+      "context_id": "deepen-cost-model",
+      "question": "时间复杂度和空间复杂度要分开吗？",
+      "aliases": [
+        "复制输入会增加什么成本",
+        "只扫一遍为什么还要看空间"
+      ],
+      "keywords": [
+        "时间复杂度",
+        "空间复杂度",
+        "复制",
+        "额外空间",
+        "分开说明"
+      ],
+      "diagnostic": "函数除了重复动作，还创建了多少随输入规模增长的新数据？",
+      "hints": [
+        "一次扫描可以是 Θ(n) 时间。",
+        "若同时复制全部 n 项，还会使用 Θ(n) 额外空间；原地计数可能只用 Θ(1) 额外空间。"
+      ],
+      "example": "copied = values.copy() 会分配与 n 一起增长的新列表。",
+      "answer": "时间描述做了多少工作，空间描述额外占用多少存储。两者可能有不同增长率，应该分别给出。",
+      "source": {
+        "label": "模型有用，也有边界",
+        "href": "#deepen-cost-model"
+      },
+      "updated_at": "2026-07-17",
+      "lesson_id": "cs-core-02"
+    },
+    {
+      "id": "growth-career-answer",
+      "context_id": "career-explain-cost",
+      "question": "面试里怎样解释一段代码的复杂度？",
+      "aliases": [
+        "复杂度题应该怎么回答",
+        "只报 O(n) 够不够",
+        "复杂度题只报O(n)为什么不够"
+      ],
+      "keywords": [
+        "面试",
+        "复杂度表达",
+        "输入",
+        "重复动作",
+        "停止条件"
+      ],
+      "diagnostic": "你的回答是否包含 n 的含义、重复动作、停止条件和最坏输入？",
+      "hints": [
+        "先讲过程，再给符号：n 是什么，循环做什么，何时停。",
+        "补充最好和最坏次数，再分别说明时间与额外空间。"
+      ],
+      "example": "逐项课程查找：n 是记录数，首次匹配停止，最好 1 次、最坏 n 次，最坏时间 Θ(n)、额外空间 Θ(1)。",
+      "answer": "完整回答要让听者能从代码过程复核结论。只报一个字母没有说明问题边界，也无法判断你是否真的理解。",
+      "source": {
+        "label": "被问到复杂度时，先讲过程",
+        "href": "#career-explain-cost"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true,
+      "lesson_id": "cs-core-02"
     }
   ]
 }

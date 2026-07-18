@@ -2687,7 +2687,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        换一个待处理容器，访问顺序就变了
       
     </span>
   </a>
@@ -2698,7 +2698,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：运行递归与显式前沿基线
+        开始前
       
     </span>
   </a>
@@ -2709,7 +2709,18 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：定义前沿和峰值统计契约
+        前沿是“已经发现，但还没处理”
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-3-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        处理完 7，两种容器里都有 3 和 9
       
     </span>
   </a>
@@ -2720,18 +2731,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：用栈实现迭代前序
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bfs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第四步：用队列生成 BFS 和层级行
+        想先访问左孩子，就要先压右孩子
       
     </span>
   </a>
@@ -2742,18 +2742,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：复现压栈顺序反转失败
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#widest_level" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第六步：完成 widest_level 迁移验收
+        队列为什么自然形成层序
       
     </span>
   </a>
@@ -2764,7 +2753,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        峰值出现在什么时候
       
     </span>
   </a>
@@ -2775,7 +2764,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        固定输出
+        逐项打印两个容器
       
     </span>
   </a>
@@ -2786,7 +2775,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        回归双语言阶段作品
       
     </span>
   </a>
@@ -2797,7 +2786,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        完成证据
+        故意把压栈顺序反过来
       
     </span>
   </a>
@@ -2808,7 +2797,29 @@
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        来源与版本
+        找到最宽层
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dfs-bfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DFS 走右边、BFS 变深搜或峰值少算
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可追踪树与遍历实验 v1.0
       
     </span>
   </a>
@@ -2817,6 +2828,61 @@
       
         <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        两种遍历都是线性时间，空间形状不同
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visited" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么这节课没有 visited
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dfs-bfs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用同一棵树比较 DFS 与 BFS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -3871,7 +3937,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        换一个待处理容器，访问顺序就变了
       
     </span>
   </a>
@@ -3882,7 +3948,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：运行递归与显式前沿基线
+        开始前
       
     </span>
   </a>
@@ -3893,7 +3959,18 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：定义前沿和峰值统计契约
+        前沿是“已经发现，但还没处理”
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-3-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        处理完 7，两种容器里都有 3 和 9
       
     </span>
   </a>
@@ -3904,18 +3981,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：用栈实现迭代前序
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bfs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第四步：用队列生成 BFS 和层级行
+        想先访问左孩子，就要先压右孩子
       
     </span>
   </a>
@@ -3926,18 +3992,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：复现压栈顺序反转失败
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#widest_level" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第六步：完成 widest_level 迁移验收
+        队列为什么自然形成层序
       
     </span>
   </a>
@@ -3948,7 +4003,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        峰值出现在什么时候
       
     </span>
   </a>
@@ -3959,7 +4014,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        固定输出
+        逐项打印两个容器
       
     </span>
   </a>
@@ -3970,7 +4025,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        回归双语言阶段作品
       
     </span>
   </a>
@@ -3981,7 +4036,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        完成证据
+        故意把压栈顺序反过来
       
     </span>
   </a>
@@ -3992,7 +4047,29 @@
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        来源与版本
+        找到最宽层
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dfs-bfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DFS 走右边、BFS 变深搜或峰值少算
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可追踪树与遍历实验 v1.0
       
     </span>
   </a>
@@ -4001,6 +4078,61 @@
       
         <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        两种遍历都是线性时间，空间形状不同
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visited" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么这节课没有 visited
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dfs-bfs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用同一棵树比较 DFS 与 BFS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -4030,155 +4162,230 @@
   
 
 
-<h1 id="dfsbfs">迭代 DFS、BFS 与层级前沿<a class="headerlink" href="#dfsbfs" title="Permanent link">&para;</a></h1>
 <div class="be-tutor-mount" data-tutor-lesson="cs-core-17" aria-hidden="true"></div>
 
-<blockquote>
-<p><strong>任务先行：</strong> 用显式栈复现递归前序，用队列形成层序遍历，并把容器峰值变成可测试的空间证据。</p>
-</blockquote>
-<h2 id="_1">任务路线<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="be-task-route" role="list" aria-label="本课六步任务"><span role="listitem">1 递归基线</span><span role="listitem">2 前沿契约</span><span role="listitem">3 迭代 DFS</span><span role="listitem">4 BFS 层级</span><span role="listitem">5 顺序失败</span><span role="listitem">6 最宽层迁移</span></div>
-
-<section class="be-task-step" data-step-id="step-1" id="step-1">
-<h2 id="_2">第一步：运行递归与显式前沿基线<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>依次运行 <code>recursive</code> 和 <code>frontier</code>。<strong>当前任务：</strong>确认迭代 DFS 与递归前序一致，BFS 按深度输出。<strong>成功证据：</strong>DFS、BFS 都访问 6 个节点，最大前沿分别为 2 和 3。</p>
+<section class="be-page-hero be-lesson-hero" data-context-type="overview" data-learning-context="overview-frontier-output" id="overview-frontier-output">
+<p><span class="be-lesson-kicker">共同算法基础 · 第 13 课 · 可追踪树与遍历实验</span></p>
+<h1 id="dfsbfs">迭代 DFS、BFS 与层级前沿<a class="headerlink" href="#dfsbfs" title="Permanent link">&para;</a></h1>
+<h2 id="_1">换一个待处理容器，访问顺序就变了<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>dfs_preorder：   7, 3, 5, 9, 8, 11   max_frontier=2
+bfs_level_order：7, 3, 9, 5, 8, 11   max_frontier=3
+levels：0=[7] 1=[3,9] 2=[5,8,11]
+</code></pre></div>
+<p>DFS 把待处理节点放进栈，最后加入的先处理；BFS 放进队列，最早发现的先处理。两者都访问同样的 6 个节点，但前沿里同时等待的节点和最终顺序不同。</p>
+<p><a class="md-button md-button--primary" href="#example-stack-queue">比较两种前沿</a>
+<a class="md-button" href="#reproduce-frontier-trace">运行完整轨迹</a></p>
+<div class="be-lesson-facts">
+<p><span>课程位置<strong>共同算法基础 · 13 / 16</strong></span><span>前置<strong>递归 DFS 与调用深度</strong></span><span>完成后留下<strong>显式栈队列、层级行和最宽层</strong></span></p>
+</div>
 </section>
-<section class="be-task-step" data-step-id="step-2" id="step-2">
-<h2 id="_3">第二步：定义前沿和峰值统计契约<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>前沿是已经发现但尚未处理的节点。初始根进入容器后立即计数，每次压入或入队后更新峰值；空树峰值为 0。<strong>主动修改：</strong>运行空树、单节点和三节点满树。<strong>成功证据：</strong>计数不依赖容器分配容量。</p>
+<h2 id="_2">开始前<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>能说出栈的后进先出与队列的先进先出。</li>
+<li>已有一棵经过校验、没有环、每个节点只有唯一父节点的树。</li>
+<li>本课先处理树；一般图为什么需要 <code>visited</code>，留到下一组正式展开。</li>
+</ul>
+<section data-context-type="concept" data-learning-context="concept-frontier" id="concept-frontier">
+<h2 id="_3">前沿是“已经发现，但还没处理”<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>根先进入容器，成为第一个前沿节点。每次取出一个节点并记录它，再把存在的孩子加入容器。容器中剩下的元素，就是下一步可能处理的范围。</p>
+<p>前沿不等于已经访问的节点集合，也不等于容器分配的容量；课程统计的是当时真实等待处理的节点数。</p>
 </section>
-<section class="be-task-step" data-step-id="step-3" id="step-3">
-<h2 id="_4">第三步：用栈实现迭代前序<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>栈后进先出。为了让左孩子先处理，必须先压右、再压左；弹出时记录当前值。<strong>成功证据：</strong>固定结果为 <code>7,3,5,9,8,11</code>，与递归前序逐项一致。</p>
+<section data-context-type="example" data-learning-context="example-stack-queue" id="example-stack-queue">
+<h2 id="7-3-9">处理完 7，两种容器里都有 3 和 9<a class="headerlink" href="#7-3-9" title="Permanent link">&para;</a></h2>
+<div class="be-frontier-compare">
+<div><strong>DFS · 栈</strong><code>[9, 3] ← top</code><span>3 最后压入，所以下一个弹出 3</span></div>
+<div><strong>BFS · 队列</strong><code>front → [3, 9]</code><span>3 先入队，所以下一个取出 3</span></div>
+</div>
+<p>第二步开始分叉：DFS 继续深入 3 的孩子 5；BFS 会先处理与 3 同层的 9。</p>
 </section>
-<section class="be-task-step" data-step-id="step-4" id="step-4">
-<h2 id="bfs">第四步：用队列生成 BFS 和层级行<a class="headerlink" href="#bfs" title="Permanent link">&para;</a></h2>
-<p>队列先进先出，固定先左后右入队，并让每个队列项携带深度。</p>
-<pre class="mermaid"><code>flowchart LR
-    Q0["frontier: 7"] --&gt; Q1["处理 7；加入 3,9"]
-    Q1 --&gt; Q2["处理 3；加入 5"]
-    Q2 --&gt; Q3["处理 9；加入 8,11"]
-    Q3 --&gt; L["levels: [7] [3,9] [5,8,11]"]</code></pre>
-<p><strong>主动修改：</strong>加入只有右孩子的合法树。<strong>成功证据：</strong>层深度连续、同层保持从左到右，缺失孩子不产生占位访问。</p>
+<section data-context-type="concept" data-learning-context="concept-dfs-push-order" id="concept-dfs-push-order">
+<h2 id="_4">想先访问左孩子，就要先压右孩子<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>栈是后进先出。处理 7 时先压 9、再压 3，3 才会位于栈顶。弹出节点时记录当前值，就能得到与递归前序完全相同的结果。</p>
+<div class="highlight"><pre><span></span><code>pop 7 → push 9,3
+pop 3 → push 5
+pop 5 → pop 9 → ...
+</code></pre></div>
 </section>
-<section class="be-task-step" data-step-id="step-5" id="step-5">
-<h2 id="_5">第五步：复现压栈顺序反转失败<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>临时改为先压左、再压右，观察右子树先被弹出；不要改节点链接或报告期望值掩盖问题。<strong>诊断边界：</strong>已验证的树没有环，因此不需要 <code>visited</code>；一般图必须另行处理重复访问。<strong>恢复标准：</strong>恢复先右后左后，迭代结果重新等于递归前序。</p>
+<section data-context-type="concept" data-learning-context="concept-bfs-levels" id="concept-bfs-levels">
+<h2 id="_5">队列为什么自然形成层序<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>队列从头取出、从尾加入。深度 1 的 3、9 都比深度 2 的 5、8、11 更早入队，所以一定先完成浅层。</p>
+<p>让队列项携带深度；首次看到新深度时创建一行，后续同深度节点按入队顺序追加，就得到 <code>[7] [3,9] [5,8,11]</code>。</p>
 </section>
-<section class="be-task-step" data-step-id="step-6" id="step-6">
-<h2 id="widest_level">第六步：完成 <code>widest_level</code> 迁移验收<a class="headerlink" href="#widest_level" title="Permanent link">&para;</a></h2>
-<p>在构造层级行的同时找出最宽层。<strong>约束：</strong>并列时保留最早出现的较浅层；不依赖值排序；空树深度为空、宽度与访问数为 0。<strong>成功证据：</strong>固定树返回 <code>depth=2,width=3,visits=6</code>，单节点和并列宽度通过。</p>
-</section>
-<h2 id="_6">课程信息<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<section data-context-type="example" data-learning-context="example-frontier-trace" id="example-frontier-trace">
+<h2 id="_6">峰值出现在什么时候<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>项目</th>
-<th>内容</th>
+<th>遍历</th>
+<th>产生峰值的时刻</th>
+<th>等待节点</th>
+<th style="text-align: right;">峰值</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>前置</td>
-<td><a href="../16-recursive-dfs-traversal-call-frames/">递归深度优先遍历、基线条件与调用深度</a></td>
+<td>DFS</td>
+<td>处理 7 或 9 后</td>
+<td><code>[9,3]</code> / <code>[11,8]</code></td>
+<td style="text-align: right;">2</td>
 </tr>
 <tr>
-<td>阶段作品</td>
-<td><a href="../../../exercises/cs-core/traceable-tree-traversal-lab/">可追踪树与遍历实验</a></td>
-</tr>
-<tr>
-<td>完整遍历</td>
-<td>时间 <code>Theta(n)</code>；DFS/BFS 最坏显式空间均可到 <code>Theta(n)</code></td>
-</tr>
-<tr>
-<td>事实核查</td>
-<td>Open Data Structures、Python 与 C++ 标准草案，2026-07-16</td>
+<td>BFS</td>
+<td>处理 9 后</td>
+<td><code>[5,8,11]</code></td>
+<td style="text-align: right;">3</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_7">固定输出<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>显式前沿遍历
-dfs_preorder：7, 3, 5, 9, 8, 11
-dfs_visits=6，max_frontier=2
-bfs_level_order：7, 3, 9, 5, 8, 11
-bfs_visits=6，max_frontier=3
-levels：0=[7] 1=[3, 9] 2=[5, 8, 11]
+<p>初始根进入容器时也要参与统计。空树没有根，峰值为 0；单节点树峰值为 1。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-frontier-trace" id="reproduce-frontier-trace">
+<h2 id="_7">逐项打印两个容器<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>.venv/bin/python<span class="w"> </span>site-src/examples/algorithm-foundation/tree_frontier_trace.py
 </code></pre></div>
-<p>DFS 的典型空间与树高相关，但在一般树形和实现下最坏可积累线性前沿；BFS 由最大宽度 <code>w</code> 主导，也可能达到 <code>Theta(n)</code>。</p>
-<h2 id="_8">常见错误与排查<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>运行前先写出处理 9 之后的栈和队列。轨迹将固定打印每次 <code>pop</code> 后剩余的前沿，并在末尾给出 DFS 的 2 和 BFS 的 3。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-bilingual-frontier" id="reproduce-bilingual-frontier">
+<h2 id="_8">回归双语言阶段作品<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/cs-core/traceable-tree-traversal-lab/python
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>-v
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>src<span class="w"> </span>tests
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>traceable_tree_traversal_lab<span class="w"> </span>frontier
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/cs-core/traceable-tree-traversal-lab/cpp
+cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Debug
+cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>--config<span class="w"> </span>Debug
+ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class="w"> </span>--build-config<span class="w"> </span>Debug<span class="w"> </span>--output-on-failure
+./build/traceable_tree_traversal_lab<span class="w"> </span>frontier
+</code></pre></div>
+<p>同时回归 <code>shape</code> 与 <code>recursive</code>。两种语言三份报告必须逐字一致，迭代前序还要逐项等于递归前序。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-reverse-push" id="modify-reverse-push">
+<h2 id="_9">故意把压栈顺序反过来<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>临时改成先压左、再压右。右孩子会最后进入、最先弹出，序列在 7 后变成 9 开头。</p>
+<p>不要修改节点链接或预期输出来“修测试”。恢复先右后左，再用递归前序作为独立参照，确认完整序列逐项相等。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-widest-level" id="modify-widest-level">
+<h2 id="_10">找到最宽层<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>按深度扫描已经生成的层级行，只在当前宽度<strong>严格大于</strong>已知宽度时更新：</p>
+<div class="highlight"><pre><span></span><code>固定树 → depth=2, width=3, visits=6
+单节点 → depth=0, width=1, visits=1
+空树   → depth=None, width=0, visits=0
+</code></pre></div>
+<p>严格大于让并列宽度保留较浅的第一层；结果不依赖节点值排序。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-frontier" id="troubleshoot-frontier">
+<h2 id="dfs-bfs">DFS 走右边、BFS 变深搜或峰值少算<a class="headerlink" href="#dfs-bfs" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>现象</th>
-<th>原因</th>
-<th>恢复</th>
+<th>常见原因</th>
+<th>改法</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>DFS 先访问右子树</td>
-<td>压栈顺序与弹出顺序混淆</td>
-<td>先压右、后压左</td>
+<td>DFS 在 7 后访问 9</td>
+<td>先压左、后压右</td>
+<td>恢复先右后左</td>
 </tr>
 <tr>
-<td>BFS 变成深度优先</td>
-<td>队列被当成栈使用</td>
+<td>BFS 不按层</td>
+<td>从队尾取出，队列被当成栈</td>
 <td>头部取出、尾部加入</td>
 </tr>
 <tr>
-<td>峰值少算一个</td>
-<td>只在弹出时计数</td>
-<td>初始和每次加入后更新</td>
+<td><code>max_frontier</code> 少 1</td>
+<td>只在取出后统计</td>
+<td>初始根和每次加入后更新</td>
 </tr>
 <tr>
-<td>树遍历无故维护 visited</td>
-<td>把图的环条件提前套用</td>
-<td>先证明输入是无环树</td>
+<td>空树峰值为 1</td>
+<td>无条件假设根已入容器</td>
+<td>空根直接返回零轨迹</td>
+</tr>
+<tr>
+<td>层级深度跳号</td>
+<td>孩子没有携带 <code>depth+1</code></td>
+<td>队列项保存节点和深度</td>
+</tr>
+<tr>
+<td>树遍历无故重复跳过</td>
+<td>提前套用图的 <code>visited</code></td>
+<td>先依赖已验证的无环树契约</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_9">完成证据<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<ul>
-<li>迭代 DFS 与递归前序逐项一致。</li>
-<li>BFS、层级行、访问数和最大前沿均有固定测试。</li>
-<li>压栈顺序失败可复现并恢复，不执行未定义行为。</li>
-<li>Python 与 C++ <code>frontier</code> 输出逐字一致。</li>
+</section>
+<section data-context-type="project" data-learning-context="project-tree-v10" id="project-tree-v10">
+<h2 id="v10">可追踪树与遍历实验 v1.0<a class="headerlink" href="#v10" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>v0.1 形状、槽位与链接所有权
+v0.2 递归三序、调用深度与层计数
+v1.0 显式 DFS/BFS、前沿峰值、层级行与最宽层
+</code></pre></div>
+<p>树组现在从输入表示一直走到递归和迭代遍历，正常、空树、顺序反转、深度超限和并列宽度都有测试。下一组把“唯一父节点、没有环”的树放宽为一般无向图。</p>
+<p><a class="md-button md-button--primary" href="../../../exercises/cs-core/traceable-tree-traversal-lab/">查看可追踪树与遍历实验</a></p>
+</section>
+<section data-context-type="deepen" data-learning-context="deepen-frontier-space" id="deepen-frontier-space">
+<h2 id="_11">两种遍历都是线性时间，空间形状不同<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>DFS、BFS 都让每个节点进入并离开容器一次，完整遍历时间是 <code>Theta(n)</code>。BFS 前沿通常由最大层宽 <code>w</code> 主导；迭代 DFS 保存待处理分支，在某些树形下也可能积累到线性规模。</p>
+<p>不要简单说“DFS 永远只用树高空间”。递归调用栈沿单条路径是 <code>Theta(h)</code>；这里统计的显式前沿还可能同时保留多个尚未处理的右分支。</p>
+</section>
+<section data-context-type="deepen" data-learning-context="deepen-tree-graph-boundary" id="deepen-tree-graph-boundary">
+<h2 id="visited">为什么这节课没有 <code>visited</code><a class="headerlink" href="#visited" title="Permanent link">&para;</a></h2>
+<p>当前 <code>BinaryTree</code> 在构造时保证唯一根、唯一父节点和无环链接，从根沿孩子边不会再次遇到同一节点，因此不需要访问集合。</p>
+<p>一般图允许多个邻居指向同一顶点，也可能形成环。下一组必须在加入前沿时管理发现状态，否则会重复处理甚至无法终止。</p>
+</section>
+<section data-context-type="career" data-learning-context="career-frontier-evidence" id="career-frontier-evidence">
+<h2 id="dfs-bfs_1">用同一棵树比较 DFS 与 BFS<a class="headerlink" href="#dfs-bfs_1" title="Permanent link">&para;</a></h2>
+<p>先说明前沿的定义，再展示处理 7 后的栈 <code>[9,3]</code> 和队列 <code>[3,9]</code>。继续走到 DFS 峰值 2、BFS 峰值 3，并说明先右后左为何复现递归前序。</p>
+<p>最后补上层级行、最宽层、空树和树／图边界。这样的比较包含容器语义、固定轨迹、空间证据和适用条件。</p>
+</section>
+<h2 id="_12">完成检查<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能区分前沿、已访问节点和容器容量。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 迭代 DFS 先压右后压左，完整序列等于递归前序。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> BFS 头部取出、尾部按左后右加入，生成连续层级行。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 固定树 DFS/BFS 峰值分别为 2、3，空树与单节点正确。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>widest_level</code> 并列时保留较浅层，空树返回无深度。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Python 类型检查与单元测试、C++ 构建与 CTest、三种双语言报告全部通过。</li>
 </ul>
-<h2 id="_10">来源与版本<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h2 id="_13">来源与版本<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>来源</th>
-<th>用途</th>
-<th>核查日期</th>
+<th>用于核查</th>
+<th>版本或日期</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://opendatastructures.org/ods-python/6_1_BinaryTree_Basic_Binary.html">Open Data Structures BinaryTree</a></td>
 <td>树的 BFS 与队列前沿</td>
-<td>2026-07-16</td>
+<td>2026-07-17 核查</td>
 </tr>
 <tr>
 <td><a href="https://opendatastructures.org/ods-python/12_3_Graph_Traversal.html">Open Data Structures Graph Traversal</a></td>
 <td>DFS/BFS 容器差异与图边界</td>
-<td>2026-07-16</td>
+<td>2026-07-17 核查</td>
 </tr>
 <tr>
 <td><a href="https://docs.python.org/3.11/library/collections.html#collections.deque">Python <code>deque</code></a></td>
-<td>双端队列接口</td>
-<td>2026-07-16</td>
+<td>头部取出和尾部加入</td>
+<td>Python 3.11，2026-07-17 核查</td>
 </tr>
 <tr>
 <td><a href="https://eel.is/c++draft/container.adaptors.general">C++ 容器适配器</a></td>
-<td><code>stack</code> 与 <code>queue</code> 接口边界</td>
-<td>2026-07-16</td>
+<td><code>stack</code> 与 <code>queue</code> 接口</td>
+<td>C++20 教学基线，2026-07-17 核查</td>
 </tr>
 </tbody>
 </table>
-<p>本地 DFS/BFS 素材只用于概念和误区审计；“BFS 给出最短路”必须附带无权或等权边条件，本课尚不进入最短路。</p>
-<h2 id="_11">下一步<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
-<p>树的表示、递归与显式遍历基础闭环完成。下一课进入 <a href="../18-undirected-graph-adjacency-representations/">简单无向图、邻接表示与输入边界</a>；搜索树、堆和带权最短路仍未开放。</p>
+<p>本课的 BFS 只说明层序遍历；“BFS 给出最短路”还需要无权或等权边条件，将在图课程中单独证明。</p>
+<h2 id="_14">下一步<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p>树的表示、递归与显式遍历基础闭环完成。进入<a href="../18-undirected-graph-adjacency-representations/">简单无向图、邻接表示与输入边界</a>，把唯一父节点的树扩展为可能存在多条到达路径的一般图。</p>
 
 
 

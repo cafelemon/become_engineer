@@ -1,211 +1,301 @@
 {
-  "version": 1,
+  "version": 2,
   "lesson": {
     "id": "python-core-03",
     "title": "Python 容器协议、迭代器与生成器",
     "path": "learning-paths/programming-languages/python-core/03-iterables-iterators-generators/"
   },
-  "steps": [
+  "contexts": [
     {
-      "id": "step-1",
-      "title": "开始任务"
+      "id": "overview-iterator",
+      "type": "overview",
+      "title": "第一次有三项，第二次为什么空了",
+      "anchor": "#overview-iterator"
     },
     {
-      "id": "step-2",
-      "title": "主动修改"
+      "id": "concept-iteration-protocol",
+      "type": "concept",
+      "title": "for 循环怎样知道该停了",
+      "anchor": "#concept-iteration-protocol"
     },
     {
-      "id": "step-3",
-      "title": "按需知识"
+      "id": "concept-iterable-iterator",
+      "type": "concept",
+      "title": "容器和迭代器不是同一个角色",
+      "anchor": "#concept-iterable-iterator"
     },
     {
-      "id": "step-4",
-      "title": "排错实验"
+      "id": "concept-generator",
+      "type": "concept",
+      "title": "yield 会把函数暂停在中间",
+      "anchor": "#concept-generator"
     },
     {
-      "id": "step-5",
-      "title": "迁移验收"
+      "id": "example-eager-lazy",
+      "type": "example",
+      "title": "列表推导立刻算，生成器表达式按需算",
+      "anchor": "#example-eager-lazy"
+    },
+    {
+      "id": "concept-iterator-types",
+      "type": "concept",
+      "title": "类型签名要说明消费方式",
+      "anchor": "#concept-iterator-types"
+    },
+    {
+      "id": "troubleshoot-double-consume",
+      "type": "troubleshoot",
+      "title": "两次统计为什么第二次得到 0",
+      "anchor": "#troubleshoot-double-consume"
+    },
+    {
+      "id": "example-iteration-tools",
+      "type": "example",
+      "title": "常用工具也有消费规则",
+      "anchor": "#example-iteration-tools"
+    },
+    {
+      "id": "reproduce-lazy-pipeline",
+      "type": "reproduce",
+      "title": "看见生成器什么时候真正开始",
+      "anchor": "#reproduce-lazy-pipeline"
+    },
+    {
+      "id": "modify-incomplete-courses",
+      "type": "modify",
+      "title": "增加只看未完成课程",
+      "anchor": "#modify-incomplete-courses"
+    },
+    {
+      "id": "project-reporter-iterator",
+      "type": "project",
+      "title": "找到报告器唯一的物化边界",
+      "anchor": "#project-reporter-iterator"
+    },
+    {
+      "id": "deepen-lazy-cost",
+      "type": "deepen",
+      "title": "惰性把成本推迟了，也把失败推迟了",
+      "anchor": "#deepen-lazy-cost"
+    },
+    {
+      "id": "career-iterator-evidence",
+      "type": "career",
+      "title": "讲惰性处理时，说明消费次数",
+      "anchor": "#career-iterator-evidence"
     }
   ],
   "cards": [
     {
-      "id": "lazy-run",
+      "id": "iter-exhausted",
       "lesson_id": "python-core-03",
-      "step_id": "step-1",
-      "question": "惰性学习报告器如何观察生成时机？",
+      "context_id": "overview-iterator",
+      "question": "为什么第一次遍历有值，第二次却空了？",
       "aliases": [
-        "生成器什么时候执行",
-        "惰性报告器运行"
-      ],
-      "keywords": [
-        "生成器",
-        "惰性",
-        "next",
-        "报告器"
-      ],
-      "diagnostic": "你只创建了生成器，还是已经调用 next 或进入循环？",
-      "hints": [
-        "生成器函数调用创建生成器对象，代码在首次消费时才推进。",
-        "先创建生成器对象但不消费，再调用一次 `next()`，观察代码只产生第一条报告行。"
-      ],
-      "example": "局部示例：`rows = progress_lines(records)` 后尚未输出；`next(rows)` 才得到第一行。",
-      "answer": "在产生值处加临时可观察输出，比较创建与消费顺序。",
-      "source": {
-        "label": "第一步：观察一次惰性报告消费",
-        "href": "#step-1"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": true
-    },
-    {
-      "id": "iterable-iterator",
-      "lesson_id": "python-core-03",
-      "step_id": "step-1",
-      "question": "Iterable 和 Iterator 有什么区别？",
-      "aliases": [
-        "可迭代对象和迭代器",
-        "iter next区别"
-      ],
-      "keywords": [
-        "Iterable",
-        "Iterator",
-        "iter",
-        "next"
-      ],
-      "diagnostic": "对象能否提供新迭代器，还是自身保存当前消费位置？",
-      "hints": [
-        "Iterable 可交给 iter；Iterator 既可迭代又可被 next 推进并保存位置。",
-        "对容器调用 `iter()` 得到迭代器，并用 `next()` 消费一项，比较容器与迭代器的状态。"
-      ],
-      "example": "局部示例：`iterator = iter(records); first = next(iterator)`。",
-      "answer": "容器通常可重复迭代，单个迭代器通常只能消费一次。",
-      "source": {
-        "label": "第一步：观察一次惰性报告消费",
-        "href": "#step-1"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": true
-    },
-    {
-      "id": "generator-function",
-      "lesson_id": "python-core-03",
-      "step_id": "step-2",
-      "question": "生成器函数为什么要用 yield？",
-      "aliases": [
-        "yield有什么用",
-        "生成器函数怎么写"
-      ],
-      "keywords": [
-        "yield",
-        "生成器",
-        "暂停",
-        "惰性"
-      ],
-      "diagnostic": "你希望一次性返回所有结果，还是按需要逐个产生？",
-      "hints": [
-        "yield 产出一个值并保留函数状态，下一次消费从暂停处继续。",
-        "将逐条报告的 `return` 改为 `yield`，用 for 循环消费并观察每条只在需要时创建。"
-      ],
-      "example": "局部示例：`def progress_lines(records):\\n    for record in records:\\n        yield record[\"course\"]`。",
-      "answer": "用 yield 逐条产生报告行，而不是先构造所有文本。",
-      "source": {
-        "label": "第二步：增加一个惰性筛选或报告行",
-        "href": "#step-2"
-      },
-      "updated_at": "2026-07-15"
-    },
-    {
-      "id": "generator-expression",
-      "lesson_id": "python-core-03",
-      "step_id": "step-2",
-      "question": "列表推导式和生成器表达式怎么选？",
-      "aliases": [
-        "列表推导和生成器区别",
-        "括号生成器"
-      ],
-      "keywords": [
-        "列表",
-        "生成器",
-        "内存",
-        "惰性"
-      ],
-      "diagnostic": "调用方是否需要多次遍历、长度或索引？",
-      "hints": [
-        "列表立即物化并可多次遍历；生成器表达式按需产生值且常更省内存。",
-        "对同一筛选写一个列表推导和一个圆括号生成器，观察列表立即有全部值而生成器需消费。"
-      ],
-      "example": "局部示例：`(record for record in records if record[\"done\"])` 是生成器表达式。",
-      "answer": "按消费次数和接口需求选择，不把惰性当绝对更好。",
-      "source": {
-        "label": "第二步：增加一个惰性筛选或报告行",
-        "href": "#step-2"
-      },
-      "updated_at": "2026-07-15"
-    },
-    {
-      "id": "islice-boundary",
-      "lesson_id": "python-core-03",
-      "step_id": "step-3",
-      "question": "为什么无限或长迭代要用 islice 限制？",
-      "aliases": [
-        "islice怎么用",
-        "无限生成器限制"
-      ],
-      "keywords": [
-        "islice",
-        "无限",
-        "消费",
-        "边界"
-      ],
-      "diagnostic": "来源是否可能无限或远大于当前展示需要？",
-      "hints": [
-        "惰性不等于自动停止；消费者需给出明确数量或终止条件。",
-        "给可能很长的报告行加明确数量限制，再确认只显示需要的前几项。"
-      ],
-      "example": "局部示例：`from itertools import islice; preview = list(islice(rows, 3))`。",
-      "answer": "用 islice 限制报告预览，避免无界循环或无界工作。",
-      "source": {
-        "label": "第三步：为消费设定边界",
-        "href": "#step-3"
-      },
-      "updated_at": "2026-07-15"
-    },
-    {
-      "id": "double-consume",
-      "lesson_id": "python-core-03",
-      "step_id": "step-4",
-      "question": "为什么第二次遍历迭代器没有结果？",
-      "aliases": [
-        "迭代器第二次为空",
-        "生成器被消费"
+        "同一个iterator第二次list为什么是空列表",
+        "迭代器会自动回到开头吗"
       ],
       "keywords": [
         "迭代器",
-        "消费",
+        "耗尽",
         "第二次",
         "空"
       ],
-      "diagnostic": "第一次循环是否已走到迭代器末尾？",
+      "diagnostic": "第一次操作是否已经把同一个迭代器消费到终点？",
       "hints": [
-        "迭代器维护当前位置，耗尽后不会自动回到开头。",
-        "先 `list(iterator)` 一次，再次转列表观察为空；按需求重新创建迭代器或在边界保存列表。"
+        "迭代器保存当前位置，只向前推进。",
+        "耗尽后不会自动重置；需要从容器重新 iter() 或重新创建生成器。"
       ],
-      "example": "局部示例：`rows = progress_lines(records); list(rows); list(rows)` 的第二个列表为空。",
-      "answer": "重新创建迭代器，或在确实需要二次消费的边界 list() 一次。",
+      "example": "list(iterator) 第一次取完后，第二次得到 []。",
+      "answer": "同一迭代器通常单次消费；容器仍在，但这个遍历状态已经到终点。",
       "source": {
-        "label": "第四步：复现单次消费错误",
-        "href": "#step-4"
+        "label": "第一次有三项，第二次为什么空了",
+        "href": "#overview-iterator"
       },
-      "updated_at": "2026-07-15"
+      "updated_at": "2026-07-17",
+      "recommended": true
     },
     {
-      "id": "sequence-interface",
+      "id": "iter-for-stop",
       "lesson_id": "python-core-03",
-      "step_id": "step-3",
-      "question": "Iterable、Iterator 和 Sequence 应该怎样写进类型签名？",
+      "context_id": "concept-iteration-protocol",
+      "question": "for 循环怎样知道没有下一个值了？",
       "aliases": [
-        "迭代类型注解",
-        "Sequence还是Iterable"
+        "StopIteration在for循环里做什么",
+        "iter和next的协议怎么结束"
+      ],
+      "keywords": [
+        "for",
+        "StopIteration",
+        "iter",
+        "next"
+      ],
+      "diagnostic": "next(iterator) 在耗尽时会给出什么信号？",
+      "hints": [
+        "iter(source) 取得迭代器。",
+        "next() 耗尽时抛 StopIteration，for 循环将它视为正常结束。"
+      ],
+      "example": "第三次 next 两项迭代器会 StopIteration。",
+      "answer": "迭代协议用 StopIteration 表示结束；for 循环内部处理它，无需业务代码手写。",
+      "source": {
+        "label": "for 循环怎样知道该停了",
+        "href": "#concept-iteration-protocol"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "iter-next-default",
+      "lesson_id": "python-core-03",
+      "context_id": "concept-iteration-protocol",
+      "question": "next() 的默认值有什么用？",
+      "aliases": [
+        "怎样避免手动next耗尽时报异常",
+        "next iterator 没值时返回提示"
+      ],
+      "keywords": [
+        "next",
+        "默认值",
+        "耗尽"
+      ],
+      "diagnostic": "调用 next 时是否传了第二个参数？",
+      "hints": [
+        "next(iterator, default) 在耗尽时返回 default。",
+        "不传默认值才抛 StopIteration。"
+      ],
+      "example": "next(iterator, '没有更多课程') 安全返回提示。",
+      "answer": "默认值适合可接受耗尽的精确消费；正常遍历仍优先用 for。",
+      "source": {
+        "label": "for 循环怎样知道该停了",
+        "href": "#concept-iteration-protocol"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "iter-container-role",
+      "lesson_id": "python-core-03",
+      "context_id": "concept-iterable-iterator",
+      "question": "列表和列表迭代器有什么区别？",
+      "aliases": [
+        "容器与iterator分别保存什么",
+        "为什么next不能直接传list"
+      ],
+      "keywords": [
+        "列表",
+        "迭代器",
+        "容器",
+        "位置"
+      ],
+      "diagnostic": "对象保存的是数据，还是某次遍历的位置？",
+      "hints": [
+        "列表保存元素，可以创建多个独立迭代器。",
+        "迭代器保存当前位置，可交给 next()。"
+      ],
+      "example": "iter(list) 每次通常得到新对象，iter(iterator) 返回自己。",
+      "answer": "容器负责保存数据，迭代器负责一次遍历状态；角色不同，所以 list 不能直接 next。",
+      "source": {
+        "label": "容器和迭代器不是同一个角色",
+        "href": "#concept-iterable-iterator"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "iter-generator-timing",
+      "lesson_id": "python-core-03",
+      "context_id": "concept-generator",
+      "question": "生成器函数什么时候真正执行？",
+      "aliases": [
+        "调用有yield的函数为什么没打印",
+        "第一次next才开始是什么意思"
+      ],
+      "keywords": [
+        "生成器",
+        "yield",
+        "执行时机",
+        "next"
+      ],
+      "diagnostic": "你只是调用了生成器函数，还是已经推进了它？",
+      "hints": [
+        "调用生成器函数先创建对象，不运行到第一个 yield。",
+        "第一次 next() 才进入函数体，yield 返回值并暂停。"
+      ],
+      "example": "generator = trace_courses() 不打印；next(generator) 才打印开始。",
+      "answer": "生成器把创建和执行分开，代码按消费需求逐段运行。",
+      "source": {
+        "label": "yield 会把函数暂停在中间",
+        "href": "#concept-generator"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "iter-yield-state",
+      "lesson_id": "python-core-03",
+      "context_id": "concept-generator",
+      "question": "yield 之后局部变量和位置去哪了？",
+      "aliases": [
+        "生成器暂停后怎么继续",
+        "yield和return有什么区别"
+      ],
+      "keywords": [
+        "yield",
+        "暂停",
+        "局部状态",
+        "恢复"
+      ],
+      "diagnostic": "下一次 next() 是否要从函数开头重新执行？",
+      "hints": [
+        "yield 返回一个值并暂停当前帧。",
+        "局部变量和指令位置保留，下一次从 yield 后继续。"
+      ],
+      "example": "第二次 next() 继续执行 yield 后面的语句。",
+      "answer": "生成器对象保存暂停状态；耗尽后关闭，不会自动重启。",
+      "source": {
+        "label": "yield 会把函数暂停在中间",
+        "href": "#concept-generator"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "iter-eager-lazy",
+      "lesson_id": "python-core-03",
+      "context_id": "example-eager-lazy",
+      "question": "列表推导式和生成器表达式怎么选？",
+      "aliases": [
+        "方括号和圆括号推导有什么差别",
+        "惰性一定更快更好吗"
+      ],
+      "keywords": [
+        "列表推导",
+        "生成器表达式",
+        "惰性",
+        "选择"
+      ],
+      "diagnostic": "结果需要一次顺序处理，还是要反复读取并保存？",
+      "hints": [
+        "列表推导立即计算并保存全部结果。",
+        "生成器表达式按需计算，适合一次流水处理或提前停止。"
+      ],
+      "example": "[x*2 for x in range(4)] 是列表，(x*2 for x in range(4)) 是生成器。",
+      "answer": "按消费方式和数据规模选择；惰性不自动更快，也会推迟异常。",
+      "source": {
+        "label": "列表推导立刻算，生成器表达式按需算",
+        "href": "#example-eager-lazy"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "iter-type-choice",
+      "lesson_id": "python-core-03",
+      "context_id": "concept-iterator-types",
+      "question": "Iterable、Iterator 和 Sequence 应该怎样选？",
+      "aliases": [
+        "三个容器协议的区别",
+        "函数参数和生成器返回类型怎么标"
       ],
       "keywords": [
         "Iterable",
@@ -213,46 +303,308 @@
         "Sequence",
         "类型"
       ],
-      "diagnostic": "函数需要索引和多次遍历，还是只需一次顺序消费？",
+      "diagnostic": "实现只遍历一次、要直接 next，还是需要长度与索引？",
       "hints": [
-        "按最低能力写接口：一次消费用 Iterable/Iterator，索引与可重复访问才要求 Sequence。",
-        "根据函数是否需要索引或二次遍历来写签名，不要求生成器具备 Sequence 能力。"
+        "单次遍历参数用 Iterable。",
+        "生成器返回 Iterator；需要长度、索引或多次读取时用 Sequence。"
       ],
-      "example": "局部示例：只遍历一次可写 `def render(records: Iterable[StudyRecord]) -> Iterable[str]:`。",
-      "answer": "过宽的 Sequence 会限制可传入生成器；过窄的 Iterator 会误导调用者。",
+      "example": "positive(values: Iterable[int]) -> Iterator[int]。",
+      "answer": "签名要表达真实消费方式，不能标 Iterable 却偷偷索引或多次遍历。",
       "source": {
-        "label": "第三步：为消费设定边界",
-        "href": "#step-3"
+        "label": "类型签名要说明消费方式",
+        "href": "#concept-iterator-types"
       },
-      "updated_at": "2026-07-15"
+      "updated_at": "2026-07-17",
+      "recommended": false
     },
     {
-      "id": "lazy-migration",
+      "id": "iter-double-consume",
       "lesson_id": "python-core-03",
-      "step_id": "step-5",
-      "question": "如何新增惰性报告视图并验收？",
+      "context_id": "troubleshoot-double-consume",
+      "question": "为什么同一个生成器做总和后计数会变成 0？",
       "aliases": [
-        "生成器迁移任务",
-        "惰性视图验收"
+        "broken_summary为什么对列表对生成器结果不同",
+        "两次遍历一次性输入有什么坑"
       ],
       "keywords": [
-        "迁移",
-        "惰性",
-        "测试",
-        "双语言"
+        "重复消费",
+        "总和",
+        "计数",
+        "生成器"
       ],
-      "diagnostic": "新视图是按标签筛选、逐行输出，还是需要物化汇总？",
+      "diagnostic": "第一次 sum(values) 是否已经走完整个输入？",
       "hints": [
-        "先定义消费方式与停止条件，再保持最终共同报告规则不变。",
-        "新增惰性标签视图后，将它与共同报告比较，并确认不会提前把全部记录变成列表。"
+        "生成器在第一次 sum 后耗尽。",
+        "第二次遍历没有剩余值，所以计数是 0。"
       ],
-      "example": "局部示例：`yield from (row for row in rows if \"Python\" in row)` 可作为一条惰性视图。",
-      "answer": "运行 mypy、测试和双语言比较，验证输入不被意外耗尽或修改。",
+      "example": "对 iter([1,2]) 先 sum 再计数得到 count=0。",
+      "answer": "把汇总和计数放在同一循环，或在明确需要多次读取的边界只物化一次。",
       "source": {
-        "label": "第五步：迁移验收与下一步",
-        "href": "#step-5"
+        "label": "两次统计为什么第二次得到 0",
+        "href": "#troubleshoot-double-consume"
       },
-      "updated_at": "2026-07-15"
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "iter-materialize",
+      "lesson_id": "python-core-03",
+      "context_id": "troubleshoot-double-consume",
+      "question": "什么时候把 Iterable 转成 list 是合理的？",
+      "aliases": [
+        "物化是不是一定不好",
+        "多次排序筛选怎样处理一次性输入"
+      ],
+      "keywords": [
+        "物化",
+        "list",
+        "边界",
+        "多次读取"
+      ],
+      "diagnostic": "后续是否确实需要汇总、排序和筛选多次？",
+      "hints": [
+        "需要多次分析时在公开入口 list(values) 一次。",
+        "不要让多个深层函数各自偷偷物化。"
+      ],
+      "example": "build_report 入口创建 snapshot，后续共享它。",
+      "answer": "物化是资源决策，不是失败；关键是位置明确、次数可控、理由真实。",
+      "source": {
+        "label": "两次统计为什么第二次得到 0",
+        "href": "#troubleshoot-double-consume"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "iter-tools",
+      "lesson_id": "python-core-03",
+      "context_id": "example-iteration-tools",
+      "question": "zip(strict=True) 为什么比普通 zip 更安全？",
+      "aliases": [
+        "两个列表长度不一致为什么要报错",
+        "zip静默截断怎么避免"
+      ],
+      "keywords": [
+        "zip",
+        "strict",
+        "长度",
+        "截断"
+      ],
+      "diagnostic": "业务是否要求两组数据一一对应且长度相同？",
+      "hints": [
+        "普通 zip 在最短输入结束时停止。",
+        "strict=True 在长度不同时报 ValueError，避免尾部数据被悄悄丢弃。"
+      ],
+      "example": "课程名2项、小时1项时 strict zip 会失败。",
+      "answer": "当长度一致是契约时启用 strict，让数据错位明确暴露。",
+      "source": {
+        "label": "常用工具也有消费规则",
+        "href": "#example-iteration-tools"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "iter-islice",
+      "lesson_id": "python-core-03",
+      "context_id": "example-iteration-tools",
+      "question": "为什么无限生成器必须配 islice？",
+      "aliases": [
+        "natural_numbers为什么不能直接list",
+        "怎样只取无限来源前五项"
+      ],
+      "keywords": [
+        "无限生成器",
+        "islice",
+        "边界",
+        "停止"
+      ],
+      "diagnostic": "这个来源是否有自然终点？",
+      "hints": [
+        "无限生成器会持续 yield。",
+        "islice(source, n) 只消费前 n 项并停止。"
+      ],
+      "example": "list(islice(natural_numbers(),5)) 得到0到4。",
+      "answer": "有限消费者为无限或未知长度来源提供明确停止条件，不能直接完整物化。",
+      "source": {
+        "label": "常用工具也有消费规则",
+        "href": "#example-iteration-tools"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "iter-reproduce",
+      "lesson_id": "python-core-03",
+      "context_id": "reproduce-lazy-pipeline",
+      "question": "惰性筛选例子里的 events 应该怎么看？",
+      "aliases": [
+        "before为空after_first只有Python说明什么",
+        "生成器执行轨迹怎样读"
+      ],
+      "keywords": [
+        "events",
+        "惰性筛选",
+        "轨迹"
+      ],
+      "diagnostic": "创建 filtered 后，来源函数是否已经执行？",
+      "hints": [
+        "before=[] 证明还未进入来源。",
+        "first=Python 后 events 只有 start 和 Python，说明只推进到首个匹配。"
+      ],
+      "example": "继续消费才经过 Web 并找到 CS。",
+      "answer": "事件轨迹把创建、部分消费、继续消费和耗尽四个时刻分开。",
+      "source": {
+        "label": "看见生成器什么时候真正开始",
+        "href": "#reproduce-lazy-pipeline"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "iter-new-view",
+      "lesson_id": "python-core-03",
+      "context_id": "modify-incomplete-courses",
+      "question": "怎样实现惰性的未完成课程筛选？",
+      "aliases": [
+        "iter_incomplete应该怎么写",
+        "只看未完成课程不能先转列表"
+      ],
+      "keywords": [
+        "未完成",
+        "惰性",
+        "筛选",
+        "测试"
+      ],
+      "diagnostic": "函数能否在第一次 next 前不读取来源？",
+      "hints": [
+        "返回 Iterator，并在 for 中按完成小时与目标小时判断。",
+        "先测创建不执行、首个匹配、顺序和耗尽。"
+      ],
+      "example": "不要在 iter_incomplete 内先 list(records)。",
+      "answer": "惰性筛选应按需推进并保留输入顺序；若需要副本隔离，也要在 yield 前明确复制。",
+      "source": {
+        "label": "增加只看未完成课程",
+        "href": "#modify-incomplete-courses"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "iter-project",
+      "lesson_id": "python-core-03",
+      "context_id": "project-reporter-iterator",
+      "question": "报告器为什么只在 build_report 入口物化一次？",
+      "aliases": [
+        "项目生成器在哪里转list",
+        "任意Iterable怎样支持多次汇总排序筛选"
+      ],
+      "keywords": [
+        "报告器",
+        "build_report",
+        "snapshot",
+        "物化"
+      ],
+      "diagnostic": "报告生成后面是否需要汇总、排序和标签筛选多次读取？",
+      "hints": [
+        "任意 Iterable 可能只能消费一次。",
+        "入口复制为 snapshot 后，所有后续分析共享同一稳定快照。"
+      ],
+      "example": "列表、元组和生成器应得到同一报告。",
+      "answer": "单一公开物化边界既兼容一次性输入，又避免深层函数重复消费和重复复制。",
+      "source": {
+        "label": "找到报告器唯一的物化边界",
+        "href": "#project-reporter-iterator"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": true
+    },
+    {
+      "id": "iter-project-tests",
+      "lesson_id": "python-core-03",
+      "context_id": "project-reporter-iterator",
+      "question": "报告器的迭代边界要用哪些测试证明？",
+      "aliases": [
+        "项目惰性行为怎么验收",
+        "生成器进入正式报告要测什么"
+      ],
+      "keywords": [
+        "项目测试",
+        "惰性",
+        "输入不变",
+        "30项"
+      ],
+      "diagnostic": "是否覆盖执行时机、耗尽、不同输入形态和副作用？",
+      "hints": [
+        "验证 next 前不执行、耗尽后为空。",
+        "比较列表、元组、一次性生成器报告，并确认排序筛选不改输入。"
+      ],
+      "example": "当前正式项目30项测试保持通过。",
+      "answer": "迭代接口需要行为证据；只看类型标注无法证明消费次数和执行时机。",
+      "source": {
+        "label": "找到报告器唯一的物化边界",
+        "href": "#project-reporter-iterator"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "iter-lazy-failure",
+      "lesson_id": "python-core-03",
+      "context_id": "deepen-lazy-cost",
+      "question": "惰性计算为什么也会把异常推迟？",
+      "aliases": [
+        "生成器创建成功为什么next才报错",
+        "懒执行有哪些资源风险"
+      ],
+      "keywords": [
+        "惰性",
+        "异常",
+        "推迟",
+        "资源"
+      ],
+      "diagnostic": "可能失败的代码位于 yield 前后，真正什么时候执行？",
+      "hints": [
+        "生成器创建时函数体通常未运行。",
+        "读取文件或计算错误可能在后续某次 next 才发生。"
+      ],
+      "example": "测试要推进到失败位置，不能只创建生成器。",
+      "answer": "惰性推迟成本也推迟失败；必须说明消费、关闭和异常处理边界。",
+      "source": {
+        "label": "惰性把成本推迟了，也把失败推迟了",
+        "href": "#deepen-lazy-cost"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
+    },
+    {
+      "id": "iter-career",
+      "lesson_id": "python-core-03",
+      "context_id": "career-iterator-evidence",
+      "question": "项目里怎样讲清生成器的价值和取舍？",
+      "aliases": [
+        "求职怎么表达惰性处理",
+        "为什么不把所有列表都换成生成器"
+      ],
+      "keywords": [
+        "求职",
+        "生成器",
+        "取舍",
+        "证据"
+      ],
+      "diagnostic": "能否说清消费次数、物化位置和适用数据规模？",
+      "hints": [
+        "展示任意 Iterable、惰性筛选和单一 snapshot 边界。",
+        "同时说明小数据反复读取时列表更简单，惰性会增加时机与资源管理难度。"
+      ],
+      "example": "用事件测试、islice和报告一致证明设计。",
+      "answer": "好的表达包含适用场景、失败风险和验证证据，不把生成器包装成无条件优化。",
+      "source": {
+        "label": "讲惰性处理时，说明消费次数",
+        "href": "#career-iterator-evidence"
+      },
+      "updated_at": "2026-07-17",
+      "recommended": false
     }
   ]
 }

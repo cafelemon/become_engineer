@@ -1732,7 +1732,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        一条状态卡，长成了多记录报告
       
     </span>
   </a>
@@ -1743,7 +1743,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：生成第一份多记录报告
+        开始前
       
     </span>
   </a>
@@ -1754,7 +1754,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：为记录选择容器
+        先问数据怎样使用，再选容器
       
     </span>
   </a>
@@ -1765,7 +1765,29 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：用算法完成一个可观察修改
+        一条记录先用简单聚合表示
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#begin-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [begin, end) 包含开头，不包含结尾
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#size-capacity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        size 是现有元素，capacity 是当前存储余量
       
     </span>
   </a>
@@ -1776,7 +1798,29 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：故意观察迭代器失效或排序风险
+        查找、计数、转换和累计各有明确结果
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sort 会改范围，所以报告器排序副本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        去重和稳定输出，是这里选择 set、map 的理由
       
     </span>
   </a>
@@ -1787,7 +1831,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：迁移验收与下一步
+        复杂度讲增长，不承诺一次运行几毫秒
       
     </span>
   </a>
@@ -1798,7 +1842,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        先用四个整数看清算法行为
       
     </span>
   </a>
@@ -1809,7 +1853,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        学习目标
+        运行正式双语言报告器
       
     </span>
   </a>
@@ -1820,7 +1864,18 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        学习顺序
+        增加“未完成课程数”
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#push_back" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        push_back 以后，旧位置可能已经不在原来的存储上
       
     </span>
   </a>
@@ -1831,38 +1886,43 @@
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        根据需求选择容器
+        排序异常时，先检查比较器和复制边界
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="根据需求选择容器">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        固定长度与动态长度
+        报告器开始处理真正的一组数据
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
-        结构化记录只做简单聚合
+        容器选择是一组权衡，不是一张固定答案表
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#stl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        讲 STL 时，讲选择和失败，不要背接口名
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1870,18 +1930,7 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        迭代器与半开区间
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vector" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        vector容量与迭代器失效
+        完成检查
       
     </span>
   </a>
@@ -1892,277 +1941,6 @@
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        标准算法操作范围
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="标准算法操作范围">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#findfind_if" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        find与find_if
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#count_iftransformaccumulate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        count_if、transform与accumulate
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sort" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sort会修改传入范围
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lambda" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Lambda与严格弱序
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        有序与无序关联容器
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        复杂度与选择依据
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完整示例：多记录学习报告器
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="完整示例：多记录学习报告器">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        公开头文件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        业务实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        程序入口
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完整测试文件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cmake" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        CMake项目
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#git" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Git忽略边界
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        构建、测试与运行
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI协作任务
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AI协作任务">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        可复用提示模板
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        人工审阅清单
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        核心手动检查点
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        微练习
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常见错误与排查
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        阶段作品
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完成标准
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         来源与版本
       
     </span>
@@ -2171,7 +1949,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -4181,7 +3959,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        一条状态卡，长成了多记录报告
       
     </span>
   </a>
@@ -4192,7 +3970,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：生成第一份多记录报告
+        开始前
       
     </span>
   </a>
@@ -4203,7 +3981,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：为记录选择容器
+        先问数据怎样使用，再选容器
       
     </span>
   </a>
@@ -4214,7 +3992,29 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：用算法完成一个可观察修改
+        一条记录先用简单聚合表示
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#begin-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [begin, end) 包含开头，不包含结尾
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#size-capacity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        size 是现有元素，capacity 是当前存储余量
       
     </span>
   </a>
@@ -4225,7 +4025,29 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：故意观察迭代器失效或排序风险
+        查找、计数、转换和累计各有明确结果
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sort 会改范围，所以报告器排序副本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        去重和稳定输出，是这里选择 set、map 的理由
       
     </span>
   </a>
@@ -4236,7 +4058,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：迁移验收与下一步
+        复杂度讲增长，不承诺一次运行几毫秒
       
     </span>
   </a>
@@ -4247,7 +4069,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        先用四个整数看清算法行为
       
     </span>
   </a>
@@ -4258,7 +4080,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        学习目标
+        运行正式双语言报告器
       
     </span>
   </a>
@@ -4269,7 +4091,18 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        学习顺序
+        增加“未完成课程数”
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#push_back" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        push_back 以后，旧位置可能已经不在原来的存储上
       
     </span>
   </a>
@@ -4280,38 +4113,43 @@
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        根据需求选择容器
+        排序异常时，先检查比较器和复制边界
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="根据需求选择容器">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        固定长度与动态长度
+        报告器开始处理真正的一组数据
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
-        结构化记录只做简单聚合
+        容器选择是一组权衡，不是一张固定答案表
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#stl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        讲 STL 时，讲选择和失败，不要背接口名
+      
+    </span>
+  </a>
   
 </li>
       
@@ -4319,18 +4157,7 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        迭代器与半开区间
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vector" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        vector容量与迭代器失效
+        完成检查
       
     </span>
   </a>
@@ -4341,277 +4168,6 @@
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        标准算法操作范围
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="标准算法操作范围">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#findfind_if" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        find与find_if
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#count_iftransformaccumulate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        count_if、transform与accumulate
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sort" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sort会修改传入范围
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lambda" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Lambda与严格弱序
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        有序与无序关联容器
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        复杂度与选择依据
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完整示例：多记录学习报告器
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="完整示例：多记录学习报告器">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        公开头文件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        业务实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        程序入口
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完整测试文件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cmake" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        CMake项目
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#git" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Git忽略边界
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        构建、测试与运行
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI协作任务
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AI协作任务">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        可复用提示模板
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        人工审阅清单
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        核心手动检查点
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        微练习
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常见错误与排查
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        阶段作品
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        完成标准
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         来源与版本
       
     </span>
@@ -4620,7 +4176,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -4650,259 +4206,165 @@
   
 
 
-<h1 id="c-stl">C++ STL 容器、迭代器与基础算法<a class="headerlink" href="#c-stl" title="Permanent link">&para;</a></h1>
 <div class="be-tutor-mount" data-tutor-lesson="cpp-core-04" aria-hidden="true"></div>
 
-<blockquote>
-<p><strong>任务先行：</strong> 把学习状态卡升级为多记录学习报告器。先完成一条可验证报告，再用容器、范围和算法解释每次修改。</p>
-</blockquote>
-<h2 id="_1">任务路线<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="be-task-route" role="list" aria-label="本课五步任务"><span role="listitem">1 报告</span><span role="listitem">2 容器</span><span role="listitem">3 算法</span><span role="listitem">4 诊断</span><span role="listitem">5 迁移</span></div>
+<section class="be-page-hero be-lesson-hero" data-context-type="overview" data-learning-context="overview-multi-record-report" id="overview-multi-record-report">
+<p><span class="be-page-eyebrow">C++ 核心 · 第二课 · 双语言学习进度报告器</span></p>
+<h1 id="c-stl">C++ STL 容器、迭代器与基础算法<a class="headerlink" href="#c-stl" title="Permanent link">&para;</a></h1>
+<h2 id="_1">一条状态卡，长成了多记录报告<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>学习进度报告
+总计划：35.0 小时
+总完成：30.5 小时
+总体进度：87.1%
 
-<section class="be-task-step" data-step-id="step-1" id="step-1">
-<h2 id="_2">第一步：生成第一份多记录报告<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>按完整示例构建并运行双语言学习报告器。<strong>可观察结果：</strong> C++ 输出与共同数据和报告规则一致，CTest 通过。</p>
+按进度排序：
+- C++ 核心：100.0%（已完成）
+- 工程复盘：100.0%（已完成）
+- Python 起步：75.0%（进行中）
+- 算法练习：50.0%（进行中）
+</code></pre></div>
+<p>数据从一条变成多条以后，程序要保存顺序、汇总小时、去重标签、统计状态、排序和筛选。STL 不只是容器名字和函数表，它提供了一套“数据放在哪里、算法处理哪段范围、修改后什么位置仍然有效”的共同语言。</p>
+<div class="be-page-actions">
+<p><a class="md-button md-button--primary" href="#concept-choose-container">先选合适的容器</a>
+<a class="md-button" href="#reproduce-stl-micro">直接跑算法小例子</a></p>
+</div>
 </section>
-<section class="be-task-step" data-step-id="step-2" id="step-2">
-<h2 id="_3">第二步：为记录选择容器<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>向样例增加一条学习记录，说明为什么动态记录使用 <code>std::vector</code>，唯一标签可使用 <code>std::set</code>，按键查找才考虑 <code>std::map</code>。重新运行并确认记录进入报告。</p>
-</section>
-<section class="be-task-step" data-step-id="step-3" id="step-3">
-<h2 id="_4">第三步：用算法完成一个可观察修改<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>在半开区间 <code>[begin, end)</code> 上使用 <code>find_if</code>、<code>count_if</code>、<code>transform</code>、<code>accumulate</code> 或 <code>sort</code> 中的一种，输出修改前后结果。<strong>成功标准：</strong> 能说明 <code>end()</code> 不是最后一个元素。</p>
-</section>
-<section class="be-task-step" data-step-id="step-4" id="step-4">
-<h2 id="_5">第四步：故意观察迭代器失效或排序风险<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>保存 <code>vector</code> 迭代器后触发可能重新分配的增长，或把排序比较器临时写成 <code>&lt;=</code> 并阅读问题。恢复安全写法。<strong>验收：</strong> 不持有可能失效的迭代器继续解引用。</p>
-</section>
-<section class="be-task-step" data-step-id="step-5" id="step-5">
-<h2 id="_6">第五步：迁移验收与下一步<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<p>独立增加一种统计或筛选规则，保证输入记录不被意外修改，并与 Python 版本对比输出。完成后进入 Python 迭代器与生成器，理解惰性消费的对应关系。</p>
-</section>
-<p>上一节已经把程序拆成头文件、源文件、库、应用和测试，但学习状态卡仍然只能处理一条记录。本节把它升级为多记录报告器，并学习如何根据数据的顺序、唯一性和查找方式选择容器。</p>
-<p>目标不是背完STL接口，而是建立三个判断：数据应该放在哪里、算法通过什么范围处理数据、修改容器后哪些位置仍然有效。</p>
-<h2 id="_7">课程信息<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>适合人群</td>
-<td>已完成C++多文件与最小CMake课程，需要处理多条结构化数据的学习者</td>
-</tr>
-<tr>
-<td>前置知识</td>
-<td>C++20基础类型、函数、<code>const&amp;</code>、命名空间、头文件、CMake和CTest</td>
-</tr>
-<tr>
-<td>学习结果</td>
-<td>能选择基础STL容器，使用迭代器和标准算法处理多条记录，并解释复杂度与失效边界</td>
-</tr>
-<tr>
-<td>环境</td>
-<td>Apple Clang 21、CMake 4.4.0；C++20，仅使用标准库</td>
-</tr>
-<tr>
-<td>阶段作品</td>
-<td><a href="../../../../exercises/programming-languages/study-progress-reporters/">双语言学习进度报告器</a></td>
-</tr>
-<tr>
-<td>事实核查</td>
-<td>2026-07-15，依据C++工作草案相关章节</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_8">学习目标<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<p>完成本节后，你应该能够：</p>
+<div class="be-lesson-overview">
+  <div><span>课程位置</span><strong>C++ 核心 · 2 / 3</strong></div>
+  <div><span>前置</span><strong>C++ 函数、引用、CMake、CTest 和基本复杂度</strong></div>
+  <div><span>完成后留下</span><strong>多记录报告、容器选择、算法回归和双语言一致性</strong></div>
+</div>
+
+<h2 id="_2">开始前<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
-<li>根据数据规模、顺序、唯一性和查找方式选择基础容器。</li>
-<li>使用<code>std::vector</code>保存、追加、读取和遍历多条记录。</li>
-<li>区分<code>size()</code>与<code>capacity()</code>，说明<code>reserve()</code>不会改变元素数量。</li>
-<li>使用<code>begin()</code>和<code>end()</code>表达半开区间<code>[begin, end)</code>。</li>
-<li>使用范围<code>for</code>、显式迭代器和<code>const</code>引用只读遍历。</li>
-<li>解释<code>vector</code>重新分配为何会使旧引用、指针和迭代器失效。</li>
-<li>使用标准算法完成查找、筛选、统计、转换、累计和排序。</li>
-<li>编写满足严格弱序的排序比较器，不使用<code>&lt;=</code>。</li>
-<li>说明顺序容器、关联容器和无序关联容器的典型复杂度差异。</li>
-<li>审阅AI生成的STL代码，发现错误容器、隐藏复制和悬空位置。</li>
+<li>已能从全新目录构建上一课的库、应用和测试。</li>
+<li>知道 <code>const&amp;</code> 表达只读借用，按值参数会复制输入。</li>
+<li>本课只使用 C++20 标准库，不提前引入 ranges、模板框架或第三方容器。</li>
+<li>正式阶段作品已经包含本课代码；小例子用更小数据帮助看清算法行为。</li>
 </ul>
-<h2 id="_9">学习顺序<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<ol>
-<li>从业务需求选择容器。</li>
-<li>使用<code>vector</code>表示多条简单聚合记录。</li>
-<li>用迭代器和半开区间理解标准算法接口。</li>
-<li>观察<code>size</code>、<code>capacity</code>、重新分配和失效。</li>
-<li>使用查找、计数、转换、累计与排序算法。</li>
-<li>使用<code>set</code>和<code>map</code>生成稳定的汇总结果。</li>
-<li>完成双语言多记录报告器并验证输出一致。</li>
-</ol>
-<h2 id="_10">根据需求选择容器<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<p>下面的图回答一个问题：<strong>面对一组数据，首先应该依据什么选择容器？</strong></p>
+<section data-context-type="concept" data-learning-context="concept-choose-container" id="concept-choose-container">
+<h2 id="_3">先问数据怎样使用，再选容器<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart TD
-    A["需要保存一组数据"] --&gt; B{"元素数量固定吗"}
-    B -- "是" --&gt; C["std::array\n固定长度、连续存储"]
-    B -- "否" --&gt; D{"需要按整数位置读取吗"}
-    D -- "是" --&gt; E["std::vector\n动态长度、连续存储"]
-    D -- "否" --&gt; F{"需要唯一且有序的键吗"}
-    F -- "是" --&gt; G["std::set / std::map"]
-    F -- "否" --&gt; H{"更重视平均常数查找吗"}
-    H -- "是" --&gt; I["std::unordered_map"]
-    H -- "否" --&gt; E</code></pre>
-<p>这不是绝对规则。数据量很小时，简单的<code>vector</code>加线性查找往往足够清楚；不能只看到“哈希平均更快”就把所有数据放进<code>unordered_map</code>。</p>
+    A["要保存一组数据"] --&gt; B{"长度编译时固定吗"}
+    B -- "是" --&gt; C["std::array"]
+    B -- "否" --&gt; D{"需要按顺序增长和遍历吗"}
+    D -- "是" --&gt; E["std::vector"]
+    D -- "否" --&gt; F{"只保存唯一且有序的值吗"}
+    F -- "是" --&gt; G["std::set"]
+    F -- "否" --&gt; H{"需要键到值且按键有序吗"}
+    H -- "是" --&gt; I["std::map"]
+    H -- "否" --&gt; J["再评估 unordered 容器或简单 vector"]</code></pre>
 <table>
 <thead>
 <tr>
 <th>容器</th>
-<th>主要特征</th>
-<th>典型访问或查找</th>
-<th>输出顺序</th>
+<th>适合这里的什么数据</th>
+<th>顺序与查找</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>std::string</code></td>
-<td>专门保存字符序列</td>
-<td>按位置常数访问，文本查找取决于操作</td>
-<td>保留字符顺序</td>
-</tr>
-<tr>
 <td><code>std::array&lt;T, N&gt;</code></td>
-<td>编译期固定长度</td>
-<td>按位置常数访问</td>
-<td>保留元素顺序</td>
+<td>固定三次测验分数</td>
+<td>固定长度、按位置访问</td>
 </tr>
 <tr>
 <td><code>std::vector&lt;T&gt;</code></td>
-<td>动态连续序列</td>
-<td>按位置常数访问，普通查找线性</td>
-<td>保留元素顺序</td>
+<td>数量会变化的学习记录</td>
+<td>保持序列顺序，普通查找线性</td>
 </tr>
 <tr>
 <td><code>std::set&lt;T&gt;</code></td>
-<td>唯一且有序的值</td>
-<td>对数级查找、插入</td>
-<td>按比较规则排序</td>
+<td>去重并稳定展示的标签</td>
+<td>唯一、有序，对数级查找</td>
 </tr>
 <tr>
 <td><code>std::map&lt;K, V&gt;</code></td>
-<td>唯一且有序的键值</td>
-<td>对数级查找、插入</td>
-<td>按键排序</td>
+<td>状态到数量的统计</td>
+<td>唯一键、有序输出</td>
 </tr>
 <tr>
 <td><code>std::unordered_map&lt;K, V&gt;</code></td>
-<td>哈希键值</td>
-<td>平均常数查找，最坏线性</td>
-<td>不提供业务可依赖顺序</td>
+<td>不依赖遍历顺序的键查找</td>
+<td>平均常数查找，不承诺业务顺序</td>
 </tr>
 </tbody>
 </table>
-<p>复杂度描述的是增长趋势，不是一次运行的耗时承诺。容器元素类型、哈希质量、内存局部性和数据规模都会影响真实结果。</p>
-<h3 id="_11">固定长度与动态长度<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;array&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
-
-<span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fixed_scores</span><span class="p">{</span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w"> </span><span class="mi">95</span><span class="p">};</span>
-<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">changing_scores</span><span class="p">{</span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">};</span>
-<span class="n">changing_scores</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">95</span><span class="p">);</span>
-</code></pre></div>
-<p><code>array</code>长度属于类型的一部分；<code>vector</code>可以增加或删除元素。本节的课程记录数量会变化，因此使用<code>vector</code>。</p>
-<h3 id="_12">结构化记录只做简单聚合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>数据很小时，<code>vector</code> 加线性查找往往最清楚。看到“哈希平均更快”就把所有东西换成 <code>unordered_map</code>，会让顺序、测试和接口复杂度一起变化。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-study-record" id="example-study-record">
+<h2 id="_4">一条记录先用简单聚合表示<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">StudyRecord</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">course_name</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">target_hours</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">completed_hours</span><span class="p">;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tags</span><span class="p">;</span>
 <span class="p">};</span>
-</code></pre></div>
-<p>这里只把相关字段放在一起，不讲构造函数、封装或生命周期策略。对象与资源课程会继续回答“对象怎样建立和维持不变量”。</p>
-<h2 id="_13">迭代器与半开区间<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
-<p>许多标准算法接收两个位置：第一个元素和结束位置。范围写作<code>[first, last)</code>，左边包含，右边不包含。</p>
-<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">scores</span><span class="p">{</span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w"> </span><span class="mi">95</span><span class="p">};</span>
 
-<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scores</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">scores</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">iterator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">iterator</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">records</span><span class="p">{</span>
+<span class="w">    </span><span class="p">{</span><span class="s">&quot;Python 起步&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="mf">7.5</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;基础&quot;</span><span class="p">}},</span>
+<span class="w">    </span><span class="p">{</span><span class="s">&quot;C++ 核心&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;cpp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;基础&quot;</span><span class="p">}},</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><code>StudyRecord</code> 只是把相关字段放在一起；<code>vector</code> 保存数量会增长的记录。对象怎样维持不变量、引用和指针能借用多久，留到下一课专门处理。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-half-open-range" id="concept-half-open-range">
+<h2 id="begin-end"><code>[begin, end)</code> 包含开头，不包含结尾<a class="headerlink" href="#begin-end" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">iterator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">iterator</span><span class="o">-&gt;</span><span class="n">course_name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li><code>begin()</code>指向第一个元素。</li>
-<li><code>end()</code>指向最后一个元素之后的位置，不能解引用。</li>
-<li>空容器中<code>begin() == end()</code>，算法自然处理零个元素。</li>
-<li><code>*iterator</code>读取当前位置，<code>++iterator</code>移动到下一个位置。</li>
+<li><code>begin()</code> 指向第一个元素。</li>
+<li><code>end()</code> 指向最后一个元素之后，不能解引用。</li>
+<li>空容器中 <code>begin() == end()</code>，范围自然包含零个元素。</li>
+<li><code>[first, last)</code> 可以直接交给多个标准算法。</li>
 </ul>
-<p>只读遍历优先使用<code>const</code>引用：</p>
+<p>只需遍历全部记录时，范围 <code>for</code> 更直白：</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">records</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">course_name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>范围<code>for</code>更适合“全部遍历”；显式迭代器适合需要当前位置、与<code>end()</code>比较或传给算法的场景。</p>
-<h2 id="vector"><code>vector</code>容量与迭代器失效<a class="headerlink" href="#vector" title="Permanent link">&para;</a></h2>
-<p>下面的图回答一个问题：<strong>为什么向<code>vector</code>追加元素后不能盲目继续使用旧迭代器？</strong></p>
-<pre class="mermaid"><code>flowchart LR
-    A["vector已有元素\nsize &lt;= capacity"] --&gt; B["保存iterator/reference"]
-    B --&gt; C["push_back / insert"]
-    C --&gt; D{"新size超过旧capacity吗"}
-    D -- "否" --&gt; E["未重新分配\n仍需检查插入位置规则"]
-    D -- "是" --&gt; F["申请新存储并移动元素"]
-    F --&gt; G["全部旧iterator/reference/pointer失效"]
-    G --&gt; H["从容器重新取得位置"]</code></pre>
+<p>显式迭代器适合要比较 <code>end()</code>、保留当前位置或把范围交给算法的场景。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-vector-capacity" id="concept-vector-capacity">
+<h2 id="size-capacity"><code>size</code> 是现有元素，<code>capacity</code> 是当前存储余量<a class="headerlink" href="#size-capacity" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">values</span><span class="p">{};</span>
 <span class="n">values</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
-
-<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">values</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">values</span><span class="p">.</span><span class="n">capacity</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
 <span class="n">values</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
 </code></pre></div>
 <ul>
-<li><code>size()</code>是当前元素数量。</li>
-<li><code>capacity()</code>是不重新分配时最多可以容纳的元素数量。</li>
-<li><code>reserve(4)</code>至少预留四个位置，但<code>size()</code>仍是<code>0</code>。</li>
-<li>若重新分配发生，指向原元素的引用、指针、迭代器以及旧<code>end()</code>全部失效。</li>
+<li><code>size()</code> 现在是 1。</li>
+<li><code>capacity()</code> 至少是 4，但实现可以给更多。</li>
+<li><code>reserve(4)</code> 不创建四个元素。</li>
 </ul>
-<p>不要为了观察错误而解引用失效迭代器，那属于未定义行为。安全实验只记录扩容前后的<code>capacity()</code>，扩容后重新调用<code>begin()</code>取得新位置。</p>
-<p><code>reserve()</code>是容量提示，不是每个<code>vector</code>都必须调用。只有已经知道大致元素数量或需要降低重新分配次数时才使用。</p>
-<h2 id="_14">标准算法操作范围<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
-<p>标准算法把“遍历机制”与“业务操作”分开。下面只介绍本节会实际使用的部分。</p>
-<h3 id="findfind_if"><code>find</code>与<code>find_if</code><a class="headerlink" href="#findfind_if" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">tag_position</span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">find</span><span class="p">(</span><span class="n">record</span><span class="p">.</span><span class="n">tags</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">tags</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;基础&quot;</span><span class="p">)</span>
+<p>当增长超过现有容量，<code>vector</code> 可能申请新存储并移动元素。旧引用、指针、迭代器和旧 <code>end()</code> 会失效。安全观察只记录增长前后的 <code>size()</code>、<code>capacity()</code>，扩容后重新取得位置；不要故意解引用失效迭代器，那属于未定义行为。</p>
+<p><code>reserve()</code> 不是固定仪式。只有大致知道数量或有重新分配证据时再使用。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-standard-algorithms" id="example-standard-algorithms">
+<h2 id="_5">查找、计数、转换和累计各有明确结果<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">first_done</span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">find_if</span><span class="p">(</span><span class="n">records</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">completed_hours</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">target_hours</span><span class="p">;</span>
+<span class="w">    </span><span class="p">})</span>
 <span class="p">};</span>
-<span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">has_tag</span><span class="p">{</span><span class="n">tag_position</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">tags</span><span class="p">.</span><span class="n">end</span><span class="p">()};</span>
-</code></pre></div>
-<p><code>find</code>查找等于给定值的元素。<code>find_if</code>接收判断条件：</p>
-<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">course_position</span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">find_if</span><span class="p">(</span>
-<span class="w">        </span><span class="n">records</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span>
-<span class="w">        </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">completed_hours</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">target_hours</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">)</span>
+
+<span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">done_count</span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">count_if</span><span class="p">(</span><span class="n">records</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">completed_hours</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">target_hours</span><span class="p">;</span>
+<span class="w">    </span><span class="p">})</span>
 <span class="p">};</span>
 </code></pre></div>
-<p>找不到时返回传入范围的结束迭代器，使用前必须先比较。</p>
-<h3 id="count_iftransformaccumulate"><code>count_if</code>、<code>transform</code>与<code>accumulate</code><a class="headerlink" href="#count_iftransformaccumulate" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">completed_count</span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">count_if</span><span class="p">(</span>
-<span class="w">        </span><span class="n">records</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span>
-<span class="w">        </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">completed_hours</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">target_hours</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">)</span>
-<span class="p">};</span>
-</code></pre></div>
+<p><code>find_if</code> 返回第一个匹配位置，使用前要和 <code>end()</code> 比较；<code>count_if</code> 直接返回匹配数量。</p>
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">progresses</span><span class="p">{};</span>
 <span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span>
-<span class="w">    </span><span class="n">records</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">back_inserter</span><span class="p">(</span><span class="n">progresses</span><span class="p">),</span>
+<span class="w">    </span><span class="n">records</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">back_inserter</span><span class="p">(</span><span class="n">progresses</span><span class="p">),</span>
 <span class="w">    </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">completed_hours</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">target_hours</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">);</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">total</span><span class="p">{</span>
+
+<span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">total</span><span class="p">{</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">accumulate</span><span class="p">(</span>
 <span class="w">        </span><span class="n">records</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
 <span class="w">        </span><span class="p">[](</span><span class="kt">double</span><span class="w"> </span><span class="n">current</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -4911,688 +4373,275 @@
 <span class="w">    </span><span class="p">)</span>
 <span class="p">};</span>
 </code></pre></div>
-<p><code>transform</code>需要可写输出位置；<code>back_inserter</code>让结果通过<code>push_back</code>进入容器。<code>accumulate</code>的初始值类型会影响累计类型，因此小时数使用<code>0.0</code>而不是<code>0</code>。</p>
-<h3 id="sort"><code>sort</code>会修改传入范围<a class="headerlink" href="#sort" title="Permanent link">&para;</a></h3>
+<p><code>transform</code> 需要可写输出位置，<code>back_inserter</code> 通过 <code>push_back</code> 追加结果。浮点累计从 <code>0.0</code> 开始；写成整数 <code>0</code> 会改变累计类型。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-sort-copy" id="concept-sort-copy">
+<h2 id="sort"><code>sort</code> 会改范围，所以报告器排序副本<a class="headerlink" href="#sort" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sort_by_progress</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">records</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">sort</span><span class="p">(</span>
-<span class="w">        </span><span class="n">records</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span>
-<span class="w">        </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">right</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">calculate_progress</span><span class="p">(</span><span class="n">left</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">calculate_progress</span><span class="p">(</span><span class="n">right</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">);</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">sort</span><span class="p">(</span><span class="n">records</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">compare_progress</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">records</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>参数按值传入，函数排序的是副本。若改为非<code>const</code>引用，调用者容器会被原地重排，接口必须明确表达这种副作用。</p>
-<h2 id="lambda">Lambda与严格弱序<a class="headerlink" href="#lambda" title="Permanent link">&para;</a></h2>
-<p>Lambda让短小条件靠近算法调用：</p>
-<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="o">&amp;</span><span class="n">tag</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">find</span><span class="p">(</span><span class="n">record</span><span class="p">.</span><span class="n">tags</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">tags</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">tag</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span>
-<span class="w">        </span><span class="n">record</span><span class="p">.</span><span class="n">tags</span><span class="p">.</span><span class="n">end</span><span class="p">();</span>
-<span class="p">}</span>
-</code></pre></div>
-<ul>
-<li><code>[]</code>是捕获列表。</li>
-<li><code>[&amp;tag]</code>按引用捕获当前函数中的<code>tag</code>。</li>
-<li>参数和返回判断与普通函数相同。</li>
-</ul>
-<p>排序比较器必须回答“left是否严格排在right前面”。相等元素互相比较都应返回<code>false</code>：</p>
-<div class="highlight"><pre><span></span><code><span class="k">return</span><span class="w"> </span><span class="n">left_progress</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">right_progress</span><span class="p">;</span>
-</code></pre></div>
-<p>不能写成<code>left_progress &gt;= right_progress</code>或对升序使用<code>&lt;=</code>。这会让元素与自己比较为<code>true</code>，破坏严格弱序，<code>std::sort</code>的行为不再满足要求。</p>
-<p>本节用课程名作为进度相同的次级规则，使报告顺序稳定：</p>
+<p>参数按值接收，调用时生成记录副本；排序不会打乱调用者原序列。若接口改成非常量引用，原地重排就是公开副作用，名字、文档和测试都要明确。</p>
+<p>比较器必须表达严格顺序：</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">left_progress</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">right_progress</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">left_progress</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">right_progress</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="k">return</span><span class="w"> </span><span class="n">left</span><span class="p">.</span><span class="n">course_name</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">right</span><span class="p">.</span><span class="n">course_name</span><span class="p">;</span>
 </code></pre></div>
-<h2 id="_15">有序与无序关联容器<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
-<p>唯一标签需要去重并稳定展示，所以使用<code>std::set&lt;std::string&gt;</code>。状态统计需要稳定按键输出，所以使用<code>std::map&lt;std::string, std::size_t&gt;</code>。</p>
+<p>不能写 <code>&gt;=</code> 或 <code>&lt;=</code>。一条记录与自己比较必须返回 <code>false</code>，进度相同时再用课程名形成稳定次级规则。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-associated-order" id="concept-associated-order">
+<h2 id="setmap">去重和稳定输出，是这里选择 <code>set</code>、<code>map</code> 的理由<a class="headerlink" href="#setmap" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">unique_tags</span><span class="p">{};</span>
 <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">status_counts</span><span class="p">{};</span>
 </code></pre></div>
-<p><code>unordered_map</code>适合不依赖遍历顺序、重视平均查找成本的场景：</p>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fast_lookup</span><span class="p">{</span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;Python 起步&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;C++ 核心&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span>
-<span class="p">};</span>
-</code></pre></div>
-<p>不能把一次运行中的哈希遍历顺序写进测试或用户可见协议。需要稳定输出时，选择有序容器，或把键复制到序列后显式排序。</p>
-<h2 id="_16">复杂度与选择依据<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
-<p>设记录数为<code>N</code>，单条记录平均标签数为<code>T</code>：</p>
+<p>重复标签进入 <code>set</code> 后只保留一次，遍历时按比较规则有序；状态统计用 <code>map</code>，报告顺序稳定。<code>unordered_map</code> 的一次遍历看起来稳定，也不能写进用户可见协议或跨运行测试。</p>
+<p>需要哈希查找又要稳定输出时，可以把键复制到序列后显式排序。容器选择服务于行为契约，不是按“哪个理论复杂度更低”单点决定。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-complexity" id="concept-complexity">
+<h2 id="_6">复杂度讲增长，不承诺一次运行几毫秒<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>设记录数为 <code>N</code>，单条记录平均标签数为 <code>T</code>：</p>
 <table>
 <thead>
 <tr>
 <th>操作</th>
-<th>本节实现</th>
+<th>本课实现</th>
 <th>典型复杂度</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>按位置读取<code>vector</code></td>
+<td>按位置读取 vector</td>
 <td><code>records[index]</code></td>
 <td><code>O(1)</code></td>
 </tr>
 <tr>
-<td>在<code>vector</code>查课程</td>
+<td>查找课程</td>
 <td><code>find_if</code></td>
 <td><code>O(N)</code></td>
 </tr>
 <tr>
-<td>统计全部记录</td>
-<td>两次<code>count_if</code></td>
-<td><code>O(N)</code>，常数次遍历</td>
-</tr>
-<tr>
-<td>累计总时间</td>
-<td><code>accumulate</code></td>
+<td>统计、累计</td>
+<td><code>count_if</code>、<code>accumulate</code></td>
 <td><code>O(N)</code></td>
 </tr>
 <tr>
-<td>按进度排序</td>
+<td>排序</td>
 <td><code>sort</code></td>
-<td><code>O(N log N)</code>比较</td>
+<td><code>O(N log N)</code> 次比较</td>
 </tr>
 <tr>
-<td>单条记录查标签</td>
+<td>单记录查标签</td>
 <td><code>find</code></td>
 <td><code>O(T)</code></td>
 </tr>
 <tr>
-<td><code>set/map</code>查找</td>
+<td><code>set</code>／<code>map</code> 查找</td>
 <td>有序关联结构</td>
 <td><code>O(log N)</code></td>
 </tr>
 <tr>
-<td><code>unordered_map</code>查找</td>
+<td><code>unordered_map</code> 查找</td>
 <td>哈希结构</td>
-<td>平均<code>O(1)</code>，最坏<code>O(N)</code></td>
+<td>平均 <code>O(1)</code>，最坏 <code>O(N)</code></td>
 </tr>
 </tbody>
 </table>
-<p>减少遍历次数不一定优先于可读性。只有性能证据说明这里是瓶颈时，才把多个清楚的算法强行合并成复杂循环。</p>
-<h2 id="_17">完整示例：多记录学习报告器<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
-<p>目录和构建方式延续上一节：</p>
-<div class="highlight"><pre><span></span><code>study-reporters/
-├── include/study/study_report.hpp
-├── src/main.cpp
-├── src/study_report.cpp
-├── tests/study_report_tests.cpp
-├── .gitignore
-└── CMakeLists.txt
+<p>真实时间还受元素大小、分配、缓存局部性和数据规模影响。没有性能证据时，几个清楚算法比一个难读的“单遍万能循环”更值得保留。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-stl-micro" id="reproduce-stl-micro">
+<h2 id="_7">先用四个整数看清算法行为<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>clang++<span class="w"> </span>-std<span class="o">=</span>c++20<span class="w"> </span>-Wall<span class="w"> </span>-Wextra<span class="w"> </span>-Wpedantic<span class="w"> </span>-Wconversion<span class="w"> </span>-Wshadow<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>site-src/examples/cpp-core/stl_algorithms.cpp<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-o<span class="w"> </span>/tmp/be-stl-algorithms
+/tmp/be-stl-algorithms
 </code></pre></div>
-<p>以下文件与<a href="https://github.com/cafelemon/become_engineer/tree/main/exercises/programming-languages/study-progress-reporters/cpp">阶段作品C++版本</a>保持一致。</p>
-<h3 id="_18">公开头文件<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">include/study/study_report.hpp</span><pre><span></span><code><span class="cp">#ifndef BECOME_ENGINEER_STUDY_STUDY_REPORT_HPP</span>
-<span class="cp">#define BECOME_ENGINEER_STUDY_STUDY_REPORT_HPP</span>
-
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstddef&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;map&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;set&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
-
-<span class="k">namespace</span><span class="w"> </span><span class="nn">study</span><span class="w"> </span><span class="p">{</span>
-
-<span class="k">struct</span><span class="w"> </span><span class="nc">StudyRecord</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">course_name</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">target_hours</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">completed_hours</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tags</span><span class="p">;</span>
+<p>你会看到：第一项大于等于 4 的值、偶数数量、总和、转换后的序列、排序副本、原序列首项和去重标签数。先预测 <code>[2, 5, 3, 4]</code> 的结果，再运行对照。</p>
+<p>特别看 <code>sorted=5 4 3 2</code> 与 <code>original_first=2</code>：排序发生在副本，原输入没有被改动。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-bilingual-report" id="reproduce-bilingual-report">
+<h2 id="_8">运行正式双语言报告器<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>-S<span class="w"> </span>exercises/programming-languages/study-progress-reporters/cpp<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-B<span class="w"> </span>/tmp/be-study-report-cpp<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Debug
+cmake<span class="w"> </span>--build<span class="w"> </span>/tmp/be-study-report-cpp<span class="w"> </span>--config<span class="w"> </span>Debug
+ctest<span class="w"> </span>--test-dir<span class="w"> </span>/tmp/be-study-report-cpp<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--build-config<span class="w"> </span>Debug<span class="w"> </span>--output-on-failure
+/tmp/be-study-report-cpp/study_report_app
+</code></pre></div>
+<p>再运行 Python 版本，比较标准输出：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/programming-languages/study-progress-reporters/python
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>study_progress_reporter<span class="w"> </span>report
+</code></pre></div>
+<p>两种实现不要求逐行同构，但共同样例、排序规则、状态统计、标签顺序和报告文本必须一致。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-report-statistic" id="modify-report-statistic">
+<h2 id="_9">增加“未完成课程数”<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>先在测试中写出期望，再使用 <code>count_if</code> 计算：</p>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">unfinished_count</span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">count_if</span><span class="p">(</span><span class="n">records</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">build_status</span><span class="p">(</span><span class="n">record</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;进行中&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">})</span>
 <span class="p">};</span>
-
-<span class="k">struct</span><span class="w"> </span><span class="nc">StudySummary</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">total_target_hours</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">total_completed_hours</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">status_counts</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">unique_tags</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="kt">double</span><span class="w"> </span><span class="nf">calculate_progress</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="p">);</span>
-<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">build_status</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="p">);</span>
-<span class="n">StudySummary</span><span class="w"> </span><span class="nf">summarize</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">records</span><span class="p">);</span>
-<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sort_by_progress</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">records</span><span class="p">);</span>
-<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">filter_by_tag</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">records</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tag</span>
-<span class="p">);</span>
-<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">build_report</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">records</span><span class="p">);</span>
-<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sample_records</span><span class="p">();</span>
-
-<span class="p">}</span><span class="w"> </span><span class="c1">// namespace study</span>
-
-<span class="cp">#endif</span>
 </code></pre></div>
-<h3 id="_19">业务实现<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">src/study_report.cpp</span><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;study/study_report.hpp&quot;</span>
-
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;algorithm&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iomanip&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iterator&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;numeric&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sstream&gt;</span>
-
-<span class="k">namespace</span><span class="w"> </span><span class="nn">study</span><span class="w"> </span><span class="p">{</span>
-
-<span class="kt">double</span><span class="w"> </span><span class="nf">calculate_progress</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">record</span><span class="p">.</span><span class="n">target_hours</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">raw_progress</span><span class="p">{</span><span class="n">record</span><span class="p">.</span><span class="n">completed_hours</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">target_hours</span><span class="p">};</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">clamp</span><span class="p">(</span><span class="n">raw_progress</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">build_status</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">completed_hours</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">target_hours</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;已完成&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;进行中&quot;</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">StudySummary</span><span class="w"> </span><span class="nf">summarize</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">records</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">StudySummary</span><span class="w"> </span><span class="n">summary</span><span class="p">{</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">accumulate</span><span class="p">(</span>
-<span class="w">            </span><span class="n">records</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
-<span class="w">            </span><span class="p">[](</span><span class="kt">double</span><span class="w"> </span><span class="n">total</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">target_hours</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">),</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">accumulate</span><span class="p">(</span>
-<span class="w">            </span><span class="n">records</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
-<span class="w">            </span><span class="p">[](</span><span class="kt">double</span><span class="w"> </span><span class="n">total</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">completed_hours</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">),</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="p">{</span><span class="s">&quot;已完成&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">count_if</span><span class="p">(</span>
-<span class="w">                </span><span class="n">records</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span>
-<span class="w">                </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="n">build_status</span><span class="p">(</span><span class="n">record</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;已完成&quot;</span><span class="p">;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">))},</span>
-<span class="w">            </span><span class="p">{</span><span class="s">&quot;进行中&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">count_if</span><span class="p">(</span>
-<span class="w">                </span><span class="n">records</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span>
-<span class="w">                </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="n">build_status</span><span class="p">(</span><span class="n">record</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;进行中&quot;</span><span class="p">;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">))},</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{},</span>
-<span class="w">    </span><span class="p">};</span>
-
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">records</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">summary</span><span class="p">.</span><span class="n">unique_tags</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">record</span><span class="p">.</span><span class="n">tags</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">tags</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">summary</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sort_by_progress</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">records</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">sort</span><span class="p">(</span>
-<span class="w">        </span><span class="n">records</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span>
-<span class="w">        </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">right</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">left_progress</span><span class="p">{</span><span class="n">calculate_progress</span><span class="p">(</span><span class="n">left</span><span class="p">)};</span>
-<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">right_progress</span><span class="p">{</span><span class="n">calculate_progress</span><span class="p">(</span><span class="n">right</span><span class="p">)};</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">left_progress</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">right_progress</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">left_progress</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">right_progress</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">left</span><span class="p">.</span><span class="n">course_name</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">right</span><span class="p">.</span><span class="n">course_name</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">records</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">filter_by_tag</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">records</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tag</span>
-<span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">result</span><span class="p">{};</span>
-<span class="w">    </span><span class="n">result</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">records</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">copy_if</span><span class="p">(</span>
-<span class="w">        </span><span class="n">records</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">back_inserter</span><span class="p">(</span><span class="n">result</span><span class="p">),</span>
-<span class="w">        </span><span class="p">[</span><span class="o">&amp;</span><span class="n">tag</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">find</span><span class="p">(</span><span class="n">record</span><span class="p">.</span><span class="n">tags</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="n">tags</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">tag</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span>
-<span class="w">                </span><span class="n">record</span><span class="p">.</span><span class="n">tags</span><span class="p">.</span><span class="n">end</span><span class="p">();</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">namespace</span><span class="w"> </span><span class="p">{</span>
-
-<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">join_names</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">records</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">records</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;无&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span><span class="w"> </span><span class="n">output</span><span class="p">{};</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">iterator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">iterator</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">begin</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">iterator</span><span class="o">-&gt;</span><span class="n">course_name</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">output</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
-<span class="p">}</span>
-
-<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">join_tags</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">tags</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tags</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;无&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span><span class="w"> </span><span class="n">output</span><span class="p">{};</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tags</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">tags</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">iterator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">iterator</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">tags</span><span class="p">.</span><span class="n">begin</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">iterator</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">output</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
-<span class="p">}</span>
-
-<span class="p">}</span><span class="w"> </span><span class="c1">// namespace</span>
-
-<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">build_report</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">records</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">StudySummary</span><span class="w"> </span><span class="n">summary</span><span class="p">{</span><span class="n">summarize</span><span class="p">(</span><span class="n">records</span><span class="p">)};</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sorted_records</span><span class="p">{</span><span class="n">sort_by_progress</span><span class="p">(</span><span class="n">records</span><span class="p">)};</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">basic_records</span><span class="p">{</span><span class="n">filter_by_tag</span><span class="p">(</span><span class="n">records</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;基础&quot;</span><span class="p">)};</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">overall_progress</span><span class="p">{</span>
-<span class="w">        </span><span class="n">summary</span><span class="p">.</span><span class="n">total_target_hours</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.0</span>
-<span class="w">            </span><span class="o">?</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">clamp</span><span class="p">(</span>
-<span class="w">                </span><span class="n">summary</span><span class="p">.</span><span class="n">total_completed_hours</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">summary</span><span class="p">.</span><span class="n">total_target_hours</span><span class="p">,</span>
-<span class="w">                </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span>
-<span class="w">            </span><span class="p">)</span>
-<span class="w">            </span><span class="o">:</span><span class="w"> </span><span class="mf">0.0</span>
-<span class="w">    </span><span class="p">};</span>
-
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">progresses</span><span class="p">{};</span>
-<span class="w">    </span><span class="n">progresses</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">sorted_records</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span>
-<span class="w">        </span><span class="n">sorted_records</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">sorted_records</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">back_inserter</span><span class="p">(</span><span class="n">progresses</span><span class="p">),</span>
-<span class="w">        </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">calculate_progress</span><span class="p">(</span><span class="n">record</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span><span class="w"> </span><span class="n">output</span><span class="p">{};</span>
-<span class="w">    </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">fixed</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">setprecision</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">    </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;学习进度报告</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;总计划：&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">summary</span><span class="p">.</span><span class="n">total_target_hours</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; 小时</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;总完成：&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">summary</span><span class="p">.</span><span class="n">total_completed_hours</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; 小时</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;总体进度：&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">overall_progress</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100.0</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;%</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;按进度排序：</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span><span class="p">{};</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">sorted_records</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">index</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;- &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sorted_records</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">course_name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;：&quot;</span>
-<span class="w">               </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">progresses</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100.0</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;%（&quot;</span>
-<span class="w">               </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">build_status</span><span class="p">(</span><span class="n">sorted_records</span><span class="p">[</span><span class="n">index</span><span class="p">])</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;）</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">状态统计：</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="p">[</span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">summary</span><span class="p">.</span><span class="n">status_counts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;- &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;：&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;唯一标签：&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">join_tags</span><span class="p">(</span><span class="n">summary</span><span class="p">.</span><span class="n">unique_tags</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-<span class="w">    </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;标签[基础]：&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">join_names</span><span class="p">(</span><span class="n">basic_records</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">output</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
-<span class="p">}</span>
-
-<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sample_records</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="p">{</span><span class="s">&quot;Python 起步&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="mf">7.5</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;基础&quot;</span><span class="p">}},</span>
-<span class="w">        </span><span class="p">{</span><span class="s">&quot;C++ 核心&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;cpp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;基础&quot;</span><span class="p">}},</span>
-<span class="w">        </span><span class="p">{</span><span class="s">&quot;算法练习&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">8.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;算法&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;基础&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;基础&quot;</span><span class="p">}},</span>
-<span class="w">        </span><span class="p">{</span><span class="s">&quot;工程复盘&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">7.0</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;工程&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;复盘&quot;</span><span class="p">}},</span>
-<span class="w">    </span><span class="p">};</span>
-<span class="p">}</span>
-
-<span class="p">}</span><span class="w"> </span><span class="c1">// namespace study</span>
+<p>把结果加入汇总结构和报告，保持原记录顺序与内容不变。空输入、全部完成和部分完成都要验证。若 Python 版本也加入同一公开字段，两边报告一起更新；若只是 C++ 练习，就不要宣称双语言契约已经改变。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-iterator" id="troubleshoot-iterator">
+<h2 id="push_back"><code>push_back</code> 以后，旧位置可能已经不在原来的存储上<a class="headerlink" href="#push_back" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+<span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">old_capacity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">capacity</span><span class="p">();</span>
+<span class="n">records</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">new_record</span><span class="p">);</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">reallocated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="n">capacity</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">old_capacity</span><span class="p">;</span>
 </code></pre></div>
-<h3 id="_20">程序入口<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">src/main.cpp</span><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;study/study_report.hpp&quot;</span>
-
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
-
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">study</span><span class="o">::</span><span class="n">build_report</span><span class="p">(</span><span class="n">study</span><span class="o">::</span><span class="n">sample_records</span><span class="p">())</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="_21">完整测试文件<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
-<p>测试覆盖空记录、重复标签、进度并列、超额完成、筛选无结果、输入不变和稳定报告：</p>
-<div class="highlight"><span class="filename">tests/study_report_tests.cpp</span><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;study/study_report.hpp&quot;</span>
-
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cmath&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
-
-<span class="k">namespace</span><span class="w"> </span><span class="p">{</span>
-
-<span class="kt">int</span><span class="w"> </span><span class="n">failures</span><span class="p">{};</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">expect_true</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">condition</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;FAILED: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-<span class="w">        </span><span class="o">++</span><span class="n">failures</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">expect_close</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">actual</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">expected</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">tolerance</span><span class="p">{</span><span class="mf">0.000001</span><span class="p">};</span>
-<span class="w">    </span><span class="n">expect_true</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">abs</span><span class="p">(</span><span class="n">actual</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">expected</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">tolerance</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">names</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">study</span><span class="o">::</span><span class="n">StudyRecord</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">records</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">result</span><span class="p">{};</span>
-<span class="w">    </span><span class="n">result</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">records</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">study</span><span class="o">::</span><span class="n">StudyRecord</span><span class="o">&amp;</span><span class="w"> </span><span class="n">record</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">records</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">result</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">record</span><span class="p">.</span><span class="n">course_name</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">}</span><span class="w"> </span><span class="c1">// namespace</span>
-
-<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">study</span><span class="o">::</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">records</span><span class="p">{</span><span class="n">study</span><span class="o">::</span><span class="n">sample_records</span><span class="p">()};</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">original_names</span><span class="p">{</span><span class="n">names</span><span class="p">(</span><span class="n">records</span><span class="p">)};</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">study</span><span class="o">::</span><span class="n">StudySummary</span><span class="w"> </span><span class="n">summary</span><span class="p">{</span><span class="n">study</span><span class="o">::</span><span class="n">summarize</span><span class="p">(</span><span class="n">records</span><span class="p">)};</span>
-
-<span class="w">    </span><span class="n">expect_close</span><span class="p">(</span><span class="n">summary</span><span class="p">.</span><span class="n">total_target_hours</span><span class="p">,</span><span class="w"> </span><span class="mf">35.0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;total target hours&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">expect_close</span><span class="p">(</span><span class="n">summary</span><span class="p">.</span><span class="n">total_completed_hours</span><span class="p">,</span><span class="w"> </span><span class="mf">30.5</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;total completed hours&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">expect_true</span><span class="p">(</span><span class="n">summary</span><span class="p">.</span><span class="n">status_counts</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="s">&quot;已完成&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;completed count&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">expect_true</span><span class="p">(</span><span class="n">summary</span><span class="p">.</span><span class="n">status_counts</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="s">&quot;进行中&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;in-progress count&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">expect_true</span><span class="p">(</span><span class="n">summary</span><span class="p">.</span><span class="n">unique_tags</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;duplicate tags should collapse&quot;</span><span class="p">);</span>
-
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">study</span><span class="o">::</span><span class="n">StudySummary</span><span class="w"> </span><span class="n">empty_summary</span><span class="p">{</span><span class="n">study</span><span class="o">::</span><span class="n">summarize</span><span class="p">({})};</span>
-<span class="w">    </span><span class="n">expect_close</span><span class="p">(</span><span class="n">empty_summary</span><span class="p">.</span><span class="n">total_target_hours</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;empty target total&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">expect_true</span><span class="p">(</span><span class="n">empty_summary</span><span class="p">.</span><span class="n">unique_tags</span><span class="p">.</span><span class="n">empty</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;empty tags&quot;</span><span class="p">);</span>
-
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">study</span><span class="o">::</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sorted</span><span class="p">{</span><span class="n">study</span><span class="o">::</span><span class="n">sort_by_progress</span><span class="p">(</span><span class="n">records</span><span class="p">)};</span>
-<span class="w">    </span><span class="n">expect_true</span><span class="p">(</span>
-<span class="w">        </span><span class="n">names</span><span class="p">(</span><span class="n">sorted</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">{</span>
-<span class="w">            </span><span class="s">&quot;C++ 核心&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;工程复盘&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Python 起步&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;算法练习&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="s">&quot;progress order and name tie-breaker&quot;</span>
-<span class="w">    </span><span class="p">);</span>
-<span class="w">    </span><span class="n">expect_true</span><span class="p">(</span><span class="n">names</span><span class="p">(</span><span class="n">records</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">original_names</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sorting must not mutate input&quot;</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">study</span><span class="o">::</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">filtered</span><span class="p">{</span><span class="n">study</span><span class="o">::</span><span class="n">filter_by_tag</span><span class="p">(</span><span class="n">records</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;基础&quot;</span><span class="p">)};</span>
-<span class="w">    </span><span class="n">expect_true</span><span class="p">(</span>
-<span class="w">        </span><span class="n">names</span><span class="p">(</span><span class="n">filtered</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">{</span>
-<span class="w">            </span><span class="s">&quot;Python 起步&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;C++ 核心&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;算法练习&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="s">&quot;tag filter&quot;</span>
-<span class="w">    </span><span class="p">);</span>
-<span class="w">    </span><span class="n">filtered</span><span class="p">.</span><span class="n">front</span><span class="p">().</span><span class="n">tags</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="s">&quot;changed&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">expect_true</span><span class="p">(</span>
-<span class="w">        </span><span class="n">records</span><span class="p">.</span><span class="n">front</span><span class="p">().</span><span class="n">tags</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;filtered records must be independent copies&quot;</span>
-<span class="w">    </span><span class="p">);</span>
-<span class="w">    </span><span class="n">expect_true</span><span class="p">(</span>
-<span class="w">        </span><span class="n">study</span><span class="o">::</span><span class="n">filter_by_tag</span><span class="p">(</span><span class="n">records</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;不存在&quot;</span><span class="p">).</span><span class="n">empty</span><span class="p">(),</span>
-<span class="w">        </span><span class="s">&quot;missing tag should return an empty vector&quot;</span>
-<span class="w">    </span><span class="p">);</span>
-
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">study</span><span class="o">::</span><span class="n">StudyRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">equal_progress</span><span class="p">{</span>
-<span class="w">        </span><span class="p">{</span><span class="s">&quot;B&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="p">{}},</span>
-<span class="w">        </span><span class="p">{</span><span class="s">&quot;A&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="p">{}},</span>
-<span class="w">    </span><span class="p">};</span>
-<span class="w">    </span><span class="n">expect_true</span><span class="p">(</span>
-<span class="w">        </span><span class="n">names</span><span class="p">(</span><span class="n">study</span><span class="o">::</span><span class="n">sort_by_progress</span><span class="p">(</span><span class="n">equal_progress</span><span class="p">))</span><span class="w"> </span><span class="o">==</span>
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">{</span><span class="s">&quot;A&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;B&quot;</span><span class="p">},</span>
-<span class="w">        </span><span class="s">&quot;equal progress should use name order&quot;</span>
-<span class="w">    </span><span class="p">);</span>
-
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">expected</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;学习进度报告</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">        </span><span class="s">&quot;总计划：35.0 小时</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">        </span><span class="s">&quot;总完成：30.5 小时</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">        </span><span class="s">&quot;总体进度：87.1%</span><span class="se">\n\n</span><span class="s">&quot;</span>
-<span class="w">        </span><span class="s">&quot;按进度排序：</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">        </span><span class="s">&quot;- C++ 核心：100.0%（已完成）</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">        </span><span class="s">&quot;- 工程复盘：100.0%（已完成）</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">        </span><span class="s">&quot;- Python 起步：75.0%（进行中）</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">        </span><span class="s">&quot;- 算法练习：50.0%（进行中）</span><span class="se">\n\n</span><span class="s">&quot;</span>
-<span class="w">        </span><span class="s">&quot;状态统计：</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">        </span><span class="s">&quot;- 已完成：2</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">        </span><span class="s">&quot;- 进行中：2</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">        </span><span class="s">&quot;唯一标签：cpp, python, 基础, 复盘, 工程, 算法</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">        </span><span class="s">&quot;标签[基础]：Python 起步, C++ 核心, 算法练习&quot;</span>
-<span class="w">    </span><span class="p">};</span>
-<span class="w">    </span><span class="n">expect_true</span><span class="p">(</span><span class="n">study</span><span class="o">::</span><span class="n">build_report</span><span class="p">(</span><span class="n">records</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;stable report output&quot;</span><span class="p">);</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">failures</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;All study report tests passed.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">failures</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; test(s) failed.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="cmake">CMake项目<a class="headerlink" href="#cmake" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">CMakeLists.txt</span><pre><span></span><code><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.20</span><span class="p">)</span>
-
-<span class="nb">project</span><span class="p">(</span><span class="s">study_reporters</span><span class="w"> </span><span class="s">VERSION</span><span class="w"> </span><span class="s">0.1.0</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s">CXX</span><span class="p">)</span>
-
-<span class="nb">function</span><span class="p">(</span><span class="s">enable_project_warnings</span><span class="w"> </span><span class="s">target_name</span><span class="p">)</span>
-<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">MSVC</span><span class="p">)</span>
-<span class="w">    </span><span class="nb">target_compile_options</span><span class="p">(</span><span class="o">${</span><span class="nv">target_name</span><span class="o">}</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">/W4</span><span class="w"> </span><span class="s">/permissive-</span><span class="p">)</span>
-<span class="w">  </span><span class="nb">else</span><span class="p">()</span>
-<span class="w">    </span><span class="nb">target_compile_options</span><span class="p">(</span>
-<span class="w">      </span><span class="o">${</span><span class="nv">target_name</span><span class="o">}</span>
-<span class="w">      </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">-Wall</span><span class="w"> </span><span class="s">-Wextra</span><span class="w"> </span><span class="s">-Wpedantic</span><span class="w"> </span><span class="s">-Wconversion</span><span class="w"> </span><span class="s">-Wshadow</span>
-<span class="w">    </span><span class="p">)</span>
-<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
-<span class="nb">endfunction</span><span class="p">()</span>
-
-<span class="nb">add_library</span><span class="p">(</span><span class="s">study_report_lib</span><span class="w"> </span><span class="s">STATIC</span><span class="w"> </span><span class="s">src/study_report.cpp</span><span class="p">)</span>
-<span class="nb">target_include_directories</span><span class="p">(</span>
-<span class="w">  </span><span class="s">study_report_lib</span>
-<span class="w">  </span><span class="s">PUBLIC</span><span class="w"> </span><span class="s2">&quot;${CMAKE_CURRENT_SOURCE_DIR}/include&quot;</span>
-<span class="p">)</span>
-<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">study_report_lib</span><span class="w"> </span><span class="s">PUBLIC</span><span class="w"> </span><span class="s">cxx_std_20</span><span class="p">)</span>
-<span class="nb">set_target_properties</span><span class="p">(</span><span class="s">study_report_lib</span><span class="w"> </span><span class="s">PROPERTIES</span><span class="w"> </span><span class="s">CXX_EXTENSIONS</span><span class="w"> </span><span class="s">OFF</span><span class="p">)</span>
-<span class="nb">enable_project_warnings</span><span class="p">(</span><span class="s">study_report_lib</span><span class="p">)</span>
-
-<span class="nb">add_executable</span><span class="p">(</span><span class="s">study_report_app</span><span class="w"> </span><span class="s">src/main.cpp</span><span class="p">)</span>
-<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">study_report_app</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">study_report_lib</span><span class="p">)</span>
-<span class="nb">set_target_properties</span><span class="p">(</span><span class="s">study_report_app</span><span class="w"> </span><span class="s">PROPERTIES</span><span class="w"> </span><span class="s">CXX_EXTENSIONS</span><span class="w"> </span><span class="s">OFF</span><span class="p">)</span>
-<span class="nb">enable_project_warnings</span><span class="p">(</span><span class="s">study_report_app</span><span class="p">)</span>
-
-<span class="nb">include</span><span class="p">(</span><span class="s">CTest</span><span class="p">)</span>
-
-<span class="nb">if</span><span class="p">(</span><span class="s">BUILD_TESTING</span><span class="p">)</span>
-<span class="w">  </span><span class="nb">add_executable</span><span class="p">(</span><span class="s">study_report_tests</span><span class="w"> </span><span class="s">tests/study_report_tests.cpp</span><span class="p">)</span>
-<span class="w">  </span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">study_report_tests</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">study_report_lib</span><span class="p">)</span>
-<span class="w">  </span><span class="nb">set_target_properties</span><span class="p">(</span><span class="s">study_report_tests</span><span class="w"> </span><span class="s">PROPERTIES</span><span class="w"> </span><span class="s">CXX_EXTENSIONS</span><span class="w"> </span><span class="s">OFF</span><span class="p">)</span>
-<span class="w">  </span><span class="nb">enable_project_warnings</span><span class="p">(</span><span class="s">study_report_tests</span><span class="p">)</span>
-<span class="w">  </span><span class="nb">add_test</span><span class="p">(</span><span class="s">NAME</span><span class="w"> </span><span class="s">study_report_tests</span><span class="w"> </span><span class="s">COMMAND</span><span class="w"> </span><span class="s">study_report_tests</span><span class="p">)</span>
-<span class="nb">endif</span><span class="p">()</span>
-</code></pre></div>
-<h3 id="git">Git忽略边界<a class="headerlink" href="#git" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">.gitignore</span><pre><span></span><code>build/
-</code></pre></div>
-<h3 id="_22">构建、测试与运行<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Debug
-cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>--config<span class="w"> </span>Debug
-ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class="w"> </span>--build-config<span class="w"> </span>Debug<span class="w"> </span>--output-on-failure
-./build/study_report_app
-</code></pre></div>
-<p>预期关键结果：全部目标在严格警告下零警告，CTest通过，应用输出与<a href="../../../../exercises/programming-languages/study-progress-reporters/">阶段作品README</a>中的预期报告一致。</p>
-<h2 id="ai">AI协作任务<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h2>
-<h3 id="_23">可复用提示模板<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>请把单条C++20学习状态卡升级为多记录报告器。
-约束：
-1. 使用简单StudyRecord聚合和std::vector保存记录；
-2. 使用标准算法完成排序、筛选、计数、转换与累计；
-3. 排序按进度降序，进度相同按课程名升序；
-4. 使用std::set和std::map生成稳定输出，不依赖unordered_map遍历顺序；
-5. 排序和筛选不得修改调用者输入；
-6. 不返回指向局部变量的引用、指针或迭代器；
-7. 比较器必须满足严格弱序，不使用&lt;=或&gt;=；
-8. 保持C++20、严格警告、CMake和CTest，不引入第三方库。
-请同时给出复杂度、迭代器失效风险、测试和验证命令。
-</code></pre></div>
-<h3 id="_24">人工审阅清单<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
-<ul>
-<li>容器选择是否服务于顺序、唯一性和查找要求。</li>
-<li>是否为了“看起来高级”引入<code>list</code>、ranges或模板抽象。</li>
-<li>按值参数是否是有意复制，还是隐藏性能问题。</li>
-<li>Lambda捕获是否超过实际需要。</li>
-<li>比较器对相同元素是否返回<code>false</code>。</li>
-<li><code>vector</code>修改后是否继续使用旧位置。</li>
-<li>哈希容器顺序是否进入报告和测试契约。</li>
-<li>测试是否证明原始记录没有被排序或筛选修改。</li>
-</ul>
-<p>主动修改：把筛选标签从“基础”改成“工程”，先更新行为测试，再修改实现并比较两种语言的输出。</p>
-<h2 id="_25">核心手动检查点<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h2>
-<ol>
-<li>在纸上追踪<code>[begin, end)</code>处理三个元素和空容器的过程。</li>
-<li>记录一次<code>vector</code>追加前后的<code>size</code>与<code>capacity</code>；若容量变化，只重新取得迭代器，不解引用旧位置。</li>
-<li>把<code>sort_by_progress</code>改成非<code>const</code>引用原地排序，观察输入测试失败，再恢复按值副本。</li>
-<li>解释为什么标签查找使用线性<code>find</code>，状态统计使用<code>map</code>，而不是机械替换成哈希。</li>
-<li>把一次手写累计循环改成<code>accumulate</code>，先让已有测试证明行为没有改变。</li>
-<li>把比较器错误改成<code>&gt;=</code>，说明规则为何无效；不要把未定义行为的偶然输出当成实验结论。</li>
-</ol>
-<h2 id="_26">微练习<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
-<ol>
-<li>用<code>array</code>保存固定三次测验分数，用<code>vector</code>保存数量会变化的练习记录。</li>
-<li>使用<code>reserve</code>预留容量，验证它不会改变<code>size()</code>。</li>
-<li>使用显式迭代器遍历空容器和非空容器。</li>
-<li>用<code>find_if</code>找到第一条已完成记录，并先检查是否等于<code>end()</code>。</li>
-<li>用<code>count_if</code>统计未完成记录，用<code>accumulate</code>累计计划时间。</li>
-<li>用<code>transform</code>生成进度数组，并与原记录数量对照。</li>
-<li>用<code>set</code>去重重复标签，用<code>map</code>统计状态。</li>
-<li>为并列进度补充课程名次级排序规则。</li>
-<li>验证筛选无结果返回空<code>vector</code>，而不是特殊占位记录。</li>
-<li>故意改坏一个CTest期望，确认非零退出后恢复。</li>
-</ol>
-<h2 id="_27">常见错误与排查<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h2>
+<p>如果发生重新分配，不能再解引用 <code>position</code>。即使本次容量没变，插入和删除也有各自失效规则。简单可靠的做法是完成容器修改后重新 <code>find_if</code> 或重新取得 <code>begin()</code>。</p>
+<p>不要用“这台电脑刚好没有崩溃”证明旧迭代器安全。未定义行为没有可依赖的输出。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-sort-contract" id="troubleshoot-sort-contract">
+<h2 id="_10">排序异常时，先检查比较器和复制边界<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>现象</th>
-<th>常见原因</th>
-<th>检查方法</th>
+<th>先检查</th>
 <th>修复方向</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>vector</code>越界或崩溃</td>
-<td>用<code>operator[]</code>读取不存在位置</td>
-<td>先检查<code>size()</code>，调试时可用<code>at()</code></td>
-<td>修正索引或遍历方式</td>
+<td>并列记录顺序变化</td>
+<td>是否有稳定次级字段</td>
+<td>进度相同再比较课程名</td>
+</tr>
+<tr>
+<td>比较器对自身返回 true</td>
+<td>是否用了 <code>&lt;=</code>／<code>&gt;=</code></td>
+<td>改成严格比较</td>
+</tr>
+<tr>
+<td>原记录顺序被改</td>
+<td>是否直接 sort 调用者 vector</td>
+<td>排序副本或明确原地接口</td>
 </tr>
 <tr>
 <td>查找后解引用失败</td>
-<td>未判断返回值是否为<code>end()</code></td>
-<td>打印或断点检查比较结果</td>
+<td>是否先和 <code>end()</code> 比较</td>
 <td>先处理未找到分支</td>
 </tr>
 <tr>
-<td>排序结果偶尔异常</td>
-<td>比较器使用<code>&lt;=</code>、<code>&gt;=</code>或依赖可变状态</td>
-<td>检查<code>comp(x, x)</code>是否为<code>false</code></td>
-<td>建立严格顺序和稳定次级规则</td>
+<td>累计小数丢失</td>
+<td>初始值是否写成整数 0</td>
+<td>使用 <code>0.0</code></td>
 </tr>
 <tr>
-<td>原始记录顺序改变</td>
-<td>对调用者容器直接<code>sort</code></td>
-<td>排序前后比较课程名序列</td>
-<td>明确原地副作用或排序副本</td>
-</tr>
-<tr>
-<td>旧迭代器失效</td>
-<td><code>vector</code>插入、扩容或删除后继续使用</td>
-<td>比较操作前后<code>capacity</code>和修改位置</td>
-<td>修改后重新取得位置</td>
-</tr>
-<tr>
-<td>报告顺序跨运行变化</td>
-<td>依赖<code>unordered_map</code>遍历顺序</td>
-<td>搜索输出循环使用的容器</td>
-<td>改用<code>map</code>或显式排序键</td>
-</tr>
-<tr>
-<td>标签重复</td>
-<td>直接输出所有记录的标签</td>
-<td>加入重复标签测试</td>
-<td>使用<code>set</code>或显式去重</td>
-</tr>
-<tr>
-<td><code>accumulate</code>结果类型不对</td>
-<td>初始值写成<code>0</code>导致整数累计</td>
-<td>检查初始值类型</td>
-<td>浮点累计使用<code>0.0</code></td>
-</tr>
-<tr>
-<td>构建警告涉及有符号比较</td>
-<td><code>int</code>与<code>size_t</code>混用</td>
-<td>阅读<code>-Wconversion</code>诊断</td>
-<td>索引使用<code>std::size_t</code>或范围遍历</td>
+<td>输出跨运行变化</td>
+<td>是否依赖哈希遍历</td>
+<td>用有序容器或显式排序</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_28">阶段作品<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h2>
-<p><a href="../../../../exercises/programming-languages/study-progress-reporters/">双语言学习进度报告器</a>同时提供Python和C++实现。两边使用同一数据与业务规则，分别通过mypy/unittest和编译器/CTest验收，并要求标准输出逐字一致。</p>
-<p>这份作品整合六节课程，不是一课一个项目。现有<a href="../../../../exercises/python-basics/study-progress-reporter/">Python起步学习进度报告器</a>继续保留，代表较早阶段的文件、异常和测试能力，不被本作品覆盖。</p>
-<h2 id="_29">完成标准<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h2>
-<ul>
-<li>能为固定序列、动态序列、唯一值和键值查找选择基础容器。</li>
-<li>能解释<code>vector</code>的<code>size</code>、<code>capacity</code>、重新分配和迭代器失效。</li>
-<li>能手动追踪半开区间并正确处理<code>end()</code>。</li>
-<li>能使用本节要求的查找、统计、转换、累计和排序算法。</li>
-<li>能说明<code>sort</code>的修改行为和按值复制的接口取舍。</li>
-<li>能写出严格弱序比较器并解释为何不能使用<code>&lt;=</code>。</li>
-<li>能说明<code>map</code>与<code>unordered_map</code>在复杂度和输出顺序上的差异。</li>
-<li>能在严格警告下构建课程工程并通过CTest。</li>
-<li>能运行双语言阶段作品并证明输出一致、输入不变。</li>
-<li>能审阅AI代码中的容器、复制、迭代器和比较器风险。</li>
+<p>比较器契约被破坏时，不要把某次“看起来还对”的结果当成通过。恢复严格顺序后，用相同进度、相同名称和空输入测试。</p>
+</section>
+<section data-context-type="project" data-learning-context="project-cpp-v04" id="project-cpp-v04">
+<h2 id="_11">报告器开始处理真正的一组数据<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>上一版</th>
+<th>这一版</th>
+<th>下一版</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单条状态与函数</td>
+<td><code>vector</code> 多记录、排序、筛选、汇总</td>
+<td>对象借用、查找与 RAII 审计</td>
+</tr>
+<tr>
+<td>CMake 工程骨架</td>
+<td>同一库中加入 STL 算法</td>
+<td>资源离开作用域自动释放</td>
+</tr>
+<tr>
+<td>CTest 检查计算</td>
+<td>输入不变和双语言输出一致</td>
+<td>引用、指针和文件失败路径</td>
+</tr>
+</tbody>
+</table>
+<p><a href="../../../../exercises/programming-languages/study-progress-reporters/">阶段作品说明</a>记录两种语言的共同契约。Python 通过协议和生成器表达遍历，C++ 通过容器范围和迭代器表达位置；最终输出一致，但语言机制不需要伪装成相同。</p>
+</section>
+<section data-context-type="deepen" data-learning-context="deepen-container-tradeoff" id="deepen-container-tradeoff">
+<h2 id="_12">容器选择是一组权衡，不是一张固定答案表<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>顺序、修改频率、查找方式、稳定输出、元素大小和数据规模会共同影响选择。把 <code>vector</code> 换成 <code>list</code> 不会自动获得“插入更快”的整体程序；先找到位置、内存局部性和迭代方式都要算进去。</p>
+<p>本课先建立标准容器和算法的可解释基线。真正需要性能优化时，用代表性数据、明确指标和剖析结果再改，而不是从复杂度表直接跳到结论。</p>
+</section>
+<section data-context-type="career" data-learning-context="career-stl-evidence" id="career-stl-evidence">
+<h2 id="stl">讲 STL 时，讲选择和失败，不要背接口名<a class="headerlink" href="#stl" title="Permanent link">&para;</a></h2>
+<p>可以说明为什么记录用 <code>vector</code>、标签用 <code>set</code>、统计用 <code>map</code>；为什么排序接收副本；怎样发现旧迭代器可能失效；如何用并列进度和空输入证明比较器与算法边界。</p>
+<p>这比说“熟悉 vector、map、sort”更能体现你知道容器和算法会怎样影响程序行为。</p>
+</section>
+<h2 id="_13">完成检查<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能根据固定长度、动态顺序、唯一性和键值关系选择基础容器。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能解释 <code>vector</code> 的 <code>size</code>、<code>capacity</code>、重新分配和位置失效。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能手动追踪 <code>[begin, end)</code>，并在查找后先检查 <code>end()</code>。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能使用 <code>find_if</code>、<code>count_if</code>、<code>transform</code>、<code>accumulate</code> 和 <code>sort</code>。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说明排序副本与原地排序的接口差别。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能写出严格比较器，解释为什么不能用 <code>&lt;=</code> 或 <code>&gt;=</code>。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说明 <code>map</code> 与 <code>unordered_map</code> 的复杂度和输出顺序差异。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能通过 CTest，并证明 C++ 与 Python 主报告逐字一致。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能增加一项统计，同时保持输入记录不变。</li>
 </ul>
-<h2 id="_30">来源与版本<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h2>
+<h2 id="_14">来源与版本<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>来源</th>
 <th>用于核查</th>
-<th>版本或日期</th>
+<th>核查日期</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://eel.is/c++draft/vector.capacity">C++工作草案：vector容量</a></td>
-<td><code>capacity</code>、<code>reserve</code>和重新分配失效</td>
-<td>C++20教学基线，2026-07-15核查</td>
+<td><a href="https://eel.is/c++draft/vector.capacity">C++ draft：vector capacity</a></td>
+<td><code>capacity</code>、<code>reserve</code> 与重新分配</td>
+<td>2026-07-17</td>
 </tr>
 <tr>
-<td><a href="https://eel.is/c++draft/vector.modifiers">C++工作草案：vector修改操作</a></td>
+<td><a href="https://eel.is/c++draft/vector.modifiers">C++ draft：vector modifiers</a></td>
 <td>插入、删除与迭代器失效</td>
-<td>C++20教学基线，2026-07-15核查</td>
+<td>2026-07-17</td>
 </tr>
 <tr>
-<td><a href="https://eel.is/c++draft/iterator.requirements">C++工作草案：迭代器要求</a></td>
-<td>迭代器、范围和算法前置</td>
-<td>2026-07-15核查</td>
+<td><a href="https://eel.is/c++draft/iterator.requirements">C++ draft：iterator requirements</a></td>
+<td>迭代器和范围前置条件</td>
+<td>2026-07-17</td>
 </tr>
 <tr>
-<td><a href="https://eel.is/c++draft/alg.find">C++工作草案：查找算法</a></td>
-<td><code>find</code>与<code>find_if</code></td>
-<td>2026-07-15核查</td>
+<td><a href="https://eel.is/c++draft/alg.find">C++ draft：find algorithms</a></td>
+<td><code>find</code> 与 <code>find_if</code></td>
+<td>2026-07-17</td>
 </tr>
 <tr>
-<td><a href="https://eel.is/c++draft/alg.sorting">C++工作草案：排序算法</a></td>
+<td><a href="https://eel.is/c++draft/alg.sorting">C++ draft：sorting algorithms</a></td>
 <td><code>sort</code>、复杂度与严格弱序</td>
-<td>2026-07-15核查</td>
+<td>2026-07-17</td>
 </tr>
 <tr>
-<td><a href="https://eel.is/c++draft/associative.reqmts">C++工作草案：关联容器</a></td>
-<td><code>set</code>、<code>map</code>和有序复杂度</td>
-<td>2026-07-15核查</td>
+<td><a href="https://eel.is/c++draft/associative.reqmts">C++ draft：associative containers</a></td>
+<td><code>set</code>、<code>map</code> 与有序复杂度</td>
+<td>2026-07-17</td>
 </tr>
 <tr>
-<td><a href="https://eel.is/c++draft/unord.req">C++工作草案：无序关联容器</a></td>
+<td><a href="https://eel.is/c++draft/unord.req">C++ draft：unordered containers</a></td>
 <td>哈希容器平均与最坏复杂度</td>
-<td>2026-07-15核查</td>
+<td>2026-07-17</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_31">下一步<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h2>
-<p>下一节进入Python核心语言的 <strong><a href="../../python-core/03-iterables-iterators-generators/">容器协议、迭代器与生成器</a></strong>。完成这组对照后，继续学习 C++ <strong><a href="../05-objects-references-pointers-lifetime-raii/">对象、引用、指针、生命周期与RAII</a></strong>，把容器中的对象、借用与资源释放纳入同一份阶段作品。</p>
+<h2 id="_15">下一步<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>下一节进入<a href="../05-objects-references-pointers-lifetime-raii/">对象、引用、指针、生命周期与 RAII</a>。报告器会用引用修改一条记录、用可空非拥有指针表达“可能找不到”，并在作用域内安全写出审计文件。</p>
 
 
 

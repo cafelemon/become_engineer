@@ -2768,43 +2768,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#0-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从 0 出发看不到 5，怎样把整张图走完
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bfs-dfs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第一步：运行 BFS 与全图 DFS 基线
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dfs_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第二步：实现带已访问状态的递归 DFS
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dfs_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第三步：从最小未访问顶点启动全图 DFS
+        开始前
       
     </span>
   </a>
@@ -2815,7 +2793,18 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：排除父边后检测无向环
+        单起点搜索与全图遍历回答不同问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-dfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        扫描到 5 时，启动第二次 DFS
       
     </span>
   </a>
@@ -2826,18 +2815,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：复现未排除父边的误判
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build_component_labels" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第六步：完成 build_component_labels 迁移验收
+        进入顶点，先标记，再看邻居
       
     </span>
   </a>
@@ -2848,7 +2826,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        孩子回看父节点，不是发现了环
       
     </span>
   </a>
@@ -2859,7 +2837,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        固定输出
+        路径图没有环，固定图有
       
     </span>
   </a>
@@ -2870,7 +2848,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        看递归在哪里进入新分量
       
     </span>
   </a>
@@ -2881,7 +2859,18 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        来源与版本
+        回归一般图三份报告
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dfs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        打乱边顺序，DFS 轨迹仍不变
       
     </span>
   </a>
@@ -2890,6 +2879,94 @@
       
         <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三个没有边的顶点有几个分量
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        少分量、无限递归或所有边都像环
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可追踪图遍历实验 v1.0
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dfs-thetave" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么完整 DFS 是 Theta(V+E)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        递归深度不是连通分量大小
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用一个误判讲清无向环检测
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -3857,43 +3934,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#0-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从 0 出发看不到 5，怎样把整张图走完
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bfs-dfs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第一步：运行 BFS 与全图 DFS 基线
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dfs_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第二步：实现带已访问状态的递归 DFS
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dfs_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第三步：从最小未访问顶点启动全图 DFS
+        开始前
       
     </span>
   </a>
@@ -3904,7 +3959,18 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：排除父边后检测无向环
+        单起点搜索与全图遍历回答不同问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-dfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        扫描到 5 时，启动第二次 DFS
       
     </span>
   </a>
@@ -3915,18 +3981,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：复现未排除父边的误判
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build_component_labels" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第六步：完成 build_component_labels 迁移验收
+        进入顶点，先标记，再看邻居
       
     </span>
   </a>
@@ -3937,7 +3992,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        孩子回看父节点，不是发现了环
       
     </span>
   </a>
@@ -3948,7 +4003,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        固定输出
+        路径图没有环，固定图有
       
     </span>
   </a>
@@ -3959,7 +4014,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        看递归在哪里进入新分量
       
     </span>
   </a>
@@ -3970,7 +4025,18 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        来源与版本
+        回归一般图三份报告
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dfs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        打乱边顺序，DFS 轨迹仍不变
       
     </span>
   </a>
@@ -3979,6 +4045,94 @@
       
         <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三个没有边的顶点有几个分量
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        少分量、无限递归或所有边都像环
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可追踪图遍历实验 v1.0
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dfs-thetave" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么完整 DFS 是 Theta(V+E)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        递归深度不是连通分量大小
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用一个误判讲清无向环检测
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -4008,75 +4162,12 @@
   
 
 
-<h1 id="dfs">DFS、连通分量与无向环检测<a class="headerlink" href="#dfs" title="Permanent link">&para;</a></h1>
 <div class="be-tutor-mount" data-tutor-lesson="cs-core-20" aria-hidden="true"></div>
 
-<blockquote>
-<p><strong>任务先行：</strong> 从一次可达性搜索扩展为全图 DFS，并用父边规则区分无向边的回看与真正的环证据。</p>
-</blockquote>
-<h2 id="_1">任务路线<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="be-task-route" role="list" aria-label="本课六步任务"><span role="listitem">1 BFS 基线</span><span role="listitem">2 递归 DFS</span><span role="listitem">3 连通分量</span><span role="listitem">4 无向环</span><span role="listitem">5 父边误判</span><span role="listitem">6 标签迁移</span></div>
-
-<section class="be-task-step" data-step-id="step-1" id="step-1">
-<h2 id="bfs-dfs">第一步：运行 BFS 与全图 DFS 基线<a class="headerlink" href="#bfs-dfs" title="Permanent link">&para;</a></h2>
-<p>先运行 <code>bfs</code> 再运行 <code>dfs</code>。<strong>当前任务：</strong>区分“从起点可达的遍历”和“覆盖所有顶点的遍历”。<strong>成功证据：</strong>BFS 从 0 访问 5 个顶点；全图 DFS 访问 7 个并得到 2 个分量。</p>
-</section>
-<section class="be-task-step" data-step-id="step-2" id="step-2">
-<h2 id="dfs_1">第二步：实现带已访问状态的递归 DFS<a class="headerlink" href="#dfs_1" title="Permanent link">&para;</a></h2>
-<p>进入顶点后立即标记，再按升序递归未访问邻居。<code>max_depth</code> 以每个分量起点为 0 重新计算；空图为 -1。与树不同，一般图若没有 <code>visited</code> 会沿环重复递归。</p>
-<p><strong>主动修改：</strong>交换输入边顺序。<strong>成功证据：</strong>规范化邻接表使 DFS 序列保持不变。</p>
-</section>
-<section class="be-task-step" data-step-id="step-3" id="step-3">
-<h2 id="dfs_2">第三步：从最小未访问顶点启动全图 DFS<a class="headerlink" href="#dfs_2" title="Permanent link">&para;</a></h2>
-<p>外层按 <code>0..V-1</code> 扫描；每遇到未访问顶点就创建新分量并递归。孤立顶点也是大小为 1 的连通分量，不能因没有边而消失。</p>
-<pre class="mermaid"><code>flowchart LR
-    S["扫描最小未访问顶点"] --&gt; D["DFS 收集一个分量"]
-    D --&gt; R{"仍有未访问顶点?"}
-    R -- 是 --&gt; S
-    R -- 否 --&gt; O["输出分量与标签"]</code></pre>
-<p><strong>成功证据：</strong>样例分量依次为 <code>[0,1,3,2,4]</code> 和 <code>[5,6]</code>。</p>
-</section>
-<section class="be-task-step" data-step-id="step-4" id="step-4">
-<h2 id="_2">第四步：排除父边后检测无向环<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>无向边会在两个邻接表中出现。DFS 从 <code>u</code> 走到 <code>v</code> 后，<code>v</code> 看见已访问的 <code>u</code> 只是父边；只有已访问邻居不等于父节点时才构成环证据。首次证据规范为 <code>(min,max)</code>，样例为 <code>(0,2)</code>。</p>
-<p><strong>复杂度证据：</strong>全图访问每个顶点一次、检查每个无向邻接项一次，即 <code>V</code> 次访问与 <code>2E</code> 次边检查，时间 <code>Theta(V+E)</code>。</p>
-</section>
-<section class="be-task-step" data-step-id="step-5" id="step-5">
-<h2 id="_3">第五步：复现未排除父边的误判<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>临时删除 <code>neighbor != parent</code> 条件，在只有 <code>0—1—2</code> 的无环路径上运行。<strong>预期失败：</strong>1 回看 0 时被误报为环。<strong>恢复标准：</strong>重新排除父边后路径图无环，真正的四边环仍能识别。</p>
-</section>
-<section class="be-task-step" data-step-id="step-6" id="step-6">
-<h2 id="build_component_labels">第六步：完成 <code>build_component_labels</code> 迁移验收<a class="headerlink" href="#build_component_labels" title="Permanent link">&para;</a></h2>
-<p>按分量发现顺序为每个顶点写标签。空图返回空标签和 0 个分量；孤立顶点各自获得新标签。<strong>成功证据：</strong>样例标签为 <code>0,0,0,0,0,1,1</code>，所有顶点恰好写一次。</p>
-</section>
-<h2 id="_4">课程信息<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>前置</td>
-<td><a href="../19-bfs-unweighted-distances-shortest-paths/">BFS、无权距离与最短路径</a></td>
-</tr>
-<tr>
-<td>阶段作品</td>
-<td><a href="../../../exercises/cs-core/traceable-graph-traversal-lab/">可追踪图遍历实验</a></td>
-</tr>
-<tr>
-<td>完整遍历</td>
-<td>邻接表下时间 <code>Theta(V+E)</code>，已访问、递归与结果空间最坏 <code>Theta(V)</code></td>
-</tr>
-<tr>
-<td>事实核查</td>
-<td>MIT 6.006、Open Data Structures，2026-07-16</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_5">固定输出<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<section class="be-page-hero be-lesson-hero" data-context-type="overview" data-learning-context="overview-dfs-output" id="overview-dfs-output">
+<p><span class="be-lesson-kicker">共同算法基础 · 第 16 课 · 可追踪图遍历实验</span></p>
+<h1 id="dfs">DFS、连通分量与无向环检测<a class="headerlink" href="#dfs" title="Permanent link">&para;</a></h1>
+<h2 id="0-5">从 0 出发看不到 5，怎样把整张图走完<a class="headerlink" href="#0-5" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>全图 DFS
 components=2
 component 0：0, 1, 3, 2, 4
@@ -4085,68 +4176,199 @@ visits=7，edge_checks=12，max_depth=3
 cycle=yes，first_edge=(0, 2)
 labels：0, 0, 0, 0, 0, 1, 1
 </code></pre></div>
-<h2 id="_6">常见错误与排查<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>一次 DFS 只能走完起点所在的连通部分。要覆盖整张图，就继续按顶点编号扫描；每遇到一个没访问过的顶点，再启动一次 DFS。上面的固定图会从 0 和 5 各启动一次，因此有两个连通分量。</p>
+<p><a class="md-button md-button--primary" href="#example-component-scan">看全图扫描怎样重启</a>
+<a class="md-button" href="#reproduce-dfs-trace">运行递归轨迹</a></p>
+<div class="be-lesson-facts">
+<p><span>课程位置<strong>共同算法基础 · 16 / 16</strong></span><span>前置<strong>无权 BFS、距离与父链</strong></span><span>完成后留下<strong>全图遍历、分量标签与无向环证据</strong></span></p>
+</div>
+</section>
+<h2 id="_1">开始前<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>图仍是简单无向图，每行邻居按升序保存。</li>
+<li>能区分“已发现”与“尚未访问”，知道一般图可能形成环。</li>
+<li>本课只判断无向环；有向图的回边、拓扑排序和强连通分量另行学习。</li>
+</ul>
+<section data-context-type="concept" data-learning-context="concept-single-full-search" id="concept-single-full-search">
+<h2 id="_2">单起点搜索与全图遍历回答不同问题<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>从 0 运行 BFS 或 DFS，只能回答“哪些顶点能从 0 到达”。全图 DFS 在外面再加一层顶点扫描，回答“整张图可以分成多少块”。</p>
+<p>外层扫描不改变单次 DFS 的写法。它只负责找到下一个尚未访问的起点，并为这个新分量准备空结果。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-component-scan" id="example-component-scan">
+<h2 id="5-dfs">扫描到 5 时，启动第二次 DFS<a class="headerlink" href="#5-dfs" title="Permanent link">&para;</a></h2>
+<div aria-label="全图 DFS 收集连通分量" class="be-component-scan">
+<div><strong>扫描 0</strong><code>未访问</code><span>启动分量 0</span></div>
+<div><strong>DFS(0)</strong><code>0,1,3,2,4</code><span>五个顶点标记完成</span></div>
+<div><strong>继续到 5</strong><code>未访问</code><span>启动分量 1</span></div>
+<div><strong>DFS(5)</strong><code>5,6</code><span>所有顶点均已访问</span></div>
+</div>
+<p>顶点 1–4 在外层扫描时已经访问，不会重复启动。若顶点没有任何边，它仍会作为一个只含自己的分量被收集。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-mark-before-recursion" id="concept-mark-before-recursion">
+<h2 id="_3">进入顶点，先标记，再看邻居<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>递归函数一进入 <code>vertex</code> 就把它加入 <code>visited</code>，然后按升序扫描邻居。若邻居尚未访问，才沿这条边递归。</p>
+<p>这里不能把标记推迟到递归返回之后。环上的另一个顶点会立刻沿边回来，再次进入同一个调用，递归便无法收束。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-parent-edge" id="concept-parent-edge">
+<h2 id="_4">孩子回看父节点，不是发现了环<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>无向边 <code>{0,1}</code> 同时出现在 0 和 1 的邻接表里。DFS 从 0 走到 1 后，1 必然会看见已经访问的 0；那只是刚才走过的树边反向项。</p>
+<p>因此遇到已访问邻居时，还要判断它是否等于当前调用的父节点。只有“已访问且不是父节点”才提供无向环证据。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-cycle-evidence" id="example-cycle-evidence">
+<h2 id="_5">路径图没有环，固定图有<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>无环路径：0 — 1 — 2
+1 看见 0：父边，跳过
+2 看见 1：父边，跳过
+
+固定图的一部分：0 — 1 — 3 — 2 — 0
+2 看见 0：已访问且不是父节点，得到环证据 (0,2)
+</code></pre></div>
+<p>项目把首次证据规范为 <code>(min(u,v), max(u,v))</code>。它证明存在环，但不承诺立即返回完整环路径。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-dfs-trace" id="reproduce-dfs-trace">
+<h2 id="_6">看递归在哪里进入新分量<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>先猜第二个 <code>start_component</code> 会打印哪个顶点，再运行：</p>
+<div class="highlight"><pre><span></span><code>.venv/bin/python<span class="w"> </span>site-src/examples/algorithm-foundation/full_graph_dfs_trace.py
+</code></pre></div>
+<p>缩进表示递归深度。脚本会打印进入顶点、检查边、首次环证据、两个分量和最终标签，便于把调用栈与图结构对在一起。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-bilingual-dfs" id="reproduce-bilingual-dfs">
+<h2 id="_7">回归一般图三份报告<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/cs-core/traceable-graph-traversal-lab/python
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>-v
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>src<span class="w"> </span>tests
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>traceable_graph_traversal_lab<span class="w"> </span>dfs
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/cs-core/traceable-graph-traversal-lab/cpp
+cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Debug
+cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>--config<span class="w"> </span>Debug
+ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class="w"> </span>--build-config<span class="w"> </span>Debug<span class="w"> </span>--output-on-failure
+./build/traceable_graph_traversal_lab<span class="w"> </span>dfs
+</code></pre></div>
+<p>Python 与 C++ 都应输出两个分量、7 次访问、12 次邻接项检查、最大深度 3 和首次环边 <code>(0,2)</code>。同时回归 <code>graph</code>、<code>bfs</code>，三份报告逐字一致。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-edge-order" id="modify-edge-order">
+<h2 id="dfs_1">打乱边顺序，DFS 轨迹仍不变<a class="headerlink" href="#dfs_1" title="Permanent link">&para;</a></h2>
+<p>把原始边列表倒序，再运行全图 DFS。上一课的图构造会把规范边和每行邻居重新排序，所以分量顺序仍是 <code>[0,1,3,2,4]</code>、<code>[5,6]</code>。</p>
+<p>如果结果跟着输入排列变化，先修邻接表示，不要在 DFS 里硬编码期望顺序。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-isolated-components" id="modify-isolated-components">
+<h2 id="_8">三个没有边的顶点有几个分量<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>建立 <code>V=3</code>、边集为空的图。外层扫描会分别从 0、1、2 启动，得到三个单顶点分量，标签是 <code>0,1,2</code>，没有环，最大深度为 0。</p>
+<p>空图则没有任何启动点：分量和标签都为空，项目把最大深度定义为 -1。两者不要混在一起。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-dfs" id="troubleshoot-dfs">
+<h2 id="_9">少分量、无限递归或所有边都像环<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>现象</th>
-<th>原因</th>
-<th>恢复</th>
+<th>常见原因</th>
+<th>改法</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>只得到起点所在分量</td>
-<td>缺少外层顶点扫描</td>
-<td>从每个未访问顶点重启 DFS</td>
+<td>只得到 <code>[0,1,3,2,4]</code></td>
+<td>只从 0 调用一次 DFS</td>
+<td>外层扫描所有顶点并在未访问点重启</td>
 </tr>
 <tr>
-<td>每条边都像环</td>
-<td>把返回父节点的边也计入</td>
-<td>记录并排除 DFS 父边</td>
+<td>环上反复递归</td>
+<td>进入后没有立即标记</td>
+<td>扫描邻居前写入 <code>visited</code></td>
 </tr>
 <tr>
-<td>环上无限递归</td>
-<td>递归后才标记</td>
-<td>进入顶点立即标记</td>
+<td>路径 <code>0—1—2</code> 被判有环</td>
+<td>没有排除父边</td>
+<td>已访问邻居必须不等于父节点</td>
 </tr>
 <tr>
-<td>分量编号漂移</td>
-<td>顶点或邻接顺序不稳定</td>
-<td>顶点与邻接点都升序</td>
+<td>分量编号每次不同</td>
+<td>顶点或邻接顺序不固定</td>
+<td>外层编号和每行邻居都升序</td>
+</tr>
+<tr>
+<td>孤立顶点消失</td>
+<td>从边集合反推顶点</td>
+<td>按 <code>[0,V)</code> 扫描完整顶点集合</td>
+</tr>
+<tr>
+<td>空图深度变成 0</td>
+<td>默认假设启动过 DFS</td>
+<td>无分量时明确返回 -1</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_7">来源与版本<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+</section>
+<section data-context-type="project" data-learning-context="project-graph-v10" id="project-graph-v10">
+<h2 id="v10">可追踪图遍历实验 v1.0<a class="headerlink" href="#v10" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>v0.1 简单无向图、规范边、邻接表示和输入校验
+v0.2 BFS、无权距离、父链、最短路径和范围查询
+v1.0 全图 DFS、连通分量、分量标签和无向环证据
+</code></pre></div>
+<p>三课已经把输入、表示、单起点搜索和全图分析串在一起。正常图、空图、孤立点、不可达目标、父边误判和输入重排都有固定测试，Python 与 C++ 使用同一公开报告契约。</p>
+<p><a class="md-button md-button--primary" href="../../../exercises/cs-core/traceable-graph-traversal-lab/">查看可追踪图遍历实验</a></p>
+</section>
+<section data-context-type="deepen" data-learning-context="deepen-dfs-counts" id="deepen-dfs-counts">
+<h2 id="dfs-thetave">为什么完整 DFS 是 <code>Theta(V+E)</code><a class="headerlink" href="#dfs-thetave" title="Permanent link">&para;</a></h2>
+<p>外层扫描每个顶点一次，首次进入时才加入 <code>visited</code>。邻接表中的每个条目也只在所属顶点被处理时扫描一次；无向边有两个邻接项，所以固定图的 6 条边对应 12 次检查。</p>
+<p>总工作量是 <code>V+2E</code>，省略常数后为 <code>Theta(V+E)</code>。<code>visited</code>、分量结果和递归栈最坏都可能占 <code>Theta(V)</code> 空间。</p>
+</section>
+<section data-context-type="deepen" data-learning-context="deepen-recursion-boundary" id="deepen-recursion-boundary">
+<h2 id="_10">递归深度不是连通分量大小<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>固定图第一个分量有 5 个顶点，但按当前邻接顺序形成的 DFS 树最深只有 3 条树边。深度取决于 DFS 树形，不等于顶点数或最短距离。</p>
+<p>长链图的递归深度会接近 <code>V-1</code>，可能碰到语言调用栈限制。需要处理超深输入时，应改用显式栈并保持相同的发现与父边规则。</p>
+</section>
+<section data-context-type="career" data-learning-context="career-dfs-evidence" id="career-dfs-evidence">
+<h2 id="_11">用一个误判讲清无向环检测<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>先用 <code>0—1—2</code> 说明孩子必然回看父节点，因此“看见已访问邻居”不能直接判环。再换到 <code>0—1—3—2—0</code>，指出 2 看见 0 时它不是父节点，才得到真实环证据。</p>
+<p>接着补上外层重启如何收集两个分量、孤立点如何处理，以及 7 次顶点访问和 12 次邻接检查。这个回答比只说“DFS 可以判环”更完整，也更容易被代码和测试验证。</p>
+</section>
+<h2 id="_12">完成检查<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能区分单起点搜索与覆盖整张图的外层扫描。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 进入顶点先标记，固定图不会沿环重复递归。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 路径图不误报；已访问且非父节点的邻居提供环证据。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 固定图得到两个分量和标签 <code>0,0,0,0,0,1,1</code>。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 空图、三个孤立顶点、边输入重排和深链边界都能解释。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Python 类型检查与单元测试、C++ 构建与 CTest、三种双语言报告全部通过。</li>
+</ul>
+<h2 id="_13">来源与版本<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>来源</th>
-<th>用途</th>
-<th>核查日期</th>
+<th>用于核查</th>
+<th>版本或日期</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/f3e349e0eb3288592289d2c81e0c4f4d_MIT6_006S20_lec10.pdf">MIT 6.006 Lecture 10</a></td>
 <td>DFS、全图搜索与连通分量</td>
-<td>2026-07-16</td>
+<td>2026-07-17 核查</td>
 </tr>
 <tr>
-<td><a href="https://opendatastructures.org/ods-python/12_3_Graph_Traversal.html">Open Data Structures Graph Traversal</a></td>
-<td>已访问状态与遍历框架</td>
-<td>2026-07-16</td>
+<td><a href="https://opendatastructures.org/ods-python/12_3_Graph_Traversal.html">Open Data Structures 图遍历</a></td>
+<td>已访问状态和邻接表遍历成本</td>
+<td>2026-07-17 核查</td>
 </tr>
 <tr>
-<td><a href="https://eel.is/c++draft/container.adaptors.general">C++ 容器适配器</a></td>
-<td>后续显式栈/队列对照</td>
-<td>2026-07-16</td>
+<td><a href="https://docs.python.org/3.11/library/sys.html#sys.getrecursionlimit">Python 递归限制</a></td>
+<td>深链输入的调用栈边界</td>
+<td>Python 3.11，2026-07-17 核查</td>
+</tr>
+<tr>
+<td><a href="https://eel.is/c++draft/expr.call">C++ 函数调用</a></td>
+<td>递归调用语义边界</td>
+<td>C++20 教学基线，2026-07-17 核查</td>
 </tr>
 </tbody>
 </table>
-<p>本地材料只用于检查 DFS/BFS、复杂度与环判断的易错条件；有向图的回边、拓扑排序和强连通分量不在本课契约内。</p>
-<h2 id="_8">下一步<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<p>一般图表示与基础遍历闭环完成。下一课进入<a href="../21-binary-min-heap-implicit-tree-invariant/">二叉最小堆、隐式树与堆不变量</a>；有向图算法、最小生成树和并查集仍未开放。</p>
+<p>本课的父边规则只适用于无向图。有向图需要按发现、处理中和完成等状态区分边类型，不能删除 <code>parent</code> 判断后直接沿用。</p>
+<h2 id="_14">下一步<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p>共同算法与数据结构基础到这里闭环。进入算法核心的<a href="../21-binary-min-heap-implicit-tree-invariant/">二叉最小堆、隐式树与堆不变量</a>，开始处理“始终取出当前最小项”的数据结构。</p>
 
 
 

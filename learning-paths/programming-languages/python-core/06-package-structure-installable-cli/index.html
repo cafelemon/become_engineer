@@ -2139,51 +2139,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#16" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第一步：锁定 16 项测试和报告基线
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第二步：迁移为 src 布局常规包
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyproject" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第三步：建立 pyproject 和两个安装入口
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#argparse-report-audit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第四步：用 argparse 建立 report 和 audit 子命令
+        换到空目录，这条命令还认识你的程序
       
     </span>
   </a>
@@ -2194,7 +2150,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：安全复现直接运行包内文件的失败
+        开始前
       
     </span>
   </a>
@@ -2205,7 +2161,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第六步：完成参数迁移验收
+        一个项目里有四个不同层次
       
     </span>
   </a>
@@ -2216,7 +2172,106 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        连字符、下划线和导入语句别混在一起
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        src 布局故意让“没安装也能导入”变难
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pyprojecttoml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pyproject.toml 告诉构建工具去哪里找包
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        两个入口，最后只走一个 main
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI 解析人的输入，业务函数处理业务
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        不记参数，先问 --help
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clipy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        直接运行 cli.py，为什么反而导入失败
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        只 import 一下，不该突然打印报告
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wheel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        在干净环境里安装 wheel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        增加 --status，但别碰默认报告
       
     </span>
   </a>
@@ -2227,7 +2282,18 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        学习目标
+        学习进度报告器现在是一件可安装工具
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#editable-wheel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        editable 成功，不代表 wheel 一定完整
       
     </span>
   </a>
@@ -2238,84 +2304,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        从脚本到命令发生了什么
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 保存可回归基线
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-src" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 组织常规包与 src 布局
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 声明安装与入口
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-argparse" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 让 argparse 只管理调用边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 观察导入上下文失败
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. 迁移任务与完整验收
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI 协作任务
+        讲包化时，拿出项目目录外的结果
       
     </span>
   </a>
@@ -2326,7 +2315,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        完成检查
       
     </span>
   </a>
@@ -2337,17 +2326,6 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        完成证据
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         来源与版本
       
     </span>
@@ -2356,7 +2334,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -3959,51 +3937,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#16" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第一步：锁定 16 项测试和报告基线
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第二步：迁移为 src 布局常规包
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyproject" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第三步：建立 pyproject 和两个安装入口
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#argparse-report-audit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第四步：用 argparse 建立 report 和 audit 子命令
+        换到空目录，这条命令还认识你的程序
       
     </span>
   </a>
@@ -4014,7 +3948,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：安全复现直接运行包内文件的失败
+        开始前
       
     </span>
   </a>
@@ -4025,7 +3959,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第六步：完成参数迁移验收
+        一个项目里有四个不同层次
       
     </span>
   </a>
@@ -4036,7 +3970,106 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        连字符、下划线和导入语句别混在一起
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        src 布局故意让“没安装也能导入”变难
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pyprojecttoml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pyproject.toml 告诉构建工具去哪里找包
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        两个入口，最后只走一个 main
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI 解析人的输入，业务函数处理业务
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        不记参数，先问 --help
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clipy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        直接运行 cli.py，为什么反而导入失败
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        只 import 一下，不该突然打印报告
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wheel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        在干净环境里安装 wheel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        增加 --status，但别碰默认报告
       
     </span>
   </a>
@@ -4047,7 +4080,18 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        学习目标
+        学习进度报告器现在是一件可安装工具
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#editable-wheel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        editable 成功，不代表 wheel 一定完整
       
     </span>
   </a>
@@ -4058,84 +4102,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        从脚本到命令发生了什么
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 保存可回归基线
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-src" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 组织常规包与 src 布局
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 声明安装与入口
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-argparse" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 让 argparse 只管理调用边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 观察导入上下文失败
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. 迁移任务与完整验收
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI 协作任务
+        讲包化时，拿出项目目录外的结果
       
     </span>
   </a>
@@ -4146,7 +4113,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        完成检查
       
     </span>
   </a>
@@ -4157,17 +4124,6 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        完成证据
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         来源与版本
       
     </span>
@@ -4176,7 +4132,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -4206,155 +4162,98 @@
   
 
 
-<h1 id="python-cli">Python 包结构、可安装入口与 CLI<a class="headerlink" href="#python-cli" title="Permanent link">&para;</a></h1>
 <div class="be-tutor-mount" data-tutor-lesson="python-core-06" aria-hidden="true"></div>
 
-<blockquote>
-<p><strong>任务先行：</strong> 把只能依赖当前目录运行的多模块报告器迁移为可安装包，并用同一业务函数同时支持 <code>study-progress</code> 和 <code>python -m study_progress_reporter</code>。先在项目目录外看到报告，再解释包、分发项目、入口和参数边界。</p>
-</blockquote>
-<h2 id="_1">任务路线<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="be-task-route" role="list" aria-label="本课六步任务"><span role="listitem">1 锁定基线</span><span role="listitem">2 src 包</span><span role="listitem">3 安装入口</span><span role="listitem">4 CLI</span><span role="listitem">5 导入失败</span><span role="listitem">6 迁移验收</span></div>
+<section class="be-page-hero be-lesson-hero" data-context-type="overview" data-learning-context="overview-installed-command" id="overview-installed-command">
+<p><span class="be-page-eyebrow">Python 工程化 · 第一课 · 离开源码目录也能运行</span></p>
+<h1 id="python-cli">Python 包结构、可安装入口与 CLI<a class="headerlink" href="#python-cli" title="Permanent link">&para;</a></h1>
+<h2 id="_1">换到空目录，这条命令还认识你的程序<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>study-progress<span class="w"> </span>report
+python<span class="w"> </span>-m<span class="w"> </span>study_progress_reporter<span class="w"> </span>report
+</code></pre></div>
+<p>两条命令都能输出同一份学习进度报告，而且当前目录里没有 <code>main.py</code>。这说明程序依赖的是已经安装的包，而不是“终端刚好站在源码旁边”。</p>
+<div class="be-page-actions">
+<p><a class="md-button md-button--primary" href="#concept-package-names">先分清三个名字</a>
+<a class="md-button" href="#reproduce-wheel-install">做一次干净安装</a></p>
+</div>
+</section>
+<div class="be-lesson-overview">
+  <div><span>课程位置</span><strong>Python 工程化 · 1 / 2</strong></div>
+  <div><span>前置</span><strong>模块、虚拟环境、函数接口、测试和资源边界</strong></div>
+  <div><span>完成后留下</span><strong>可安装 wheel、模块入口、控制台命令和两个 CLI 子命令</strong></div>
+</div>
 
-<section class="be-task-step" data-step-id="step-1" id="step-1">
-<h2 id="16">第一步：锁定 16 项测试和报告基线<a class="headerlink" href="#16" title="Permanent link">&para;</a></h2>
-<p>从旧结构的 Python 子目录运行 unittest、mypy 和 <code>main.py</code>，保存 16 项测试与 <code>总体进度：87.1%</code>。<strong>当前任务：</strong> 明确迁移只改变运行边界。<strong>成功证据：</strong> 默认报告文本、<code>build_report()</code> 和 <code>write_audit_snapshot()</code> 行为在迁移前后不变。</p>
+<h2 id="_2">开始前<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>能创建并激活虚拟环境，知道 <code>python -m pip</code> 使用的是哪个解释器。</li>
+<li>能读懂包内绝对导入和 <code>main(argv) -&gt; int</code>。</li>
+<li>已完成学习进度报告器的核心五课，当前正式项目有 30 项测试。</li>
+<li>本课运行依赖仍只有标准库；构建与类型检查属于开发工具。</li>
+</ul>
+<section data-context-type="concept" data-learning-context="concept-package-layers" id="concept-package-layers">
+<h2 id="_3">一个项目里有四个不同层次<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>分发项目 study-progress-reporter
+└── 导入包 study_progress_reporter
+    ├── 模块 reporting.py / cli.py / config.py
+    └── 对外接口 build_report() / StudyRecord
+
+终端命令 study-progress
+</code></pre></div>
+<ul>
+<li><strong>模块</strong>通常对应一个 <code>.py</code> 文件。</li>
+<li><strong>导入包</strong>是 Python 代码里的命名空间，名称必须是合法标识符。</li>
+<li><strong>分发项目</strong>由安装器和项目元数据识别，可以使用连字符。</li>
+<li><strong>控制台命令</strong>给终端用户使用，可以另取更短的名字。</li>
+</ul>
+<p>名字不必相同，但映射必须在 <code>pyproject.toml</code>、源码和文档中一致。</p>
 </section>
-<section class="be-task-step" data-step-id="step-2" id="step-2">
-<h2 id="src">第二步：迁移为 src 布局常规包<a class="headerlink" href="#src" title="Permanent link">&para;</a></h2>
-<p>把可导入代码放入 <code>src/study_progress_reporter/</code>，增加 <code>__init__.py</code>，并改用包内绝对导入。<strong>最少知识：</strong> 导入包名与发布名不是同一个概念。<strong>主动修改：</strong> 从包根导出一个稳定业务接口。<strong>成功证据：</strong> 测试从安装后的包导入，不再向 <code>sys.path</code> 塞路径。</p>
-</section>
-<section class="be-task-step" data-step-id="step-3" id="step-3">
-<h2 id="pyproject">第三步：建立 pyproject 和两个安装入口<a class="headerlink" href="#pyproject" title="Permanent link">&para;</a></h2>
-<p>用 <code>pyproject.toml</code> 声明 Python 3.11、<code>src</code> 包发现和 <code>[project.scripts]</code>，再执行 editable install。<strong>可观察结果：</strong> 在阶段作品目录之外运行 <code>study-progress report</code> 与 <code>python -m study_progress_reporter report</code> 都得到相同报告。</p>
-</section>
-<section class="be-task-step" data-step-id="step-4" id="step-4">
-<h2 id="argparse-report-audit">第四步：用 argparse 建立 report 和 audit 子命令<a class="headerlink" href="#argparse-report-audit" title="Permanent link">&para;</a></h2>
-<p>入口只解析参数、选择数据并调用业务函数；<code>report --tag</code> 提供主动变化，<code>audit --output</code> 显式决定写入位置。<strong>成功证据：</strong> <code>--help</code> 自动列出子命令，默认报告无回归，筛选不会修改样例记录。</p>
-</section>
-<section class="be-task-step" data-step-id="step-5" id="step-5">
-<h2 id="_2">第五步：安全复现直接运行包内文件的失败<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>在临时副本或只读观察中直接执行 <code>src/study_progress_reporter/cli.py</code>，记录包导入失败；随后恢复为模块入口或安装后的控制台入口。<strong>恢复标准：</strong> 不修改 <code>sys.path</code>，不退回裸同目录导入，两个正式入口重新通过。</p>
-</section>
-<section class="be-task-step" data-step-id="step-6" id="step-6">
-<h2 id="_3">第六步：完成参数迁移验收<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>在不提供完整实现的前提下新增一种报告选择参数，并保持默认报告、审计和 C++ 对照契约。<strong>验收：</strong> 新参数有帮助文本、成功路径、空结果或边界测试；命令入口与模块入口行为一致。</p>
-</section>
-<h2 id="_4">课程信息<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<section data-context-type="concept" data-learning-context="concept-package-names" id="concept-package-names">
+<h2 id="_4">连字符、下划线和导入语句别混在一起<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>项目</th>
-<th>内容</th>
+<th>使用位置</th>
+<th>本项目名称</th>
+<th>例子</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>适合人群</td>
-<td>已完成装饰器与资源边界，希望把多模块程序变成可稳定调用工具的学习者</td>
+<td>安装和元数据</td>
+<td><code>study-progress-reporter</code></td>
+<td><code>pip install study-progress-reporter</code></td>
 </tr>
 <tr>
-<td>前置知识</td>
-<td>模块、导入、虚拟环境、函数接口、unittest、mypy、上下文管理器</td>
+<td>Python 导入</td>
+<td><code>study_progress_reporter</code></td>
+<td><code>from study_progress_reporter import build_report</code></td>
 </tr>
 <tr>
-<td>可观察产出</td>
-<td><code>src</code> 布局包、<code>pyproject.toml</code>、模块入口、控制台脚本、两个 CLI 子命令</td>
-</tr>
-<tr>
-<td>环境</td>
-<td>Python 3.11+；运行只用标准库；构建与类型检查属于开发依赖</td>
-</tr>
-<tr>
-<td>阶段作品</td>
-<td><a href="../../../../exercises/programming-languages/study-progress-reporters/">双语言学习进度报告器</a></td>
-</tr>
-<tr>
-<td>事实核查</td>
-<td>Python 3.11.15 与 PyPA 文档，2026-07-15 核查</td>
+<td>终端调用</td>
+<td><code>study-progress</code></td>
+<td><code>study-progress report</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="_5">学习目标<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<ul>
-<li>区分模块、导入包、分发项目、命令入口和正在运行的 <code>__main__</code>。</li>
-<li>解释 <code>src</code> 布局为何要求先安装，并识别“从源码目录碰巧可导入”的假成功。</li>
-<li>使用 <code>pyproject.toml</code> 声明包发现、Python 版本和控制台脚本。</li>
-<li>使用 <code>argparse</code> 设计子命令、帮助文本和可测试的 <code>main(argv)</code>。</li>
-<li>保持 CLI 层、业务层和文件副作用边界，不在导入时解析参数或退出进程。</li>
-<li>用项目目录外运行、自动测试和报告对照证明工具可安装、可调用。</li>
-</ul>
-<h2 id="_6">从脚本到命令发生了什么<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart LR
-    A["study-progress"] --&gt; C["cli.main(argv)"]
-    B["python -m study_progress_reporter"] --&gt; D["__main__.py"]
-    D --&gt; C
-    C --&gt; E{"report / audit"}
-    E --&gt; F["reporting.build_report"]
-    E --&gt; G["reporting.write_audit_snapshot"]
-    F --&gt; H["stdout 报告"]
-    G --&gt; I["审计文件"]</code></pre>
-<p>两条入口只在最外层不同，最终都调用 <code>cli.main()</code>。业务模块不知道控制台脚本名称，也不在导入时读取 <code>sys.argv</code>。</p>
-<h2 id="1">1. 保存可回归基线<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<p>迁移前从旧 Python 子目录运行：</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>-v
-python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>.
-python<span class="w"> </span>main.py
-</code></pre></div>
-<p>当时应有 16 项测试。迁移完成后的仓库有更多 CLI 与配置测试，但以下默认输出仍必须存在：</p>
-<div class="highlight"><pre><span></span><code>学习进度报告
-总计划：35.0 小时
-总完成：30.5 小时
-总体进度：87.1%
-</code></pre></div>
-<p>基线不是“程序能启动”一句话，而是业务接口、报告文本、审计成功/失败和 C++ 对照共同组成的回归证据。</p>
-<h2 id="2-src">2. 组织常规包与 src 布局<a class="headerlink" href="#2-src" title="Permanent link">&para;</a></h2>
-<p>迁移后的关键结构：</p>
+<p><code>import study-progress-reporter</code> 会被 Python 当成减法表达式，当然不能工作。控制台命令也不是 Python 模块名，它由安装过程生成。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-src-layout" id="concept-src-layout">
+<h2 id="src">src 布局故意让“没安装也能导入”变难<a class="headerlink" href="#src" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>python/
 ├── pyproject.toml
-├── config.example.toml
 ├── src/
 │   └── study_progress_reporter/
 │       ├── __init__.py
 │       ├── __main__.py
 │       ├── cli.py
-│       ├── config.py
-│       ├── logging_setup.py
-│       └── ...业务模块
+│       └── reporting.py
 └── tests/
 </code></pre></div>
-<p>三个名称解决不同问题：</p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>本课值</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>分发项目名</td>
-<td><code>study-progress-reporter</code></td>
-<td>安装器和项目元数据使用，可含连字符</td>
-</tr>
-<tr>
-<td>导入包名</td>
-<td><code>study_progress_reporter</code></td>
-<td>Python <code>import</code> 使用，采用合法标识符</td>
-</tr>
-<tr>
-<td>控制台命令</td>
-<td><code>study-progress</code></td>
-<td>学习者在终端调用</td>
-</tr>
-</tbody>
-</table>
-<p>包内导入写完整名称：</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">study_progress_reporter.reporting</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_report</span>
-</code></pre></div>
-<p>本课不使用 <code>sys.path.append()</code> 修补导入。那会把运行位置和机器状态藏进源码，测试通过也无法证明安装后的使用者能导入。</p>
-<h2 id="3">3. 声明安装与入口<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
-<p><code>pyproject.toml</code> 的最小边界：</p>
+<p>若包直接放在项目根目录，终端站在这里时，当前目录会进入模块搜索路径。即使安装配置漏了文件，测试仍可能因为“源码就在脚边”而通过。</p>
+<p><code>src</code> 布局要求先安装，测试和使用者更接近真实安装边界。不要用 <code>sys.path.append("src")</code> 绕回去；那会把问题重新藏起来。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-pyproject" id="example-pyproject">
+<h2 id="pyprojecttoml">pyproject.toml 告诉构建工具去哪里找包<a class="headerlink" href="#pyprojecttoml" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">[build-system]</span>
 <span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;setuptools&gt;=68&quot;</span><span class="p">]</span>
 <span class="n">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;setuptools.build_meta&quot;</span>
@@ -4371,162 +4270,168 @@ python<span class="w"> </span>main.py
 <span class="k">[tool.setuptools.packages.find]</span>
 <span class="n">where</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">]</span>
 </code></pre></div>
-<p>从 Python 阶段作品目录执行：</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span>
-study-progress<span class="w"> </span>report
-python<span class="w"> </span>-m<span class="w"> </span>study_progress_reporter<span class="w"> </span>report
-</code></pre></div>
-<p>editable install 让源码修改在下一次进程启动时可见，适合开发；常规 wheel 安装用于验证发布物是否真的包含包。两者都不是上传 PyPI。</p>
+<p><code>[project.scripts]</code> 的右侧是“导入模块 : 可调用对象”。安装器会生成 <code>study-progress</code> 命令，并在调用时执行 <code>cli.main()</code>。</p>
+<p>版本、Python 要求和依赖都属于公开契约。不要为了“安装成功”漏写真实运行依赖；当前项目确实只用标准库，所以 <code>dependencies = []</code> 才成立。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-two-entrypoints" id="concept-two-entrypoints">
+<h2 id="main">两个入口，最后只走一个 main<a class="headerlink" href="#main" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+    A["study-progress"] --&gt; C["cli.main(argv)"]
+    B["python -m study_progress_reporter"] --&gt; D["__main__.py"]
+    D --&gt; C
+    C --&gt; E{"report / audit"}
+    E --&gt; F["build_report()"]
+    E --&gt; G["write_audit_snapshot()"]</code></pre>
 <p><code>__main__.py</code> 保持很薄：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">study_progress_reporter.cli</span><span class="w"> </span><span class="kn">import</span> <span class="n">main</span>
+
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
 </code></pre></div>
-<h2 id="4-argparse">4. 让 argparse 只管理调用边界<a class="headerlink" href="#4-argparse" title="Permanent link">&para;</a></h2>
-<p>解析器定义两个子命令：</p>
+<p>不要分别复制两套参数解析和业务逻辑。入口越薄，帮助文本、退出码和输出越不容易漂移。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-cli-boundary" id="concept-cli-boundary">
+<h2 id="cli">CLI 解析人的输入，业务函数处理业务<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>study-progress report [--tag TAG]
 study-progress audit [--output PATH]
 </code></pre></div>
-<p>观察帮助而不是猜参数：</p>
+<p><code>argparse</code> 负责子命令、参数、帮助和语法错误；报告计算和文件提交仍由普通函数完成：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">arguments</span> <span class="o">=</span> <span class="n">build_parser</span><span class="p">()</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">arguments</span><span class="o">.</span><span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;report&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">build_report</span><span class="p">(</span><span class="n">records</span><span class="p">))</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="o">...</span>
+</code></pre></div>
+<p>让 <code>main()</code> 接收 <code>argv</code>，测试就能直接传 <code>['report', '--tag', '工程']</code>，不必修改全局 <code>sys.argv</code>。库模块也不要在导入时调用 <code>parse_args()</code> 或 <code>SystemExit</code>。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-cli-help" id="example-cli-help">
+<h2 id="-help">不记参数，先问 --help<a class="headerlink" href="#-help" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>study-progress<span class="w"> </span>--help
 study-progress<span class="w"> </span>report<span class="w"> </span>--help
 study-progress<span class="w"> </span>audit<span class="w"> </span>--help
 </code></pre></div>
-<p><code>main(argv)</code> 接收可选参数序列，使单元测试不必修改全局 <code>sys.argv</code>：</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="n">arguments</span> <span class="o">=</span> <span class="n">build_parser</span><span class="p">()</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
-    <span class="o">...</span>
-</code></pre></div>
-<p>主动修改：</p>
+<p>帮助应列出 <code>report</code>、<code>audit</code>、<code>--tag</code> 和 <code>--output</code>。再运行：</p>
 <div class="highlight"><pre><span></span><code>study-progress<span class="w"> </span>report<span class="w"> </span>--tag<span class="w"> </span>工程
 </code></pre></div>
-<p>应只出现“工程复盘”；再次运行默认报告时，四条记录全部恢复，证明筛选没有修改共享样例。</p>
-<h2 id="5">5. 观察导入上下文失败<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
-<p>下面命令只作为受控失败实验：</p>
+<p>报告里只出现“工程复盘”。随后执行无筛选的 <code>study-progress report</code>，四条记录应全部回来，证明筛选没有修改共享样例数据。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-direct-file" id="troubleshoot-direct-file">
+<h2 id="clipy">直接运行 cli.py，为什么反而导入失败<a class="headerlink" href="#clipy" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>src/study_progress_reporter/cli.py
 </code></pre></div>
-<p>包内文件被当成普通脚本直接执行时，解释器不会自动把 <code>src</code> 当作已安装包根，绝对包导入可能出现 <code>ModuleNotFoundError</code>。不要把导入改回 <code>from reporting import ...</code>，也不要写机器路径。</p>
-<p>恢复并验证：</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>study_progress_reporter<span class="w"> </span>report
+<p>这条命令把包内模块当成孤立脚本。解释器没有通过已安装包进入，绝对导入可能报 <code>ModuleNotFoundError</code>。</p>
+<p>正确恢复方式：</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span>
+python<span class="w"> </span>-m<span class="w"> </span>study_progress_reporter<span class="w"> </span>report
 study-progress<span class="w"> </span>report
-python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import study_progress_reporter; print(study_progress_reporter.__file__)&quot;</span>
 </code></pre></div>
-<p>这三条命令分别证明模块入口、控制台入口和已安装导入边界。</p>
-<h2 id="6">6. 迁移任务与完整验收<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
-<p>独立新增 <code>--status</code>、<code>--min-progress</code> 或另一种只读筛选参数，要求：</p>
-<ul>
-<li>不改变无参数默认报告。</li>
-<li>不修改 <code>sample_records()</code> 返回的原始对象。</li>
-<li>在 <code>--help</code> 中有可理解描述。</li>
-<li>覆盖正常、无匹配和非法输入中的适用场景。</li>
-<li><code>study-progress</code> 与 <code>python -m</code> 结果一致。</li>
-</ul>
-<p>验证命令：</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>src<span class="w"> </span>tests
-python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>-v
-python<span class="w"> </span>-m<span class="w"> </span>build
+<p>不要把导入改成同目录裸导入，也不要在源码里追加机器路径。失败说明入口用错了，不说明包内绝对导入应该被拆掉。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-import-side-effect" id="troubleshoot-import-side-effect">
+<h2 id="import">只 import 一下，不该突然打印报告<a class="headerlink" href="#import" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import study_progress_reporter&quot;</span>
 </code></pre></div>
-<p>在干净临时虚拟环境安装 <code>dist/*.whl</code> 后，从项目目录外运行 <code>study-progress report</code>。这一步能捕获源码目录中“碰巧可导入”、但 wheel 漏包的问题。</p>
-<h2 id="ai">AI 协作任务<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h2>
-<p>AI 可以提出目录迁移和 parser 结构候选，学习者必须检查：</p>
+<p>这条命令应该安静退出，不创建文件、不配置全局日志、不解析命令行。</p>
+<p><code>__init__.py</code> 可以导出稳定接口：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">study_progress_reporter.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">StudyRecord</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">study_progress_reporter.reporting</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_report</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;StudyRecord&quot;</span><span class="p">,</span> <span class="s2">&quot;build_report&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p>真正执行应用只留在 <code>cli.main()</code> 和 <code>__main__.py</code>。这样别人可以把报告器当库使用，而不会因为导入一个类型就启动程序。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-wheel-install" id="reproduce-wheel-install">
+<h2 id="wheel">在干净环境里安装 wheel<a class="headerlink" href="#wheel" title="Permanent link">&para;</a></h2>
+<p>从项目目录构建，但把产物放进临时目录：</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>build<span class="w"> </span>--no-isolation
+</code></pre></div>
+<p>然后创建新虚拟环境，安装 wheel，并切到项目之外运行：</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>/tmp/study-progress-smoke
+/tmp/study-progress-smoke/bin/python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-deps<span class="w"> </span>dist/*.whl
+<span class="nb">cd</span><span class="w"> </span>/tmp
+/tmp/study-progress-smoke/bin/study-progress<span class="w"> </span>report
+/tmp/study-progress-smoke/bin/python<span class="w"> </span>-m<span class="w"> </span>study_progress_reporter<span class="w"> </span>report
+</code></pre></div>
+<p>两个入口都应包含 <code>总体进度：87.1%</code>，stderr 为空，退出码为 0。最后检查 <code>--help</code> 和错误子命令：未知子命令由 argparse 返回 2。</p>
+<p>仓库验证脚本会在真正的临时目录中完成同样检查，不复用项目自己的虚拟环境或源码路径。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-status-filter" id="modify-status-filter">
+<h2 id="-status">增加 --status，但别碰默认报告<a class="headerlink" href="#-status" title="Permanent link">&para;</a></h2>
+<p>给 <code>report</code> 增加只读筛选：</p>
+<div class="highlight"><pre><span></span><code>study-progress report --status 进行中
+study-progress report --status 已完成
+</code></pre></div>
+<p>先写这些测试：</p>
+<ol>
+<li>“进行中”只保留两条对应记录。</li>
+<li>“已完成”只保留完成记录。</li>
+<li>非法状态由 argparse 或清楚的校验返回非零。</li>
+<li>无 <code>--status</code> 时报告逐字保持原样。</li>
+<li>模块入口和控制台入口输出一致。</li>
+</ol>
+<p>筛选逻辑放在分析模块，CLI 只选择和调用。不要直接修改 <code>sample_records()</code> 返回的对象。</p>
+</section>
+<section data-context-type="project" data-learning-context="project-installable-reporter" id="project-installable-reporter">
+<h2 id="_5">学习进度报告器现在是一件可安装工具<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>当前项目已经具备：</p>
 <ul>
-<li>是否把分发名、导入包名和控制台命令混为一谈。</li>
-<li>是否在 <code>__init__.py</code> 执行 CLI、写文件或配置日志。</li>
-<li>是否通过 <code>sys.path</code>、当前目录或未安装源码获得假成功。</li>
-<li>是否让 <code>argparse</code> 代码进入业务模块，导致导入时退出。</li>
-<li>是否改变默认报告、审计函数或 C++ 对照输出。</li>
+<li><code>src/study_progress_reporter/</code> 常规包。</li>
+<li><code>pyproject.toml</code> 项目元数据和控制台入口。</li>
+<li><code>python -m study_progress_reporter</code> 模块入口。</li>
+<li><code>report</code> 与 <code>audit</code> 子命令。</li>
+<li>30 项单元测试和严格 mypy。</li>
 </ul>
-<h2 id="_7">常见错误与排查<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>现象</th>
-<th>可能原因</th>
-<th>恢复顺序</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>ModuleNotFoundError</code></td>
-<td>尚未安装、用了错误解释器或直接运行包内文件</td>
-<td>检查 <code>python -m pip --version</code>，执行 editable install，再用正式入口</td>
-</tr>
-<tr>
-<td>命令找不到</td>
-<td>虚拟环境未激活或脚本安装到另一环境</td>
-<td>检查 <code>python</code> 与 <code>study-progress</code> 路径</td>
-</tr>
-<tr>
-<td>wheel 安装后缺少模块</td>
-<td>包发现未指向 <code>src</code></td>
-<td>检查 <code>[tool.setuptools.packages.find]</code> 并重建 wheel</td>
-</tr>
-<tr>
-<td>导入包就打印报告</td>
-<td>顶层执行了 CLI</td>
-<td>入口逻辑只留在 <code>main()</code> 和 <code>__main__.py</code></td>
-</tr>
-<tr>
-<td>测试只能在源码目录通过</td>
-<td>仍依赖当前目录导入</td>
-<td>从安装包导入，并在项目目录外做 smoke test</td>
-</tr>
-<tr>
-<td><code>--help</code> 没有子命令</td>
-<td>subparser 未注册或未设为必需</td>
-<td>检查 parser 构建函数和帮助测试</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_8">完成证据<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>本课不改 <code>build_report()</code>、<code>write_audit_snapshot()</code> 和主报告文本。安装只是新增调用边界，不应迫使业务核心知道终端命令叫什么。</p>
+<p>运行当前回归：</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>.
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>-v
+python<span class="w"> </span>-m<span class="w"> </span>build<span class="w"> </span>--no-isolation
+</code></pre></div>
+<p>再由干净环境安装 wheel。源码测试和安装测试缺一项，都不能证明发布物可用。</p>
+</section>
+<section data-context-type="deepen" data-learning-context="deepen-package-contract" id="deepen-package-contract">
+<h2 id="editable-wheel">editable 成功，不代表 wheel 一定完整<a class="headerlink" href="#editable-wheel" title="Permanent link">&para;</a></h2>
+<p>editable install 常把开发环境直接指向源码，适合快速迭代；wheel 是准备交给另一环境的实际产物。包发现规则、数据文件和入口声明有误时，editable 可能工作，wheel 却缺内容。</p>
+<p>工程化验证至少分三层：</p>
+<ol>
+<li>源码静态检查和单元测试。</li>
+<li>构建产物内容与元数据。</li>
+<li>干净环境、项目目录外的安装后 smoke test。</li>
+</ol>
+<p>上传 PyPI、版本兼容矩阵、锁定构建依赖和供应链签名属于后续发布工程，本课不把“本地 wheel 可安装”夸大为生产发布已经完成。</p>
+</section>
+<section data-context-type="career" data-learning-context="career-package-evidence" id="career-package-evidence">
+<h2 id="_6">讲包化时，拿出项目目录外的结果<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>可以这样表达：</p>
+<blockquote>
+<p>我把多模块报告器迁移为 <code>src</code> 布局的可安装包，使用同一个 <code>cli.main()</code> 支持控制台命令和 <code>python -m</code>。CLI 只处理参数与进程状态，报告和审计仍由业务函数负责。验证覆盖导入无副作用、帮助文本、筛选、退出码、wheel 内容，以及干净虚拟环境中从项目目录外运行两个入口；默认报告与 C++ 对照保持不变。</p>
+</blockquote>
+<p>这比“我会写 pyproject.toml”更能说明你处理过安装边界和假成功。</p>
+</section>
+<h2 id="_7">完成检查<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能区分模块、导入包、分发项目和终端命令。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我知道 <code>src</code> 布局为什么要求先安装，也没有用 <code>sys.path</code> 绕过。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能从 <code>[project.scripts]</code> 追到 <code>cli.main()</code>。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 两个正式入口调用同一份业务逻辑。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 导入包没有打印、写文件、解析参数或退出进程。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我会用 <code>--help</code> 查看子命令和参数。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我复现了直接运行包内文件的错误，并用正式入口恢复。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我在干净虚拟环境安装 wheel，并从项目目录外运行成功。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我完成了 <code>--status</code> 筛选及默认回归测试。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 正式项目 30 项测试和严格 mypy 保持通过。</li>
+</ul>
+<h2 id="_8">来源与版本<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>src/study_progress_reporter</code> 可作为常规包导入，顶层导入无输出和文件副作用。</li>
-<li>editable install 与 wheel install 后，两个入口都能在项目目录外运行。</li>
-<li>默认报告保留 <code>87.1%</code> 和完整文本，Python/C++ 输出一致。</li>
-<li><code>report --tag</code> 与 <code>audit --output</code> 有自动测试，筛选不修改输入。</li>
-<li>参数语法错误由 argparse 输出帮助并返回 2；业务失败留给下一课形成完整诊断契约。</li>
+<li>适用版本：Python 3.11 及以上；setuptools 68 及以上；mypy 2.2.0。</li>
+<li>核查日期：2026-07-17。</li>
+<li>事实来源：<a href="https://docs.python.org/3.11/tutorial/modules.html">Python 模块与包</a>用于包、搜索路径和 <code>__main__</code>；<a href="https://docs.python.org/3.11/using/cmdline.html#cmdoption-m">Python <code>-m</code></a>用于模块入口；<a href="https://docs.python.org/3.11/library/argparse.html"><code>argparse</code></a>用于子命令、帮助和语法错误；<a href="https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/">PyPA src 布局</a>用于安装边界；<a href="https://packaging.python.org/en/latest/guides/writing-pyproject-toml/">编写 <code>pyproject.toml</code></a>用于项目元数据与控制台脚本。</li>
+<li>代码验证：仓库脚本覆盖严格 mypy、30 项测试、无副作用导入、源码外构建、wheel 内容、临时虚拟环境安装、两个入口、帮助、筛选、stderr 和退出码；构建使用本机已安装依赖，不联网。</li>
 </ul>
-<h2 id="_9">来源与版本<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>来源</th>
-<th>用于核查</th>
-<th>日期</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://docs.python.org/3.11/tutorial/modules.html">Python 模块与包</a></td>
-<td><code>__main__</code>、包、搜索路径和包内引用</td>
-<td>2026-07-15</td>
-</tr>
-<tr>
-<td><a href="https://docs.python.org/3.11/using/cmdline.html#cmdoption-m">Python 命令行 <code>-m</code></a></td>
-<td>包的 <code>__main__.py</code> 执行语义</td>
-<td>2026-07-15</td>
-</tr>
-<tr>
-<td><a href="https://docs.python.org/3.11/library/argparse.html">argparse</a></td>
-<td>参数、子命令、帮助与语法失败</td>
-<td>2026-07-15</td>
-</tr>
-<tr>
-<td><a href="https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/">PyPA src 布局说明</a></td>
-<td>src/flat 差异、editable 安装边界</td>
-<td>2026-07-15</td>
-</tr>
-<tr>
-<td><a href="https://packaging.python.org/en/latest/guides/writing-pyproject-toml/">编写 pyproject.toml</a></td>
-<td>项目元数据与 <code>[project.scripts]</code></td>
-<td>2026-07-15</td>
-</tr>
-</tbody>
-</table>
-<p>本地素材库的模块与包章节用于识别 <code>__name__</code>、导入方式和包概念等新手卡点；其中旧式发布步骤没有进入课程，现代安装与入口事实由 PyPA 官方资料和实际 wheel 测试重新建立。</p>
-<h2 id="_10">下一步<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<p>进入 <a href="../07-toml-configuration-logging-diagnostics/">TOML 配置、日志与可诊断执行契约</a>。下一课保持包和 CLI 入口稳定，让学习者能够显式提供配置、区分业务输出与诊断，并用退出码判断成功或失败。</p>
+<h2 id="_9">下一步<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>进入<a href="../07-toml-configuration-logging-diagnostics/">TOML 配置、日志与可诊断执行契约</a>，让命令显式读取配置，并把业务输出、诊断信息和退出状态分开。</p>
 
 
 

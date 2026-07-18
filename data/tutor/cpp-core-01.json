@@ -1,256 +1,217 @@
 {
-  "version": 1,
+  "version": 2,
   "lesson": {
     "id": "cpp-core-01",
     "title": "从源文件到可执行程序：编译、类型与输入输出",
     "path": "learning-paths/programming-languages/cpp-core/01-build-types-io/"
   },
-  "steps": [
-    {
-      "id": "step-1",
-      "title": "开始任务"
-    },
-    {
-      "id": "step-2",
-      "title": "主动修改"
-    },
-    {
-      "id": "step-3",
-      "title": "按需知识"
-    },
-    {
-      "id": "step-4",
-      "title": "排错实验"
-    },
-    {
-      "id": "step-5",
-      "title": "迁移验收"
-    }
+  "contexts": [
+    {"id":"overview-cpp-output","type":"overview","title":"先跑出一张状态卡","anchor":"#overview-cpp-output"},
+    {"id":"concept-build-pipeline","type":"concept","title":"源文件不会自己运行","anchor":"#concept-build-pipeline"},
+    {"id":"example-first-program","type":"example","title":"先读懂一个小程序","anchor":"#example-first-program"},
+    {"id":"concept-static-types","type":"concept","title":"类型在编译时就要说清楚","anchor":"#concept-static-types"},
+    {"id":"concept-initialize-assign","type":"concept","title":"初始化和赋值不是同一件事","anchor":"#concept-initialize-assign"},
+    {"id":"concept-streams-exit","type":"concept","title":"输入、结果和错误各走一条路","anchor":"#concept-streams-exit"},
+    {"id":"reproduce-toolchain","type":"reproduce","title":"确认电脑里有编译器","anchor":"#reproduce-toolchain"},
+    {"id":"reproduce-build-run","type":"reproduce","title":"编译并运行完整状态卡","anchor":"#reproduce-build-run"},
+    {"id":"example-build-flags","type":"example","title":"读懂编译命令","anchor":"#example-build-flags"},
+    {"id":"reproduce-split-build","type":"reproduce","title":"把编译和链接拆开","anchor":"#reproduce-split-build"},
+    {"id":"modify-status-card","type":"modify","title":"把状态卡改成自己的","anchor":"#modify-status-card"},
+    {"id":"troubleshoot-narrowing","type":"troubleshoot","title":"处理窄化和整数除法","anchor":"#troubleshoot-narrowing"},
+    {"id":"troubleshoot-link-input","type":"troubleshoot","title":"区分链接失败和输入失败","anchor":"#troubleshoot-link-input"},
+    {"id":"project-cpp-v01","type":"project","title":"C++ 报告器从这里起步","anchor":"#project-cpp-v01"},
+    {"id":"deepen-types-build","type":"deepen","title":"编译器替你守住什么","anchor":"#deepen-types-build"},
+    {"id":"career-build-story","type":"career","title":"怎样讲清这次构建","anchor":"#career-build-story"}
   ],
   "cards": [
     {
-      "id": "compiler-driver",
-      "lesson_id": "cpp-core-01",
-      "step_id": "step-1",
-      "question": "为什么要用 clang++ 或 g++ 而不是 clang？",
-      "aliases": [
-        "clang++和clang区别",
-        "g++怎么用"
-      ],
-      "keywords": [
-        "clang++",
-        "g++",
-        "链接",
-        "标准库"
-      ],
-      "diagnostic": "你执行的是 C++ 驱动程序还是 C 驱动程序？",
-      "hints": [
-        "C++ 驱动程序会按 C++ 规则编译并在链接时加入所需标准库。",
-        "编译前先在终端输入 `clang++ --version` 或 `g++ --version`，确认实际可用的 C++ 驱动程序。"
-      ],
-      "example": "例如：`clang++ -std=c++20 study_status.cpp -o build/study_status` 会同时完成 C++ 编译和链接。",
-      "answer": "把 clang++ 或 g++ 用于本课 C++20 命令；clang/gcc 不是同一层入口。",
-      "source": {
-        "label": "第一步：得到第一个可执行状态卡",
-        "href": "#step-1"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": true
+      "id":"cpp-first-output","lesson_id":"cpp-core-01","context_id":"overview-cpp-output",
+      "question":"C++ 第一课最后会做出什么？","aliases":["这节课会跑出什么","状态卡是什么"],"keywords":["第一课","状态卡","输出"],
+      "diagnostic":"第一屏里的姓名、课程和计划小时都看到了吗？",
+      "hints":["先把一个源文件变成能独立运行的程序。","运行后会看到一张学习状态卡，还会留下编译命令和排错记录。"],
+      "example":"study_status.cpp → study_status → 学习状态卡。",
+      "answer":"你会写一个 C++20 状态卡，编译成可执行程序，并验证正常与非法输入。",
+      "source":{"label":"先跑出一张状态卡","href":"#overview-cpp-output"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "compile-link",
-      "lesson_id": "cpp-core-01",
-      "step_id": "step-1",
-      "question": "编译和链接有什么区别？",
-      "aliases": [
-        "链接错误和编译错误",
-        "什么是目标文件"
-      ],
-      "keywords": [
-        "翻译单元",
-        "链接",
-        "目标文件",
-        "符号"
-      ],
-      "diagnostic": "错误出现在生成 .o/.obj 前，还是解析符号时？",
-      "hints": [
-        "编译检查一个翻译单元并产生目标文件；链接把目标文件和库组合成可执行文件。",
-        "先加 `-c` 只生成 `build/study_status.o`，再把这个目标文件交给第二条链接命令，观察两个产物。"
-      ],
-      "example": "示例：`clang++ -c study_status.cpp -o build/study_status.o` 后执行 `clang++ build/study_status.o -o build/study_status`。",
-      "answer": "先根据失败阶段定位：语法与类型多属编译，未定义符号多属链接。",
-      "source": {
-        "label": "第一步：得到第一个可执行状态卡",
-        "href": "#step-1"
-      },
-      "updated_at": "2026-07-15",
-      "recommended": true
+      "id":"cpp-build-pipeline","lesson_id":"cpp-core-01","context_id":"concept-build-pipeline",
+      "question":"为什么 cpp 文件不能直接运行？","aliases":["C++为什么要编译","源码怎么变成程序"],"keywords":["源文件","编译","链接","可执行程序"],
+      "diagnostic":"你现在手里的是 `.cpp` 源文件，还是已经生成的可执行程序？",
+      "hints":["编译器先检查并翻译源文件。","链接器再把目标代码和所需实现组合起来。"],
+      "example":"study_status.cpp → study_status.o → study_status。",
+      "answer":"操作系统运行的是当前平台的可执行程序；C++ 源文件要先经过编译和链接。",
+      "source":{"label":"源文件不会自己运行","href":"#concept-build-pipeline"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "brace-narrowing",
-      "lesson_id": "cpp-core-01",
-      "step_id": "step-4",
-      "question": "花括号初始化为什么拒绝 2.5 赋给 int？",
-      "aliases": [
-        "int hours 2.5报错",
-        "窄化转换"
-      ],
-      "keywords": [
-        "花括号",
-        "窄化",
-        "int",
-        "double"
-      ],
-      "diagnostic": "你是否需要保留小数部分？",
-      "hints": [
-        "花括号初始化会阻止可能丢失信息的窄化转换。",
-        "将 `int hours{2.5};` 原样构建并保留诊断；不要把它换成无提示的等号初始化来逃避问题。"
-      ],
-      "example": "局部示例：`const double measured_hours{2.5}; const int whole_hours{static_cast<int>(measured_hours)};` 明确了丢弃小数。",
-      "answer": "若业务确实只要整数，先说明舍弃规则，再使用显式 static_cast<int>。",
-      "source": {
-        "label": "第四步：故意制造一个编译诊断",
-        "href": "#step-4"
-      },
-      "updated_at": "2026-07-15"
+      "id":"cpp-compile-link","lesson_id":"cpp-core-01","context_id":"concept-build-pipeline",
+      "question":"编译错误和链接错误怎么区分？","aliases":["undefined reference是什么意思","编译和链接有什么区别"],"keywords":["编译错误","链接错误","undefined reference","符号"],
+      "diagnostic":"错误发生在生成目标文件之前，还是组合目标文件时？",
+      "hints":["语法和类型通常在编译阶段检查。","找不到已经声明的函数实现，通常会在链接阶段失败。"],
+      "example":"`-c` 成功生成 `.o`，下一条命令报 `undefined reference`，说明失败在链接。",
+      "answer":"先按阶段定位：单个翻译单元的语法与类型问题属于编译；组合目标文件时缺少符号属于链接。",
+      "source":{"label":"源文件不会自己运行","href":"#concept-build-pipeline"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "auto-static",
-      "lesson_id": "cpp-core-01",
-      "step_id": "step-2",
-      "question": "auto 是动态类型吗？",
-      "aliases": [
-        "auto类型什么时候确定",
-        "cpp auto"
-      ],
-      "keywords": [
-        "auto",
-        "静态类型",
-        "推导"
-      ],
-      "diagnostic": "编译器能否在初始化表达式处推导类型？",
-      "hints": [
-        "auto 在编译期由初始化器推导，变量之后仍是固定静态类型。",
-        "在状态卡中声明 `const auto progress{0.75};`，让编译器从右侧推导 `double`，再尝试赋字符串观察静态检查。"
-      ],
-      "example": "局部示例：`const auto completed{false};` 的类型在初始化处确定为 `bool`。",
-      "answer": "使用 auto 不会让 C++ 变量像 Python 一样在后续赋值时改变类型。",
-      "source": {
-        "label": "第二步：主动修改一项学习状态",
-        "href": "#step-2"
-      },
-      "updated_at": "2026-07-15"
+      "id":"cpp-main-return","lesson_id":"cpp-core-01","context_id":"example-first-program",
+      "question":"main 和 return 0 是干什么的？","aliases":["main函数是什么","return 0什么意思"],"keywords":["main","return 0","程序入口"],
+      "diagnostic":"程序从哪里开始执行，结束状态又交给谁？",
+      "hints":["命令行程序从 `main()` 进入。","返回值会成为进程退出状态，0 表示正常结束。"],
+      "example":"`int main() { return 0; }`。",
+      "answer":"`main()` 是程序入口；`return 0` 把成功状态交给操作系统和调用它的 shell。",
+      "source":{"label":"先读懂一个小程序","href":"#example-first-program"},"updated_at":"2026-07-17"
     },
     {
-      "id": "getline-newline",
-      "lesson_id": "cpp-core-01",
-      "step_id": "step-3",
-      "question": "为什么 getline 读到空字符串？",
-      "aliases": [
-        "cin后getline为空",
-        "残留换行"
-      ],
-      "keywords": [
-        "getline",
-        "换行",
-        "cin",
-        "输入"
-      ],
-      "diagnostic": "前一条输入是否用过 operator>>？",
-      "hints": [
-        "operator>> 通常留下换行；随后的 getline 会先读到它。",
-        "读取数值后，在读取姓名前使用 `std::getline(std::cin >> std::ws, learner);`，再输入带空格的姓名验证。"
-      ],
-      "example": "局部示例：先 `std::cin >> planned_hours;`，再 `std::getline(std::cin >> std::ws, learner);`。",
-      "answer": "在切换前处理残留换行，或统一设计输入读取策略。",
-      "source": {
-        "label": "第三步：让程序读取并检查输入",
-        "href": "#step-3"
-      },
-      "updated_at": "2026-07-15"
+      "id":"cpp-static-types","lesson_id":"cpp-core-01","context_id":"concept-static-types",
+      "question":"C++ 的静态类型是什么意思？","aliases":["变量类型能不能变","C++类型什么时候确定"],"keywords":["静态类型","string","int","double","bool"],
+      "diagnostic":"这个对象在声明时写了什么类型？",
+      "hints":["编译器在运行前就依据类型检查操作。","对象声明后不会因为下一次赋值而换成另一种类型。"],
+      "example":"`int hours{5};` 之后不能把字符串赋给 `hours`。",
+      "answer":"静态类型表示对象的类型在编译时已经确定，并约束后续赋值和操作。",
+      "source":{"label":"类型在编译时就要说清楚","href":"#concept-static-types"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "exit-code",
-      "lesson_id": "cpp-core-01",
-      "step_id": "step-3",
-      "question": "程序退出码如何检查？",
-      "aliases": [
-        "如何查看退出码",
-        "Windows 如何查看退出码"
-      ],
-      "keywords": [
-        "退出码",
-        "return 0",
-        "错误"
-      ],
-      "diagnostic": "你使用的是 macOS/Linux 终端还是 PowerShell？",
-      "hints": [
-        "main 返回 0 表示成功；shell 会保存最近进程状态。",
-        "在正常输入和非法输入后分别查看 shell 保存的状态值，而不是只看屏幕上的提示文字。"
-      ],
-      "example": "macOS/Linux 运行程序后输入 `echo $?`；PowerShell 使用 `$LASTEXITCODE`。",
-      "answer": "正常输入检查零退出码，非法输入应产生非零退出码；命令按当前平台查看。",
-      "source": {
-        "label": "第三步：让程序读取并检查输入",
-        "href": "#step-3"
-      },
-      "updated_at": "2026-07-15"
+      "id":"cpp-type-size","lesson_id":"cpp-core-01","context_id":"concept-static-types",
+      "question":"int 一定是 4 字节吗？","aliases":["C++类型大小要不要背","sizeof怎么用"],"keywords":["sizeof","类型大小","numeric_limits","平台"],
+      "diagnostic":"你问的是当前编译器的结果，还是所有平台都必须相同？",
+      "hints":["一次运行只能说明当前实现。","需要时用 `sizeof` 和 `numeric_limits` 观察，不从一次结果外推所有平台。"],
+      "example":"`std::cout << sizeof(int);` 只报告本机当前实现。",
+      "answer":"不要把常见实现当成语言对所有平台的统一承诺；按需求观察并查标准边界。",
+      "source":{"label":"类型在编译时就要说清楚","href":"#concept-static-types"},"updated_at":"2026-07-17"
     },
     {
-      "id": "diagnostic-read",
-      "lesson_id": "cpp-core-01",
-      "step_id": "step-4",
-      "question": "C++ 编译诊断应该怎么看？",
-      "aliases": [
-        "看不懂编译错误",
-        "错误信息怎么看"
-      ],
-      "keywords": [
-        "诊断",
-        "文件",
-        "行号",
-        "错误"
-      ],
-      "diagnostic": "诊断指向的第一处自己源码位置在哪里？",
-      "hints": [
-        "先读错误类别、文件和行号，再看该行的类型与期望值。",
-        "从编译输出中先定位第一条指向 `study_status.cpp` 的报错，再检查该行两边值的类型。"
-      ],
-      "example": "局部示例：花括号窄化诊断指向 `int hours{2.5};`，说明目标 `int` 不能无损接收 `double`。",
-      "answer": "不要先关闭警告；用最小修改恢复构建并重新运行。",
-      "source": {
-        "label": "第四步：故意制造一个编译诊断",
-        "href": "#step-4"
-      },
-      "updated_at": "2026-07-15"
+      "id":"cpp-const-init","lesson_id":"cpp-core-01","context_id":"concept-initialize-assign",
+      "question":"const 和花括号初始化分别解决什么？","aliases":["为什么写const","大括号初始化有什么用"],"keywords":["const","花括号","初始化","赋值"],
+      "diagnostic":"这个值设好后还要不要改变？转换时会不会丢信息？",
+      "hints":["`const` 保护初始化后不再改变的意图。","花括号会拒绝一部分危险的窄化转换。"],
+      "example":"`const int hours{5};` 同时表达初值和不再修改。",
+      "answer":"`const` 约束后续修改；花括号初始化在创建对象时加强窄化检查。",
+      "source":{"label":"初始化和赋值不是同一件事","href":"#concept-initialize-assign"},"updated_at":"2026-07-17","recommended":true
     },
     {
-      "id": "build-migration",
-      "lesson_id": "cpp-core-01",
-      "step_id": "step-5",
-      "question": "状态卡新增字段应该怎么验收？",
-      "aliases": [
-        "cpp新增学习字段",
-        "迁移任务提示"
-      ],
-      "keywords": [
-        "迁移",
-        "字段",
-        "构建",
-        "build"
-      ],
-      "diagnostic": "新字段是文本、整数、浮点数还是真假状态？",
-      "hints": [
-        "先选择能表达业务含义的类型，再输出并重新构建。",
-        "新增 `weekly_goal` 后同时修改初始化与输出，再以严格警告命令重建状态卡。"
-      ],
-      "example": "局部示例：`const int weekly_goal{8}; std::cout << \"本周目标：\" << weekly_goal << '\\n';`。",
-      "answer": "验收包括严格警告构建、运行输出变化，以及生成物仍只在 build 目录。",
-      "source": {
-        "label": "第五步：迁移验收与下一步",
-        "href": "#step-5"
-      },
-      "updated_at": "2026-07-15"
+      "id":"cpp-auto-static","lesson_id":"cpp-core-01","context_id":"concept-initialize-assign",
+      "question":"auto 是不是动态类型？","aliases":["auto类型会变吗","auto什么时候推导"],"keywords":["auto","类型推导","静态类型"],
+      "diagnostic":"编译器能否从初始化表达式确定一个具体类型？",
+      "hints":["`auto` 在编译时从右侧推导。","推导完成后，对象仍有固定类型。"],
+      "example":"`const auto progress{0.75};` 推导为 `double`。",
+      "answer":"不是。`auto` 省去重复写类型名，但仍然是编译期静态类型推导。",
+      "source":{"label":"初始化和赋值不是同一件事","href":"#concept-initialize-assign"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"cpp-streams","lesson_id":"cpp-core-01","context_id":"concept-streams-exit",
+      "question":"cout、cerr 和退出码为什么要分开？","aliases":["正常输出和错误输出怎么分","C++标准流怎么用"],"keywords":["cout","cerr","stdout","stderr","退出码"],
+      "diagnostic":"这条文字是正常结果、错误说明，还是给脚本判断的状态？",
+      "hints":["正常结果写 `cout`，错误说明写 `cerr`。","成功与否还要用 `main()` 返回值表达。"],
+      "example":"合法输入输出状态卡并返回 0；非法小时写 stderr 并返回 1。",
+      "answer":"分开以后，人和自动化都能可靠消费结果：业务结果、诊断文字和进程状态各有位置。",
+      "source":{"label":"输入、结果和错误各走一条路","href":"#concept-streams-exit"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"cpp-getline","lesson_id":"cpp-core-01","context_id":"concept-streams-exit",
+      "question":"为什么姓名要用 getline？","aliases":["姓名有空格怎么读","cin只读到第一个词"],"keywords":["getline","空格","姓名","输入"],
+      "diagnostic":"输入 `Lin Yue` 时，你希望得到一整行还是只要第一个词？",
+      "hints":["`operator>>` 按格式读取，空白通常会结束字符串。","`getline()` 读取整行，更符合包含空格的姓名。"],
+      "example":"`std::getline(std::cin, learner);`。",
+      "answer":"姓名可能包含空格，所以这里读取整行；之后再单独校验空字符串。",
+      "source":{"label":"输入、结果和错误各走一条路","href":"#concept-streams-exit"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"cpp-compiler-install","lesson_id":"cpp-core-01","context_id":"reproduce-toolchain",
+      "question":"终端说找不到 clang++ 或 cl 怎么办？","aliases":["编译器没安装怎么办","command not found clang++"],"keywords":["clang++","g++","cl","安装","终端"],
+      "diagnostic":"你用的是 macOS、Windows 还是 Linux，打开的又是哪种终端？",
+      "hints":["先按平台完成工具链安装，再重新打开终端。","Windows 要在 Developer PowerShell 中检查 `cl`。"],
+      "example":"macOS 用 `xcode-select --install`；Ubuntu 可安装 `build-essential`。",
+      "answer":"先确认平台、安装项和终端入口，再用版本命令验证；普通 PowerShell 找不到 `cl` 不一定代表没安装。",
+      "source":{"label":"确认电脑里有编译器","href":"#reproduce-toolchain"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"cpp-exit-code","lesson_id":"cpp-core-01","context_id":"reproduce-build-run",
+      "question":"C++ 程序的退出码怎么查看？","aliases":["如何检查return 0","PowerShell怎么看退出码"],"keywords":["退出码","echo $?","LASTEXITCODE","return"],
+      "diagnostic":"你是在 macOS／Linux shell，还是 PowerShell？",
+      "hints":["macOS／Linux 在运行后用 `echo $?`。","PowerShell 使用 `$LASTEXITCODE`。"],
+      "example":"正常输入后应为 0，非法输入后应为非 0。",
+      "answer":"查看 shell 保存的最近进程状态，并同时验证成功与失败路径。",
+      "source":{"label":"编译并运行完整状态卡","href":"#reproduce-build-run"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"cpp-warning-flags","lesson_id":"cpp-core-01","context_id":"example-build-flags",
+      "question":"Wall、Wextra 和 Werror 有什么用？","aliases":["为什么要开严格警告","编译参数怎么看"],"keywords":["Wall","Wextra","Werror","警告","编译参数"],
+      "diagnostic":"你是想看到更多可疑代码，还是把所有警告都当成语言错误？",
+      "hints":["`-Wall -Wextra` 打开常用诊断，但不代表覆盖所有问题。","课程测试再用 `-Werror` 防止示例留下已知警告。"],
+      "example":"`-Wconversion` 会特别关注可能改变值的隐式转换。",
+      "answer":"这些选项帮助更早发现可疑代码；它们不是正确性证明，也不该在看不懂时直接关闭。",
+      "source":{"label":"读懂编译命令","href":"#example-build-flags"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"cpp-object-file","lesson_id":"cpp-core-01","context_id":"reproduce-split-build",
+      "question":"目标文件为什么还不能直接交付？","aliases":["o文件是什么","obj文件和exe区别"],"keywords":["目标文件","object",".o",".obj","链接"],
+      "diagnostic":"这一步是否已经解析了程序需要的全部符号并生成可执行格式？",
+      "hints":["`-c` 只编译，不执行链接。","目标文件还要与其他目标和所需库组合。"],
+      "example":"`study_status.o` 再交给 `clang++` 链接为 `study_status`。",
+      "answer":"目标文件是构建中间产物；完成链接后才得到操作系统能正常加载的程序。",
+      "source":{"label":"把编译和链接拆开","href":"#reproduce-split-build"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"cpp-rebuild","lesson_id":"cpp-core-01","context_id":"modify-status-card",
+      "question":"为什么改了源码，输出还是旧的？","aliases":["C++修改后没变化","是不是要重新编译"],"keywords":["重新编译","旧输出","运行路径"],
+      "diagnostic":"保存源码后，你重新执行编译命令，并运行了刚生成的文件吗？",
+      "hints":["源码和可执行程序是两份文件。","确认编译输出路径与运行路径完全一致。"],
+      "example":"改 `planned_hours` → 重新编译 → 运行 `build/study_status`。",
+      "answer":"C++ 源码保存后不会自动更新旧程序；重新构建，并确认没有运行另一个目录里的旧文件。",
+      "source":{"label":"把状态卡改成自己的","href":"#modify-status-card"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"cpp-narrowing","lesson_id":"cpp-core-01","context_id":"troubleshoot-narrowing",
+      "question":"2.5 放进 int 为什么会报错？","aliases":["narrowing conversion是什么","花括号初始化报错"],"keywords":["2.5","int","narrowing","窄化"],
+      "diagnostic":"你希望保留 0.5，还是已经决定怎样取整？",
+      "hints":["`int` 不能保存小数部分。","花括号不允许这次信息丢失悄悄发生。"],
+      "example":"需要小数就用 `double planned_hours{2.5};`。",
+      "answer":"这是窄化诊断。先按数据含义选择类型；确实要取整时，明确规则后再显式转换。",
+      "source":{"label":"处理窄化和整数除法","href":"#troubleshoot-narrowing"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"cpp-integer-division","lesson_id":"cpp-core-01","context_id":"troubleshoot-narrowing",
+      "question":"为什么 3 除以 4 得到 0？","aliases":["C++整数除法","进度为什么是零"],"keywords":["整数除法","3/4","double","转换"],
+      "diagnostic":"除法发生时，两侧操作数是什么类型？",
+      "hints":["两个 `int` 先执行整数除法。","把操作数在除法前转成 `double`，不是算完以后才转结果。"],
+      "example":"`static_cast<double>(completed) / planned`。",
+      "answer":"`3 / 4` 先得到整数 0，再赋给 double 仍是 0.0；浮点转换必须发生在除法之前。",
+      "source":{"label":"处理窄化和整数除法","href":"#troubleshoot-narrowing"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"cpp-invalid-input","lesson_id":"cpp-core-01","context_id":"troubleshoot-link-input",
+      "question":"输入字母以后程序该怎么处理？","aliases":["小时输入不是数字怎么办","cin读取失败怎么判断"],"keywords":["非法输入","cin","读取失败","cerr"],
+      "diagnostic":"读取表达式是否成功，程序有没有继续使用那个值？",
+      "hints":["检查 `std::cin >> planned_hours` 的结果。","失败时写 stderr 并返回非零，不继续生成状态卡。"],
+      "example":"`if (!(std::cin >> hours)) { std::cerr << ...; return 1; }`。",
+      "answer":"把输入流失败当成正常的错误路径处理：说明原因、停止计算并返回非零状态。",
+      "source":{"label":"区分链接失败和输入失败","href":"#troubleshoot-link-input"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"cpp-project-line","lesson_id":"cpp-core-01","context_id":"project-cpp-v01",
+      "question":"这张状态卡后面会怎么长大？","aliases":["C++项目后面做什么","状态卡和RAII什么关系"],"keywords":["项目","报告器","CMake","STL","RAII"],
+      "diagnostic":"现在有几个源文件，是否已经能处理多条记录和写文件？",
+      "hints":["下一课先拆函数，之后进入多文件和 CMake。","STL 处理多条记录，RAII 再安全地写审计文件。"],
+      "example":"单文件状态卡 → 函数 → CMake 与测试 → 容器 → RAII 审计。",
+      "answer":"它会演进为 C++ 学习进度报告器，并与 Python 版本保持同一主报告契约。",
+      "source":{"label":"C++ 报告器从这里起步","href":"#project-cpp-v01"},"updated_at":"2026-07-17","recommended":true
+    },
+    {
+      "id":"cpp-compiler-limits","lesson_id":"cpp-core-01","context_id":"deepen-types-build",
+      "question":"编译没有警告就说明程序正确吗？","aliases":["编译通过是不是就没问题","静态类型能保证什么"],"keywords":["编译通过","警告","业务约束","测试"],
+      "diagnostic":"输入边界、业务规则和运行失败是否都已经验证？",
+      "hints":["静态检查只能覆盖其中一部分问题。","继续跑正常、边界和非法输入，再检查结果与退出码。"],
+      "example":"`double` 接受负数，但负计划小时仍然是业务错误。",
+      "answer":"不能。编译器守住语法和一部分类型问题，业务约束与运行行为仍要靠校验和测试证明。",
+      "source":{"label":"编译器替你守住什么","href":"#deepen-types-build"},"updated_at":"2026-07-17"
+    },
+    {
+      "id":"cpp-career-evidence","lesson_id":"cpp-core-01","context_id":"career-build-story",
+      "question":"这节 C++ 课能留下什么求职材料？","aliases":["C++第一课怎么讲项目","构建过程怎么面试表达"],"keywords":["求职","构建","排错","证据"],
+      "diagnostic":"你能不能拿出源码、命令、失败修复和验证结果？",
+      "hints":["先讲程序目标和构建链。","再讲一次失败怎样定位，最后说明如何验证修复。"],
+      "example":"源码 + 严格编译命令 + 链接失败记录 + 退出码矩阵。",
+      "answer":"用真实材料讲“问题—诊断—修复—验证”，比只说熟悉 C++ 语法更可信。",
+      "source":{"label":"怎样讲清这次构建","href":"#career-build-story"},"updated_at":"2026-07-17"
     }
   ]
 }

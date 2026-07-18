@@ -1,95 +1,45 @@
 {
-  "version": 1,
-  "lesson": { "id": "cs-core-07", "title": "栈、LIFO 接口与空栈边界", "path": "learning-paths/cs-core/07-stack-lifo-interface-underflow/" },
-  "steps": [
-    { "id": "step-1", "title": "运行链表基线与栈模式" },
-    { "id": "step-2", "title": "定义 LIFO 接口契约" },
-    { "id": "step-3", "title": "用链表头实现栈" },
-    { "id": "step-4", "title": "追踪嵌套压栈和弹栈" },
-    { "id": "step-5", "title": "验证空栈安全失败" },
-    { "id": "step-6", "title": "迁移 drain_stack" }
+  "version":2,
+  "lesson":{"id":"cs-core-07","title":"栈、LIFO 接口与空栈边界","path":"learning-paths/cs-core/07-stack-lifo-interface-underflow/"},
+  "contexts":[
+    {"id":"overview-stack-output","type":"overview","title":"最后放进去的 9 为什么先出来","anchor":"#overview-stack-output"},
+    {"id":"concept-lifo-contract","type":"concept","title":"栈规定顺序，不规定材料","anchor":"#concept-lifo-contract"},
+    {"id":"example-stack-trace","type":"example","title":"四次状态变化","anchor":"#example-stack-trace"},
+    {"id":"concept-head-as-top","type":"concept","title":"链表头充当栈顶","anchor":"#concept-head-as-top"},
+    {"id":"example-push-pop-links","type":"example","title":"push 与 pop 的表头重连","anchor":"#example-push-pop-links"},
+    {"id":"concept-peek-observer","type":"concept","title":"peek 是只读观察","anchor":"#concept-peek-observer"},
+    {"id":"concept-size-invariant","type":"concept","title":"链接与计数不变量","anchor":"#concept-size-invariant"},
+    {"id":"reproduce-stack-micro","type":"reproduce","title":"运行五行栈轨迹","anchor":"#reproduce-stack-micro"},
+    {"id":"reproduce-bilingual-stack","type":"reproduce","title":"对照 Python 和 C++ 栈报告","anchor":"#reproduce-bilingual-stack"},
+    {"id":"modify-stack-trace","type":"modify","title":"换操作重画轨迹","anchor":"#modify-stack-trace"},
+    {"id":"modify-drain-stack","type":"modify","title":"完整排空独立栈","anchor":"#modify-drain-stack"},
+    {"id":"troubleshoot-underflow","type":"troubleshoot","title":"空栈安全失败","anchor":"#troubleshoot-underflow"},
+    {"id":"troubleshoot-order","type":"troubleshoot","title":"顺序、输入和移动错误","anchor":"#troubleshoot-order"},
+    {"id":"project-linear-v02","type":"project","title":"线性结构实验增加受限接口","anchor":"#project-linear-v02"},
+    {"id":"deepen-stack-uses","type":"deepen","title":"栈在后续课程中的用途","anchor":"#deepen-stack-uses"},
+    {"id":"career-stack-evidence","type":"career","title":"把接口和实现证据讲完整","anchor":"#career-stack-evidence"}
   ],
-  "cards": [
-    {
-      "id": "stack-output-baseline", "lesson_id": "cs-core-07", "step_id": "step-1",
-      "question": "栈模式的固定输出要证明什么？", "aliases": ["stack首次成功是什么", "为什么先锁定linked基线"],
-      "keywords": ["stack", "基线", "top", "pop", "双语言"],
-      "diagnostic": "压入 7、3、9 后 top 是否为9，弹出后是否为3、7？",
-      "hints": ["先确认 linked 输出未回归。", "再比较两端 stack 输出。"],
-      "example": "top=9，pop=9，remaining(top->bottom)=3, 7。", "answer": "基线同时证明旧模式兼容和新模式的 LIFO 可观察结果。",
-      "source": { "label": "第一步：运行链表基线与栈模式", "href": "#step-1" }, "updated_at": "2026-07-16", "recommended": true
-    },
-    {
-      "id": "lifo-contract", "lesson_id": "cs-core-07", "step_id": "step-2",
-      "question": "栈的 LIFO 契约是什么？", "aliases": ["后进先出怎么理解", "栈允许哪些核心操作"],
-      "keywords": ["LIFO", "后进先出", "push", "pop", "peek"],
-      "diagnostic": "最后 push 的元素是否总由下一次 pop 返回？",
-      "hints": ["push 和 pop 在同一端。", "peek 只观察栈顶，不修改状态。"],
-      "example": "依次 push 7、3、9，首次 pop 返回9。", "answer": "LIFO 规定访问顺序，不规定必须使用数组还是链表。",
-      "source": { "label": "第二步：定义 LIFO 接口契约", "href": "#step-2" }, "updated_at": "2026-07-16", "recommended": true
-    },
-    {
-      "id": "stack-interface-representation", "lesson_id": "cs-core-07", "step_id": "step-2",
-      "question": "为什么栈接口不等于某一种底层容器？", "aliases": ["栈就是数组吗", "栈就是数组还是链表吗", "std stack为何叫容器适配器"],
-      "keywords": ["接口", "表示", "容器适配器", "list", "std::stack"],
-      "diagnostic": "当前结论描述的是操作契约，还是某个实现选择？",
-      "hints": ["链表头和动态数组尾都能实现栈。", "比较复杂度与失效边界，而不是混同名称。"],
-      "example": "本实验用链表，Python list 和 std::stack 也能提供 LIFO。", "answer": "栈定义 push/pop/peek 行为，底层表示是可替换的工程选择。",
-      "source": { "label": "第二步：定义 LIFO 接口契约", "href": "#step-2" }, "updated_at": "2026-07-16"
-    },
-    {
-      "id": "head-as-stack-top", "lesson_id": "cs-core-07", "step_id": "step-3",
-      "question": "为什么把链表头作为栈顶？", "aliases": ["链式栈怎样做到Theta1", "push pop peek复杂度"],
-      "keywords": ["链表头", "栈顶", "Theta(1)", "push", "peek"],
-      "diagnostic": "三个核心操作是否都只读取或重连 head？",
-      "hints": ["push_front 对应 push。", "pop_front 对应 pop，头值对应 peek。"],
-      "example": "链表长度不会改变一次栈顶操作触碰的节点数。", "answer": "头部已知且支持常量重连，正好满足栈只操作一端的契约。",
-      "source": { "label": "第三步：用链表头实现栈", "href": "#step-3" }, "updated_at": "2026-07-16", "recommended": true
-    },
-    {
-      "id": "peek-no-mutation", "lesson_id": "cs-core-07", "step_id": "step-3",
-      "question": "peek 为什么不能改变栈？", "aliases": ["查看栈顶后size变了怎么办", "peek和pop区别"],
-      "keywords": ["peek", "pop", "只读", "size", "状态"],
-      "diagnostic": "peek 前后的 head、size 和元素顺序是否完全相同？",
-      "hints": ["peek 只读取头节点的 value。", "不要复用会移动 head 的 pop。"],
-      "example": "peek 返回9后 size 仍为3。", "answer": "peek 是观察操作；删除或减少大小会破坏公开接口契约。",
-      "source": { "label": "第三步：用链表头实现栈", "href": "#step-3" }, "updated_at": "2026-07-16"
-    },
-    {
-      "id": "stack-state-trace", "lesson_id": "cs-core-07", "step_id": "step-4",
-      "question": "怎样追踪一串压栈和弹栈状态？", "aliases": ["嵌套push pop如何画状态", "栈顶到栈底顺序"],
-      "keywords": ["状态追踪", "push", "pop", "top-to-bottom", "size"],
-      "diagnostic": "每一步是否同时记录返回值、栈顶到栈底序列和大小？",
-      "hints": ["先写预测，再运行。", "每次 push 放到序列最前，每次 pop 移除最前。"],
-      "example": "push7,push3,pop,push9 最终为[9,7]。", "answer": "逐步状态表能定位顺序错误，比只看最终结果更可靠。",
-      "source": { "label": "第四步：追踪嵌套压栈和弹栈", "href": "#step-4" }, "updated_at": "2026-07-16", "recommended": true
-    },
-    {
-      "id": "stack-underflow", "lesson_id": "cs-core-07", "step_id": "step-5",
-      "question": "空栈 pop 和 peek 应怎样失败？", "aliases": ["栈下溢用什么异常", "为什么不能返回0哨兵"],
-      "keywords": ["空栈", "下溢", "IndexError", "out_of_range", "哨兵"],
-      "diagnostic": "空栈是否抛公开异常，且没有伪造一个可能合法的返回值？",
-      "hints": ["Python 使用 IndexError。", "C++ 使用 std::out_of_range。"],
-      "example": "失败后 size=0，随后 push7 仍成功。", "answer": "异常明确区分无结果和合法整数，并让调用方处理下溢。",
-      "source": { "label": "第五步：验证空栈安全失败", "href": "#step-5" }, "updated_at": "2026-07-16", "recommended": true
-    },
-    {
-      "id": "stack-failure-invariant", "lesson_id": "cs-core-07", "step_id": "step-5",
-      "question": "怎样证明栈下溢没有破坏状态？", "aliases": ["异常后栈还能继续用吗", "失败不变性测试"],
-      "keywords": ["失败不变性", "异常", "empty", "size", "恢复"],
-      "diagnostic": "异常前后 empty、size 和 to_list 是否相同？",
-      "hints": ["在任何链接修改之前检查空状态。", "失败后再执行一次成功 push/pop。"],
-      "example": "空栈 peek 失败后 push7、pop 仍返回7。", "answer": "比较失败前后快照并继续一次成功操作，可以证明结构仍有效。",
-      "source": { "label": "第五步：验证空栈安全失败", "href": "#step-5" }, "updated_at": "2026-07-16"
-    },
-    {
-      "id": "drain-stack-migration", "lesson_id": "cs-core-07", "step_id": "step-6",
-      "question": "drain_stack 迁移任务要验收什么？", "aliases": ["排空栈为何要保护输入", "逆序弹出测试"],
-      "keywords": ["drain_stack", "迁移验收", "逆序", "输入不变", "空输入"],
-      "diagnostic": "是否把输入复制进独立栈，并按 pop 顺序收集全部值？",
-      "hints": ["输入顺序用于 push。", "覆盖空、单元素、重复和一般序列。"],
-      "example": "[7,3,9] 返回[9,3,7]，源列表仍为[7,3,9]。", "answer": "迁移通过标准是完整 LIFO 输出、原输入不变且所有边界可复现。",
-      "source": { "label": "第六步：迁移 drain_stack", "href": "#step-6" }, "updated_at": "2026-07-16", "recommended": true
-    }
+  "cards":[
+    {"id":"stack-output","lesson_id":"cs-core-07","context_id":"overview-stack-output","question":"栈报告里的 top、pop 和 remaining 说明了什么？","aliases":["为什么最后push的9先出来","栈固定输出怎样看"],"keywords":["top","pop","remaining","9","LIFO"],"diagnostic":"压入7、3、9以后，最靠近出口的是哪个值？","hints":["最后一次 push 的是 9。","pop 返回栈顶，剩余顺序按 top-to-bottom 写。"],"example":"top=9、pop=9、remaining=3,7。","answer":"报告证明后进先出：最后压入的9先弹出，余下栈顶变成3，底部仍是7。","source":{"label":"最后放进去的 9 为什么先出来","href":"#overview-stack-output"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"lifo-contract","lesson_id":"cs-core-07","context_id":"concept-lifo-contract","question":"栈的 LIFO 契约到底是什么？","aliases":["后进先出怎么理解","last in first out是什么"],"keywords":["LIFO","后进先出","push","pop","顺序"],"diagnostic":"下一次 pop 是否总返回最近一次尚未弹出的 push 值？","hints":["push 与 pop 在同一端。","最后进入且还在栈里的元素最先离开。"],"example":"push 7、3、9 后第一次 pop 返回9。","answer":"LIFO 规定最后进入的未删除元素最先返回；它约束访问顺序，不约束底层一定使用哪种容器。","source":{"label":"栈规定顺序不规定材料","href":"#concept-lifo-contract"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"stack-core-operations","lesson_id":"cs-core-07","context_id":"concept-lifo-contract","question":"push、pop、peek 分别会不会改变栈？","aliases":["栈三个核心操作区别","peek和pop有什么不同"],"keywords":["push","pop","peek","size","修改"],"diagnostic":"这个操作是在放入、取走，还是只查看栈顶？","hints":["push 让 size 加1，pop 让 size 减1。","peek 只读，状态不变。"],"example":"peek返回9以后size仍是3。","answer":"push 添加栈顶，pop 删除并返回栈顶，peek 只返回栈顶；只有前两者修改结构。","source":{"label":"栈规定顺序不规定材料","href":"#concept-lifo-contract"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"interface-vs-representation","lesson_id":"cs-core-07","context_id":"concept-lifo-contract","question":"栈就是数组或链表中的一种吗？","aliases":["为什么栈接口不等于容器","std stack为何叫适配器"],"keywords":["接口","表示","数组","链表","容器适配器"],"diagnostic":"你说的是允许什么操作，还是内部怎样保存节点？","hints":["栈定义 LIFO 操作。","链表头和动态数组尾都能实现这个接口。"],"example":"本课用链表，Python list尾部也能提供LIFO。","answer":"栈是受限接口；数组、链表是表示选择。实现只要满足顺序、复杂度和边界契约，就可以承载栈。","source":{"label":"栈规定顺序不规定材料","href":"#concept-lifo-contract"},"updated_at":"2026-07-17"},
+    {"id":"stack-state-trace","lesson_id":"cs-core-07","context_id":"example-stack-trace","question":"push 7、push 3、pop、push 9 后栈是什么？","aliases":["四次栈操作状态怎样变化","最后top to bottom是什么"],"keywords":["状态轨迹","push7","push3","pop","push9"],"diagnostic":"每次是否把新值放在 top-to-bottom 序列最前面？","hints":["前两步得到[3,7]。","pop移走3，再push9得到[9,7]。"],"example":"[7] → [3,7] → [7] → [9,7]。","answer":"pop返回3，最终从栈顶到栈底是[9,7]，size为2。","source":{"label":"每一步都把栈顶写在最前面","href":"#example-stack-trace"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"top-to-bottom-direction","lesson_id":"cs-core-07","context_id":"example-stack-trace","question":"为什么栈轨迹要明确写 top-to-bottom？","aliases":["序列左边是栈顶还是栈底","栈图方向混乱怎么办"],"keywords":["top-to-bottom","方向","栈顶","序列","轨迹"],"diagnostic":"同一页里的第一个元素是否始终代表栈顶？","hints":["方向不固定会把LIFO误读成FIFO。","本课统一把栈顶写在最前。"],"example":"[9,7] 表示9在栈顶，7在栈底。","answer":"显式方向消除表示歧义；本项目所有列表和报告都按栈顶到栈底排列。","source":{"label":"每一步都把栈顶写在最前面","href":"#example-stack-trace"},"updated_at":"2026-07-17"},
+    {"id":"head-as-stack-top","lesson_id":"cs-core-07","context_id":"concept-head-as-top","question":"为什么链式栈把链表头作为栈顶？","aliases":["链式栈怎样做到Theta1","为什么不把top放链表尾"],"keywords":["head","top","链式栈","Theta(1)","尾部"],"diagnostic":"这个位置的插入、删除和读取是否都无需遍历？","hints":["链表头位置始终已知。","没有tail的链表尾需要先从头查找。"],"example":"push_front、pop_front、读取head.value都只碰固定节点。","answer":"链表头能让 push、pop、peek 都是 Θ(1)；放在无尾入口的末端会把操作拖成 Θ(n)。","source":{"label":"让链表头直接充当栈顶","href":"#concept-head-as-top"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"push-pop-links","lesson_id":"cs-core-07","context_id":"example-push-pop-links","question":"链式栈 push 和 pop 分别怎样重连？","aliases":["新节点怎样变成top","pop以后top指向哪里"],"keywords":["push","pop","重连","top","next"],"diagnostic":"你能否画出旧top、新节点和旧top.next的变化？","hints":["push让新节点.next指向旧top，再更新top。","pop保存旧值，再让top指向旧top.next。"],"example":"top→3→7，push9后top→9→3→7。","answer":"两项操作都只改栈顶入口和一条 next 链接，后续节点保持原顺序。","source":{"label":"push 和 pop 只是表头重连","href":"#example-push-pop-links"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"peek-no-mutation","lesson_id":"cs-core-07","context_id":"concept-peek-observer","question":"peek 为什么不能先 pop 再 push 回去？","aliases":["peek后size变了怎么办","查看栈顶怎样保持状态"],"keywords":["peek","只读","pop","push","状态不变"],"diagnostic":"调用前后 top、size 和元素身份是否应该完全相同？","hints":["peek只需读取top.value。","pop再push会执行两次多余修改。"],"example":"peek返回9，调用前后[9,3,7]和size=3不变。","answer":"peek 是观察接口，应直接读取栈顶；先删再加可能改变身份、异常和并发语义，也违反最小修改原则。","source":{"label":"peek 是观察不是试着弹一下再放回去","href":"#concept-peek-observer"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"stack-invariants","lesson_id":"cs-core-07","context_id":"concept-size-invariant","question":"链式栈最重要的结构和计数规则是什么？","aliases":["top为空和size0什么关系","pop返回对但size错了怎么办"],"keywords":["不变量","top","size","可达节点","empty"],"diagnostic":"从top可达的节点数是否等于size，空状态是否同步？","hints":["top为空当且仅当size为0。","push只加1，pop只减1，peek不变。"],"example":"pop后还有[3,7]时size必须是2。","answer":"入口、可达链和计数必须一致；只验证返回值不足以证明栈没有损坏。","source":{"label":"栈也要同时守住链接和计数","href":"#concept-size-invariant"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"run-stack-micro","lesson_id":"cs-core-07","context_id":"reproduce-stack-micro","question":"链式栈小程序应该怎样运行和核对？","aliases":["linked_stack_trace怎么跑","peek最后为什么size2"],"keywords":["linked_stack_trace.py","运行","五行轨迹","peek","size"],"diagnostic":"是否从仓库根目录运行，并先预测每行序列和大小？","hints":["使用项目 .venv 的Python。","最后peek只读，因此size保持2。"],"example":".venv/bin/python site-src/examples/algorithm-foundation/linked_stack_trace.py。","answer":"正确轨迹依次是[7]、[3,7]、[7]、[9,7]，最后peek返回9且size仍为2。","source":{"label":"运行五行栈轨迹","href":"#reproduce-stack-micro"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"bilingual-stack-regression","lesson_id":"cs-core-07","context_id":"reproduce-bilingual-stack","question":"为什么栈课还要重跑 linked 和 queue？","aliases":["三种线性结构模式为何一起回归","Python C++栈报告怎样对照"],"keywords":["linked","stack","queue","回归","双语言"],"diagnostic":"三种模式是否共用入口、构建和部分节点实现？","hints":["新改动不能破坏已冻结模式。","Python和C++三份stdout都逐字比较。"],"example":"linked、stack、queue单测和报告全部通过。","answer":"全模式回归证明栈迁移没有破坏链表或队列契约，双语言对照保护共同接口规则。","source":{"label":"在正式项目里对照 Python 和 C++","href":"#reproduce-bilingual-stack"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"duplicate-stack-trace","lesson_id":"cs-core-07","context_id":"modify-stack-trace","question":"栈里有两个相同的 4，需要合并吗？","aliases":["重复值压栈怎样处理","pop8后peek4是哪一个"],"keywords":["重复值","push4","节点","顺序","peek"],"diagnostic":"两次push是否代表两个独立节点和两次操作？","hints":["栈不负责去重。","弹出8后看到的是后压入的4。"],"example":"push4、push4后序列是[4,4]，size=2。","answer":"重复值保持为独立栈项；值相同不改变入栈时间和 LIFO 顺序。","source":{"label":"换一串操作再自己画一次","href":"#modify-stack-trace"},"updated_at":"2026-07-17"},
+    {"id":"drain-stack","lesson_id":"cs-core-07","context_id":"modify-drain-stack","question":"drain_stack 应该返回什么顺序？","aliases":["排空栈为什么得到逆序","7 3 9 drain结果"],"keywords":["drain_stack","排空","逆序","LIFO","返回序列"],"diagnostic":"输入是否按原顺序push，再不断pop到空？","hints":["最后push的值最先进入结果。","空输入直接得到空结果。"],"example":"[7,3,9]返回[9,3,7]。","answer":"排空结果是完整弹出顺序，也就是输入压栈顺序的逆序；重复和单元素同样遵守LIFO。","source":{"label":"用 drain_stack 完整排空一份副本","href":"#modify-drain-stack"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"drain-input-unchanged","lesson_id":"cs-core-07","context_id":"modify-drain-stack","question":"drain_stack 为什么不能修改调用方输入？","aliases":["排空函数怎样保护源列表","输入列表被清空了怎么办"],"keywords":["输入不变","副本","调用方","drain_stack","副作用"],"diagnostic":"函数是在独立栈上pop，还是直接从输入容器删除？","hints":["遍历输入，把值push到新栈。","只排空新栈，测试前后输入相等。"],"example":"返回[9,3,7]后，source仍是[7,3,9]。","answer":"输入属于调用方，函数契约只要求读取；建立独立栈能避免隐藏副作用并让结果更易复用。","source":{"label":"用 drain_stack 完整排空一份副本","href":"#modify-drain-stack"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"stack-underflow","lesson_id":"cs-core-07","context_id":"troubleshoot-underflow","question":"空栈 pop 和 peek 应该怎样失败？","aliases":["栈下溢为什么不能返回0","空top读取怎么办"],"keywords":["空栈","下溢","IndexError","out_of_range","哨兵"],"diagnostic":"接口是否明确区分无栈顶和一个合法的整数0？","hints":["Python抛IndexError。","C++抛std::out_of_range，不能先读空节点。"],"example":"空栈pop不返回0，因为0也可能是合法数据。","answer":"两种操作都在读取前抛明确异常；哨兵或静默忽略会掩盖真实状态错误。","source":{"label":"空栈没有默认栈顶","href":"#troubleshoot-underflow"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"underflow-preserves-state","lesson_id":"cs-core-07","context_id":"troubleshoot-underflow","question":"怎样证明下溢没有把栈弄坏？","aliases":["异常以后栈还能用吗","失败不改变状态怎样测试"],"keywords":["下溢","状态不变","empty","size","恢复"],"diagnostic":"异常前后入口、size和元素序列是否相同？","hints":["先检查empty和size仍为0。","再push7并pop，确认返回7。"],"example":"peek失败后push7、pop仍成功。","answer":"比较失败前后快照并继续一次成功操作，能证明异常发生前没有修改链接和计数。","source":{"label":"空栈没有默认栈顶","href":"#troubleshoot-underflow"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"fix-stack-order","lesson_id":"cs-core-07","context_id":"troubleshoot-order","question":"第一次 pop 返回 7 而不是 9，应该查哪里？","aliases":["栈顺序反了怎么办","to list输出成入栈顺序"],"keywords":["顺序错误","pop","top","链表尾","top-to-bottom"],"diagnostic":"栈顶是否真的映射到head，输出是否按top-to-bottom解释？","hints":["若操作链表尾，可能把最早值当栈顶。","固定top等于head，序列首项就是栈顶。"],"example":"push7、3、9后head应是9。","answer":"先检查栈顶映射和输出方向；本实现的top必须等于链表头，第一次pop才会返回9。","source":{"label":"弹出 7 而不是 9 先查两件事","href":"#troubleshoot-order"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"project-linear-stack","lesson_id":"cs-core-07","context_id":"project-linear-v02","question":"这节课给可追踪线性结构实验增加了什么？","aliases":["线性结构项目v02是什么","栈怎样复用上一课链表"],"keywords":["可追踪线性结构实验","受限接口","LinkedStack","项目","v02"],"diagnostic":"项目是否复用节点基础，却只公开栈需要的操作？","hints":["上一版是通用单链表操作。","这一版收窄为push、pop、peek、size、empty。"],"example":"同样的头节点重连，被包装成LIFO接口和固定报告。","answer":"项目展示同一种链式表示如何承载更窄的抽象接口，并保留双语言、下溢和移动回归。","source":{"label":"线性结构实验增加一个受限接口","href":"#project-linear-v02"},"updated_at":"2026-07-17","recommended":true},
+    {"id":"stack-use-cases","lesson_id":"cs-core-07","context_id":"deepen-stack-uses","question":"哪些问题真的适合用栈？","aliases":["递归DFS为什么会看到栈","撤销和括号匹配为何用LIFO"],"keywords":["调用栈","DFS","括号匹配","撤销","LIFO"],"diagnostic":"最近进入但尚未处理的状态，是否应该最先继续？","hints":["调用返回、DFS前沿和撤销都需要处理最近状态。","不要只因数据是序列就默认使用栈。"],"example":"显式DFS把最近发现的节点先弹出继续。","answer":"当问题只从一端访问，且最近保存的未完成状态应最先处理时，栈才是合适抽象。","source":{"label":"后面哪些地方会再次看到栈","href":"#deepen-stack-uses"},"updated_at":"2026-07-17"},
+    {"id":"career-stack","lesson_id":"cs-core-07","context_id":"career-stack-evidence","question":"面试里怎样把栈的接口和实现讲完整？","aliases":["栈面试别只说后进先出","怎样用项目证明LinkedStack可靠"],"keywords":["面试","接口","链式实现","Theta(1)","测试证据"],"diagnostic":"回答是否先定义LIFO，再说明底层选择和失败测试？","hints":["用7、3、9解释顺序。","再讲链表头、复杂度、下溢、输入不变和移动语义。"],"example":"LIFO契约 → head作为top → 三项Θ(1) → 边界与双语言回归。","answer":"把抽象顺序、实现取舍和可运行证据分层说明，比只背定义更准确，也更能展示工程判断。","source":{"label":"讲栈时把接口和实现分开","href":"#career-stack-evidence"},"updated_at":"2026-07-17","recommended":true}
   ]
 }

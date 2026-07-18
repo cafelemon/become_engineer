@@ -3008,10 +3008,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#0-7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        从顶点 0 出发，也能得到总权重 7
       
     </span>
   </a>
@@ -3019,10 +3019,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#kruskal-prim" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：运行 Kruskal 与 Prim 基线
+        开始前
       
     </span>
   </a>
@@ -3033,7 +3033,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：定义已访问集合与割边
+        先画一道线：已访问在里面，未访问在外面
       
     </span>
   </a>
@@ -3044,7 +3044,29 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：维护最小边前沿
+        前沿随着树一起长，也会留下旧候选
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        visit() 扫描全部邻接项，只压入通向外面的边
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0-1@4 压入时有用，弹出时已经过期
       
     </span>
   </a>
@@ -3055,7 +3077,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：从最小未访问顶点重启森林
+        队列空了，不代表整张图已经结束
       
     </span>
   </a>
@@ -3066,7 +3088,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：复现遗漏过期边检查
+        两种算法不必选出完全相同的边
       
     </span>
   </a>
@@ -3077,7 +3099,18 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第六步：完成双算法对照迁移验收
+        先运行一份短轨迹
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        再跑完整的 Python 与 C++ 实现
       
     </span>
   </a>
@@ -3088,7 +3121,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        固定输出
+        加一个孤立点，再交换同权边的输入顺序
       
     </span>
   </a>
@@ -3099,7 +3132,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        写一个只比较森林不变量的对照器
       
     </span>
   </a>
@@ -3110,7 +3143,40 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        来源与版本
+        总权重不对、边数过多，先查这几处
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可追踪生成森林实验 v1.0
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oe-log-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        懒惰边队列的代价是 O(E log E)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        讲 Prim 时，拿一条过期边说明为什么要复查
       
     </span>
   </a>
@@ -3119,6 +3185,28 @@
       
         <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -3846,10 +3934,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#0-7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        从顶点 0 出发，也能得到总权重 7
       
     </span>
   </a>
@@ -3857,10 +3945,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#kruskal-prim" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：运行 Kruskal 与 Prim 基线
+        开始前
       
     </span>
   </a>
@@ -3871,7 +3959,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第二步：定义已访问集合与割边
+        先画一道线：已访问在里面，未访问在外面
       
     </span>
   </a>
@@ -3882,7 +3970,29 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：维护最小边前沿
+        前沿随着树一起长，也会留下旧候选
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        visit() 扫描全部邻接项，只压入通向外面的边
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0-1@4 压入时有用，弹出时已经过期
       
     </span>
   </a>
@@ -3893,7 +4003,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：从最小未访问顶点重启森林
+        队列空了，不代表整张图已经结束
       
     </span>
   </a>
@@ -3904,7 +4014,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：复现遗漏过期边检查
+        两种算法不必选出完全相同的边
       
     </span>
   </a>
@@ -3915,7 +4025,18 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第六步：完成双算法对照迁移验收
+        先运行一份短轨迹
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        再跑完整的 Python 与 C++ 实现
       
     </span>
   </a>
@@ -3926,7 +4047,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        固定输出
+        加一个孤立点，再交换同权边的输入顺序
       
     </span>
   </a>
@@ -3937,7 +4058,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        写一个只比较森林不变量的对照器
       
     </span>
   </a>
@@ -3948,7 +4069,40 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        来源与版本
+        总权重不对、边数过多，先查这几处
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可追踪生成森林实验 v1.0
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oe-log-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        懒惰边队列的代价是 O(E log E)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        讲 Prim 时，拿一条过期边说明为什么要复查
       
     </span>
   </a>
@@ -3957,6 +4111,28 @@
       
         <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -3986,46 +4162,12 @@
   
 
 
-<h1 id="lazy-prim">Lazy Prim、割边前沿与过期边<a class="headerlink" href="#lazy-prim" title="Permanent link">&para;</a></h1>
 <div class="be-tutor-mount" data-tutor-lesson="cs-core-26" aria-hidden="true"></div>
 
-<blockquote>
-<p><strong>任务先行：</strong> 从每个分量的最小顶点开始维护跨割边最小堆，跳过已经失效的内部边，并与 Kruskal 对照森林不变量。</p>
-</blockquote>
-<h2 id="_1">任务路线<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="be-task-route" role="list" aria-label="本课六步任务"><span role="listitem">1 Kruskal 基线</span><span role="listitem">2 定义割边</span><span role="listitem">3 最小前沿</span><span role="listitem">4 重启分量</span><span role="listitem">5 过期边实验</span><span role="listitem">6 双算法迁移</span></div>
-
-<section class="be-task-step" data-step-id="step-1" id="step-1">
-<h2 id="kruskal-prim">第一步：运行 Kruskal 与 Prim 基线<a class="headerlink" href="#kruskal-prim" title="Permanent link">&para;</a></h2>
-<p>依次运行 <code>kruskal</code>、<code>prim</code>。<strong>成功证据：</strong>Prim 从 0 和 5 启动两个分量，接受 5 条边、总权重 7；边集顺序可不同，但比较结果为 <code>yes</code>。</p>
-</section>
-<section class="be-task-step" data-step-id="step-2" id="step-2">
-<h2 id="_2">第二步：定义已访问集合与割边<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>割把已访问顶点和未访问顶点分开。只有跨越这道割的边能安全扩张当前树。Prim 每次选择<strong>当前割上</strong>的最小边，不是每次取全图尚未使用的最小边。</p>
-</section>
-<section class="be-task-step" data-step-id="step-3" id="step-3">
-<h2 id="_3">第三步：维护最小边前沿<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>访问新顶点时扫描全部邻接项，只把通向未访问顶点的边按 <code>(weight,u,v)</code> 压入队列。<code>edge_scans</code> 统计邻接项，<code>queue_pushes</code> 统计真实压入，<code>max_frontier</code> 在每次压入后更新。</p>
-<pre class="mermaid"><code>flowchart LR
-    V["访问新顶点"] --&gt; S["扫描邻接项"]
-    S --&gt; Q{"邻居未访问?"}
-    Q -- 是 --&gt; P["压入割边前沿"]
-    Q -- 否 --&gt; K["不压入"]
-    P --&gt; M["弹出当前最小边"]</code></pre>
-</section>
-<section class="be-task-step" data-step-id="step-4" id="step-4">
-<h2 id="_4">第四步：从最小未访问顶点重启森林<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>一个队列耗尽后，从编号最小的未访问顶点开始新分量；孤立顶点也记为分量起点，但不会产生边。<strong>主动修改：</strong>打乱输入边并新增孤立顶点，起点顺序仍由顶点编号决定。</p>
-</section>
-<section class="be-task-step" data-step-id="step-5" id="step-5">
-<h2 id="_5">第五步：复现遗漏过期边检查<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>某条边压入时可能跨割，弹出时两端却已被其他边连接进树。若两端均访问，计一次 <code>stale_pop</code> 并跳过。临时删除检查会接受成环边并破坏 <code>V-C</code>；恢复后样例固定为 3 次过期弹出。</p>
-</section>
-<section class="be-task-step" data-step-id="step-6" id="step-6">
-<h2 id="_6">第六步：完成双算法对照迁移验收<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<p><code>compare_spanning_forests</code> 比较 Kruskal 与 Prim 的总权重、分量数以及两边数是否都为 <code>V-C</code>，不要求相同边集。覆盖空图、孤立点、负权、同权、多分量和输入不变性。Lazy Prim 时间为 <code>O(E log E)</code>，队列额外空间 <code>O(E)</code>。</p>
-</section>
-<h2 id="_7">固定输出<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<section class="be-page-hero be-lesson-hero" data-context-type="overview" data-learning-context="overview-prim-output" id="overview-prim-output">
+<p><span class="be-lesson-kicker">算法核心 · 第 6 课 · 可追踪生成森林实验</span></p>
+<h1 id="lazy-prim">Lazy Prim、割边前沿与过期边<a class="headerlink" href="#lazy-prim" title="Permanent link">&para;</a></h1>
+<h2 id="0-7">从顶点 0 出发，也能得到总权重 7<a class="headerlink" href="#0-7" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>Lazy Prim 最小生成森林
 component_starts：0, 5
 accepted：0-2@1, 1-2@2, 2-3@3, 3-4@2, 5-6@-1
@@ -4033,72 +4175,192 @@ edge_scans=16，queue_pushes=8，stale_pops=3，max_frontier=4
 components=2，total_weight=7
 matches_kruskal=yes
 </code></pre></div>
-<h2 id="_8">常见错误与排查<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>Kruskal 把全图的边排好序；Prim 则站在已经长出的树边上，只看跨过当前边界的候选边。走法不同，但都能得到两分量、五条边、总权重 7 的最小生成森林。</p>
+<p><a class="md-button md-button--primary" href="#example-frontier-growth">看前沿怎样变化</a>
+<a class="md-button" href="#reproduce-prim-trace">运行 Prim 轨迹</a></p>
+<div class="be-lesson-facts">
+<p><span>课程位置<strong>算法核心 · 6 / 6</strong></span><span>前置<strong>最小堆、带权图、Kruskal</strong></span><span>完成后留下<strong>割边前沿、过期边与双算法对照</strong></span></p>
+</div>
+</section>
+<h2 id="_1">开始前<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>能读懂最小堆的压入与弹出。</li>
+<li>知道无向图的一条边会出现在两个顶点的邻接表里。</li>
+<li>已经用 Kruskal 得到过同一份最小生成森林。</li>
+</ul>
+<section data-context-type="concept" data-learning-context="concept-cut-frontier" id="concept-cut-frontier">
+<h2 id="_2">先画一道线：已访问在里面，未访问在外面<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>把已经接入当前树的顶点放在集合 S，其他顶点放在 V-S。连接两边的边叫作当前割上的边。Prim 每次只从这些边里取最轻的一条，把一个新顶点接进来。</p>
+<p>这与“取全图还没用过的最轻边”不同。后者可能完全落在另一分量里，也可能两端都在当前树内；它们都不能扩张眼前这棵树。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-frontier-growth" id="example-frontier-growth">
+<h2 id="_3">前沿随着树一起长，也会留下旧候选<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div aria-label="Lazy Prim 前沿变化" class="be-prim-frontier">
+<div><strong>访问 0</strong><code>0-2@1, 0-1@4</code><span>先放入两条割边</span></div>
+<div><strong>接入 2</strong><code>1-2@2, 2-3@3, 0-1@4, 2-4@6</code><span>前沿达到 4 条</span></div>
+<div><strong>接入 1</strong><code>2-3@3, 0-1@4, 1-3@5, 2-4@6</code><span>0-1 已经开始变旧</span></div>
+<div><strong>接入 3、4</strong><code>0-1@4, 1-3@5, 2-4@6</code><span>剩下三条两端都已访问</span></div>
+<div><strong>从 5 重启</strong><code>5-6@-1</code><span>第二个分量独立生长</span></div>
+</div>
+<p>最小堆只保证弹出队列中键最小的候选，不会自动删除已经失效的边。Lazy Prim 的“lazy”就在这里：等它弹出时再判断是否还跨割。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-visit-push" id="concept-visit-push">
+<h2 id="visit"><code>visit()</code> 扫描全部邻接项，只压入通向外面的边<a class="headerlink" href="#visit" title="Permanent link">&para;</a></h2>
+<p>访问一个新顶点时，先把它标为已访问，再遍历它的邻接表。每看一项，<code>edge_scans</code> 加一；只有邻居仍未访问，才把边按 <code>(weight,u,v)</code> 压入最小堆，并让 <code>queue_pushes</code> 加一。</p>
+<p><code>max_frontier</code> 在每次真正压入后，用当前队列长度更新。空图和纯孤立点没有候选边，所以峰值保持 0。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-stale-edge" id="example-stale-edge">
+<h2 id="0-14"><code>0-1@4</code> 压入时有用，弹出时已经过期<a class="headerlink" href="#0-14" title="Permanent link">&para;</a></h2>
+<p>访问 0 时，顶点 1 尚未接入，<code>0-1@4</code> 确实跨割。后来更轻的 <code>0-2@1</code> 与 <code>1-2@2</code> 先把 1 接进树；等 <code>0-1@4</code> 弹出时，两端都已访问。</p>
+<p>这条边现在是内部边。跳过它并计一次 <code>stale_pop</code>；若仍接纳，就会在 0、1、2 之间形成环。样例中 <code>0-1@4</code>、<code>1-3@5</code>、<code>2-4@6</code> 都会过期。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-component-restart" id="concept-component-restart">
+<h2 id="_4">队列空了，不代表整张图已经结束<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>顶点 0 所在分量完成后，扫描顶点编号，从最小的未访问顶点 5 重启。访问 5 后，<code>5-6@-1</code> 成为唯一候选并被接纳。</p>
+<p>孤立顶点也要记录为一个分量起点，只是不会产生边。空图则没有起点、没有边，分量数为 0。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-kruskal-contrast" id="example-kruskal-contrast">
+<h2 id="_5">两种算法不必选出完全相同的边<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>Kruskal 与 Prim 都应返回相同总权重、相同分量数，并各有 <code>V-C</code> 条边。同权图可能存在多份最优森林，所以逐条比较边集会把合法结果误判为错误。</p>
+<p>本项目仍使用 <code>(weight,u,v)</code> 作为确定键，锁定 Python 与 C++ 的复现轨迹；这只是工程上的稳定输出，不是对数学唯一性的承诺。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-prim-trace" id="reproduce-prim-trace">
+<h2 id="_6">先运行一份短轨迹<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>.venv/bin/python<span class="w"> </span>site-src/examples/algorithm-core/lazy_prim_frontier_trace.py
+</code></pre></div>
+<p>你会看到五条 <code>accept</code>、三条 <code>stale</code>，随后从顶点 5 重启。最后一行应为：</p>
+<div class="highlight"><pre><span></span><code>starts=0,5 scans=16 pushes=8 stale=3 max_frontier=4 total_weight=7 components=2
+</code></pre></div>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-bilingual-prim" id="reproduce-bilingual-prim">
+<h2 id="python-c">再跑完整的 Python 与 C++ 实现<a class="headerlink" href="#python-c" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/cs-core/traceable-spanning-forest-lab/python
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>-v
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>src<span class="w"> </span>tests
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>traceable_spanning_forest_lab<span class="w"> </span>prim
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/cs-core/traceable-spanning-forest-lab/cpp
+cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Debug
+cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>--config<span class="w"> </span>Debug
+ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class="w"> </span>--build-config<span class="w"> </span>Debug<span class="w"> </span>--output-on-failure
+./build/traceable_spanning_forest_lab<span class="w"> </span>prim
+</code></pre></div>
+<p>顺手回归 <code>dsu</code> 与 <code>kruskal</code>。三种模式的 Python/C++ 输出都应逐字一致。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-isolated-ties" id="modify-isolated-ties">
+<h2 id="_7">加一个孤立点，再交换同权边的输入顺序<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>把顶点数加到 8，但不给顶点 7 连边。<code>component_starts</code> 应多出 7，分量数增为 3，接受边和总权重不变，边数仍满足 <code>V-C</code>。</p>
+<p>然后打乱输入边，尤其交换两条权重为 2 的边。因为端点规范化、邻接表排序和堆键都确定，双语言轨迹不应随输入排列漂移。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-compare-forests" id="modify-compare-forests">
+<h2 id="_8">写一个只比较森林不变量的对照器<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>让 <code>compare_spanning_forests(graph)</code> 同时运行 Kruskal 与 Prim，检查总权重、分量数以及双方边数是否都为 <code>V-C</code>。覆盖空图、孤立点、负权、同权、多分量与输入不变性。</p>
+<p>不要把“边集完全相同”写进契约。你可以另造一个有多份最优解的同权图，确认两份不同边集仍能通过不变量检查。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-prim" id="troubleshoot-prim">
+<h2 id="_9">总权重不对、边数过多，先查这几处<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>现象</th>
-<th>原因</th>
-<th>恢复</th>
+<th>常见原因</th>
+<th>改法</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>每次选全图最小边</td>
-<td>混淆 Kruskal 与 Prim</td>
-<td>只维护当前割边</td>
+<td>每次选全图最轻边</td>
+<td>把 Prim 写成了 Kruskal</td>
+<td>堆里只放当前树向外的边</td>
 </tr>
 <tr>
-<td>接受边超过 <code>V-C</code></td>
-<td>没跳过过期内部边</td>
-<td>弹出时检查两端访问状态</td>
+<td>接纳边超过 <code>V-C</code></td>
+<td>弹出时没复查两端状态</td>
+<td>两端都访问就计过期并跳过</td>
 </tr>
 <tr>
-<td>断开图漏顶点</td>
+<td>断开图漏掉顶点 5</td>
 <td>只从顶点 0 启动一次</td>
-<td>从最小未访问顶点重启</td>
+<td>队列耗尽后找最小未访问点</td>
 </tr>
 <tr>
-<td>要求两算法边集一致</td>
+<td><code>edge_scans</code> 少一半</td>
+<td>只统计无向边一次</td>
+<td>统计每个访问顶点的全部邻接项</td>
+</tr>
+<tr>
+<td>前沿峰值偏小</td>
+<td>在弹出或整轮结束后统计</td>
+<td>每次真实压入后立即更新</td>
+</tr>
+<tr>
+<td>两算法边集不同就失败</td>
 <td>忽略同权多解</td>
-<td>比较权重、分量与边数</td>
+<td>比较权重、分量和 <code>V-C</code> 边数</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_9">来源与版本<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+</section>
+<section data-context-type="project" data-learning-context="project-forest-v10" id="project-forest-v10">
+<h2 id="v10">可追踪生成森林实验 v1.0<a class="headerlink" href="#v10" title="Permanent link">&para;</a></h2>
+<p>这条项目线现在有三层：并查集负责动态连通，Kruskal 用同根判断拒绝成环边，Lazy Prim 用局部割边前沿生长森林。两种生成森林算法共同回归空图、孤立点、负权、同权、断开图、溢出与输入不变性。</p>
+<p><a class="md-button md-button--primary" href="../../../exercises/cs-core/traceable-spanning-forest-lab/">查看阶段作品</a></p>
+</section>
+<section data-context-type="deepen" data-learning-context="deepen-prim-cost" id="deepen-prim-cost">
+<h2 id="oe-log-e">懒惰边队列的代价是 <code>O(E log E)</code><a class="headerlink" href="#oe-log-e" title="Permanent link">&para;</a></h2>
+<p>无向图共扫描 <code>2E</code> 个邻接项。每条边至多被压入一次，候选边的压入和弹出各花 <code>O(log E)</code>，所以整体时间为 <code>O(E log E)</code>，额外队列空间为 <code>O(E)</code>。</p>
+<p>使用索引优先队列的 eager Prim 可以把前沿改为“每个未访问顶点当前最轻的连接边”，复杂度表达也会变化；那是后续深化内容，本课先把 lazy 版本的状态和失败路径走清楚。</p>
+</section>
+<section data-context-type="career" data-learning-context="career-prim-evidence" id="career-prim-evidence">
+<h2 id="prim">讲 Prim 时，拿一条过期边说明为什么要复查<a class="headerlink" href="#prim" title="Permanent link">&para;</a></h2>
+<p>先画出已访问集合与未访问集合，再解释只把跨割边放进最小堆。用 <code>0-1@4</code> 说明“压入时合法，弹出时过期”，比只背一段伪代码更容易讲清 lazy 的含义。</p>
+<p>最后拿 Kruskal 对照：一个按全局边序，一个按局部前沿；同权时边集可能不同，但权重、分量数和 <code>V-C</code> 边数必须一致。</p>
+</section>
+<h2 id="_10">完成检查<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能画出当前割，并说清哪些边可以进入前沿。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 访问顶点时扫描全部邻接项，只压入通向未访问邻居的边。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 弹出边时重新检查两端，过期内部边不会进入森林。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 断开图从最小未访问顶点重启，孤立点也计作分量。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能解释 <code>edge_scans</code>、<code>queue_pushes</code>、<code>stale_pops</code> 与 <code>max_frontier</code>。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Kruskal 与 Prim 比较森林不变量，不强求相同边集。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Python 类型检查、C++ CTest 与三种双语言报告全部通过。</li>
+</ul>
+<h2 id="_11">来源与版本<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>来源</th>
-<th>用途</th>
-<th>核查日期</th>
+<th>用于核查</th>
+<th>版本或日期</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://algs4.cs.princeton.edu/43mst/index.php">Princeton MST</a></td>
-<td>Lazy Prim、割性质与复杂度</td>
-<td>2026-07-16</td>
+<td><a href="https://algs4.cs.princeton.edu/43mst/index.php">Princeton Minimum Spanning Trees</a></td>
+<td>割性质、Lazy Prim 与复杂度</td>
+<td>2026-07-18 核查</td>
 </tr>
 <tr>
-<td><a href="https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/PrimMST.html">Princeton PrimMST</a></td>
-<td>Prim 接口与前沿对照</td>
-<td>2026-07-16</td>
+<td><a href="https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/LazyPrimMST.html">Princeton LazyPrimMST</a></td>
+<td>懒惰边前沿与过期边</td>
+<td>2026-07-18 核查</td>
 </tr>
 <tr>
 <td><a href="https://docs.python.org/3.11/library/heapq.html">Python 3.11 <code>heapq</code></a></td>
-<td>最小堆前沿</td>
-<td>2026-07-16</td>
+<td>Python 最小堆接口</td>
+<td>3.11；2026-07-18 核查</td>
 </tr>
 <tr>
 <td><a href="https://eel.is/c++draft/priority.queue">C++ <code>priority_queue</code></a></td>
-<td>容器适配器与比较键</td>
-<td>2026-07-16</td>
+<td>C++ 队列适配器与比较键</td>
+<td>工作草案；2026-07-18 核查</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_10">下一步<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<p>并查集与最小生成森林闭环完成。下一阶段进入计算机运行基础；有向图、负权最短路与网络流仍未开放。</p>
+<p>本课不进入 eager Prim、动态最小生成树、次小生成树或稠密图专用实现。</p>
+<h2 id="_12">下一步<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>现有 55 节正式课程到这里完成内容架构 V2 迁移。系统编程、网络、数据库与更高阶算法仍在课程总表中等待建设；先回到<a href="../../curriculum-map/">完整课程地图</a>选择下一条已开放方向。</p>
 
 
 

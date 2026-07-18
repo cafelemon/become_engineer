@@ -2432,10 +2432,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#7-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7 最早排队，所以 7 先离开
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        开始前
       
     </span>
   </a>
@@ -2446,18 +2457,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：运行栈基线与队列模式
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fifo_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第二步：定义 FIFO 和首尾不变量
+        队尾进，队首出
       
     </span>
   </a>
@@ -2468,7 +2468,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：实现常量时间入队与出队
+        从空到单元素，再回到空
       
     </span>
   </a>
@@ -2479,7 +2479,18 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：验证完整状态转换
+        首尾必须一起讲
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C++ 中，头拥有，尾只负责定位
       
     </span>
   </a>
@@ -2490,18 +2501,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：对照标准容器并安全失败
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#serve_until_empty" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第六步：完成 serve_until_empty 迁移验收
+        多保存一个尾入口，换来常量入队
       
     </span>
   </a>
@@ -2512,7 +2512,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        最后一次出队要多做一件事
       
     </span>
   </a>
@@ -2523,7 +2523,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        拥有头与观察尾
+        跑一遍完整首尾转换
       
     </span>
   </a>
@@ -2534,7 +2534,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        运行与输出
+        在正式项目里核对三种模式
       
     </span>
   </a>
@@ -2545,7 +2545,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        为什么不使用列表头部删除
+        换一串值，把首尾都记下来
       
     </span>
   </a>
@@ -2553,10 +2553,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
+  <a href="#serve_until_empty" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AI 协作任务
+        serve_until_empty 保持输入顺序
       
     </span>
   </a>
@@ -2567,7 +2567,7 @@
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        空队列的三种读取都要拒绝
       
     </span>
   </a>
@@ -2578,7 +2578,7 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        完成证据
+        队列顺序或首尾不对时
       
     </span>
   </a>
@@ -2589,7 +2589,7 @@
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
-        来源与版本
+        线性结构实验完成第一个小闭环
       
     </span>
   </a>
@@ -2598,6 +2598,50 @@
       
         <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        标准库已经有队列，为什么还要写一遍
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        讲队列时，别漏掉最后一次出队
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -3901,10 +3945,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#7-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7 最早排队，所以 7 先离开
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
+        开始前
       
     </span>
   </a>
@@ -3915,18 +3970,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第一步：运行栈基线与队列模式
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fifo_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第二步：定义 FIFO 和首尾不变量
+        队尾进，队首出
       
     </span>
   </a>
@@ -3937,7 +3981,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：实现常量时间入队与出队
+        从空到单元素，再回到空
       
     </span>
   </a>
@@ -3948,7 +3992,18 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第四步：验证完整状态转换
+        首尾必须一起讲
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C++ 中，头拥有，尾只负责定位
       
     </span>
   </a>
@@ -3959,18 +4014,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第五步：对照标准容器并安全失败
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#serve_until_empty" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第六步：完成 serve_until_empty 迁移验收
+        多保存一个尾入口，换来常量入队
       
     </span>
   </a>
@@ -3981,7 +4025,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        最后一次出队要多做一件事
       
     </span>
   </a>
@@ -3992,7 +4036,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        拥有头与观察尾
+        跑一遍完整首尾转换
       
     </span>
   </a>
@@ -4003,7 +4047,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        运行与输出
+        在正式项目里核对三种模式
       
     </span>
   </a>
@@ -4014,7 +4058,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        为什么不使用列表头部删除
+        换一串值，把首尾都记下来
       
     </span>
   </a>
@@ -4022,10 +4066,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
+  <a href="#serve_until_empty" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AI 协作任务
+        serve_until_empty 保持输入顺序
       
     </span>
   </a>
@@ -4036,7 +4080,7 @@
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        空队列的三种读取都要拒绝
       
     </span>
   </a>
@@ -4047,7 +4091,7 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        完成证据
+        队列顺序或首尾不对时
       
     </span>
   </a>
@@ -4058,7 +4102,7 @@
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
-        来源与版本
+        线性结构实验完成第一个小闭环
       
     </span>
   </a>
@@ -4067,6 +4111,50 @@
       
         <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        标准库已经有队列，为什么还要写一遍
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        讲队列时，别漏掉最后一次出队
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -4096,172 +4184,264 @@
   
 
 
-<h1 id="fifo">队列、FIFO 与首尾不变量<a class="headerlink" href="#fifo" title="Permanent link">&para;</a></h1>
 <div class="be-tutor-mount" data-tutor-lesson="cs-core-08" aria-hidden="true"></div>
 
-<blockquote>
-<p><strong>任务先行：</strong> 用拥有头节点和非拥有尾指针实现常量时间 FIFO 队列，完整验证空、单元素、多元素再回到空的状态转换。</p>
-</blockquote>
-<h2 id="_1">任务路线<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="be-task-route" role="list" aria-label="本课六步任务"><span role="listitem">1 栈基线</span><span role="listitem">2 FIFO 契约</span><span role="listitem">3 首尾实现</span><span role="listitem">4 状态转换</span><span role="listitem">5 标准边界</span><span role="listitem">6 服务迁移</span></div>
-
-<section class="be-task-step" data-step-id="step-1" id="step-1">
-<h2 id="_2">第一步：运行栈基线与队列模式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>先确认 <code>stack</code> 输出没有变化，再运行 <code>queue</code>。<strong>当前任务：</strong>观察入队 <code>7, 3, 9</code> 后队首为 7、队尾为 9。<strong>成功证据：</strong>出队返回 7，剩余顺序为 <code>3, 9</code>，双语言输出一致。</p>
-</section>
-<section class="be-task-step" data-step-id="step-2" id="step-2">
-<h2 id="fifo_1">第二步：定义 FIFO 和首尾不变量<a class="headerlink" href="#fifo_1" title="Permanent link">&para;</a></h2>
-<p>队列从尾部 <code>enqueue</code>、从头部 <code>dequeue</code>。空队列必须同时满足 <code>head</code> 与 <code>tail</code> 为空；非空时尾指针必须指向最后节点。<strong>主动修改：</strong>画出两次入队后的链接。<strong>成功证据：</strong>遍历顺序等于服务顺序，大小等于节点数。</p>
-</section>
-<section class="be-task-step" data-step-id="step-3" id="step-3">
-<h2 id="_3">第三步：实现常量时间入队与出队<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>头节点拥有整条链，尾指针只用于快速定位最后节点。<code>enqueue</code> 接到尾后，<code>dequeue</code> 移走头。<strong>当前任务：</strong>确认操作不遍历链表。<strong>成功证据：</strong>入队、出队、读取首尾都只触碰常量个节点，为 <code>Θ(1)</code>。</p>
-</section>
-<section class="be-task-step" data-step-id="step-4" id="step-4">
-<h2 id="_4">第四步：验证完整状态转换<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>执行空→入队 7→入队 3→出队 7→出队 3→再次入队 9。<strong>主动修改：</strong>每一步同时记录头、尾、大小。<strong>成功证据：</strong>删除最后一个元素后头尾都为空，再入队时头尾重新指向同一新节点。</p>
-</section>
-<section class="be-task-step" data-step-id="step-5" id="step-5">
-<h2 id="_5">第五步：对照标准容器并安全失败<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>Python <code>collections.deque</code> 支持两端近似常量追加和弹出；C++ <code>std::queue</code> 是容器适配器。<strong>安全失败实验：</strong>对空队列调用 <code>dequeue</code>、<code>front</code>、<code>back</code>。<strong>恢复标准：</strong>Python 抛 <code>IndexError</code>，C++ 抛 <code>std::out_of_range</code>，三次失败后仍可正常入队。</p>
-</section>
-<section class="be-task-step" data-step-id="step-6" id="step-6">
-<h2 id="serve_until_empty">第六步：完成 <code>serve_until_empty</code> 迁移验收<a class="headerlink" href="#serve_until_empty" title="Permanent link">&para;</a></h2>
-<p>接收一组值，依次入队并返回完整出队序列。<strong>约束：</strong>不提供完整答案；不得修改输入，禁止用 Python <code>list.pop(0)</code> 代替队列实现。<strong>成功证据：</strong>空、单元素、重复值和 <code>[7,3,9]</code> 均保持输入顺序。</p>
-</section>
-<h2 id="_6">课程信息<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>前置</td>
-<td><a href="../07-stack-lifo-interface-underflow/">栈、LIFO 接口与空栈边界</a></td>
-</tr>
-<tr>
-<td>环境</td>
-<td>Python 3.11+、C++20、CMake 3.20+；纯标准库</td>
-</tr>
-<tr>
-<td>阶段作品</td>
-<td><a href="../../../exercises/cs-core/traceable-linear-structures-lab/">可追踪线性结构实验</a></td>
-</tr>
-<tr>
-<td>可观察产出</td>
-<td>FIFO 输出、首尾状态表、尾指针重置和受控下溢</td>
-</tr>
-<tr>
-<td>事实核查</td>
-<td>Python 与 C++ 标准资料，2026-07-16</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_7">拥有头与观察尾<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart LR
-    Head["head 拥有"] --&gt; N7["7"]
-    N7 --&gt;|"next 拥有"| N3["3"]
-    N3 --&gt;|"next 拥有"| N9["9"]
-    Tail["tail 只观察"] -.-&gt; N9
-    N9 --&gt; Null["空链接"]</code></pre>
-<p>C++ 的 <code>tail</code> 不释放节点，也不形成第二条所有权链；它的有效期完全依赖 <code>head</code> 链。移动队列时要把头所有权、尾观察位置和大小一起转移，并把源对象重置为空。删除最后一个节点时若忘记清空 <code>tail</code>，它会变成悬空观察指针。</p>
-<h2 id="_8">运行与输出<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>traceable_linear_structures_lab<span class="w"> </span>queue
-./build/traceable_linear_structures_lab<span class="w"> </span>queue
-</code></pre></div>
+<section class="be-page-hero be-lesson-hero" data-context-type="overview" data-learning-context="overview-queue-output" id="overview-queue-output">
+<p><span class="be-lesson-kicker">共同算法基础 · 第 4 课 · 可追踪线性结构实验</span></p>
+<h1 id="fifo">队列、FIFO 与首尾不变量<a class="headerlink" href="#fifo" title="Permanent link">&para;</a></h1>
+<h2 id="7-7">7 最早排队，所以 7 先离开<a class="headerlink" href="#7-7" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>队列实验
 enqueue：7, 3, 9
 front=7，back=9，size=3
 dequeue=7
 remaining(front-&gt;back)：3, 9
 </code></pre></div>
-<h2 id="_9">为什么不使用列表头部删除<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<p>Python <code>list</code> 是可变序列，删除第一个元素后通常需要移动后续元素，因此 <code>pop(0)</code> 为线性成本。<code>collections.deque</code> 才公开适合两端追加与弹出的接口。C++ <code>std::queue</code> 默认可适配 <code>deque</code>，但队列接口本身仍不等于某种具体容器。</p>
-<h2 id="ai">AI 协作任务<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h2>
-<p>可让 AI 检查状态转换或生成表格，但学习者必须确认尾指针不拥有节点、最后一次出队会清空尾指针、移动后源对象仍满足空队列不变量，并拒绝把 <code>list.pop(0)</code> 写成常量操作。</p>
-<h2 id="_10">常见错误与排查<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>栈只用一端；队列把入口和出口分开。新值从队尾加入，旧值从队首离开。最早入队的 7 先被服务，这就是 FIFO：First In, First Out，先进先出。</p>
+<p><a class="md-button md-button--primary" href="#example-queue-trace">看懂首尾怎样变化</a>
+<a class="md-button" href="#reproduce-queue-micro">直接运行小例子</a></p>
+<div class="be-lesson-facts">
+<p><span>课程位置<strong>共同算法基础 · 4 / 16</strong></span>
+<span>前置<strong>单链表所有权与栈的受限接口</strong></span>
+<span>完成后留下<strong>FIFO 轨迹、首尾不变量和双语言回归</strong></span></p>
+</div>
+</section>
+<h2 id="_1">开始前<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>能解释栈为什么后进先出，并把链表头映射为栈顶。</li>
+<li>知道 C++ <code>unique_ptr</code> 可以形成单一拥有链，裸指针可以只观察对象。</li>
+<li>本课先做通用队列；环形缓冲区、线程安全队列和优先队列留到后面。</li>
+</ul>
+<section data-context-type="concept" data-learning-context="concept-fifo-contract" id="concept-fifo-contract">
+<h2 id="_2">队尾进，队首出<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>现象</th>
-<th>原因</th>
-<th>检查与恢复</th>
+<th>操作</th>
+<th>位置</th>
+<th>是否修改</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>第一次入队后头仍为空</td>
-<td>只更新了尾</td>
-<td>空队列入队同时设置头尾</td>
+<td><code>enqueue(value)</code></td>
+<td>队尾 <code>back</code></td>
+<td>加一个元素</td>
 </tr>
 <tr>
-<td>清空后 <code>back()</code> 读取旧值</td>
-<td>最后出队未清空尾</td>
-<td>头变空时同步重置尾</td>
+<td><code>dequeue()</code></td>
+<td>队首 <code>front</code></td>
+<td>移除并返回一个元素</td>
 </tr>
 <tr>
-<td>入队需要遍历</td>
-<td>没有维护尾指针</td>
-<td>尾只观察最后节点</td>
+<td><code>front()</code></td>
+<td>队首</td>
+<td>只读</td>
 </tr>
 <tr>
-<td>顺序变成后进先出</td>
-<td>在同一端入队出队</td>
-<td>固定尾入、头出</td>
-</tr>
-<tr>
-<td>Python 队列越来越慢</td>
-<td>使用 <code>list.pop(0)</code></td>
-<td>改用链式实现或 <code>deque</code></td>
+<td><code>back()</code></td>
+<td>队尾</td>
+<td>只读</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_11">完成证据<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>最早进入、还没有离开的元素，总由下一次 <code>dequeue()</code> 返回。队列规定服务顺序，不规定必须使用链表或 <code>deque</code>。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-queue-trace" id="example-queue-trace">
+<h2 id="_3">从空到单元素，再回到空<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div aria-label="队列从空开始，入队 7 时首尾都是 7，入队 3 后首为 7 尾为 3，出队两次后首尾重新为空" class="be-queue-trace" role="img">
+<div><strong>empty</strong><code>front — / back —</code><span>size 0</span></div>
+<div><strong>enqueue 7</strong><code>front 7 / back 7</code><span>size 1</span></div>
+<div><strong>enqueue 3</strong><code>front 7 / back 3</code><span>size 2</span></div>
+<div><strong>dequeue 两次</strong><code>front — / back —</code><span>size 0</span></div>
+</div>
+<p>单元素状态最容易漏：<code>head</code> 和 <code>tail</code> 指向同一个节点。删除它以后，两者必须一起回到空；之后再次入队，新节点又同时成为首和尾。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-endpoint-invariants" id="concept-endpoint-invariants">
+<h2 id="_4">首尾必须一起讲<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>链式队列每次操作后都要满足：</p>
+<ol>
+<li>空队列：<code>head</code>、<code>tail</code> 都为空，<code>size == 0</code>。</li>
+<li>单元素：<code>head</code> 和 <code>tail</code> 指向同一节点，<code>size == 1</code>。</li>
+<li>多元素：<code>head</code> 指向最早值，<code>tail</code> 指向最后值，<code>tail.next</code> 为空。</li>
+<li>从 <code>head</code> 沿链接走到尾，节点数量等于 <code>size</code>。</li>
+</ol>
+<p>只检查 <code>empty()</code> 不够。旧 <code>tail</code> 若没有清空，队列表面为空，下一次 <code>back()</code> 或入队仍可能访问已经失效的对象。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-owning-head-observing-tail" id="concept-owning-head-observing-tail">
+<h2 id="c">C++ 中，头拥有，尾只负责定位<a class="headerlink" href="#c" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+    Queue["LinkedQueue"] --&gt;|"head_ 拥有"| N7["7"]
+    N7 --&gt;|"next 拥有"| N3["3"]
+    N3 --&gt;|"next 拥有"| N9["9"]
+    Tail["tail_ 只观察"] -.-&gt; N9
+    N9 --&gt; Null["nullptr"]</code></pre>
+<p><code>head_</code> 的 <code>unique_ptr</code> 链负责节点生命周期。<code>tail_</code> 是非拥有指针，只让程序快速找到最后节点；它不 <code>delete</code>，也不能形成第二条 <code>unique_ptr</code> 链。</p>
+<p>移动队列时，头所有权、尾位置和 <code>size</code> 要一起交给目标；源队列恢复为空。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-constant-operations" id="concept-constant-operations">
+<h2 id="_5">多保存一个尾入口，换来常量入队<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>没有 <code>tail</code> 时，追加节点要从 <code>head</code> 走到链尾，是 <code>Θ(n)</code>。维护 <code>tail</code> 后：</p>
 <ul>
-<li><code>queue</code> 输出双语言逐字一致。</li>
-<li>空、单元素、多元素和重新入队状态全部通过。</li>
-<li>删除最后一个元素后头尾同时为空。</li>
-<li>空队列三种操作受控失败且不改变状态。</li>
-<li><code>serve_until_empty</code> 保持 FIFO 和原输入不变。</li>
+<li><code>enqueue</code>：把 <code>tail.next</code> 接到新节点，再移动 <code>tail</code>。</li>
+<li><code>dequeue</code>：把 <code>head</code> 移到 <code>head.next</code>。</li>
+<li><code>front/back</code>：直接读取两个入口。</li>
 </ul>
-<h2 id="_12">来源与版本<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>四项操作都只触碰常量个节点，为 <code>Θ(1)</code>。代价是必须维护上一节没有的首尾同步规则。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-last-dequeue" id="example-last-dequeue">
+<h2 id="_6">最后一次出队要多做一件事<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>出队前：head -&gt; 7 &lt;- tail
+取出值：7
+移动 head：head = 空
+同步 tail：tail = 空
+结果：size = 0
+</code></pre></div>
+<p>旧节点由拥有链释放以后，<code>tail</code> 若还保留它的地址，就成了悬空观察指针。判断 <code>head</code> 已为空后立即清空 <code>tail</code>，再返回取出的值。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-queue-micro" id="reproduce-queue-micro">
+<h2 id="_7">跑一遍完整首尾转换<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>.venv/bin/python<span class="w"> </span>site-src/examples/algorithm-foundation/linked_queue_trace.py
+</code></pre></div>
+<p>程序从空队列开始，依次入队 7、3，再出队到空，最后重新入队 9。重点看三行：单元素时首尾同为 7；清空时首尾同为 <code>None</code>；复用时首尾同为 9。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-bilingual-queue" id="reproduce-bilingual-queue">
+<h2 id="_8">在正式项目里核对三种模式<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/cs-core/traceable-linear-structures-lab/python
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>-v
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>src<span class="w"> </span>tests
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>../../../../.venv/bin/python<span class="w"> </span>-m<span class="w"> </span>traceable_linear_structures_lab<span class="w"> </span>queue
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>exercises/cs-core/traceable-linear-structures-lab/cpp
+cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Debug
+cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>--config<span class="w"> </span>Debug
+ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class="w"> </span>--build-config<span class="w"> </span>Debug<span class="w"> </span>--output-on-failure
+./build/traceable_linear_structures_lab<span class="w"> </span>queue
+</code></pre></div>
+<p>Python 与 C++ 的 <code>linked</code>、<code>stack</code>、<code>queue</code> 报告都应逐字一致。C++ 测试还要证明移动后的源队列为空。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-queue-state" id="modify-queue-state">
+<h2 id="_9">换一串值，把首尾都记下来<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>执行 <code>enqueue(4)、enqueue(4)、dequeue()、enqueue(8)、dequeue()、dequeue()</code>。每一步先写出 <code>front</code>、<code>back</code>、<code>size</code>，再运行。</p>
+<p>重复值不合并；第一次出队只移走先进入的那个 4。最后一次出队以后，首尾同时为空。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-serve-until-empty" id="modify-serve-until-empty">
+<h2 id="serve_until_empty"><code>serve_until_empty</code> 保持输入顺序<a class="headerlink" href="#serve_until_empty" title="Permanent link">&para;</a></h2>
+<p>函数把输入逐项入队，再从头服务到空：</p>
+<div class="highlight"><pre><span></span><code>输入 [7, 3, 9]
+返回 [7, 3, 9]
+原输入仍是 [7, 3, 9]
+</code></pre></div>
+<p>请覆盖空输入、单元素、重复值和一般序列。函数操作自己建立的队列，不删除调用方输入，也不使用 <code>list.pop(0)</code> 冒充队列。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-underflow" id="troubleshoot-underflow">
+<h2 id="_10">空队列的三种读取都要拒绝<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>空队列没有可返回的队首或队尾。<code>dequeue()</code>、<code>front()</code>、<code>back()</code> 在 Python 中抛 <code>IndexError</code>，在 C++ 中抛 <code>std::out_of_range</code>。</p>
+<p>三次失败都发生在读取节点前，状态保持为空；随后入队 7，四项正常操作仍应可用。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-endpoints" id="troubleshoot-endpoints">
+<h2 id="_11">队列顺序或首尾不对时<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>常见原因</th>
+<th>改法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一次入队后 <code>head</code> 仍为空</td>
+<td>只更新了 <code>tail</code></td>
+<td>空队列入队同时设置首尾</td>
+</tr>
+<tr>
+<td>清空后 <code>back()</code> 读到旧值</td>
+<td>最后出队没清 <code>tail</code></td>
+<td><code>head</code> 变空时同步清尾</td>
+</tr>
+<tr>
+<td>入队越来越慢</td>
+<td>没有维护尾入口</td>
+<td>用 <code>tail</code> 直接定位链尾</td>
+</tr>
+<tr>
+<td>顺序变成后进先出</td>
+<td>同一端入队、出队</td>
+<td>固定尾入、头出</td>
+</tr>
+<tr>
+<td>Python 数据越多越慢</td>
+<td>使用 <code>list.pop(0)</code></td>
+<td>改用链式队列或 <code>collections.deque</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section data-context-type="project" data-learning-context="project-linear-v03" id="project-linear-v03">
+<h2 id="_12">线性结构实验完成第一个小闭环<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>单链表：节点链接、查找 visits、局部重连
+栈：同一端 push / pop，LIFO
+队列：尾入头出，FIFO，head 拥有 + tail 观察
+共同保证：双语言固定输出、下溢、移动与输入不变
+</code></pre></div>
+<p>三节课没有把所有接口揉成一个“大容器”。它们共用节点知识，却各自保留清晰的操作边界，便于后续选择结构而不是只背名字。</p>
+<p><a class="md-button md-button--primary" href="../../../exercises/cs-core/traceable-linear-structures-lab/">查看可追踪线性结构实验</a></p>
+</section>
+<section data-context-type="deepen" data-learning-context="deepen-standard-queues" id="deepen-standard-queues">
+<h2 id="_13">标准库已经有队列，为什么还要写一遍<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>Python <code>collections.deque</code> 适合两端追加和弹出；C++ <code>std::queue</code> 用底层容器适配出 FIFO 接口。正式业务通常优先使用这些经过验证的实现。</p>
+<p>本课手写链式队列，是为了看清尾入口如何改变复杂度、非拥有指针何时失效，以及空—单元素—多元素状态怎样转换。理解实现后，使用标准库时也更知道自己依赖了什么。</p>
+</section>
+<section data-context-type="career" data-learning-context="career-queue-evidence" id="career-queue-evidence">
+<h2 id="_14">讲队列时，别漏掉最后一次出队<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p>先用 7、3、9 说明 FIFO，再解释为何头出尾入、维护 <code>tail</code> 后两端操作都是 <code>Θ(1)</code>。C++ 实现里，<code>head_</code> 的 <code>unique_ptr</code> 链拥有节点，<code>tail_</code> 只观察最后位置。</p>
+<p>最值得讲的边界是删除唯一节点：必须同时清空首尾。再补上三种下溢、清空后复用、移动后源对象和输入不变测试，整个实现才闭合。</p>
+</section>
+<h2 id="_15">完成检查<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能根据一串入队、出队写出每一步 <code>front</code>、<code>back</code> 和 <code>size</code>。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说明队列是 FIFO 接口，不等于某一种底层容器。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能解释 <code>head_</code> 拥有节点、<code>tail_</code> 只观察节点。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说明为什么维护尾入口后，入队和出队都是 <code>Θ(1)</code>。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 删除最后节点后首尾同时为空，清空后还能重新入队。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 三种空队列操作明确失败，<code>serve_until_empty</code> 保持输入与输出顺序。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Python 类型检查与单元测试、C++ 构建与 CTest、三种双语言报告全部通过。</li>
+</ul>
+<h2 id="_16">来源与版本<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>来源</th>
-<th>用途</th>
-<th>核查日期</th>
+<th>用于核查</th>
+<th>版本或日期</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://docs.python.org/3.11/library/collections.html#collections.deque">Python <code>collections.deque</code></a></td>
-<td>两端操作与列表头部操作成本</td>
-<td>2026-07-16</td>
+<td>两端操作与 <code>list.pop(0)</code> 的选择边界</td>
+<td>Python 3.11，2026-07-17 核查</td>
 </tr>
 <tr>
 <td><a href="https://eel.is/c++draft/container.adaptors.general">C++ 容器适配器</a></td>
-<td>队列接口和底层容器边界</td>
-<td>2026-07-16</td>
+<td>队列接口与底层容器关系</td>
+<td>C++20 教学基线，2026-07-17 核查</td>
 </tr>
 <tr>
 <td><a href="https://eel.is/c++draft/queue">C++ <code>queue</code></a></td>
-<td>FIFO 公开操作与默认容器</td>
-<td>2026-07-16</td>
+<td>FIFO 公开操作</td>
+<td>C++20 教学基线，2026-07-17 核查</td>
 </tr>
 <tr>
 <td><a href="https://eel.is/c++draft/unique.ptr">C++ <code>unique_ptr</code></a></td>
-<td>头节点拥有链</td>
-<td>2026-07-16</td>
+<td>头节点单一拥有链</td>
+<td>C++20 教学基线，2026-07-17 核查</td>
 </tr>
 </tbody>
 </table>
-<p>本地线性数据结构材料只用于审计队列定义和复杂度条件；没有读取或改写 recruiting raw 链表、栈队列题面。</p>
-<h2 id="_13">下一步<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
-<p>线性结构基础闭环完成。下一课进入<a href="../09-hash-function-key-equality-collisions/">哈希函数、键相等与冲突</a>；环形缓冲区、优先队列、排序和正式机考训练继续留在后续课程。</p>
+<p>本地线性结构材料只用于检查队列定义和复杂度条件；状态轨迹、首尾模型、报告和测试均由本项目独立编写。</p>
+<h2 id="_17">下一步<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<p>线性结构的第一轮闭环完成。下一课进入<a href="../09-hash-function-key-equality-collisions/">哈希函数、键相等与冲突</a>，从“沿链接逐个找”转向“先用键计算桶位置”。</p>
 
 
 

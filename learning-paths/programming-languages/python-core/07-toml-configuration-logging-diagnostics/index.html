@@ -2167,29 +2167,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第一步：运行 CLI 与标准流基线
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tomllib-toml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第二步：用 tomllib 读取显式 TOML
+        同一次运行，留下三种不同答案
       
     </span>
   </a>
@@ -2200,29 +2178,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：校验结构并实现固定优先级
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#logger" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第四步：用命名 logger 分离业务输出与诊断
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#toml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第五步：安全观察坏 TOML 与不可写路径
+        开始前
       
     </span>
   </a>
@@ -2233,7 +2189,18 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第六步：完成新配置项迁移验收
+        三个通道回答三个问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#012" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0、1、2 不是三种随意编号
       
     </span>
   </a>
@@ -2244,7 +2211,29 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        配置从哪里来，命令行上要看得见
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#toml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TOML 能解析，不代表配置适合这个程序
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        校验通过以后，再进入明确的 AppConfig
       
     </span>
   </a>
@@ -2255,7 +2244,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        学习目标
+        优先级只在一个地方合并
       
     </span>
   </a>
@@ -2266,7 +2255,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        三种输出回答三个问题
+        库不抢全局日志，应用只配置自己的名字
       
     </span>
   </a>
@@ -2274,10 +2263,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#info" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 先观察而不是混写
+        打开 INFO，报告文字仍然不变
       
     </span>
   </a>
@@ -2285,104 +2274,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-toml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 只读取显式 TOML
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-appconfig" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 从不可信字典进入 AppConfig
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 日志属于应用边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 失败实验与恢复证据
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. 失败实验与恢复证据">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#toml_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        坏 TOML
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        未知字段
+        坏配置要在执行业务之前停下来
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        审计路径失败
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. 迁移验收
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI 协作任务
+        审计路径写不了，旧文件仍要安全
       
     </span>
   </a>
@@ -2393,7 +2299,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        跑完一张配置与诊断矩阵
       
     </span>
   </a>
@@ -2404,7 +2310,18 @@
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        完成证据
+        给报告标题增加一个可配置选项
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 工程化闭环完成
       
     </span>
   </a>
@@ -2415,7 +2332,7 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        来源与版本
+        可诊断不等于日志越多越好
       
     </span>
   </a>
@@ -2424,6 +2341,39 @@
       
         <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        讲配置和日志时，把失败契约说出来
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -3998,29 +3948,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务路线
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第一步：运行 CLI 与标准流基线
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tomllib-toml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第二步：用 tomllib 读取显式 TOML
+        同一次运行，留下三种不同答案
       
     </span>
   </a>
@@ -4031,29 +3959,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第三步：校验结构并实现固定优先级
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#logger" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第四步：用命名 logger 分离业务输出与诊断
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#toml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第五步：安全观察坏 TOML 与不可写路径
+        开始前
       
     </span>
   </a>
@@ -4064,7 +3970,18 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        第六步：完成新配置项迁移验收
+        三个通道回答三个问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#012" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0、1、2 不是三种随意编号
       
     </span>
   </a>
@@ -4075,7 +3992,29 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        课程信息
+        配置从哪里来，命令行上要看得见
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#toml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TOML 能解析，不代表配置适合这个程序
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        校验通过以后，再进入明确的 AppConfig
       
     </span>
   </a>
@@ -4086,7 +4025,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        学习目标
+        优先级只在一个地方合并
       
     </span>
   </a>
@@ -4097,7 +4036,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        三种输出回答三个问题
+        库不抢全局日志，应用只配置自己的名字
       
     </span>
   </a>
@@ -4105,10 +4044,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#info" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 先观察而不是混写
+        打开 INFO，报告文字仍然不变
       
     </span>
   </a>
@@ -4116,104 +4055,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-toml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 只读取显式 TOML
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-appconfig" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 从不可信字典进入 AppConfig
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 日志属于应用边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 失败实验与恢复证据
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. 失败实验与恢复证据">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#toml_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        坏 TOML
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        未知字段
+        坏配置要在执行业务之前停下来
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        审计路径失败
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. 迁移验收
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AI 协作任务
+        审计路径写不了，旧文件仍要安全
       
     </span>
   </a>
@@ -4224,7 +4080,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见错误与排查
+        跑完一张配置与诊断矩阵
       
     </span>
   </a>
@@ -4235,7 +4091,18 @@
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        完成证据
+        给报告标题增加一个可配置选项
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 工程化闭环完成
       
     </span>
   </a>
@@ -4246,7 +4113,7 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        来源与版本
+        可诊断不等于日志越多越好
       
     </span>
   </a>
@@ -4255,6 +4122,39 @@
       
         <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        讲配置和日志时，把失败契约说出来
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        来源与版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
         下一步
@@ -4284,110 +4184,80 @@
   
 
 
-<h1 id="python-toml">Python TOML 配置、日志与可诊断执行契约<a class="headerlink" href="#python-toml" title="Permanent link">&para;</a></h1>
 <div class="be-tutor-mount" data-tutor-lesson="python-core-07" aria-hidden="true"></div>
 
-<blockquote>
-<p><strong>任务先行：</strong> 给上一课的 CLI 增加显式 TOML 配置与命名日志。先观察同一个命令的 <code>stdout</code>、<code>stderr</code> 和退出码，再解释配置优先级、类型校验、日志级别与失败恢复。</p>
-</blockquote>
-<h2 id="_1">任务路线<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="be-task-route" role="list" aria-label="本课六步任务"><span role="listitem">1 CLI 基线</span><span role="listitem">2 读取 TOML</span><span role="listitem">3 校验优先级</span><span role="listitem">4 日志分流</span><span role="listitem">5 失败实验</span><span role="listitem">6 迁移验收</span></div>
+<section class="be-page-hero be-lesson-hero" data-context-type="overview" data-learning-context="overview-three-channels" id="overview-three-channels">
+<p><span class="be-page-eyebrow">Python 工程化 · 第二课 · 让人和脚本都看懂程序结果</span></p>
+<h1 id="python-toml">Python TOML 配置、日志与可诊断执行契约<a class="headerlink" href="#python-toml" title="Permanent link">&para;</a></h1>
+<h2 id="_1">同一次运行，留下三种不同答案<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>stdout：学习进度报告……
+stderr：INFO study_progress_reporter: 执行命令：report
+退出码：0
+</code></pre></div>
+<p>stdout 是程序交付的业务结果；stderr 说明程序怎样运行或为什么失败；退出码让 shell、CI 和其他程序判断下一步是否继续。混在一起，人还能勉强读，自动化却很难可靠使用。</p>
+<div class="be-page-actions">
+<p><a class="md-button md-button--primary" href="#concept-stream-contract">先分清三个通道</a>
+<a class="md-button" href="#reproduce-config-diagnostics">跑完配置与失败矩阵</a></p>
+</div>
+</section>
+<div class="be-lesson-overview">
+  <div><span>课程位置</span><strong>Python 工程化 · 2 / 2</strong></div>
+  <div><span>前置</span><strong>可安装 CLI、dataclass、Path、异常和自动化测试</strong></div>
+  <div><span>完成后留下</span><strong>显式 TOML、固定优先级、命名日志、标准流和退出码契约</strong></div>
+</div>
 
-<section class="be-task-step" data-step-id="step-1" id="step-1">
-<h2 id="cli">第一步：运行 CLI 与标准流基线<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h2>
-<p>运行默认报告、审计成功和缺少输出路径三条命令。<strong>当前任务：</strong> 分别记录 stdout、stderr 和退出码。<strong>成功证据：</strong> 默认报告只在 stdout，成功为 0，尚未满足的审计请求为 1。</p>
-</section>
-<section class="be-task-step" data-step-id="step-2" id="step-2">
-<h2 id="tomllib-toml">第二步：用 tomllib 读取显式 TOML<a class="headerlink" href="#tomllib-toml" title="Permanent link">&para;</a></h2>
-<p>只在用户提供 <code>--config PATH</code> 时以二进制方式读取 TOML，并映射到不可变 <code>AppConfig</code>。<strong>主动修改：</strong> 用配置选择标签或审计路径。<strong>成功证据：</strong> 不传配置时行为完全保持默认，配置不会从用户目录或环境变量偷偷进入。</p>
-</section>
-<section class="be-task-step" data-step-id="step-3" id="step-3">
-<h2 id="_2">第三步：校验结构并实现固定优先级<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>仅允许 <code>[report].tag</code>、<code>[audit].output</code>、<code>[logging].level</code>，拒绝未知表、未知字段、错误类型和空字符串。<strong>优先级：</strong> 命令行 &gt; 显式 TOML &gt; 默认值。<strong>成功证据：</strong> 同时提供配置和参数时，测试证明参数胜出。</p>
-</section>
-<section class="be-task-step" data-step-id="step-4" id="step-4">
-<h2 id="logger">第四步：用命名 logger 分离业务输出与诊断<a class="headerlink" href="#logger" title="Permanent link">&para;</a></h2>
-<p>建立 <code>study_progress_reporter</code> logger，默认 WARNING；报告只 <code>print()</code> 到 stdout，日志只进入 stderr。<strong>主动修改：</strong> 使用 INFO 观察命令与审计成功事件。<strong>成功证据：</strong> 开启日志不改变报告文本，默认成功运行仍安静。</p>
-</section>
-<section class="be-task-step" data-step-id="step-5" id="step-5">
-<h2 id="toml">第五步：安全观察坏 TOML 与不可写路径<a class="headerlink" href="#toml" title="Permanent link">&para;</a></h2>
-<p>在临时目录使用语法错误 TOML、未知字段和缺失父目录。<strong>恢复标准：</strong> 配置或 I/O 失败返回 1、错误进入 stderr、stdout 为空；已有审计文件不变且没有 <code>.tmp</code> 残留。</p>
-</section>
-<section class="be-task-step" data-step-id="step-6" id="step-6">
-<h2 id="_3">第六步：完成新配置项迁移验收<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>独立增加一个只读、无秘密的配置项，并补默认值、配置值、命令行覆盖、错误类型和输出流测试。<strong>约束：</strong> 不增加自动配置搜索，不记录原始数据或参数秘密，不改变退出码 0/1/2 的含义。</p>
-</section>
-<h2 id="_4">课程信息<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_2">开始前<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>已经能从项目目录外运行 <code>study-progress</code>。</li>
+<li>知道 <code>main(argv) -&gt; int</code> 的返回值会成为进程退出状态。</li>
+<li>能用 <code>TemporaryDirectory</code> 构造不会污染机器的文件测试。</li>
+<li>本课使用 Python 3.11 标准库 <code>tomllib</code> 与 <code>logging</code>，不引入配置框架。</li>
+</ul>
+<section data-context-type="concept" data-learning-context="concept-stream-contract" id="concept-stream-contract">
+<h2 id="_3">三个通道回答三个问题<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>项目</th>
-<th>内容</th>
+<th>通道</th>
+<th>回答的问题</th>
+<th>当前项目</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>适合人群</td>
-<td>已完成可安装 CLI，需要建立配置、诊断与失败契约的学习者</td>
+<td>stdout</td>
+<td>业务结果是什么</td>
+<td>完整学习报告</td>
 </tr>
 <tr>
-<td>前置知识</td>
-<td>dataclass、Path、异常、上下文管理、argparse、包安装、unittest</td>
+<td>stderr</td>
+<td>程序怎样运行、为什么失败</td>
+<td>INFO 日志与错误说明</td>
 </tr>
 <tr>
-<td>可观察产出</td>
-<td>显式 TOML、不可变配置、优先级、命名日志、stdout/stderr 与退出码测试</td>
-</tr>
-<tr>
-<td>环境</td>
-<td>Python 3.11+，运行只用 <code>tomllib</code>、<code>logging</code> 等标准库</td>
-</tr>
-<tr>
-<td>阶段作品</td>
-<td><a href="../../../../exercises/programming-languages/study-progress-reporters/">双语言学习进度报告器</a></td>
-</tr>
-<tr>
-<td>事实核查</td>
-<td>Python 3.11.15 官方文档，2026-07-15 核查</td>
+<td>退出码</td>
+<td>调用方是否应继续</td>
+<td><code>0</code> 成功、<code>1</code> 业务失败、<code>2</code> 参数语法错误</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_5">学习目标<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<ul>
-<li>使用 <code>tomllib</code> 读取 TOML，并理解它只负责解析、不负责业务校验或写回。</li>
-<li>把外部字典校验成明确的 <code>AppConfig</code>，拒绝未知字段和宽松隐式转换。</li>
-<li>实现并测试“命令行 &gt; 显式配置 &gt; 默认值”的单一优先级。</li>
-<li>区分报告、诊断和进程状态，维护 stdout、stderr、退出码三种契约。</li>
-<li>使用命名 logger、级别和参数化消息，不在库模块调用 <code>basicConfig()</code>。</li>
-<li>设计不会破坏旧审计、不会留下半成品的配置与 I/O 失败路径。</li>
-</ul>
-<h2 id="_6">三种输出回答三个问题<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart TD
-    A["命令行参数"] --&gt; D["合并配置"]
-    B["显式 TOML"] --&gt; D
-    C["默认值"] --&gt; D
-    D --&gt; E["CLI 执行"]
-    E --&gt; F["stdout：业务报告"]
-    E --&gt; G["stderr：日志与错误"]
-    E --&gt; H["退出码：0 / 1 / 2"]</code></pre>
-<ul>
-<li>stdout 回答“业务结果是什么”，可以被管道或文件重定向。</li>
-<li>stderr 回答“程序怎样运行、为什么失败”，不会污染报告。</li>
-<li>退出码回答“调用方是否应继续”，无需解析中文错误文本。</li>
-</ul>
-<h2 id="1">1. 先观察而不是混写<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>用重定向把它们拆开：</p>
 <div class="highlight"><pre><span></span><code>study-progress<span class="w"> </span>report<span class="w"> </span>&gt;report.txt<span class="w"> </span><span class="m">2</span>&gt;diagnostics.txt
 <span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
-study-progress<span class="w"> </span>audit
-<span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
 </code></pre></div>
-<p>默认报告成功时 <code>report.txt</code> 包含报告、<code>diagnostics.txt</code> 为空、退出码为 0。审计缺少路径时 stdout 为空，stderr 说明需要 <code>--output</code> 或配置，退出码为 1。</p>
-<p>参数语法错误由 argparse 负责：</p>
-<div class="highlight"><pre><span></span><code>study-progress<span class="w"> </span>unknown
+<p>默认成功时，<code>report.txt</code> 有报告，<code>diagnostics.txt</code> 为空，退出码是 0。调用方不需要解析中文报告来判断成功。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-exit-codes" id="example-exit-codes">
+<h2 id="012">0、1、2 不是三种随意编号<a class="headerlink" href="#012" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>study-progress<span class="w"> </span>report<span class="w">              </span><span class="c1"># 0：完成业务</span>
+study-progress<span class="w"> </span>audit<span class="w">               </span><span class="c1"># 1：请求合法，但缺少输出路径</span>
+study-progress<span class="w"> </span>unknown<span class="w">             </span><span class="c1"># 2：命令语法不成立</span>
 </code></pre></div>
-<p>它打印 usage 到 stderr 并退出 2。业务失败不要伪装成参数语法错误。</p>
-<h2 id="2-toml">2. 只读取显式 TOML<a class="headerlink" href="#2-toml" title="Permanent link">&para;</a></h2>
-<p>公开示例：</p>
+<p><code>argparse</code> 已经为语法错误提供 usage 和退出码 2。配置文件坏了、审计路径写不了等情况，是程序理解请求后遇到的业务失败，<code>main()</code> 返回 1。</p>
+<p>不要让所有错误都返回 0，也不要把业务失败伪装成 argparse 语法错误。稳定的退出码比错误文字更适合脚本判断。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-explicit-toml" id="concept-explicit-toml">
+<h2 id="_4">配置从哪里来，命令行上要看得见<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">[report]</span>
 <span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;基础&quot;</span>
 
@@ -4397,41 +4267,58 @@ study-progress<span class="w"> </span>audit
 <span class="k">[logging]</span>
 <span class="n">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;INFO&quot;</span>
 </code></pre></div>
-<p>调用时明确给出：</p>
+<p>只有显式提供时才读取：</p>
 <div class="highlight"><pre><span></span><code>study-progress<span class="w"> </span>--config<span class="w"> </span>config.example.toml<span class="w"> </span>report
 </code></pre></div>
-<p>读取 TOML 文件必须使用二进制模式：</p>
+<p>Python 3.11 的 <code>tomllib</code> 用二进制文件读取：</p>
 <div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">path</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">config_file</span><span class="p">:</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="n">tomllib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
 </code></pre></div>
-<p><code>tomllib</code> 返回普通字典并在语法错误时抛出 <code>TOMLDecodeError</code>。它不会判断 <code>tag = 3</code> 是否符合本应用，也不会写回 TOML。因此解析之后仍要做结构与类型校验。</p>
-<p>不自动读取当前目录、用户家目录或环境变量，可以让同一命令的输入来源可见。未来真实产品如需自动搜索，必须另行定义优先级和安全边界。</p>
-<h2 id="3-appconfig">3. 从不可信字典进入 AppConfig<a class="headerlink" href="#3-appconfig" title="Permanent link">&para;</a></h2>
-<p>本课只允许：</p>
-<div class="highlight"><pre><span></span><code>report.tag      -&gt; 非空字符串或缺省
-audit.output    -&gt; 非空字符串，随后转为 Path，或缺省
-logging.level   -&gt; DEBUG/INFO/WARNING/ERROR/CRITICAL
+<p>本项目不自动搜索当前目录、用户家目录或环境变量。这样同一条命令的输入来源清楚，换机器也不会因为某个隐藏配置突然改变结果。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-parse-validate" id="concept-parse-validate">
+<h2 id="toml">TOML 能解析，不代表配置适合这个程序<a class="headerlink" href="#toml" title="Permanent link">&para;</a></h2>
+<p><code>tomllib</code> 只负责把合法 TOML 变成普通字典。下面的文件语法都正确，却不符合本应用：</p>
+<div class="highlight"><pre><span></span><code><span class="k">[report]</span>
+<span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
+
+<span class="k">[network]</span>
+<span class="n">timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>
 </code></pre></div>
-<p>使用冻结数据类保存通过校验的结果：</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<p>应用只接受：</p>
+<div class="highlight"><pre><span></span><code>report.tag      -&gt; 非空字符串或缺省
+audit.output    -&gt; 非空字符串，随后转换为 Path，或缺省
+logging.level   -&gt; DEBUG / INFO / WARNING / ERROR / CRITICAL
+</code></pre></div>
+<p>未知表、未知字段、错误类型和空字符串都要拒绝，不能悄悄转成字符串或回退默认值。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-frozen-config" id="example-frozen-config">
+<h2 id="appconfig">校验通过以后，再进入明确的 AppConfig<a class="headerlink" href="#appconfig" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">AppConfig</span><span class="p">:</span>
     <span class="n">report_tag</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">audit_output</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">log_level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;WARNING&quot;</span>
 </code></pre></div>
-<p>拒绝而不是猜测：</p>
-<ul>
-<li><code>tag = 3</code> 不转换为字符串。</li>
-<li><code>[report] colour = "blue"</code> 不静默忽略。</li>
-<li><code>level = "TRACE"</code> 不映射到最接近级别。</li>
-<li><code>[network]</code> 即使语法合法也不属于本课配置。</li>
-</ul>
-<p>固定优先级示例：</p>
-<div class="highlight"><pre><span></span><code>study-progress<span class="w"> </span>--config<span class="w"> </span>config.example.toml<span class="w"> </span>--log-level<span class="w"> </span>WARNING<span class="w"> </span>report<span class="w"> </span>--tag<span class="w"> </span>工程
+<p>外部字典只存在于输入边界。通过表名、字段名、类型和取值检查后，核心代码只接触 <code>AppConfig</code>，不必在每个调用点重复猜 <code>dict[str, object]</code> 里有什么。</p>
+<p><code>frozen=True</code> 防止执行过程中随手修改配置，但它不是秘密保护，也不会让 <code>Path</code> 指向的文件自动存在。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-precedence" id="concept-precedence">
+<h2 id="_5">优先级只在一个地方合并<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>固定顺序：</p>
+<div class="highlight"><pre><span></span><code>命令行参数 &gt; 显式 TOML &gt; 默认值
 </code></pre></div>
-<p>若配置是 <code>tag = "基础"</code>、<code>level = "INFO"</code>，最终使用命令行的“工程”和 WARNING。测试应直接断言合并后的配置和可观察输出。</p>
-<h2 id="4">4. 日志属于应用边界<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
-<p>库模块通过名称取得 logger 或把事件交给调用者，但不在导入时配置全局 root logger。应用入口安装一个 stderr handler：</p>
+<p>例如配置里是 <code>tag = "基础"</code>，命令行又写：</p>
+<div class="highlight"><pre><span></span><code>study-progress<span class="w"> </span>--config<span class="w"> </span>reporter.toml<span class="w"> </span>report<span class="w"> </span>--tag<span class="w"> </span>工程
+</code></pre></div>
+<p>最终使用“工程”。<code>argparse</code> 的可选值先保持 <code>None</code>，再由 <code>apply_cli_overrides()</code> 集中覆盖数据类；不要让 report 和 audit 各自写一套优先级。</p>
+</section>
+<section data-context-type="concept" data-learning-context="concept-named-logger" id="concept-named-logger">
+<h2 id="_6">库不抢全局日志，应用只配置自己的名字<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;study_progress_reporter&quot;</span><span class="p">)</span>
 <span class="n">logger</span><span class="o">.</span><span class="n">handlers</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 <span class="n">handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
@@ -4439,142 +4326,169 @@ logging.level   -&gt; DEBUG/INFO/WARNING/ERROR/CRITICAL
 <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
 <span class="n">logger</span><span class="o">.</span><span class="n">propagate</span> <span class="o">=</span> <span class="kc">False</span>
 </code></pre></div>
-<p>使用参数化消息：</p>
-<div class="highlight"><pre><span></span><code><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;执行命令：</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
-</code></pre></div>
-<p>不要记录完整记录对象、密钥、环境变量或未知配置原文。当前配置没有秘密字段，但保持最小日志仍是后续项目的安全基线。</p>
-<p>观察日志分流：</p>
+<p>库模块可以取得命名 logger 或接受事件 sink，但不应在导入时调用 <code>basicConfig()</code> 改动调用者的 root logger。</p>
+<p>重复配置前清理本 logger 的 handler，避免测试或同一进程多次运行后日志成倍出现。<code>propagate = False</code> 防止同一事件再交给 root logger 打一遍。</p>
+</section>
+<section data-context-type="example" data-learning-context="example-log-separation" id="example-log-separation">
+<h2 id="info">打开 INFO，报告文字仍然不变<a class="headerlink" href="#info" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>study-progress<span class="w"> </span>--log-level<span class="w"> </span>INFO<span class="w"> </span>report<span class="w"> </span>&gt;report.txt<span class="w"> </span><span class="m">2</span>&gt;diagnostics.txt
 </code></pre></div>
-<p><code>report.txt</code> 与默认报告完全一致；<code>diagnostics.txt</code> 包含命令事件。关闭 INFO 后诊断为空，不需要改代码。</p>
-<h2 id="5">5. 失败实验与恢复证据<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
-<h3 id="toml_1">坏 TOML<a class="headerlink" href="#toml_1" title="Permanent link">&para;</a></h3>
-<p>在临时文件写入：</p>
-<div class="highlight"><pre><span></span><code><span class="k">[report</span>
+<ul>
+<li><code>report.txt</code> 与默认报告逐字一致。</li>
+<li><code>diagnostics.txt</code> 包含“执行命令：report”。</li>
+<li>不传 <code>--log-level</code> 时默认 WARNING，成功运行保持安静。</li>
+</ul>
+<p>日志使用参数化消息：</p>
+<div class="highlight"><pre><span></span><code><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;执行命令：</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">arguments</span><span class="o">.</span><span class="n">command</span><span class="p">)</span>
+</code></pre></div>
+<p>不要记录完整学习记录、配置全文、环境变量或密钥。能排错不等于应把所有输入都写进日志。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-bad-config" id="troubleshoot-bad-config">
+<h2 id="_7">坏配置要在执行业务之前停下来<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>三种常见失败：</p>
+<div class="highlight"><pre><span></span><code><span class="k">[report</span><span class="w">                 </span><span class="err">#</span><span class="w"> </span><span class="k">TOML</span><span class="w"> </span><span class="err">语法错误</span>
 <span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;基础&quot;</span>
 </code></pre></div>
-<p>运行后应返回 1，stderr 以“错误：无法读取配置”开头，stdout 为空。</p>
-<h3 id="_7">未知字段<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">[report]</span>
-<span class="n">colour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;blue&quot;</span>
+<span class="n">colour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;blue&quot;</span><span class="w">         </span><span class="c1"># 未知字段</span>
 </code></pre></div>
-<p>语法正确仍应被业务校验拒绝。这样拼写错误不会悄悄回退默认值。</p>
-<h3 id="_8">审计路径失败<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">[logging]</span>
+<span class="n">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;TRACE&quot;</span><span class="w">         </span><span class="c1"># 不支持的取值</span>
+</code></pre></div>
+<p>CLI 应在 stderr 写清楚错误，返回 1，stdout 为空，也不开始生成审计文件。修复配置后重新运行，不要靠忽略未知字段让拼写错误静默生效。</p>
+</section>
+<section data-context-type="troubleshoot" data-learning-context="troubleshoot-audit-io" id="troubleshoot-audit-io">
+<h2 id="_8">审计路径写不了，旧文件仍要安全<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>study-progress<span class="w"> </span>audit<span class="w"> </span>--output<span class="w"> </span>missing/audit.txt
 </code></pre></div>
-<p>本课不自动创建父目录，命令返回 1，stderr 记录失败。若已有正式审计文件，先写临时文件的资源边界会保证它在失败时不被覆盖。</p>
-<p>恢复顺序：修复 TOML 或显式建立允许写入的父目录，再重新运行；不要扩大权限、吞掉异常或把失败返回成 0。</p>
-<h2 id="6">6. 迁移验收<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
-<p>从以下候选中选择一项：报告标题、默认筛选标签的别名、日志格式选择。不得照抄完整实现，并满足：</p>
+<p>本项目不会自动创建父目录。缺失目录时：</p>
+<ul>
+<li>stdout 为空。</li>
+<li>stderr 说明无法写入审计文件。</li>
+<li>退出码为 1。</li>
+<li>已有正式文件不变。</li>
+<li>同目录没有残留 <code>.tmp</code>。</li>
+</ul>
+<p>配置必须全部校验通过后才开始文件副作用；审计仍使用上一课的分阶段写入边界。</p>
+</section>
+<section data-context-type="reproduce" data-learning-context="reproduce-config-diagnostics" id="reproduce-config-diagnostics">
+<h2 id="_9">跑完一张配置与诊断矩阵<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>在项目目录执行：</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>mypy<span class="w"> </span>--strict<span class="w"> </span>.
+<span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>-v
+</code></pre></div>
+<p>再依次观察：</p>
+<table>
+<thead>
+<tr>
+<th>输入</th>
+<th>stdout</th>
+<th>stderr</th>
+<th style="text-align: right;">退出码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>默认 <code>report</code></td>
+<td>完整报告</td>
+<td>空</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>INFO <code>report</code></td>
+<td>完整报告</td>
+<td>INFO 事件</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>坏 TOML</td>
+<td>空</td>
+<td>配置错误</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>audit</code> 无路径</td>
+<td>空</td>
+<td>需要输出路径</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>未知子命令</td>
+<td>空</td>
+<td>usage</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+<p>仓库脚本还会验证命令行覆盖 TOML、重复配置 logger 不重复输出、失败前旧文件不变，以及程序不会自动读取工作目录中的配置。</p>
+</section>
+<section data-context-type="modify" data-learning-context="modify-report-title" id="modify-report-title">
+<h2 id="_10">给报告标题增加一个可配置选项<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>增加 <code>[report].title</code> 和对应 <code>--title</code>，要求：</p>
 <ol>
-<li>缺省时旧行为完全不变。</li>
-<li>TOML 有合法值和错误类型测试。</li>
-<li>CLI 有覆盖配置值的参数与测试。</li>
-<li>未知字段仍失败，不增加“随便接受”的 <code>dict[str, object]</code> 漏洞。</li>
-<li>stdout、stderr 和退出码分别断言。</li>
-<li>日志不包含记录内容、配置全文或私人路径以外的不必要数据。</li>
+<li>缺省时仍输出“学习进度报告”。</li>
+<li>TOML 接受非空字符串，拒绝数字和空白。</li>
+<li>命令行标题覆盖 TOML 标题。</li>
+<li>未知字段仍然失败。</li>
+<li>标题只进入 stdout，不写成 INFO 日志。</li>
 </ol>
-<h2 id="ai">AI 协作任务<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h2>
-<p>AI 可以生成 schema 候选和测试矩阵，学习者必须检查：</p>
+<p>若 <code>build_report()</code> 需要标题参数，用关键字专用参数表达，并保持默认值兼容现有调用。不要让业务函数读取全局配置对象。</p>
+</section>
+<section data-context-type="project" data-learning-context="project-diagnostic-cli" id="project-diagnostic-cli">
+<h2 id="python">Python 工程化闭环完成<a class="headerlink" href="#python" title="Permanent link">&para;</a></h2>
+<p>学习进度报告器现在可以：</p>
+<div class="highlight"><pre><span></span><code>显式 CLI / TOML / 默认值
+        -&gt; 校验并合并 AppConfig
+        -&gt; report 或 audit
+        -&gt; stdout 业务结果
+        -&gt; stderr 诊断
+        -&gt; 0 / 1 / 2 退出状态
+</code></pre></div>
+<p>当前 30 项测试覆盖配置、优先级、标准流、日志、参数错误、审计成功与失败；包化测试还会构建 wheel，在干净环境从项目目录外运行。</p>
+<p>这节课不自动读取 <code>.env</code>，不记录秘密，也不引入远程日志平台。配置来源和数据边界保持小而清楚，后续 Web、AI 与 Agent 项目才能在此基础上继续扩展。</p>
+</section>
+<section data-context-type="deepen" data-learning-context="deepen-operability" id="deepen-operability">
+<h2 id="_11">可诊断不等于日志越多越好<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>好的诊断应该帮助回答：执行了哪个命令、选择了什么公开模式、在哪个边界失败。过多日志会淹没信号，还可能泄露路径、记录内容和秘密。</p>
+<p>以后进入服务端系统，还需要结构化日志、请求标识、指标、追踪、日志轮转和隐私策略。本课先建立更基础的约束：</p>
 <ul>
-<li>是否把 TOML 解析成功误当作配置合法。</li>
-<li>是否对整数、布尔值和空字符串做了宽松转换。</li>
-<li>是否存在两个互相矛盾的优先级实现。</li>
-<li>是否使用 root logger、重复添加 handler 或把日志写到 stdout。</li>
-<li>是否把异常吞掉并返回 0，或在失败前覆盖正式审计。</li>
-<li>是否自动读取用户目录、环境变量或真实秘密。</li>
+<li>业务输出与诊断分流。</li>
+<li>默认安静，按需打开级别。</li>
+<li>失败返回非零。</li>
+<li>日志内容最小化。</li>
 </ul>
-<h2 id="_9">常见错误与排查<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>现象</th>
-<th>可能原因</th>
-<th>检查与恢复</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>合法 TOML 仍运行出错</td>
-<td>解析后未做字段类型校验</td>
-<td>在构造 <code>AppConfig</code> 前逐字段验证</td>
-</tr>
-<tr>
-<td>参数没有覆盖配置</td>
-<td>合并顺序反了或 argparse 默认值遮住缺省</td>
-<td>CLI 可选值先保持 <code>None</code>，最后覆盖配置</td>
-</tr>
-<tr>
-<td>默认报告混入 INFO</td>
-<td>handler 指向 stdout 或默认级别太低</td>
-<td>handler 保持 stderr，默认 WARNING</td>
-</tr>
-<tr>
-<td>多次测试重复日志</td>
-<td>每次配置都追加 handler</td>
-<td>配置前清理本应用 logger 的 handlers</td>
-</tr>
-<tr>
-<td>错误命令返回 0</td>
-<td>只打印错误，没有把失败映射为返回值</td>
-<td><code>main()</code> 明确返回 1，最外层 <code>SystemExit</code></td>
-</tr>
-<tr>
-<td>坏配置后旧审计消失</td>
-<td>校验或写入顺序错误</td>
-<td>配置全部通过后再执行，审计继续分阶段提交</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_10">完成证据<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+</section>
+<section data-context-type="career" data-learning-context="career-diagnostic-evidence" id="career-diagnostic-evidence">
+<h2 id="_12">讲配置和日志时，把失败契约说出来<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>可以这样表达：</p>
+<blockquote>
+<p>我为可安装 CLI 增加了显式 TOML 配置，解析后严格校验未知字段、类型和日志级别，再按“命令行、配置、默认值”集中合并。报告只写 stdout，命名 logger 写 stderr，成功、业务失败和语法错误分别返回 0、1、2。测试覆盖坏 TOML、参数覆盖、重复 handler、缺失路径和旧审计文件保护。</p>
+</blockquote>
+<p>这能说明你设计的是可被人和自动化稳定调用的工具，而不只是“加了 logging”。</p>
+</section>
+<h2 id="_13">完成检查<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说明 stdout、stderr 和退出码各自服务谁。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我区分了成功 0、业务失败 1 和参数语法错误 2。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 配置只通过 <code>--config</code> 显式读取，并以二进制模式交给 <code>tomllib</code>。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我知道解析成功不等于字段、类型和取值合法。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 优先级只在一个函数中实现：命令行大于 TOML，大于默认值。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 命名 logger 不污染 root，也不会重复添加 handler。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 开启 INFO 后 stdout 报告保持不变。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 坏配置和审计失败都在副作用前或安全边界内停止。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我跑完配置与诊断矩阵，并断言三个通道。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我完成了报告标题配置及默认回归。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Python 工程化 30 项测试、wheel 和干净安装回归全部通过。</li>
+</ul>
+<h2 id="_14">来源与版本<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
 <ul>
-<li>不传 <code>--config</code> 时默认报告与上一课一致，程序不自动搜索配置。</li>
-<li>三个公开 TOML 表及其字段均有合法、缺省、未知和错误类型测试。</li>
-<li>命令行覆盖配置，配置覆盖默认值，只有一套合并函数。</li>
-<li>默认成功无 stderr；INFO 诊断只进 stderr，不改变 stdout。</li>
-<li>成功、配置/I/O 失败、参数语法错误分别返回 0、1、2。</li>
-<li>坏 TOML、未知字段、无输出路径和缺失父目录都不会留下半成品或破坏旧审计。</li>
+<li>适用版本：Python 3.11 及以上；mypy 2.2.0。</li>
+<li>核查日期：2026-07-17。</li>
+<li>事实来源：<a href="https://docs.python.org/3.11/library/tomllib.html"><code>tomllib</code></a>用于二进制读取、解析结果和异常；<a href="https://docs.python.org/3.11/howto/logging.html">Logging HOWTO</a>与<a href="https://docs.python.org/3.11/library/logging.html"><code>logging</code> 参考</a>用于 logger、handler、级别和传播；<a href="https://docs.python.org/3.11/library/sys.html#sys.exit"><code>sys.exit</code></a>用于进程状态；<a href="https://docs.python.org/3.11/library/argparse.html"><code>argparse</code></a>用于帮助和语法错误。</li>
+<li>代码验证：仓库脚本覆盖严格 mypy、30 项测试、显式配置、结构与类型拒绝、优先级、标准流、日志级别、重复 handler、退出码、审计保护、wheel 和干净安装；不联网。</li>
 </ul>
-<h2 id="_11">来源与版本<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>来源</th>
-<th>用于核查</th>
-<th>日期</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://docs.python.org/3.11/library/tomllib.html">tomllib</a></td>
-<td>二进制读取、返回类型、解析异常与只读能力</td>
-<td>2026-07-15</td>
-</tr>
-<tr>
-<td><a href="https://docs.python.org/3.11/howto/logging.html">Logging HOWTO</a></td>
-<td>级别、消息参数、应用与库边界</td>
-<td>2026-07-15</td>
-</tr>
-<tr>
-<td><a href="https://docs.python.org/3.11/library/logging.html">logging 库参考</a></td>
-<td>logger、handler、formatter 和传播</td>
-<td>2026-07-15</td>
-</tr>
-<tr>
-<td><a href="https://docs.python.org/3.11/library/sys.html#sys.exit">sys.exit</a></td>
-<td>0 与非零进程状态</td>
-<td>2026-07-15</td>
-</tr>
-<tr>
-<td><a href="https://docs.python.org/3.11/library/argparse.html">argparse</a></td>
-<td>参数语法错误和帮助输出</td>
-<td>2026-07-15</td>
-</tr>
-</tbody>
-</table>
-<p>本地素材库的 logging 章节用于整理日志级别、logger/handler/formatter 和配置常见问题；旧式全局配置和大段示例未直接复用。本课以 Python 3.11 官方语义、独立重写和自动测试为事实基线。</p>
-<h2 id="_12">下一步<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
-<p>Python 核心的类型、接口、容器、对象、资源、包装、包、CLI、配置、日志和测试已形成最小工程化闭环。下一课进入 <a href="../../../cs-core/01-sequence-interface-array-representation-boundaries/">CS：序列接口、数组表示与安全边界</a>；网络、并发、数据库、Web 与真实发布留在达到对应前置后的课程和项目里程碑。</p>
+<h2 id="_15">下一步<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>Python 核心与工程化七课已经形成完整成果线。系统方向下一步进入<a href="../../cpp-core/">C++ 起步与核心</a>；算法方向可以进入<a href="../../../cs-core/">共同算法与数据结构基础</a>。两条路线都会继续使用可复现代码、失败路径和项目证据。</p>
 
 
 
