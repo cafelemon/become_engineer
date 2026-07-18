@@ -85,6 +85,8 @@ exclude_docs: |
   **/*.pyc
   **/*.db
   **/*.db-journal
+  **/*.sqlite
+  **/*.sqlite3
 
 # 课程内容架构样板仅用于本地评审。`mkdocs serve` 会显示草稿标记，
 # 正式 `mkdocs build` 不会生成这些页面或把它们写入搜索索引。
@@ -154,6 +156,8 @@ nav:
           - Web 核心:
               - 课程说明: learning-paths/web-fullstack/web-core/README.md
               - TypeScript、OpenAPI 与运行时数据契约: learning-paths/web-fullstack/web-core/01-typescript-openapi-runtime-contract.md
+              - 关系模型、SQLite 与持久化边界: learning-paths/web-fullstack/web-core/02-relational-model-sqlite-persistence.md
+              - REST 资源、CRUD、分页与幂等: learning-paths/web-fullstack/web-core/03-rest-resources-crud-pagination-idempotency.md
       - 算法与数据结构:
           - 共同算法与数据结构基础:
               - 动态数组容量、扩容成本与摊还分析: learning-paths/cs-core/05-dynamic-array-capacity-amortized-cost.md

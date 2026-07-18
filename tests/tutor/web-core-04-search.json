@@ -1,0 +1,39 @@
+{
+  "lesson_id": "web-core-04",
+  "cases": [
+    {"query":"Web v0.8 最后能做出什么","expected_card":"web-v08-result"},
+    {"query":"这节表单课给项目加什么","expected_card":"web-v08-result"},
+    {"query":"为什么同一个字段要检查四次","expected_card":"four-validation-layers"},
+    {"query":"HTML TypeScript Pydantic SQLite 为什么都校验","expected_card":"four-validation-layers"},
+    {"query":"有浏览器校验服务端为什么还要校验","expected_card":"client-not-security"},
+    {"query":"required 能不能保证数据安全","expected_card":"client-not-security"},
+    {"query":"checkValidity 和 reportValidity 有什么区别","expected_card":"check-report-validity"},
+    {"query":"怎么让浏览器显示输入错误","expected_card":"check-report-validity"},
+    {"query":"为什么只输入空格还能通过 required","expected_card":"whitespace-note"},
+    {"query":"备注全是空格怎么拦","expected_card":"whitespace-note"},
+    {"query":"表单为什么需要这么多状态","expected_card":"form-state-machine"},
+    {"query":"提交不是只有成功失败吗","expected_card":"form-state-machine"},
+    {"query":"网络断开后为什么要复用同一个请求键","expected_card":"retry-same-key"},
+    {"query":"重试时 Idempotency-Key 要不要换","expected_card":"retry-same-key"},
+    {"query":"改了表单内容还可以用原来的请求键吗","expected_card":"changed-draft-new-key"},
+    {"query":"什么时候应该生成新幂等键","expected_card":"changed-draft-new-key"},
+    {"query":"怎样跑通 v0.8 表单","expected_card":"run-v08-form"},
+    {"query":"怎样看到 0.3 被拦下","expected_card":"run-v08-form"},
+    {"query":"422 错误怎样放回对应输入框","expected_card":"map-422-fields"},
+    {"query":"FastAPI detail loc 怎么读","expected_card":"map-422-fields"},
+    {"query":"把步长改成 0.5 要改哪些地方","expected_card":"change-rule-all-layers"},
+    {"query":"为什么不能只改 HTML step","expected_card":"change-rule-all-layers"},
+    {"query":"保存成功但重新读取失败怎么办","expected_card":"saved-sync-failed"},
+    {"query":"POST 201 后 GET 断了要不要再提交","expected_card":"saved-sync-failed"},
+    {"query":"旧请求为什么会覆盖新页面","expected_card":"stale-response-gate"},
+    {"query":"快速切换学习者时数据串了怎么办","expected_card":"stale-response-gate"},
+    {"query":"Web v0.8 给学习进度报告器增加了什么","expected_card":"project-web-v08"},
+    {"query":"Web 核心四课最后做成什么","expected_card":"project-web-v08"},
+    {"query":"求职时怎样讲表单与失败恢复","expected_card":"career-form-recovery"},
+    {"query":"表单项目怎么讲得不只是做页面","expected_card":"career-form-recovery"}
+  ],
+  "unknown": [
+    "怎样让彗星停在茶杯旁边",
+    "企鹅为什么不参加木工比赛"
+  ]
+}

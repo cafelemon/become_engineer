@@ -1,0 +1,37 @@
+{
+  "lesson_id": "web-core-03",
+  "cases": [
+    {"query":"Web v0.7 最后能做出什么","expected_card":"web-v07-result"},
+    {"query":"为什么相同请求发两次只多一条","expected_card":"web-v07-result"},
+    {"query":"为什么 URL 用 study-sessions 而不是 create-session","expected_card":"resource-url-nouns"},
+    {"query":"REST 地址为什么用名词","expected_card":"resource-url-nouns"},
+    {"query":"集合资源和单条资源有什么区别","expected_card":"collection-item-resource"},
+    {"query":"为什么更新用 session id","expected_card":"collection-item-resource"},
+    {"query":"幂等是不是要求每次状态码都一样","expected_card":"http-idempotent-effect"},
+    {"query":"DELETE 第二次 404 还算幂等吗","expected_card":"http-idempotent-effect"},
+    {"query":"POST 为什么还要 Idempotency-Key","expected_card":"post-idempotency-key"},
+    {"query":"网络重试怎样避免重复写入","expected_card":"post-idempotency-key"},
+    {"query":"同一个幂等键换了请求内容会怎样","expected_card":"idempotency-conflict"},
+    {"query":"为什么返回 409 Conflict","expected_card":"idempotency-conflict"},
+    {"query":"after_id 游标怎样翻到下一页","expected_card":"cursor-after-id"},
+    {"query":"下一页参数应该传什么","expected_card":"cursor-after-id"},
+    {"query":"分页为什么要读取 limit 加一条","expected_card":"limit-plus-one"},
+    {"query":"为什么不先 COUNT 全表","expected_card":"limit-plus-one"},
+    {"query":"为什么索引是 learner_id 和 id","expected_card":"pagination-index"},
+    {"query":"组合索引在这里帮了什么","expected_card":"pagination-index"},
+    {"query":"怎样亲手证明重复请求只写入一次","expected_card":"run-v07-replay"},
+    {"query":"只看 replayed true 够不够","expected_card":"run-v07-replay"},
+    {"query":"PUT 和 DELETE 重复执行后应该看到什么","expected_card":"put-delete-repeat"},
+    {"query":"PUT 为什么不会把小时数累加","expected_card":"put-delete-repeat"},
+    {"query":"为什么删除后演示记录又自己回来了","expected_card":"seed-resurrection-bug"},
+    {"query":"种子数据为什么不能每次请求都补","expected_card":"seed-resurrection-bug"},
+    {"query":"Web v0.7 给学习进度报告器增加了什么","expected_card":"project-web-v07"},
+    {"query":"项目怎样从 SQLite 走到 REST","expected_card":"project-web-v07"},
+    {"query":"求职时怎样讲这次 REST 和幂等改造","expected_card":"career-rest-story"},
+    {"query":"接口项目怎样讲得不只是 CRUD","expected_card":"career-rest-story"}
+  ],
+  "unknown": [
+    "怎样让月亮给仙人掌浇水",
+    "为什么海豚不参加自行车比赛"
+  ]
+}

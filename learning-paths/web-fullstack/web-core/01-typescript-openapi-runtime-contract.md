@@ -328,5 +328,4 @@ focus_topic: "TypeScript 契约"
 
 ## 下一步
 
-下一节会把内存字典换成 SQLite。先不急着写一大串 SQL：我们会先画清学习者、课程和学习记录之间的关系，再验证重启、重复写入和事务失败时会发生什么。
-
+继续进入[关系模型、SQLite 与持久化边界](02-relational-model-sqlite-persistence.md)。下一节会把内存字典换成 SQLite，先画清学习者与学习时段的关系，再验证重启、约束和事务失败时会发生什么。

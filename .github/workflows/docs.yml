@@ -13,6 +13,7 @@ on:
       - "site-src/**/*.json"
       - "site-src/**/*.webp"
       - "site-src/examples/**/*.py"
+      - "site-src/examples/**/*.sql"
       - "site-src/examples/**/*.cpp"
       - "site-src/examples/**/*.hpp"
       - "site-src/examples/**/CMakeLists.txt"
@@ -75,6 +76,8 @@ on:
       - "scripts/test_cs_lazy_prim_v2.mjs"
       - "scripts/test_web_start_html_v2.mjs"
       - "scripts/test_web_core_typescript_contract_v2.mjs"
+      - "scripts/test_web_core_sqlite_persistence_v2.mjs"
+      - "scripts/test_web_core_rest_resources_v2.mjs"
       - "scripts/test_tutor_search.cjs"
       - "tests/tutor/**"
       - "mkdocs.yml"
@@ -113,7 +116,10 @@ jobs:
         with:
           node-version: "24"
           cache: npm
-          cache-dependency-path: site-src/examples/web-core/learning-dashboard-v05/package-lock.json
+          cache-dependency-path: |
+            site-src/examples/web-core/learning-dashboard-v05/package-lock.json
+            site-src/examples/web-core/learning-dashboard-v06/package-lock.json
+            site-src/examples/web-core/learning-dashboard-v07/package-lock.json
 
       - name: Install CI dependencies
         run: |
@@ -286,6 +292,22 @@ jobs:
       - name: Verify Web core TypeScript contract lesson
         if: ${{ hashFiles('scripts/test_web_core_typescript_contract_v2.mjs') != '' }}
         run: node scripts/test_web_core_typescript_contract_v2.mjs
+
+      - name: Install Web core SQLite dependencies
+        if: ${{ hashFiles('site-src/examples/web-core/learning-dashboard-v06/package-lock.json') != '' }}
+        run: npm ci --prefix site-src/examples/web-core/learning-dashboard-v06
+
+      - name: Verify Web core SQLite persistence lesson
+        if: ${{ hashFiles('scripts/test_web_core_sqlite_persistence_v2.mjs') != '' }}
+        run: node scripts/test_web_core_sqlite_persistence_v2.mjs
+
+      - name: Install Web core REST dependencies
+        if: ${{ hashFiles('site-src/examples/web-core/learning-dashboard-v07/package-lock.json') != '' }}
+        run: npm ci --prefix site-src/examples/web-core/learning-dashboard-v07
+
+      - name: Verify Web core REST resources lesson
+        if: ${{ hashFiles('scripts/test_web_core_rest_resources_v2.mjs') != '' }}
+        run: node scripts/test_web_core_rest_resources_v2.mjs
 
       - name: Build documentation strictly
         run: mkdocs build --strict

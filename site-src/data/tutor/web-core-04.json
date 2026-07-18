@@ -1,0 +1,188 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "web-core-04",
+    "title": "表单校验、提交与前后端状态同步",
+    "path": "learning-paths/web-fullstack/web-core/04-form-validation-submission-state-sync/"
+  },
+  "contexts": [
+    {"id":"overview-form-from-error-to-saved","type":"overview","title":"填错时留在原地，保存后再相信服务器","anchor":"#overview-form-from-error-to-saved"},
+    {"id":"concept-validation-layers","type":"concept","title":"四道检查，各有一份责任","anchor":"#concept-validation-layers"},
+    {"id":"example-html-and-typescript-validation","type":"example","title":"输入框先做最便宜的检查","anchor":"#example-html-and-typescript-validation"},
+    {"id":"concept-form-state-flow","type":"concept","title":"一次提交不只有成功和失败","anchor":"#concept-form-state-flow"},
+    {"id":"example-retry-same-intent","type":"example","title":"重试的是同一件事","anchor":"#example-retry-same-intent"},
+    {"id":"reproduce-dashboard-v08","type":"reproduce","title":"跑起来，填错一次再保存","anchor":"#reproduce-dashboard-v08"},
+    {"id":"modify-form-rules","type":"modify","title":"改一条规则，别只改输入框","anchor":"#modify-form-rules"},
+    {"id":"troubleshoot-form-submission","type":"troubleshoot","title":"表单不对时，先判断失败发生在哪一层","anchor":"#troubleshoot-form-submission"},
+    {"id":"project-dashboard-v08","type":"project","title":"学习进度报告器 Web v0.8","anchor":"#project-dashboard-v08"},
+    {"id":"deepen-client-server-state","type":"deepen","title":"为什么这版没有先把数字加上去","anchor":"#deepen-client-server-state"},
+    {"id":"career-explain-form-recovery","type":"career","title":"讲清一次结果未知","anchor":"#career-explain-form-recovery"}
+  ],
+  "cards": [
+    {
+      "id":"web-v08-result","lesson_id":"web-core-04","context_id":"overview-form-from-error-to-saved",
+      "question":"Web v0.8 最后能做出什么？",
+      "aliases":["这节表单课给项目加什么","为什么保存后还要重新读取"],
+      "keywords":["Web v0.8","表单","校验","提交","状态同步","结果"],
+      "diagnostic":"你的页面现在只是展示接口数据，还是已经能填写、提交、回填错误并恢复？",
+      "hints":["先让小时数和备注经过浏览器与服务端校验。","再处理提交中、断线重试、保存成功和重新同步。"],
+      "example":"0.3 被页面拦下；1.25 保存为记录 #5；随后 GET 得到新的累计小时和列表。",
+      "answer":"你会完成学习进度报告器 Web v0.8：真实表单、字段错误、可重试提交、旧响应保护和服务器状态同步。",
+      "source":{"label":"填错时留在原地，保存后再相信服务器","href":"#overview-form-from-error-to-saved"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"four-validation-layers","lesson_id":"web-core-04","context_id":"concept-validation-layers",
+      "question":"为什么同一个字段要检查四次？",
+      "aliases":["HTML TypeScript Pydantic SQLite 为什么都校验","前后端规则重复是不是浪费"],
+      "keywords":["四层校验","HTML","TypeScript","Pydantic","SQLite","重复","字段"],
+      "diagnostic":"每一层都能保证后面的请求一定经过自己吗？",
+      "hints":["浏览器校验主要减少等待。","服务端守信任边界，数据库守最终写入。"],
+      "example":"min/step → validateSessionDraft → Field(multiple_of) → SQLite CHECK。",
+      "answer":"四层处在不同边界。前一层可以被绕过，后一层仍要独立保护数据；它们共享规则，但责任不同。",
+      "source":{"label":"四道检查，各有一份责任","href":"#concept-validation-layers"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"client-not-security","lesson_id":"web-core-04","context_id":"concept-validation-layers",
+      "question":"有浏览器校验，服务端为什么还要校验？",
+      "aliases":["required 能不能保证数据安全","前端已经拦了为什么后端还返回 422"],
+      "keywords":["浏览器校验","服务端校验","required","安全","绕过","422","信任边界"],
+      "diagnostic":"请求只能从你的网页发出，还是也能由 curl 或改过的脚本发送？",
+      "hints":["用户设备上的代码可以被查看和修改。","服务端只相信自己重新验证过的输入。"],
+      "example":"curl 可以绕过 input 的 min、max 和 step，直接向 API 发 0.3。",
+      "answer":"客户端校验改善体验，不是安全机制。服务端必须把任何请求都当作外部输入重新验证。",
+      "source":{"label":"四道检查，各有一份责任","href":"#concept-validation-layers"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"check-report-validity","lesson_id":"web-core-04","context_id":"example-html-and-typescript-validation",
+      "question":"checkValidity 和 reportValidity 有什么区别？",
+      "aliases":["怎么让浏览器显示输入错误","HTML 表单怎样检查 min max step"],
+      "keywords":["checkValidity","reportValidity","min","max","step","浏览器提示"],
+      "diagnostic":"你只需要知道是否合法，还是还要把问题告诉填写者？",
+      "hints":["checkValidity 返回布尔值。","reportValidity 会进行交互式提示。"],
+      "example":"先 if (!form.checkValidity())，再 form.reportValidity()。",
+      "answer":"前者用来决定是否继续提交，后者让浏览器把违反 required、范围或步长的字段显示出来。",
+      "source":{"label":"输入框先做最便宜的检查","href":"#example-html-and-typescript-validation"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"whitespace-note","lesson_id":"web-core-04","context_id":"example-html-and-typescript-validation",
+      "question":"为什么只输入空格还能通过 required？",
+      "aliases":["备注全是空格怎么拦","为什么还要 trim note"],
+      "keywords":["空格","required","trim","备注","空内容","字段校验"],
+      "diagnostic":"输入框真的没有字符，还是字符只是看起来空白？",
+      "hints":["空格也是字符串字符。","去掉两端空格后再检查真正长度。"],
+      "example":"\"   \".trim() 得到空字符串。",
+      "answer":"required 只判断值是否为空，不理解业务含义。TypeScript 与 Pydantic 都要 trim 后再判断备注长度。",
+      "source":{"label":"输入框先做最便宜的检查","href":"#example-html-and-typescript-validation"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"form-state-machine","lesson_id":"web-core-04","context_id":"concept-form-state-flow",
+      "question":"表单为什么需要这么多状态？",
+      "aliases":["提交不是只有成功失败吗","editing submitting saved 怎么分"],
+      "keywords":["表单状态","editing","submitting","saved","invalid","network-error","sync-error"],
+      "diagnostic":"字段错误、网络没响应和写入后刷新失败，用户下一步应该一样吗？",
+      "hints":["不同失败发生在不同阶段。","状态决定输入是否保留、按钮是否可点以及下一次发 POST 还是 GET。"],
+      "example":"network-error 可以原样重试 POST；sync-error 只能重新 GET。",
+      "answer":"状态不是为了命名好看，而是防止错误操作。每个状态都对应清晰的界面和恢复动作。",
+      "source":{"label":"一次提交不只有成功和失败","href":"#concept-form-state-flow"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"retry-same-key","lesson_id":"web-core-04","context_id":"example-retry-same-intent",
+      "question":"网络断开后为什么要复用同一个请求键？",
+      "aliases":["重试时 Idempotency-Key 要不要换","结果未知怎么避免重复记录"],
+      "keywords":["网络断开","重试","同一个请求键","Idempotency-Key","结果未知","重复记录"],
+      "diagnostic":"第一次请求可能已经写入，只是响应没有回来吗？",
+      "hints":["同一内容代表同一次保存意图。","同一个键让服务器返回原记录，而不是再新增。"],
+      "example":"1.25 小时与同一备注重试时，key 保持 lesson-v08-abc。",
+      "answer":"网络错误不能证明服务器没处理。复用请求键能同时覆盖“没写入”和“已写入但响应丢失”两种情况。",
+      "source":{"label":"重试的是同一件事","href":"#example-retry-same-intent"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"changed-draft-new-key","lesson_id":"web-core-04","context_id":"example-retry-same-intent",
+      "question":"改了表单内容还可以用原来的请求键吗？",
+      "aliases":["什么时候应该生成新幂等键","修改 hours 后为什么换 key"],
+      "keywords":["改内容","新请求键","hours","fingerprint","409","保存意图"],
+      "diagnostic":"这是原请求重试，还是已经变成另一条学习时段？",
+      "hints":["先比较 hours 与去空格后的 note。","内容变化就结束旧意图，生成新键。"],
+      "example":"1.25 改成 1.5 后 fingerprint 改变，key 也改变。",
+      "answer":"不能。旧键代表旧内容；复用并改变请求体会得到 409。新内容应使用新键。",
+      "source":{"label":"重试的是同一件事","href":"#example-retry-same-intent"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"run-v08-form","lesson_id":"web-core-04","context_id":"reproduce-dashboard-v08",
+      "question":"怎样跑通 v0.8 表单？",
+      "aliases":["表单课从哪里启动","怎样看到 0.3 被拦下"],
+      "keywords":["运行 v0.8","启动","表单","0.3","1.25","uvicorn","npm test"],
+      "diagnostic":"前后端测试已经通过，Uvicorn 也监听 8780 了吗？",
+      "hints":["先运行 npm test 和 17 项后端测试。","再启动 Uvicorn，先填 0.3，后改 1.25。"],
+      "example":"uvicorn app:app --reload --port 8780。",
+      "answer":"从 v08 目录安装依赖、运行两套测试并启动服务；浏览器先验证错误，再保存有效记录并观察后续两个 GET。",
+      "source":{"label":"跑起来，填错一次再保存","href":"#reproduce-dashboard-v08"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"map-422-fields","lesson_id":"web-core-04","context_id":"reproduce-dashboard-v08",
+      "question":"422 错误怎样放回对应输入框？",
+      "aliases":["FastAPI detail loc 怎么读","服务端字段错误怎么显示"],
+      "keywords":["422","detail","loc","字段错误","hours","note","回填"],
+      "diagnostic":"响应 detail 数组的 loc 最后一段是什么？",
+      "hints":["只接受 body 中已知的 hours 或 note。","把消息写到对应 aria-describedby 错误元素。"],
+      "example":"loc: [\"body\", \"hours\"] → data-error-hours。",
+      "answer":"解析受信任的错误结构，用 loc 的字段名建立白名单映射；未知位置保留为整表错误，不随意写入 DOM。",
+      "source":{"label":"跑起来，填错一次再保存","href":"#reproduce-dashboard-v08"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"change-rule-all-layers","lesson_id":"web-core-04","context_id":"modify-form-rules",
+      "question":"把步长改成 0.5 要改哪些地方？",
+      "aliases":["为什么不能只改 HTML step","表单规则怎样保持前后端一致"],
+      "keywords":["步长 0.5","HTML step","form.ts","Pydantic","SQLite CHECK","测试"],
+      "diagnostic":"还有哪一层会继续接受 0.25 或拒绝新的有效值？",
+      "hints":["列出 HTML、TypeScript、Pydantic 和 SQLite。","最后修改前后端测试并用新数据库验证。"],
+      "example":"step=0.5、hours*2 为整数、multiple_of=0.5。",
+      "answer":"四层规则和测试必须一起改；旧数据库还需要迁移或重建，不能只让输入框看起来更新。",
+      "source":{"label":"改一条规则，别只改输入框","href":"#modify-form-rules"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"saved-sync-failed","lesson_id":"web-core-04","context_id":"troubleshoot-form-submission",
+      "question":"保存成功但重新读取失败怎么办？",
+      "aliases":["POST 201 后 GET 断了要不要再提交","数据库有记录页面却没更新"],
+      "keywords":["保存成功","重新读取失败","POST 201","GET","同步失败","不要再提交"],
+      "diagnostic":"POST 已经明确返回成功，还是连 POST 响应也没有收到？",
+      "hints":["已知写入成功时不要再发新的 POST。","保留记录 ID，只提供重新同步 GET。"],
+      "example":"记录 #5 已保存，但页面没有同步；按钮只显示“重新同步页面”。",
+      "answer":"把写入和刷新分开表达。记录已经存在，接下来只重读汇总与列表，避免用新键重复新增。",
+      "source":{"label":"表单不对时，先判断失败发生在哪一层","href":"#troubleshoot-form-submission"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"stale-response-gate","lesson_id":"web-core-04","context_id":"troubleshoot-form-submission",
+      "question":"旧请求为什么会覆盖新页面？",
+      "aliases":["快速切换学习者时数据串了怎么办","怎样忽略晚到的旧响应"],
+      "keywords":["旧请求","覆盖","快速切换","晚到响应","LatestRequestGate","递增令牌"],
+      "diagnostic":"两个请求按发出顺序返回了吗？",
+      "hints":["每次刷新领取更大的编号。","只有编号仍是最新的响应可以渲染。"],
+      "example":"token 1 晚于 token 2 返回时，token 1 被忽略。",
+      "answer":"网络响应顺序不保证与发出顺序一致。递增令牌让旧结果失去渲染资格，避免页面倒退。",
+      "source":{"label":"表单不对时，先判断失败发生在哪一层","href":"#troubleshoot-form-submission"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"project-web-v08","lesson_id":"web-core-04","context_id":"project-dashboard-v08",
+      "question":"Web v0.8 给学习进度报告器增加了什么？",
+      "aliases":["Web 核心四课最后做成什么","v0.7 和 v0.8 差在哪"],
+      "keywords":["项目","Web v0.8","Web 核心","v0.7","表单","同步","失败恢复"],
+      "diagnostic":"你能否从填写开始，展示错误、重试、保存和服务器重读？",
+      "hints":["保留 v0.7 的资源与幂等。","新增真实表单、四层校验、状态流和同步恢复。"],
+      "example":"输入 → 校验 → POST → 201 → 两个 GET → 新汇总和列表。",
+      "answer":"v0.8 把稳定 API 接到可操作页面，完成 Web 核心的契约、持久化、资源和表单数据流闭环。",
+      "source":{"label":"学习进度报告器 Web v0.8","href":"#project-dashboard-v08"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"career-form-recovery","lesson_id":"web-core-04","context_id":"career-explain-form-recovery",
+      "question":"求职时怎样讲表单与失败恢复？",
+      "aliases":["表单项目怎么讲得不只是做页面","结果未知怎样形成项目表达"],
+      "keywords":["求职","表单","失败恢复","结果未知","项目表达","幂等","状态同步"],
+      "diagnostic":"你能否指出每种失败对应的用户动作和测试？",
+      "hints":["先讲客户端与服务端为什么分别校验。","再讲断线保留意图、幂等重试和成功后服务器重读。"],
+      "example":"字段错误不请求 → 网络未知同键重试 → 已保存只重读 → 自动测试。",
+      "answer":"不要只说做了表单。用信任边界、状态流、结果未知、重复写入保护和回归测试说明你如何处理真实失败。",
+      "source":{"label":"讲清一次结果未知","href":"#career-explain-form-recovery"},"updated_at":"2026-07-18","recommended":true
+    }
+  ]
+}

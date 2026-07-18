@@ -1,0 +1,35 @@
+{
+  "lesson_id": "web-core-02",
+  "cases": [
+    {"query":"Web v0.6 最后能做出什么","expected_card":"web-v06-result"},
+    {"query":"为什么重启服务后小时数还在","expected_card":"web-v06-result"},
+    {"query":"内存字典和 SQLite 文件到底差在哪","expected_card":"memory-versus-persistence"},
+    {"query":"持久化是什么意思","expected_card":"memory-versus-persistence"},
+    {"query":"为什么学习者和学习时段要分两张表","expected_card":"two-table-relation"},
+    {"query":"一对多关系在这里是什么","expected_card":"two-table-relation"},
+    {"query":"主键和外键分别在保护什么","expected_card":"primary-foreign-key"},
+    {"query":"为什么 ghost 学习者写不进去","expected_card":"primary-foreign-key"},
+    {"query":"累计小时数是怎么从多条记录算出来的","expected_card":"left-join-sum"},
+    {"query":"LEFT JOIN 和 SUM 在这里做什么","expected_card":"left-join-sum"},
+    {"query":"SQL 为什么一定要用问号占位符","expected_card":"sql-placeholders"},
+    {"query":"能不能用 f-string 拼 SQL","expected_card":"sql-placeholders"},
+    {"query":"怎样证明记录真的持久化了","expected_card":"restart-verification"},
+    {"query":"只刷新页面能证明写进数据库吗","expected_card":"restart-verification"},
+    {"query":"with connection 什么时候提交什么时候回滚","expected_card":"transaction-commit-rollback"},
+    {"query":"SQLite connection 上下文会自动关闭吗","expected_card":"transaction-commit-rollback"},
+    {"query":"怎样把固定 1 小时改成自己的学习记录","expected_card":"modify-session-hours"},
+    {"query":"我想保存 0.75 小时要改哪里","expected_card":"modify-session-hours"},
+    {"query":"出现 unable to open database file 怎么办","expected_card":"sqlite-open-failure"},
+    {"query":"API 返回数据库 503 要看哪里","expected_card":"sqlite-open-failure"},
+    {"query":"Web v0.6 给项目增加了什么","expected_card":"project-web-v06"},
+    {"query":"v0.5 和 v0.6 差在哪","expected_card":"project-web-v06"},
+    {"query":"SQLite 适合这个项目但什么时候要换数据库","expected_card":"sqlite-fit-and-limit"},
+    {"query":"什么时候需要 PostgreSQL","expected_card":"sqlite-fit-and-limit"},
+    {"query":"求职时怎样讲这次 SQLite 改造","expected_card":"career-persistence-story"},
+    {"query":"数据库项目怎样讲出工程能力","expected_card":"career-persistence-story"}
+  ],
+  "unknown": [
+    "怎样让仙人掌在海底开花",
+    "企鹅为什么不使用滑板上班"
+  ]
+}

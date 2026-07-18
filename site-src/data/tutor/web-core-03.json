@@ -1,0 +1,177 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "web-core-03",
+    "title": "REST 资源、CRUD、分页与幂等",
+    "path": "learning-paths/web-fullstack/web-core/03-rest-resources-crud-pagination-idempotency/"
+  },
+  "contexts": [
+    {"id":"overview-one-request-one-record","type":"overview","title":"同一个请求发两次，只新增一条记录","anchor":"#overview-one-request-one-record"},
+    {"id":"concept-resource-urls","type":"concept","title":"URL 先说操作谁","anchor":"#concept-resource-urls"},
+    {"id":"example-methods-and-status","type":"example","title":"方法相同，重复后的含义也不同","anchor":"#example-methods-and-status"},
+    {"id":"concept-cursor-pagination","type":"concept","title":"一页只读两条","anchor":"#concept-cursor-pagination"},
+    {"id":"reproduce-dashboard-v07","type":"reproduce","title":"跑起来，连续发两次","anchor":"#reproduce-dashboard-v07"},
+    {"id":"example-update-delete-conflict","type":"example","title":"再试更新、删除和冲突","anchor":"#example-update-delete-conflict"},
+    {"id":"modify-own-rest-resource","type":"modify","title":"换成自己的记录","anchor":"#modify-own-rest-resource"},
+    {"id":"troubleshoot-rest-api","type":"troubleshoot","title":"结果不对时，从状态码往回查","anchor":"#troubleshoot-rest-api"},
+    {"id":"project-dashboard-v07","type":"project","title":"学习进度报告器 Web v0.7","anchor":"#project-dashboard-v07"},
+    {"id":"deepen-pagination-idempotency","type":"deepen","title":"这套实现还缺什么","anchor":"#deepen-pagination-idempotency"},
+    {"id":"career-explain-rest-failure","type":"career","title":"从一次重复写入讲接口可靠性","anchor":"#career-explain-rest-failure"}
+  ],
+  "cards": [
+    {
+      "id":"web-v07-result","lesson_id":"web-core-03","context_id":"overview-one-request-one-record",
+      "question":"Web v0.7 最后能做出什么？",
+      "aliases":["这节 REST 课会给项目加什么","为什么相同请求发两次只多一条"],
+      "keywords":["Web v0.7","REST","CRUD","分页","幂等","重复请求","结果"],
+      "diagnostic":"你现在只能追加学习时段，还是已经能查询、替换、删除并安全重试？",
+      "hints":["先把集合与单条记录设计成资源 URL。","再用游标翻页，并让相同幂等键返回原记录。"],
+      "example":"第一次 POST 返回 201，重放返回 200，两次 session_id 都是 5。",
+      "answer":"你会完成学习进度报告器 Web v0.7：资源化 CRUD、游标分页、状态码、Location 响应头和重复创建保护。",
+      "source":{"label":"同一个请求发两次，只新增一条记录","href":"#overview-one-request-one-record"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"resource-url-nouns","lesson_id":"web-core-03","context_id":"concept-resource-urls",
+      "question":"为什么 URL 用 study-sessions 而不是 create-session？",
+      "aliases":["REST 地址为什么用名词","资源 URL 该怎样命名"],
+      "keywords":["URL","study-sessions","create-session","名词","资源","HTTP 方法"],
+      "diagnostic":"动作已经由 POST、PUT、DELETE 表达了吗？",
+      "hints":["URL 先指出要操作的资源。","方法再表达读取、创建、替换或删除。"],
+      "example":"POST /api/learners/xiaoma/study-sessions。",
+      "answer":"资源 URL 用名词能让同一个地址配合不同 HTTP 方法；这比在每个地址里重复写动作更容易形成一致接口。",
+      "source":{"label":"URL 先说操作谁","href":"#concept-resource-urls"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"collection-item-resource","lesson_id":"web-core-03","context_id":"concept-resource-urls",
+      "question":"集合资源和单条资源有什么区别？",
+      "aliases":["为什么列表地址带 learner id","为什么更新用 session id"],
+      "keywords":["集合资源","单条资源","learner_id","session_id","列表","更新"],
+      "diagnostic":"你是在操作某位学习者的一组时段，还是已经知道某一条时段的 ID？",
+      "hints":["列表与创建从学习者下面的集合进入。","读取、替换和删除单条时使用稳定 session_id。"],
+      "example":"/learners/xiaoma/study-sessions 与 /study-sessions/5。",
+      "answer":"集合 URL 表达归属和列表范围；单条 URL 用稳定 ID 标识一个资源，便于 GET、PUT 和 DELETE 共用。",
+      "source":{"label":"URL 先说操作谁","href":"#concept-resource-urls"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"http-idempotent-effect","lesson_id":"web-core-03","context_id":"example-methods-and-status",
+      "question":"幂等是不是要求每次状态码都一样？",
+      "aliases":["DELETE 第二次 404 还算幂等吗","幂等到底比较什么"],
+      "keywords":["幂等","状态码","DELETE","404","最终效果","重复请求"],
+      "diagnostic":"你比较的是每次响应文字，还是请求对服务器产生的预期效果？",
+      "hints":["同一个 DELETE 执行一次或多次，资源最终都不存在。","响应可以从 204 变成 404，最终状态仍相同。"],
+      "example":"第一次 DELETE 204，第二次 404，记录最终不存在。",
+      "answer":"幂等关心多次相同请求与一次请求的预期效果相同，不要求每次响应状态和正文完全一样。",
+      "source":{"label":"方法相同，重复后的含义也不同","href":"#example-methods-and-status"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"post-idempotency-key","lesson_id":"web-core-03","context_id":"example-methods-and-status",
+      "question":"POST 为什么还要 Idempotency-Key？",
+      "aliases":["网络重试怎样避免重复写入","创建接口怎么防止多记一小时"],
+      "keywords":["POST","Idempotency-Key","网络重试","重复写入","一小时","创建"],
+      "diagnostic":"第一次请求可能已经提交，只是响应没回到客户端吗？",
+      "hints":["客户端用同一个键标识同一次创建意图。","服务端保存键并在重放时返回原资源。"],
+      "example":"my-rest-practice-001 连续提交两次，只创建 session_id 5。",
+      "answer":"POST 默认可能再次创建。项目用幂等键把重试关联到第一次成功写入，避免响应丢失后重复累计。",
+      "source":{"label":"方法相同，重复后的含义也不同","href":"#example-methods-and-status"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"idempotency-conflict","lesson_id":"web-core-03","context_id":"example-methods-and-status",
+      "question":"同一个幂等键换了请求内容会怎样？",
+      "aliases":["为什么返回 409 Conflict","同一个 key 能不能改 hours"],
+      "keywords":["幂等键","请求内容","409","Conflict","hours","冲突"],
+      "diagnostic":"这个键代表原意图重试，还是一个新的创建意图？",
+      "hints":["原意图重试应保持 learner、hours 与 note 相同。","内容不同就拒绝，不覆盖也不新建。"],
+      "example":"同一键先发 1.0 小时，再发 2.0 小时，第二次返回 409。",
+      "answer":"服务返回 409，原记录保持不变。新的创建意图应生成新键，不能复用旧键改变含义。",
+      "source":{"label":"方法相同，重复后的含义也不同","href":"#example-methods-and-status"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"cursor-after-id","lesson_id":"web-core-03","context_id":"concept-cursor-pagination",
+      "question":"after_id 游标怎样翻到下一页？",
+      "aliases":["下一页参数应该传什么","为什么第二页从 id 大于 2 开始"],
+      "keywords":["after_id","游标","下一页","id 大于 2","分页","limit"],
+      "diagnostic":"上一页最后一条记录的 ID 是多少？",
+      "hints":["第一页 after_id=0。","把上一页最后一个 ID 作为下一页 after_id。"],
+      "example":"第一页返回 1、2 和 next_after_id=2；下一页查询 id > 2。",
+      "answer":"游标保存已经读到的位置。服务按递增 ID 查询后面的记录，并返回下一次需要使用的游标。",
+      "source":{"label":"一页只读两条","href":"#concept-cursor-pagination"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"limit-plus-one","lesson_id":"web-core-03","context_id":"concept-cursor-pagination",
+      "question":"分页为什么要读取 limit 加一条？",
+      "aliases":["怎样知道还有下一页","为什么不先 COUNT 全表"],
+      "keywords":["limit + 1","下一页","COUNT","多取一条","分页"],
+      "diagnostic":"页面需要总条数，还是只需要知道后面还有没有？",
+      "hints":["多出的记录不返回给页面。","它只用来判断 next_after_id 是否存在。"],
+      "example":"limit=2 时读取最多 3 条，展示前 2 条。",
+      "answer":"多取一条能用同一次查询判断是否还有后续页，当前场景不需要额外统计全部记录。",
+      "source":{"label":"一页只读两条","href":"#concept-cursor-pagination"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"pagination-index","lesson_id":"web-core-03","context_id":"concept-cursor-pagination",
+      "question":"为什么索引是 learner_id 和 id？",
+      "aliases":["分页索引怎样匹配查询","组合索引在这里帮了什么"],
+      "keywords":["索引","learner_id","id","组合索引","WHERE","ORDER BY"],
+      "diagnostic":"查询先按哪个字段筛选，再按哪个字段比较和排序？",
+      "hints":["先固定 learner_id。","再读取 id 大于游标的递增记录。"],
+      "example":"CREATE INDEX ... ON study_sessions(learner_id, id)。",
+      "answer":"组合索引顺序与 WHERE learner_id、id > cursor 和 ORDER BY id 的访问方式一致，减少无关扫描。",
+      "source":{"label":"一页只读两条","href":"#concept-cursor-pagination"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"run-v07-replay","lesson_id":"web-core-03","context_id":"reproduce-dashboard-v07",
+      "question":"怎样亲手证明重复请求只写入一次？",
+      "aliases":["v0.7 重放实验怎么做","只看 replayed true 够不够"],
+      "keywords":["证明","重复请求","写入一次","201","200","session_id","记录数"],
+      "diagnostic":"你是否同时比较了两次响应 ID 和数据库记录数？",
+      "hints":["用同一个键连续发送相同 POST。","确认第一次 201、第二次 200、ID 相同且只新增一行。"],
+      "example":"201 false #5 → 200 true #5 → session_count 只加 1。",
+      "answer":"响应字段只是线索；完整证明还要由后端测试或查询确认数据库没有第二条记录。",
+      "source":{"label":"跑起来，连续发两次","href":"#reproduce-dashboard-v07"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"put-delete-repeat","lesson_id":"web-core-03","context_id":"example-update-delete-conflict",
+      "question":"PUT 和 DELETE 重复执行后应该看到什么？",
+      "aliases":["PUT 为什么不会把小时数累加","DELETE 第二次为什么 404"],
+      "keywords":["PUT","DELETE","重复执行","小时数","204","404","替换"],
+      "diagnostic":"PUT 是替换成目标值，还是在旧值上做加法？",
+      "hints":["同一 PUT 两次都把资源设成同一内容。","DELETE 第一次移除，第二次找不到，但最终都不存在。"],
+      "example":"PUT 1.5 两次仍为 1.5；DELETE 得到 204 后再得 404。",
+      "answer":"本课用完整替换实现 PUT；DELETE 的重复响应可以不同，但服务器最终资源状态相同。",
+      "source":{"label":"再试更新、删除和冲突","href":"#example-update-delete-conflict"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"seed-resurrection-bug","lesson_id":"web-core-03","context_id":"troubleshoot-rest-api",
+      "question":"为什么删除后演示记录又自己回来了？",
+      "aliases":["DELETE 后数据复活怎么查","种子数据为什么不能每次请求都补"],
+      "keywords":["删除","记录回来","复活","种子数据","初始化","每次请求"],
+      "diagnostic":"数据库初始化是否在每次方法调用时重新 INSERT 演示行？",
+      "hints":["先测试连续 DELETE 的最终状态。","只在空数据库第一次创建时写入演示数据。"],
+      "example":"旧实现删除 id 1 后，下一次 initialize 又 INSERT OR IGNORE id 1。",
+      "answer":"这是初始化契约错误，不是 DELETE 失效。修复后保留建表检查，但不在已有数据库中反复补种子。",
+      "source":{"label":"结果不对时，从状态码往回查","href":"#troubleshoot-rest-api"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"project-web-v07","lesson_id":"web-core-03","context_id":"project-dashboard-v07",
+      "question":"Web v0.7 给学习进度报告器增加了什么？",
+      "aliases":["v0.6 和 v0.7 差在哪","项目怎样从 SQLite 走到 REST"],
+      "keywords":["项目","Web v0.7","v0.6","REST","CRUD","分页","幂等"],
+      "diagnostic":"你能否展示资源 URL、两页数据和一次安全重放？",
+      "hints":["保留 v0.6 的关系模型与事务。","新增资源路由、游标、组合索引和幂等键。"],
+      "example":"SQLite 持久化 → REST CRUD → after_id 分页 → 重放不重复。",
+      "answer":"v0.7 让数据库能力变成一致、可测试的 HTTP 资源接口，为下一节真实表单和前后端状态同步提供稳定后端。",
+      "source":{"label":"学习进度报告器 Web v0.7","href":"#project-dashboard-v07"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"career-rest-story","lesson_id":"web-core-03","context_id":"career-explain-rest-failure",
+      "question":"求职时怎样讲这次 REST 和幂等改造？",
+      "aliases":["接口项目怎样讲得不只是 CRUD","重复写入故障怎样形成项目表达"],
+      "keywords":["求职","REST","幂等","项目表达","重复写入","故障","测试"],
+      "diagnostic":"你能否从一次真实失败讲到约束和回归测试？",
+      "hints":["先说响应丢失为什么会触发重复创建。","再说客户端意图键、数据库唯一约束、409 和测试。"],
+      "example":"故障 → 资源设计 → 唯一约束 → 重放原资源 → 冲突拒绝 → 回归测试。",
+      "answer":"不要只列 GET、POST、PUT、DELETE。用重复写入问题、设计选择、失败路径和自动测试说明接口可靠性。",
+      "source":{"label":"从一次重复写入讲接口可靠性","href":"#career-explain-rest-failure"},"updated_at":"2026-07-18","recommended":true
+    }
+  ]
+}

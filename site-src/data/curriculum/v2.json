@@ -2,7 +2,7 @@
   "version": 2,
   "updated_at": "2026-07-18",
   "authority": "learning-paths/curriculum-map.md",
-  "course_count": 60,
+  "course_count": 62,
   "lesson_roots": [
     "learning-paths/engineering-foundation/stage-0",
     "learning-paths/programming-languages/python-basics",
@@ -121,6 +121,8 @@
     {"id":"web-start-02","title":"CSS 布局、视觉层级与手机适配","url":"learning-paths/web-fullstack/web-start/02-css-layout-responsive-dashboard.md","module_id":"web-start","content_status":"已开放"},
     {"id":"web-start-03","title":"JavaScript 事件、DOM 与页面状态","url":"learning-paths/web-fullstack/web-start/03-javascript-events-dom-page-state.md","module_id":"web-start","content_status":"已开放"},
     {"id":"web-start-04","title":"HTTP、JSON 与本地 API","url":"learning-paths/web-fullstack/web-start/04-http-json-local-api.md","module_id":"web-start","content_status":"已开放"},
-    {"id":"web-core-01","title":"TypeScript、OpenAPI 与运行时数据契约","url":"learning-paths/web-fullstack/web-core/01-typescript-openapi-runtime-contract.md","module_id":"web-core","content_status":"已开放"}
+    {"id":"web-core-01","title":"TypeScript、OpenAPI 与运行时数据契约","url":"learning-paths/web-fullstack/web-core/01-typescript-openapi-runtime-contract.md","module_id":"web-core","content_status":"已开放"},
+    {"id":"web-core-02","title":"关系模型、SQLite 与持久化边界","url":"learning-paths/web-fullstack/web-core/02-relational-model-sqlite-persistence.md","module_id":"web-core","content_status":"已开放"},
+    {"id":"web-core-03","title":"REST 资源、CRUD、分页与幂等","url":"learning-paths/web-fullstack/web-core/03-rest-resources-crud-pagination-idempotency.md","module_id":"web-core","content_status":"已开放"}
   ]
 }

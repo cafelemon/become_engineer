@@ -10,7 +10,7 @@
 
 [开始学习](beginner-roadmap.md){ .md-button .md-button--primary }
 [让小码规划路线](../README.md#learning-assessment){ .md-button }
-[直接看 59 节明细](#opened-lessons){ .md-button }
+[直接看 62 节明细](#opened-lessons){ .md-button }
 
 </div>
 
@@ -25,7 +25,7 @@
   <div><strong>衔接状态</strong><span>可顺序进入 · 缺少起步层 · 等待前置 · 方向可选</span></div>
 </div>
 
-当前正式课程共 **60 节**：工程基础 10 节、Python 起步 7 节、CS 起步 4 节、Python 核心与工程化 7 节、C++ 起步 2 节、C++ 核心 3 节、算法基础与核心 22 节、Web 起步 4 节、Web 核心 1 节。既有课程 URL 没有改变；新方向只在正式正文、示例和验收同时完成后增加课程。
+当前正式课程共 **62 节**：工程基础 10 节、Python 起步 7 节、CS 起步 4 节、Python 核心与工程化 7 节、C++ 起步 2 节、C++ 核心 3 节、算法基础与核心 22 节、Web 起步 4 节、Web 核心 3 节。既有课程 URL 没有改变；新方向只在正式正文、示例和验收同时完成后增加课程。
 
 ## 四类用户共用一棵能力树
 
@@ -68,7 +68,7 @@
       <a href="#module-python-core" data-status="open">Python 核心</a>
       <a href="#module-python-engineering" data-status="open">Python 工程化</a>
       <a href="#module-web-start" data-status="open">Web 起步 · 4 / 4</a>
-      <a href="#module-web-core" data-status="building">Web 核心 · 1 / 4</a>
+      <a href="#module-web-core" data-status="building">Web 核心 · 3 / 4</a>
       <a href="#module-web-engineering" data-status="planned">Web 工程化</a>
     </section>
     <section>
@@ -139,7 +139,7 @@
 | <span id="module-python-core">Python 核心</span> | 核心 | 方向主干 | 类型、协议、数据模型与资源边界 | Python 起步 → Python 工程化 | 应用、AI、LLM 方向优先 | 已开放 | 方向可选 |
 | <span id="module-python-engineering">Python 工程化</span> | 工程化 | 方向主干 | 可安装包、CLI、配置和诊断 | Python 核心 → Web、LLM 应用 | 应用、AI、LLM 方向优先；求职追加证据问答 | 已开放 | 可顺序进入 |
 | <span id="module-web-start">Web 起步</span> | 起步 | 方向主干 | HTML、CSS、页面状态与本地 API 的首次闭环 | Python 起步 → Web 核心 | A/C 完整；B/D 按 HTML、CSS、JS 与 HTTP 缺口补修；求职画像追加项目解释 | 已开放 · 4/4 | 方向可选 |
-| <span id="module-web-core">Web 核心</span> | 核心 | 方向主干 | TypeScript 运行时契约、持久化、REST 资源与表单状态 | Web 起步 + Python 工程化 → Web 工程化 | A/C 按顺序；B/D 可按契约、数据库与表单缺口补修；求职画像追加故障复盘 | 建设中 · 1/4 | 可顺序进入 |
+| <span id="module-web-core">Web 核心</span> | 核心 | 方向主干 | TypeScript 运行时契约、持久化、REST 资源与表单状态 | Web 起步 + Python 工程化 → Web 工程化 | A/C 按顺序；B/D 可按契约、数据库、资源与表单缺口补修；求职画像追加故障复盘 | 建设中 · 3/4 | 可顺序进入 |
 | <span id="module-web-engineering">Web 工程化</span> | 工程化 | 能力深化 | 测试、认证、发布与可观测应用 | Web 核心 → RAG/Agent | 兴趣按项目选；求职路线重点 | 已规划未建设 | 等待前置 |
 | <span id="module-cpp-start">C++ 起步</span> | 起步 | 方向主干 | 从源码、编译到首次运行和函数组织 | 方向选择 → C++ 核心 | 系统、性能、设备方向进入 | 已开放 | 可顺序进入 |
 | <span id="module-cpp-core">C++ 核心</span> | 核心 | 方向主干 | 多文件构建、STL、生命周期与 RAII | C++ 起步 → 系统工程、设备基础 | 系统方向主干；其他方向可选 | 已开放 | 可顺序进入 |
@@ -174,7 +174,7 @@
 
 ## 已开放课程明细 { #opened-lessons }
 
-以下 **60 节课程各出现一次**。既有 55 节已完成 V2 迁移；Web 起步四课已经完成，Web 核心开始建设。
+以下 **62 节课程各出现一次**。既有 55 节已完成 V2 迁移；Web 起步四课已经完成，Web 核心已开放运行时契约、SQLite 持久化与 REST 资源三课。
 
 ### 工程基础起步 · 10 节
 
@@ -216,9 +216,11 @@
 3. [JavaScript 事件、DOM 与页面状态](web-fullstack/web-start/03-javascript-events-dom-page-state.md) · 已开放
 4. [HTTP、JSON 与本地 API](web-fullstack/web-start/04-http-json-local-api.md) · 已开放
 
-### Web 核心 · 1 节
+### Web 核心 · 3 节
 
 1. [TypeScript、OpenAPI 与运行时数据契约](web-fullstack/web-core/01-typescript-openapi-runtime-contract.md) · 已开放
+2. [关系模型、SQLite 与持久化边界](web-fullstack/web-core/02-relational-model-sqlite-persistence.md) · 已开放
+3. [REST 资源、CRUD、分页与幂等](web-fullstack/web-core/03-rest-resources-crud-pagination-idempotency.md) · 已开放
 
 ### C++ 起步 · 2 节
 
@@ -271,7 +273,7 @@
 以下只登记稳定模块，不提前虚构课名和课数：
 
 - **共同基座缺口**：首个可验证项目与方向选择的公开汇总入口；CS 起步四课已经开放。
-- **应用工程**：Web 起步四课已经完成；Web 核心已开放 TypeScript、OpenAPI 与运行时契约，后续继续持久化、REST 资源与表单状态，再进入 Web 工程化。
+- **应用工程**：Web 起步四课已经完成；Web 核心已开放运行时契约、SQLite 持久化与 REST 资源，后续完成表单状态，再进入 Web 工程化。
 - **系统工程**：C++ 起步与核心已经开放；继续建设操作系统／网络／数据库核心，以及系统编程、并发、网络与性能。
 - **算法**：算法深化，以及只对求职画像默认叠加的机考、限时模拟与复盘。
 - **AI 模型**：数学数据实验、机器学习、深度学习，再分强化学习、视觉、NLP/Transformer、多模态等方向。
@@ -282,8 +284,8 @@
 ## 接下来怎么推进
 
 1. 55 节既有课程已经完成 V2 迁移；后续按依赖关系建设新的连续课程组。
-2. Web 起步四课已经完成，Web 核心第一课把学习进度报告器升级为 v0.5 契约边界。
-3. 继续完成 Web 核心的持久化、REST 资源与表单状态；CS 系统基础作为并行深化线，进入认证、并发与部署前汇合。
+2. Web 起步四课已经完成；Web 核心前三课把学习进度报告器升级为 v0.7，具备运行时契约、SQLite 持久化、资源 CRUD、游标分页与重复写入保护。
+3. 继续完成 Web 核心的表单状态；CS 系统基础作为并行深化线，进入认证、并发与部署前汇合。
 4. 每新增一节正式课程，同时更新正文、示例、知识库、测试、项目关系、课程登记和公开状态；禁止只增加空页面或目录标题。
 
 设备方向的硬件门槛与三级出口见[设备系统与边缘智能](device-edge-systems/README.md)。公开课程登记的机器可校验版本位于 `site-src/data/curriculum/v2.json`，但学习者只需要使用本页。

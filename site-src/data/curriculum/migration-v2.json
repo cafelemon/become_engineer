@@ -24,7 +24,7 @@
     {"id":"b06-algorithm-foundation","order":6,"title":"共同算法与数据结构基础","lesson_count":16,"prerequisite_modules":["cs-start"],"completion_gate":"用轨迹、操作计数和边界测试掌握常用结构、查找排序、递归、BFS 与 DFS。"},
     {"id":"b07-algorithm-core","order":7,"title":"算法核心","lesson_count":6,"prerequisite_modules":["algorithm-foundation"],"completion_gate":"完成堆、优先队列、最短路、并查集和最小生成森林的实现、解释与迁移。"},
     {"id":"b08-web-start","order":8,"title":"Web 起步","lesson_count":4,"prerequisite_modules":["python-start"],"completion_gate":"从浏览器和 HTML 文档开始，持续演进学习进度报告器 Web，并完成页面状态与本地 API 的第一次闭环。"},
-    {"id":"b09-web-core","order":9,"title":"Web 核心","lesson_count":1,"prerequisite_modules":["web-start","python-engineering"],"completion_gate":"当前已完成 TypeScript、OpenAPI 与运行时契约；待持久化、REST 资源和表单状态三课完成后关闭课程组。"}
+    {"id":"b09-web-core","order":9,"title":"Web 核心","lesson_count":3,"prerequisite_modules":["web-start","python-engineering"],"completion_gate":"当前已完成运行时契约、SQLite 持久化与 REST 资源；待表单状态一课完成后关闭课程组。"}
   ],
   "tutor_lesson_ids": {
     "engineering-01":"engineering-foundation-01",
@@ -86,7 +86,9 @@
     "web-start-02":"web-start-02",
     "web-start-03":"web-start-03",
     "web-start-04":"web-start-04",
-    "web-core-01":"web-core-01"
+    "web-core-01":"web-core-01",
+    "web-core-02":"web-core-02",
+    "web-core-03":"web-core-03"
   },
   "lessons": [
     {"id":"engineering-01","target_module_id":"engineering-start","target_depth":"起步","target_role":"共同基座","course_type":"tool-operation","project_line":"engineering-learning-workspace","batch_id":"b01-engineering-start","prerequisite_lesson_ids":[],"migration_status":"已迁移","migration_kind":"重写讲解与复现路径"},
@@ -155,6 +157,8 @@
     {"id":"web-start-02","target_module_id":"web-start","target_depth":"起步","target_role":"方向主干","course_type":"web-llm-agent","project_line":"learning-dashboard-web","batch_id":"b08-web-start","prerequisite_lesson_ids":["web-start-01"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
     {"id":"web-start-03","target_module_id":"web-start","target_depth":"起步","target_role":"方向主干","course_type":"web-llm-agent","project_line":"learning-dashboard-web","batch_id":"b08-web-start","prerequisite_lesson_ids":["web-start-02"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
     {"id":"web-start-04","target_module_id":"web-start","target_depth":"起步","target_role":"方向主干","course_type":"web-llm-agent","project_line":"learning-dashboard-web","batch_id":"b08-web-start","prerequisite_lesson_ids":["web-start-03"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
-    {"id":"web-core-01","target_module_id":"web-core","target_depth":"核心","target_role":"方向主干","course_type":"web-llm-agent","project_line":"learning-dashboard-web","batch_id":"b09-web-core","prerequisite_lesson_ids":["web-start-04","python-core-07"],"migration_status":"已迁移","migration_kind":"新建正式课程"}
+    {"id":"web-core-01","target_module_id":"web-core","target_depth":"核心","target_role":"方向主干","course_type":"web-llm-agent","project_line":"learning-dashboard-web","batch_id":"b09-web-core","prerequisite_lesson_ids":["web-start-04","python-core-07"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"web-core-02","target_module_id":"web-core","target_depth":"核心","target_role":"方向主干","course_type":"web-llm-agent","project_line":"learning-dashboard-web","batch_id":"b09-web-core","prerequisite_lesson_ids":["web-core-01"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"web-core-03","target_module_id":"web-core","target_depth":"核心","target_role":"方向主干","course_type":"web-llm-agent","project_line":"learning-dashboard-web","batch_id":"b09-web-core","prerequisite_lesson_ids":["web-core-02"],"migration_status":"已迁移","migration_kind":"新建正式课程"}
   ]
 }
