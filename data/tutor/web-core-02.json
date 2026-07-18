@@ -1,0 +1,166 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "web-core-02",
+    "title": "关系模型、SQLite 与持久化边界",
+    "path": "learning-paths/web-fullstack/web-core/02-relational-model-sqlite-persistence/"
+  },
+  "contexts": [
+    {"id":"overview-restart-keeps-data","type":"overview","title":"服务停了再开，刚才的 1 小时还在","anchor":"#overview-restart-keeps-data"},
+    {"id":"concept-memory-and-disk","type":"concept","title":"内存字典和数据库文件差在哪","anchor":"#concept-memory-and-disk"},
+    {"id":"concept-two-related-tables","type":"concept","title":"为什么分成两张表","anchor":"#concept-two-related-tables"},
+    {"id":"example-placeholders","type":"example","title":"SQL 和数据不要自己拼在一起","anchor":"#example-placeholders"},
+    {"id":"reproduce-dashboard-v06","type":"reproduce","title":"保存一次，再重启服务","anchor":"#reproduce-dashboard-v06"},
+    {"id":"example-transaction-boundary","type":"example","title":"两个动作要么都成功，要么都不留下","anchor":"#example-transaction-boundary"},
+    {"id":"modify-own-session","type":"modify","title":"把固定的 1 小时改成自己的记录","anchor":"#modify-own-session"},
+    {"id":"troubleshoot-sqlite","type":"troubleshoot","title":"没得到同样结果时","anchor":"#troubleshoot-sqlite"},
+    {"id":"project-dashboard-v06","type":"project","title":"学习进度报告器 Web v0.6","anchor":"#project-dashboard-v06"},
+    {"id":"deepen-sqlite-and-migrations","type":"deepen","title":"SQLite 能用到什么时候","anchor":"#deepen-sqlite-and-migrations"},
+    {"id":"career-explain-persistence","type":"career","title":"不要只说项目用了 SQLite","anchor":"#career-explain-persistence"}
+  ],
+  "cards": [
+    {
+      "id":"web-v06-result","lesson_id":"web-core-02","context_id":"overview-restart-keeps-data",
+      "question":"Web v0.6 最后能做出什么？",
+      "aliases":["这节 SQLite 课会留下什么","为什么重启服务后小时数还在"],
+      "keywords":["Web v0.6","SQLite","重启","小时数","持久化","结果"],
+      "diagnostic":"你现在修改的数据是在 Python 字典里，还是已经写进数据库文件？",
+      "hints":["先保存一条学习时段，再停止 Uvicorn。","重新启动后 GET 仍能汇总出新的小时数。"],
+      "example":"7.5 小时 → 保存 1 小时 → 重启 → 8.5 小时。",
+      "answer":"你会完成学习进度报告器 Web v0.6：两张关系表、SQLite 持久化、参数化 SQL、事务回滚，以及重启后仍能读取的学习时段。",
+      "source":{"label":"服务停了再开，刚才的 1 小时还在","href":"#overview-restart-keeps-data"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"memory-versus-persistence","lesson_id":"web-core-02","context_id":"concept-memory-and-disk",
+      "question":"内存字典和 SQLite 文件到底差在哪？",
+      "aliases":["为什么 Python 进程一停数据就没了","持久化是什么意思"],
+      "keywords":["内存","字典","SQLite 文件","进程","持久化","重启"],
+      "diagnostic":"数据的寿命现在是否依赖这个 Python 进程还活着？",
+      "hints":["字典属于进程内存。","SQLite 把记录写入磁盘文件，新进程可以重新连接读取。"],
+      "example":"SUMMARIES 修改会随进程结束消失；learning.sqlite3 不会因普通重启消失。",
+      "answer":"持久化让数据寿命脱离当前进程，但不等于永不丢失；备份、迁移和文件损坏仍要单独处理。",
+      "source":{"label":"内存字典和数据库文件差在哪","href":"#concept-memory-and-disk"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"two-table-relation","lesson_id":"web-core-02","context_id":"concept-two-related-tables",
+      "question":"为什么学习者和学习时段要分两张表？",
+      "aliases":["一张表存所有小时数不行吗","一对多关系在这里是什么"],
+      "keywords":["learners","study_sessions","两张表","一对多","关系模型","重复"],
+      "diagnostic":"一位学习者会有固定一条学习时段，还是会不断新增很多条？",
+      "hints":["学习者信息相对稳定。","每次投入是可追加的独立事件，用 learner_id 关联。"],
+      "example":"learners 的 xiaoma 对应 study_sessions 中多行 xiaoma。",
+      "answer":"拆表避免 hours_1、hours_2 这类重复列，让每次学习成为独立行，并通过外键保持归属关系。",
+      "source":{"label":"为什么分成两张表","href":"#concept-two-related-tables"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"primary-foreign-key","lesson_id":"web-core-02","context_id":"concept-two-related-tables",
+      "question":"主键和外键分别在保护什么？",
+      "aliases":["PK 和 FK 怎么理解","为什么 ghost 学习者写不进去"],
+      "keywords":["主键","外键","PK","FK","唯一","ghost","PRAGMA foreign_keys"],
+      "diagnostic":"你要保证的是本表不重复，还是跨表引用一定存在？",
+      "hints":["主键唯一标识 learners 的一行。","外键要求 study_sessions.learner_id 能在 learners.id 中找到。"],
+      "example":"ghost 不在 learners 中，插入对应 session 会被拒绝。",
+      "answer":"主键保证本表身份唯一；外键保护跨表的存在关系。SQLite 示例在每次连接时开启 foreign_keys。",
+      "source":{"label":"为什么分成两张表","href":"#concept-two-related-tables"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"left-join-sum","lesson_id":"web-core-02","context_id":"concept-two-related-tables",
+      "question":"累计小时数是怎么从多条记录算出来的？",
+      "aliases":["LEFT JOIN 和 SUM 在这里做什么","没有学习时段为什么还能返回 0"],
+      "keywords":["LEFT JOIN","SUM","COALESCE","累计小时","聚合","0.0"],
+      "diagnostic":"页面小时数来自 learners 的固定列，还是 study_sessions 的多行汇总？",
+      "hints":["JOIN 先按 learner_id 连接。","SUM 求和，COALESCE 把没有记录的 NULL 变成 0.0。"],
+      "example":"7.5 + 1.0 经 SUM 得到 8.5。",
+      "answer":"查询连接学习者与其所有学习时段，再用 SUM 聚合；LEFT JOIN 保留没有时段的学习者。",
+      "source":{"label":"为什么分成两张表","href":"#concept-two-related-tables"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"sql-placeholders","lesson_id":"web-core-02","context_id":"example-placeholders",
+      "question":"SQL 为什么一定要用问号占位符？",
+      "aliases":["能不能用 f-string 拼 SQL","参数化查询怎样防止输入改 SQL"],
+      "keywords":["SQL","占位符","问号","参数化查询","f-string","注入","绑定"],
+      "diagnostic":"learner_id 现在是 SQL 结构的一部分，还是独立传给驱动的数据？",
+      "hints":["SQL 字符串只写固定结构。","用户值放在第二个参数元组中交给驱动绑定。"],
+      "example":"execute('WHERE id = ?', (learner_id,))。",
+      "answer":"占位符分开查询结构和输入值，避免引号等字符改变 SQL 含义；不要用 f-string 或加号拼用户输入。",
+      "source":{"label":"SQL 和数据不要自己拼在一起","href":"#example-placeholders"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"restart-verification","lesson_id":"web-core-02","context_id":"reproduce-dashboard-v06",
+      "question":"怎样证明记录真的持久化了？",
+      "aliases":["重启实验具体怎么做","只刷新页面能证明写进数据库吗"],
+      "keywords":["证明","持久化","停止服务","重新启动","GET","POST","8.5"],
+      "diagnostic":"你只是重新渲染页面，还是已经让原来的 Python 进程结束？",
+      "hints":["先 POST 保存并记下总小时数。","按 Ctrl+C 停止 Uvicorn，重新启动后再 GET。"],
+      "example":"GET 7.5 → POST 1.0 → Ctrl+C → 重启 → GET 8.5。",
+      "answer":"刷新页面只能证明当前进程能读到数据；完整证明要结束服务、建立新进程并重新查询同一数据库文件。",
+      "source":{"label":"保存一次，再重启服务","href":"#reproduce-dashboard-v06"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"transaction-commit-rollback","lesson_id":"web-core-02","context_id":"example-transaction-boundary",
+      "question":"with connection 什么时候提交，什么时候回滚？",
+      "aliases":["事务失败为什么不会留下半条数据","SQLite connection 上下文会自动关闭吗"],
+      "keywords":["事务","with connection","commit","rollback","回滚","close","半条数据"],
+      "diagnostic":"with 块是正常结束，还是有异常继续抛出？连接最后有没有显式关闭？",
+      "hints":["正常退出时提交，未捕获异常时回滚。","连接上下文不负责 close，示例在 finally 中关闭。"],
+      "example":"先 INSERT，再执行不存在表的 SQL；异常后记录数量不变。",
+      "answer":"事务把一组变化作为整体处理。Python 的连接上下文会提交或回滚打开的事务，但连接仍需显式关闭。",
+      "source":{"label":"两个动作要么都成功，要么都不留下","href":"#example-transaction-boundary"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"modify-session-hours","lesson_id":"web-core-02","context_id":"modify-own-session",
+      "question":"怎样把固定 1 小时改成自己的学习记录？",
+      "aliases":["我想保存 0.75 小时要改哪里","主动修改这节应该做什么"],
+      "keywords":["修改","0.75","学习记录","note","saveStudySession","预测"],
+      "diagnostic":"你准备修改小时数、备注，还是数据库结构？",
+      "hints":["先只改 saveStudySession 的 hours 与 note。","运行测试，再保存、重启并核对总数。"],
+      "example":"saveStudySession(activeLearnerId, 0.75, '补回滚测试')。",
+      "answer":"先做小改动：换成真实小时数和备注，预测新总数，再检查 201、页面刷新、重启读取和负数 422。",
+      "source":{"label":"把固定的 1 小时改成自己的记录","href":"#modify-own-session"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"sqlite-open-failure","lesson_id":"web-core-02","context_id":"troubleshoot-sqlite",
+      "question":"出现 unable to open database file 怎么办？",
+      "aliases":["SQLite 文件打不开怎么查","API 返回数据库 503 要看哪里"],
+      "keywords":["unable to open database file","SQLite","503","路径","权限","目录"],
+      "diagnostic":"数据库路径的父目录能否创建，目标路径本身是不是一个目录？",
+      "hints":["先确认从项目根目录运行以及 data 目录权限。","再检查 LEARNING_DB_PATH 是否指向文件位置。"],
+      "example":"把目录路径误当数据库文件会得到可读的 503。",
+      "answer":"先查路径和权限，不要反复改 SQL。示例会把 sqlite3.Error 转成 503，测试也覆盖了不可打开路径。",
+      "source":{"label":"没得到同样结果时","href":"#troubleshoot-sqlite"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"project-web-v06","lesson_id":"web-core-02","context_id":"project-dashboard-v06",
+      "question":"Web v0.6 给项目增加了什么？",
+      "aliases":["v0.5 和 v0.6 差在哪","学习进度报告器怎样接入数据库"],
+      "keywords":["项目","Web v0.6","v0.5","SQLite","关系表","事务","重启"],
+      "diagnostic":"你能否同时展示关系结构、成功写入、重启读取和失败回滚？",
+      "hints":["保留 v0.5 的前后端契约。","把内存字典替换成 SQLite，并新增追加时段接口与测试。"],
+      "example":"TypeScript 守卫 → FastAPI → LearningDatabase → learning.sqlite3。",
+      "answer":"v0.6 让项目从可靠接收 JSON 进入可靠保存数据，并为下一节 REST 资源、CRUD 和幂等建立存储基础。",
+      "source":{"label":"学习进度报告器 Web v0.6","href":"#project-dashboard-v06"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"sqlite-fit-and-limit","lesson_id":"web-core-02","context_id":"deepen-sqlite-and-migrations",
+      "question":"SQLite 适合这个项目，但什么时候要换数据库？",
+      "aliases":["SQLite 是不是只能做小白项目","什么时候需要 PostgreSQL"],
+      "keywords":["SQLite","PostgreSQL","适合","限制","多实例","并发","迁移"],
+      "diagnostic":"当前系统是本机单进程少量写入，还是多实例、高并发和在线运维？",
+      "hints":["先根据部署和写入方式判断，不按项目听起来大不大判断。","换数据库前要保住应用接口、事务语义和测试。"],
+      "example":"本地学习面板适合 SQLite；多实例服务需要重新评估独立数据库。",
+      "answer":"SQLite 是成熟的嵌入式数据库。当前场景搭建简单；需求进入多实例、持续并发写入和复杂运维后，再评估 PostgreSQL 等方案。",
+      "source":{"label":"SQLite 能用到什么时候","href":"#deepen-sqlite-and-migrations"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"career-persistence-story","lesson_id":"web-core-02","context_id":"career-explain-persistence",
+      "question":"求职时怎样讲这次 SQLite 改造？",
+      "aliases":["数据库项目怎样讲出工程能力","不要只说用了 SQLite 应该说什么"],
+      "keywords":["求职","SQLite 改造","项目表达","关系模型","参数化","回滚","测试"],
+      "diagnostic":"你能否讲清原问题、设计选择、失败路径和回归证明？",
+      "hints":["先说内存数据重启丢失和两表关系。","再说占位符、双层约束、事务回滚与测试。"],
+      "example":"问题 → 关系建模 → 安全写入 → 失败回滚 → 重启与测试证明。",
+      "answer":"用一条真实改进链解释可靠性，不要只列 SQL 关键字或数据库名称。代码和测试要能支撑每个判断。",
+      "source":{"label":"不要只说项目用了 SQLite","href":"#career-explain-persistence"},"updated_at":"2026-07-18"
+    }
+  ]
+}

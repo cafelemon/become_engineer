@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>学习进度报告器 Web v0.8</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="dist/main.js"></script>
+  </head>
+  <body>
+    <main>
+      <article class="study-card" aria-labelledby="profile-title">
+        <p class="eyebrow">学习进度报告器 Web v0.8</p>
+        <h1 id="profile-title" data-field="title">小码的学习面板</h1>
+        <p class="intro" data-field="description">正在学习 Python 与 Web，希望把练习做成可以展示的作品。</p>
+
+        <div class="api-note">
+          <span class="api-dot" aria-hidden="true"></span>
+          <p><strong>页面与服务器保持同步</strong><br>当前学习者：<code data-active-learner>xiaoma</code></p>
+        </div>
+
+        <div class="profile-controls" aria-label="选择学习者">
+          <button type="button" data-profile-id="xiaoma" aria-pressed="true">小码</button>
+          <button type="button" data-profile-id="afei" aria-pressed="false">阿飞</button>
+          <button type="button" data-profile-id="nobody" aria-pressed="false">不存在的记录</button>
+        </div>
+
+        <p class="notice" role="status" data-view-status data-kind="loading">正在读取小码的汇总……</p>
+
+        <div data-view-content hidden>
+          <dl class="metrics">
+            <div><dt>已完成课程</dt><dd data-field="completed-lessons">8 节</dd></div>
+            <div><dt>累计投入</dt><dd data-field="hours">7.5 小时</dd></div>
+            <div><dt>当前状态</dt><dd data-field="status">按计划推进</dd></div>
+            <div><dt>下一个里程碑</dt><dd data-field="next-milestone">把学习时段表单接入完整数据流</dd></div>
+          </dl>
+
+          <section class="form-panel" aria-labelledby="form-title">
+            <div class="section-heading">
+              <div>
+                <h2 id="form-title">记一条学习时段</h2>
+                <p>先在浏览器检查，再交给服务器确认。</p>
+              </div>
+            </div>
+
+            <form data-session-form novalidate>
+              <div class="field-grid">
+                <label for="session-hours">学习小时</label>
+                <input
+                  id="session-hours"
+                  name="hours"
+                  type="number"
+                  min="0.25"
+                  max="24"
+                  step="0.25"
+                  value="1.25"
+                  inputmode="decimal"
+                  aria-describedby="hours-help hours-error"
+                  data-input-hours
+                  required>
+                <small id="hours-help">按 0.25 小时递增，最多 24 小时。</small>
+                <p id="hours-error" class="field-error" data-error-hours role="alert" hidden></p>
+              </div>
+
+              <div class="field-grid">
+                <label for="session-note">完成了什么</label>
+                <textarea
+                  id="session-note"
+                  name="note"
+                  rows="3"
+                  minlength="2"
+                  maxlength="200"
+                  aria-describedby="note-help note-error"
+                  data-input-note
+                  required>复盘表单状态</textarea>
+                <small id="note-help">写 2–200 个字符，不要只输入空格。</small>
+                <p id="note-error" class="field-error" data-error-note role="alert" hidden></p>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="primary" data-submit-session>保存学习时段</button>
+                <button type="button" data-refresh-dashboard hidden>只重新同步页面</button>
+              </div>
+              <p class="notice" role="status" aria-live="polite" data-form-status data-kind="idle">填写一条学习时段。</p>
+            </form>
+          </section>
+
+          <section class="sessions" aria-labelledby="sessions-title">
+            <div class="section-heading">
+              <div>
+                <h2 id="sessions-title">服务器里的学习时段</h2>
+                <p>保存成功后，页面重新请求汇总和列表，不直接猜结果。</p>
+              </div>
+            </div>
+            <p class="notice" role="status" data-session-status data-kind="loading">正在读取学习时段……</p>
+            <ol class="session-list" data-session-list></ol>
+          </section>
+        </div>
+
+        <noscript>
+          <p class="noscript-note">JavaScript 没有运行，表单不会拦截或发送数据。启动服务后可以打开 <a href="http://127.0.0.1:8780/docs">本机接口文档</a>，也可以使用课程里的 <code>curl</code> 命令完成校验、提交和重试练习。</p>
+        </noscript>
+      </article>
+    </main>
+  </body>
+</html>

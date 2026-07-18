@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>学习进度报告器 Web v0.7</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="dist/main.js"></script>
+  </head>
+  <body>
+    <main>
+      <article class="study-card" aria-labelledby="profile-title">
+        <p class="eyebrow">学习进度报告器 Web v0.7</p>
+        <h1 id="profile-title" data-field="title">小码的学习面板</h1>
+        <p class="intro" data-field="description">正在学习 Python 与 Web，希望把练习做成可以展示的作品。</p>
+
+        <div class="api-note">
+          <span class="api-dot" aria-hidden="true"></span>
+          <p><strong>REST 资源已连接</strong><br>当前学习者：<code data-active-learner>xiaoma</code></p>
+        </div>
+
+        <div class="profile-controls" aria-label="选择学习者">
+          <button type="button" data-profile-id="xiaoma" aria-pressed="true">小码</button>
+          <button type="button" data-profile-id="afei" aria-pressed="false">阿飞</button>
+          <button type="button" data-profile-id="nobody" aria-pressed="false">不存在的记录</button>
+        </div>
+
+        <p class="notice" role="status" data-view-status data-kind="loading">正在读取小码的汇总……</p>
+
+        <div data-view-content hidden>
+          <dl class="metrics">
+            <div><dt>已完成课程</dt><dd data-field="completed-lessons">8 节</dd></div>
+            <div><dt>累计投入</dt><dd data-field="hours">7.5 小时</dd></div>
+            <div><dt>当前状态</dt><dd data-field="status">按计划推进</dd></div>
+            <div><dt>下一个里程碑</dt><dd data-field="next-milestone">让学习记录可以查询、修改和分页</dd></div>
+          </dl>
+
+          <section class="sessions" aria-labelledby="sessions-title">
+            <div class="section-heading">
+              <div>
+                <h2 id="sessions-title">学习时段</h2>
+                <p>接口每页只返回两条，按记录 ID 继续向后读。</p>
+              </div>
+              <button type="button" data-load-more disabled>下一页</button>
+            </div>
+            <p class="notice" role="status" data-session-status data-kind="loading">正在读取第一页……</p>
+            <ol class="session-list" data-session-list></ol>
+          </section>
+
+          <section class="replay-panel" aria-labelledby="replay-title">
+            <div>
+              <h2 id="replay-title">试一次重复请求</h2>
+              <p>浏览器会用同一个 <code>Idempotency-Key</code> 连续发送两次 POST。</p>
+            </div>
+            <button type="button" class="primary" data-replay-write>连续发送两次</button>
+          </section>
+          <p class="notice" role="status" data-replay-status data-kind="idle">还没有发送。</p>
+        </div>
+
+        <noscript>
+          <p class="noscript-note">JavaScript 没有运行，页面保留了结构和说明。启动服务后可以打开 <a href="http://127.0.0.1:8780/docs">本机接口文档</a>，也可以使用课程里的 <code>curl</code> 命令完成分页、更新、删除和重复请求练习。</p>
+        </noscript>
+      </article>
+    </main>
+  </body>
+</html>

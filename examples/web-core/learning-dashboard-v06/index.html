@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>学习进度报告器 Web v0.6</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="dist/main.js"></script>
+  </head>
+  <body>
+    <main>
+      <article class="study-card" aria-labelledby="profile-title">
+        <p class="eyebrow">学习进度报告器 Web v0.6</p>
+        <h1 id="profile-title" data-field="title">小码的学习面板</h1>
+        <p class="intro" data-field="description">正在学习 Python 与 Web，希望把练习做成可以展示的作品。</p>
+
+        <div class="storage-note">
+          <span class="storage-dot" aria-hidden="true"></span>
+          <p><strong>SQLite 已连接</strong><br>当前学习者：<code data-active-learner>xiaoma</code></p>
+        </div>
+
+        <div class="profile-controls" aria-label="选择数据库记录">
+          <button type="button" data-profile-id="xiaoma" aria-pressed="true">小码</button>
+          <button type="button" data-profile-id="afei" aria-pressed="false">阿飞</button>
+          <button type="button" data-profile-id="nobody" aria-pressed="false">不存在的记录</button>
+          <button type="button" data-profile-id="unavailable" aria-pressed="false">数据库不可用</button>
+        </div>
+
+        <p class="view-status" role="status" data-view-status data-kind="success">页面已打开；数据来自 SQLite。</p>
+
+        <dl class="metrics" data-view-content>
+          <div><dt>已完成课程</dt><dd data-field="completed-lessons">8 节</dd></div>
+          <div><dt>累计投入</dt><dd data-field="hours">7.5 小时</dd></div>
+          <div><dt>当前状态</dt><dd data-field="status">按计划推进</dd></div>
+          <div><dt>下一个里程碑</dt><dd data-field="next-milestone">让学习记录在重启后仍然存在</dd></div>
+        </dl>
+
+        <section class="save-panel" aria-labelledby="save-title">
+          <div>
+            <h2 id="save-title">把今天的 1 小时留下来</h2>
+            <p>点击后会新增一条 <code>study_sessions</code> 记录，再重新汇总页面。</p>
+          </div>
+          <button type="button" class="primary" data-save-one-hour>保存 1 小时</button>
+        </section>
+        <p class="save-status" role="status" data-save-status data-kind="idle">还没有写入新记录。</p>
+
+        <noscript>
+          <p class="noscript-note">当前显示 HTML 里的初始记录。启动服务后，仍可打开 <a href="http://127.0.0.1:8780/docs">本机接口文档</a> 和 <a href="http://127.0.0.1:8780/api/learning-summary/xiaoma">SQLite 汇总 JSON</a>；保存练习也可使用正文中的 <code>curl</code> 命令。</p>
+        </noscript>
+      </article>
+    </main>
+  </body>
+</html>
