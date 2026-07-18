@@ -6,7 +6,7 @@
 using namespace traceable_spanning_forest_lab;
 int main() {
   DisjointSet dsu(7);
-  for (const auto edge : {std::pair{0U,1U},std::pair{2U,3U},std::pair{0U,2U},std::pair{4U,5U},std::pair{5U,6U},std::pair{3U,6U}}) assert(dsu.unite(edge.first,edge.second).merged);
+  for (const auto& edge : {std::pair{0U,1U},std::pair{2U,3U},std::pair{0U,2U},std::pair{4U,5U},std::pair{5U,6U},std::pair{3U,6U}}) assert(dsu.unite(edge.first,edge.second).merged);
   assert((dsu.parents() == std::vector<std::size_t>{0,0,0,0,0,4,4}));
   const auto found=dsu.find(5); assert(found.visits==3 && found.compressions==1 && found.root==0);
   bool range_failed=false; try { dsu.find(7); } catch(const std::out_of_range&) { range_failed=true; } assert(range_failed);
