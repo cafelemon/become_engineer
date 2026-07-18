@@ -6,6 +6,7 @@ personal-learning/
 private/
 _private/
 .ai/ui-evidence/
+.ai/debug/
 
 # Local secrets and environment overrides
 .env

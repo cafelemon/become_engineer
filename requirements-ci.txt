@@ -1,0 +1,9 @@
+-r requirements.txt
+
+# Course example validation
+mypy==2.2.0
+
+# Web course example validation
+fastapi==0.139.2
+uvicorn==0.51.0
+httpx==0.28.1
