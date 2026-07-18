@@ -60,7 +60,9 @@ AI基础 + MCU/RTOS 或嵌入式 Linux/BSP
 共同基座 / 方向主干 / 能力深化 / 求职叠加
 ```
 
-`site-src/data/curriculum/v2.json` 登记模块 ID、层级、角色、前置、解锁、四类用户规则、内容状态、衔接状态和 55 节课程 URL。`site-src/data/curriculum/migration-v2.json` 逐课冻结目标模块、课型、项目线、迁移批次、前置课程、稳定小码 ID 和 V1/V2 状态。`scripts/validate_curriculum_v2.cjs` 同时校验课程登记、真实 Markdown、权威地图链接和迁移台账；个性化 V1 暂不消费这两个文件。
+`site-src/data/curriculum/v2.json` 登记正式课程目录、模块 ID、层级、角色、前置、解锁、四类用户规则、内容状态、衔接状态和课程 URL。`site-src/data/curriculum/migration-v2.json` 逐课冻结目标模块、课型、项目线、生产批次、前置课程、稳定小码 ID 和 V1/V2 状态。`scripts/validate_curriculum_v2.cjs` 从登记的课程目录发现正式页面，同时校验权威地图链接和生产台账；个性化 V1 暂不消费模块依赖。
+
+Web 项目从 v0.5 开始明确区分四层数据契约：Pydantic 校验服务端正常响应，OpenAPI 描述公开接口，TypeScript 检查前端代码，运行时守卫检查实际收到的外部 JSON。类型声明不能代替运行时校验；测试必须覆盖 HTTP 成功但字段漂移的失败路径。
 
 路线口径：
 
@@ -155,7 +157,7 @@ become_engineer/
 - CSS 组件负责入口、阶段、状态、按钮和响应式层级；原生 JavaScript 仅用于筛选、展开或本地状态等无法由语义化 HTML 完成的行为。
 - 所有交互采用渐进增强：脚本失败时完整内容、链接和导航仍然可用。
 - V1 不引入 React、Vue、Docusaurus、账号系统或服务端状态，不改变 GitHub Pages 静态发布边界。
-- 55 节正式课程已经执行 V2 语义内容契约；运行时继续保留 V1 `steps` 兼容分支，供历史或外部兼容数据安全降级。
+- 55 节既有课程和后续新课均执行 V2 语义内容契约；运行时继续保留 V1 `steps` 兼容分支，供历史或外部兼容数据安全降级。
 - `.agents/skills/become-engineer-course-authoring/` 是课程生产流程的仓库内唯一源，个人 Codex Skills 只保留其经校验的可用副本。
 
 ## 课程内容 V2 生产架构
@@ -173,7 +175,8 @@ become_engineer/
 - 统一站点的 `tutor-v2-candidate.js` 只负责定位样板知识库并调用正式运行时，不再维护第二套检索或聊天界面。
 - `test_tutor_search.cjs` 从课程架构登记发现正式课程，并同时检查 V1 正式课和 V2 冻结样板；`validate_course_content_v2.cjs` 检查共同模板、八类模板、语义类型、语言和兼容契约。
 - 批次 C 将可运行代码与静态页面分离：FastAPI 和 scikit-learn 仅存在于独立评审依赖，LLM／Agent 默认读取离线样本；DeepSeek 适配器延迟加载，只读本机环境变量，不参与自动测试或生产构建。
-- 规范、模板、Skill 和双协议运行时已经固化；55 节正式课程已完成正文与知识库迁移，课程 URL 和稳定课程标识未改变。
+- 规范、模板、Skill 和双协议运行时已经固化；55 节既有课程、Web 起步四课与 Web 核心第一课均按同一生产链完成，正式登记达到 60 节。
+- Web 起步 v0.4 采用单一 FastAPI 同源提供静态页面与 JSON 接口；Web 核心 v0.5 加入 TypeScript、OpenAPI 和运行时契约。数据库、认证、跨来源部署与可观测性继续按核心和工程化层逐步进入。
 
 ## 知识库助教 V1/V2
 
@@ -196,7 +199,7 @@ flowchart LR
 - 像素宠物只承担入口和状态反馈，JavaScript 或资源失败时不影响课程正文。
 - 每节课程至少 8 张知识卡和 16 条固定问法；V1 继续检查 5–7 个步骤锚点，V2 检查七类语义环节、正文锚点和课型契约。
 
-55 节现有课程均使用 V2；运行时和校验器继续支持 V1 与 V2，以保证历史状态隔离和兼容数据不会让正文失效。
+全部正式课程均使用 V2；运行时和校验器继续支持 V1 与 V2，以保证历史状态隔离和兼容数据不会让正文失效。
 
 ## 公开站点与治理文档边界
 

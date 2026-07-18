@@ -1,0 +1,35 @@
+{
+  "lesson_id": "web-core-01",
+  "cases": [
+    {"query":"Web v0.5 最后会做出什么","expected_card":"web-v05-result"},
+    {"query":"这节 TypeScript 课会留下什么","expected_card":"web-v05-result"},
+    {"query":"HTTP 200 为什么不代表数据一定正确","expected_card":"http-200-not-valid"},
+    {"query":"接口都成功了为什么页面还报错","expected_card":"http-200-not-valid"},
+    {"query":"用了 TypeScript 为什么还要检查 JSON","expected_card":"typescript-network-limit"},
+    {"query":"interface 为什么管不了网络响应","expected_card":"typescript-network-limit"},
+    {"query":"unknown 和 any 有什么区别","expected_card":"unknown-not-any"},
+    {"query":"能不能直接用 any 省事","expected_card":"unknown-not-any"},
+    {"query":"Pydantic OpenAPI TypeScript 和类型守卫各管什么","expected_card":"contract-four-roles"},
+    {"query":"OpenAPI 能替代 TypeScript 守卫吗","expected_card":"contract-four-roles"},
+    {"query":"PageState 为什么要用 kind 区分","expected_card":"discriminated-page-state"},
+    {"query":"为什么只有 success 才有 record","expected_card":"discriminated-page-state"},
+    {"query":"类型守卫的 value is LearningSummary 是什么意思","expected_card":"type-guard-predicate"},
+    {"query":"isLearningSummary 为什么能缩窄类型","expected_card":"type-guard-predicate"},
+    {"query":"第一次怎样安装并运行 TypeScript","expected_card":"install-node-typescript"},
+    {"query":"v0.5 的 npm 命令是什么","expected_card":"install-node-typescript"},
+    {"query":"focus_topic 要改哪些地方","expected_card":"add-focus-topic"},
+    {"query":"怎样做一次完整契约修改","expected_card":"add-focus-topic"},
+    {"query":"改了 TypeScript 页面为什么还是旧的","expected_card":"tsc-module-debug"},
+    {"query":"浏览器加载不到 main.js 怎么查","expected_card":"tsc-module-debug"},
+    {"query":"Web v0.5 给项目增加了什么","expected_card":"project-web-v05"},
+    {"query":"v0.4 和 v0.5 差在哪","expected_card":"project-web-v05"},
+    {"query":"要不要从 OpenAPI 自动生成 TypeScript","expected_card":"openapi-code-generation"},
+    {"query":"什么时候适合生成前端类型","expected_card":"openapi-code-generation"},
+    {"query":"求职时怎样讲这次契约漂移","expected_card":"career-contract-drift"},
+    {"query":"前后端类型一致该怎么回答","expected_card":"career-contract-drift"}
+  ],
+  "unknown": [
+    "怎样在火星上种植蓝莓",
+    "海豚会不会用声呐寻找钥匙"
+  ]
+}

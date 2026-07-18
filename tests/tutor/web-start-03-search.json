@@ -1,0 +1,33 @@
+{
+  "lesson_id": "web-start-03",
+  "cases": [
+    {"query":"JavaScript 第三课最后会做出什么","expected_card":"js-v03-result"},
+    {"query":"Web v0.3 会留下什么","expected_card":"js-v03-result"},
+    {"query":"DOM 和磁盘里的 HTML 文件有什么区别","expected_card":"dom-versus-html"},
+    {"query":"刷新后修改为什么消失","expected_card":"dom-versus-html"},
+    {"query":"querySelector 找不到元素会怎样","expected_card":"query-selector-null"},
+    {"query":"Cannot read properties of null 怎么查","expected_card":"query-selector-null"},
+    {"query":"addEventListener 什么时候执行函数","expected_card":"event-listener-flow"},
+    {"query":"点击事件怎么触发代码","expected_card":"event-listener-flow"},
+    {"query":"为什么按钮不直接修改每个 DOM 字段","expected_card":"state-render-separation"},
+    {"query":"状态和 render 为什么分开","expected_card":"state-render-separation"},
+    {"query":"为什么空数据和错误要分开","expected_card":"four-ui-states"},
+    {"query":"没有记录是不是程序坏了","expected_card":"four-ui-states"},
+    {"query":"显示名字为什么用 textContent 不用 innerHTML","expected_card":"text-content-safety"},
+    {"query":"怎样避免名字被当成 HTML 标签","expected_card":"text-content-safety"},
+    {"query":"role status 在动态页面有什么用","expected_card":"live-status-region"},
+    {"query":"页面状态变化怎样让读屏知道","expected_card":"live-status-region"},
+    {"query":"v0.3 需要安装 Node 或服务器吗","expected_card":"run-v03-locally"},
+    {"query":"直接双击 index.html 可以吗","expected_card":"run-v03-locally"},
+    {"query":"怎样增加自己的学习记录","expected_card":"add-own-profile"},
+    {"query":"新增按钮总是显示空数据","expected_card":"add-own-profile"},
+    {"query":"按钮点了完全没反应先查什么","expected_card":"debug-no-click"},
+    {"query":"控制台第一条红色错误怎么看","expected_card":"debug-no-click"},
+    {"query":"Web v0.3 给连续项目增加了什么","expected_card":"project-web-v03"},
+    {"query":"页面状态和下一课 API 怎么衔接","expected_card":"project-web-v03"}
+  ],
+  "unknown": [
+    "怎样给企鹅设计电梯",
+    "土星环上能不能种茶"
+  ]
+}

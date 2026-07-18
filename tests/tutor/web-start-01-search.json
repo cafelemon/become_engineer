@@ -1,0 +1,29 @@
+{
+  "lesson_id": "web-start-01",
+  "cases": [
+    {"query":"Web 第一课最后会做出什么","expected_card":"web-first-result"},
+    {"query":"第一张学习卡片是什么","expected_card":"web-first-result"},
+    {"query":"双击 HTML 以后浏览器做了什么","expected_card":"browser-document-flow"},
+    {"query":"HTML 怎么变成页面","expected_card":"browser-document-flow"},
+    {"query":"HTML CSS JavaScript 分别管什么","expected_card":"html-css-js-roles"},
+    {"query":"页面结构样式交互有什么区别","expected_card":"html-css-js-roles"},
+    {"query":"title 和 h1 为什么都要写","expected_card":"document-head-body"},
+    {"query":"head 里面放什么","expected_card":"document-head-body"},
+    {"query":"中文乱码怎么办","expected_card":"charset-viewport"},
+    {"query":"手机页面为什么特别小","expected_card":"charset-viewport"},
+    {"query":"为什么不用一堆 div 写卡片","expected_card":"semantic-elements"},
+    {"query":"main article dl 有什么用","expected_card":"semantic-elements"},
+    {"query":"改完页面没有变化","expected_card":"open-correct-file"},
+    {"query":"怎么确认打开的是正确的 index.html","expected_card":"open-correct-file"},
+    {"query":"页面有文字却没有卡片样式","expected_card":"missing-styles"},
+    {"query":"styles.css 加载不到","expected_card":"missing-styles"},
+    {"query":"静态卡片和 Python 报告器什么关系","expected_card":"project-web-v01"},
+    {"query":"Web v0.1 后面怎么继续","expected_card":"project-web-v01"},
+    {"query":"面试怎么讲语义化 HTML","expected_card":"career-html-evidence"},
+    {"query":"项目里的 HTML 能讲什么","expected_card":"career-html-evidence"}
+  ],
+  "unknown": [
+    "如何给海豚安排晚餐",
+    "月球表面的天气怎样"
+  ]
+}

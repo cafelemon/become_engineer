@@ -10,13 +10,7 @@ const registry = JSON.parse(fs.readFileSync(registryPath, "utf8"));
 const migrationPath = path.join(root, "site-src/data/curriculum/migration-v2.json");
 const migration = JSON.parse(fs.readFileSync(migrationPath, "utf8"));
 
-const lessonRoots = [
-  "learning-paths/engineering-foundation/stage-0",
-  "learning-paths/programming-languages/python-basics",
-  "learning-paths/programming-languages/cpp-core",
-  "learning-paths/programming-languages/python-core",
-  "learning-paths/cs-core"
-];
+const lessonRoots = registry.lesson_roots;
 
 function markdownLessons(directory) {
   return fs.readdirSync(path.join(root, directory))
@@ -38,7 +32,9 @@ function stripCode(markdown) {
 
 assert.equal(registry.version, 2, "课程登记版本必须为 2");
 assert.equal(registry.authority, "learning-paths/curriculum-map.md", "权威公开页面不一致");
-assert.equal(registry.course_count, 55, "声明课程数必须为 55");
+assert.ok(Number.isInteger(registry.course_count) && registry.course_count > 0, "声明课程数必须是正整数");
+assert.ok(Array.isArray(lessonRoots) && lessonRoots.length > 0, "课程登记必须声明正式课程目录");
+unique(lessonRoots, "正式课程目录");
 assert.equal(registry.lessons.length, registry.course_count, "逐课登记数量与声明不一致");
 
 unique(registry.modules.map((item) => item.id), "模块 ID");
@@ -68,7 +64,7 @@ for (const module of registry.modules) {
 
 const expectedUrls = lessonRoots.flatMap(markdownLessons).sort();
 const registeredUrls = registry.lessons.map((item) => item.url).sort();
-assert.deepEqual(registeredUrls, expectedUrls, "课程登记必须与五个已开放课程目录逐项一致");
+assert.deepEqual(registeredUrls, expectedUrls, "课程登记必须与已开放课程目录逐项一致");
 
 for (const lesson of registry.lessons) {
   assert.ok(moduleIds.has(lesson.module_id), `${lesson.id} 引用了未知模块 ${lesson.module_id}`);

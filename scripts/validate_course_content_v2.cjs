@@ -81,7 +81,8 @@ for (const token of ["lesson + contexts + cards", "lesson + steps + cards", "be:
   if (!contract.includes(token)) failures.push("课程契约缺少兼容说明：" + token);
 }
 if (!standard.includes("十三个跨方向样板已于 2026-07-17 通过评审")) failures.push("内容规范未记录跨方向评审结论");
-if (!standard.includes("现有 55 节正式课程")) failures.push("内容规范未说明 V1 正式课程迁移边界");
+if (!standard.includes("55 节既有正式课程已经完成 V2 迁移")) failures.push("内容规范未说明既有课程迁移结论");
+if (!standard.includes("不再生产新的 V1 课程")) failures.push("内容规范未说明 V1 兼容边界");
 
 if (failures.length) {
   console.error("V2 课程生产契约校验失败：");

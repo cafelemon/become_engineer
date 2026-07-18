@@ -81,6 +81,7 @@ exclude_docs: |
   source-materials/**
   **/.DS_Store
   **/__pycache__/**
+  **/node_modules/**
   **/*.pyc
   **/*.db
   **/*.db-journal
@@ -142,6 +143,17 @@ nav:
           - Python 工程化:
               - 包结构、可安装入口与 CLI: learning-paths/programming-languages/python-core/06-package-structure-installable-cli.md
               - TOML 配置、日志与诊断: learning-paths/programming-languages/python-core/07-toml-configuration-logging-diagnostics.md
+      - Web 全栈:
+          - 路线说明: learning-paths/web-fullstack/README.md
+          - Web 起步:
+              - 课程说明: learning-paths/web-fullstack/web-start/README.md
+              - 浏览器、HTML 与第一张学习卡片: learning-paths/web-fullstack/web-start/01-browser-html-learning-card.md
+              - CSS 布局、视觉层级与手机适配: learning-paths/web-fullstack/web-start/02-css-layout-responsive-dashboard.md
+              - JavaScript 事件、DOM 与页面状态: learning-paths/web-fullstack/web-start/03-javascript-events-dom-page-state.md
+              - HTTP、JSON 与本地 API: learning-paths/web-fullstack/web-start/04-http-json-local-api.md
+          - Web 核心:
+              - 课程说明: learning-paths/web-fullstack/web-core/README.md
+              - TypeScript、OpenAPI 与运行时数据契约: learning-paths/web-fullstack/web-core/01-typescript-openapi-runtime-contract.md
       - 算法与数据结构:
           - 共同算法与数据结构基础:
               - 动态数组容量、扩容成本与摊还分析: learning-paths/cs-core/05-dynamic-array-capacity-amortized-cost.md

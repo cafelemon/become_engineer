@@ -6,13 +6,14 @@
   "current_schema": "v2-with-v1-compatibility",
   "target_schema": "v2",
   "migration_statuses": ["待迁移", "样板已通过待迁移", "迁移中", "已迁移"],
-  "migration_kinds": ["采用已验收样板", "重写讲解与复现路径", "重分层并迁移", "保留深度重组内容"],
+  "migration_kinds": ["采用已验收样板", "重写讲解与复现路径", "重分层并迁移", "保留深度重组内容", "新建正式课程"],
   "course_types": ["tool-operation", "programming-start", "cs-concept", "algorithm-data-structure", "system-device", "ai-experiment", "web-llm-agent", "project-integration"],
   "project_lines": {
     "engineering-learning-workspace": "工程学习工作台",
     "study-progress-reporter": "学习进度报告器",
     "bilingual-study-progress-reporter": "双语言学习进度报告器",
-    "traceable-data-engine": "跨语言可追踪数据引擎"
+    "traceable-data-engine": "跨语言可追踪数据引擎",
+    "learning-dashboard-web": "学习进度报告器 Web"
   },
   "batches": [
     {"id":"b01-engineering-start","order":1,"title":"工程基础起步","lesson_count":10,"prerequisite_modules":[],"completion_gate":"十节课程形成同一个本地学习工作区；新手能找到工具、完成操作并从常见错误恢复。"},
@@ -21,7 +22,9 @@
     {"id":"b04-python-core-engineering","order":4,"title":"Python 核心与工程化","lesson_count":7,"prerequisite_modules":["python-start"],"completion_gate":"报告器从单文件练习演进为类型清楚、可安装、可配置、可诊断的工程。"},
     {"id":"b05-cpp-start-core","order":5,"title":"C++ 起步与核心","lesson_count":5,"prerequisite_modules":["direction-choice"],"completion_gate":"前两课承担 C++ 起步，后三课进入工程组织、STL、对象生命周期与 RAII。"},
     {"id":"b06-algorithm-foundation","order":6,"title":"共同算法与数据结构基础","lesson_count":16,"prerequisite_modules":["cs-start"],"completion_gate":"用轨迹、操作计数和边界测试掌握常用结构、查找排序、递归、BFS 与 DFS。"},
-    {"id":"b07-algorithm-core","order":7,"title":"算法核心","lesson_count":6,"prerequisite_modules":["algorithm-foundation"],"completion_gate":"完成堆、优先队列、最短路、并查集和最小生成森林的实现、解释与迁移。"}
+    {"id":"b07-algorithm-core","order":7,"title":"算法核心","lesson_count":6,"prerequisite_modules":["algorithm-foundation"],"completion_gate":"完成堆、优先队列、最短路、并查集和最小生成森林的实现、解释与迁移。"},
+    {"id":"b08-web-start","order":8,"title":"Web 起步","lesson_count":4,"prerequisite_modules":["python-start"],"completion_gate":"从浏览器和 HTML 文档开始，持续演进学习进度报告器 Web，并完成页面状态与本地 API 的第一次闭环。"},
+    {"id":"b09-web-core","order":9,"title":"Web 核心","lesson_count":1,"prerequisite_modules":["web-start","python-engineering"],"completion_gate":"当前已完成 TypeScript、OpenAPI 与运行时契约；待持久化、REST 资源和表单状态三课完成后关闭课程组。"}
   ],
   "tutor_lesson_ids": {
     "engineering-01":"engineering-foundation-01",
@@ -78,7 +81,12 @@
     "cs-core-23":"cs-core-23",
     "cs-core-24":"cs-core-24",
     "cs-core-25":"cs-core-25",
-    "cs-core-26":"cs-core-26"
+    "cs-core-26":"cs-core-26",
+    "web-start-01":"web-start-01",
+    "web-start-02":"web-start-02",
+    "web-start-03":"web-start-03",
+    "web-start-04":"web-start-04",
+    "web-core-01":"web-core-01"
   },
   "lessons": [
     {"id":"engineering-01","target_module_id":"engineering-start","target_depth":"起步","target_role":"共同基座","course_type":"tool-operation","project_line":"engineering-learning-workspace","batch_id":"b01-engineering-start","prerequisite_lesson_ids":[],"migration_status":"已迁移","migration_kind":"重写讲解与复现路径"},
@@ -141,6 +149,12 @@
     {"id":"cs-core-23","target_module_id":"algorithm-core","target_depth":"核心","target_role":"方向主干","course_type":"algorithm-data-structure","project_line":"traceable-data-engine","batch_id":"b07-algorithm-core","prerequisite_lesson_ids":["cs-core-22"],"migration_status":"已迁移","migration_kind":"保留深度重组内容"},
     {"id":"cs-core-24","target_module_id":"algorithm-core","target_depth":"核心","target_role":"方向主干","course_type":"algorithm-data-structure","project_line":"traceable-data-engine","batch_id":"b07-algorithm-core","prerequisite_lesson_ids":["cs-core-23"],"migration_status":"已迁移","migration_kind":"保留深度重组内容"},
     {"id":"cs-core-25","target_module_id":"algorithm-core","target_depth":"核心","target_role":"方向主干","course_type":"algorithm-data-structure","project_line":"traceable-data-engine","batch_id":"b07-algorithm-core","prerequisite_lesson_ids":["cs-core-24"],"migration_status":"已迁移","migration_kind":"保留深度重组内容"},
-    {"id":"cs-core-26","target_module_id":"algorithm-core","target_depth":"核心","target_role":"方向主干","course_type":"algorithm-data-structure","project_line":"traceable-data-engine","batch_id":"b07-algorithm-core","prerequisite_lesson_ids":["cs-core-25"],"migration_status":"已迁移","migration_kind":"保留深度重组内容"}
+    {"id":"cs-core-26","target_module_id":"algorithm-core","target_depth":"核心","target_role":"方向主干","course_type":"algorithm-data-structure","project_line":"traceable-data-engine","batch_id":"b07-algorithm-core","prerequisite_lesson_ids":["cs-core-25"],"migration_status":"已迁移","migration_kind":"保留深度重组内容"},
+
+    {"id":"web-start-01","target_module_id":"web-start","target_depth":"起步","target_role":"方向主干","course_type":"web-llm-agent","project_line":"learning-dashboard-web","batch_id":"b08-web-start","prerequisite_lesson_ids":["python-start-07"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"web-start-02","target_module_id":"web-start","target_depth":"起步","target_role":"方向主干","course_type":"web-llm-agent","project_line":"learning-dashboard-web","batch_id":"b08-web-start","prerequisite_lesson_ids":["web-start-01"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"web-start-03","target_module_id":"web-start","target_depth":"起步","target_role":"方向主干","course_type":"web-llm-agent","project_line":"learning-dashboard-web","batch_id":"b08-web-start","prerequisite_lesson_ids":["web-start-02"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"web-start-04","target_module_id":"web-start","target_depth":"起步","target_role":"方向主干","course_type":"web-llm-agent","project_line":"learning-dashboard-web","batch_id":"b08-web-start","prerequisite_lesson_ids":["web-start-03"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"web-core-01","target_module_id":"web-core","target_depth":"核心","target_role":"方向主干","course_type":"web-llm-agent","project_line":"learning-dashboard-web","batch_id":"b09-web-core","prerequisite_lesson_ids":["web-start-04","python-core-07"],"migration_status":"已迁移","migration_kind":"新建正式课程"}
   ]
 }

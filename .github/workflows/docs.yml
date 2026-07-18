@@ -9,6 +9,7 @@ on:
       - "site-src/**/*.css"
       - "site-src/**/*.html"
       - "site-src/**/*.js"
+      - "site-src/**/*.ts"
       - "site-src/**/*.json"
       - "site-src/**/*.webp"
       - "site-src/examples/**/*.py"
@@ -73,6 +74,7 @@ on:
       - "scripts/test_cs_kruskal_v2.mjs"
       - "scripts/test_cs_lazy_prim_v2.mjs"
       - "scripts/test_web_start_html_v2.mjs"
+      - "scripts/test_web_core_typescript_contract_v2.mjs"
       - "scripts/test_tutor_search.cjs"
       - "tests/tutor/**"
       - "mkdocs.yml"
@@ -105,6 +107,13 @@ jobs:
           cache-dependency-path: |
             requirements.txt
             requirements-ci.txt
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: site-src/examples/web-core/learning-dashboard-v05/package-lock.json
 
       - name: Install CI dependencies
         run: |
@@ -269,6 +278,14 @@ jobs:
       - name: Verify Web start HTML lesson
         if: ${{ hashFiles('scripts/test_web_start_html_v2.mjs') != '' }}
         run: node scripts/test_web_start_html_v2.mjs
+
+      - name: Install Web core TypeScript dependencies
+        if: ${{ hashFiles('site-src/examples/web-core/learning-dashboard-v05/package-lock.json') != '' }}
+        run: npm ci --prefix site-src/examples/web-core/learning-dashboard-v05
+
+      - name: Verify Web core TypeScript contract lesson
+        if: ${{ hashFiles('scripts/test_web_core_typescript_contract_v2.mjs') != '' }}
+        run: node scripts/test_web_core_typescript_contract_v2.mjs
 
       - name: Build documentation strictly
         run: mkdocs build --strict

@@ -1,0 +1,31 @@
+{
+  "lesson_id": "web-start-02",
+  "cases": [
+    {"query":"CSS 第二课最后会做出什么","expected_card":"css-v02-result"},
+    {"query":"Web v0.2 会留下什么","expected_card":"css-v02-result"},
+    {"query":"CSS 里的选择器属性和值是什么","expected_card":"css-rule-anatomy"},
+    {"query":"一条 CSS 规则怎么看","expected_card":"css-rule-anatomy"},
+    {"query":"写 CSS 为什么常用 class 不用 id","expected_card":"class-versus-id"},
+    {"query":"类选择器和 ID 选择器怎么选","expected_card":"class-versus-id"},
+    {"query":"box sizing border box 改了什么","expected_card":"box-sizing-border-box"},
+    {"query":"为什么 width 100% 还会超出去","expected_card":"box-sizing-border-box"},
+    {"query":"三项数据怎么用 Grid 排成等宽列","expected_card":"grid-three-columns"},
+    {"query":"repeat 3 minmax 0 1fr 是什么意思","expected_card":"grid-three-columns"},
+    {"query":"怎样让三列在手机上变成一列","expected_card":"responsive-media-query"},
+    {"query":"390px 下还是三列怎么办","expected_card":"responsive-media-query"},
+    {"query":"clamp 写字号有什么用","expected_card":"clamp-fluid-size"},
+    {"query":"标题怎么随屏幕变化又不会太大","expected_card":"clamp-fluid-size"},
+    {"query":"怎么验证页面真的适配 390px","expected_card":"verify-responsive-page"},
+    {"query":"手机适配要检查什么","expected_card":"verify-responsive-page"},
+    {"query":"为什么 CSS 规则被划掉了","expected_card":"css-cascade-debug"},
+    {"query":"哪条样式覆盖了我写的规则","expected_card":"css-cascade-debug"},
+    {"query":"手机页面为什么有横向滚动条","expected_card":"horizontal-overflow"},
+    {"query":"长文字把网格撑开怎么办","expected_card":"horizontal-overflow"},
+    {"query":"Web v0.2 给报告器增加了什么","expected_card":"project-web-v02"},
+    {"query":"CSS 和连续项目有什么关系","expected_card":"project-web-v02"}
+  ],
+  "unknown": [
+    "怎样给鲸鱼设计雨伞",
+    "火星上的咖啡多少钱"
+  ]
+}

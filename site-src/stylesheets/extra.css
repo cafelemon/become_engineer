@@ -1944,6 +1944,10 @@
     bottom: 0.65rem;
   }
 
+  html.be-tutor-open .be-tutor-launcher {
+    display: none;
+  }
+
   .be-tutor-panel {
     top: 0;
     right: 0;
@@ -3808,6 +3812,98 @@ html.be-modal-open body {
   }
 }
 
+/* Formal Web start: CSS rule anatomy and responsive layout comparison. */
+.be-style-rule {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 1rem 0;
+}
+
+.be-style-rule > div {
+  min-width: 0;
+  padding: 0.8rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.65rem;
+  background: var(--be-surface);
+}
+
+.be-style-rule strong,
+.be-style-rule span { display: block; }
+.be-style-rule strong {
+  color: var(--be-nav-section-color);
+  overflow-wrap: anywhere;
+}
+.be-style-rule span { margin-top: 0.3rem; color: var(--be-muted); font-size: 0.74rem; }
+
+.be-responsive-compare {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(9rem, 0.7fr);
+  align-items: start;
+  gap: 0.8rem;
+  margin: 1.1rem 0;
+}
+
+.be-responsive-compare > div {
+  min-width: 0;
+  padding: 0.9rem;
+  border: 1px solid var(--be-border);
+  border-radius: 0.8rem;
+  background: var(--md-default-bg-color);
+}
+
+.be-responsive-compare > div > span,
+.be-responsive-compare > div > strong { display: block; }
+.be-responsive-compare > div > span { color: var(--be-muted); font-size: 0.68rem; }
+.be-responsive-compare > div > strong { margin: 0.35rem 0 0.65rem; }
+.be-responsive-compare > div > div { display: grid; gap: 0.4rem; }
+.be-responsive-compare__desktop > div { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.be-responsive-compare__mobile > div { grid-template-columns: 1fr; }
+.be-responsive-compare i {
+  min-width: 0;
+  padding: 0.45rem;
+  border-radius: 0.45rem;
+  background: var(--be-surface);
+  color: var(--be-nav-section-color);
+  font-style: normal;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 44rem) {
+  .be-style-rule,
+  .be-responsive-compare { grid-template-columns: 1fr; }
+}
+
+/* Formal Web start: event-to-state preview. */
+.be-state-preview {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 1.1rem 0;
+}
+
+.be-state-preview > div {
+  min-width: 0;
+  padding: 0.8rem;
+  border: 1px solid var(--be-border);
+  border-top: 0.25rem solid var(--be-nav-section-color);
+  border-radius: 0.65rem;
+  background: var(--be-surface);
+}
+
+.be-state-preview > div:nth-child(3) { border-top-color: #b78103; }
+.be-state-preview > div:nth-child(4) { border-top-color: #c95663; }
+.be-state-preview strong,
+.be-state-preview span { display: block; }
+.be-state-preview span { margin-top: 0.3rem; color: var(--be-muted); font-size: 0.74rem; }
+.be-data-flow--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+@media (max-width: 44rem) {
+  .be-state-preview,
+  .be-data-flow--three { grid-template-columns: 1fr; }
+}
+
 /* Formal V2 algorithm foundation: linked-queue endpoint trace. */
 .be-queue-trace {
   display: grid;
@@ -4042,3 +4138,96 @@ html.be-modal-open body {
 
 @media (max-width: 64rem) { .be-prim-frontier { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 40rem) { .be-prim-frontier { grid-template-columns: 1fr; } }
+
+/* Formal Web start: document flow and first learning-card preview. */
+.be-profile-preview {
+  display: grid;
+  gap: 0.65rem;
+  margin: 1.15rem 0;
+  padding: clamp(1.1rem, 4vw, 1.8rem);
+  border: 1px solid var(--be-border);
+  border-radius: 1rem;
+  background: var(--md-default-bg-color);
+  box-shadow: 0 1rem 2.4rem color-mix(in srgb, var(--md-primary-fg-color) 10%, transparent);
+}
+
+.be-profile-preview > span {
+  color: var(--be-nav-section-color);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.be-profile-preview > strong {
+  font-size: clamp(1.45rem, 5vw, 2.25rem);
+  line-height: 1.15;
+}
+
+.be-profile-preview > p { margin: 0; }
+
+.be-profile-preview > div {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-top: 0.45rem;
+}
+
+.be-profile-preview > div > span {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.6rem;
+  background: var(--be-surface);
+}
+
+.be-profile-preview > div b {
+  color: var(--be-nav-section-color);
+}
+
+.be-profile-preview > div small {
+  color: var(--be-muted);
+}
+
+.be-data-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 1.1rem 0;
+}
+
+.be-data-flow > div {
+  position: relative;
+  min-width: 0;
+  padding: 0.85rem;
+  border: 1px solid var(--be-border);
+  border-top: 0.25rem solid var(--be-nav-section-color);
+  border-radius: 0.65rem;
+  background: var(--be-surface);
+}
+
+.be-data-flow > div:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: -0.52rem;
+  z-index: 1;
+  color: var(--be-muted);
+  transform: translate(50%, -50%);
+}
+
+.be-data-flow strong,
+.be-data-flow span { display: block; }
+.be-data-flow span { margin-top: 0.35rem; color: var(--be-muted); font-size: 0.74rem; }
+
+@media (max-width: 44rem) {
+  .be-profile-preview > div { grid-template-columns: 1fr; }
+  .be-data-flow { grid-template-columns: 1fr; }
+  .be-data-flow > div:not(:last-child)::after {
+    content: "↓";
+    top: auto;
+    right: 50%;
+    bottom: -0.62rem;
+    transform: translate(50%, 50%);
+  }
+}

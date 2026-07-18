@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>小码的学习进度</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <article class="study-card" aria-labelledby="profile-title">
+        <p class="eyebrow">学习进度报告器 Web v0.3</p>
+        <h1 id="profile-title" data-field="title">小码的学习面板</h1>
+        <p class="study-card__intro" data-field="description">正在学习 Python 与 Web，希望把练习做成可以展示的作品。</p>
+
+        <div class="profile-controls" aria-label="选择学习者">
+          <button type="button" data-profile-id="xiaoma" aria-pressed="true">小码</button>
+          <button type="button" data-profile-id="afei" aria-pressed="false">阿飞</button>
+          <button type="button" data-profile-id="nobody" aria-pressed="false">不存在</button>
+          <button type="button" data-profile-id="broken" aria-pressed="false">模拟错误</button>
+        </div>
+
+        <p class="view-status" role="status" data-view-status data-kind="success">已显示小码。</p>
+
+        <dl class="metrics" data-view-content>
+          <div>
+            <dt>已完成课程</dt>
+            <dd data-field="completed-lessons">7 节</dd>
+          </div>
+          <div>
+            <dt>本周投入</dt>
+            <dd data-field="hours">6.5 小时</dd>
+          </div>
+          <div>
+            <dt>当前状态</dt>
+            <dd data-field="status">按计划推进</dd>
+          </div>
+          <div>
+            <dt>下一个里程碑</dt>
+            <dd data-field="next-milestone">连接页面状态</dd>
+          </div>
+        </dl>
+
+        <noscript><p class="noscript-note">当前显示初始记录；切换学习者需要启用 JavaScript。</p></noscript>
+      </article>
+    </main>
+  </body>
+</html>

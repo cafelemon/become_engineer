@@ -1,0 +1,33 @@
+{
+  "lesson_id": "web-start-04",
+  "cases": [
+    {"query":"Web v0.4 最后会做出什么","expected_card":"api-v04-result"},
+    {"query":"第四节 Web 起步会留下什么","expected_card":"api-v04-result"},
+    {"query":"浏览器怎样拿到 Python 里的学习记录","expected_card":"browser-http-api-flow"},
+    {"query":"浏览器能直接读 Python 变量吗","expected_card":"browser-http-api-flow"},
+    {"query":"为什么 fetch 遇到 404 不一定进入 catch","expected_card":"fetch-http-errors"},
+    {"query":"fetch 怎么判断 404","expected_card":"fetch-http-errors"},
+    {"query":"FastAPI 的响应模型有什么用","expected_card":"response-model-contract"},
+    {"query":"Pydantic 模型是不是数据库","expected_card":"response-model-contract"},
+    {"query":"为什么学习者 ID 写成 AA 会返回 422","expected_card":"path-validation-422"},
+    {"query":"路径参数怎样限制格式","expected_card":"path-validation-422"},
+    {"query":"为什么 fetchSummary 不直接修改 DOM","expected_card":"fetch-render-boundary"},
+    {"query":"API 请求怎样复用上一课 render","expected_card":"fetch-render-boundary"},
+    {"query":"v0.4 要怎样在本地启动","expected_card":"run-single-local-service"},
+    {"query":"为什么不能继续双击 index.html","expected_card":"run-single-local-service"},
+    {"query":"怎样增加自己的 API 学习记录","expected_card":"add-api-record"},
+    {"query":"my-profile 怎样接到前端","expected_card":"add-api-record"},
+    {"query":"页面读不到 API 时先查什么","expected_card":"debug-local-api-order"},
+    {"query":"JSON 正常页面不更新怎么办","expected_card":"debug-local-api-order"},
+    {"query":"本课为什么不需要配置 CORS","expected_card":"same-origin-cors"},
+    {"query":"前端换到 3000 端口为什么被拦截","expected_card":"same-origin-cors"},
+    {"query":"Web v0.4 给连续项目增加了什么","expected_card":"project-web-v04"},
+    {"query":"Web 起步四课怎样闭环","expected_card":"project-web-v04"},
+    {"query":"求职时怎样讲这个本地 API 项目","expected_card":"career-api-story"},
+    {"query":"API 故障复盘应该说什么","expected_card":"career-api-story"}
+  ],
+  "unknown": [
+    "怎样训练海豚整理书架",
+    "月球背面适合种什么树"
+  ]
+}

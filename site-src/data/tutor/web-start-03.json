@@ -1,0 +1,155 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "web-start-03",
+    "title": "JavaScript 事件、DOM 与页面状态",
+    "path": "learning-paths/web-fullstack/web-start/03-javascript-events-dom-page-state/"
+  },
+  "contexts": [
+    {"id":"overview-interactive-dashboard","type":"overview","title":"点一下，页面知道该换谁的数据","anchor":"#overview-interactive-dashboard"},
+    {"id":"concept-dom-tree","type":"concept","title":"JavaScript 操作的不是 HTML 文件本身","anchor":"#concept-dom-tree"},
+    {"id":"concept-event-state-render","type":"concept","title":"一次点击走过三段路","anchor":"#concept-event-state-render"},
+    {"id":"example-four-page-states","type":"example","title":"页面不能只有成功一种样子","anchor":"#example-four-page-states"},
+    {"id":"example-render-text-safely","type":"example","title":"把文字放进页面，不要顺手拼 HTML","anchor":"#example-render-text-safely"},
+    {"id":"reproduce-dashboard-v03","type":"reproduce","title":"复制三份文件，再直接打开","anchor":"#reproduce-dashboard-v03"},
+    {"id":"modify-add-profile","type":"modify","title":"加入你的记录和按钮","anchor":"#modify-add-profile"},
+    {"id":"troubleshoot-javascript-page","type":"troubleshoot","title":"点了没反应，先看控制台第一条错误","anchor":"#troubleshoot-javascript-page"},
+    {"id":"project-dashboard-v03","type":"project","title":"学习面板开始响应操作","anchor":"#project-dashboard-v03"},
+    {"id":"deepen-dom-state-boundary","type":"deepen","title":"DOM 不应该是唯一数据源","anchor":"#deepen-dom-state-boundary"},
+    {"id":"career-explain-ui-state","type":"career","title":"解释一次状态设计","anchor":"#career-explain-ui-state"}
+  ],
+  "cards": [
+    {
+      "id":"js-v03-result","lesson_id":"web-start-03","context_id":"overview-interactive-dashboard",
+      "question":"JavaScript 第三课最后会做出什么？",
+      "aliases":["Web v0.3 会留下什么","这节课的按钮能做什么"],
+      "keywords":["JavaScript","第三课","v0.3","按钮","页面状态","app.js"],
+      "diagnostic":"点击四个按钮时，页面能否区分加载、成功、空数据和错误？",
+      "hints":["继续使用 v0.2 的 HTML 和 CSS。","新增 app.js、四种状态截图和可重复运行的状态测试。"],
+      "example":"点击小码显示记录，点击不存在显示空数据，点击模拟错误显示恢复提示。",
+      "answer":"你会完成学习进度报告器 Web v0.3：按钮事件驱动本地状态，再由统一 render 函数更新 DOM，并覆盖四种页面状态。",
+      "source":{"label":"点一下，页面知道该换谁的数据","href":"#overview-interactive-dashboard"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"dom-versus-html","lesson_id":"web-start-03","context_id":"concept-dom-tree",
+      "question":"DOM 和磁盘里的 HTML 文件有什么区别？",
+      "aliases":["JavaScript 改的是 HTML 文件吗","刷新后修改为什么消失"],
+      "keywords":["DOM","HTML 文件","内存","刷新","浏览器解析","消失"],
+      "diagnostic":"你改动后是否保存过源文件，还是只在浏览器内存里更新元素？",
+      "hints":["HTML 是磁盘上的源文件。","DOM 是浏览器解析后在内存中维护的当前文档对象树。"],
+      "example":"textContent 会改当前 DOM；刷新后浏览器重新读取 index.html。",
+      "answer":"JavaScript 通常修改当前页面的 DOM，不会自动写回 HTML 文件。刷新会重建 DOM，所以未持久化的变化会消失。",
+      "source":{"label":"JavaScript 操作的不是 HTML 文件本身","href":"#concept-dom-tree"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"query-selector-null","lesson_id":"web-start-03","context_id":"concept-dom-tree",
+      "question":"querySelector 找不到元素时会发生什么？",
+      "aliases":["为什么 querySelector 返回 null","Cannot read properties of null 怎么查"],
+      "keywords":["querySelector","null","选择器","找不到元素","Cannot read properties"],
+      "diagnostic":"选择器里的 id、class 或 data 属性是否与 HTML 逐字一致？",
+      "hints":["querySelector 只返回第一个匹配元素。","完全没有匹配时返回 null，继续读属性就会报错。"],
+      "example":"document.querySelector('#missing') 返回 null。",
+      "answer":"先检查选择器和脚本执行时机；找不到时 querySelector 返回 null。需要修正 DOM 契约或显式处理缺失，而不是继续调用其属性。",
+      "source":{"label":"JavaScript 操作的不是 HTML 文件本身","href":"#concept-dom-tree"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"event-listener-flow","lesson_id":"web-start-03","context_id":"concept-event-state-render",
+      "question":"addEventListener 是什么时候执行函数？",
+      "aliases":["点击事件怎么触发代码","事件监听器是什么意思"],
+      "keywords":["addEventListener","click","事件","监听器","函数","按钮"],
+      "diagnostic":"你传给 addEventListener 的是函数本身，还是已经调用后的结果？",
+      "hints":["登记监听器时不会等待在这一行阻塞。","用户触发 click 后，浏览器才调用监听函数。"],
+      "example":"button.addEventListener('click', handleClick) 传入 handleClick，不写括号。",
+      "answer":"addEventListener 把函数登记给某种事件；事件发生时浏览器调用它。这样 HTML 不需要写内联 onclick。",
+      "source":{"label":"一次点击走过三段路","href":"#concept-event-state-render"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"state-render-separation","lesson_id":"web-start-03","context_id":"concept-event-state-render",
+      "question":"为什么按钮不直接修改每个 DOM 字段？",
+      "aliases":["状态和 render 为什么要分开","事件状态渲染怎么串起来"],
+      "keywords":["状态","render","DOM 字段","分开","事件","数据来源"],
+      "diagnostic":"换成 API 数据后，你是否希望继续复用同一份页面渲染代码？",
+      "hints":["按钮负责表达用户选择。","状态描述当前结果，render 只负责把结果显示出来。"],
+      "example":"事件 → getView(profileId) → render(view)。",
+      "answer":"分开后，数据选择、业务状态和页面显示各有一个职责。下一课替换数据来源时，不必重写全部 DOM 操作。",
+      "source":{"label":"一次点击走过三段路","href":"#concept-event-state-render"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"four-ui-states","lesson_id":"web-start-03","context_id":"example-four-page-states",
+      "question":"为什么空数据和错误要分成两种状态？",
+      "aliases":["loading success empty error 有什么区别","没有记录是不是程序坏了"],
+      "keywords":["loading","success","empty","error","空数据","错误","四种状态"],
+      "diagnostic":"操作是否正常完成，只是没有找到记录，还是处理过程本身失败？",
+      "hints":["empty 表示查询完成但结果为空。","error 表示本次处理没有正常完成，需要恢复或重试。"],
+      "example":"未知 ID 返回 empty；模拟读取失败返回 error。",
+      "answer":"二者给用户的下一步不同：空数据应检查 ID 或创建记录，错误应重试或修复服务。混在一起会让页面无法给出准确反馈。",
+      "source":{"label":"页面不能只有成功一种样子","href":"#example-four-page-states"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"text-content-safety","lesson_id":"web-start-03","context_id":"example-render-text-safely",
+      "question":"显示名字时为什么用 textContent 不用 innerHTML？",
+      "aliases":["textContent 和 innerHTML 怎么选","怎样避免名字被当成 HTML 标签"],
+      "keywords":["textContent","innerHTML","文字","标签","显示名字","安全"],
+      "diagnostic":"这段数据只是普通文字，还是确实需要生成受控 HTML 结构？",
+      "hints":["textContent 会按文字显示尖括号。","innerHTML 会请求浏览器把字符串解释成新的标签。"],
+      "example":"名字 `<b>小码</b>` 用 textContent 会原样显示，不会变成粗体元素。",
+      "answer":"普通数据应使用 textContent，避免把内容误解释成结构。需要创建元素时，优先明确创建和设置属性，而不是拼接未知 HTML。",
+      "source":{"label":"把文字放进页面，不要顺手拼 HTML","href":"#example-render-text-safely"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"live-status-region","lesson_id":"web-start-03","context_id":"example-render-text-safely",
+      "question":"role status 在动态页面里有什么用？",
+      "aliases":["页面状态变化怎样让读屏知道","aria live 为什么不抢焦点"],
+      "keywords":["role status","aria-live","读屏","辅助技术","焦点","动态更新"],
+      "diagnostic":"状态提示元素是否从页面加载时就存在，并在里面更新文字？",
+      "hints":["status 是礼貌播报的 live region。","它通知更新，但不应该把键盘焦点强行移过去。"],
+      "example":"<p role='status' data-view-status>已显示小码。</p>。",
+      "answer":"role=status 让辅助技术在合适时机播报非紧急更新。保持元素存在并更新其内容，比每次创建后抢焦点更稳妥。",
+      "source":{"label":"把文字放进页面，不要顺手拼 HTML","href":"#example-render-text-safely"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"run-v03-locally","lesson_id":"web-start-03","context_id":"reproduce-dashboard-v03",
+      "question":"v0.3 需要安装 Node 或服务器吗？",
+      "aliases":["JavaScript 页面怎么在本地运行","直接双击 index.html 可以吗"],
+      "keywords":["v0.3","Node","服务器","双击","index.html","app.js","本地运行"],
+      "diagnostic":"目录中是否同时存在 index.html、styles.css 和 app.js？",
+      "hints":["本课使用普通 defer 脚本，不是 ES module。","三份文件放在同一目录后可直接双击 index.html。"],
+      "example":"<script src='app.js' defer></script> 在文档解析后执行。",
+      "answer":"不需要。v0.3 的本地数据和普通脚本可通过 file:// 运行；下一课使用 HTTP 请求时再启动明确的本地服务器。",
+      "source":{"label":"复制三份文件，再直接打开","href":"#reproduce-dashboard-v03"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"add-own-profile","lesson_id":"web-start-03","context_id":"modify-add-profile",
+      "question":"怎样给页面增加自己的学习记录？",
+      "aliases":["新增按钮总是显示空数据","data profile id 和对象键怎么对应","怎样增加自己的学习记录"],
+      "keywords":["新增记录","按钮","data-profile-id","PROFILES","对象键","空数据"],
+      "diagnostic":"按钮 data-profile-id 与 PROFILES 中的键是否逐字一致？",
+      "hints":["先在 PROFILES 增加完整记录。","再增加匹配按钮；新字段还要接入 HTML 与 render。"],
+      "example":"按钮 my-profile 必须对应 PROFILES['my-profile']。",
+      "answer":"记录、按钮和 render 契约三处要对齐。ID 不一致会进入 empty；只加数据不加渲染字段，页面也不会自动出现新内容。",
+      "source":{"label":"加入你的记录和按钮","href":"#modify-add-profile"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"debug-no-click","lesson_id":"web-start-03","context_id":"troubleshoot-javascript-page",
+      "question":"按钮点了完全没反应该先查什么？",
+      "aliases":["JavaScript 没有运行怎么办","控制台第一条红色错误怎么看","按钮点了完全没反应先查什么"],
+      "keywords":["按钮没反应","JavaScript","Console","脚本路径","语法错误","第一条错误"],
+      "diagnostic":"开发者工具 Console 是否有 app.js 的第一条错误，Network 是否加载到脚本？",
+      "hints":["先确认 app.js 真正加载。","再按第一条错误的文件和行号检查语法或空选择器。"],
+      "example":"Cannot read properties of null 通常先回到对应 querySelector。",
+      "answer":"按脚本加载、第一条控制台错误、事件触发、状态结果、DOM 更新的顺序查。不要同时重写 HTML、CSS 和 JavaScript。",
+      "source":{"label":"点了没反应，先看控制台第一条错误","href":"#troubleshoot-javascript-page"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"project-web-v03","lesson_id":"web-start-03","context_id":"project-dashboard-v03",
+      "question":"Web v0.3 给连续项目增加了什么？",
+      "aliases":["第三课项目增加了什么","页面状态和下一课 API 怎么衔接"],
+      "keywords":["项目","Web v0.3","连续项目","页面状态","JavaScript","API","下一课"],
+      "diagnostic":"本课改变的是数据来源，还是页面处理数据的方式？",
+      "hints":["数据仍来自 app.js 中的本地对象。","事件、四种状态和 render 已经就绪，下一课替换为 HTTP JSON。"],
+      "example":"v0.3 建立事件 → 状态 → render → DOM 的链路。",
+      "answer":"v0.3 让静态面板响应用户操作，明确四种状态并留下自动测试；v0.4 将复用渲染边界，把本地对象换成 FastAPI 响应。",
+      "source":{"label":"学习面板开始响应操作","href":"#project-dashboard-v03"},"updated_at":"2026-07-18","recommended":true
+    }
+  ]
+}
