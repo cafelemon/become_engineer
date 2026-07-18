@@ -1,0 +1,155 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "web-start-04",
+    "title": "HTTP、JSON 与本地 API",
+    "path": "learning-paths/web-fullstack/web-start/04-http-json-local-api/"
+  },
+  "contexts": [
+    {"id":"overview-first-api-response","type":"overview","title":"页面里的数据，第一次来自 Python","anchor":"#overview-first-api-response"},
+    {"id":"concept-browser-http-api-json","type":"concept","title":"浏览器不会直接读取 Python 变量","anchor":"#concept-browser-http-api-json"},
+    {"id":"concept-status-before-json","type":"concept","title":"先看状态码，再决定怎样读正文","anchor":"#concept-status-before-json"},
+    {"id":"example-response-contract","type":"example","title":"Python 先把响应约好","anchor":"#example-response-contract"},
+    {"id":"example-fetch-and-render","type":"example","title":"fetch 只负责取数据，render 继续负责页面","anchor":"#example-fetch-and-render"},
+    {"id":"reproduce-dashboard-v04","type":"reproduce","title":"启动一个服务，打开一个地址","anchor":"#reproduce-dashboard-v04"},
+    {"id":"modify-add-api-record","type":"modify","title":"加一条自己的记录，再让页面读到它","anchor":"#modify-add-api-record"},
+    {"id":"troubleshoot-local-api","type":"troubleshoot","title":"页面没更新，按请求走过的顺序查","anchor":"#troubleshoot-local-api"},
+    {"id":"project-dashboard-v04","type":"project","title":"Web 起步第一次闭环","anchor":"#project-dashboard-v04"},
+    {"id":"deepen-same-origin-cors-contract","type":"deepen","title":"为什么本课只启动一个来源","anchor":"#deepen-same-origin-cors-contract"},
+    {"id":"career-explain-api-failure","type":"career","title":"讲清一次完整请求","anchor":"#career-explain-api-failure"}
+  ],
+  "cards": [
+    {
+      "id":"api-v04-result","lesson_id":"web-start-04","context_id":"overview-first-api-response",
+      "question":"Web v0.4 最后会做出什么？",
+      "aliases":["第四节 Web 起步会留下什么","这节本地 API 课的结果是什么"],
+      "keywords":["Web v0.4","第四课","本地 API","FastAPI","HTTP","JSON","结果"],
+      "diagnostic":"页面中的记录现在来自 app.js 的本地对象，还是 Python API？",
+      "hints":["保留 v0.3 的页面状态和 render。","加入 FastAPI、fetch、接口测试和真实状态码。"],
+      "example":"GET /api/learning-summary/xiaoma 返回 200 和一份 JSON。",
+      "answer":"你会完成学习进度报告器 Web v0.4：一个本地 FastAPI 同时提供页面与 JSON 接口，前端处理成功、未找到、校验失败、服务错误和断线。",
+      "source":{"label":"页面里的数据，第一次来自 Python","href":"#overview-first-api-response"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"browser-http-api-flow","lesson_id":"web-start-04","context_id":"concept-browser-http-api-json",
+      "question":"浏览器怎样拿到 Python 里的学习记录？",
+      "aliases":["浏览器能直接读 Python 变量吗","HTTP API JSON 是怎么连起来的"],
+      "keywords":["浏览器","Python 变量","HTTP","FastAPI","JSON","请求","响应"],
+      "diagnostic":"你能否分别说出请求路径、服务端函数和响应正文在哪里？",
+      "hints":["浏览器先发 HTTP GET。","FastAPI 调用 Python 函数，再把模型序列化为 JSON 响应。"],
+      "example":"浏览器 → GET /api/learning-summary/xiaoma → FastAPI → JSON。",
+      "answer":"浏览器不能直接读取服务进程中的变量。双方通过 HTTP 契约交换数据，JSON 是这次响应正文的格式。",
+      "source":{"label":"浏览器不会直接读取 Python 变量","href":"#concept-browser-http-api-json"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"fetch-http-errors","lesson_id":"web-start-04","context_id":"concept-status-before-json",
+      "question":"为什么 fetch 遇到 404 不一定进入 catch？",
+      "aliases":["fetch 怎么判断 404","为什么要检查 response ok 和 status"],
+      "keywords":["fetch","404","catch","response.ok","status","状态码","网络错误"],
+      "diagnostic":"这次是收到了 HTTP 错误响应，还是根本没有收到响应？",
+      "hints":["404 仍是一份到达浏览器的 HTTP Response。","用 response.status 或 response.ok 分支；连接失败才会走异常路径。"],
+      "example":"if (response.status === 404) return emptyView;",
+      "answer":"fetch 主要在网络层失败时拒绝 Promise。404、422 或 503 通常仍会返回 Response，所以应用要自己检查状态码。",
+      "source":{"label":"先看状态码，再决定怎样读正文","href":"#concept-status-before-json"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"response-model-contract","lesson_id":"web-start-04","context_id":"example-response-contract",
+      "question":"FastAPI 的响应模型有什么用？",
+      "aliases":["response_model 为什么要写","Pydantic 模型是不是数据库"],
+      "keywords":["FastAPI","response_model","Pydantic","响应模型","接口契约","数据库","过滤字段"],
+      "diagnostic":"浏览器允许收到哪些字段和类型，是否已经在模型中写清楚？",
+      "hints":["响应模型会参与校验和接口文档。","它还会按公开模型过滤未声明字段，但不会自动保存数据。"],
+      "example":"response_model=LearningSummary 约定字段、类型和公开范围。",
+      "answer":"响应模型是服务对外的数据契约，用于校验、序列化、文档和字段过滤；它不是数据库，本课记录仍在内存字典中。",
+      "source":{"label":"Python 先把响应约好","href":"#example-response-contract"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"path-validation-422","lesson_id":"web-start-04","context_id":"example-response-contract",
+      "question":"为什么学习者 ID 写成 AA 会返回 422？",
+      "aliases":["422 是什么意思","路径参数怎样限制格式"],
+      "keywords":["422","AA","路径参数","Path","pattern","格式校验","learner_id"],
+      "diagnostic":"ID 是否满足 3 到 32 位小写字母、数字或连字符？",
+      "hints":["路径已经匹配到接口。","参数在进入业务查询前没有通过 pattern 校验。"],
+      "example":"^[a-z0-9-]{3,32}$ 不接受大写 AA。",
+      "answer":"422 表示请求结构或参数不符合接口约定。本课由 FastAPI 在调用查询逻辑前完成路径参数校验。",
+      "source":{"label":"Python 先把响应约好","href":"#example-response-contract"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"fetch-render-boundary","lesson_id":"web-start-04","context_id":"example-fetch-and-render",
+      "question":"为什么 fetchSummary 不直接修改 DOM？",
+      "aliases":["fetch 和 render 为什么分开","API 请求怎样复用上一课 render"],
+      "keywords":["fetchSummary","render","DOM","分开","测试","页面状态","复用"],
+      "diagnostic":"你是否可以不打开浏览器，就给请求函数一份假的 fetch 并测试返回状态？",
+      "hints":["fetchSummary 负责把 HTTP 结果变成 view。","render 只把 view 显示到 DOM，因此两边可以分别测试。"],
+      "example":"click → fetchSummary → view → render(view)。",
+      "answer":"分开能保留 v0.3 的渲染边界，也让网络处理和 DOM 更新各自可测试。换数据源时不需要重写页面。",
+      "source":{"label":"fetch 只负责取数据，render 继续负责页面","href":"#example-fetch-and-render"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"run-single-local-service","lesson_id":"web-start-04","context_id":"reproduce-dashboard-v04",
+      "question":"v0.4 要怎样在本地启动？",
+      "aliases":["FastAPI 页面从哪个地址打开","为什么不能继续双击 index.html"],
+      "keywords":["v0.4","本地启动","Uvicorn","127.0.0.1","8780","双击","index.html"],
+      "diagnostic":"终端是否显示 Uvicorn 正在监听 127.0.0.1:8780？",
+      "hints":["先用项目 .venv 安装 requirements-test.txt。","启动 uvicorn app:app 后，从 http://127.0.0.1:8780/ 打开页面。"],
+      "example":".venv/bin/python -m uvicorn app:app --app-dir practice/web-start/learning-dashboard --port 8780",
+      "answer":"本课由一个 FastAPI 同时提供页面和 API。启动 Uvicorn 后用 HTTP 地址打开；双击文件会绕开服务端来源。",
+      "source":{"label":"启动一个服务，打开一个地址","href":"#reproduce-dashboard-v04"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"add-api-record","lesson_id":"web-start-04","context_id":"modify-add-api-record",
+      "question":"怎样增加自己的 API 学习记录？",
+      "aliases":["新增 Python 记录后页面为什么没有按钮","my-profile 怎样接到前端"],
+      "keywords":["新增记录","SUMMARIES","LearningSummary","my-profile","按钮","data-profile-id"],
+      "diagnostic":"API 直接访问能找到记录吗，按钮 ID 与字典键是否一致？",
+      "hints":["先在 SUMMARIES 增加合法 LearningSummary，并重启服务。","直接访问 JSON 成功后，再增加匹配的前端按钮。"],
+      "example":"SUMMARIES['my-profile'] 对应 data-profile-id='my-profile'。",
+      "answer":"先证明服务端记录与契约正确，再接按钮和渲染。分两段验证能快速判断问题在 API 还是页面。",
+      "source":{"label":"加一条自己的记录，再让页面读到它","href":"#modify-add-api-record"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"debug-local-api-order","lesson_id":"web-start-04","context_id":"troubleshoot-local-api",
+      "question":"页面读不到 API 时先查什么？",
+      "aliases":["连接不到 Uvicorn 怎么排查","JSON 正常页面不更新怎么办"],
+      "keywords":["排错","Uvicorn","连接失败","JSON","Network","状态码","页面不更新"],
+      "diagnostic":"健康检查能否打开，Network 中是否收到状态码和 JSON？",
+      "hints":["先确认服务和请求路径，再看状态码。","JSON 正常后才检查 summaryToRecord 和 render。"],
+      "example":"服务 → 路径 → 状态码 → JSON → 页面映射。",
+      "answer":"沿请求链逐层确认，不要同时改前后端。健康检查失败先看服务；JSON 正常但页面旧，再看字段映射和 DOM。",
+      "source":{"label":"页面没更新，按请求走过的顺序查","href":"#troubleshoot-local-api"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"same-origin-cors","lesson_id":"web-start-04","context_id":"deepen-same-origin-cors-contract",
+      "question":"本课为什么不需要配置 CORS？",
+      "aliases":["同源是什么意思","前端换到 3000 端口为什么可能被拦截"],
+      "keywords":["CORS","同源","origin","端口","3000","8780","浏览器拦截"],
+      "diagnostic":"页面和 API 的协议、主机、端口是否完全相同？",
+      "hints":["本课两端都来自 http://127.0.0.1:8780。","前端换端口后会变成跨来源请求，需要后端明确允许。"],
+      "example":"127.0.0.1:3000 与 127.0.0.1:8780 是两个来源。",
+      "answer":"协议、主机和端口相同就是同源。本课用一个服务降低首次复现门槛；拆分部署时再配置最小允许来源。",
+      "source":{"label":"为什么本课只启动一个来源","href":"#deepen-same-origin-cors-contract"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"project-web-v04","lesson_id":"web-start-04","context_id":"project-dashboard-v04",
+      "question":"Web v0.4 给连续项目增加了什么？",
+      "aliases":["Web 起步四课怎样闭环","学习进度报告器为什么算前后端项目"],
+      "keywords":["项目","Web v0.4","Web 起步","闭环","FastAPI","接口测试","前后端"],
+      "diagnostic":"你能否展示页面、接口、状态处理和测试四类结果？",
+      "hints":["前三课留下结构、样式、事件和 render。","本课增加真实 HTTP 数据源、契约和失败测试。"],
+      "example":"HTML/CSS/JS → fetch → FastAPI → LearningSummary → JSON。",
+      "answer":"v0.4 让四课成果第一次形成前后端闭环，并留下 API 测试与故障记录；数据库、认证和部署留给 Web 核心与工程化。",
+      "source":{"label":"Web 起步第一次闭环","href":"#project-dashboard-v04"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"career-api-story","lesson_id":"web-start-04","context_id":"career-explain-api-failure",
+      "question":"求职时怎样讲这个本地 API 项目？",
+      "aliases":["小项目怎样讲出工程能力","API 故障复盘应该说什么"],
+      "keywords":["求职","项目表达","API","故障复盘","工程能力","状态码","测试"],
+      "diagnostic":"你能否用代码和测试说明一次请求的职责分工与失败恢复？",
+      "hints":["先讲浏览器、HTTP、API、模型和 DOM 的责任。","再用一次真实故障说明检查顺序、修复和回归测试。"],
+      "example":"现象 → 定位到响应字段 → 修复 summaryToRecord → 增加固定测试。",
+      "answer":"诚实描述项目规模，重点展示契约、状态设计、故障定位和测试。不要把本地字典包装成生产数据库或线上系统。",
+      "source":{"label":"讲清一次完整请求","href":"#career-explain-api-failure"},"updated_at":"2026-07-18"
+    }
+  ]
+}

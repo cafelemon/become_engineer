@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>学习进度报告器 Web v0.5</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="dist/main.js"></script>
+  </head>
+  <body>
+    <main>
+      <article class="study-card" aria-labelledby="profile-title">
+        <p class="eyebrow">学习进度报告器 Web v0.5</p>
+        <h1 id="profile-title" data-field="title">小码的学习面板</h1>
+        <p class="intro" data-field="description">正在学习 Python 与 Web，希望把练习做成可以展示的作品。</p>
+
+        <p class="contract-note"><span aria-hidden="true"></span>页面只显示通过 <code>LearningSummary</code> 检查的数据</p>
+
+        <div class="profile-controls" aria-label="选择接口结果">
+          <button type="button" data-profile-id="xiaoma" aria-pressed="true">正确数据</button>
+          <button type="button" data-profile-id="afei" aria-pressed="false">另一条记录</button>
+          <button type="button" data-profile-id="contract-drift" aria-pressed="false">200 + 错误字段</button>
+          <button type="button" data-profile-id="nobody" aria-pressed="false">404</button>
+          <button type="button" data-profile-id="AA" aria-pressed="false">422</button>
+          <button type="button" data-profile-id="unavailable" aria-pressed="false">503</button>
+        </div>
+
+        <p class="view-status" role="status" data-view-status data-kind="success">页面已打开；选择一种响应观察结果。</p>
+
+        <dl class="metrics" data-view-content>
+          <div><dt>已完成课程</dt><dd data-field="completed-lessons">8 节</dd></div>
+          <div><dt>本周投入</dt><dd data-field="hours">7.5 小时</dd></div>
+          <div><dt>当前状态</dt><dd data-field="status">按计划推进</dd></div>
+          <div><dt>下一个里程碑</dt><dd data-field="next-milestone">让前后端契约保持一致</dd></div>
+        </dl>
+
+        <noscript>
+          <p class="noscript-note">当前显示 HTML 里的初始记录。你仍可打开 <a href="/docs">接口文档</a> 和 <a href="/api/learning-summary/xiaoma">正确 JSON</a>。</p>
+        </noscript>
+      </article>
+    </main>
+  </body>
+</html>

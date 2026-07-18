@@ -1,0 +1,131 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "web-start-01",
+    "title": "浏览器、HTML 与第一张学习卡片",
+    "path": "learning-paths/web-fullstack/web-start/01-browser-html-learning-card/"
+  },
+  "contexts": [
+    {"id":"overview-learning-card","type":"overview","title":"先在浏览器里看到它","anchor":"#overview-learning-card"},
+    {"id":"concept-browser-document","type":"concept","title":"浏览器拿到的是一份文档","anchor":"#concept-browser-document"},
+    {"id":"concept-document-shell","type":"concept","title":"一份完整页面先要有外壳","anchor":"#concept-document-shell"},
+    {"id":"example-semantic-card","type":"example","title":"用合适的标签写卡片","anchor":"#example-semantic-card"},
+    {"id":"reproduce-open-page","type":"reproduce","title":"把示例放进自己的工作区","anchor":"#reproduce-open-page"},
+    {"id":"modify-own-card","type":"modify","title":"换成你自己的内容","anchor":"#modify-own-card"},
+    {"id":"troubleshoot-local-page","type":"troubleshoot","title":"页面不对时，从文件关系开始查","anchor":"#troubleshoot-local-page"},
+    {"id":"project-dashboard-v01","type":"project","title":"报告器第一次进入浏览器","anchor":"#project-dashboard-v01"},
+    {"id":"career-explain-html","type":"career","title":"求职加练：别只说我会 HTML","anchor":"#career-explain-html"}
+  ],
+  "cards": [
+    {
+      "id":"web-first-result","lesson_id":"web-start-01","context_id":"overview-learning-card",
+      "question":"Web 第一课最后会做出什么？",
+      "aliases":["第一张学习卡片是什么","这节课要留下哪些文件"],
+      "keywords":["第一课","学习卡片","index.html","styles.css","浏览器"],
+      "diagnostic":"第一屏里有标题、介绍和哪三项学习数据？",
+      "hints":["先做能直接打开的静态页面，不用安装框架。","保存 index.html、styles.css 和一张自己的页面截图。"],
+      "example":"页面显示昵称、已完成课程、本周投入和当前状态。",
+      "answer":"你会完成学习进度报告器 Web v0.1：一份有语义结构、能在浏览器直接打开的学习卡片。",
+      "source":{"label":"先在浏览器里看到它","href":"#overview-learning-card"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"browser-document-flow","lesson_id":"web-start-01","context_id":"concept-browser-document",
+      "question":"双击 HTML 以后浏览器做了什么？",
+      "aliases":["HTML 怎么变成页面","浏览器怎么读 index.html"],
+      "keywords":["双击","浏览器","解析","文档结构","页面"],
+      "diagnostic":"浏览器地址是否以 file:// 开头，并且指向你的 index.html？",
+      "hints":["浏览器先读取标签和文字。","它建立元素层级后，再结合 CSS 把页面画出来。"],
+      "example":"index.html → 浏览器解析 → 文档结构 → 屏幕页面。",
+      "answer":"操作系统把文件交给浏览器；浏览器解析 HTML，建立文档结构，再按照样式把结构显示到屏幕。",
+      "source":{"label":"浏览器拿到的是一份文档","href":"#concept-browser-document"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"html-css-js-roles","lesson_id":"web-start-01","context_id":"concept-browser-document",
+      "question":"HTML、CSS、JavaScript 分别管什么？",
+      "aliases":["三个前端文件怎么分工","页面结构样式交互有什么区别"],
+      "keywords":["HTML","CSS","JavaScript","结构","样式","交互"],
+      "diagnostic":"把 styles.css 临时移走后，页面内容是否仍然存在？",
+      "hints":["HTML 说明内容是什么。","CSS 管外观与布局；JavaScript 处理操作和状态变化。"],
+      "example":"h1 是 HTML 结构，标题颜色是 CSS，点击后换标题是 JavaScript。",
+      "answer":"HTML 描述结构和语义，CSS 控制表现与布局，JavaScript 让页面响应操作并改变状态。",
+      "source":{"label":"浏览器拿到的是一份文档","href":"#concept-browser-document"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"document-head-body","lesson_id":"web-start-01","context_id":"concept-document-shell",
+      "question":"head、body、title 和 h1 有什么区别？",
+      "aliases":["title 和 h1 为什么都要写","head 里面放什么"],
+      "keywords":["head","body","title","h1","标签页","正文"],
+      "diagnostic":"你改的是浏览器标签页标题，还是页面里面的大标题？",
+      "hints":["head 保存文档信息和资源链接，body 放可见正文。","title 出现在浏览器标签页，h1 是页面主标题。"],
+      "example":"<title>学习进度</title> 与 <h1>小码的学习卡片</h1> 可以不同。",
+      "answer":"head 不承担正文，body 承载页面内容；title 命名浏览器标签页，h1 标记正文的主标题。",
+      "source":{"label":"一份完整页面先要有外壳","href":"#concept-document-shell"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"charset-viewport","lesson_id":"web-start-01","context_id":"concept-document-shell",
+      "question":"charset 和 viewport 为什么不能随便删？",
+      "aliases":["中文乱码怎么办","手机页面为什么特别小"],
+      "keywords":["charset","UTF-8","viewport","乱码","手机","缩放"],
+      "diagnostic":"问题发生在文字解码，还是手机页面宽度？",
+      "hints":["中文乱码先检查 charset=utf-8。","手机像缩小的桌面页时，检查 meta viewport。"],
+      "example":"<meta charset=\"utf-8\">；<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">。",
+      "answer":"charset 规定字节怎样解码成文字；viewport 让移动浏览器按设备宽度布局。它们解决的是不同问题。",
+      "source":{"label":"一份完整页面先要有外壳","href":"#concept-document-shell"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"semantic-elements","lesson_id":"web-start-01","context_id":"example-semantic-card",
+      "question":"为什么不用一堆 div 写完整张卡片？",
+      "aliases":["main article dl 有什么用","语义化标签有什么好处"],
+      "keywords":["语义","div","main","article","dl","dt","dd","可访问性"],
+      "diagnostic":"页面中的内容是主区域、独立卡片，还是名称和值的组合？",
+      "hints":["main 和 article 说明区域角色。","dl、dt、dd 表达一组名称和值，而不只是画几个盒子。"],
+      "example":"已完成课程是 dt，7 节是与它对应的 dd。",
+      "answer":"语义元素让浏览器、辅助技术和维护者更容易理解内容关系；div 只表示普通容器，没有这些含义。",
+      "source":{"label":"用合适的标签写卡片","href":"#example-semantic-card"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"open-correct-file","lesson_id":"web-start-01","context_id":"reproduce-open-page",
+      "question":"怎样确认浏览器打开的是正确的 index.html？",
+      "aliases":["改完页面没有变化","浏览器一直显示旧内容"],
+      "keywords":["index.html","路径","file://","保存","刷新","旧内容"],
+      "diagnostic":"浏览器地址里的目录，是否和 VS Code 当前工作区中的文件一致？",
+      "hints":["先保存文件，再看浏览器地址。","从 VS Code 的文件位置重新双击，避免打开旧副本。"],
+      "example":"浏览器地址应指向 practice/web-start/learning-dashboard/index.html。",
+      "answer":"保存文件后比较浏览器的 file:// 地址与 VS Code 文件路径；不一致就关闭旧标签，从当前文件位置重新打开。",
+      "source":{"label":"把示例放进自己的工作区","href":"#reproduce-open-page"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"missing-styles","lesson_id":"web-start-01","context_id":"troubleshoot-local-page",
+      "question":"页面有文字却没有卡片样式怎么办？",
+      "aliases":["CSS 没有生效","styles.css 加载不到"],
+      "keywords":["CSS","styles.css","link","href","样式丢失","同一目录"],
+      "diagnostic":"index.html 与 styles.css 是否在同一目录，link 的文件名是否完全一致？",
+      "hints":["先检查文件名和大小写。","再检查 head 里的 link href 是否仍是 styles.css。"],
+      "example":"<link rel=\"stylesheet\" href=\"styles.css\">。",
+      "answer":"HTML 已显示说明正文可读；接着核对 CSS 文件位置、名称和 link href，不要先重写整张页面。",
+      "source":{"label":"页面不对时，从文件关系开始查","href":"#troubleshoot-local-page"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"project-web-v01","lesson_id":"web-start-01","context_id":"project-dashboard-v01",
+      "question":"静态学习卡片和 Python 报告器是什么关系？",
+      "aliases":["静态卡片和 Python 报告器什么关系","为什么现在要手写数据","Web v0.1 后面怎么继续"],
+      "keywords":["项目","学习进度报告器","静态页面","手写数据","FastAPI","v0.1"],
+      "diagnostic":"这节课有没有让浏览器自动读取 Python 数据？",
+      "hints":["当前只建立浏览器入口和页面结构。","后面先加入页面状态，再由 FastAPI 返回 JSON，届时才自动连接。"],
+      "example":"终端报告仍由 Python 生成，Web v0.1 用同类数据做静态卡片。",
+      "answer":"它们属于同一个连续项目的两个阶段。v0.1 先确定页面结构，后续版本再用 JavaScript 和 API 取代手写数据。",
+      "source":{"label":"报告器第一次进入浏览器","href":"#project-dashboard-v01"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"career-html-evidence","lesson_id":"web-start-01","context_id":"career-explain-html",
+      "question":"求职时怎样证明我真的理解这张 HTML 页面？",
+      "aliases":["面试怎么讲语义化 HTML","项目里 HTML 能讲什么","项目里的 HTML 能讲什么"],
+      "keywords":["求职","面试","项目里的 HTML","项目证据","语义化","viewport","故障复盘"],
+      "diagnostic":"你的回答是否能指向具体标签、改名实验和恢复过程？",
+      "hints":["解释为什么选 h1、article 和 dl。","展示删掉 viewport 或移走 CSS 后的现象与恢复。"],
+      "example":"我用 dl 表达指标名称和值，并通过移走 CSS 证明内容结构仍可读。",
+      "answer":"用代码选择、一次失败实验和恢复结果组织回答，说明结构、移动端和样式分层，而不是只背标签列表。",
+      "source":{"label":"求职加练：别只说我会 HTML","href":"#career-explain-html"},"updated_at":"2026-07-18"
+    }
+  ]
+}

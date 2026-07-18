@@ -1,0 +1,166 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "web-core-01",
+    "title": "TypeScript、OpenAPI 与运行时数据契约",
+    "path": "learning-paths/web-fullstack/web-core/01-typescript-openapi-runtime-contract/"
+  },
+  "contexts": [
+    {"id":"overview-200-but-rejected","type":"overview","title":"接口返回 200，页面为什么拒绝显示","anchor":"#overview-200-but-rejected"},
+    {"id":"concept-compile-time-runtime","type":"concept","title":"TypeScript 能检查代码，不能替你检查网络","anchor":"#concept-compile-time-runtime"},
+    {"id":"concept-three-contract-views","type":"concept","title":"同一份数据，有三个观察位置","anchor":"#concept-three-contract-views"},
+    {"id":"example-interface-page-state","type":"example","title":"先把数据和页面状态写清楚","anchor":"#example-interface-page-state"},
+    {"id":"example-runtime-guard","type":"example","title":"类型守卫怎样把 unknown 变成可用数据","anchor":"#example-runtime-guard"},
+    {"id":"reproduce-dashboard-v05","type":"reproduce","title":"编译 TypeScript，再启动原来的 FastAPI","anchor":"#reproduce-dashboard-v05"},
+    {"id":"modify-add-focus-topic","type":"modify","title":"给学习记录增加 focus_topic","anchor":"#modify-add-focus-topic"},
+    {"id":"troubleshoot-typescript-contract","type":"troubleshoot","title":"报错时先看它来自哪一层","anchor":"#troubleshoot-typescript-contract"},
+    {"id":"project-dashboard-v05","type":"project","title":"学习进度报告器 Web v0.5","anchor":"#project-dashboard-v05"},
+    {"id":"deepen-generate-or-maintain","type":"deepen","title":"字段多了，要不要从 OpenAPI 生成 TypeScript","anchor":"#deepen-generate-or-maintain"},
+    {"id":"career-review-contract-drift","type":"career","title":"讲清一次契约漂移","anchor":"#career-review-contract-drift"}
+  ],
+  "cards": [
+    {
+      "id":"web-v05-result","lesson_id":"web-core-01","context_id":"overview-200-but-rejected",
+      "question":"Web v0.5 最后会做出什么？",
+      "aliases":["这节 TypeScript 课会留下什么","为什么页面会拒绝 200 响应"],
+      "keywords":["Web v0.5","TypeScript","200","拒绝","契约漂移","结果"],
+      "diagnostic":"你现在的页面会不会把 response.json() 的任何结果直接交给 render？",
+      "hints":["v0.4 的 FastAPI 和页面状态都会保留。","v0.5 在 JSON 与 render 之间增加 unknown 和类型守卫。"],
+      "example":"completed_hours 是字符串时，页面显示 contract-error 而不是指标。",
+      "answer":"你会完成学习进度报告器 Web v0.5：TypeScript 严格编译、OpenAPI 契约、运行时数据守卫和一条可复现的契约漂移故障。",
+      "source":{"label":"接口明明返回 200，页面为什么拒绝显示","href":"#overview-200-but-rejected"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"http-200-not-valid","lesson_id":"web-core-01","context_id":"overview-200-but-rejected",
+      "question":"HTTP 200 为什么不代表数据一定正确？",
+      "aliases":["接口都成功了为什么页面还报错","200 OK 能证明 JSON 字段吗"],
+      "keywords":["HTTP 200","OK","JSON","字段","类型","正确"],
+      "diagnostic":"你检查的是请求是否得到响应，还是响应正文是否符合页面契约？",
+      "hints":["状态码描述这次 HTTP 请求的结果。","字段和类型还需要响应模型或运行时守卫检查。"],
+      "example":"200 + completed_hours: '七小时' 仍不符合 number 契约。",
+      "answer":"200 说明服务成功处理并返回了响应，不保证业务字段的形状。页面必须把 HTTP 成功和数据有效分开判断。",
+      "source":{"label":"接口明明返回 200，页面为什么拒绝显示","href":"#overview-200-but-rejected"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"typescript-network-limit","lesson_id":"web-core-01","context_id":"concept-compile-time-runtime",
+      "question":"用了 TypeScript，为什么还要检查 JSON？",
+      "aliases":["TypeScript 不能保证接口数据吗","interface 为什么管不了网络响应"],
+      "keywords":["TypeScript","JSON","interface","网络","编译时","运行时"],
+      "diagnostic":"这份值来自当前代码，还是来自进程外的 HTTP 响应？",
+      "hints":["TypeScript 类型在编译后不会跟着 JavaScript 去网络里。","外部值先是 unknown，检查通过后才能缩窄。"],
+      "example":"const payload: unknown = await response.json();",
+      "answer":"TypeScript 能检查前端代码如何使用值，但不能证明服务器这次真的按接口返回。网络、存储和用户输入都要在运行时验证。",
+      "source":{"label":"TypeScript 能检查代码，不能替你检查网络","href":"#concept-compile-time-runtime"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"unknown-not-any","lesson_id":"web-core-01","context_id":"concept-compile-time-runtime",
+      "question":"unknown 和 any 有什么区别？",
+      "aliases":["为什么 response json 要写 unknown","能不能直接用 any 省事"],
+      "keywords":["unknown","any","response.json","检查","类型安全"],
+      "diagnostic":"编译器现在会不会允许你直接读取 payload.completed_hours？",
+      "hints":["any 会关闭这段值的类型检查。","unknown 要求先缩窄，再读取字段。"],
+      "example":"isLearningSummary(payload) 通过后才能使用 payload。",
+      "answer":"unknown 保留了不确定性，强迫代码先证明值的形状；any 会让编译器放弃检查，容易把接口漂移拖到页面深处。",
+      "source":{"label":"TypeScript 能检查代码，不能替你检查网络","href":"#concept-compile-time-runtime"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"contract-four-roles","lesson_id":"web-core-01","context_id":"concept-three-contract-views",
+      "question":"Pydantic、OpenAPI、TypeScript 和类型守卫各管什么？",
+      "aliases":["前后端契约为什么有好几份","OpenAPI 能替代 TypeScript 守卫吗"],
+      "keywords":["Pydantic","OpenAPI","TypeScript","类型守卫","契约","职责"],
+      "diagnostic":"你想检查服务端返回、公开文档、前端代码，还是当前 JSON？",
+      "hints":["Pydantic 和 OpenAPI 位于服务端契约一侧。","TypeScript 检查代码，守卫检查当前运行时值。"],
+      "example":"response_model → openapi.json → interface → isLearningSummary(payload)。",
+      "answer":"四者观察的是同一份数据在不同边界上的状态，互相配合而不是互相替代。",
+      "source":{"label":"同一份数据，有三个观察位置","href":"#concept-three-contract-views"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"discriminated-page-state","lesson_id":"web-core-01","context_id":"example-interface-page-state",
+      "question":"PageState 为什么要用 kind 区分？",
+      "aliases":["判别联合有什么用","为什么只有 success 才有 record"],
+      "keywords":["PageState","kind","判别联合","success","record","render"],
+      "diagnostic":"错误状态里有没有一条可以安全显示的学习记录？",
+      "hints":["kind 让每种状态携带自己真正拥有的数据。","判断 kind === 'success' 后，TypeScript 才允许读取 record。"],
+      "example":"contract-error 只有 message，success 才有 record。",
+      "answer":"判别联合把状态与可用字段绑定，减少空值和错误分支，也能提醒 render 处理新增状态。",
+      "source":{"label":"先把数据和页面状态写清楚","href":"#example-interface-page-state"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"type-guard-predicate","lesson_id":"web-core-01","context_id":"example-runtime-guard",
+      "question":"类型守卫的 value is LearningSummary 是什么意思？",
+      "aliases":["类型谓词怎么读","isLearningSummary 为什么能缩窄类型"],
+      "keywords":["类型守卫","类型谓词","value is","LearningSummary","缩窄"],
+      "diagnostic":"函数返回 true 时，是否真的逐字段证明了这份值？",
+      "hints":["返回类型告诉 TypeScript true 分支的类型。","前提是函数内部检查足够完整，不能只写 Boolean(value)。"],
+      "example":"if (isLearningSummary(payload)) { payload.completed_hours }",
+      "answer":"value is LearningSummary 是类型谓词。它让编译器在 true 分支缩窄类型，但正确性依赖守卫中的真实运行时检查。",
+      "source":{"label":"类型守卫怎样把 unknown 变成可用数据","href":"#example-runtime-guard"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"install-node-typescript","lesson_id":"web-core-01","context_id":"reproduce-dashboard-v05",
+      "question":"第一次怎样安装并运行 TypeScript？",
+      "aliases":["tsc 找不到怎么办","v0.5 的 npm 命令是什么"],
+      "keywords":["安装","Node.js","TypeScript","tsc","npm ci","npm test","v0.5"],
+      "diagnostic":"当前终端能否输出 node --version，并且位于 package-lock.json 所在目录？",
+      "hints":["先安装 Node.js LTS，重新打开终端。","进入 v0.5 目录运行 npm ci，再运行 npm test。"],
+      "example":"cd practice/web-core/learning-dashboard && npm ci && npm test",
+      "answer":"TypeScript 作为项目开发依赖由锁文件安装，不需要全局安装。npm test 会先严格编译，再运行前端契约测试。",
+      "source":{"label":"编译 TypeScript，再启动原来的 FastAPI","href":"#reproduce-dashboard-v05"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"add-focus-topic","lesson_id":"web-core-01","context_id":"modify-add-focus-topic",
+      "question":"focus_topic 要改哪些地方？",
+      "aliases":["新增字段为什么前后端都要改","怎样做一次完整契约修改"],
+      "keywords":["focus_topic","新增字段","Pydantic","OpenAPI","interface","守卫","DOM"],
+      "diagnostic":"新字段已经经过服务端模型、公开 schema、前端检查和页面显示了吗？",
+      "hints":["先改 Python 并观察 OpenAPI。","再改 interface、守卫、映射、render 和两端测试。"],
+      "example":"Python model → OpenAPI → TypeScript → guard → DOM。",
+      "answer":"按数据流逐层修改并每层验证，不要只让编辑器不报错；漏掉运行时守卫会留下真实的网络边界漏洞。",
+      "source":{"label":"给学习记录增加 focus_topic","href":"#modify-add-focus-topic"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"tsc-module-debug","lesson_id":"web-core-01","context_id":"troubleshoot-typescript-contract",
+      "question":"改了 TypeScript，页面为什么还是旧的？",
+      "aliases":["dist 没更新怎么办","浏览器加载不到 main.js 怎么查"],
+      "keywords":["TypeScript","dist","旧代码","main.js","module","npm run build","排错"],
+      "diagnostic":"dist 文件的更新时间是否变化，浏览器请求 /dist/main.js 是否返回 200？",
+      "hints":[".ts 不会由浏览器自动执行，要先重新编译。","再检查页面从 FastAPI 地址打开，并查看模块请求。"],
+      "example":"npm run build → dist/main.js → Network 200。",
+      "answer":"先确认编译产物，再确认静态路径和浏览器缓存；不要在 src 已正确时反复改业务代码。",
+      "source":{"label":"报错时先看它来自哪一层","href":"#troubleshoot-typescript-contract"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"project-web-v05","lesson_id":"web-core-01","context_id":"project-dashboard-v05",
+      "question":"Web v0.5 给项目增加了什么？",
+      "aliases":["学习进度报告器怎样进入 Web 核心","v0.4 和 v0.5 差在哪"],
+      "keywords":["项目","Web v0.5","v0.4","TypeScript","OpenAPI","契约漂移","测试"],
+      "diagnostic":"你能否展示静态检查、运行时拒绝和 API schema 三类结果？",
+      "hints":["保留 v0.4 的 FastAPI、fetch 和页面状态。","加入严格 TS、OpenAPI 对照、守卫与漂移测试。"],
+      "example":"200 错误字段 → contract-error → 不调用成功渲染。",
+      "answer":"v0.5 把项目从能连接前后端推进到能维护数据契约，并为下一节持久化建立可靠的数据边界。",
+      "source":{"label":"学习进度报告器 Web v0.5","href":"#project-dashboard-v05"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"openapi-code-generation","lesson_id":"web-core-01","context_id":"deepen-generate-or-maintain",
+      "question":"要不要从 OpenAPI 自动生成 TypeScript？",
+      "aliases":["手写 interface 会不会漂移","什么时候适合生成前端类型"],
+      "keywords":["OpenAPI","代码生成","TypeScript","interface","漂移","CI","运行时校验"],
+      "diagnostic":"接口数量、权威来源、CI 重现和运行时校验边界是否已经明确？",
+      "hints":["字段少时手写更容易看清契约。","规模变大后可生成，但要检查是否同时提供运行时验证。"],
+      "example":"生成 interface 不一定生成 isLearningSummary。",
+      "answer":"生成是减少重复劳动的工程选择，不是自动安全。先确定 OpenAPI 权威性、CI 和破坏性变更策略，再引入工具。",
+      "source":{"label":"字段多了，要不要从 OpenAPI 生成 TypeScript","href":"#deepen-generate-or-maintain"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"career-contract-drift","lesson_id":"web-core-01","context_id":"career-review-contract-drift",
+      "question":"求职时怎样讲这次契约漂移？",
+      "aliases":["TypeScript 项目怎样讲出工程能力","前后端类型一致该怎么回答"],
+      "keywords":["求职","契约漂移","TypeScript","项目表达","故障复盘","测试"],
+      "diagnostic":"你能否指出错误最早出现在哪层，以及哪条测试防止它复发？",
+      "hints":["先讲 200 + 错类型的现象和风险。","再讲 unknown、守卫、隐藏旧指标和固定测试。"],
+      "example":"现象 → 数据边界 → 拒绝渲染 → 修复 → 回归测试。",
+      "answer":"不要只说项目用了 TypeScript。用代码说明网络数据仍不可信、你怎样拦截漂移，以及新增字段如何保持四层一致。",
+      "source":{"label":"讲清一次契约漂移","href":"#career-review-contract-drift"},"updated_at":"2026-07-18"
+    }
+  ]
+}

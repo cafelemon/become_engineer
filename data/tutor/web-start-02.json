@@ -1,0 +1,144 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "web-start-02",
+    "title": "CSS 布局、视觉层级与手机适配",
+    "path": "learning-paths/web-fullstack/web-start/02-css-layout-responsive-dashboard/"
+  },
+  "contexts": [
+    {"id":"overview-readable-dashboard","type":"overview","title":"同一份内容，换个宽度也要好读","anchor":"#overview-readable-dashboard"},
+    {"id":"concept-css-rule","type":"concept","title":"CSS 先找到元素，再改变表现","anchor":"#concept-css-rule"},
+    {"id":"concept-box-model","type":"concept","title":"卡片占多宽，要把四层算在一起","anchor":"#concept-box-model"},
+    {"id":"example-grid-hierarchy","type":"example","title":"让三项数据排成真正的网格","anchor":"#example-grid-hierarchy"},
+    {"id":"example-responsive-width","type":"example","title":"页面变窄时，别硬塞三列","anchor":"#example-responsive-width"},
+    {"id":"reproduce-dashboard-v02","type":"reproduce","title":"把 v0.2 放进自己的项目","anchor":"#reproduce-dashboard-v02"},
+    {"id":"modify-personal-theme","type":"modify","title":"做一版属于你的视觉层级","anchor":"#modify-personal-theme"},
+    {"id":"troubleshoot-css-layout","type":"troubleshoot","title":"样式不对时，先看哪条规则赢了","anchor":"#troubleshoot-css-layout"},
+    {"id":"project-dashboard-v02","type":"project","title":"学习面板有了稳定布局","anchor":"#project-dashboard-v02"},
+    {"id":"deepen-cascade-responsive","type":"deepen","title":"响应式不是缩小版桌面","anchor":"#deepen-cascade-responsive"},
+    {"id":"career-explain-responsive","type":"career","title":"用一次溢出说明你的判断","anchor":"#career-explain-responsive"}
+  ],
+  "cards": [
+    {
+      "id":"css-v02-result","lesson_id":"web-start-02","context_id":"overview-readable-dashboard",
+      "question":"CSS 第二课最后会做出什么？",
+      "aliases":["Web v0.2 会留下什么","这一课为什么要做手机适配"],
+      "keywords":["CSS","第二课","v0.2","桌面","390px","手机适配"],
+      "diagnostic":"同一份指标在桌面和 390px 下分别排成几列？",
+      "hints":["桌面保留并排比较。","窄屏改成单列，并保存两张截图和 styles.css。"],
+      "example":"三项指标在桌面三列，在 390px 视口单列。",
+      "answer":"你会完成学习进度报告器 Web v0.2：一份有清晰视觉层级、支持深浅色并能在桌面和手机宽度阅读的学习面板。",
+      "source":{"label":"同一份内容，换个宽度也要好读","href":"#overview-readable-dashboard"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"css-rule-anatomy","lesson_id":"web-start-02","context_id":"concept-css-rule",
+      "question":"CSS 里的选择器、属性和值分别是什么？",
+      "aliases":["一条 CSS 规则怎么看","study-card padding 2rem 怎么读"],
+      "keywords":["CSS 规则","选择器","属性","值","study-card","padding"],
+      "diagnostic":"你现在是要找哪个元素，还是要决定改它的哪项表现？",
+      "hints":["花括号前面是选择器，用来找元素。","声明中冒号左边是属性，右边是值。"],
+      "example":".study-card 是选择器，padding 是属性，2rem 是值。",
+      "answer":"选择器决定规则作用于谁，属性说明改变哪一项表现，值给出具体设置。三者一起才形成有效声明。",
+      "source":{"label":"CSS 先找到元素，再改变表现","href":"#concept-css-rule"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"class-versus-id","lesson_id":"web-start-02","context_id":"concept-css-rule",
+      "question":"写 CSS 时为什么常用 class 而不是 id？",
+      "aliases":["类选择器和 ID 选择器怎么选","为什么不要全用 id 写样式"],
+      "keywords":["class","id","类选择器","ID 选择器","权重","复用"],
+      "diagnostic":"这个样式是否可能给多个相同角色的元素复用？",
+      "hints":["class 可以复用，id 应保持页面唯一。","id 选择器权重更高，后续覆盖更难。"],
+      "example":"多张指标卡共用 class，页面主标题仍可以有唯一 id 供 aria-labelledby 引用。",
+      "answer":"类名适合表达可复用的组件角色，选择器权重也较温和；id 更适合唯一标识和锚点，不必承担日常样式。",
+      "source":{"label":"CSS 先找到元素，再改变表现","href":"#concept-css-rule"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"box-sizing-border-box","lesson_id":"web-start-02","context_id":"concept-box-model",
+      "question":"box-sizing border-box 到底改了什么？",
+      "aliases":["为什么 width 100% 还会超出去","盒模型怎样算宽度"],
+      "keywords":["box-sizing","border-box","width","100%","盒模型","padding","border"],
+      "diagnostic":"你给出的 width 是否还要额外加上 padding 和 border？",
+      "hints":["默认 content-box 只把 width 算作内容宽度。","border-box 把内容、内边距和边框都包含在声明宽度里。"],
+      "example":"width: 100% 加 padding 时，border-box 更容易保持在父容器内。",
+      "answer":"border-box 改变尺寸计算方式：声明的宽高包含内边距与边框。外边距仍在元素外部，长内容也仍可能造成溢出。",
+      "source":{"label":"卡片占多宽，要把四层算在一起","href":"#concept-box-model"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"grid-three-columns","lesson_id":"web-start-02","context_id":"example-grid-hierarchy",
+      "question":"三项学习数据怎样用 Grid 排成等宽列？",
+      "aliases":["repeat 3 minmax 0 1fr 是什么意思","指标卡怎么做三列"],
+      "keywords":["Grid","三列","repeat","minmax","1fr","metrics","gap"],
+      "diagnostic":"`.metrics` 是否是三个指标项的直接父元素？",
+      "hints":["先给父容器 display: grid。","用 repeat(3, minmax(0, 1fr)) 建三列，用 gap 控制间距。"],
+      "example":".metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; }",
+      "answer":"让共同父容器成为 Grid，再定义三列共享可用空间。minmax(0, 1fr) 允许长内容所在的列继续收缩，减少溢出。",
+      "source":{"label":"让三项数据排成真正的网格","href":"#example-grid-hierarchy"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"responsive-media-query","lesson_id":"web-start-02","context_id":"example-responsive-width",
+      "question":"怎样让三列在手机上变成一列？",
+      "aliases":["media query 怎么写","390px 下还是三列怎么办"],
+      "keywords":["媒体查询","media query","max-width","40rem","手机","单列","390px"],
+      "diagnostic":"窄屏覆盖的是 `.metrics`，还是误改了里面的单个卡片？",
+      "hints":["默认先保留桌面三列。","在 max-width: 40rem 内把 .metrics 改为 grid-template-columns: 1fr。"],
+      "example":"@media (max-width: 40rem) { .metrics { grid-template-columns: 1fr; } }",
+      "answer":"媒体查询按当前视口宽度覆盖布局。它不识别手机型号，只在可用空间不足时把网格改成单列。",
+      "source":{"label":"页面变窄时，别硬塞三列","href":"#example-responsive-width"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"clamp-fluid-size","lesson_id":"web-start-02","context_id":"example-responsive-width",
+      "question":"clamp 写字号有什么用？",
+      "aliases":["clamp 2rem 7vw 3.25rem 怎么理解","标题怎样随屏幕变化又不太大","标题怎么随屏幕变化又不会太大"],
+      "keywords":["clamp","字号","font-size","rem","vw","最小值","最大值"],
+      "diagnostic":"你是否同时需要最小字号、随视口变化的中间值和最大字号？",
+      "hints":["clamp 的第一个值是下限，第三个值是上限。","中间的 7vw 只在上下限之间生效。"],
+      "example":"clamp(2rem, 7vw, 3.25rem) 不小于 2rem，也不大于 3.25rem。",
+      "answer":"clamp 把流动尺寸限制在可读范围内。它适合连续缩放，但不能替代布局在窄屏下重新排列。",
+      "source":{"label":"页面变窄时，别硬塞三列","href":"#example-responsive-width"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"verify-responsive-page","lesson_id":"web-start-02","context_id":"reproduce-dashboard-v02",
+      "question":"我怎样验证页面真的适配了 390px？",
+      "aliases":["手机适配要检查什么","开发者工具设备模式怎么看"],
+      "keywords":["验证","390px","开发者工具","设备模式","横向滚动","截图"],
+      "diagnostic":"390px 下是否单列、能换行且没有横向滚动？",
+      "hints":["先在开发者工具把视口宽度设为 390。","再用真实手机检查系统字体、浏览器工具栏和触摸环境。"],
+      "example":"保存桌面三列截图与 390px 单列截图，并检查页面最右侧没有被裁掉。",
+      "answer":"设备模式用于快速改变视口；检查列数、换行和横向滚动后，再在真实手机打开一次。模拟结果不能完全替代真机。",
+      "source":{"label":"把 v0.2 放进自己的项目","href":"#reproduce-dashboard-v02"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"css-cascade-debug","lesson_id":"web-start-02","context_id":"troubleshoot-css-layout",
+      "question":"为什么我写的 CSS 规则被划掉了？",
+      "aliases":["CSS 改了不生效怎么办","哪条样式覆盖了我写的规则","为什么 CSS 规则被划掉了"],
+      "keywords":["级联","覆盖","规则划掉","开发者工具","Styles","specificity","important"],
+      "diagnostic":"开发者工具是否显示另一条同属性声明最终生效？",
+      "hints":["先看生效规则来自哪个文件和行号。","比较来源、重要性、选择器权重和出现顺序，不要先加 !important。"],
+      "example":"两个相同类选择器都写 color 时，通常后出现的声明生效。",
+      "answer":"被划掉表示该声明参与了匹配，但在级联中输了。用 Styles 面板找到获胜声明，再简化或调整正确规则。",
+      "source":{"label":"样式不对时，先看哪条规则赢了","href":"#troubleshoot-css-layout"},"updated_at":"2026-07-18","recommended":true
+    },
+    {
+      "id":"horizontal-overflow","lesson_id":"web-start-02","context_id":"troubleshoot-css-layout",
+      "question":"手机页面为什么出现横向滚动条？",
+      "aliases":["页面在手机上超宽了","长文字把网格撑开怎么办"],
+      "keywords":["横向滚动","溢出","固定宽度","长文字","minmax","overflow-wrap"],
+      "diagnostic":"是固定宽度超过视口，还是某段内容拒绝换行？",
+      "hints":["先在开发者工具逐层寻找超过视口的元素。","流动容器用 min(100%, 上限)，网格列允许缩到 0，长内容允许合理换行。"],
+      "example":"width: min(100%, 42rem)；minmax(0, 1fr)；overflow-wrap: anywhere。",
+      "answer":"横向滚动通常来自固定宽度、网格最小尺寸或长内容。先找出具体超宽元素，再修正尺寸和换行，不要直接隐藏全页 overflow。",
+      "source":{"label":"样式不对时，先看哪条规则赢了","href":"#troubleshoot-css-layout"},"updated_at":"2026-07-18"
+    },
+    {
+      "id":"project-web-v02","lesson_id":"web-start-02","context_id":"project-dashboard-v02",
+      "question":"Web v0.2 给学习进度报告器增加了什么？",
+      "aliases":["第二课项目增加了什么","CSS 和连续项目有什么关系"],
+      "keywords":["项目","Web v0.2","学习进度报告器","响应式","深浅色","下一版"],
+      "diagnostic":"与 v0.1 相比，HTML 数据有没有自动变化？",
+      "hints":["本课改变的是呈现和布局，不是数据来源。","v0.3 才会用 JavaScript 管理页面状态。"],
+      "example":"v0.2 增加颜色变量、盒模型、桌面三列、手机单列和深色模式。",
+      "answer":"v0.2 让同一份语义 HTML 在不同宽度与配色下保持可读，并留下可复现 CSS 和两种视口截图；数据仍然是静态的。",
+      "source":{"label":"学习面板有了稳定布局","href":"#project-dashboard-v02"},"updated_at":"2026-07-18","recommended":true
+    }
+  ]
+}
