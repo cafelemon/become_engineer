@@ -1,0 +1,132 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "cs-systems-03",
+    "title": "内存、文件与资源生命周期",
+    "path": "learning-paths/cs-systems-core/03-memory-file-resource-lifecycle/"
+  },
+  "contexts": [
+    {"id":"overview-resource-result","type":"overview","title":"变量删掉了，资源就一定释放了吗","anchor":"#overview-resource-result"},
+    {"id":"concept-reference-lifecycle","type":"concept","title":"生命周期看的是对象和资源，不只是变量名","anchor":"#concept-reference-lifecycle"},
+    {"id":"example-memory-trace","type":"example","title":"弱引用看存活，tracemalloc 看 Python 分配","anchor":"#example-memory-trace"},
+    {"id":"example-file-context","type":"example","title":"with 把关闭责任放在一个清楚的出口","anchor":"#example-file-context"},
+    {"id":"reproduce-resource-lab","type":"reproduce","title":"跑完四条释放路径","anchor":"#reproduce-resource-lab"},
+    {"id":"modify-resource-owner","type":"modify","title":"给资源再加一层所有者","anchor":"#modify-resource-owner"},
+    {"id":"troubleshoot-resource-lifecycle","type":"troubleshoot","title":"资源问题先找最后一个所有者","anchor":"#troubleshoot-resource-lifecycle"},
+    {"id":"project-runtime-observer-v03","type":"project","title":"系统运行观察器 v0.3","anchor":"#project-runtime-observer-v03"},
+    {"id":"deepen-memory-boundary","type":"deepen","title":"Python 实验不能替代所有语言的内存模型","anchor":"#deepen-memory-boundary"},
+    {"id":"career-resource-ownership","type":"career","title":"怎样解释一次资源泄漏排查","anchor":"#career-resource-ownership"}
+  ],
+  "cards": [
+    {
+      "id":"resource-lesson-result","lesson_id":"cs-systems-03","context_id":"overview-resource-result",
+      "question":"这节资源生命周期课最后能做出什么？",
+      "aliases":["系统运行观察器 v0.3 增加什么","第三课会观察哪些资源"],
+      "keywords":["v0.3","资源生命周期","内存","文件","释放"],
+      "diagnostic":"你能同时证明对象存活、文件关闭和临时目录清理吗？",
+      "hints":["先看 retained 和 released。","再看正常、异常和临时目录三个退出路径。"],
+      "example":"retained=True，closed_after_error=True，removed=True。",
+      "answer":"你会用强弱引用和 tracemalloc 观察 Python 对象，再用上下文管理器证明文件与临时目录在正常、异常路径都被清理。",
+      "source":{"label":"变量删掉了，资源就一定释放了吗","href":"#overview-resource-result"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"name-object-resource","lesson_id":"cs-systems-03","context_id":"concept-reference-lifecycle",
+      "question":"变量名、对象和系统资源有什么区别？",
+      "aliases":["删除变量是不是删除对象","文件对象和文件句柄是一回事吗"],
+      "keywords":["变量名","对象","系统资源","文件句柄","区别"],
+      "diagnostic":"一个对象还能不能被别名引用，它管理的句柄又是否已经关闭？",
+      "hints":["变量名只是引用入口。","对象可以管理比自己更底层的资源。"],
+      "example":"删除 payload 后 alias 仍指向对象；关闭 handle 后磁盘文件仍存在。",
+      "answer":"名字指向对象，对象可以管理文件句柄等系统资源；三者生命周期相关但不相同。",
+      "source":{"label":"生命周期看的是对象和资源，不只是变量名","href":"#concept-reference-lifecycle"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"alias-retains-object","lesson_id":"cs-systems-03","context_id":"concept-reference-lifecycle",
+      "question":"为什么 del payload 后对象还活着？",
+      "aliases":["别名为什么会保留对象","最后一个强引用是什么意思"],
+      "keywords":["del payload","别名","强引用","对象存活","最后引用"],
+      "diagnostic":"是否还有 alias、容器或闭包指向同一个对象？",
+      "hints":["del 只移除一个名字。","对象在强引用全部消失前仍可到达。"],
+      "example":"payload 和 alias 同时指向 Payload，删除 payload 后 alias 仍保活。",
+      "answer":"`del payload` 只删除一条引用；只要 alias 仍是强引用，对象就不会因为原名字消失而结束。",
+      "source":{"label":"生命周期看的是对象和资源，不只是变量名","href":"#concept-reference-lifecycle"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"weakref-purpose","lesson_id":"cs-systems-03","context_id":"example-memory-trace",
+      "question":"弱引用在内存实验里负责什么？",
+      "aliases":["weakref 为什么不会保活","怎样观察对象是否已经释放"],
+      "keywords":["weakref","弱引用","不保活","对象释放","observer"],
+      "diagnostic":"观察者本身是否会成为新的强引用？",
+      "hints":["弱引用可以观察对象。","对象结束后 observer() 返回 None。"],
+      "example":"observer = weakref.ref(payload)，删除最后强引用后 observer() is None。",
+      "answer":"弱引用用于观察对象是否仍存活，但不会延长对象生命周期，因此适合验证最后一个强引用消失后的状态。",
+      "source":{"label":"弱引用看存活，tracemalloc 看 Python 分配","href":"#example-memory-trace"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"tracemalloc-not-rss","lesson_id":"cs-systems-03","context_id":"example-memory-trace",
+      "question":"为什么 tracemalloc 下降不等于 RSS 立刻下降？",
+      "aliases":["Python 内存追踪和系统内存有什么区别","能用 tracemalloc 证明操作系统回收吗"],
+      "keywords":["tracemalloc","RSS","Python 分配器","系统内存","追踪值"],
+      "diagnostic":"你测的是 Python 内存块，还是操作系统进程驻留页？",
+      "hints":["tracemalloc 安装在 Python 分配器上。","分配器可以保留内存供后续复用。"],
+      "example":"对象释放后 traced_drop=True，但课程不固定系统监控数值。",
+      "answer":"tracemalloc 追踪 Python 分配的内存块；释放对象后，底层分配器未必立即把页归还操作系统，所以不能把它等同于 RSS。",
+      "source":{"label":"弱引用看存活，tracemalloc 看 Python 分配","href":"#example-memory-trace"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"with-closes-file","lesson_id":"cs-systems-03","context_id":"example-file-context",
+      "question":"with 为什么能可靠关闭文件？",
+      "aliases":["异常时文件还会 close 吗","文件上下文管理器做了什么"],
+      "keywords":["with","文件关闭","异常路径","上下文管理器","close"],
+      "diagnostic":"退出代码块时，关闭动作是否由统一出口执行？",
+      "hints":["进入时得到文件对象。","退出时 __exit__ 处理正常和异常路径。"],
+      "example":"with path.open(...) as handle，抛 RuntimeError 后 handle.closed 仍为 True。",
+      "answer":"文件上下文管理器把关闭放在统一退出路径，正常结束和异常展开都会调用退出逻辑。",
+      "source":{"label":"with 把关闭责任放在一个清楚的出口","href":"#example-file-context"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"run-resource-lab","lesson_id":"cs-systems-03","context_id":"reproduce-resource-lab",
+      "question":"怎样运行资源生命周期实验？",
+      "aliases":["资源实验目录在哪里","怎样运行四项生命周期测试"],
+      "keywords":["运行","resource_lifecycle.py","unittest","四项测试","v03"],
+      "diagnostic":"你是否进入 runtime-observer-v03 目录？",
+      "hints":["先运行 resource_lifecycle.py。","再运行 test_resource_lifecycle.py。"],
+      "example":"python -m unittest -v test_resource_lifecycle.py。",
+      "answer":"进入 v03 示例目录，先运行主程序查看四行固定结果，再运行 4 项 unittest。",
+      "source":{"label":"跑完四条释放路径","href":"#reproduce-resource-lab"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"resource-owner-modification","lesson_id":"cs-systems-03","context_id":"modify-resource-owner",
+      "question":"主动修改要怎样增加资源所有者？",
+      "aliases":["TraceWriter 练习要做什么","怎样给自定义类实现文件清理"],
+      "keywords":["TraceWriter","资源所有者","主动修改","__enter__","__exit__"],
+      "diagnostic":"你的类是否在同一个出口关闭自己打开的文件？",
+      "hints":["进入时打开文件并保存句柄。","退出时写记录并关闭，测试异常路径。"],
+      "example":"TraceWriter 在 __exit__ 写 closed by TraceWriter 后关闭文件。",
+      "answer":"实现一个拥有文件句柄的 TraceWriter，上下文退出时负责关闭，并分别测试正常和抛错路径。",
+      "source":{"label":"给资源再加一层所有者","href":"#modify-resource-owner"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"find-last-owner","lesson_id":"cs-systems-03","context_id":"troubleshoot-resource-lifecycle",
+      "question":"资源一直不释放时先查什么？",
+      "aliases":["文件句柄泄漏怎样排查","对象弱引用还活着怎么办"],
+      "keywords":["最后所有者","资源泄漏","文件句柄","强引用","排查"],
+      "diagnostic":"哪条引用或异常路径仍保留资源？",
+      "hints":["先画所有权和退出路径。","分别检查别名、容器、异常返回和 close。"],
+      "example":"解析失败直接 return，跳过 close；改用 with 后异常测试通过。",
+      "answer":"先找最后一个强引用或资源所有者，再逐条检查正常、异常和提前返回路径是否都进入释放出口。",
+      "source":{"label":"资源问题先找最后一个所有者","href":"#troubleshoot-resource-lifecycle"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"career-resource-leak","lesson_id":"cs-systems-03","context_id":"career-resource-ownership",
+      "question":"求职时怎样解释一次资源泄漏修复？",
+      "aliases":["文件描述符泄漏项目怎么讲","资源生命周期追问怎么回答"],
+      "keywords":["求职","资源泄漏","文件描述符","所有权","异常测试"],
+      "diagnostic":"你能指出资源、所有者、漏掉的路径、系统现象和回归测试吗？",
+      "hints":["先说成功与失败路径哪里不同。","再给出统一释放边界和测试。"],
+      "example":"失败时提前返回跳过 close → with 统一退出 → 异常测试证明关闭。",
+      "answer":"按资源、所有者、遗漏路径、外部现象、修复方式和正常／异常测试组织证据，不只说加了 close。",
+      "source":{"label":"怎样解释一次资源泄漏排查","href":"#career-resource-ownership"},"updated_at":"2026-07-20","recommended":true
+    }
+  ]
+}

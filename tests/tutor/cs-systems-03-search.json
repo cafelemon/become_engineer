@@ -1,0 +1,26 @@
+{
+  "lesson_id": "cs-systems-03",
+  "cases": [
+    {"query":"这节资源生命周期课最后能做出什么","expected_card":"resource-lesson-result"},
+    {"query":"系统运行观察器 v0.3 增加什么","expected_card":"resource-lesson-result"},
+    {"query":"变量名、对象和系统资源有什么区别","expected_card":"name-object-resource"},
+    {"query":"文件对象和文件句柄是一回事吗","expected_card":"name-object-resource"},
+    {"query":"为什么 del payload 后对象还活着","expected_card":"alias-retains-object"},
+    {"query":"最后一个强引用是什么意思","expected_card":"alias-retains-object"},
+    {"query":"弱引用在内存实验里负责什么","expected_card":"weakref-purpose"},
+    {"query":"weakref 为什么不会保活","expected_card":"weakref-purpose"},
+    {"query":"为什么 tracemalloc 下降不等于 RSS 立刻下降","expected_card":"tracemalloc-not-rss"},
+    {"query":"能用 tracemalloc 证明操作系统回收吗","expected_card":"tracemalloc-not-rss"},
+    {"query":"with 为什么能可靠关闭文件","expected_card":"with-closes-file"},
+    {"query":"异常时文件还会 close 吗","expected_card":"with-closes-file"},
+    {"query":"怎样运行资源生命周期实验","expected_card":"run-resource-lab"},
+    {"query":"怎样运行四项生命周期测试","expected_card":"run-resource-lab"},
+    {"query":"主动修改要怎样增加资源所有者","expected_card":"resource-owner-modification"},
+    {"query":"TraceWriter 练习要做什么","expected_card":"resource-owner-modification"},
+    {"query":"资源一直不释放时先查什么","expected_card":"find-last-owner"},
+    {"query":"文件句柄泄漏怎样排查","expected_card":"find-last-owner"},
+    {"query":"求职时怎样解释一次资源泄漏修复","expected_card":"career-resource-leak"},
+    {"query":"资源生命周期追问怎么回答","expected_card":"career-resource-leak"}
+  ],
+  "unknown": ["怎样在月球海里养珊瑚", "云朵能不能编译成音乐"]
+}

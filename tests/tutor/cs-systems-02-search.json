@@ -1,0 +1,26 @@
+{
+  "lesson_id": "cs-systems-02",
+  "cases": [
+    {"query":"这节线程课最后能做出什么","expected_card":"race-lesson-result"},
+    {"query":"系统运行观察器 v0.2 增加什么","expected_card":"race-lesson-result"},
+    {"query":"两个线程都加一为什么最后只有 1","expected_card":"lost-update-reason"},
+    {"query":"lost update 是怎么发生的","expected_card":"lost-update-reason"},
+    {"query":"什么是临界区","expected_card":"critical-section"},
+    {"query":"锁应该保护哪一段","expected_card":"critical-section"},
+    {"query":"Barrier 在这个实验里做什么","expected_card":"barrier-for-test"},
+    {"query":"怎样稳定复现丢失更新","expected_card":"barrier-for-test"},
+    {"query":"为什么锁要包住读取和写回","expected_card":"lock-full-operation"},
+    {"query":"只锁赋值为什么还会丢更新","expected_card":"lock-full-operation"},
+    {"query":"怎样运行线程竞态实验","expected_card":"run-concurrency-lab"},
+    {"query":"怎么看到 expected 2 actual 1","expected_card":"run-concurrency-lab"},
+    {"query":"双字段计数器为什么要用同一把锁","expected_card":"two-field-invariant"},
+    {"query":"completed 和 remaining 怎么一起更新","expected_card":"two-field-invariant"},
+    {"query":"为什么检查结果前要 join 线程","expected_card":"join-before-check"},
+    {"query":"主线程为什么读到旧计数","expected_card":"join-before-check"},
+    {"query":"有 GIL 为什么还需要锁","expected_card":"gil-not-lock"},
+    {"query":"Python 线程是不是天然安全","expected_card":"gil-not-lock"},
+    {"query":"求职时怎样解释一次竞态修复","expected_card":"career-race-explanation"},
+    {"query":"竞态条件面试怎么讲","expected_card":"career-race-explanation"}
+  ],
+  "unknown": ["怎样让铅笔在云上发芽", "鲸鱼会不会背乘法表"]
+}

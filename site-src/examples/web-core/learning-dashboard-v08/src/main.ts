@@ -4,7 +4,12 @@ import {
   fetchSummary,
   loadingState
 } from "./api.js";
-import { createSubmissionIntent, LatestRequestGate, validateSessionDraft } from "./form.js";
+import {
+  clearSessionDraft,
+  createSubmissionIntent,
+  LatestRequestGate,
+  validateSessionDraft
+} from "./form.js";
 import {
   renderForm,
   renderSessions,
@@ -142,6 +147,7 @@ refs.form.addEventListener("submit", async (event) => {
   }
 
   refs.form.reset();
+  clearSessionDraft(hoursInput, noteInput);
   renderForm(
     {
       ...result,
@@ -158,6 +164,7 @@ refs.refreshButton.addEventListener("click", async () => {
   if (refreshed) {
     waitingForRefresh = false;
     refs.form.reset();
+    clearSessionDraft(hoursInput, noteInput);
     renderForm({ kind: "idle", message: "页面已经同步，可以继续填写。" }, refs);
   }
 });

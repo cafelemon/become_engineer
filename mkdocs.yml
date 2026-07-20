@@ -145,6 +145,14 @@ nav:
           - Python 工程化:
               - 包结构、可安装入口与 CLI: learning-paths/programming-languages/python-core/06-package-structure-installable-cli.md
               - TOML 配置、日志与诊断: learning-paths/programming-languages/python-core/07-toml-configuration-logging-diagnostics.md
+      - CS 系统基础:
+          - 课程说明: learning-paths/cs-systems-core/README.md
+          - 程序、进程与退出状态: learning-paths/cs-systems-core/01-program-process-exit-status.md
+          - 线程、竞态条件与锁: learning-paths/cs-systems-core/02-threads-races-locks.md
+          - 内存、文件与资源生命周期: learning-paths/cs-systems-core/03-memory-file-resource-lifecycle.md
+          - 从端口到 HTTP 的本机网络链路: learning-paths/cs-systems-core/04-local-network-port-http.md
+          - 事务、隔离与并发写入: learning-paths/cs-systems-core/05-transactions-isolation-concurrent-writes.md
+          - 身份、授权与最小权限: learning-paths/cs-systems-core/06-identity-authorization-least-privilege.md
       - Web 全栈:
           - 路线说明: learning-paths/web-fullstack/README.md
           - Web 起步:
@@ -158,6 +166,7 @@ nav:
               - TypeScript、OpenAPI 与运行时数据契约: learning-paths/web-fullstack/web-core/01-typescript-openapi-runtime-contract.md
               - 关系模型、SQLite 与持久化边界: learning-paths/web-fullstack/web-core/02-relational-model-sqlite-persistence.md
               - REST 资源、CRUD、分页与幂等: learning-paths/web-fullstack/web-core/03-rest-resources-crud-pagination-idempotency.md
+              - 表单校验、提交与前后端状态同步: learning-paths/web-fullstack/web-core/04-form-validation-submission-state-sync.md
       - 算法与数据结构:
           - 共同算法与数据结构基础:
               - 动态数组容量、扩容成本与摊还分析: learning-paths/cs-core/05-dynamic-array-capacity-amortized-cost.md

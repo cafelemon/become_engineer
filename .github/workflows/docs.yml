@@ -78,6 +78,13 @@ on:
       - "scripts/test_web_core_typescript_contract_v2.mjs"
       - "scripts/test_web_core_sqlite_persistence_v2.mjs"
       - "scripts/test_web_core_rest_resources_v2.mjs"
+      - "scripts/test_web_core_form_state_v2.mjs"
+      - "scripts/test_cs_systems_process_v2.mjs"
+      - "scripts/test_cs_systems_concurrency_v2.mjs"
+      - "scripts/test_cs_systems_resources_v2.mjs"
+      - "scripts/test_cs_systems_network_v2.mjs"
+      - "scripts/test_cs_systems_transactions_v2.mjs"
+      - "scripts/test_cs_systems_authorization_v2.mjs"
       - "scripts/test_tutor_search.cjs"
       - "tests/tutor/**"
       - "mkdocs.yml"
@@ -120,6 +127,7 @@ jobs:
             site-src/examples/web-core/learning-dashboard-v05/package-lock.json
             site-src/examples/web-core/learning-dashboard-v06/package-lock.json
             site-src/examples/web-core/learning-dashboard-v07/package-lock.json
+            site-src/examples/web-core/learning-dashboard-v08/package-lock.json
 
       - name: Install CI dependencies
         run: |
@@ -308,6 +316,32 @@ jobs:
       - name: Verify Web core REST resources lesson
         if: ${{ hashFiles('scripts/test_web_core_rest_resources_v2.mjs') != '' }}
         run: node scripts/test_web_core_rest_resources_v2.mjs
+
+      - name: Install Web core form dependencies
+        if: ${{ hashFiles('site-src/examples/web-core/learning-dashboard-v08/package-lock.json') != '' }}
+        run: npm ci --prefix site-src/examples/web-core/learning-dashboard-v08
+
+      - name: Verify Web core form state lesson
+        if: ${{ hashFiles('scripts/test_web_core_form_state_v2.mjs') != '' }}
+        run: node scripts/test_web_core_form_state_v2.mjs
+
+      - name: Verify CS systems process lesson
+        run: node scripts/test_cs_systems_process_v2.mjs
+
+      - name: Verify CS systems concurrency lesson
+        run: node scripts/test_cs_systems_concurrency_v2.mjs
+
+      - name: Verify CS systems resource lifecycle lesson
+        run: node scripts/test_cs_systems_resources_v2.mjs
+
+      - name: Verify CS systems local network lesson
+        run: node scripts/test_cs_systems_network_v2.mjs
+
+      - name: Verify CS systems transactions lesson
+        run: node scripts/test_cs_systems_transactions_v2.mjs
+
+      - name: Verify CS systems authorization lesson
+        run: node scripts/test_cs_systems_authorization_v2.mjs
 
       - name: Build documentation strictly
         run: mkdocs build --strict

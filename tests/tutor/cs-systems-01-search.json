@@ -1,0 +1,26 @@
+{
+  "lesson_id": "cs-systems-01",
+  "cases": [
+    {"query":"这节进程课最后能做出什么","expected_card":"process-lesson-result"},
+    {"query":"系统运行观察器 v0.1 有什么用","expected_card":"process-lesson-result"},
+    {"query":"程序和进程到底有什么区别","expected_card":"program-vs-process"},
+    {"query":"同一份程序为什么能运行多次","expected_card":"program-vs-process"},
+    {"query":"PID 为什么不能当永久 ID","expected_card":"pid-not-business-id"},
+    {"query":"进程号会不会一直不变","expected_card":"pid-not-business-id"},
+    {"query":"stdout stderr 和退出码分别看什么","expected_card":"stdout-stderr-returncode"},
+    {"query":"有输出是不是就算成功","expected_card":"stdout-stderr-returncode"},
+    {"query":"超时和非零退出有什么不同","expected_card":"timeout-vs-exit"},
+    {"query":"timeout 算不算退出码","expected_card":"timeout-vs-exit"},
+    {"query":"怎样运行系统观察器 v0.1","expected_card":"run-runtime-observer"},
+    {"query":"怎样复现 exit 7 和 timeout","expected_card":"run-runtime-observer"},
+    {"query":"怎样给 worker 增加一种失败方式","expected_card":"add-exit-mode"},
+    {"query":"invalid input 模式要改什么","expected_card":"add-exit-mode"},
+    {"query":"子进程提示 FileNotFoundError 先查什么","expected_card":"subprocess-not-started"},
+    {"query":"worker 路径找不到怎么办","expected_card":"subprocess-not-started"},
+    {"query":"为什么示例不用 shell=True","expected_card":"avoid-shell-true"},
+    {"query":"命令为什么要传参数列表","expected_card":"avoid-shell-true"},
+    {"query":"求职时怎样讲进程失败处理","expected_card":"career-process-boundary"},
+    {"query":"怎样解释启动失败退出失败和超时","expected_card":"career-process-boundary"}
+  ],
+  "unknown": ["怎样给月亮安装脚轮", "海豚为什么不写毛笔字"]
+}

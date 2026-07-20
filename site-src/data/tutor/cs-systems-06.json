@@ -1,0 +1,132 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "cs-systems-06",
+    "title": "身份、授权与最小权限",
+    "path": "learning-paths/cs-systems-core/06-identity-authorization-least-privilege/"
+  },
+  "contexts": [
+    {"id":"overview-authorization-result","type":"overview","title":"已经登录，为什么仍不能执行诊断","anchor":"#overview-authorization-result"},
+    {"id":"concept-authn-authz","type":"concept","title":"认证回答是谁，授权回答能做什么","anchor":"#concept-authn-authz"},
+    {"id":"example-opaque-token","type":"example","title":"令牌只在签发时出现原文","anchor":"#example-opaque-token"},
+    {"id":"example-policy-audit","type":"example","title":"权限检查和审计共用同一个动作名","anchor":"#example-policy-audit"},
+    {"id":"reproduce-authorization-lab","type":"reproduce","title":"跑过匿名、越权和允许路径","anchor":"#reproduce-authorization-lab"},
+    {"id":"modify-readonly-action","type":"modify","title":"增加日志摘要读取，不扩大诊断权限","anchor":"#modify-readonly-action"},
+    {"id":"troubleshoot-auth-boundary","type":"troubleshoot","title":"权限错误先分身份、策略和秘密处理","anchor":"#troubleshoot-auth-boundary"},
+    {"id":"project-runtime-observer-v06","type":"project","title":"系统运行观察器 v0.6","anchor":"#project-runtime-observer-v06"},
+    {"id":"deepen-security-boundary","type":"deepen","title":"这不是生产登录系统","anchor":"#deepen-security-boundary"},
+    {"id":"career-auth-evidence","type":"career","title":"不要把认证成功说成拥有全部权限","anchor":"#career-auth-evidence"}
+  ],
+  "cards": [
+    {
+      "id":"authorization-lesson-result","lesson_id":"cs-systems-06","context_id":"overview-authorization-result",
+      "question":"这节身份权限课最后能做出什么？",
+      "aliases":["系统运行观察器 v0.6 增加什么","第六课会验证哪些权限结果"],
+      "keywords":["v0.6","身份","授权","最小权限","401","403"],
+      "diagnostic":"你能分别证明匿名、只读、越权、允许和日志脱敏吗？",
+      "hints":["先看 401、viewer 200 和 viewer 403。","再看 operator 200 与 raw_token_logged=False。"],
+      "example":"anonymous=401，viewer read=200，diagnostic=403，operator=200。",
+      "answer":"你会建立只读和诊断两个动作权限，区分 401/403，默认拒绝未登记动作，并证明令牌不进入存储原文和日志。",
+      "source":{"label":"已经登录，为什么仍不能执行诊断","href":"#overview-authorization-result"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"authentication-vs-authorization","lesson_id":"cs-systems-06","context_id":"concept-authn-authz",
+      "question":"认证和授权有什么区别？",
+      "aliases":["你是谁和你能做什么为何分开","登录成功是不是拥有全部权限"],
+      "keywords":["认证","授权","身份","动作权限","区别"],
+      "diagnostic":"当前判断是在确认主体，还是检查主体能否执行动作？",
+      "hints":["认证产生 Principal。","授权比较 action 与 scopes。"],
+      "example":"viewer 已认证，但没有 diagnostic:run。",
+      "answer":"认证确认请求对应哪个主体；授权在已知主体后判断它是否获准执行目标动作。认证成功不等于拥有全部权限。",
+      "source":{"label":"认证回答是谁，授权回答能做什么","href":"#concept-authn-authz"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"status-401-403","lesson_id":"cs-systems-06","context_id":"concept-authn-authz",
+      "question":"401 和 403 在本课怎样区分？",
+      "aliases":["什么时候返回 WWW-Authenticate","有效身份权限不足返回什么"],
+      "keywords":["401","403","WWW-Authenticate","无效令牌","权限不足"],
+      "diagnostic":"请求是没有可验证身份，还是身份有效但缺动作权限？",
+      "hints":["无身份使用 401 并挑战认证。","有效身份缺权限使用 403。"],
+      "example":"匿名 GET /status → 401；viewer POST /diagnostics → 403。",
+      "answer":"缺少或无效凭据返回 401 与 WWW-Authenticate；身份有效但无目标权限返回 403。",
+      "source":{"label":"认证回答是谁，授权回答能做什么","href":"#concept-authn-authz"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"least-privilege-scopes","lesson_id":"cs-systems-06","context_id":"concept-authn-authz",
+      "question":"viewer 怎样体现最小权限？",
+      "aliases":["只读身份为什么不能运行诊断","status read 和 diagnostic run 怎么分"],
+      "keywords":["viewer","最小权限","status:read","diagnostic:run","scope"],
+      "diagnostic":"viewer 完成查看状态是否真的需要诊断权限？",
+      "hints":["只授予当前任务需要的 action。","诊断权限只放进 operator scopes。"],
+      "example":"viewer={status:read}；operator={status:read, diagnostic:run}。",
+      "answer":"viewer 只获得读取状态所需的 scope；更强的诊断动作单独授予 operator，避免为了方便扩大权限。",
+      "source":{"label":"认证回答是谁，授权回答能做什么","href":"#concept-authn-authz"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"opaque-token-storage","lesson_id":"cs-systems-06","context_id":"example-opaque-token",
+      "question":"为什么服务端只保存令牌摘要？",
+      "aliases":["不透明令牌原文存在哪里","随机令牌怎样避免写进源码"],
+      "keywords":["不透明令牌","摘要","secrets","源码","存储"],
+      "diagnostic":"服务端查找主体是否需要保留可直接使用的 Bearer 原文？",
+      "hints":["运行时生成高熵令牌。","存储 SHA-256 摘要并比较候选摘要。"],
+      "example":"客户端持有 token，TokenStore 只保存 digest → Principal。",
+      "answer":"高熵令牌运行时生成，服务端只保存摘要映射，减少存储泄漏后直接拿原令牌调用的风险；原文不写源码或日志。",
+      "source":{"label":"令牌只在签发时出现原文","href":"#example-opaque-token"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"audit-without-secret","lesson_id":"cs-systems-06","context_id":"example-policy-audit",
+      "question":"权限审计日志应该记录什么？",
+      "aliases":["为什么日志不能记录 Authorization","怎样证明原始 token 没进日志"],
+      "keywords":["审计日志","Authorization","原始 token","principal","action","result"],
+      "diagnostic":"排查需要主体、动作和结果，是否真的需要秘密原文？",
+      "hints":["保留 principal、action、result。","从字段设计上排除请求头和令牌。"],
+      "example":"principal=viewer action=diagnostic:run result=403。",
+      "answer":"日志记录主体、动作、结果和必要上下文，不记录 Authorization 头、原始令牌或敏感请求正文。",
+      "source":{"label":"权限检查和审计共用同一个动作名","href":"#example-policy-audit"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"run-authorization-lab","lesson_id":"cs-systems-06","context_id":"reproduce-authorization-lab",
+      "question":"怎样运行身份授权实验？",
+      "aliases":["权限示例目录在哪里","怎样运行五项授权测试"],
+      "keywords":["运行","authorization_lab.py","unittest","五项测试","v06"],
+      "diagnostic":"你是否进入 runtime-observer-v06 目录？",
+      "hints":["先运行主程序。","再运行 test_authorization_lab.py。"],
+      "example":"python -m unittest -v test_authorization_lab.py。",
+      "answer":"进入 v06 示例目录运行主程序和 5 项 unittest；令牌每次变化，但固定输出不包含令牌原文。",
+      "source":{"label":"跑过匿名、越权和允许路径","href":"#reproduce-authorization-lab"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"deny-new-action","lesson_id":"cs-systems-06","context_id":"modify-readonly-action",
+      "question":"新增动作为什么要先验证默认拒绝？",
+      "aliases":["summary read 应该怎样授权","新接口能不能自动继承旧权限"],
+      "keywords":["默认拒绝","新增动作","summary:read","显式授权","新接口"],
+      "diagnostic":"路由表外或未授予的新 action 会不会意外通过？",
+      "hints":["先写未登记时的拒绝测试。","再显式登记 route 与 scope。"],
+      "example":"/summary 未登记先 404；登记后 viewer 需明确拥有 summary:read。",
+      "answer":"先证明未知动作不被允许，再显式添加路由和最小 scope，避免新功能从宽泛角色继承过大权限。",
+      "source":{"label":"增加日志摘要读取，不扩大诊断权限","href":"#modify-readonly-action"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"not-production-login","lesson_id":"cs-systems-06","context_id":"deepen-security-boundary",
+      "question":"为什么这不是生产登录系统？",
+      "aliases":["本课为什么不自制 JWT","明文 HTTP 能不能承载真实 Bearer token"],
+      "keywords":["生产登录","JWT","TLS","OAuth","OIDC","Bearer"],
+      "diagnostic":"示例是否具备 TLS、过期、刷新、吊销、账号和资源级授权？",
+      "hints":["本课只有单进程短期不透明令牌。","生产需要成熟身份系统与 TLS。"],
+      "example":"示例没有密码、注册、刷新、吊销、TLS 或跨服务信任。",
+      "answer":"它只验证认证与授权边界；生产还需要 TLS、成熟身份提供方、会话生命周期、密钥管理和更细授权。",
+      "source":{"label":"这不是生产登录系统","href":"#deepen-security-boundary"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"career-auth-chain","lesson_id":"cs-systems-06","context_id":"career-auth-evidence",
+      "question":"求职时怎样解释认证授权证据链？",
+      "aliases":["身份权限项目追问怎么回答","为什么不能把登录成功说成全部权限"],
+      "keywords":["求职","认证授权","证据链","401","403","最小权限","脱敏"],
+      "diagnostic":"你能从凭据一路讲到 Principal、scope、action、响应和审计吗？",
+      "hints":["先区分 401、403 和 200。","再说明默认拒绝、最小 scope 与日志脱敏。"],
+      "example":"无令牌 401；viewer read 200；viewer diagnostic 403；operator 200。",
+      "answer":"按凭据验证、Principal、动作权限、HTTP 结果和脱敏审计组成链路，并用 5 项测试证明每个边界。",
+      "source":{"label":"不要把认证成功说成拥有全部权限","href":"#career-auth-evidence"},"updated_at":"2026-07-20","recommended":true
+    }
+  ]
+}

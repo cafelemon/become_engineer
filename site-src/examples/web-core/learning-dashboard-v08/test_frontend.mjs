@@ -8,6 +8,7 @@ import {
   serverFieldErrors
 } from "./dist/api.js";
 import {
+  clearSessionDraft,
   createSubmissionIntent,
   LatestRequestGate,
   validateSessionDraft
@@ -46,6 +47,13 @@ const oldToken = gate.start();
 const latestToken = gate.start();
 assert.equal(gate.isCurrent(oldToken), false);
 assert.equal(gate.isCurrent(latestToken), true);
+
+const draftFields = {
+  hours: { value: "1.25" },
+  note: { value: "复盘表单状态" }
+};
+clearSessionDraft(draftFields.hours, draftFields.note);
+assert.deepEqual(draftFields, { hours: { value: "" }, note: { value: "" } });
 
 const validationPayload = {
   detail: [

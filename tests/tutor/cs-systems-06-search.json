@@ -1,0 +1,26 @@
+{
+  "lesson_id": "cs-systems-06",
+  "cases": [
+    {"query":"这节身份权限课最后能做出什么","expected_card":"authorization-lesson-result"},
+    {"query":"系统运行观察器 v0.6 增加什么","expected_card":"authorization-lesson-result"},
+    {"query":"认证和授权有什么区别","expected_card":"authentication-vs-authorization"},
+    {"query":"登录成功是不是拥有全部权限","expected_card":"authentication-vs-authorization"},
+    {"query":"401 和 403 在本课怎样区分","expected_card":"status-401-403"},
+    {"query":"什么时候返回 WWW-Authenticate","expected_card":"status-401-403"},
+    {"query":"viewer 怎样体现最小权限","expected_card":"least-privilege-scopes"},
+    {"query":"只读身份为什么不能运行诊断","expected_card":"least-privilege-scopes"},
+    {"query":"为什么服务端只保存令牌摘要","expected_card":"opaque-token-storage"},
+    {"query":"随机令牌怎样避免写进源码","expected_card":"opaque-token-storage"},
+    {"query":"权限审计日志应该记录什么","expected_card":"audit-without-secret"},
+    {"query":"为什么日志不能记录 Authorization","expected_card":"audit-without-secret"},
+    {"query":"怎样运行身份授权实验","expected_card":"run-authorization-lab"},
+    {"query":"怎样运行五项授权测试","expected_card":"run-authorization-lab"},
+    {"query":"新增动作为什么要先验证默认拒绝","expected_card":"deny-new-action"},
+    {"query":"新接口能不能自动继承旧权限","expected_card":"deny-new-action"},
+    {"query":"为什么这不是生产登录系统","expected_card":"not-production-login"},
+    {"query":"明文 HTTP 能不能承载真实 Bearer token","expected_card":"not-production-login"},
+    {"query":"求职时怎样解释认证授权证据链","expected_card":"career-auth-chain"},
+    {"query":"身份权限项目追问怎么回答","expected_card":"career-auth-chain"}
+  ],
+  "unknown": ["怎样给彩虹配置管理员账号", "企鹅的令牌能不能打开火山"]
+}

@@ -1,0 +1,131 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "cs-systems-01",
+    "title": "程序、进程与退出状态",
+    "path": "learning-paths/cs-systems-core/01-program-process-exit-status/"
+  },
+  "contexts": [
+    {"id":"overview-process-result","type":"overview","title":"同一段代码启动三次，结果并不只在屏幕上","anchor":"#overview-process-result"},
+    {"id":"concept-program-process","type":"concept","title":"程序是文件，进程是一次正在运行的实例","anchor":"#concept-program-process"},
+    {"id":"example-streams-and-exit","type":"example","title":"stdout 说结果，stderr 说问题，退出码给调用者判断","anchor":"#example-streams-and-exit"},
+    {"id":"reproduce-runtime-observer","type":"reproduce","title":"跑三条不同的结束路径","anchor":"#reproduce-runtime-observer"},
+    {"id":"modify-worker-mode","type":"modify","title":"加一种结束方式","anchor":"#modify-worker-mode"},
+    {"id":"troubleshoot-subprocess","type":"troubleshoot","title":"子进程不对时，先看它有没有启动","anchor":"#troubleshoot-subprocess"},
+    {"id":"project-runtime-observer-v01","type":"project","title":"系统运行观察器 v0.1","anchor":"#project-runtime-observer-v01"},
+    {"id":"deepen-process-boundary","type":"deepen","title":"为什么这节不直接教 fork","anchor":"#deepen-process-boundary"},
+    {"id":"career-process-failure","type":"career","title":"进程失败和超时有什么不同","anchor":"#career-process-failure"}
+  ],
+  "cards": [
+    {
+      "id":"process-lesson-result","lesson_id":"cs-systems-01","context_id":"overview-process-result",
+      "question":"这节进程课最后能做出什么？",
+      "aliases":["系统运行观察器 v0.1 有什么用","第一课会看到哪些进程结果"],
+      "keywords":["系统运行观察器","v0.1","进程","退出码","超时","结果"],
+      "diagnostic":"你现在能区分正常结束、非零退出和超过期限吗？",
+      "hints":["先启动同一个 worker 的三种模式。","再分别保存 stdout、stderr、退出码和超时。"],
+      "example":"success 返回 0；fail 返回 7；sleep 进入 timeout。",
+      "answer":"你会完成一个跨平台子进程观察器，能记录父子 PID、两条输出流、退出码和超时。",
+      "source":{"label":"同一段代码启动三次，结果并不只在屏幕上","href":"#overview-process-result"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"program-vs-process","lesson_id":"cs-systems-01","context_id":"concept-program-process",
+      "question":"程序和进程到底有什么区别？",
+      "aliases":["py 文件就是进程吗","同一份程序为什么能运行多次"],
+      "keywords":["程序","进程","文件","运行实例","区别"],
+      "diagnostic":"代码还放在磁盘上，还是已经被解释器加载并分配了运行资源？",
+      "hints":["程序是可被加载的文件和指令。","进程是这份程序的一次运行实例。"],
+      "example":"worker.py 是程序；PID 41001 对应它的一次运行。",
+      "answer":"程序描述要执行什么，进程表示它正在某个运行环境中执行；同一程序可以有多个独立进程。",
+      "source":{"label":"程序是文件，进程是一次正在运行的实例","href":"#concept-program-process"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"pid-not-business-id","lesson_id":"cs-systems-01","context_id":"concept-program-process",
+      "question":"PID 为什么不能当永久 ID？",
+      "aliases":["进程号会不会一直不变","能不能把 PID 存进业务数据"],
+      "keywords":["PID","进程号","复用","永久 ID","业务 ID"],
+      "diagnostic":"进程结束以后，操作系统还需要永远保留这个编号吗？",
+      "hints":["PID 只在当前系统运行状态里识别进程。","进程结束后编号可以被后来进程复用。"],
+      "example":"今天的 PID 41001，重启后可能变成 5207。",
+      "answer":"PID 是临时运行标识，不具备业务身份的稳定性；日志可记录它，业务实体必须使用自己的稳定 ID。",
+      "source":{"label":"程序是文件，进程是一次正在运行的实例","href":"#concept-program-process"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"stdout-stderr-returncode","lesson_id":"cs-systems-01","context_id":"example-streams-and-exit",
+      "question":"stdout、stderr 和退出码分别看什么？",
+      "aliases":["有输出是不是就算成功","标准错误和返回码有什么区别"],
+      "keywords":["stdout","stderr","退出码","returncode","成功","诊断"],
+      "diagnostic":"调用者要继续处理正常结果，还是要判断失败原因和最终状态？",
+      "hints":["stdout 与 stderr 是两条内容通道。","退出码才是进程结束时给调用者的状态。"],
+      "example":"stderr 有 simulated failure，returncode 为 7。",
+      "answer":"stdout 放正常结果，stderr 放诊断；调用者还要读退出码，不能用有没有文字替代成功判断。",
+      "source":{"label":"stdout 说结果，stderr 说问题，退出码给调用者判断","href":"#example-streams-and-exit"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"timeout-vs-exit","lesson_id":"cs-systems-01","context_id":"example-streams-and-exit",
+      "question":"超时和非零退出有什么不同？",
+      "aliases":["timeout 算不算退出码","程序失败和一直没结束怎么分"],
+      "keywords":["超时","timeout","非零退出","期限","结束状态"],
+      "diagnostic":"子进程已经主动结束，还是调用者只是不愿继续等待？",
+      "hints":["非零退出来自已经结束的进程。","超时来自调用者的等待期限。"],
+      "example":"fail 主动返回 7；sleep 在 0.05 秒内没有结束。",
+      "answer":"非零退出表示进程结束并报告失败；超时表示期限到了，调用者还要终止并回收该进程。",
+      "source":{"label":"stdout 说结果，stderr 说问题，退出码给调用者判断","href":"#example-streams-and-exit"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"run-runtime-observer","lesson_id":"cs-systems-01","context_id":"reproduce-runtime-observer",
+      "question":"怎样运行系统观察器 v0.1？",
+      "aliases":["进程示例从哪里启动","怎样复现 exit 7 和 timeout"],
+      "keywords":["运行","observer.py","test_observer","exit 7","timeout","命令"],
+      "diagnostic":"你已经进入 runtime-observer-v01 目录了吗？",
+      "hints":["先执行 python observer.py。","再执行 unittest 固定三条路径。"],
+      "example":"python -m unittest -v test_observer.py。",
+      "answer":"进入 v01 示例目录，先运行观察器，再运行 3 项 unittest；输出不固定 PID，只检查父子关系。",
+      "source":{"label":"跑三条不同的结束路径","href":"#reproduce-runtime-observer"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"add-exit-mode","lesson_id":"cs-systems-01","context_id":"modify-worker-mode",
+      "question":"怎样给 worker 增加一种失败方式？",
+      "aliases":["invalid input 模式要改什么","主动修改进程例子怎么做"],
+      "keywords":["worker","invalid-input","失败方式","stderr","返回码 2","测试"],
+      "diagnostic":"新模式的诊断文字和退出码是否都有明确约定？",
+      "hints":["先扩充 argparse 的 choices。","再写 stderr、返回 2，并补观察器测试。"],
+      "example":"invalid-input → stderr: invalid input → return 2。",
+      "answer":"新增模式后同时更新 worker、观察输出和测试；不要把非零退出转成成功。",
+      "source":{"label":"加一种结束方式","href":"#modify-worker-mode"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"subprocess-not-started","lesson_id":"cs-systems-01","context_id":"troubleshoot-subprocess",
+      "question":"子进程提示 FileNotFoundError 先查什么？",
+      "aliases":["worker 路径找不到怎么办","子进程根本没启动怎么排查"],
+      "keywords":["FileNotFoundError","子进程","路径","sys.executable","没有启动"],
+      "diagnostic":"找不到的是 Python 解释器，还是 worker.py？",
+      "hints":["使用当前 sys.executable。","用 __file__ 计算 worker 的绝对路径。"],
+      "example":"Path(__file__).with_name('worker.py')。",
+      "answer":"先区分创建失败和运行失败；修正可执行文件或脚本路径后，进程才会有退出状态。",
+      "source":{"label":"子进程不对时，先看它有没有启动","href":"#troubleshoot-subprocess"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"avoid-shell-true","lesson_id":"cs-systems-01","context_id":"troubleshoot-subprocess",
+      "question":"为什么示例不用 shell=True？",
+      "aliases":["命令为什么要传参数列表","shell 字符串有什么问题"],
+      "keywords":["shell=True","参数列表","跨平台","命令注入","subprocess"],
+      "diagnostic":"你需要的是 Shell 管道语法，还是只要启动一个已知程序？",
+      "hints":["参数列表不需要再经过 Shell 解析。","它更容易跨平台，也减少拼接输入的风险。"],
+      "example":"[sys.executable, worker, '--mode', mode]。",
+      "answer":"本课只启动已知程序，参数列表更直接、更安全；没有必要为方便引入 Shell 语法和注入边界。",
+      "source":{"label":"子进程不对时，先看它有没有启动","href":"#troubleshoot-subprocess"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"career-process-boundary","lesson_id":"cs-systems-01","context_id":"career-process-failure",
+      "question":"求职时怎样讲进程失败处理？",
+      "aliases":["进程项目怎么讲不空泛","怎样解释启动失败退出失败和超时"],
+      "keywords":["求职","进程失败","启动失败","非零退出","超时","复盘"],
+      "diagnostic":"你能否给每种现象对应一个状态、诊断和清理动作？",
+      "hints":["先区分没有启动、已失败退出和还没结束。","再说明输出、回收与测试。"],
+      "example":"FileNotFoundError → 未启动；return 7 → 已结束；TimeoutExpired → 期限到了。",
+      "answer":"按现象、进程状态、诊断信息、清理动作和测试证据讲，不要用一句“程序挂了”覆盖全部故障。",
+      "source":{"label":"进程失败和超时有什么不同","href":"#career-process-failure"},"updated_at":"2026-07-20","recommended":true
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "cs-systems-05",
+    "title": "事务、隔离与并发写入",
+    "path": "learning-paths/cs-systems-core/05-transactions-isolation-concurrent-writes/"
+  },
+  "contexts": [
+    {"id":"overview-transaction-result","type":"overview","title":"已经扣款却来不及入账，数据库应该留下什么","anchor":"#overview-transaction-result"},
+    {"id":"concept-transaction-boundary","type":"concept","title":"事务把多个语句变成一次提交决定","anchor":"#concept-transaction-boundary"},
+    {"id":"example-writer-lock","type":"example","title":"BEGIN IMMEDIATE 让写入竞争变得可重复","anchor":"#example-writer-lock"},
+    {"id":"example-wal-snapshot","type":"example","title":"同一读事务看到同一个快照","anchor":"#example-wal-snapshot"},
+    {"id":"reproduce-transaction-lab","type":"reproduce","title":"用四个临时数据库隔离四个结论","anchor":"#reproduce-transaction-lab"},
+    {"id":"modify-transfer-rule","type":"modify","title":"完成真正的转账，再故意重复一次","anchor":"#modify-transfer-rule"},
+    {"id":"troubleshoot-sqlite-concurrency","type":"troubleshoot","title":"并发数据库问题要把连接和事务画出来","anchor":"#troubleshoot-sqlite-concurrency"},
+    {"id":"project-runtime-observer-v05","type":"project","title":"系统运行观察器 v0.5","anchor":"#project-runtime-observer-v05"},
+    {"id":"deepen-sqlite-boundary","type":"deepen","title":"ACID 是检查问题的框架，不是四个开关","anchor":"#deepen-sqlite-boundary"},
+    {"id":"career-transaction-evidence","type":"career","title":"用状态变化解释事务，而不是背 ACID","anchor":"#career-transaction-evidence"}
+  ],
+  "cards": [
+    {
+      "id":"transaction-lesson-result","lesson_id":"cs-systems-05","context_id":"overview-transaction-result",
+      "question":"这节事务并发课最后能做出什么？",
+      "aliases":["系统运行观察器 v0.5 增加什么","第五课会复现哪些数据库现象"],
+      "keywords":["v0.5","事务","回滚","写锁","快照"],
+      "diagnostic":"你能分别证明回滚、约束、锁失败重试和一致读取吗？",
+      "hints":["先看余额是否回到 100,100。","再看 blocked、retry 和快照的三个值。"],
+      "example":"after=100,100；blocked=True；before=100 during=100 after=120。",
+      "answer":"你会用临时 SQLite 数据库稳定复现原子回滚、约束拒绝、并发写锁、释放后重试和 WAL 读快照。",
+      "source":{"label":"已经扣款却来不及入账，数据库应该留下什么","href":"#overview-transaction-result"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"transaction-all-or-nothing","lesson_id":"cs-systems-05","context_id":"concept-transaction-boundary",
+      "question":"事务为什么能避免只扣款不入账？",
+      "aliases":["转账中途失败为什么余额没变","原子回滚保护了什么"],
+      "keywords":["事务","转账","原子性","回滚","只扣款"],
+      "diagnostic":"扣减和增加是否在同一个 BEGIN/COMMIT 边界内？",
+      "hints":["失败前不要提交部分语句。","异常路径执行 rollback。"],
+      "example":"alice 扣 30 后抛错，ROLLBACK 恢复两边 100。",
+      "answer":"两条余额更新属于同一事务，只有全部成功才提交；中途异常回滚整个事务，因此不会留下半次转账。",
+      "source":{"label":"事务把多个语句变成一次提交决定","href":"#concept-transaction-boundary"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"constraint-defense","lesson_id":"cs-systems-05","context_id":"concept-transaction-boundary",
+      "question":"有事务为什么还需要余额 CHECK 约束？",
+      "aliases":["应用检查能不能替代数据库约束","负余额怎样在存储层拒绝"],
+      "keywords":["CHECK 约束","负余额","应用检查","数据库约束","防线"],
+      "diagnostic":"绕过应用代码直接执行 UPDATE 时，数据库还能否拒绝非法状态？",
+      "hints":["事务负责整体提交。","约束负责每个可提交状态是否合法。"],
+      "example":"CHECK(balance >= 0) 让扣 130 触发 IntegrityError。",
+      "answer":"事务与约束保护不同问题；CHECK 让数据库独立拒绝负余额，即使应用校验遗漏也不能提交。",
+      "source":{"label":"事务把多个语句变成一次提交决定","href":"#concept-transaction-boundary"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"begin-immediate-lock","lesson_id":"cs-systems-05","context_id":"example-writer-lock",
+      "question":"BEGIN IMMEDIATE 在锁实验里做什么？",
+      "aliases":["怎样稳定复现 database is locked","为什么不让两个线程随机抢写锁"],
+      "keywords":["BEGIN IMMEDIATE","database is locked","写锁","稳定复现","SQLite"],
+      "diagnostic":"连接 A 是否在连接 B 尝试前已经取得写事务？",
+      "hints":["A 先 BEGIN IMMEDIATE。","事件等 B 完成失败尝试后 A 才回滚。"],
+      "example":"A 持锁，B 的 50ms busy timeout 到期得到 locked。",
+      "answer":"它让连接 A 提前取得写事务，事件再固定 B 的尝试顺序，因此锁失败不依赖调度偶然。",
+      "source":{"label":"BEGIN IMMEDIATE 让写入竞争变得可重复","href":"#example-writer-lock"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"retry-after-release","lesson_id":"cs-systems-05","context_id":"example-writer-lock",
+      "question":"为什么锁释放后重试可以成功？",
+      "aliases":["database is locked 后怎样恢复","写锁失败要不要无限重试"],
+      "keywords":["锁释放","重试","rollback","有限重试","写入成功"],
+      "diagnostic":"持锁事务是否已经提交或回滚，重试是否有明确上限？",
+      "hints":["先结束 holder 事务并关闭连接。","再由新事务有限重试。"],
+      "example":"holder.rollback() 后新连接 BEGIN IMMEDIATE 成功。",
+      "answer":"持锁连接回滚并关闭后，写锁不再占用；新事务可以获得锁。真实系统仍需设置重试上限并考虑幂等。",
+      "source":{"label":"BEGIN IMMEDIATE 让写入竞争变得可重复","href":"#example-writer-lock"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"wal-reader-snapshot","lesson_id":"cs-systems-05","context_id":"example-wal-snapshot",
+      "question":"写连接提交 120 后读连接为什么还看到 100？",
+      "aliases":["WAL 读事务快照怎样保持一致","结束读事务后为什么看到新值"],
+      "keywords":["WAL","读事务","快照","100","120"],
+      "diagnostic":"读连接是否仍在第一次读取开启的同一事务？",
+      "hints":["同一读事务保持历史快照。","COMMIT 后下一次读取选择新快照。"],
+      "example":"before=100，writer commit 120，during=100，reader commit 后 after=120。",
+      "answer":"WAL 模式下已有读事务继续读取自己的快照；结束事务后，新读取才看到写连接已提交的 120。",
+      "source":{"label":"同一读事务看到同一个快照","href":"#example-wal-snapshot"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"run-transaction-lab","lesson_id":"cs-systems-05","context_id":"reproduce-transaction-lab",
+      "question":"怎样运行事务隔离实验？",
+      "aliases":["SQLite 并发示例目录在哪里","怎样运行四项事务测试"],
+      "keywords":["运行","transaction_lab.py","unittest","临时数据库","v05"],
+      "diagnostic":"你是否进入 runtime-observer-v05 目录？",
+      "hints":["先运行主程序。","再运行 test_transaction_lab.py。"],
+      "example":"python -m unittest -v test_transaction_lab.py。",
+      "answer":"进入 v05 示例目录运行主程序和 4 项 unittest；四个数据库都在临时目录中创建并删除。",
+      "source":{"label":"用四个临时数据库隔离四个结论","href":"#reproduce-transaction-lab"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"duplicate-transfer-intent","lesson_id":"cs-systems-05","context_id":"modify-transfer-rule",
+      "question":"事务能自动识别重复转账意图吗？",
+      "aliases":["连续调用两次 transfer 为什么会执行两次","事务和幂等有什么区别"],
+      "keywords":["重复转账","事务","幂等","操作 ID","唯一约束"],
+      "diagnostic":"两次调用在数据库看来是两个有效事务，还是共享同一个操作标识？",
+      "hints":["事务只保证每次调用内部完整。","去重需要业务操作 ID 和唯一约束。"],
+      "example":"两次 transfer(10) 都合法时会总共转 20。",
+      "answer":"不能。事务不猜调用者意图；需要操作 ID、唯一约束和重放规则才能把重复请求识别为同一次业务操作。",
+      "source":{"label":"完成真正的转账，再故意重复一次","href":"#modify-transfer-rule"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"sqlite-specific-boundary","lesson_id":"cs-systems-05","context_id":"deepen-sqlite-boundary",
+      "question":"为什么不能把这次 SQLite 实验外推到所有数据库？",
+      "aliases":["SQLite WAL 等于所有 MVCC 吗","隔离结论为什么要说明产品版本"],
+      "keywords":["SQLite 具体行为","WAL","MVCC","隔离级别","产品版本"],
+      "diagnostic":"其他数据库是否使用同样的锁、日志、快照和默认隔离配置？",
+      "hints":["实现机制与默认配置会不同。","回到目标数据库官方文档重新实验。"],
+      "example":"本课结论限定 Python sqlite3、SQLite 3 和 WAL。",
+      "answer":"不同数据库的并发控制和隔离配置不同；本课只证明当前 SQLite WAL 实验，跨产品必须重新声明条件和验证。",
+      "source":{"label":"ACID 是检查问题的框架，不是四个开关","href":"#deepen-sqlite-boundary"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"career-transaction-state","lesson_id":"cs-systems-05","context_id":"career-transaction-evidence",
+      "question":"求职时怎样用状态变化解释事务并发？",
+      "aliases":["事务隔离项目追问怎么回答","不能只背 ACID 应该讲什么"],
+      "keywords":["求职","状态变化","ACID","隔离","锁","测试证据"],
+      "diagnostic":"你能给出回滚余额、锁失败重试和快照前中后的证据吗？",
+      "hints":["先讲三个独立实验。","最后限定 SQLite WAL 边界。"],
+      "example":"100,100 回滚；blocked/retry；100/100/120 快照。",
+      "answer":"用回滚前后状态解释原子性，用锁失败和释放后重试解释竞争，用事务内外读取解释隔离，并明确实现边界。",
+      "source":{"label":"用状态变化解释事务，而不是背 ACID","href":"#career-transaction-evidence"},"updated_at":"2026-07-20","recommended":true
+    }
+  ]
+}

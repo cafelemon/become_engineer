@@ -1,0 +1,26 @@
+{
+  "lesson_id": "cs-systems-05",
+  "cases": [
+    {"query":"这节事务并发课最后能做出什么","expected_card":"transaction-lesson-result"},
+    {"query":"系统运行观察器 v0.5 增加什么","expected_card":"transaction-lesson-result"},
+    {"query":"事务为什么能避免只扣款不入账","expected_card":"transaction-all-or-nothing"},
+    {"query":"原子回滚保护了什么","expected_card":"transaction-all-or-nothing"},
+    {"query":"有事务为什么还需要余额 CHECK 约束","expected_card":"constraint-defense"},
+    {"query":"负余额怎样在存储层拒绝","expected_card":"constraint-defense"},
+    {"query":"BEGIN IMMEDIATE 在锁实验里做什么","expected_card":"begin-immediate-lock"},
+    {"query":"怎样稳定复现 database is locked","expected_card":"begin-immediate-lock"},
+    {"query":"为什么锁释放后重试可以成功","expected_card":"retry-after-release"},
+    {"query":"database is locked 后怎样恢复","expected_card":"retry-after-release"},
+    {"query":"写连接提交 120 后读连接为什么还看到 100","expected_card":"wal-reader-snapshot"},
+    {"query":"WAL 读事务快照怎样保持一致","expected_card":"wal-reader-snapshot"},
+    {"query":"怎样运行事务隔离实验","expected_card":"run-transaction-lab"},
+    {"query":"怎样运行四项事务测试","expected_card":"run-transaction-lab"},
+    {"query":"事务能自动识别重复转账意图吗","expected_card":"duplicate-transfer-intent"},
+    {"query":"事务和幂等有什么区别","expected_card":"duplicate-transfer-intent"},
+    {"query":"为什么不能把这次 SQLite 实验外推到所有数据库","expected_card":"sqlite-specific-boundary"},
+    {"query":"隔离结论为什么要说明产品版本","expected_card":"sqlite-specific-boundary"},
+    {"query":"求职时怎样用状态变化解释事务并发","expected_card":"career-transaction-state"},
+    {"query":"不能只背 ACID 应该讲什么","expected_card":"career-transaction-state"}
+  ],
+  "unknown": ["怎样给银河系建立购物车", "雨滴会不会发生数据库死锁"]
+}

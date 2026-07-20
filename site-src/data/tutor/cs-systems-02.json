@@ -1,0 +1,132 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "cs-systems-02",
+    "title": "线程、竞态条件与锁",
+    "path": "learning-paths/cs-systems-core/02-threads-races-locks/"
+  },
+  "contexts": [
+    {"id":"overview-race-result","type":"overview","title":"两个线程都加了一次，计数为什么只有 1","anchor":"#overview-race-result"},
+    {"id":"concept-read-modify-write","type":"concept","title":"counter += 1 里面不只一步","anchor":"#concept-read-modify-write"},
+    {"id":"example-forced-interleaving","type":"example","title":"用 Barrier 固定交错，不靠多跑几次看看","anchor":"#example-forced-interleaving"},
+    {"id":"example-lock-critical-section","type":"example","title":"锁要包住完整的不变量","anchor":"#example-lock-critical-section"},
+    {"id":"reproduce-concurrency-lab","type":"reproduce","title":"先看错一次，再看锁修好它","anchor":"#reproduce-concurrency-lab"},
+    {"id":"modify-counter-invariant","type":"modify","title":"给计数器再加一个不变量","anchor":"#modify-counter-invariant"},
+    {"id":"troubleshoot-thread-lock","type":"troubleshoot","title":"并发问题难查，是因为一次成功不能证明安全","anchor":"#troubleshoot-thread-lock"},
+    {"id":"project-runtime-observer-v02","type":"project","title":"系统运行观察器 v0.2","anchor":"#project-runtime-observer-v02"},
+    {"id":"deepen-gil-and-parallelism","type":"deepen","title":"GIL 没有替你设计共享状态","anchor":"#deepen-gil-and-parallelism"},
+    {"id":"career-explain-race","type":"career","title":"别只说加锁就好了","anchor":"#career-explain-race"}
+  ],
+  "cards": [
+    {
+      "id":"race-lesson-result","lesson_id":"cs-systems-02","context_id":"overview-race-result",
+      "question":"这节线程课最后能做出什么？",
+      "aliases":["系统运行观察器 v0.2 增加什么","线程课会复现什么错误"],
+      "keywords":["系统运行观察器","v0.2","线程","竞态","锁","结果"],
+      "diagnostic":"你能稳定复现少一次更新，而不是偶尔看到吗？",
+      "hints":["先用 Barrier 固定两个线程的读取顺序。","再用 Lock 保护完整读改写。"],
+      "example":"无锁 expected=2 actual=1；有锁 expected=2000 actual=2000。",
+      "answer":"你会完成一个可重复的竞态实验，解释丢失更新，并用锁和测试保护共享计数。",
+      "source":{"label":"两个线程都加了一次，计数为什么只有 1","href":"#overview-race-result"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"lost-update-reason","lesson_id":"cs-systems-02","context_id":"concept-read-modify-write",
+      "question":"两个线程都加一为什么最后只有 1？",
+      "aliases":["lost update 是怎么发生的","counter 加两次为什么丢一次"],
+      "keywords":["lost update","丢失更新","两个线程","读改写","计数 1"],
+      "diagnostic":"两个线程读取旧值时，前一个新值已经写回了吗？",
+      "hints":["把 += 拆成读、计算和写。","两个线程可能都从 0 算出 1。"],
+      "example":"A 读 0，B 读 0，A 写 1，B 也写 1。",
+      "answer":"两次写入都基于同一个旧快照，后写入覆盖前写入，所以完成两次工作却只留下 1。",
+      "source":{"label":"counter += 1 里面不只一步","href":"#concept-read-modify-write"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"critical-section","lesson_id":"cs-systems-02","context_id":"concept-read-modify-write",
+      "question":"什么是临界区？",
+      "aliases":["锁应该保护哪一段","共享状态哪里需要互斥"],
+      "keywords":["临界区","critical section","共享状态","互斥","锁范围"],
+      "diagnostic":"哪些操作必须一起完成，外部才不会看到一半状态？",
+      "hints":["先找共享的不变量。","把维护不变量的完整操作放进同一互斥区。"],
+      "example":"读取 counter、加一、写回 counter 是一个临界区。",
+      "answer":"临界区是访问共享可变状态、必须互斥完成的代码区域；范围由不变量决定，不由行数决定。",
+      "source":{"label":"counter += 1 里面不只一步","href":"#concept-read-modify-write"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"barrier-for-test","lesson_id":"cs-systems-02","context_id":"example-forced-interleaving",
+      "question":"Barrier 在这个实验里做什么？",
+      "aliases":["为什么不用多跑几次等竞态","怎样稳定复现丢失更新"],
+      "keywords":["Barrier","固定交错","稳定复现","竞态测试","两个线程"],
+      "diagnostic":"你是在修复计数器，还是在安排两个线程都先读到旧值？",
+      "hints":["Barrier 等两方都到达。","它让两份 snapshot 都固定为 0。"],
+      "example":"both_have_read.wait() 后两个线程再写回。",
+      "answer":"Barrier 只构造确定性失败顺序，使测试稳定；真正修复共享状态的是锁或其他同步设计。",
+      "source":{"label":"用 Barrier 固定交错，不靠多跑几次看看","href":"#example-forced-interleaving"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"lock-full-operation","lesson_id":"cs-systems-02","context_id":"example-lock-critical-section",
+      "question":"为什么锁要包住读取和写回？",
+      "aliases":["只锁赋值为什么还会丢更新","Lock 应该放在哪里"],
+      "keywords":["Lock","读取","写回","完整读改写","只锁赋值"],
+      "diagnostic":"读取发生在锁外时，两个线程还会不会拿到同一个旧值？",
+      "hints":["锁外读取仍然可以同时发生。","同一把锁要覆盖读取、计算和写回。"],
+      "example":"with lock: counter['value'] += 1。",
+      "answer":"互斥必须保护整个不变量；只锁最后写入无法阻止多个线程基于相同旧值计算。",
+      "source":{"label":"锁要包住完整的不变量","href":"#example-lock-critical-section"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"run-concurrency-lab","lesson_id":"cs-systems-02","context_id":"reproduce-concurrency-lab",
+      "question":"怎样运行线程竞态实验？",
+      "aliases":["怎么看到 expected 2 actual 1","线程例子从哪里运行"],
+      "keywords":["运行","concurrency_lab","expected 2 actual 1","unittest","命令"],
+      "diagnostic":"你已经进入 runtime-observer-v02 目录了吗？",
+      "hints":["先运行 concurrency_lab.py。","再运行 3 项 unittest。"],
+      "example":"python -m unittest -v test_concurrency_lab.py。",
+      "answer":"在 v02 目录运行示例和测试；输出固定为一次丢失更新和一次锁保护成功。",
+      "source":{"label":"先看错一次，再看锁修好它","href":"#reproduce-concurrency-lab"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"two-field-invariant","lesson_id":"cs-systems-02","context_id":"modify-counter-invariant",
+      "question":"双字段计数器为什么要用同一把锁？",
+      "aliases":["completed 和 remaining 怎么一起更新","两个字段各一把锁可以吗"],
+      "keywords":["双字段","completed","remaining","同一把锁","不变量","2000"],
+      "diagnostic":"调用者能否在两个字段更新之间读到只完成一半的状态？",
+      "hints":["不变量是 completed + remaining = 2000。","同一互斥区要同时更新两项。"],
+      "example":"with lock: completed += 1; remaining -= 1。",
+      "answer":"两个字段共同维护一个不变量，必须作为一次原子业务更新；分别加锁不能保证外部看到一致组合。",
+      "source":{"label":"给计数器再加一个不变量","href":"#modify-counter-invariant"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"join-before-check","lesson_id":"cs-systems-02","context_id":"troubleshoot-thread-lock",
+      "question":"为什么检查结果前要 join 线程？",
+      "aliases":["主线程为什么读到旧计数","thread join 是在等什么"],
+      "keywords":["join","主线程","旧结果","等待线程","结束"],
+      "diagnostic":"主线程读结果时，工作线程已经全部结束了吗？",
+      "hints":["start 只表示线程开始运行。","join 让当前线程等它结束。"],
+      "example":"先为每个 thread 调用 join，再断言 counter。",
+      "answer":"没有 join 时，主线程可能在工作完成前验收；join 建立了“工作结束后再读结果”的顺序。",
+      "source":{"label":"并发问题难查，是因为一次成功不能证明安全","href":"#troubleshoot-thread-lock"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"gil-not-lock","lesson_id":"cs-systems-02","context_id":"deepen-gil-and-parallelism",
+      "question":"有 GIL 为什么还需要锁？",
+      "aliases":["Python 线程是不是天然安全","GIL 能不能防止竞态"],
+      "keywords":["GIL","线程安全","锁","竞态","CPython","业务不变量"],
+      "diagnostic":"你的业务更新只是一条不可分割操作，还是跨读取、计算和写回？",
+      "hints":["GIL 是解释器执行约束。","业务不变量仍可能跨多个可交错操作。"],
+      "example":"两个线程都读取 0 后分别写 1，GIL 没有替业务加锁。",
+      "answer":"GIL 不替应用定义临界区，也不保证复合业务操作安全；共享可变状态仍需明确同步。",
+      "source":{"label":"GIL 没有替你设计共享状态","href":"#deepen-gil-and-parallelism"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"career-race-explanation","lesson_id":"cs-systems-02","context_id":"career-explain-race",
+      "question":"求职时怎样解释一次竞态修复？",
+      "aliases":["并发项目不能只说加锁怎么办","竞态条件面试怎么讲"],
+      "keywords":["求职","竞态修复","加锁","交错顺序","临界区","测试"],
+      "diagnostic":"你能指出共享状态、不变量、错误交错和回归测试吗？",
+      "hints":["先画出两次读改写怎样重叠。","再说明锁范围、代价和确定性测试。"],
+      "example":"A/B 都读 0 → 最终 1 → Lock 包住读改写 → Barrier 测试旧错误。",
+      "answer":"用共享不变量、错误交错、临界区、锁粒度和稳定测试组成完整证据，不要止于一句加锁。",
+      "source":{"label":"别只说加锁就好了","href":"#career-explain-race"},"updated_at":"2026-07-20","recommended":true
+    }
+  ]
+}

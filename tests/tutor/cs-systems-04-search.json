@@ -1,0 +1,26 @@
+{
+  "lesson_id": "cs-systems-04",
+  "cases": [
+    {"query":"这节本机网络课最后能做出什么","expected_card":"network-lesson-result"},
+    {"query":"系统运行观察器 v0.4 增加什么","expected_card":"network-lesson-result"},
+    {"query":"地址、端口、TCP 和 HTTP 分别做什么","expected_card":"address-port-protocol"},
+    {"query":"本机请求经过哪些网络层","expected_card":"address-port-protocol"},
+    {"query":"为什么测试绑定 127.0.0.1:0","expected_card":"bind-port-zero"},
+    {"query":"怎样避免测试固定端口冲突","expected_card":"bind-port-zero"},
+    {"query":"怎样从原始 HTTP 响应读出状态","expected_card":"raw-http-status"},
+    {"query":"HTTP 200 在哪一行","expected_card":"raw-http-status"},
+    {"query":"响应超时能证明服务端没收到请求吗","expected_card":"timeout-not-no-request"},
+    {"query":"超时后能不能直接重试写请求","expected_card":"timeout-not-no-request"},
+    {"query":"怎样运行本机 TCP 和 HTTP 实验","expected_card":"run-network-lab"},
+    {"query":"怎样运行四项网络测试","expected_card":"run-network-lab"},
+    {"query":"主动修改为什么要保留未知路径 404","expected_card":"add-version-route"},
+    {"query":"增加 version 路由要测试什么","expected_card":"add-version-route"},
+    {"query":"连接拒绝、404 和超时怎样区分","expected_card":"refused-vs-404-timeout"},
+    {"query":"网络失败应该按什么顺序排查","expected_card":"refused-vs-404-timeout"},
+    {"query":"本机回环实验不能证明什么","expected_card":"loopback-limit"},
+    {"query":"127.0.0.1 能代表生产网络吗","expected_card":"loopback-limit"},
+    {"query":"求职时怎样解释一次网络分层排查","expected_card":"career-network-layers"},
+    {"query":"HTTP 生命周期项目追问怎么回答","expected_card":"career-network-layers"}
+  ],
+  "unknown": ["怎样让石头发送电子邮件", "海底火车有没有浏览器缓存"]
+}
