@@ -71,3 +71,11 @@ export class LatestRequestGate {
     return token === this.generation;
   }
 }
+
+export function clearSessionDraft(
+  hoursInput: { value: string },
+  noteInput: { value: string }
+): void {
+  hoursInput.value = "";
+  noteInput.value = "";
+}

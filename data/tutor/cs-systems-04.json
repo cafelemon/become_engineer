@@ -1,0 +1,132 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "cs-systems-04",
+    "title": "从端口到 HTTP 的本机网络链路",
+    "path": "learning-paths/cs-systems-core/04-local-network-port-http/"
+  },
+  "contexts": [
+    {"id":"overview-network-result","type":"overview","title":"TCP 连上了，为什么请求仍可能失败","anchor":"#overview-network-result"},
+    {"id":"concept-port-to-http","type":"concept","title":"一次本机请求跨过三层结果","anchor":"#concept-port-to-http"},
+    {"id":"example-http-message","type":"example","title":"先读原始消息，再谈框架","anchor":"#example-http-message"},
+    {"id":"example-deterministic-timeout","type":"example","title":"超时由调用者期限决定","anchor":"#example-deterministic-timeout"},
+    {"id":"reproduce-local-network","type":"reproduce","title":"在一台机器上跑完整链路","anchor":"#reproduce-local-network"},
+    {"id":"modify-local-route","type":"modify","title":"增加 /version，别把未知路径当成功","anchor":"#modify-local-route"},
+    {"id":"troubleshoot-local-network","type":"troubleshoot","title":"从最靠近本机的边界开始查","anchor":"#troubleshoot-local-network"},
+    {"id":"project-runtime-observer-v04","type":"project","title":"系统运行观察器 v0.4","anchor":"#project-runtime-observer-v04"},
+    {"id":"deepen-network-boundary","type":"deepen","title":"本机回环不能证明互联网和生产性能","anchor":"#deepen-network-boundary"},
+    {"id":"career-network-triage","type":"career","title":"别用网络问题结束排查","anchor":"#career-network-triage"}
+  ],
+  "cards": [
+    {
+      "id":"network-lesson-result","lesson_id":"cs-systems-04","context_id":"overview-network-result",
+      "question":"这节本机网络课最后能做出什么？",
+      "aliases":["系统运行观察器 v0.4 增加什么","第四课会观察哪些网络结果"],
+      "keywords":["v0.4","本机网络","TCP","HTTP","超时"],
+      "diagnostic":"你能分别判断连接、HTTP 状态、超时和清理吗？",
+      "hints":["先看 tcp connected。","再看 200、404、timeout 和 cleaned_up。"],
+      "example":"connected=True，status=200，404，timed_out=True。",
+      "answer":"你会在本机动态端口建立真实 TCP 连接，发送最小 HTTP 消息，并区分 200、404、响应超时和资源回收。",
+      "source":{"label":"TCP 连上了，为什么请求仍可能失败","href":"#overview-network-result"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"address-port-protocol","lesson_id":"cs-systems-04","context_id":"concept-port-to-http",
+      "question":"地址、端口、TCP 和 HTTP 分别做什么？",
+      "aliases":["端口和 HTTP 是一层吗","本机请求经过哪些网络层"],
+      "keywords":["地址","端口","TCP","HTTP","分层"],
+      "diagnostic":"你是在选择主机、监听入口、字节流还是消息语义？",
+      "hints":["IP 选择主机，端口选择监听入口。","TCP 传字节，HTTP 组织请求与响应。"],
+      "example":"127.0.0.1:动态端口上承载 GET /health HTTP/1.1。",
+      "answer":"地址定位主机，端口交给监听 socket，TCP 提供有序字节流，HTTP 定义请求、响应和状态码。",
+      "source":{"label":"一次本机请求跨过三层结果","href":"#concept-port-to-http"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"bind-port-zero","lesson_id":"cs-systems-04","context_id":"concept-port-to-http",
+      "question":"为什么测试绑定 127.0.0.1:0？",
+      "aliases":["端口 0 是真的连接端口吗","怎样避免测试固定端口冲突"],
+      "keywords":["127.0.0.1:0","动态端口","bind","回环","端口冲突"],
+      "diagnostic":"端口 0 是给客户端使用，还是请求系统在绑定时分配？",
+      "hints":["端口 0 只出现在 bind 参数。","绑定后 getsockname 返回真实端口。"],
+      "example":"server.bind((HOST, 0)) 后把分配出的 port 交给客户端。",
+      "answer":"回环地址限制在本机，端口 0 让系统挑选空闲端口；客户端连接的是绑定后取得的真实端口。",
+      "source":{"label":"一次本机请求跨过三层结果","href":"#concept-port-to-http"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"raw-http-status","lesson_id":"cs-systems-04","context_id":"example-http-message",
+      "question":"怎样从原始 HTTP 响应读出状态？",
+      "aliases":["HTTP 200 在哪一行","响应头和 JSON 正文怎样分开"],
+      "keywords":["HTTP 状态行","200 OK","响应头","JSON 正文","空行"],
+      "diagnostic":"你找到第一行和头正文之间的空行了吗？",
+      "hints":["第一行包含协议版本和状态码。","连续 CRLF 把头部与正文分开。"],
+      "example":"HTTP/1.1 200 OK，空行后是 {\"status\":\"ok\"}。",
+      "answer":"读取响应第一行取得状态码，再以头部后的空行分隔正文；Content-Length 表示正文字节数。",
+      "source":{"label":"先读原始消息，再谈框架","href":"#example-http-message"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"timeout-not-no-request","lesson_id":"cs-systems-04","context_id":"example-deterministic-timeout",
+      "question":"响应超时能证明服务端没收到请求吗？",
+      "aliases":["socket timeout 等于没有连接吗","超时后能不能直接重试写请求"],
+      "keywords":["响应超时","服务端收到","socket.timeout","重试","副作用"],
+      "diagnostic":"连接是否已建立，请求事件是否已触发？",
+      "hints":["超时只说明期限内没读到下一批数据。","服务端可能已收到甚至处理请求。"],
+      "example":"request_received 已设置，但客户端在 release_response 前超时。",
+      "answer":"不能。响应超时只描述调用者等待结果的期限；重试前必须考虑原请求可能已产生副作用。",
+      "source":{"label":"超时由调用者期限决定","href":"#example-deterministic-timeout"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"run-network-lab","lesson_id":"cs-systems-04","context_id":"reproduce-local-network",
+      "question":"怎样运行本机 TCP 和 HTTP 实验？",
+      "aliases":["本机网络示例目录在哪里","怎样运行四项网络测试"],
+      "keywords":["运行","local_network_lab.py","unittest","回环","v04"],
+      "diagnostic":"你是否进入 runtime-observer-v04 目录，并允许本机回环端口？",
+      "hints":["先运行主程序。","再运行 test_local_network_lab.py。"],
+      "example":"python -m unittest -v test_local_network_lab.py。",
+      "answer":"进入 v04 示例目录运行主程序和 4 项 unittest；实验只监听 127.0.0.1 的动态端口。",
+      "source":{"label":"在一台机器上跑完整链路","href":"#reproduce-local-network"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"add-version-route","lesson_id":"cs-systems-04","context_id":"modify-local-route",
+      "question":"主动修改为什么要保留未知路径 404？",
+      "aliases":["增加 version 路由要测试什么","新路径为什么不能让全部请求返回 200"],
+      "keywords":["/version","404","主动修改","路由","未知路径"],
+      "diagnostic":"新增允许路径后，默认分支是否仍明确拒绝未知路径？",
+      "hints":["先固定 /version 的 200。","再保留 /missing 的 404 回归。"],
+      "example":"/version → 200；/missing → 404。",
+      "answer":"新增成功路径不能吞掉错误分支；保留 404 测试才能证明路由选择仍然准确。",
+      "source":{"label":"增加 /version，别把未知路径当成功","href":"#modify-local-route"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"refused-vs-404-timeout","lesson_id":"cs-systems-04","context_id":"troubleshoot-local-network",
+      "question":"连接拒绝、404 和超时怎样区分？",
+      "aliases":["网络失败应该按什么顺序排查","TCP 成功为什么 HTTP 还失败"],
+      "keywords":["ConnectionRefusedError","404","超时","分层排查","TCP 成功"],
+      "diagnostic":"失败发生在监听、连接、HTTP 路由还是响应期限？",
+      "hints":["拒绝发生在连接阶段。","404 是 HTTP 结果，超时是期限结果。"],
+      "example":"未监听→拒绝；错误路径→404；已收请求未响应→timeout。",
+      "answer":"连接拒绝先查监听地址端口；404 说明 HTTP 服务已响应但资源不存在；超时说明期限内没有完整结果。",
+      "source":{"label":"从最靠近本机的边界开始查","href":"#troubleshoot-local-network"},"updated_at":"2026-07-20","recommended":true
+    },
+    {
+      "id":"loopback-limit","lesson_id":"cs-systems-04","context_id":"deepen-network-boundary",
+      "question":"本机回环实验不能证明什么？",
+      "aliases":["127.0.0.1 能代表生产网络吗","本机测试能测互联网性能吗"],
+      "keywords":["回环限制","生产网络","DNS","TLS","性能"],
+      "diagnostic":"请求是否经过真实 DNS、路由、代理、TLS 和公网链路？",
+      "hints":["回环数据不离开本机。","延迟与吞吐不能外推到生产。"],
+      "example":"本课没有 DNS、TLS、交换机、代理或公网防火墙。",
+      "answer":"它只能证明本机 API、字节流、HTTP 消息和清理关系，不能证明互联网可达性、安全性或生产性能。",
+      "source":{"label":"本机回环不能证明互联网和生产性能","href":"#deepen-network-boundary"},"updated_at":"2026-07-20"
+    },
+    {
+      "id":"career-network-layers","lesson_id":"cs-systems-04","context_id":"career-network-triage",
+      "question":"求职时怎样解释一次网络分层排查？",
+      "aliases":["不能只说网络问题该怎么讲","HTTP 生命周期项目追问怎么回答"],
+      "keywords":["求职","网络分层","HTTP 生命周期","故障排查","测试证据"],
+      "diagnostic":"你能按监听、连接、请求、状态、期限和清理给证据吗？",
+      "hints":["先定位失败层。","再引用 200、404、timeout 与 cleaned_up。"],
+      "example":"TCP connected → 404 路由错 → 改对后 timeout → 清理通过。",
+      "answer":"按监听、TCP 连接、HTTP 请求、应用状态、响应期限和资源清理逐层说明，并用测试结果支持判断。",
+      "source":{"label":"别用网络问题结束排查","href":"#career-network-triage"},"updated_at":"2026-07-20","recommended":true
+    }
+  ]
+}

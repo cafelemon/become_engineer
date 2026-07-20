@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-07-18",
+  "updated_at": "2026-07-20",
   "registry": "site-src/data/curriculum/v2.json",
   "content_standard": "docs/08_content_standard.md",
   "current_schema": "v2-with-v1-compatibility",
@@ -13,7 +13,8 @@
     "study-progress-reporter": "学习进度报告器",
     "bilingual-study-progress-reporter": "双语言学习进度报告器",
     "traceable-data-engine": "跨语言可追踪数据引擎",
-    "learning-dashboard-web": "学习进度报告器 Web"
+    "learning-dashboard-web": "学习进度报告器 Web",
+    "system-runtime-observer": "系统运行观察器"
   },
   "batches": [
     {"id":"b01-engineering-start","order":1,"title":"工程基础起步","lesson_count":10,"prerequisite_modules":[],"completion_gate":"十节课程形成同一个本地学习工作区；新手能找到工具、完成操作并从常见错误恢复。"},
@@ -24,7 +25,8 @@
     {"id":"b06-algorithm-foundation","order":6,"title":"共同算法与数据结构基础","lesson_count":16,"prerequisite_modules":["cs-start"],"completion_gate":"用轨迹、操作计数和边界测试掌握常用结构、查找排序、递归、BFS 与 DFS。"},
     {"id":"b07-algorithm-core","order":7,"title":"算法核心","lesson_count":6,"prerequisite_modules":["algorithm-foundation"],"completion_gate":"完成堆、优先队列、最短路、并查集和最小生成森林的实现、解释与迁移。"},
     {"id":"b08-web-start","order":8,"title":"Web 起步","lesson_count":4,"prerequisite_modules":["python-start"],"completion_gate":"从浏览器和 HTML 文档开始，持续演进学习进度报告器 Web，并完成页面状态与本地 API 的第一次闭环。"},
-    {"id":"b09-web-core","order":9,"title":"Web 核心","lesson_count":3,"prerequisite_modules":["web-start","python-engineering"],"completion_gate":"当前已完成运行时契约、SQLite 持久化与 REST 资源；待表单状态一课完成后关闭课程组。"}
+    {"id":"b09-web-core","order":9,"title":"Web 核心","lesson_count":4,"prerequisite_modules":["web-start","python-engineering"],"completion_gate":"四课完成运行时契约、SQLite 持久化、REST 资源与表单状态闭环；进入 Web 工程化前补齐对应 CS 系统基础。"},
+    {"id":"b10-cs-systems-core","order":10,"title":"CS 系统基础","lesson_count":6,"prerequisite_modules":["cs-start"],"completion_gate":"六课完成进程、共享状态、内存与文件、本机网络、事务并发和最小权限；系统运行观察器 v0.6 可运行、可解释、可排错，并为 Web 工程化与系统工程提供共同前置。"}
   ],
   "tutor_lesson_ids": {
     "engineering-01":"engineering-foundation-01",
@@ -88,7 +90,14 @@
     "web-start-04":"web-start-04",
     "web-core-01":"web-core-01",
     "web-core-02":"web-core-02",
-    "web-core-03":"web-core-03"
+    "web-core-03":"web-core-03",
+    "web-core-04":"web-core-04",
+    "cs-systems-01":"cs-systems-01",
+    "cs-systems-02":"cs-systems-02",
+    "cs-systems-03":"cs-systems-03",
+    "cs-systems-04":"cs-systems-04",
+    "cs-systems-05":"cs-systems-05",
+    "cs-systems-06":"cs-systems-06"
   },
   "lessons": [
     {"id":"engineering-01","target_module_id":"engineering-start","target_depth":"起步","target_role":"共同基座","course_type":"tool-operation","project_line":"engineering-learning-workspace","batch_id":"b01-engineering-start","prerequisite_lesson_ids":[],"migration_status":"已迁移","migration_kind":"重写讲解与复现路径"},
@@ -159,6 +168,13 @@
     {"id":"web-start-04","target_module_id":"web-start","target_depth":"起步","target_role":"方向主干","course_type":"web-llm-agent","project_line":"learning-dashboard-web","batch_id":"b08-web-start","prerequisite_lesson_ids":["web-start-03"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
     {"id":"web-core-01","target_module_id":"web-core","target_depth":"核心","target_role":"方向主干","course_type":"web-llm-agent","project_line":"learning-dashboard-web","batch_id":"b09-web-core","prerequisite_lesson_ids":["web-start-04","python-core-07"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
     {"id":"web-core-02","target_module_id":"web-core","target_depth":"核心","target_role":"方向主干","course_type":"web-llm-agent","project_line":"learning-dashboard-web","batch_id":"b09-web-core","prerequisite_lesson_ids":["web-core-01"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
-    {"id":"web-core-03","target_module_id":"web-core","target_depth":"核心","target_role":"方向主干","course_type":"web-llm-agent","project_line":"learning-dashboard-web","batch_id":"b09-web-core","prerequisite_lesson_ids":["web-core-02"],"migration_status":"已迁移","migration_kind":"新建正式课程"}
+    {"id":"web-core-03","target_module_id":"web-core","target_depth":"核心","target_role":"方向主干","course_type":"web-llm-agent","project_line":"learning-dashboard-web","batch_id":"b09-web-core","prerequisite_lesson_ids":["web-core-02"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"web-core-04","target_module_id":"web-core","target_depth":"核心","target_role":"方向主干","course_type":"web-llm-agent","project_line":"learning-dashboard-web","batch_id":"b09-web-core","prerequisite_lesson_ids":["web-core-03"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"cs-systems-01","target_module_id":"cs-systems-core","target_depth":"核心","target_role":"方向主干","course_type":"system-device","project_line":"system-runtime-observer","batch_id":"b10-cs-systems-core","prerequisite_lesson_ids":["cs-core-04"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"cs-systems-02","target_module_id":"cs-systems-core","target_depth":"核心","target_role":"方向主干","course_type":"system-device","project_line":"system-runtime-observer","batch_id":"b10-cs-systems-core","prerequisite_lesson_ids":["cs-systems-01"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"cs-systems-03","target_module_id":"cs-systems-core","target_depth":"核心","target_role":"方向主干","course_type":"system-device","project_line":"system-runtime-observer","batch_id":"b10-cs-systems-core","prerequisite_lesson_ids":["cs-systems-02"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"cs-systems-04","target_module_id":"cs-systems-core","target_depth":"核心","target_role":"方向主干","course_type":"system-device","project_line":"system-runtime-observer","batch_id":"b10-cs-systems-core","prerequisite_lesson_ids":["cs-systems-03"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"cs-systems-05","target_module_id":"cs-systems-core","target_depth":"核心","target_role":"方向主干","course_type":"system-device","project_line":"system-runtime-observer","batch_id":"b10-cs-systems-core","prerequisite_lesson_ids":["cs-systems-04"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"cs-systems-06","target_module_id":"cs-systems-core","target_depth":"核心","target_role":"方向主干","course_type":"system-device","project_line":"system-runtime-observer","batch_id":"b10-cs-systems-core","prerequisite_lesson_ids":["cs-systems-05"],"migration_status":"已迁移","migration_kind":"新建正式课程"}
   ]
 }
