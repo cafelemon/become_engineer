@@ -1,0 +1,16 @@
+import{mkdirSync,writeFileSync}from"node:fs";import{resolve}from"node:path";const root=resolve(import.meta.dirname,".."),lessonId="deep-learning-05",title="验证曲线、过拟合、权重衰减与 Dropout",path="learning-paths/ai-foundation/deep-learning/05-validation-curves-overfitting-weight-decay-dropout/";
+const contexts=[["overview-validation-regularization","overview","验证与正则结果"],["concept-overfitting-curves","concept","过拟合曲线"],["concept-regularization-mechanisms","concept","正则化机制"],["example-selection-protocol","example","选择协议"],["reproduce-validation-v05","reproduce","运行验证实验"],["modify-validation-protocol","modify","修改验证协议"],["troubleshoot-validation-regularization","troubleshoot","验证排错"],["deepen-validation-reuse","deepen","验证集复用"],["project-diagnosable-network-v05","project","可诊断网络 v0.5"]].map(([id,type,t])=>({id,type,title:t,anchor:`#${id}`}));
+const defs=[
+["overfitting","concept-overfitting-curves","怎样从曲线判断过拟合？","训练变好验证变差说明什么","当训练目标继续改善而未参与训练的验证表现退化时，出现了过拟合证据。","无正则验证损失从最佳0.400回退到0.572。"],
+["validation-role","example-selection-protocol","验证集在模型选择中做什么？","validation 能参与反向传播吗","验证集比较预声明候选和停止点，不参与梯度或参数更新。","本课只按验证损失选择。"],
+["weight-decay","concept-regularization-mechanisms","weight decay 有什么作用？","权重衰减如何正则化","它在优化更新中惩罚较大参数，限制模型用极端权重拟合训练噪声。","正则候选使用0.02。"],
+["dropout","concept-regularization-mechanisms","Dropout 在训练时做什么？","dropout 为什么会随机","训练时随机屏蔽部分激活并缩放保留值，降低对固定局部路径的依赖。","本课比例0.25。"],
+["train-eval","concept-regularization-mechanisms","model.train 和 model.eval 有什么区别？","eval 是否只是关闭梯度","它们切换Dropout/BatchNorm等模块行为；关闭梯度需要另外使用no_grad。","eval输出稳定。"],
+["no-grad","reproduce-validation-v05","torch.no_grad 在验证时做什么？","验证为什么关闭梯度","它停止记录自动微分图，减少开销并防止验证路径产生gradient，但不替代eval模式。","所有参数grad仍为None。"],
+["selection-rule","example-selection-protocol","为什么模型选择规则必须提前写？","固定预算和早停为何选出不同模型","不同合法规则可能给出不同结果；看完曲线再换规则会引入选择偏差。","固定预算选正则，历史最佳会选无正则。"],
+["early-stopping","example-selection-protocol","早停为什么也算正则化？","best epoch 有什么意义","根据验证表现保留较早状态可阻止模型继续拟合训练噪声，是训练协议的一部分。","无正则最佳epoch为50。"],
+["test-untouched","deepen-validation-reuse","为什么本课不能查看测试集？","test 可以用来调正则吗","测试集用于候选和规则冻结后的最终一次评估；反复查看会把它变成调参集。","固定输出test_set=not-used。"],
+["validation-v05","project-diagnosable-network-v05","可诊断神经网络 v0.5 新增了什么？","深度学习第五课项目做什么","它新增双曲线、权重衰减、Dropout、模式探针、选择规则、最佳state和8项测试。","结论限定当前固定预算。"],
+];
+const cards=defs.map(([id,c,q,a,answer,example],i)=>({id,lesson_id:lessonId,context_id:c,question:q,aliases:[a],keywords:[...new Set(`${q} ${a}`.replace(/[？?，、/]/g," ").split(/\s+/).filter(Boolean))],diagnostic:`先判断“${a}”涉及曲线、正则、模式、选择规则还是测试边界。`,hints:[`查看 #${c}。`,"运行 test_validation_lab.py 并比较完整history。"],example,answer,source:{label:contexts.find(x=>x.id===c).title,href:`#${c}`},updated_at:"2026-07-23",recommended:i<8}));
+const cases=defs.flatMap(([id,,q,a])=>[{query:q.replace("？",""),expected_card:id},{query:a,expected_card:id}]);mkdirSync(resolve(root,"site-src/data/tutor"),{recursive:true});mkdirSync(resolve(root,"tests/tutor"),{recursive:true});writeFileSync(resolve(root,`site-src/data/tutor/${lessonId}.json`),`${JSON.stringify({version:2,lesson:{id:lessonId,title,path},contexts,cards},null,2)}\n`);writeFileSync(resolve(root,`tests/tutor/${lessonId}-search.json`),`${JSON.stringify({lesson_id:lessonId,cases,unknown:["怎样调整咖啡研磨度","云为什么会形成"]},null,2)}\n`);

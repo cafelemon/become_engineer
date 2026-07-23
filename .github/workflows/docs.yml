@@ -39,6 +39,7 @@ on:
       - "scripts/test_python_files_json_v2.mjs"
       - "scripts/test_python_modules_venv_v2.mjs"
       - "scripts/test_python_errors_tests_v2.mjs"
+      - "scripts/test_deep_learning_*.mjs"
       - "scripts/test_cs_data_representation_v2.mjs"
       - "scripts/test_cs_operation_growth_v2.mjs"
       - "scripts/test_cs_text_units_v2.mjs"
@@ -457,6 +458,30 @@ jobs:
 
       - name: Verify machine-learning persistence and inference contracts
         run: node scripts/test_machine_learning_08_v2.mjs
+
+      - name: Verify deep-learning tensor contracts
+        run: node scripts/test_deep_learning_01_v2.mjs
+
+      - name: Verify deep-learning forward network contracts
+        run: node scripts/test_deep_learning_02_v2.mjs
+
+      - name: Verify deep-learning gradient contracts
+        run: node scripts/test_deep_learning_03_v2.mjs
+
+      - name: Verify deep-learning training-loop contracts
+        run: node scripts/test_deep_learning_04_v2.mjs
+
+      - name: Verify deep-learning validation and regularization contracts
+        run: node scripts/test_deep_learning_05_v2.mjs
+
+      - name: Verify deep-learning initialization and gradient diagnostics
+        run: node scripts/test_deep_learning_06_v2.mjs
+
+      - name: Verify deep-learning checkpoint and exact resume
+        run: node scripts/test_deep_learning_07_v2.mjs
+
+      - name: Verify deep-learning inference delivery contracts
+        run: node scripts/test_deep_learning_08_v2.mjs
 
       - name: Verify CS systems concurrency lesson
         run: node scripts/test_cs_systems_concurrency_v2.mjs

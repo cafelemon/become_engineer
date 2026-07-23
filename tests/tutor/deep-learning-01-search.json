@@ -1,0 +1,89 @@
+{
+  "lesson_id": "deep-learning-01",
+  "cases": [
+    {
+      "query": "张量的 shape 表示什么",
+      "expected_card": "tensor-shape"
+    },
+    {
+      "query": "shape 里的每一维怎么读",
+      "expected_card": "tensor-shape"
+    },
+    {
+      "query": "ndim 和 shape 有什么关系",
+      "expected_card": "tensor-rank"
+    },
+    {
+      "query": "张量 rank 是什么",
+      "expected_card": "tensor-rank"
+    },
+    {
+      "query": "深度学习输入为什么使用 float32",
+      "expected_card": "input-dtype"
+    },
+    {
+      "query": "特征 dtype 为什么不是 int",
+      "expected_card": "input-dtype"
+    },
+    {
+      "query": "分类目标为什么使用 int64",
+      "expected_card": "target-dtype"
+    },
+    {
+      "query": "类别标签为什么要 long",
+      "expected_card": "target-dtype"
+    },
+    {
+      "query": "tensor 的 device 表示什么",
+      "expected_card": "device"
+    },
+    {
+      "query": "cpu cuda mps 有什么关系",
+      "expected_card": "device"
+    },
+    {
+      "query": "怎样推导矩阵乘法后的 shape",
+      "expected_card": "matmul-shape"
+    },
+    {
+      "query": "8x2 乘 2x3 为什么是 8x3",
+      "expected_card": "matmul-shape"
+    },
+    {
+      "query": "bias 广播做了什么",
+      "expected_card": "broadcast"
+    },
+    {
+      "query": "3 怎么加到 8x3",
+      "expected_card": "broadcast"
+    },
+    {
+      "query": "输入和目标为什么必须行对齐",
+      "expected_card": "row-alignment"
+    },
+    {
+      "query": "X 和 y 少一行会怎样",
+      "expected_card": "row-alignment"
+    },
+    {
+      "query": "固定随机种子就能完全复现吗",
+      "expected_card": "seed-reproducibility"
+    },
+    {
+      "query": "manual_seed 是否保证跨平台一致",
+      "expected_card": "seed-reproducibility"
+    },
+    {
+      "query": "可诊断神经网络 v0.1 新增了什么",
+      "expected_card": "tensor-contract-v01"
+    },
+    {
+      "query": "深度学习第一课项目做什么",
+      "expected_card": "tensor-contract-v01"
+    }
+  ],
+  "unknown": [
+    "怎样挑选登山鞋",
+    "鲸鱼一天睡多久"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "lesson_id": "deep-learning-02",
+  "cases": [
+    {
+      "query": "nn.Module 为什么要注册子层",
+      "expected_card": "module-registration"
+    },
+    {
+      "query": "模型层为什么赋值给 self",
+      "expected_card": "module-registration"
+    },
+    {
+      "query": "Parameter 和普通 tensor 有什么区别",
+      "expected_card": "parameter"
+    },
+    {
+      "query": "哪些 tensor 会被模型训练",
+      "expected_card": "parameter"
+    },
+    {
+      "query": "nn.Linear 的 weight shape 怎样读",
+      "expected_card": "linear-weight-shape"
+    },
+    {
+      "query": "Linear 2 4 的权重为什么是 4x2",
+      "expected_card": "linear-weight-shape"
+    },
+    {
+      "query": "两层网络的 22 个参数怎样计算",
+      "expected_card": "parameter-count"
+    },
+    {
+      "query": "模型参数量怎么算",
+      "expected_card": "parameter-count"
+    },
+    {
+      "query": "激活函数为什么不能省略",
+      "expected_card": "activation"
+    },
+    {
+      "query": "两层 Linear 不加激活会怎样",
+      "expected_card": "activation"
+    },
+    {
+      "query": "ReLU 对数值和 shape 做了什么",
+      "expected_card": "relu"
+    },
+    {
+      "query": "relu 会改变维度吗",
+      "expected_card": "relu"
+    },
+    {
+      "query": "logits 是概率吗",
+      "expected_card": "logits"
+    },
+    {
+      "query": "模型最后的分数为什么不相加为1",
+      "expected_card": "logits"
+    },
+    {
+      "query": "softmax 为什么使用类别维",
+      "expected_card": "softmax-dim"
+    },
+    {
+      "query": "dim 1 的概率是什么意思",
+      "expected_card": "softmax-dim"
+    },
+    {
+      "query": "logits 有 grad_fn 表示什么",
+      "expected_card": "grad-fn"
+    },
+    {
+      "query": "requires_grad true 是否已经训练",
+      "expected_card": "grad-fn"
+    },
+    {
+      "query": "可诊断神经网络 v0.2 新增了什么",
+      "expected_card": "forward-v02"
+    },
+    {
+      "query": "深度学习第二课项目做什么",
+      "expected_card": "forward-v02"
+    }
+  ],
+  "unknown": [
+    "如何修理自行车链条",
+    "候鸟为什么迁徙"
+  ]
+}

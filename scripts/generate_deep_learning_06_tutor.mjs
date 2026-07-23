@@ -1,0 +1,16 @@
+import{mkdirSync,writeFileSync}from"node:fs";import{resolve}from"node:path";const root=resolve(import.meta.dirname,".."),lessonId="deep-learning-06",title="初始化、激活分布、梯度诊断与裁剪",path="learning-paths/ai-foundation/deep-learning/06-initialization-activation-gradient-diagnostics-clipping/";
+const contexts=[["overview-training-diagnostics","overview","训练诊断结果"],["concept-initialization-symmetry","concept","初始化与对称"],["concept-activation-gradient-signals","concept","激活梯度信号"],["example-gradient-clipping","example","梯度裁剪"],["reproduce-diagnostics-v06","reproduce","运行诊断实验"],["modify-diagnostics","modify","修改诊断"],["troubleshoot-training-diagnostics","troubleshoot","训练诊断排错"],["deepen-clip-semantics","deepen","裁剪语义"],["project-diagnosable-network-v06","project","可诊断网络 v0.6"]].map(([id,type,t])=>({id,type,title:t,anchor:`#${id}`}));
+const defs=[
+["initialization","concept-initialization-symmetry","初始化为什么影响训练？","权重初值重要吗","初始化决定前向信号和反向梯度尺度，还需要打破同层神经元对称。","本课固定正态std0.35。"],
+["zero-symmetry","concept-initialization-symmetry","隐藏层全零初始化会怎样？","权重全0为什么学不动","同层单元保持相同状态，ReLU隐藏激活为0，隐藏weight gradient停滞。","v0.6自动验证三层weight grad为0。"],
+["activation-rate","concept-activation-gradient-signals","ReLU 非零率能说明什么？","激活为0太多怎么查","它描述当前batch中通过ReLU的比例；接近0可能提示大量单元关闭，但需多步结合判断。","两层为0.504和0.369。"],
+["layer-gradient","concept-activation-gradient-signals","为什么要看逐层 gradient norm？","只看全局梯度够吗","逐层范数能定位梯度从哪一层开始衰减、增长或非有限，全局值会掩盖位置。","本课记录六个参数。"],
+["exploding-gradient","concept-activation-gradient-signals","梯度爆炸是什么？","global gradient norm 很大说明什么","梯度尺度异常增大可能导致过大更新；应结合loss、数据、层级和学习率定位根因。","loss放大1000倍使norm放大1000倍。"],
+["gradient-clipping","example-gradient-clipping","clip_grad_norm 做了什么？","梯度裁剪放在哪一步","它在backward后step前按全局范数缩放gradient，限制更新长度。","1454.178728裁到1.0。"],
+["clip-boundary","deepen-clip-semantics","梯度裁剪能修复 NaN 吗？","加clip是否解决训练爆炸","不能；裁剪是护栏，坏输入、错误loss或结构根因仍必须修复。","非有限输入在前向前拒绝。"],
+["nonfinite-guard","troubleshoot-training-diagnostics","发现非有限 gradient 后还能 step 吗？","gradient NaN 怎么处理","不能继续更新；应停止step，定位首个非有限数据、激活、loss或梯度。","每个parameter都执行isfinite。"],
+["global-norm","deepen-clip-semantics","全局梯度范数怎样计算？","gradient norm 是各层相加吗","把所有参数gradient元素平方求和后开根号，等价于拼接向量的L2范数。","健康值1.454179。"],
+["diagnostics-v06","project-diagnosable-network-v06","可诊断神经网络 v0.6 新增了什么？","深度学习第六课项目做什么","它新增初始化、激活统计、逐层gradient、非有限门禁、裁剪和8项测试。","下一版保存恢复训练状态。"],
+];
+const cards=defs.map(([id,c,q,a,answer,example],i)=>({id,lesson_id:lessonId,context_id:c,question:q,aliases:[a],keywords:[...new Set(`${q} ${a}`.replace(/[？?，、/]/g," ").split(/\s+/).filter(Boolean))],diagnostic:`先判断“${a}”涉及初始化、激活、逐层梯度、非有限值还是裁剪。`,hints:[`查看 #${c}。`,"运行 test_diagnostics_lab.py 并定位首个异常层。"],example,answer,source:{label:contexts.find(x=>x.id===c).title,href:`#${c}`},updated_at:"2026-07-23",recommended:i<8}));
+const cases=defs.flatMap(([id,,q,a])=>[{query:q.replace("？",""),expected_card:id},{query:a,expected_card:id}]);mkdirSync(resolve(root,"site-src/data/tutor"),{recursive:true});mkdirSync(resolve(root,"tests/tutor"),{recursive:true});writeFileSync(resolve(root,`site-src/data/tutor/${lessonId}.json`),`${JSON.stringify({version:2,lesson:{id:lessonId,title,path},contexts,cards},null,2)}\n`);writeFileSync(resolve(root,`tests/tutor/${lessonId}-search.json`),`${JSON.stringify({lesson_id:lessonId,cases,unknown:["如何保养皮鞋","火山为什么喷发"]},null,2)}\n`);

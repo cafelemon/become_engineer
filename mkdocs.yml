@@ -247,6 +247,16 @@ nav:
                   - 聚类、PCA 与无监督评估: learning-paths/ai-foundation/machine-learning/06-clustering-pca-unsupervised-evaluation.md
                   - 概率校准、阈值、分组误差与模型比较: learning-paths/ai-foundation/machine-learning/07-probability-calibration-threshold-group-errors-model-comparison.md
                   - 模型持久化、推理契约与交付验收: learning-paths/ai-foundation/machine-learning/08-model-persistence-inference-contract-delivery-acceptance.md
+              - 深度学习:
+                  - 课程说明: learning-paths/ai-foundation/deep-learning/README.md
+                  - 张量、形状、数据类型与设备契约: learning-paths/ai-foundation/deep-learning/01-tensor-shape-dtype-device-contract.md
+                  - 线性层、激活函数、参数与前向图: learning-paths/ai-foundation/deep-learning/02-linear-layer-activation-parameters-forward-graph.md
+                  - 交叉熵、自动微分、反向传播与梯度核查: learning-paths/ai-foundation/deep-learning/03-cross-entropy-autograd-backprop-gradient-check.md
+                  - Mini-batch、SGD、学习率与训练循环: learning-paths/ai-foundation/deep-learning/04-mini-batch-sgd-learning-rate-training-loop.md
+                  - 验证曲线、过拟合、权重衰减与 Dropout: learning-paths/ai-foundation/deep-learning/05-validation-curves-overfitting-weight-decay-dropout.md
+                  - 初始化、激活分布、梯度诊断与裁剪: learning-paths/ai-foundation/deep-learning/06-initialization-activation-gradient-diagnostics-clipping.md
+                  - 检查点、随机状态与精确恢复训练: learning-paths/ai-foundation/deep-learning/07-checkpoint-rng-resume-exact-training.md
+                  - Eval、推理 Schema、Manifest 与离线交付: learning-paths/ai-foundation/deep-learning/08-eval-inference-schema-manifest-delivery.md
   - 项目:
       - 项目说明: projects/README.md
       - 项目主干规划: projects/project-roadmap.md
@@ -264,6 +274,7 @@ nav:
           - 可追踪生成森林实验: exercises/cs-core/traceable-spanning-forest-lab/README.md
       - Python 内容分析工具: projects/python-content-analysis/README.md
       - 结构化数据机器学习系统: projects/structured-data-ml-system/README.md
+      - 可诊断神经网络训练系统: projects/diagnosable-neural-network/README.md
       - 文本分类模型演进: projects/text-classification-evolution/README.md
       - 强化学习控制实验: projects/reinforcement-learning-control-lab/README.md
       - 可评估的智能学习助手: projects/intelligent-learning-assistant/README.md

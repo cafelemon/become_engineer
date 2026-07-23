@@ -1,0 +1,89 @@
+{
+  "lesson_id": "deep-learning-06",
+  "cases": [
+    {
+      "query": "初始化为什么影响训练",
+      "expected_card": "initialization"
+    },
+    {
+      "query": "权重初值重要吗",
+      "expected_card": "initialization"
+    },
+    {
+      "query": "隐藏层全零初始化会怎样",
+      "expected_card": "zero-symmetry"
+    },
+    {
+      "query": "权重全0为什么学不动",
+      "expected_card": "zero-symmetry"
+    },
+    {
+      "query": "ReLU 非零率能说明什么",
+      "expected_card": "activation-rate"
+    },
+    {
+      "query": "激活为0太多怎么查",
+      "expected_card": "activation-rate"
+    },
+    {
+      "query": "为什么要看逐层 gradient norm",
+      "expected_card": "layer-gradient"
+    },
+    {
+      "query": "只看全局梯度够吗",
+      "expected_card": "layer-gradient"
+    },
+    {
+      "query": "梯度爆炸是什么",
+      "expected_card": "exploding-gradient"
+    },
+    {
+      "query": "global gradient norm 很大说明什么",
+      "expected_card": "exploding-gradient"
+    },
+    {
+      "query": "clip_grad_norm 做了什么",
+      "expected_card": "gradient-clipping"
+    },
+    {
+      "query": "梯度裁剪放在哪一步",
+      "expected_card": "gradient-clipping"
+    },
+    {
+      "query": "梯度裁剪能修复 NaN 吗",
+      "expected_card": "clip-boundary"
+    },
+    {
+      "query": "加clip是否解决训练爆炸",
+      "expected_card": "clip-boundary"
+    },
+    {
+      "query": "发现非有限 gradient 后还能 step 吗",
+      "expected_card": "nonfinite-guard"
+    },
+    {
+      "query": "gradient NaN 怎么处理",
+      "expected_card": "nonfinite-guard"
+    },
+    {
+      "query": "全局梯度范数怎样计算",
+      "expected_card": "global-norm"
+    },
+    {
+      "query": "gradient norm 是各层相加吗",
+      "expected_card": "global-norm"
+    },
+    {
+      "query": "可诊断神经网络 v0.6 新增了什么",
+      "expected_card": "diagnostics-v06"
+    },
+    {
+      "query": "深度学习第六课项目做什么",
+      "expected_card": "diagnostics-v06"
+    }
+  ],
+  "unknown": [
+    "如何保养皮鞋",
+    "火山为什么喷发"
+  ]
+}

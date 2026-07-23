@@ -10,7 +10,7 @@
 
 [开始学习](beginner-roadmap.md){ .md-button .md-button--primary }
 [让小码规划路线](../README.md#learning-assessment){ .md-button }
-[直接看 109 节明细](#opened-lessons){ .md-button }
+[直接看 114 节明细](#opened-lessons){ .md-button }
 
 </div>
 
@@ -25,7 +25,7 @@
   <div><strong>衔接状态</strong><span>可顺序进入 · 缺少起步层 · 等待前置 · 方向可选</span></div>
 </div>
 
-当前正式课程共 **109 节**：工程基础 10 节、Python 起步 7 节、CS 起步 4 节、首个可验证项目 1 节、Python 核心与工程化 7 节、C++ 起步 2 节、C++ 核心 3 节、算法基础与核心 22 节、算法深化 10 节、算法求职加练 3 节、CS 系统基础 6 节、系统工程 6 节、AI 数学数据 6 节、机器学习 8 节、Web 起步 4 节、Web 核心 4 节、Web 工程化 6 节。
+当前正式课程共 **117 节**：工程基础 10 节、Python 起步 7 节、CS 起步 4 节、首个可验证项目 1 节、Python 核心与工程化 7 节、C++ 起步 2 节、C++ 核心 3 节、算法基础与核心 22 节、算法深化 10 节、算法求职加练 3 节、CS 系统基础 6 节、系统工程 6 节、AI 数学数据 6 节、机器学习 8 节、深度学习 8 节、Web 起步 4 节、Web 核心 4 节、Web 工程化 6 节。
 
 ## 四类用户共用一棵能力树
 
@@ -89,7 +89,7 @@
       <h3>AI 模型</h3>
       <a href="#module-ai-math-data" data-status="open">数学、数据与实验 · 6 / 6</a>
       <a href="#module-machine-learning" data-status="open">机器学习 · 已开放 8 / 8</a>
-      <a href="#module-deep-learning" data-status="planned">深度学习 · 前置已满足</a>
+      <a href="#module-deep-learning" data-status="open">深度学习 · 已开放 8 / 8</a>
       <a href="#module-reinforcement-learning" data-status="planned">强化学习</a>
       <a href="#module-vision" data-status="planned">视觉 / NLP / 多模态</a>
     </section>
@@ -151,12 +151,12 @@
 | <span id="module-cs-systems-core">操作系统、网络与数据库核心</span> | 核心 | 方向主干 | 进程、线程、内存、协议、事务与权限实验 | CS 起步 → 系统工程、Web 工程化 | 四类按方向进入；不是算法起步前置 | 已开放 · 6/6 | 可顺序进入 |
 | <span id="module-ai-math-data">数学、数据与可复现实验</span> | 基础 | 方向主干 | 数据处理、实验设计、指标与基线 | Python 工程化 + 算法基础 → ML | AI 模型路线共用 | 已开放 · 6/6 | 可顺序进入 |
 | <span id="module-machine-learning">机器学习</span> | 核心 | 方向主干 | 可复现训练、验证和误差分析 | 数学数据实验 → 深度学习 | AI 模型路线共用 | 已开放 · 8/8 | 可顺序进入 |
-| <span id="module-deep-learning">深度学习</span> | 核心 | 方向主干 | 神经网络训练、调试和评估 | 机器学习 → RL／视觉／NLP／多模态 | AI 模型路线进入；LLM 应用不强制 | 已规划未建设 | 可顺序进入 |
+| <span id="module-deep-learning">深度学习</span> | 核心 | 方向主干 | 神经网络训练、调试和评估 | 机器学习 → RL／视觉／NLP／多模态 | AI 模型路线进入；LLM 应用不强制 | 已开放 · 8/8 | 可顺序进入 |
 | <span id="module-reinforcement-learning">强化学习</span> | 专业/求职 | 能力深化 | 策略、价值、环境与控制实验 | 深度学习 → 智能控制 | 专业方向可选 | 已规划未建设 | 方向可选 |
 | <span id="module-vision">计算机视觉</span> | 专业/求职 | 能力深化 | 视觉数据、模型、评估与部署证据 | 深度学习 → 边缘视觉／多模态 Agent | 专业方向可选 | 已规划未建设 | 方向可选 |
 | <span id="module-nlp-transformer">NLP 与 Transformer</span> | 深化 | 能力深化 | 文本任务、Transformer 与评估 | 深度学习 → 模型型 Agent | 模型方向可选；不是应用 Agent 通用前置 | 已规划未建设 | 方向可选 |
 | <span id="module-multimodal">多模态与其他 AI 专业方向</span> | 专业/求职 | 能力深化 | 多模态或专项模型项目 | 深度学习 → 高级 Agent | 专业方向可选 | 已规划未建设 | 方向可选 |
-| <span id="module-llm-use">模型使用与结构化输出</span> | 基础 | 方向主干 | 可验证的模型调用、Schema 与失败处理 | Python 工程化 + Web/API → RAG | LLM 应用路线进入；不强制 ML/DL | 已规划未建设 | 等待前置 |
+| <span id="module-llm-use">模型使用与结构化输出</span> | 基础 | 方向主干 | 可验证的模型调用、Schema 与失败处理 | Python 工程化 + Web/API → RAG | LLM 应用路线进入；不强制 ML/DL | 已规划未建设 · 6 课设计完成 | 可顺序进入 |
 | <span id="module-llm-rag-eval">检索、RAG 与评估</span> | 工程化 | 方向主干 | 有引用、固定评估集和可观测失败的 RAG | 模型使用 + Web 工程化 → Agent | LLM/Agent 路线共用 | 已规划未建设 | 等待前置 |
 | <span id="module-agent-tool-calling">Tool Calling 与有界工作流</span> | 基础 | 方向主干 | 可停止、可验收的工具工作流 | RAG 与评估 → Agent 工程 | Agent 路线进入 | 已规划未建设 | 等待前置 |
 | <span id="module-agent-engineering">状态、记忆、上下文、恢复、评估、可观测性与安全</span> | 工程化 | 方向主干 | 可恢复、可评估、可观测的 Agent | Tool Calling → 专业 Agent | Agent 路线共用；求职追加系统设计追问 | 已规划未建设 | 等待前置 |
@@ -174,7 +174,7 @@
 
 ## 已开放课程明细 { #opened-lessons }
 
-以下 **109 节课程各出现一次**。既有 55 节已完成 V2 迁移；算法深化、AI 数学数据与机器学习均已开放。
+以下 **117 节课程各出现一次**。既有 55 节已完成 V2 迁移；算法深化、AI 数学数据、机器学习与深度学习均已开放。
 
 ### 工程基础起步 · 10 节
 
@@ -339,6 +339,17 @@
 7. [概率校准、阈值、分组误差与模型比较](ai-foundation/machine-learning/07-probability-calibration-threshold-group-errors-model-comparison.md) · 已开放
 8. [模型持久化、推理契约与交付验收](ai-foundation/machine-learning/08-model-persistence-inference-contract-delivery-acceptance.md) · 已开放
 
+### 深度学习 · 已开放 8 / 8
+
+1. [张量、形状、数据类型与设备契约](ai-foundation/deep-learning/01-tensor-shape-dtype-device-contract.md) · 已开放
+2. [线性层、激活函数、参数与前向图](ai-foundation/deep-learning/02-linear-layer-activation-parameters-forward-graph.md) · 已开放
+3. [交叉熵、自动微分、反向传播与梯度核查](ai-foundation/deep-learning/03-cross-entropy-autograd-backprop-gradient-check.md) · 已开放
+4. [Mini-batch、SGD、学习率与训练循环](ai-foundation/deep-learning/04-mini-batch-sgd-learning-rate-training-loop.md) · 已开放
+5. [验证曲线、过拟合、权重衰减与 Dropout](ai-foundation/deep-learning/05-validation-curves-overfitting-weight-decay-dropout.md) · 已开放
+6. [初始化、激活分布、梯度诊断与裁剪](ai-foundation/deep-learning/06-initialization-activation-gradient-diagnostics-clipping.md) · 已开放
+7. [检查点、随机状态与精确恢复训练](ai-foundation/deep-learning/07-checkpoint-rng-resume-exact-training.md) · 已开放
+8. [Eval、推理 Schema、Manifest 与离线交付](ai-foundation/deep-learning/08-eval-inference-schema-manifest-delivery.md) · 已开放
+
 ## 规划模块边界
 
 以下只登记稳定模块，不提前虚构课名和课数：
@@ -347,8 +358,8 @@
 - **应用工程**：Web 起步、Web 核心、CS 系统基础与 Web 工程化均已完成；RAG／Agent 的 Web 工程化前置已满足，但下游正文仍未建设。
 - **系统工程**：六课已完成描述符 I/O、信号、队列、非阻塞网络、性能与恢复并开放。
 - **算法**：求职叠加三课已完成固定判题、限时策略和错因回归；算法深化 10/10 已开放。
-- **AI 模型**：数学数据实验 6/6 与机器学习 8/8 已开放；深度学习前置已满足但正文尚未建设，后续再进入强化学习、视觉、NLP/Transformer、多模态等方向。
-- **LLM 应用**：模型使用与结构化输出、检索、RAG 与评估；它与 AI 模型相邻但不是同一条线。
+- **AI 模型**：数学数据实验 6/6、机器学习 8/8 与深度学习 8/8 已开放；强化学习、视觉、NLP/Transformer 与多模态的模型前置已经满足，但专项正文仍未建设。
+- **LLM 应用**：模型使用与结构化输出按 6 课从适配器、Prompt、Schema、重试、流式推进到交付；再进入检索、RAG 与评估。它与 AI 模型相邻但不是同一条线。
 - **Agent 工程**：Tool Calling、有界工作流、状态／记忆／上下文／恢复／评估／可观测性／安全，再进入专业 Agent。
 - **设备系统**：C 起步、设备共同基础、MCU/RTOS、Linux/BSP、工业控制；与 AI 或强化学习汇合后进入边缘智能或智能控制。
 
@@ -356,7 +367,7 @@
 
 1. 55 节既有课程已经完成 V2 迁移；后续按依赖关系建设新的连续课程组。
 2. Web 起步与 Web 核心各四课已经完成；学习进度报告器升级为 v0.8，具备运行时契约、SQLite 持久化、资源 CRUD、游标分页、重复写入保护、表单校验和失败恢复。
-3. 共同基座、Web 工程化、算法求职叠加、系统工程、算法深化、数学数据实验与机器学习均已完成；下一组按课程地图进入深度学习。
+3. 共同基座、Web 工程化、算法求职叠加、系统工程、算法深化、数学数据实验、机器学习与深度学习均已完成并开放；下一课程组按地图前置顺序建设。
 4. 每新增一节正式课程，同时更新正文、示例、知识库、测试、项目关系、课程登记和公开状态；禁止只增加空页面或目录标题。
 
 设备方向的硬件门槛与三级出口见[设备系统与边缘智能](device-edge-systems/README.md)。公开课程登记的机器可校验版本位于 `site-src/data/curriculum/v2.json`，但学习者只需要使用本页。

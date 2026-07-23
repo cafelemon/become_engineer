@@ -1,6 +1,6 @@
 # Become Engineer 总学习地图
 
-本页只保留架构摘要。课程层级、前置、状态、四类用户规则和当前 102 节课程明细，以[完整课程地图](../learning-paths/curriculum-map.md)为唯一权威版本。
+本页只保留架构摘要。课程层级、前置、状态、四类用户规则和当前 117 节课程明细，以[完整课程地图](../learning-paths/curriculum-map.md)为唯一权威版本。
 
 ## 服务对象
 

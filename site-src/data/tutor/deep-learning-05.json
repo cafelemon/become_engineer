@@ -1,0 +1,341 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "deep-learning-05",
+    "title": "验证曲线、过拟合、权重衰减与 Dropout",
+    "path": "learning-paths/ai-foundation/deep-learning/05-validation-curves-overfitting-weight-decay-dropout/"
+  },
+  "contexts": [
+    {
+      "id": "overview-validation-regularization",
+      "type": "overview",
+      "title": "验证与正则结果",
+      "anchor": "#overview-validation-regularization"
+    },
+    {
+      "id": "concept-overfitting-curves",
+      "type": "concept",
+      "title": "过拟合曲线",
+      "anchor": "#concept-overfitting-curves"
+    },
+    {
+      "id": "concept-regularization-mechanisms",
+      "type": "concept",
+      "title": "正则化机制",
+      "anchor": "#concept-regularization-mechanisms"
+    },
+    {
+      "id": "example-selection-protocol",
+      "type": "example",
+      "title": "选择协议",
+      "anchor": "#example-selection-protocol"
+    },
+    {
+      "id": "reproduce-validation-v05",
+      "type": "reproduce",
+      "title": "运行验证实验",
+      "anchor": "#reproduce-validation-v05"
+    },
+    {
+      "id": "modify-validation-protocol",
+      "type": "modify",
+      "title": "修改验证协议",
+      "anchor": "#modify-validation-protocol"
+    },
+    {
+      "id": "troubleshoot-validation-regularization",
+      "type": "troubleshoot",
+      "title": "验证排错",
+      "anchor": "#troubleshoot-validation-regularization"
+    },
+    {
+      "id": "deepen-validation-reuse",
+      "type": "deepen",
+      "title": "验证集复用",
+      "anchor": "#deepen-validation-reuse"
+    },
+    {
+      "id": "project-diagnosable-network-v05",
+      "type": "project",
+      "title": "可诊断网络 v0.5",
+      "anchor": "#project-diagnosable-network-v05"
+    }
+  ],
+  "cards": [
+    {
+      "id": "overfitting",
+      "lesson_id": "deep-learning-05",
+      "context_id": "concept-overfitting-curves",
+      "question": "怎样从曲线判断过拟合？",
+      "aliases": [
+        "训练变好验证变差说明什么"
+      ],
+      "keywords": [
+        "怎样从曲线判断过拟合",
+        "训练变好验证变差说明什么"
+      ],
+      "diagnostic": "先判断“训练变好验证变差说明什么”涉及曲线、正则、模式、选择规则还是测试边界。",
+      "hints": [
+        "查看 #concept-overfitting-curves。",
+        "运行 test_validation_lab.py 并比较完整history。"
+      ],
+      "example": "无正则验证损失从最佳0.400回退到0.572。",
+      "answer": "当训练目标继续改善而未参与训练的验证表现退化时，出现了过拟合证据。",
+      "source": {
+        "label": "过拟合曲线",
+        "href": "#concept-overfitting-curves"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "validation-role",
+      "lesson_id": "deep-learning-05",
+      "context_id": "example-selection-protocol",
+      "question": "验证集在模型选择中做什么？",
+      "aliases": [
+        "validation 能参与反向传播吗"
+      ],
+      "keywords": [
+        "验证集在模型选择中做什么",
+        "validation",
+        "能参与反向传播吗"
+      ],
+      "diagnostic": "先判断“validation 能参与反向传播吗”涉及曲线、正则、模式、选择规则还是测试边界。",
+      "hints": [
+        "查看 #example-selection-protocol。",
+        "运行 test_validation_lab.py 并比较完整history。"
+      ],
+      "example": "本课只按验证损失选择。",
+      "answer": "验证集比较预声明候选和停止点，不参与梯度或参数更新。",
+      "source": {
+        "label": "选择协议",
+        "href": "#example-selection-protocol"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "weight-decay",
+      "lesson_id": "deep-learning-05",
+      "context_id": "concept-regularization-mechanisms",
+      "question": "weight decay 有什么作用？",
+      "aliases": [
+        "权重衰减如何正则化"
+      ],
+      "keywords": [
+        "weight",
+        "decay",
+        "有什么作用",
+        "权重衰减如何正则化"
+      ],
+      "diagnostic": "先判断“权重衰减如何正则化”涉及曲线、正则、模式、选择规则还是测试边界。",
+      "hints": [
+        "查看 #concept-regularization-mechanisms。",
+        "运行 test_validation_lab.py 并比较完整history。"
+      ],
+      "example": "正则候选使用0.02。",
+      "answer": "它在优化更新中惩罚较大参数，限制模型用极端权重拟合训练噪声。",
+      "source": {
+        "label": "正则化机制",
+        "href": "#concept-regularization-mechanisms"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "dropout",
+      "lesson_id": "deep-learning-05",
+      "context_id": "concept-regularization-mechanisms",
+      "question": "Dropout 在训练时做什么？",
+      "aliases": [
+        "dropout 为什么会随机"
+      ],
+      "keywords": [
+        "Dropout",
+        "在训练时做什么",
+        "dropout",
+        "为什么会随机"
+      ],
+      "diagnostic": "先判断“dropout 为什么会随机”涉及曲线、正则、模式、选择规则还是测试边界。",
+      "hints": [
+        "查看 #concept-regularization-mechanisms。",
+        "运行 test_validation_lab.py 并比较完整history。"
+      ],
+      "example": "本课比例0.25。",
+      "answer": "训练时随机屏蔽部分激活并缩放保留值，降低对固定局部路径的依赖。",
+      "source": {
+        "label": "正则化机制",
+        "href": "#concept-regularization-mechanisms"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "train-eval",
+      "lesson_id": "deep-learning-05",
+      "context_id": "concept-regularization-mechanisms",
+      "question": "model.train 和 model.eval 有什么区别？",
+      "aliases": [
+        "eval 是否只是关闭梯度"
+      ],
+      "keywords": [
+        "model.train",
+        "和",
+        "model.eval",
+        "有什么区别",
+        "eval",
+        "是否只是关闭梯度"
+      ],
+      "diagnostic": "先判断“eval 是否只是关闭梯度”涉及曲线、正则、模式、选择规则还是测试边界。",
+      "hints": [
+        "查看 #concept-regularization-mechanisms。",
+        "运行 test_validation_lab.py 并比较完整history。"
+      ],
+      "example": "eval输出稳定。",
+      "answer": "它们切换Dropout/BatchNorm等模块行为；关闭梯度需要另外使用no_grad。",
+      "source": {
+        "label": "正则化机制",
+        "href": "#concept-regularization-mechanisms"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "no-grad",
+      "lesson_id": "deep-learning-05",
+      "context_id": "reproduce-validation-v05",
+      "question": "torch.no_grad 在验证时做什么？",
+      "aliases": [
+        "验证为什么关闭梯度"
+      ],
+      "keywords": [
+        "torch.no_grad",
+        "在验证时做什么",
+        "验证为什么关闭梯度"
+      ],
+      "diagnostic": "先判断“验证为什么关闭梯度”涉及曲线、正则、模式、选择规则还是测试边界。",
+      "hints": [
+        "查看 #reproduce-validation-v05。",
+        "运行 test_validation_lab.py 并比较完整history。"
+      ],
+      "example": "所有参数grad仍为None。",
+      "answer": "它停止记录自动微分图，减少开销并防止验证路径产生gradient，但不替代eval模式。",
+      "source": {
+        "label": "运行验证实验",
+        "href": "#reproduce-validation-v05"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "selection-rule",
+      "lesson_id": "deep-learning-05",
+      "context_id": "example-selection-protocol",
+      "question": "为什么模型选择规则必须提前写？",
+      "aliases": [
+        "固定预算和早停为何选出不同模型"
+      ],
+      "keywords": [
+        "为什么模型选择规则必须提前写",
+        "固定预算和早停为何选出不同模型"
+      ],
+      "diagnostic": "先判断“固定预算和早停为何选出不同模型”涉及曲线、正则、模式、选择规则还是测试边界。",
+      "hints": [
+        "查看 #example-selection-protocol。",
+        "运行 test_validation_lab.py 并比较完整history。"
+      ],
+      "example": "固定预算选正则，历史最佳会选无正则。",
+      "answer": "不同合法规则可能给出不同结果；看完曲线再换规则会引入选择偏差。",
+      "source": {
+        "label": "选择协议",
+        "href": "#example-selection-protocol"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "early-stopping",
+      "lesson_id": "deep-learning-05",
+      "context_id": "example-selection-protocol",
+      "question": "早停为什么也算正则化？",
+      "aliases": [
+        "best epoch 有什么意义"
+      ],
+      "keywords": [
+        "早停为什么也算正则化",
+        "best",
+        "epoch",
+        "有什么意义"
+      ],
+      "diagnostic": "先判断“best epoch 有什么意义”涉及曲线、正则、模式、选择规则还是测试边界。",
+      "hints": [
+        "查看 #example-selection-protocol。",
+        "运行 test_validation_lab.py 并比较完整history。"
+      ],
+      "example": "无正则最佳epoch为50。",
+      "answer": "根据验证表现保留较早状态可阻止模型继续拟合训练噪声，是训练协议的一部分。",
+      "source": {
+        "label": "选择协议",
+        "href": "#example-selection-protocol"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "test-untouched",
+      "lesson_id": "deep-learning-05",
+      "context_id": "deepen-validation-reuse",
+      "question": "为什么本课不能查看测试集？",
+      "aliases": [
+        "test 可以用来调正则吗"
+      ],
+      "keywords": [
+        "为什么本课不能查看测试集",
+        "test",
+        "可以用来调正则吗"
+      ],
+      "diagnostic": "先判断“test 可以用来调正则吗”涉及曲线、正则、模式、选择规则还是测试边界。",
+      "hints": [
+        "查看 #deepen-validation-reuse。",
+        "运行 test_validation_lab.py 并比较完整history。"
+      ],
+      "example": "固定输出test_set=not-used。",
+      "answer": "测试集用于候选和规则冻结后的最终一次评估；反复查看会把它变成调参集。",
+      "source": {
+        "label": "验证集复用",
+        "href": "#deepen-validation-reuse"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "validation-v05",
+      "lesson_id": "deep-learning-05",
+      "context_id": "project-diagnosable-network-v05",
+      "question": "可诊断神经网络 v0.5 新增了什么？",
+      "aliases": [
+        "深度学习第五课项目做什么"
+      ],
+      "keywords": [
+        "可诊断神经网络",
+        "v0.5",
+        "新增了什么",
+        "深度学习第五课项目做什么"
+      ],
+      "diagnostic": "先判断“深度学习第五课项目做什么”涉及曲线、正则、模式、选择规则还是测试边界。",
+      "hints": [
+        "查看 #project-diagnosable-network-v05。",
+        "运行 test_validation_lab.py 并比较完整history。"
+      ],
+      "example": "结论限定当前固定预算。",
+      "answer": "它新增双曲线、权重衰减、Dropout、模式探针、选择规则、最佳state和8项测试。",
+      "source": {
+        "label": "可诊断网络 v0.5",
+        "href": "#project-diagnosable-network-v05"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

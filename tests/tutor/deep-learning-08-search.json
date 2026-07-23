@@ -1,0 +1,89 @@
+{
+  "lesson_id": "deep-learning-08",
+  "cases": [
+    {
+      "query": "model.eval 和 inference_mode 有什么区别",
+      "expected_card": "eval-vs-inference"
+    },
+    {
+      "query": "推理为什么两个都要",
+      "expected_card": "eval-vs-inference"
+    },
+    {
+      "query": "推理输入 Schema 要固定什么",
+      "expected_card": "input-schema"
+    },
+    {
+      "query": "模型输入字段怎么约束",
+      "expected_card": "input-schema"
+    },
+    {
+      "query": "为什么类别顺序要写进 manifest",
+      "expected_card": "label-order"
+    },
+    {
+      "query": "概率数组顺序能猜吗",
+      "expected_card": "label-order"
+    },
+    {
+      "query": "推理 manifest 应包含什么",
+      "expected_card": "manifest"
+    },
+    {
+      "query": "模型旁边为什么要json",
+      "expected_card": "manifest"
+    },
+    {
+      "query": "为什么推理产物只导出 state_dict",
+      "expected_card": "state-dict-only"
+    },
+    {
+      "query": "训练checkpoint能直接交付吗",
+      "expected_card": "state-dict-only"
+    },
+    {
+      "query": "strict=True 为什么重要",
+      "expected_card": "strict-load"
+    },
+    {
+      "query": "state key不匹配能忽略吗",
+      "expected_card": "strict-load"
+    },
+    {
+      "query": "哪些坏输入必须在推理前拒绝",
+      "expected_card": "input-rejection"
+    },
+    {
+      "query": "NaN和额外字段怎么办",
+      "expected_card": "input-rejection"
+    },
+    {
+      "query": "摘要、Schema 和来源信任有何区别",
+      "expected_card": "artifact-integrity"
+    },
+    {
+      "query": "hash匹配就安全吗",
+      "expected_card": "artifact-integrity"
+    },
+    {
+      "query": "概率输出怎样验收",
+      "expected_card": "probability-contract"
+    },
+    {
+      "query": "softmax结果要检查什么",
+      "expected_card": "probability-contract"
+    },
+    {
+      "query": "可诊断神经网络 v0.8 完成什么",
+      "expected_card": "delivery-v08"
+    },
+    {
+      "query": "深度学习第八课项目做什么",
+      "expected_card": "delivery-v08"
+    }
+  ],
+  "unknown": [
+    "怎样修剪月季",
+    "鲸鱼如何呼吸"
+  ]
+}

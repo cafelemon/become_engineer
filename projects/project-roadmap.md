@@ -10,6 +10,7 @@
 | --- | --- | --- | --- |
 | 完成 Python 起步后 | [Python 内容分析工具](python-content-analysis/README.md) | 工程基础、Python、数据处理 | 建立可复用的内容审计工具 |
 | 进入机器学习后 | [结构化数据机器学习系统](structured-data-ml-system/README.md) | Python、数学、机器学习、工程化 | 完成数据到推理的ML闭环 |
+| 进入深度学习后 | [可诊断神经网络训练系统](diagnosable-neural-network/README.md) | 机器学习、深度学习、实验工程 | 完成可训练、可诊断、可恢复的神经网络闭环 |
 | 进入深度学习与 NLP 后 | [文本分类模型演进](text-classification-evolution/README.md) | 机器学习、深度学习、NLP/Transformer | 在同一任务上比较模型演进 |
 | 完成机器学习基础后 | [强化学习控制实验](reinforcement-learning-control-lab/README.md) | Python、数学、机器学习、强化学习 | 独立验证决策学习方法 |
 | 进入 LLM/Agent 后 | [可评估的智能学习助手](intelligent-learning-assistant/README.md) | 工程、Web、LLM、RAG、Agent、评估 | 将本仓库内容构建成可验证应用 |
@@ -17,9 +18,10 @@
 ## 关系
 
 - 项目 1 为后续内容生产提供工具，但不是所有项目的强制代码依赖。
-- 项目 2 是项目 3 的机器学习基础。
-- 项目 4 从机器学习和深度学习分支出去，不要求继续进入 LLM/Agent。
-- 项目 5 依赖 Python 工程能力、Web/API 基础和 LLM 知识，不依赖强化学习。
+- 结构化数据机器学习系统是可诊断神经网络训练系统的实验基础。
+- 可诊断神经网络训练系统是文本分类模型演进的通用深度学习基础。
+- 强化学习控制实验从机器学习和深度学习分支出去，不要求继续进入 LLM/Agent。
+- 可评估的智能学习助手依赖 Python 工程能力、Web/API 基础和 LLM 知识，不依赖强化学习。
 
 ## 课程层级与解锁映射
 
@@ -27,6 +29,7 @@
 | --- | --- | --- | --- |
 | Python 内容分析工具 | 语言必修与工程化深化 | Python起步完成 | CLI、测试、日志、内容审计和自动检查 |
 | 结构化数据机器学习系统 | AI必修主干 | 数学、数据、机器学习和评估基础完成 | 经典ML扩展、实验工程、MLOps和可解释性 |
+| 可诊断神经网络训练系统 | AI必修主干 | 机器学习完成 | 视觉、NLP、强化学习和深度模型实验 |
 | 文本分类模型演进 | AI必修与推荐深化 | 机器学习、深度学习和NLP基础完成 | 深度网络、NLP、Transformer和误差分析 |
 | 强化学习控制实验 | AI专业选修 | 机器学习、深度学习、概率和优化基础完成 | 强化学习算法与控制实验 |
 | 可评估的智能学习助手 | LLM/Agent必修与推荐深化 | Web、AI评估、检索和LLM基础完成 | RAG、评估系统、Tool Calling、Agent和可观测性 |

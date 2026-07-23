@@ -1,0 +1,89 @@
+{
+  "lesson_id": "deep-learning-05",
+  "cases": [
+    {
+      "query": "怎样从曲线判断过拟合",
+      "expected_card": "overfitting"
+    },
+    {
+      "query": "训练变好验证变差说明什么",
+      "expected_card": "overfitting"
+    },
+    {
+      "query": "验证集在模型选择中做什么",
+      "expected_card": "validation-role"
+    },
+    {
+      "query": "validation 能参与反向传播吗",
+      "expected_card": "validation-role"
+    },
+    {
+      "query": "weight decay 有什么作用",
+      "expected_card": "weight-decay"
+    },
+    {
+      "query": "权重衰减如何正则化",
+      "expected_card": "weight-decay"
+    },
+    {
+      "query": "Dropout 在训练时做什么",
+      "expected_card": "dropout"
+    },
+    {
+      "query": "dropout 为什么会随机",
+      "expected_card": "dropout"
+    },
+    {
+      "query": "model.train 和 model.eval 有什么区别",
+      "expected_card": "train-eval"
+    },
+    {
+      "query": "eval 是否只是关闭梯度",
+      "expected_card": "train-eval"
+    },
+    {
+      "query": "torch.no_grad 在验证时做什么",
+      "expected_card": "no-grad"
+    },
+    {
+      "query": "验证为什么关闭梯度",
+      "expected_card": "no-grad"
+    },
+    {
+      "query": "为什么模型选择规则必须提前写",
+      "expected_card": "selection-rule"
+    },
+    {
+      "query": "固定预算和早停为何选出不同模型",
+      "expected_card": "selection-rule"
+    },
+    {
+      "query": "早停为什么也算正则化",
+      "expected_card": "early-stopping"
+    },
+    {
+      "query": "best epoch 有什么意义",
+      "expected_card": "early-stopping"
+    },
+    {
+      "query": "为什么本课不能查看测试集",
+      "expected_card": "test-untouched"
+    },
+    {
+      "query": "test 可以用来调正则吗",
+      "expected_card": "test-untouched"
+    },
+    {
+      "query": "可诊断神经网络 v0.5 新增了什么",
+      "expected_card": "validation-v05"
+    },
+    {
+      "query": "深度学习第五课项目做什么",
+      "expected_card": "validation-v05"
+    }
+  ],
+  "unknown": [
+    "怎样调整咖啡研磨度",
+    "云为什么会形成"
+  ]
+}

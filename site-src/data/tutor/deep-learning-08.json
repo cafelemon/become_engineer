@@ -1,0 +1,341 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "deep-learning-08",
+    "title": "Eval、推理 Schema、Manifest 与离线交付",
+    "path": "learning-paths/ai-foundation/deep-learning/08-eval-inference-schema-manifest-delivery/"
+  },
+  "contexts": [
+    {
+      "id": "overview-offline-delivery",
+      "type": "overview",
+      "title": "离线交付结果",
+      "anchor": "#overview-offline-delivery"
+    },
+    {
+      "id": "concept-inference-mode",
+      "type": "concept",
+      "title": "推理模式",
+      "anchor": "#concept-inference-mode"
+    },
+    {
+      "id": "concept-inference-contract",
+      "type": "concept",
+      "title": "推理契约",
+      "anchor": "#concept-inference-contract"
+    },
+    {
+      "id": "example-artifact-manifest",
+      "type": "example",
+      "title": "产物清单",
+      "anchor": "#example-artifact-manifest"
+    },
+    {
+      "id": "reproduce-delivery-v08",
+      "type": "reproduce",
+      "title": "运行交付验收",
+      "anchor": "#reproduce-delivery-v08"
+    },
+    {
+      "id": "modify-delivery-contract",
+      "type": "modify",
+      "title": "修改交付契约",
+      "anchor": "#modify-delivery-contract"
+    },
+    {
+      "id": "troubleshoot-delivery",
+      "type": "troubleshoot",
+      "title": "推理交付排错",
+      "anchor": "#troubleshoot-delivery"
+    },
+    {
+      "id": "deepen-delivery-boundary",
+      "type": "deepen",
+      "title": "交付边界",
+      "anchor": "#deepen-delivery-boundary"
+    },
+    {
+      "id": "project-diagnosable-network-v08",
+      "type": "project",
+      "title": "可诊断网络 v0.8",
+      "anchor": "#project-diagnosable-network-v08"
+    }
+  ],
+  "cards": [
+    {
+      "id": "eval-vs-inference",
+      "lesson_id": "deep-learning-08",
+      "context_id": "concept-inference-mode",
+      "question": "model.eval 和 inference_mode 有什么区别？",
+      "aliases": [
+        "推理为什么两个都要"
+      ],
+      "keywords": [
+        "model.eval",
+        "和",
+        "inference_mode",
+        "有什么区别",
+        "推理为什么两个都要"
+      ],
+      "diagnostic": "先判断“推理为什么两个都要”是推理模式、输入输出契约、产物兼容性、完整性还是来源信任问题。",
+      "hints": [
+        "查看 #concept-inference-mode。",
+        "运行 test_delivery_lab.py 并沿manifest到predict排查。"
+      ],
+      "example": "predict同时启用两者。",
+      "answer": "eval改变Dropout/BatchNorm行为；inference_mode关闭自动微分跟踪，两者职责不同。",
+      "source": {
+        "label": "推理模式",
+        "href": "#concept-inference-mode"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "input-schema",
+      "lesson_id": "deep-learning-08",
+      "context_id": "concept-inference-contract",
+      "question": "推理输入 Schema 要固定什么？",
+      "aliases": [
+        "模型输入字段怎么约束"
+      ],
+      "keywords": [
+        "推理输入",
+        "Schema",
+        "要固定什么",
+        "模型输入字段怎么约束"
+      ],
+      "diagnostic": "先判断“模型输入字段怎么约束”是推理模式、输入输出契约、产物兼容性、完整性还是来源信任问题。",
+      "hints": [
+        "查看 #concept-inference-contract。",
+        "运行 test_delivery_lab.py 并沿manifest到predict排查。"
+      ],
+      "example": "signal_a和signal_b必须恰好存在。",
+      "answer": "固定字段名、类型、有限性、额外字段策略、顺序/shape与预处理语义。",
+      "source": {
+        "label": "推理契约",
+        "href": "#concept-inference-contract"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "label-order",
+      "lesson_id": "deep-learning-08",
+      "context_id": "concept-inference-contract",
+      "question": "为什么类别顺序要写进 manifest？",
+      "aliases": [
+        "概率数组顺序能猜吗"
+      ],
+      "keywords": [
+        "为什么类别顺序要写进",
+        "manifest",
+        "概率数组顺序能猜吗"
+      ],
+      "diagnostic": "先判断“概率数组顺序能猜吗”是推理模式、输入输出契约、产物兼容性、完整性还是来源信任问题。",
+      "hints": [
+        "查看 #concept-inference-contract。",
+        "运行 test_delivery_lab.py 并沿manifest到predict排查。"
+      ],
+      "example": "顺序固定negative|positive。",
+      "answer": "概率位置依赖训练时类别索引；交换顺序会让shape不变但语义反转。",
+      "source": {
+        "label": "推理契约",
+        "href": "#concept-inference-contract"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "manifest",
+      "lesson_id": "deep-learning-08",
+      "context_id": "example-artifact-manifest",
+      "question": "推理 manifest 应包含什么？",
+      "aliases": [
+        "模型旁边为什么要json"
+      ],
+      "keywords": [
+        "推理",
+        "manifest",
+        "应包含什么",
+        "模型旁边为什么要json"
+      ],
+      "diagnostic": "先判断“模型旁边为什么要json”是推理模式、输入输出契约、产物兼容性、完整性还是来源信任问题。",
+      "hints": [
+        "查看 #example-artifact-manifest。",
+        "运行 test_delivery_lab.py 并沿manifest到predict排查。"
+      ],
+      "example": "v0.8 manifest冻结完整接口。",
+      "answer": "至少包含身份、版本、架构、依赖、输入输出Schema、标签、阈值、文件名和摘要。",
+      "source": {
+        "label": "产物清单",
+        "href": "#example-artifact-manifest"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "state-dict-only",
+      "lesson_id": "deep-learning-08",
+      "context_id": "example-artifact-manifest",
+      "question": "为什么推理产物只导出 state_dict？",
+      "aliases": [
+        "训练checkpoint能直接交付吗"
+      ],
+      "keywords": [
+        "为什么推理产物只导出",
+        "state_dict",
+        "训练checkpoint能直接交付吗"
+      ],
+      "diagnostic": "先判断“训练checkpoint能直接交付吗”是推理模式、输入输出契约、产物兼容性、完整性还是来源信任问题。",
+      "hints": [
+        "查看 #example-artifact-manifest。",
+        "运行 test_delivery_lab.py 并沿manifest到predict排查。"
+      ],
+      "example": "model-state.pt不含训练状态。",
+      "answer": "推理不需要optimizer、epoch和RNG；分离可缩小接口与加载面。",
+      "source": {
+        "label": "产物清单",
+        "href": "#example-artifact-manifest"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "strict-load",
+      "lesson_id": "deep-learning-08",
+      "context_id": "example-artifact-manifest",
+      "question": "strict=True 为什么重要？",
+      "aliases": [
+        "state key不匹配能忽略吗"
+      ],
+      "keywords": [
+        "strict=True",
+        "为什么重要",
+        "state",
+        "key不匹配能忽略吗"
+      ],
+      "diagnostic": "先判断“state key不匹配能忽略吗”是推理模式、输入输出契约、产物兼容性、完整性还是来源信任问题。",
+      "hints": [
+        "查看 #example-artifact-manifest。",
+        "运行 test_delivery_lab.py 并沿manifest到predict排查。"
+      ],
+      "example": "架构先校验再严格装载。",
+      "answer": "它拒绝缺失或多余参数键，避免架构漂移被静默吞掉。",
+      "source": {
+        "label": "产物清单",
+        "href": "#example-artifact-manifest"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "input-rejection",
+      "lesson_id": "deep-learning-08",
+      "context_id": "troubleshoot-delivery",
+      "question": "哪些坏输入必须在推理前拒绝？",
+      "aliases": [
+        "NaN和额外字段怎么办"
+      ],
+      "keywords": [
+        "哪些坏输入必须在推理前拒绝",
+        "NaN和额外字段怎么办"
+      ],
+      "diagnostic": "先判断“NaN和额外字段怎么办”是推理模式、输入输出契约、产物兼容性、完整性还是来源信任问题。",
+      "hints": [
+        "查看 #troubleshoot-delivery。",
+        "运行 test_delivery_lab.py 并沿manifest到predict排查。"
+      ],
+      "example": "9项测试覆盖门禁。",
+      "answer": "缺失、额外、字符串、bool、NaN和Infinity都应在tensor进入模型前拒绝。",
+      "source": {
+        "label": "推理交付排错",
+        "href": "#troubleshoot-delivery"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "artifact-integrity",
+      "lesson_id": "deep-learning-08",
+      "context_id": "example-artifact-manifest",
+      "question": "摘要、Schema 和来源信任有何区别？",
+      "aliases": [
+        "hash匹配就安全吗"
+      ],
+      "keywords": [
+        "摘要",
+        "Schema",
+        "和来源信任有何区别",
+        "hash匹配就安全吗"
+      ],
+      "diagnostic": "先判断“hash匹配就安全吗”是推理模式、输入输出契约、产物兼容性、完整性还是来源信任问题。",
+      "hints": [
+        "查看 #example-artifact-manifest。",
+        "运行 test_delivery_lab.py 并沿manifest到predict排查。"
+      ],
+      "example": "只加载可信本机产物。",
+      "answer": "摘要检查字节变化，Schema检查兼容性，两者都不能证明未知来源可信。",
+      "source": {
+        "label": "产物清单",
+        "href": "#example-artifact-manifest"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "probability-contract",
+      "lesson_id": "deep-learning-08",
+      "context_id": "concept-inference-contract",
+      "question": "概率输出怎样验收？",
+      "aliases": [
+        "softmax结果要检查什么"
+      ],
+      "keywords": [
+        "概率输出怎样验收",
+        "softmax结果要检查什么"
+      ],
+      "diagnostic": "先判断“softmax结果要检查什么”是推理模式、输入输出契约、产物兼容性、完整性还是来源信任问题。",
+      "hints": [
+        "查看 #concept-inference-contract。",
+        "运行 test_delivery_lab.py 并沿manifest到predict排查。"
+      ],
+      "example": "两样本概率互为镜像。",
+      "answer": "固定类别维、概率数量/顺序、有限性、和为1与阈值标签语义。",
+      "source": {
+        "label": "推理契约",
+        "href": "#concept-inference-contract"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "delivery-v08",
+      "lesson_id": "deep-learning-08",
+      "context_id": "project-diagnosable-network-v08",
+      "question": "可诊断神经网络 v0.8 完成什么？",
+      "aliases": [
+        "深度学习第八课项目做什么"
+      ],
+      "keywords": [
+        "可诊断神经网络",
+        "v0.8",
+        "完成什么",
+        "深度学习第八课项目做什么"
+      ],
+      "diagnostic": "先判断“深度学习第八课项目做什么”是推理模式、输入输出契约、产物兼容性、完整性还是来源信任问题。",
+      "hints": [
+        "查看 #project-diagnosable-network-v08。",
+        "运行 test_delivery_lab.py 并沿manifest到predict排查。"
+      ],
+      "example": "八课合计65项真实测试。",
+      "answer": "它完成推理产物、manifest、Schema、确定性推理、篡改拒绝和9项测试。",
+      "source": {
+        "label": "可诊断网络 v0.8",
+        "href": "#project-diagnosable-network-v08"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

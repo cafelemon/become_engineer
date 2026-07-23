@@ -1,0 +1,16 @@
+import{mkdirSync,writeFileSync}from"node:fs";import{resolve}from"node:path";const root=resolve(import.meta.dirname,".."),lessonId="deep-learning-08",title="Eval、推理 Schema、Manifest 与离线交付",path="learning-paths/ai-foundation/deep-learning/08-eval-inference-schema-manifest-delivery/";
+const contexts=[["overview-offline-delivery","overview","离线交付结果"],["concept-inference-mode","concept","推理模式"],["concept-inference-contract","concept","推理契约"],["example-artifact-manifest","example","产物清单"],["reproduce-delivery-v08","reproduce","运行交付验收"],["modify-delivery-contract","modify","修改交付契约"],["troubleshoot-delivery","troubleshoot","推理交付排错"],["deepen-delivery-boundary","deepen","交付边界"],["project-diagnosable-network-v08","project","可诊断网络 v0.8"]].map(([id,type,t])=>({id,type,title:t,anchor:`#${id}`}));
+const defs=[
+["eval-vs-inference","concept-inference-mode","model.eval 和 inference_mode 有什么区别？","推理为什么两个都要","eval改变Dropout/BatchNorm行为；inference_mode关闭自动微分跟踪，两者职责不同。","predict同时启用两者。"],
+["input-schema","concept-inference-contract","推理输入 Schema 要固定什么？","模型输入字段怎么约束","固定字段名、类型、有限性、额外字段策略、顺序/shape与预处理语义。","signal_a和signal_b必须恰好存在。"],
+["label-order","concept-inference-contract","为什么类别顺序要写进 manifest？","概率数组顺序能猜吗","概率位置依赖训练时类别索引；交换顺序会让shape不变但语义反转。","顺序固定negative|positive。"],
+["manifest","example-artifact-manifest","推理 manifest 应包含什么？","模型旁边为什么要json","至少包含身份、版本、架构、依赖、输入输出Schema、标签、阈值、文件名和摘要。","v0.8 manifest冻结完整接口。"],
+["state-dict-only","example-artifact-manifest","为什么推理产物只导出 state_dict？","训练checkpoint能直接交付吗","推理不需要optimizer、epoch和RNG；分离可缩小接口与加载面。","model-state.pt不含训练状态。"],
+["strict-load","example-artifact-manifest","strict=True 为什么重要？","state key不匹配能忽略吗","它拒绝缺失或多余参数键，避免架构漂移被静默吞掉。","架构先校验再严格装载。"],
+["input-rejection","troubleshoot-delivery","哪些坏输入必须在推理前拒绝？","NaN和额外字段怎么办","缺失、额外、字符串、bool、NaN和Infinity都应在tensor进入模型前拒绝。","9项测试覆盖门禁。"],
+["artifact-integrity","example-artifact-manifest","摘要、Schema 和来源信任有何区别？","hash匹配就安全吗","摘要检查字节变化，Schema检查兼容性，两者都不能证明未知来源可信。","只加载可信本机产物。"],
+["probability-contract","concept-inference-contract","概率输出怎样验收？","softmax结果要检查什么","固定类别维、概率数量/顺序、有限性、和为1与阈值标签语义。","两样本概率互为镜像。"],
+["delivery-v08","project-diagnosable-network-v08","可诊断神经网络 v0.8 完成什么？","深度学习第八课项目做什么","它完成推理产物、manifest、Schema、确定性推理、篡改拒绝和9项测试。","八课合计65项真实测试。"],
+];
+const cards=defs.map(([id,c,q,a,answer,example],i)=>({id,lesson_id:lessonId,context_id:c,question:q,aliases:[a],keywords:[...new Set(`${q} ${a}`.replace(/[？?，、/]/g," ").split(/\s+/).filter(Boolean))],diagnostic:`先判断“${a}”是推理模式、输入输出契约、产物兼容性、完整性还是来源信任问题。`,hints:[`查看 #${c}。`,"运行 test_delivery_lab.py 并沿manifest到predict排查。"],example,answer,source:{label:contexts.find(x=>x.id===c).title,href:`#${c}`},updated_at:"2026-07-23",recommended:i<8}));
+const cases=defs.flatMap(([id,,q,a])=>[{query:q.replace("？",""),expected_card:id},{query:a,expected_card:id}]);mkdirSync(resolve(root,"site-src/data/tutor"),{recursive:true});mkdirSync(resolve(root,"tests/tutor"),{recursive:true});writeFileSync(resolve(root,`site-src/data/tutor/${lessonId}.json`),`${JSON.stringify({version:2,lesson:{id:lessonId,title,path},contexts,cards},null,2)}\n`);writeFileSync(resolve(root,`tests/tutor/${lessonId}-search.json`),`${JSON.stringify({lesson_id:lessonId,cases,unknown:["怎样修剪月季","鲸鱼如何呼吸"]},null,2)}\n`);

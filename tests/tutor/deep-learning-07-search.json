@@ -1,0 +1,89 @@
+{
+  "lesson_id": "deep-learning-07",
+  "cases": [
+    {
+      "query": "恢复训练要保存哪些状态",
+      "expected_card": "checkpoint-state"
+    },
+    {
+      "query": "checkpoint只存模型够吗",
+      "expected_card": "checkpoint-state"
+    },
+    {
+      "query": "为什么要保存 optimizer state",
+      "expected_card": "optimizer-state"
+    },
+    {
+      "query": "momentum不保存会怎样",
+      "expected_card": "optimizer-state"
+    },
+    {
+      "query": "随机种子和 RNG state 有什么区别",
+      "expected_card": "rng-state"
+    },
+    {
+      "query": "恢复时重新seed够吗",
+      "expected_card": "rng-state"
+    },
+    {
+      "query": "怎样证明恢复训练正确",
+      "expected_card": "exact-resume"
+    },
+    {
+      "query": "恢复后loss差不多算成功吗",
+      "expected_card": "exact-resume"
+    },
+    {
+      "query": "为什么检查点要原子写入",
+      "expected_card": "atomic-checkpoint"
+    },
+    {
+      "query": "直接覆盖checkpoint有什么风险",
+      "expected_card": "atomic-checkpoint"
+    },
+    {
+      "query": "为什么要在 torch.load 前验摘要",
+      "expected_card": "digest-before-load"
+    },
+    {
+      "query": "checkpoint篡改何时检查",
+      "expected_card": "digest-before-load"
+    },
+    {
+      "query": "weights_only=True 解决了什么",
+      "expected_card": "weights-only"
+    },
+    {
+      "query": "torch.load如何收窄风险",
+      "expected_card": "weights-only"
+    },
+    {
+      "query": "checkpoint 版本不兼容怎么办",
+      "expected_card": "schema-version"
+    },
+    {
+      "query": "模型结构不一样能强行load吗",
+      "expected_card": "schema-version"
+    },
+    {
+      "query": "map_location=cpu 有什么用",
+      "expected_card": "map-location"
+    },
+    {
+      "query": "GPU checkpoint如何在CPU读取",
+      "expected_card": "map-location"
+    },
+    {
+      "query": "可诊断神经网络 v0.7 新增什么",
+      "expected_card": "checkpoint-v07"
+    },
+    {
+      "query": "深度学习第七课项目做什么",
+      "expected_card": "checkpoint-v07"
+    }
+  ],
+  "unknown": [
+    "怎样制作陶瓷杯",
+    "候鸟为什么迁徙"
+  ]
+}

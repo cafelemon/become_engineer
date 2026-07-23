@@ -1,0 +1,89 @@
+{
+  "lesson_id": "deep-learning-03",
+  "cases": [
+    {
+      "query": "交叉熵为什么直接接收 logits",
+      "expected_card": "cross-entropy"
+    },
+    {
+      "query": "softmax 后还能传 CrossEntropyLoss 吗",
+      "expected_card": "cross-entropy"
+    },
+    {
+      "query": "分类目标为什么必须是 int64 索引",
+      "expected_card": "class-target"
+    },
+    {
+      "query": "交叉熵 target dtype 是什么",
+      "expected_card": "class-target"
+    },
+    {
+      "query": "loss.backward 做了什么",
+      "expected_card": "backward"
+    },
+    {
+      "query": "backward 怎样得到参数梯度",
+      "expected_card": "backward"
+    },
+    {
+      "query": "参数梯度的 shape 为什么相同",
+      "expected_card": "grad-shape"
+    },
+    {
+      "query": "weight grad 维度怎么看",
+      "expected_card": "grad-shape"
+    },
+    {
+      "query": "有限差分怎样核查 autograd",
+      "expected_card": "finite-difference"
+    },
+    {
+      "query": "数值梯度怎么算",
+      "expected_card": "finite-difference"
+    },
+    {
+      "query": "有限差分 epsilon 越小越好吗",
+      "expected_card": "epsilon"
+    },
+    {
+      "query": "数值梯度步长怎么选",
+      "expected_card": "epsilon"
+    },
+    {
+      "query": "为什么两次 backward 梯度会翻倍",
+      "expected_card": "accumulation"
+    },
+    {
+      "query": "grad 默认会累加吗",
+      "expected_card": "accumulation"
+    },
+    {
+      "query": "zero_grad set_to_none 有什么作用",
+      "expected_card": "zero-grad"
+    },
+    {
+      "query": "每轮为什么清梯度",
+      "expected_card": "zero-grad"
+    },
+    {
+      "query": "为什么同一个 loss 不能默认 backward 两次",
+      "expected_card": "graph-lifetime"
+    },
+    {
+      "query": "Trying to backward through graph a second time",
+      "expected_card": "graph-lifetime"
+    },
+    {
+      "query": "可诊断神经网络 v0.3 新增了什么",
+      "expected_card": "gradient-v03"
+    },
+    {
+      "query": "深度学习第三课项目做什么",
+      "expected_card": "gradient-v03"
+    }
+  ],
+  "unknown": [
+    "怎样给绿植换盆",
+    "为什么海水是咸的"
+  ]
+}

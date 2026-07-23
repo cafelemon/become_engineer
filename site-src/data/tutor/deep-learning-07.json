@@ -1,0 +1,339 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "deep-learning-07",
+    "title": "检查点、随机状态与精确恢复训练",
+    "path": "learning-paths/ai-foundation/deep-learning/07-checkpoint-rng-resume-exact-training/"
+  },
+  "contexts": [
+    {
+      "id": "overview-exact-resume",
+      "type": "overview",
+      "title": "精确恢复结果",
+      "anchor": "#overview-exact-resume"
+    },
+    {
+      "id": "concept-checkpoint-state",
+      "type": "concept",
+      "title": "检查点状态",
+      "anchor": "#concept-checkpoint-state"
+    },
+    {
+      "id": "concept-rng-resume",
+      "type": "concept",
+      "title": "随机状态恢复",
+      "anchor": "#concept-rng-resume"
+    },
+    {
+      "id": "example-resume-transaction",
+      "type": "example",
+      "title": "保存加载顺序",
+      "anchor": "#example-resume-transaction"
+    },
+    {
+      "id": "reproduce-checkpoint-v07",
+      "type": "reproduce",
+      "title": "运行恢复实验",
+      "anchor": "#reproduce-checkpoint-v07"
+    },
+    {
+      "id": "modify-checkpoint",
+      "type": "modify",
+      "title": "修改检查点",
+      "anchor": "#modify-checkpoint"
+    },
+    {
+      "id": "troubleshoot-checkpoint",
+      "type": "troubleshoot",
+      "title": "检查点排错",
+      "anchor": "#troubleshoot-checkpoint"
+    },
+    {
+      "id": "deepen-checkpoint-boundary",
+      "type": "deepen",
+      "title": "恢复边界",
+      "anchor": "#deepen-checkpoint-boundary"
+    },
+    {
+      "id": "project-diagnosable-network-v07",
+      "type": "project",
+      "title": "可诊断网络 v0.7",
+      "anchor": "#project-diagnosable-network-v07"
+    }
+  ],
+  "cards": [
+    {
+      "id": "checkpoint-state",
+      "lesson_id": "deep-learning-07",
+      "context_id": "concept-checkpoint-state",
+      "question": "恢复训练要保存哪些状态？",
+      "aliases": [
+        "checkpoint只存模型够吗"
+      ],
+      "keywords": [
+        "恢复训练要保存哪些状态",
+        "checkpoint只存模型够吗"
+      ],
+      "diagnostic": "先判断“checkpoint只存模型够吗”缺的是状态完整性、写入原子性、加载信任还是恢复等价证据。",
+      "hints": [
+        "查看 #concept-checkpoint-state。",
+        "运行 test_checkpoint_lab.py 并比较连续/恢复两条路径。"
+      ],
+      "example": "v0.7保存model+optimizer+epoch+history+RNG。",
+      "answer": "至少保存模型、优化器、进度、历史、实际随机源状态和兼容配置。",
+      "source": {
+        "label": "检查点状态",
+        "href": "#concept-checkpoint-state"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "optimizer-state",
+      "lesson_id": "deep-learning-07",
+      "context_id": "concept-checkpoint-state",
+      "question": "为什么要保存 optimizer state？",
+      "aliases": [
+        "momentum不保存会怎样"
+      ],
+      "keywords": [
+        "为什么要保存",
+        "optimizer",
+        "state",
+        "momentum不保存会怎样"
+      ],
+      "diagnostic": "先判断“momentum不保存会怎样”缺的是状态完整性、写入原子性、加载信任还是恢复等价证据。",
+      "hints": [
+        "查看 #concept-checkpoint-state。",
+        "运行 test_checkpoint_lab.py 并比较连续/恢复两条路径。"
+      ],
+      "example": "本课SGD momentum为0.9。",
+      "answer": "动量等内部状态决定后续更新；重新创建optimizer会让恢复轨迹分叉。",
+      "source": {
+        "label": "检查点状态",
+        "href": "#concept-checkpoint-state"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "rng-state",
+      "lesson_id": "deep-learning-07",
+      "context_id": "concept-rng-resume",
+      "question": "随机种子和 RNG state 有什么区别？",
+      "aliases": [
+        "恢复时重新seed够吗"
+      ],
+      "keywords": [
+        "随机种子和",
+        "RNG",
+        "state",
+        "有什么区别",
+        "恢复时重新seed够吗"
+      ],
+      "diagnostic": "先判断“恢复时重新seed够吗”缺的是状态完整性、写入原子性、加载信任还是恢复等价证据。",
+      "hints": [
+        "查看 #concept-rng-resume。",
+        "运行 test_checkpoint_lab.py 并比较连续/恢复两条路径。"
+      ],
+      "example": "恢复后shuffle和Dropout接续原序列。",
+      "answer": "种子定义序列起点，RNG state定义已消费到的位置；中断恢复需要后者。",
+      "source": {
+        "label": "随机状态恢复",
+        "href": "#concept-rng-resume"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "exact-resume",
+      "lesson_id": "deep-learning-07",
+      "context_id": "overview-exact-resume",
+      "question": "怎样证明恢复训练正确？",
+      "aliases": [
+        "恢复后loss差不多算成功吗"
+      ],
+      "keywords": [
+        "怎样证明恢复训练正确",
+        "恢复后loss差不多算成功吗"
+      ],
+      "diagnostic": "先判断“恢复后loss差不多算成功吗”缺的是状态完整性、写入原子性、加载信任还是恢复等价证据。",
+      "hints": [
+        "查看 #overview-exact-resume。",
+        "运行 test_checkpoint_lab.py 并比较连续/恢复两条路径。"
+      ],
+      "example": "第3轮中断、第8轮三类状态全相等。",
+      "answer": "在受控环境比较连续与中断恢复的完整history、model和optimizer逐值一致。",
+      "source": {
+        "label": "精确恢复结果",
+        "href": "#overview-exact-resume"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "atomic-checkpoint",
+      "lesson_id": "deep-learning-07",
+      "context_id": "example-resume-transaction",
+      "question": "为什么检查点要原子写入？",
+      "aliases": [
+        "直接覆盖checkpoint有什么风险"
+      ],
+      "keywords": [
+        "为什么检查点要原子写入",
+        "直接覆盖checkpoint有什么风险"
+      ],
+      "diagnostic": "先判断“直接覆盖checkpoint有什么风险”缺的是状态完整性、写入原子性、加载信任还是恢复等价证据。",
+      "hints": [
+        "查看 #example-resume-transaction。",
+        "运行 test_checkpoint_lab.py 并比较连续/恢复两条路径。"
+      ],
+      "example": "测试确认没有残留tmp。",
+      "answer": "进程中断可能留下半文件；先写同目录临时文件再原子替换目标。",
+      "source": {
+        "label": "保存加载顺序",
+        "href": "#example-resume-transaction"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "digest-before-load",
+      "lesson_id": "deep-learning-07",
+      "context_id": "example-resume-transaction",
+      "question": "为什么要在 torch.load 前验摘要？",
+      "aliases": [
+        "checkpoint篡改何时检查"
+      ],
+      "keywords": [
+        "为什么要在",
+        "torch.load",
+        "前验摘要",
+        "checkpoint篡改何时检查"
+      ],
+      "diagnostic": "先判断“checkpoint篡改何时检查”缺的是状态完整性、写入原子性、加载信任还是恢复等价证据。",
+      "hints": [
+        "查看 #example-resume-transaction。",
+        "运行 test_checkpoint_lab.py 并比较连续/恢复两条路径。"
+      ],
+      "example": "SHA-256在load前验证。",
+      "answer": "先检查字节完整性可在反序列化前拒绝截断或替换。",
+      "source": {
+        "label": "保存加载顺序",
+        "href": "#example-resume-transaction"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "weights-only",
+      "lesson_id": "deep-learning-07",
+      "context_id": "deepen-checkpoint-boundary",
+      "question": "weights_only=True 解决了什么？",
+      "aliases": [
+        "torch.load如何收窄风险"
+      ],
+      "keywords": [
+        "weights_only=True",
+        "解决了什么",
+        "torch.load如何收窄风险"
+      ],
+      "diagnostic": "先判断“torch.load如何收窄风险”缺的是状态完整性、写入原子性、加载信任还是恢复等价证据。",
+      "hints": [
+        "查看 #deepen-checkpoint-boundary。",
+        "运行 test_checkpoint_lab.py 并比较连续/恢复两条路径。"
+      ],
+      "example": "仅加载本机生成且已审查产物。",
+      "answer": "它限制可反序列化对象类型，但不能证明未知文件来源可信。",
+      "source": {
+        "label": "恢复边界",
+        "href": "#deepen-checkpoint-boundary"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "schema-version",
+      "lesson_id": "deep-learning-07",
+      "context_id": "troubleshoot-checkpoint",
+      "question": "checkpoint 版本不兼容怎么办？",
+      "aliases": [
+        "模型结构不一样能强行load吗"
+      ],
+      "keywords": [
+        "checkpoint",
+        "版本不兼容怎么办",
+        "模型结构不一样能强行load吗"
+      ],
+      "diagnostic": "先判断“模型结构不一样能强行load吗”缺的是状态完整性、写入原子性、加载信任还是恢复等价证据。",
+      "hints": [
+        "查看 #troubleshoot-checkpoint。",
+        "运行 test_checkpoint_lab.py 并比较连续/恢复两条路径。"
+      ],
+      "example": "版本999被拒绝。",
+      "answer": "应校验版本、架构和配置并确定性拒绝，不靠strict=False掩盖差异。",
+      "source": {
+        "label": "检查点排错",
+        "href": "#troubleshoot-checkpoint"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "map-location",
+      "lesson_id": "deep-learning-07",
+      "context_id": "troubleshoot-checkpoint",
+      "question": "map_location=cpu 有什么用？",
+      "aliases": [
+        "GPU checkpoint如何在CPU读取"
+      ],
+      "keywords": [
+        "map_location=cpu",
+        "有什么用",
+        "GPU",
+        "checkpoint如何在CPU读取"
+      ],
+      "diagnostic": "先判断“GPU checkpoint如何在CPU读取”缺的是状态完整性、写入原子性、加载信任还是恢复等价证据。",
+      "hints": [
+        "查看 #troubleshoot-checkpoint。",
+        "运行 test_checkpoint_lab.py 并比较连续/恢复两条路径。"
+      ],
+      "example": "v0.7固定CPU恢复。",
+      "answer": "它把存储映射到CPU，避免加载依赖原设备；仍需验证dtype与结构。",
+      "source": {
+        "label": "检查点排错",
+        "href": "#troubleshoot-checkpoint"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "checkpoint-v07",
+      "lesson_id": "deep-learning-07",
+      "context_id": "project-diagnosable-network-v07",
+      "question": "可诊断神经网络 v0.7 新增什么？",
+      "aliases": [
+        "深度学习第七课项目做什么"
+      ],
+      "keywords": [
+        "可诊断神经网络",
+        "v0.7",
+        "新增什么",
+        "深度学习第七课项目做什么"
+      ],
+      "diagnostic": "先判断“深度学习第七课项目做什么”缺的是状态完整性、写入原子性、加载信任还是恢复等价证据。",
+      "hints": [
+        "查看 #project-diagnosable-network-v07。",
+        "运行 test_checkpoint_lab.py 并比较连续/恢复两条路径。"
+      ],
+      "example": "下一版分离推理交付产物。",
+      "answer": "它新增完整训练态、原子保存、完整性和兼容门禁、精确恢复与8项测试。",
+      "source": {
+        "label": "可诊断网络 v0.7",
+        "href": "#project-diagnosable-network-v07"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

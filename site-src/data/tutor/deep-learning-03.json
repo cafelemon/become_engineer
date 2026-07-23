@@ -1,0 +1,361 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "deep-learning-03",
+    "title": "交叉熵、自动微分、反向传播与梯度核查",
+    "path": "learning-paths/ai-foundation/deep-learning/03-cross-entropy-autograd-backprop-gradient-check/"
+  },
+  "contexts": [
+    {
+      "id": "overview-gradient-contract",
+      "type": "overview",
+      "title": "梯度核查结果",
+      "anchor": "#overview-gradient-contract"
+    },
+    {
+      "id": "concept-cross-entropy-loss",
+      "type": "concept",
+      "title": "交叉熵损失",
+      "anchor": "#concept-cross-entropy-loss"
+    },
+    {
+      "id": "concept-backprop-chain-rule",
+      "type": "concept",
+      "title": "反向传播链式法则",
+      "anchor": "#concept-backprop-chain-rule"
+    },
+    {
+      "id": "example-finite-difference",
+      "type": "example",
+      "title": "有限差分核查",
+      "anchor": "#example-finite-difference"
+    },
+    {
+      "id": "reproduce-gradient-v03",
+      "type": "reproduce",
+      "title": "运行梯度实验",
+      "anchor": "#reproduce-gradient-v03"
+    },
+    {
+      "id": "modify-gradient-check",
+      "type": "modify",
+      "title": "修改梯度实验",
+      "anchor": "#modify-gradient-check"
+    },
+    {
+      "id": "troubleshoot-gradient-contract",
+      "type": "troubleshoot",
+      "title": "梯度排错",
+      "anchor": "#troubleshoot-gradient-contract"
+    },
+    {
+      "id": "deepen-gradient-accumulation",
+      "type": "deepen",
+      "title": "梯度累加",
+      "anchor": "#deepen-gradient-accumulation"
+    },
+    {
+      "id": "project-diagnosable-network-v03",
+      "type": "project",
+      "title": "可诊断网络 v0.3",
+      "anchor": "#project-diagnosable-network-v03"
+    }
+  ],
+  "cards": [
+    {
+      "id": "cross-entropy",
+      "lesson_id": "deep-learning-03",
+      "context_id": "concept-cross-entropy-loss",
+      "question": "交叉熵为什么直接接收 logits？",
+      "aliases": [
+        "softmax 后还能传 CrossEntropyLoss 吗"
+      ],
+      "keywords": [
+        "交叉熵为什么直接接收",
+        "logits",
+        "softmax",
+        "后还能传",
+        "CrossEntropyLoss",
+        "吗"
+      ],
+      "diagnostic": "先判断“softmax 后还能传 CrossEntropyLoss 吗”涉及 loss、计算图、数值梯度、累加还是清零。",
+      "hints": [
+        "查看 #concept-cross-entropy-loss。",
+        "运行 test_gradient_lab.py 并读取梯度证据。"
+      ],
+      "example": "v0.3 输入 [8,2] logits。",
+      "answer": "CrossEntropyLoss 内部稳定组合 log-softmax 与负对数似然，应直接接收未归一化 logits。",
+      "source": {
+        "label": "交叉熵损失",
+        "href": "#concept-cross-entropy-loss"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "class-target",
+      "lesson_id": "deep-learning-03",
+      "context_id": "concept-cross-entropy-loss",
+      "question": "分类目标为什么必须是 int64 索引？",
+      "aliases": [
+        "交叉熵 target dtype 是什么"
+      ],
+      "keywords": [
+        "分类目标为什么必须是",
+        "int64",
+        "索引",
+        "交叉熵",
+        "target",
+        "dtype",
+        "是什么"
+      ],
+      "diagnostic": "先判断“交叉熵 target dtype 是什么”涉及 loss、计算图、数值梯度、累加还是清零。",
+      "hints": [
+        "查看 #concept-cross-entropy-loss。",
+        "运行 test_gradient_lab.py 并读取梯度证据。"
+      ],
+      "example": "targets shape 为 [8]。",
+      "answer": "单标签分类目标指向每行 logits 的类别列，使用 int64 类别索引。",
+      "source": {
+        "label": "交叉熵损失",
+        "href": "#concept-cross-entropy-loss"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "backward",
+      "lesson_id": "deep-learning-03",
+      "context_id": "concept-backprop-chain-rule",
+      "question": "loss.backward 做了什么？",
+      "aliases": [
+        "backward 怎样得到参数梯度"
+      ],
+      "keywords": [
+        "loss.backward",
+        "做了什么",
+        "backward",
+        "怎样得到参数梯度"
+      ],
+      "diagnostic": "先判断“backward 怎样得到参数梯度”涉及 loss、计算图、数值梯度、累加还是清零。",
+      "hints": [
+        "查看 #concept-backprop-chain-rule。",
+        "运行 test_gradient_lab.py 并读取梯度证据。"
+      ],
+      "example": "四个参数都得到同 shape 梯度。",
+      "answer": "它从标量 loss 出发，沿计算图反向应用局部导数与链式法则，把结果累加到叶子参数 grad。",
+      "source": {
+        "label": "反向传播链式法则",
+        "href": "#concept-backprop-chain-rule"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "grad-shape",
+      "lesson_id": "deep-learning-03",
+      "context_id": "concept-backprop-chain-rule",
+      "question": "参数梯度的 shape 为什么相同？",
+      "aliases": [
+        "weight grad 维度怎么看"
+      ],
+      "keywords": [
+        "参数梯度的",
+        "shape",
+        "为什么相同",
+        "weight",
+        "grad",
+        "维度怎么看"
+      ],
+      "diagnostic": "先判断“weight grad 维度怎么看”涉及 loss、计算图、数值梯度、累加还是清零。",
+      "hints": [
+        "查看 #concept-backprop-chain-rule。",
+        "运行 test_gradient_lab.py 并读取梯度证据。"
+      ],
+      "example": "fc1.weight 与 grad 都是 [4,2]。",
+      "answer": "每个梯度元素对应同位置参数的局部变化率，所以 gradient shape 与 parameter shape 对齐。",
+      "source": {
+        "label": "反向传播链式法则",
+        "href": "#concept-backprop-chain-rule"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "finite-difference",
+      "lesson_id": "deep-learning-03",
+      "context_id": "example-finite-difference",
+      "question": "有限差分怎样核查 autograd？",
+      "aliases": [
+        "数值梯度怎么算"
+      ],
+      "keywords": [
+        "有限差分怎样核查",
+        "autograd",
+        "数值梯度怎么算"
+      ],
+      "diagnostic": "先判断“数值梯度怎么算”涉及 loss、计算图、数值梯度、累加还是清零。",
+      "hints": [
+        "查看 #example-finite-difference。",
+        "运行 test_gradient_lab.py 并读取梯度证据。"
+      ],
+      "example": "非零参数绝对误差为0.000008。",
+      "answer": "中心差分用 L(w+epsilon)-L(w-epsilon) 除以 2epsilon，近似当前点局部导数。",
+      "source": {
+        "label": "有限差分核查",
+        "href": "#example-finite-difference"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "epsilon",
+      "lesson_id": "deep-learning-03",
+      "context_id": "modify-gradient-check",
+      "question": "有限差分 epsilon 越小越好吗？",
+      "aliases": [
+        "数值梯度步长怎么选"
+      ],
+      "keywords": [
+        "有限差分",
+        "epsilon",
+        "越小越好吗",
+        "数值梯度步长怎么选"
+      ],
+      "diagnostic": "先判断“数值梯度步长怎么选”涉及 loss、计算图、数值梯度、累加还是清零。",
+      "hints": [
+        "查看 #modify-gradient-check。",
+        "运行 test_gradient_lab.py 并读取梯度证据。"
+      ],
+      "example": "比较1e-1、1e-3和1e-7。",
+      "answer": "不是；过大有截断误差，过小会被浮点舍入和相消放大。",
+      "source": {
+        "label": "修改梯度实验",
+        "href": "#modify-gradient-check"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "accumulation",
+      "lesson_id": "deep-learning-03",
+      "context_id": "deepen-gradient-accumulation",
+      "question": "为什么两次 backward 梯度会翻倍？",
+      "aliases": [
+        "grad 默认会累加吗"
+      ],
+      "keywords": [
+        "为什么两次",
+        "backward",
+        "梯度会翻倍",
+        "grad",
+        "默认会累加吗"
+      ],
+      "diagnostic": "先判断“grad 默认会累加吗”涉及 loss、计算图、数值梯度、累加还是清零。",
+      "hints": [
+        "查看 #deepen-gradient-accumulation。",
+        "运行 test_gradient_lab.py 并读取梯度证据。"
+      ],
+      "example": "v0.3 固定输出2.000x。",
+      "answer": "PyTorch 默认把新梯度加到现有 grad，而不是覆盖；相同前向两次会得到2倍。",
+      "source": {
+        "label": "梯度累加",
+        "href": "#deepen-gradient-accumulation"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "zero-grad",
+      "lesson_id": "deep-learning-03",
+      "context_id": "deepen-gradient-accumulation",
+      "question": "zero_grad set_to_none 有什么作用？",
+      "aliases": [
+        "每轮为什么清梯度"
+      ],
+      "keywords": [
+        "zero_grad",
+        "set_to_none",
+        "有什么作用",
+        "每轮为什么清梯度"
+      ],
+      "diagnostic": "先判断“每轮为什么清梯度”涉及 loss、计算图、数值梯度、累加还是清零。",
+      "hints": [
+        "查看 #deepen-gradient-accumulation。",
+        "运行 test_gradient_lab.py 并读取梯度证据。"
+      ],
+      "example": "下一轮 backward 前清除。",
+      "answer": "它移除旧梯度缓冲，防止普通训练把不同 step 意外累加，并区分无梯度与零梯度。",
+      "source": {
+        "label": "梯度累加",
+        "href": "#deepen-gradient-accumulation"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "graph-lifetime",
+      "lesson_id": "deep-learning-03",
+      "context_id": "troubleshoot-gradient-contract",
+      "question": "为什么同一个 loss 不能默认 backward 两次？",
+      "aliases": [
+        "Trying to backward through graph a second time"
+      ],
+      "keywords": [
+        "为什么同一个",
+        "loss",
+        "不能默认",
+        "backward",
+        "两次",
+        "Trying",
+        "to",
+        "through",
+        "graph",
+        "a",
+        "second",
+        "time"
+      ],
+      "diagnostic": "先判断“Trying to backward through graph a second time”涉及 loss、计算图、数值梯度、累加还是清零。",
+      "hints": [
+        "查看 #troubleshoot-gradient-contract。",
+        "运行 test_gradient_lab.py 并读取梯度证据。"
+      ],
+      "example": "不要习惯性 retain_graph。",
+      "answer": "普通 backward 后中间图会释放；需要新梯度时重新 forward，除非确有理由保留图。",
+      "source": {
+        "label": "梯度排错",
+        "href": "#troubleshoot-gradient-contract"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "gradient-v03",
+      "lesson_id": "deep-learning-03",
+      "context_id": "project-diagnosable-network-v03",
+      "question": "可诊断神经网络 v0.3 新增了什么？",
+      "aliases": [
+        "深度学习第三课项目做什么"
+      ],
+      "keywords": [
+        "可诊断神经网络",
+        "v0.3",
+        "新增了什么",
+        "深度学习第三课项目做什么"
+      ],
+      "diagnostic": "先判断“深度学习第三课项目做什么”涉及 loss、计算图、数值梯度、累加还是清零。",
+      "hints": [
+        "查看 #project-diagnosable-network-v03。",
+        "运行 test_gradient_lab.py 并读取梯度证据。"
+      ],
+      "example": "尚未执行 optimizer step。",
+      "answer": "它新增交叉熵、backward、梯度范数、有限差分、累加清零和8项真实测试。",
+      "source": {
+        "label": "可诊断网络 v0.3",
+        "href": "#project-diagnosable-network-v03"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

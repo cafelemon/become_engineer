@@ -1,0 +1,89 @@
+{
+  "lesson_id": "deep-learning-04",
+  "cases": [
+    {
+      "query": "mini-batch 是什么",
+      "expected_card": "mini-batch"
+    },
+    {
+      "query": "为什么不一次用全部训练数据",
+      "expected_card": "mini-batch"
+    },
+    {
+      "query": "训练 step 表示什么",
+      "expected_card": "step"
+    },
+    {
+      "query": "一次 step 做哪些事",
+      "expected_card": "step"
+    },
+    {
+      "query": "一个 epoch 怎样算完整",
+      "expected_card": "epoch"
+    },
+    {
+      "query": "epoch 是否必须覆盖全部行",
+      "expected_card": "epoch"
+    },
+    {
+      "query": "SGD 怎样更新参数",
+      "expected_card": "sgd"
+    },
+    {
+      "query": "梯度下降公式是什么",
+      "expected_card": "sgd"
+    },
+    {
+      "query": "学习率控制什么",
+      "expected_card": "learning-rate"
+    },
+    {
+      "query": "lr 越大训练越好吗",
+      "expected_card": "learning-rate"
+    },
+    {
+      "query": "为什么训练顺序是 zero backward step",
+      "expected_card": "training-order"
+    },
+    {
+      "query": "optimizer step 放在哪里",
+      "expected_card": "training-order"
+    },
+    {
+      "query": "epoch loss 为什么按 batch 行数加权",
+      "expected_card": "weighted-epoch-loss"
+    },
+    {
+      "query": "batch loss 能直接平均吗",
+      "expected_card": "weighted-epoch-loss"
+    },
+    {
+      "query": "怎样让每个 epoch 洗牌又可复现",
+      "expected_card": "seeded-batches"
+    },
+    {
+      "query": "batch order 怎么固定",
+      "expected_card": "seeded-batches"
+    },
+    {
+      "query": "零学习率对照证明什么",
+      "expected_card": "zero-learning-rate"
+    },
+    {
+      "query": "lr 0 为什么参数不变",
+      "expected_card": "zero-learning-rate"
+    },
+    {
+      "query": "可诊断神经网络 v0.4 新增了什么",
+      "expected_card": "training-v04"
+    },
+    {
+      "query": "深度学习第四课项目做什么",
+      "expected_card": "training-v04"
+    }
+  ],
+  "unknown": [
+    "怎样烘焙酸面包",
+    "珊瑚为什么会白化"
+  ]
+}

@@ -20,6 +20,7 @@
 | --- | --- | --- |
 | 完成 Python 起步后 | [Python 内容分析工具](python-content-analysis/README.md) | 用 Python 处理 Markdown、JSON 和目录数据，逐步加入 CLI、日志、测试和报告输出 |
 | 进入机器学习后 | [结构化数据机器学习系统](structured-data-ml-system/README.md) | 完成数据清洗、特征工程、训练验证、指标比较和推理闭环 |
+| 进入深度学习后 | [可诊断神经网络训练系统](diagnosable-neural-network/README.md) | 从张量推进到训练、诊断、恢复和离线推理交付 |
 | 进入深度学习与 NLP 后 | [文本分类模型演进](text-classification-evolution/README.md) | 从传统模型推进到深度学习和 Transformer，比较效果、成本和误差 |
 | 完成机器学习基础后 | [强化学习控制实验](reinforcement-learning-control-lab/README.md) | 理解环境、状态、动作、奖励和价值方法，侧重实验分析 |
 | 进入 LLM / Agent 后 | [可评估的智能学习助手](intelligent-learning-assistant/README.md) | 用本学习库内容构建可检索、可引用、可评估、可使用工具的学习助手 |
