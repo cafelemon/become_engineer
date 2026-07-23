@@ -1,0 +1,384 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "web-engineering-03",
+    "title": "资源所有权、角色授权与审计日志",
+    "path": "learning-paths/web-fullstack/web-engineering/03-resource-ownership-authorization-audit/"
+  },
+  "contexts": [
+    {
+      "id": "overview-resource-authorization",
+      "type": "overview",
+      "title": "overview resource authorization",
+      "anchor": "#overview-resource-authorization"
+    },
+    {
+      "id": "concept-default-deny",
+      "type": "concept",
+      "title": "concept default deny",
+      "anchor": "#concept-default-deny"
+    },
+    {
+      "id": "example-401-403-404",
+      "type": "example",
+      "title": "example 401 403 404",
+      "anchor": "#example-401-403-404"
+    },
+    {
+      "id": "reproduce-dashboard-v11",
+      "type": "reproduce",
+      "title": "reproduce dashboard v11",
+      "anchor": "#reproduce-dashboard-v11"
+    },
+    {
+      "id": "modify-permission-matrix",
+      "type": "modify",
+      "title": "modify permission matrix",
+      "anchor": "#modify-permission-matrix"
+    },
+    {
+      "id": "troubleshoot-audit-redaction",
+      "type": "troubleshoot",
+      "title": "troubleshoot audit redaction",
+      "anchor": "#troubleshoot-audit-redaction"
+    },
+    {
+      "id": "project-dashboard-v11",
+      "type": "project",
+      "title": "project dashboard v11",
+      "anchor": "#project-dashboard-v11"
+    },
+    {
+      "id": "career-authorization-review",
+      "type": "career",
+      "title": "career authorization review",
+      "anchor": "#career-authorization-review"
+    }
+  ],
+  "cards": [
+    {
+      "id": "authorization-result",
+      "lesson_id": "web-engineering-03",
+      "context_id": "overview-resource-authorization",
+      "question": "v0.11 最后交付什么？",
+      "aliases": [
+        "所有权授权课做出什么"
+      ],
+      "keywords": [
+        "v0.11",
+        "最后交付什么",
+        "所有权授权课做出什么"
+      ],
+      "diagnostic": "先确认你正在处理“所有权授权课做出什么”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 overview-resource-authorization 中的责任。",
+        "再用本课固定测试验证 v0.11 最后交付什么。"
+      ],
+      "example": "v0.11 增加资源所有者、角色动作矩阵、默认拒绝和脱敏审计。",
+      "answer": "v0.11 增加资源所有者、角色动作矩阵、默认拒绝和脱敏审计。",
+      "source": {
+        "label": "overview resource authorization",
+        "href": "#overview-resource-authorization"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "owner-field",
+      "lesson_id": "web-engineering-03",
+      "context_id": "overview-resource-authorization",
+      "question": "owner_user_id 解决什么问题？",
+      "aliases": [
+        "学习记录怎样归属主体"
+      ],
+      "keywords": [
+        "owner_user_id",
+        "解决什么问题",
+        "学习记录怎样归属主体"
+      ],
+      "diagnostic": "先确认你正在处理“学习记录怎样归属主体”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 overview-resource-authorization 中的责任。",
+        "再用本课固定测试验证 owner_user_id 解决什么问题。"
+      ],
+      "example": "资源行保存所有者，查询和写入同时按当前主体约束。",
+      "answer": "资源行保存所有者，查询和写入同时按当前主体约束。",
+      "source": {
+        "label": "overview resource authorization",
+        "href": "#overview-resource-authorization"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "default-deny",
+      "lesson_id": "web-engineering-03",
+      "context_id": "concept-default-deny",
+      "question": "为什么未声明动作默认拒绝？",
+      "aliases": [
+        "权限矩阵没有动作怎么办"
+      ],
+      "keywords": [
+        "为什么未声明动作默认拒绝",
+        "权限矩阵没有动作怎么办"
+      ],
+      "diagnostic": "先确认你正在处理“权限矩阵没有动作怎么办”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 concept-default-deny 中的责任。",
+        "再用本课固定测试验证 为什么未声明动作默认拒绝。"
+      ],
+      "example": "没有明确允许的角色动作一律拒绝，避免新接口意外继承权限。",
+      "answer": "没有明确允许的角色动作一律拒绝，避免新接口意外继承权限。",
+      "source": {
+        "label": "concept default deny",
+        "href": "#concept-default-deny"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "learner-role",
+      "lesson_id": "web-engineering-03",
+      "context_id": "concept-default-deny",
+      "question": "learner 可以执行哪些动作？",
+      "aliases": [
+        "普通学习者权限边界是什么"
+      ],
+      "keywords": [
+        "learner",
+        "可以执行哪些动作",
+        "普通学习者权限边界是什么"
+      ],
+      "diagnostic": "先确认你正在处理“普通学习者权限边界是什么”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 concept-default-deny 中的责任。",
+        "再用本课固定测试验证 learner 可以执行哪些动作。"
+      ],
+      "example": "学习者只读写自己的学习资源，不能运行操作员诊断。",
+      "answer": "学习者只读写自己的学习资源，不能运行操作员诊断。",
+      "source": {
+        "label": "concept default deny",
+        "href": "#concept-default-deny"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "operator-role",
+      "lesson_id": "web-engineering-03",
+      "context_id": "concept-default-deny",
+      "question": "operator 是不是管理员？",
+      "aliases": [
+        "操作员能读取所有学习记录吗"
+      ],
+      "keywords": [
+        "operator",
+        "是不是管理员",
+        "操作员能读取所有学习记录吗"
+      ],
+      "diagnostic": "先确认你正在处理“操作员能读取所有学习记录吗”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 concept-default-deny 中的责任。",
+        "再用本课固定测试验证 operator 是不是管理员。"
+      ],
+      "example": "操作员只执行明确诊断动作，不因角色名称获得全资源权限。",
+      "answer": "操作员只执行明确诊断动作，不因角色名称获得全资源权限。",
+      "source": {
+        "label": "concept default deny",
+        "href": "#concept-default-deny"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "anonymous-401",
+      "lesson_id": "web-engineering-03",
+      "context_id": "example-401-403-404",
+      "question": "匿名请求为什么是 401？",
+      "aliases": [
+        "没有 Cookie 访问资源返回什么"
+      ],
+      "keywords": [
+        "匿名请求为什么是",
+        "401",
+        "没有",
+        "Cookie",
+        "访问资源返回什么"
+      ],
+      "diagnostic": "先确认你正在处理“没有 Cookie 访问资源返回什么”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 example-401-403-404 中的责任。",
+        "再用本课固定测试验证 匿名请求为什么是 401。"
+      ],
+      "example": "请求尚未建立有效身份，因此返回 401 和认证挑战。",
+      "answer": "请求尚未建立有效身份，因此返回 401 和认证挑战。",
+      "source": {
+        "label": "example 401 403 404",
+        "href": "#example-401-403-404"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "forbidden-403",
+      "lesson_id": "web-engineering-03",
+      "context_id": "example-401-403-404",
+      "question": "有效身份越权为什么是 403？",
+      "aliases": [
+        "角色没有动作权限返回什么"
+      ],
+      "keywords": [
+        "有效身份越权为什么是",
+        "403",
+        "角色没有动作权限返回什么"
+      ],
+      "diagnostic": "先确认你正在处理“角色没有动作权限返回什么”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 example-401-403-404 中的责任。",
+        "再用本课固定测试验证 有效身份越权为什么是 403。"
+      ],
+      "example": "主体已识别但动作未授权，返回 403。",
+      "answer": "主体已识别但动作未授权，返回 403。",
+      "source": {
+        "label": "example 401 403 404",
+        "href": "#example-401-403-404"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "hidden-404",
+      "lesson_id": "web-engineering-03",
+      "context_id": "example-401-403-404",
+      "question": "他人资源为什么返回 404？",
+      "aliases": [
+        "怎样减少资源枚举"
+      ],
+      "keywords": [
+        "他人资源为什么返回",
+        "404",
+        "怎样减少资源枚举"
+      ],
+      "diagnostic": "先确认你正在处理“怎样减少资源枚举”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 example-401-403-404 中的责任。",
+        "再用本课固定测试验证 他人资源为什么返回 404。"
+      ],
+      "example": "对当前主体不可见的资源统一表现为不存在，避免泄露其存在性。",
+      "answer": "对当前主体不可见的资源统一表现为不存在，避免泄露其存在性。",
+      "source": {
+        "label": "example 401 403 404",
+        "href": "#example-401-403-404"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "run-v11",
+      "lesson_id": "web-engineering-03",
+      "context_id": "reproduce-dashboard-v11",
+      "question": "怎样运行 v0.11 授权测试？",
+      "aliases": [
+        "八项授权审计测试命令是什么"
+      ],
+      "keywords": [
+        "怎样运行",
+        "v0.11",
+        "授权测试",
+        "八项授权审计测试命令是什么"
+      ],
+      "diagnostic": "先确认你正在处理“八项授权审计测试命令是什么”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 reproduce-dashboard-v11 中的责任。",
+        "再用本课固定测试验证 怎样运行 v0.11 授权测试。"
+      ],
+      "example": "运行 8 项测试覆盖匿名、本人、他人、默认拒绝、角色边界和审计。",
+      "answer": "运行 8 项测试覆盖匿名、本人、他人、默认拒绝、角色边界和审计。",
+      "source": {
+        "label": "reproduce dashboard v11",
+        "href": "#reproduce-dashboard-v11"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "modify-matrix",
+      "lesson_id": "web-engineering-03",
+      "context_id": "modify-permission-matrix",
+      "question": "新增权限动作的正确顺序是什么？",
+      "aliases": [
+        "怎样扩展权限矩阵"
+      ],
+      "keywords": [
+        "新增权限动作的正确顺序是什么",
+        "怎样扩展权限矩阵"
+      ],
+      "diagnostic": "先确认你正在处理“怎样扩展权限矩阵”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 modify-permission-matrix 中的责任。",
+        "再用本课固定测试验证 新增权限动作的正确顺序是什么。"
+      ],
+      "example": "先写拒绝测试和动作定义，再只向需要的角色放行。",
+      "answer": "先写拒绝测试和动作定义，再只向需要的角色放行。",
+      "source": {
+        "label": "modify permission matrix",
+        "href": "#modify-permission-matrix"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "audit-redaction",
+      "lesson_id": "web-engineering-03",
+      "context_id": "troubleshoot-audit-redaction",
+      "question": "审计日志应该记录什么？",
+      "aliases": [
+        "哪些认证值不能进入日志"
+      ],
+      "keywords": [
+        "审计日志应该记录什么",
+        "哪些认证值不能进入日志"
+      ],
+      "diagnostic": "先确认你正在处理“哪些认证值不能进入日志”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 troubleshoot-audit-redaction 中的责任。",
+        "再用本课固定测试验证 审计日志应该记录什么。"
+      ],
+      "example": "记录主体、动作、资源、结果和 request ID，不记录密码、Cookie、会话或 CSRF 原文。",
+      "answer": "记录主体、动作、资源、结果和 request ID，不记录密码、Cookie、会话或 CSRF 原文。",
+      "source": {
+        "label": "troubleshoot audit redaction",
+        "href": "#troubleshoot-audit-redaction"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "project-v11",
+      "lesson_id": "web-engineering-03",
+      "context_id": "project-dashboard-v11",
+      "question": "v0.11 的权限证据有哪些？",
+      "aliases": [
+        "怎样证明资源隔离有效"
+      ],
+      "keywords": [
+        "v0.11",
+        "的权限证据有哪些",
+        "怎样证明资源隔离有效"
+      ],
+      "diagnostic": "先确认你正在处理“怎样证明资源隔离有效”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 project-dashboard-v11 中的责任。",
+        "再用本课固定测试验证 v0.11 的权限证据有哪些。"
+      ],
+      "example": "用权限矩阵和 401/403/404 测试证明身份、动作与所有权三层边界。",
+      "answer": "用权限矩阵和 401/403/404 测试证明身份、动作与所有权三层边界。",
+      "source": {
+        "label": "project dashboard v11",
+        "href": "#project-dashboard-v11"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "updated_at": "2026-07-20",
+  "updated_at": "2026-07-22",
   "authority": "learning-paths/curriculum-map.md",
-  "course_count": 69,
+  "course_count": 75,
   "lesson_roots": [
     "learning-paths/engineering-foundation/stage-0",
     "learning-paths/programming-languages/python-basics",
@@ -11,7 +11,8 @@
     "learning-paths/cs-core",
     "learning-paths/web-fullstack/web-start",
     "learning-paths/web-fullstack/web-core",
-    "learning-paths/cs-systems-core"
+    "learning-paths/cs-systems-core",
+    "learning-paths/web-fullstack/web-engineering"
   ],
   "depths": ["起步", "基础", "核心", "工程化", "深化", "专业/求职"],
   "roles": ["共同基座", "方向主干", "能力深化", "求职叠加"],
@@ -32,7 +33,7 @@
     {"id":"python-engineering","title":"Python 工程化","domain":"应用工程","depth":"工程化","role":"方向主干","prerequisites":["python-core"],"unlocks":["web-core","llm-use"],"profiles":["beginner-interest","experienced-interest","beginner-career","experienced-career"],"content_status":"已开放","connection_status":"可顺序进入","anchor":"module-python-engineering"},
     {"id":"web-start","title":"Web 起步","domain":"应用工程","depth":"起步","role":"方向主干","prerequisites":["python-start"],"unlocks":["web-core"],"profiles":["beginner-interest","experienced-interest","beginner-career","experienced-career"],"content_status":"已开放","connection_status":"方向可选","anchor":"module-web-start"},
     {"id":"web-core","title":"Web 核心","domain":"应用工程","depth":"核心","role":"方向主干","prerequisites":["web-start","python-engineering"],"unlocks":["web-engineering","llm-use"],"profiles":["beginner-interest","experienced-interest","beginner-career","experienced-career"],"content_status":"已开放","connection_status":"可顺序进入","anchor":"module-web-core"},
-    {"id":"web-engineering","title":"Web 工程化","domain":"应用工程","depth":"工程化","role":"能力深化","prerequisites":["web-core"],"unlocks":["llm-rag-eval","agent-tool-calling"],"profiles":["beginner-interest","experienced-interest","beginner-career","experienced-career"],"content_status":"已规划未建设","connection_status":"可顺序进入","anchor":"module-web-engineering"},
+    {"id":"web-engineering","title":"Web 工程化","domain":"应用工程","depth":"工程化","role":"能力深化","prerequisites":["web-core","cs-systems-core"],"unlocks":["llm-rag-eval","agent-tool-calling"],"profiles":["beginner-interest","experienced-interest","beginner-career","experienced-career"],"content_status":"已开放","connection_status":"可顺序进入","anchor":"module-web-engineering"},
     {"id":"cpp-start","title":"C++ 起步","domain":"系统工程","depth":"起步","role":"方向主干","prerequisites":["direction-choice"],"unlocks":["cpp-core"],"profiles":["beginner-interest","experienced-interest","beginner-career","experienced-career"],"content_status":"已开放","connection_status":"可顺序进入","anchor":"module-cpp-start"},
     {"id":"cpp-core","title":"C++ 核心","domain":"系统工程","depth":"核心","role":"方向主干","prerequisites":["cpp-start"],"unlocks":["systems-engineering","device-foundation"],"profiles":["beginner-interest","experienced-interest","beginner-career","experienced-career"],"content_status":"已开放","connection_status":"可顺序进入","anchor":"module-cpp-core"},
     {"id":"systems-engineering","title":"系统编程、并发、网络与性能","domain":"系统工程","depth":"工程化","role":"能力深化","prerequisites":["cpp-core","cs-systems-core"],"unlocks":["device-foundation","agent-advanced"],"profiles":["beginner-interest","experienced-interest","beginner-career","experienced-career"],"content_status":"已规划未建设","connection_status":"方向可选","anchor":"module-systems-engineering"},
@@ -131,6 +132,12 @@
     {"id":"cs-systems-03","title":"内存、文件与资源生命周期","url":"learning-paths/cs-systems-core/03-memory-file-resource-lifecycle.md","module_id":"cs-systems-core","content_status":"已开放"},
     {"id":"cs-systems-04","title":"从端口到 HTTP 的本机网络链路","url":"learning-paths/cs-systems-core/04-local-network-port-http.md","module_id":"cs-systems-core","content_status":"已开放"},
     {"id":"cs-systems-05","title":"事务、隔离与并发写入","url":"learning-paths/cs-systems-core/05-transactions-isolation-concurrent-writes.md","module_id":"cs-systems-core","content_status":"已开放"},
-    {"id":"cs-systems-06","title":"身份、授权与最小权限","url":"learning-paths/cs-systems-core/06-identity-authorization-least-privilege.md","module_id":"cs-systems-core","content_status":"已开放"}
+    {"id":"cs-systems-06","title":"身份、授权与最小权限","url":"learning-paths/cs-systems-core/06-identity-authorization-least-privilege.md","module_id":"cs-systems-core","content_status":"已开放"},
+    {"id":"web-engineering-01","title":"PostgreSQL、Alembic 与数据迁移","url":"learning-paths/web-fullstack/web-engineering/01-postgresql-alembic-data-migration.md","module_id":"web-engineering","content_status":"已开放"},
+    {"id":"web-engineering-02","title":"密码哈希、Cookie 会话与 CSRF 防护","url":"learning-paths/web-fullstack/web-engineering/02-password-hashing-cookie-sessions-csrf.md","module_id":"web-engineering","content_status":"已开放"},
+    {"id":"web-engineering-03","title":"资源所有权、角色授权与审计日志","url":"learning-paths/web-fullstack/web-engineering/03-resource-ownership-authorization-audit.md","module_id":"web-engineering","content_status":"已开放"},
+    {"id":"web-engineering-04","title":"会话前端、端到端测试与持续集成","url":"learning-paths/web-fullstack/web-engineering/04-session-frontend-e2e-ci.md","module_id":"web-engineering","content_status":"已开放"},
+    {"id":"web-engineering-05","title":"容器、配置、健康检查与优雅停止","url":"learning-paths/web-fullstack/web-engineering/05-containers-config-health-graceful-shutdown.md","module_id":"web-engineering","content_status":"已开放"},
+    {"id":"web-engineering-06","title":"指标、备份、发布与回滚演练","url":"learning-paths/web-fullstack/web-engineering/06-observability-backup-release-rollback.md","module_id":"web-engineering","content_status":"已开放"}
   ]
 }

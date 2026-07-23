@@ -1,0 +1,105 @@
+{
+  "lesson_id": "web-engineering-01",
+  "cases": [
+    {
+      "query": "v0.9 最后交付什么",
+      "expected_card": "postgres-result"
+    },
+    {
+      "query": "PostgreSQL 迁移课做出什么",
+      "expected_card": "postgres-result"
+    },
+    {
+      "query": "为什么结构版本要进代码",
+      "expected_card": "migration-version"
+    },
+    {
+      "query": "Alembic 版本表有什么用",
+      "expected_card": "migration-version"
+    },
+    {
+      "query": "upgrade head 做什么",
+      "expected_card": "upgrade-head"
+    },
+    {
+      "query": "怎样推进到最新 revision",
+      "expected_card": "upgrade-head"
+    },
+    {
+      "query": "迁移失败为什么要回滚",
+      "expected_card": "migration-rollback"
+    },
+    {
+      "query": "DDL 失败后怎样保持原结构",
+      "expected_card": "migration-rollback"
+    },
+    {
+      "query": "SQLite 导入为什么能重复运行",
+      "expected_card": "import-idempotent"
+    },
+    {
+      "query": "教学数据导入怎样避免重复",
+      "expected_card": "import-idempotent"
+    },
+    {
+      "query": "迁移后核对哪些不变量",
+      "expected_card": "import-invariants"
+    },
+    {
+      "query": "怎样证明数据迁移完整",
+      "expected_card": "import-invariants"
+    },
+    {
+      "query": "连接池 pre ping 有什么用",
+      "expected_card": "pool-pre-ping"
+    },
+    {
+      "query": "数据库连接失效怎样被发现",
+      "expected_card": "pool-pre-ping"
+    },
+    {
+      "query": "怎样运行 v0.9 真实迁移测试",
+      "expected_card": "run-v09"
+    },
+    {
+      "query": "PostgreSQL 四项测试命令是什么",
+      "expected_card": "run-v09"
+    },
+    {
+      "query": "怎样主动新增一个迁移列",
+      "expected_card": "modify-revision"
+    },
+    {
+      "query": "新 revision 练习怎么做",
+      "expected_card": "modify-revision"
+    },
+    {
+      "query": "找不到 Alembic revision 怎么排查",
+      "expected_card": "revision-troubleshoot"
+    },
+    {
+      "query": "alembic_version 不一致怎么办",
+      "expected_card": "revision-troubleshoot"
+    },
+    {
+      "query": "为什么生产降级不能照搬教学 downgrade",
+      "expected_card": "downgrade-boundary"
+    },
+    {
+      "query": "downgrade base 的边界是什么",
+      "expected_card": "downgrade-boundary"
+    },
+    {
+      "query": "v0.9 与 v0.8 的核心差异是什么",
+      "expected_card": "project-v09"
+    },
+    {
+      "query": "学习进度报告器迁移证据有哪些",
+      "expected_card": "project-v09"
+    }
+  ],
+  "unknown": [
+    "怎样在月球海里培育会唱歌的珊瑚",
+    "云朵编译成彩虹需要什么参数"
+  ]
+}

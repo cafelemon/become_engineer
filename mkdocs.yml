@@ -167,6 +167,14 @@ nav:
               - 关系模型、SQLite 与持久化边界: learning-paths/web-fullstack/web-core/02-relational-model-sqlite-persistence.md
               - REST 资源、CRUD、分页与幂等: learning-paths/web-fullstack/web-core/03-rest-resources-crud-pagination-idempotency.md
               - 表单校验、提交与前后端状态同步: learning-paths/web-fullstack/web-core/04-form-validation-submission-state-sync.md
+          - Web 工程化:
+              - 课程说明: learning-paths/web-fullstack/web-engineering/README.md
+              - PostgreSQL、Alembic 与数据迁移: learning-paths/web-fullstack/web-engineering/01-postgresql-alembic-data-migration.md
+              - 密码哈希、Cookie 会话与 CSRF 防护: learning-paths/web-fullstack/web-engineering/02-password-hashing-cookie-sessions-csrf.md
+              - 资源所有权、角色授权与审计日志: learning-paths/web-fullstack/web-engineering/03-resource-ownership-authorization-audit.md
+              - 会话前端、端到端测试与持续集成: learning-paths/web-fullstack/web-engineering/04-session-frontend-e2e-ci.md
+              - 容器、配置、健康检查与优雅停止: learning-paths/web-fullstack/web-engineering/05-containers-config-health-graceful-shutdown.md
+              - 指标、备份、发布与回滚演练: learning-paths/web-fullstack/web-engineering/06-observability-backup-release-rollback.md
       - 算法与数据结构:
           - 共同算法与数据结构基础:
               - 动态数组容量、扩容成本与摊还分析: learning-paths/cs-core/05-dynamic-array-capacity-amortized-cost.md

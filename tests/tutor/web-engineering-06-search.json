@@ -1,0 +1,105 @@
+{
+  "lesson_id": "web-engineering-06",
+  "cases": [
+    {
+      "query": "v0.14 最后交付什么",
+      "expected_card": "release-result"
+    },
+    {
+      "query": "发布回滚课做出什么",
+      "expected_card": "release-result"
+    },
+    {
+      "query": "request ID 用来做什么",
+      "expected_card": "request-id"
+    },
+    {
+      "query": "怎样串联一次请求的日志",
+      "expected_card": "request-id"
+    },
+    {
+      "query": "结构化 JSON 日志有什么价值",
+      "expected_card": "json-log"
+    },
+    {
+      "query": "日志为什么不用拼接文本",
+      "expected_card": "json-log"
+    },
+    {
+      "query": "expand contract 为什么支持回滚",
+      "expected_card": "expand-contract"
+    },
+    {
+      "query": "数据库变更怎样兼容旧镜像",
+      "expected_card": "expand-contract"
+    },
+    {
+      "query": "什么时候必须阻止应用回滚",
+      "expected_card": "unsafe-rollback"
+    },
+    {
+      "query": "镜像能启动就能回滚吗",
+      "expected_card": "unsafe-rollback"
+    },
+    {
+      "query": "为什么 request ID 不能做指标标签",
+      "expected_card": "low-cardinality"
+    },
+    {
+      "query": "高基数指标有什么问题",
+      "expected_card": "low-cardinality"
+    },
+    {
+      "query": "metrics 为什么只对内部开放",
+      "expected_card": "metrics-internal"
+    },
+    {
+      "query": "Prometheus 指标能公开到公网吗",
+      "expected_card": "metrics-internal"
+    },
+    {
+      "query": "怎样运行 v0.14 发布门禁测试",
+      "expected_card": "run-v14"
+    },
+    {
+      "query": "八项可观测测试命令是什么",
+      "expected_card": "run-v14"
+    },
+    {
+      "query": "为什么备份使用 pg_dump custom 格式",
+      "expected_card": "pg-dump-custom"
+    },
+    {
+      "query": "自定义备份格式有什么用",
+      "expected_card": "pg-dump-custom"
+    },
+    {
+      "query": "为什么恢复到独立验证数据库",
+      "expected_card": "restore-isolated"
+    },
+    {
+      "query": "能不能直接覆盖正式库验证备份",
+      "expected_card": "restore-isolated"
+    },
+    {
+      "query": "发布故障注入要记录什么",
+      "expected_card": "failure-injection"
+    },
+    {
+      "query": "readiness 失败后怎样回滚",
+      "expected_card": "failure-injection"
+    },
+    {
+      "query": "Web 工程化最终交付证据有哪些",
+      "expected_card": "project-v14"
+    },
+    {
+      "query": "v0.14 如何证明可恢复",
+      "expected_card": "project-v14"
+    }
+  ],
+  "unknown": [
+    "怎样在月球海里培育会唱歌的珊瑚",
+    "云朵编译成彩虹需要什么参数"
+  ]
+}

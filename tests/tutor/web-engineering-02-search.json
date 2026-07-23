@@ -1,0 +1,105 @@
+{
+  "lesson_id": "web-engineering-02",
+  "cases": [
+    {
+      "query": "v0.10 最后交付什么",
+      "expected_card": "auth-result"
+    },
+    {
+      "query": "会话安全课做出什么",
+      "expected_card": "auth-result"
+    },
+    {
+      "query": "为什么密码保存 Argon2id 哈希",
+      "expected_card": "argon2-hash"
+    },
+    {
+      "query": "密码能不能加密后保存",
+      "expected_card": "argon2-hash"
+    },
+    {
+      "query": "为什么使用不透明会话令牌",
+      "expected_card": "opaque-token"
+    },
+    {
+      "query": "为什么这课不自制 JWT",
+      "expected_card": "opaque-token"
+    },
+    {
+      "query": "数据库为什么只存令牌摘要",
+      "expected_card": "token-digest"
+    },
+    {
+      "query": "会话原文落库有什么风险",
+      "expected_card": "token-digest"
+    },
+    {
+      "query": "会话 Cookie 需要哪些属性",
+      "expected_card": "cookie-flags"
+    },
+    {
+      "query": "HttpOnly SameSite 各自防什么",
+      "expected_card": "cookie-flags"
+    },
+    {
+      "query": "CSRF 为什么使用自定义请求头",
+      "expected_card": "csrf-header"
+    },
+    {
+      "query": "CSRF 令牌能放 URL 吗",
+      "expected_card": "csrf-header"
+    },
+    {
+      "query": "什么时候返回 401",
+      "expected_card": "status-401"
+    },
+    {
+      "query": "WWW-Authenticate 何时出现",
+      "expected_card": "status-401"
+    },
+    {
+      "query": "CSRF 错误为什么返回 403",
+      "expected_card": "status-403-csrf"
+    },
+    {
+      "query": "已登录但请求被拒绝是什么状态",
+      "expected_card": "status-403-csrf"
+    },
+    {
+      "query": "怎样运行 v0.10 会话测试",
+      "expected_card": "run-v10"
+    },
+    {
+      "query": "Cookie 和 CSRF 测试命令是什么",
+      "expected_card": "run-v10"
+    },
+    {
+      "query": "怎样测试会话到期而不等待",
+      "expected_card": "modify-expiry"
+    },
+    {
+      "query": "缩短会话时间练习怎么做",
+      "expected_card": "modify-expiry"
+    },
+    {
+      "query": "POST 返回 403 怎样排查",
+      "expected_card": "csrf-troubleshoot"
+    },
+    {
+      "query": "X-CSRF-Token 不匹配怎么办",
+      "expected_card": "csrf-troubleshoot"
+    },
+    {
+      "query": "v0.10 新增哪些认证接口",
+      "expected_card": "project-v10"
+    },
+    {
+      "query": "为什么不包含注册和 OAuth",
+      "expected_card": "project-v10"
+    }
+  ],
+  "unknown": [
+    "怎样在月球海里培育会唱歌的珊瑚",
+    "云朵编译成彩虹需要什么参数"
+  ]
+}

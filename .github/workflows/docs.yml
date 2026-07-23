@@ -14,6 +14,9 @@ on:
       - "site-src/**/*.webp"
       - "site-src/examples/**/*.py"
       - "site-src/examples/**/*.sql"
+      - "site-src/examples/**/*.sh"
+      - "site-src/examples/**/*.yaml"
+      - "site-src/examples/**/Dockerfile"
       - "site-src/examples/**/*.cpp"
       - "site-src/examples/**/*.hpp"
       - "site-src/examples/**/CMakeLists.txt"
@@ -85,6 +88,14 @@ on:
       - "scripts/test_cs_systems_network_v2.mjs"
       - "scripts/test_cs_systems_transactions_v2.mjs"
       - "scripts/test_cs_systems_authorization_v2.mjs"
+      - "scripts/test_web_engineering_postgres_v2.mjs"
+      - "scripts/test_web_engineering_sessions_v2.mjs"
+      - "scripts/test_web_engineering_authorization_v2.mjs"
+      - "scripts/test_web_engineering_e2e_v2.mjs"
+      - "scripts/test_web_engineering_container_v2.mjs"
+      - "scripts/test_web_engineering_release_v2.mjs"
+      - "scripts/lib/validate_web_engineering_lesson.mjs"
+      - "scripts/generate_web_engineering_tutor.mjs"
       - "scripts/test_tutor_search.cjs"
       - "tests/tutor/**"
       - "mkdocs.yml"
@@ -103,6 +114,20 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: dashboard
+          POSTGRES_USER: dashboard
+          POSTGRES_PASSWORD: dashboard
+        ports:
+          - 55439:5432
+        options: >-
+          --health-cmd "pg_isready -U dashboard -d dashboard"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -128,6 +153,7 @@ jobs:
             site-src/examples/web-core/learning-dashboard-v06/package-lock.json
             site-src/examples/web-core/learning-dashboard-v07/package-lock.json
             site-src/examples/web-core/learning-dashboard-v08/package-lock.json
+            site-src/examples/web-engineering/learning-dashboard-v12/package-lock.json
 
       - name: Install CI dependencies
         run: |
@@ -342,6 +368,60 @@ jobs:
 
       - name: Verify CS systems authorization lesson
         run: node scripts/test_cs_systems_authorization_v2.mjs
+
+      - name: Verify Web engineering PostgreSQL migration lesson
+        run: node scripts/test_web_engineering_postgres_v2.mjs
+
+      - name: Verify Web engineering session security lesson
+        run: node scripts/test_web_engineering_sessions_v2.mjs
+
+      - name: Verify Web engineering authorization lesson
+        run: node scripts/test_web_engineering_authorization_v2.mjs
+
+      - name: Install Web engineering frontend dependencies
+        run: npm ci --prefix site-src/examples/web-engineering/learning-dashboard-v12
+
+      - name: Install Playwright Chromium
+        run: npx --prefix site-src/examples/web-engineering/learning-dashboard-v12 playwright install --with-deps chromium
+
+      - name: Verify Web engineering frontend and E2E contract lesson
+        run: |
+          node scripts/test_web_engineering_e2e_v2.mjs
+          npm --prefix site-src/examples/web-engineering/learning-dashboard-v12 run test:e2e
+
+      - name: Verify Web engineering container and health lesson
+        run: node scripts/test_web_engineering_container_v2.mjs
+
+      - name: Smoke-test Web engineering Compose runtime
+        run: |
+          set -eu
+          compose_file=site-src/examples/web-engineering/learning-dashboard-v13/compose.yaml
+          cleanup_compose() { docker compose -f "$compose_file" stop; }
+          trap cleanup_compose EXIT
+          docker compose -f "$compose_file" up -d --build
+          app_ready=false
+          for attempt in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:58080/health/ready; then
+              app_ready=true
+              break
+            fi
+            sleep 1
+          done
+          test "$app_ready" = true
+          curl -fsS http://127.0.0.1:58080/health/live
+          docker compose -f "$compose_file" exec -T app id | grep 'uid=10001(appuser)'
+
+      - name: Verify Web engineering observability and release lesson
+        run: node scripts/test_web_engineering_release_v2.mjs
+
+      - name: Restore PostgreSQL backup into an independent database
+        run: |
+          docker run --rm --network host \
+            -e PGPASSWORD=dashboard \
+            -e DATABASE_URL=postgresql://dashboard:dashboard@127.0.0.1:55439/dashboard \
+            -e VERIFY_DATABASE_URL=postgresql://dashboard:dashboard@127.0.0.1:55439/dashboard_verify \
+            -v "$PWD/site-src/examples/web-engineering/learning-dashboard-v14/backup_restore.sh:/work/backup_restore.sh:ro" \
+            postgres:16-alpine sh -c 'dropdb -h 127.0.0.1 -p 55439 -U dashboard --if-exists dashboard_verify && createdb -h 127.0.0.1 -p 55439 -U dashboard dashboard_verify && sh /work/backup_restore.sh /tmp/dashboard.dump'
 
       - name: Build documentation strictly
         run: mkdocs build --strict

@@ -10,7 +10,7 @@
 
 [开始学习](beginner-roadmap.md){ .md-button .md-button--primary }
 [让小码规划路线](../README.md#learning-assessment){ .md-button }
-[直接看 69 节明细](#opened-lessons){ .md-button }
+[直接看 75 节明细](#opened-lessons){ .md-button }
 
 </div>
 
@@ -25,7 +25,7 @@
   <div><strong>衔接状态</strong><span>可顺序进入 · 缺少起步层 · 等待前置 · 方向可选</span></div>
 </div>
 
-当前正式课程共 **69 节**：工程基础 10 节、Python 起步 7 节、CS 起步 4 节、Python 核心与工程化 7 节、C++ 起步 2 节、C++ 核心 3 节、算法基础与核心 22 节、Web 起步 4 节、Web 核心 4 节、CS 系统基础 6 节。既有课程 URL 没有改变；新方向只在正式正文、示例和验收同时完成后增加课程。
+当前正式课程共 **75 节**：工程基础 10 节、Python 起步 7 节、CS 起步 4 节、Python 核心与工程化 7 节、C++ 起步 2 节、C++ 核心 3 节、算法基础与核心 22 节、Web 起步 4 节、Web 核心 4 节、CS 系统基础 6 节、Web 工程化 6 节。既有课程 URL 没有改变；新方向只在正式正文、示例和验收同时完成后增加课程。
 
 ## 四类用户共用一棵能力树
 
@@ -69,7 +69,7 @@
       <a href="#module-python-engineering" data-status="open">Python 工程化</a>
       <a href="#module-web-start" data-status="open">Web 起步 · 4 / 4</a>
       <a href="#module-web-core" data-status="open">Web 核心 · 4 / 4</a>
-      <a href="#module-web-engineering" data-status="planned">Web 工程化</a>
+      <a href="#module-web-engineering" data-status="open">Web 工程化 · 6 / 6</a>
     </section>
     <section>
       <h3>系统工程</h3>
@@ -140,7 +140,7 @@
 | <span id="module-python-engineering">Python 工程化</span> | 工程化 | 方向主干 | 可安装包、CLI、配置和诊断 | Python 核心 → Web、LLM 应用 | 应用、AI、LLM 方向优先；求职追加证据问答 | 已开放 | 可顺序进入 |
 | <span id="module-web-start">Web 起步</span> | 起步 | 方向主干 | HTML、CSS、页面状态与本地 API 的首次闭环 | Python 起步 → Web 核心 | A/C 完整；B/D 按 HTML、CSS、JS 与 HTTP 缺口补修；求职画像追加项目解释 | 已开放 · 4/4 | 方向可选 |
 | <span id="module-web-core">Web 核心</span> | 核心 | 方向主干 | TypeScript 运行时契约、持久化、REST 资源与表单状态 | Web 起步 + Python 工程化 → Web 工程化 | A/C 按顺序；B/D 可按契约、数据库、资源与表单缺口补修；求职画像追加故障复盘 | 已开放 · 4/4 | 可顺序进入 |
-| <span id="module-web-engineering">Web 工程化</span> | 工程化 | 能力深化 | 测试、认证、发布与可观测应用 | Web 核心 + CS 系统核心 → RAG/Agent | 兴趣按项目选；求职路线重点 | 已规划未建设 | 可顺序进入 |
+| <span id="module-web-engineering">Web 工程化</span> | 工程化 | 能力深化 | PostgreSQL 迁移、认证授权、测试、容器、发布与可观测应用 | Web 核心 + CS 系统核心 → RAG/Agent | 兴趣按项目选；求职路线重点 | 已开放 · 6/6 | 可顺序进入 |
 | <span id="module-cpp-start">C++ 起步</span> | 起步 | 方向主干 | 从源码、编译到首次运行和函数组织 | 方向选择 → C++ 核心 | 系统、性能、设备方向进入 | 已开放 | 可顺序进入 |
 | <span id="module-cpp-core">C++ 核心</span> | 核心 | 方向主干 | 多文件构建、STL、生命周期与 RAII | C++ 起步 → 系统工程、设备基础 | 系统方向主干；其他方向可选 | 已开放 | 可顺序进入 |
 | <span id="module-systems-engineering">系统编程、并发、网络与性能</span> | 工程化 | 能力深化 | 可诊断的系统程序与性能证据 | C++ 核心 + CS 系统核心 → 设备／高级 Agent | 系统和设备路线重点；求职叠加故障题 | 已规划未建设 | 方向可选 |
@@ -174,7 +174,7 @@
 
 ## 已开放课程明细 { #opened-lessons }
 
-以下 **69 节课程各出现一次**。既有 55 节已完成 V2 迁移；Web 起步和 Web 核心各四课已经完成；CS 系统基础六课完成，系统运行观察器演进到 v0.6。
+以下 **75 节课程各出现一次**。既有 55 节已完成 V2 迁移；Web 起步、Web 核心、CS 系统基础和 Web 工程化均已完成，学习进度报告器演进到 Web v0.14。
 
 ### 工程基础起步 · 10 节
 
@@ -222,6 +222,15 @@
 2. [关系模型、SQLite 与持久化边界](web-fullstack/web-core/02-relational-model-sqlite-persistence.md) · 已开放
 3. [REST 资源、CRUD、分页与幂等](web-fullstack/web-core/03-rest-resources-crud-pagination-idempotency.md) · 已开放
 4. [表单校验、提交与前后端状态同步](web-fullstack/web-core/04-form-validation-submission-state-sync.md) · 已开放
+
+### Web 工程化 · 6 节
+
+1. [PostgreSQL、Alembic 与数据迁移](web-fullstack/web-engineering/01-postgresql-alembic-data-migration.md) · 已开放
+2. [密码哈希、Cookie 会话与 CSRF 防护](web-fullstack/web-engineering/02-password-hashing-cookie-sessions-csrf.md) · 已开放
+3. [资源所有权、角色授权与审计日志](web-fullstack/web-engineering/03-resource-ownership-authorization-audit.md) · 已开放
+4. [会话前端、端到端测试与持续集成](web-fullstack/web-engineering/04-session-frontend-e2e-ci.md) · 已开放
+5. [容器、配置、健康检查与优雅停止](web-fullstack/web-engineering/05-containers-config-health-graceful-shutdown.md) · 已开放
+6. [指标、备份、发布与回滚演练](web-fullstack/web-engineering/06-observability-backup-release-rollback.md) · 已开放
 
 ### C++ 起步 · 2 节
 
@@ -283,7 +292,7 @@
 以下只登记稳定模块，不提前虚构课名和课数：
 
 - **共同基座缺口**：首个可验证项目与方向选择的公开汇总入口；CS 起步四课已经开放。
-- **应用工程**：Web 起步、Web 核心和 CS 系统基础前置均已完成；Web 工程化正文仍未建设，可从认证、测试、部署与可观测性继续。
+- **应用工程**：Web 起步、Web 核心、CS 系统基础与 Web 工程化均已完成；RAG／Agent 的 Web 工程化前置已满足，但下游正文仍未建设。
 - **系统工程**：C++ 起步、C++ 核心和 CS 系统基础均已开放；更深的系统编程、并发、网络与性能正文仍未建设，可作为方向课程继续。
 - **算法**：算法深化，以及只对求职画像默认叠加的机考、限时模拟与复盘。
 - **AI 模型**：数学数据实验、机器学习、深度学习，再分强化学习、视觉、NLP/Transformer、多模态等方向。

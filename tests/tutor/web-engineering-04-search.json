@@ -1,0 +1,105 @@
+{
+  "lesson_id": "web-engineering-04",
+  "cases": [
+    {
+      "query": "v0.12 最后交付什么",
+      "expected_card": "frontend-result"
+    },
+    {
+      "query": "会话前端课做出什么",
+      "expected_card": "frontend-result"
+    },
+    {
+      "query": "刷新后怎样恢复身份",
+      "expected_card": "refresh-me"
+    },
+    {
+      "query": "为什么刷新要请求 api me",
+      "expected_card": "refresh-me"
+    },
+    {
+      "query": "前端把 CSRF 保存在哪里",
+      "expected_card": "csrf-memory"
+    },
+    {
+      "query": "CSRF 能放 localStorage 吗",
+      "expected_card": "csrf-memory"
+    },
+    {
+      "query": "前端为什么读不到会话 Cookie",
+      "expected_card": "cookie-unreadable"
+    },
+    {
+      "query": "HttpOnly 对 TypeScript 有什么影响",
+      "expected_card": "cookie-unreadable"
+    },
+    {
+      "query": "前端收到 401 做什么",
+      "expected_card": "route-401"
+    },
+    {
+      "query": "身份失效怎样回登录页",
+      "expected_card": "route-401"
+    },
+    {
+      "query": "前端收到 403 做什么",
+      "expected_card": "route-403"
+    },
+    {
+      "query": "权限不足为什么不当成未登录",
+      "expected_card": "route-403"
+    },
+    {
+      "query": "退出后要清除哪些状态",
+      "expected_card": "logout-state"
+    },
+    {
+      "query": "为什么退出要重置页面状态",
+      "expected_card": "logout-state"
+    },
+    {
+      "query": "怎样运行 v0.12 TypeScript 测试",
+      "expected_card": "run-v12"
+    },
+    {
+      "query": "会话状态机测试命令是什么",
+      "expected_card": "run-v12"
+    },
+    {
+      "query": "为什么 Playwright 要连接真实 PostgreSQL",
+      "expected_card": "playwright-real"
+    },
+    {
+      "query": "E2E 可以 mock 数据库吗",
+      "expected_card": "playwright-real"
+    },
+    {
+      "query": "怎样给登录错误增加键盘可达提示",
+      "expected_card": "modify-a11y"
+    },
+    {
+      "query": "失败提示如何获得焦点",
+      "expected_card": "modify-a11y"
+    },
+    {
+      "query": "刷新后变匿名怎样排查",
+      "expected_card": "refresh-troubleshoot"
+    },
+    {
+      "query": "api me 返回 401 查什么",
+      "expected_card": "refresh-troubleshoot"
+    },
+    {
+      "query": "v0.12 为什么继续使用原生 TypeScript",
+      "expected_card": "project-v12"
+    },
+    {
+      "query": "这课为什么不引入 React",
+      "expected_card": "project-v12"
+    }
+  ],
+  "unknown": [
+    "怎样在月球海里培育会唱歌的珊瑚",
+    "云朵编译成彩虹需要什么参数"
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "lesson_id": "web-engineering-05",
+  "cases": [
+    {
+      "query": "v0.13 最后交付什么",
+      "expected_card": "container-result"
+    },
+    {
+      "query": "容器健康课做出什么",
+      "expected_card": "container-result"
+    },
+    {
+      "query": "为什么宿主端口只绑定 127.0.0.1",
+      "expected_card": "loopback-bind"
+    },
+    {
+      "query": "Compose 端口怎样避免外网暴露",
+      "expected_card": "loopback-bind"
+    },
+    {
+      "query": "应用容器为什么使用非 root 用户",
+      "expected_card": "non-root"
+    },
+    {
+      "query": "Dockerfile USER 有什么用",
+      "expected_card": "non-root"
+    },
+    {
+      "query": "liveness 回答什么问题",
+      "expected_card": "liveness"
+    },
+    {
+      "query": "存活检查能访问数据库吗",
+      "expected_card": "liveness"
+    },
+    {
+      "query": "readiness 回答什么问题",
+      "expected_card": "readiness"
+    },
+    {
+      "query": "数据库未就绪为什么返回 503",
+      "expected_card": "readiness"
+    },
+    {
+      "query": "depends_on service_healthy 有什么作用",
+      "expected_card": "service-healthy"
+    },
+    {
+      "query": "容器已启动为什么 app 还要等",
+      "expected_card": "service-healthy"
+    },
+    {
+      "query": "文件型 secret 与普通环境变量怎样分工",
+      "expected_card": "secret-file"
+    },
+    {
+      "query": "数据库密码放在哪里",
+      "expected_card": "secret-file"
+    },
+    {
+      "query": "生产缺少配置为什么拒绝启动",
+      "expected_card": "config-fail-fast"
+    },
+    {
+      "query": "能不能用默认密码继续运行",
+      "expected_card": "config-fail-fast"
+    },
+    {
+      "query": "怎样验证 v0.13 Compose 拓扑",
+      "expected_card": "run-v13"
+    },
+    {
+      "query": "容器配置测试命令是什么",
+      "expected_card": "run-v13"
+    },
+    {
+      "query": "怎样模拟数据库未就绪",
+      "expected_card": "modify-readiness"
+    },
+    {
+      "query": "live 正常 ready 503 怎样验证",
+      "expected_card": "modify-readiness"
+    },
+    {
+      "query": "优雅停止要按什么顺序",
+      "expected_card": "graceful-stop"
+    },
+    {
+      "query": "停止时怎样保护在途请求",
+      "expected_card": "graceful-stop"
+    },
+    {
+      "query": "v0.13 的部署证据有哪些",
+      "expected_card": "project-v13"
+    },
+    {
+      "query": "怎样证明容器配置安全",
+      "expected_card": "project-v13"
+    }
+  ],
+  "unknown": [
+    "怎样在月球海里培育会唱歌的珊瑚",
+    "云朵编译成彩虹需要什么参数"
+  ]
+}

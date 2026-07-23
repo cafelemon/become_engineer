@@ -1,0 +1,403 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "web-engineering-04",
+    "title": "会话前端、端到端测试与持续集成",
+    "path": "learning-paths/web-fullstack/web-engineering/04-session-frontend-e2e-ci/"
+  },
+  "contexts": [
+    {
+      "id": "overview-session-frontend",
+      "type": "overview",
+      "title": "overview session frontend",
+      "anchor": "#overview-session-frontend"
+    },
+    {
+      "id": "concept-memory-csrf",
+      "type": "concept",
+      "title": "concept memory csrf",
+      "anchor": "#concept-memory-csrf"
+    },
+    {
+      "id": "example-route-status",
+      "type": "example",
+      "title": "example route status",
+      "anchor": "#example-route-status"
+    },
+    {
+      "id": "reproduce-dashboard-v12",
+      "type": "reproduce",
+      "title": "reproduce dashboard v12",
+      "anchor": "#reproduce-dashboard-v12"
+    },
+    {
+      "id": "modify-accessible-login",
+      "type": "modify",
+      "title": "modify accessible login",
+      "anchor": "#modify-accessible-login"
+    },
+    {
+      "id": "troubleshoot-frontend-session",
+      "type": "troubleshoot",
+      "title": "troubleshoot frontend session",
+      "anchor": "#troubleshoot-frontend-session"
+    },
+    {
+      "id": "project-dashboard-v12",
+      "type": "project",
+      "title": "project dashboard v12",
+      "anchor": "#project-dashboard-v12"
+    },
+    {
+      "id": "career-e2e-failure",
+      "type": "career",
+      "title": "career e2e failure",
+      "anchor": "#career-e2e-failure"
+    }
+  ],
+  "cards": [
+    {
+      "id": "frontend-result",
+      "lesson_id": "web-engineering-04",
+      "context_id": "overview-session-frontend",
+      "question": "v0.12 最后交付什么？",
+      "aliases": [
+        "会话前端课做出什么"
+      ],
+      "keywords": [
+        "v0.12",
+        "最后交付什么",
+        "会话前端课做出什么"
+      ],
+      "diagnostic": "先确认你正在处理“会话前端课做出什么”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 overview-session-frontend 中的责任。",
+        "再用本课固定测试验证 v0.12 最后交付什么。"
+      ],
+      "example": "v0.12 用原生 TypeScript 完成登录、身份恢复、权限状态、退出和 E2E 边界。",
+      "answer": "v0.12 用原生 TypeScript 完成登录、身份恢复、权限状态、退出和 E2E 边界。",
+      "source": {
+        "label": "overview session frontend",
+        "href": "#overview-session-frontend"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "refresh-me",
+      "lesson_id": "web-engineering-04",
+      "context_id": "overview-session-frontend",
+      "question": "刷新后怎样恢复身份？",
+      "aliases": [
+        "为什么刷新要请求 api me"
+      ],
+      "keywords": [
+        "刷新后怎样恢复身份",
+        "为什么刷新要请求",
+        "api",
+        "me"
+      ],
+      "diagnostic": "先确认你正在处理“为什么刷新要请求 api me”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 overview-session-frontend 中的责任。",
+        "再用本课固定测试验证 刷新后怎样恢复身份。"
+      ],
+      "example": "浏览器不保存会话原文，刷新后由 HttpOnly Cookie 配合 /api/me 恢复服务端身份。",
+      "answer": "浏览器不保存会话原文，刷新后由 HttpOnly Cookie 配合 /api/me 恢复服务端身份。",
+      "source": {
+        "label": "overview session frontend",
+        "href": "#overview-session-frontend"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "csrf-memory",
+      "lesson_id": "web-engineering-04",
+      "context_id": "concept-memory-csrf",
+      "question": "前端把 CSRF 保存在哪里？",
+      "aliases": [
+        "CSRF 能放 localStorage 吗"
+      ],
+      "keywords": [
+        "前端把",
+        "CSRF",
+        "保存在哪里",
+        "能放",
+        "localStorage",
+        "吗"
+      ],
+      "diagnostic": "先确认你正在处理“CSRF 能放 localStorage 吗”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 concept-memory-csrf 中的责任。",
+        "再用本课固定测试验证 前端把 CSRF 保存在哪里。"
+      ],
+      "example": "CSRF 只存在当前页面内存，退出或刷新后由服务端重新取得。",
+      "answer": "CSRF 只存在当前页面内存，退出或刷新后由服务端重新取得。",
+      "source": {
+        "label": "concept memory csrf",
+        "href": "#concept-memory-csrf"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "cookie-unreadable",
+      "lesson_id": "web-engineering-04",
+      "context_id": "concept-memory-csrf",
+      "question": "前端为什么读不到会话 Cookie？",
+      "aliases": [
+        "HttpOnly 对 TypeScript 有什么影响"
+      ],
+      "keywords": [
+        "前端为什么读不到会话",
+        "Cookie",
+        "HttpOnly",
+        "对",
+        "TypeScript",
+        "有什么影响"
+      ],
+      "diagnostic": "先确认你正在处理“HttpOnly 对 TypeScript 有什么影响”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 concept-memory-csrf 中的责任。",
+        "再用本课固定测试验证 前端为什么读不到会话 Cookie。"
+      ],
+      "example": "HttpOnly 让浏览器随请求发送 Cookie，但不向脚本暴露值。",
+      "answer": "HttpOnly 让浏览器随请求发送 Cookie，但不向脚本暴露值。",
+      "source": {
+        "label": "concept memory csrf",
+        "href": "#concept-memory-csrf"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "route-401",
+      "lesson_id": "web-engineering-04",
+      "context_id": "example-route-status",
+      "question": "前端收到 401 做什么？",
+      "aliases": [
+        "身份失效怎样回登录页"
+      ],
+      "keywords": [
+        "前端收到",
+        "401",
+        "做什么",
+        "身份失效怎样回登录页"
+      ],
+      "diagnostic": "先确认你正在处理“身份失效怎样回登录页”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 example-route-status 中的责任。",
+        "再用本课固定测试验证 前端收到 401 做什么。"
+      ],
+      "example": "清除身份相关内存状态并路由到登录页。",
+      "answer": "清除身份相关内存状态并路由到登录页。",
+      "source": {
+        "label": "example route status",
+        "href": "#example-route-status"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "route-403",
+      "lesson_id": "web-engineering-04",
+      "context_id": "example-route-status",
+      "question": "前端收到 403 做什么？",
+      "aliases": [
+        "权限不足为什么不当成未登录"
+      ],
+      "keywords": [
+        "前端收到",
+        "403",
+        "做什么",
+        "权限不足为什么不当成未登录"
+      ],
+      "diagnostic": "先确认你正在处理“权限不足为什么不当成未登录”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 example-route-status 中的责任。",
+        "再用本课固定测试验证 前端收到 403 做什么。"
+      ],
+      "example": "保留有效身份，展示动作不被允许的解释和返回路径。",
+      "answer": "保留有效身份，展示动作不被允许的解释和返回路径。",
+      "source": {
+        "label": "example route status",
+        "href": "#example-route-status"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "logout-state",
+      "lesson_id": "web-engineering-04",
+      "context_id": "example-route-status",
+      "question": "退出后要清除哪些状态？",
+      "aliases": [
+        "为什么退出要重置页面状态"
+      ],
+      "keywords": [
+        "退出后要清除哪些状态",
+        "为什么退出要重置页面状态"
+      ],
+      "diagnostic": "先确认你正在处理“为什么退出要重置页面状态”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 example-route-status 中的责任。",
+        "再用本课固定测试验证 退出后要清除哪些状态。"
+      ],
+      "example": "服务端撤销会话后，前端清除主体、CSRF、受保护数据和路由状态。",
+      "answer": "服务端撤销会话后，前端清除主体、CSRF、受保护数据和路由状态。",
+      "source": {
+        "label": "example route status",
+        "href": "#example-route-status"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "run-v12",
+      "lesson_id": "web-engineering-04",
+      "context_id": "reproduce-dashboard-v12",
+      "question": "怎样运行 v0.12 TypeScript 测试？",
+      "aliases": [
+        "会话状态机测试命令是什么"
+      ],
+      "keywords": [
+        "怎样运行",
+        "v0.12",
+        "TypeScript",
+        "测试",
+        "会话状态机测试命令是什么"
+      ],
+      "diagnostic": "先确认你正在处理“会话状态机测试命令是什么”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 reproduce-dashboard-v12 中的责任。",
+        "再用本课固定测试验证 怎样运行 v0.12 TypeScript 测试。"
+      ],
+      "example": "安装锁定依赖后运行 npm test，编译并验证 401、403、刷新和退出状态。",
+      "answer": "安装锁定依赖后运行 npm test，编译并验证 401、403、刷新和退出状态。",
+      "source": {
+        "label": "reproduce dashboard v12",
+        "href": "#reproduce-dashboard-v12"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "playwright-real",
+      "lesson_id": "web-engineering-04",
+      "context_id": "reproduce-dashboard-v12",
+      "question": "为什么 Playwright 要连接真实 PostgreSQL？",
+      "aliases": [
+        "E2E 可以 mock 数据库吗"
+      ],
+      "keywords": [
+        "为什么",
+        "Playwright",
+        "要连接真实",
+        "PostgreSQL",
+        "E2E",
+        "可以",
+        "mock",
+        "数据库吗"
+      ],
+      "diagnostic": "先确认你正在处理“E2E 可以 mock 数据库吗”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 reproduce-dashboard-v12 中的责任。",
+        "再用本课固定测试验证 为什么 Playwright 要连接真实 PostgreSQL。"
+      ],
+      "example": "关键登录、写入和隔离流程必须跨浏览器、API 与真实数据库验证。",
+      "answer": "关键登录、写入和隔离流程必须跨浏览器、API 与真实数据库验证。",
+      "source": {
+        "label": "reproduce dashboard v12",
+        "href": "#reproduce-dashboard-v12"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "modify-a11y",
+      "lesson_id": "web-engineering-04",
+      "context_id": "modify-accessible-login",
+      "question": "怎样给登录错误增加键盘可达提示？",
+      "aliases": [
+        "失败提示如何获得焦点"
+      ],
+      "keywords": [
+        "怎样给登录错误增加键盘可达提示",
+        "失败提示如何获得焦点"
+      ],
+      "diagnostic": "先确认你正在处理“失败提示如何获得焦点”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 modify-accessible-login 中的责任。",
+        "再用本课固定测试验证 怎样给登录错误增加键盘可达提示。"
+      ],
+      "example": "错误区域可聚焦并用语义状态提示，同时不丢失输入和恢复路径。",
+      "answer": "错误区域可聚焦并用语义状态提示，同时不丢失输入和恢复路径。",
+      "source": {
+        "label": "modify accessible login",
+        "href": "#modify-accessible-login"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "refresh-troubleshoot",
+      "lesson_id": "web-engineering-04",
+      "context_id": "troubleshoot-frontend-session",
+      "question": "刷新后变匿名怎样排查？",
+      "aliases": [
+        "api me 返回 401 查什么"
+      ],
+      "keywords": [
+        "刷新后变匿名怎样排查",
+        "api",
+        "me",
+        "返回",
+        "401",
+        "查什么"
+      ],
+      "diagnostic": "先确认你正在处理“api me 返回 401 查什么”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 troubleshoot-frontend-session 中的责任。",
+        "再用本课固定测试验证 刷新后变匿名怎样排查。"
+      ],
+      "example": "检查 Cookie 属性、请求是否携带凭据、会话到期撤销和 /api/me 响应。",
+      "answer": "检查 Cookie 属性、请求是否携带凭据、会话到期撤销和 /api/me 响应。",
+      "source": {
+        "label": "troubleshoot frontend session",
+        "href": "#troubleshoot-frontend-session"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "project-v12",
+      "lesson_id": "web-engineering-04",
+      "context_id": "project-dashboard-v12",
+      "question": "v0.12 为什么继续使用原生 TypeScript？",
+      "aliases": [
+        "这课为什么不引入 React"
+      ],
+      "keywords": [
+        "v0.12",
+        "为什么继续使用原生",
+        "TypeScript",
+        "这课为什么不引入",
+        "React"
+      ],
+      "diagnostic": "先确认你正在处理“这课为什么不引入 React”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 project-dashboard-v12 中的责任。",
+        "再用本课固定测试验证 v0.12 为什么继续使用原生 TypeScript。"
+      ],
+      "example": "本课目标是会话边界和测试链路，避免框架迁移掩盖状态问题。",
+      "answer": "本课目标是会话边界和测试链路，避免框架迁移掩盖状态问题。",
+      "source": {
+        "label": "project dashboard v12",
+        "href": "#project-dashboard-v12"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    }
+  ]
+}

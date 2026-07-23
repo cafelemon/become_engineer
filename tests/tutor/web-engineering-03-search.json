@@ -1,0 +1,105 @@
+{
+  "lesson_id": "web-engineering-03",
+  "cases": [
+    {
+      "query": "v0.11 最后交付什么",
+      "expected_card": "authorization-result"
+    },
+    {
+      "query": "所有权授权课做出什么",
+      "expected_card": "authorization-result"
+    },
+    {
+      "query": "owner_user_id 解决什么问题",
+      "expected_card": "owner-field"
+    },
+    {
+      "query": "学习记录怎样归属主体",
+      "expected_card": "owner-field"
+    },
+    {
+      "query": "为什么未声明动作默认拒绝",
+      "expected_card": "default-deny"
+    },
+    {
+      "query": "权限矩阵没有动作怎么办",
+      "expected_card": "default-deny"
+    },
+    {
+      "query": "learner 可以执行哪些动作",
+      "expected_card": "learner-role"
+    },
+    {
+      "query": "普通学习者权限边界是什么",
+      "expected_card": "learner-role"
+    },
+    {
+      "query": "operator 是不是管理员",
+      "expected_card": "operator-role"
+    },
+    {
+      "query": "操作员能读取所有学习记录吗",
+      "expected_card": "operator-role"
+    },
+    {
+      "query": "匿名请求为什么是 401",
+      "expected_card": "anonymous-401"
+    },
+    {
+      "query": "没有 Cookie 访问资源返回什么",
+      "expected_card": "anonymous-401"
+    },
+    {
+      "query": "有效身份越权为什么是 403",
+      "expected_card": "forbidden-403"
+    },
+    {
+      "query": "角色没有动作权限返回什么",
+      "expected_card": "forbidden-403"
+    },
+    {
+      "query": "他人资源为什么返回 404",
+      "expected_card": "hidden-404"
+    },
+    {
+      "query": "怎样减少资源枚举",
+      "expected_card": "hidden-404"
+    },
+    {
+      "query": "怎样运行 v0.11 授权测试",
+      "expected_card": "run-v11"
+    },
+    {
+      "query": "八项授权审计测试命令是什么",
+      "expected_card": "run-v11"
+    },
+    {
+      "query": "新增权限动作的正确顺序是什么",
+      "expected_card": "modify-matrix"
+    },
+    {
+      "query": "怎样扩展权限矩阵",
+      "expected_card": "modify-matrix"
+    },
+    {
+      "query": "审计日志应该记录什么",
+      "expected_card": "audit-redaction"
+    },
+    {
+      "query": "哪些认证值不能进入日志",
+      "expected_card": "audit-redaction"
+    },
+    {
+      "query": "v0.11 的权限证据有哪些",
+      "expected_card": "project-v11"
+    },
+    {
+      "query": "怎样证明资源隔离有效",
+      "expected_card": "project-v11"
+    }
+  ],
+  "unknown": [
+    "怎样在月球海里培育会唱歌的珊瑚",
+    "云朵编译成彩虹需要什么参数"
+  ]
+}
