@@ -1,0 +1,356 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "systems-engineering-01",
+    "title": "文件描述符、部分 I/O 与所有权",
+    "path": "learning-paths/systems-engineering/01-file-descriptors-partial-io-ownership/"
+  },
+  "contexts": [
+    {
+      "id": "overview-fd-partial-io",
+      "type": "overview",
+      "title": "部分 I/O 目标",
+      "anchor": "#overview-fd-partial-io"
+    },
+    {
+      "id": "concept-fd-ownership-layers",
+      "type": "concept",
+      "title": "描述符所有权层次",
+      "anchor": "#concept-fd-ownership-layers"
+    },
+    {
+      "id": "example-write-all-read-eof",
+      "type": "example",
+      "title": "完整读写循环",
+      "anchor": "#example-write-all-read-eof"
+    },
+    {
+      "id": "reproduce-fd-pipeline-v01",
+      "type": "reproduce",
+      "title": "运行真实 pipe",
+      "anchor": "#reproduce-fd-pipeline-v01"
+    },
+    {
+      "id": "concept-eintr-eof-errors",
+      "type": "concept",
+      "title": "返回值状态",
+      "anchor": "#concept-eintr-eof-errors"
+    },
+    {
+      "id": "modify-fd-failure-paths",
+      "type": "modify",
+      "title": "主动破坏 I/O",
+      "anchor": "#modify-fd-failure-paths"
+    },
+    {
+      "id": "troubleshoot-fd-pipeline",
+      "type": "troubleshoot",
+      "title": "描述符排错",
+      "anchor": "#troubleshoot-fd-pipeline"
+    },
+    {
+      "id": "project-diagnostic-service-v01",
+      "type": "project",
+      "title": "可诊断系统服务 v0.1",
+      "anchor": "#project-diagnostic-service-v01"
+    },
+    {
+      "id": "career-fd-ownership-review",
+      "type": "career",
+      "title": "描述符追问",
+      "anchor": "#career-fd-ownership-review"
+    }
+  ],
+  "cards": [
+    {
+      "id": "partial-io",
+      "lesson_id": "systems-engineering-01",
+      "context_id": "overview-fd-partial-io",
+      "question": "为什么一次 write 不等于完整消息？",
+      "aliases": [
+        "短写后应该怎么处理"
+      ],
+      "keywords": [
+        "为什么一次",
+        "write",
+        "不等于完整消息",
+        "短写后应该怎么处理"
+      ],
+      "diagnostic": "先判断“短写后应该怎么处理”属于进度、EOF、所有权还是平台边界。",
+      "hints": [
+        "查看 #overview-fd-partial-io 的图或返回值表。",
+        "再运行 test_fd_pipeline.py 核对“为什么一次 write 不等于完整消息”。"
+      ],
+      "example": "11 字节按最多 3 字节请求，需要 4 次写。",
+      "answer": "write 返回的是本次实际写入字节数，可能小于请求量；循环必须按返回值推进到全部完成。",
+      "source": {
+        "label": "部分 I/O 目标",
+        "href": "#overview-fd-partial-io"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "fd-layers",
+      "lesson_id": "systems-engineering-01",
+      "context_id": "concept-fd-ownership-layers",
+      "question": "描述符所有权有哪三层？",
+      "aliases": [
+        "int fd 内核对象和 C++ 对象是什么关系"
+      ],
+      "keywords": [
+        "描述符所有权有哪三层",
+        "int",
+        "fd",
+        "内核对象和",
+        "C++",
+        "对象是什么关系"
+      ],
+      "diagnostic": "先判断“int fd 内核对象和 C++ 对象是什么关系”属于进度、EOF、所有权还是平台边界。",
+      "hints": [
+        "查看 #concept-fd-ownership-layers 的图或返回值表。",
+        "再运行 test_fd_pipeline.py 核对“描述符所有权有哪三层”。"
+      ],
+      "example": "移动 UniqueFd 改变所有者，不复制内核资源。",
+      "answer": "整数位于进程描述符表，指向内核打开对象；C++ UniqueFd 负责唯一关闭责任。",
+      "source": {
+        "label": "描述符所有权层次",
+        "href": "#concept-fd-ownership-layers"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "unique-fd",
+      "lesson_id": "systems-engineering-01",
+      "context_id": "concept-fd-ownership-layers",
+      "question": "UniqueFd 为什么禁止复制？",
+      "aliases": [
+        "怎样避免两个对象重复 close"
+      ],
+      "keywords": [
+        "UniqueFd",
+        "为什么禁止复制",
+        "怎样避免两个对象重复",
+        "close"
+      ],
+      "diagnostic": "先判断“怎样避免两个对象重复 close”属于进度、EOF、所有权还是平台边界。",
+      "hints": [
+        "查看 #concept-fd-ownership-layers 的图或返回值表。",
+        "再运行 test_fd_pipeline.py 核对“UniqueFd 为什么禁止复制”。"
+      ],
+      "example": "移动后源对象保存 -1。",
+      "answer": "复制会制造两个关闭责任人；删除复制并只允许移动，使关闭责任始终唯一。",
+      "source": {
+        "label": "描述符所有权层次",
+        "href": "#concept-fd-ownership-layers"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "write-progress",
+      "lesson_id": "systems-engineering-01",
+      "context_id": "example-write-all-read-eof",
+      "question": "写循环为什么按 written 推进？",
+      "aliases": [
+        "offset 能不能加 request"
+      ],
+      "keywords": [
+        "写循环为什么按",
+        "written",
+        "推进",
+        "offset",
+        "能不能加",
+        "request"
+      ],
+      "diagnostic": "先判断“offset 能不能加 request”属于进度、EOF、所有权还是平台边界。",
+      "hints": [
+        "查看 #example-write-all-read-eof 的图或返回值表。",
+        "再运行 test_fd_pipeline.py 核对“写循环为什么按 written 推进”。"
+      ],
+      "example": "offset += static_cast<size_t>(written)。",
+      "answer": "只有系统调用返回的 written 字节已经交付，按请求量推进会在短写时跳过数据。",
+      "source": {
+        "label": "完整读写循环",
+        "href": "#example-write-all-read-eof"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "pipe-eof",
+      "lesson_id": "systems-engineering-01",
+      "context_id": "example-write-all-read-eof",
+      "question": "pipe 读端什么时候得到 EOF？",
+      "aliases": [
+        "为什么不关闭写端会一直等待"
+      ],
+      "keywords": [
+        "pipe",
+        "读端什么时候得到",
+        "EOF",
+        "为什么不关闭写端会一直等待"
+      ],
+      "diagnostic": "先判断“为什么不关闭写端会一直等待”属于进度、EOF、所有权还是平台边界。",
+      "hints": [
+        "查看 #example-write-all-read-eof 的图或返回值表。",
+        "再运行 test_fd_pipeline.py 核对“pipe 读端什么时候得到 EOF”。"
+      ],
+      "example": "moved_write.reset() 先关闭最后写端。",
+      "answer": "所有写端描述符关闭且缓冲数据读尽后，read 才返回 0 表示 EOF。",
+      "source": {
+        "label": "完整读写循环",
+        "href": "#example-write-all-read-eof"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "real-pipe",
+      "lesson_id": "systems-engineering-01",
+      "context_id": "reproduce-fd-pipeline-v01",
+      "question": "示例是否真的调用 POSIX pipe？",
+      "aliases": [
+        "fd pipeline 是不是 Mock"
+      ],
+      "keywords": [
+        "示例是否真的调用",
+        "POSIX",
+        "pipe",
+        "fd",
+        "pipeline",
+        "是不是",
+        "Mock"
+      ],
+      "diagnostic": "先判断“fd pipeline 是不是 Mock”属于进度、EOF、所有权还是平台边界。",
+      "hints": [
+        "查看 #reproduce-fd-pipeline-v01 的图或返回值表。",
+        "再运行 test_fd_pipeline.py 核对“示例是否真的调用 POSIX pipe”。"
+      ],
+      "example": "编译产物放在临时目录。",
+      "answer": "是。测试编译并运行调用 pipe、read、write、close 和 fcntl 的 C++20 程序。",
+      "source": {
+        "label": "运行真实 pipe",
+        "href": "#reproduce-fd-pipeline-v01"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "read-states",
+      "lesson_id": "systems-engineering-01",
+      "context_id": "concept-eintr-eof-errors",
+      "question": "read 的正数零和负一分别表示什么？",
+      "aliases": [
+        "怎样区分数据 EOF EINTR 和错误"
+      ],
+      "keywords": [
+        "read",
+        "的正数零和负一分别表示什么",
+        "怎样区分数据",
+        "EOF",
+        "EINTR",
+        "和错误"
+      ],
+      "diagnostic": "先判断“怎样区分数据 EOF EINTR 和错误”属于进度、EOF、所有权还是平台边界。",
+      "hints": [
+        "查看 #concept-eintr-eof-errors 的图或返回值表。",
+        "再运行 test_fd_pipeline.py 核对“read 的正数零和负一分别表示什么”。"
+      ],
+      "example": "不能把暂时没数据当成 EOF。",
+      "answer": "正数是收到字节，0 是 EOF，-1 且 EINTR 可重试，其他 -1 是错误。",
+      "source": {
+        "label": "返回值状态",
+        "href": "#concept-eintr-eof-errors"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "fd-reuse",
+      "lesson_id": "systems-engineering-01",
+      "context_id": "troubleshoot-fd-pipeline",
+      "question": "为什么关闭后不能长期依赖 fd 数值？",
+      "aliases": [
+        "描述符数字会不会被复用"
+      ],
+      "keywords": [
+        "为什么关闭后不能长期依赖",
+        "fd",
+        "数值",
+        "描述符数字会不会被复用"
+      ],
+      "diagnostic": "先判断“描述符数字会不会被复用”属于进度、EOF、所有权还是平台边界。",
+      "hints": [
+        "查看 #troubleshoot-fd-pipeline 的图或返回值表。",
+        "再运行 test_fd_pipeline.py 核对“为什么关闭后不能长期依赖 fd 数值”。"
+      ],
+      "example": "单一所有权并在关闭后立即置 -1。",
+      "answer": "close 后该整数槽位可被新资源复用，数值相同不代表还是原内核对象。",
+      "source": {
+        "label": "描述符排错",
+        "href": "#troubleshoot-fd-pipeline"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "platform-boundary",
+      "lesson_id": "systems-engineering-01",
+      "context_id": "troubleshoot-fd-pipeline",
+      "question": "POSIX 描述符是不是标准 C++？",
+      "aliases": [
+        "这套代码能否直接用于 Windows"
+      ],
+      "keywords": [
+        "POSIX",
+        "描述符是不是标准",
+        "C++",
+        "这套代码能否直接用于",
+        "Windows"
+      ],
+      "diagnostic": "先判断“这套代码能否直接用于 Windows”属于进度、EOF、所有权还是平台边界。",
+      "hints": [
+        "查看 #troubleshoot-fd-pipeline 的图或返回值表。",
+        "再运行 test_fd_pipeline.py 核对“POSIX 描述符是不是标准 C++”。"
+      ],
+      "example": "本课目标平台是 macOS 与 Linux。",
+      "answer": "不是。RAII 和移动属于 C++，pipe/read/write/close/fcntl 属于 POSIX；Windows 原生句柄需要另一套适配。",
+      "source": {
+        "label": "描述符排错",
+        "href": "#troubleshoot-fd-pipeline"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "diagnostic-v01",
+      "lesson_id": "systems-engineering-01",
+      "context_id": "project-diagnostic-service-v01",
+      "question": "可诊断系统服务 v0.1 交付什么？",
+      "aliases": [
+        "系统工程第一课项目产出是什么"
+      ],
+      "keywords": [
+        "可诊断系统服务",
+        "v0.1",
+        "交付什么",
+        "系统工程第一课项目产出是什么"
+      ],
+      "diagnostic": "先判断“系统工程第一课项目产出是什么”属于进度、EOF、所有权还是平台边界。",
+      "hints": [
+        "查看 #project-diagnostic-service-v01 的图或返回值表。",
+        "再运行 test_fd_pipeline.py 核对“可诊断系统服务 v0.1 交付什么”。"
+      ],
+      "example": "固定输出包含 roundtrip=pass 与 all_descriptors=closed。",
+      "answer": "交付真实 pipe、完整读写循环、移动专属 UniqueFd、关闭证据和 4 项编译运行测试。",
+      "source": {
+        "label": "可诊断系统服务 v0.1",
+        "href": "#project-diagnostic-service-v01"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "lesson_id": "systems-engineering-02",
+  "cases": [
+    {
+      "query": "信号处理器为什么只负责通知",
+      "expected_card": "handler-boundary"
+    },
+    {
+      "query": "能否在 handler 里直接清理业务",
+      "expected_card": "handler-boundary"
+    },
+    {
+      "query": "self-pipe 解决什么问题",
+      "expected_card": "self-pipe"
+    },
+    {
+      "query": "怎样把异步信号交给主循环",
+      "expected_card": "self-pipe"
+    },
+    {
+      "query": "信号处理器为什么保存 errno",
+      "expected_card": "errno-save"
+    },
+    {
+      "query": "handler 会不会覆盖被打断代码的错误",
+      "expected_card": "errno-save"
+    },
+    {
+      "query": "父进程为什么等待 ready marker",
+      "expected_card": "ready-handshake"
+    },
+    {
+      "query": "立即 kill worker 有什么竞态",
+      "expected_card": "ready-handshake"
+    },
+    {
+      "query": "测试是否使用真实 SIGTERM",
+      "expected_card": "real-signal"
+    },
+    {
+      "query": "监督器是不是 Mock",
+      "expected_card": "real-signal"
+    },
+    {
+      "query": "为什么退出后还要 waitpid",
+      "expected_card": "reap"
+    },
+    {
+      "query": "worker 结束是不是自动回收",
+      "expected_card": "reap"
+    },
+    {
+      "query": "监督器怎样区分三类结果",
+      "expected_card": "exit-mapping"
+    },
+    {
+      "query": "退出 0 1 2 分别代表什么",
+      "expected_card": "exit-mapping"
+    },
+    {
+      "query": "哪些操作不该放进信号处理器",
+      "expected_card": "signal-safe"
+    },
+    {
+      "query": "handler 里能否 iostream malloc waitpid",
+      "expected_card": "signal-safe"
+    },
+    {
+      "query": "self-pipe 是否精确记录多次信号",
+      "expected_card": "notification-coalescing"
+    },
+    {
+      "query": "连续 SIGTERM 会不会丢计数",
+      "expected_card": "notification-coalescing"
+    },
+    {
+      "query": "可诊断系统服务 v0.2 新增什么",
+      "expected_card": "diagnostic-v02"
+    },
+    {
+      "query": "系统工程第二课项目增量是什么",
+      "expected_card": "diagnostic-v02"
+    }
+  ],
+  "unknown": [
+    "怎样向月亮发送优雅停止",
+    "鲸鱼进程退出后会变成云吗"
+  ]
+}

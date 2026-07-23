@@ -1,0 +1,89 @@
+{
+  "lesson_id": "algorithm-deepening-05",
+  "cases": [
+    {
+      "query": "回溯状态包含什么",
+      "expected_card": "backtrack-state"
+    },
+    {
+      "query": "start total path 各自作用",
+      "expected_card": "backtrack-state"
+    },
+    {
+      "query": "为什么选择后必须撤销",
+      "expected_card": "choose-undo"
+    },
+    {
+      "query": "path pop 不能漏掉",
+      "expected_card": "choose-undo"
+    },
+    {
+      "query": "怎样保证每个位置最多用一次",
+      "expected_card": "position-once"
+    },
+    {
+      "query": "递归下一层 start 怎么传",
+      "expected_card": "position-once"
+    },
+    {
+      "query": "重复值为什么只在同层跳过",
+      "expected_card": "same-level-duplicate"
+    },
+    {
+      "query": "index 大于 start 的判断",
+      "expected_card": "same-level-duplicate"
+    },
+    {
+      "query": "超过目标为什么能剪整个后缀",
+      "expected_card": "suffix-prune"
+    },
+    {
+      "query": "break 需要什么前提",
+      "expected_card": "suffix-prune"
+    },
+    {
+      "query": "目标为零返回什么",
+      "expected_card": "zero-target"
+    },
+    {
+      "query": "空组合是不是解",
+      "expected_card": "zero-target"
+    },
+    {
+      "query": "无解怎样表示",
+      "expected_card": "no-solution"
+    },
+    {
+      "query": "回溯没有找到组合怎么办",
+      "expected_card": "no-solution"
+    },
+    {
+      "query": "节点计数说明什么",
+      "expected_card": "node-count"
+    },
+    {
+      "query": "剪枝数量能证明正确吗",
+      "expected_card": "node-count"
+    },
+    {
+      "query": "解很多时怎样受控停止",
+      "expected_card": "output-bound"
+    },
+    {
+      "query": "回溯输出爆炸怎么处理",
+      "expected_card": "output-bound"
+    },
+    {
+      "query": "约束模式实验 v0.5 新增什么",
+      "expected_card": "pattern-v05"
+    },
+    {
+      "query": "算法深化第五课项目是什么",
+      "expected_card": "pattern-v05"
+    }
+  ],
+  "unknown": [
+    "怎样给木桌涂保护油",
+    "海豹如何在冰面休息"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "lesson_id": "direction-choice-01",
+  "cases": [
+    {
+      "query": "第一个可验证项目要通过什么门槛",
+      "expected_card": "project-gate"
+    },
+    {
+      "query": "项目做完的标准是什么",
+      "expected_card": "project-gate"
+    },
+    {
+      "query": "检查器能决定我适合什么职业吗",
+      "expected_card": "not-career-test"
+    },
+    {
+      "query": "方向排序是不是职业结论",
+      "expected_card": "not-career-test"
+    },
+    {
+      "query": "项目为什么需要代码测试说明和复盘",
+      "expected_card": "four-evidence"
+    },
+    {
+      "query": "四类证据分别证明什么",
+      "expected_card": "four-evidence"
+    },
+    {
+      "query": "artifact claim 应该怎么写",
+      "expected_card": "specific-claim"
+    },
+    {
+      "query": "证据声明为什么不能写学会了 Python",
+      "expected_card": "specific-claim"
+    },
+    {
+      "query": "小项目也能作为项目证据吗",
+      "expected_card": "small-project"
+    },
+    {
+      "query": "项目是不是越大越好",
+      "expected_card": "small-project"
+    },
+    {
+      "query": "怎样运行方向选择证据检查器",
+      "expected_card": "run-checker"
+    },
+    {
+      "query": "portfolio_check 命令是什么",
+      "expected_card": "run-checker"
+    },
+    {
+      "query": "为什么证据路径不能逃出工作区",
+      "expected_card": "workspace-path"
+    },
+    {
+      "query": "为什么拒绝绝对路径和上级目录",
+      "expected_card": "workspace-path"
+    },
+    {
+      "query": "两周方向实验应该怎样设计",
+      "expected_card": "route-trial"
+    },
+    {
+      "query": "方向试学要记录什么",
+      "expected_card": "route-trial"
+    },
+    {
+      "query": "missing evidence kinds 怎么修复",
+      "expected_card": "missing-evidence"
+    },
+    {
+      "query": "检查器说缺少 reflection 怎么办",
+      "expected_card": "missing-evidence"
+    },
+    {
+      "query": "验证档案 v0.1 最后保存什么",
+      "expected_card": "portfolio-v01"
+    },
+    {
+      "query": "方向选择课的项目产出有哪些",
+      "expected_card": "portfolio-v01"
+    }
+  ],
+  "unknown": [
+    "怎样把海浪编译成会发光的积木",
+    "月球盆栽应该使用什么网络协议"
+  ]
+}

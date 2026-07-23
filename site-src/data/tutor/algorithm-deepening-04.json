@@ -1,0 +1,330 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "algorithm-deepening-04",
+    "title": "单调栈、单调队列与支配关系",
+    "path": "learning-paths/algorithm-deepening/04-monotonic-stack-queue-dominance/"
+  },
+  "contexts": [
+    {
+      "id": "overview-monotonic-structures",
+      "type": "overview",
+      "title": "单调结构目标",
+      "anchor": "#overview-monotonic-structures"
+    },
+    {
+      "id": "concept-stack-resolution",
+      "type": "concept",
+      "title": "单调栈结算",
+      "anchor": "#concept-stack-resolution"
+    },
+    {
+      "id": "example-deque-dominance",
+      "type": "example",
+      "title": "队列支配",
+      "anchor": "#example-deque-dominance"
+    },
+    {
+      "id": "reproduce-monotonic-v04",
+      "type": "reproduce",
+      "title": "运行单调实验",
+      "anchor": "#reproduce-monotonic-v04"
+    },
+    {
+      "id": "concept-amortized-linear",
+      "type": "concept",
+      "title": "摊还线性",
+      "anchor": "#concept-amortized-linear"
+    },
+    {
+      "id": "modify-monotonic-contract",
+      "type": "modify",
+      "title": "修改单调契约",
+      "anchor": "#modify-monotonic-contract"
+    },
+    {
+      "id": "troubleshoot-monotonic",
+      "type": "troubleshoot",
+      "title": "单调结构排错",
+      "anchor": "#troubleshoot-monotonic"
+    },
+    {
+      "id": "project-pattern-lab-v04",
+      "type": "project",
+      "title": "约束模式实验 v0.4",
+      "anchor": "#project-pattern-lab-v04"
+    },
+    {
+      "id": "career-monotonic-dominance",
+      "type": "career",
+      "title": "单调结构追问",
+      "anchor": "#career-monotonic-dominance"
+    }
+  ],
+  "cards": [
+    {
+      "id": "stack-purpose",
+      "lesson_id": "algorithm-deepening-04",
+      "context_id": "concept-stack-resolution",
+      "question": "单调栈保存什么候选？",
+      "aliases": [
+        "栈里为什么是下标"
+      ],
+      "keywords": [
+        "单调栈保存什么候选",
+        "栈里为什么是下标"
+      ],
+      "diagnostic": "先判断“栈里为什么是下标”涉及严格比较、支配淘汰还是窗口过期。",
+      "hints": [
+        "查看 #concept-stack-resolution 的候选规则。",
+        "运行 test_monotonic_structures_trace.py 核对“单调栈保存什么候选”。"
+      ],
+      "example": "扫描结束仍在栈内则答案 none。",
+      "answer": "保存尚未遇到右侧严格更大值的下标；下标同时保留位置、值和顺序。",
+      "source": {
+        "label": "单调栈结算",
+        "href": "#concept-stack-resolution"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "strict-compare",
+      "lesson_id": "algorithm-deepening-04",
+      "context_id": "concept-stack-resolution",
+      "question": "严格更大为什么不能弹出相等值？",
+      "aliases": [
+        "比较符小于还是小于等于"
+      ],
+      "keywords": [
+        "严格更大为什么不能弹出相等值",
+        "比较符小于还是小于等于"
+      ],
+      "diagnostic": "先判断“比较符小于还是小于等于”涉及严格比较、支配淘汰还是窗口过期。",
+      "hints": [
+        "查看 #concept-stack-resolution 的候选规则。",
+        "运行 test_monotonic_structures_trace.py 核对“严格更大为什么不能弹出相等值”。"
+      ],
+      "example": "两个值 2 都由后续 4 结算。",
+      "answer": "相等不满足严格更大，因此只有栈顶值小于当前值时才能结算。",
+      "source": {
+        "label": "单调栈结算",
+        "href": "#concept-stack-resolution"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "deque-front",
+      "lesson_id": "algorithm-deepening-04",
+      "context_id": "example-deque-dominance",
+      "question": "单调队列队首表示什么？",
+      "aliases": [
+        "窗口最大值在哪里"
+      ],
+      "keywords": [
+        "单调队列队首表示什么",
+        "窗口最大值在哪里"
+      ],
+      "diagnostic": "先判断“窗口最大值在哪里”涉及严格比较、支配淘汰还是窗口过期。",
+      "hints": [
+        "查看 #example-deque-dominance 的候选规则。",
+        "运行 test_monotonic_structures_trace.py 核对“单调队列队首表示什么”。"
+      ],
+      "example": "宽度 3 输出 2,4,4。",
+      "answer": "清除过期下标后，值单调递减的队首就是当前窗口最大值下标。",
+      "source": {
+        "label": "队列支配",
+        "href": "#example-deque-dominance"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "back-dominance",
+      "lesson_id": "algorithm-deepening-04",
+      "context_id": "example-deque-dominance",
+      "question": "为什么能从队尾删除不大于新值的候选？",
+      "aliases": [
+        "旧候选为何永远回不来"
+      ],
+      "keywords": [
+        "为什么能从队尾删除不大于新值的候选",
+        "旧候选为何永远回不来"
+      ],
+      "diagnostic": "先判断“旧候选为何永远回不来”涉及严格比较、支配淘汰还是窗口过期。",
+      "hints": [
+        "查看 #example-deque-dominance 的候选规则。",
+        "运行 test_monotonic_structures_trace.py 核对“为什么能从队尾删除不大于新值的候选”。"
+      ],
+      "example": "固定样例尾部淘汰 3 次。",
+      "answer": "新值更晚过期且不小，旧候选在未来任何共同窗口都不可能胜出。",
+      "source": {
+        "label": "队列支配",
+        "href": "#example-deque-dominance"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "front-expiry",
+      "lesson_id": "algorithm-deepening-04",
+      "context_id": "example-deque-dominance",
+      "question": "队首何时过期？",
+      "aliases": [
+        "窗口左边界怎样判断"
+      ],
+      "keywords": [
+        "队首何时过期",
+        "窗口左边界怎样判断"
+      ],
+      "diagnostic": "先判断“窗口左边界怎样判断”涉及严格比较、支配淘汰还是窗口过期。",
+      "hints": [
+        "查看 #example-deque-dominance 的候选规则。",
+        "运行 test_monotonic_structures_trace.py 核对“队首何时过期”。"
+      ],
+      "example": "存值而不存下标无法判断过期。",
+      "answer": "当下标 `<= index-width` 时已不属于当前窗口，必须从头部移除。",
+      "source": {
+        "label": "队列支配",
+        "href": "#example-deque-dominance"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "amortized",
+      "lesson_id": "algorithm-deepening-04",
+      "context_id": "concept-amortized-linear",
+      "question": "嵌套 while 为什么仍是线性？",
+      "aliases": [
+        "单调结构怎样摊还分析"
+      ],
+      "keywords": [
+        "嵌套",
+        "while",
+        "为什么仍是线性",
+        "单调结构怎样摊还分析"
+      ],
+      "diagnostic": "先判断“单调结构怎样摊还分析”涉及严格比较、支配淘汰还是窗口过期。",
+      "hints": [
+        "查看 #concept-amortized-linear 的候选规则。",
+        "运行 test_monotonic_structures_trace.py 核对“嵌套 while 为什么仍是线性”。"
+      ],
+      "example": "不能把每轮 while 上限直接相乘。",
+      "answer": "每个下标入结构一次、离开至多一次，全部弹出次数总计 O(n)。",
+      "source": {
+        "label": "摊还线性",
+        "href": "#concept-amortized-linear"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "equal-max",
+      "lesson_id": "algorithm-deepening-04",
+      "context_id": "modify-monotonic-contract",
+      "question": "重复最大值保留早值还是新值？",
+      "aliases": [
+        "尾部相等值怎样处理"
+      ],
+      "keywords": [
+        "重复最大值保留早值还是新值",
+        "尾部相等值怎样处理"
+      ],
+      "diagnostic": "先判断“尾部相等值怎样处理”涉及严格比较、支配淘汰还是窗口过期。",
+      "hints": [
+        "查看 #modify-monotonic-contract 的候选规则。",
+        "运行 test_monotonic_structures_trace.py 核对“重复最大值保留早值还是新值”。"
+      ],
+      "example": "只输出数值时两者都可正确。",
+      "answer": "由输出下标契约决定；用 <= 保留更新值，用 < 保留更早相等值。",
+      "source": {
+        "label": "修改单调契约",
+        "href": "#modify-monotonic-contract"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "oversized-window",
+      "lesson_id": "algorithm-deepening-04",
+      "context_id": "troubleshoot-monotonic",
+      "question": "窗口宽度大于数组怎样处理？",
+      "aliases": [
+        "没有完整窗口返回什么"
+      ],
+      "keywords": [
+        "窗口宽度大于数组怎样处理",
+        "没有完整窗口返回什么"
+      ],
+      "diagnostic": "先判断“没有完整窗口返回什么”涉及严格比较、支配淘汰还是窗口过期。",
+      "hints": [
+        "查看 #troubleshoot-monotonic 的候选规则。",
+        "运行 test_monotonic_structures_trace.py 核对“窗口宽度大于数组怎样处理”。"
+      ],
+      "example": "边界契约必须写进测试。",
+      "answer": "本课返回空结果；宽度非正则明确拒绝。",
+      "source": {
+        "label": "单调结构排错",
+        "href": "#troubleshoot-monotonic"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "stack-none",
+      "lesson_id": "algorithm-deepening-04",
+      "context_id": "troubleshoot-monotonic",
+      "question": "没有右侧更大值怎样表示？",
+      "aliases": [
+        "未结算栈元素怎么办"
+      ],
+      "keywords": [
+        "没有右侧更大值怎样表示",
+        "未结算栈元素怎么办"
+      ],
+      "diagnostic": "先判断“未结算栈元素怎么办”涉及严格比较、支配淘汰还是窗口过期。",
+      "hints": [
+        "查看 #troubleshoot-monotonic 的候选规则。",
+        "运行 test_monotonic_structures_trace.py 核对“没有右侧更大值怎样表示”。"
+      ],
+      "example": "4 和末尾 3 的答案为 none。",
+      "answer": "扫描结束留下的下标保持 None，不伪造哨兵值。",
+      "source": {
+        "label": "单调结构排错",
+        "href": "#troubleshoot-monotonic"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "pattern-v04",
+      "lesson_id": "algorithm-deepening-04",
+      "context_id": "project-pattern-lab-v04",
+      "question": "约束模式实验 v0.4 新增什么？",
+      "aliases": [
+        "算法深化第四课项目是什么"
+      ],
+      "keywords": [
+        "约束模式实验",
+        "v0.4",
+        "新增什么",
+        "算法深化第四课项目是什么"
+      ],
+      "diagnostic": "先判断“算法深化第四课项目是什么”涉及严格比较、支配淘汰还是窗口过期。",
+      "hints": [
+        "查看 #project-pattern-lab-v04 的候选规则。",
+        "运行 test_monotonic_structures_trace.py 核对“约束模式实验 v0.4 新增什么”。"
+      ],
+      "example": "固定不变量 dominated-candidates-never-return。",
+      "answer": "新增下一严格更大值、窗口最大值、支配/过期计数与双语言一致报告。",
+      "source": {
+        "label": "约束模式实验 v0.4",
+        "href": "#project-pattern-lab-v04"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

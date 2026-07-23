@@ -1,0 +1,89 @@
+{
+  "lesson_id": "algorithm-deepening-04",
+  "cases": [
+    {
+      "query": "单调栈保存什么候选",
+      "expected_card": "stack-purpose"
+    },
+    {
+      "query": "栈里为什么是下标",
+      "expected_card": "stack-purpose"
+    },
+    {
+      "query": "严格更大为什么不能弹出相等值",
+      "expected_card": "strict-compare"
+    },
+    {
+      "query": "比较符小于还是小于等于",
+      "expected_card": "strict-compare"
+    },
+    {
+      "query": "单调队列队首表示什么",
+      "expected_card": "deque-front"
+    },
+    {
+      "query": "窗口最大值在哪里",
+      "expected_card": "deque-front"
+    },
+    {
+      "query": "为什么能从队尾删除不大于新值的候选",
+      "expected_card": "back-dominance"
+    },
+    {
+      "query": "旧候选为何永远回不来",
+      "expected_card": "back-dominance"
+    },
+    {
+      "query": "队首何时过期",
+      "expected_card": "front-expiry"
+    },
+    {
+      "query": "窗口左边界怎样判断",
+      "expected_card": "front-expiry"
+    },
+    {
+      "query": "嵌套 while 为什么仍是线性",
+      "expected_card": "amortized"
+    },
+    {
+      "query": "单调结构怎样摊还分析",
+      "expected_card": "amortized"
+    },
+    {
+      "query": "重复最大值保留早值还是新值",
+      "expected_card": "equal-max"
+    },
+    {
+      "query": "尾部相等值怎样处理",
+      "expected_card": "equal-max"
+    },
+    {
+      "query": "窗口宽度大于数组怎样处理",
+      "expected_card": "oversized-window"
+    },
+    {
+      "query": "没有完整窗口返回什么",
+      "expected_card": "oversized-window"
+    },
+    {
+      "query": "没有右侧更大值怎样表示",
+      "expected_card": "stack-none"
+    },
+    {
+      "query": "未结算栈元素怎么办",
+      "expected_card": "stack-none"
+    },
+    {
+      "query": "约束模式实验 v0.4 新增什么",
+      "expected_card": "pattern-v04"
+    },
+    {
+      "query": "算法深化第四课项目是什么",
+      "expected_card": "pattern-v04"
+    }
+  ],
+  "unknown": [
+    "怎样调一杯柠檬苏打",
+    "候鸟为什么排成人字形"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "lesson_id": "algorithm-deepening-01",
+  "cases": [
+    {
+      "query": "双指针求两数和为什么要求有序",
+      "expected_card": "sorted-precondition"
+    },
+    {
+      "query": "乱序时为什么会漏解",
+      "expected_card": "sorted-precondition"
+    },
+    {
+      "query": "当前和过大为什么移动右指针",
+      "expected_card": "move-right"
+    },
+    {
+      "query": "sum 大于 target 排除什么",
+      "expected_card": "move-right"
+    },
+    {
+      "query": "当前和过小为什么移动左指针",
+      "expected_card": "move-left"
+    },
+    {
+      "query": "sum 小于 target 排除什么",
+      "expected_card": "move-left"
+    },
+    {
+      "query": "双指针循环不变量是什么",
+      "expected_card": "loop-invariant"
+    },
+    {
+      "query": "指针外候选怎样证明",
+      "expected_card": "loop-invariant"
+    },
+    {
+      "query": "为什么循环条件是 left 小于 right",
+      "expected_card": "distinct-indices"
+    },
+    {
+      "query": "能否用同一元素两次",
+      "expected_card": "distinct-indices"
+    },
+    {
+      "query": "本课返回哪一组多解答案",
+      "expected_card": "first-match"
+    },
+    {
+      "query": "是否保证字典序最小",
+      "expected_card": "first-match"
+    },
+    {
+      "query": "双指针为什么是 O(n)",
+      "expected_card": "linear-cost"
+    },
+    {
+      "query": "最多比较多少次",
+      "expected_card": "linear-cost"
+    },
+    {
+      "query": "怎样返回全部不重复值对",
+      "expected_card": "all-pairs"
+    },
+    {
+      "query": "匹配后怎样跳过重复值",
+      "expected_card": "all-pairs"
+    },
+    {
+      "query": "乱序数组要原下标怎么办",
+      "expected_card": "original-indices"
+    },
+    {
+      "query": "排序后如何保留位置",
+      "expected_card": "original-indices"
+    },
+    {
+      "query": "约束模式实验 v0.1 新增什么",
+      "expected_card": "pattern-v01"
+    },
+    {
+      "query": "算法深化第一课项目是什么",
+      "expected_card": "pattern-v01"
+    }
+  ],
+  "unknown": [
+    "怎样给咖啡豆选择烘焙度",
+    "海星会不会在沙滩散步"
+  ]
+}

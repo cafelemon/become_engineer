@@ -1,0 +1,89 @@
+{
+  "lesson_id": "algorithm-deepening-10",
+  "cases": [
+    {
+      "query": "Trie 节点代表什么",
+      "expected_card": "trie-path"
+    },
+    {
+      "query": "前缀树怎样共享路径",
+      "expected_card": "trie-path"
+    },
+    {
+      "query": "路径存在为什么不等于完整词",
+      "expected_card": "terminal"
+    },
+    {
+      "query": "te 为什么不是词",
+      "expected_card": "terminal"
+    },
+    {
+      "query": "怎样让 Trie 补全确定",
+      "expected_card": "autocomplete"
+    },
+    {
+      "query": "补全顺序如何固定",
+      "expected_card": "autocomplete"
+    },
+    {
+      "query": "重复插入为何不增加节点",
+      "expected_card": "duplicate"
+    },
+    {
+      "query": "Trie 插入幂等边界",
+      "expected_card": "duplicate"
+    },
+    {
+      "query": "KMP prefix 值代表什么",
+      "expected_card": "prefix-meaning"
+    },
+    {
+      "query": "最长真前后缀是什么",
+      "expected_card": "prefix-meaning"
+    },
+    {
+      "query": "KMP 失配时为什么沿 prefix 回退",
+      "expected_card": "fallback"
+    },
+    {
+      "query": "怎样避免文本回退",
+      "expected_card": "fallback"
+    },
+    {
+      "query": "KMP 怎样保留重叠匹配",
+      "expected_card": "overlap"
+    },
+    {
+      "query": "命中后 matched 怎么处理",
+      "expected_card": "overlap"
+    },
+    {
+      "query": "空模式怎样处理",
+      "expected_card": "empty-pattern"
+    },
+    {
+      "query": "KMP 空字符串契约",
+      "expected_card": "empty-pattern"
+    },
+    {
+      "query": "Python 和 C++ 字符下标一定相同吗",
+      "expected_card": "unicode-boundary"
+    },
+    {
+      "query": "Unicode 码点与 UTF-8 字节",
+      "expected_card": "unicode-boundary"
+    },
+    {
+      "query": "约束模式实验 v1.0 完成什么",
+      "expected_card": "pattern-v10"
+    },
+    {
+      "query": "算法深化第十课项目是什么",
+      "expected_card": "pattern-v10"
+    }
+  ],
+  "unknown": [
+    "陶瓷杯裂纹怎样修复",
+    "南极企鹅有哪些种类"
+  ]
+}

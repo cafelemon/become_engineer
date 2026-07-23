@@ -1,0 +1,89 @@
+{
+  "lesson_id": "algorithm-deepening-06",
+  "cases": [
+    {
+      "query": "本课优化目标是什么",
+      "expected_card": "objective-count"
+    },
+    {
+      "query": "区间调度最大化什么",
+      "expected_card": "objective-count"
+    },
+    {
+      "query": "两个端点相接的区间冲突吗",
+      "expected_card": "half-open-touch"
+    },
+    {
+      "query": "半开区间怎样判断兼容",
+      "expected_card": "half-open-touch"
+    },
+    {
+      "query": "正确的局部选择规则是什么",
+      "expected_card": "finish-rule"
+    },
+    {
+      "query": "区间按什么排序",
+      "expected_card": "finish-rule"
+    },
+    {
+      "query": "交换论证怎样证明首选安全",
+      "expected_card": "exchange-proof"
+    },
+    {
+      "query": "为什么最早结束不损失最优解",
+      "expected_card": "exchange-proof"
+    },
+    {
+      "query": "最早开始为什么错误",
+      "expected_card": "earliest-start-counterexample"
+    },
+    {
+      "query": "3 对 4 的贪心反例",
+      "expected_card": "earliest-start-counterexample"
+    },
+    {
+      "query": "结束时间相同时怎样稳定输出",
+      "expected_card": "tie-determinism"
+    },
+    {
+      "query": "贪心排序并列键",
+      "expected_card": "tie-determinism"
+    },
+    {
+      "query": "穷举在实验中做什么",
+      "expected_card": "bruteforce-oracle"
+    },
+    {
+      "query": "为什么不能用穷举做生产算法",
+      "expected_card": "bruteforce-oracle"
+    },
+    {
+      "query": "加入区间价值后还能最早结束吗",
+      "expected_card": "weighted-failure"
+    },
+    {
+      "query": "带权区间为什么需要 DP",
+      "expected_card": "weighted-failure"
+    },
+    {
+      "query": "贪心区间调度复杂度是多少",
+      "expected_card": "greedy-complexity"
+    },
+    {
+      "query": "排序和扫描分别多快",
+      "expected_card": "greedy-complexity"
+    },
+    {
+      "query": "约束模式实验 v0.6 新增什么",
+      "expected_card": "pattern-v06"
+    },
+    {
+      "query": "算法深化第六课项目是什么",
+      "expected_card": "pattern-v06"
+    }
+  ],
+  "unknown": [
+    "怎样修理漏水的花洒",
+    "候鸟为什么会排成人字形"
+  ]
+}

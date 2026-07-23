@@ -1,0 +1,353 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "systems-engineering-02",
+    "title": "信号、进程监督与优雅停止",
+    "path": "learning-paths/systems-engineering/02-signals-process-supervision-graceful-shutdown/"
+  },
+  "contexts": [
+    {
+      "id": "overview-signal-supervision",
+      "type": "overview",
+      "title": "信号监督目标",
+      "anchor": "#overview-signal-supervision"
+    },
+    {
+      "id": "concept-async-signal-boundary",
+      "type": "concept",
+      "title": "异步信号边界",
+      "anchor": "#concept-async-signal-boundary"
+    },
+    {
+      "id": "example-self-pipe-sequence",
+      "type": "example",
+      "title": "self-pipe 时序",
+      "anchor": "#example-self-pipe-sequence"
+    },
+    {
+      "id": "reproduce-signal-supervisor-v02",
+      "type": "reproduce",
+      "title": "运行真实信号",
+      "anchor": "#reproduce-signal-supervisor-v02"
+    },
+    {
+      "id": "concept-supervision-states",
+      "type": "concept",
+      "title": "监督状态",
+      "anchor": "#concept-supervision-states"
+    },
+    {
+      "id": "modify-signal-failures",
+      "type": "modify",
+      "title": "制造监督失败",
+      "anchor": "#modify-signal-failures"
+    },
+    {
+      "id": "troubleshoot-signal-supervisor",
+      "type": "troubleshoot",
+      "title": "停止排错",
+      "anchor": "#troubleshoot-signal-supervisor"
+    },
+    {
+      "id": "project-diagnostic-service-v02",
+      "type": "project",
+      "title": "可诊断系统服务 v0.2",
+      "anchor": "#project-diagnostic-service-v02"
+    },
+    {
+      "id": "career-graceful-shutdown-review",
+      "type": "career",
+      "title": "优雅停止追问",
+      "anchor": "#career-graceful-shutdown-review"
+    }
+  ],
+  "cards": [
+    {
+      "id": "handler-boundary",
+      "lesson_id": "systems-engineering-02",
+      "context_id": "overview-signal-supervision",
+      "question": "信号处理器为什么只负责通知？",
+      "aliases": [
+        "能否在 handler 里直接清理业务"
+      ],
+      "keywords": [
+        "信号处理器为什么只负责通知",
+        "能否在",
+        "handler",
+        "里直接清理业务"
+      ],
+      "diagnostic": "先判断“能否在 handler 里直接清理业务”位于信号边界、主循环还是回收阶段。",
+      "hints": [
+        "查看 #overview-signal-supervision 的时序或状态表。",
+        "再运行 test_signal_supervisor.py 核对“信号处理器为什么只负责通知”。"
+      ],
+      "example": "固定输出 signal_handler=notification-only。",
+      "answer": "信号可能打断任意代码，复杂库调用可能死锁；处理器应只做 signal-safe 通知，让主循环清理。",
+      "source": {
+        "label": "信号监督目标",
+        "href": "#overview-signal-supervision"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "self-pipe",
+      "lesson_id": "systems-engineering-02",
+      "context_id": "concept-async-signal-boundary",
+      "question": "self-pipe 解决什么问题？",
+      "aliases": [
+        "怎样把异步信号交给主循环"
+      ],
+      "keywords": [
+        "self-pipe",
+        "解决什么问题",
+        "怎样把异步信号交给主循环"
+      ],
+      "diagnostic": "先判断“怎样把异步信号交给主循环”位于信号边界、主循环还是回收阶段。",
+      "hints": [
+        "查看 #concept-async-signal-boundary 的时序或状态表。",
+        "再运行 test_signal_supervisor.py 核对“self-pipe 解决什么问题”。"
+      ],
+      "example": "父子进程各使用自己的 self-pipe。",
+      "answer": "处理器向 pipe 写标记，阻塞在普通 read 或事件循环中的代码被唤醒并在正常上下文处理状态。",
+      "source": {
+        "label": "异步信号边界",
+        "href": "#concept-async-signal-boundary"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "errno-save",
+      "lesson_id": "systems-engineering-02",
+      "context_id": "concept-async-signal-boundary",
+      "question": "信号处理器为什么保存 errno？",
+      "aliases": [
+        "handler 会不会覆盖被打断代码的错误"
+      ],
+      "keywords": [
+        "信号处理器为什么保存",
+        "errno",
+        "handler",
+        "会不会覆盖被打断代码的错误"
+      ],
+      "diagnostic": "先判断“handler 会不会覆盖被打断代码的错误”位于信号边界、主循环还是回收阶段。",
+      "hints": [
+        "查看 #concept-async-signal-boundary 的时序或状态表。",
+        "再运行 test_signal_supervisor.py 核对“信号处理器为什么保存 errno”。"
+      ],
+      "example": "进入时 saved_errno，退出前恢复。",
+      "answer": "处理器调用 write 可能改变 errno，保存并恢复可避免污染被打断控制流的诊断状态。",
+      "source": {
+        "label": "异步信号边界",
+        "href": "#concept-async-signal-boundary"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "ready-handshake",
+      "lesson_id": "systems-engineering-02",
+      "context_id": "example-self-pipe-sequence",
+      "question": "父进程为什么等待 ready marker？",
+      "aliases": [
+        "立即 kill worker 有什么竞态"
+      ],
+      "keywords": [
+        "父进程为什么等待",
+        "ready",
+        "marker",
+        "立即",
+        "kill",
+        "worker",
+        "有什么竞态"
+      ],
+      "diagnostic": "先判断“立即 kill worker 有什么竞态”位于信号边界、主循环还是回收阶段。",
+      "hints": [
+        "查看 #example-self-pipe-sequence 的时序或状态表。",
+        "再运行 test_signal_supervisor.py 核对“父进程为什么等待 ready marker”。"
+      ],
+      "example": "worker 安装 sigaction 后才写 ready。",
+      "answer": "ready 证明子进程已安装处理器；否则 SIGTERM 可能按默认动作直接终止 worker。",
+      "source": {
+        "label": "self-pipe 时序",
+        "href": "#example-self-pipe-sequence"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "real-signal",
+      "lesson_id": "systems-engineering-02",
+      "context_id": "reproduce-signal-supervisor-v02",
+      "question": "测试是否使用真实 SIGTERM？",
+      "aliases": [
+        "监督器是不是 Mock"
+      ],
+      "keywords": [
+        "测试是否使用真实",
+        "SIGTERM",
+        "监督器是不是",
+        "Mock"
+      ],
+      "diagnostic": "先判断“监督器是不是 Mock”位于信号边界、主循环还是回收阶段。",
+      "hints": [
+        "查看 #reproduce-signal-supervisor-v02 的时序或状态表。",
+        "再运行 test_signal_supervisor.py 核对“测试是否使用真实 SIGTERM”。"
+      ],
+      "example": "父进程向自身和 fork 返回的 worker PID 发 SIGTERM。",
+      "answer": "是。程序调用 fork、kill、sigaction、pipe 和 waitpid，外层测试只负责编译、运行与超时。",
+      "source": {
+        "label": "运行真实信号",
+        "href": "#reproduce-signal-supervisor-v02"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "reap",
+      "lesson_id": "systems-engineering-02",
+      "context_id": "concept-supervision-states",
+      "question": "为什么退出后还要 waitpid？",
+      "aliases": [
+        "worker 结束是不是自动回收"
+      ],
+      "keywords": [
+        "为什么退出后还要",
+        "waitpid",
+        "worker",
+        "结束是不是自动回收"
+      ],
+      "diagnostic": "先判断“worker 结束是不是自动回收”位于信号边界、主循环还是回收阶段。",
+      "hints": [
+        "查看 #concept-supervision-states 的时序或状态表。",
+        "再运行 test_signal_supervisor.py 核对“为什么退出后还要 waitpid”。"
+      ],
+      "example": "固定输出 worker_reaped=yes。",
+      "answer": "父进程必须读取子进程退出状态才能回收资源并避免僵尸，同时保留失败证据。",
+      "source": {
+        "label": "监督状态",
+        "href": "#concept-supervision-states"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "exit-mapping",
+      "lesson_id": "systems-engineering-02",
+      "context_id": "concept-supervision-states",
+      "question": "监督器怎样区分三类结果？",
+      "aliases": [
+        "退出 0 1 2 分别代表什么"
+      ],
+      "keywords": [
+        "监督器怎样区分三类结果",
+        "退出",
+        "0",
+        "1",
+        "2",
+        "分别代表什么"
+      ],
+      "diagnostic": "先判断“退出 0 1 2 分别代表什么”位于信号边界、主循环还是回收阶段。",
+      "hints": [
+        "查看 #concept-supervision-states 的时序或状态表。",
+        "再运行 test_signal_supervisor.py 核对“监督器怎样区分三类结果”。"
+      ],
+      "example": "--child-exit 7 让父进程返回 1。",
+      "answer": "0 表示正常停止，1 表示已回收但 worker 失败，2 表示参数或监督基础设施错误。",
+      "source": {
+        "label": "监督状态",
+        "href": "#concept-supervision-states"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "signal-safe",
+      "lesson_id": "systems-engineering-02",
+      "context_id": "troubleshoot-signal-supervisor",
+      "question": "哪些操作不该放进信号处理器？",
+      "aliases": [
+        "handler 里能否 iostream malloc waitpid"
+      ],
+      "keywords": [
+        "哪些操作不该放进信号处理器",
+        "handler",
+        "里能否",
+        "iostream",
+        "malloc",
+        "waitpid"
+      ],
+      "diagnostic": "先判断“handler 里能否 iostream malloc waitpid”位于信号边界、主循环还是回收阶段。",
+      "hints": [
+        "查看 #troubleshoot-signal-supervisor 的时序或状态表。",
+        "再运行 test_signal_supervisor.py 核对“哪些操作不该放进信号处理器”。"
+      ],
+      "example": "复杂清理回到主循环。",
+      "answer": "本课不在处理器中使用 iostream、分配、锁、waitpid 或业务关闭，只写预建 pipe 和 sig_atomic_t。",
+      "source": {
+        "label": "停止排错",
+        "href": "#troubleshoot-signal-supervisor"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "notification-coalescing",
+      "lesson_id": "systems-engineering-02",
+      "context_id": "troubleshoot-signal-supervisor",
+      "question": "self-pipe 是否精确记录多次信号？",
+      "aliases": [
+        "连续 SIGTERM 会不会丢计数"
+      ],
+      "keywords": [
+        "self-pipe",
+        "是否精确记录多次信号",
+        "连续",
+        "SIGTERM",
+        "会不会丢计数"
+      ],
+      "diagnostic": "先判断“连续 SIGTERM 会不会丢计数”位于信号边界、主循环还是回收阶段。",
+      "hints": [
+        "查看 #troubleshoot-signal-supervisor 的时序或状态表。",
+        "再运行 test_signal_supervisor.py 核对“self-pipe 是否精确记录多次信号”。"
+      ],
+      "example": "单个 sig_atomic_t 不能外推为信号日志。",
+      "answer": "本课协议只表示有停止事件，不承诺精确计数或顺序；需要精确语义时必须另设队列协议。",
+      "source": {
+        "label": "停止排错",
+        "href": "#troubleshoot-signal-supervisor"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "diagnostic-v02",
+      "lesson_id": "systems-engineering-02",
+      "context_id": "project-diagnostic-service-v02",
+      "question": "可诊断系统服务 v0.2 新增什么？",
+      "aliases": [
+        "系统工程第二课项目增量是什么"
+      ],
+      "keywords": [
+        "可诊断系统服务",
+        "v0.2",
+        "新增什么",
+        "系统工程第二课项目增量是什么"
+      ],
+      "diagnostic": "先判断“系统工程第二课项目增量是什么”位于信号边界、主循环还是回收阶段。",
+      "hints": [
+        "查看 #project-diagnostic-service-v02 的时序或状态表。",
+        "再运行 test_signal_supervisor.py 核对“可诊断系统服务 v0.2 新增什么”。"
+      ],
+      "example": "尚未实现 TERM 到 KILL 的宽限期升级。",
+      "answer": "新增父子 self-pipe、ready 握手、真实 SIGTERM、退出码传播、waitpid 回收和 5 项测试。",
+      "source": {
+        "label": "可诊断系统服务 v0.2",
+        "href": "#project-diagnostic-service-v02"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

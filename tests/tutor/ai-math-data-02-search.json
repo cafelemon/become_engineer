@@ -1,0 +1,89 @@
+{
+  "lesson_id": "ai-math-data-02",
+  "cases": [
+    {
+      "query": "为什么大数值列会主导欧氏距离",
+      "expected_card": "scale-dominance"
+    },
+    {
+      "query": "不同量纲怎样影响距离",
+      "expected_card": "scale-dominance"
+    },
+    {
+      "query": "换单位为什么会改变点积和距离",
+      "expected_card": "unit-change"
+    },
+    {
+      "query": "厘米换成米有什么影响",
+      "expected_card": "unit-change"
+    },
+    {
+      "query": "z-score 怎样计算",
+      "expected_card": "z-score"
+    },
+    {
+      "query": "标准分数公式",
+      "expected_card": "z-score"
+    },
+    {
+      "query": "本课标准差为什么除以 n",
+      "expected_card": "population-scale"
+    },
+    {
+      "query": "总体标准差还是样本标准差",
+      "expected_card": "population-scale"
+    },
+    {
+      "query": "训练列标准化后有什么不变量",
+      "expected_card": "standardized-invariant"
+    },
+    {
+      "query": "均值0方差1",
+      "expected_card": "standardized-invariant"
+    },
+    {
+      "query": "fit 和 transform 有什么区别",
+      "expected_card": "fit-transform"
+    },
+    {
+      "query": "标准化器怎样用于新数据",
+      "expected_card": "fit-transform"
+    },
+    {
+      "query": "为什么只能在训练集 fit",
+      "expected_card": "train-fit-only"
+    },
+    {
+      "query": "验证集参与标准化算泄漏吗",
+      "expected_card": "train-fit-only"
+    },
+    {
+      "query": "常数列为什么不能直接标准化",
+      "expected_card": "constant-column"
+    },
+    {
+      "query": "零方差列怎么处理",
+      "expected_card": "constant-column"
+    },
+    {
+      "query": "新数据为什么必须匹配训练列",
+      "expected_card": "schema-match"
+    },
+    {
+      "query": "transform 列数顺序错了怎么办",
+      "expected_card": "schema-match"
+    },
+    {
+      "query": "实验系统 v0.2 新增什么",
+      "expected_card": "experiment-v02"
+    },
+    {
+      "query": "AI 数学数据第二课项目",
+      "expected_card": "experiment-v02"
+    }
+  ],
+  "unknown": [
+    "怎样给阳台植物浇水",
+    "月球表面为什么有陨石坑"
+  ]
+}

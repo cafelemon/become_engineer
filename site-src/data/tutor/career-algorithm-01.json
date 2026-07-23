@@ -1,0 +1,335 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "career-algorithm-01",
+    "title": "固定输入输出与本机判题契约",
+    "path": "learning-paths/career-algorithm/01-fixed-io-local-judge-contract/"
+  },
+  "contexts": [
+    {
+      "id": "overview-fixed-io-judge",
+      "type": "overview",
+      "title": "本机判题目标",
+      "anchor": "#overview-fixed-io-judge"
+    },
+    {
+      "id": "concept-four-judge-boundaries",
+      "type": "concept",
+      "title": "判题链边界",
+      "anchor": "#concept-four-judge-boundaries"
+    },
+    {
+      "id": "example-deduplicate-contract",
+      "type": "example",
+      "title": "去重排序契约",
+      "anchor": "#example-deduplicate-contract"
+    },
+    {
+      "id": "reproduce-local-judge-v01",
+      "type": "reproduce",
+      "title": "运行真实判题",
+      "anchor": "#reproduce-local-judge-v01"
+    },
+    {
+      "id": "concept-result-state-machine",
+      "type": "concept",
+      "title": "判定状态机",
+      "anchor": "#concept-result-state-machine"
+    },
+    {
+      "id": "modify-create-controlled-failures",
+      "type": "modify",
+      "title": "主动制造失败",
+      "anchor": "#modify-create-controlled-failures"
+    },
+    {
+      "id": "troubleshoot-local-judge",
+      "type": "troubleshoot",
+      "title": "判题排错",
+      "anchor": "#troubleshoot-local-judge"
+    },
+    {
+      "id": "project-algorithm-rehearsal-v01",
+      "type": "project",
+      "title": "算法演练运行器 v0.1",
+      "anchor": "#project-algorithm-rehearsal-v01"
+    },
+    {
+      "id": "career-judge-contract-review",
+      "type": "career",
+      "title": "机考契约追问",
+      "anchor": "#career-judge-contract-review"
+    }
+  ],
+  "cards": [
+    {
+      "id": "fixed-io-contract",
+      "lesson_id": "career-algorithm-01",
+      "context_id": "overview-fixed-io-judge",
+      "question": "固定输入输出判题到底检查什么？",
+      "aliases": [
+        "为什么思路正确还可能判错"
+      ],
+      "keywords": [
+        "固定输入输出判题到底检查什么",
+        "为什么思路正确还可能判错"
+      ],
+      "diagnostic": "先定位“为什么思路正确还可能判错”属于输入、进程、输出还是时间边界。",
+      "hints": [
+        "查看 #overview-fixed-io-judge 的固定状态或表格。",
+        "再运行 test_judge_runner.py 核对“固定输入输出判题到底检查什么”。"
+      ],
+      "example": "调试文本写进 stdout 会让正确算法得到 wrong-answer。",
+      "answer": "它同时检查输入格式、输出格式、进程退出和时间上限；算法思路只是完整契约中的一层。",
+      "source": {
+        "label": "本机判题目标",
+        "href": "#overview-fixed-io-judge"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "judge-boundaries",
+      "lesson_id": "career-algorithm-01",
+      "context_id": "concept-four-judge-boundaries",
+      "question": "本机判题链有哪些边界？",
+      "aliases": [
+        "cases judge solution 之间怎样通信"
+      ],
+      "keywords": [
+        "本机判题链有哪些边界",
+        "cases",
+        "judge",
+        "solution",
+        "之间怎样通信"
+      ],
+      "diagnostic": "先定位“cases judge solution 之间怎样通信”属于输入、进程、输出还是时间边界。",
+      "hints": [
+        "查看 #concept-four-judge-boundaries 的固定状态或表格。",
+        "再运行 test_judge_runner.py 核对“本机判题链有哪些边界”。"
+      ],
+      "example": "cases.json -> judge_runner.py -> solution.py -> 判定状态。",
+      "answer": "运行器读取用例，向解法子进程 stdin 写输入，再读取 stdout、stderr、退出码并处理超时。",
+      "source": {
+        "label": "判题链边界",
+        "href": "#concept-four-judge-boundaries"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "deterministic-output",
+      "lesson_id": "career-algorithm-01",
+      "context_id": "example-deduplicate-contract",
+      "question": "集合去重后为什么还要排序？",
+      "aliases": [
+        "怎样让算法输出稳定可重复"
+      ],
+      "keywords": [
+        "集合去重后为什么还要排序",
+        "怎样让算法输出稳定可重复"
+      ],
+      "diagnostic": "先定位“怎样让算法输出稳定可重复”属于输入、进程、输出还是时间边界。",
+      "hints": [
+        "查看 #example-deduplicate-contract 的固定状态或表格。",
+        "再运行 test_judge_runner.py 核对“集合去重后为什么还要排序”。"
+      ],
+      "example": "sorted(set(values)) 固定输出为 1 2 4 9。",
+      "answer": "集合只负责唯一性，排序显式规定输出顺序，避免依赖未写进契约的遍历顺序。",
+      "source": {
+        "label": "去重排序契约",
+        "href": "#example-deduplicate-contract"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "real-subprocess",
+      "lesson_id": "career-algorithm-01",
+      "context_id": "reproduce-local-judge-v01",
+      "question": "运行器是否真的启动了解法进程？",
+      "aliases": [
+        "本机判题是不是 Mock"
+      ],
+      "keywords": [
+        "运行器是否真的启动了解法进程",
+        "本机判题是不是",
+        "Mock"
+      ],
+      "diagnostic": "先定位“本机判题是不是 Mock”属于输入、进程、输出还是时间边界。",
+      "hints": [
+        "查看 #reproduce-local-judge-v01 的固定状态或表格。",
+        "再运行 test_judge_runner.py 核对“运行器是否真的启动了解法进程”。"
+      ],
+      "example": "测试会实际运行错误退出和忙循环脚本。",
+      "answer": "是。它用 subprocess.run 和参数列表启动当前 Python 解释器，传入 stdin 并捕获真实标准流与退出码。",
+      "source": {
+        "label": "运行真实判题",
+        "href": "#reproduce-local-judge-v01"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "result-order",
+      "lesson_id": "career-algorithm-01",
+      "context_id": "concept-result-state-machine",
+      "question": "判题状态为什么要按顺序判断？",
+      "aliases": [
+        "超时运行错误答案错误先判断哪个"
+      ],
+      "keywords": [
+        "判题状态为什么要按顺序判断",
+        "超时运行错误答案错误先判断哪个"
+      ],
+      "diagnostic": "先定位“超时运行错误答案错误先判断哪个”属于输入、进程、输出还是时间边界。",
+      "hints": [
+        "查看 #concept-result-state-machine 的固定状态或表格。",
+        "再运行 test_judge_runner.py 核对“判题状态为什么要按顺序判断”。"
+      ],
+      "example": "exit 7 固定得到 runtime-error，不比较崩溃前输出。",
+      "answer": "先处理运行器错误和超时，再看非零退出，最后才比较正常进程的 stdout，避免把不同根因压成答案错误。",
+      "source": {
+        "label": "判定状态机",
+        "href": "#concept-result-state-machine"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "wrong-answer",
+      "lesson_id": "career-algorithm-01",
+      "context_id": "concept-result-state-machine",
+      "question": "wrong-answer 和 runtime-error 有什么区别？",
+      "aliases": [
+        "答案错误和运行错误怎么区分"
+      ],
+      "keywords": [
+        "wrong-answer",
+        "和",
+        "runtime-error",
+        "有什么区别",
+        "答案错误和运行错误怎么区分"
+      ],
+      "diagnostic": "先定位“答案错误和运行错误怎么区分”属于输入、进程、输出还是时间边界。",
+      "hints": [
+        "查看 #concept-result-state-machine 的固定状态或表格。",
+        "再运行 test_judge_runner.py 核对“wrong-answer 和 runtime-error 有什么区别”。"
+      ],
+      "example": "打印错误文本后退出 0 是 stdout-mismatch，SystemExit(7) 是 exit-7。",
+      "answer": "正常退出但 stdout 不符合期望是 wrong-answer；子进程非零退出是 runtime-error。",
+      "source": {
+        "label": "判定状态机",
+        "href": "#concept-result-state-machine"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "controlled-failure",
+      "lesson_id": "career-algorithm-01",
+      "context_id": "modify-create-controlled-failures",
+      "question": "怎样主动复现三类判题失败？",
+      "aliases": [
+        "如何制造答案错误运行错误和超时"
+      ],
+      "keywords": [
+        "怎样主动复现三类判题失败",
+        "如何制造答案错误运行错误和超时"
+      ],
+      "diagnostic": "先定位“如何制造答案错误运行错误和超时”属于输入、进程、输出还是时间边界。",
+      "hints": [
+        "查看 #modify-create-controlled-failures 的固定状态或表格。",
+        "再运行 test_judge_runner.py 核对“怎样主动复现三类判题失败”。"
+      ],
+      "example": "使用 --timeout 0.05 让忙循环稳定进入 timeout。",
+      "answer": "每次只改一个变量：加入多余输出、显式非零退出、加入忙循环，并记录预期、实际与恢复。",
+      "source": {
+        "label": "主动制造失败",
+        "href": "#modify-create-controlled-failures"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "output-normalization",
+      "lesson_id": "career-algorithm-01",
+      "context_id": "troubleshoot-local-judge",
+      "question": "输出规范化会忽略哪些差异？",
+      "aliases": [
+        "判题器如何处理空格和换行"
+      ],
+      "keywords": [
+        "输出规范化会忽略哪些差异",
+        "判题器如何处理空格和换行"
+      ],
+      "diagnostic": "先定位“判题器如何处理空格和换行”属于输入、进程、输出还是时间边界。",
+      "hints": [
+        "查看 #troubleshoot-local-judge 的固定状态或表格。",
+        "再运行 test_judge_runner.py 核对“输出规范化会忽略哪些差异”。"
+      ],
+      "example": "行尾两个空格可忽略，1 双空格 2 与 1 空格 2 仍不同。",
+      "answer": "本课统一换行并忽略行尾空白，但保留行内空格差异，避免宽松 strip 掩盖格式错误。",
+      "source": {
+        "label": "判题排错",
+        "href": "#troubleshoot-local-judge"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "workspace-boundary",
+      "lesson_id": "career-algorithm-01",
+      "context_id": "troubleshoot-local-judge",
+      "question": "为什么解法路径不能逃出工作区？",
+      "aliases": [
+        "为什么拒绝绝对路径和上级目录"
+      ],
+      "keywords": [
+        "为什么解法路径不能逃出工作区",
+        "为什么拒绝绝对路径和上级目录"
+      ],
+      "diagnostic": "先定位“为什么拒绝绝对路径和上级目录”属于输入、进程、输出还是时间边界。",
+      "hints": [
+        "查看 #troubleshoot-local-judge 的固定状态或表格。",
+        "再运行 test_judge_runner.py 核对“为什么解法路径不能逃出工作区”。"
+      ],
+      "example": "../outside.py 固定得到 solution escapes workspace。",
+      "answer": "工作区边界让运行资产可移植，并避免运行器意外执行项目外的私人或系统文件。",
+      "source": {
+        "label": "判题排错",
+        "href": "#troubleshoot-local-judge"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "rehearsal-v01",
+      "lesson_id": "career-algorithm-01",
+      "context_id": "project-algorithm-rehearsal-v01",
+      "question": "算法演练运行器 v0.1 留下哪些证据？",
+      "aliases": [
+        "第一课项目产出是什么"
+      ],
+      "keywords": [
+        "算法演练运行器",
+        "v0.1",
+        "留下哪些证据",
+        "第一课项目产出是什么"
+      ],
+      "diagnostic": "先定位“第一课项目产出是什么”属于输入、进程、输出还是时间边界。",
+      "hints": [
+        "查看 #project-algorithm-rehearsal-v01 的固定状态或表格。",
+        "再运行 test_judge_runner.py 核对“算法演练运行器 v0.1 留下哪些证据”。"
+      ],
+      "example": "固定快照记录状态与原因，不记录机器相关耗时。",
+      "answer": "留下版本化用例、标准输入输出解法、真实子进程运行器、7 项测试和四类判题状态证据。",
+      "source": {
+        "label": "算法演练运行器 v0.1",
+        "href": "#project-algorithm-rehearsal-v01"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

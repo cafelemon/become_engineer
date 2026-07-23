@@ -15,7 +15,7 @@ export default defineConfig({
       timeout: 120000
     },
     {
-      command: "npm run build && ../../../../.venv/bin/uvicorn e2e_app:app --host 127.0.0.1 --port 8792",
+      command: "../../../../.venv/bin/uvicorn e2e_app:app --host 127.0.0.1 --port 8792",
       url: "http://127.0.0.1:8792/",
       reuseExistingServer: false,
       timeout: 120000,

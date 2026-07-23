@@ -1,0 +1,89 @@
+{
+  "lesson_id": "algorithm-deepening-09",
+  "cases": [
+    {
+      "query": "拓扑排序为何只取零入度节点",
+      "expected_card": "topo-frontier"
+    },
+    {
+      "query": "零入度前沿是什么",
+      "expected_card": "topo-frontier"
+    },
+    {
+      "query": "Kahn 算法怎样报告环",
+      "expected_card": "cycle-check"
+    },
+    {
+      "query": "为什么处理数小于节点数",
+      "expected_card": "cycle-check"
+    },
+    {
+      "query": "强连通分量是什么",
+      "expected_card": "scc-meaning"
+    },
+    {
+      "query": "哪些节点属于同一个 SCC",
+      "expected_card": "scc-meaning"
+    },
+    {
+      "query": "Kosaraju 为什么需要反图",
+      "expected_card": "kosaraju"
+    },
+    {
+      "query": "两遍 DFS 各做什么",
+      "expected_card": "kosaraju"
+    },
+    {
+      "query": "SCC 缩点图为什么无环",
+      "expected_card": "condensation"
+    },
+    {
+      "query": "condensation 为什么是 DAG",
+      "expected_card": "condensation"
+    },
+    {
+      "query": "多源 BFS 怎样初始化",
+      "expected_card": "multi-source"
+    },
+    {
+      "query": "多个源点如何同时搜索",
+      "expected_card": "multi-source"
+    },
+    {
+      "query": "首次发现为什么是最短距离",
+      "expected_card": "first-discovery"
+    },
+    {
+      "query": "无权图 BFS 的层不变量",
+      "expected_card": "first-discovery"
+    },
+    {
+      "query": "带权边还能用多源 BFS 吗",
+      "expected_card": "weighted-boundary"
+    },
+    {
+      "query": "何时改用 Dijkstra",
+      "expected_card": "weighted-boundary"
+    },
+    {
+      "query": "三类图算法复杂度怎样",
+      "expected_card": "complexity"
+    },
+    {
+      "query": "拓扑 SCC BFS 多快",
+      "expected_card": "complexity"
+    },
+    {
+      "query": "约束模式实验 v0.9 新增什么",
+      "expected_card": "pattern-v09"
+    },
+    {
+      "query": "算法深化第九课项目是什么",
+      "expected_card": "pattern-v09"
+    }
+  ],
+  "unknown": [
+    "怎样清洗羊毛围巾",
+    "潮汐每天变化几次"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "lesson_id": "ai-math-data-01",
+  "cases": [
+    {
+      "query": "标量、向量和矩阵有什么区别",
+      "expected_card": "scalar-vector-matrix"
+    },
+    {
+      "query": "数值对象有几条轴",
+      "expected_card": "scalar-vector-matrix"
+    },
+    {
+      "query": "矩阵形状怎样书写",
+      "expected_card": "shape-order"
+    },
+    {
+      "query": "2x3 谁是行谁是列",
+      "expected_card": "shape-order"
+    },
+    {
+      "query": "为什么拒绝锯齿矩阵",
+      "expected_card": "rectangular"
+    },
+    {
+      "query": "每行长度不同能算矩阵吗",
+      "expected_card": "rectangular"
+    },
+    {
+      "query": "点积怎样计算",
+      "expected_card": "dot"
+    },
+    {
+      "query": "同位置乘积之和",
+      "expected_card": "dot"
+    },
+    {
+      "query": "矩阵向量积怎样拆解",
+      "expected_card": "matvec"
+    },
+    {
+      "query": "为什么每行做一次点积",
+      "expected_card": "matvec"
+    },
+    {
+      "query": "matvec 需要什么形状",
+      "expected_card": "matvec-shape"
+    },
+    {
+      "query": "列数为什么等于向量长度",
+      "expected_card": "matvec-shape"
+    },
+    {
+      "query": "欧氏距离怎样计算",
+      "expected_card": "distance"
+    },
+    {
+      "query": "三四五距离",
+      "expected_card": "distance"
+    },
+    {
+      "query": "普通 zip 有什么形状风险",
+      "expected_card": "zip-truncation"
+    },
+    {
+      "query": "向量少算为什么不报错",
+      "expected_card": "zip-truncation"
+    },
+    {
+      "query": "空矩阵形状一定唯一吗",
+      "expected_card": "empty-matrix"
+    },
+    {
+      "query": "0x0 是什么约定",
+      "expected_card": "empty-matrix"
+    },
+    {
+      "query": "实验系统 v0.1 新增什么",
+      "expected_card": "experiment-v01"
+    },
+    {
+      "query": "AI 数学数据第一课项目",
+      "expected_card": "experiment-v01"
+    }
+  ],
+  "unknown": [
+    "怎样调节自行车座椅高度",
+    "海水为什么是咸的"
+  ]
+}

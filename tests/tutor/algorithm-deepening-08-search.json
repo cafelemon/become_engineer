@@ -1,0 +1,89 @@
+{
+  "lesson_id": "algorithm-deepening-08",
+  "cases": [
+    {
+      "query": "0/1 背包状态代表什么",
+      "expected_card": "knapsack-state"
+    },
+    {
+      "query": "背包 dp 容量语义",
+      "expected_card": "knapsack-state"
+    },
+    {
+      "query": "0/1 背包为什么容量倒序",
+      "expected_card": "descending-capacity"
+    },
+    {
+      "query": "怎样防止同一物品重复使用",
+      "expected_card": "descending-capacity"
+    },
+    {
+      "query": "容量正序会出现什么错误",
+      "expected_card": "forward-counterexample"
+    },
+    {
+      "query": "单件物品 6 对 3 反例",
+      "expected_card": "forward-counterexample"
+    },
+    {
+      "query": "什么时候容量可以正序",
+      "expected_card": "complete-knapsack"
+    },
+    {
+      "query": "完全背包怎样迭代",
+      "expected_card": "complete-knapsack"
+    },
+    {
+      "query": "空间压缩会丢失什么",
+      "expected_card": "space-contract"
+    },
+    {
+      "query": "一维背包为什么难重建",
+      "expected_card": "space-contract"
+    },
+    {
+      "query": "矩阵链区间状态是什么",
+      "expected_card": "interval-state"
+    },
+    {
+      "query": "cost left right 代表什么",
+      "expected_card": "interval-state"
+    },
+    {
+      "query": "区间 DP 为什么按长度递增",
+      "expected_card": "length-order"
+    },
+    {
+      "query": "子区间何时就绪",
+      "expected_card": "length-order"
+    },
+    {
+      "query": "样例矩阵链最优结果是什么",
+      "expected_card": "matrix-result"
+    },
+    {
+      "query": "4500 怎样得到",
+      "expected_card": "matrix-result"
+    },
+    {
+      "query": "两种 DP 的复杂度是多少",
+      "expected_card": "complexities"
+    },
+    {
+      "query": "背包和矩阵链分别多快",
+      "expected_card": "complexities"
+    },
+    {
+      "query": "约束模式实验 v0.8 新增什么",
+      "expected_card": "pattern-v08"
+    },
+    {
+      "query": "算法深化第八课项目是什么",
+      "expected_card": "pattern-v08"
+    }
+  ],
+  "unknown": [
+    "室内绿植多久浇一次水",
+    "怎样挑选合适的羽毛球拍"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "lesson_id": "algorithm-deepening-03",
+  "cases": [
+    {
+      "query": "prefix i 表示什么",
+      "expected_card": "prefix-meaning"
+    },
+    {
+      "query": "前缀数组为什么长 n+1",
+      "expected_card": "prefix-meaning"
+    },
+    {
+      "query": "半开区间和怎样计算",
+      "expected_card": "range-subtract"
+    },
+    {
+      "query": "为什么 prefix right 减 left",
+      "expected_card": "range-subtract"
+    },
+    {
+      "query": "空区间为什么自然为零",
+      "expected_card": "empty-range"
+    },
+    {
+      "query": "left 等于 right 怎么算",
+      "expected_card": "empty-range"
+    },
+    {
+      "query": "区间加为什么在 left 加 delta",
+      "expected_card": "difference-start"
+    },
+    {
+      "query": "差分从哪里生效",
+      "expected_card": "difference-start"
+    },
+    {
+      "query": "区间加为什么在 right 减 delta",
+      "expected_card": "difference-stop"
+    },
+    {
+      "query": "差分怎样在右边界停止",
+      "expected_card": "difference-stop"
+    },
+    {
+      "query": "重叠区间更新怎样组合",
+      "expected_card": "overlap-add"
+    },
+    {
+      "query": "差分标记能否覆盖",
+      "expected_card": "overlap-add"
+    },
+    {
+      "query": "前缀和的成本是什么",
+      "expected_card": "prefix-cost"
+    },
+    {
+      "query": "多次静态查询为何适合前缀",
+      "expected_card": "prefix-cost"
+    },
+    {
+      "query": "差分更新的成本是什么",
+      "expected_card": "difference-cost"
+    },
+    {
+      "query": "离线区间加为何适合差分",
+      "expected_card": "difference-cost"
+    },
+    {
+      "query": "为什么统一半开区间",
+      "expected_card": "half-open"
+    },
+    {
+      "query": "闭区间混用有什么风险",
+      "expected_card": "half-open"
+    },
+    {
+      "query": "约束模式实验 v0.3 新增什么",
+      "expected_card": "pattern-v03"
+    },
+    {
+      "query": "算法深化第三课项目是什么",
+      "expected_card": "pattern-v03"
+    }
+  ],
+  "unknown": [
+    "怎样修剪一棵盆景松",
+    "鲸鱼为什么会唱歌"
+  ]
+}

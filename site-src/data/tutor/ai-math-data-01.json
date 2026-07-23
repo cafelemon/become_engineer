@@ -1,0 +1,335 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "ai-math-data-01",
+    "title": "向量、矩阵、形状与数值契约",
+    "path": "learning-paths/ai-foundation/math-data/01-vectors-matrices-shapes-numeric-contracts/"
+  },
+  "contexts": [
+    {
+      "id": "overview-vector-contract",
+      "type": "overview",
+      "title": "数值契约",
+      "anchor": "#overview-vector-contract"
+    },
+    {
+      "id": "concept-scalar-vector-matrix",
+      "type": "concept",
+      "title": "标量向量矩阵",
+      "anchor": "#concept-scalar-vector-matrix"
+    },
+    {
+      "id": "example-dot-matvec",
+      "type": "example",
+      "title": "点积与矩阵向量积",
+      "anchor": "#example-dot-matvec"
+    },
+    {
+      "id": "concept-distance-dimension",
+      "type": "concept",
+      "title": "距离与维度",
+      "anchor": "#concept-distance-dimension"
+    },
+    {
+      "id": "reproduce-vector-v01",
+      "type": "reproduce",
+      "title": "运行数值实验",
+      "anchor": "#reproduce-vector-v01"
+    },
+    {
+      "id": "modify-vector-contract",
+      "type": "modify",
+      "title": "修改维度契约",
+      "anchor": "#modify-vector-contract"
+    },
+    {
+      "id": "troubleshoot-vector-shape",
+      "type": "troubleshoot",
+      "title": "形状排错",
+      "anchor": "#troubleshoot-vector-shape"
+    },
+    {
+      "id": "project-reproducible-experiment-v01",
+      "type": "project",
+      "title": "实验系统 v0.1",
+      "anchor": "#project-reproducible-experiment-v01"
+    },
+    {
+      "id": "career-vector-contract",
+      "type": "career",
+      "title": "形状契约追问",
+      "anchor": "#career-vector-contract"
+    }
+  ],
+  "cards": [
+    {
+      "id": "scalar-vector-matrix",
+      "lesson_id": "ai-math-data-01",
+      "context_id": "concept-scalar-vector-matrix",
+      "question": "标量、向量和矩阵有什么区别？",
+      "aliases": [
+        "数值对象有几条轴"
+      ],
+      "keywords": [
+        "标量",
+        "向量和矩阵有什么区别",
+        "数值对象有几条轴"
+      ],
+      "diagnostic": "先判断“数值对象有几条轴”涉及对象层级、形状还是计算公式。",
+      "hints": [
+        "查看 #concept-scalar-vector-matrix。",
+        "运行 test_vector_shape_lab.py。"
+      ],
+      "example": "样例矩阵形状 2×3。",
+      "answer": "标量是一个数，向量有一个分量轴，矩阵有行列两个轴。",
+      "source": {
+        "label": "标量向量矩阵",
+        "href": "#concept-scalar-vector-matrix"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "shape-order",
+      "lesson_id": "ai-math-data-01",
+      "context_id": "concept-scalar-vector-matrix",
+      "question": "矩阵形状怎样书写？",
+      "aliases": [
+        "2x3 谁是行谁是列"
+      ],
+      "keywords": [
+        "矩阵形状怎样书写",
+        "2x3",
+        "谁是行谁是列"
+      ],
+      "diagnostic": "先判断“2x3 谁是行谁是列”涉及对象层级、形状还是计算公式。",
+      "hints": [
+        "查看 #concept-scalar-vector-matrix。",
+        "运行 test_vector_shape_lab.py。"
+      ],
+      "example": "不能把它误写成 3×2。",
+      "answer": "固定写 rows×columns，2×3 表示两行、每行三列。",
+      "source": {
+        "label": "标量向量矩阵",
+        "href": "#concept-scalar-vector-matrix"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "rectangular",
+      "lesson_id": "ai-math-data-01",
+      "context_id": "concept-scalar-vector-matrix",
+      "question": "为什么拒绝锯齿矩阵？",
+      "aliases": [
+        "每行长度不同能算矩阵吗"
+      ],
+      "keywords": [
+        "为什么拒绝锯齿矩阵",
+        "每行长度不同能算矩阵吗"
+      ],
+      "diagnostic": "先判断“每行长度不同能算矩阵吗”涉及对象层级、形状还是计算公式。",
+      "hints": [
+        "查看 #concept-scalar-vector-matrix。",
+        "运行 test_vector_shape_lab.py。"
+      ],
+      "example": "固定状态 ragged=reject。",
+      "answer": "数学矩阵要求每行列数相同，否则形状和按列运算没有统一定义。",
+      "source": {
+        "label": "标量向量矩阵",
+        "href": "#concept-scalar-vector-matrix"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "dot",
+      "lesson_id": "ai-math-data-01",
+      "context_id": "example-dot-matvec",
+      "question": "点积怎样计算？",
+      "aliases": [
+        "同位置乘积之和"
+      ],
+      "keywords": [
+        "点积怎样计算",
+        "同位置乘积之和"
+      ],
+      "diagnostic": "先判断“同位置乘积之和”涉及对象层级、形状还是计算公式。",
+      "hints": [
+        "查看 #example-dot-matvec。",
+        "运行 test_vector_shape_lab.py。"
+      ],
+      "example": "样例得到 4.5。",
+      "answer": "两个等长向量逐项相乘再求和。",
+      "source": {
+        "label": "点积与矩阵向量积",
+        "href": "#example-dot-matvec"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "matvec",
+      "lesson_id": "ai-math-data-01",
+      "context_id": "example-dot-matvec",
+      "question": "矩阵向量积怎样拆解？",
+      "aliases": [
+        "为什么每行做一次点积"
+      ],
+      "keywords": [
+        "矩阵向量积怎样拆解",
+        "为什么每行做一次点积"
+      ],
+      "diagnostic": "先判断“为什么每行做一次点积”涉及对象层级、形状还是计算公式。",
+      "hints": [
+        "查看 #example-dot-matvec。",
+        "运行 test_vector_shape_lab.py。"
+      ],
+      "example": "两行得到 4.5,3.0。",
+      "answer": "矩阵每行分别与向量点积，因此输出长度等于行数。",
+      "source": {
+        "label": "点积与矩阵向量积",
+        "href": "#example-dot-matvec"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "matvec-shape",
+      "lesson_id": "ai-math-data-01",
+      "context_id": "example-dot-matvec",
+      "question": "matvec 需要什么形状？",
+      "aliases": [
+        "列数为什么等于向量长度"
+      ],
+      "keywords": [
+        "matvec",
+        "需要什么形状",
+        "列数为什么等于向量长度"
+      ],
+      "diagnostic": "先判断“列数为什么等于向量长度”涉及对象层级、形状还是计算公式。",
+      "hints": [
+        "查看 #example-dot-matvec。",
+        "运行 test_vector_shape_lab.py。"
+      ],
+      "example": "错配在计算前拒绝。",
+      "answer": "每行点积要求分量一一对应，所以矩阵列数必须等于向量长度。",
+      "source": {
+        "label": "点积与矩阵向量积",
+        "href": "#example-dot-matvec"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "distance",
+      "lesson_id": "ai-math-data-01",
+      "context_id": "concept-distance-dimension",
+      "question": "欧氏距离怎样计算？",
+      "aliases": [
+        "三四五距离"
+      ],
+      "keywords": [
+        "欧氏距离怎样计算",
+        "三四五距离"
+      ],
+      "diagnostic": "先判断“三四五距离”涉及对象层级、形状还是计算公式。",
+      "hints": [
+        "查看 #concept-distance-dimension。",
+        "运行 test_vector_shape_lab.py。"
+      ],
+      "example": "维度必须相同。",
+      "answer": "逐维差平方求和后开方；(0,0) 到 (3,4) 为 5。",
+      "source": {
+        "label": "距离与维度",
+        "href": "#concept-distance-dimension"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "zip-truncation",
+      "lesson_id": "ai-math-data-01",
+      "context_id": "troubleshoot-vector-shape",
+      "question": "普通 zip 有什么形状风险？",
+      "aliases": [
+        "向量少算为什么不报错"
+      ],
+      "keywords": [
+        "普通",
+        "zip",
+        "有什么形状风险",
+        "向量少算为什么不报错"
+      ],
+      "diagnostic": "先判断“向量少算为什么不报错”涉及对象层级、形状还是计算公式。",
+      "hints": [
+        "查看 #troubleshoot-vector-shape。",
+        "运行 test_vector_shape_lab.py。"
+      ],
+      "example": "先校验长度并使用 strict。",
+      "answer": "普通 zip 会按较短输入静默停止，可能产生看似正常的错误数值。",
+      "source": {
+        "label": "形状排错",
+        "href": "#troubleshoot-vector-shape"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "empty-matrix",
+      "lesson_id": "ai-math-data-01",
+      "context_id": "modify-vector-contract",
+      "question": "空矩阵形状一定唯一吗？",
+      "aliases": [
+        "0x0 是什么约定"
+      ],
+      "keywords": [
+        "空矩阵形状一定唯一吗",
+        "0x0",
+        "是什么约定"
+      ],
+      "diagnostic": "先判断“0x0 是什么约定”涉及对象层级、形状还是计算公式。",
+      "hints": [
+        "查看 #modify-vector-contract。",
+        "运行 test_vector_shape_lab.py。"
+      ],
+      "example": "边界必须写入契约。",
+      "answer": "本课返回 (0,0) 作为教学契约；不同数组系统可能还保存未知列数。",
+      "source": {
+        "label": "修改维度契约",
+        "href": "#modify-vector-contract"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "experiment-v01",
+      "lesson_id": "ai-math-data-01",
+      "context_id": "project-reproducible-experiment-v01",
+      "question": "实验系统 v0.1 新增什么？",
+      "aliases": [
+        "AI 数学数据第一课项目"
+      ],
+      "keywords": [
+        "实验系统",
+        "v0.1",
+        "新增什么",
+        "AI",
+        "数学数据第一课项目"
+      ],
+      "diagnostic": "先判断“AI 数学数据第一课项目”涉及对象层级、形状还是计算公式。",
+      "hints": [
+        "查看 #project-reproducible-experiment-v01。",
+        "运行 test_vector_shape_lab.py。"
+      ],
+      "example": "不依赖第三方包。",
+      "answer": "新增点积、矩阵形状、matvec、距离、错配拒绝和固定报告。",
+      "source": {
+        "label": "实验系统 v0.1",
+        "href": "#project-reproducible-experiment-v01"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

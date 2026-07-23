@@ -1,0 +1,335 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "systems-engineering-05",
+    "title": "延迟分布、采样分析与性能预算",
+    "path": "learning-paths/systems-engineering/05-latency-distribution-sampling-performance-budget/"
+  },
+  "contexts": [
+    {
+      "id": "overview-performance-evidence",
+      "type": "overview",
+      "title": "性能证据目标",
+      "anchor": "#overview-performance-evidence"
+    },
+    {
+      "id": "concept-latency-distribution",
+      "type": "concept",
+      "title": "延迟分布",
+      "anchor": "#concept-latency-distribution"
+    },
+    {
+      "id": "example-sampling-clock",
+      "type": "example",
+      "title": "采样与时钟",
+      "anchor": "#example-sampling-clock"
+    },
+    {
+      "id": "reproduce-performance-v05",
+      "type": "reproduce",
+      "title": "运行性能实验",
+      "anchor": "#reproduce-performance-v05"
+    },
+    {
+      "id": "concept-performance-budget",
+      "type": "concept",
+      "title": "性能预算",
+      "anchor": "#concept-performance-budget"
+    },
+    {
+      "id": "modify-performance-budget",
+      "type": "modify",
+      "title": "修改预算",
+      "anchor": "#modify-performance-budget"
+    },
+    {
+      "id": "troubleshoot-performance-evidence",
+      "type": "troubleshoot",
+      "title": "性能排错",
+      "anchor": "#troubleshoot-performance-evidence"
+    },
+    {
+      "id": "project-diagnostic-service-v05",
+      "type": "project",
+      "title": "可诊断系统服务 v0.5",
+      "anchor": "#project-diagnostic-service-v05"
+    },
+    {
+      "id": "career-tail-latency",
+      "type": "career",
+      "title": "尾延迟追问",
+      "anchor": "#career-tail-latency"
+    }
+  ],
+  "cards": [
+    {
+      "id": "percentile-meaning",
+      "lesson_id": "systems-engineering-05",
+      "context_id": "concept-latency-distribution",
+      "question": "p95 延迟是什么意思？",
+      "aliases": [
+        "p95 怎样解释"
+      ],
+      "keywords": [
+        "p95",
+        "延迟是什么意思",
+        "怎样解释"
+      ],
+      "diagnostic": "先判断“p95 怎样解释”涉及分布、采样还是预算边界。",
+      "hints": [
+        "查看 #concept-latency-distribution 的公式或测量阶段。",
+        "运行 test_performance_budget.py 核对“p95 延迟是什么意思”。"
+      ],
+      "example": "本课最近秩 p95_us=120。",
+      "answer": "约 95% 样本不超过该值；必须同时说明样本集合与计算方法。",
+      "source": {
+        "label": "延迟分布",
+        "href": "#concept-latency-distribution"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "nearest-rank",
+      "lesson_id": "systems-engineering-05",
+      "context_id": "concept-latency-distribution",
+      "question": "最近秩怎样计算百分位？",
+      "aliases": [
+        "百分位 rank 公式"
+      ],
+      "keywords": [
+        "最近秩怎样计算百分位",
+        "百分位",
+        "rank",
+        "公式"
+      ],
+      "diagnostic": "先判断“百分位 rank 公式”涉及分布、采样还是预算边界。",
+      "hints": [
+        "查看 #concept-latency-distribution 的公式或测量阶段。",
+        "运行 test_performance_budget.py 核对“最近秩怎样计算百分位”。"
+      ],
+      "example": "20 个样本的 p95 取第 19 个。",
+      "answer": "先排序，rank=ceil(p*n/100)，再取 rank-1 下标。",
+      "source": {
+        "label": "延迟分布",
+        "href": "#concept-latency-distribution"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "mean-tail",
+      "lesson_id": "systems-engineering-05",
+      "context_id": "concept-latency-distribution",
+      "question": "为什么平均值不能代替 p99？",
+      "aliases": [
+        "均值为什么看不到尾延迟"
+      ],
+      "keywords": [
+        "为什么平均值不能代替",
+        "p99",
+        "均值为什么看不到尾延迟"
+      ],
+      "diagnostic": "先判断“均值为什么看不到尾延迟”涉及分布、采样还是预算边界。",
+      "hints": [
+        "查看 #concept-latency-distribution 的公式或测量阶段。",
+        "运行 test_performance_budget.py 核对“为什么平均值不能代替 p99”。"
+      ],
+      "example": "本课 p50=30、p99=200。",
+      "answer": "均值压缩了分布，少量极慢请求可能仍影响超时与体验。",
+      "source": {
+        "label": "延迟分布",
+        "href": "#concept-latency-distribution"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "steady-clock",
+      "lesson_id": "systems-engineering-05",
+      "context_id": "example-sampling-clock",
+      "question": "测持续时间为什么用 steady_clock？",
+      "aliases": [
+        "系统时间能否测耗时"
+      ],
+      "keywords": [
+        "测持续时间为什么用",
+        "steady_clock",
+        "系统时间能否测耗时"
+      ],
+      "diagnostic": "先判断“系统时间能否测耗时”涉及分布、采样还是预算边界。",
+      "hints": [
+        "查看 #example-sampling-clock 的公式或测量阶段。",
+        "运行 test_performance_budget.py 核对“测持续时间为什么用 steady_clock”。"
+      ],
+      "example": "固定输出 measurement_clock=steady_clock。",
+      "answer": "steady_clock 单调，不受墙钟校时倒退影响，适合计算时间间隔。",
+      "source": {
+        "label": "采样与时钟",
+        "href": "#example-sampling-clock"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "warmup-separation",
+      "lesson_id": "systems-engineering-05",
+      "context_id": "example-sampling-clock",
+      "question": "为什么预热不进入测量样本？",
+      "aliases": [
+        "预热和采样怎样分开"
+      ],
+      "keywords": [
+        "为什么预热不进入测量样本",
+        "预热和采样怎样分开"
+      ],
+      "diagnostic": "先判断“预热和采样怎样分开”涉及分布、采样还是预算边界。",
+      "hints": [
+        "查看 #example-sampling-clock 的公式或测量阶段。",
+        "运行 test_performance_budget.py 核对“为什么预热不进入测量样本”。"
+      ],
+      "example": "1000 次预热后采 2000 次。",
+      "answer": "预热用于稳定代码与运行状态；混入会改变所声明的热路径分布。",
+      "source": {
+        "label": "采样与时钟",
+        "href": "#example-sampling-clock"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "deterministic-replay",
+      "lesson_id": "systems-engineering-05",
+      "context_id": "reproduce-performance-v05",
+      "question": "为什么固定样本和真实测量要分开？",
+      "aliases": [
+        "怎样让性能测试可重复"
+      ],
+      "keywords": [
+        "为什么固定样本和真实测量要分开",
+        "怎样让性能测试可重复"
+      ],
+      "diagnostic": "先判断“怎样让性能测试可重复”涉及分布、采样还是预算边界。",
+      "hints": [
+        "查看 #reproduce-performance-v05 的公式或测量阶段。",
+        "运行 test_performance_budget.py 核对“为什么固定样本和真实测量要分开”。"
+      ],
+      "example": "elapsed=observed-not-asserted。",
+      "answer": "固定样本验证统计和预算逻辑；真实墙钟用于观察且受环境噪声影响。",
+      "source": {
+        "label": "运行性能实验",
+        "href": "#reproduce-performance-v05"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "budget-contract",
+      "lesson_id": "systems-engineering-05",
+      "context_id": "concept-performance-budget",
+      "question": "完整性能预算包含什么？",
+      "aliases": [
+        "性能阈值还要写哪些条件"
+      ],
+      "keywords": [
+        "完整性能预算包含什么",
+        "性能阈值还要写哪些条件"
+      ],
+      "diagnostic": "先判断“性能阈值还要写哪些条件”涉及分布、采样还是预算边界。",
+      "hints": [
+        "查看 #concept-performance-budget 的公式或测量阶段。",
+        "运行 test_performance_budget.py 核对“完整性能预算包含什么”。"
+      ],
+      "example": "p95 150µs 只约束本课回放数据。",
+      "answer": "至少包含指标、统计方法、阈值、负载、环境和失败动作。",
+      "source": {
+        "label": "性能预算",
+        "href": "#concept-performance-budget"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "ci-noise",
+      "lesson_id": "systems-engineering-05",
+      "context_id": "troubleshoot-performance-evidence",
+      "question": "共享 CI 的墙钟测试为何偶发失败？",
+      "aliases": [
+        "性能门禁怎样减少环境噪声"
+      ],
+      "keywords": [
+        "共享",
+        "CI",
+        "的墙钟测试为何偶发失败",
+        "性能门禁怎样减少环境噪声"
+      ],
+      "diagnostic": "先判断“性能门禁怎样减少环境噪声”涉及分布、采样还是预算边界。",
+      "hints": [
+        "查看 #troubleshoot-performance-evidence 的公式或测量阶段。",
+        "运行 test_performance_budget.py 核对“共享 CI 的墙钟测试为何偶发失败”。"
+      ],
+      "example": "功能 CI 不断言本机绝对耗时。",
+      "answer": "共享负载、频率和后台进程会漂移，应在受控环境重复测量并保存基线。",
+      "source": {
+        "label": "性能排错",
+        "href": "#troubleshoot-performance-evidence"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "compiler-elision",
+      "lesson_id": "systems-engineering-05",
+      "context_id": "troubleshoot-performance-evidence",
+      "question": "微基准快得异常应检查什么？",
+      "aliases": [
+        "编译器会不会删掉工作"
+      ],
+      "keywords": [
+        "微基准快得异常应检查什么",
+        "编译器会不会删掉工作"
+      ],
+      "diagnostic": "先判断“编译器会不会删掉工作”涉及分布、采样还是预算边界。",
+      "hints": [
+        "查看 #troubleshoot-performance-evidence 的公式或测量阶段。",
+        "运行 test_performance_budget.py 核对“微基准快得异常应检查什么”。"
+      ],
+      "example": "示例累积 checksum 做健全性检查。",
+      "answer": "若结果未被消费，优化器可能消除工作；需消费输出并核对功能正确性。",
+      "source": {
+        "label": "性能排错",
+        "href": "#troubleshoot-performance-evidence"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "diagnostic-v05",
+      "lesson_id": "systems-engineering-05",
+      "context_id": "project-diagnostic-service-v05",
+      "question": "可诊断系统服务 v0.5 新增什么？",
+      "aliases": [
+        "第五课项目增量是什么"
+      ],
+      "keywords": [
+        "可诊断系统服务",
+        "v0.5",
+        "新增什么",
+        "第五课项目增量是什么"
+      ],
+      "diagnostic": "先判断“第五课项目增量是什么”涉及分布、采样还是预算边界。",
+      "hints": [
+        "查看 #project-diagnostic-service-v05 的公式或测量阶段。",
+        "运行 test_performance_budget.py 核对“可诊断系统服务 v0.5 新增什么”。"
+      ],
+      "example": "5 项测试不依赖机器绝对速度。",
+      "answer": "新增延迟回放、最近秩 p50/p95/p99、p95 预算、预热和单调时钟观测。",
+      "source": {
+        "label": "可诊断系统服务 v0.5",
+        "href": "#project-diagnostic-service-v05"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

@@ -88,6 +88,8 @@ on:
       - "scripts/test_cs_systems_network_v2.mjs"
       - "scripts/test_cs_systems_transactions_v2.mjs"
       - "scripts/test_cs_systems_authorization_v2.mjs"
+      - "scripts/test_direction_choice_portfolio_v2.mjs"
+      - "scripts/generate_direction_choice_tutor.mjs"
       - "scripts/test_web_engineering_postgres_v2.mjs"
       - "scripts/test_web_engineering_sessions_v2.mjs"
       - "scripts/test_web_engineering_authorization_v2.mjs"
@@ -353,6 +355,72 @@ jobs:
 
       - name: Verify CS systems process lesson
         run: node scripts/test_cs_systems_process_v2.mjs
+
+      - name: Verify first project and direction trials
+        run: node scripts/test_direction_choice_portfolio_v2.mjs
+
+      - name: Verify algorithm rehearsal judge contract
+        run: node scripts/test_career_algorithm_01_v2.mjs
+
+      - name: Verify timed algorithm rehearsal
+        run: node scripts/test_career_algorithm_02_v2.mjs
+
+      - name: Verify algorithm retrospective and regressions
+        run: node scripts/test_career_algorithm_03_v2.mjs
+
+      - name: Verify systems engineering file descriptors
+        run: node scripts/test_systems_engineering_01_v2.mjs
+
+      - name: Verify systems engineering signal supervision
+        run: node scripts/test_systems_engineering_02_v2.mjs
+
+      - name: Verify systems engineering bounded queue
+        run: node scripts/test_systems_engineering_03_v2.mjs
+
+      - name: Verify systems engineering nonblocking network
+        run: node scripts/test_systems_engineering_04_v2.mjs
+
+      - name: Verify systems engineering performance budget
+        run: node scripts/test_systems_engineering_05_v2.mjs
+
+      - name: Verify systems engineering recovery acceptance
+        run: node scripts/test_systems_engineering_06_v2.mjs
+
+      - name: Verify algorithm deepening two pointers
+        run: node scripts/test_algorithm_deepening_01_v2.mjs
+
+      - name: Verify algorithm deepening sliding window
+        run: node scripts/test_algorithm_deepening_02_v2.mjs
+
+      - name: Verify algorithm deepening prefix and difference
+        run: node scripts/test_algorithm_deepening_03_v2.mjs
+
+      - name: Verify algorithm deepening monotonic structures
+        run: node scripts/test_algorithm_deepening_04_v2.mjs
+
+      - name: Verify algorithm deepening backtracking
+        run: node scripts/test_algorithm_deepening_05_v2.mjs
+
+      - name: Verify algorithm deepening greedy exchange
+        run: node scripts/test_algorithm_deepening_06_v2.mjs
+
+      - name: Verify algorithm deepening linear dynamic programming
+        run: node scripts/test_algorithm_deepening_07_v2.mjs
+
+      - name: Verify algorithm deepening structured dynamic programming
+        run: node scripts/test_algorithm_deepening_08_v2.mjs
+
+      - name: Verify algorithm deepening advanced graph
+        run: node scripts/test_algorithm_deepening_09_v2.mjs
+
+      - name: Verify algorithm deepening string matching
+        run: node scripts/test_algorithm_deepening_10_v2.mjs
+
+      - name: Verify AI math and data vector contracts
+        run: node scripts/test_ai_math_data_01_v2.mjs
+
+      - name: Verify AI math and data scaling contracts
+        run: node scripts/test_ai_math_data_02_v2.mjs
 
       - name: Verify CS systems concurrency lesson
         run: node scripts/test_cs_systems_concurrency_v2.mjs

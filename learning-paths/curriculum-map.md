@@ -10,7 +10,7 @@
 
 [开始学习](beginner-roadmap.md){ .md-button .md-button--primary }
 [让小码规划路线](../README.md#learning-assessment){ .md-button }
-[直接看 75 节明细](#opened-lessons){ .md-button }
+[直接看 97 节明细](#opened-lessons){ .md-button }
 
 </div>
 
@@ -25,7 +25,7 @@
   <div><strong>衔接状态</strong><span>可顺序进入 · 缺少起步层 · 等待前置 · 方向可选</span></div>
 </div>
 
-当前正式课程共 **75 节**：工程基础 10 节、Python 起步 7 节、CS 起步 4 节、Python 核心与工程化 7 节、C++ 起步 2 节、C++ 核心 3 节、算法基础与核心 22 节、Web 起步 4 节、Web 核心 4 节、CS 系统基础 6 节、Web 工程化 6 节。既有课程 URL 没有改变；新方向只在正式正文、示例和验收同时完成后增加课程。
+当前正式课程共 **97 节**：工程基础 10 节、Python 起步 7 节、CS 起步 4 节、首个可验证项目 1 节、Python 核心与工程化 7 节、C++ 起步 2 节、C++ 核心 3 节、算法基础与核心 22 节、算法深化 10 节、算法求职加练 3 节、CS 系统基础 6 节、系统工程 6 节、AI 数学数据 2 节、Web 起步 4 节、Web 核心 4 节、Web 工程化 6 节。
 
 ## 四类用户共用一棵能力树
 
@@ -56,7 +56,7 @@
       <span aria-hidden="true">→</span>
       <a href="#module-cs-start" data-status="open"><strong>CS 起步</strong><small>已开放 · 可顺序进入</small></a>
       <span aria-hidden="true">→</span>
-      <a href="#module-direction-choice" data-status="building"><strong>首个可验证项目</strong><small>建设中 · 完成后选择方向</small></a>
+      <a href="#module-direction-choice" data-status="open"><strong>首个可验证项目</strong><small>已开放 · 用两周实验选择方向</small></a>
     </div>
   </section>
 
@@ -76,18 +76,18 @@
       <a href="#module-cpp-start" data-status="open">C++ 起步 · 已开放</a>
       <a href="#module-cpp-core" data-status="open">C++ 核心 · 已开放</a>
       <a href="#module-cs-systems-core" data-status="open">CS 系统核心 · 6 / 6</a>
-      <a href="#module-systems-engineering" data-status="planned">并发、网络与性能</a>
+      <a href="#module-systems-engineering" data-status="open">并发、网络与性能 · 6 / 6</a>
     </section>
     <section>
       <h3>算法</h3>
       <a href="#module-algorithm-foundation" data-status="open">共同算法基础</a>
       <a href="#module-algorithm-core" data-status="open">算法核心</a>
-      <a href="#module-algorithm-deepening" data-status="planned">算法深化</a>
-      <a href="#module-career-algorithm" data-status="building">求职：机考与复盘</a>
+      <a href="#module-algorithm-deepening" data-status="open">算法深化 · 已开放 10 / 10</a>
+      <a href="#module-career-algorithm" data-status="open">求职：机考与复盘 · 3 / 3</a>
     </section>
     <section>
       <h3>AI 模型</h3>
-      <a href="#module-ai-math-data" data-status="planned">数学、数据与实验</a>
+      <a href="#module-ai-math-data" data-status="building">数学、数据与实验 · 2 / 6</a>
       <a href="#module-machine-learning" data-status="planned">机器学习</a>
       <a href="#module-deep-learning" data-status="planned">深度学习</a>
       <a href="#module-reinforcement-learning" data-status="planned">强化学习</a>
@@ -135,7 +135,7 @@
 | <span id="module-engineering-start">工程基础起步</span> | 起步 | 共同基座 | 可复现本地学习工作区 | 无 → Python 起步 | A/C 完整；B/D 按缺口补修 | 已开放 | 可顺序进入 |
 | <span id="module-python-start">Python 编程起步</span> | 起步 | 共同基座 | 可运行、可测试的小程序 | 工程基础 → CS 起步、Python 核心 | 四类共用；有基础者可测评跳过 | 已开放 | 可顺序进入 |
 | <span id="module-cs-start">CS 起步</span> | 起步 | 共同基座 | 能描述表示、复杂度与边界 | Python 起步 → 算法基础、方向选择 | 四类共用；已有基础者可用每课检查跳过已掌握部分 | 已开放 | 可顺序进入 |
-| <span id="module-direction-choice">首个可验证项目与方向选择</span> | 基础 | 共同基座 | 第一份代码、测试、说明和复盘证据 | CS 起步 → 各方向 | 四类都完成；求职画像追加项目表达 | 建设中 | 等待前置 |
+| <span id="module-direction-choice">首个可验证项目与方向选择</span> | 基础 | 共同基座 | 第一份代码、测试、说明和复盘证据 | CS 起步 → 各方向 | 四类都完成；求职画像追加项目表达 | 已开放 · 1/1 | 可顺序进入 |
 | <span id="module-python-core">Python 核心</span> | 核心 | 方向主干 | 类型、协议、数据模型与资源边界 | Python 起步 → Python 工程化 | 应用、AI、LLM 方向优先 | 已开放 | 方向可选 |
 | <span id="module-python-engineering">Python 工程化</span> | 工程化 | 方向主干 | 可安装包、CLI、配置和诊断 | Python 核心 → Web、LLM 应用 | 应用、AI、LLM 方向优先；求职追加证据问答 | 已开放 | 可顺序进入 |
 | <span id="module-web-start">Web 起步</span> | 起步 | 方向主干 | HTML、CSS、页面状态与本地 API 的首次闭环 | Python 起步 → Web 核心 | A/C 完整；B/D 按 HTML、CSS、JS 与 HTTP 缺口补修；求职画像追加项目解释 | 已开放 · 4/4 | 方向可选 |
@@ -143,13 +143,13 @@
 | <span id="module-web-engineering">Web 工程化</span> | 工程化 | 能力深化 | PostgreSQL 迁移、认证授权、测试、容器、发布与可观测应用 | Web 核心 + CS 系统核心 → RAG/Agent | 兴趣按项目选；求职路线重点 | 已开放 · 6/6 | 可顺序进入 |
 | <span id="module-cpp-start">C++ 起步</span> | 起步 | 方向主干 | 从源码、编译到首次运行和函数组织 | 方向选择 → C++ 核心 | 系统、性能、设备方向进入 | 已开放 | 可顺序进入 |
 | <span id="module-cpp-core">C++ 核心</span> | 核心 | 方向主干 | 多文件构建、STL、生命周期与 RAII | C++ 起步 → 系统工程、设备基础 | 系统方向主干；其他方向可选 | 已开放 | 可顺序进入 |
-| <span id="module-systems-engineering">系统编程、并发、网络与性能</span> | 工程化 | 能力深化 | 可诊断的系统程序与性能证据 | C++ 核心 + CS 系统核心 → 设备／高级 Agent | 系统和设备路线重点；求职叠加故障题 | 已规划未建设 | 方向可选 |
+| <span id="module-systems-engineering">系统编程、并发、网络与性能</span> | 工程化 | 能力深化 | 可诊断的系统程序与性能证据 | C++ 核心 + CS 系统核心 → 设备／高级 Agent | 系统和设备路线重点；求职叠加故障题 | 已开放 · 6/6 | 方向可选 |
 | <span id="module-algorithm-foundation">共同算法基础</span> | 基础 | 共同基座 | 常用结构、查找排序、递归、BFS/DFS 与边界测试 | CS 起步 → 算法核心 | 四类共用，深度可按测评调整 | 已开放 | 可顺序进入 |
 | <span id="module-algorithm-core">算法核心</span> | 核心 | 方向主干 | 动态结构、堆、最短路、并查集和生成树 | 算法基础 → 深化／机考 | 算法兴趣或求职进入 | 已开放 | 方向可选 |
-| <span id="module-algorithm-deepening">算法深化</span> | 深化 | 能力深化 | 双指针、窗口、前缀和、单调结构、回溯、贪心、DP、高阶图与字符串 | 算法核心 → 专项 | 兴趣按方向选；求职按岗位权重选 | 已规划未建设 | 方向可选 |
-| <span id="module-career-algorithm">机考、限时模拟与复盘</span> | 专业/求职 | 求职叠加 | 固定输入输出、测试、限时记录和错因复盘 | 算法基础／核心 → 岗位专项 | 仅 C/D 默认叠加 | 建设中 | 方向可选 |
+| <span id="module-algorithm-deepening">算法深化</span> | 深化 | 能力深化 | 双指针、窗口、前缀和、单调结构、回溯、贪心、DP、高阶图与字符串 | 算法核心 → 专项 | 兴趣按方向选；求职按岗位权重选 | 已开放 · 10/10 | 方向可选 |
+| <span id="module-career-algorithm">机考、限时模拟与复盘</span> | 专业/求职 | 求职叠加 | 固定输入输出、测试、限时记录和错因复盘 | 算法基础／核心 → 岗位专项 | 仅 C/D 默认叠加 | 已开放 · 3/3 | 方向可选 |
 | <span id="module-cs-systems-core">操作系统、网络与数据库核心</span> | 核心 | 方向主干 | 进程、线程、内存、协议、事务与权限实验 | CS 起步 → 系统工程、Web 工程化 | 四类按方向进入；不是算法起步前置 | 已开放 · 6/6 | 可顺序进入 |
-| <span id="module-ai-math-data">数学、数据与可复现实验</span> | 基础 | 方向主干 | 数据处理、实验设计、指标与基线 | Python 工程化 + 算法基础 → ML | AI 模型路线共用 | 已规划未建设 | 等待前置 |
+| <span id="module-ai-math-data">数学、数据与可复现实验</span> | 基础 | 方向主干 | 数据处理、实验设计、指标与基线 | Python 工程化 + 算法基础 → ML | AI 模型路线共用 | 建设中 · 2/6 | 可顺序进入 |
 | <span id="module-machine-learning">机器学习</span> | 核心 | 方向主干 | 可复现训练、验证和误差分析 | 数学数据实验 → 深度学习 | AI 模型路线共用 | 已规划未建设 | 等待前置 |
 | <span id="module-deep-learning">深度学习</span> | 核心 | 方向主干 | 神经网络训练、调试和评估 | 机器学习 → RL／视觉／NLP／多模态 | AI 模型路线进入；LLM 应用不强制 | 已规划未建设 | 等待前置 |
 | <span id="module-reinforcement-learning">强化学习</span> | 专业/求职 | 能力深化 | 策略、价值、环境与控制实验 | 深度学习 → 智能控制 | 专业方向可选 | 已规划未建设 | 方向可选 |
@@ -174,7 +174,7 @@
 
 ## 已开放课程明细 { #opened-lessons }
 
-以下 **75 节课程各出现一次**。既有 55 节已完成 V2 迁移；Web 起步、Web 核心、CS 系统基础和 Web 工程化均已完成，学习进度报告器演进到 Web v0.14。
+以下 **97 节课程各出现一次**。既有 55 节已完成 V2 迁移；算法深化 10/10 已开放，AI 数学数据进入 2/6。
 
 ### 工程基础起步 · 10 节
 
@@ -250,6 +250,10 @@
 3. [字符串、UTF-8 字节与码点边界](cs-core/03-string-utf8-byte-code-point-boundaries.md) · 已开放
 4. [二维网格、行优先布局与坐标边界](cs-core/04-two-dimensional-grid-row-major-layout.md) · 已开放
 
+### 首个可验证项目与方向选择 · 1 节
+
+1. [首个可验证项目：从代码证据到方向试学](direction-choice/01-first-verifiable-project-direction-trials.md) · 已开放
+
 ### CS 系统基础 · 6 节
 
 1. [程序、进程与退出状态](cs-systems-core/01-program-process-exit-status.md) · 已开放
@@ -258,6 +262,15 @@
 4. [从端口到 HTTP 的本机网络链路](cs-systems-core/04-local-network-port-http.md) · 已开放
 5. [事务、隔离与并发写入](cs-systems-core/05-transactions-isolation-concurrent-writes.md) · 已开放
 6. [身份、授权与最小权限](cs-systems-core/06-identity-authorization-least-privilege.md) · 已开放
+
+### 系统工程 · 已开放 6 / 6
+
+1. [文件描述符、部分 I/O 与所有权](systems-engineering/01-file-descriptors-partial-io-ownership.md) · 已开放
+2. [信号、进程监督与优雅停止](systems-engineering/02-signals-process-supervision-graceful-shutdown.md) · 已开放
+3. [条件变量、有界队列与关闭协议](systems-engineering/03-condition-variables-bounded-queue-shutdown.md) · 已开放
+4. [非阻塞网络、事件循环与背压](systems-engineering/04-nonblocking-network-event-loop-backpressure.md) · 已开放
+5. [延迟分布、采样分析与性能预算](systems-engineering/05-latency-distribution-sampling-performance-budget.md) · 已开放
+6. [故障注入、资源泄漏与恢复验收](systems-engineering/06-fault-injection-resource-leaks-recovery-acceptance.md) · 已开放
 
 ### 共同算法与数据结构基础 · 16 节
 
@@ -287,15 +300,39 @@
 5. [Kruskal、环检测与最小生成森林](cs-core/25-kruskal-minimum-spanning-forest.md) · 已开放
 6. [Lazy Prim、割边前沿与过期边](cs-core/26-lazy-prim-cut-frontier-stale-edges.md) · 已开放
 
+### 算法深化 · 已开放 10 / 10
+
+1. [有序双指针、候选消除与不变量](algorithm-deepening/01-sorted-two-pointers-candidate-elimination-invariant.md) · 已开放
+2. [滑动窗口、频次状态与最短覆盖](algorithm-deepening/02-sliding-window-frequency-minimum-cover.md) · 已开放
+3. [前缀和、差分与区间批处理](algorithm-deepening/03-prefix-sum-difference-range-batching.md) · 已开放
+4. [单调栈、单调队列与支配关系](algorithm-deepening/04-monotonic-stack-queue-dominance.md) · 已开放
+5. [回溯、选择树与剪枝](algorithm-deepening/05-backtracking-choice-tree-pruning.md) · 已开放
+6. [贪心选择、交换论证与反例](algorithm-deepening/06-greedy-choice-exchange-counterexample.md) · 已开放
+7. [线性动态规划、状态与转移](algorithm-deepening/07-linear-dynamic-programming-state-transition.md) · 已开放
+8. [背包、区间动态规划与空间压缩](algorithm-deepening/08-knapsack-interval-dp-space-compression.md) · 已开放
+9. [高阶图：拓扑、强连通与多源路径](algorithm-deepening/09-advanced-graph-topology-scc-multisource.md) · 已开放
+10. [Trie、KMP 与字符串匹配](algorithm-deepening/10-trie-kmp-string-matching.md) · 已开放
+
+### 算法求职加练 · 已开放 3 / 3
+
+1. [固定输入输出与本机判题契约](career-algorithm/01-fixed-io-local-judge-contract.md) · 已开放
+2. [限时模拟、策略选择与过程记录](career-algorithm/02-timed-rehearsal-strategy-log.md) · 已开放
+3. [错因分类、最小反例与回归复盘](career-algorithm/03-failure-categories-minimal-counterexamples-regression.md) · 已开放
+
+### 数学、数据与可复现实验 · 建设中 2 / 6
+
+1. [向量、矩阵、形状与数值契约](ai-foundation/math-data/01-vectors-matrices-shapes-numeric-contracts.md) · 已开放
+2. [点积、距离、缩放与标准化](ai-foundation/math-data/02-dot-distance-scaling-standardization.md) · 已开放
+
 ## 规划模块边界
 
 以下只登记稳定模块，不提前虚构课名和课数：
 
-- **共同基座缺口**：首个可验证项目与方向选择的公开汇总入口；CS 起步四课已经开放。
+- **共同基座**：CS 起步四课与首个可验证项目均已开放；四类学习者先形成代码、测试、说明和复盘证据，再用短期实验选择方向。
 - **应用工程**：Web 起步、Web 核心、CS 系统基础与 Web 工程化均已完成；RAG／Agent 的 Web 工程化前置已满足，但下游正文仍未建设。
-- **系统工程**：C++ 起步、C++ 核心和 CS 系统基础均已开放；更深的系统编程、并发、网络与性能正文仍未建设，可作为方向课程继续。
-- **算法**：算法深化，以及只对求职画像默认叠加的机考、限时模拟与复盘。
-- **AI 模型**：数学数据实验、机器学习、深度学习，再分强化学习、视觉、NLP/Transformer、多模态等方向。
+- **系统工程**：六课已完成描述符 I/O、信号、队列、非阻塞网络、性能与恢复并开放。
+- **算法**：求职叠加三课已完成固定判题、限时策略和错因回归；算法深化 10/10 已开放。
+- **AI 模型**：数学数据实验进入 2/6；完成后再进入机器学习、深度学习及强化学习、视觉、NLP/Transformer、多模态等方向。
 - **LLM 应用**：模型使用与结构化输出、检索、RAG 与评估；它与 AI 模型相邻但不是同一条线。
 - **Agent 工程**：Tool Calling、有界工作流、状态／记忆／上下文／恢复／评估／可观测性／安全，再进入专业 Agent。
 - **设备系统**：C 起步、设备共同基础、MCU/RTOS、Linux/BSP、工业控制；与 AI 或强化学习汇合后进入边缘智能或智能控制。
@@ -304,7 +341,7 @@
 
 1. 55 节既有课程已经完成 V2 迁移；后续按依赖关系建设新的连续课程组。
 2. Web 起步与 Web 核心各四课已经完成；学习进度报告器升级为 v0.8，具备运行时契约、SQLite 持久化、资源 CRUD、游标分页、重复写入保护、表单校验和失败恢复。
-3. CS 系统基础六课已完成，系统运行观察器演进到 v0.6；接下来可建设 Web 工程化或更深的系统工程，设备方向仍先等待 C 语言前置。
+3. 共同基座、Web 工程化、算法求职叠加、系统工程与算法深化均已完成；数学数据实验当前 2/6。
 4. 每新增一节正式课程，同时更新正文、示例、知识库、测试、项目关系、课程登记和公开状态；禁止只增加空页面或目录标题。
 
 设备方向的硬件门槛与三级出口见[设备系统与边缘智能](device-edge-systems/README.md)。公开课程登记的机器可校验版本位于 `site-src/data/curriculum/v2.json`，但学习者只需要使用本页。

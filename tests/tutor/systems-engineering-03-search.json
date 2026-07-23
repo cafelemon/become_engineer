@@ -1,0 +1,89 @@
+{
+  "lesson_id": "systems-engineering-03",
+  "cases": [
+    {
+      "query": "有界队列为什么比无限队列安全",
+      "expected_card": "bounded-purpose"
+    },
+    {
+      "query": "容量上限解决什么过载问题",
+      "expected_card": "bounded-purpose"
+    },
+    {
+      "query": "排空关闭是什么意思",
+      "expected_card": "drain-close"
+    },
+    {
+      "query": "close 后是否立即清空任务",
+      "expected_card": "drain-close"
+    },
+    {
+      "query": "条件变量为什么必须带谓词",
+      "expected_card": "wait-predicate"
+    },
+    {
+      "query": "notify 一次是否等于条件成立",
+      "expected_card": "wait-predicate"
+    },
+    {
+      "query": "close 为什么唤醒两组等待者",
+      "expected_card": "notify-both"
+    },
+    {
+      "query": "只 notify 消费者够不够",
+      "expected_card": "notify-both"
+    },
+    {
+      "query": "怎样不靠 sleep 证明生产者被阻塞",
+      "expected_card": "deterministic-pressure"
+    },
+    {
+      "query": "背压测试如何避免调度运气",
+      "expected_card": "deterministic-pressure"
+    },
+    {
+      "query": "任务何时算被服务接受",
+      "expected_card": "accept-boundary"
+    },
+    {
+      "query": "push 返回 true 后谁负责",
+      "expected_card": "accept-boundary"
+    },
+    {
+      "query": "关闭后 push 应该返回什么",
+      "expected_card": "close-reject"
+    },
+    {
+      "query": "停止接收时能否继续入队",
+      "expected_card": "close-reject"
+    },
+    {
+      "query": "虚假唤醒会造成什么问题",
+      "expected_card": "spurious-wakeup"
+    },
+    {
+      "query": "if 加裸 wait 为什么危险",
+      "expected_card": "spurious-wakeup"
+    },
+    {
+      "query": "增大容量能消除背压吗",
+      "expected_card": "capacity-limit"
+    },
+    {
+      "query": "队列更大是否解决下游慢",
+      "expected_card": "capacity-limit"
+    },
+    {
+      "query": "可诊断系统服务 v0.3 新增什么",
+      "expected_card": "diagnostic-v03"
+    },
+    {
+      "query": "第三课项目增量是什么",
+      "expected_card": "diagnostic-v03"
+    }
+  ],
+  "unknown": [
+    "怎样给星星设置队列容量",
+    "企鹅虚假唤醒后会唱歌吗"
+  ]
+}

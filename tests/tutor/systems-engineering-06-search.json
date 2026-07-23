@@ -1,0 +1,89 @@
+{
+  "lesson_id": "systems-engineering-06",
+  "cases": [
+    {
+      "query": "怎样证明服务真的恢复",
+      "expected_card": "recovery-proof"
+    },
+    {
+      "query": "恢复日志够不够",
+      "expected_card": "recovery-proof"
+    },
+    {
+      "query": "故障注入计划要写什么",
+      "expected_card": "fault-plan"
+    },
+    {
+      "query": "故障实验四要素",
+      "expected_card": "fault-plan"
+    },
+    {
+      "query": "怎样确认已知 fd 仍然打开",
+      "expected_card": "fd-detection"
+    },
+    {
+      "query": "fcntl 怎样查 fd",
+      "expected_card": "fd-detection"
+    },
+    {
+      "query": "为什么不能扫描后关闭所有陌生 fd",
+      "expected_card": "resource-scope"
+    },
+    {
+      "query": "资源清理怎样避免误伤",
+      "expected_card": "resource-scope"
+    },
+    {
+      "query": "子进程失败后为什么还要 waitpid",
+      "expected_card": "child-reap"
+    },
+    {
+      "query": "记录 exit 7 就够了吗",
+      "expected_card": "child-reap"
+    },
+    {
+      "query": "EPIPE 后怎样恢复传输",
+      "expected_card": "epipe-recovery"
+    },
+    {
+      "query": "能否继续重试旧 socket",
+      "expected_card": "epipe-recovery"
+    },
+    {
+      "query": "临时文件恢复验收检查什么",
+      "expected_card": "temporary-cleanup"
+    },
+    {
+      "query": "unlink 之前还要做什么",
+      "expected_card": "temporary-cleanup"
+    },
+    {
+      "query": "为什么恢复重试必须有上限",
+      "expected_card": "retry-bound"
+    },
+    {
+      "query": "无限重连有什么风险",
+      "expected_card": "retry-bound"
+    },
+    {
+      "query": "恢复为什么分资源层和服务层",
+      "expected_card": "service-resource"
+    },
+    {
+      "query": "资源关闭和业务恢复哪个重要",
+      "expected_card": "service-resource"
+    },
+    {
+      "query": "可诊断系统服务 v0.6 新增什么",
+      "expected_card": "diagnostic-v06"
+    },
+    {
+      "query": "第六课项目增量是什么",
+      "expected_card": "diagnostic-v06"
+    }
+  ],
+  "unknown": [
+    "怎样烤一块松软面包",
+    "长颈鹿睡觉时会做梦吗"
+  ]
+}

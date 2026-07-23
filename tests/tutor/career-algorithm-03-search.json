@@ -1,0 +1,89 @@
+{
+  "lesson_id": "career-algorithm-03",
+  "cases": [
+    {
+      "query": "完整失败复盘需要哪些证据",
+      "expected_card": "evidence-chain"
+    },
+    {
+      "query": "失败后应该留下什么",
+      "expected_card": "evidence-chain"
+    },
+    {
+      "query": "算法错因分为哪五类",
+      "expected_card": "five-categories"
+    },
+    {
+      "query": "契约边界实现复杂度策略怎么区分",
+      "expected_card": "five-categories"
+    },
+    {
+      "query": "错因分类为什么不是永久结论",
+      "expected_card": "category-hypothesis"
+    },
+    {
+      "query": "分类错了以后怎么办",
+      "expected_card": "category-hypothesis"
+    },
+    {
+      "query": "为什么只称反例候选",
+      "expected_card": "counterexample-candidate"
+    },
+    {
+      "query": "工具能否证明全局最小反例",
+      "expected_card": "counterexample-candidate"
+    },
+    {
+      "query": "更小探针要记录什么",
+      "expected_card": "smaller-probe"
+    },
+    {
+      "query": "怎样说明反例已经缩小",
+      "expected_card": "smaller-probe"
+    },
+    {
+      "query": "复盘记录怎样通过门槛",
+      "expected_card": "regression-gate"
+    },
+    {
+      "query": "after 为什么必须 regression-pass",
+      "expected_card": "regression-gate"
+    },
+    {
+      "query": "复杂度修复为什么用操作计数",
+      "expected_card": "operation-count"
+    },
+    {
+      "query": "为什么不用一次耗时证明更快",
+      "expected_card": "operation-count"
+    },
+    {
+      "query": "为什么一次只做一个最小修复",
+      "expected_card": "one-fix"
+    },
+    {
+      "query": "同时重构和换算法有什么问题",
+      "expected_card": "one-fix"
+    },
+    {
+      "query": "原因为什么不能只写粗心",
+      "expected_card": "technical-cause"
+    },
+    {
+      "query": "复盘中的 cause 应该怎么写",
+      "expected_card": "technical-cause"
+    },
+    {
+      "query": "算法演练运行器 v0.3 交付什么",
+      "expected_card": "rehearsal-v03"
+    },
+    {
+      "query": "三课项目最终产出是什么",
+      "expected_card": "rehearsal-v03"
+    }
+  ],
+  "unknown": [
+    "怎样给极光制作最小饼干反例",
+    "松鼠回归测试需要几把雨伞"
+  ]
+}

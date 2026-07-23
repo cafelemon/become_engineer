@@ -1,0 +1,89 @@
+{
+  "lesson_id": "algorithm-deepening-02",
+  "cases": [
+    {
+      "query": "滑动窗口的两个边界各负责什么",
+      "expected_card": "expand-shrink"
+    },
+    {
+      "query": "右端和左端怎样分工",
+      "expected_card": "expand-shrink"
+    },
+    {
+      "query": "窗口频次不变量是什么",
+      "expected_card": "window-invariant"
+    },
+    {
+      "query": "current 必须对应什么",
+      "expected_card": "window-invariant"
+    },
+    {
+      "query": "需求 AAC 为什么不能用集合",
+      "expected_card": "duplicate-need"
+    },
+    {
+      "query": "重复需求怎样表示",
+      "expected_card": "duplicate-need"
+    },
+    {
+      "query": "formed 什么时候增加",
+      "expected_card": "formed-increase"
+    },
+    {
+      "query": "多余字符会增加 formed 吗",
+      "expected_card": "formed-increase"
+    },
+    {
+      "query": "formed 什么时候减少",
+      "expected_card": "formed-decrease"
+    },
+    {
+      "query": "移除字符后何时失效",
+      "expected_card": "formed-decrease"
+    },
+    {
+      "query": "为什么持续收缩能找到该右端最短窗口",
+      "expected_card": "minimum-proof"
+    },
+    {
+      "query": "固定 right 怎样找最优 left",
+      "expected_card": "minimum-proof"
+    },
+    {
+      "query": "嵌套 while 为什么仍是 O(n)",
+      "expected_card": "linear-window"
+    },
+    {
+      "query": "窗口会不会 O(n平方)",
+      "expected_card": "linear-window"
+    },
+    {
+      "query": "没有覆盖窗口时返回什么",
+      "expected_card": "no-cover"
+    },
+    {
+      "query": "空字符串是否会歧义",
+      "expected_card": "no-cover"
+    },
+    {
+      "query": "并列最短窗口怎样处理",
+      "expected_card": "tie-contract"
+    },
+    {
+      "query": "最短答案顺序由什么决定",
+      "expected_card": "tie-contract"
+    },
+    {
+      "query": "约束模式实验 v0.2 新增什么",
+      "expected_card": "pattern-v02"
+    },
+    {
+      "query": "算法深化第二课项目是什么",
+      "expected_card": "pattern-v02"
+    }
+  ],
+  "unknown": [
+    "怎样给陶土花瓶上釉",
+    "信天翁一生飞多远"
+  ]
+}

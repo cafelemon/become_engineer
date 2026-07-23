@@ -1,0 +1,332 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "algorithm-deepening-06",
+    "title": "贪心选择、交换论证与反例",
+    "path": "learning-paths/algorithm-deepening/06-greedy-choice-exchange-counterexample/"
+  },
+  "contexts": [
+    {
+      "id": "overview-greedy",
+      "type": "overview",
+      "title": "贪心目标",
+      "anchor": "#overview-greedy"
+    },
+    {
+      "id": "concept-interval-contract",
+      "type": "concept",
+      "title": "区间契约",
+      "anchor": "#concept-interval-contract"
+    },
+    {
+      "id": "example-earliest-finish",
+      "type": "example",
+      "title": "最早结束选择",
+      "anchor": "#example-earliest-finish"
+    },
+    {
+      "id": "concept-exchange-proof",
+      "type": "concept",
+      "title": "交换论证",
+      "anchor": "#concept-exchange-proof"
+    },
+    {
+      "id": "reproduce-greedy-v06",
+      "type": "reproduce",
+      "title": "运行贪心实验",
+      "anchor": "#reproduce-greedy-v06"
+    },
+    {
+      "id": "modify-greedy",
+      "type": "modify",
+      "title": "修改目标与边界",
+      "anchor": "#modify-greedy"
+    },
+    {
+      "id": "troubleshoot-greedy",
+      "type": "troubleshoot",
+      "title": "贪心排错",
+      "anchor": "#troubleshoot-greedy"
+    },
+    {
+      "id": "project-pattern-lab-v06",
+      "type": "project",
+      "title": "约束模式实验 v0.6",
+      "anchor": "#project-pattern-lab-v06"
+    },
+    {
+      "id": "career-greedy-proof",
+      "type": "career",
+      "title": "贪心证明追问",
+      "anchor": "#career-greedy-proof"
+    }
+  ],
+  "cards": [
+    {
+      "id": "objective-count",
+      "lesson_id": "algorithm-deepening-06",
+      "context_id": "concept-interval-contract",
+      "question": "本课优化目标是什么？",
+      "aliases": [
+        "区间调度最大化什么"
+      ],
+      "keywords": [
+        "本课优化目标是什么",
+        "区间调度最大化什么"
+      ],
+      "diagnostic": "先判断“区间调度最大化什么”涉及目标、区间边界、局部规则还是证明义务。",
+      "hints": [
+        "查看 #concept-interval-contract 的目标与证据。",
+        "运行 test_greedy_interval_trace.py 核对“本课优化目标是什么”。"
+      ],
+      "example": "目标改变后必须重新选择算法。",
+      "answer": "在互不重叠前提下最大化选中区间数量，不是总时长或总价值。",
+      "source": {
+        "label": "区间契约",
+        "href": "#concept-interval-contract"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "half-open-touch",
+      "lesson_id": "algorithm-deepening-06",
+      "context_id": "concept-interval-contract",
+      "question": "两个端点相接的区间冲突吗？",
+      "aliases": [
+        "半开区间怎样判断兼容"
+      ],
+      "keywords": [
+        "两个端点相接的区间冲突吗",
+        "半开区间怎样判断兼容"
+      ],
+      "diagnostic": "先判断“半开区间怎样判断兼容”涉及目标、区间边界、局部规则还是证明义务。",
+      "hints": [
+        "查看 #concept-interval-contract 的目标与证据。",
+        "运行 test_greedy_interval_trace.py 核对“两个端点相接的区间冲突吗”。"
+      ],
+      "example": "[1,4) 与 [4,7) 可同时选择。",
+      "answer": "使用 [start,end)，下一段 start>=last_end 就兼容。",
+      "source": {
+        "label": "区间契约",
+        "href": "#concept-interval-contract"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "finish-rule",
+      "lesson_id": "algorithm-deepening-06",
+      "context_id": "example-earliest-finish",
+      "question": "正确的局部选择规则是什么？",
+      "aliases": [
+        "区间按什么排序"
+      ],
+      "keywords": [
+        "正确的局部选择规则是什么",
+        "区间按什么排序"
+      ],
+      "diagnostic": "先判断“区间按什么排序”涉及目标、区间边界、局部规则还是证明义务。",
+      "hints": [
+        "查看 #example-earliest-finish 的目标与证据。",
+        "运行 test_greedy_interval_trace.py 核对“正确的局部选择规则是什么”。"
+      ],
+      "example": "样例选择 A,D,H,K。",
+      "answer": "按结束时间从早到晚扫描，选择第一个与已选结果兼容的区间。",
+      "source": {
+        "label": "最早结束选择",
+        "href": "#example-earliest-finish"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "exchange-proof",
+      "lesson_id": "algorithm-deepening-06",
+      "context_id": "concept-exchange-proof",
+      "question": "交换论证怎样证明首选安全？",
+      "aliases": [
+        "为什么最早结束不损失最优解"
+      ],
+      "keywords": [
+        "交换论证怎样证明首选安全",
+        "为什么最早结束不损失最优解"
+      ],
+      "diagnostic": "先判断“为什么最早结束不损失最优解”涉及目标、区间边界、局部规则还是证明义务。",
+      "hints": [
+        "查看 #concept-exchange-proof 的目标与证据。",
+        "运行 test_greedy_interval_trace.py 核对“交换论证怎样证明首选安全”。"
+      ],
+      "example": "存在一个以 g 开头的最优解。",
+      "answer": "把任一最优解首段 o 换成结束不晚于它的 g，不减少后续空间或数量。",
+      "source": {
+        "label": "交换论证",
+        "href": "#concept-exchange-proof"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "earliest-start-counterexample",
+      "lesson_id": "algorithm-deepening-06",
+      "context_id": "overview-greedy",
+      "question": "最早开始为什么错误？",
+      "aliases": [
+        "3 对 4 的贪心反例"
+      ],
+      "keywords": [
+        "最早开始为什么错误",
+        "3",
+        "对",
+        "4",
+        "的贪心反例"
+      ],
+      "diagnostic": "先判断“3 对 4 的贪心反例”涉及目标、区间边界、局部规则还是证明义务。",
+      "hints": [
+        "查看 #overview-greedy 的目标与证据。",
+        "运行 test_greedy_interval_trace.py 核对“最早开始为什么错误”。"
+      ],
+      "example": "样例给出可重复的反例。",
+      "answer": "它先选 C 占据较长前缀，只得到 C,G,K 三段；最早结束能得到四段。",
+      "source": {
+        "label": "贪心目标",
+        "href": "#overview-greedy"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "tie-determinism",
+      "lesson_id": "algorithm-deepening-06",
+      "context_id": "example-earliest-finish",
+      "question": "结束时间相同时怎样稳定输出？",
+      "aliases": [
+        "贪心排序并列键"
+      ],
+      "keywords": [
+        "结束时间相同时怎样稳定输出",
+        "贪心排序并列键"
+      ],
+      "diagnostic": "先判断“贪心排序并列键”涉及目标、区间边界、局部规则还是证明义务。",
+      "hints": [
+        "查看 #example-earliest-finish 的目标与证据。",
+        "运行 test_greedy_interval_trace.py 核对“结束时间相同时怎样稳定输出”。"
+      ],
+      "example": "固定 order_by_finish 可逐字比较。",
+      "answer": "再按开始时间和标签排序；次级键用于确定性，不是正确性核心。",
+      "source": {
+        "label": "最早结束选择",
+        "href": "#example-earliest-finish"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "bruteforce-oracle",
+      "lesson_id": "algorithm-deepening-06",
+      "context_id": "reproduce-greedy-v06",
+      "question": "穷举在实验中做什么？",
+      "aliases": [
+        "为什么不能用穷举做生产算法"
+      ],
+      "keywords": [
+        "穷举在实验中做什么",
+        "为什么不能用穷举做生产算法"
+      ],
+      "diagnostic": "先判断“为什么不能用穷举做生产算法”涉及目标、区间边界、局部规则还是证明义务。",
+      "hints": [
+        "查看 #reproduce-greedy-v06 的目标与证据。",
+        "运行 test_greedy_interval_trace.py 核对“穷举在实验中做什么”。"
+      ],
+      "example": "指数增长，因此只用于测试。",
+      "answer": "小 n 时枚举可行子集，作为独立 oracle 核对贪心最优值。",
+      "source": {
+        "label": "运行贪心实验",
+        "href": "#reproduce-greedy-v06"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "weighted-failure",
+      "lesson_id": "algorithm-deepening-06",
+      "context_id": "modify-greedy",
+      "question": "加入区间价值后还能最早结束吗？",
+      "aliases": [
+        "带权区间为什么需要 DP"
+      ],
+      "keywords": [
+        "加入区间价值后还能最早结束吗",
+        "带权区间为什么需要",
+        "DP"
+      ],
+      "diagnostic": "先判断“带权区间为什么需要 DP”涉及目标、区间边界、局部规则还是证明义务。",
+      "hints": [
+        "查看 #modify-greedy 的目标与证据。",
+        "运行 test_greedy_interval_trace.py 核对“加入区间价值后还能最早结束吗”。"
+      ],
+      "example": "下一步用带权区间 DP。",
+      "answer": "交换后可能保留数量却损失更高价值，原目标保持步骤失效。",
+      "source": {
+        "label": "修改目标与边界",
+        "href": "#modify-greedy"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "greedy-complexity",
+      "lesson_id": "algorithm-deepening-06",
+      "context_id": "reproduce-greedy-v06",
+      "question": "贪心区间调度复杂度是多少？",
+      "aliases": [
+        "排序和扫描分别多快"
+      ],
+      "keywords": [
+        "贪心区间调度复杂度是多少",
+        "排序和扫描分别多快"
+      ],
+      "diagnostic": "先判断“排序和扫描分别多快”涉及目标、区间边界、局部规则还是证明义务。",
+      "hints": [
+        "查看 #reproduce-greedy-v06 的目标与证据。",
+        "运行 test_greedy_interval_trace.py 核对“贪心区间调度复杂度是多少”。"
+      ],
+      "example": "穷举 oracle 不计入生产复杂度。",
+      "answer": "排序 O(n log n)，扫描 O(n)，结果最多保存 n 个区间。",
+      "source": {
+        "label": "运行贪心实验",
+        "href": "#reproduce-greedy-v06"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "pattern-v06",
+      "lesson_id": "algorithm-deepening-06",
+      "context_id": "project-pattern-lab-v06",
+      "question": "约束模式实验 v0.6 新增什么？",
+      "aliases": [
+        "算法深化第六课项目是什么"
+      ],
+      "keywords": [
+        "约束模式实验",
+        "v0.6",
+        "新增什么",
+        "算法深化第六课项目是什么"
+      ],
+      "diagnostic": "先判断“算法深化第六课项目是什么”涉及目标、区间边界、局部规则还是证明义务。",
+      "hints": [
+        "查看 #project-pattern-lab-v06 的目标与证据。",
+        "运行 test_greedy_interval_trace.py 核对“约束模式实验 v0.6 新增什么”。"
+      ],
+      "example": "固定不变量 selected-intervals-nonoverlap。",
+      "answer": "新增无权区间调度、错误规则反例、交换论证、小规模 oracle 与双语言固定报告。",
+      "source": {
+        "label": "约束模式实验 v0.6",
+        "href": "#project-pattern-lab-v06"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

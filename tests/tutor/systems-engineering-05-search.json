@@ -1,0 +1,89 @@
+{
+  "lesson_id": "systems-engineering-05",
+  "cases": [
+    {
+      "query": "p95 延迟是什么意思",
+      "expected_card": "percentile-meaning"
+    },
+    {
+      "query": "p95 怎样解释",
+      "expected_card": "percentile-meaning"
+    },
+    {
+      "query": "最近秩怎样计算百分位",
+      "expected_card": "nearest-rank"
+    },
+    {
+      "query": "百分位 rank 公式",
+      "expected_card": "nearest-rank"
+    },
+    {
+      "query": "为什么平均值不能代替 p99",
+      "expected_card": "mean-tail"
+    },
+    {
+      "query": "均值为什么看不到尾延迟",
+      "expected_card": "mean-tail"
+    },
+    {
+      "query": "测持续时间为什么用 steady_clock",
+      "expected_card": "steady-clock"
+    },
+    {
+      "query": "系统时间能否测耗时",
+      "expected_card": "steady-clock"
+    },
+    {
+      "query": "为什么预热不进入测量样本",
+      "expected_card": "warmup-separation"
+    },
+    {
+      "query": "预热和采样怎样分开",
+      "expected_card": "warmup-separation"
+    },
+    {
+      "query": "为什么固定样本和真实测量要分开",
+      "expected_card": "deterministic-replay"
+    },
+    {
+      "query": "怎样让性能测试可重复",
+      "expected_card": "deterministic-replay"
+    },
+    {
+      "query": "完整性能预算包含什么",
+      "expected_card": "budget-contract"
+    },
+    {
+      "query": "性能阈值还要写哪些条件",
+      "expected_card": "budget-contract"
+    },
+    {
+      "query": "共享 CI 的墙钟测试为何偶发失败",
+      "expected_card": "ci-noise"
+    },
+    {
+      "query": "性能门禁怎样减少环境噪声",
+      "expected_card": "ci-noise"
+    },
+    {
+      "query": "微基准快得异常应检查什么",
+      "expected_card": "compiler-elision"
+    },
+    {
+      "query": "编译器会不会删掉工作",
+      "expected_card": "compiler-elision"
+    },
+    {
+      "query": "可诊断系统服务 v0.5 新增什么",
+      "expected_card": "diagnostic-v05"
+    },
+    {
+      "query": "第五课项目增量是什么",
+      "expected_card": "diagnostic-v05"
+    }
+  ],
+  "unknown": [
+    "怎样给多肉植物换土",
+    "海豚为什么喜欢跃出水面"
+  ]
+}

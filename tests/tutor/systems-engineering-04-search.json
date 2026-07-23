@@ -1,0 +1,89 @@
+{
+  "lesson_id": "systems-engineering-04",
+  "cases": [
+    {
+      "query": "非阻塞 socket 解决什么问题",
+      "expected_card": "nonblocking-purpose"
+    },
+    {
+      "query": "非阻塞是否消除等待",
+      "expected_card": "nonblocking-purpose"
+    },
+    {
+      "query": "EAGAIN 表示连接失败了吗",
+      "expected_card": "eagain-meaning"
+    },
+    {
+      "query": "EAGAIN 应该怎样处理",
+      "expected_card": "eagain-meaning"
+    },
+    {
+      "query": "什么时候应该订阅 POLLOUT",
+      "expected_card": "pollout-interest"
+    },
+    {
+      "query": "为什么不能一直监听可写",
+      "expected_card": "pollout-interest"
+    },
+    {
+      "query": "POLLIN 保证读到完整消息吗",
+      "expected_card": "pollin-meaning"
+    },
+    {
+      "query": "读就绪是否等于整条消息到达",
+      "expected_card": "pollin-meaning"
+    },
+    {
+      "query": "怎样真实触发网络背压",
+      "expected_card": "real-backpressure"
+    },
+    {
+      "query": "不用 Mock 怎样得到 EAGAIN",
+      "expected_card": "real-backpressure"
+    },
+    {
+      "query": "send 返回正数就代表整条消息完成吗",
+      "expected_card": "partial-send"
+    },
+    {
+      "query": "部分发送怎样续传",
+      "expected_card": "partial-send"
+    },
+    {
+      "query": "网络实验为什么不记录写入次数",
+      "expected_card": "stable-snapshot"
+    },
+    {
+      "query": "怎样避免不同机器快照漂移",
+      "expected_card": "stable-snapshot"
+    },
+    {
+      "query": "事件循环为什么会空转",
+      "expected_card": "busy-loop"
+    },
+    {
+      "query": "CPU 满载但没有业务流量",
+      "expected_card": "busy-loop"
+    },
+    {
+      "query": "对端关闭后怎样结束事件处理",
+      "expected_card": "socket-close"
+    },
+    {
+      "query": "HUP 或 recv 等于 0 怎么办",
+      "expected_card": "socket-close"
+    },
+    {
+      "query": "可诊断系统服务 v0.4 新增什么",
+      "expected_card": "diagnostic-v04"
+    },
+    {
+      "query": "第四课项目增量是什么",
+      "expected_card": "diagnostic-v04"
+    }
+  ],
+  "unknown": [
+    "怎样给仙人掌挑花盆",
+    "企鹅在南极怎样跳探戈"
+  ]
+}

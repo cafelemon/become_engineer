@@ -1,0 +1,89 @@
+{
+  "lesson_id": "systems-engineering-01",
+  "cases": [
+    {
+      "query": "为什么一次 write 不等于完整消息",
+      "expected_card": "partial-io"
+    },
+    {
+      "query": "短写后应该怎么处理",
+      "expected_card": "partial-io"
+    },
+    {
+      "query": "描述符所有权有哪三层",
+      "expected_card": "fd-layers"
+    },
+    {
+      "query": "int fd 内核对象和 C++ 对象是什么关系",
+      "expected_card": "fd-layers"
+    },
+    {
+      "query": "UniqueFd 为什么禁止复制",
+      "expected_card": "unique-fd"
+    },
+    {
+      "query": "怎样避免两个对象重复 close",
+      "expected_card": "unique-fd"
+    },
+    {
+      "query": "写循环为什么按 written 推进",
+      "expected_card": "write-progress"
+    },
+    {
+      "query": "offset 能不能加 request",
+      "expected_card": "write-progress"
+    },
+    {
+      "query": "pipe 读端什么时候得到 EOF",
+      "expected_card": "pipe-eof"
+    },
+    {
+      "query": "为什么不关闭写端会一直等待",
+      "expected_card": "pipe-eof"
+    },
+    {
+      "query": "示例是否真的调用 POSIX pipe",
+      "expected_card": "real-pipe"
+    },
+    {
+      "query": "fd pipeline 是不是 Mock",
+      "expected_card": "real-pipe"
+    },
+    {
+      "query": "read 的正数零和负一分别表示什么",
+      "expected_card": "read-states"
+    },
+    {
+      "query": "怎样区分数据 EOF EINTR 和错误",
+      "expected_card": "read-states"
+    },
+    {
+      "query": "为什么关闭后不能长期依赖 fd 数值",
+      "expected_card": "fd-reuse"
+    },
+    {
+      "query": "描述符数字会不会被复用",
+      "expected_card": "fd-reuse"
+    },
+    {
+      "query": "POSIX 描述符是不是标准 C++",
+      "expected_card": "platform-boundary"
+    },
+    {
+      "query": "这套代码能否直接用于 Windows",
+      "expected_card": "platform-boundary"
+    },
+    {
+      "query": "可诊断系统服务 v0.1 交付什么",
+      "expected_card": "diagnostic-v01"
+    },
+    {
+      "query": "系统工程第一课项目产出是什么",
+      "expected_card": "diagnostic-v01"
+    }
+  ],
+  "unknown": [
+    "怎样给彩虹分配文件描述符",
+    "海豚短写后会不会变成树"
+  ]
+}

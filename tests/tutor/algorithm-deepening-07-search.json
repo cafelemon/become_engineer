@@ -1,0 +1,89 @@
+{
+  "lesson_id": "algorithm-deepening-07",
+  "cases": [
+    {
+      "query": "dp[i] 代表什么",
+      "expected_card": "state-meaning"
+    },
+    {
+      "query": "线性 DP 状态怎样定义",
+      "expected_card": "state-meaning"
+    },
+    {
+      "query": "状态转移怎样推导",
+      "expected_card": "transition"
+    },
+    {
+      "query": "take 和 skip 是什么",
+      "expected_card": "transition"
+    },
+    {
+      "query": "为什么需要 dp[0]=0",
+      "expected_card": "base-case"
+    },
+    {
+      "query": "空前缀基线有什么用",
+      "expected_card": "base-case"
+    },
+    {
+      "query": "状态表的不变量是什么",
+      "expected_card": "prefix-invariant"
+    },
+    {
+      "query": "怎样证明每个 dp 格子正确",
+      "expected_card": "prefix-invariant"
+    },
+    {
+      "query": "怎样重建一组最优下标",
+      "expected_card": "reconstruct"
+    },
+    {
+      "query": "从 dp 表尾如何回退",
+      "expected_card": "reconstruct"
+    },
+    {
+      "query": "take 和 skip 相等时怎么办",
+      "expected_card": "tie-policy"
+    },
+    {
+      "query": "DP 平局如何固定输出",
+      "expected_card": "tie-policy"
+    },
+    {
+      "query": "全负输入为什么返回零",
+      "expected_card": "negative-empty"
+    },
+    {
+      "query": "允许空选择怎样影响答案",
+      "expected_card": "negative-empty"
+    },
+    {
+      "query": "先取最大值为什么失败",
+      "expected_card": "greedy-counterexample"
+    },
+    {
+      "query": "6 对 9 的反例",
+      "expected_card": "greedy-counterexample"
+    },
+    {
+      "query": "什么时候能把空间压到 O(1)",
+      "expected_card": "space-compression"
+    },
+    {
+      "query": "滚动变量会丢失什么",
+      "expected_card": "space-compression"
+    },
+    {
+      "query": "约束模式实验 v0.7 新增什么",
+      "expected_card": "pattern-v07"
+    },
+    {
+      "query": "算法深化第七课项目是什么",
+      "expected_card": "pattern-v07"
+    }
+  ],
+  "unknown": [
+    "怎样判断咖啡豆的新鲜度",
+    "月相变化需要多少天"
+  ]
+}

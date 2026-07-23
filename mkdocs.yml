@@ -125,6 +125,22 @@ nav:
           - 操作计数、增长率与渐近复杂度: learning-paths/cs-core/02-operation-count-growth-asymptotic-complexity.md
           - 字符串、UTF-8 字节与码点边界: learning-paths/cs-core/03-string-utf8-byte-code-point-boundaries.md
           - 二维网格、行优先布局与坐标边界: learning-paths/cs-core/04-two-dimensional-grid-row-major-layout.md
+      - 首个可验证项目与方向选择:
+          - 课程说明: learning-paths/direction-choice/README.md
+          - 从代码证据到方向试学: learning-paths/direction-choice/01-first-verifiable-project-direction-trials.md
+      - 算法求职加练:
+          - 课程说明: learning-paths/career-algorithm/README.md
+          - 固定输入输出与本机判题: learning-paths/career-algorithm/01-fixed-io-local-judge-contract.md
+          - 限时模拟与过程记录: learning-paths/career-algorithm/02-timed-rehearsal-strategy-log.md
+          - 错因分类与回归复盘: learning-paths/career-algorithm/03-failure-categories-minimal-counterexamples-regression.md
+      - 系统工程:
+          - 课程说明: learning-paths/systems-engineering/README.md
+          - 文件描述符与部分 I/O: learning-paths/systems-engineering/01-file-descriptors-partial-io-ownership.md
+          - 信号与优雅停止: learning-paths/systems-engineering/02-signals-process-supervision-graceful-shutdown.md
+          - 有界队列与关闭协议: learning-paths/systems-engineering/03-condition-variables-bounded-queue-shutdown.md
+          - 非阻塞网络与事件循环: learning-paths/systems-engineering/04-nonblocking-network-event-loop-backpressure.md
+          - 延迟分布与性能预算: learning-paths/systems-engineering/05-latency-distribution-sampling-performance-budget.md
+          - 故障注入与恢复验收: learning-paths/systems-engineering/06-fault-injection-resource-leaks-recovery-acceptance.md
       - C++：起步与核心:
           - 课程说明: learning-paths/programming-languages/cpp-core/README.md
           - C++ 起步:
@@ -200,6 +216,23 @@ nav:
               - 并查集、按大小合并与路径压缩: learning-paths/cs-core/24-disjoint-set-union-path-compression.md
               - Kruskal、环检测与最小生成森林: learning-paths/cs-core/25-kruskal-minimum-spanning-forest.md
               - Lazy Prim、割边前沿与过期边: learning-paths/cs-core/26-lazy-prim-cut-frontier-stale-edges.md
+          - 算法深化:
+              - 课程说明: learning-paths/algorithm-deepening/README.md
+              - 有序双指针与候选消除: learning-paths/algorithm-deepening/01-sorted-two-pointers-candidate-elimination-invariant.md
+              - 滑动窗口与最短覆盖: learning-paths/algorithm-deepening/02-sliding-window-frequency-minimum-cover.md
+              - 前缀和与差分: learning-paths/algorithm-deepening/03-prefix-sum-difference-range-batching.md
+              - 单调栈与单调队列: learning-paths/algorithm-deepening/04-monotonic-stack-queue-dominance.md
+              - 回溯与剪枝: learning-paths/algorithm-deepening/05-backtracking-choice-tree-pruning.md
+              - 贪心选择与交换论证: learning-paths/algorithm-deepening/06-greedy-choice-exchange-counterexample.md
+              - 线性动态规划: learning-paths/algorithm-deepening/07-linear-dynamic-programming-state-transition.md
+              - 背包、区间动态规划与空间压缩: learning-paths/algorithm-deepening/08-knapsack-interval-dp-space-compression.md
+              - 高阶图：拓扑、强连通与多源路径: learning-paths/algorithm-deepening/09-advanced-graph-topology-scc-multisource.md
+              - Trie、KMP 与字符串匹配: learning-paths/algorithm-deepening/10-trie-kmp-string-matching.md
+          - AI 模型:
+              - 数学、数据与可复现实验:
+                  - 课程说明: learning-paths/ai-foundation/math-data/README.md
+                  - 向量、矩阵、形状与数值契约: learning-paths/ai-foundation/math-data/01-vectors-matrices-shapes-numeric-contracts.md
+                  - 点积、距离、缩放与标准化: learning-paths/ai-foundation/math-data/02-dot-distance-scaling-standardization.md
   - 项目:
       - 项目说明: projects/README.md
       - 项目主干规划: projects/project-roadmap.md

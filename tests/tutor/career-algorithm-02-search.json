@@ -1,0 +1,89 @@
+{
+  "lesson_id": "career-algorithm-02",
+  "cases": [
+    {
+      "query": "限时模拟真正要训练什么",
+      "expected_card": "timeboxed-goal"
+    },
+    {
+      "query": "限时训练是不是只看做完几题",
+      "expected_card": "timeboxed-goal"
+    },
+    {
+      "query": "为什么要先固定总预算",
+      "expected_card": "budget-first"
+    },
+    {
+      "query": "题目选择前为什么先写时间上限",
+      "expected_card": "budget-first"
+    },
+    {
+      "query": "检查点应该检查什么",
+      "expected_card": "checkpoint"
+    },
+    {
+      "query": "到检查点是否必须换题",
+      "expected_card": "checkpoint"
+    },
+    {
+      "query": "四种模拟事件分别是什么",
+      "expected_card": "event-types"
+    },
+    {
+      "query": "start checkpoint submit switch 怎么用",
+      "expected_card": "event-types"
+    },
+    {
+      "query": "逻辑分钟和墙钟耗时有什么区别",
+      "expected_card": "logical-minutes"
+    },
+    {
+      "query": "固定输出为什么不用 time time",
+      "expected_card": "logical-minutes"
+    },
+    {
+      "query": "timeout 和 switch 有什么区别",
+      "expected_card": "timeout-switch"
+    },
+    {
+      "query": "运行超时与主动换题怎么区分",
+      "expected_card": "timeout-switch"
+    },
+    {
+      "query": "两轮模拟为什么只改变一个变量",
+      "expected_card": "one-variable"
+    },
+    {
+      "query": "怎样做限时策略对照实验",
+      "expected_card": "one-variable"
+    },
+    {
+      "query": "换题说明怎样写才可复盘",
+      "expected_card": "honest-note"
+    },
+    {
+      "query": "为什么 note 不能只写太难",
+      "expected_card": "honest-note"
+    },
+    {
+      "query": "为什么任务事件不能重叠",
+      "expected_card": "timeline-state"
+    },
+    {
+      "query": "一个任务没结束能否开始另一个",
+      "expected_card": "timeline-state"
+    },
+    {
+      "query": "算法演练运行器 v0.2 新增了什么",
+      "expected_card": "rehearsal-v02"
+    },
+    {
+      "query": "第二课项目增量是什么",
+      "expected_card": "rehearsal-v02"
+    }
+  ],
+  "unknown": [
+    "怎样给彗星安排限时午睡",
+    "纸飞机的检查点应该种什么花"
+  ]
+}

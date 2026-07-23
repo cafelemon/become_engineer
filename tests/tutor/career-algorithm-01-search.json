@@ -1,0 +1,89 @@
+{
+  "lesson_id": "career-algorithm-01",
+  "cases": [
+    {
+      "query": "固定输入输出判题到底检查什么",
+      "expected_card": "fixed-io-contract"
+    },
+    {
+      "query": "为什么思路正确还可能判错",
+      "expected_card": "fixed-io-contract"
+    },
+    {
+      "query": "本机判题链有哪些边界",
+      "expected_card": "judge-boundaries"
+    },
+    {
+      "query": "cases judge solution 之间怎样通信",
+      "expected_card": "judge-boundaries"
+    },
+    {
+      "query": "集合去重后为什么还要排序",
+      "expected_card": "deterministic-output"
+    },
+    {
+      "query": "怎样让算法输出稳定可重复",
+      "expected_card": "deterministic-output"
+    },
+    {
+      "query": "运行器是否真的启动了解法进程",
+      "expected_card": "real-subprocess"
+    },
+    {
+      "query": "本机判题是不是 Mock",
+      "expected_card": "real-subprocess"
+    },
+    {
+      "query": "判题状态为什么要按顺序判断",
+      "expected_card": "result-order"
+    },
+    {
+      "query": "超时运行错误答案错误先判断哪个",
+      "expected_card": "result-order"
+    },
+    {
+      "query": "wrong-answer 和 runtime-error 有什么区别",
+      "expected_card": "wrong-answer"
+    },
+    {
+      "query": "答案错误和运行错误怎么区分",
+      "expected_card": "wrong-answer"
+    },
+    {
+      "query": "怎样主动复现三类判题失败",
+      "expected_card": "controlled-failure"
+    },
+    {
+      "query": "如何制造答案错误运行错误和超时",
+      "expected_card": "controlled-failure"
+    },
+    {
+      "query": "输出规范化会忽略哪些差异",
+      "expected_card": "output-normalization"
+    },
+    {
+      "query": "判题器如何处理空格和换行",
+      "expected_card": "output-normalization"
+    },
+    {
+      "query": "为什么解法路径不能逃出工作区",
+      "expected_card": "workspace-boundary"
+    },
+    {
+      "query": "为什么拒绝绝对路径和上级目录",
+      "expected_card": "workspace-boundary"
+    },
+    {
+      "query": "算法演练运行器 v0.1 留下哪些证据",
+      "expected_card": "rehearsal-v01"
+    },
+    {
+      "query": "第一课项目产出是什么",
+      "expected_card": "rehearsal-v01"
+    }
+  ],
+  "unknown": [
+    "怎样让鲸鱼参加字符串编译比赛",
+    "云朵超时后应该返回哪种水果"
+  ]
+}
