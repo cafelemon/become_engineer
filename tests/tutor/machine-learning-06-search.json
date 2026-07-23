@@ -1,0 +1,89 @@
+{
+  "lesson_id": "machine-learning-06",
+  "cases": [
+    {
+      "query": "PCA 在做什么",
+      "expected_card": "pca"
+    },
+    {
+      "query": "主成分分析是什么",
+      "expected_card": "pca"
+    },
+    {
+      "query": "解释方差比表示什么",
+      "expected_card": "explained-variance"
+    },
+    {
+      "query": "PCA 的 0.762 是什么",
+      "expected_card": "explained-variance"
+    },
+    {
+      "query": "为什么 PCA 前要标准化",
+      "expected_card": "scale-before-pca"
+    },
+    {
+      "query": "PCA 为什么怕量纲",
+      "expected_card": "scale-before-pca"
+    },
+    {
+      "query": "KMeans 优化什么",
+      "expected_card": "kmeans"
+    },
+    {
+      "query": "聚类惯性是什么",
+      "expected_card": "kmeans"
+    },
+    {
+      "query": "为什么不能只用最小惯性选 k",
+      "expected_card": "inertia-limit"
+    },
+    {
+      "query": "k越大惯性越小怎么办",
+      "expected_card": "inertia-limit"
+    },
+    {
+      "query": "簇编号 0 和 1 有顺序吗",
+      "expected_card": "cluster-label"
+    },
+    {
+      "query": "cluster label 能互换吗",
+      "expected_card": "cluster-label"
+    },
+    {
+      "query": "轮廓系数衡量什么",
+      "expected_card": "silhouette"
+    },
+    {
+      "query": "silhouette score 是什么",
+      "expected_card": "silhouette"
+    },
+    {
+      "query": "聚类稳定性为什么重要",
+      "expected_card": "stability"
+    },
+    {
+      "query": "换随机种子簇会变吗",
+      "expected_card": "stability"
+    },
+    {
+      "query": "聚类结果是真实类别吗",
+      "expected_card": "cluster-truth"
+    },
+    {
+      "query": "簇能直接叫用户类型吗",
+      "expected_card": "cluster-truth"
+    },
+    {
+      "query": "结构化机器学习系统 v0.6 新增什么",
+      "expected_card": "experiment-v06"
+    },
+    {
+      "query": "机器学习第六课项目",
+      "expected_card": "experiment-v06"
+    }
+  ],
+  "unknown": [
+    "怎么清洗羽绒服上的油渍",
+    "为什么秋天树叶会变黄"
+  ]
+}

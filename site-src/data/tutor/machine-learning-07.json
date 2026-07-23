@@ -1,0 +1,337 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "machine-learning-07",
+    "title": "概率校准、阈值、分组误差与模型比较",
+    "path": "learning-paths/ai-foundation/machine-learning/07-probability-calibration-threshold-group-errors-model-comparison/"
+  },
+  "contexts": [
+    {
+      "id": "overview-calibration-contract",
+      "type": "overview",
+      "title": "概率审计契约",
+      "anchor": "#overview-calibration-contract"
+    },
+    {
+      "id": "concept-calibration-metrics",
+      "type": "concept",
+      "title": "校准与概率指标",
+      "anchor": "#concept-calibration-metrics"
+    },
+    {
+      "id": "concept-threshold-policy",
+      "type": "concept",
+      "title": "阈值政策",
+      "anchor": "#concept-threshold-policy"
+    },
+    {
+      "id": "example-group-error-audit",
+      "type": "example",
+      "title": "分组错误审计",
+      "anchor": "#example-group-error-audit"
+    },
+    {
+      "id": "reproduce-calibration-v07",
+      "type": "reproduce",
+      "title": "运行概率审计",
+      "anchor": "#reproduce-calibration-v07"
+    },
+    {
+      "id": "modify-calibration",
+      "type": "modify",
+      "title": "修改校准实验",
+      "anchor": "#modify-calibration"
+    },
+    {
+      "id": "troubleshoot-calibration",
+      "type": "troubleshoot",
+      "title": "概率审计排错",
+      "anchor": "#troubleshoot-calibration"
+    },
+    {
+      "id": "project-structured-data-ml-v07",
+      "type": "project",
+      "title": "结构化 ML 系统 v0.7",
+      "anchor": "#project-structured-data-ml-v07"
+    },
+    {
+      "id": "career-calibration-contract",
+      "type": "career",
+      "title": "分组误差追问",
+      "anchor": "#career-calibration-contract"
+    }
+  ],
+  "cards": [
+    {
+      "id": "calibration",
+      "lesson_id": "machine-learning-07",
+      "context_id": "concept-calibration-metrics",
+      "question": "概率校准是什么意思？",
+      "aliases": [
+        "预测0.7是否真有七成"
+      ],
+      "keywords": [
+        "概率校准是什么意思",
+        "预测0.7是否真有七成"
+      ],
+      "diagnostic": "先判断“预测0.7是否真有七成”涉及概率质量、阈值政策、测试隔离还是分组分母。",
+      "hints": [
+        "查看 #concept-calibration-metrics。",
+        "运行 test_calibration_error_lab.py。"
+      ],
+      "example": "本课用开发集五折sigmoid。",
+      "answer": "在足够多相似预测中，模型给出的概率应接近实际正类频率。",
+      "source": {
+        "label": "校准与概率指标",
+        "href": "#concept-calibration-metrics"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "brier",
+      "lesson_id": "machine-learning-07",
+      "context_id": "concept-calibration-metrics",
+      "question": "Brier 分数衡量什么？",
+      "aliases": [
+        "概率平方误差是什么"
+      ],
+      "keywords": [
+        "Brier",
+        "分数衡量什么",
+        "概率平方误差是什么"
+      ],
+      "diagnostic": "先判断“概率平方误差是什么”涉及概率质量、阈值政策、测试隔离还是分组分母。",
+      "hints": [
+        "查看 #concept-calibration-metrics。",
+        "运行 test_calibration_error_lab.py。"
+      ],
+      "example": "校准后0.194。",
+      "answer": "它是二元标签与正类概率的平均平方误差，越小越好。",
+      "source": {
+        "label": "校准与概率指标",
+        "href": "#concept-calibration-metrics"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "ece",
+      "lesson_id": "machine-learning-07",
+      "context_id": "concept-calibration-metrics",
+      "question": "ECE 怎样计算？",
+      "aliases": [
+        "expected calibration error"
+      ],
+      "keywords": [
+        "ECE",
+        "怎样计算",
+        "expected",
+        "calibration",
+        "error"
+      ],
+      "diagnostic": "先判断“expected calibration error”涉及概率质量、阈值政策、测试隔离还是分组分母。",
+      "hints": [
+        "查看 #concept-calibration-metrics。",
+        "运行 test_calibration_error_lab.py。"
+      ],
+      "example": "本课固定5箱。",
+      "answer": "它按概率分箱，汇总每箱平均置信度与实际正类率的加权差。",
+      "source": {
+        "label": "校准与概率指标",
+        "href": "#concept-calibration-metrics"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "threshold-policy",
+      "lesson_id": "machine-learning-07",
+      "context_id": "concept-threshold-policy",
+      "question": "阈值为什么是决策政策？",
+      "aliases": [
+        "0.35阈值代表什么"
+      ],
+      "keywords": [
+        "阈值为什么是决策政策",
+        "0.35阈值代表什么"
+      ],
+      "diagnostic": "先判断“0.35阈值代表什么”涉及概率质量、阈值政策、测试隔离还是分组分母。",
+      "hints": [
+        "查看 #concept-threshold-policy。",
+        "运行 test_calibration_error_lab.py。"
+      ],
+      "example": "阈值测试前声明。",
+      "answer": "它把连续概率映射为动作，反映漏报、误报和复核容量权衡，不改变概率本身。",
+      "source": {
+        "label": "阈值政策",
+        "href": "#concept-threshold-policy"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "test-retune",
+      "lesson_id": "machine-learning-07",
+      "context_id": "concept-threshold-policy",
+      "question": "能看最终测试后再改阈值吗？",
+      "aliases": [
+        "测试集调阈值算泄漏吗"
+      ],
+      "keywords": [
+        "能看最终测试后再改阈值吗",
+        "测试集调阈值算泄漏吗"
+      ],
+      "diagnostic": "先判断“测试集调阈值算泄漏吗”涉及概率质量、阈值政策、测试隔离还是分组分母。",
+      "hints": [
+        "查看 #concept-threshold-policy。",
+        "运行 test_calibration_error_lab.py。"
+      ],
+      "example": "固定test-not-retuned。",
+      "answer": "若据测试反馈改阈值，测试就参与选择，必须降级并取得新的独立证据。",
+      "source": {
+        "label": "阈值政策",
+        "href": "#concept-threshold-policy"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "group-denominator",
+      "lesson_id": "machine-learning-07",
+      "context_id": "example-group-error-audit",
+      "question": "分组指标为什么必须报告分母？",
+      "aliases": [
+        "只看百分比有什么问题"
+      ],
+      "keywords": [
+        "分组指标为什么必须报告分母",
+        "只看百分比有什么问题"
+      ],
+      "diagnostic": "先判断“只看百分比有什么问题”涉及概率质量、阈值政策、测试隔离还是分组分母。",
+      "hints": [
+        "查看 #example-group-error-audit。",
+        "运行 test_calibration_error_lab.py。"
+      ],
+      "example": "最小组只有2行。",
+      "answer": "小组中一个样本就会让比例巨变，样本数和正负类数决定指标可信度。",
+      "source": {
+        "label": "分组错误审计",
+        "href": "#example-group-error-audit"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "undefined-metric",
+      "lesson_id": "machine-learning-07",
+      "context_id": "example-group-error-audit",
+      "question": "某组没有正类时召回是多少？",
+      "aliases": [
+        "召回分母为0怎么办"
+      ],
+      "keywords": [
+        "某组没有正类时召回是多少",
+        "召回分母为0怎么办"
+      ],
+      "diagnostic": "先判断“召回分母为0怎么办”涉及概率质量、阈值政策、测试隔离还是分组分母。",
+      "hints": [
+        "查看 #example-group-error-audit。",
+        "运行 test_calibration_error_lab.py。"
+      ],
+      "example": "代码显式返回None。",
+      "answer": "召回无定义，应输出na而不是伪造0，保留分母事实。",
+      "source": {
+        "label": "分组错误审计",
+        "href": "#example-group-error-audit"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "group-fairness",
+      "lesson_id": "machine-learning-07",
+      "context_id": "example-group-error-audit",
+      "question": "分组错误不同就能得出公平性结论吗？",
+      "aliases": [
+        "召回差异是不是歧视"
+      ],
+      "keywords": [
+        "分组错误不同就能得出公平性结论吗",
+        "召回差异是不是歧视"
+      ],
+      "diagnostic": "先判断“召回差异是不是歧视”涉及概率质量、阈值政策、测试隔离还是分组分母。",
+      "hints": [
+        "查看 #example-group-error-audit。",
+        "运行 test_calibration_error_lab.py。"
+      ],
+      "example": "渠道是合成字段。",
+      "answer": "不能只凭小样本指标；还需属性语义、代理风险、区间、独立数据与影响分析。",
+      "source": {
+        "label": "分组错误审计",
+        "href": "#example-group-error-audit"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "metric-cherry-pick",
+      "lesson_id": "machine-learning-07",
+      "context_id": "project-structured-data-ml-v07",
+      "question": "为什么要同时报告 Brier、log loss 和 ECE？",
+      "aliases": [
+        "模型比较不能挑指标"
+      ],
+      "keywords": [
+        "为什么要同时报告",
+        "Brier",
+        "log",
+        "loss",
+        "和",
+        "ECE",
+        "模型比较不能挑指标"
+      ],
+      "diagnostic": "先判断“模型比较不能挑指标”涉及概率质量、阈值政策、测试隔离还是分组分母。",
+      "hints": [
+        "查看 #project-structured-data-ml-v07。",
+        "运行 test_calibration_error_lab.py。"
+      ],
+      "example": "原始和校准共六项。",
+      "answer": "它们强调不同概率缺陷，全量报告能减少只挑有利数字的风险。",
+      "source": {
+        "label": "结构化 ML 系统 v0.7",
+        "href": "#project-structured-data-ml-v07"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "experiment-v07",
+      "lesson_id": "machine-learning-07",
+      "context_id": "project-structured-data-ml-v07",
+      "question": "结构化机器学习系统 v0.7 新增什么？",
+      "aliases": [
+        "机器学习第七课项目"
+      ],
+      "keywords": [
+        "结构化机器学习系统",
+        "v0.7",
+        "新增什么",
+        "机器学习第七课项目"
+      ],
+      "diagnostic": "先判断“机器学习第七课项目”涉及概率质量、阈值政策、测试隔离还是分组分母。",
+      "hints": [
+        "查看 #project-structured-data-ml-v07。",
+        "运行 test_calibration_error_lab.py。"
+      ],
+      "example": "8项真实测试。",
+      "answer": "新增五折概率校准、三类概率指标、预声明阈值和带分母分组错误审计。",
+      "source": {
+        "label": "结构化 ML 系统 v0.7",
+        "href": "#project-structured-data-ml-v07"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

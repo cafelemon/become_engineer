@@ -1,0 +1,89 @@
+{
+  "lesson_id": "ai-math-data-06",
+  "cases": [
+    {
+      "query": "实验复现清单至少包含什么",
+      "expected_card": "manifest"
+    },
+    {
+      "query": "指标要绑定哪些输入",
+      "expected_card": "manifest"
+    },
+    {
+      "query": "哪些实验配置必须记录",
+      "expected_card": "config"
+    },
+    {
+      "query": "seed threshold schema split",
+      "expected_card": "config"
+    },
+    {
+      "query": "为什么哈希前要规范化 JSON",
+      "expected_card": "canonical-json"
+    },
+    {
+      "query": "键顺序影响摘要怎么办",
+      "expected_card": "canonical-json"
+    },
+    {
+      "query": "数据行顺序变化为何不应改变指纹",
+      "expected_card": "stable-data"
+    },
+    {
+      "query": "稳定 sample_id 排序",
+      "expected_card": "stable-data"
+    },
+    {
+      "query": "SHA-256 能证明数据可信吗",
+      "expected_card": "sha-limit"
+    },
+    {
+      "query": "哈希完整性边界",
+      "expected_card": "sha-limit"
+    },
+    {
+      "query": "产物摘要解决什么问题",
+      "expected_card": "artifact-hash"
+    },
+    {
+      "query": "结果文件被修改怎样发现",
+      "expected_card": "artifact-hash"
+    },
+    {
+      "query": "复现失败怎样定位边界",
+      "expected_card": "failure-scope"
+    },
+    {
+      "query": "config data artifacts",
+      "expected_card": "failure-scope"
+    },
+    {
+      "query": "复现清单能记录秘密吗",
+      "expected_card": "secrets"
+    },
+    {
+      "query": "token 要不要写入 manifest",
+      "expected_card": "secrets"
+    },
+    {
+      "query": "固定复现报告为何不写绝对路径和当前时间",
+      "expected_card": "machine-values"
+    },
+    {
+      "query": "跨机器输出漂移",
+      "expected_card": "machine-values"
+    },
+    {
+      "query": "实验系统 v0.6 完成什么",
+      "expected_card": "experiment-v06"
+    },
+    {
+      "query": "AI 数学数据第六课项目",
+      "expected_card": "experiment-v06"
+    }
+  ],
+  "unknown": [
+    "怎样挑选旅行背包",
+    "鲸鱼为什么需要浮出水面"
+  ]
+}

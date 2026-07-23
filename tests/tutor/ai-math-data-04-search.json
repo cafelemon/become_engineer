@@ -1,0 +1,89 @@
+{
+  "lesson_id": "ai-math-data-04",
+  "cases": [
+    {
+      "query": "随机种子解决什么问题",
+      "expected_card": "seed"
+    },
+    {
+      "query": "固定 seed 有什么用",
+      "expected_card": "seed"
+    },
+    {
+      "query": "固定种子为什么不等于结果稳健",
+      "expected_card": "seed-limit"
+    },
+    {
+      "query": "可复现等于可靠吗",
+      "expected_card": "seed-limit"
+    },
+    {
+      "query": "为什么使用局部 Random",
+      "expected_card": "local-rng"
+    },
+    {
+      "query": "不要修改全局随机状态",
+      "expected_card": "local-rng"
+    },
+    {
+      "query": "同种子为何仍可能得到不同划分",
+      "expected_card": "stable-input"
+    },
+    {
+      "query": "输入顺序影响 shuffle 吗",
+      "expected_card": "stable-input"
+    },
+    {
+      "query": "分层划分怎样保留类别",
+      "expected_card": "stratified"
+    },
+    {
+      "query": "每个标签内部抽样",
+      "expected_card": "stratified"
+    },
+    {
+      "query": "少数类只有一个样本怎么办",
+      "expected_card": "small-class"
+    },
+    {
+      "query": "一个样本能同时训练验证吗",
+      "expected_card": "small-class"
+    },
+    {
+      "query": "怎样证明训练验证无交叉无丢失",
+      "expected_card": "no-overlap"
+    },
+    {
+      "query": "split 集合不变量",
+      "expected_card": "no-overlap"
+    },
+    {
+      "query": "ID 不重叠为何仍可能泄漏",
+      "expected_card": "entity-leakage"
+    },
+    {
+      "query": "同一用户多记录跨分区",
+      "expected_card": "entity-leakage"
+    },
+    {
+      "query": "什么时候不应随机划分",
+      "expected_card": "time-split"
+    },
+    {
+      "query": "时间序列怎样验证",
+      "expected_card": "time-split"
+    },
+    {
+      "query": "实验系统 v0.4 新增什么",
+      "expected_card": "experiment-v04"
+    },
+    {
+      "query": "AI 数学数据第四课项目",
+      "expected_card": "experiment-v04"
+    }
+  ],
+  "unknown": [
+    "怎样冲泡手冲咖啡",
+    "为什么猫会打呼噜"
+  ]
+}

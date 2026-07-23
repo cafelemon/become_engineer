@@ -1,0 +1,89 @@
+{
+  "lesson_id": "machine-learning-01",
+  "cases": [
+    {
+      "query": "机器学习表格中的样本是什么",
+      "expected_card": "sample"
+    },
+    {
+      "query": "一行代表什么",
+      "expected_card": "sample"
+    },
+    {
+      "query": "特征和目标有什么区别",
+      "expected_card": "feature"
+    },
+    {
+      "query": "X 和 y 怎么分",
+      "expected_card": "feature"
+    },
+    {
+      "query": "样本 ID 为什么不应直接作为特征",
+      "expected_card": "identifier"
+    },
+    {
+      "query": "sample_id 能训练吗",
+      "expected_card": "identifier"
+    },
+    {
+      "query": "目标列进入特征会怎样",
+      "expected_card": "target-leakage"
+    },
+    {
+      "query": "target leakage 是什么",
+      "expected_card": "target-leakage"
+    },
+    {
+      "query": "训练集和验证集职责是什么",
+      "expected_card": "fit-validation"
+    },
+    {
+      "query": "validation 能参与 fit 吗",
+      "expected_card": "fit-validation"
+    },
+    {
+      "query": "为什么分类切分要分层",
+      "expected_card": "stratify"
+    },
+    {
+      "query": "stratify target 有什么用",
+      "expected_card": "stratify"
+    },
+    {
+      "query": "多数类基线做了什么",
+      "expected_card": "dummy"
+    },
+    {
+      "query": "DummyClassifier 是否使用特征",
+      "expected_card": "dummy"
+    },
+    {
+      "query": "基线准确率 0.667 为什么仍无预测能力",
+      "expected_card": "baseline-metrics"
+    },
+    {
+      "query": "高准确率基线的盲点",
+      "expected_card": "baseline-metrics"
+    },
+    {
+      "query": "合成数据结果能外推真实业务吗",
+      "expected_card": "synthetic-boundary"
+    },
+    {
+      "query": "教学合成数据有什么边界",
+      "expected_card": "synthetic-boundary"
+    },
+    {
+      "query": "结构化机器学习系统 v0.1 新增什么",
+      "expected_card": "experiment-v01"
+    },
+    {
+      "query": "机器学习第一课项目",
+      "expected_card": "experiment-v01"
+    }
+  ],
+  "unknown": [
+    "怎样保养木质家具",
+    "海豚为什么会跃出水面"
+  ]
+}

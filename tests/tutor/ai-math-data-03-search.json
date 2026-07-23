@@ -1,0 +1,89 @@
+{
+  "lesson_id": "ai-math-data-03",
+  "cases": [
+    {
+      "query": "表格 Schema 包含什么",
+      "expected_card": "schema"
+    },
+    {
+      "query": "数据字段契约怎么写",
+      "expected_card": "schema"
+    },
+    {
+      "query": "为什么布尔值不能作为数值特征",
+      "expected_card": "bool-number"
+    },
+    {
+      "query": "True 是 int 为什么仍拒绝",
+      "expected_card": "bool-number"
+    },
+    {
+      "query": "缺失特征为什么不能默认填 0",
+      "expected_card": "missing"
+    },
+    {
+      "query": "None 和 0 有什么区别",
+      "expected_card": "missing"
+    },
+    {
+      "query": "缺失和无效有什么区别",
+      "expected_card": "invalid-row"
+    },
+    {
+      "query": "label 2 为什么不是缺失",
+      "expected_card": "invalid-row"
+    },
+    {
+      "query": "完全重复行怎样处理",
+      "expected_card": "exact-duplicate"
+    },
+    {
+      "query": "相同 ID 相同内容重复",
+      "expected_card": "exact-duplicate"
+    },
+    {
+      "query": "同一 ID 内容冲突为什么不能保留第一条",
+      "expected_card": "conflicting-id"
+    },
+    {
+      "query": "重复 ID 字段不同怎么办",
+      "expected_card": "conflicting-id"
+    },
+    {
+      "query": "质量报告何时拒绝继续",
+      "expected_card": "quality-status"
+    },
+    {
+      "query": "status reject 是什么",
+      "expected_card": "quality-status"
+    },
+    {
+      "query": "质量报告怎样保持稳定顺序",
+      "expected_card": "stable-order"
+    },
+    {
+      "query": "输入顺序变化输出怎么办",
+      "expected_card": "stable-order"
+    },
+    {
+      "query": "新增字段时怎样演进 Schema",
+      "expected_card": "schema-evolution"
+    },
+    {
+      "query": "未知字段应该拒绝吗",
+      "expected_card": "schema-evolution"
+    },
+    {
+      "query": "实验系统 v0.3 新增什么",
+      "expected_card": "experiment-v03"
+    },
+    {
+      "query": "AI 数学数据第三课项目",
+      "expected_card": "experiment-v03"
+    }
+  ],
+  "unknown": [
+    "怎样选择登山鞋尺码",
+    "为什么彩虹有多种颜色"
+  ]
+}

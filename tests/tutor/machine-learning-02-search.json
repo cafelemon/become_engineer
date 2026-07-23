@@ -1,0 +1,89 @@
+{
+  "lesson_id": "machine-learning-02",
+  "cases": [
+    {
+      "query": "缺失值为什么不能统一填成 0",
+      "expected_card": "missing-semantics"
+    },
+    {
+      "query": "缺失值怎么填",
+      "expected_card": "missing-semantics"
+    },
+    {
+      "query": "目标缺失能用众数填补吗",
+      "expected_card": "target-missing"
+    },
+    {
+      "query": "标签缺失怎么处理",
+      "expected_card": "target-missing"
+    },
+    {
+      "query": "fit 和 transform 有什么区别",
+      "expected_card": "fit-transform"
+    },
+    {
+      "query": "fit_transform 怎么用",
+      "expected_card": "fit-transform"
+    },
+    {
+      "query": "为什么全表预处理后再切分会泄漏",
+      "expected_card": "preprocess-leakage"
+    },
+    {
+      "query": "填补也会数据泄漏吗",
+      "expected_card": "preprocess-leakage"
+    },
+    {
+      "query": "ColumnTransformer 解决什么问题",
+      "expected_card": "column-transformer"
+    },
+    {
+      "query": "不同列怎么用不同预处理",
+      "expected_card": "column-transformer"
+    },
+    {
+      "query": "为什么要把预处理和模型放进 Pipeline",
+      "expected_card": "pipeline"
+    },
+    {
+      "query": "Pipeline 有什么用",
+      "expected_card": "pipeline"
+    },
+    {
+      "query": "推理出现训练时没见过的类别怎么办",
+      "expected_card": "unknown-category"
+    },
+    {
+      "query": "handle_unknown ignore",
+      "expected_card": "unknown-category"
+    },
+    {
+      "query": "独热编码后为什么要保留字段名",
+      "expected_card": "feature-names"
+    },
+    {
+      "query": "变换后特征名有什么用",
+      "expected_card": "feature-names"
+    },
+    {
+      "query": "为什么不应原地修改验证数据",
+      "expected_card": "raw-immutability"
+    },
+    {
+      "query": "验证集为什么保持原样",
+      "expected_card": "raw-immutability"
+    },
+    {
+      "query": "结构化机器学习系统 v0.2 新增什么",
+      "expected_card": "experiment-v02"
+    },
+    {
+      "query": "机器学习第二课项目",
+      "expected_card": "experiment-v02"
+    }
+  ],
+  "unknown": [
+    "怎样修理漏水的水龙头",
+    "月球表面为什么有环形山"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "lesson_id": "machine-learning-07",
+  "cases": [
+    {
+      "query": "概率校准是什么意思",
+      "expected_card": "calibration"
+    },
+    {
+      "query": "预测0.7是否真有七成",
+      "expected_card": "calibration"
+    },
+    {
+      "query": "Brier 分数衡量什么",
+      "expected_card": "brier"
+    },
+    {
+      "query": "概率平方误差是什么",
+      "expected_card": "brier"
+    },
+    {
+      "query": "ECE 怎样计算",
+      "expected_card": "ece"
+    },
+    {
+      "query": "expected calibration error",
+      "expected_card": "ece"
+    },
+    {
+      "query": "阈值为什么是决策政策",
+      "expected_card": "threshold-policy"
+    },
+    {
+      "query": "0.35阈值代表什么",
+      "expected_card": "threshold-policy"
+    },
+    {
+      "query": "能看最终测试后再改阈值吗",
+      "expected_card": "test-retune"
+    },
+    {
+      "query": "测试集调阈值算泄漏吗",
+      "expected_card": "test-retune"
+    },
+    {
+      "query": "分组指标为什么必须报告分母",
+      "expected_card": "group-denominator"
+    },
+    {
+      "query": "只看百分比有什么问题",
+      "expected_card": "group-denominator"
+    },
+    {
+      "query": "某组没有正类时召回是多少",
+      "expected_card": "undefined-metric"
+    },
+    {
+      "query": "召回分母为0怎么办",
+      "expected_card": "undefined-metric"
+    },
+    {
+      "query": "分组错误不同就能得出公平性结论吗",
+      "expected_card": "group-fairness"
+    },
+    {
+      "query": "召回差异是不是歧视",
+      "expected_card": "group-fairness"
+    },
+    {
+      "query": "为什么要同时报告 Brier、log loss 和 ECE",
+      "expected_card": "metric-cherry-pick"
+    },
+    {
+      "query": "模型比较不能挑指标",
+      "expected_card": "metric-cherry-pick"
+    },
+    {
+      "query": "结构化机器学习系统 v0.7 新增什么",
+      "expected_card": "experiment-v07"
+    },
+    {
+      "query": "机器学习第七课项目",
+      "expected_card": "experiment-v07"
+    }
+  ],
+  "unknown": [
+    "如何给木桌修补划痕",
+    "彩虹为什么有多种颜色"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "lesson_id": "ai-math-data-05",
+  "cases": [
+    {
+      "query": "为什么评估前要建立简单基线",
+      "expected_card": "baseline"
+    },
+    {
+      "query": "多数类基线有什么用",
+      "expected_card": "baseline"
+    },
+    {
+      "query": "混淆矩阵四格是什么",
+      "expected_card": "confusion"
+    },
+    {
+      "query": "TP FP TN FN",
+      "expected_card": "confusion"
+    },
+    {
+      "query": "准确率怎样计算",
+      "expected_card": "accuracy"
+    },
+    {
+      "query": "accuracy 分母",
+      "expected_card": "accuracy"
+    },
+    {
+      "query": "精确率回答什么问题",
+      "expected_card": "precision"
+    },
+    {
+      "query": "报为正的有多少是真的",
+      "expected_card": "precision"
+    },
+    {
+      "query": "召回率回答什么问题",
+      "expected_card": "recall"
+    },
+    {
+      "query": "真实正类找回多少",
+      "expected_card": "recall"
+    },
+    {
+      "query": "F1 怎样结合精确率和召回率",
+      "expected_card": "f1"
+    },
+    {
+      "query": "F1 公式",
+      "expected_card": "f1"
+    },
+    {
+      "query": "分数等于阈值时如何分类",
+      "expected_card": "threshold-boundary"
+    },
+    {
+      "query": "score 大于等于 threshold",
+      "expected_card": "threshold-boundary"
+    },
+    {
+      "query": "阈值应该怎样选择",
+      "expected_card": "threshold-cost"
+    },
+    {
+      "query": "误报漏报成本",
+      "expected_card": "threshold-cost"
+    },
+    {
+      "query": "没有正预测时精确率怎么办",
+      "expected_card": "zero-division"
+    },
+    {
+      "query": "指标零分母",
+      "expected_card": "zero-division"
+    },
+    {
+      "query": "实验系统 v0.5 新增什么",
+      "expected_card": "experiment-v05"
+    },
+    {
+      "query": "AI 数学数据第五课项目",
+      "expected_card": "experiment-v05"
+    }
+  ],
+  "unknown": [
+    "怎样修理漏水水龙头",
+    "天空为什么是蓝色"
+  ]
+}

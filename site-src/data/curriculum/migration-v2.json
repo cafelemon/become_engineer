@@ -18,7 +18,8 @@
     "algorithm-rehearsal": "算法演练运行器",
     "diagnostic-system-service": "可诊断系统服务",
     "traceable-constraint-pattern-lab": "可追踪约束模式实验",
-    "reproducible-experiment-evaluation-system": "可复现实验与评估系统"
+    "reproducible-experiment-evaluation-system": "可复现实验与评估系统",
+    "structured-data-ml-system": "结构化数据机器学习系统"
   },
   "batches": [
     {"id":"b01-engineering-start","order":1,"title":"工程基础起步","lesson_count":10,"prerequisite_modules":[],"completion_gate":"十节课程形成同一个本地学习工作区；新手能找到工具、完成操作并从常见错误恢复。"},
@@ -35,7 +36,8 @@
     {"id":"b12-career-algorithm","order":12,"title":"算法求职加练","lesson_count":3,"prerequisite_modules":["algorithm-foundation"],"completion_gate":"三课完成固定判题契约、限时策略回放、五类错因、反例探针和修复回归；算法演练运行器 v0.3 可运行、可解释、可复盘。"},
     {"id":"b13-systems-engineering","order":13,"title":"系统工程","lesson_count":6,"prerequisite_modules":["cpp-core","cs-systems-core"],"completion_gate":"六课已完成描述符、信号监督、有界队列、非阻塞背压、性能预算和故障恢复；真实运行、浏览器与站内链接组级验收通过。"},
     {"id":"b14-algorithm-deepening","order":14,"title":"算法深化","lesson_count":10,"prerequisite_modules":["algorithm-core"],"completion_gate":"十课真实运行、检索、严格构建、30246 条链接、5885 个锚点和 30 项多模式浏览器检查全部通过，整组已开放。"},
-    {"id":"b15-ai-math-data","order":15,"title":"数学、数据与可复现实验","lesson_count":2,"prerequisite_modules":["python-engineering","algorithm-foundation"],"completion_gate":"当前 2/6：已完成数值形状、缩放与训练集拟合边界；完成数据质量、划分、指标和实验产物后再开放整组。"}
+    {"id":"b15-ai-math-data","order":15,"title":"数学、数据与可复现实验","lesson_count":6,"prerequisite_modules":["python-engineering","algorithm-foundation"],"completion_gate":"六课共 36 项 Python 标准库测试、1559 卡/3120 问全站检索、严格构建、33629 条链接、6166 个锚点和 18 项多模式浏览器检查通过，整组已开放。"},
+    {"id":"b16-machine-learning","order":16,"title":"机器学习","lesson_count":8,"prerequisite_modules":["ai-math-data"],"completion_gate":"八课共 64 项真实测试、1639 卡/3280 问全站检索、严格构建、38302 条链接、6539 个锚点和 24 项多模式浏览器检查通过，整组已开放。"}
   ],
   "tutor_lesson_ids": {
     "engineering-01":"engineering-foundation-01",
@@ -134,7 +136,19 @@
     "algorithm-deepening-09":"algorithm-deepening-09",
     "algorithm-deepening-10":"algorithm-deepening-10",
     "ai-math-data-01":"ai-math-data-01",
-    "ai-math-data-02":"ai-math-data-02"
+    "ai-math-data-02":"ai-math-data-02",
+    "ai-math-data-03":"ai-math-data-03",
+    "ai-math-data-04":"ai-math-data-04",
+    "ai-math-data-05":"ai-math-data-05",
+    "ai-math-data-06":"ai-math-data-06",
+    "machine-learning-01":"machine-learning-01",
+    "machine-learning-02":"machine-learning-02",
+    "machine-learning-03":"machine-learning-03",
+    "machine-learning-04":"machine-learning-04",
+    "machine-learning-05":"machine-learning-05",
+    "machine-learning-06":"machine-learning-06",
+    "machine-learning-07":"machine-learning-07",
+    "machine-learning-08":"machine-learning-08"
   },
   "lessons": [
     {"id":"engineering-01","target_module_id":"engineering-start","target_depth":"起步","target_role":"共同基座","course_type":"tool-operation","project_line":"engineering-learning-workspace","batch_id":"b01-engineering-start","prerequisite_lesson_ids":[],"migration_status":"已迁移","migration_kind":"重写讲解与复现路径"},
@@ -240,6 +254,18 @@
     {"id":"algorithm-deepening-09","target_module_id":"algorithm-deepening","target_depth":"深化","target_role":"能力深化","course_type":"algorithm-data-structure","project_line":"traceable-constraint-pattern-lab","batch_id":"b14-algorithm-deepening","prerequisite_lesson_ids":["algorithm-deepening-08"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
     {"id":"algorithm-deepening-10","target_module_id":"algorithm-deepening","target_depth":"深化","target_role":"能力深化","course_type":"algorithm-data-structure","project_line":"traceable-constraint-pattern-lab","batch_id":"b14-algorithm-deepening","prerequisite_lesson_ids":["algorithm-deepening-09"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
     {"id":"ai-math-data-01","target_module_id":"ai-math-data","target_depth":"基础","target_role":"方向主干","course_type":"ai-experiment","project_line":"reproducible-experiment-evaluation-system","batch_id":"b15-ai-math-data","prerequisite_lesson_ids":["python-core-07","cs-core-20"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
-    {"id":"ai-math-data-02","target_module_id":"ai-math-data","target_depth":"基础","target_role":"方向主干","course_type":"ai-experiment","project_line":"reproducible-experiment-evaluation-system","batch_id":"b15-ai-math-data","prerequisite_lesson_ids":["ai-math-data-01"],"migration_status":"已迁移","migration_kind":"新建正式课程"}
+    {"id":"ai-math-data-02","target_module_id":"ai-math-data","target_depth":"基础","target_role":"方向主干","course_type":"ai-experiment","project_line":"reproducible-experiment-evaluation-system","batch_id":"b15-ai-math-data","prerequisite_lesson_ids":["ai-math-data-01"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"ai-math-data-03","target_module_id":"ai-math-data","target_depth":"基础","target_role":"方向主干","course_type":"ai-experiment","project_line":"reproducible-experiment-evaluation-system","batch_id":"b15-ai-math-data","prerequisite_lesson_ids":["ai-math-data-02"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"ai-math-data-04","target_module_id":"ai-math-data","target_depth":"基础","target_role":"方向主干","course_type":"ai-experiment","project_line":"reproducible-experiment-evaluation-system","batch_id":"b15-ai-math-data","prerequisite_lesson_ids":["ai-math-data-03"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"ai-math-data-05","target_module_id":"ai-math-data","target_depth":"基础","target_role":"方向主干","course_type":"ai-experiment","project_line":"reproducible-experiment-evaluation-system","batch_id":"b15-ai-math-data","prerequisite_lesson_ids":["ai-math-data-04"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"ai-math-data-06","target_module_id":"ai-math-data","target_depth":"基础","target_role":"方向主干","course_type":"project-integration","project_line":"reproducible-experiment-evaluation-system","batch_id":"b15-ai-math-data","prerequisite_lesson_ids":["ai-math-data-05"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"machine-learning-01","target_module_id":"machine-learning","target_depth":"核心","target_role":"方向主干","course_type":"ai-experiment","project_line":"structured-data-ml-system","batch_id":"b16-machine-learning","prerequisite_lesson_ids":["ai-math-data-06"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"machine-learning-02","target_module_id":"machine-learning","target_depth":"核心","target_role":"方向主干","course_type":"ai-experiment","project_line":"structured-data-ml-system","batch_id":"b16-machine-learning","prerequisite_lesson_ids":["machine-learning-01"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"machine-learning-03","target_module_id":"machine-learning","target_depth":"核心","target_role":"方向主干","course_type":"ai-experiment","project_line":"structured-data-ml-system","batch_id":"b16-machine-learning","prerequisite_lesson_ids":["machine-learning-02"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"machine-learning-04","target_module_id":"machine-learning","target_depth":"核心","target_role":"方向主干","course_type":"ai-experiment","project_line":"structured-data-ml-system","batch_id":"b16-machine-learning","prerequisite_lesson_ids":["machine-learning-03"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"machine-learning-05","target_module_id":"machine-learning","target_depth":"核心","target_role":"方向主干","course_type":"ai-experiment","project_line":"structured-data-ml-system","batch_id":"b16-machine-learning","prerequisite_lesson_ids":["machine-learning-04"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"machine-learning-06","target_module_id":"machine-learning","target_depth":"核心","target_role":"方向主干","course_type":"ai-experiment","project_line":"structured-data-ml-system","batch_id":"b16-machine-learning","prerequisite_lesson_ids":["machine-learning-05"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"machine-learning-07","target_module_id":"machine-learning","target_depth":"核心","target_role":"方向主干","course_type":"ai-experiment","project_line":"structured-data-ml-system","batch_id":"b16-machine-learning","prerequisite_lesson_ids":["machine-learning-06"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"machine-learning-08","target_module_id":"machine-learning","target_depth":"核心","target_role":"方向主干","course_type":"project-integration","project_line":"structured-data-ml-system","batch_id":"b16-machine-learning","prerequisite_lesson_ids":["machine-learning-07"],"migration_status":"已迁移","migration_kind":"新建正式课程"}
   ]
 }

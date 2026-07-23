@@ -1,0 +1,89 @@
+{
+  "lesson_id": "machine-learning-05",
+  "cases": [
+    {
+      "query": "交叉验证每一折分别做什么",
+      "expected_card": "cv-role"
+    },
+    {
+      "query": "五折交叉验证怎么轮换",
+      "expected_card": "cv-role"
+    },
+    {
+      "query": "为什么分类交叉验证要分层",
+      "expected_card": "stratified-cv"
+    },
+    {
+      "query": "StratifiedKFold 有什么用",
+      "expected_card": "stratified-cv"
+    },
+    {
+      "query": "交叉验证会创造更多数据吗",
+      "expected_card": "cv-not-new-data"
+    },
+    {
+      "query": "五折是不是数据变多了",
+      "expected_card": "cv-not-new-data"
+    },
+    {
+      "query": "为什么调很多参数会对验证反馈过拟合",
+      "expected_card": "selection-bias"
+    },
+    {
+      "query": "模型选择偏差是什么",
+      "expected_card": "selection-bias"
+    },
+    {
+      "query": "最终测试集为什么只能最后使用",
+      "expected_card": "final-test"
+    },
+    {
+      "query": "测试集能反复看吗",
+      "expected_card": "final-test"
+    },
+    {
+      "query": "CV 分数高于测试分数说明什么",
+      "expected_card": "cv-test-gap"
+    },
+    {
+      "query": "交叉验证和测试差很多",
+      "expected_card": "cv-test-gap"
+    },
+    {
+      "query": "为什么预处理必须放进交叉验证 Pipeline",
+      "expected_card": "pipeline-inside-cv"
+    },
+    {
+      "query": "CV 前能先标准化吗",
+      "expected_card": "pipeline-inside-cv"
+    },
+    {
+      "query": "网格搜索做了多少次拟合",
+      "expected_card": "grid-search"
+    },
+    {
+      "query": "6候选五折多少次",
+      "expected_card": "grid-search"
+    },
+    {
+      "query": "为什么用平衡准确率选择",
+      "expected_card": "balanced-selection"
+    },
+    {
+      "query": "类别不平衡用什么评分",
+      "expected_card": "balanced-selection"
+    },
+    {
+      "query": "结构化机器学习系统 v0.5 新增什么",
+      "expected_card": "experiment-v05"
+    },
+    {
+      "query": "机器学习第五课项目",
+      "expected_card": "experiment-v05"
+    }
+  ],
+  "unknown": [
+    "怎么辨别咖啡豆的新鲜度",
+    "云为什么会飘在天空中"
+  ]
+}

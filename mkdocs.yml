@@ -233,6 +233,20 @@ nav:
                   - 课程说明: learning-paths/ai-foundation/math-data/README.md
                   - 向量、矩阵、形状与数值契约: learning-paths/ai-foundation/math-data/01-vectors-matrices-shapes-numeric-contracts.md
                   - 点积、距离、缩放与标准化: learning-paths/ai-foundation/math-data/02-dot-distance-scaling-standardization.md
+                  - 表格 Schema、缺失值、重复与数据质量: learning-paths/ai-foundation/math-data/03-table-schema-missing-duplicates-data-quality.md
+                  - 随机性、抽样、训练验证划分与泄漏: learning-paths/ai-foundation/math-data/04-randomness-sampling-train-validation-leakage.md
+                  - 基线、混淆矩阵、阈值与指标选择: learning-paths/ai-foundation/math-data/05-baseline-confusion-matrix-threshold-metrics.md
+                  - 实验配置、数据指纹、产物清单与复现验收: learning-paths/ai-foundation/math-data/06-experiment-config-data-fingerprint-artifact-reproduction.md
+              - 机器学习:
+                  - 课程说明: learning-paths/ai-foundation/machine-learning/README.md
+                  - 问题定义、特征目标与多数类基线: learning-paths/ai-foundation/machine-learning/01-problem-features-target-majority-baseline.md
+                  - 缺失值、类别编码与预处理流水线: learning-paths/ai-foundation/machine-learning/02-missing-categorical-preprocessing-pipeline.md
+                  - 逻辑回归、损失、概率与正则化: learning-paths/ai-foundation/machine-learning/03-logistic-regression-loss-probability-regularization.md
+                  - 决策树、切分、过拟合与复杂度约束: learning-paths/ai-foundation/machine-learning/04-decision-tree-splits-overfitting-complexity.md
+                  - 交叉验证、超参数选择与最终测试集: learning-paths/ai-foundation/machine-learning/05-cross-validation-hyperparameter-selection-final-test.md
+                  - 聚类、PCA 与无监督评估: learning-paths/ai-foundation/machine-learning/06-clustering-pca-unsupervised-evaluation.md
+                  - 概率校准、阈值、分组误差与模型比较: learning-paths/ai-foundation/machine-learning/07-probability-calibration-threshold-group-errors-model-comparison.md
+                  - 模型持久化、推理契约与交付验收: learning-paths/ai-foundation/machine-learning/08-model-persistence-inference-contract-delivery-acceptance.md
   - 项目:
       - 项目说明: projects/README.md
       - 项目主干规划: projects/project-roadmap.md

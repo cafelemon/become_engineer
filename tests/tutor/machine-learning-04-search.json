@@ -1,0 +1,89 @@
+{
+  "lesson_id": "machine-learning-04",
+  "cases": [
+    {
+      "query": "决策树的一个节点怎样切分",
+      "expected_card": "tree-split"
+    },
+    {
+      "query": "树如何选择阈值",
+      "expected_card": "tree-split"
+    },
+    {
+      "query": "Gini 不纯度表示什么",
+      "expected_card": "gini"
+    },
+    {
+      "query": "gini 越小越好吗",
+      "expected_card": "gini"
+    },
+    {
+      "query": "决策树切分是全局最优吗",
+      "expected_card": "greedy-tree"
+    },
+    {
+      "query": "树是贪心算法吗",
+      "expected_card": "greedy-tree"
+    },
+    {
+      "query": "训练准确率 100% 为什么可能过拟合",
+      "expected_card": "overfit"
+    },
+    {
+      "query": "训练满分有什么问题",
+      "expected_card": "overfit"
+    },
+    {
+      "query": "训练验证差距说明什么",
+      "expected_card": "generalization-gap"
+    },
+    {
+      "query": "generalization gap 是什么",
+      "expected_card": "generalization-gap"
+    },
+    {
+      "query": "max_depth 控制什么",
+      "expected_card": "max-depth"
+    },
+    {
+      "query": "树深度限制有什么用",
+      "expected_card": "max-depth"
+    },
+    {
+      "query": "min_samples_leaf 控制什么",
+      "expected_card": "min-leaf"
+    },
+    {
+      "query": "叶子最少样本数",
+      "expected_card": "min-leaf"
+    },
+    {
+      "query": "导出的树规则能当永久业务规则吗",
+      "expected_card": "tree-rule-boundary"
+    },
+    {
+      "query": "树规则是不是因果",
+      "expected_card": "tree-rule-boundary"
+    },
+    {
+      "query": "反复看验证集选树有什么风险",
+      "expected_card": "validation-selection"
+    },
+    {
+      "query": "验证集也会过拟合吗",
+      "expected_card": "validation-selection"
+    },
+    {
+      "query": "结构化机器学习系统 v0.4 新增什么",
+      "expected_card": "experiment-v04"
+    },
+    {
+      "query": "机器学习第四课项目",
+      "expected_card": "experiment-v04"
+    }
+  ],
+  "unknown": [
+    "如何挑选适合室内的绿植",
+    "火山喷发为什么会形成岩浆"
+  ]
+}

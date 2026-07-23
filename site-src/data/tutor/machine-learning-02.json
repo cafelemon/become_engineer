@@ -1,0 +1,336 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "machine-learning-02",
+    "title": "缺失值、类别编码与预处理流水线",
+    "path": "learning-paths/ai-foundation/machine-learning/02-missing-categorical-preprocessing-pipeline/"
+  },
+  "contexts": [
+    {
+      "id": "overview-preprocessing-contract",
+      "type": "overview",
+      "title": "预处理流水线契约",
+      "anchor": "#overview-preprocessing-contract"
+    },
+    {
+      "id": "concept-missing-semantics",
+      "type": "concept",
+      "title": "缺失值语义",
+      "anchor": "#concept-missing-semantics"
+    },
+    {
+      "id": "concept-fit-transform-boundary",
+      "type": "concept",
+      "title": "拟合变换边界",
+      "anchor": "#concept-fit-transform-boundary"
+    },
+    {
+      "id": "example-column-transformer-pipeline",
+      "type": "example",
+      "title": "异构列流水线",
+      "anchor": "#example-column-transformer-pipeline"
+    },
+    {
+      "id": "reproduce-preprocessing-v02",
+      "type": "reproduce",
+      "title": "运行预处理实验",
+      "anchor": "#reproduce-preprocessing-v02"
+    },
+    {
+      "id": "modify-preprocessing",
+      "type": "modify",
+      "title": "修改预处理",
+      "anchor": "#modify-preprocessing"
+    },
+    {
+      "id": "troubleshoot-preprocessing",
+      "type": "troubleshoot",
+      "title": "预处理排错",
+      "anchor": "#troubleshoot-preprocessing"
+    },
+    {
+      "id": "project-structured-data-ml-v02",
+      "type": "project",
+      "title": "结构化 ML 系统 v0.2",
+      "anchor": "#project-structured-data-ml-v02"
+    },
+    {
+      "id": "career-preprocessing-contract",
+      "type": "career",
+      "title": "预处理契约追问",
+      "anchor": "#career-preprocessing-contract"
+    }
+  ],
+  "cards": [
+    {
+      "id": "missing-semantics",
+      "lesson_id": "machine-learning-02",
+      "context_id": "concept-missing-semantics",
+      "question": "缺失值为什么不能统一填成 0？",
+      "aliases": [
+        "缺失值怎么填"
+      ],
+      "keywords": [
+        "缺失值为什么不能统一填成",
+        "0",
+        "缺失值怎么填"
+      ],
+      "diagnostic": "先判断“缺失值怎么填”涉及缺失语义、拟合边界、字段路由还是推理一致性。",
+      "hints": [
+        "查看 #concept-missing-semantics。",
+        "运行 test_preprocessing_lab.py。"
+      ],
+      "example": "数值用训练中位数，类别用训练众数。",
+      "answer": "0 可能是真实测量值，填补策略必须服从字段语义，并保留未知信息的边界。",
+      "source": {
+        "label": "缺失值语义",
+        "href": "#concept-missing-semantics"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "target-missing",
+      "lesson_id": "machine-learning-02",
+      "context_id": "concept-missing-semantics",
+      "question": "目标缺失能用众数填补吗？",
+      "aliases": [
+        "标签缺失怎么处理"
+      ],
+      "keywords": [
+        "目标缺失能用众数填补吗",
+        "标签缺失怎么处理"
+      ],
+      "diagnostic": "先判断“标签缺失怎么处理”涉及缺失语义、拟合边界、字段路由还是推理一致性。",
+      "hints": [
+        "查看 #concept-missing-semantics。",
+        "运行 test_preprocessing_lab.py。"
+      ],
+      "example": "本课目标必须完整。",
+      "answer": "不能把特征填补规则直接用于监督答案；是否保留无标签样本由任务和训练方法决定。",
+      "source": {
+        "label": "缺失值语义",
+        "href": "#concept-missing-semantics"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "fit-transform",
+      "lesson_id": "machine-learning-02",
+      "context_id": "concept-fit-transform-boundary",
+      "question": "fit 和 transform 有什么区别？",
+      "aliases": [
+        "fit_transform 怎么用"
+      ],
+      "keywords": [
+        "fit",
+        "和",
+        "transform",
+        "有什么区别",
+        "fit_transform",
+        "怎么用"
+      ],
+      "diagnostic": "先判断“fit_transform 怎么用”涉及缺失语义、拟合边界、字段路由还是推理一致性。",
+      "hints": [
+        "查看 #concept-fit-transform-boundary。",
+        "运行 test_preprocessing_lab.py。"
+      ],
+      "example": "验证值不改变训练中位数。",
+      "answer": "fit 学统计量和词表，transform 只应用已学状态；验证和推理只能使用训练期状态。",
+      "source": {
+        "label": "拟合变换边界",
+        "href": "#concept-fit-transform-boundary"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "preprocess-leakage",
+      "lesson_id": "machine-learning-02",
+      "context_id": "concept-fit-transform-boundary",
+      "question": "为什么全表预处理后再切分会泄漏？",
+      "aliases": [
+        "填补也会数据泄漏吗"
+      ],
+      "keywords": [
+        "为什么全表预处理后再切分会泄漏",
+        "填补也会数据泄漏吗"
+      ],
+      "diagnostic": "先判断“填补也会数据泄漏吗”涉及缺失语义、拟合边界、字段路由还是推理一致性。",
+      "hints": [
+        "查看 #concept-fit-transform-boundary。",
+        "运行 test_preprocessing_lab.py。"
+      ],
+      "example": "先切分，再在训练集 fit。",
+      "answer": "验证数据参与中位数、尺度或类别词表学习，使离线评估不再代表未见数据。",
+      "source": {
+        "label": "拟合变换边界",
+        "href": "#concept-fit-transform-boundary"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "column-transformer",
+      "lesson_id": "machine-learning-02",
+      "context_id": "example-column-transformer-pipeline",
+      "question": "ColumnTransformer 解决什么问题？",
+      "aliases": [
+        "不同列怎么用不同预处理"
+      ],
+      "keywords": [
+        "ColumnTransformer",
+        "解决什么问题",
+        "不同列怎么用不同预处理"
+      ],
+      "diagnostic": "先判断“不同列怎么用不同预处理”涉及缺失语义、拟合边界、字段路由还是推理一致性。",
+      "hints": [
+        "查看 #example-column-transformer-pipeline。",
+        "运行 test_preprocessing_lab.py。"
+      ],
+      "example": "数值4列与类别1列分开处理。",
+      "answer": "它按列把异构字段送到不同变换分支，再按固定顺序合并输出。",
+      "source": {
+        "label": "异构列流水线",
+        "href": "#example-column-transformer-pipeline"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "pipeline",
+      "lesson_id": "machine-learning-02",
+      "context_id": "example-column-transformer-pipeline",
+      "question": "为什么要把预处理和模型放进 Pipeline？",
+      "aliases": [
+        "Pipeline 有什么用"
+      ],
+      "keywords": [
+        "为什么要把预处理和模型放进",
+        "Pipeline",
+        "有什么用"
+      ],
+      "diagnostic": "先判断“Pipeline 有什么用”涉及缺失语义、拟合边界、字段路由还是推理一致性。",
+      "hints": [
+        "查看 #example-column-transformer-pipeline。",
+        "运行 test_preprocessing_lab.py。"
+      ],
+      "example": "多数类分类器与预处理绑定。",
+      "answer": "它固定训练、验证和推理的完整顺序，减少漏步骤、重复拟合与版本漂移。",
+      "source": {
+        "label": "异构列流水线",
+        "href": "#example-column-transformer-pipeline"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "unknown-category",
+      "lesson_id": "machine-learning-02",
+      "context_id": "example-column-transformer-pipeline",
+      "question": "推理出现训练时没见过的类别怎么办？",
+      "aliases": [
+        "handle_unknown ignore"
+      ],
+      "keywords": [
+        "推理出现训练时没见过的类别怎么办",
+        "handle_unknown",
+        "ignore"
+      ],
+      "diagnostic": "先判断“handle_unknown ignore”涉及缺失语义、拟合边界、字段路由还是推理一致性。",
+      "hints": [
+        "查看 #example-column-transformer-pipeline。",
+        "运行 test_preprocessing_lab.py。"
+      ],
+      "example": "partner 不导致预测失败。",
+      "answer": "应明确未知类别策略；本课编码器忽略它并输出稳定宽度的全零类别向量。",
+      "source": {
+        "label": "异构列流水线",
+        "href": "#example-column-transformer-pipeline"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "feature-names",
+      "lesson_id": "machine-learning-02",
+      "context_id": "example-column-transformer-pipeline",
+      "question": "独热编码后为什么要保留字段名？",
+      "aliases": [
+        "变换后特征名有什么用"
+      ],
+      "keywords": [
+        "独热编码后为什么要保留字段名",
+        "变换后特征名有什么用"
+      ],
+      "diagnostic": "先判断“变换后特征名有什么用”涉及缺失语义、拟合边界、字段路由还是推理一致性。",
+      "hints": [
+        "查看 #example-column-transformer-pipeline。",
+        "运行 test_preprocessing_lab.py。"
+      ],
+      "example": "5个原始特征变成7个命名特征。",
+      "answer": "字段名连接输出列与原始语义，支持调试、解释、Schema 对比和产物验收。",
+      "source": {
+        "label": "异构列流水线",
+        "href": "#example-column-transformer-pipeline"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "raw-immutability",
+      "lesson_id": "machine-learning-02",
+      "context_id": "project-structured-data-ml-v02",
+      "question": "为什么不应原地修改验证数据？",
+      "aliases": [
+        "验证集为什么保持原样"
+      ],
+      "keywords": [
+        "为什么不应原地修改验证数据",
+        "验证集为什么保持原样"
+      ],
+      "diagnostic": "先判断“验证集为什么保持原样”涉及缺失语义、拟合边界、字段路由还是推理一致性。",
+      "hints": [
+        "查看 #project-structured-data-ml-v02。",
+        "运行 test_preprocessing_lab.py。"
+      ],
+      "example": "测试 raw_validation_unchanged。",
+      "answer": "保留原始快照才能复核输入、重跑其他方案，并证明评估数据没有被训练步骤污染。",
+      "source": {
+        "label": "结构化 ML 系统 v0.2",
+        "href": "#project-structured-data-ml-v02"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "experiment-v02",
+      "lesson_id": "machine-learning-02",
+      "context_id": "project-structured-data-ml-v02",
+      "question": "结构化机器学习系统 v0.2 新增什么？",
+      "aliases": [
+        "机器学习第二课项目"
+      ],
+      "keywords": [
+        "结构化机器学习系统",
+        "v0.2",
+        "新增什么",
+        "机器学习第二课项目"
+      ],
+      "diagnostic": "先判断“机器学习第二课项目”涉及缺失语义、拟合边界、字段路由还是推理一致性。",
+      "hints": [
+        "查看 #project-structured-data-ml-v02。",
+        "运行 test_preprocessing_lab.py。"
+      ],
+      "example": "8项真实测试。",
+      "answer": "新增受控缺失、类别字段、训练期 ColumnTransformer、同一 Pipeline 和未知类别契约。",
+      "source": {
+        "label": "结构化 ML 系统 v0.2",
+        "href": "#project-structured-data-ml-v02"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

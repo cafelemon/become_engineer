@@ -1,0 +1,344 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "machine-learning-01",
+    "title": "问题定义、特征目标与多数类基线",
+    "path": "learning-paths/ai-foundation/machine-learning/01-problem-features-target-majority-baseline/"
+  },
+  "contexts": [
+    {
+      "id": "overview-ml-baseline-contract",
+      "type": "overview",
+      "title": "机器学习基线契约",
+      "anchor": "#overview-ml-baseline-contract"
+    },
+    {
+      "id": "concept-sample-feature-target",
+      "type": "concept",
+      "title": "样本特征目标",
+      "anchor": "#concept-sample-feature-target"
+    },
+    {
+      "id": "concept-supervised-generalization",
+      "type": "concept",
+      "title": "监督与泛化",
+      "anchor": "#concept-supervised-generalization"
+    },
+    {
+      "id": "example-stratified-majority-baseline",
+      "type": "example",
+      "title": "分层与多数类基线",
+      "anchor": "#example-stratified-majority-baseline"
+    },
+    {
+      "id": "reproduce-ml-baseline-v01",
+      "type": "reproduce",
+      "title": "运行基线实验",
+      "anchor": "#reproduce-ml-baseline-v01"
+    },
+    {
+      "id": "modify-ml-baseline",
+      "type": "modify",
+      "title": "修改基线",
+      "anchor": "#modify-ml-baseline"
+    },
+    {
+      "id": "troubleshoot-ml-baseline",
+      "type": "troubleshoot",
+      "title": "基线排错",
+      "anchor": "#troubleshoot-ml-baseline"
+    },
+    {
+      "id": "project-structured-data-ml-v01",
+      "type": "project",
+      "title": "结构化 ML 系统 v0.1",
+      "anchor": "#project-structured-data-ml-v01"
+    },
+    {
+      "id": "career-ml-baseline-contract",
+      "type": "career",
+      "title": "基线契约追问",
+      "anchor": "#career-ml-baseline-contract"
+    }
+  ],
+  "cards": [
+    {
+      "id": "sample",
+      "lesson_id": "machine-learning-01",
+      "context_id": "concept-sample-feature-target",
+      "question": "机器学习表格中的样本是什么？",
+      "aliases": [
+        "一行代表什么"
+      ],
+      "keywords": [
+        "机器学习表格中的样本是什么",
+        "一行代表什么"
+      ],
+      "diagnostic": "先判断“一行代表什么”涉及样本边界、特征目标、切分还是基线。",
+      "hints": [
+        "查看 #concept-sample-feature-target。",
+        "运行 test_baseline_lab.py。"
+      ],
+      "example": "本课每行有唯一 sample_id。",
+      "answer": "一行表示一个观察单位，必须有稳定边界和可追踪身份。",
+      "source": {
+        "label": "样本特征目标",
+        "href": "#concept-sample-feature-target"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "feature",
+      "lesson_id": "machine-learning-01",
+      "context_id": "concept-sample-feature-target",
+      "question": "特征和目标有什么区别？",
+      "aliases": [
+        "X 和 y 怎么分"
+      ],
+      "keywords": [
+        "特征和目标有什么区别",
+        "X",
+        "和",
+        "y",
+        "怎么分"
+      ],
+      "diagnostic": "先判断“X 和 y 怎么分”涉及样本边界、特征目标、切分还是基线。",
+      "hints": [
+        "查看 #concept-sample-feature-target。",
+        "运行 test_baseline_lab.py。"
+      ],
+      "example": "target 不能进入四列特征。",
+      "answer": "特征是预测时可用的输入，目标是训练监督信号和评估答案。",
+      "source": {
+        "label": "样本特征目标",
+        "href": "#concept-sample-feature-target"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "identifier",
+      "lesson_id": "machine-learning-01",
+      "context_id": "concept-sample-feature-target",
+      "question": "样本 ID 为什么不应直接作为特征？",
+      "aliases": [
+        "sample_id 能训练吗"
+      ],
+      "keywords": [
+        "样本",
+        "ID",
+        "为什么不应直接作为特征",
+        "sample_id",
+        "能训练吗"
+      ],
+      "diagnostic": "先判断“sample_id 能训练吗”涉及样本边界、特征目标、切分还是基线。",
+      "hints": [
+        "查看 #concept-sample-feature-target。",
+        "运行 test_baseline_lab.py。"
+      ],
+      "example": "本课从 X 中排除 sample_id。",
+      "answer": "ID 用于追踪切分和错误，通常没有可泛化语义，还可能让模型记住样本。",
+      "source": {
+        "label": "样本特征目标",
+        "href": "#concept-sample-feature-target"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "target-leakage",
+      "lesson_id": "machine-learning-01",
+      "context_id": "concept-supervised-generalization",
+      "question": "目标列进入特征会怎样？",
+      "aliases": [
+        "target leakage 是什么"
+      ],
+      "keywords": [
+        "目标列进入特征会怎样",
+        "target",
+        "leakage",
+        "是什么"
+      ],
+      "diagnostic": "先判断“target leakage 是什么”涉及样本边界、特征目标、切分还是基线。",
+      "hints": [
+        "查看 #concept-supervised-generalization。",
+        "运行 test_baseline_lab.py。"
+      ],
+      "example": "特征使用显式白名单。",
+      "answer": "模型直接或间接读到答案会得到虚假的离线高分，无法代表新样本预测能力。",
+      "source": {
+        "label": "监督与泛化",
+        "href": "#concept-supervised-generalization"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "fit-validation",
+      "lesson_id": "machine-learning-01",
+      "context_id": "concept-supervised-generalization",
+      "question": "训练集和验证集职责是什么？",
+      "aliases": [
+        "validation 能参与 fit 吗"
+      ],
+      "keywords": [
+        "训练集和验证集职责是什么",
+        "validation",
+        "能参与",
+        "fit",
+        "吗"
+      ],
+      "diagnostic": "先判断“validation 能参与 fit 吗”涉及样本边界、特征目标、切分还是基线。",
+      "hints": [
+        "查看 #concept-supervised-generalization。",
+        "运行 test_baseline_lab.py。"
+      ],
+      "example": "固定 validation-untouched。",
+      "answer": "训练集用于拟合参数，验证集只比较方案，不能参与拟合或训练期统计量。",
+      "source": {
+        "label": "监督与泛化",
+        "href": "#concept-supervised-generalization"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "stratify",
+      "lesson_id": "machine-learning-01",
+      "context_id": "example-stratified-majority-baseline",
+      "question": "为什么分类切分要分层？",
+      "aliases": [
+        "stratify target 有什么用"
+      ],
+      "keywords": [
+        "为什么分类切分要分层",
+        "stratify",
+        "target",
+        "有什么用"
+      ],
+      "diagnostic": "先判断“stratify target 有什么用”涉及样本边界、特征目标、切分还是基线。",
+      "hints": [
+        "查看 #example-stratified-majority-baseline。",
+        "运行 test_baseline_lab.py。"
+      ],
+      "example": "训练60/30，验证20/10。",
+      "answer": "分层让各分区尽量保留原类别比例，避免小验证集偶然丢失类别。",
+      "source": {
+        "label": "分层与多数类基线",
+        "href": "#example-stratified-majority-baseline"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "dummy",
+      "lesson_id": "machine-learning-01",
+      "context_id": "example-stratified-majority-baseline",
+      "question": "多数类基线做了什么？",
+      "aliases": [
+        "DummyClassifier 是否使用特征"
+      ],
+      "keywords": [
+        "多数类基线做了什么",
+        "DummyClassifier",
+        "是否使用特征"
+      ],
+      "diagnostic": "先判断“DummyClassifier 是否使用特征”涉及样本边界、特征目标、切分还是基线。",
+      "hints": [
+        "查看 #example-stratified-majority-baseline。",
+        "运行 test_baseline_lab.py。"
+      ],
+      "example": "固定预测标签0。",
+      "answer": "它忽略输入特征，只预测训练集最常见标签，为复杂模型提供最低比较线。",
+      "source": {
+        "label": "分层与多数类基线",
+        "href": "#example-stratified-majority-baseline"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "baseline-metrics",
+      "lesson_id": "machine-learning-01",
+      "context_id": "example-stratified-majority-baseline",
+      "question": "基线准确率 0.667 为什么仍无预测能力？",
+      "aliases": [
+        "高准确率基线的盲点"
+      ],
+      "keywords": [
+        "基线准确率",
+        "0.667",
+        "为什么仍无预测能力",
+        "高准确率基线的盲点"
+      ],
+      "diagnostic": "先判断“高准确率基线的盲点”涉及样本边界、特征目标、切分还是基线。",
+      "hints": [
+        "查看 #example-stratified-majority-baseline。",
+        "运行 test_baseline_lab.py。"
+      ],
+      "example": "必须同时看类别与错误类型。",
+      "answer": "类别不平衡使全猜负类也能答对三分之二，但正类召回率为0。",
+      "source": {
+        "label": "分层与多数类基线",
+        "href": "#example-stratified-majority-baseline"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "synthetic-boundary",
+      "lesson_id": "machine-learning-01",
+      "context_id": "project-structured-data-ml-v01",
+      "question": "合成数据结果能外推真实业务吗？",
+      "aliases": [
+        "教学合成数据有什么边界"
+      ],
+      "keywords": [
+        "合成数据结果能外推真实业务吗",
+        "教学合成数据有什么边界"
+      ],
+      "diagnostic": "先判断“教学合成数据有什么边界”涉及样本边界、特征目标、切分还是基线。",
+      "hints": [
+        "查看 #project-structured-data-ml-v01。",
+        "运行 test_baseline_lab.py。"
+      ],
+      "example": "不使用个人数据。",
+      "answer": "不能；它只提供离线确定性和已知生成机制，真实分布仍需真实数据证据。",
+      "source": {
+        "label": "结构化 ML 系统 v0.1",
+        "href": "#project-structured-data-ml-v01"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "experiment-v01",
+      "lesson_id": "machine-learning-01",
+      "context_id": "project-structured-data-ml-v01",
+      "question": "结构化机器学习系统 v0.1 新增什么？",
+      "aliases": [
+        "机器学习第一课项目"
+      ],
+      "keywords": [
+        "结构化机器学习系统",
+        "v0.1",
+        "新增什么",
+        "机器学习第一课项目"
+      ],
+      "diagnostic": "先判断“机器学习第一课项目”涉及样本边界、特征目标、切分还是基线。",
+      "hints": [
+        "查看 #project-structured-data-ml-v01。",
+        "运行 test_baseline_lab.py。"
+      ],
+      "example": "7项真实测试。",
+      "answer": "新增版本化合成表格、Schema、分层切分、多数类基线与固定报告。",
+      "source": {
+        "label": "结构化 ML 系统 v0.1",
+        "href": "#project-structured-data-ml-v01"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "lesson_id": "machine-learning-03",
+  "cases": [
+    {
+      "query": "逻辑回归的线性分数是什么",
+      "expected_card": "linear-score"
+    },
+    {
+      "query": "wTx+b 是什么",
+      "expected_card": "linear-score"
+    },
+    {
+      "query": "sigmoid 在逻辑回归中做什么",
+      "expected_card": "sigmoid"
+    },
+    {
+      "query": "逻辑回归怎么输出概率",
+      "expected_card": "sigmoid"
+    },
+    {
+      "query": "模型概率等于真实发生频率吗",
+      "expected_card": "probability-boundary"
+    },
+    {
+      "query": "predict_proba 能直接相信吗",
+      "expected_card": "probability-boundary"
+    },
+    {
+      "query": "对数损失衡量什么",
+      "expected_card": "log-loss"
+    },
+    {
+      "query": "log loss 是什么",
+      "expected_card": "log-loss"
+    },
+    {
+      "query": "概率和分类阈值有什么区别",
+      "expected_card": "threshold"
+    },
+    {
+      "query": "为什么0.5不是概率本身",
+      "expected_card": "threshold"
+    },
+    {
+      "query": "准确率不变但召回提高说明什么",
+      "expected_card": "metric-comparison"
+    },
+    {
+      "query": "模型没超过基线还有用吗",
+      "expected_card": "metric-comparison"
+    },
+    {
+      "query": "L2 正则化有什么作用",
+      "expected_card": "l2"
+    },
+    {
+      "query": "为什么惩罚大系数",
+      "expected_card": "l2"
+    },
+    {
+      "query": "逻辑回归的 C 越大正则越强吗",
+      "expected_card": "c-parameter"
+    },
+    {
+      "query": "C 和正则强度关系",
+      "expected_card": "c-parameter"
+    },
+    {
+      "query": "最大系数能证明因果吗",
+      "expected_card": "coefficient-causality"
+    },
+    {
+      "query": "逻辑回归系数是不是因果",
+      "expected_card": "coefficient-causality"
+    },
+    {
+      "query": "结构化机器学习系统 v0.3 新增什么",
+      "expected_card": "experiment-v03"
+    },
+    {
+      "query": "机器学习第三课项目",
+      "expected_card": "experiment-v03"
+    }
+  ],
+  "unknown": [
+    "如何给自行车链条上油",
+    "为什么海水尝起来是咸的"
+  ]
+}

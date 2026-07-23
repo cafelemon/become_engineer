@@ -1,0 +1,89 @@
+{
+  "lesson_id": "machine-learning-08",
+  "cases": [
+    {
+      "query": "为什么不能只保存分类器",
+      "expected_card": "full-pipeline"
+    },
+    {
+      "query": "模型要保存预处理吗",
+      "expected_card": "full-pipeline"
+    },
+    {
+      "query": "最终评估后全量重训会得到新测试分数吗",
+      "expected_card": "retrain-boundary"
+    },
+    {
+      "query": "全量训练还能评估吗",
+      "expected_card": "retrain-boundary"
+    },
+    {
+      "query": "为什么不能加载陌生 pickle",
+      "expected_card": "pickle-risk"
+    },
+    {
+      "query": "pickle 安全吗",
+      "expected_card": "pickle-risk"
+    },
+    {
+      "query": "SHA-256 校验能证明模型安全吗",
+      "expected_card": "checksum"
+    },
+    {
+      "query": "哈希有什么边界",
+      "expected_card": "checksum"
+    },
+    {
+      "query": "模型加载前应按什么顺序检查",
+      "expected_card": "load-order"
+    },
+    {
+      "query": "何时才能 unpickle",
+      "expected_card": "load-order"
+    },
+    {
+      "query": "推理为什么拒绝额外字段",
+      "expected_card": "schema-exact"
+    },
+    {
+      "query": "多余字段能忽略吗",
+      "expected_card": "schema-exact"
+    },
+    {
+      "query": "缺失值和未知类别怎么推理",
+      "expected_card": "nullable-unknown"
+    },
+    {
+      "query": "新类别能预测吗",
+      "expected_card": "nullable-unknown"
+    },
+    {
+      "query": "NaN 和无穷为什么要入口拒绝",
+      "expected_card": "nonfinite"
+    },
+    {
+      "query": "inf 能送给模型吗",
+      "expected_card": "nonfinite"
+    },
+    {
+      "query": "离线产物为什么还不是生产服务",
+      "expected_card": "production-gap"
+    },
+    {
+      "query": "模型文件能直接上线吗",
+      "expected_card": "production-gap"
+    },
+    {
+      "query": "结构化机器学习系统 v0.8 新增什么",
+      "expected_card": "experiment-v08"
+    },
+    {
+      "query": "机器学习第八课项目",
+      "expected_card": "experiment-v08"
+    }
+  ],
+  "unknown": [
+    "如何调整吉他的琴弦高度",
+    "潮汐为什么每天会变化"
+  ]
+}

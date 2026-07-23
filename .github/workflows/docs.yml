@@ -422,6 +422,42 @@ jobs:
       - name: Verify AI math and data scaling contracts
         run: node scripts/test_ai_math_data_02_v2.mjs
 
+      - name: Verify AI math and data quality gate
+        run: node scripts/test_ai_math_data_03_v2.mjs
+
+      - name: Verify AI math and data split contracts
+        run: node scripts/test_ai_math_data_04_v2.mjs
+
+      - name: Verify AI math and data metrics contracts
+        run: node scripts/test_ai_math_data_05_v2.mjs
+
+      - name: Verify AI math and data reproduction manifest
+        run: node scripts/test_ai_math_data_06_v2.mjs
+
+      - name: Verify machine-learning problem and baseline contracts
+        run: node scripts/test_machine_learning_01_v2.mjs
+
+      - name: Verify machine-learning preprocessing pipeline contracts
+        run: node scripts/test_machine_learning_02_v2.mjs
+
+      - name: Verify machine-learning logistic regression contracts
+        run: node scripts/test_machine_learning_03_v2.mjs
+
+      - name: Verify machine-learning decision tree contracts
+        run: node scripts/test_machine_learning_04_v2.mjs
+
+      - name: Verify machine-learning model selection contracts
+        run: node scripts/test_machine_learning_05_v2.mjs
+
+      - name: Verify machine-learning unsupervised contracts
+        run: node scripts/test_machine_learning_06_v2.mjs
+
+      - name: Verify machine-learning calibration and group errors
+        run: node scripts/test_machine_learning_07_v2.mjs
+
+      - name: Verify machine-learning persistence and inference contracts
+        run: node scripts/test_machine_learning_08_v2.mjs
+
       - name: Verify CS systems concurrency lesson
         run: node scripts/test_cs_systems_concurrency_v2.mjs
 

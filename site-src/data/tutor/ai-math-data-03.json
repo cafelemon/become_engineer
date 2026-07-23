@@ -1,0 +1,347 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "ai-math-data-03",
+    "title": "表格 Schema、缺失值、重复与数据质量",
+    "path": "learning-paths/ai-foundation/math-data/03-table-schema-missing-duplicates-data-quality/"
+  },
+  "contexts": [
+    {
+      "id": "overview-data-quality-gate",
+      "type": "overview",
+      "title": "数据质量门禁",
+      "anchor": "#overview-data-quality-gate"
+    },
+    {
+      "id": "concept-schema-contract",
+      "type": "concept",
+      "title": "Schema 契约",
+      "anchor": "#concept-schema-contract"
+    },
+    {
+      "id": "concept-missing-invalid",
+      "type": "concept",
+      "title": "缺失与无效",
+      "anchor": "#concept-missing-invalid"
+    },
+    {
+      "id": "example-duplicate-conflict",
+      "type": "example",
+      "title": "重复与冲突",
+      "anchor": "#example-duplicate-conflict"
+    },
+    {
+      "id": "reproduce-data-quality-v03",
+      "type": "reproduce",
+      "title": "运行质量实验",
+      "anchor": "#reproduce-data-quality-v03"
+    },
+    {
+      "id": "modify-data-quality-policy",
+      "type": "modify",
+      "title": "修改质量策略",
+      "anchor": "#modify-data-quality-policy"
+    },
+    {
+      "id": "troubleshoot-data-quality",
+      "type": "troubleshoot",
+      "title": "数据质量排错",
+      "anchor": "#troubleshoot-data-quality"
+    },
+    {
+      "id": "project-reproducible-experiment-v03",
+      "type": "project",
+      "title": "实验系统 v0.3",
+      "anchor": "#project-reproducible-experiment-v03"
+    },
+    {
+      "id": "career-data-quality-gate",
+      "type": "career",
+      "title": "质量门禁追问",
+      "anchor": "#career-data-quality-gate"
+    }
+  ],
+  "cards": [
+    {
+      "id": "schema",
+      "lesson_id": "ai-math-data-03",
+      "context_id": "concept-schema-contract",
+      "question": "表格 Schema 包含什么？",
+      "aliases": [
+        "数据字段契约怎么写"
+      ],
+      "keywords": [
+        "表格",
+        "Schema",
+        "包含什么",
+        "数据字段契约怎么写"
+      ],
+      "diagnostic": "先判断“数据字段契约怎么写”涉及字段契约、缺失、无效还是身份冲突。",
+      "hints": [
+        "查看 #concept-schema-contract。",
+        "运行 test_data_quality_lab.py。"
+      ],
+      "example": "样例有 sample_id、两个特征和二分类 label。",
+      "answer": "Schema 明确字段集合、类型、可空性和值域，是数据进入计算前的接口。",
+      "source": {
+        "label": "Schema 契约",
+        "href": "#concept-schema-contract"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "bool-number",
+      "lesson_id": "ai-math-data-03",
+      "context_id": "concept-schema-contract",
+      "question": "为什么布尔值不能作为数值特征？",
+      "aliases": [
+        "True 是 int 为什么仍拒绝"
+      ],
+      "keywords": [
+        "为什么布尔值不能作为数值特征",
+        "True",
+        "是",
+        "int",
+        "为什么仍拒绝"
+      ],
+      "diagnostic": "先判断“True 是 int 为什么仍拒绝”涉及字段契约、缺失、无效还是身份冲突。",
+      "hints": [
+        "查看 #concept-schema-contract。",
+        "运行 test_data_quality_lab.py。"
+      ],
+      "example": "True 不应被归一化成 1.0。",
+      "answer": "Python 类型关系允许 bool 作为 int 子类，但数据语义不同，必须显式排除。",
+      "source": {
+        "label": "Schema 契约",
+        "href": "#concept-schema-contract"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "missing",
+      "lesson_id": "ai-math-data-03",
+      "context_id": "concept-missing-invalid",
+      "question": "缺失特征为什么不能默认填 0？",
+      "aliases": [
+        "None 和 0 有什么区别"
+      ],
+      "keywords": [
+        "缺失特征为什么不能默认填",
+        "0",
+        "None",
+        "和",
+        "有什么区别"
+      ],
+      "diagnostic": "先判断“None 和 0 有什么区别”涉及字段契约、缺失、无效还是身份冲突。",
+      "hints": [
+        "查看 #concept-missing-invalid。",
+        "运行 test_data_quality_lab.py。"
+      ],
+      "example": "本课保留 None 并计数。",
+      "answer": "None 表示未知，0 可能是真实测量；填充策略必须另行决定并记录。",
+      "source": {
+        "label": "缺失与无效",
+        "href": "#concept-missing-invalid"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "invalid-row",
+      "lesson_id": "ai-math-data-03",
+      "context_id": "concept-missing-invalid",
+      "question": "缺失和无效有什么区别？",
+      "aliases": [
+        "label 2 为什么不是缺失"
+      ],
+      "keywords": [
+        "缺失和无效有什么区别",
+        "label",
+        "2",
+        "为什么不是缺失"
+      ],
+      "diagnostic": "先判断“label 2 为什么不是缺失”涉及字段契约、缺失、无效还是身份冲突。",
+      "hints": [
+        "查看 #concept-missing-invalid。",
+        "运行 test_data_quality_lab.py。"
+      ],
+      "example": "二分类 label=2 计入 invalid_rows。",
+      "answer": "缺失表示没有观测；无效表示已有值违反类型或值域契约。",
+      "source": {
+        "label": "缺失与无效",
+        "href": "#concept-missing-invalid"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "exact-duplicate",
+      "lesson_id": "ai-math-data-03",
+      "context_id": "example-duplicate-conflict",
+      "question": "完全重复行怎样处理？",
+      "aliases": [
+        "相同 ID 相同内容重复"
+      ],
+      "keywords": [
+        "完全重复行怎样处理",
+        "相同",
+        "ID",
+        "相同内容重复"
+      ],
+      "diagnostic": "先判断“相同 ID 相同内容重复”涉及字段契约、缺失、无效还是身份冲突。",
+      "hints": [
+        "查看 #example-duplicate-conflict。",
+        "运行 test_data_quality_lab.py。"
+      ],
+      "example": "样例 exact_duplicates=1。",
+      "answer": "逐字段相同的重复只接受一份，同时计入重复证据。",
+      "source": {
+        "label": "重复与冲突",
+        "href": "#example-duplicate-conflict"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "conflicting-id",
+      "lesson_id": "ai-math-data-03",
+      "context_id": "example-duplicate-conflict",
+      "question": "同一 ID 内容冲突为什么不能保留第一条？",
+      "aliases": [
+        "重复 ID 字段不同怎么办"
+      ],
+      "keywords": [
+        "同一",
+        "ID",
+        "内容冲突为什么不能保留第一条",
+        "重复",
+        "字段不同怎么办"
+      ],
+      "diagnostic": "先判断“重复 ID 字段不同怎么办”涉及字段契约、缺失、无效还是身份冲突。",
+      "hints": [
+        "查看 #example-duplicate-conflict。",
+        "运行 test_data_quality_lab.py。"
+      ],
+      "example": "样例 conflicting_ids=c。",
+      "answer": "冲突说明样本身份歧义，静默保留会隐藏来源问题，因此整组隔离。",
+      "source": {
+        "label": "重复与冲突",
+        "href": "#example-duplicate-conflict"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "quality-status",
+      "lesson_id": "ai-math-data-03",
+      "context_id": "example-duplicate-conflict",
+      "question": "质量报告何时拒绝继续？",
+      "aliases": [
+        "status reject 是什么"
+      ],
+      "keywords": [
+        "质量报告何时拒绝继续",
+        "status",
+        "reject",
+        "是什么"
+      ],
+      "diagnostic": "先判断“status reject 是什么”涉及字段契约、缺失、无效还是身份冲突。",
+      "hints": [
+        "查看 #example-duplicate-conflict。",
+        "运行 test_data_quality_lab.py。"
+      ],
+      "example": "样例只接受 a,b。",
+      "answer": "存在无效行或冲突 ID 时报告为 reject，但仍保存各项计数供复查。",
+      "source": {
+        "label": "重复与冲突",
+        "href": "#example-duplicate-conflict"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "stable-order",
+      "lesson_id": "ai-math-data-03",
+      "context_id": "troubleshoot-data-quality",
+      "question": "质量报告怎样保持稳定顺序？",
+      "aliases": [
+        "输入顺序变化输出怎么办"
+      ],
+      "keywords": [
+        "质量报告怎样保持稳定顺序",
+        "输入顺序变化输出怎么办"
+      ],
+      "diagnostic": "先判断“输入顺序变化输出怎么办”涉及字段契约、缺失、无效还是身份冲突。",
+      "hints": [
+        "查看 #troubleshoot-data-quality。",
+        "运行 test_data_quality_lab.py。"
+      ],
+      "example": "固定输出 accepted_ids=a,b。",
+      "answer": "按稳定 sample_id 排序接受集合和冲突清单，避免依赖来源顺序。",
+      "source": {
+        "label": "数据质量排错",
+        "href": "#troubleshoot-data-quality"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "schema-evolution",
+      "lesson_id": "ai-math-data-03",
+      "context_id": "modify-data-quality-policy",
+      "question": "新增字段时怎样演进 Schema？",
+      "aliases": [
+        "未知字段应该拒绝吗"
+      ],
+      "keywords": [
+        "新增字段时怎样演进",
+        "Schema",
+        "未知字段应该拒绝吗"
+      ],
+      "diagnostic": "先判断“未知字段应该拒绝吗”涉及字段契约、缺失、无效还是身份冲突。",
+      "hints": [
+        "查看 #modify-data-quality-policy。",
+        "运行 test_data_quality_lab.py。"
+      ],
+      "example": "本课采用字段完全匹配。",
+      "answer": "需要明确严格拒绝或兼容读取策略，并用版本和测试防止拼写错误静默进入。",
+      "source": {
+        "label": "修改质量策略",
+        "href": "#modify-data-quality-policy"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "experiment-v03",
+      "lesson_id": "ai-math-data-03",
+      "context_id": "project-reproducible-experiment-v03",
+      "question": "实验系统 v0.3 新增什么？",
+      "aliases": [
+        "AI 数学数据第三课项目"
+      ],
+      "keywords": [
+        "实验系统",
+        "v0.3",
+        "新增什么",
+        "AI",
+        "数学数据第三课项目"
+      ],
+      "diagnostic": "先判断“AI 数学数据第三课项目”涉及字段契约、缺失、无效还是身份冲突。",
+      "hints": [
+        "查看 #project-reproducible-experiment-v03。",
+        "运行 test_data_quality_lab.py。"
+      ],
+      "example": "先审计再缩放或划分。",
+      "answer": "新增显式 Schema、缺失计数、重复分类、冲突隔离和质量状态。",
+      "source": {
+        "label": "实验系统 v0.3",
+        "href": "#project-reproducible-experiment-v03"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

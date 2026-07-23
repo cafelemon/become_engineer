@@ -1,0 +1,332 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "machine-learning-05",
+    "title": "交叉验证、超参数选择与最终测试集",
+    "path": "learning-paths/ai-foundation/machine-learning/05-cross-validation-hyperparameter-selection-final-test/"
+  },
+  "contexts": [
+    {
+      "id": "overview-selection-contract",
+      "type": "overview",
+      "title": "模型选择契约",
+      "anchor": "#overview-selection-contract"
+    },
+    {
+      "id": "concept-cv-fold-roles",
+      "type": "concept",
+      "title": "交叉验证折角色",
+      "anchor": "#concept-cv-fold-roles"
+    },
+    {
+      "id": "concept-selection-bias-final-test",
+      "type": "concept",
+      "title": "选择偏差与最终测试",
+      "anchor": "#concept-selection-bias-final-test"
+    },
+    {
+      "id": "example-grid-search-pipeline",
+      "type": "example",
+      "title": "网格搜索流水线",
+      "anchor": "#example-grid-search-pipeline"
+    },
+    {
+      "id": "reproduce-selection-v05",
+      "type": "reproduce",
+      "title": "运行模型选择",
+      "anchor": "#reproduce-selection-v05"
+    },
+    {
+      "id": "modify-selection",
+      "type": "modify",
+      "title": "修改选择协议",
+      "anchor": "#modify-selection"
+    },
+    {
+      "id": "troubleshoot-selection",
+      "type": "troubleshoot",
+      "title": "模型选择排错",
+      "anchor": "#troubleshoot-selection"
+    },
+    {
+      "id": "project-structured-data-ml-v05",
+      "type": "project",
+      "title": "结构化 ML 系统 v0.5",
+      "anchor": "#project-structured-data-ml-v05"
+    },
+    {
+      "id": "career-selection-contract",
+      "type": "career",
+      "title": "最终测试追问",
+      "anchor": "#career-selection-contract"
+    }
+  ],
+  "cards": [
+    {
+      "id": "cv-role",
+      "lesson_id": "machine-learning-05",
+      "context_id": "concept-cv-fold-roles",
+      "question": "交叉验证每一折分别做什么？",
+      "aliases": [
+        "五折交叉验证怎么轮换"
+      ],
+      "keywords": [
+        "交叉验证每一折分别做什么",
+        "五折交叉验证怎么轮换"
+      ],
+      "diagnostic": "先判断“五折交叉验证怎么轮换”涉及折角色、选择偏差、测试隔离还是评分契约。",
+      "hints": [
+        "查看 #concept-cv-fold-roles。",
+        "运行 test_model_selection_lab.py。"
+      ],
+      "example": "90行开发集做五折。",
+      "answer": "每轮用四折拟合、一折评分，使开发集每个样本轮流承担验证角色。",
+      "source": {
+        "label": "交叉验证折角色",
+        "href": "#concept-cv-fold-roles"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "stratified-cv",
+      "lesson_id": "machine-learning-05",
+      "context_id": "concept-cv-fold-roles",
+      "question": "为什么分类交叉验证要分层？",
+      "aliases": [
+        "StratifiedKFold 有什么用"
+      ],
+      "keywords": [
+        "为什么分类交叉验证要分层",
+        "StratifiedKFold",
+        "有什么用"
+      ],
+      "diagnostic": "先判断“StratifiedKFold 有什么用”涉及折角色、选择偏差、测试隔离还是评分契约。",
+      "hints": [
+        "查看 #concept-cv-fold-roles。",
+        "运行 test_model_selection_lab.py。"
+      ],
+      "example": "固定shuffle与种子。",
+      "answer": "它让每折尽量保持类别比例，减少某折偶然缺少少数类。",
+      "source": {
+        "label": "交叉验证折角色",
+        "href": "#concept-cv-fold-roles"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "cv-not-new-data",
+      "lesson_id": "machine-learning-05",
+      "context_id": "concept-cv-fold-roles",
+      "question": "交叉验证会创造更多数据吗？",
+      "aliases": [
+        "五折是不是数据变多了"
+      ],
+      "keywords": [
+        "交叉验证会创造更多数据吗",
+        "五折是不是数据变多了"
+      ],
+      "diagnostic": "先判断“五折是不是数据变多了”涉及折角色、选择偏差、测试隔离还是评分契约。",
+      "hints": [
+        "查看 #concept-cv-fold-roles。",
+        "运行 test_model_selection_lab.py。"
+      ],
+      "example": "总开发样本仍是90行。",
+      "answer": "不会；它只是轮换使用已有开发样本，仍不能替代新数据。",
+      "source": {
+        "label": "交叉验证折角色",
+        "href": "#concept-cv-fold-roles"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "selection-bias",
+      "lesson_id": "machine-learning-05",
+      "context_id": "concept-selection-bias-final-test",
+      "question": "为什么调很多参数会对验证反馈过拟合？",
+      "aliases": [
+        "模型选择偏差是什么"
+      ],
+      "keywords": [
+        "为什么调很多参数会对验证反馈过拟合",
+        "模型选择偏差是什么"
+      ],
+      "diagnostic": "先判断“模型选择偏差是什么”涉及折角色、选择偏差、测试隔离还是评分契约。",
+      "hints": [
+        "查看 #concept-selection-bias-final-test。",
+        "运行 test_model_selection_lab.py。"
+      ],
+      "example": "需保留最终测试。",
+      "answer": "每次比较都让反馈影响下一步决策，最佳验证分数会逐渐偏乐观。",
+      "source": {
+        "label": "选择偏差与最终测试",
+        "href": "#concept-selection-bias-final-test"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "final-test",
+      "lesson_id": "machine-learning-05",
+      "context_id": "concept-selection-bias-final-test",
+      "question": "最终测试集为什么只能最后使用？",
+      "aliases": [
+        "测试集能反复看吗"
+      ],
+      "keywords": [
+        "最终测试集为什么只能最后使用",
+        "测试集能反复看吗"
+      ],
+      "diagnostic": "先判断“测试集能反复看吗”涉及折角色、选择偏差、测试隔离还是评分契约。",
+      "hints": [
+        "查看 #concept-selection-bias-final-test。",
+        "运行 test_model_selection_lab.py。"
+      ],
+      "example": "本课选择后访问一次。",
+      "answer": "它要提供未参与选择的独立估计；反复据此改方案后就不再独立。",
+      "source": {
+        "label": "选择偏差与最终测试",
+        "href": "#concept-selection-bias-final-test"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "cv-test-gap",
+      "lesson_id": "machine-learning-05",
+      "context_id": "concept-selection-bias-final-test",
+      "question": "CV 分数高于测试分数说明什么？",
+      "aliases": [
+        "交叉验证和测试差很多"
+      ],
+      "keywords": [
+        "CV",
+        "分数高于测试分数说明什么",
+        "交叉验证和测试差很多"
+      ],
+      "diagnostic": "先判断“交叉验证和测试差很多”涉及折角色、选择偏差、测试隔离还是评分契约。",
+      "hints": [
+        "查看 #concept-selection-bias-final-test。",
+        "运行 test_model_selection_lab.py。"
+      ],
+      "example": "0.742 对 0.575。",
+      "answer": "可能来自有限样本波动、选择乐观或分布差异，需如实报告并继续诊断。",
+      "source": {
+        "label": "选择偏差与最终测试",
+        "href": "#concept-selection-bias-final-test"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "pipeline-inside-cv",
+      "lesson_id": "machine-learning-05",
+      "context_id": "example-grid-search-pipeline",
+      "question": "为什么预处理必须放进交叉验证 Pipeline？",
+      "aliases": [
+        "CV 前能先标准化吗"
+      ],
+      "keywords": [
+        "为什么预处理必须放进交叉验证",
+        "Pipeline",
+        "CV",
+        "前能先标准化吗"
+      ],
+      "diagnostic": "先判断“CV 前能先标准化吗”涉及折角色、选择偏差、测试隔离还是评分契约。",
+      "hints": [
+        "查看 #example-grid-search-pipeline。",
+        "运行 test_model_selection_lab.py。"
+      ],
+      "example": "每折独立拟合预处理。",
+      "answer": "否则验证折会参与中位数、尺度和类别词表学习，造成折间泄漏。",
+      "source": {
+        "label": "网格搜索流水线",
+        "href": "#example-grid-search-pipeline"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "grid-search",
+      "lesson_id": "machine-learning-05",
+      "context_id": "example-grid-search-pipeline",
+      "question": "网格搜索做了多少次拟合？",
+      "aliases": [
+        "6候选五折多少次"
+      ],
+      "keywords": [
+        "网格搜索做了多少次拟合",
+        "6候选五折多少次"
+      ],
+      "diagnostic": "先判断“6候选五折多少次”涉及折角色、选择偏差、测试隔离还是评分契约。",
+      "hints": [
+        "查看 #example-grid-search-pipeline。",
+        "运行 test_model_selection_lab.py。"
+      ],
+      "example": "candidate_count=6。",
+      "answer": "6个候选各跑5折，共30次折内拟合，之后最佳方案再在完整开发集重拟合。",
+      "source": {
+        "label": "网格搜索流水线",
+        "href": "#example-grid-search-pipeline"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "balanced-selection",
+      "lesson_id": "machine-learning-05",
+      "context_id": "example-grid-search-pipeline",
+      "question": "为什么用平衡准确率选择？",
+      "aliases": [
+        "类别不平衡用什么评分"
+      ],
+      "keywords": [
+        "为什么用平衡准确率选择",
+        "类别不平衡用什么评分"
+      ],
+      "diagnostic": "先判断“类别不平衡用什么评分”涉及折角色、选择偏差、测试隔离还是评分契约。",
+      "hints": [
+        "查看 #example-grid-search-pipeline。",
+        "运行 test_model_selection_lab.py。"
+      ],
+      "example": "评分口径在搜索前固定。",
+      "answer": "它平均各类别召回，避免多数类占比直接支配准确率。",
+      "source": {
+        "label": "网格搜索流水线",
+        "href": "#example-grid-search-pipeline"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "experiment-v05",
+      "lesson_id": "machine-learning-05",
+      "context_id": "project-structured-data-ml-v05",
+      "question": "结构化机器学习系统 v0.5 新增什么？",
+      "aliases": [
+        "机器学习第五课项目"
+      ],
+      "keywords": [
+        "结构化机器学习系统",
+        "v0.5",
+        "新增什么",
+        "机器学习第五课项目"
+      ],
+      "diagnostic": "先判断“机器学习第五课项目”涉及折角色、选择偏差、测试隔离还是评分契约。",
+      "hints": [
+        "查看 #project-structured-data-ml-v05。",
+        "运行 test_model_selection_lab.py。"
+      ],
+      "example": "8项真实测试。",
+      "answer": "新增冻结测试集、五折分层CV、六候选搜索、开发集重拟合与一次最终评估。",
+      "source": {
+        "label": "结构化 ML 系统 v0.5",
+        "href": "#project-structured-data-ml-v05"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}
