@@ -1,0 +1,89 @@
+{
+  "lesson_id": "agent-tool-calling-01",
+  "cases": [
+    {
+      "query": "为什么模型工具调用只是候选",
+      "expected_card": "proposal-only"
+    },
+    {
+      "query": "模型返回function call就执行吗",
+      "expected_card": "proposal-only"
+    },
+    {
+      "query": "Tool Calling 有哪些阶段",
+      "expected_card": "five-step-flow"
+    },
+    {
+      "query": "工具调用流程是什么",
+      "expected_card": "five-step-flow"
+    },
+    {
+      "query": "为什么需要工具允许列表",
+      "expected_card": "allowlisted-registry"
+    },
+    {
+      "query": "按模型给的函数名反射不行吗",
+      "expected_card": "allowlisted-registry"
+    },
+    {
+      "query": "工具 manifest 为什么做指纹",
+      "expected_card": "manifest-fingerprint"
+    },
+    {
+      "query": "schema版本怎么识别",
+      "expected_card": "manifest-fingerprint"
+    },
+    {
+      "query": "参数为什么不自动转换类型",
+      "expected_card": "strict-json"
+    },
+    {
+      "query": "字符串true能转布尔吗",
+      "expected_card": "strict-json"
+    },
+    {
+      "query": "额外参数可以忽略吗",
+      "expected_card": "extra-fields"
+    },
+    {
+      "query": "多了admin字段怎么办",
+      "expected_card": "extra-fields"
+    },
+    {
+      "query": "call_id 有什么作用",
+      "expected_card": "call-id"
+    },
+    {
+      "query": "工具结果怎么关联原调用",
+      "expected_card": "call-id"
+    },
+    {
+      "query": "strict Schema 等于授权吗",
+      "expected_card": "schema-not-auth"
+    },
+    {
+      "query": "参数合法就能访问别人的数据吗",
+      "expected_card": "schema-not-auth"
+    },
+    {
+      "query": "工具候选日志保存参数吗",
+      "expected_card": "tool-logs"
+    },
+    {
+      "query": "排错要记录完整arguments吗",
+      "expected_card": "tool-logs"
+    },
+    {
+      "query": "智能学习助手 v0.13 新增什么",
+      "expected_card": "assistant-v13"
+    },
+    {
+      "query": "Tool Calling第一课项目做什么",
+      "expected_card": "assistant-v13"
+    }
+  ],
+  "unknown": [
+    "怎么挑选露营帐篷",
+    "咖啡豆怎样烘焙"
+  ]
+}

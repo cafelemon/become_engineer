@@ -1,0 +1,89 @@
+{
+  "lesson_id": "llm-use-03",
+  "cases": [
+    {
+      "query": "结构化输出要经过哪些校验层",
+      "expected_card": "validation-pipeline"
+    },
+    {
+      "query": "JSON合法后还检查什么",
+      "expected_card": "validation-pipeline"
+    },
+    {
+      "query": "invalid_json 和 not_object 有何区别",
+      "expected_card": "invalid-json"
+    },
+    {
+      "query": "数组也是合法JSON为何拒绝",
+      "expected_card": "invalid-json"
+    },
+    {
+      "query": "为什么额外字段也要拒绝",
+      "expected_card": "exact-fields"
+    },
+    {
+      "query": "多一个phone字段有害吗",
+      "expected_card": "exact-fields"
+    },
+    {
+      "query": "为什么字符串8不自动转整数",
+      "expected_card": "strict-int"
+    },
+    {
+      "query": "weekly_hours能否强制转换",
+      "expected_card": "strict-int"
+    },
+    {
+      "query": "为什么 bool 要在 int 前单独检查",
+      "expected_card": "bool-int"
+    },
+    {
+      "query": "True是不是Python整数",
+      "expected_card": "bool-int"
+    },
+    {
+      "query": "缺少 current_level 应该重试还是补问",
+      "expected_card": "missing-info"
+    },
+    {
+      "query": "模型能否猜用户水平",
+      "expected_card": "missing-info"
+    },
+    {
+      "query": "Provider结构化模式后还要应用校验吗",
+      "expected_card": "schema-mode"
+    },
+    {
+      "query": "JSON Schema保证就不用检查吗",
+      "expected_card": "schema-mode"
+    },
+    {
+      "query": "为什么要保留稳定错误代码",
+      "expected_card": "error-code"
+    },
+    {
+      "query": "所有失败写parse error够吗",
+      "expected_card": "error-code"
+    },
+    {
+      "query": "坏输出可以无限重新生成吗",
+      "expected_card": "retry-boundary"
+    },
+    {
+      "query": "解析失败一直retry行吗",
+      "expected_card": "retry-boundary"
+    },
+    {
+      "query": "智能学习助手 v0.3 新增什么",
+      "expected_card": "assistant-v03"
+    },
+    {
+      "query": "LLM第三课项目做什么",
+      "expected_card": "assistant-v03"
+    }
+  ],
+  "unknown": [
+    "如何给皮鞋上蜡",
+    "为什么萤火虫会发光"
+  ]
+}

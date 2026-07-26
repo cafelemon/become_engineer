@@ -1,0 +1,339 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "llm-use-03",
+    "title": "JSON、严格 Schema、语义校验与缺失信息",
+    "path": "learning-paths/llm-agent/model-use/03-json-schema-semantic-validation-missing-information/"
+  },
+  "contexts": [
+    {
+      "id": "overview-structured-output",
+      "type": "overview",
+      "title": "结构化输出结果",
+      "anchor": "#overview-structured-output"
+    },
+    {
+      "id": "concept-validation-layers",
+      "type": "concept",
+      "title": "校验层次",
+      "anchor": "#concept-validation-layers"
+    },
+    {
+      "id": "concept-no-silent-repair",
+      "type": "concept",
+      "title": "拒绝静默修复",
+      "anchor": "#concept-no-silent-repair"
+    },
+    {
+      "id": "example-learning-request",
+      "type": "example",
+      "title": "学习请求对象",
+      "anchor": "#example-learning-request"
+    },
+    {
+      "id": "reproduce-structured-v03",
+      "type": "reproduce",
+      "title": "运行结构化实验",
+      "anchor": "#reproduce-structured-v03"
+    },
+    {
+      "id": "modify-structured-schema",
+      "type": "modify",
+      "title": "修改Schema",
+      "anchor": "#modify-structured-schema"
+    },
+    {
+      "id": "troubleshoot-structured-output",
+      "type": "troubleshoot",
+      "title": "结构化输出排错",
+      "anchor": "#troubleshoot-structured-output"
+    },
+    {
+      "id": "deepen-provider-schema",
+      "type": "deepen",
+      "title": "Provider Schema边界",
+      "anchor": "#deepen-provider-schema"
+    },
+    {
+      "id": "project-learning-assistant-v03",
+      "type": "project",
+      "title": "智能学习助手v0.3",
+      "anchor": "#project-learning-assistant-v03"
+    }
+  ],
+  "cards": [
+    {
+      "id": "validation-pipeline",
+      "lesson_id": "llm-use-03",
+      "context_id": "concept-validation-layers",
+      "question": "结构化输出要经过哪些校验层？",
+      "aliases": [
+        "JSON合法后还检查什么"
+      ],
+      "keywords": [
+        "结构化输出要经过哪些校验层",
+        "JSON合法后还检查什么"
+      ],
+      "diagnostic": "先定位“JSON合法后还检查什么”失败在语法、形状、字段、类型、语义还是信息来源。",
+      "hints": [
+        "查看 #concept-validation-layers。",
+        "运行 test_structured_output.py 查看稳定错误代码。"
+      ],
+      "example": "v0.3七层流水线。",
+      "answer": "依次检查非空、JSON语法、顶层对象、字段集合、严格类型、枚举/范围，再构造业务对象。",
+      "source": {
+        "label": "校验层次",
+        "href": "#concept-validation-layers"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "invalid-json",
+      "lesson_id": "llm-use-03",
+      "context_id": "concept-validation-layers",
+      "question": "invalid_json 和 not_object 有何区别？",
+      "aliases": [
+        "数组也是合法JSON为何拒绝"
+      ],
+      "keywords": [
+        "invalid_json",
+        "和",
+        "not_object",
+        "有何区别",
+        "数组也是合法JSON为何拒绝"
+      ],
+      "diagnostic": "先定位“数组也是合法JSON为何拒绝”失败在语法、形状、字段、类型、语义还是信息来源。",
+      "hints": [
+        "查看 #concept-validation-layers。",
+        "运行 test_structured_output.py 查看稳定错误代码。"
+      ],
+      "example": "数组fixture返回not_object。",
+      "answer": "前者语法错误；后者语法正确但顶层形状不是约定对象。",
+      "source": {
+        "label": "校验层次",
+        "href": "#concept-validation-layers"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "exact-fields",
+      "lesson_id": "llm-use-03",
+      "context_id": "concept-validation-layers",
+      "question": "为什么额外字段也要拒绝？",
+      "aliases": [
+        "多一个phone字段有害吗"
+      ],
+      "keywords": [
+        "为什么额外字段也要拒绝",
+        "多一个phone字段有害吗"
+      ],
+      "diagnostic": "先定位“多一个phone字段有害吗”失败在语法、形状、字段、类型、语义还是信息来源。",
+      "hints": [
+        "查看 #concept-validation-layers。",
+        "运行 test_structured_output.py 查看稳定错误代码。"
+      ],
+      "example": "extra-fields:false。",
+      "answer": "未声明字段未经过业务和隐私设计，默认拒绝能避免悄悄接收。",
+      "source": {
+        "label": "校验层次",
+        "href": "#concept-validation-layers"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "strict-int",
+      "lesson_id": "llm-use-03",
+      "context_id": "concept-no-silent-repair",
+      "question": "为什么字符串8不自动转整数？",
+      "aliases": [
+        "weekly_hours能否强制转换"
+      ],
+      "keywords": [
+        "为什么字符串8不自动转整数",
+        "weekly_hours能否强制转换"
+      ],
+      "diagnostic": "先定位“weekly_hours能否强制转换”失败在语法、形状、字段、类型、语义还是信息来源。",
+      "hints": [
+        "查看 #concept-no-silent-repair。",
+        "运行 test_structured_output.py 查看稳定错误代码。"
+      ],
+      "example": "字符串和bool都拒绝。",
+      "answer": "静默转换会让不一致规则和猜测进入业务；类型不符应明确拒绝。",
+      "source": {
+        "label": "拒绝静默修复",
+        "href": "#concept-no-silent-repair"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "bool-int",
+      "lesson_id": "llm-use-03",
+      "context_id": "example-learning-request",
+      "question": "为什么 bool 要在 int 前单独检查？",
+      "aliases": [
+        "True是不是Python整数"
+      ],
+      "keywords": [
+        "为什么",
+        "bool",
+        "要在",
+        "int",
+        "前单独检查",
+        "True是不是Python整数"
+      ],
+      "diagnostic": "先定位“True是不是Python整数”失败在语法、形状、字段、类型、语义还是信息来源。",
+      "hints": [
+        "查看 #example-learning-request。",
+        "运行 test_structured_output.py 查看稳定错误代码。"
+      ],
+      "example": "isinstance(hours,bool)先拒绝。",
+      "answer": "Python中bool是int子类，不显式排除会把True当1。",
+      "source": {
+        "label": "学习请求对象",
+        "href": "#example-learning-request"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "missing-info",
+      "lesson_id": "llm-use-03",
+      "context_id": "concept-no-silent-repair",
+      "question": "缺少 current_level 应该重试还是补问？",
+      "aliases": [
+        "模型能否猜用户水平"
+      ],
+      "keywords": [
+        "缺少",
+        "current_level",
+        "应该重试还是补问",
+        "模型能否猜用户水平"
+      ],
+      "diagnostic": "先定位“模型能否猜用户水平”失败在语法、形状、字段、类型、语义还是信息来源。",
+      "hints": [
+        "查看 #concept-no-silent-repair。",
+        "运行 test_structured_output.py 查看稳定错误代码。"
+      ],
+      "example": "recovery:ask_user。",
+      "answer": "这是用户事实缺失，应向用户补问，重新生成不能创造可靠事实。",
+      "source": {
+        "label": "拒绝静默修复",
+        "href": "#concept-no-silent-repair"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "schema-mode",
+      "lesson_id": "llm-use-03",
+      "context_id": "deepen-provider-schema",
+      "question": "Provider结构化模式后还要应用校验吗？",
+      "aliases": [
+        "JSON Schema保证就不用检查吗"
+      ],
+      "keywords": [
+        "Provider结构化模式后还要应用校验吗",
+        "JSON",
+        "Schema保证就不用检查吗"
+      ],
+      "diagnostic": "先定位“JSON Schema保证就不用检查吗”失败在语法、形状、字段、类型、语义还是信息来源。",
+      "hints": [
+        "查看 #deepen-provider-schema。",
+        "运行 test_structured_output.py 查看稳定错误代码。"
+      ],
+      "example": "application-validation-required。",
+      "answer": "仍要处理拒绝、不完整、业务范围和事实缺失；支持的Schema子集也需核对。",
+      "source": {
+        "label": "Provider Schema边界",
+        "href": "#deepen-provider-schema"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "error-code",
+      "lesson_id": "llm-use-03",
+      "context_id": "troubleshoot-structured-output",
+      "question": "为什么要保留稳定错误代码？",
+      "aliases": [
+        "所有失败写parse error够吗"
+      ],
+      "keywords": [
+        "为什么要保留稳定错误代码",
+        "所有失败写parse",
+        "error够吗"
+      ],
+      "diagnostic": "先定位“所有失败写parse error够吗”失败在语法、形状、字段、类型、语义还是信息来源。",
+      "hints": [
+        "查看 #troubleshoot-structured-output。",
+        "运行 test_structured_output.py 查看稳定错误代码。"
+      ],
+      "example": "九种失败分层。",
+      "answer": "稳定代码让界面、重试、补问和指标选择不同恢复路径。",
+      "source": {
+        "label": "结构化输出排错",
+        "href": "#troubleshoot-structured-output"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "retry-boundary",
+      "lesson_id": "llm-use-03",
+      "context_id": "troubleshoot-structured-output",
+      "question": "坏输出可以无限重新生成吗？",
+      "aliases": [
+        "解析失败一直retry行吗"
+      ],
+      "keywords": [
+        "坏输出可以无限重新生成吗",
+        "解析失败一直retry行吗"
+      ],
+      "diagnostic": "先定位“解析失败一直retry行吗”失败在语法、形状、字段、类型、语义还是信息来源。",
+      "hints": [
+        "查看 #troubleshoot-structured-output。",
+        "运行 test_structured_output.py 查看稳定错误代码。"
+      ],
+      "example": "v0.3只返回恢复建议。",
+      "answer": "不能；重试需要第4课的错误分类、deadline和尝试预算。",
+      "source": {
+        "label": "结构化输出排错",
+        "href": "#troubleshoot-structured-output"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    },
+    {
+      "id": "assistant-v03",
+      "lesson_id": "llm-use-03",
+      "context_id": "project-learning-assistant-v03",
+      "question": "智能学习助手 v0.3 新增什么？",
+      "aliases": [
+        "LLM第三课项目做什么"
+      ],
+      "keywords": [
+        "智能学习助手",
+        "v0.3",
+        "新增什么",
+        "LLM第三课项目做什么"
+      ],
+      "diagnostic": "先定位“LLM第三课项目做什么”失败在语法、形状、字段、类型、语义还是信息来源。",
+      "hints": [
+        "查看 #project-learning-assistant-v03。",
+        "运行 test_structured_output.py 查看稳定错误代码。"
+      ],
+      "example": "下一版加入有界重试。",
+      "answer": "新增严格JSON/Schema/语义校验、恢复分类、十组fixture和8项测试。",
+      "source": {
+        "label": "智能学习助手v0.3",
+        "href": "#project-learning-assistant-v03"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    }
+  ]
+}

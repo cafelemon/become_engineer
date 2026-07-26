@@ -1,0 +1,89 @@
+{
+  "lesson_id": "llm-rag-eval-02",
+  "cases": [
+    {
+      "query": "倒排索引保存什么",
+      "expected_card": "inverted-index"
+    },
+    {
+      "query": "posting list是什么",
+      "expected_card": "inverted-index"
+    },
+    {
+      "query": "IDF 为什么让稀有词权重更高",
+      "expected_card": "idf"
+    },
+    {
+      "query": "df越小分越高吗",
+      "expected_card": "idf"
+    },
+    {
+      "query": "BM25 为什么不让词频线性增长",
+      "expected_card": "tf-saturation"
+    },
+    {
+      "query": "重复100次会得100倍吗",
+      "expected_card": "tf-saturation"
+    },
+    {
+      "query": "参数 b 控制什么",
+      "expected_card": "length-normalization"
+    },
+    {
+      "query": "长文档为什么要归一",
+      "expected_card": "length-normalization"
+    },
+    {
+      "query": "本课中文 tokenizer 有什么限制",
+      "expected_card": "han-tokenizer"
+    },
+    {
+      "query": "单字二元组算中文分词吗",
+      "expected_card": "han-tokenizer"
+    },
+    {
+      "query": "BM25 同分如何稳定排序",
+      "expected_card": "stable-tie"
+    },
+    {
+      "query": "score一样每次顺序不同",
+      "expected_card": "stable-tie"
+    },
+    {
+      "query": "未知词查询应该返回什么",
+      "expected_card": "empty-query"
+    },
+    {
+      "query": "没命中也返回零分文档吗",
+      "expected_card": "empty-query"
+    },
+    {
+      "query": "如何解释一篇文档的 BM25 分数",
+      "expected_card": "score-explain"
+    },
+    {
+      "query": "总分从哪里来",
+      "expected_card": "score-explain"
+    },
+    {
+      "query": "向量检索前为什么保留 BM25",
+      "expected_card": "lexical-baseline"
+    },
+    {
+      "query": "embedding更智能还要关键词吗",
+      "expected_card": "lexical-baseline"
+    },
+    {
+      "query": "智能学习助手 v0.8 新增什么",
+      "expected_card": "assistant-v08"
+    },
+    {
+      "query": "RAG第二课项目做什么",
+      "expected_card": "assistant-v08"
+    }
+  ],
+  "unknown": [
+    "怎样给绿植换盆",
+    "为什么海水是咸的"
+  ]
+}

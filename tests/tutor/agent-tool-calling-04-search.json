@@ -1,0 +1,89 @@
+{
+  "lesson_id": "agent-tool-calling-04",
+  "cases": [
+    {
+      "query": "人工确认要绑定什么",
+      "expected_card": "confirmation-binding"
+    },
+    {
+      "query": "confirmed布尔值够吗",
+      "expected_card": "confirmation-binding"
+    },
+    {
+      "query": "模型可以自己填写确认字段吗",
+      "expected_card": "model-not-confirm"
+    },
+    {
+      "query": "模型说用户同意能执行吗",
+      "expected_card": "model-not-confirm"
+    },
+    {
+      "query": "同请求重试为什么不重复写",
+      "expected_card": "idempotency-replay"
+    },
+    {
+      "query": "网络重试会写两次吗",
+      "expected_card": "idempotency-replay"
+    },
+    {
+      "query": "同幂等键换参数怎么办",
+      "expected_card": "idempotency-conflict"
+    },
+    {
+      "query": "key相同分钟数不同能覆盖吗",
+      "expected_card": "idempotency-conflict"
+    },
+    {
+      "query": "没有确认时发生什么",
+      "expected_card": "default-deny"
+    },
+    {
+      "query": "缺grant能先写后补吗",
+      "expected_card": "default-deny"
+    },
+    {
+      "query": "确认为什么要过期",
+      "expected_card": "confirmation-expiry"
+    },
+    {
+      "query": "一次同意永久有效吗",
+      "expected_card": "confirmation-expiry"
+    },
+    {
+      "query": "怎样证明拒绝路径没有副作用",
+      "expected_card": "write-count"
+    },
+    {
+      "query": "只看403或错误码够吗",
+      "expected_card": "write-count"
+    },
+    {
+      "query": "本课实现分布式 exactly-once 了吗",
+      "expected_card": "exactly-once-boundary"
+    },
+    {
+      "query": "内存幂等能外推生产吗",
+      "expected_card": "exactly-once-boundary"
+    },
+    {
+      "query": "写工具日志能记grant吗",
+      "expected_card": "write-logs"
+    },
+    {
+      "query": "幂等键可打印吗",
+      "expected_card": "write-logs"
+    },
+    {
+      "query": "智能学习助手 v0.16 新增什么",
+      "expected_card": "assistant-v16"
+    },
+    {
+      "query": "第四课项目做什么",
+      "expected_card": "assistant-v16"
+    }
+  ],
+  "unknown": [
+    "海水为什么是咸的",
+    "怎样练习毛笔字"
+  ]
+}

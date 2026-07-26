@@ -257,6 +257,34 @@ nav:
                   - 初始化、激活分布、梯度诊断与裁剪: learning-paths/ai-foundation/deep-learning/06-initialization-activation-gradient-diagnostics-clipping.md
                   - 检查点、随机状态与精确恢复训练: learning-paths/ai-foundation/deep-learning/07-checkpoint-rng-resume-exact-training.md
                   - Eval、推理 Schema、Manifest 与离线交付: learning-paths/ai-foundation/deep-learning/08-eval-inference-schema-manifest-delivery.md
+          - LLM 应用与 Agent:
+              - 模型使用与结构化输出:
+                  - 课程说明: learning-paths/llm-agent/model-use/README.md
+                  - 模型边界、消息与离线适配器: learning-paths/llm-agent/model-use/01-model-boundary-messages-offline-adapter.md
+                  - Prompt 角色、版本、参数与上下文预算: learning-paths/llm-agent/model-use/02-prompt-roles-version-parameters-context-budget.md
+                  - JSON、严格 Schema、语义校验与缺失信息: learning-paths/llm-agent/model-use/03-json-schema-semantic-validation-missing-information.md
+                  - 错误分类、Deadline、退避与有界重试: learning-paths/llm-agent/model-use/04-error-taxonomy-deadline-backoff-bounded-retry.md
+                  - 流事件、Delta 顺序、终止原因与取消: learning-paths/llm-agent/model-use/05-stream-delta-order-finish-cancel.md
+                  - Provider 配置、秘密、脱敏与可选真实验收: learning-paths/llm-agent/model-use/06-provider-config-secrets-redaction-delivery.md
+              - 检索、RAG 与评估:
+                  - 课程说明: learning-paths/llm-agent/rag-eval/README.md
+                  - 语料文档契约、来源身份与可复现索引: learning-paths/llm-agent/rag-eval/01-corpus-document-source-reproducible-index.md
+                  - 倒排索引、BM25、Top-k 与稳定排序: learning-paths/llm-agent/rag-eval/02-inverted-index-bm25-top-k-stable-ranking.md
+                  - 分块、重叠、来源坐标与精确引用: learning-paths/llm-agent/rag-eval/03-chunk-overlap-source-coordinates-citation.md
+                  - Embedding 适配器、余弦相似度与 RRF 混合检索: learning-paths/llm-agent/rag-eval/04-embedding-cosine-rrf-hybrid-retrieval.md
+                  - 有证据回答、Claim-Citation 门禁与缺证据拒答: learning-paths/llm-agent/rag-eval/05-grounded-claim-citation-abstention.md
+                  - 固定评估集、检索指标、引用质量与回归门禁: learning-paths/llm-agent/rag-eval/06-fixed-eval-retrieval-citation-regression-gates.md
+              - Tool Calling 与有界工作流:
+                  - 课程说明: learning-paths/llm-agent/tool-calling-workflow/README.md
+                  - 工具定义、注册表、候选调用与严格参数: learning-paths/llm-agent/tool-calling-workflow/01-tool-definition-registry-candidate-call-strict-arguments.md
+                  - 业务校验、主体授权与只读工具执行: learning-paths/llm-agent/tool-calling-workflow/02-business-validation-authorization-read-only-execution.md
+                  - 多工具调用、call_id 关联与部分失败隔离: learning-paths/llm-agent/tool-calling-workflow/03-multiple-calls-call-id-correlation-partial-failure.md
+                  - 受控副作用、人工确认与幂等保护: learning-paths/llm-agent/tool-calling-workflow/04-controlled-side-effects-confirmation-idempotency.md
+                  - 有界工具循环、状态预算与显式终止: learning-paths/llm-agent/tool-calling-workflow/05-bounded-tool-loop-state-budgets-termination.md
+                  - 固定对抗评估、预算指标与回归交付: learning-paths/llm-agent/tool-calling-workflow/06-fixed-adversarial-evaluation-regression-delivery.md
+              - Agent 工程:
+                  - 课程说明: learning-paths/llm-agent/agent-engineering/README.md
+                  - SQLite 运行状态、事件日志与原子 checkpoint: learning-paths/llm-agent/agent-engineering/01-sqlite-run-state-event-log-atomic-checkpoint.md
   - 项目:
       - 项目说明: projects/README.md
       - 项目主干规划: projects/project-roadmap.md

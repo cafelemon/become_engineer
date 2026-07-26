@@ -1,0 +1,16 @@
+import{mkdirSync,writeFileSync}from"node:fs";import{resolve}from"node:path";const root=resolve(import.meta.dirname,".."),lessonId="llm-use-05",title="流事件、Delta 顺序、终止原因与取消",path="learning-paths/llm-agent/model-use/05-stream-delta-order-finish-cancel/";
+const contexts=[["overview-stream-lifecycle","overview","流响应生命周期"],["concept-stream-protocol","concept","流事件协议"],["concept-partial-not-complete","concept","部分不等于完成"],["example-stream-state-machine","example","流状态机"],["reproduce-stream-v05","reproduce","运行流实验"],["modify-stream-renderer","modify","修改四态界面"],["troubleshoot-stream-events","troubleshoot","流事件排错"],["deepen-provider-stream-map","deepen","Provider事件映射"],["project-learning-assistant-v05","project","智能学习助手v0.5"]].map(([id,type,title])=>({id,type,title,anchor:`#${id}`}));
+const defs=[
+["created-first","concept-stream-protocol","为什么第一条流事件必须是 created？","直接收到delta怎么办","created建立一次响应生命周期；从中间开始的delta缺少完整上下文，应拒绝。","missing_created。"],
+["strict-sequence","example-stream-state-machine","序号如何发现重复和丢失？","流式事件乱序怎么判断","期望序号从0连续增长；实际值不同统一返回sequence_mismatch。","0后再来0或2都拒绝。"],
+["terminal-required","concept-stream-protocol","连接关闭为什么不等于正常完成？","没有completed也算结束吗","必须看到明确终止事件；连接断开可能是截断，finalize应返回missing_terminal。","terminal required:true。"],
+["partial-output","concept-partial-not-complete","截断时的部分文本能保存为计划吗？","有字就算完成吗","不能；可标记展示，但status仍是incomplete，不能进入完成业务路径。","partial-is-complete:false。"],
+["stream-cancel","modify-stream-renderer","用户取消后还要继续读事件吗？","cancel后provider又发completed","不应；取消形成终止状态，后续事件返回event_after_terminal。","cancel-stops-consumption。"],
+["finish-reason","example-stream-state-machine","completed 为什么还检查 finish reason？","response.completed就够了吗","内部契约要求completed配stop，防止适配层把截断事件误映射成完成。","invalid_finish_reason。"],
+["output-bound","troubleshoot-stream-events","流式拼接为什么要最大字符数？","delta很小还会内存超限吗","单个delta小不代表累计量小；上限防止无界内存和失控输出。","max_chars超限拒绝。"],
+["json-after-terminal","concept-partial-not-complete","结构化JSON应在每个delta后解析吗？","边流边json.loads可以吗","不应；JSON片段通常未闭合，先确认completed再运行严格解析。","json-parse:after-terminal-only。"],
+["provider-map","deepen-provider-stream-map","不同Provider事件名放在哪里转换？","业务里判断各家SSE事件吗","由provider adapter映射为稳定内部事件，业务只消费统一协议。","原始event ID另行设计。"],
+["assistant-v05","project-learning-assistant-v05","智能学习助手 v0.5 新增什么？","LLM第五课项目做什么","新增严格序号、delta拼接、四种终止状态、取消与累计上限。","下一版安全交付。"],
+];
+const cards=defs.map(([id,c,q,a,answer,example],i)=>({id,lesson_id:lessonId,context_id:c,question:q,aliases:[a],keywords:[...new Set(`${q} ${a}`.replace(/[？?，、/]/g," ").split(/\s+/).filter(Boolean))],diagnostic:`先定位“${a}”发生在创建、序号、delta、终止还是取消阶段。`,hints:[`查看 #${c}。`,"运行 test_stream_assembler.py 回放固定事件。"],example,answer,source:{label:contexts.find(x=>x.id===c).title,href:`#${c}`},updated_at:"2026-07-26",recommended:i<8}));
+const cases=defs.flatMap(([id,,q,a])=>[{query:q.replace("？",""),expected_card:id},{query:a,expected_card:id}]);mkdirSync(resolve(root,"site-src/data/tutor"),{recursive:true});mkdirSync(resolve(root,"tests/tutor"),{recursive:true});writeFileSync(resolve(root,`site-src/data/tutor/${lessonId}.json`),`${JSON.stringify({version:2,lesson:{id:lessonId,title,path},contexts,cards},null,2)}\n`);writeFileSync(resolve(root,`tests/tutor/${lessonId}-search.json`),`${JSON.stringify({lesson_id:lessonId,cases,unknown:["如何养护木质餐桌","雨天鞋子湿了怎么晾"]},null,2)}\n`);

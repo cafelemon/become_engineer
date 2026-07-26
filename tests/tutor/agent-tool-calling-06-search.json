@@ -1,0 +1,89 @@
+{
+  "lesson_id": "agent-tool-calling-06",
+  "cases": [
+    {
+      "query": "评估协议为什么要指纹",
+      "expected_card": "protocol-fingerprint"
+    },
+    {
+      "query": "案例顺序变化会影响吗",
+      "expected_card": "protocol-fingerprint"
+    },
+    {
+      "query": "两个报告什么时候可比较",
+      "expected_card": "protocol-compatibility"
+    },
+    {
+      "query": "不同案例数能比较分数吗",
+      "expected_card": "protocol-compatibility"
+    },
+    {
+      "query": "为什么指标要分组",
+      "expected_card": "separate-denominators"
+    },
+    {
+      "query": "正常高分能抵消安全失败吗",
+      "expected_card": "separate-denominators"
+    },
+    {
+      "query": "不安全执行允许几次",
+      "expected_card": "unsafe-zero"
+    },
+    {
+      "query": "平均分高能容忍一次危险handler吗",
+      "expected_card": "unsafe-zero"
+    },
+    {
+      "query": "怎样证明安全拒绝真的安全",
+      "expected_card": "adversarial-proof"
+    },
+    {
+      "query": "只看最终回复说拒绝够吗",
+      "expected_card": "adversarial-proof"
+    },
+    {
+      "query": "新增案例后还能用旧基线吗",
+      "expected_card": "add-case"
+    },
+    {
+      "query": "加确认过期例继续比旧3/3吗",
+      "expected_card": "add-case"
+    },
+    {
+      "query": "incompatible_protocol 是退化吗",
+      "expected_card": "gate-failure"
+    },
+    {
+      "query": "指纹不同说明代码变差吗",
+      "expected_card": "gate-failure"
+    },
+    {
+      "query": "8例满分代表生产质量吗",
+      "expected_card": "eight-case-boundary"
+    },
+    {
+      "query": "scripted model满分能上线吗",
+      "expected_card": "eight-case-boundary"
+    },
+    {
+      "query": "评估报告能保存prompt吗",
+      "expected_card": "eval-logs"
+    },
+    {
+      "query": "为了复盘打印全部参数行吗",
+      "expected_card": "eval-logs"
+    },
+    {
+      "query": "智能学习助手 v0.18 新增什么",
+      "expected_card": "assistant-v18"
+    },
+    {
+      "query": "第六课项目做什么",
+      "expected_card": "assistant-v18"
+    }
+  ],
+  "unknown": [
+    "怎样种植番茄",
+    "古典音乐有哪些时期"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "lesson_id": "llm-use-01",
+  "cases": [
+    {
+      "query": "为什么业务代码不应直接依赖 provider JSON",
+      "expected_card": "model-boundary"
+    },
+    {
+      "query": "模型API字段能否传遍业务层",
+      "expected_card": "model-boundary"
+    },
+    {
+      "query": "system 和 user 消息有什么区别",
+      "expected_card": "message-role"
+    },
+    {
+      "query": "消息role为什么不能混",
+      "expected_card": "message-role"
+    },
+    {
+      "query": "模型调用为什么不只有成功和异常",
+      "expected_card": "result-status"
+    },
+    {
+      "query": "refused和incomplete怎么处理",
+      "expected_card": "result-status"
+    },
+    {
+      "query": "finish reason 有什么用",
+      "expected_card": "finish-reason"
+    },
+    {
+      "query": "有text就算完整吗",
+      "expected_card": "finish-reason"
+    },
+    {
+      "query": "离线 adapter 能证明什么",
+      "expected_card": "offline-adapter"
+    },
+    {
+      "query": "Mock能证明模型效果吗",
+      "expected_card": "offline-adapter"
+    },
+    {
+      "query": "为什么请求要在 adapter 前校验",
+      "expected_card": "preflight-validation"
+    },
+    {
+      "query": "坏消息何时拒绝",
+      "expected_card": "preflight-validation"
+    },
+    {
+      "query": "HTTP成功但模型文本为空怎么办",
+      "expected_card": "empty-completed"
+    },
+    {
+      "query": "completed空响应算成功吗",
+      "expected_card": "empty-completed"
+    },
+    {
+      "query": "为什么保留 usage 和 request ID",
+      "expected_card": "usage-request-id"
+    },
+    {
+      "query": "只保存回复文本够吗",
+      "expected_card": "usage-request-id"
+    },
+    {
+      "query": "模型调用日志应该避免记录什么",
+      "expected_card": "log-redaction"
+    },
+    {
+      "query": "Prompt和Authorization能打日志吗",
+      "expected_card": "log-redaction"
+    },
+    {
+      "query": "智能学习助手 v0.1 新增什么",
+      "expected_card": "assistant-v01"
+    },
+    {
+      "query": "LLM第一课项目做什么",
+      "expected_card": "assistant-v01"
+    }
+  ],
+  "unknown": [
+    "怎样给木门刷漆",
+    "海豚为什么会跳出水面"
+  ]
+}

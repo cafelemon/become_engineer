@@ -1,0 +1,89 @@
+{
+  "lesson_id": "llm-rag-eval-05",
+  "cases": [
+    {
+      "query": "Context pack 为什么要有界",
+      "expected_card": "context-budget"
+    },
+    {
+      "query": "检索结果都塞给模型不行吗",
+      "expected_card": "context-budget"
+    },
+    {
+      "query": "来源文本为什么要显式分隔",
+      "expected_card": "source-data"
+    },
+    {
+      "query": "RAG内容和指令怎么区分",
+      "expected_card": "source-data"
+    },
+    {
+      "query": "为什么按 claim 绑定 citation",
+      "expected_card": "claim-granularity"
+    },
+    {
+      "query": "答案末尾一个引用不够吗",
+      "expected_card": "claim-granularity"
+    },
+    {
+      "query": "回答能引用未检索语料吗",
+      "expected_card": "retrieved-only-answer"
+    },
+    {
+      "query": "全库有证据可以事后补吗",
+      "expected_card": "retrieved-only-answer"
+    },
+    {
+      "query": "为什么先做抽取式 claim",
+      "expected_card": "extractive-baseline"
+    },
+    {
+      "query": "同义改写不能自动过吗",
+      "expected_card": "extractive-baseline"
+    },
+    {
+      "query": "Citation 要校验哪些字段",
+      "expected_card": "quote-gate"
+    },
+    {
+      "query": "有chunk ID就够吗",
+      "expected_card": "quote-gate"
+    },
+    {
+      "query": "证据不足时应该输出什么",
+      "expected_card": "abstention"
+    },
+    {
+      "query": "不知道也要生成一段吗",
+      "expected_card": "abstention"
+    },
+    {
+      "query": "来源里的忽略系统指令会执行吗",
+      "expected_card": "injection-data"
+    },
+    {
+      "query": "检索文档能改规则吗",
+      "expected_card": "injection-data"
+    },
+    {
+      "query": "证据回答日志保存全文吗",
+      "expected_card": "grounding-logs"
+    },
+    {
+      "query": "排错要记录上下文和答案吗",
+      "expected_card": "grounding-logs"
+    },
+    {
+      "query": "智能学习助手 v0.11 新增什么",
+      "expected_card": "assistant-v11"
+    },
+    {
+      "query": "RAG第五课项目做什么",
+      "expected_card": "assistant-v11"
+    }
+  ],
+  "unknown": [
+    "怎样种植薄荷",
+    "月亮为什么有阴晴圆缺"
+  ]
+}

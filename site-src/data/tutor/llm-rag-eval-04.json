@@ -1,0 +1,333 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "llm-rag-eval-04",
+    "title": "Embedding 适配器、余弦相似度与 RRF 混合检索",
+    "path": "learning-paths/llm-agent/rag-eval/04-embedding-cosine-rrf-hybrid-retrieval/"
+  },
+  "contexts": [
+    {
+      "id": "overview-hybrid-retrieval",
+      "type": "overview",
+      "title": "混合检索",
+      "anchor": "#overview-hybrid-retrieval"
+    },
+    {
+      "id": "concept-embedding-boundary",
+      "type": "concept",
+      "title": "Embedding边界",
+      "anchor": "#concept-embedding-boundary"
+    },
+    {
+      "id": "concept-cosine-ranking",
+      "type": "concept",
+      "title": "余弦排序",
+      "anchor": "#concept-cosine-ranking"
+    },
+    {
+      "id": "example-rrf-fusion",
+      "type": "example",
+      "title": "RRF融合",
+      "anchor": "#example-rrf-fusion"
+    },
+    {
+      "id": "reproduce-hybrid-v10",
+      "type": "reproduce",
+      "title": "运行混合检索",
+      "anchor": "#reproduce-hybrid-v10"
+    },
+    {
+      "id": "modify-ranking-fusion",
+      "type": "modify",
+      "title": "修改排序融合",
+      "anchor": "#modify-ranking-fusion"
+    },
+    {
+      "id": "troubleshoot-vector-fusion",
+      "type": "troubleshoot",
+      "title": "向量融合排错",
+      "anchor": "#troubleshoot-vector-fusion"
+    },
+    {
+      "id": "deepen-semantic-claim-boundary",
+      "type": "deepen",
+      "title": "语义声明边界",
+      "anchor": "#deepen-semantic-claim-boundary"
+    },
+    {
+      "id": "project-learning-assistant-v10",
+      "type": "project",
+      "title": "智能学习助手v0.10",
+      "anchor": "#project-learning-assistant-v10"
+    }
+  ],
+  "cards": [
+    {
+      "id": "adapter-boundary",
+      "lesson_id": "llm-rag-eval-04",
+      "context_id": "concept-embedding-boundary",
+      "question": "为什么要做 Embedding adapter？",
+      "aliases": [
+        "向量接口为什么隔离"
+      ],
+      "keywords": [
+        "为什么要做",
+        "Embedding",
+        "adapter",
+        "向量接口为什么隔离"
+      ],
+      "diagnostic": "先定位“向量接口为什么隔离”属于适配器、向量校验、cosine排序、RRF还是语义声明。",
+      "hints": [
+        "查看 #concept-embedding-boundary。",
+        "运行 test_hybrid_retriever.py 核对固定排名。"
+      ],
+      "example": "Protocol只声明embed。",
+      "answer": "让检索核心依赖稳定批次契约，而非某个SDK、凭据或模型；provider可替换。",
+      "source": {
+        "label": "Embedding边界",
+        "href": "#concept-embedding-boundary"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "batch-shape",
+      "lesson_id": "llm-rag-eval-04",
+      "context_id": "concept-embedding-boundary",
+      "question": "返回向量数量错了怎么办？",
+      "aliases": [
+        "embedding少返回一条"
+      ],
+      "keywords": [
+        "返回向量数量错了怎么办",
+        "embedding少返回一条"
+      ],
+      "diagnostic": "先定位“embedding少返回一条”属于适配器、向量校验、cosine排序、RRF还是语义声明。",
+      "hints": [
+        "查看 #concept-embedding-boundary。",
+        "运行 test_hybrid_retriever.py 核对固定排名。"
+      ],
+      "example": "输入输出一一对应。",
+      "answer": "拒绝adapter_shape_mismatch，不能把后续向量错配到别的chunk。",
+      "source": {
+        "label": "Embedding边界",
+        "href": "#concept-embedding-boundary"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "vector-validation",
+      "lesson_id": "llm-rag-eval-04",
+      "context_id": "concept-cosine-ranking",
+      "question": "向量进入索引前检查什么？",
+      "aliases": [
+        "NaN零向量不同维怎么办"
+      ],
+      "keywords": [
+        "向量进入索引前检查什么",
+        "NaN零向量不同维怎么办"
+      ],
+      "diagnostic": "先定位“NaN零向量不同维怎么办”属于适配器、向量校验、cosine排序、RRF还是语义声明。",
+      "hints": [
+        "查看 #concept-cosine-ranking。",
+        "运行 test_hybrid_retriever.py 核对固定排名。"
+      ],
+      "example": "坏向量先拒绝。",
+      "answer": "检查数字且非bool、有限、同维、非空和非零范数。",
+      "source": {
+        "label": "余弦排序",
+        "href": "#concept-cosine-ranking"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "cosine",
+      "lesson_id": "llm-rag-eval-04",
+      "context_id": "concept-cosine-ranking",
+      "question": "余弦相似度比较什么？",
+      "aliases": [
+        "向量长度会影响cosine吗"
+      ],
+      "keywords": [
+        "余弦相似度比较什么",
+        "向量长度会影响cosine吗"
+      ],
+      "diagnostic": "先定位“向量长度会影响cosine吗”属于适配器、向量校验、cosine排序、RRF还是语义声明。",
+      "hints": [
+        "查看 #concept-cosine-ranking。",
+        "运行 test_hybrid_retriever.py 核对固定排名。"
+      ],
+      "example": "(1,1)与(2,2)。",
+      "answer": "比较方向；点积除以两边范数，正比例向量相似度为1。",
+      "source": {
+        "label": "余弦排序",
+        "href": "#concept-cosine-ranking"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "stable-vector-tie",
+      "lesson_id": "llm-rag-eval-04",
+      "context_id": "concept-cosine-ranking",
+      "question": "向量同分怎么稳定排序？",
+      "aliases": [
+        "cosine一样谁先"
+      ],
+      "keywords": [
+        "向量同分怎么稳定排序",
+        "cosine一样谁先"
+      ],
+      "diagnostic": "先定位“cosine一样谁先”属于适配器、向量校验、cosine排序、RRF还是语义声明。",
+      "hints": [
+        "查看 #concept-cosine-ranking。",
+        "运行 test_hybrid_retriever.py 核对固定排名。"
+      ],
+      "example": "chunk-a先于chunk-b。",
+      "answer": "先按score降序，再按稳定chunk ID升序。",
+      "source": {
+        "label": "余弦排序",
+        "href": "#concept-cosine-ranking"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "rrf-ranks",
+      "lesson_id": "llm-rag-eval-04",
+      "context_id": "example-rrf-fusion",
+      "question": "RRF 为什么不用原始分数？",
+      "aliases": [
+        "BM25和cosine可以直接加吗"
+      ],
+      "keywords": [
+        "RRF",
+        "为什么不用原始分数",
+        "BM25和cosine可以直接加吗"
+      ],
+      "diagnostic": "先定位“BM25和cosine可以直接加吗”属于适配器、向量校验、cosine排序、RRF还是语义声明。",
+      "hints": [
+        "查看 #example-rrf-fusion。",
+        "运行 test_hybrid_retriever.py 核对固定排名。"
+      ],
+      "example": "固定k为60。",
+      "answer": "两种分数尺度不可直接比较；RRF按各自名次贡献1/(k+rank)。",
+      "source": {
+        "label": "RRF融合",
+        "href": "#example-rrf-fusion"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "rrf-duplicates",
+      "lesson_id": "llm-rag-eval-04",
+      "context_id": "troubleshoot-vector-fusion",
+      "question": "同一路排名重复 chunk 会怎样？",
+      "aliases": [
+        "一个ID出现两次能多加分吗"
+      ],
+      "keywords": [
+        "同一路排名重复",
+        "chunk",
+        "会怎样",
+        "一个ID出现两次能多加分吗"
+      ],
+      "diagnostic": "先定位“一个ID出现两次能多加分吗”属于适配器、向量校验、cosine排序、RRF还是语义声明。",
+      "hints": [
+        "查看 #troubleshoot-vector-fusion。",
+        "运行 test_hybrid_retriever.py 核对固定排名。"
+      ],
+      "example": "每路ID唯一。",
+      "answer": "不能；重复会虚增支持度，因此确定性拒绝duplicate_ranked_chunk。",
+      "source": {
+        "label": "向量融合排错",
+        "href": "#troubleshoot-vector-fusion"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "fixture-honesty",
+      "lesson_id": "llm-rag-eval-04",
+      "context_id": "deepen-semantic-claim-boundary",
+      "question": "固定二维向量能证明语义检索吗？",
+      "aliases": [
+        "fixture向量效果好算真实效果吗"
+      ],
+      "keywords": [
+        "固定二维向量能证明语义检索吗",
+        "fixture向量效果好算真实效果吗"
+      ],
+      "diagnostic": "先定位“fixture向量效果好算真实效果吗”属于适配器、向量校验、cosine排序、RRF还是语义声明。",
+      "hints": [
+        "查看 #deepen-semantic-claim-boundary。",
+        "运行 test_hybrid_retriever.py 核对固定排名。"
+      ],
+      "example": "semantic-claim:false。",
+      "answer": "不能；只证明接口、校验、cosine与排序，真实语义需真实模型和评估集。",
+      "source": {
+        "label": "语义声明边界",
+        "href": "#deepen-semantic-claim-boundary"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "vector-logging",
+      "lesson_id": "llm-rag-eval-04",
+      "context_id": "deepen-semantic-claim-boundary",
+      "question": "向量和查询可以完整打日志吗？",
+      "aliases": [
+        "排错记录embedding原值吗"
+      ],
+      "keywords": [
+        "向量和查询可以完整打日志吗",
+        "排错记录embedding原值吗"
+      ],
+      "diagnostic": "先定位“排错记录embedding原值吗”属于适配器、向量校验、cosine排序、RRF还是语义声明。",
+      "hints": [
+        "查看 #deepen-semantic-claim-boundary。",
+        "运行 test_hybrid_retriever.py 核对固定排名。"
+      ],
+      "example": "降低数据暴露。",
+      "answer": "本课允许chunk ID、分数、名次和错误码，不记录查询、正文或向量原值。",
+      "source": {
+        "label": "语义声明边界",
+        "href": "#deepen-semantic-claim-boundary"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    },
+    {
+      "id": "assistant-v10",
+      "lesson_id": "llm-rag-eval-04",
+      "context_id": "project-learning-assistant-v10",
+      "question": "智能学习助手 v0.10 新增什么？",
+      "aliases": [
+        "RAG第四课项目做什么"
+      ],
+      "keywords": [
+        "智能学习助手",
+        "v0.10",
+        "新增什么",
+        "RAG第四课项目做什么"
+      ],
+      "diagnostic": "先定位“RAG第四课项目做什么”属于适配器、向量校验、cosine排序、RRF还是语义声明。",
+      "hints": [
+        "查看 #project-learning-assistant-v10。",
+        "运行 test_hybrid_retriever.py 核对固定排名。"
+      ],
+      "example": "下一版证据回答。",
+      "answer": "新增embedding边界、严格向量索引、cosine Top-k与RRF混合排序。",
+      "source": {
+        "label": "智能学习助手v0.10",
+        "href": "#project-learning-assistant-v10"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "lesson_id": "agent-tool-calling-03",
+  "cases": [
+    {
+      "query": "call_id 有什么作用",
+      "expected_card": "call-id"
+    },
+    {
+      "query": "为什么不能按数组位置配对",
+      "expected_card": "call-id"
+    },
+    {
+      "query": "怎样保证每次调用恰好一个输出",
+      "expected_card": "exactly-once"
+    },
+    {
+      "query": "结果数量一样就够吗",
+      "expected_card": "exactly-once"
+    },
+    {
+      "query": "一个工具失败要丢掉整批结果吗",
+      "expected_card": "partial-failure"
+    },
+    {
+      "query": "unknown_tool会让批次中止吗",
+      "expected_card": "partial-failure"
+    },
+    {
+      "query": "为什么限制单轮最多四个调用",
+      "expected_card": "batch-budget"
+    },
+    {
+      "query": "prompt里提醒少调用就够吗",
+      "expected_card": "batch-budget"
+    },
+    {
+      "query": "结果乱序怎样恢复",
+      "expected_card": "out-of-order"
+    },
+    {
+      "query": "逆序outputs怎么办",
+      "expected_card": "out-of-order"
+    },
+    {
+      "query": "missing_output 表示什么",
+      "expected_card": "missing-output"
+    },
+    {
+      "query": "某个handler没返回怎么办",
+      "expected_card": "missing-output"
+    },
+    {
+      "query": "为什么还要核对工具名",
+      "expected_card": "name-mismatch"
+    },
+    {
+      "query": "call_id对了就行吗",
+      "expected_card": "name-mismatch"
+    },
+    {
+      "query": "多调用等于并发吗",
+      "expected_card": "multi-not-parallel"
+    },
+    {
+      "query": "支持乱序就是异步吗",
+      "expected_card": "multi-not-parallel"
+    },
+    {
+      "query": "多调用日志记录什么",
+      "expected_card": "safe-logs"
+    },
+    {
+      "query": "能保存所有参数结果吗",
+      "expected_card": "safe-logs"
+    },
+    {
+      "query": "智能学习助手 v0.15 新增什么",
+      "expected_card": "assistant-v15"
+    },
+    {
+      "query": "第三课项目做什么",
+      "expected_card": "assistant-v15"
+    }
+  ],
+  "unknown": [
+    "怎样给月季修枝",
+    "地球为何有四季"
+  ]
+}

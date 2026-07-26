@@ -1,0 +1,89 @@
+{
+  "lesson_id": "agent-tool-calling-05",
+  "cases": [
+    {
+      "query": "谁拥有工具循环",
+      "expected_card": "app-owned-loop"
+    },
+    {
+      "query": "模型可以自己决定继续多久吗",
+      "expected_card": "app-owned-loop"
+    },
+    {
+      "query": "模型事件不合法时怎么办",
+      "expected_card": "protocol-terminal"
+    },
+    {
+      "query": "final还能带tool_calls吗",
+      "expected_card": "protocol-terminal"
+    },
+    {
+      "query": "轮数预算限制什么",
+      "expected_card": "round-budget"
+    },
+    {
+      "query": "每轮都没调用工具就不计数吗",
+      "expected_card": "round-budget"
+    },
+    {
+      "query": "调用预算何时检查",
+      "expected_card": "call-budget"
+    },
+    {
+      "query": "五个调用能先执行四个吗",
+      "expected_card": "call-budget"
+    },
+    {
+      "query": "deadline 与轮数有什么不同",
+      "expected_card": "deadline"
+    },
+    {
+      "query": "轮数少就不会超时吗",
+      "expected_card": "deadline"
+    },
+    {
+      "query": "换 call ID 能绕过循环检测吗",
+      "expected_card": "cycle-signature"
+    },
+    {
+      "query": "第二次用新ID就不是重复吗",
+      "expected_card": "cycle-signature"
+    },
+    {
+      "query": "needs_input 是失败吗",
+      "expected_card": "terminal-status"
+    },
+    {
+      "query": "追问用户算错误吗",
+      "expected_card": "terminal-status"
+    },
+    {
+      "query": "工具重试要计入什么",
+      "expected_card": "retry-budget"
+    },
+    {
+      "query": "瞬时错误可以无限重试吗",
+      "expected_card": "retry-budget"
+    },
+    {
+      "query": "状态机 trace 保存什么",
+      "expected_card": "safe-trace"
+    },
+    {
+      "query": "能打印prompt和工具结果吗",
+      "expected_card": "safe-trace"
+    },
+    {
+      "query": "智能学习助手 v0.17 新增什么",
+      "expected_card": "assistant-v17"
+    },
+    {
+      "query": "第五课项目做什么",
+      "expected_card": "assistant-v17"
+    }
+  ],
+  "unknown": [
+    "怎样辨认星座",
+    "烘焙面包要多少水"
+  ]
+}

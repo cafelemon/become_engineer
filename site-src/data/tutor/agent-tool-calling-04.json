@@ -1,0 +1,330 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "agent-tool-calling-04",
+    "title": "受控副作用、人工确认与幂等保护",
+    "path": "learning-paths/llm-agent/tool-calling-workflow/04-controlled-side-effects-confirmation-idempotency/"
+  },
+  "contexts": [
+    {
+      "id": "overview-controlled-side-effects",
+      "type": "overview",
+      "title": "受控副作用",
+      "anchor": "#overview-controlled-side-effects"
+    },
+    {
+      "id": "concept-confirmation-binding",
+      "type": "concept",
+      "title": "确认绑定",
+      "anchor": "#concept-confirmation-binding"
+    },
+    {
+      "id": "concept-idempotent-write",
+      "type": "concept",
+      "title": "幂等写入",
+      "anchor": "#concept-idempotent-write"
+    },
+    {
+      "id": "example-default-deny-write",
+      "type": "example",
+      "title": "默认拒绝写入",
+      "anchor": "#example-default-deny-write"
+    },
+    {
+      "id": "reproduce-controlled-write-v16",
+      "type": "reproduce",
+      "title": "运行受控写入",
+      "anchor": "#reproduce-controlled-write-v16"
+    },
+    {
+      "id": "modify-confirmation-ttl",
+      "type": "modify",
+      "title": "修改确认时效",
+      "anchor": "#modify-confirmation-ttl"
+    },
+    {
+      "id": "troubleshoot-write-gates",
+      "type": "troubleshoot",
+      "title": "写入门禁排错",
+      "anchor": "#troubleshoot-write-gates"
+    },
+    {
+      "id": "deepen-atomic-idempotency-boundary",
+      "type": "deepen",
+      "title": "原子幂等边界",
+      "anchor": "#deepen-atomic-idempotency-boundary"
+    },
+    {
+      "id": "project-learning-assistant-v16",
+      "type": "project",
+      "title": "智能学习助手v0.16",
+      "anchor": "#project-learning-assistant-v16"
+    }
+  ],
+  "cards": [
+    {
+      "id": "confirmation-binding",
+      "lesson_id": "agent-tool-calling-04",
+      "context_id": "concept-confirmation-binding",
+      "question": "人工确认要绑定什么？",
+      "aliases": [
+        "confirmed布尔值够吗"
+      ],
+      "keywords": [
+        "人工确认要绑定什么",
+        "confirmed布尔值够吗"
+      ],
+      "diagnostic": "先定位“confirmed布尔值够吗”属于授权、确认、幂等、零写入证据还是生产原子性边界。",
+      "hints": [
+        "查看 #concept-confirmation-binding。",
+        "运行 test_controlled_write.py 核对write_count。"
+      ],
+      "example": "短期grant。",
+      "answer": "要绑定主体、call ID、工具、参数指纹和到期时间，并单次消费。",
+      "source": {
+        "label": "确认绑定",
+        "href": "#concept-confirmation-binding"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "model-not-confirm",
+      "lesson_id": "agent-tool-calling-04",
+      "context_id": "concept-confirmation-binding",
+      "question": "模型可以自己填写确认字段吗？",
+      "aliases": [
+        "模型说用户同意能执行吗"
+      ],
+      "keywords": [
+        "模型可以自己填写确认字段吗",
+        "模型说用户同意能执行吗"
+      ],
+      "diagnostic": "先定位“模型说用户同意能执行吗”属于授权、确认、幂等、零写入证据还是生产原子性边界。",
+      "hints": [
+        "查看 #concept-confirmation-binding。",
+        "运行 test_controlled_write.py 核对write_count。"
+      ],
+      "example": "no model confirmation。",
+      "answer": "不能；确认由应用的人类控制面签发，模型输出仍只是候选。",
+      "source": {
+        "label": "确认绑定",
+        "href": "#concept-confirmation-binding"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "idempotency-replay",
+      "lesson_id": "agent-tool-calling-04",
+      "context_id": "concept-idempotent-write",
+      "question": "同请求重试为什么不重复写？",
+      "aliases": [
+        "网络重试会写两次吗"
+      ],
+      "keywords": [
+        "同请求重试为什么不重复写",
+        "网络重试会写两次吗"
+      ],
+      "diagnostic": "先定位“网络重试会写两次吗”属于授权、确认、幂等、零写入证据还是生产原子性边界。",
+      "hints": [
+        "查看 #concept-idempotent-write。",
+        "运行 test_controlled_write.py 核对write_count。"
+      ],
+      "example": "write_count=1。",
+      "answer": "同主体、工具、key和payload命中已完成记录，返回replayed而不再次写入。",
+      "source": {
+        "label": "幂等写入",
+        "href": "#concept-idempotent-write"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "idempotency-conflict",
+      "lesson_id": "agent-tool-calling-04",
+      "context_id": "concept-idempotent-write",
+      "question": "同幂等键换参数怎么办？",
+      "aliases": [
+        "key相同分钟数不同能覆盖吗"
+      ],
+      "keywords": [
+        "同幂等键换参数怎么办",
+        "key相同分钟数不同能覆盖吗"
+      ],
+      "diagnostic": "先定位“key相同分钟数不同能覆盖吗”属于授权、确认、幂等、零写入证据还是生产原子性边界。",
+      "hints": [
+        "查看 #concept-idempotent-write。",
+        "运行 test_controlled_write.py 核对write_count。"
+      ],
+      "example": "拒绝冲突。",
+      "answer": "不能；参数指纹不同返回idempotency_conflict。",
+      "source": {
+        "label": "幂等写入",
+        "href": "#concept-idempotent-write"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "default-deny",
+      "lesson_id": "agent-tool-calling-04",
+      "context_id": "example-default-deny-write",
+      "question": "没有确认时发生什么？",
+      "aliases": [
+        "缺grant能先写后补吗"
+      ],
+      "keywords": [
+        "没有确认时发生什么",
+        "缺grant能先写后补吗"
+      ],
+      "diagnostic": "先定位“缺grant能先写后补吗”属于授权、确认、幂等、零写入证据还是生产原子性边界。",
+      "hints": [
+        "查看 #example-default-deny-write。",
+        "运行 test_controlled_write.py 核对write_count。"
+      ],
+      "example": "默认拒绝。",
+      "answer": "返回confirmation_required且writes保持0。",
+      "source": {
+        "label": "默认拒绝写入",
+        "href": "#example-default-deny-write"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "confirmation-expiry",
+      "lesson_id": "agent-tool-calling-04",
+      "context_id": "modify-confirmation-ttl",
+      "question": "确认为什么要过期？",
+      "aliases": [
+        "一次同意永久有效吗"
+      ],
+      "keywords": [
+        "确认为什么要过期",
+        "一次同意永久有效吗"
+      ],
+      "diagnostic": "先定位“一次同意永久有效吗”属于授权、确认、幂等、零写入证据还是生产原子性边界。",
+      "hints": [
+        "查看 #modify-confirmation-ttl。",
+        "运行 test_controlled_write.py 核对write_count。"
+      ],
+      "example": "TTL边界。",
+      "answer": "短期有效减少旧授权被挪用；过期不自动刷新。",
+      "source": {
+        "label": "修改确认时效",
+        "href": "#modify-confirmation-ttl"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "write-count",
+      "lesson_id": "agent-tool-calling-04",
+      "context_id": "troubleshoot-write-gates",
+      "question": "怎样证明拒绝路径没有副作用？",
+      "aliases": [
+        "只看403或错误码够吗"
+      ],
+      "keywords": [
+        "怎样证明拒绝路径没有副作用",
+        "只看403或错误码够吗"
+      ],
+      "diagnostic": "先定位“只看403或错误码够吗”属于授权、确认、幂等、零写入证据还是生产原子性边界。",
+      "hints": [
+        "查看 #troubleshoot-write-gates。",
+        "运行 test_controlled_write.py 核对write_count。"
+      ],
+      "example": "零写入证据。",
+      "answer": "不够；还要断言store状态与write_count未变化。",
+      "source": {
+        "label": "写入门禁排错",
+        "href": "#troubleshoot-write-gates"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "exactly-once-boundary",
+      "lesson_id": "agent-tool-calling-04",
+      "context_id": "deepen-atomic-idempotency-boundary",
+      "question": "本课实现分布式 exactly-once 了吗？",
+      "aliases": [
+        "内存幂等能外推生产吗"
+      ],
+      "keywords": [
+        "本课实现分布式",
+        "exactly-once",
+        "了吗",
+        "内存幂等能外推生产吗"
+      ],
+      "diagnostic": "先定位“内存幂等能外推生产吗”属于授权、确认、幂等、零写入证据还是生产原子性边界。",
+      "hints": [
+        "查看 #deepen-atomic-idempotency-boundary。",
+        "运行 test_controlled_write.py 核对write_count。"
+      ],
+      "example": "边界声明。",
+      "answer": "不能；生产还需事务、唯一约束、outbox或外部幂等协议。",
+      "source": {
+        "label": "原子幂等边界",
+        "href": "#deepen-atomic-idempotency-boundary"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "write-logs",
+      "lesson_id": "agent-tool-calling-04",
+      "context_id": "troubleshoot-write-gates",
+      "question": "写工具日志能记grant吗？",
+      "aliases": [
+        "幂等键可打印吗"
+      ],
+      "keywords": [
+        "写工具日志能记grant吗",
+        "幂等键可打印吗"
+      ],
+      "diagnostic": "先定位“幂等键可打印吗”属于授权、确认、幂等、零写入证据还是生产原子性边界。",
+      "hints": [
+        "查看 #troubleshoot-write-gates。",
+        "运行 test_controlled_write.py 核对write_count。"
+      ],
+      "example": "敏感控制值脱敏。",
+      "answer": "默认都不记录，只记call ID、工具名、状态和错误码。",
+      "source": {
+        "label": "写入门禁排错",
+        "href": "#troubleshoot-write-gates"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    },
+    {
+      "id": "assistant-v16",
+      "lesson_id": "agent-tool-calling-04",
+      "context_id": "project-learning-assistant-v16",
+      "question": "智能学习助手 v0.16 新增什么？",
+      "aliases": [
+        "第四课项目做什么"
+      ],
+      "keywords": [
+        "智能学习助手",
+        "v0.16",
+        "新增什么",
+        "第四课项目做什么"
+      ],
+      "diagnostic": "先定位“第四课项目做什么”属于授权、确认、幂等、零写入证据还是生产原子性边界。",
+      "hints": [
+        "查看 #project-learning-assistant-v16。",
+        "运行 test_controlled_write.py 核对write_count。"
+      ],
+      "example": "下一版有界循环。",
+      "answer": "新增写风险、授权、绑定确认、单次短期grant与幂等replay/冲突。",
+      "source": {
+        "label": "智能学习助手v0.16",
+        "href": "#project-learning-assistant-v16"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    }
+  ]
+}

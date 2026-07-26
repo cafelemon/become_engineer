@@ -1,0 +1,89 @@
+{
+  "lesson_id": "llm-rag-eval-01",
+  "cases": [
+    {
+      "query": "为什么文档不能用数组下标做身份",
+      "expected_card": "document-id"
+    },
+    {
+      "query": "第0篇文档不能当ID吗",
+      "expected_card": "document-id"
+    },
+    {
+      "query": "source URI 为什么必须带锚点",
+      "expected_card": "source-uri"
+    },
+    {
+      "query": "只有课程URL够吗",
+      "expected_card": "source-uri"
+    },
+    {
+      "query": "content SHA-256 能证明什么",
+      "expected_card": "content-hash"
+    },
+    {
+      "query": "哈希能证明内容是真的吗",
+      "expected_card": "content-hash"
+    },
+    {
+      "query": "语料 fingerprint 覆盖哪些字段",
+      "expected_card": "corpus-fingerprint"
+    },
+    {
+      "query": "只hash正文够吗",
+      "expected_card": "corpus-fingerprint"
+    },
+    {
+      "query": "为什么先按 document_id 排序",
+      "expected_card": "canonical-order"
+    },
+    {
+      "query": "输入重排不应该变版本吗",
+      "expected_card": "canonical-order"
+    },
+    {
+      "query": "两个文档ID能指向同一来源吗",
+      "expected_card": "duplicate-source"
+    },
+    {
+      "query": "重复source URI怎么处理",
+      "expected_card": "duplicate-source"
+    },
+    {
+      "query": "索引快照为什么原子替换",
+      "expected_card": "atomic-index"
+    },
+    {
+      "query": "直接write_text不行吗",
+      "expected_card": "atomic-index"
+    },
+    {
+      "query": "增加字段为何要升级 Schema",
+      "expected_card": "schema-version"
+    },
+    {
+      "query": "loader忽略新字段可以吗",
+      "expected_card": "schema-version"
+    },
+    {
+      "query": "评估报告为什么要记录 corpus fingerprint",
+      "expected_card": "corpus-eval-link"
+    },
+    {
+      "query": "模型没变还需语料版本吗",
+      "expected_card": "corpus-eval-link"
+    },
+    {
+      "query": "智能学习助手 v0.7 新增什么",
+      "expected_card": "assistant-v07"
+    },
+    {
+      "query": "RAG第一课项目做什么",
+      "expected_card": "assistant-v07"
+    }
+  ],
+  "unknown": [
+    "怎么清洗羊毛大衣",
+    "月球为什么有环形山"
+  ]
+}

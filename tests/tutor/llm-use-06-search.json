@@ -1,0 +1,89 @@
+{
+  "lesson_id": "llm-use-06",
+  "cases": [
+    {
+      "query": "为什么默认模式不访问真实模型",
+      "expected_card": "offline-default"
+    },
+    {
+      "query": "没有key也能运行吗",
+      "expected_card": "offline-default"
+    },
+    {
+      "query": "为什么 ProviderConfig 不保存 API key",
+      "expected_card": "config-no-key"
+    },
+    {
+      "query": "把密钥放配置对象方便吗",
+      "expected_card": "config-no-key"
+    },
+    {
+      "query": "真实调用为什么需要两个开关",
+      "expected_card": "provider-gates"
+    },
+    {
+      "query": "有--real还不够吗",
+      "expected_card": "provider-gates"
+    },
+    {
+      "query": "provider URL 为什么只接受 HTTPS",
+      "expected_card": "https-config"
+    },
+    {
+      "query": "HTTP本机地址可以调用模型吗",
+      "expected_card": "https-config"
+    },
+    {
+      "query": "模型调用审计应该记录什么",
+      "expected_card": "audit-allowlist"
+    },
+    {
+      "query": "日志要保存Prompt方便排错吗",
+      "expected_card": "audit-allowlist"
+    },
+    {
+      "query": "为什么允许列表后还要递归脱敏",
+      "expected_card": "recursive-redaction"
+    },
+    {
+      "query": "Authorization只在顶层吗",
+      "expected_card": "recursive-redaction"
+    },
+    {
+      "query": "异常链为什么也可能泄露密钥",
+      "expected_card": "exception-secret"
+    },
+    {
+      "query": "错误消息没key就安全了吗",
+      "expected_card": "exception-secret"
+    },
+    {
+      "query": "环境变量是否等于生产秘密管理器",
+      "expected_card": "environment-limit"
+    },
+    {
+      "query": "key放env就绝对安全吗",
+      "expected_card": "environment-limit"
+    },
+    {
+      "query": "真实 provider 验收是否进入 CI",
+      "expected_card": "real-optional"
+    },
+    {
+      "query": "自动测试能用真实key吗",
+      "expected_card": "real-optional"
+    },
+    {
+      "query": "智能学习助手 v0.6 完成什么",
+      "expected_card": "assistant-v06"
+    },
+    {
+      "query": "LLM第六课项目做什么",
+      "expected_card": "assistant-v06"
+    }
+  ],
+  "unknown": [
+    "咖啡豆怎么保存",
+    "怎样挑选羽毛球拍"
+  ]
+}

@@ -1,0 +1,332 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "llm-use-05",
+    "title": "流事件、Delta 顺序、终止原因与取消",
+    "path": "learning-paths/llm-agent/model-use/05-stream-delta-order-finish-cancel/"
+  },
+  "contexts": [
+    {
+      "id": "overview-stream-lifecycle",
+      "type": "overview",
+      "title": "流响应生命周期",
+      "anchor": "#overview-stream-lifecycle"
+    },
+    {
+      "id": "concept-stream-protocol",
+      "type": "concept",
+      "title": "流事件协议",
+      "anchor": "#concept-stream-protocol"
+    },
+    {
+      "id": "concept-partial-not-complete",
+      "type": "concept",
+      "title": "部分不等于完成",
+      "anchor": "#concept-partial-not-complete"
+    },
+    {
+      "id": "example-stream-state-machine",
+      "type": "example",
+      "title": "流状态机",
+      "anchor": "#example-stream-state-machine"
+    },
+    {
+      "id": "reproduce-stream-v05",
+      "type": "reproduce",
+      "title": "运行流实验",
+      "anchor": "#reproduce-stream-v05"
+    },
+    {
+      "id": "modify-stream-renderer",
+      "type": "modify",
+      "title": "修改四态界面",
+      "anchor": "#modify-stream-renderer"
+    },
+    {
+      "id": "troubleshoot-stream-events",
+      "type": "troubleshoot",
+      "title": "流事件排错",
+      "anchor": "#troubleshoot-stream-events"
+    },
+    {
+      "id": "deepen-provider-stream-map",
+      "type": "deepen",
+      "title": "Provider事件映射",
+      "anchor": "#deepen-provider-stream-map"
+    },
+    {
+      "id": "project-learning-assistant-v05",
+      "type": "project",
+      "title": "智能学习助手v0.5",
+      "anchor": "#project-learning-assistant-v05"
+    }
+  ],
+  "cards": [
+    {
+      "id": "created-first",
+      "lesson_id": "llm-use-05",
+      "context_id": "concept-stream-protocol",
+      "question": "为什么第一条流事件必须是 created？",
+      "aliases": [
+        "直接收到delta怎么办"
+      ],
+      "keywords": [
+        "为什么第一条流事件必须是",
+        "created",
+        "直接收到delta怎么办"
+      ],
+      "diagnostic": "先定位“直接收到delta怎么办”发生在创建、序号、delta、终止还是取消阶段。",
+      "hints": [
+        "查看 #concept-stream-protocol。",
+        "运行 test_stream_assembler.py 回放固定事件。"
+      ],
+      "example": "missing_created。",
+      "answer": "created建立一次响应生命周期；从中间开始的delta缺少完整上下文，应拒绝。",
+      "source": {
+        "label": "流事件协议",
+        "href": "#concept-stream-protocol"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "strict-sequence",
+      "lesson_id": "llm-use-05",
+      "context_id": "example-stream-state-machine",
+      "question": "序号如何发现重复和丢失？",
+      "aliases": [
+        "流式事件乱序怎么判断"
+      ],
+      "keywords": [
+        "序号如何发现重复和丢失",
+        "流式事件乱序怎么判断"
+      ],
+      "diagnostic": "先定位“流式事件乱序怎么判断”发生在创建、序号、delta、终止还是取消阶段。",
+      "hints": [
+        "查看 #example-stream-state-machine。",
+        "运行 test_stream_assembler.py 回放固定事件。"
+      ],
+      "example": "0后再来0或2都拒绝。",
+      "answer": "期望序号从0连续增长；实际值不同统一返回sequence_mismatch。",
+      "source": {
+        "label": "流状态机",
+        "href": "#example-stream-state-machine"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "terminal-required",
+      "lesson_id": "llm-use-05",
+      "context_id": "concept-stream-protocol",
+      "question": "连接关闭为什么不等于正常完成？",
+      "aliases": [
+        "没有completed也算结束吗"
+      ],
+      "keywords": [
+        "连接关闭为什么不等于正常完成",
+        "没有completed也算结束吗"
+      ],
+      "diagnostic": "先定位“没有completed也算结束吗”发生在创建、序号、delta、终止还是取消阶段。",
+      "hints": [
+        "查看 #concept-stream-protocol。",
+        "运行 test_stream_assembler.py 回放固定事件。"
+      ],
+      "example": "terminal required:true。",
+      "answer": "必须看到明确终止事件；连接断开可能是截断，finalize应返回missing_terminal。",
+      "source": {
+        "label": "流事件协议",
+        "href": "#concept-stream-protocol"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "partial-output",
+      "lesson_id": "llm-use-05",
+      "context_id": "concept-partial-not-complete",
+      "question": "截断时的部分文本能保存为计划吗？",
+      "aliases": [
+        "有字就算完成吗"
+      ],
+      "keywords": [
+        "截断时的部分文本能保存为计划吗",
+        "有字就算完成吗"
+      ],
+      "diagnostic": "先定位“有字就算完成吗”发生在创建、序号、delta、终止还是取消阶段。",
+      "hints": [
+        "查看 #concept-partial-not-complete。",
+        "运行 test_stream_assembler.py 回放固定事件。"
+      ],
+      "example": "partial-is-complete:false。",
+      "answer": "不能；可标记展示，但status仍是incomplete，不能进入完成业务路径。",
+      "source": {
+        "label": "部分不等于完成",
+        "href": "#concept-partial-not-complete"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "stream-cancel",
+      "lesson_id": "llm-use-05",
+      "context_id": "modify-stream-renderer",
+      "question": "用户取消后还要继续读事件吗？",
+      "aliases": [
+        "cancel后provider又发completed"
+      ],
+      "keywords": [
+        "用户取消后还要继续读事件吗",
+        "cancel后provider又发completed"
+      ],
+      "diagnostic": "先定位“cancel后provider又发completed”发生在创建、序号、delta、终止还是取消阶段。",
+      "hints": [
+        "查看 #modify-stream-renderer。",
+        "运行 test_stream_assembler.py 回放固定事件。"
+      ],
+      "example": "cancel-stops-consumption。",
+      "answer": "不应；取消形成终止状态，后续事件返回event_after_terminal。",
+      "source": {
+        "label": "修改四态界面",
+        "href": "#modify-stream-renderer"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "finish-reason",
+      "lesson_id": "llm-use-05",
+      "context_id": "example-stream-state-machine",
+      "question": "completed 为什么还检查 finish reason？",
+      "aliases": [
+        "response.completed就够了吗"
+      ],
+      "keywords": [
+        "completed",
+        "为什么还检查",
+        "finish",
+        "reason",
+        "response.completed就够了吗"
+      ],
+      "diagnostic": "先定位“response.completed就够了吗”发生在创建、序号、delta、终止还是取消阶段。",
+      "hints": [
+        "查看 #example-stream-state-machine。",
+        "运行 test_stream_assembler.py 回放固定事件。"
+      ],
+      "example": "invalid_finish_reason。",
+      "answer": "内部契约要求completed配stop，防止适配层把截断事件误映射成完成。",
+      "source": {
+        "label": "流状态机",
+        "href": "#example-stream-state-machine"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "output-bound",
+      "lesson_id": "llm-use-05",
+      "context_id": "troubleshoot-stream-events",
+      "question": "流式拼接为什么要最大字符数？",
+      "aliases": [
+        "delta很小还会内存超限吗"
+      ],
+      "keywords": [
+        "流式拼接为什么要最大字符数",
+        "delta很小还会内存超限吗"
+      ],
+      "diagnostic": "先定位“delta很小还会内存超限吗”发生在创建、序号、delta、终止还是取消阶段。",
+      "hints": [
+        "查看 #troubleshoot-stream-events。",
+        "运行 test_stream_assembler.py 回放固定事件。"
+      ],
+      "example": "max_chars超限拒绝。",
+      "answer": "单个delta小不代表累计量小；上限防止无界内存和失控输出。",
+      "source": {
+        "label": "流事件排错",
+        "href": "#troubleshoot-stream-events"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "json-after-terminal",
+      "lesson_id": "llm-use-05",
+      "context_id": "concept-partial-not-complete",
+      "question": "结构化JSON应在每个delta后解析吗？",
+      "aliases": [
+        "边流边json.loads可以吗"
+      ],
+      "keywords": [
+        "结构化JSON应在每个delta后解析吗",
+        "边流边json.loads可以吗"
+      ],
+      "diagnostic": "先定位“边流边json.loads可以吗”发生在创建、序号、delta、终止还是取消阶段。",
+      "hints": [
+        "查看 #concept-partial-not-complete。",
+        "运行 test_stream_assembler.py 回放固定事件。"
+      ],
+      "example": "json-parse:after-terminal-only。",
+      "answer": "不应；JSON片段通常未闭合，先确认completed再运行严格解析。",
+      "source": {
+        "label": "部分不等于完成",
+        "href": "#concept-partial-not-complete"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "provider-map",
+      "lesson_id": "llm-use-05",
+      "context_id": "deepen-provider-stream-map",
+      "question": "不同Provider事件名放在哪里转换？",
+      "aliases": [
+        "业务里判断各家SSE事件吗"
+      ],
+      "keywords": [
+        "不同Provider事件名放在哪里转换",
+        "业务里判断各家SSE事件吗"
+      ],
+      "diagnostic": "先定位“业务里判断各家SSE事件吗”发生在创建、序号、delta、终止还是取消阶段。",
+      "hints": [
+        "查看 #deepen-provider-stream-map。",
+        "运行 test_stream_assembler.py 回放固定事件。"
+      ],
+      "example": "原始event ID另行设计。",
+      "answer": "由provider adapter映射为稳定内部事件，业务只消费统一协议。",
+      "source": {
+        "label": "Provider事件映射",
+        "href": "#deepen-provider-stream-map"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    },
+    {
+      "id": "assistant-v05",
+      "lesson_id": "llm-use-05",
+      "context_id": "project-learning-assistant-v05",
+      "question": "智能学习助手 v0.5 新增什么？",
+      "aliases": [
+        "LLM第五课项目做什么"
+      ],
+      "keywords": [
+        "智能学习助手",
+        "v0.5",
+        "新增什么",
+        "LLM第五课项目做什么"
+      ],
+      "diagnostic": "先定位“LLM第五课项目做什么”发生在创建、序号、delta、终止还是取消阶段。",
+      "hints": [
+        "查看 #project-learning-assistant-v05。",
+        "运行 test_stream_assembler.py 回放固定事件。"
+      ],
+      "example": "下一版安全交付。",
+      "answer": "新增严格序号、delta拼接、四种终止状态、取消与累计上限。",
+      "source": {
+        "label": "智能学习助手v0.5",
+        "href": "#project-learning-assistant-v05"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    }
+  ]
+}

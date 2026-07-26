@@ -1,0 +1,337 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "agent-tool-calling-01",
+    "title": "工具定义、注册表、候选调用与严格参数",
+    "path": "learning-paths/llm-agent/tool-calling-workflow/01-tool-definition-registry-candidate-call-strict-arguments/"
+  },
+  "contexts": [
+    {
+      "id": "overview-tool-proposal",
+      "type": "overview",
+      "title": "工具候选协议",
+      "anchor": "#overview-tool-proposal"
+    },
+    {
+      "id": "concept-tool-flow",
+      "type": "concept",
+      "title": "Tool Calling流程",
+      "anchor": "#concept-tool-flow"
+    },
+    {
+      "id": "concept-registry-manifest",
+      "type": "concept",
+      "title": "注册表与Manifest",
+      "anchor": "#concept-registry-manifest"
+    },
+    {
+      "id": "example-strict-candidate",
+      "type": "example",
+      "title": "严格候选参数",
+      "anchor": "#example-strict-candidate"
+    },
+    {
+      "id": "reproduce-tool-v13",
+      "type": "reproduce",
+      "title": "运行工具协议",
+      "anchor": "#reproduce-tool-v13"
+    },
+    {
+      "id": "modify-tool-schema",
+      "type": "modify",
+      "title": "修改工具Schema",
+      "anchor": "#modify-tool-schema"
+    },
+    {
+      "id": "troubleshoot-tool-protocol",
+      "type": "troubleshoot",
+      "title": "工具协议排错",
+      "anchor": "#troubleshoot-tool-protocol"
+    },
+    {
+      "id": "deepen-schema-security-boundary",
+      "type": "deepen",
+      "title": "Schema安全边界",
+      "anchor": "#deepen-schema-security-boundary"
+    },
+    {
+      "id": "project-learning-assistant-v13",
+      "type": "project",
+      "title": "智能学习助手v0.13",
+      "anchor": "#project-learning-assistant-v13"
+    }
+  ],
+  "cards": [
+    {
+      "id": "proposal-only",
+      "lesson_id": "agent-tool-calling-01",
+      "context_id": "concept-tool-flow",
+      "question": "为什么模型工具调用只是候选？",
+      "aliases": [
+        "模型返回function call就执行吗"
+      ],
+      "keywords": [
+        "为什么模型工具调用只是候选",
+        "模型返回function",
+        "call就执行吗"
+      ],
+      "diagnostic": "先定位“模型返回function call就执行吗”属于候选流程、注册表、manifest、参数门禁还是授权边界。",
+      "hints": [
+        "查看 #concept-tool-flow。",
+        "运行 test_tool_protocol.py 核对稳定错误码。"
+      ],
+      "example": "executed:false。",
+      "answer": "不执行；应用仍需验证、授权、确认、预算和受控handler。",
+      "source": {
+        "label": "Tool Calling流程",
+        "href": "#concept-tool-flow"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "five-step-flow",
+      "lesson_id": "agent-tool-calling-01",
+      "context_id": "concept-tool-flow",
+      "question": "Tool Calling 有哪些阶段？",
+      "aliases": [
+        "工具调用流程是什么"
+      ],
+      "keywords": [
+        "Tool",
+        "Calling",
+        "有哪些阶段",
+        "工具调用流程是什么"
+      ],
+      "diagnostic": "先定位“工具调用流程是什么”属于候选流程、注册表、manifest、参数门禁还是授权边界。",
+      "hints": [
+        "查看 #concept-tool-flow。",
+        "运行 test_tool_protocol.py 核对稳定错误码。"
+      ],
+      "example": "本课停在执行前。",
+      "answer": "定义工具、接收候选、应用执行、按call_id回传结果、模型回答或继续。",
+      "source": {
+        "label": "Tool Calling流程",
+        "href": "#concept-tool-flow"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "allowlisted-registry",
+      "lesson_id": "agent-tool-calling-01",
+      "context_id": "concept-registry-manifest",
+      "question": "为什么需要工具允许列表？",
+      "aliases": [
+        "按模型给的函数名反射不行吗"
+      ],
+      "keywords": [
+        "为什么需要工具允许列表",
+        "按模型给的函数名反射不行吗"
+      ],
+      "diagnostic": "先定位“按模型给的函数名反射不行吗”属于候选流程、注册表、manifest、参数门禁还是授权边界。",
+      "hints": [
+        "查看 #concept-registry-manifest。",
+        "运行 test_tool_protocol.py 核对稳定错误码。"
+      ],
+      "example": "ToolRegistry。",
+      "answer": "允许列表只暴露明确业务能力，拒绝run_shell或任意函数名。",
+      "source": {
+        "label": "注册表与Manifest",
+        "href": "#concept-registry-manifest"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "manifest-fingerprint",
+      "lesson_id": "agent-tool-calling-01",
+      "context_id": "concept-registry-manifest",
+      "question": "工具 manifest 为什么做指纹？",
+      "aliases": [
+        "schema版本怎么识别"
+      ],
+      "keywords": [
+        "工具",
+        "manifest",
+        "为什么做指纹",
+        "schema版本怎么识别"
+      ],
+      "diagnostic": "先定位“schema版本怎么识别”属于候选流程、注册表、manifest、参数门禁还是授权边界。",
+      "hints": [
+        "查看 #concept-registry-manifest。",
+        "运行 test_tool_protocol.py 核对稳定错误码。"
+      ],
+      "example": "e5c8836eb436。",
+      "answer": "规范排序后哈希识别模型看到的定义集合；指纹不证明定义安全。",
+      "source": {
+        "label": "注册表与Manifest",
+        "href": "#concept-registry-manifest"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "strict-json",
+      "lesson_id": "agent-tool-calling-01",
+      "context_id": "example-strict-candidate",
+      "question": "参数为什么不自动转换类型？",
+      "aliases": [
+        "字符串true能转布尔吗"
+      ],
+      "keywords": [
+        "参数为什么不自动转换类型",
+        "字符串true能转布尔吗"
+      ],
+      "diagnostic": "先定位“字符串true能转布尔吗”属于候选流程、注册表、manifest、参数门禁还是授权边界。",
+      "hints": [
+        "查看 #example-strict-candidate。",
+        "运行 test_tool_protocol.py 核对稳定错误码。"
+      ],
+      "example": "argument_type_invalid。",
+      "answer": "不转；隐式纠正会掩盖模型输出错误并把猜测送进执行器。",
+      "source": {
+        "label": "严格候选参数",
+        "href": "#example-strict-candidate"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "extra-fields",
+      "lesson_id": "agent-tool-calling-01",
+      "context_id": "example-strict-candidate",
+      "question": "额外参数可以忽略吗？",
+      "aliases": [
+        "多了admin字段怎么办"
+      ],
+      "keywords": [
+        "额外参数可以忽略吗",
+        "多了admin字段怎么办"
+      ],
+      "diagnostic": "先定位“多了admin字段怎么办”属于候选流程、注册表、manifest、参数门禁还是授权边界。",
+      "hints": [
+        "查看 #example-strict-candidate。",
+        "运行 test_tool_protocol.py 核对稳定错误码。"
+      ],
+      "example": "additionalProperties false。",
+      "answer": "默认拒绝，避免模型扩张调用能力或业务层误用未知字段。",
+      "source": {
+        "label": "严格候选参数",
+        "href": "#example-strict-candidate"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "call-id",
+      "lesson_id": "agent-tool-calling-01",
+      "context_id": "troubleshoot-tool-protocol",
+      "question": "call_id 有什么作用？",
+      "aliases": [
+        "工具结果怎么关联原调用"
+      ],
+      "keywords": [
+        "call_id",
+        "有什么作用",
+        "工具结果怎么关联原调用"
+      ],
+      "diagnostic": "先定位“工具结果怎么关联原调用”属于候选流程、注册表、manifest、参数门禁还是授权边界。",
+      "hints": [
+        "查看 #troubleshoot-tool-protocol。",
+        "运行 test_tool_protocol.py 核对稳定错误码。"
+      ],
+      "example": "call_demo1。",
+      "answer": "它是后续输出与候选调用的稳定关联键；本课先验证格式。",
+      "source": {
+        "label": "工具协议排错",
+        "href": "#troubleshoot-tool-protocol"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "schema-not-auth",
+      "lesson_id": "agent-tool-calling-01",
+      "context_id": "deepen-schema-security-boundary",
+      "question": "strict Schema 等于授权吗？",
+      "aliases": [
+        "参数合法就能访问别人的数据吗"
+      ],
+      "keywords": [
+        "strict",
+        "Schema",
+        "等于授权吗",
+        "参数合法就能访问别人的数据吗"
+      ],
+      "diagnostic": "先定位“参数合法就能访问别人的数据吗”属于候选流程、注册表、manifest、参数门禁还是授权边界。",
+      "hints": [
+        "查看 #deepen-schema-security-boundary。",
+        "运行 test_tool_protocol.py 核对稳定错误码。"
+      ],
+      "example": "下一课授权。",
+      "answer": "不等于；Schema只管形状，主体权限、业务规则与副作用另行门禁。",
+      "source": {
+        "label": "Schema安全边界",
+        "href": "#deepen-schema-security-boundary"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "tool-logs",
+      "lesson_id": "agent-tool-calling-01",
+      "context_id": "troubleshoot-tool-protocol",
+      "question": "工具候选日志保存参数吗？",
+      "aliases": [
+        "排错要记录完整arguments吗"
+      ],
+      "keywords": [
+        "工具候选日志保存参数吗",
+        "排错要记录完整arguments吗"
+      ],
+      "diagnostic": "先定位“排错要记录完整arguments吗”属于候选流程、注册表、manifest、参数门禁还是授权边界。",
+      "hints": [
+        "查看 #troubleshoot-tool-protocol。",
+        "运行 test_tool_protocol.py 核对稳定错误码。"
+      ],
+      "example": "允许字段日志。",
+      "answer": "默认只记录call ID、工具名和错误码，不保存参数或用户原文。",
+      "source": {
+        "label": "工具协议排错",
+        "href": "#troubleshoot-tool-protocol"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    },
+    {
+      "id": "assistant-v13",
+      "lesson_id": "agent-tool-calling-01",
+      "context_id": "project-learning-assistant-v13",
+      "question": "智能学习助手 v0.13 新增什么？",
+      "aliases": [
+        "Tool Calling第一课项目做什么"
+      ],
+      "keywords": [
+        "智能学习助手",
+        "v0.13",
+        "新增什么",
+        "Tool",
+        "Calling第一课项目做什么"
+      ],
+      "diagnostic": "先定位“Tool Calling第一课项目做什么”属于候选流程、注册表、manifest、参数门禁还是授权边界。",
+      "hints": [
+        "查看 #project-learning-assistant-v13。",
+        "运行 test_tool_protocol.py 核对稳定错误码。"
+      ],
+      "example": "下一版只读执行。",
+      "answer": "新增工具注册表、规范manifest、严格候选解析和不可变参数，不执行handler。",
+      "source": {
+        "label": "智能学习助手v0.13",
+        "href": "#project-learning-assistant-v13"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    }
+  ]
+}

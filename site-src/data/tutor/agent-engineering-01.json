@@ -1,0 +1,341 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "agent-engineering-01",
+    "title": "SQLite 运行状态、事件日志与原子 checkpoint",
+    "path": "learning-paths/llm-agent/agent-engineering/01-sqlite-run-state-event-log-atomic-checkpoint/"
+  },
+  "contexts": [
+    {
+      "id": "overview-durable-run-state",
+      "type": "overview",
+      "title": "持久运行状态",
+      "anchor": "#overview-durable-run-state"
+    },
+    {
+      "id": "concept-snapshot-event-log",
+      "type": "concept",
+      "title": "快照与事件",
+      "anchor": "#concept-snapshot-event-log"
+    },
+    {
+      "id": "concept-version-event-id",
+      "type": "concept",
+      "title": "版本与事件身份",
+      "anchor": "#concept-version-event-id"
+    },
+    {
+      "id": "example-atomic-checkpoint",
+      "type": "example",
+      "title": "原子checkpoint",
+      "anchor": "#example-atomic-checkpoint"
+    },
+    {
+      "id": "reproduce-durable-state-v19",
+      "type": "reproduce",
+      "title": "运行持久状态",
+      "anchor": "#reproduce-durable-state-v19"
+    },
+    {
+      "id": "modify-transition-graph",
+      "type": "modify",
+      "title": "修改状态图",
+      "anchor": "#modify-transition-graph"
+    },
+    {
+      "id": "troubleshoot-run-state",
+      "type": "troubleshoot",
+      "title": "运行状态排错",
+      "anchor": "#troubleshoot-run-state"
+    },
+    {
+      "id": "deepen-state-not-reasoning",
+      "type": "deepen",
+      "title": "状态与思维边界",
+      "anchor": "#deepen-state-not-reasoning"
+    },
+    {
+      "id": "project-learning-assistant-v19",
+      "type": "project",
+      "title": "智能学习助手v0.19",
+      "anchor": "#project-learning-assistant-v19"
+    }
+  ],
+  "cards": [
+    {
+      "id": "snapshot-event",
+      "lesson_id": "agent-engineering-01",
+      "context_id": "concept-snapshot-event-log",
+      "question": "snapshot 和 event log 有什么区别？",
+      "aliases": [
+        "为什么要保存两张表"
+      ],
+      "keywords": [
+        "snapshot",
+        "和",
+        "event",
+        "log",
+        "有什么区别",
+        "为什么要保存两张表"
+      ],
+      "diagnostic": "先定位“为什么要保存两张表”属于快照、事件、事务、并发、幂等、状态图还是数据最小化。",
+      "hints": [
+        "查看 #concept-snapshot-event-log。",
+        "运行 test_durable_run_state.py 观察版本和事件数。"
+      ],
+      "example": "现在与历史。",
+      "answer": "snapshot回答当前状态，event按序解释状态怎样到来；同事务保持一致。",
+      "source": {
+        "label": "快照与事件",
+        "href": "#concept-snapshot-event-log"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "atomic-transition",
+      "lesson_id": "agent-engineering-01",
+      "context_id": "concept-snapshot-event-log",
+      "question": "事件和状态为何必须原子提交？",
+      "aliases": [
+        "先写事件后崩溃怎么办"
+      ],
+      "keywords": [
+        "事件和状态为何必须原子提交",
+        "先写事件后崩溃怎么办"
+      ],
+      "diagnostic": "先定位“先写事件后崩溃怎么办”属于快照、事件、事务、并发、幂等、状态图还是数据最小化。",
+      "hints": [
+        "查看 #concept-snapshot-event-log。",
+        "运行 test_durable_run_state.py 观察版本和事件数。"
+      ],
+      "example": "BEGIN IMMEDIATE。",
+      "answer": "两条写入在同一事务中；注入失败后同时回滚。",
+      "source": {
+        "label": "快照与事件",
+        "href": "#concept-snapshot-event-log"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "expected-version",
+      "lesson_id": "agent-engineering-01",
+      "context_id": "concept-version-event-id",
+      "question": "expected version 解决什么？",
+      "aliases": [
+        "两个worker同时写会覆盖吗"
+      ],
+      "keywords": [
+        "expected",
+        "version",
+        "解决什么",
+        "两个worker同时写会覆盖吗"
+      ],
+      "diagnostic": "先定位“两个worker同时写会覆盖吗”属于快照、事件、事务、并发、幂等、状态图还是数据最小化。",
+      "hints": [
+        "查看 #concept-version-event-id。",
+        "运行 test_durable_run_state.py 观察版本和事件数。"
+      ],
+      "example": "乐观并发。",
+      "answer": "只有匹配当前version者更新，旧快照得到stale_version。",
+      "source": {
+        "label": "版本与事件身份",
+        "href": "#concept-version-event-id"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "event-id",
+      "lesson_id": "agent-engineering-01",
+      "context_id": "concept-version-event-id",
+      "question": "event ID 解决什么？",
+      "aliases": [
+        "超时重试会多一条事件吗"
+      ],
+      "keywords": [
+        "event",
+        "ID",
+        "解决什么",
+        "超时重试会多一条事件吗"
+      ],
+      "diagnostic": "先定位“超时重试会多一条事件吗”属于快照、事件、事务、并发、幂等、状态图还是数据最小化。",
+      "hints": [
+        "查看 #concept-version-event-id。",
+        "运行 test_durable_run_state.py 观察版本和事件数。"
+      ],
+      "example": "幂等身份。",
+      "answer": "同ID同payload返回replay；同ID改payload冲突。",
+      "source": {
+        "label": "版本与事件身份",
+        "href": "#concept-version-event-id"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "checkpoint-allowlist",
+      "lesson_id": "agent-engineering-01",
+      "context_id": "example-atomic-checkpoint",
+      "question": "checkpoint 能保存哪些字段？",
+      "aliases": [
+        "可以保存完整prompt吗"
+      ],
+      "keywords": [
+        "checkpoint",
+        "能保存哪些字段",
+        "可以保存完整prompt吗"
+      ],
+      "diagnostic": "先定位“可以保存完整prompt吗”属于快照、事件、事务、并发、幂等、状态图还是数据最小化。",
+      "hints": [
+        "查看 #example-atomic-checkpoint。",
+        "运行 test_durable_run_state.py 观察版本和事件数。"
+      ],
+      "example": "小型显式状态。",
+      "answer": "只允许next step、工具状态和有界已完成step ID。",
+      "source": {
+        "label": "原子checkpoint",
+        "href": "#example-atomic-checkpoint"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "transition-graph",
+      "lesson_id": "agent-engineering-01",
+      "context_id": "modify-transition-graph",
+      "question": "终态还能继续转移吗？",
+      "aliases": [
+        "completed后能恢复running吗"
+      ],
+      "keywords": [
+        "终态还能继续转移吗",
+        "completed后能恢复running吗"
+      ],
+      "diagnostic": "先定位“completed后能恢复running吗”属于快照、事件、事务、并发、幂等、状态图还是数据最小化。",
+      "hints": [
+        "查看 #modify-transition-graph。",
+        "运行 test_durable_run_state.py 观察版本和事件数。"
+      ],
+      "example": "状态机。",
+      "answer": "不能；允许状态图明确拒绝终态后续写入。",
+      "source": {
+        "label": "修改状态图",
+        "href": "#modify-transition-graph"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "storage-failure",
+      "lesson_id": "agent-engineering-01",
+      "context_id": "troubleshoot-run-state",
+      "question": "storage_failure 后怎样检查？",
+      "aliases": [
+        "事件写了一半吗"
+      ],
+      "keywords": [
+        "storage_failure",
+        "后怎样检查",
+        "事件写了一半吗"
+      ],
+      "diagnostic": "先定位“事件写了一半吗”属于快照、事件、事务、并发、幂等、状态图还是数据最小化。",
+      "hints": [
+        "查看 #troubleshoot-run-state。",
+        "运行 test_durable_run_state.py 观察版本和事件数。"
+      ],
+      "example": "回滚证据。",
+      "answer": "重新读取snapshot与事件数；事务应保持原版本和原事件数。",
+      "source": {
+        "label": "运行状态排错",
+        "href": "#troubleshoot-run-state"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "no-reasoning",
+      "lesson_id": "agent-engineering-01",
+      "context_id": "deepen-state-not-reasoning",
+      "question": "为什么不保存 chain of thought？",
+      "aliases": [
+        "恢复需要模型推理全文吗"
+      ],
+      "keywords": [
+        "为什么不保存",
+        "chain",
+        "of",
+        "thought",
+        "恢复需要模型推理全文吗"
+      ],
+      "diagnostic": "先定位“恢复需要模型推理全文吗”属于快照、事件、事务、并发、幂等、状态图还是数据最小化。",
+      "hints": [
+        "查看 #deepen-state-not-reasoning。",
+        "运行 test_durable_run_state.py 观察版本和事件数。"
+      ],
+      "example": "显式checkpoint。",
+      "answer": "不需要；只保存可验证业务状态，降低隐私、注入和访问风险。",
+      "source": {
+        "label": "状态与思维边界",
+        "href": "#deepen-state-not-reasoning"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "state-logs",
+      "lesson_id": "agent-engineering-01",
+      "context_id": "troubleshoot-run-state",
+      "question": "事件日志能保存工具原文吗？",
+      "aliases": [
+        "为了排错记录prompt行吗"
+      ],
+      "keywords": [
+        "事件日志能保存工具原文吗",
+        "为了排错记录prompt行吗"
+      ],
+      "diagnostic": "先定位“为了排错记录prompt行吗”属于快照、事件、事务、并发、幂等、状态图还是数据最小化。",
+      "hints": [
+        "查看 #troubleshoot-run-state。",
+        "运行 test_durable_run_state.py 观察版本和事件数。"
+      ],
+      "example": "最小事件。",
+      "answer": "默认只存事件类型、状态、序号和指纹，不存敏感正文。",
+      "source": {
+        "label": "运行状态排错",
+        "href": "#troubleshoot-run-state"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    },
+    {
+      "id": "assistant-v19",
+      "lesson_id": "agent-engineering-01",
+      "context_id": "project-learning-assistant-v19",
+      "question": "智能学习助手 v0.19 新增什么？",
+      "aliases": [
+        "Agent工程第一课做什么"
+      ],
+      "keywords": [
+        "智能学习助手",
+        "v0.19",
+        "新增什么",
+        "Agent工程第一课做什么"
+      ],
+      "diagnostic": "先定位“Agent工程第一课做什么”属于快照、事件、事务、并发、幂等、状态图还是数据最小化。",
+      "hints": [
+        "查看 #project-learning-assistant-v19。",
+        "运行 test_durable_run_state.py 观察版本和事件数。"
+      ],
+      "example": "下一版记忆上下文。",
+      "answer": "新增SQLite run、事件日志、版本、幂等event和原子checkpoint。",
+      "source": {
+        "label": "智能学习助手v0.19",
+        "href": "#project-learning-assistant-v19"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    }
+  ]
+}

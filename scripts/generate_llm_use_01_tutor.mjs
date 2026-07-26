@@ -1,0 +1,16 @@
+import{mkdirSync,writeFileSync}from"node:fs";import{resolve}from"node:path";const root=resolve(import.meta.dirname,".."),lessonId="llm-use-01",title="模型边界、消息与离线适配器",path="learning-paths/llm-agent/model-use/01-model-boundary-messages-offline-adapter/";
+const contexts=[["overview-model-boundary","overview","模型调用结果"],["concept-model-call-chain","concept","模型调用链"],["concept-message-status","concept","消息与状态"],["example-offline-adapter","example","离线适配器"],["reproduce-model-boundary-v01","reproduce","运行离线实验"],["modify-model-boundary","modify","修改失败状态"],["troubleshoot-model-boundary","troubleshoot","模型边界排错"],["deepen-provider-differences","deepen","Provider差异"],["project-learning-assistant-v01","project","智能学习助手v0.1"]].map(([id,type,title])=>({id,type,title,anchor:`#${id}`}));
+const defs=[
+["model-boundary","concept-model-call-chain","为什么业务代码不应直接依赖 provider JSON？","模型API字段能否传遍业务层","adapter负责协议翻译，业务只依赖稳定请求和结果，provider变化被限制在边界内。","v0.1用ModelAdapter Protocol。"],
+["message-role","concept-message-status","system 和 user 消息有什么区别？","消息role为什么不能混","system表达应用职责，user表达本次输入；角色混淆会让数据和规则失去边界。","请求固定system开头、user结尾。"],
+["result-status","concept-message-status","模型调用为什么不只有成功和异常？","refused和incomplete怎么处理","完成、拒绝和不完整都是有效结束状态，应用必须分别处理。","三种状态都有固定fixture。"],
+["finish-reason","concept-message-status","finish reason 有什么用？","有text就算完整吗","它解释为何停止；输出上限导致的部分文本不能冒充完整答案。","incomplete原因是max_output_units。"],
+["offline-adapter","example-offline-adapter","离线 adapter 能证明什么？","Mock能证明模型效果吗","它能确定性证明应用的请求、状态和失败处理，不能证明真实模型质量。","CI不访问网络。"],
+["preflight-validation","troubleshoot-model-boundary","为什么请求要在 adapter 前校验？","坏消息何时拒绝","越早拒绝越不会产生费用或不可控调用，也能给出稳定错误。","非法请求时adapter calls仍为空。"],
+["empty-completed","troubleshoot-model-boundary","HTTP成功但模型文本为空怎么办？","completed空响应算成功吗","不能；completed还必须满足应用文本门禁，否则拒绝进入完成态。","empty_completed=rejected。"],
+["usage-request-id","deepen-provider-differences","为什么保留 usage 和 request ID？","只保存回复文本够吗","usage支持预算审计，request ID支持故障关联；都不应替代业务结果校验。","归一化结果保留五类字段。"],
+["log-redaction","troubleshoot-model-boundary","模型调用日志应该避免记录什么？","Prompt和Authorization能打日志吗","默认不记录Authorization、原始Prompt和原始回复，只记录必要状态与内部关联。","固定报告明确raw字段none。"],
+["assistant-v01","project-learning-assistant-v01","智能学习助手 v0.1 新增什么？","LLM第一课项目做什么","新增消息/请求/结果契约、离线adapter、失败分层和8项测试。","下一版冻结Prompt快照。"],
+];
+const cards=defs.map(([id,c,q,a,answer,example],i)=>({id,lesson_id:lessonId,context_id:c,question:q,aliases:[a],keywords:[...new Set(`${q} ${a}`.replace(/[？?，、/]/g," ").split(/\s+/).filter(Boolean))],diagnostic:`先判断“${a}”属于请求、adapter、provider响应还是应用结果。`,hints:[`查看 #${c}。`,"运行 test_model_boundary.py 并定位调用前后状态。"],example,answer,source:{label:contexts.find(x=>x.id===c).title,href:`#${c}`},updated_at:"2026-07-26",recommended:i<8}));
+const cases=defs.flatMap(([id,,q,a])=>[{query:q.replace("？",""),expected_card:id},{query:a,expected_card:id}]);mkdirSync(resolve(root,"site-src/data/tutor"),{recursive:true});mkdirSync(resolve(root,"tests/tutor"),{recursive:true});writeFileSync(resolve(root,`site-src/data/tutor/${lessonId}.json`),`${JSON.stringify({version:2,lesson:{id:lessonId,title,path},contexts,cards},null,2)}\n`);writeFileSync(resolve(root,`tests/tutor/${lessonId}-search.json`),`${JSON.stringify({lesson_id:lessonId,cases,unknown:["怎样给木门刷漆","海豚为什么会跳出水面"]},null,2)}\n`);

@@ -1,0 +1,89 @@
+{
+  "lesson_id": "agent-engineering-01",
+  "cases": [
+    {
+      "query": "snapshot 和 event log 有什么区别",
+      "expected_card": "snapshot-event"
+    },
+    {
+      "query": "为什么要保存两张表",
+      "expected_card": "snapshot-event"
+    },
+    {
+      "query": "事件和状态为何必须原子提交",
+      "expected_card": "atomic-transition"
+    },
+    {
+      "query": "先写事件后崩溃怎么办",
+      "expected_card": "atomic-transition"
+    },
+    {
+      "query": "expected version 解决什么",
+      "expected_card": "expected-version"
+    },
+    {
+      "query": "两个worker同时写会覆盖吗",
+      "expected_card": "expected-version"
+    },
+    {
+      "query": "event ID 解决什么",
+      "expected_card": "event-id"
+    },
+    {
+      "query": "超时重试会多一条事件吗",
+      "expected_card": "event-id"
+    },
+    {
+      "query": "checkpoint 能保存哪些字段",
+      "expected_card": "checkpoint-allowlist"
+    },
+    {
+      "query": "可以保存完整prompt吗",
+      "expected_card": "checkpoint-allowlist"
+    },
+    {
+      "query": "终态还能继续转移吗",
+      "expected_card": "transition-graph"
+    },
+    {
+      "query": "completed后能恢复running吗",
+      "expected_card": "transition-graph"
+    },
+    {
+      "query": "storage_failure 后怎样检查",
+      "expected_card": "storage-failure"
+    },
+    {
+      "query": "事件写了一半吗",
+      "expected_card": "storage-failure"
+    },
+    {
+      "query": "为什么不保存 chain of thought",
+      "expected_card": "no-reasoning"
+    },
+    {
+      "query": "恢复需要模型推理全文吗",
+      "expected_card": "no-reasoning"
+    },
+    {
+      "query": "事件日志能保存工具原文吗",
+      "expected_card": "state-logs"
+    },
+    {
+      "query": "为了排错记录prompt行吗",
+      "expected_card": "state-logs"
+    },
+    {
+      "query": "智能学习助手 v0.19 新增什么",
+      "expected_card": "assistant-v19"
+    },
+    {
+      "query": "Agent工程第一课做什么",
+      "expected_card": "assistant-v19"
+    }
+  ],
+  "unknown": [
+    "怎样养护多肉植物",
+    "月亮为什么有圆缺"
+  ]
+}

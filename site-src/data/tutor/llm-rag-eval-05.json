@@ -1,0 +1,336 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "llm-rag-eval-05",
+    "title": "有证据回答、Claim-Citation 门禁与缺证据拒答",
+    "path": "learning-paths/llm-agent/rag-eval/05-grounded-claim-citation-abstention/"
+  },
+  "contexts": [
+    {
+      "id": "overview-grounded-answer",
+      "type": "overview",
+      "title": "有证据回答",
+      "anchor": "#overview-grounded-answer"
+    },
+    {
+      "id": "concept-context-pack",
+      "type": "concept",
+      "title": "上下文包",
+      "anchor": "#concept-context-pack"
+    },
+    {
+      "id": "concept-claim-citation",
+      "type": "concept",
+      "title": "Claim与Citation",
+      "anchor": "#concept-claim-citation"
+    },
+    {
+      "id": "example-extractive-gate",
+      "type": "example",
+      "title": "抽取式门禁",
+      "anchor": "#example-extractive-gate"
+    },
+    {
+      "id": "reproduce-grounded-v11",
+      "type": "reproduce",
+      "title": "运行证据回答",
+      "anchor": "#reproduce-grounded-v11"
+    },
+    {
+      "id": "modify-support-policy",
+      "type": "modify",
+      "title": "修改支持策略",
+      "anchor": "#modify-support-policy"
+    },
+    {
+      "id": "troubleshoot-grounding",
+      "type": "troubleshoot",
+      "title": "证据回答排错",
+      "anchor": "#troubleshoot-grounding"
+    },
+    {
+      "id": "deepen-injection-abstention",
+      "type": "deepen",
+      "title": "注入与拒答",
+      "anchor": "#deepen-injection-abstention"
+    },
+    {
+      "id": "project-learning-assistant-v11",
+      "type": "project",
+      "title": "智能学习助手v0.11",
+      "anchor": "#project-learning-assistant-v11"
+    }
+  ],
+  "cards": [
+    {
+      "id": "context-budget",
+      "lesson_id": "llm-rag-eval-05",
+      "context_id": "concept-context-pack",
+      "question": "Context pack 为什么要有界？",
+      "aliases": [
+        "检索结果都塞给模型不行吗"
+      ],
+      "keywords": [
+        "Context",
+        "pack",
+        "为什么要有界",
+        "检索结果都塞给模型不行吗"
+      ],
+      "diagnostic": "先定位“检索结果都塞给模型不行吗”属于上下文预算、claim粒度、citation切片、拒答还是来源信任。",
+      "hints": [
+        "查看 #concept-context-pack。",
+        "运行 test_grounded_answer.py 核对门禁错误码。"
+      ],
+      "example": "字符预算不冒充token。",
+      "answer": "控制上下文成本和无关证据；本课只在完整chunk边界停止。",
+      "source": {
+        "label": "上下文包",
+        "href": "#concept-context-pack"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "source-data",
+      "lesson_id": "llm-rag-eval-05",
+      "context_id": "concept-context-pack",
+      "question": "来源文本为什么要显式分隔？",
+      "aliases": [
+        "RAG内容和指令怎么区分"
+      ],
+      "keywords": [
+        "来源文本为什么要显式分隔",
+        "RAG内容和指令怎么区分"
+      ],
+      "diagnostic": "先定位“RAG内容和指令怎么区分”属于上下文预算、claim粒度、citation切片、拒答还是来源信任。",
+      "hints": [
+        "查看 #concept-context-pack。",
+        "运行 test_grounded_answer.py 核对门禁错误码。"
+      ],
+      "example": "source-data。",
+      "answer": "来源是不可信数据；标签和system规则共同声明其中指令没有控制权限。",
+      "source": {
+        "label": "上下文包",
+        "href": "#concept-context-pack"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "claim-granularity",
+      "lesson_id": "llm-rag-eval-05",
+      "context_id": "concept-claim-citation",
+      "question": "为什么按 claim 绑定 citation？",
+      "aliases": [
+        "答案末尾一个引用不够吗"
+      ],
+      "keywords": [
+        "为什么按",
+        "claim",
+        "绑定",
+        "citation",
+        "答案末尾一个引用不够吗"
+      ],
+      "diagnostic": "先定位“答案末尾一个引用不够吗”属于上下文预算、claim粒度、citation切片、拒答还是来源信任。",
+      "hints": [
+        "查看 #concept-claim-citation。",
+        "运行 test_grounded_answer.py 核对门禁错误码。"
+      ],
+      "example": "claims[]各自引用。",
+      "answer": "总引用无法说明每条事实由哪段证据支持；逐claim门禁可定位缺证据项。",
+      "source": {
+        "label": "Claim与Citation",
+        "href": "#concept-claim-citation"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "retrieved-only-answer",
+      "lesson_id": "llm-rag-eval-05",
+      "context_id": "concept-claim-citation",
+      "question": "回答能引用未检索语料吗？",
+      "aliases": [
+        "全库有证据可以事后补吗"
+      ],
+      "keywords": [
+        "回答能引用未检索语料吗",
+        "全库有证据可以事后补吗"
+      ],
+      "diagnostic": "先定位“全库有证据可以事后补吗”属于上下文预算、claim粒度、citation切片、拒答还是来源信任。",
+      "hints": [
+        "查看 #concept-claim-citation。",
+        "运行 test_grounded_answer.py 核对门禁错误码。"
+      ],
+      "example": "citation_chunk_not_retrieved。",
+      "answer": "不能；本次未提供给生成边界的内容不能冒充本次回答依据。",
+      "source": {
+        "label": "Claim与Citation",
+        "href": "#concept-claim-citation"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "extractive-baseline",
+      "lesson_id": "llm-rag-eval-05",
+      "context_id": "example-extractive-gate",
+      "question": "为什么先做抽取式 claim？",
+      "aliases": [
+        "同义改写不能自动过吗"
+      ],
+      "keywords": [
+        "为什么先做抽取式",
+        "claim",
+        "同义改写不能自动过吗"
+      ],
+      "diagnostic": "先定位“同义改写不能自动过吗”属于上下文预算、claim粒度、citation切片、拒答还是来源信任。",
+      "hints": [
+        "查看 #example-extractive-gate。",
+        "运行 test_grounded_answer.py 核对门禁错误码。"
+      ],
+      "example": "extractive:true。",
+      "answer": "抽取式关系可机械证明；任意转述需要独立语义评估，不能用字符串规则假装。",
+      "source": {
+        "label": "抽取式门禁",
+        "href": "#example-extractive-gate"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "quote-gate",
+      "lesson_id": "llm-rag-eval-05",
+      "context_id": "troubleshoot-grounding",
+      "question": "Citation 要校验哪些字段？",
+      "aliases": [
+        "有chunk ID就够吗"
+      ],
+      "keywords": [
+        "Citation",
+        "要校验哪些字段",
+        "有chunk",
+        "ID就够吗"
+      ],
+      "diagnostic": "先定位“有chunk ID就够吗”属于上下文预算、claim粒度、citation切片、拒答还是来源信任。",
+      "hints": [
+        "查看 #troubleshoot-grounding。",
+        "运行 test_grounded_answer.py 核对门禁错误码。"
+      ],
+      "example": "quote-match:true。",
+      "answer": "还要合法相对区间、逐字quote和未篡改chunk摘要。",
+      "source": {
+        "label": "证据回答排错",
+        "href": "#troubleshoot-grounding"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "abstention",
+      "lesson_id": "llm-rag-eval-05",
+      "context_id": "deepen-injection-abstention",
+      "question": "证据不足时应该输出什么？",
+      "aliases": [
+        "不知道也要生成一段吗"
+      ],
+      "keywords": [
+        "证据不足时应该输出什么",
+        "不知道也要生成一段吗"
+      ],
+      "diagnostic": "先定位“不知道也要生成一段吗”属于上下文预算、claim粒度、citation切片、拒答还是来源信任。",
+      "hints": [
+        "查看 #deepen-injection-abstention。",
+        "运行 test_grounded_answer.py 核对门禁错误码。"
+      ],
+      "example": "可计算拒答指标。",
+      "answer": "返回abstained、空claims和稳定insufficient_evidence，不编造填空。",
+      "source": {
+        "label": "注入与拒答",
+        "href": "#deepen-injection-abstention"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "injection-data",
+      "lesson_id": "llm-rag-eval-05",
+      "context_id": "deepen-injection-abstention",
+      "question": "来源里的忽略系统指令会执行吗？",
+      "aliases": [
+        "检索文档能改规则吗"
+      ],
+      "keywords": [
+        "来源里的忽略系统指令会执行吗",
+        "检索文档能改规则吗"
+      ],
+      "diagnostic": "先定位“检索文档能改规则吗”属于上下文预算、claim粒度、citation切片、拒答还是来源信任。",
+      "hints": [
+        "查看 #deepen-injection-abstention。",
+        "运行 test_grounded_answer.py 核对门禁错误码。"
+      ],
+      "example": "instructions-in-source:false。",
+      "answer": "不会；它只在source-data中作为文本，控制规则来自更高权限边界。",
+      "source": {
+        "label": "注入与拒答",
+        "href": "#deepen-injection-abstention"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "grounding-logs",
+      "lesson_id": "llm-rag-eval-05",
+      "context_id": "troubleshoot-grounding",
+      "question": "证据回答日志保存全文吗？",
+      "aliases": [
+        "排错要记录上下文和答案吗"
+      ],
+      "keywords": [
+        "证据回答日志保存全文吗",
+        "排错要记录上下文和答案吗"
+      ],
+      "diagnostic": "先定位“排错要记录上下文和答案吗”属于上下文预算、claim粒度、citation切片、拒答还是来源信任。",
+      "hints": [
+        "查看 #troubleshoot-grounding。",
+        "运行 test_grounded_answer.py 核对门禁错误码。"
+      ],
+      "example": "允许字段日志。",
+      "answer": "默认只记录chunk ID、状态和错误码，不保存查询、上下文、答案或引文。",
+      "source": {
+        "label": "证据回答排错",
+        "href": "#troubleshoot-grounding"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    },
+    {
+      "id": "assistant-v11",
+      "lesson_id": "llm-rag-eval-05",
+      "context_id": "project-learning-assistant-v11",
+      "question": "智能学习助手 v0.11 新增什么？",
+      "aliases": [
+        "RAG第五课项目做什么"
+      ],
+      "keywords": [
+        "智能学习助手",
+        "v0.11",
+        "新增什么",
+        "RAG第五课项目做什么"
+      ],
+      "diagnostic": "先定位“RAG第五课项目做什么”属于上下文预算、claim粒度、citation切片、拒答还是来源信任。",
+      "hints": [
+        "查看 #project-learning-assistant-v11。",
+        "运行 test_grounded_answer.py 核对门禁错误码。"
+      ],
+      "example": "下一版固定评估。",
+      "answer": "新增有界证据包、逐claim精确引用、抽取式支持门禁和结构化拒答。",
+      "source": {
+        "label": "智能学习助手v0.11",
+        "href": "#project-learning-assistant-v11"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    }
+  ]
+}

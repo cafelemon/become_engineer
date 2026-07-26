@@ -1,0 +1,89 @@
+{
+  "lesson_id": "llm-rag-eval-03",
+  "cases": [
+    {
+      "query": "为什么 chunk 要有最大字符数",
+      "expected_card": "chunk-bound"
+    },
+    {
+      "query": "文档整篇放上下文不行吗",
+      "expected_card": "chunk-bound"
+    },
+    {
+      "query": "单句超过上限为什么不直接硬切",
+      "expected_card": "sentence-boundary"
+    },
+    {
+      "query": "长句从中间切开可以吗",
+      "expected_card": "sentence-boundary"
+    },
+    {
+      "query": "chunk ID 为什么包含字符区间",
+      "expected_card": "chunk-id"
+    },
+    {
+      "query": "只用递增编号不行吗",
+      "expected_card": "chunk-id"
+    },
+    {
+      "query": "句子重叠有什么代价",
+      "expected_card": "overlap-cost"
+    },
+    {
+      "query": "overlap越多越好吗",
+      "expected_card": "overlap-cost"
+    },
+    {
+      "query": "引用相对坐标如何回到原文",
+      "expected_card": "relative-absolute"
+    },
+    {
+      "query": "quote_start从哪里算",
+      "expected_card": "relative-absolute"
+    },
+    {
+      "query": "为什么只能引用已检索 chunk",
+      "expected_card": "retrieved-only"
+    },
+    {
+      "query": "全语料里有同一句能补引用吗",
+      "expected_card": "retrieved-only"
+    },
+    {
+      "query": "精确引文可以自动改空格吗",
+      "expected_card": "quote-match"
+    },
+    {
+      "query": "同义改写算quote吗",
+      "expected_card": "quote-match"
+    },
+    {
+      "query": "如何发现 chunk 被篡改",
+      "expected_card": "chunk-tamper"
+    },
+    {
+      "query": "坐标没变文字变了",
+      "expected_card": "chunk-tamper"
+    },
+    {
+      "query": "来源里的忽略系统指令该执行吗",
+      "expected_card": "source-instruction"
+    },
+    {
+      "query": "RAG文档能改变system规则吗",
+      "expected_card": "source-instruction"
+    },
+    {
+      "query": "智能学习助手 v0.9 新增什么",
+      "expected_card": "assistant-v09"
+    },
+    {
+      "query": "RAG第三课项目做什么",
+      "expected_card": "assistant-v09"
+    }
+  ],
+  "unknown": [
+    "怎么制作酸奶",
+    "为什么树叶秋天变黄"
+  ]
+}

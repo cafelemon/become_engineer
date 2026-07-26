@@ -1,0 +1,16 @@
+import{mkdirSync,writeFileSync}from"node:fs";import{resolve}from"node:path";const root=resolve(import.meta.dirname,".."),lessonId="llm-use-06",title="Provider 配置、秘密、脱敏与可选真实验收",path="learning-paths/llm-agent/model-use/06-provider-config-secrets-redaction-delivery/";
+const contexts=[["overview-secure-delivery","overview","安全交付边界"],["concept-config-secret-boundary","concept","配置与秘密"],["concept-fail-closed-delivery","concept","失败关闭"],["example-redacted-audit","example","脱敏审计"],["reproduce-delivery-v06","reproduce","运行交付实验"],["modify-provider-config","modify","修改Provider配置"],["troubleshoot-delivery-security","troubleshoot","交付安全排错"],["deepen-production-secret","deepen","生产秘密边界"],["project-learning-assistant-v06","project","智能学习助手v0.6"]].map(([id,type,title])=>({id,type,title,anchor:`#${id}`}));
+const defs=[
+["offline-default","concept-fail-closed-delivery","为什么默认模式不访问真实模型？","没有key也能运行吗","离线 scripted 是必过验收，避免费用、网络和凭据成为学习或CI前置。","default mode:offline。"],
+["config-no-key","concept-config-secret-boundary","为什么 ProviderConfig 不保存 API key？","把密钥放配置对象方便吗","配置对象常被repr、缓存或日志化；key只在调用边界从运行环境读取。","config-repr:false。"],
+["provider-gates","concept-fail-closed-delivery","真实调用为什么需要两个开关？","有--real还不够吗","CLI意图和环境授权同时存在才调用，降低误操作和CI误联网风险。","--real加ALLOW_REAL_PROVIDER=1。"],
+["https-config","concept-fail-closed-delivery","provider URL 为什么只接受 HTTPS？","HTTP本机地址可以调用模型吗","此交付边界拒绝明文provider连接；教学离线模式不需要URL。","provider HTTP返回invalid_config。"],
+["audit-allowlist","example-redacted-audit","模型调用审计应该记录什么？","日志要保存Prompt方便排错吗","记录provider、model、request ID、状态和尝试次数；不默认保存Prompt、回复或凭据。","允许列表审计。"],
+["recursive-redaction","example-redacted-audit","为什么允许列表后还要递归脱敏？","Authorization只在顶层吗","诊断对象可能嵌套headers、token或cookie；防御性脱敏阻止它们进入证据。","敏感键替换REDACTED。"],
+["exception-secret","troubleshoot-delivery-security","异常链为什么也可能泄露密钥？","错误消息没key就安全了吗","底层异常或repr可能包含headers；归一化错误时应切断不可信异常链。","provider_call_failed无cause。"],
+["environment-limit","deepen-production-secret","环境变量是否等于生产秘密管理器？","key放env就绝对安全吗","不是；秘密仍在进程内存并可能被同权限工具看到，生产需受控注入、轮换和最小权限。","process-memory:yes。"],
+["real-optional","modify-provider-config","真实 provider 验收是否进入 CI？","自动测试能用真实key吗","不进入；自动验收只用合成key和ScriptedTransport，真实调用由个人显式可选。","ci:false。"],
+["assistant-v06","project-learning-assistant-v06","智能学习助手 v0.6 完成什么？","LLM第六课项目做什么","完成离线默认、fail closed配置、双重确认、秘密边界、脱敏审计与交付证据。","六课累计48项测试。"],
+];
+const cards=defs.map(([id,c,q,a,answer,example],i)=>({id,lesson_id:lessonId,context_id:c,question:q,aliases:[a],keywords:[...new Set(`${q} ${a}`.replace(/[？?，、/]/g," ").split(/\s+/).filter(Boolean))],diagnostic:`先定位“${a}”属于默认模式、启动门禁、调用边界、日志还是生产限制。`,hints:[`查看 #${c}。`,"运行 test_delivery_cli.py 并搜索 synthetic key。"],example,answer,source:{label:contexts.find(x=>x.id===c).title,href:`#${c}`},updated_at:"2026-07-26",recommended:i<8}));
+const cases=defs.flatMap(([id,,q,a])=>[{query:q.replace("？",""),expected_card:id},{query:a,expected_card:id}]);mkdirSync(resolve(root,"site-src/data/tutor"),{recursive:true});mkdirSync(resolve(root,"tests/tutor"),{recursive:true});writeFileSync(resolve(root,`site-src/data/tutor/${lessonId}.json`),`${JSON.stringify({version:2,lesson:{id:lessonId,title,path},contexts,cards},null,2)}\n`);writeFileSync(resolve(root,`tests/tutor/${lessonId}-search.json`),`${JSON.stringify({lesson_id:lessonId,cases,unknown:["咖啡豆怎么保存","怎样挑选羽毛球拍"]},null,2)}\n`);

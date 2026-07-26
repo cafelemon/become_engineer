@@ -483,6 +483,63 @@ jobs:
       - name: Verify deep-learning inference delivery contracts
         run: node scripts/test_deep_learning_08_v2.mjs
 
+      - name: Verify LLM model boundary and offline adapter
+        run: node scripts/test_llm_use_01_v2.mjs
+
+      - name: Verify LLM prompt contract and budget
+        run: node scripts/test_llm_use_02_v2.mjs
+
+      - name: Verify LLM structured output validation
+        run: node scripts/test_llm_use_03_v2.mjs
+
+      - name: Verify LLM bounded failure recovery
+        run: node scripts/test_llm_use_04_v2.mjs
+
+      - name: Verify LLM streaming lifecycle
+        run: node scripts/test_llm_use_05_v2.mjs
+
+      - name: Verify LLM provider configuration and secure delivery
+        run: node scripts/test_llm_use_06_v2.mjs
+
+      - name: Verify RAG corpus identity and reproducible index
+        run: node scripts/test_llm_rag_eval_01_v2.mjs
+
+      - name: Verify RAG BM25 lexical baseline
+        run: node scripts/test_llm_rag_eval_02_v2.mjs
+
+      - name: Verify RAG chunk and exact citation contracts
+        run: node scripts/test_llm_rag_eval_03_v2.mjs
+
+      - name: Verify RAG vector and hybrid retrieval contracts
+        run: node scripts/test_llm_rag_eval_04_v2.mjs
+
+      - name: Verify RAG grounded answer and abstention contracts
+        run: node scripts/test_llm_rag_eval_05_v2.mjs
+
+      - name: Verify RAG fixed evaluation and regression gates
+        run: node scripts/test_llm_rag_eval_06_v2.mjs
+
+      - name: Verify Agent tool registry and candidate call contracts
+        run: node scripts/test_agent_tool_calling_01_v2.mjs
+
+      - name: Verify Agent business validation, authorization, and read-only execution
+        run: node scripts/test_agent_tool_calling_02_v2.mjs
+
+      - name: Verify Agent multiple-call correlation and partial-failure isolation
+        run: node scripts/test_agent_tool_calling_03_v2.mjs
+
+      - name: Verify Agent controlled side effects, confirmation, and idempotency
+        run: node scripts/test_agent_tool_calling_04_v2.mjs
+
+      - name: Verify Agent bounded tool loop, budgets, and terminal states
+        run: node scripts/test_agent_tool_calling_05_v2.mjs
+
+      - name: Verify Agent fixed adversarial evaluation and regression delivery
+        run: node scripts/test_agent_tool_calling_06_v2.mjs
+
+      - name: Verify Agent durable run state, event log, and atomic checkpoint
+        run: node scripts/test_agent_engineering_01_v2.mjs
+
       - name: Verify CS systems concurrency lesson
         run: node scripts/test_cs_systems_concurrency_v2.mjs
 

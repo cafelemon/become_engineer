@@ -1,0 +1,89 @@
+{
+  "lesson_id": "llm-use-04",
+  "cases": [
+    {
+      "query": "哪些模型调用错误可以重试",
+      "expected_card": "retryable-errors"
+    },
+    {
+      "query": "限流和认证失败都retry吗",
+      "expected_card": "retryable-errors"
+    },
+    {
+      "query": "单次 timeout 管什么",
+      "expected_card": "attempt-timeout"
+    },
+    {
+      "query": "attempt timeout和deadline区别",
+      "expected_card": "attempt-timeout"
+    },
+    {
+      "query": "整体 deadline 管什么",
+      "expected_card": "overall-deadline"
+    },
+    {
+      "query": "重试总共能等多久",
+      "expected_card": "overall-deadline"
+    },
+    {
+      "query": "为什么 deadline 外还要最大尝试次数",
+      "expected_card": "attempt-budget"
+    },
+    {
+      "query": "调用很快会不会无限retry",
+      "expected_card": "attempt-budget"
+    },
+    {
+      "query": "认证失败为什么不能靠重试恢复",
+      "expected_card": "terminal-error"
+    },
+    {
+      "query": "401多试几次可以吗",
+      "expected_card": "terminal-error"
+    },
+    {
+      "query": "退避前为什么再检查 deadline",
+      "expected_card": "backoff-deadline"
+    },
+    {
+      "query": "先sleep再看时间行吗",
+      "expected_card": "backoff-deadline"
+    },
+    {
+      "query": "虚拟时钟是否等于Mock provider",
+      "expected_card": "virtual-clock"
+    },
+    {
+      "query": "不真实sleep算真实测试吗",
+      "expected_card": "virtual-clock"
+    },
+    {
+      "query": "如何处理 provider 的 Retry-After",
+      "expected_card": "retry-after"
+    },
+    {
+      "query": "服务建议等待多久就盲从吗",
+      "expected_card": "retry-after"
+    },
+    {
+      "query": "生产重试为什么需要 jitter",
+      "expected_card": "jitter"
+    },
+    {
+      "query": "固定指数退避不够吗",
+      "expected_card": "jitter"
+    },
+    {
+      "query": "智能学习助手 v0.4 新增什么",
+      "expected_card": "assistant-v04"
+    },
+    {
+      "query": "LLM第四课项目做什么",
+      "expected_card": "assistant-v04"
+    }
+  ],
+  "unknown": [
+    "怎么修理自行车链条",
+    "冰箱冷藏室结霜怎么办"
+  ]
+}

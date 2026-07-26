@@ -1,0 +1,89 @@
+{
+  "lesson_id": "llm-use-05",
+  "cases": [
+    {
+      "query": "为什么第一条流事件必须是 created",
+      "expected_card": "created-first"
+    },
+    {
+      "query": "直接收到delta怎么办",
+      "expected_card": "created-first"
+    },
+    {
+      "query": "序号如何发现重复和丢失",
+      "expected_card": "strict-sequence"
+    },
+    {
+      "query": "流式事件乱序怎么判断",
+      "expected_card": "strict-sequence"
+    },
+    {
+      "query": "连接关闭为什么不等于正常完成",
+      "expected_card": "terminal-required"
+    },
+    {
+      "query": "没有completed也算结束吗",
+      "expected_card": "terminal-required"
+    },
+    {
+      "query": "截断时的部分文本能保存为计划吗",
+      "expected_card": "partial-output"
+    },
+    {
+      "query": "有字就算完成吗",
+      "expected_card": "partial-output"
+    },
+    {
+      "query": "用户取消后还要继续读事件吗",
+      "expected_card": "stream-cancel"
+    },
+    {
+      "query": "cancel后provider又发completed",
+      "expected_card": "stream-cancel"
+    },
+    {
+      "query": "completed 为什么还检查 finish reason",
+      "expected_card": "finish-reason"
+    },
+    {
+      "query": "response.completed就够了吗",
+      "expected_card": "finish-reason"
+    },
+    {
+      "query": "流式拼接为什么要最大字符数",
+      "expected_card": "output-bound"
+    },
+    {
+      "query": "delta很小还会内存超限吗",
+      "expected_card": "output-bound"
+    },
+    {
+      "query": "结构化JSON应在每个delta后解析吗",
+      "expected_card": "json-after-terminal"
+    },
+    {
+      "query": "边流边json.loads可以吗",
+      "expected_card": "json-after-terminal"
+    },
+    {
+      "query": "不同Provider事件名放在哪里转换",
+      "expected_card": "provider-map"
+    },
+    {
+      "query": "业务里判断各家SSE事件吗",
+      "expected_card": "provider-map"
+    },
+    {
+      "query": "智能学习助手 v0.5 新增什么",
+      "expected_card": "assistant-v05"
+    },
+    {
+      "query": "LLM第五课项目做什么",
+      "expected_card": "assistant-v05"
+    }
+  ],
+  "unknown": [
+    "如何养护木质餐桌",
+    "雨天鞋子湿了怎么晾"
+  ]
+}

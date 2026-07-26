@@ -20,7 +20,8 @@
     "traceable-constraint-pattern-lab": "可追踪约束模式实验",
     "reproducible-experiment-evaluation-system": "可复现实验与评估系统",
     "structured-data-ml-system": "结构化数据机器学习系统",
-    "diagnosable-neural-network": "可诊断神经网络训练系统"
+    "diagnosable-neural-network": "可诊断神经网络训练系统",
+    "intelligent-learning-assistant": "可评估的智能学习助手"
   },
   "batches": [
     {"id":"b01-engineering-start","order":1,"title":"工程基础起步","lesson_count":10,"prerequisite_modules":[],"completion_gate":"十节课程形成同一个本地学习工作区；新手能找到工具、完成操作并从常见错误恢复。"},
@@ -39,7 +40,11 @@
     {"id":"b14-algorithm-deepening","order":14,"title":"算法深化","lesson_count":10,"prerequisite_modules":["algorithm-core"],"completion_gate":"十课真实运行、检索、严格构建、30246 条链接、5885 个锚点和 30 项多模式浏览器检查全部通过，整组已开放。"},
     {"id":"b15-ai-math-data","order":15,"title":"数学、数据与可复现实验","lesson_count":6,"prerequisite_modules":["python-engineering","algorithm-foundation"],"completion_gate":"六课共 36 项 Python 标准库测试、1559 卡/3120 问全站检索、严格构建、33629 条链接、6166 个锚点和 18 项多模式浏览器检查通过，整组已开放。"},
     {"id":"b16-machine-learning","order":16,"title":"机器学习","lesson_count":8,"prerequisite_modules":["ai-math-data"],"completion_gate":"八课共 64 项真实测试、1639 卡/3280 问全站检索、严格构建、38302 条链接、6539 个锚点和 24 项多模式浏览器检查通过，整组已开放。"},
-    {"id":"b17-deep-learning","order":17,"title":"深度学习","lesson_count":8,"prerequisite_modules":["machine-learning"],"completion_gate":"八课共 65 项真实 PyTorch 测试、1719 卡/3440 问全站检索、严格构建 218 个 HTML、42374 条链接、6922 个锚点和 24 项多模式浏览器检查通过，整组已开放。"}
+    {"id":"b17-deep-learning","order":17,"title":"深度学习","lesson_count":8,"prerequisite_modules":["machine-learning"],"completion_gate":"八课共 65 项真实 PyTorch 测试、1719 卡/3440 问全站检索、严格构建 218 个 HTML、42374 条链接、6922 个锚点和 24 项多模式浏览器检查通过，整组已开放。"},
+    {"id":"b18-llm-use","order":18,"title":"模型使用与结构化输出","lesson_count":6,"prerequisite_modules":["python-engineering","web-core"],"completion_gate":"六课共 48 项真实离线测试、60 卡/120 问、严格构建 225 个 HTML、45343 条链接、7191 个锚点和 18 项多模式浏览器检查通过，整组已开放。"},
+    {"id":"b19-llm-rag-eval","order":19,"title":"检索、RAG 与评估","lesson_count":6,"prerequisite_modules":["llm-use","web-engineering"],"completion_gate":"六课共 48 项真实离线测试、60 卡/120 问、严格构建 232 个 HTML、48410 条链接、7460 个锚点和 18 项多模式浏览器检查通过，整组已开放。"},
+    {"id":"b20-agent-tool-calling","order":20,"title":"Tool Calling 与有界工作流","lesson_count":6,"prerequisite_modules":["llm-rag-eval"],"completion_gate":"六课共 48 项真实离线测试、60 卡/120 问、固定对抗评估、严格构建、站内链接和 18 项多模式浏览器检查通过，整组已开放。"},
+    {"id":"b21-agent-engineering","order":21,"title":"Agent 工程","lesson_count":1,"prerequisite_modules":["agent-tool-calling"],"completion_gate":"规划六课；当前完成 SQLite 运行状态、事件日志与原子 checkpoint 1 课、8 项测试。六课组级验收通过后开放。"}
   ],
   "tutor_lesson_ids": {
     "engineering-01":"engineering-foundation-01",
@@ -158,7 +163,26 @@
     "deep-learning-05":"deep-learning-05",
     "deep-learning-06":"deep-learning-06",
     "deep-learning-07":"deep-learning-07",
-    "deep-learning-08":"deep-learning-08"
+    "deep-learning-08":"deep-learning-08",
+    "llm-use-01":"llm-use-01",
+    "llm-use-02":"llm-use-02",
+    "llm-use-03":"llm-use-03",
+    "llm-use-04":"llm-use-04",
+    "llm-use-05":"llm-use-05",
+    "llm-use-06":"llm-use-06",
+    "llm-rag-eval-01":"llm-rag-eval-01",
+    "llm-rag-eval-02":"llm-rag-eval-02",
+    "llm-rag-eval-03":"llm-rag-eval-03",
+    "llm-rag-eval-04":"llm-rag-eval-04",
+    "llm-rag-eval-05":"llm-rag-eval-05",
+    "llm-rag-eval-06":"llm-rag-eval-06",
+    "agent-tool-calling-01":"agent-tool-calling-01",
+    "agent-tool-calling-02":"agent-tool-calling-02",
+    "agent-tool-calling-03":"agent-tool-calling-03",
+    "agent-tool-calling-04":"agent-tool-calling-04",
+    "agent-tool-calling-05":"agent-tool-calling-05",
+    "agent-tool-calling-06":"agent-tool-calling-06",
+    "agent-engineering-01":"agent-engineering-01"
   },
   "lessons": [
     {"id":"engineering-01","target_module_id":"engineering-start","target_depth":"起步","target_role":"共同基座","course_type":"tool-operation","project_line":"engineering-learning-workspace","batch_id":"b01-engineering-start","prerequisite_lesson_ids":[],"migration_status":"已迁移","migration_kind":"重写讲解与复现路径"},
@@ -284,6 +308,25 @@
     {"id":"deep-learning-05","target_module_id":"deep-learning","target_depth":"核心","target_role":"方向主干","course_type":"ai-experiment","project_line":"diagnosable-neural-network","batch_id":"b17-deep-learning","prerequisite_lesson_ids":["deep-learning-04"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
     {"id":"deep-learning-06","target_module_id":"deep-learning","target_depth":"核心","target_role":"方向主干","course_type":"ai-experiment","project_line":"diagnosable-neural-network","batch_id":"b17-deep-learning","prerequisite_lesson_ids":["deep-learning-05"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
     {"id":"deep-learning-07","target_module_id":"deep-learning","target_depth":"核心","target_role":"方向主干","course_type":"ai-experiment","project_line":"diagnosable-neural-network","batch_id":"b17-deep-learning","prerequisite_lesson_ids":["deep-learning-06"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
-    {"id":"deep-learning-08","target_module_id":"deep-learning","target_depth":"核心","target_role":"方向主干","course_type":"project-integration","project_line":"diagnosable-neural-network","batch_id":"b17-deep-learning","prerequisite_lesson_ids":["deep-learning-07"],"migration_status":"已迁移","migration_kind":"新建正式课程"}
+    {"id":"deep-learning-08","target_module_id":"deep-learning","target_depth":"核心","target_role":"方向主干","course_type":"project-integration","project_line":"diagnosable-neural-network","batch_id":"b17-deep-learning","prerequisite_lesson_ids":["deep-learning-07"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"llm-use-01","target_module_id":"llm-use","target_depth":"基础","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b18-llm-use","prerequisite_lesson_ids":["python-core-07","web-core-04"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"llm-use-02","target_module_id":"llm-use","target_depth":"基础","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b18-llm-use","prerequisite_lesson_ids":["llm-use-01"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"llm-use-03","target_module_id":"llm-use","target_depth":"基础","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b18-llm-use","prerequisite_lesson_ids":["llm-use-02"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"llm-use-04","target_module_id":"llm-use","target_depth":"基础","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b18-llm-use","prerequisite_lesson_ids":["llm-use-03"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"llm-use-05","target_module_id":"llm-use","target_depth":"基础","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b18-llm-use","prerequisite_lesson_ids":["llm-use-04"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"llm-use-06","target_module_id":"llm-use","target_depth":"基础","target_role":"方向主干","course_type":"project-integration","project_line":"intelligent-learning-assistant","batch_id":"b18-llm-use","prerequisite_lesson_ids":["llm-use-05"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"llm-rag-eval-01","target_module_id":"llm-rag-eval","target_depth":"工程化","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b19-llm-rag-eval","prerequisite_lesson_ids":["llm-use-06","web-engineering-06"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"llm-rag-eval-02","target_module_id":"llm-rag-eval","target_depth":"工程化","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b19-llm-rag-eval","prerequisite_lesson_ids":["llm-rag-eval-01"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"llm-rag-eval-03","target_module_id":"llm-rag-eval","target_depth":"工程化","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b19-llm-rag-eval","prerequisite_lesson_ids":["llm-rag-eval-02"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"llm-rag-eval-04","target_module_id":"llm-rag-eval","target_depth":"工程化","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b19-llm-rag-eval","prerequisite_lesson_ids":["llm-rag-eval-03"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"llm-rag-eval-05","target_module_id":"llm-rag-eval","target_depth":"工程化","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b19-llm-rag-eval","prerequisite_lesson_ids":["llm-rag-eval-04"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"llm-rag-eval-06","target_module_id":"llm-rag-eval","target_depth":"工程化","target_role":"方向主干","course_type":"project-integration","project_line":"intelligent-learning-assistant","batch_id":"b19-llm-rag-eval","prerequisite_lesson_ids":["llm-rag-eval-05"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"agent-tool-calling-01","target_module_id":"agent-tool-calling","target_depth":"基础","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b20-agent-tool-calling","prerequisite_lesson_ids":["llm-rag-eval-06"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"agent-tool-calling-02","target_module_id":"agent-tool-calling","target_depth":"基础","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b20-agent-tool-calling","prerequisite_lesson_ids":["agent-tool-calling-01"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"agent-tool-calling-03","target_module_id":"agent-tool-calling","target_depth":"基础","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b20-agent-tool-calling","prerequisite_lesson_ids":["agent-tool-calling-02"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"agent-tool-calling-04","target_module_id":"agent-tool-calling","target_depth":"基础","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b20-agent-tool-calling","prerequisite_lesson_ids":["agent-tool-calling-03"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"agent-tool-calling-05","target_module_id":"agent-tool-calling","target_depth":"基础","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b20-agent-tool-calling","prerequisite_lesson_ids":["agent-tool-calling-04"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"agent-tool-calling-06","target_module_id":"agent-tool-calling","target_depth":"基础","target_role":"方向主干","course_type":"project-integration","project_line":"intelligent-learning-assistant","batch_id":"b20-agent-tool-calling","prerequisite_lesson_ids":["agent-tool-calling-05"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"agent-engineering-01","target_module_id":"agent-engineering","target_depth":"工程化","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b21-agent-engineering","prerequisite_lesson_ids":["agent-tool-calling-06"],"migration_status":"已迁移","migration_kind":"新建正式课程"}
   ]
 }

@@ -1,0 +1,89 @@
+{
+  "lesson_id": "agent-tool-calling-02",
+  "cases": [
+    {
+      "query": "为什么授权要在 handler 前",
+      "expected_card": "validation-order"
+    },
+    {
+      "query": "先查询再判断权限可以吗",
+      "expected_card": "validation-order"
+    },
+    {
+      "query": "Schema 通过后还检查什么",
+      "expected_card": "business-validation"
+    },
+    {
+      "query": "字段类型对了就安全吗",
+      "expected_card": "business-validation"
+    },
+    {
+      "query": "怎样证明 SQLite 真只读",
+      "expected_card": "readonly-uri"
+    },
+    {
+      "query": "代码只写SELECT够吗",
+      "expected_card": "readonly-uri"
+    },
+    {
+      "query": "为什么 SQL 值要参数化",
+      "expected_card": "parameterized-sql"
+    },
+    {
+      "query": "字符串拼接learner_id行吗",
+      "expected_card": "parameterized-sql"
+    },
+    {
+      "query": "有读取权限就能读所有学习者吗",
+      "expected_card": "ownership"
+    },
+    {
+      "query": "permission够不够",
+      "expected_card": "ownership"
+    },
+    {
+      "query": "工具结果为什么限制三条",
+      "expected_card": "bounded-result"
+    },
+    {
+      "query": "把全部记录交给模型不行吗",
+      "expected_card": "bounded-result"
+    },
+    {
+      "query": "工具失败要把异常堆栈给模型吗",
+      "expected_card": "error-envelope"
+    },
+    {
+      "query": "数据库路径能回传吗",
+      "expected_card": "error-envelope"
+    },
+    {
+      "query": "参数化 SQL 等于授权吗",
+      "expected_card": "parameterization-not-auth"
+    },
+    {
+      "query": "防注入就不会越权吗",
+      "expected_card": "parameterization-not-auth"
+    },
+    {
+      "query": "只读工具日志记录结果全文吗",
+      "expected_card": "read-logs"
+    },
+    {
+      "query": "排错需要保存query吗",
+      "expected_card": "read-logs"
+    },
+    {
+      "query": "智能学习助手 v0.14 新增什么",
+      "expected_card": "assistant-v14"
+    },
+    {
+      "query": "Tool Calling第二课项目做什么",
+      "expected_card": "assistant-v14"
+    }
+  ],
+  "unknown": [
+    "如何学习水彩画",
+    "候鸟为什么迁徙"
+  ]
+}

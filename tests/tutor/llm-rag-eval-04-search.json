@@ -1,0 +1,89 @@
+{
+  "lesson_id": "llm-rag-eval-04",
+  "cases": [
+    {
+      "query": "为什么要做 Embedding adapter",
+      "expected_card": "adapter-boundary"
+    },
+    {
+      "query": "向量接口为什么隔离",
+      "expected_card": "adapter-boundary"
+    },
+    {
+      "query": "返回向量数量错了怎么办",
+      "expected_card": "batch-shape"
+    },
+    {
+      "query": "embedding少返回一条",
+      "expected_card": "batch-shape"
+    },
+    {
+      "query": "向量进入索引前检查什么",
+      "expected_card": "vector-validation"
+    },
+    {
+      "query": "NaN零向量不同维怎么办",
+      "expected_card": "vector-validation"
+    },
+    {
+      "query": "余弦相似度比较什么",
+      "expected_card": "cosine"
+    },
+    {
+      "query": "向量长度会影响cosine吗",
+      "expected_card": "cosine"
+    },
+    {
+      "query": "向量同分怎么稳定排序",
+      "expected_card": "stable-vector-tie"
+    },
+    {
+      "query": "cosine一样谁先",
+      "expected_card": "stable-vector-tie"
+    },
+    {
+      "query": "RRF 为什么不用原始分数",
+      "expected_card": "rrf-ranks"
+    },
+    {
+      "query": "BM25和cosine可以直接加吗",
+      "expected_card": "rrf-ranks"
+    },
+    {
+      "query": "同一路排名重复 chunk 会怎样",
+      "expected_card": "rrf-duplicates"
+    },
+    {
+      "query": "一个ID出现两次能多加分吗",
+      "expected_card": "rrf-duplicates"
+    },
+    {
+      "query": "固定二维向量能证明语义检索吗",
+      "expected_card": "fixture-honesty"
+    },
+    {
+      "query": "fixture向量效果好算真实效果吗",
+      "expected_card": "fixture-honesty"
+    },
+    {
+      "query": "向量和查询可以完整打日志吗",
+      "expected_card": "vector-logging"
+    },
+    {
+      "query": "排错记录embedding原值吗",
+      "expected_card": "vector-logging"
+    },
+    {
+      "query": "智能学习助手 v0.10 新增什么",
+      "expected_card": "assistant-v10"
+    },
+    {
+      "query": "RAG第四课项目做什么",
+      "expected_card": "assistant-v10"
+    }
+  ],
+  "unknown": [
+    "怎么烤制面包",
+    "猫为什么喜欢纸箱"
+  ]
+}

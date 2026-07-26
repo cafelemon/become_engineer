@@ -25,7 +25,7 @@
   <div><strong>衔接状态</strong><span>可顺序进入 · 缺少起步层 · 等待前置 · 方向可选</span></div>
 </div>
 
-当前正式课程共 **117 节**：工程基础 10 节、Python 起步 7 节、CS 起步 4 节、首个可验证项目 1 节、Python 核心与工程化 7 节、C++ 起步 2 节、C++ 核心 3 节、算法基础与核心 22 节、算法深化 10 节、算法求职加练 3 节、CS 系统基础 6 节、系统工程 6 节、AI 数学数据 6 节、机器学习 8 节、深度学习 8 节、Web 起步 4 节、Web 核心 4 节、Web 工程化 6 节。
+当前正式课程共 **129 节**：工程基础 10 节、Python 起步 7 节、CS 起步 4 节、首个可验证项目 1 节、Python 核心与工程化 7 节、C++ 起步 2 节、C++ 核心 3 节、算法基础与核心 22 节、算法深化 10 节、算法求职加练 3 节、CS 系统基础 6 节、系统工程 6 节、AI 数学数据 6 节、机器学习 8 节、深度学习 8 节、模型使用与结构化输出 6 节、检索/RAG/评估 6 节、Web 起步 4 节、Web 核心 4 节、Web 工程化 6 节。
 
 ## 四类用户共用一棵能力树
 
@@ -95,14 +95,14 @@
     </section>
     <section>
       <h3>LLM 应用</h3>
-      <a href="#module-llm-use" data-status="planned">模型使用与结构化输出</a>
-      <a href="#module-llm-rag-eval" data-status="planned">检索、RAG 与评估</a>
+      <a href="#module-llm-use" data-status="open">模型使用与结构化输出 · 已开放 6 / 6</a>
+      <a href="#module-llm-rag-eval" data-status="open">检索、RAG 与评估 · 已开放 6 / 6</a>
       <small>不要求先完成完整机器学习与深度学习</small>
     </section>
     <section>
       <h3>Agent 工程</h3>
-      <a href="#module-agent-tool-calling" data-status="planned">Tool Calling 与有界工作流</a>
-      <a href="#module-agent-engineering" data-status="planned">状态、恢复、评估与安全</a>
+      <a href="#module-agent-tool-calling" data-status="open">Tool Calling 与有界工作流 · 已开放 6 / 6</a>
+      <a href="#module-agent-engineering" data-status="building">状态、恢复、评估与安全 · 建设中 1 / 6</a>
       <a href="#module-agent-specialized" data-status="planned">专业 Agent</a>
       <small>微调、本地推理、多模态 Agent 再追加模型或系统前置</small>
     </section>
@@ -156,10 +156,10 @@
 | <span id="module-vision">计算机视觉</span> | 专业/求职 | 能力深化 | 视觉数据、模型、评估与部署证据 | 深度学习 → 边缘视觉／多模态 Agent | 专业方向可选 | 已规划未建设 | 方向可选 |
 | <span id="module-nlp-transformer">NLP 与 Transformer</span> | 深化 | 能力深化 | 文本任务、Transformer 与评估 | 深度学习 → 模型型 Agent | 模型方向可选；不是应用 Agent 通用前置 | 已规划未建设 | 方向可选 |
 | <span id="module-multimodal">多模态与其他 AI 专业方向</span> | 专业/求职 | 能力深化 | 多模态或专项模型项目 | 深度学习 → 高级 Agent | 专业方向可选 | 已规划未建设 | 方向可选 |
-| <span id="module-llm-use">模型使用与结构化输出</span> | 基础 | 方向主干 | 可验证的模型调用、Schema 与失败处理 | Python 工程化 + Web/API → RAG | LLM 应用路线进入；不强制 ML/DL | 已规划未建设 · 6 课设计完成 | 可顺序进入 |
-| <span id="module-llm-rag-eval">检索、RAG 与评估</span> | 工程化 | 方向主干 | 有引用、固定评估集和可观测失败的 RAG | 模型使用 + Web 工程化 → Agent | LLM/Agent 路线共用 | 已规划未建设 | 等待前置 |
-| <span id="module-agent-tool-calling">Tool Calling 与有界工作流</span> | 基础 | 方向主干 | 可停止、可验收的工具工作流 | RAG 与评估 → Agent 工程 | Agent 路线进入 | 已规划未建设 | 等待前置 |
-| <span id="module-agent-engineering">状态、记忆、上下文、恢复、评估、可观测性与安全</span> | 工程化 | 方向主干 | 可恢复、可评估、可观测的 Agent | Tool Calling → 专业 Agent | Agent 路线共用；求职追加系统设计追问 | 已规划未建设 | 等待前置 |
+| <span id="module-llm-use">模型使用与结构化输出</span> | 基础 | 方向主干 | 可验证的模型调用、Schema 与失败处理 | Python 工程化 + Web/API → RAG | LLM 应用路线进入；不强制 ML/DL | 已开放 · 6/6 | 可顺序进入 |
+| <span id="module-llm-rag-eval">检索、RAG 与评估</span> | 工程化 | 方向主干 | 有引用、固定评估集和可观测失败的 RAG | 模型使用 + Web 工程化 → Agent | LLM/Agent 路线共用 | 已开放 · 6/6 | 可顺序进入 |
+| <span id="module-agent-tool-calling">Tool Calling 与有界工作流</span> | 基础 | 方向主干 | 可停止、可验收的工具工作流 | RAG 与评估 → Agent 工程 | Agent 路线进入 | 已开放 · 6/6 | 可顺序进入 |
+| <span id="module-agent-engineering">状态、记忆、上下文、恢复、评估、可观测性与安全</span> | 工程化 | 方向主干 | 可恢复、可评估、可观测的 Agent | Tool Calling → 专业 Agent | Agent 路线共用；求职追加系统设计追问 | 建设中 · 1/6 | 可顺序进入 |
 | <span id="module-agent-specialized">专业 Agent</span> | 专业/求职 | 能力深化 | Coding、Research、Text2SQL 等领域项目 | Agent 工程 → 领域交付 | 按兴趣或岗位选择 | 已规划未建设 | 方向可选 |
 | <span id="module-agent-advanced">微调、本地推理与多模态 Agent</span> | 专业/求职 | 能力深化 | 模型或系统边界明确的高级 Agent | Agent 工程 + DL／Transformer／系统能力 | 只在实际需求满足时进入 | 已规划未建设 | 等待前置 |
 | <span id="module-c-start">C 语言起步</span> | 起步 | 方向主干 | 编译、指针、内存与硬件接口基础 | 方向选择 → 设备共同基础 | 仅设备方向进入 | 已规划未建设 | 方向可选 |
@@ -174,7 +174,7 @@
 
 ## 已开放课程明细 { #opened-lessons }
 
-以下 **117 节课程各出现一次**。既有 55 节已完成 V2 迁移；算法深化、AI 数学数据、机器学习与深度学习均已开放。
+以下 **136 节课程各出现一次**。既有 55 节已完成 V2 迁移；Agent 工程进入 1/6 建设。
 
 ### 工程基础起步 · 10 节
 
@@ -350,24 +350,55 @@
 7. [检查点、随机状态与精确恢复训练](ai-foundation/deep-learning/07-checkpoint-rng-resume-exact-training.md) · 已开放
 8. [Eval、推理 Schema、Manifest 与离线交付](ai-foundation/deep-learning/08-eval-inference-schema-manifest-delivery.md) · 已开放
 
+### 模型使用与结构化输出 · 已开放 6 / 6
+
+1. [模型边界、消息与离线适配器](llm-agent/model-use/01-model-boundary-messages-offline-adapter.md) · 已开放
+2. [Prompt 角色、版本、参数与上下文预算](llm-agent/model-use/02-prompt-roles-version-parameters-context-budget.md) · 已开放
+3. [JSON、严格 Schema、语义校验与缺失信息](llm-agent/model-use/03-json-schema-semantic-validation-missing-information.md) · 已开放
+4. [错误分类、Deadline、退避与有界重试](llm-agent/model-use/04-error-taxonomy-deadline-backoff-bounded-retry.md) · 已开放
+5. [流事件、Delta 顺序、终止原因与取消](llm-agent/model-use/05-stream-delta-order-finish-cancel.md) · 已开放
+6. [Provider 配置、秘密、脱敏与可选真实验收](llm-agent/model-use/06-provider-config-secrets-redaction-delivery.md) · 已开放
+
+### 检索、RAG 与评估 · 已开放 6 / 6
+
+1. [语料文档契约、来源身份与可复现索引](llm-agent/rag-eval/01-corpus-document-source-reproducible-index.md) · 已开放
+2. [倒排索引、BM25、Top-k 与稳定排序](llm-agent/rag-eval/02-inverted-index-bm25-top-k-stable-ranking.md) · 已开放
+3. [分块、重叠、来源坐标与精确引用](llm-agent/rag-eval/03-chunk-overlap-source-coordinates-citation.md) · 已开放
+4. [Embedding 适配器、余弦相似度与 RRF 混合检索](llm-agent/rag-eval/04-embedding-cosine-rrf-hybrid-retrieval.md) · 已开放
+5. [有证据回答、Claim-Citation 门禁与缺证据拒答](llm-agent/rag-eval/05-grounded-claim-citation-abstention.md) · 已开放
+6. [固定评估集、检索指标、引用质量与回归门禁](llm-agent/rag-eval/06-fixed-eval-retrieval-citation-regression-gates.md) · 已开放
+
+### Tool Calling 与有界工作流 · 已开放 6 / 6
+
+1. [工具定义、注册表、候选调用与严格参数](llm-agent/tool-calling-workflow/01-tool-definition-registry-candidate-call-strict-arguments.md) · 已开放
+2. [业务校验、主体授权与只读工具执行](llm-agent/tool-calling-workflow/02-business-validation-authorization-read-only-execution.md) · 已开放
+3. [多工具调用、call_id 关联与部分失败隔离](llm-agent/tool-calling-workflow/03-multiple-calls-call-id-correlation-partial-failure.md) · 已开放
+4. [受控副作用、人工确认与幂等保护](llm-agent/tool-calling-workflow/04-controlled-side-effects-confirmation-idempotency.md) · 已开放
+5. [有界工具循环、状态预算与显式终止](llm-agent/tool-calling-workflow/05-bounded-tool-loop-state-budgets-termination.md) · 已开放
+6. [固定对抗评估、预算指标与回归交付](llm-agent/tool-calling-workflow/06-fixed-adversarial-evaluation-regression-delivery.md) · 已开放
+
+### Agent 工程 · 建设中 1 / 6
+
+1. [SQLite 运行状态、事件日志与原子 checkpoint](llm-agent/agent-engineering/01-sqlite-run-state-event-log-atomic-checkpoint.md) · 建设中
+
 ## 规划模块边界
 
 以下只登记稳定模块，不提前虚构课名和课数：
 
 - **共同基座**：CS 起步四课与首个可验证项目均已开放；四类学习者先形成代码、测试、说明和复盘证据，再用短期实验选择方向。
-- **应用工程**：Web 起步、Web 核心、CS 系统基础与 Web 工程化均已完成；RAG／Agent 的 Web 工程化前置已满足，但下游正文仍未建设。
+- **应用工程**：Web 起步、Web 核心、CS 系统基础与 Web 工程化均已完成；RAG 与 Agent 的 Web 工程化前置已满足。
 - **系统工程**：六课已完成描述符 I/O、信号、队列、非阻塞网络、性能与恢复并开放。
 - **算法**：求职叠加三课已完成固定判题、限时策略和错因回归；算法深化 10/10 已开放。
 - **AI 模型**：数学数据实验 6/6、机器学习 8/8 与深度学习 8/8 已开放；强化学习、视觉、NLP/Transformer 与多模态的模型前置已经满足，但专项正文仍未建设。
-- **LLM 应用**：模型使用与结构化输出按 6 课从适配器、Prompt、Schema、重试、流式推进到交付；再进入检索、RAG 与评估。它与 AI 模型相邻但不是同一条线。
-- **Agent 工程**：Tool Calling、有界工作流、状态／记忆／上下文／恢复／评估／可观测性／安全，再进入专业 Agent。
+- **LLM 应用**：模型使用与结构化输出、检索/RAG/评估均已开放。
+- **Agent 工程**：Tool Calling 与有界工作流 6/6 已开放；状态／记忆／上下文／恢复／评估／可观测性／安全进入 1/6 建设。
 - **设备系统**：C 起步、设备共同基础、MCU/RTOS、Linux/BSP、工业控制；与 AI 或强化学习汇合后进入边缘智能或智能控制。
 
 ## 接下来怎么推进
 
 1. 55 节既有课程已经完成 V2 迁移；后续按依赖关系建设新的连续课程组。
 2. Web 起步与 Web 核心各四课已经完成；学习进度报告器升级为 v0.8，具备运行时契约、SQLite 持久化、资源 CRUD、游标分页、重复写入保护、表单校验和失败恢复。
-3. 共同基座、Web 工程化、算法求职叠加、系统工程、算法深化、数学数据实验、机器学习与深度学习均已完成并开放；下一课程组按地图前置顺序建设。
+3. 共同基座至 Tool Calling 与有界工作流均已开放；Agent 工程进入 1/6 建设。
 4. 每新增一节正式课程，同时更新正文、示例、知识库、测试、项目关系、课程登记和公开状态；禁止只增加空页面或目录标题。
 
 设备方向的硬件门槛与三级出口见[设备系统与边缘智能](device-edge-systems/README.md)。公开课程登记的机器可校验版本位于 `site-src/data/curriculum/v2.json`，但学习者只需要使用本页。

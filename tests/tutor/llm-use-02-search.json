@@ -1,0 +1,89 @@
+{
+  "lesson_id": "llm-use-02",
+  "cases": [
+    {
+      "query": "为什么 Prompt 应当版本化",
+      "expected_card": "prompt-config"
+    },
+    {
+      "query": "Prompt不就是字符串吗",
+      "expected_card": "prompt-config"
+    },
+    {
+      "query": "用户说忽略规则会变成 system 吗",
+      "expected_card": "message-role"
+    },
+    {
+      "query": "用户能否覆盖system role",
+      "expected_card": "message-role"
+    },
+    {
+      "query": "为什么在调用前检查上下文预算",
+      "expected_card": "input-budget"
+    },
+    {
+      "query": "超长Prompt何时拒绝",
+      "expected_card": "input-budget"
+    },
+    {
+      "query": "UTF-8 字节能当 token 吗",
+      "expected_card": "unit-boundary"
+    },
+    {
+      "query": "input_units是不是provider tokens",
+      "expected_card": "unit-boundary"
+    },
+    {
+      "query": "Prompt 指纹覆盖哪些字段",
+      "expected_card": "prompt-fingerprint"
+    },
+    {
+      "query": "hash只算用户问题够吗",
+      "expected_card": "prompt-fingerprint"
+    },
+    {
+      "query": "为什么指纹前要规范序列化",
+      "expected_card": "canonical-json"
+    },
+    {
+      "query": "JSON key顺序影响hash吗",
+      "expected_card": "canonical-json"
+    },
+    {
+      "query": "Prompt 审计记录能保存什么",
+      "expected_card": "audit-redaction"
+    },
+    {
+      "query": "是否记录完整Prompt",
+      "expected_card": "audit-redaction"
+    },
+    {
+      "query": "Prompt 哈希能保证原文保密吗",
+      "expected_card": "hash-secrecy"
+    },
+    {
+      "query": "有SHA-256就无法猜原文吗",
+      "expected_card": "hash-secrecy"
+    },
+    {
+      "query": "temperature 0 能保证永远相同吗",
+      "expected_card": "temperature-zero"
+    },
+    {
+      "query": "零温度是否绝对确定",
+      "expected_card": "temperature-zero"
+    },
+    {
+      "query": "智能学习助手 v0.2 新增什么",
+      "expected_card": "assistant-v02"
+    },
+    {
+      "query": "LLM第二课项目做什么",
+      "expected_card": "assistant-v02"
+    }
+  ],
+  "unknown": [
+    "怎样更换自行车内胎",
+    "燕子为什么春天回来"
+  ]
+}

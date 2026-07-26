@@ -1,0 +1,16 @@
+import{mkdirSync,writeFileSync}from"node:fs";import{resolve}from"node:path";const root=resolve(import.meta.dirname,".."),lessonId="llm-use-03",title="JSON、严格 Schema、语义校验与缺失信息",path="learning-paths/llm-agent/model-use/03-json-schema-semantic-validation-missing-information/";
+const contexts=[["overview-structured-output","overview","结构化输出结果"],["concept-validation-layers","concept","校验层次"],["concept-no-silent-repair","concept","拒绝静默修复"],["example-learning-request","example","学习请求对象"],["reproduce-structured-v03","reproduce","运行结构化实验"],["modify-structured-schema","modify","修改Schema"],["troubleshoot-structured-output","troubleshoot","结构化输出排错"],["deepen-provider-schema","deepen","Provider Schema边界"],["project-learning-assistant-v03","project","智能学习助手v0.3"]].map(([id,type,title])=>({id,type,title,anchor:`#${id}`}));
+const defs=[
+["validation-pipeline","concept-validation-layers","结构化输出要经过哪些校验层？","JSON合法后还检查什么","依次检查非空、JSON语法、顶层对象、字段集合、严格类型、枚举/范围，再构造业务对象。","v0.3七层流水线。"],
+["invalid-json","concept-validation-layers","invalid_json 和 not_object 有何区别？","数组也是合法JSON为何拒绝","前者语法错误；后者语法正确但顶层形状不是约定对象。","数组fixture返回not_object。"],
+["exact-fields","concept-validation-layers","为什么额外字段也要拒绝？","多一个phone字段有害吗","未声明字段未经过业务和隐私设计，默认拒绝能避免悄悄接收。","extra-fields:false。"],
+["strict-int","concept-no-silent-repair","为什么字符串8不自动转整数？","weekly_hours能否强制转换","静默转换会让不一致规则和猜测进入业务；类型不符应明确拒绝。","字符串和bool都拒绝。"],
+["bool-int","example-learning-request","为什么 bool 要在 int 前单独检查？","True是不是Python整数","Python中bool是int子类，不显式排除会把True当1。","isinstance(hours,bool)先拒绝。"],
+["missing-info","concept-no-silent-repair","缺少 current_level 应该重试还是补问？","模型能否猜用户水平","这是用户事实缺失，应向用户补问，重新生成不能创造可靠事实。","recovery:ask_user。"],
+["schema-mode","deepen-provider-schema","Provider结构化模式后还要应用校验吗？","JSON Schema保证就不用检查吗","仍要处理拒绝、不完整、业务范围和事实缺失；支持的Schema子集也需核对。","application-validation-required。"],
+["error-code","troubleshoot-structured-output","为什么要保留稳定错误代码？","所有失败写parse error够吗","稳定代码让界面、重试、补问和指标选择不同恢复路径。","九种失败分层。"],
+["retry-boundary","troubleshoot-structured-output","坏输出可以无限重新生成吗？","解析失败一直retry行吗","不能；重试需要第4课的错误分类、deadline和尝试预算。","v0.3只返回恢复建议。"],
+["assistant-v03","project-learning-assistant-v03","智能学习助手 v0.3 新增什么？","LLM第三课项目做什么","新增严格JSON/Schema/语义校验、恢复分类、十组fixture和8项测试。","下一版加入有界重试。"],
+];
+const cards=defs.map(([id,c,q,a,answer,example],i)=>({id,lesson_id:lessonId,context_id:c,question:q,aliases:[a],keywords:[...new Set(`${q} ${a}`.replace(/[？?，、/]/g," ").split(/\s+/).filter(Boolean))],diagnostic:`先定位“${a}”失败在语法、形状、字段、类型、语义还是信息来源。`,hints:[`查看 #${c}。`,"运行 test_structured_output.py 查看稳定错误代码。"],example,answer,source:{label:contexts.find(x=>x.id===c).title,href:`#${c}`},updated_at:"2026-07-26",recommended:i<8}));
+const cases=defs.flatMap(([id,,q,a])=>[{query:q.replace("？",""),expected_card:id},{query:a,expected_card:id}]);mkdirSync(resolve(root,"site-src/data/tutor"),{recursive:true});mkdirSync(resolve(root,"tests/tutor"),{recursive:true});writeFileSync(resolve(root,`site-src/data/tutor/${lessonId}.json`),`${JSON.stringify({version:2,lesson:{id:lessonId,title,path},contexts,cards},null,2)}\n`);writeFileSync(resolve(root,`tests/tutor/${lessonId}-search.json`),`${JSON.stringify({lesson_id:lessonId,cases,unknown:["如何给皮鞋上蜡","为什么萤火虫会发光"]},null,2)}\n`);
