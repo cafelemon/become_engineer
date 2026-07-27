@@ -1,0 +1,398 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "web-engineering-02",
+    "title": "密码哈希、Cookie 会话与 CSRF 防护",
+    "path": "learning-paths/web-fullstack/web-engineering/02-password-hashing-cookie-sessions-csrf/"
+  },
+  "contexts": [
+    {
+      "id": "overview-session-boundary",
+      "type": "overview",
+      "title": "overview session boundary",
+      "anchor": "#overview-session-boundary"
+    },
+    {
+      "id": "concept-cookie-session",
+      "type": "concept",
+      "title": "concept cookie session",
+      "anchor": "#concept-cookie-session"
+    },
+    {
+      "id": "example-auth-status",
+      "type": "example",
+      "title": "example auth status",
+      "anchor": "#example-auth-status"
+    },
+    {
+      "id": "reproduce-dashboard-v10",
+      "type": "reproduce",
+      "title": "reproduce dashboard v10",
+      "anchor": "#reproduce-dashboard-v10"
+    },
+    {
+      "id": "modify-session-expiry",
+      "type": "modify",
+      "title": "modify session expiry",
+      "anchor": "#modify-session-expiry"
+    },
+    {
+      "id": "troubleshoot-csrf",
+      "type": "troubleshoot",
+      "title": "troubleshoot csrf",
+      "anchor": "#troubleshoot-csrf"
+    },
+    {
+      "id": "project-dashboard-v10",
+      "type": "project",
+      "title": "project dashboard v10",
+      "anchor": "#project-dashboard-v10"
+    },
+    {
+      "id": "career-session-incident",
+      "type": "career",
+      "title": "career session incident",
+      "anchor": "#career-session-incident"
+    }
+  ],
+  "cards": [
+    {
+      "id": "auth-result",
+      "lesson_id": "web-engineering-02",
+      "context_id": "overview-session-boundary",
+      "question": "v0.10 最后交付什么？",
+      "aliases": [
+        "会话安全课做出什么"
+      ],
+      "keywords": [
+        "v0.10",
+        "最后交付什么",
+        "会话安全课做出什么"
+      ],
+      "diagnostic": "先确认你正在处理“会话安全课做出什么”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 overview-session-boundary 中的责任。",
+        "再用本课固定测试验证 v0.10 最后交付什么。"
+      ],
+      "example": "v0.10 增加 Argon2id、短期不透明会话、Cookie 身份与 CSRF 防护。",
+      "answer": "v0.10 增加 Argon2id、短期不透明会话、Cookie 身份与 CSRF 防护。",
+      "source": {
+        "label": "overview session boundary",
+        "href": "#overview-session-boundary"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "argon2-hash",
+      "lesson_id": "web-engineering-02",
+      "context_id": "overview-session-boundary",
+      "question": "为什么密码保存 Argon2id 哈希？",
+      "aliases": [
+        "密码能不能加密后保存"
+      ],
+      "keywords": [
+        "为什么密码保存",
+        "Argon2id",
+        "哈希",
+        "密码能不能加密后保存"
+      ],
+      "diagnostic": "先确认你正在处理“密码能不能加密后保存”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 overview-session-boundary 中的责任。",
+        "再用本课固定测试验证 为什么密码保存 Argon2id 哈希。"
+      ],
+      "example": "密码只保存专用慢哈希，验证时比较而不恢复原文。",
+      "answer": "密码只保存专用慢哈希，验证时比较而不恢复原文。",
+      "source": {
+        "label": "overview session boundary",
+        "href": "#overview-session-boundary"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "opaque-token",
+      "lesson_id": "web-engineering-02",
+      "context_id": "concept-cookie-session",
+      "question": "为什么使用不透明会话令牌？",
+      "aliases": [
+        "为什么这课不自制 JWT"
+      ],
+      "keywords": [
+        "为什么使用不透明会话令牌",
+        "为什么这课不自制",
+        "JWT"
+      ],
+      "diagnostic": "先确认你正在处理“为什么这课不自制 JWT”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 concept-cookie-session 中的责任。",
+        "再用本课固定测试验证 为什么使用不透明会话令牌。"
+      ],
+      "example": "随机不透明值把会话状态留在服务端，便于到期和撤销。",
+      "answer": "随机不透明值把会话状态留在服务端，便于到期和撤销。",
+      "source": {
+        "label": "concept cookie session",
+        "href": "#concept-cookie-session"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "token-digest",
+      "lesson_id": "web-engineering-02",
+      "context_id": "concept-cookie-session",
+      "question": "数据库为什么只存令牌摘要？",
+      "aliases": [
+        "会话原文落库有什么风险"
+      ],
+      "keywords": [
+        "数据库为什么只存令牌摘要",
+        "会话原文落库有什么风险"
+      ],
+      "diagnostic": "先确认你正在处理“会话原文落库有什么风险”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 concept-cookie-session 中的责任。",
+        "再用本课固定测试验证 数据库为什么只存令牌摘要。"
+      ],
+      "example": "请求携带原值，服务端用摘要查找；数据库泄露不能直接得到可用令牌。",
+      "answer": "请求携带原值，服务端用摘要查找；数据库泄露不能直接得到可用令牌。",
+      "source": {
+        "label": "concept cookie session",
+        "href": "#concept-cookie-session"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "cookie-flags",
+      "lesson_id": "web-engineering-02",
+      "context_id": "concept-cookie-session",
+      "question": "会话 Cookie 需要哪些属性？",
+      "aliases": [
+        "HttpOnly SameSite 各自防什么"
+      ],
+      "keywords": [
+        "会话",
+        "Cookie",
+        "需要哪些属性",
+        "HttpOnly",
+        "SameSite",
+        "各自防什么"
+      ],
+      "diagnostic": "先确认你正在处理“HttpOnly SameSite 各自防什么”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 concept-cookie-session 中的责任。",
+        "再用本课固定测试验证 会话 Cookie 需要哪些属性。"
+      ],
+      "example": "HttpOnly 限制脚本读取，SameSite 明确跨站发送策略，生产还需 Secure。",
+      "answer": "HttpOnly 限制脚本读取，SameSite 明确跨站发送策略，生产还需 Secure。",
+      "source": {
+        "label": "concept cookie session",
+        "href": "#concept-cookie-session"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "csrf-header",
+      "lesson_id": "web-engineering-02",
+      "context_id": "concept-cookie-session",
+      "question": "CSRF 为什么使用自定义请求头？",
+      "aliases": [
+        "CSRF 令牌能放 URL 吗"
+      ],
+      "keywords": [
+        "CSRF",
+        "为什么使用自定义请求头",
+        "令牌能放",
+        "URL",
+        "吗"
+      ],
+      "diagnostic": "先确认你正在处理“CSRF 令牌能放 URL 吗”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 concept-cookie-session 中的责任。",
+        "再用本课固定测试验证 CSRF 为什么使用自定义请求头。"
+      ],
+      "example": "状态修改携带服务器签发的 X-CSRF-Token，值不进入 URL 或 localStorage。",
+      "answer": "状态修改携带服务器签发的 X-CSRF-Token，值不进入 URL 或 localStorage。",
+      "source": {
+        "label": "concept cookie session",
+        "href": "#concept-cookie-session"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "status-401",
+      "lesson_id": "web-engineering-02",
+      "context_id": "example-auth-status",
+      "question": "什么时候返回 401？",
+      "aliases": [
+        "WWW-Authenticate 何时出现"
+      ],
+      "keywords": [
+        "什么时候返回",
+        "401",
+        "WWW-Authenticate",
+        "何时出现"
+      ],
+      "diagnostic": "先确认你正在处理“WWW-Authenticate 何时出现”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 example-auth-status 中的责任。",
+        "再用本课固定测试验证 什么时候返回 401。"
+      ],
+      "example": "缺少、无效、过期或撤销身份返回 401，并附认证挑战。",
+      "answer": "缺少、无效、过期或撤销身份返回 401，并附认证挑战。",
+      "source": {
+        "label": "example auth status",
+        "href": "#example-auth-status"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "status-403-csrf",
+      "lesson_id": "web-engineering-02",
+      "context_id": "example-auth-status",
+      "question": "CSRF 错误为什么返回 403？",
+      "aliases": [
+        "已登录但请求被拒绝是什么状态"
+      ],
+      "keywords": [
+        "CSRF",
+        "错误为什么返回",
+        "403",
+        "已登录但请求被拒绝是什么状态"
+      ],
+      "diagnostic": "先确认你正在处理“已登录但请求被拒绝是什么状态”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 example-auth-status 中的责任。",
+        "再用本课固定测试验证 CSRF 错误为什么返回 403。"
+      ],
+      "example": "身份有效但状态修改缺少正确 CSRF 时返回 403。",
+      "answer": "身份有效但状态修改缺少正确 CSRF 时返回 403。",
+      "source": {
+        "label": "example auth status",
+        "href": "#example-auth-status"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "run-v10",
+      "lesson_id": "web-engineering-02",
+      "context_id": "reproduce-dashboard-v10",
+      "question": "怎样运行 v0.10 会话测试？",
+      "aliases": [
+        "Cookie 和 CSRF 测试命令是什么"
+      ],
+      "keywords": [
+        "怎样运行",
+        "v0.10",
+        "会话测试",
+        "Cookie",
+        "和",
+        "CSRF",
+        "测试命令是什么"
+      ],
+      "diagnostic": "先确认你正在处理“Cookie 和 CSRF 测试命令是什么”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 reproduce-dashboard-v10 中的责任。",
+        "再用本课固定测试验证 怎样运行 v0.10 会话测试。"
+      ],
+      "example": "运行 9 项测试覆盖错误密码、Cookie、身份恢复、CSRF、到期和撤销。",
+      "answer": "运行 9 项测试覆盖错误密码、Cookie、身份恢复、CSRF、到期和撤销。",
+      "source": {
+        "label": "reproduce dashboard v10",
+        "href": "#reproduce-dashboard-v10"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "modify-expiry",
+      "lesson_id": "web-engineering-02",
+      "context_id": "modify-session-expiry",
+      "question": "怎样测试会话到期而不等待？",
+      "aliases": [
+        "缩短会话时间练习怎么做"
+      ],
+      "keywords": [
+        "怎样测试会话到期而不等待",
+        "缩短会话时间练习怎么做"
+      ],
+      "diagnostic": "先确认你正在处理“缩短会话时间练习怎么做”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 modify-session-expiry 中的责任。",
+        "再用本课固定测试验证 怎样测试会话到期而不等待。"
+      ],
+      "example": "通过受控时钟或测试辅助函数把到期时间移到过去，再断言认证失败。",
+      "answer": "通过受控时钟或测试辅助函数把到期时间移到过去，再断言认证失败。",
+      "source": {
+        "label": "modify session expiry",
+        "href": "#modify-session-expiry"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "csrf-troubleshoot",
+      "lesson_id": "web-engineering-02",
+      "context_id": "troubleshoot-csrf",
+      "question": "POST 返回 403 怎样排查？",
+      "aliases": [
+        "X-CSRF-Token 不匹配怎么办"
+      ],
+      "keywords": [
+        "POST",
+        "返回",
+        "403",
+        "怎样排查",
+        "X-CSRF-Token",
+        "不匹配怎么办"
+      ],
+      "diagnostic": "先确认你正在处理“X-CSRF-Token 不匹配怎么办”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 troubleshoot-csrf 中的责任。",
+        "再用本课固定测试验证 POST 返回 403 怎样排查。"
+      ],
+      "example": "依次检查会话 Cookie、当前会话的 CSRF 值和请求头，不关闭防护。",
+      "answer": "依次检查会话 Cookie、当前会话的 CSRF 值和请求头，不关闭防护。",
+      "source": {
+        "label": "troubleshoot csrf",
+        "href": "#troubleshoot-csrf"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "project-v10",
+      "lesson_id": "web-engineering-02",
+      "context_id": "project-dashboard-v10",
+      "question": "v0.10 新增哪些认证接口？",
+      "aliases": [
+        "为什么不包含注册和 OAuth"
+      ],
+      "keywords": [
+        "v0.10",
+        "新增哪些认证接口",
+        "为什么不包含注册和",
+        "OAuth"
+      ],
+      "diagnostic": "先确认你正在处理“为什么不包含注册和 OAuth”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 project-dashboard-v10 中的责任。",
+        "再用本课固定测试验证 v0.10 新增哪些认证接口。"
+      ],
+      "example": "项目只增加 login、logout、me 和合成账号，生产身份协议留给后续。",
+      "answer": "项目只增加 login、logout、me 和合成账号，生产身份协议留给后续。",
+      "source": {
+        "label": "project dashboard v10",
+        "href": "#project-dashboard-v10"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    }
+  ]
+}

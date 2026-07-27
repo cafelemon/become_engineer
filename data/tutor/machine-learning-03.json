@@ -1,0 +1,336 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "machine-learning-03",
+    "title": "逻辑回归、损失、概率与正则化",
+    "path": "learning-paths/ai-foundation/machine-learning/03-logistic-regression-loss-probability-regularization/"
+  },
+  "contexts": [
+    {
+      "id": "overview-logistic-contract",
+      "type": "overview",
+      "title": "逻辑回归契约",
+      "anchor": "#overview-logistic-contract"
+    },
+    {
+      "id": "concept-score-sigmoid-probability",
+      "type": "concept",
+      "title": "分数与概率",
+      "anchor": "#concept-score-sigmoid-probability"
+    },
+    {
+      "id": "concept-loss-threshold",
+      "type": "concept",
+      "title": "损失与阈值",
+      "anchor": "#concept-loss-threshold"
+    },
+    {
+      "id": "example-l2-regularization",
+      "type": "example",
+      "title": "L2 正则化",
+      "anchor": "#example-l2-regularization"
+    },
+    {
+      "id": "reproduce-logistic-v03",
+      "type": "reproduce",
+      "title": "运行逻辑回归",
+      "anchor": "#reproduce-logistic-v03"
+    },
+    {
+      "id": "modify-logistic",
+      "type": "modify",
+      "title": "修改逻辑回归",
+      "anchor": "#modify-logistic"
+    },
+    {
+      "id": "troubleshoot-logistic",
+      "type": "troubleshoot",
+      "title": "逻辑回归排错",
+      "anchor": "#troubleshoot-logistic"
+    },
+    {
+      "id": "project-structured-data-ml-v03",
+      "type": "project",
+      "title": "结构化 ML 系统 v0.3",
+      "anchor": "#project-structured-data-ml-v03"
+    },
+    {
+      "id": "career-logistic-contract",
+      "type": "career",
+      "title": "概率模型追问",
+      "anchor": "#career-logistic-contract"
+    }
+  ],
+  "cards": [
+    {
+      "id": "linear-score",
+      "lesson_id": "machine-learning-03",
+      "context_id": "concept-score-sigmoid-probability",
+      "question": "逻辑回归的线性分数是什么？",
+      "aliases": [
+        "wTx+b 是什么"
+      ],
+      "keywords": [
+        "逻辑回归的线性分数是什么",
+        "wTx+b",
+        "是什么"
+      ],
+      "diagnostic": "先判断“wTx+b 是什么”涉及分数概率、损失阈值、正则化还是系数解释。",
+      "hints": [
+        "查看 #concept-score-sigmoid-probability。",
+        "运行 test_logistic_regression_lab.py。"
+      ],
+      "example": "本课有7个系数和1个截距。",
+      "answer": "它是变换后特征的加权和加截距，是 sigmoid 映射概率之前的实数分数。",
+      "source": {
+        "label": "分数与概率",
+        "href": "#concept-score-sigmoid-probability"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "sigmoid",
+      "lesson_id": "machine-learning-03",
+      "context_id": "concept-score-sigmoid-probability",
+      "question": "sigmoid 在逻辑回归中做什么？",
+      "aliases": [
+        "逻辑回归怎么输出概率"
+      ],
+      "keywords": [
+        "sigmoid",
+        "在逻辑回归中做什么",
+        "逻辑回归怎么输出概率"
+      ],
+      "diagnostic": "先判断“逻辑回归怎么输出概率”涉及分数概率、损失阈值、正则化还是系数解释。",
+      "hints": [
+        "查看 #concept-score-sigmoid-probability。",
+        "运行 test_logistic_regression_lab.py。"
+      ],
+      "example": "概率范围0.006到0.885。",
+      "answer": "它把任意实数分数单调映射到0到1，形成正类概率估计。",
+      "source": {
+        "label": "分数与概率",
+        "href": "#concept-score-sigmoid-probability"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "probability-boundary",
+      "lesson_id": "machine-learning-03",
+      "context_id": "concept-score-sigmoid-probability",
+      "question": "模型概率等于真实发生频率吗？",
+      "aliases": [
+        "predict_proba 能直接相信吗"
+      ],
+      "keywords": [
+        "模型概率等于真实发生频率吗",
+        "predict_proba",
+        "能直接相信吗"
+      ],
+      "diagnostic": "先判断“predict_proba 能直接相信吗”涉及分数概率、损失阈值、正则化还是系数解释。",
+      "hints": [
+        "查看 #concept-score-sigmoid-probability。",
+        "运行 test_logistic_regression_lab.py。"
+      ],
+      "example": "本课不外推业务概率。",
+      "answer": "不一定；它是当前数据和模型下的估计，还需独立评估与校准证据。",
+      "source": {
+        "label": "分数与概率",
+        "href": "#concept-score-sigmoid-probability"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "log-loss",
+      "lesson_id": "machine-learning-03",
+      "context_id": "concept-loss-threshold",
+      "question": "对数损失衡量什么？",
+      "aliases": [
+        "log loss 是什么"
+      ],
+      "keywords": [
+        "对数损失衡量什么",
+        "log",
+        "loss",
+        "是什么"
+      ],
+      "diagnostic": "先判断“log loss 是什么”涉及分数概率、损失阈值、正则化还是系数解释。",
+      "hints": [
+        "查看 #concept-loss-threshold。",
+        "运行 test_logistic_regression_lab.py。"
+      ],
+      "example": "固定验证损失0.590。",
+      "answer": "它根据真实标签评价整段概率，尤其惩罚对错误答案过度自信。",
+      "source": {
+        "label": "损失与阈值",
+        "href": "#concept-loss-threshold"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "threshold",
+      "lesson_id": "machine-learning-03",
+      "context_id": "concept-loss-threshold",
+      "question": "概率和分类阈值有什么区别？",
+      "aliases": [
+        "为什么0.5不是概率本身"
+      ],
+      "keywords": [
+        "概率和分类阈值有什么区别",
+        "为什么0.5不是概率本身"
+      ],
+      "diagnostic": "先判断“为什么0.5不是概率本身”涉及分数概率、损失阈值、正则化还是系数解释。",
+      "hints": [
+        "查看 #concept-loss-threshold。",
+        "运行 test_logistic_regression_lab.py。"
+      ],
+      "example": "本课阈值固定0.5。",
+      "answer": "概率是连续模型输出，阈值是把概率转成动作的决策规则，能按成本调整。",
+      "source": {
+        "label": "损失与阈值",
+        "href": "#concept-loss-threshold"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "metric-comparison",
+      "lesson_id": "machine-learning-03",
+      "context_id": "concept-loss-threshold",
+      "question": "准确率不变但召回提高说明什么？",
+      "aliases": [
+        "模型没超过基线还有用吗"
+      ],
+      "keywords": [
+        "准确率不变但召回提高说明什么",
+        "模型没超过基线还有用吗"
+      ],
+      "diagnostic": "先判断“模型没超过基线还有用吗”涉及分数概率、损失阈值、正则化还是系数解释。",
+      "hints": [
+        "查看 #concept-loss-threshold。",
+        "运行 test_logistic_regression_lab.py。"
+      ],
+      "example": "召回由0变为0.3。",
+      "answer": "不同指标观察不同错误；需结合基线、损失、阈值、错误成本和更多数据判断。",
+      "source": {
+        "label": "损失与阈值",
+        "href": "#concept-loss-threshold"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "l2",
+      "lesson_id": "machine-learning-03",
+      "context_id": "example-l2-regularization",
+      "question": "L2 正则化有什么作用？",
+      "aliases": [
+        "为什么惩罚大系数"
+      ],
+      "keywords": [
+        "L2",
+        "正则化有什么作用",
+        "为什么惩罚大系数"
+      ],
+      "diagnostic": "先判断“为什么惩罚大系数”涉及分数概率、损失阈值、正则化还是系数解释。",
+      "hints": [
+        "查看 #example-l2-regularization。",
+        "运行 test_logistic_regression_lab.py。"
+      ],
+      "example": "比较系数L2范数。",
+      "answer": "它对大权重增加代价，限制模型复杂度并缓解对训练噪声的过度响应。",
+      "source": {
+        "label": "L2 正则化",
+        "href": "#example-l2-regularization"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "c-parameter",
+      "lesson_id": "machine-learning-03",
+      "context_id": "example-l2-regularization",
+      "question": "逻辑回归的 C 越大正则越强吗？",
+      "aliases": [
+        "C 和正则强度关系"
+      ],
+      "keywords": [
+        "逻辑回归的",
+        "C",
+        "越大正则越强吗",
+        "和正则强度关系"
+      ],
+      "diagnostic": "先判断“C 和正则强度关系”涉及分数概率、损失阈值、正则化还是系数解释。",
+      "hints": [
+        "查看 #example-l2-regularization。",
+        "运行 test_logistic_regression_lab.py。"
+      ],
+      "example": "0.1范数小于10.0。",
+      "answer": "不是；C越小约束越强，C越大正则越弱。",
+      "source": {
+        "label": "L2 正则化",
+        "href": "#example-l2-regularization"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "coefficient-causality",
+      "lesson_id": "machine-learning-03",
+      "context_id": "example-l2-regularization",
+      "question": "最大系数能证明因果吗？",
+      "aliases": [
+        "逻辑回归系数是不是因果"
+      ],
+      "keywords": [
+        "最大系数能证明因果吗",
+        "逻辑回归系数是不是因果"
+      ],
+      "diagnostic": "先判断“逻辑回归系数是不是因果”涉及分数概率、损失阈值、正则化还是系数解释。",
+      "hints": [
+        "查看 #example-l2-regularization。",
+        "运行 test_logistic_regression_lab.py。"
+      ],
+      "example": "最大权重仅用于调试。",
+      "answer": "不能；相关特征、编码、尺度和混杂都会影响权重，它只描述当前模型关联。",
+      "source": {
+        "label": "L2 正则化",
+        "href": "#example-l2-regularization"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "experiment-v03",
+      "lesson_id": "machine-learning-03",
+      "context_id": "project-structured-data-ml-v03",
+      "question": "结构化机器学习系统 v0.3 新增什么？",
+      "aliases": [
+        "机器学习第三课项目"
+      ],
+      "keywords": [
+        "结构化机器学习系统",
+        "v0.3",
+        "新增什么",
+        "机器学习第三课项目"
+      ],
+      "diagnostic": "先判断“机器学习第三课项目”涉及分数概率、损失阈值、正则化还是系数解释。",
+      "hints": [
+        "查看 #project-structured-data-ml-v03。",
+        "运行 test_logistic_regression_lab.py。"
+      ],
+      "example": "8项真实测试。",
+      "answer": "在同一无泄漏预处理后加入逻辑回归、概率、阈值、对数损失和正则化比较。",
+      "source": {
+        "label": "结构化 ML 系统 v0.3",
+        "href": "#project-structured-data-ml-v03"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

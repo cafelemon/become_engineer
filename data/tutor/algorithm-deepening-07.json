@@ -1,0 +1,347 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "algorithm-deepening-07",
+    "title": "线性动态规划、状态与转移",
+    "path": "learning-paths/algorithm-deepening/07-linear-dynamic-programming-state-transition/"
+  },
+  "contexts": [
+    {
+      "id": "overview-linear-dp",
+      "type": "overview",
+      "title": "线性 DP 目标",
+      "anchor": "#overview-linear-dp"
+    },
+    {
+      "id": "concept-dp-state",
+      "type": "concept",
+      "title": "状态与转移",
+      "anchor": "#concept-dp-state"
+    },
+    {
+      "id": "example-dp-table",
+      "type": "example",
+      "title": "状态表",
+      "anchor": "#example-dp-table"
+    },
+    {
+      "id": "concept-dp-reconstruction",
+      "type": "concept",
+      "title": "选择重建",
+      "anchor": "#concept-dp-reconstruction"
+    },
+    {
+      "id": "reproduce-linear-dp-v07",
+      "type": "reproduce",
+      "title": "运行线性 DP",
+      "anchor": "#reproduce-linear-dp-v07"
+    },
+    {
+      "id": "modify-linear-dp",
+      "type": "modify",
+      "title": "修改状态契约",
+      "anchor": "#modify-linear-dp"
+    },
+    {
+      "id": "troubleshoot-linear-dp",
+      "type": "troubleshoot",
+      "title": "动态规划排错",
+      "anchor": "#troubleshoot-linear-dp"
+    },
+    {
+      "id": "project-pattern-lab-v07",
+      "type": "project",
+      "title": "约束模式实验 v0.7",
+      "anchor": "#project-pattern-lab-v07"
+    },
+    {
+      "id": "career-linear-dp",
+      "type": "career",
+      "title": "DP 状态追问",
+      "anchor": "#career-linear-dp"
+    }
+  ],
+  "cards": [
+    {
+      "id": "state-meaning",
+      "lesson_id": "algorithm-deepening-07",
+      "context_id": "concept-dp-state",
+      "question": "dp[i] 代表什么？",
+      "aliases": [
+        "线性 DP 状态怎样定义"
+      ],
+      "keywords": [
+        "dp[i]",
+        "代表什么",
+        "线性",
+        "DP",
+        "状态怎样定义"
+      ],
+      "diagnostic": "先判断“线性 DP 状态怎样定义”涉及状态定义、基线、转移、计算顺序还是重建。",
+      "hints": [
+        "查看 #concept-dp-state 的状态证据。",
+        "运行 test_linear_dp_trace.py 核对“dp[i] 代表什么”。"
+      ],
+      "example": "dp[0] 对应空前缀。",
+      "answer": "dp[i] 是前 i 个元素在不选相邻位置且允许空选择时的最大和。",
+      "source": {
+        "label": "状态与转移",
+        "href": "#concept-dp-state"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "transition",
+      "lesson_id": "algorithm-deepening-07",
+      "context_id": "concept-dp-state",
+      "question": "状态转移怎样推导？",
+      "aliases": [
+        "take 和 skip 是什么"
+      ],
+      "keywords": [
+        "状态转移怎样推导",
+        "take",
+        "和",
+        "skip",
+        "是什么"
+      ],
+      "diagnostic": "先判断“take 和 skip 是什么”涉及状态定义、基线、转移、计算顺序还是重建。",
+      "hints": [
+        "查看 #concept-dp-state 的状态证据。",
+        "运行 test_linear_dp_trace.py 核对“状态转移怎样推导”。"
+      ],
+      "example": "两类决策覆盖所有合法解。",
+      "answer": "跳过当前得到 dp[i-1]；选择当前得到 dp[i-2]+value[i-1]，取二者最大。",
+      "source": {
+        "label": "状态与转移",
+        "href": "#concept-dp-state"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "base-case",
+      "lesson_id": "algorithm-deepening-07",
+      "context_id": "concept-dp-state",
+      "question": "为什么需要 dp[0]=0？",
+      "aliases": [
+        "空前缀基线有什么用"
+      ],
+      "keywords": [
+        "为什么需要",
+        "dp[0]=0",
+        "空前缀基线有什么用"
+      ],
+      "diagnostic": "先判断“空前缀基线有什么用”涉及状态定义、基线、转移、计算顺序还是重建。",
+      "hints": [
+        "查看 #concept-dp-state 的状态证据。",
+        "运行 test_linear_dp_trace.py 核对“为什么需要 dp[0]=0”。"
+      ],
+      "example": "表长度为 n+1。",
+      "answer": "它给第一个元素和全负输入提供明确边界，并表达允许空选择。",
+      "source": {
+        "label": "状态与转移",
+        "href": "#concept-dp-state"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "prefix-invariant",
+      "lesson_id": "algorithm-deepening-07",
+      "context_id": "example-dp-table",
+      "question": "状态表的不变量是什么？",
+      "aliases": [
+        "怎样证明每个 dp 格子正确"
+      ],
+      "keywords": [
+        "状态表的不变量是什么",
+        "怎样证明每个",
+        "dp",
+        "格子正确"
+      ],
+      "diagnostic": "先判断“怎样证明每个 dp 格子正确”涉及状态定义、基线、转移、计算顺序还是重建。",
+      "hints": [
+        "查看 #example-dp-table 的状态证据。",
+        "运行 test_linear_dp_trace.py 核对“状态表的不变量是什么”。"
+      ],
+      "example": "固定不变量 dp-prefix-optimum。",
+      "answer": "dp[i] 始终是前 i 个元素的最优值；由更短前缀的最优值归纳得到。",
+      "source": {
+        "label": "状态表",
+        "href": "#example-dp-table"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "reconstruct",
+      "lesson_id": "algorithm-deepening-07",
+      "context_id": "concept-dp-reconstruction",
+      "question": "怎样重建一组最优下标？",
+      "aliases": [
+        "从 dp 表尾如何回退"
+      ],
+      "keywords": [
+        "怎样重建一组最优下标",
+        "从",
+        "dp",
+        "表尾如何回退"
+      ],
+      "diagnostic": "先判断“从 dp 表尾如何回退”涉及状态定义、基线、转移、计算顺序还是重建。",
+      "hints": [
+        "查看 #concept-dp-reconstruction 的状态证据。",
+        "运行 test_linear_dp_trace.py 核对“怎样重建一组最优下标”。"
+      ],
+      "example": "样例得到 0,2,4。",
+      "answer": "若 take>skip 就选当前并退两格，否则退一格，最后反转下标。",
+      "source": {
+        "label": "选择重建",
+        "href": "#concept-dp-reconstruction"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "tie-policy",
+      "lesson_id": "algorithm-deepening-07",
+      "context_id": "concept-dp-reconstruction",
+      "question": "take 和 skip 相等时怎么办？",
+      "aliases": [
+        "DP 平局如何固定输出"
+      ],
+      "keywords": [
+        "take",
+        "和",
+        "skip",
+        "相等时怎么办",
+        "DP",
+        "平局如何固定输出"
+      ],
+      "diagnostic": "先判断“DP 平局如何固定输出”涉及状态定义、基线、转移、计算顺序还是重建。",
+      "hints": [
+        "查看 #concept-dp-reconstruction 的状态证据。",
+        "运行 test_linear_dp_trace.py 核对“take 和 skip 相等时怎么办”。"
+      ],
+      "example": "[1,1] 选择下标 0。",
+      "answer": "本课固定跳过当前，使多组最优解的重建结果可重复。",
+      "source": {
+        "label": "选择重建",
+        "href": "#concept-dp-reconstruction"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "negative-empty",
+      "lesson_id": "algorithm-deepening-07",
+      "context_id": "reproduce-linear-dp-v07",
+      "question": "全负输入为什么返回零？",
+      "aliases": [
+        "允许空选择怎样影响答案"
+      ],
+      "keywords": [
+        "全负输入为什么返回零",
+        "允许空选择怎样影响答案"
+      ],
+      "diagnostic": "先判断“允许空选择怎样影响答案”涉及状态定义、基线、转移、计算顺序还是重建。",
+      "hints": [
+        "查看 #reproduce-linear-dp-v07 的状态证据。",
+        "运行 test_linear_dp_trace.py 核对“全负输入为什么返回零”。"
+      ],
+      "example": "禁止空选择时必须重设基线。",
+      "answer": "空集合合法且和为零，比任何负数选择更优。",
+      "source": {
+        "label": "运行线性 DP",
+        "href": "#reproduce-linear-dp-v07"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "greedy-counterexample",
+      "lesson_id": "algorithm-deepening-07",
+      "context_id": "overview-linear-dp",
+      "question": "先取最大值为什么失败？",
+      "aliases": [
+        "6 对 9 的反例"
+      ],
+      "keywords": [
+        "先取最大值为什么失败",
+        "6",
+        "对",
+        "9",
+        "的反例"
+      ],
+      "diagnostic": "先判断“6 对 9 的反例”涉及状态定义、基线、转移、计算顺序还是重建。",
+      "hints": [
+        "查看 #overview-linear-dp 的状态证据。",
+        "运行 test_linear_dp_trace.py 核对“先取最大值为什么失败”。"
+      ],
+      "example": "局部最大会阻塞两个可组合选择。",
+      "answer": "[4,5,4,1,1] 先取 5 后只得 6；DP 选择 4+4+1 得 9。",
+      "source": {
+        "label": "线性 DP 目标",
+        "href": "#overview-linear-dp"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "space-compression",
+      "lesson_id": "algorithm-deepening-07",
+      "context_id": "modify-linear-dp",
+      "question": "什么时候能把空间压到 O(1)？",
+      "aliases": [
+        "滚动变量会丢失什么"
+      ],
+      "keywords": [
+        "什么时候能把空间压到",
+        "O(1)",
+        "滚动变量会丢失什么"
+      ],
+      "diagnostic": "先判断“滚动变量会丢失什么”涉及状态定义、基线、转移、计算顺序还是重建。",
+      "hints": [
+        "查看 #modify-linear-dp 的状态证据。",
+        "运行 test_linear_dp_trace.py 核对“什么时候能把空间压到 O(1)”。"
+      ],
+      "example": "优化必须服从输出契约。",
+      "answer": "只求最优值时保留前两格即可；直接重建路径需要表或额外决策信息。",
+      "source": {
+        "label": "修改状态契约",
+        "href": "#modify-linear-dp"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "pattern-v07",
+      "lesson_id": "algorithm-deepening-07",
+      "context_id": "project-pattern-lab-v07",
+      "question": "约束模式实验 v0.7 新增什么？",
+      "aliases": [
+        "算法深化第七课项目是什么"
+      ],
+      "keywords": [
+        "约束模式实验",
+        "v0.7",
+        "新增什么",
+        "算法深化第七课项目是什么"
+      ],
+      "diagnostic": "先判断“算法深化第七课项目是什么”涉及状态定义、基线、转移、计算顺序还是重建。",
+      "hints": [
+        "查看 #project-pattern-lab-v07 的状态证据。",
+        "运行 test_linear_dp_trace.py 核对“约束模式实验 v0.7 新增什么”。"
+      ],
+      "example": "固定状态表 0,4,5,8,8,9。",
+      "answer": "新增线性 DP 状态表、选择重建、平局契约、错误贪心和小规模 oracle。",
+      "source": {
+        "label": "约束模式实验 v0.7",
+        "href": "#project-pattern-lab-v07"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

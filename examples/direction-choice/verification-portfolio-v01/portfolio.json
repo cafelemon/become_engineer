@@ -1,0 +1,45 @@
+{
+  "project_id": "study-summary-v01",
+  "artifacts": [
+    {
+      "kind": "code",
+      "path": "evidence/study_summary.py",
+      "claim": "实现非负学习时段的确定性汇总"
+    },
+    {
+      "kind": "tests",
+      "path": "evidence/test_study_summary.py",
+      "claim": "覆盖正常、空输入和负数拒绝"
+    },
+    {
+      "kind": "readme",
+      "path": "evidence/README.md",
+      "claim": "记录环境、命令、输入输出和边界"
+    },
+    {
+      "kind": "reflection",
+      "path": "evidence/retrospective.md",
+      "claim": "记录失败假设、修改和剩余风险"
+    }
+  ],
+  "route_trials": [
+    {
+      "route": "application-engineering",
+      "interest": 4,
+      "signals": ["interface", "data-flow"],
+      "note": "愿意继续把汇总接到 API 和页面"
+    },
+    {
+      "route": "algorithm",
+      "interest": 3,
+      "signals": ["correctness", "trace"],
+      "note": "愿意继续解释边界与执行轨迹"
+    },
+    {
+      "route": "systems-engineering",
+      "interest": 2,
+      "signals": ["runtime"],
+      "note": "先做一次进程和资源实验再判断"
+    }
+  ]
+}

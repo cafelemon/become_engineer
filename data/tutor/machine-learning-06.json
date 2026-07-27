@@ -1,0 +1,344 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "machine-learning-06",
+    "title": "聚类、PCA 与无监督评估",
+    "path": "learning-paths/ai-foundation/machine-learning/06-clustering-pca-unsupervised-evaluation/"
+  },
+  "contexts": [
+    {
+      "id": "overview-unsupervised-contract",
+      "type": "overview",
+      "title": "无监督实验契约",
+      "anchor": "#overview-unsupervised-contract"
+    },
+    {
+      "id": "concept-pca-variance",
+      "type": "concept",
+      "title": "PCA 与解释方差",
+      "anchor": "#concept-pca-variance"
+    },
+    {
+      "id": "concept-kmeans-objective",
+      "type": "concept",
+      "title": "KMeans 目标",
+      "anchor": "#concept-kmeans-objective"
+    },
+    {
+      "id": "example-unsupervised-evaluation",
+      "type": "example",
+      "title": "无监督评估",
+      "anchor": "#example-unsupervised-evaluation"
+    },
+    {
+      "id": "reproduce-unsupervised-v06",
+      "type": "reproduce",
+      "title": "运行无监督实验",
+      "anchor": "#reproduce-unsupervised-v06"
+    },
+    {
+      "id": "modify-unsupervised",
+      "type": "modify",
+      "title": "修改无监督实验",
+      "anchor": "#modify-unsupervised"
+    },
+    {
+      "id": "troubleshoot-unsupervised",
+      "type": "troubleshoot",
+      "title": "无监督排错",
+      "anchor": "#troubleshoot-unsupervised"
+    },
+    {
+      "id": "project-structured-data-ml-v06",
+      "type": "project",
+      "title": "结构化 ML 系统 v0.6",
+      "anchor": "#project-structured-data-ml-v06"
+    },
+    {
+      "id": "career-unsupervised-contract",
+      "type": "career",
+      "title": "聚类解释追问",
+      "anchor": "#career-unsupervised-contract"
+    }
+  ],
+  "cards": [
+    {
+      "id": "pca",
+      "lesson_id": "machine-learning-06",
+      "context_id": "concept-pca-variance",
+      "question": "PCA 在做什么？",
+      "aliases": [
+        "主成分分析是什么"
+      ],
+      "keywords": [
+        "PCA",
+        "在做什么",
+        "主成分分析是什么"
+      ],
+      "diagnostic": "先判断“主成分分析是什么”涉及降维、聚类目标、内部指标还是解释边界。",
+      "hints": [
+        "查看 #concept-pca-variance。",
+        "运行 test_unsupervised_lab.py。"
+      ],
+      "example": "本课投影到2维。",
+      "answer": "它寻找相互正交且依次解释最大方差的线性方向，用较少维度表示数据。",
+      "source": {
+        "label": "PCA 与解释方差",
+        "href": "#concept-pca-variance"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "explained-variance",
+      "lesson_id": "machine-learning-06",
+      "context_id": "concept-pca-variance",
+      "question": "解释方差比表示什么？",
+      "aliases": [
+        "PCA 的 0.762 是什么"
+      ],
+      "keywords": [
+        "解释方差比表示什么",
+        "PCA",
+        "的",
+        "0.762",
+        "是什么"
+      ],
+      "diagnostic": "先判断“PCA 的 0.762 是什么”涉及降维、聚类目标、内部指标还是解释边界。",
+      "hints": [
+        "查看 #concept-pca-variance。",
+        "运行 test_unsupervised_lab.py。"
+      ],
+      "example": "前两维累计0.762。",
+      "answer": "它表示选定主成分保留的标准化样本方差比例，不等于业务信息比例。",
+      "source": {
+        "label": "PCA 与解释方差",
+        "href": "#concept-pca-variance"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "scale-before-pca",
+      "lesson_id": "machine-learning-06",
+      "context_id": "concept-pca-variance",
+      "question": "为什么 PCA 前要标准化？",
+      "aliases": [
+        "PCA 为什么怕量纲"
+      ],
+      "keywords": [
+        "为什么",
+        "PCA",
+        "前要标准化",
+        "为什么怕量纲"
+      ],
+      "diagnostic": "先判断“PCA 为什么怕量纲”涉及降维、聚类目标、内部指标还是解释边界。",
+      "hints": [
+        "查看 #concept-pca-variance。",
+        "运行 test_unsupervised_lab.py。"
+      ],
+      "example": "四列先StandardScaler。",
+      "answer": "PCA优化方差，量纲大的字段会不成比例地支配方向。",
+      "source": {
+        "label": "PCA 与解释方差",
+        "href": "#concept-pca-variance"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "kmeans",
+      "lesson_id": "machine-learning-06",
+      "context_id": "concept-kmeans-objective",
+      "question": "KMeans 优化什么？",
+      "aliases": [
+        "聚类惯性是什么"
+      ],
+      "keywords": [
+        "KMeans",
+        "优化什么",
+        "聚类惯性是什么"
+      ],
+      "diagnostic": "先判断“聚类惯性是什么”涉及降维、聚类目标、内部指标还是解释边界。",
+      "hints": [
+        "查看 #concept-kmeans-objective。",
+        "运行 test_unsupervised_lab.py。"
+      ],
+      "example": "本课n_init=20。",
+      "answer": "它最小化样本到所属簇中心的平方距离和，也称惯性。",
+      "source": {
+        "label": "KMeans 目标",
+        "href": "#concept-kmeans-objective"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "inertia-limit",
+      "lesson_id": "machine-learning-06",
+      "context_id": "concept-kmeans-objective",
+      "question": "为什么不能只用最小惯性选 k？",
+      "aliases": [
+        "k越大惯性越小怎么办"
+      ],
+      "keywords": [
+        "为什么不能只用最小惯性选",
+        "k",
+        "k越大惯性越小怎么办"
+      ],
+      "diagnostic": "先判断“k越大惯性越小怎么办”涉及降维、聚类目标、内部指标还是解释边界。",
+      "hints": [
+        "查看 #concept-kmeans-objective。",
+        "运行 test_unsupervised_lab.py。"
+      ],
+      "example": "比较k2到k4。",
+      "answer": "惯性通常随簇数增加而不升，必须结合轮廓、稳定性、簇大小和领域约束。",
+      "source": {
+        "label": "KMeans 目标",
+        "href": "#concept-kmeans-objective"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "cluster-label",
+      "lesson_id": "machine-learning-06",
+      "context_id": "concept-kmeans-objective",
+      "question": "簇编号 0 和 1 有顺序吗？",
+      "aliases": [
+        "cluster label 能互换吗"
+      ],
+      "keywords": [
+        "簇编号",
+        "0",
+        "和",
+        "1",
+        "有顺序吗",
+        "cluster",
+        "label",
+        "能互换吗"
+      ],
+      "diagnostic": "先判断“cluster label 能互换吗”涉及降维、聚类目标、内部指标还是解释边界。",
+      "hints": [
+        "查看 #concept-kmeans-objective。",
+        "运行 test_unsupervised_lab.py。"
+      ],
+      "example": "调整兰德指数忽略置换。",
+      "answer": "没有；编号只是算法标识，重新拟合后可以整体置换。",
+      "source": {
+        "label": "KMeans 目标",
+        "href": "#concept-kmeans-objective"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "silhouette",
+      "lesson_id": "machine-learning-06",
+      "context_id": "example-unsupervised-evaluation",
+      "question": "轮廓系数衡量什么？",
+      "aliases": [
+        "silhouette score 是什么"
+      ],
+      "keywords": [
+        "轮廓系数衡量什么",
+        "silhouette",
+        "score",
+        "是什么"
+      ],
+      "diagnostic": "先判断“silhouette score 是什么”涉及降维、聚类目标、内部指标还是解释边界。",
+      "hints": [
+        "查看 #example-unsupervised-evaluation。",
+        "运行 test_unsupervised_lab.py。"
+      ],
+      "example": "k2为0.337。",
+      "answer": "它比较样本的簇内紧密度与最近其他簇分离度，范围约为-1到1。",
+      "source": {
+        "label": "无监督评估",
+        "href": "#example-unsupervised-evaluation"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "stability",
+      "lesson_id": "machine-learning-06",
+      "context_id": "example-unsupervised-evaluation",
+      "question": "聚类稳定性为什么重要？",
+      "aliases": [
+        "换随机种子簇会变吗"
+      ],
+      "keywords": [
+        "聚类稳定性为什么重要",
+        "换随机种子簇会变吗"
+      ],
+      "diagnostic": "先判断“换随机种子簇会变吗”涉及降维、聚类目标、内部指标还是解释边界。",
+      "hints": [
+        "查看 #example-unsupervised-evaluation。",
+        "运行 test_unsupervised_lab.py。"
+      ],
+      "example": "本课跨种子ARI为1。",
+      "answer": "若小扰动就改变划分，当前结构可能不稳；应跨种子、样本和时间检查。",
+      "source": {
+        "label": "无监督评估",
+        "href": "#example-unsupervised-evaluation"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "cluster-truth",
+      "lesson_id": "machine-learning-06",
+      "context_id": "example-unsupervised-evaluation",
+      "question": "聚类结果是真实类别吗？",
+      "aliases": [
+        "簇能直接叫用户类型吗"
+      ],
+      "keywords": [
+        "聚类结果是真实类别吗",
+        "簇能直接叫用户类型吗"
+      ],
+      "diagnostic": "先判断“簇能直接叫用户类型吗”涉及降维、聚类目标、内部指标还是解释边界。",
+      "hints": [
+        "查看 #example-unsupervised-evaluation。",
+        "运行 test_unsupervised_lab.py。"
+      ],
+      "example": "不把簇当身份或因果。",
+      "answer": "不能；簇只描述当前特征和算法下的几何结构，需要外部证据与风险审查。",
+      "source": {
+        "label": "无监督评估",
+        "href": "#example-unsupervised-evaluation"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "experiment-v06",
+      "lesson_id": "machine-learning-06",
+      "context_id": "project-structured-data-ml-v06",
+      "question": "结构化机器学习系统 v0.6 新增什么？",
+      "aliases": [
+        "机器学习第六课项目"
+      ],
+      "keywords": [
+        "结构化机器学习系统",
+        "v0.6",
+        "新增什么",
+        "机器学习第六课项目"
+      ],
+      "diagnostic": "先判断“机器学习第六课项目”涉及降维、聚类目标、内部指标还是解释边界。",
+      "hints": [
+        "查看 #project-structured-data-ml-v06。",
+        "运行 test_unsupervised_lab.py。"
+      ],
+      "example": "8项真实测试。",
+      "answer": "新增无标签PCA、KMeans、解释方差、轮廓、簇大小与跨种子稳定性。",
+      "source": {
+        "label": "结构化 ML 系统 v0.6",
+        "href": "#project-structured-data-ml-v06"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

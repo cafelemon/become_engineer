@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "events": [
+    {"minute": 0, "type": "start", "task_id": "io-warmup", "note": "read-contract"},
+    {"minute": 8, "type": "submit", "task_id": "io-warmup", "note": "passed-local-cases"},
+    {"minute": 9, "type": "start", "task_id": "boundary-search", "note": "define-half-open-range"},
+    {"minute": 20, "type": "checkpoint", "task_id": "boundary-search", "note": "invariant-not-stable"},
+    {"minute": 24, "type": "switch", "task_id": "boundary-search", "note": "no-progress-after-checkpoint"},
+    {"minute": 25, "type": "start", "task_id": "graph-shortest", "note": "reuse-bfs-template"},
+    {"minute": 40, "type": "checkpoint", "task_id": "graph-shortest", "note": "implementation-complete"},
+    {"minute": 43, "type": "submit", "task_id": "graph-shortest", "note": "passed-local-cases"}
+  ]
+}

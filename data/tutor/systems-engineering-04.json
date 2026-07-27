@@ -1,0 +1,343 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "systems-engineering-04",
+    "title": "非阻塞网络、事件循环与背压",
+    "path": "learning-paths/systems-engineering/04-nonblocking-network-event-loop-backpressure/"
+  },
+  "contexts": [
+    {
+      "id": "overview-nonblocking-io",
+      "type": "overview",
+      "title": "非阻塞网络目标",
+      "anchor": "#overview-nonblocking-io"
+    },
+    {
+      "id": "concept-nonblocking-state",
+      "type": "concept",
+      "title": "非阻塞状态机",
+      "anchor": "#concept-nonblocking-state"
+    },
+    {
+      "id": "example-poll-interest",
+      "type": "example",
+      "title": "poll 兴趣集合",
+      "anchor": "#example-poll-interest"
+    },
+    {
+      "id": "reproduce-nonblocking-v04",
+      "type": "reproduce",
+      "title": "运行 socket 实验",
+      "anchor": "#reproduce-nonblocking-v04"
+    },
+    {
+      "id": "concept-partial-io",
+      "type": "concept",
+      "title": "部分发送状态",
+      "anchor": "#concept-partial-io"
+    },
+    {
+      "id": "modify-event-loop",
+      "type": "modify",
+      "title": "修改事件循环",
+      "anchor": "#modify-event-loop"
+    },
+    {
+      "id": "troubleshoot-event-loop",
+      "type": "troubleshoot",
+      "title": "事件循环排错",
+      "anchor": "#troubleshoot-event-loop"
+    },
+    {
+      "id": "project-diagnostic-service-v04",
+      "type": "project",
+      "title": "可诊断系统服务 v0.4",
+      "anchor": "#project-diagnostic-service-v04"
+    },
+    {
+      "id": "career-network-backpressure",
+      "type": "career",
+      "title": "网络背压追问",
+      "anchor": "#career-network-backpressure"
+    }
+  ],
+  "cards": [
+    {
+      "id": "nonblocking-purpose",
+      "lesson_id": "systems-engineering-04",
+      "context_id": "overview-nonblocking-io",
+      "question": "非阻塞 socket 解决什么问题？",
+      "aliases": [
+        "非阻塞是否消除等待"
+      ],
+      "keywords": [
+        "非阻塞",
+        "socket",
+        "解决什么问题",
+        "非阻塞是否消除等待"
+      ],
+      "diagnostic": "先判断“非阻塞是否消除等待”属于非阻塞状态、事件兴趣还是待发数据所有权。",
+      "hints": [
+        "查看 #overview-nonblocking-io 的状态与固定证据。",
+        "运行 test_nonblocking_socket.py 核对“非阻塞 socket 解决什么问题”。"
+      ],
+      "example": "写满时 send 返回 EAGAIN。",
+      "answer": "它把线程内的无限等待变成调用方可处理的返回状态，但不会消除缓冲区容量限制。",
+      "source": {
+        "label": "非阻塞网络目标",
+        "href": "#overview-nonblocking-io"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "eagain-meaning",
+      "lesson_id": "systems-engineering-04",
+      "context_id": "concept-nonblocking-state",
+      "question": "EAGAIN 表示连接失败了吗？",
+      "aliases": [
+        "EAGAIN 应该怎样处理"
+      ],
+      "keywords": [
+        "EAGAIN",
+        "表示连接失败了吗",
+        "应该怎样处理"
+      ],
+      "diagnostic": "先判断“EAGAIN 应该怎样处理”属于非阻塞状态、事件兴趣还是待发数据所有权。",
+      "hints": [
+        "查看 #concept-nonblocking-state 的状态与固定证据。",
+        "运行 test_nonblocking_socket.py 核对“EAGAIN 表示连接失败了吗”。"
+      ],
+      "example": "固定输出 backpressure=EAGAIN-observed。",
+      "answer": "不是；它表示本次操作现在会阻塞，应保留未发送数据并等待写就绪。",
+      "source": {
+        "label": "非阻塞状态机",
+        "href": "#concept-nonblocking-state"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "pollout-interest",
+      "lesson_id": "systems-engineering-04",
+      "context_id": "example-poll-interest",
+      "question": "什么时候应该订阅 POLLOUT？",
+      "aliases": [
+        "为什么不能一直监听可写"
+      ],
+      "keywords": [
+        "什么时候应该订阅",
+        "POLLOUT",
+        "为什么不能一直监听可写"
+      ],
+      "diagnostic": "先判断“为什么不能一直监听可写”属于非阻塞状态、事件兴趣还是待发数据所有权。",
+      "hints": [
+        "查看 #example-poll-interest 的状态与固定证据。",
+        "运行 test_nonblocking_socket.py 核对“什么时候应该订阅 POLLOUT”。"
+      ],
+      "example": "对端排空后 poll_after_drain=writable。",
+      "answer": "只有存在待发数据且发送暂时无法继续时订阅；否则可写 fd 会让循环频繁空转。",
+      "source": {
+        "label": "poll 兴趣集合",
+        "href": "#example-poll-interest"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "pollin-meaning",
+      "lesson_id": "systems-engineering-04",
+      "context_id": "example-poll-interest",
+      "question": "POLLIN 保证读到完整消息吗？",
+      "aliases": [
+        "读就绪是否等于整条消息到达"
+      ],
+      "keywords": [
+        "POLLIN",
+        "保证读到完整消息吗",
+        "读就绪是否等于整条消息到达"
+      ],
+      "diagnostic": "先判断“读就绪是否等于整条消息到达”属于非阻塞状态、事件兴趣还是待发数据所有权。",
+      "hints": [
+        "查看 #example-poll-interest 的状态与固定证据。",
+        "运行 test_nonblocking_socket.py 核对“POLLIN 保证读到完整消息吗”。"
+      ],
+      "example": "恢复消息触发 reader_event=readable。",
+      "answer": "不保证；它只表示读取可能取得进度，字节流仍需累计并按协议找边界。",
+      "source": {
+        "label": "poll 兴趣集合",
+        "href": "#example-poll-interest"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "real-backpressure",
+      "lesson_id": "systems-engineering-04",
+      "context_id": "reproduce-nonblocking-v04",
+      "question": "怎样真实触发网络背压？",
+      "aliases": [
+        "不用 Mock 怎样得到 EAGAIN"
+      ],
+      "keywords": [
+        "怎样真实触发网络背压",
+        "不用",
+        "Mock",
+        "怎样得到",
+        "EAGAIN"
+      ],
+      "diagnostic": "先判断“不用 Mock 怎样得到 EAGAIN”属于非阻塞状态、事件兴趣还是待发数据所有权。",
+      "hints": [
+        "查看 #reproduce-nonblocking-v04 的状态与固定证据。",
+        "运行 test_nonblocking_socket.py 核对“怎样真实触发网络背压”。"
+      ],
+      "example": "测试不连接外网，也不固定缓冲区大小。",
+      "answer": "使用真实 socketpair，不读取对端，并以有界循环发送直到内核返回 EAGAIN。",
+      "source": {
+        "label": "运行 socket 实验",
+        "href": "#reproduce-nonblocking-v04"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "partial-send",
+      "lesson_id": "systems-engineering-04",
+      "context_id": "concept-partial-io",
+      "question": "send 返回正数就代表整条消息完成吗？",
+      "aliases": [
+        "部分发送怎样续传"
+      ],
+      "keywords": [
+        "send",
+        "返回正数就代表整条消息完成吗",
+        "部分发送怎样续传"
+      ],
+      "diagnostic": "先判断“部分发送怎样续传”属于非阻塞状态、事件兴趣还是待发数据所有权。",
+      "hints": [
+        "查看 #concept-partial-io 的状态与固定证据。",
+        "运行 test_nonblocking_socket.py 核对“send 返回正数就代表整条消息完成吗”。"
+      ],
+      "example": "remaining = buffer.size - offset。",
+      "answer": "只有返回值等于剩余长度才完成；否则增加 offset，下一次从未发送位置继续。",
+      "source": {
+        "label": "部分发送状态",
+        "href": "#concept-partial-io"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "stable-snapshot",
+      "lesson_id": "systems-engineering-04",
+      "context_id": "reproduce-nonblocking-v04",
+      "question": "网络实验为什么不记录写入次数？",
+      "aliases": [
+        "怎样避免不同机器快照漂移"
+      ],
+      "keywords": [
+        "网络实验为什么不记录写入次数",
+        "怎样避免不同机器快照漂移"
+      ],
+      "diagnostic": "先判断“怎样避免不同机器快照漂移”属于非阻塞状态、事件兴趣还是待发数据所有权。",
+      "hints": [
+        "查看 #reproduce-nonblocking-v04 的状态与固定证据。",
+        "运行 test_nonblocking_socket.py 核对“网络实验为什么不记录写入次数”。"
+      ],
+      "example": "poll_while_full=not-writable。",
+      "answer": "内核缓冲区大小和调度可变，固定输出只记录 EAGAIN、就绪恢复和消息完整性。",
+      "source": {
+        "label": "运行 socket 实验",
+        "href": "#reproduce-nonblocking-v04"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "busy-loop",
+      "lesson_id": "systems-engineering-04",
+      "context_id": "troubleshoot-event-loop",
+      "question": "事件循环为什么会空转？",
+      "aliases": [
+        "CPU 满载但没有业务流量"
+      ],
+      "keywords": [
+        "事件循环为什么会空转",
+        "CPU",
+        "满载但没有业务流量"
+      ],
+      "diagnostic": "先判断“CPU 满载但没有业务流量”属于非阻塞状态、事件兴趣还是待发数据所有权。",
+      "hints": [
+        "查看 #troubleshoot-event-loop 的状态与固定证据。",
+        "运行 test_nonblocking_socket.py 核对“事件循环为什么会空转”。"
+      ],
+      "example": "清空待发缓冲后移除写兴趣。",
+      "answer": "常见原因是没有待发数据时仍持续订阅 POLLOUT，fd 一直可写并反复唤醒。",
+      "source": {
+        "label": "事件循环排错",
+        "href": "#troubleshoot-event-loop"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "socket-close",
+      "lesson_id": "systems-engineering-04",
+      "context_id": "troubleshoot-event-loop",
+      "question": "对端关闭后怎样结束事件处理？",
+      "aliases": [
+        "HUP 或 recv 等于 0 怎么办"
+      ],
+      "keywords": [
+        "对端关闭后怎样结束事件处理",
+        "HUP",
+        "或",
+        "recv",
+        "等于",
+        "0",
+        "怎么办"
+      ],
+      "diagnostic": "先判断“HUP 或 recv 等于 0 怎么办”属于非阻塞状态、事件兴趣还是待发数据所有权。",
+      "hints": [
+        "查看 #troubleshoot-event-loop 的状态与固定证据。",
+        "运行 test_nonblocking_socket.py 核对“对端关闭后怎样结束事件处理”。"
+      ],
+      "example": "示例由 RAII 关闭 socketpair 两端。",
+      "answer": "处理 HUP、ERR 或 recv=0，停止订阅并按所有权释放描述符，不能反复轮询。",
+      "source": {
+        "label": "事件循环排错",
+        "href": "#troubleshoot-event-loop"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "diagnostic-v04",
+      "lesson_id": "systems-engineering-04",
+      "context_id": "project-diagnostic-service-v04",
+      "question": "可诊断系统服务 v0.4 新增什么？",
+      "aliases": [
+        "第四课项目增量是什么"
+      ],
+      "keywords": [
+        "可诊断系统服务",
+        "v0.4",
+        "新增什么",
+        "第四课项目增量是什么"
+      ],
+      "diagnostic": "先判断“第四课项目增量是什么”属于非阻塞状态、事件兴趣还是待发数据所有权。",
+      "hints": [
+        "查看 #project-diagnostic-service-v04 的状态与固定证据。",
+        "运行 test_nonblocking_socket.py 核对“可诊断系统服务 v0.4 新增什么”。"
+      ],
+      "example": "固定输出 resume_send=pass。",
+      "answer": "新增真实非阻塞 socket、EAGAIN、poll 读写就绪、排空恢复和 5 项测试。",
+      "source": {
+        "label": "可诊断系统服务 v0.4",
+        "href": "#project-diagnostic-service-v04"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

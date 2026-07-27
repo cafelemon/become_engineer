@@ -1,0 +1,339 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "llm-rag-eval-02",
+    "title": "倒排索引、BM25、Top-k 与稳定排序",
+    "path": "learning-paths/llm-agent/rag-eval/02-inverted-index-bm25-top-k-stable-ranking/"
+  },
+  "contexts": [
+    {
+      "id": "overview-bm25-baseline",
+      "type": "overview",
+      "title": "BM25关键词基线",
+      "anchor": "#overview-bm25-baseline"
+    },
+    {
+      "id": "concept-inverted-index",
+      "type": "concept",
+      "title": "倒排索引",
+      "anchor": "#concept-inverted-index"
+    },
+    {
+      "id": "concept-bm25-score",
+      "type": "concept",
+      "title": "BM25分数",
+      "anchor": "#concept-bm25-score"
+    },
+    {
+      "id": "example-tokenizer-contract",
+      "type": "example",
+      "title": "Tokenizer契约",
+      "anchor": "#example-tokenizer-contract"
+    },
+    {
+      "id": "reproduce-bm25-v08",
+      "type": "reproduce",
+      "title": "运行BM25实验",
+      "anchor": "#reproduce-bm25-v08"
+    },
+    {
+      "id": "modify-bm25-tokenizer",
+      "type": "modify",
+      "title": "修改Tokenizer",
+      "anchor": "#modify-bm25-tokenizer"
+    },
+    {
+      "id": "troubleshoot-bm25-ranking",
+      "type": "troubleshoot",
+      "title": "BM25排错",
+      "anchor": "#troubleshoot-bm25-ranking"
+    },
+    {
+      "id": "deepen-lexical-baseline",
+      "type": "deepen",
+      "title": "关键词基线深化",
+      "anchor": "#deepen-lexical-baseline"
+    },
+    {
+      "id": "project-learning-assistant-v08",
+      "type": "project",
+      "title": "智能学习助手v0.8",
+      "anchor": "#project-learning-assistant-v08"
+    }
+  ],
+  "cards": [
+    {
+      "id": "inverted-index",
+      "lesson_id": "llm-rag-eval-02",
+      "context_id": "concept-inverted-index",
+      "question": "倒排索引保存什么？",
+      "aliases": [
+        "posting list是什么"
+      ],
+      "keywords": [
+        "倒排索引保存什么",
+        "posting",
+        "list是什么"
+      ],
+      "diagnostic": "先定位“posting list是什么”属于token、posting、IDF、长度归一还是排序。",
+      "hints": [
+        "查看 #concept-inverted-index。",
+        "运行 test_bm25_retriever.py 并查看explain。"
+      ],
+      "example": "查询无需扫描所有正文。",
+      "answer": "保存term到文档ID集合的映射，同时每篇文档保存term frequency和长度。",
+      "source": {
+        "label": "倒排索引",
+        "href": "#concept-inverted-index"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "idf",
+      "lesson_id": "llm-rag-eval-02",
+      "context_id": "concept-bm25-score",
+      "question": "IDF 为什么让稀有词权重更高？",
+      "aliases": [
+        "df越小分越高吗"
+      ],
+      "keywords": [
+        "IDF",
+        "为什么让稀有词权重更高",
+        "df越小分越高吗"
+      ],
+      "diagnostic": "先定位“df越小分越高吗”属于token、posting、IDF、长度归一还是排序。",
+      "hints": [
+        "查看 #concept-bm25-score。",
+        "运行 test_bm25_retriever.py 并查看explain。"
+      ],
+      "example": "rare高于common。",
+      "answer": "在其他条件相同时，出现文档更少的term更能区分结果，BM25的IDF更高。",
+      "source": {
+        "label": "BM25分数",
+        "href": "#concept-bm25-score"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "tf-saturation",
+      "lesson_id": "llm-rag-eval-02",
+      "context_id": "concept-bm25-score",
+      "question": "BM25 为什么不让词频线性增长？",
+      "aliases": [
+        "重复100次会得100倍吗"
+      ],
+      "keywords": [
+        "BM25",
+        "为什么不让词频线性增长",
+        "重复100次会得100倍吗"
+      ],
+      "diagnostic": "先定位“重复100次会得100倍吗”属于token、posting、IDF、长度归一还是排序。",
+      "hints": [
+        "查看 #concept-bm25-score。",
+        "运行 test_bm25_retriever.py 并查看explain。"
+      ],
+      "example": "固定k1为1.2。",
+      "answer": "k1让term frequency收益逐渐饱和，避免堆词无限放大。",
+      "source": {
+        "label": "BM25分数",
+        "href": "#concept-bm25-score"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "length-normalization",
+      "lesson_id": "llm-rag-eval-02",
+      "context_id": "concept-bm25-score",
+      "question": "参数 b 控制什么？",
+      "aliases": [
+        "长文档为什么要归一"
+      ],
+      "keywords": [
+        "参数",
+        "b",
+        "控制什么",
+        "长文档为什么要归一"
+      ],
+      "diagnostic": "先定位“长文档为什么要归一”属于token、posting、IDF、长度归一还是排序。",
+      "hints": [
+        "查看 #concept-bm25-score。",
+        "运行 test_bm25_retriever.py 并查看explain。"
+      ],
+      "example": "本课b等于0.75。",
+      "answer": "b控制文档长度相对平均长度的归一强度；0不归一，1完全使用该项。",
+      "source": {
+        "label": "BM25分数",
+        "href": "#concept-bm25-score"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "han-tokenizer",
+      "lesson_id": "llm-rag-eval-02",
+      "context_id": "example-tokenizer-contract",
+      "question": "本课中文 tokenizer 有什么限制？",
+      "aliases": [
+        "单字二元组算中文分词吗"
+      ],
+      "keywords": [
+        "本课中文",
+        "tokenizer",
+        "有什么限制",
+        "单字二元组算中文分词吗"
+      ],
+      "diagnostic": "先定位“单字二元组算中文分词吗”属于token、posting、IDF、长度归一还是排序。",
+      "hints": [
+        "查看 #example-tokenizer-contract。",
+        "运行 test_bm25_retriever.py 并查看explain。"
+      ],
+      "example": "general-segmentation:false。",
+      "answer": "只生成汉字单字和相邻二元组，能复现但不是通用分词，可能产生公共单字噪声。",
+      "source": {
+        "label": "Tokenizer契约",
+        "href": "#example-tokenizer-contract"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "stable-tie",
+      "lesson_id": "llm-rag-eval-02",
+      "context_id": "troubleshoot-bm25-ranking",
+      "question": "BM25 同分如何稳定排序？",
+      "aliases": [
+        "score一样每次顺序不同"
+      ],
+      "keywords": [
+        "BM25",
+        "同分如何稳定排序",
+        "score一样每次顺序不同"
+      ],
+      "diagnostic": "先定位“score一样每次顺序不同”属于token、posting、IDF、长度归一还是排序。",
+      "hints": [
+        "查看 #troubleshoot-bm25-ranking。",
+        "运行 test_bm25_retriever.py 并查看explain。"
+      ],
+      "example": "alpha排在zeta前。",
+      "answer": "先按score降序，再按稳定document_id升序。",
+      "source": {
+        "label": "BM25排错",
+        "href": "#troubleshoot-bm25-ranking"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "empty-query",
+      "lesson_id": "llm-rag-eval-02",
+      "context_id": "reproduce-bm25-v08",
+      "question": "未知词查询应该返回什么？",
+      "aliases": [
+        "没命中也返回零分文档吗"
+      ],
+      "keywords": [
+        "未知词查询应该返回什么",
+        "没命中也返回零分文档吗"
+      ],
+      "diagnostic": "先定位“没命中也返回零分文档吗”属于token、posting、IDF、长度归一还是排序。",
+      "hints": [
+        "查看 #reproduce-bm25-v08。",
+        "运行 test_bm25_retriever.py 并查看explain。"
+      ],
+      "example": "query-unknown=none。",
+      "answer": "返回空结果；零分文档排除，不能用任意内容填满Top-k。",
+      "source": {
+        "label": "运行BM25实验",
+        "href": "#reproduce-bm25-v08"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "score-explain",
+      "lesson_id": "llm-rag-eval-02",
+      "context_id": "troubleshoot-bm25-ranking",
+      "question": "如何解释一篇文档的 BM25 分数？",
+      "aliases": [
+        "总分从哪里来"
+      ],
+      "keywords": [
+        "如何解释一篇文档的",
+        "BM25",
+        "分数",
+        "总分从哪里来"
+      ],
+      "diagnostic": "先定位“总分从哪里来”属于token、posting、IDF、长度归一还是排序。",
+      "hints": [
+        "查看 #troubleshoot-bm25-ranking。",
+        "运行 test_bm25_retriever.py 并查看explain。"
+      ],
+      "example": "explanation可核对。",
+      "answer": "展开每个去重query term的IDF、tf与长度归一贡献，求和必须等于总分。",
+      "source": {
+        "label": "BM25排错",
+        "href": "#troubleshoot-bm25-ranking"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "lexical-baseline",
+      "lesson_id": "llm-rag-eval-02",
+      "context_id": "deepen-lexical-baseline",
+      "question": "向量检索前为什么保留 BM25？",
+      "aliases": [
+        "embedding更智能还要关键词吗"
+      ],
+      "keywords": [
+        "向量检索前为什么保留",
+        "BM25",
+        "embedding更智能还要关键词吗"
+      ],
+      "diagnostic": "先定位“embedding更智能还要关键词吗”属于token、posting、IDF、长度归一还是排序。",
+      "hints": [
+        "查看 #deepen-lexical-baseline。",
+        "运行 test_bm25_retriever.py 并查看explain。"
+      ],
+      "example": "同一查询集比较。",
+      "answer": "BM25无模型费用、词面精确且可解释，是判断向量或混合检索是否真正改进的基线。",
+      "source": {
+        "label": "关键词基线深化",
+        "href": "#deepen-lexical-baseline"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    },
+    {
+      "id": "assistant-v08",
+      "lesson_id": "llm-rag-eval-02",
+      "context_id": "project-learning-assistant-v08",
+      "question": "智能学习助手 v0.8 新增什么？",
+      "aliases": [
+        "RAG第二课项目做什么"
+      ],
+      "keywords": [
+        "智能学习助手",
+        "v0.8",
+        "新增什么",
+        "RAG第二课项目做什么"
+      ],
+      "diagnostic": "先定位“RAG第二课项目做什么”属于token、posting、IDF、长度归一还是排序。",
+      "hints": [
+        "查看 #project-learning-assistant-v08。",
+        "运行 test_bm25_retriever.py 并查看explain。"
+      ],
+      "example": "下一版分块引用。",
+      "answer": "新增Tokenizer、倒排索引、BM25、Top-k、稳定并列和term贡献解释。",
+      "source": {
+        "label": "智能学习助手v0.8",
+        "href": "#project-learning-assistant-v08"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    }
+  ]
+}

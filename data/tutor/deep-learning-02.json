@@ -1,0 +1,359 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "deep-learning-02",
+    "title": "线性层、激活函数、参数与前向图",
+    "path": "learning-paths/ai-foundation/deep-learning/02-linear-layer-activation-parameters-forward-graph/"
+  },
+  "contexts": [
+    {
+      "id": "overview-forward-network",
+      "type": "overview",
+      "title": "前向网络结果",
+      "anchor": "#overview-forward-network"
+    },
+    {
+      "id": "concept-module-parameters",
+      "type": "concept",
+      "title": "模块与参数",
+      "anchor": "#concept-module-parameters"
+    },
+    {
+      "id": "concept-activation-nonlinearity",
+      "type": "concept",
+      "title": "激活与非线性",
+      "anchor": "#concept-activation-nonlinearity"
+    },
+    {
+      "id": "example-forward-trace-logits",
+      "type": "example",
+      "title": "前向 trace 与 logits",
+      "anchor": "#example-forward-trace-logits"
+    },
+    {
+      "id": "reproduce-forward-v02",
+      "type": "reproduce",
+      "title": "运行前向实验",
+      "anchor": "#reproduce-forward-v02"
+    },
+    {
+      "id": "modify-forward-network",
+      "type": "modify",
+      "title": "修改前向网络",
+      "anchor": "#modify-forward-network"
+    },
+    {
+      "id": "troubleshoot-forward-network",
+      "type": "troubleshoot",
+      "title": "前向网络排错",
+      "anchor": "#troubleshoot-forward-network"
+    },
+    {
+      "id": "deepen-dynamic-forward-graph",
+      "type": "deepen",
+      "title": "动态前向图",
+      "anchor": "#deepen-dynamic-forward-graph"
+    },
+    {
+      "id": "project-diagnosable-network-v02",
+      "type": "project",
+      "title": "可诊断网络 v0.2",
+      "anchor": "#project-diagnosable-network-v02"
+    }
+  ],
+  "cards": [
+    {
+      "id": "module-registration",
+      "lesson_id": "deep-learning-02",
+      "context_id": "concept-module-parameters",
+      "question": "nn.Module 为什么要注册子层？",
+      "aliases": [
+        "模型层为什么赋值给 self"
+      ],
+      "keywords": [
+        "nn.Module",
+        "为什么要注册子层",
+        "模型层为什么赋值给",
+        "self"
+      ],
+      "diagnostic": "先判断“模型层为什么赋值给 self”涉及 Module 注册、参数 shape、激活、logits 还是前向图。",
+      "hints": [
+        "查看 #concept-module-parameters。",
+        "运行 test_forward_lab.py 并读取 named_parameters 与 trace。"
+      ],
+      "example": "fc1、activation、fc2 都是 Module 属性。",
+      "answer": "注册后参数、设备迁移、状态保存和优化器才能统一发现这些子层。",
+      "source": {
+        "label": "模块与参数",
+        "href": "#concept-module-parameters"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "parameter",
+      "lesson_id": "deep-learning-02",
+      "context_id": "concept-module-parameters",
+      "question": "Parameter 和普通 tensor 有什么区别？",
+      "aliases": [
+        "哪些 tensor 会被模型训练"
+      ],
+      "keywords": [
+        "Parameter",
+        "和普通",
+        "tensor",
+        "有什么区别",
+        "哪些",
+        "会被模型训练"
+      ],
+      "diagnostic": "先判断“哪些 tensor 会被模型训练”涉及 Module 注册、参数 shape、激活、logits 还是前向图。",
+      "hints": [
+        "查看 #concept-module-parameters。",
+        "运行 test_forward_lab.py 并读取 named_parameters 与 trace。"
+      ],
+      "example": "v0.2 有四个 parameter tensor。",
+      "answer": "Parameter 是被 Module 登记的可训练 tensor；普通 tensor 不会自动出现在 model.parameters()。",
+      "source": {
+        "label": "模块与参数",
+        "href": "#concept-module-parameters"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "linear-weight-shape",
+      "lesson_id": "deep-learning-02",
+      "context_id": "concept-module-parameters",
+      "question": "nn.Linear 的 weight shape 怎样读？",
+      "aliases": [
+        "Linear 2 4 的权重为什么是 4x2"
+      ],
+      "keywords": [
+        "nn.Linear",
+        "的",
+        "weight",
+        "shape",
+        "怎样读",
+        "Linear",
+        "2",
+        "4",
+        "的权重为什么是",
+        "4x2"
+      ],
+      "diagnostic": "先判断“Linear 2 4 的权重为什么是 4x2”涉及 Module 注册、参数 shape、激活、logits 还是前向图。",
+      "hints": [
+        "查看 #concept-module-parameters。",
+        "运行 test_forward_lab.py 并读取 named_parameters 与 trace。"
+      ],
+      "example": "fc1.weight 为 [4,2]。",
+      "answer": "存储 shape 是 [out_features,in_features]，接口把 [batch,in] 映射到 [batch,out]。",
+      "source": {
+        "label": "模块与参数",
+        "href": "#concept-module-parameters"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "parameter-count",
+      "lesson_id": "deep-learning-02",
+      "context_id": "concept-module-parameters",
+      "question": "两层网络的 22 个参数怎样计算？",
+      "aliases": [
+        "模型参数量怎么算"
+      ],
+      "keywords": [
+        "两层网络的",
+        "22",
+        "个参数怎样计算",
+        "模型参数量怎么算"
+      ],
+      "diagnostic": "先判断“模型参数量怎么算”涉及 Module 注册、参数 shape、激活、logits 还是前向图。",
+      "hints": [
+        "查看 #concept-module-parameters。",
+        "运行 test_forward_lab.py 并读取 named_parameters 与 trace。"
+      ],
+      "example": "参数 tensor 数量为4，元素总数为22。",
+      "answer": "把两层 weight 与 bias 元素相加：4×2+4+2×4+2=22。",
+      "source": {
+        "label": "模块与参数",
+        "href": "#concept-module-parameters"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "activation",
+      "lesson_id": "deep-learning-02",
+      "context_id": "concept-activation-nonlinearity",
+      "question": "激活函数为什么不能省略？",
+      "aliases": [
+        "两层 Linear 不加激活会怎样"
+      ],
+      "keywords": [
+        "激活函数为什么不能省略",
+        "两层",
+        "Linear",
+        "不加激活会怎样"
+      ],
+      "diagnostic": "先判断“两层 Linear 不加激活会怎样”涉及 Module 注册、参数 shape、激活、logits 还是前向图。",
+      "hints": [
+        "查看 #concept-activation-nonlinearity。",
+        "运行 test_forward_lab.py 并读取 named_parameters 与 trace。"
+      ],
+      "example": "v0.2 在两层之间使用 ReLU。",
+      "answer": "没有非线性时连续线性变换仍能合并为一次线性变换，表达能力没有因层数本质增加。",
+      "source": {
+        "label": "激活与非线性",
+        "href": "#concept-activation-nonlinearity"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "relu",
+      "lesson_id": "deep-learning-02",
+      "context_id": "concept-activation-nonlinearity",
+      "question": "ReLU 对数值和 shape 做了什么？",
+      "aliases": [
+        "relu 会改变维度吗"
+      ],
+      "keywords": [
+        "ReLU",
+        "对数值和",
+        "shape",
+        "做了什么",
+        "relu",
+        "会改变维度吗"
+      ],
+      "diagnostic": "先判断“relu 会改变维度吗”涉及 Module 注册、参数 shape、激活、logits 还是前向图。",
+      "hints": [
+        "查看 #concept-activation-nonlinearity。",
+        "运行 test_forward_lab.py 并读取 named_parameters 与 trace。"
+      ],
+      "example": "[8,4] 经过 ReLU 仍是 [8,4]。",
+      "answer": "ReLU 把负值变为0并保留非负值，不改变 tensor shape。",
+      "source": {
+        "label": "激活与非线性",
+        "href": "#concept-activation-nonlinearity"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "logits",
+      "lesson_id": "deep-learning-02",
+      "context_id": "example-forward-trace-logits",
+      "question": "logits 是概率吗？",
+      "aliases": [
+        "模型最后的分数为什么不相加为1"
+      ],
+      "keywords": [
+        "logits",
+        "是概率吗",
+        "模型最后的分数为什么不相加为1"
+      ],
+      "diagnostic": "先判断“模型最后的分数为什么不相加为1”涉及 Module 注册、参数 shape、激活、logits 还是前向图。",
+      "hints": [
+        "查看 #example-forward-trace-logits。",
+        "运行 test_forward_lab.py 并读取 named_parameters 与 trace。"
+      ],
+      "example": "交叉熵直接接收 logits。",
+      "answer": "不是；logits 是未归一化类别分数，可以为负，也不要求总和为1。",
+      "source": {
+        "label": "前向 trace 与 logits",
+        "href": "#example-forward-trace-logits"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "softmax-dim",
+      "lesson_id": "deep-learning-02",
+      "context_id": "example-forward-trace-logits",
+      "question": "softmax 为什么使用类别维？",
+      "aliases": [
+        "dim 1 的概率是什么意思"
+      ],
+      "keywords": [
+        "softmax",
+        "为什么使用类别维",
+        "dim",
+        "1",
+        "的概率是什么意思"
+      ],
+      "diagnostic": "先判断“dim 1 的概率是什么意思”涉及 Module 注册、参数 shape、激活、logits 还是前向图。",
+      "hints": [
+        "查看 #example-forward-trace-logits。",
+        "运行 test_forward_lab.py 并读取 named_parameters 与 trace。"
+      ],
+      "example": "8行、2类 logits 使用 dim=1。",
+      "answer": "分类时在每个样本的类别维归一化，使每一行概率和为1。",
+      "source": {
+        "label": "前向 trace 与 logits",
+        "href": "#example-forward-trace-logits"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "grad-fn",
+      "lesson_id": "deep-learning-02",
+      "context_id": "deepen-dynamic-forward-graph",
+      "question": "logits 有 grad_fn 表示什么？",
+      "aliases": [
+        "requires_grad true 是否已经训练"
+      ],
+      "keywords": [
+        "logits",
+        "有",
+        "grad_fn",
+        "表示什么",
+        "requires_grad",
+        "true",
+        "是否已经训练"
+      ],
+      "diagnostic": "先判断“requires_grad true 是否已经训练”涉及 Module 注册、参数 shape、激活、logits 还是前向图。",
+      "hints": [
+        "查看 #deepen-dynamic-forward-graph。",
+        "运行 test_forward_lab.py 并读取 named_parameters 与 trace。"
+      ],
+      "example": "v0.2 明确 no-training-yet。",
+      "answer": "它表示前向运算被自动微分图记录，不表示计算过 loss、梯度或更新参数。",
+      "source": {
+        "label": "动态前向图",
+        "href": "#deepen-dynamic-forward-graph"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "forward-v02",
+      "lesson_id": "deep-learning-02",
+      "context_id": "project-diagnosable-network-v02",
+      "question": "可诊断神经网络 v0.2 新增了什么？",
+      "aliases": [
+        "深度学习第二课项目做什么"
+      ],
+      "keywords": [
+        "可诊断神经网络",
+        "v0.2",
+        "新增了什么",
+        "深度学习第二课项目做什么"
+      ],
+      "diagnostic": "先判断“深度学习第二课项目做什么”涉及 Module 注册、参数 shape、激活、logits 还是前向图。",
+      "hints": [
+        "查看 #project-diagnosable-network-v02。",
+        "运行 test_forward_lab.py 并读取 named_parameters 与 trace。"
+      ],
+      "example": "下一版加入交叉熵与 backward。",
+      "answer": "它新增两层 Module、ReLU、22 个参数、逐层 trace、概率检查和 8 项真实测试。",
+      "source": {
+        "label": "可诊断网络 v0.2",
+        "href": "#project-diagnosable-network-v02"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

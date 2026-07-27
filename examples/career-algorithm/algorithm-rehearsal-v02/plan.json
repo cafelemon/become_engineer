@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "session_id": "rehearsal-001",
+  "budget_minutes": 45,
+  "checkpoints": [10, 25, 40],
+  "tasks": [
+    {"id": "io-warmup", "priority": 1},
+    {"id": "boundary-search", "priority": 2},
+    {"id": "graph-shortest", "priority": 3}
+  ]
+}

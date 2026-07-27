@@ -1,0 +1,344 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "deep-learning-06",
+    "title": "初始化、激活分布、梯度诊断与裁剪",
+    "path": "learning-paths/ai-foundation/deep-learning/06-initialization-activation-gradient-diagnostics-clipping/"
+  },
+  "contexts": [
+    {
+      "id": "overview-training-diagnostics",
+      "type": "overview",
+      "title": "训练诊断结果",
+      "anchor": "#overview-training-diagnostics"
+    },
+    {
+      "id": "concept-initialization-symmetry",
+      "type": "concept",
+      "title": "初始化与对称",
+      "anchor": "#concept-initialization-symmetry"
+    },
+    {
+      "id": "concept-activation-gradient-signals",
+      "type": "concept",
+      "title": "激活梯度信号",
+      "anchor": "#concept-activation-gradient-signals"
+    },
+    {
+      "id": "example-gradient-clipping",
+      "type": "example",
+      "title": "梯度裁剪",
+      "anchor": "#example-gradient-clipping"
+    },
+    {
+      "id": "reproduce-diagnostics-v06",
+      "type": "reproduce",
+      "title": "运行诊断实验",
+      "anchor": "#reproduce-diagnostics-v06"
+    },
+    {
+      "id": "modify-diagnostics",
+      "type": "modify",
+      "title": "修改诊断",
+      "anchor": "#modify-diagnostics"
+    },
+    {
+      "id": "troubleshoot-training-diagnostics",
+      "type": "troubleshoot",
+      "title": "训练诊断排错",
+      "anchor": "#troubleshoot-training-diagnostics"
+    },
+    {
+      "id": "deepen-clip-semantics",
+      "type": "deepen",
+      "title": "裁剪语义",
+      "anchor": "#deepen-clip-semantics"
+    },
+    {
+      "id": "project-diagnosable-network-v06",
+      "type": "project",
+      "title": "可诊断网络 v0.6",
+      "anchor": "#project-diagnosable-network-v06"
+    }
+  ],
+  "cards": [
+    {
+      "id": "initialization",
+      "lesson_id": "deep-learning-06",
+      "context_id": "concept-initialization-symmetry",
+      "question": "初始化为什么影响训练？",
+      "aliases": [
+        "权重初值重要吗"
+      ],
+      "keywords": [
+        "初始化为什么影响训练",
+        "权重初值重要吗"
+      ],
+      "diagnostic": "先判断“权重初值重要吗”涉及初始化、激活、逐层梯度、非有限值还是裁剪。",
+      "hints": [
+        "查看 #concept-initialization-symmetry。",
+        "运行 test_diagnostics_lab.py 并定位首个异常层。"
+      ],
+      "example": "本课固定正态std0.35。",
+      "answer": "初始化决定前向信号和反向梯度尺度，还需要打破同层神经元对称。",
+      "source": {
+        "label": "初始化与对称",
+        "href": "#concept-initialization-symmetry"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "zero-symmetry",
+      "lesson_id": "deep-learning-06",
+      "context_id": "concept-initialization-symmetry",
+      "question": "隐藏层全零初始化会怎样？",
+      "aliases": [
+        "权重全0为什么学不动"
+      ],
+      "keywords": [
+        "隐藏层全零初始化会怎样",
+        "权重全0为什么学不动"
+      ],
+      "diagnostic": "先判断“权重全0为什么学不动”涉及初始化、激活、逐层梯度、非有限值还是裁剪。",
+      "hints": [
+        "查看 #concept-initialization-symmetry。",
+        "运行 test_diagnostics_lab.py 并定位首个异常层。"
+      ],
+      "example": "v0.6自动验证三层weight grad为0。",
+      "answer": "同层单元保持相同状态，ReLU隐藏激活为0，隐藏weight gradient停滞。",
+      "source": {
+        "label": "初始化与对称",
+        "href": "#concept-initialization-symmetry"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "activation-rate",
+      "lesson_id": "deep-learning-06",
+      "context_id": "concept-activation-gradient-signals",
+      "question": "ReLU 非零率能说明什么？",
+      "aliases": [
+        "激活为0太多怎么查"
+      ],
+      "keywords": [
+        "ReLU",
+        "非零率能说明什么",
+        "激活为0太多怎么查"
+      ],
+      "diagnostic": "先判断“激活为0太多怎么查”涉及初始化、激活、逐层梯度、非有限值还是裁剪。",
+      "hints": [
+        "查看 #concept-activation-gradient-signals。",
+        "运行 test_diagnostics_lab.py 并定位首个异常层。"
+      ],
+      "example": "两层为0.504和0.369。",
+      "answer": "它描述当前batch中通过ReLU的比例；接近0可能提示大量单元关闭，但需多步结合判断。",
+      "source": {
+        "label": "激活梯度信号",
+        "href": "#concept-activation-gradient-signals"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "layer-gradient",
+      "lesson_id": "deep-learning-06",
+      "context_id": "concept-activation-gradient-signals",
+      "question": "为什么要看逐层 gradient norm？",
+      "aliases": [
+        "只看全局梯度够吗"
+      ],
+      "keywords": [
+        "为什么要看逐层",
+        "gradient",
+        "norm",
+        "只看全局梯度够吗"
+      ],
+      "diagnostic": "先判断“只看全局梯度够吗”涉及初始化、激活、逐层梯度、非有限值还是裁剪。",
+      "hints": [
+        "查看 #concept-activation-gradient-signals。",
+        "运行 test_diagnostics_lab.py 并定位首个异常层。"
+      ],
+      "example": "本课记录六个参数。",
+      "answer": "逐层范数能定位梯度从哪一层开始衰减、增长或非有限，全局值会掩盖位置。",
+      "source": {
+        "label": "激活梯度信号",
+        "href": "#concept-activation-gradient-signals"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "exploding-gradient",
+      "lesson_id": "deep-learning-06",
+      "context_id": "concept-activation-gradient-signals",
+      "question": "梯度爆炸是什么？",
+      "aliases": [
+        "global gradient norm 很大说明什么"
+      ],
+      "keywords": [
+        "梯度爆炸是什么",
+        "global",
+        "gradient",
+        "norm",
+        "很大说明什么"
+      ],
+      "diagnostic": "先判断“global gradient norm 很大说明什么”涉及初始化、激活、逐层梯度、非有限值还是裁剪。",
+      "hints": [
+        "查看 #concept-activation-gradient-signals。",
+        "运行 test_diagnostics_lab.py 并定位首个异常层。"
+      ],
+      "example": "loss放大1000倍使norm放大1000倍。",
+      "answer": "梯度尺度异常增大可能导致过大更新；应结合loss、数据、层级和学习率定位根因。",
+      "source": {
+        "label": "激活梯度信号",
+        "href": "#concept-activation-gradient-signals"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "gradient-clipping",
+      "lesson_id": "deep-learning-06",
+      "context_id": "example-gradient-clipping",
+      "question": "clip_grad_norm 做了什么？",
+      "aliases": [
+        "梯度裁剪放在哪一步"
+      ],
+      "keywords": [
+        "clip_grad_norm",
+        "做了什么",
+        "梯度裁剪放在哪一步"
+      ],
+      "diagnostic": "先判断“梯度裁剪放在哪一步”涉及初始化、激活、逐层梯度、非有限值还是裁剪。",
+      "hints": [
+        "查看 #example-gradient-clipping。",
+        "运行 test_diagnostics_lab.py 并定位首个异常层。"
+      ],
+      "example": "1454.178728裁到1.0。",
+      "answer": "它在backward后step前按全局范数缩放gradient，限制更新长度。",
+      "source": {
+        "label": "梯度裁剪",
+        "href": "#example-gradient-clipping"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "clip-boundary",
+      "lesson_id": "deep-learning-06",
+      "context_id": "deepen-clip-semantics",
+      "question": "梯度裁剪能修复 NaN 吗？",
+      "aliases": [
+        "加clip是否解决训练爆炸"
+      ],
+      "keywords": [
+        "梯度裁剪能修复",
+        "NaN",
+        "吗",
+        "加clip是否解决训练爆炸"
+      ],
+      "diagnostic": "先判断“加clip是否解决训练爆炸”涉及初始化、激活、逐层梯度、非有限值还是裁剪。",
+      "hints": [
+        "查看 #deepen-clip-semantics。",
+        "运行 test_diagnostics_lab.py 并定位首个异常层。"
+      ],
+      "example": "非有限输入在前向前拒绝。",
+      "answer": "不能；裁剪是护栏，坏输入、错误loss或结构根因仍必须修复。",
+      "source": {
+        "label": "裁剪语义",
+        "href": "#deepen-clip-semantics"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "nonfinite-guard",
+      "lesson_id": "deep-learning-06",
+      "context_id": "troubleshoot-training-diagnostics",
+      "question": "发现非有限 gradient 后还能 step 吗？",
+      "aliases": [
+        "gradient NaN 怎么处理"
+      ],
+      "keywords": [
+        "发现非有限",
+        "gradient",
+        "后还能",
+        "step",
+        "吗",
+        "NaN",
+        "怎么处理"
+      ],
+      "diagnostic": "先判断“gradient NaN 怎么处理”涉及初始化、激活、逐层梯度、非有限值还是裁剪。",
+      "hints": [
+        "查看 #troubleshoot-training-diagnostics。",
+        "运行 test_diagnostics_lab.py 并定位首个异常层。"
+      ],
+      "example": "每个parameter都执行isfinite。",
+      "answer": "不能继续更新；应停止step，定位首个非有限数据、激活、loss或梯度。",
+      "source": {
+        "label": "训练诊断排错",
+        "href": "#troubleshoot-training-diagnostics"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "global-norm",
+      "lesson_id": "deep-learning-06",
+      "context_id": "deepen-clip-semantics",
+      "question": "全局梯度范数怎样计算？",
+      "aliases": [
+        "gradient norm 是各层相加吗"
+      ],
+      "keywords": [
+        "全局梯度范数怎样计算",
+        "gradient",
+        "norm",
+        "是各层相加吗"
+      ],
+      "diagnostic": "先判断“gradient norm 是各层相加吗”涉及初始化、激活、逐层梯度、非有限值还是裁剪。",
+      "hints": [
+        "查看 #deepen-clip-semantics。",
+        "运行 test_diagnostics_lab.py 并定位首个异常层。"
+      ],
+      "example": "健康值1.454179。",
+      "answer": "把所有参数gradient元素平方求和后开根号，等价于拼接向量的L2范数。",
+      "source": {
+        "label": "裁剪语义",
+        "href": "#deepen-clip-semantics"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "diagnostics-v06",
+      "lesson_id": "deep-learning-06",
+      "context_id": "project-diagnosable-network-v06",
+      "question": "可诊断神经网络 v0.6 新增了什么？",
+      "aliases": [
+        "深度学习第六课项目做什么"
+      ],
+      "keywords": [
+        "可诊断神经网络",
+        "v0.6",
+        "新增了什么",
+        "深度学习第六课项目做什么"
+      ],
+      "diagnostic": "先判断“深度学习第六课项目做什么”涉及初始化、激活、逐层梯度、非有限值还是裁剪。",
+      "hints": [
+        "查看 #project-diagnosable-network-v06。",
+        "运行 test_diagnostics_lab.py 并定位首个异常层。"
+      ],
+      "example": "下一版保存恢复训练状态。",
+      "answer": "它新增初始化、激活统计、逐层gradient、非有限门禁、裁剪和8项测试。",
+      "source": {
+        "label": "可诊断网络 v0.6",
+        "href": "#project-diagnosable-network-v06"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

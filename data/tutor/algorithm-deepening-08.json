@@ -1,0 +1,344 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "algorithm-deepening-08",
+    "title": "背包、区间动态规划与空间压缩",
+    "path": "learning-paths/algorithm-deepening/08-knapsack-interval-dp-space-compression/"
+  },
+  "contexts": [
+    {
+      "id": "overview-structured-dp",
+      "type": "overview",
+      "title": "结构化 DP 目标",
+      "anchor": "#overview-structured-dp"
+    },
+    {
+      "id": "concept-knapsack-state",
+      "type": "concept",
+      "title": "背包状态",
+      "anchor": "#concept-knapsack-state"
+    },
+    {
+      "id": "example-capacity-order",
+      "type": "example",
+      "title": "容量迭代顺序",
+      "anchor": "#example-capacity-order"
+    },
+    {
+      "id": "concept-interval-order",
+      "type": "concept",
+      "title": "区间 DP 顺序",
+      "anchor": "#concept-interval-order"
+    },
+    {
+      "id": "reproduce-structured-dp-v08",
+      "type": "reproduce",
+      "title": "运行结构化 DP",
+      "anchor": "#reproduce-structured-dp-v08"
+    },
+    {
+      "id": "modify-structured-dp",
+      "type": "modify",
+      "title": "修改 DP 模型",
+      "anchor": "#modify-structured-dp"
+    },
+    {
+      "id": "troubleshoot-structured-dp",
+      "type": "troubleshoot",
+      "title": "结构化 DP 排错",
+      "anchor": "#troubleshoot-structured-dp"
+    },
+    {
+      "id": "project-pattern-lab-v08",
+      "type": "project",
+      "title": "约束模式实验 v0.8",
+      "anchor": "#project-pattern-lab-v08"
+    },
+    {
+      "id": "career-structured-dp",
+      "type": "career",
+      "title": "空间压缩追问",
+      "anchor": "#career-structured-dp"
+    }
+  ],
+  "cards": [
+    {
+      "id": "knapsack-state",
+      "lesson_id": "algorithm-deepening-08",
+      "context_id": "concept-knapsack-state",
+      "question": "0/1 背包状态代表什么？",
+      "aliases": [
+        "背包 dp 容量语义"
+      ],
+      "keywords": [
+        "0/1",
+        "背包状态代表什么",
+        "背包",
+        "dp",
+        "容量语义"
+      ],
+      "diagnostic": "先判断“背包 dp 容量语义”涉及模型、状态维度、压缩方向还是依赖就绪顺序。",
+      "hints": [
+        "查看 #concept-knapsack-state 的循环与状态。",
+        "运行 test_structured_dp_trace.py 核对“0/1 背包状态代表什么”。"
+      ],
+      "example": "压缩前还显式包含物品维度。",
+      "answer": "处理若干物品后，dp[c] 是容量不超过 c 时的最大价值。",
+      "source": {
+        "label": "背包状态",
+        "href": "#concept-knapsack-state"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "descending-capacity",
+      "lesson_id": "algorithm-deepening-08",
+      "context_id": "example-capacity-order",
+      "question": "0/1 背包为什么容量倒序？",
+      "aliases": [
+        "怎样防止同一物品重复使用"
+      ],
+      "keywords": [
+        "0/1",
+        "背包为什么容量倒序",
+        "怎样防止同一物品重复使用"
+      ],
+      "diagnostic": "先判断“怎样防止同一物品重复使用”涉及模型、状态维度、压缩方向还是依赖就绪顺序。",
+      "hints": [
+        "查看 #example-capacity-order 的循环与状态。",
+        "运行 test_structured_dp_trace.py 核对“0/1 背包为什么容量倒序”。"
+      ],
+      "example": "每件物品在本轮至多使用一次。",
+      "answer": "倒序保证 dp[c-w] 仍是处理当前物品前的旧层状态。",
+      "source": {
+        "label": "容量迭代顺序",
+        "href": "#example-capacity-order"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "forward-counterexample",
+      "lesson_id": "algorithm-deepening-08",
+      "context_id": "example-capacity-order",
+      "question": "容量正序会出现什么错误？",
+      "aliases": [
+        "单件物品 6 对 3 反例"
+      ],
+      "keywords": [
+        "容量正序会出现什么错误",
+        "单件物品",
+        "6",
+        "对",
+        "3",
+        "反例"
+      ],
+      "diagnostic": "先判断“单件物品 6 对 3 反例”涉及模型、状态维度、压缩方向还是依赖就绪顺序。",
+      "hints": [
+        "查看 #example-capacity-order 的循环与状态。",
+        "运行 test_structured_dp_trace.py 核对“容量正序会出现什么错误”。"
+      ],
+      "example": "0/1 正确答案只能是 3。",
+      "answer": "重量 2 价值 3 容量 4 时，正序用刚写的 dp[2] 再写 dp[4]=6。",
+      "source": {
+        "label": "容量迭代顺序",
+        "href": "#example-capacity-order"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "complete-knapsack",
+      "lesson_id": "algorithm-deepening-08",
+      "context_id": "modify-structured-dp",
+      "question": "什么时候容量可以正序？",
+      "aliases": [
+        "完全背包怎样迭代"
+      ],
+      "keywords": [
+        "什么时候容量可以正序",
+        "完全背包怎样迭代"
+      ],
+      "diagnostic": "先判断“完全背包怎样迭代”涉及模型、状态维度、压缩方向还是依赖就绪顺序。",
+      "hints": [
+        "查看 #modify-structured-dp 的循环与状态。",
+        "运行 test_structured_dp_trace.py 核对“什么时候容量可以正序”。"
+      ],
+      "example": "循环顺序表达模型。",
+      "answer": "只有模型明确允许每件物品重复使用时，正序复用本轮状态才正确。",
+      "source": {
+        "label": "修改 DP 模型",
+        "href": "#modify-structured-dp"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "space-contract",
+      "lesson_id": "algorithm-deepening-08",
+      "context_id": "concept-knapsack-state",
+      "question": "空间压缩会丢失什么？",
+      "aliases": [
+        "一维背包为什么难重建"
+      ],
+      "keywords": [
+        "空间压缩会丢失什么",
+        "一维背包为什么难重建"
+      ],
+      "diagnostic": "先判断“一维背包为什么难重建”涉及模型、状态维度、压缩方向还是依赖就绪顺序。",
+      "hints": [
+        "查看 #concept-knapsack-state 的循环与状态。",
+        "运行 test_structured_dp_trace.py 核对“空间压缩会丢失什么”。"
+      ],
+      "example": "要重建需二维表、父指针或额外记录。",
+      "answer": "一维表保留最优值，却覆盖物品层和部分决策来源。",
+      "source": {
+        "label": "背包状态",
+        "href": "#concept-knapsack-state"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "interval-state",
+      "lesson_id": "algorithm-deepening-08",
+      "context_id": "concept-interval-order",
+      "question": "矩阵链区间状态是什么？",
+      "aliases": [
+        "cost left right 代表什么"
+      ],
+      "keywords": [
+        "矩阵链区间状态是什么",
+        "cost",
+        "left",
+        "right",
+        "代表什么"
+      ],
+      "diagnostic": "先判断“cost left right 代表什么”涉及模型、状态维度、压缩方向还是依赖就绪顺序。",
+      "hints": [
+        "查看 #concept-interval-order 的循环与状态。",
+        "运行 test_structured_dp_trace.py 核对“矩阵链区间状态是什么”。"
+      ],
+      "example": "单矩阵区间成本为零。",
+      "answer": "cost[l][r] 是连续矩阵 l 到 r 的最少标量乘法次数。",
+      "source": {
+        "label": "区间 DP 顺序",
+        "href": "#concept-interval-order"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "length-order",
+      "lesson_id": "algorithm-deepening-08",
+      "context_id": "concept-interval-order",
+      "question": "区间 DP 为什么按长度递增？",
+      "aliases": [
+        "子区间何时就绪"
+      ],
+      "keywords": [
+        "区间",
+        "DP",
+        "为什么按长度递增",
+        "子区间何时就绪"
+      ],
+      "diagnostic": "先判断“子区间何时就绪”涉及模型、状态维度、压缩方向还是依赖就绪顺序。",
+      "hints": [
+        "查看 #concept-interval-order 的循环与状态。",
+        "运行 test_structured_dp_trace.py 核对“区间 DP 为什么按长度递增”。"
+      ],
+      "example": "固定不变量 subintervals-ready。",
+      "answer": "长度为 L 的转移只读取更短区间，先完成短区间才能安全合并。",
+      "source": {
+        "label": "区间 DP 顺序",
+        "href": "#concept-interval-order"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "matrix-result",
+      "lesson_id": "algorithm-deepening-08",
+      "context_id": "concept-interval-order",
+      "question": "样例矩阵链最优结果是什么？",
+      "aliases": [
+        "4500 怎样得到"
+      ],
+      "keywords": [
+        "样例矩阵链最优结果是什么",
+        "4500",
+        "怎样得到"
+      ],
+      "diagnostic": "先判断“4500 怎样得到”涉及模型、状态维度、压缩方向还是依赖就绪顺序。",
+      "hints": [
+        "查看 #concept-interval-order 的循环与状态。",
+        "运行 test_structured_dp_trace.py 核对“样例矩阵链最优结果是什么”。"
+      ],
+      "example": "括号化 ((A1A2)A3)。",
+      "answer": "先算 A1A2 花 1500，再乘 A3 花 3000，总计 4500。",
+      "source": {
+        "label": "区间 DP 顺序",
+        "href": "#concept-interval-order"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "complexities",
+      "lesson_id": "algorithm-deepening-08",
+      "context_id": "reproduce-structured-dp-v08",
+      "question": "两种 DP 的复杂度是多少？",
+      "aliases": [
+        "背包和矩阵链分别多快"
+      ],
+      "keywords": [
+        "两种",
+        "DP",
+        "的复杂度是多少",
+        "背包和矩阵链分别多快"
+      ],
+      "diagnostic": "先判断“背包和矩阵链分别多快”涉及模型、状态维度、压缩方向还是依赖就绪顺序。",
+      "hints": [
+        "查看 #reproduce-structured-dp-v08 的循环与状态。",
+        "运行 test_structured_dp_trace.py 核对“两种 DP 的复杂度是多少”。"
+      ],
+      "example": "区间数平方，每区间枚举切分点。",
+      "answer": "一维背包 O(items×capacity) 时间、O(capacity) 空间；矩阵链 O(n³) 时间、O(n²) 空间。",
+      "source": {
+        "label": "运行结构化 DP",
+        "href": "#reproduce-structured-dp-v08"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "pattern-v08",
+      "lesson_id": "algorithm-deepening-08",
+      "context_id": "project-pattern-lab-v08",
+      "question": "约束模式实验 v0.8 新增什么？",
+      "aliases": [
+        "算法深化第八课项目是什么"
+      ],
+      "keywords": [
+        "约束模式实验",
+        "v0.8",
+        "新增什么",
+        "算法深化第八课项目是什么"
+      ],
+      "diagnostic": "先判断“算法深化第八课项目是什么”涉及模型、状态维度、压缩方向还是依赖就绪顺序。",
+      "hints": [
+        "查看 #project-pattern-lab-v08 的循环与状态。",
+        "运行 test_structured_dp_trace.py 核对“约束模式实验 v0.8 新增什么”。"
+      ],
+      "example": "固定两个计算顺序不变量。",
+      "answer": "新增 0/1 背包压缩、错误复用反例、矩阵链区间 DP、括号化与双语言报告。",
+      "source": {
+        "label": "约束模式实验 v0.8",
+        "href": "#project-pattern-lab-v08"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

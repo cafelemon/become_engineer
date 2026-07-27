@@ -1,0 +1,392 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "web-engineering-06",
+    "title": "指标、备份、发布与回滚演练",
+    "path": "learning-paths/web-fullstack/web-engineering/06-observability-backup-release-rollback/"
+  },
+  "contexts": [
+    {
+      "id": "overview-release-evidence",
+      "type": "overview",
+      "title": "overview release evidence",
+      "anchor": "#overview-release-evidence"
+    },
+    {
+      "id": "concept-expand-contract",
+      "type": "concept",
+      "title": "concept expand contract",
+      "anchor": "#concept-expand-contract"
+    },
+    {
+      "id": "example-low-cardinality",
+      "type": "example",
+      "title": "example low cardinality",
+      "anchor": "#example-low-cardinality"
+    },
+    {
+      "id": "reproduce-dashboard-v14",
+      "type": "reproduce",
+      "title": "reproduce dashboard v14",
+      "anchor": "#reproduce-dashboard-v14"
+    },
+    {
+      "id": "modify-release-failure",
+      "type": "modify",
+      "title": "modify release failure",
+      "anchor": "#modify-release-failure"
+    },
+    {
+      "id": "troubleshoot-rollback",
+      "type": "troubleshoot",
+      "title": "troubleshoot rollback",
+      "anchor": "#troubleshoot-rollback"
+    },
+    {
+      "id": "project-dashboard-v14",
+      "type": "project",
+      "title": "project dashboard v14",
+      "anchor": "#project-dashboard-v14"
+    },
+    {
+      "id": "career-release-rollback",
+      "type": "career",
+      "title": "career release rollback",
+      "anchor": "#career-release-rollback"
+    }
+  ],
+  "cards": [
+    {
+      "id": "release-result",
+      "lesson_id": "web-engineering-06",
+      "context_id": "overview-release-evidence",
+      "question": "v0.14 最后交付什么？",
+      "aliases": [
+        "发布回滚课做出什么"
+      ],
+      "keywords": [
+        "v0.14",
+        "最后交付什么",
+        "发布回滚课做出什么"
+      ],
+      "diagnostic": "先确认你正在处理“发布回滚课做出什么”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 overview-release-evidence 中的责任。",
+        "再用本课固定测试验证 v0.14 最后交付什么。"
+      ],
+      "example": "v0.14 汇总 JSON 日志、request ID、指标、备份恢复和兼容回滚证据。",
+      "answer": "v0.14 汇总 JSON 日志、request ID、指标、备份恢复和兼容回滚证据。",
+      "source": {
+        "label": "overview release evidence",
+        "href": "#overview-release-evidence"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "request-id",
+      "lesson_id": "web-engineering-06",
+      "context_id": "overview-release-evidence",
+      "question": "request ID 用来做什么？",
+      "aliases": [
+        "怎样串联一次请求的日志"
+      ],
+      "keywords": [
+        "request",
+        "ID",
+        "用来做什么",
+        "怎样串联一次请求的日志"
+      ],
+      "diagnostic": "先确认你正在处理“怎样串联一次请求的日志”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 overview-release-evidence 中的责任。",
+        "再用本课固定测试验证 request ID 用来做什么。"
+      ],
+      "example": "入口生成或校验 request ID，贯穿响应与结构化日志以关联故障。",
+      "answer": "入口生成或校验 request ID，贯穿响应与结构化日志以关联故障。",
+      "source": {
+        "label": "overview release evidence",
+        "href": "#overview-release-evidence"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "json-log",
+      "lesson_id": "web-engineering-06",
+      "context_id": "overview-release-evidence",
+      "question": "结构化 JSON 日志有什么价值？",
+      "aliases": [
+        "日志为什么不用拼接文本"
+      ],
+      "keywords": [
+        "结构化",
+        "JSON",
+        "日志有什么价值",
+        "日志为什么不用拼接文本"
+      ],
+      "diagnostic": "先确认你正在处理“日志为什么不用拼接文本”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 overview-release-evidence 中的责任。",
+        "再用本课固定测试验证 结构化 JSON 日志有什么价值。"
+      ],
+      "example": "稳定字段便于过滤、聚合和脱敏检查，并避免依赖脆弱文本解析。",
+      "answer": "稳定字段便于过滤、聚合和脱敏检查，并避免依赖脆弱文本解析。",
+      "source": {
+        "label": "overview release evidence",
+        "href": "#overview-release-evidence"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "expand-contract",
+      "lesson_id": "web-engineering-06",
+      "context_id": "concept-expand-contract",
+      "question": "expand contract 为什么支持回滚？",
+      "aliases": [
+        "数据库变更怎样兼容旧镜像"
+      ],
+      "keywords": [
+        "expand",
+        "contract",
+        "为什么支持回滚",
+        "数据库变更怎样兼容旧镜像"
+      ],
+      "diagnostic": "先确认你正在处理“数据库变更怎样兼容旧镜像”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 concept-expand-contract 中的责任。",
+        "再用本课固定测试验证 expand contract 为什么支持回滚。"
+      ],
+      "example": "先加兼容结构，再切换读写，确认旧版本不用后才删除旧结构。",
+      "answer": "先加兼容结构，再切换读写，确认旧版本不用后才删除旧结构。",
+      "source": {
+        "label": "concept expand contract",
+        "href": "#concept-expand-contract"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "unsafe-rollback",
+      "lesson_id": "web-engineering-06",
+      "context_id": "concept-expand-contract",
+      "question": "什么时候必须阻止应用回滚？",
+      "aliases": [
+        "镜像能启动就能回滚吗"
+      ],
+      "keywords": [
+        "什么时候必须阻止应用回滚",
+        "镜像能启动就能回滚吗"
+      ],
+      "diagnostic": "先确认你正在处理“镜像能启动就能回滚吗”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 concept-expand-contract 中的责任。",
+        "再用本课固定测试验证 什么时候必须阻止应用回滚。"
+      ],
+      "example": "数据库已不兼容旧版本或恢复未验证时，发布门禁必须拒绝回滚。",
+      "answer": "数据库已不兼容旧版本或恢复未验证时，发布门禁必须拒绝回滚。",
+      "source": {
+        "label": "concept expand contract",
+        "href": "#concept-expand-contract"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "low-cardinality",
+      "lesson_id": "web-engineering-06",
+      "context_id": "example-low-cardinality",
+      "question": "为什么 request ID 不能做指标标签？",
+      "aliases": [
+        "高基数指标有什么问题"
+      ],
+      "keywords": [
+        "为什么",
+        "request",
+        "ID",
+        "不能做指标标签",
+        "高基数指标有什么问题"
+      ],
+      "diagnostic": "先确认你正在处理“高基数指标有什么问题”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 example-low-cardinality 中的责任。",
+        "再用本课固定测试验证 为什么 request ID 不能做指标标签。"
+      ],
+      "example": "每请求唯一值会制造海量时间序列；它属于日志，不属于指标标签。",
+      "answer": "每请求唯一值会制造海量时间序列；它属于日志，不属于指标标签。",
+      "source": {
+        "label": "example low cardinality",
+        "href": "#example-low-cardinality"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "metrics-internal",
+      "lesson_id": "web-engineering-06",
+      "context_id": "example-low-cardinality",
+      "question": "metrics 为什么只对内部开放？",
+      "aliases": [
+        "Prometheus 指标能公开到公网吗"
+      ],
+      "keywords": [
+        "metrics",
+        "为什么只对内部开放",
+        "Prometheus",
+        "指标能公开到公网吗"
+      ],
+      "diagnostic": "先确认你正在处理“Prometheus 指标能公开到公网吗”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 example-low-cardinality 中的责任。",
+        "再用本课固定测试验证 metrics 为什么只对内部开放。"
+      ],
+      "example": "指标可能暴露路径和运行状态，应在本机或受控内部网络抓取。",
+      "answer": "指标可能暴露路径和运行状态，应在本机或受控内部网络抓取。",
+      "source": {
+        "label": "example low cardinality",
+        "href": "#example-low-cardinality"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "run-v14",
+      "lesson_id": "web-engineering-06",
+      "context_id": "reproduce-dashboard-v14",
+      "question": "怎样运行 v0.14 发布门禁测试？",
+      "aliases": [
+        "八项可观测测试命令是什么"
+      ],
+      "keywords": [
+        "怎样运行",
+        "v0.14",
+        "发布门禁测试",
+        "八项可观测测试命令是什么"
+      ],
+      "diagnostic": "先确认你正在处理“八项可观测测试命令是什么”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 reproduce-dashboard-v14 中的责任。",
+        "再用本课固定测试验证 怎样运行 v0.14 发布门禁测试。"
+      ],
+      "example": "运行 8 项测试验证日志、指标、request ID、恢复证据和回滚门禁。",
+      "answer": "运行 8 项测试验证日志、指标、request ID、恢复证据和回滚门禁。",
+      "source": {
+        "label": "reproduce dashboard v14",
+        "href": "#reproduce-dashboard-v14"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "pg-dump-custom",
+      "lesson_id": "web-engineering-06",
+      "context_id": "reproduce-dashboard-v14",
+      "question": "为什么备份使用 pg_dump custom 格式？",
+      "aliases": [
+        "自定义备份格式有什么用"
+      ],
+      "keywords": [
+        "为什么备份使用",
+        "pg_dump",
+        "custom",
+        "格式",
+        "自定义备份格式有什么用"
+      ],
+      "diagnostic": "先确认你正在处理“自定义备份格式有什么用”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 reproduce-dashboard-v14 中的责任。",
+        "再用本课固定测试验证 为什么备份使用 pg_dump custom 格式。"
+      ],
+      "example": "custom 格式由 pg_restore 选择性恢复，适合在独立验证库核对。",
+      "answer": "custom 格式由 pg_restore 选择性恢复，适合在独立验证库核对。",
+      "source": {
+        "label": "reproduce dashboard v14",
+        "href": "#reproduce-dashboard-v14"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "restore-isolated",
+      "lesson_id": "web-engineering-06",
+      "context_id": "reproduce-dashboard-v14",
+      "question": "为什么恢复到独立验证数据库？",
+      "aliases": [
+        "能不能直接覆盖正式库验证备份"
+      ],
+      "keywords": [
+        "为什么恢复到独立验证数据库",
+        "能不能直接覆盖正式库验证备份"
+      ],
+      "diagnostic": "先确认你正在处理“能不能直接覆盖正式库验证备份”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 reproduce-dashboard-v14 中的责任。",
+        "再用本课固定测试验证 为什么恢复到独立验证数据库。"
+      ],
+      "example": "独立库防止破坏源数据，并允许核对记录、汇总、外键和唯一约束。",
+      "answer": "独立库防止破坏源数据，并允许核对记录、汇总、外键和唯一约束。",
+      "source": {
+        "label": "reproduce dashboard v14",
+        "href": "#reproduce-dashboard-v14"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "failure-injection",
+      "lesson_id": "web-engineering-06",
+      "context_id": "modify-release-failure",
+      "question": "发布故障注入要记录什么？",
+      "aliases": [
+        "readiness 失败后怎样回滚"
+      ],
+      "keywords": [
+        "发布故障注入要记录什么",
+        "readiness",
+        "失败后怎样回滚"
+      ],
+      "diagnostic": "先确认你正在处理“readiness 失败后怎样回滚”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 modify-release-failure 中的责任。",
+        "再用本课固定测试验证 发布故障注入要记录什么。"
+      ],
+      "example": "记录候选版本、健康失败、停止推进、旧镜像恢复和复核结果。",
+      "answer": "记录候选版本、健康失败、停止推进、旧镜像恢复和复核结果。",
+      "source": {
+        "label": "modify release failure",
+        "href": "#modify-release-failure"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "project-v14",
+      "lesson_id": "web-engineering-06",
+      "context_id": "project-dashboard-v14",
+      "question": "Web 工程化最终交付证据有哪些？",
+      "aliases": [
+        "v0.14 如何证明可恢复"
+      ],
+      "keywords": [
+        "Web",
+        "工程化最终交付证据有哪些",
+        "v0.14",
+        "如何证明可恢复"
+      ],
+      "diagnostic": "先确认你正在处理“v0.14 如何证明可恢复”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 project-dashboard-v14 中的责任。",
+        "再用本课固定测试验证 Web 工程化最终交付证据有哪些。"
+      ],
+      "example": "证据包含测试、健康与指标样本、备份恢复结果、发布记录和故障复盘。",
+      "answer": "证据包含测试、健康与指标样本、备份恢复结果、发布记录和故障复盘。",
+      "source": {
+        "label": "project dashboard v14",
+        "href": "#project-dashboard-v14"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    }
+  ]
+}

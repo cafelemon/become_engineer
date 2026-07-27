@@ -1,0 +1,338 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "career-algorithm-02",
+    "title": "限时模拟、策略选择与过程记录",
+    "path": "learning-paths/career-algorithm/02-timed-rehearsal-strategy-log/"
+  },
+  "contexts": [
+    {
+      "id": "overview-timed-rehearsal",
+      "type": "overview",
+      "title": "限时模拟目标",
+      "anchor": "#overview-timed-rehearsal"
+    },
+    {
+      "id": "concept-budget-checkpoints",
+      "type": "concept",
+      "title": "预算与检查点",
+      "anchor": "#concept-budget-checkpoints"
+    },
+    {
+      "id": "example-rehearsal-events",
+      "type": "example",
+      "title": "策略事件日志",
+      "anchor": "#example-rehearsal-events"
+    },
+    {
+      "id": "reproduce-timed-rehearsal-v02",
+      "type": "reproduce",
+      "title": "回放时间线",
+      "anchor": "#reproduce-timed-rehearsal-v02"
+    },
+    {
+      "id": "concept-timeout-versus-switch",
+      "type": "concept",
+      "title": "超时与换题",
+      "anchor": "#concept-timeout-versus-switch"
+    },
+    {
+      "id": "modify-own-timed-session",
+      "type": "modify",
+      "title": "个人限时模拟",
+      "anchor": "#modify-own-timed-session"
+    },
+    {
+      "id": "troubleshoot-rehearsal-log",
+      "type": "troubleshoot",
+      "title": "日志与策略排错",
+      "anchor": "#troubleshoot-rehearsal-log"
+    },
+    {
+      "id": "project-algorithm-rehearsal-v02",
+      "type": "project",
+      "title": "算法演练运行器 v0.2",
+      "anchor": "#project-algorithm-rehearsal-v02"
+    },
+    {
+      "id": "career-timed-strategy-review",
+      "type": "career",
+      "title": "限时策略追问",
+      "anchor": "#career-timed-strategy-review"
+    }
+  ],
+  "cards": [
+    {
+      "id": "timeboxed-goal",
+      "lesson_id": "career-algorithm-02",
+      "context_id": "overview-timed-rehearsal",
+      "question": "限时模拟真正要训练什么？",
+      "aliases": [
+        "限时训练是不是只看做完几题"
+      ],
+      "keywords": [
+        "限时模拟真正要训练什么",
+        "限时训练是不是只看做完几题"
+      ],
+      "diagnostic": "先判断“限时训练是不是只看做完几题”属于预算、事件还是证据边界。",
+      "hints": [
+        "查看 #overview-timed-rehearsal 的时间线或状态表。",
+        "再用 test_timed_rehearsal.py 核对“限时模拟真正要训练什么”。"
+      ],
+      "example": "示例完成两项、主动切换一项并保留 2 分钟。",
+      "answer": "训练在固定预算内持续做出有证据的选择，并保留卡点、止损和复核记录，不只看最终完成数。",
+      "source": {
+        "label": "限时模拟目标",
+        "href": "#overview-timed-rehearsal"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "budget-first",
+      "lesson_id": "career-algorithm-02",
+      "context_id": "concept-budget-checkpoints",
+      "question": "为什么要先固定总预算？",
+      "aliases": [
+        "题目选择前为什么先写时间上限"
+      ],
+      "keywords": [
+        "为什么要先固定总预算",
+        "题目选择前为什么先写时间上限"
+      ],
+      "diagnostic": "先判断“题目选择前为什么先写时间上限”属于预算、事件还是证据边界。",
+      "hints": [
+        "查看 #concept-budget-checkpoints 的时间线或状态表。",
+        "再用 test_timed_rehearsal.py 核对“为什么要先固定总预算”。"
+      ],
+      "example": "plan.json 在事件发生前固定 45 分钟。",
+      "answer": "先固定预算才能比较任务选择和止损策略，避免结束后无限延长或改写标准。",
+      "source": {
+        "label": "预算与检查点",
+        "href": "#concept-budget-checkpoints"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "checkpoint",
+      "lesson_id": "career-algorithm-02",
+      "context_id": "concept-budget-checkpoints",
+      "question": "检查点应该检查什么？",
+      "aliases": [
+        "到检查点是否必须换题"
+      ],
+      "keywords": [
+        "检查点应该检查什么",
+        "到检查点是否必须换题"
+      ],
+      "diagnostic": "先判断“到检查点是否必须换题”属于预算、事件还是证据边界。",
+      "hints": [
+        "查看 #concept-budget-checkpoints 的时间线或状态表。",
+        "再用 test_timed_rehearsal.py 核对“检查点应该检查什么”。"
+      ],
+      "example": "20 分钟记录 invariant-not-stable 后再决定止损。",
+      "answer": "检查点要求核对题意、不变量、边界用例和继续投入依据，不要求机械换题。",
+      "source": {
+        "label": "预算与检查点",
+        "href": "#concept-budget-checkpoints"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "event-types",
+      "lesson_id": "career-algorithm-02",
+      "context_id": "example-rehearsal-events",
+      "question": "四种模拟事件分别是什么？",
+      "aliases": [
+        "start checkpoint submit switch 怎么用"
+      ],
+      "keywords": [
+        "四种模拟事件分别是什么",
+        "start",
+        "checkpoint",
+        "submit",
+        "switch",
+        "怎么用"
+      ],
+      "diagnostic": "先判断“start checkpoint submit switch 怎么用”属于预算、事件还是证据边界。",
+      "hints": [
+        "查看 #example-rehearsal-events 的时间线或状态表。",
+        "再用 test_timed_rehearsal.py 核对“四种模拟事件分别是什么”。"
+      ],
+      "example": "活跃任务必须由 submit 或 switch 结束。",
+      "answer": "start 开始任务，checkpoint 保存证据，submit 完成本地提交，switch 记录止损并结束任务。",
+      "source": {
+        "label": "策略事件日志",
+        "href": "#example-rehearsal-events"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "logical-minutes",
+      "lesson_id": "career-algorithm-02",
+      "context_id": "reproduce-timed-rehearsal-v02",
+      "question": "逻辑分钟和墙钟耗时有什么区别？",
+      "aliases": [
+        "固定输出为什么不用 time time"
+      ],
+      "keywords": [
+        "逻辑分钟和墙钟耗时有什么区别",
+        "固定输出为什么不用",
+        "time"
+      ],
+      "diagnostic": "先判断“固定输出为什么不用 time time”属于预算、事件还是证据边界。",
+      "hints": [
+        "查看 #reproduce-timed-rehearsal-v02 的时间线或状态表。",
+        "再用 test_timed_rehearsal.py 核对“逻辑分钟和墙钟耗时有什么区别”。"
+      ],
+      "example": "输出固定写 wall_clock=excluded-from-fixed-output。",
+      "answer": "逻辑分钟是学习者声明并可回放的策略记录；墙钟受机器和环境影响，不进入固定快照。",
+      "source": {
+        "label": "回放时间线",
+        "href": "#reproduce-timed-rehearsal-v02"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "timeout-switch",
+      "lesson_id": "career-algorithm-02",
+      "context_id": "concept-timeout-versus-switch",
+      "question": "timeout 和 switch 有什么区别？",
+      "aliases": [
+        "运行超时与主动换题怎么区分"
+      ],
+      "keywords": [
+        "timeout",
+        "和",
+        "switch",
+        "有什么区别",
+        "运行超时与主动换题怎么区分"
+      ],
+      "diagnostic": "先判断“运行超时与主动换题怎么区分”属于预算、事件还是证据边界。",
+      "hints": [
+        "查看 #concept-timeout-versus-switch 的时间线或状态表。",
+        "再用 test_timed_rehearsal.py 核对“timeout 和 switch 有什么区别”。"
+      ],
+      "example": "忙循环得到 timeout，不变量不稳后止损得到 switch。",
+      "answer": "timeout 是解法超过单例执行上限，switch 是学习者在总预算内基于证据主动结束当前任务。",
+      "source": {
+        "label": "超时与换题",
+        "href": "#concept-timeout-versus-switch"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "one-variable",
+      "lesson_id": "career-algorithm-02",
+      "context_id": "modify-own-timed-session",
+      "question": "两轮模拟为什么只改变一个变量？",
+      "aliases": [
+        "怎样做限时策略对照实验"
+      ],
+      "keywords": [
+        "两轮模拟为什么只改变一个变量",
+        "怎样做限时策略对照实验"
+      ],
+      "diagnostic": "先判断“怎样做限时策略对照实验”属于预算、事件还是证据边界。",
+      "hints": [
+        "查看 #modify-own-timed-session 的时间线或状态表。",
+        "再用 test_timed_rehearsal.py 核对“两轮模拟为什么只改变一个变量”。"
+      ],
+      "example": "保持题目和 45 分钟不变，只把首个检查点从 10 改到 8。",
+      "answer": "只改变一个检查点或选择规则，才能把结果差异与该策略关联，避免多项变化无法解释。",
+      "source": {
+        "label": "个人限时模拟",
+        "href": "#modify-own-timed-session"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "honest-note",
+      "lesson_id": "career-algorithm-02",
+      "context_id": "troubleshoot-rehearsal-log",
+      "question": "换题说明怎样写才可复盘？",
+      "aliases": [
+        "为什么 note 不能只写太难"
+      ],
+      "keywords": [
+        "换题说明怎样写才可复盘",
+        "为什么",
+        "note",
+        "不能只写太难"
+      ],
+      "diagnostic": "先判断“为什么 note 不能只写太难”属于预算、事件还是证据边界。",
+      "hints": [
+        "查看 #troubleshoot-rehearsal-log 的时间线或状态表。",
+        "再用 test_timed_rehearsal.py 核对“换题说明怎样写才可复盘”。"
+      ],
+      "example": "写 no-progress-after-checkpoint，不写 hard。",
+      "answer": "说明要指出缺少的具体证据，如不变量、最小用例或复杂度判断，才能设计下一步实验。",
+      "source": {
+        "label": "日志与策略排错",
+        "href": "#troubleshoot-rehearsal-log"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "timeline-state",
+      "lesson_id": "career-algorithm-02",
+      "context_id": "troubleshoot-rehearsal-log",
+      "question": "为什么任务事件不能重叠？",
+      "aliases": [
+        "一个任务没结束能否开始另一个"
+      ],
+      "keywords": [
+        "为什么任务事件不能重叠",
+        "一个任务没结束能否开始另一个"
+      ],
+      "diagnostic": "先判断“一个任务没结束能否开始另一个”属于预算、事件还是证据边界。",
+      "hints": [
+        "查看 #troubleshoot-rehearsal-log 的时间线或状态表。",
+        "再用 test_timed_rehearsal.py 核对“为什么任务事件不能重叠”。"
+      ],
+      "example": "重叠 start 固定得到 cannot start while another task is active。",
+      "answer": "单活跃任务让每段投入可归属；开始新任务前必须提交或明确切换旧任务。",
+      "source": {
+        "label": "日志与策略排错",
+        "href": "#troubleshoot-rehearsal-log"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "rehearsal-v02",
+      "lesson_id": "career-algorithm-02",
+      "context_id": "project-algorithm-rehearsal-v02",
+      "question": "算法演练运行器 v0.2 新增了什么？",
+      "aliases": [
+        "第二课项目增量是什么"
+      ],
+      "keywords": [
+        "算法演练运行器",
+        "v0.2",
+        "新增了什么",
+        "第二课项目增量是什么"
+      ],
+      "diagnostic": "先判断“第二课项目增量是什么”属于预算、事件还是证据边界。",
+      "hints": [
+        "查看 #project-algorithm-rehearsal-v02 的时间线或状态表。",
+        "再用 test_timed_rehearsal.py 核对“算法演练运行器 v0.2 新增了什么”。"
+      ],
+      "example": "它不采集屏幕、账号或跨设备速度排名。",
+      "answer": "v0.2 在判题状态之上新增预算、检查点、优先级、事件日志、固定汇总和 7 项时间线测试。",
+      "source": {
+        "label": "算法演练运行器 v0.2",
+        "href": "#project-algorithm-rehearsal-v02"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

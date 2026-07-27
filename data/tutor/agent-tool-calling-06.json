@@ -1,0 +1,331 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "agent-tool-calling-06",
+    "title": "固定对抗评估、预算指标与回归交付",
+    "path": "learning-paths/llm-agent/tool-calling-workflow/06-fixed-adversarial-evaluation-regression-delivery/"
+  },
+  "contexts": [
+    {
+      "id": "overview-tool-workflow-eval",
+      "type": "overview",
+      "title": "工作流评估",
+      "anchor": "#overview-tool-workflow-eval"
+    },
+    {
+      "id": "concept-frozen-eval-protocol",
+      "type": "concept",
+      "title": "冻结评估协议",
+      "anchor": "#concept-frozen-eval-protocol"
+    },
+    {
+      "id": "concept-separated-metrics",
+      "type": "concept",
+      "title": "分组指标",
+      "anchor": "#concept-separated-metrics"
+    },
+    {
+      "id": "example-adversarial-cases",
+      "type": "example",
+      "title": "对抗案例",
+      "anchor": "#example-adversarial-cases"
+    },
+    {
+      "id": "reproduce-tool-eval-v18",
+      "type": "reproduce",
+      "title": "运行固定评估",
+      "anchor": "#reproduce-tool-eval-v18"
+    },
+    {
+      "id": "modify-eval-case",
+      "type": "modify",
+      "title": "增加评估案例",
+      "anchor": "#modify-eval-case"
+    },
+    {
+      "id": "troubleshoot-eval-gate",
+      "type": "troubleshoot",
+      "title": "评估门禁排错",
+      "anchor": "#troubleshoot-eval-gate"
+    },
+    {
+      "id": "deepen-eval-boundary",
+      "type": "deepen",
+      "title": "评估边界",
+      "anchor": "#deepen-eval-boundary"
+    },
+    {
+      "id": "project-learning-assistant-v18",
+      "type": "project",
+      "title": "智能学习助手v0.18",
+      "anchor": "#project-learning-assistant-v18"
+    }
+  ],
+  "cards": [
+    {
+      "id": "protocol-fingerprint",
+      "lesson_id": "agent-tool-calling-06",
+      "context_id": "concept-frozen-eval-protocol",
+      "question": "评估协议为什么要指纹？",
+      "aliases": [
+        "案例顺序变化会影响吗"
+      ],
+      "keywords": [
+        "评估协议为什么要指纹",
+        "案例顺序变化会影响吗"
+      ],
+      "diagnostic": "先定位“案例顺序变化会影响吗”属于协议、分母、安全硬门禁、逐例证据还是外推边界。",
+      "hints": [
+        "查看 #concept-frozen-eval-protocol。",
+        "运行 test_tool_workflow_eval.py 查看门禁原因。"
+      ],
+      "example": "SHA-256。",
+      "answer": "规范manifest冻结题目、期望和限制；排序不变，内容变化产生新指纹。",
+      "source": {
+        "label": "冻结评估协议",
+        "href": "#concept-frozen-eval-protocol"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "protocol-compatibility",
+      "lesson_id": "agent-tool-calling-06",
+      "context_id": "concept-frozen-eval-protocol",
+      "question": "两个报告什么时候可比较？",
+      "aliases": [
+        "不同案例数能比较分数吗"
+      ],
+      "keywords": [
+        "两个报告什么时候可比较",
+        "不同案例数能比较分数吗"
+      ],
+      "diagnostic": "先定位“不同案例数能比较分数吗”属于协议、分母、安全硬门禁、逐例证据还是外推边界。",
+      "hints": [
+        "查看 #concept-frozen-eval-protocol。",
+        "运行 test_tool_workflow_eval.py 查看门禁原因。"
+      ],
+      "example": "incompatible_protocol。",
+      "answer": "只有协议指纹和案例数相同才可比较。",
+      "source": {
+        "label": "冻结评估协议",
+        "href": "#concept-frozen-eval-protocol"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "separate-denominators",
+      "lesson_id": "agent-tool-calling-06",
+      "context_id": "concept-separated-metrics",
+      "question": "为什么指标要分组？",
+      "aliases": [
+        "正常高分能抵消安全失败吗"
+      ],
+      "keywords": [
+        "为什么指标要分组",
+        "正常高分能抵消安全失败吗"
+      ],
+      "diagnostic": "先定位“正常高分能抵消安全失败吗”属于协议、分母、安全硬门禁、逐例证据还是外推边界。",
+      "hints": [
+        "查看 #concept-separated-metrics。",
+        "运行 test_tool_workflow_eval.py 查看门禁原因。"
+      ],
+      "example": "2/3/3。",
+      "answer": "不能；正常、安全和预算使用独立固定分母。",
+      "source": {
+        "label": "分组指标",
+        "href": "#concept-separated-metrics"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "unsafe-zero",
+      "lesson_id": "agent-tool-calling-06",
+      "context_id": "concept-separated-metrics",
+      "question": "不安全执行允许几次？",
+      "aliases": [
+        "平均分高能容忍一次危险handler吗"
+      ],
+      "keywords": [
+        "不安全执行允许几次",
+        "平均分高能容忍一次危险handler吗"
+      ],
+      "diagnostic": "先定位“平均分高能容忍一次危险handler吗”属于协议、分母、安全硬门禁、逐例证据还是外推边界。",
+      "hints": [
+        "查看 #concept-separated-metrics。",
+        "运行 test_tool_workflow_eval.py 查看门禁原因。"
+      ],
+      "example": "zero unsafe。",
+      "answer": "不能，unsafe executions必须为0，是硬门禁。",
+      "source": {
+        "label": "分组指标",
+        "href": "#concept-separated-metrics"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "adversarial-proof",
+      "lesson_id": "agent-tool-calling-06",
+      "context_id": "example-adversarial-cases",
+      "question": "怎样证明安全拒绝真的安全？",
+      "aliases": [
+        "只看最终回复说拒绝够吗"
+      ],
+      "keywords": [
+        "怎样证明安全拒绝真的安全",
+        "只看最终回复说拒绝够吗"
+      ],
+      "diagnostic": "先定位“只看最终回复说拒绝够吗”属于协议、分母、安全硬门禁、逐例证据还是外推边界。",
+      "hints": [
+        "查看 #example-adversarial-cases。",
+        "运行 test_tool_workflow_eval.py 查看门禁原因。"
+      ],
+      "example": "逐例证据。",
+      "answer": "不够；还要核对工具与handler计数，危险handler必须为0。",
+      "source": {
+        "label": "对抗案例",
+        "href": "#example-adversarial-cases"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "add-case",
+      "lesson_id": "agent-tool-calling-06",
+      "context_id": "modify-eval-case",
+      "question": "新增案例后还能用旧基线吗？",
+      "aliases": [
+        "加确认过期例继续比旧3/3吗"
+      ],
+      "keywords": [
+        "新增案例后还能用旧基线吗",
+        "加确认过期例继续比旧3",
+        "3吗"
+      ],
+      "diagnostic": "先定位“加确认过期例继续比旧3/3吗”属于协议、分母、安全硬门禁、逐例证据还是外推边界。",
+      "hints": [
+        "查看 #modify-eval-case。",
+        "运行 test_tool_workflow_eval.py 查看门禁原因。"
+      ],
+      "example": "新协议。",
+      "answer": "不能；新manifest产生新指纹，要建立同协议baseline。",
+      "source": {
+        "label": "增加评估案例",
+        "href": "#modify-eval-case"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "gate-failure",
+      "lesson_id": "agent-tool-calling-06",
+      "context_id": "troubleshoot-eval-gate",
+      "question": "incompatible_protocol 是退化吗？",
+      "aliases": [
+        "指纹不同说明代码变差吗"
+      ],
+      "keywords": [
+        "incompatible_protocol",
+        "是退化吗",
+        "指纹不同说明代码变差吗"
+      ],
+      "diagnostic": "先定位“指纹不同说明代码变差吗”属于协议、分母、安全硬门禁、逐例证据还是外推边界。",
+      "hints": [
+        "查看 #troubleshoot-eval-gate。",
+        "运行 test_tool_workflow_eval.py 查看门禁原因。"
+      ],
+      "example": "分开不可比与退化。",
+      "answer": "不是；先说明不可比，不能解释为质量变化。",
+      "source": {
+        "label": "评估门禁排错",
+        "href": "#troubleshoot-eval-gate"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "eight-case-boundary",
+      "lesson_id": "agent-tool-calling-06",
+      "context_id": "deepen-eval-boundary",
+      "question": "8例满分代表生产质量吗？",
+      "aliases": [
+        "scripted model满分能上线吗"
+      ],
+      "keywords": [
+        "8例满分代表生产质量吗",
+        "scripted",
+        "model满分能上线吗"
+      ],
+      "diagnostic": "先定位“scripted model满分能上线吗”属于协议、分母、安全硬门禁、逐例证据还是外推边界。",
+      "hints": [
+        "查看 #deepen-eval-boundary。",
+        "运行 test_tool_workflow_eval.py 查看门禁原因。"
+      ],
+      "example": "诚实边界。",
+      "answer": "不能；未覆盖真实provider、外部副作用、延迟成本和漂移。",
+      "source": {
+        "label": "评估边界",
+        "href": "#deepen-eval-boundary"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "eval-logs",
+      "lesson_id": "agent-tool-calling-06",
+      "context_id": "troubleshoot-eval-gate",
+      "question": "评估报告能保存prompt吗？",
+      "aliases": [
+        "为了复盘打印全部参数行吗"
+      ],
+      "keywords": [
+        "评估报告能保存prompt吗",
+        "为了复盘打印全部参数行吗"
+      ],
+      "diagnostic": "先定位“为了复盘打印全部参数行吗”属于协议、分母、安全硬门禁、逐例证据还是外推边界。",
+      "hints": [
+        "查看 #troubleshoot-eval-gate。",
+        "运行 test_tool_workflow_eval.py 查看门禁原因。"
+      ],
+      "example": "脱敏证据。",
+      "answer": "公开报告只保存case ID、状态与计数；敏感正文不进入。",
+      "source": {
+        "label": "评估门禁排错",
+        "href": "#troubleshoot-eval-gate"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    },
+    {
+      "id": "assistant-v18",
+      "lesson_id": "agent-tool-calling-06",
+      "context_id": "project-learning-assistant-v18",
+      "question": "智能学习助手 v0.18 新增什么？",
+      "aliases": [
+        "第六课项目做什么"
+      ],
+      "keywords": [
+        "智能学习助手",
+        "v0.18",
+        "新增什么",
+        "第六课项目做什么"
+      ],
+      "diagnostic": "先定位“第六课项目做什么”属于协议、分母、安全硬门禁、逐例证据还是外推边界。",
+      "hints": [
+        "查看 #project-learning-assistant-v18。",
+        "运行 test_tool_workflow_eval.py 查看门禁原因。"
+      ],
+      "example": "整组48测试。",
+      "answer": "新增冻结案例、协议指纹、分组指标、零危险执行和回归门禁。",
+      "source": {
+        "label": "智能学习助手v0.18",
+        "href": "#project-learning-assistant-v18"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    }
+  ]
+}

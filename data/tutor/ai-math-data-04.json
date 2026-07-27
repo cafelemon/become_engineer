@@ -1,0 +1,336 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "ai-math-data-04",
+    "title": "随机性、抽样、训练/验证划分与泄漏",
+    "path": "learning-paths/ai-foundation/math-data/04-randomness-sampling-train-validation-leakage/"
+  },
+  "contexts": [
+    {
+      "id": "overview-reproducible-split",
+      "type": "overview",
+      "title": "可复现划分",
+      "anchor": "#overview-reproducible-split"
+    },
+    {
+      "id": "concept-seed-local-rng",
+      "type": "concept",
+      "title": "种子与局部随机",
+      "anchor": "#concept-seed-local-rng"
+    },
+    {
+      "id": "concept-stratified-partitions",
+      "type": "concept",
+      "title": "分层分区",
+      "anchor": "#concept-stratified-partitions"
+    },
+    {
+      "id": "example-no-overlap-leakage",
+      "type": "example",
+      "title": "无交叉与泄漏",
+      "anchor": "#example-no-overlap-leakage"
+    },
+    {
+      "id": "reproduce-split-v04",
+      "type": "reproduce",
+      "title": "运行划分实验",
+      "anchor": "#reproduce-split-v04"
+    },
+    {
+      "id": "modify-split-policy",
+      "type": "modify",
+      "title": "修改划分策略",
+      "anchor": "#modify-split-policy"
+    },
+    {
+      "id": "troubleshoot-split-leakage",
+      "type": "troubleshoot",
+      "title": "划分泄漏排错",
+      "anchor": "#troubleshoot-split-leakage"
+    },
+    {
+      "id": "project-reproducible-experiment-v04",
+      "type": "project",
+      "title": "实验系统 v0.4",
+      "anchor": "#project-reproducible-experiment-v04"
+    },
+    {
+      "id": "career-split-leakage",
+      "type": "career",
+      "title": "实体泄漏追问",
+      "anchor": "#career-split-leakage"
+    }
+  ],
+  "cards": [
+    {
+      "id": "seed",
+      "lesson_id": "ai-math-data-04",
+      "context_id": "concept-seed-local-rng",
+      "question": "随机种子解决什么问题？",
+      "aliases": [
+        "固定 seed 有什么用"
+      ],
+      "keywords": [
+        "随机种子解决什么问题",
+        "固定",
+        "seed",
+        "有什么用"
+      ],
+      "diagnostic": "先判断“固定 seed 有什么用”涉及随机复现、类别覆盖还是泄漏边界。",
+      "hints": [
+        "查看 #concept-seed-local-rng。",
+        "运行 test_split_lab.py。"
+      ],
+      "example": "样例 seed=20260723。",
+      "answer": "相同算法、稳定输入顺序和相同种子可复现同一伪随机序列。",
+      "source": {
+        "label": "种子与局部随机",
+        "href": "#concept-seed-local-rng"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "seed-limit",
+      "lesson_id": "ai-math-data-04",
+      "context_id": "concept-seed-local-rng",
+      "question": "固定种子为什么不等于结果稳健？",
+      "aliases": [
+        "可复现等于可靠吗"
+      ],
+      "keywords": [
+        "固定种子为什么不等于结果稳健",
+        "可复现等于可靠吗"
+      ],
+      "diagnostic": "先判断“可复现等于可靠吗”涉及随机复现、类别覆盖还是泄漏边界。",
+      "hints": [
+        "查看 #concept-seed-local-rng。",
+        "运行 test_split_lab.py。"
+      ],
+      "example": "还需重复实验或时间外验证。",
+      "answer": "种子只复现一次抽样，不能消除样本偏差或证明换划分后结果稳定。",
+      "source": {
+        "label": "种子与局部随机",
+        "href": "#concept-seed-local-rng"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "local-rng",
+      "lesson_id": "ai-math-data-04",
+      "context_id": "concept-seed-local-rng",
+      "question": "为什么使用局部 Random？",
+      "aliases": [
+        "不要修改全局随机状态"
+      ],
+      "keywords": [
+        "为什么使用局部",
+        "Random",
+        "不要修改全局随机状态"
+      ],
+      "diagnostic": "先判断“不要修改全局随机状态”涉及随机复现、类别覆盖还是泄漏边界。",
+      "hints": [
+        "查看 #concept-seed-local-rng。",
+        "运行 test_split_lab.py。"
+      ],
+      "example": "测试验证全局状态不变。",
+      "answer": "独立 Random 实例隔离本实验的随机状态，不影响应用其他模块。",
+      "source": {
+        "label": "种子与局部随机",
+        "href": "#concept-seed-local-rng"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "stable-input",
+      "lesson_id": "ai-math-data-04",
+      "context_id": "concept-seed-local-rng",
+      "question": "同种子为何仍可能得到不同划分？",
+      "aliases": [
+        "输入顺序影响 shuffle 吗"
+      ],
+      "keywords": [
+        "同种子为何仍可能得到不同划分",
+        "输入顺序影响",
+        "shuffle",
+        "吗"
+      ],
+      "diagnostic": "先判断“输入顺序影响 shuffle 吗”涉及随机复现、类别覆盖还是泄漏边界。",
+      "hints": [
+        "查看 #concept-seed-local-rng。",
+        "运行 test_split_lab.py。"
+      ],
+      "example": "反转输入仍得到相同 Split。",
+      "answer": "伪随机操作还依赖初始顺序，所以先按稳定 sample_id 排序。",
+      "source": {
+        "label": "种子与局部随机",
+        "href": "#concept-seed-local-rng"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "stratified",
+      "lesson_id": "ai-math-data-04",
+      "context_id": "concept-stratified-partitions",
+      "question": "分层划分怎样保留类别？",
+      "aliases": [
+        "每个标签内部抽样"
+      ],
+      "keywords": [
+        "分层划分怎样保留类别",
+        "每个标签内部抽样"
+      ],
+      "diagnostic": "先判断“每个标签内部抽样”涉及随机复现、类别覆盖还是泄漏边界。",
+      "hints": [
+        "查看 #concept-stratified-partitions。",
+        "运行 test_split_lab.py。"
+      ],
+      "example": "验证标签计数为 0:1,1:1。",
+      "answer": "先按标签分组并分别抽取验证样本，再组合训练和验证分区。",
+      "source": {
+        "label": "分层分区",
+        "href": "#concept-stratified-partitions"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "small-class",
+      "lesson_id": "ai-math-data-04",
+      "context_id": "concept-stratified-partitions",
+      "question": "少数类只有一个样本怎么办？",
+      "aliases": [
+        "一个样本能同时训练验证吗"
+      ],
+      "keywords": [
+        "少数类只有一个样本怎么办",
+        "一个样本能同时训练验证吗"
+      ],
+      "diagnostic": "先判断“一个样本能同时训练验证吗”涉及随机复现、类别覆盖还是泄漏边界。",
+      "hints": [
+        "查看 #concept-stratified-partitions。",
+        "运行 test_split_lab.py。"
+      ],
+      "example": "不能复制样本伪造覆盖。",
+      "answer": "同一数据不能同时充当训练与独立验证，本课拒绝无法覆盖两边的类别。",
+      "source": {
+        "label": "分层分区",
+        "href": "#concept-stratified-partitions"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "no-overlap",
+      "lesson_id": "ai-math-data-04",
+      "context_id": "example-no-overlap-leakage",
+      "question": "怎样证明训练验证无交叉无丢失？",
+      "aliases": [
+        "split 集合不变量"
+      ],
+      "keywords": [
+        "怎样证明训练验证无交叉无丢失",
+        "split",
+        "集合不变量"
+      ],
+      "diagnostic": "先判断“split 集合不变量”涉及随机复现、类别覆盖还是泄漏边界。",
+      "hints": [
+        "查看 #example-no-overlap-leakage。",
+        "运行 test_split_lab.py。"
+      ],
+      "example": "固定输出 overlap=0。",
+      "answer": "交集必须为空，并集必须等于全部稳定样本 ID。",
+      "source": {
+        "label": "无交叉与泄漏",
+        "href": "#example-no-overlap-leakage"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "entity-leakage",
+      "lesson_id": "ai-math-data-04",
+      "context_id": "example-no-overlap-leakage",
+      "question": "ID 不重叠为何仍可能泄漏？",
+      "aliases": [
+        "同一用户多记录跨分区"
+      ],
+      "keywords": [
+        "ID",
+        "不重叠为何仍可能泄漏",
+        "同一用户多记录跨分区"
+      ],
+      "diagnostic": "先判断“同一用户多记录跨分区”涉及随机复现、类别覆盖还是泄漏边界。",
+      "hints": [
+        "查看 #example-no-overlap-leakage。",
+        "运行 test_split_lab.py。"
+      ],
+      "example": "同用户图片跨分区会虚高指标。",
+      "answer": "不同记录可能属于同一实体或采集事件，需要按实体组划分而不只是行 ID。",
+      "source": {
+        "label": "无交叉与泄漏",
+        "href": "#example-no-overlap-leakage"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "time-split",
+      "lesson_id": "ai-math-data-04",
+      "context_id": "troubleshoot-split-leakage",
+      "question": "什么时候不应随机划分？",
+      "aliases": [
+        "时间序列怎样验证"
+      ],
+      "keywords": [
+        "什么时候不应随机划分",
+        "时间序列怎样验证"
+      ],
+      "diagnostic": "先判断“时间序列怎样验证”涉及随机复现、类别覆盖还是泄漏边界。",
+      "hints": [
+        "查看 #troubleshoot-split-leakage。",
+        "运行 test_split_lab.py。"
+      ],
+      "example": "随机划分可能混入未来模式。",
+      "answer": "若生产面对未来数据，应使用过去训练、未来验证来暴露时间漂移。",
+      "source": {
+        "label": "划分泄漏排错",
+        "href": "#troubleshoot-split-leakage"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "experiment-v04",
+      "lesson_id": "ai-math-data-04",
+      "context_id": "project-reproducible-experiment-v04",
+      "question": "实验系统 v0.4 新增什么？",
+      "aliases": [
+        "AI 数学数据第四课项目"
+      ],
+      "keywords": [
+        "实验系统",
+        "v0.4",
+        "新增什么",
+        "AI",
+        "数学数据第四课项目"
+      ],
+      "diagnostic": "先判断“AI 数学数据第四课项目”涉及随机复现、类别覆盖还是泄漏边界。",
+      "hints": [
+        "查看 #project-reproducible-experiment-v04。",
+        "运行 test_split_lab.py。"
+      ],
+      "example": "重复 ID 和不可分类别会拒绝。",
+      "answer": "新增局部种子、分层训练验证划分、类别计数及无交叉无丢失证据。",
+      "source": {
+        "label": "实验系统 v0.4",
+        "href": "#project-reproducible-experiment-v04"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

@@ -1,0 +1,346 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "algorithm-deepening-09",
+    "title": "高阶图：拓扑、强连通与多源路径",
+    "path": "learning-paths/algorithm-deepening/09-advanced-graph-topology-scc-multisource/"
+  },
+  "contexts": [
+    {
+      "id": "overview-advanced-graph",
+      "type": "overview",
+      "title": "高阶图目标",
+      "anchor": "#overview-advanced-graph"
+    },
+    {
+      "id": "concept-topological-frontier",
+      "type": "concept",
+      "title": "拓扑前沿",
+      "anchor": "#concept-topological-frontier"
+    },
+    {
+      "id": "example-scc-condensation",
+      "type": "example",
+      "title": "SCC 缩点",
+      "anchor": "#example-scc-condensation"
+    },
+    {
+      "id": "concept-multisource-bfs",
+      "type": "concept",
+      "title": "多源 BFS",
+      "anchor": "#concept-multisource-bfs"
+    },
+    {
+      "id": "reproduce-advanced-graph-v09",
+      "type": "reproduce",
+      "title": "运行图实验",
+      "anchor": "#reproduce-advanced-graph-v09"
+    },
+    {
+      "id": "modify-advanced-graph",
+      "type": "modify",
+      "title": "修改图契约",
+      "anchor": "#modify-advanced-graph"
+    },
+    {
+      "id": "troubleshoot-advanced-graph",
+      "type": "troubleshoot",
+      "title": "图排错",
+      "anchor": "#troubleshoot-advanced-graph"
+    },
+    {
+      "id": "project-pattern-lab-v09",
+      "type": "project",
+      "title": "约束模式实验 v0.9",
+      "anchor": "#project-pattern-lab-v09"
+    },
+    {
+      "id": "career-advanced-graph",
+      "type": "career",
+      "title": "高阶图追问",
+      "anchor": "#career-advanced-graph"
+    }
+  ],
+  "cards": [
+    {
+      "id": "topo-frontier",
+      "lesson_id": "algorithm-deepening-09",
+      "context_id": "concept-topological-frontier",
+      "question": "拓扑排序为何只取零入度节点？",
+      "aliases": [
+        "零入度前沿是什么"
+      ],
+      "keywords": [
+        "拓扑排序为何只取零入度节点",
+        "零入度前沿是什么"
+      ],
+      "diagnostic": "先判断“零入度前沿是什么”涉及依赖顺序、互相可达还是多源距离。",
+      "hints": [
+        "查看 #concept-topological-frontier。",
+        "运行 test_advanced_graph_trace.py。"
+      ],
+      "example": "样例稳定输出 A 到 F。",
+      "answer": "它的所有前置依赖都已处理，放入顺序不会违反边方向。",
+      "source": {
+        "label": "拓扑前沿",
+        "href": "#concept-topological-frontier"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "cycle-check",
+      "lesson_id": "algorithm-deepening-09",
+      "context_id": "concept-topological-frontier",
+      "question": "Kahn 算法怎样报告环？",
+      "aliases": [
+        "为什么处理数小于节点数"
+      ],
+      "keywords": [
+        "Kahn",
+        "算法怎样报告环",
+        "为什么处理数小于节点数"
+      ],
+      "diagnostic": "先判断“为什么处理数小于节点数”涉及依赖顺序、互相可达还是多源距离。",
+      "hints": [
+        "查看 #concept-topological-frontier。",
+        "运行 test_advanced_graph_trace.py。"
+      ],
+      "example": "返回 cycle 而非部分顺序。",
+      "answer": "队列耗尽仍有节点表示剩余入度无法归零，存在有向环。",
+      "source": {
+        "label": "拓扑前沿",
+        "href": "#concept-topological-frontier"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "scc-meaning",
+      "lesson_id": "algorithm-deepening-09",
+      "context_id": "example-scc-condensation",
+      "question": "强连通分量是什么？",
+      "aliases": [
+        "哪些节点属于同一个 SCC"
+      ],
+      "keywords": [
+        "强连通分量是什么",
+        "哪些节点属于同一个",
+        "SCC"
+      ],
+      "diagnostic": "先判断“哪些节点属于同一个 SCC”涉及依赖顺序、互相可达还是多源距离。",
+      "hints": [
+        "查看 #example-scc-condensation。",
+        "运行 test_advanced_graph_trace.py。"
+      ],
+      "example": "样例 A,B,C 与 D,E 各成组。",
+      "answer": "分量内任意两点互相可达。",
+      "source": {
+        "label": "SCC 缩点",
+        "href": "#example-scc-condensation"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "kosaraju",
+      "lesson_id": "algorithm-deepening-09",
+      "context_id": "example-scc-condensation",
+      "question": "Kosaraju 为什么需要反图？",
+      "aliases": [
+        "两遍 DFS 各做什么"
+      ],
+      "keywords": [
+        "Kosaraju",
+        "为什么需要反图",
+        "两遍",
+        "DFS",
+        "各做什么"
+      ],
+      "diagnostic": "先判断“两遍 DFS 各做什么”涉及依赖顺序、互相可达还是多源距离。",
+      "hints": [
+        "查看 #example-scc-condensation。",
+        "运行 test_advanced_graph_trace.py。"
+      ],
+      "example": "输出成分内再排序。",
+      "answer": "原图记录完成顺序，反图按逆完成序收集不越界的 SCC。",
+      "source": {
+        "label": "SCC 缩点",
+        "href": "#example-scc-condensation"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "condensation",
+      "lesson_id": "algorithm-deepening-09",
+      "context_id": "example-scc-condensation",
+      "question": "SCC 缩点图为什么无环？",
+      "aliases": [
+        "condensation 为什么是 DAG"
+      ],
+      "keywords": [
+        "SCC",
+        "缩点图为什么无环",
+        "condensation",
+        "为什么是",
+        "DAG"
+      ],
+      "diagnostic": "先判断“condensation 为什么是 DAG”涉及依赖顺序、互相可达还是多源距离。",
+      "hints": [
+        "查看 #example-scc-condensation。",
+        "运行 test_advanced_graph_trace.py。"
+      ],
+      "example": "样例缩点边 0>1,1>2。",
+      "answer": "若分量间成环，环上节点互相可达，本应属于同一 SCC。",
+      "source": {
+        "label": "SCC 缩点",
+        "href": "#example-scc-condensation"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "multi-source",
+      "lesson_id": "algorithm-deepening-09",
+      "context_id": "concept-multisource-bfs",
+      "question": "多源 BFS 怎样初始化？",
+      "aliases": [
+        "多个源点如何同时搜索"
+      ],
+      "keywords": [
+        "多源",
+        "BFS",
+        "怎样初始化",
+        "多个源点如何同时搜索"
+      ],
+      "diagnostic": "先判断“多个源点如何同时搜索”涉及依赖顺序、互相可达还是多源距离。",
+      "hints": [
+        "查看 #concept-multisource-bfs。",
+        "运行 test_advanced_graph_trace.py。"
+      ],
+      "example": "等价于连接虚拟超级源。",
+      "answer": "所有唯一源都以距离 0 同时入队，再执行普通分层 BFS。",
+      "source": {
+        "label": "多源 BFS",
+        "href": "#concept-multisource-bfs"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "first-discovery",
+      "lesson_id": "algorithm-deepening-09",
+      "context_id": "concept-multisource-bfs",
+      "question": "首次发现为什么是最短距离？",
+      "aliases": [
+        "无权图 BFS 的层不变量"
+      ],
+      "keywords": [
+        "首次发现为什么是最短距离",
+        "无权图",
+        "BFS",
+        "的层不变量"
+      ],
+      "diagnostic": "先判断“无权图 BFS 的层不变量”涉及依赖顺序、互相可达还是多源距离。",
+      "hints": [
+        "查看 #concept-multisource-bfs。",
+        "运行 test_advanced_graph_trace.py。"
+      ],
+      "example": "入队时写距离避免重复。",
+      "answer": "队列按距离层推进，首次入队不可能存在更短未处理路径。",
+      "source": {
+        "label": "多源 BFS",
+        "href": "#concept-multisource-bfs"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "weighted-boundary",
+      "lesson_id": "algorithm-deepening-09",
+      "context_id": "modify-advanced-graph",
+      "question": "带权边还能用多源 BFS 吗？",
+      "aliases": [
+        "何时改用 Dijkstra"
+      ],
+      "keywords": [
+        "带权边还能用多源",
+        "BFS",
+        "吗",
+        "何时改用",
+        "Dijkstra"
+      ],
+      "diagnostic": "先判断“何时改用 Dijkstra”涉及依赖顺序、互相可达还是多源距离。",
+      "hints": [
+        "查看 #modify-advanced-graph。",
+        "运行 test_advanced_graph_trace.py。"
+      ],
+      "example": "算法必须匹配路径代价。",
+      "answer": "普通 BFS 只最小化边数；非负不同权重应使用多源 Dijkstra。",
+      "source": {
+        "label": "修改图契约",
+        "href": "#modify-advanced-graph"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "complexity",
+      "lesson_id": "algorithm-deepening-09",
+      "context_id": "reproduce-advanced-graph-v09",
+      "question": "三类图算法复杂度怎样？",
+      "aliases": [
+        "拓扑 SCC BFS 多快"
+      ],
+      "keywords": [
+        "三类图算法复杂度怎样",
+        "拓扑",
+        "SCC",
+        "BFS",
+        "多快"
+      ],
+      "diagnostic": "先判断“拓扑 SCC BFS 多快”涉及依赖顺序、互相可达还是多源距离。",
+      "hints": [
+        "查看 #reproduce-advanced-graph-v09。",
+        "运行 test_advanced_graph_trace.py。"
+      ],
+      "example": "邻接表保存图。",
+      "answer": "基础遍历均为 O(V+E)；确定性堆前沿额外 O(V log V)。",
+      "source": {
+        "label": "运行图实验",
+        "href": "#reproduce-advanced-graph-v09"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "pattern-v09",
+      "lesson_id": "algorithm-deepening-09",
+      "context_id": "project-pattern-lab-v09",
+      "question": "约束模式实验 v0.9 新增什么？",
+      "aliases": [
+        "算法深化第九课项目是什么"
+      ],
+      "keywords": [
+        "约束模式实验",
+        "v0.9",
+        "新增什么",
+        "算法深化第九课项目是什么"
+      ],
+      "diagnostic": "先判断“算法深化第九课项目是什么”涉及依赖顺序、互相可达还是多源距离。",
+      "hints": [
+        "查看 #project-pattern-lab-v09。",
+        "运行 test_advanced_graph_trace.py。"
+      ],
+      "example": "三个不变量分别约束依赖、环与距离。",
+      "answer": "新增拓扑与环、SCC 缩点、多源距离和双语言固定报告。",
+      "source": {
+        "label": "约束模式实验 v0.9",
+        "href": "#project-pattern-lab-v09"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

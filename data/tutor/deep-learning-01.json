@@ -1,0 +1,359 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "deep-learning-01",
+    "title": "张量、形状、数据类型与设备契约",
+    "path": "learning-paths/ai-foundation/deep-learning/01-tensor-shape-dtype-device-contract/"
+  },
+  "contexts": [
+    {
+      "id": "overview-tensor-contract",
+      "type": "overview",
+      "title": "张量契约结果",
+      "anchor": "#overview-tensor-contract"
+    },
+    {
+      "id": "concept-tensor-metadata",
+      "type": "concept",
+      "title": "张量元数据",
+      "anchor": "#concept-tensor-metadata"
+    },
+    {
+      "id": "concept-shape-linear-broadcast",
+      "type": "concept",
+      "title": "形状与广播",
+      "anchor": "#concept-shape-linear-broadcast"
+    },
+    {
+      "id": "example-dataset-batch-projection",
+      "type": "example",
+      "title": "数据批次与投影",
+      "anchor": "#example-dataset-batch-projection"
+    },
+    {
+      "id": "reproduce-tensor-v01",
+      "type": "reproduce",
+      "title": "运行张量实验",
+      "anchor": "#reproduce-tensor-v01"
+    },
+    {
+      "id": "modify-tensor-contract",
+      "type": "modify",
+      "title": "修改张量契约",
+      "anchor": "#modify-tensor-contract"
+    },
+    {
+      "id": "troubleshoot-tensor-contract",
+      "type": "troubleshoot",
+      "title": "张量契约排错",
+      "anchor": "#troubleshoot-tensor-contract"
+    },
+    {
+      "id": "deepen-device-reproducibility",
+      "type": "deepen",
+      "title": "设备与复现",
+      "anchor": "#deepen-device-reproducibility"
+    },
+    {
+      "id": "project-diagnosable-network-v01",
+      "type": "project",
+      "title": "可诊断网络 v0.1",
+      "anchor": "#project-diagnosable-network-v01"
+    }
+  ],
+  "cards": [
+    {
+      "id": "tensor-shape",
+      "lesson_id": "deep-learning-01",
+      "context_id": "concept-tensor-metadata",
+      "question": "张量的 shape 表示什么？",
+      "aliases": [
+        "shape 里的每一维怎么读"
+      ],
+      "keywords": [
+        "张量的",
+        "shape",
+        "表示什么",
+        "里的每一维怎么读"
+      ],
+      "diagnostic": "先判断“shape 里的每一维怎么读”涉及 shape、dtype、device、广播还是行对齐。",
+      "hints": [
+        "查看 #concept-tensor-metadata。",
+        "运行 test_tensor_lab.py 并读取实际 shape。"
+      ],
+      "example": "先从 batch 或 rows 维开始逐维命名。",
+      "answer": "shape 记录每一维长度；本课输入的 [96,2] 表示 96 行样本、每行 2 个特征。",
+      "source": {
+        "label": "张量元数据",
+        "href": "#concept-tensor-metadata"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "tensor-rank",
+      "lesson_id": "deep-learning-01",
+      "context_id": "concept-tensor-metadata",
+      "question": "ndim 和 shape 有什么关系？",
+      "aliases": [
+        "张量 rank 是什么"
+      ],
+      "keywords": [
+        "ndim",
+        "和",
+        "shape",
+        "有什么关系",
+        "张量",
+        "rank",
+        "是什么"
+      ],
+      "diagnostic": "先判断“张量 rank 是什么”涉及 shape、dtype、device、广播还是行对齐。",
+      "hints": [
+        "查看 #concept-tensor-metadata。",
+        "运行 test_tensor_lab.py 并读取实际 shape。"
+      ],
+      "example": "输入 rank2，目标 rank1。",
+      "answer": "ndim 是 shape 中维度的数量；[96,2] 的 ndim 为 2，[96] 的 ndim 为 1。",
+      "source": {
+        "label": "张量元数据",
+        "href": "#concept-tensor-metadata"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "input-dtype",
+      "lesson_id": "deep-learning-01",
+      "context_id": "concept-tensor-metadata",
+      "question": "深度学习输入为什么使用 float32？",
+      "aliases": [
+        "特征 dtype 为什么不是 int"
+      ],
+      "keywords": [
+        "深度学习输入为什么使用",
+        "float32",
+        "特征",
+        "dtype",
+        "为什么不是",
+        "int"
+      ],
+      "diagnostic": "先判断“特征 dtype 为什么不是 int”涉及 shape、dtype、device、广播还是行对齐。",
+      "hints": [
+        "查看 #concept-tensor-metadata。",
+        "运行 test_tensor_lab.py 并读取实际 shape。"
+      ],
+      "example": "v0.1 在入口拒绝 float64。",
+      "answer": "线性计算需要浮点表示；float32 是本课精度、兼容性和成本之间的明确选择。",
+      "source": {
+        "label": "张量元数据",
+        "href": "#concept-tensor-metadata"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "target-dtype",
+      "lesson_id": "deep-learning-01",
+      "context_id": "concept-tensor-metadata",
+      "question": "分类目标为什么使用 int64？",
+      "aliases": [
+        "类别标签为什么要 long"
+      ],
+      "keywords": [
+        "分类目标为什么使用",
+        "int64",
+        "类别标签为什么要",
+        "long"
+      ],
+      "diagnostic": "先判断“类别标签为什么要 long”涉及 shape、dtype、device、广播还是行对齐。",
+      "hints": [
+        "查看 #concept-tensor-metadata。",
+        "运行 test_tensor_lab.py 并读取实际 shape。"
+      ],
+      "example": "0 和 1 是类别编号，不是概率。",
+      "answer": "类别目标是离散索引，PyTorch 分类损失通常要求 int64 类别索引而不是浮点数。",
+      "source": {
+        "label": "张量元数据",
+        "href": "#concept-tensor-metadata"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "device",
+      "lesson_id": "deep-learning-01",
+      "context_id": "deepen-device-reproducibility",
+      "question": "tensor 的 device 表示什么？",
+      "aliases": [
+        "cpu cuda mps 有什么关系"
+      ],
+      "keywords": [
+        "tensor",
+        "的",
+        "device",
+        "表示什么",
+        "cpu",
+        "cuda",
+        "mps",
+        "有什么关系"
+      ],
+      "diagnostic": "先判断“cpu cuda mps 有什么关系”涉及 shape、dtype、device、广播还是行对齐。",
+      "hints": [
+        "查看 #deepen-device-reproducibility。",
+        "运行 test_tensor_lab.py 并读取实际 shape。"
+      ],
+      "example": "本组固定 CPU 低成本路径。",
+      "answer": "device 表示张量所在计算后端；参与同一运算的输入、目标与参数必须在兼容设备上。",
+      "source": {
+        "label": "设备与复现",
+        "href": "#deepen-device-reproducibility"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "matmul-shape",
+      "lesson_id": "deep-learning-01",
+      "context_id": "concept-shape-linear-broadcast",
+      "question": "怎样推导矩阵乘法后的 shape？",
+      "aliases": [
+        "8x2 乘 2x3 为什么是 8x3"
+      ],
+      "keywords": [
+        "怎样推导矩阵乘法后的",
+        "shape",
+        "8x2",
+        "乘",
+        "2x3",
+        "为什么是",
+        "8x3"
+      ],
+      "diagnostic": "先判断“8x2 乘 2x3 为什么是 8x3”涉及 shape、dtype、device、广播还是行对齐。",
+      "hints": [
+        "查看 #concept-shape-linear-broadcast。",
+        "运行 test_tensor_lab.py 并读取实际 shape。"
+      ],
+      "example": "先写 B×F @ F×H。",
+      "answer": "矩阵乘法要求中间维相等并保留外侧维，所以 [8,2]@[2,3] 得到 [8,3]。",
+      "source": {
+        "label": "形状与广播",
+        "href": "#concept-shape-linear-broadcast"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "broadcast",
+      "lesson_id": "deep-learning-01",
+      "context_id": "concept-shape-linear-broadcast",
+      "question": "bias 广播做了什么？",
+      "aliases": [
+        "3 怎么加到 8x3"
+      ],
+      "keywords": [
+        "bias",
+        "广播做了什么",
+        "3",
+        "怎么加到",
+        "8x3"
+      ],
+      "diagnostic": "先判断“3 怎么加到 8x3”涉及 shape、dtype、device、广播还是行对齐。",
+      "hints": [
+        "查看 #concept-shape-linear-broadcast。",
+        "运行 test_tensor_lab.py 并读取实际 shape。"
+      ],
+      "example": "可广播不代表业务语义必然正确。",
+      "answer": "形状 [3] 从尾维与 [8,3] 对齐，等价于对 8 行分别加同一组偏置。",
+      "source": {
+        "label": "形状与广播",
+        "href": "#concept-shape-linear-broadcast"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "row-alignment",
+      "lesson_id": "deep-learning-01",
+      "context_id": "example-dataset-batch-projection",
+      "question": "输入和目标为什么必须行对齐？",
+      "aliases": [
+        "X 和 y 少一行会怎样"
+      ],
+      "keywords": [
+        "输入和目标为什么必须行对齐",
+        "X",
+        "和",
+        "y",
+        "少一行会怎样"
+      ],
+      "diagnostic": "先判断“X 和 y 少一行会怎样”涉及 shape、dtype、device、广播还是行对齐。",
+      "hints": [
+        "查看 #example-dataset-batch-projection。",
+        "运行 test_tensor_lab.py 并读取实际 shape。"
+      ],
+      "example": "同一个 randperm 同时索引 inputs 和 targets。",
+      "answer": "第 i 行输入的监督答案必须是第 i 个目标；数量或顺序错位会让训练关系失真。",
+      "source": {
+        "label": "数据批次与投影",
+        "href": "#example-dataset-batch-projection"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "seed-reproducibility",
+      "lesson_id": "deep-learning-01",
+      "context_id": "deepen-device-reproducibility",
+      "question": "固定随机种子就能完全复现吗？",
+      "aliases": [
+        "manual_seed 是否保证跨平台一致"
+      ],
+      "keywords": [
+        "固定随机种子就能完全复现吗",
+        "manual_seed",
+        "是否保证跨平台一致"
+      ],
+      "diagnostic": "先判断“manual_seed 是否保证跨平台一致”涉及 shape、dtype、device、广播还是行对齐。",
+      "hints": [
+        "查看 #deepen-device-reproducibility。",
+        "运行 test_tensor_lab.py 并读取实际 shape。"
+      ],
+      "example": "本课只承诺同环境 CPU 实验重复。",
+      "answer": "不能；种子只是条件之一，版本、硬件、算子和并行顺序也会影响结果。",
+      "source": {
+        "label": "设备与复现",
+        "href": "#deepen-device-reproducibility"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "tensor-contract-v01",
+      "lesson_id": "deep-learning-01",
+      "context_id": "project-diagnosable-network-v01",
+      "question": "可诊断神经网络 v0.1 新增了什么？",
+      "aliases": [
+        "深度学习第一课项目做什么"
+      ],
+      "keywords": [
+        "可诊断神经网络",
+        "v0.1",
+        "新增了什么",
+        "深度学习第一课项目做什么"
+      ],
+      "diagnostic": "先判断“深度学习第一课项目做什么”涉及 shape、dtype、device、广播还是行对齐。",
+      "hints": [
+        "查看 #project-diagnosable-network-v01。",
+        "运行 test_tensor_lab.py 并读取实际 shape。"
+      ],
+      "example": "v0.1 尚未训练模型。",
+      "answer": "它新增版本化合成张量、批次、线性投影、入口校验、固定报告和 8 项真实测试。",
+      "source": {
+        "label": "可诊断网络 v0.1",
+        "href": "#project-diagnosable-network-v01"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

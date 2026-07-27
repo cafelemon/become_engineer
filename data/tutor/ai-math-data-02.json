@@ -1,0 +1,336 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "ai-math-data-02",
+    "title": "点积、距离、缩放与标准化",
+    "path": "learning-paths/ai-foundation/math-data/02-dot-distance-scaling-standardization/"
+  },
+  "contexts": [
+    {
+      "id": "overview-scaling-contract",
+      "type": "overview",
+      "title": "缩放契约",
+      "anchor": "#overview-scaling-contract"
+    },
+    {
+      "id": "concept-scale-dominance",
+      "type": "concept",
+      "title": "尺度主导",
+      "anchor": "#concept-scale-dominance"
+    },
+    {
+      "id": "concept-z-score-population",
+      "type": "concept",
+      "title": "标准分数",
+      "anchor": "#concept-z-score-population"
+    },
+    {
+      "id": "example-fit-transform-boundary",
+      "type": "example",
+      "title": "拟合与变换",
+      "anchor": "#example-fit-transform-boundary"
+    },
+    {
+      "id": "reproduce-scaling-v02",
+      "type": "reproduce",
+      "title": "运行缩放实验",
+      "anchor": "#reproduce-scaling-v02"
+    },
+    {
+      "id": "modify-scaling-policy",
+      "type": "modify",
+      "title": "修改缩放策略",
+      "anchor": "#modify-scaling-policy"
+    },
+    {
+      "id": "troubleshoot-scaling-leakage",
+      "type": "troubleshoot",
+      "title": "泄漏排错",
+      "anchor": "#troubleshoot-scaling-leakage"
+    },
+    {
+      "id": "project-reproducible-experiment-v02",
+      "type": "project",
+      "title": "实验系统 v0.2",
+      "anchor": "#project-reproducible-experiment-v02"
+    },
+    {
+      "id": "career-scaling-leakage",
+      "type": "career",
+      "title": "缩放泄漏追问",
+      "anchor": "#career-scaling-leakage"
+    }
+  ],
+  "cards": [
+    {
+      "id": "scale-dominance",
+      "lesson_id": "ai-math-data-02",
+      "context_id": "concept-scale-dominance",
+      "question": "为什么大数值列会主导欧氏距离？",
+      "aliases": [
+        "不同量纲怎样影响距离"
+      ],
+      "keywords": [
+        "为什么大数值列会主导欧氏距离",
+        "不同量纲怎样影响距离"
+      ],
+      "diagnostic": "先判断“不同量纲怎样影响距离”涉及单位、统计口径还是拟合边界。",
+      "hints": [
+        "查看 #concept-scale-dominance。",
+        "运行 test_scaling_lab.py。"
+      ],
+      "example": "样例原始首尾距离为 30.594。",
+      "answer": "欧氏距离会平方各维差值，数值跨度大的列可能压过其他列，但这不证明它更重要。",
+      "source": {
+        "label": "尺度主导",
+        "href": "#concept-scale-dominance"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "unit-change",
+      "lesson_id": "ai-math-data-02",
+      "context_id": "concept-scale-dominance",
+      "question": "换单位为什么会改变点积和距离？",
+      "aliases": [
+        "厘米换成米有什么影响"
+      ],
+      "keywords": [
+        "换单位为什么会改变点积和距离",
+        "厘米换成米有什么影响"
+      ],
+      "diagnostic": "先判断“厘米换成米有什么影响”涉及单位、统计口径还是拟合边界。",
+      "hints": [
+        "查看 #concept-scale-dominance。",
+        "运行 test_scaling_lab.py。"
+      ],
+      "example": "语义不变不代表原始数值结果不变。",
+      "answer": "单位换算会按比例改变分量数值，因此会改变依赖数值大小的点积和距离。",
+      "source": {
+        "label": "尺度主导",
+        "href": "#concept-scale-dominance"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "z-score",
+      "lesson_id": "ai-math-data-02",
+      "context_id": "concept-z-score-population",
+      "question": "z-score 怎样计算？",
+      "aliases": [
+        "标准分数公式"
+      ],
+      "keywords": [
+        "z-score",
+        "怎样计算",
+        "标准分数公式"
+      ],
+      "diagnostic": "先判断“标准分数公式”涉及单位、统计口径还是拟合边界。",
+      "hints": [
+        "查看 #concept-z-score-population。",
+        "运行 test_scaling_lab.py。"
+      ],
+      "example": "首行两列都约为 -1.342。",
+      "answer": "每个值先减去训练列均值，再除以训练列尺度：z=(x-mean)/scale。",
+      "source": {
+        "label": "标准分数",
+        "href": "#concept-z-score-population"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "population-scale",
+      "lesson_id": "ai-math-data-02",
+      "context_id": "concept-z-score-population",
+      "question": "本课标准差为什么除以 n？",
+      "aliases": [
+        "总体标准差还是样本标准差"
+      ],
+      "keywords": [
+        "本课标准差为什么除以",
+        "n",
+        "总体标准差还是样本标准差"
+      ],
+      "diagnostic": "先判断“总体标准差还是样本标准差”涉及单位、统计口径还是拟合边界。",
+      "hints": [
+        "查看 #concept-z-score-population。",
+        "运行 test_scaling_lab.py。"
+      ],
+      "example": "计算、测试和文档必须同口径。",
+      "answer": "本课把训练行当作当前总体，方差分母固定为 n；样本推断常用 n-1。",
+      "source": {
+        "label": "标准分数",
+        "href": "#concept-z-score-population"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "standardized-invariant",
+      "lesson_id": "ai-math-data-02",
+      "context_id": "concept-z-score-population",
+      "question": "训练列标准化后有什么不变量？",
+      "aliases": [
+        "均值0方差1"
+      ],
+      "keywords": [
+        "训练列标准化后有什么不变量",
+        "均值0方差1"
+      ],
+      "diagnostic": "先判断“均值0方差1”涉及单位、统计口径还是拟合边界。",
+      "hints": [
+        "查看 #concept-z-score-population。",
+        "运行 test_scaling_lab.py。"
+      ],
+      "example": "标准化首尾距离为 3.795。",
+      "answer": "按本课总体方差口径，变换后的训练列均值为 0、总体方差为 1。",
+      "source": {
+        "label": "标准分数",
+        "href": "#concept-z-score-population"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "fit-transform",
+      "lesson_id": "ai-math-data-02",
+      "context_id": "example-fit-transform-boundary",
+      "question": "fit 和 transform 有什么区别？",
+      "aliases": [
+        "标准化器怎样用于新数据"
+      ],
+      "keywords": [
+        "fit",
+        "和",
+        "transform",
+        "有什么区别",
+        "标准化器怎样用于新数据"
+      ],
+      "diagnostic": "先判断“标准化器怎样用于新数据”涉及单位、统计口径还是拟合边界。",
+      "hints": [
+        "查看 #example-fit-transform-boundary。",
+        "运行 test_scaling_lab.py。"
+      ],
+      "example": "Standardizer 保存 means 和 scales。",
+      "answer": "fit 从训练数据学习均值和尺度；transform 只复用已学习统计量变换输入。",
+      "source": {
+        "label": "拟合与变换",
+        "href": "#example-fit-transform-boundary"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "train-fit-only",
+      "lesson_id": "ai-math-data-02",
+      "context_id": "example-fit-transform-boundary",
+      "question": "为什么只能在训练集 fit？",
+      "aliases": [
+        "验证集参与标准化算泄漏吗"
+      ],
+      "keywords": [
+        "为什么只能在训练集",
+        "fit",
+        "验证集参与标准化算泄漏吗"
+      ],
+      "diagnostic": "先判断“验证集参与标准化算泄漏吗”涉及单位、统计口径还是拟合边界。",
+      "hints": [
+        "查看 #example-fit-transform-boundary。",
+        "运行 test_scaling_lab.py。"
+      ],
+      "example": "固定不变量 train-fit-only。",
+      "answer": "验证数据参与统计量计算会让未知数据的信息提前影响处理规则，破坏独立评估。",
+      "source": {
+        "label": "拟合与变换",
+        "href": "#example-fit-transform-boundary"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "constant-column",
+      "lesson_id": "ai-math-data-02",
+      "context_id": "troubleshoot-scaling-leakage",
+      "question": "常数列为什么不能直接标准化？",
+      "aliases": [
+        "零方差列怎么处理"
+      ],
+      "keywords": [
+        "常数列为什么不能直接标准化",
+        "零方差列怎么处理"
+      ],
+      "diagnostic": "先判断“零方差列怎么处理”涉及单位、统计口径还是拟合边界。",
+      "hints": [
+        "查看 #troubleshoot-scaling-leakage。",
+        "运行 test_scaling_lab.py。"
+      ],
+      "example": "本课固定 constant=reject。",
+      "answer": "常数列尺度为 0，会导致除零；应删除、标记或定义显式策略。",
+      "source": {
+        "label": "泄漏排错",
+        "href": "#troubleshoot-scaling-leakage"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "schema-match",
+      "lesson_id": "ai-math-data-02",
+      "context_id": "troubleshoot-scaling-leakage",
+      "question": "新数据为什么必须匹配训练列？",
+      "aliases": [
+        "transform 列数顺序错了怎么办"
+      ],
+      "keywords": [
+        "新数据为什么必须匹配训练列",
+        "transform",
+        "列数顺序错了怎么办"
+      ],
+      "diagnostic": "先判断“transform 列数顺序错了怎么办”涉及单位、统计口径还是拟合边界。",
+      "hints": [
+        "查看 #troubleshoot-scaling-leakage。",
+        "运行 test_scaling_lab.py。"
+      ],
+      "example": "列数错配在变换前拒绝。",
+      "answer": "已保存的每个均值和尺度只对应训练时那一列，因此列数、顺序和含义都必须一致。",
+      "source": {
+        "label": "泄漏排错",
+        "href": "#troubleshoot-scaling-leakage"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "experiment-v02",
+      "lesson_id": "ai-math-data-02",
+      "context_id": "project-reproducible-experiment-v02",
+      "question": "实验系统 v0.2 新增什么？",
+      "aliases": [
+        "AI 数学数据第二课项目"
+      ],
+      "keywords": [
+        "实验系统",
+        "v0.2",
+        "新增什么",
+        "AI",
+        "数学数据第二课项目"
+      ],
+      "diagnostic": "先判断“AI 数学数据第二课项目”涉及单位、统计口径还是拟合边界。",
+      "hints": [
+        "查看 #project-reproducible-experiment-v02。",
+        "运行 test_scaling_lab.py。"
+      ],
+      "example": "仍只使用 Python 标准库。",
+      "answer": "新增标准化拟合与变换、原始/标准化距离对照、训练集边界和常数列拒绝。",
+      "source": {
+        "label": "实验系统 v0.2",
+        "href": "#project-reproducible-experiment-v02"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

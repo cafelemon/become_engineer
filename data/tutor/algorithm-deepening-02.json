@@ -1,0 +1,341 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "algorithm-deepening-02",
+    "title": "滑动窗口、频次状态与最短覆盖",
+    "path": "learning-paths/algorithm-deepening/02-sliding-window-frequency-minimum-cover/"
+  },
+  "contexts": [
+    {
+      "id": "overview-sliding-window",
+      "type": "overview",
+      "title": "滑动窗口目标",
+      "anchor": "#overview-sliding-window"
+    },
+    {
+      "id": "concept-window-state",
+      "type": "concept",
+      "title": "窗口状态机",
+      "anchor": "#concept-window-state"
+    },
+    {
+      "id": "example-duplicate-frequency",
+      "type": "example",
+      "title": "重复需求",
+      "anchor": "#example-duplicate-frequency"
+    },
+    {
+      "id": "reproduce-window-v02",
+      "type": "reproduce",
+      "title": "运行窗口实验",
+      "anchor": "#reproduce-window-v02"
+    },
+    {
+      "id": "concept-minimum-proof",
+      "type": "concept",
+      "title": "最短性证明",
+      "anchor": "#concept-minimum-proof"
+    },
+    {
+      "id": "modify-window-contract",
+      "type": "modify",
+      "title": "修改窗口契约",
+      "anchor": "#modify-window-contract"
+    },
+    {
+      "id": "troubleshoot-sliding-window",
+      "type": "troubleshoot",
+      "title": "窗口排错",
+      "anchor": "#troubleshoot-sliding-window"
+    },
+    {
+      "id": "project-pattern-lab-v02",
+      "type": "project",
+      "title": "约束模式实验 v0.2",
+      "anchor": "#project-pattern-lab-v02"
+    },
+    {
+      "id": "career-window-state",
+      "type": "career",
+      "title": "窗口状态追问",
+      "anchor": "#career-window-state"
+    }
+  ],
+  "cards": [
+    {
+      "id": "expand-shrink",
+      "lesson_id": "algorithm-deepening-02",
+      "context_id": "overview-sliding-window",
+      "question": "滑动窗口的两个边界各负责什么？",
+      "aliases": [
+        "右端和左端怎样分工"
+      ],
+      "keywords": [
+        "滑动窗口的两个边界各负责什么",
+        "右端和左端怎样分工"
+      ],
+      "diagnostic": "先判断“右端和左端怎样分工”涉及窗口边界、频次阈值还是答案契约。",
+      "hints": [
+        "查看 #overview-sliding-window 的状态变化。",
+        "运行 test_sliding_window_trace.py 核对“滑动窗口的两个边界各负责什么”。"
+      ],
+      "example": "BANC 是收缩得到的最终最短覆盖。",
+      "answer": "右端加入元素直到满足约束，满足后左端移除元素以寻找更短可行窗口。",
+      "source": {
+        "label": "滑动窗口目标",
+        "href": "#overview-sliding-window"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "window-invariant",
+      "lesson_id": "algorithm-deepening-02",
+      "context_id": "concept-window-state",
+      "question": "窗口频次不变量是什么？",
+      "aliases": [
+        "current 必须对应什么"
+      ],
+      "keywords": [
+        "窗口频次不变量是什么",
+        "current",
+        "必须对应什么"
+      ],
+      "diagnostic": "先判断“current 必须对应什么”涉及窗口边界、频次阈值还是答案契约。",
+      "hints": [
+        "查看 #concept-window-state 的状态变化。",
+        "运行 test_sliding_window_trace.py 核对“窗口频次不变量是什么”。"
+      ],
+      "example": "固定输出 window-counts-match-state。",
+      "answer": "current 必须准确对应 text[left:right+1]，formed 必须准确反映满足需求频次的种类数。",
+      "source": {
+        "label": "窗口状态机",
+        "href": "#concept-window-state"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "duplicate-need",
+      "lesson_id": "algorithm-deepening-02",
+      "context_id": "example-duplicate-frequency",
+      "question": "需求 AAC 为什么不能用集合？",
+      "aliases": [
+        "重复需求怎样表示"
+      ],
+      "keywords": [
+        "需求",
+        "AAC",
+        "为什么不能用集合",
+        "重复需求怎样表示"
+      ],
+      "diagnostic": "先判断“重复需求怎样表示”涉及窗口边界、频次阈值还是答案契约。",
+      "hints": [
+        "查看 #example-duplicate-frequency 的状态变化。",
+        "运行 test_sliding_window_trace.py 核对“需求 AAC 为什么不能用集合”。"
+      ],
+      "example": "AC 不满足 AAC，AAC 才满足。",
+      "answer": "集合会丢掉两个 A 的数量要求，必须保存 required[A]=2。",
+      "source": {
+        "label": "重复需求",
+        "href": "#example-duplicate-frequency"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "formed-increase",
+      "lesson_id": "algorithm-deepening-02",
+      "context_id": "concept-window-state",
+      "question": "formed 什么时候增加？",
+      "aliases": [
+        "多余字符会增加 formed 吗"
+      ],
+      "keywords": [
+        "formed",
+        "什么时候增加",
+        "多余字符会增加",
+        "吗"
+      ],
+      "diagnostic": "先判断“多余字符会增加 formed 吗”涉及窗口边界、频次阈值还是答案契约。",
+      "hints": [
+        "查看 #concept-window-state 的状态变化。",
+        "运行 test_sliding_window_trace.py 核对“formed 什么时候增加”。"
+      ],
+      "example": "A 从 1 到 2 满足 A 类。",
+      "answer": "某需求字符的当前数量刚好达到要求时增加；超过要求不重复增加。",
+      "source": {
+        "label": "窗口状态机",
+        "href": "#concept-window-state"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "formed-decrease",
+      "lesson_id": "algorithm-deepening-02",
+      "context_id": "concept-window-state",
+      "question": "formed 什么时候减少？",
+      "aliases": [
+        "移除字符后何时失效"
+      ],
+      "keywords": [
+        "formed",
+        "什么时候减少",
+        "移除字符后何时失效"
+      ],
+      "diagnostic": "先判断“移除字符后何时失效”涉及窗口边界、频次阈值还是答案契约。",
+      "hints": [
+        "查看 #concept-window-state 的状态变化。",
+        "运行 test_sliding_window_trace.py 核对“formed 什么时候减少”。"
+      ],
+      "example": "先减 current，再比较 required。",
+      "answer": "移除后当前数量跌到需求量以下时减少。",
+      "source": {
+        "label": "窗口状态机",
+        "href": "#concept-window-state"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "minimum-proof",
+      "lesson_id": "algorithm-deepening-02",
+      "context_id": "concept-minimum-proof",
+      "question": "为什么持续收缩能找到该右端最短窗口？",
+      "aliases": [
+        "固定 right 怎样找最优 left"
+      ],
+      "keywords": [
+        "为什么持续收缩能找到该右端最短窗口",
+        "固定",
+        "right",
+        "怎样找最优",
+        "left"
+      ],
+      "diagnostic": "先判断“固定 right 怎样找最优 left”涉及窗口边界、频次阈值还是答案契约。",
+      "hints": [
+        "查看 #concept-minimum-proof 的状态变化。",
+        "运行 test_sliding_window_trace.py 核对“为什么持续收缩能找到该右端最短窗口”。"
+      ],
+      "example": "每次有效时先更新答案再移除。",
+      "answer": "依次移除左端直到刚刚失效，最后一个有效位置就是该 right 下最短窗口。",
+      "source": {
+        "label": "最短性证明",
+        "href": "#concept-minimum-proof"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "linear-window",
+      "lesson_id": "algorithm-deepening-02",
+      "context_id": "concept-minimum-proof",
+      "question": "嵌套 while 为什么仍是 O(n)？",
+      "aliases": [
+        "窗口会不会 O(n平方)"
+      ],
+      "keywords": [
+        "嵌套",
+        "while",
+        "为什么仍是",
+        "O(n)",
+        "窗口会不会",
+        "O(n平方)"
+      ],
+      "diagnostic": "先判断“窗口会不会 O(n平方)”涉及窗口边界、频次阈值还是答案契约。",
+      "hints": [
+        "查看 #concept-minimum-proof 的状态变化。",
+        "运行 test_sliding_window_trace.py 核对“嵌套 while 为什么仍是 O(n)”。"
+      ],
+      "example": "固定样例 expands=13 shrinks=10。",
+      "answer": "右端每个位置加入一次，左端每个位置移除至多一次，总移动不超过 2n。",
+      "source": {
+        "label": "最短性证明",
+        "href": "#concept-minimum-proof"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "no-cover",
+      "lesson_id": "algorithm-deepening-02",
+      "context_id": "troubleshoot-sliding-window",
+      "question": "没有覆盖窗口时返回什么？",
+      "aliases": [
+        "空字符串是否会歧义"
+      ],
+      "keywords": [
+        "没有覆盖窗口时返回什么",
+        "空字符串是否会歧义"
+      ],
+      "diagnostic": "先判断“空字符串是否会歧义”涉及窗口边界、频次阈值还是答案契约。",
+      "hints": [
+        "查看 #troubleshoot-sliding-window 的状态变化。",
+        "运行 test_sliding_window_trace.py 核对“没有覆盖窗口时返回什么”。"
+      ],
+      "example": "ABC 无法覆盖 AA。",
+      "answer": "返回显式 None/not-found，避免与合法空窗口或真实空文本混淆。",
+      "source": {
+        "label": "窗口排错",
+        "href": "#troubleshoot-sliding-window"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "tie-contract",
+      "lesson_id": "algorithm-deepening-02",
+      "context_id": "modify-window-contract",
+      "question": "并列最短窗口怎样处理？",
+      "aliases": [
+        "最短答案顺序由什么决定"
+      ],
+      "keywords": [
+        "并列最短窗口怎样处理",
+        "最短答案顺序由什么决定"
+      ],
+      "diagnostic": "先判断“最短答案顺序由什么决定”涉及窗口边界、频次阈值还是答案契约。",
+      "hints": [
+        "查看 #modify-window-contract 的状态变化。",
+        "运行 test_sliding_window_trace.py 核对“并列最短窗口怎样处理”。"
+      ],
+      "example": "改变平局规则要同步测试。",
+      "answer": "必须声明契约；本课只在严格变短时更新，因此保留最早发现的同长度答案。",
+      "source": {
+        "label": "修改窗口契约",
+        "href": "#modify-window-contract"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "pattern-v02",
+      "lesson_id": "algorithm-deepening-02",
+      "context_id": "project-pattern-lab-v02",
+      "question": "约束模式实验 v0.2 新增什么？",
+      "aliases": [
+        "算法深化第二课项目是什么"
+      ],
+      "keywords": [
+        "约束模式实验",
+        "v0.2",
+        "新增什么",
+        "算法深化第二课项目是什么"
+      ],
+      "diagnostic": "先判断“算法深化第二课项目是什么”涉及窗口边界、频次阈值还是答案契约。",
+      "hints": [
+        "查看 #project-pattern-lab-v02 的状态变化。",
+        "运行 test_sliding_window_trace.py 核对“约束模式实验 v0.2 新增什么”。"
+      ],
+      "example": "固定结果 9:12 BANC。",
+      "answer": "新增需求频次、伸缩窗口、三次最佳改进、重复需求与双语言一致报告。",
+      "source": {
+        "label": "约束模式实验 v0.2",
+        "href": "#project-pattern-lab-v02"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

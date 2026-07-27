@@ -1,0 +1,333 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "machine-learning-08",
+    "title": "模型持久化、推理契约与交付验收",
+    "path": "learning-paths/ai-foundation/machine-learning/08-model-persistence-inference-contract-delivery-acceptance/"
+  },
+  "contexts": [
+    {
+      "id": "overview-delivery-contract",
+      "type": "overview",
+      "title": "模型交付契约",
+      "anchor": "#overview-delivery-contract"
+    },
+    {
+      "id": "concept-artifact-boundary",
+      "type": "concept",
+      "title": "产物边界",
+      "anchor": "#concept-artifact-boundary"
+    },
+    {
+      "id": "concept-serialization-trust",
+      "type": "concept",
+      "title": "序列化信任",
+      "anchor": "#concept-serialization-trust"
+    },
+    {
+      "id": "example-inference-schema",
+      "type": "example",
+      "title": "推理 Schema",
+      "anchor": "#example-inference-schema"
+    },
+    {
+      "id": "reproduce-delivery-v08",
+      "type": "reproduce",
+      "title": "运行交付实验",
+      "anchor": "#reproduce-delivery-v08"
+    },
+    {
+      "id": "modify-delivery",
+      "type": "modify",
+      "title": "修改交付契约",
+      "anchor": "#modify-delivery"
+    },
+    {
+      "id": "troubleshoot-delivery",
+      "type": "troubleshoot",
+      "title": "模型交付排错",
+      "anchor": "#troubleshoot-delivery"
+    },
+    {
+      "id": "project-structured-data-ml-v08",
+      "type": "project",
+      "title": "结构化 ML 系统 v0.8",
+      "anchor": "#project-structured-data-ml-v08"
+    },
+    {
+      "id": "career-delivery-contract",
+      "type": "career",
+      "title": "上线交付追问",
+      "anchor": "#career-delivery-contract"
+    }
+  ],
+  "cards": [
+    {
+      "id": "full-pipeline",
+      "lesson_id": "machine-learning-08",
+      "context_id": "concept-artifact-boundary",
+      "question": "为什么不能只保存分类器？",
+      "aliases": [
+        "模型要保存预处理吗"
+      ],
+      "keywords": [
+        "为什么不能只保存分类器",
+        "模型要保存预处理吗"
+      ],
+      "diagnostic": "先判断“模型要保存预处理吗”涉及产物完整性、反序列化信任、输入Schema还是生产差距。",
+      "hints": [
+        "查看 #concept-artifact-boundary。",
+        "运行 test_delivery_lab.py。"
+      ],
+      "example": "v0.8保存完整校准流水线。",
+      "answer": "推理必须复用填补、缩放、编码和校准状态，否则输入语义和列顺序会漂移。",
+      "source": {
+        "label": "产物边界",
+        "href": "#concept-artifact-boundary"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "retrain-boundary",
+      "lesson_id": "machine-learning-08",
+      "context_id": "concept-artifact-boundary",
+      "question": "最终评估后全量重训会得到新测试分数吗？",
+      "aliases": [
+        "全量训练还能评估吗"
+      ],
+      "keywords": [
+        "最终评估后全量重训会得到新测试分数吗",
+        "全量训练还能评估吗"
+      ],
+      "diagnostic": "先判断“全量训练还能评估吗”涉及产物完整性、反序列化信任、输入Schema还是生产差距。",
+      "hints": [
+        "查看 #concept-artifact-boundary。",
+        "运行 test_delivery_lab.py。"
+      ],
+      "example": "120行用于最终产物。",
+      "answer": "不会；全量重训用于交付，不能把已参与训练的数据再次当独立测试。",
+      "source": {
+        "label": "产物边界",
+        "href": "#concept-artifact-boundary"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "pickle-risk",
+      "lesson_id": "machine-learning-08",
+      "context_id": "concept-serialization-trust",
+      "question": "为什么不能加载陌生 pickle？",
+      "aliases": [
+        "pickle 安全吗"
+      ],
+      "keywords": [
+        "为什么不能加载陌生",
+        "pickle",
+        "安全吗"
+      ],
+      "diagnostic": "先判断“pickle 安全吗”涉及产物完整性、反序列化信任、输入Schema还是生产差距。",
+      "hints": [
+        "查看 #concept-serialization-trust。",
+        "运行 test_delivery_lab.py。"
+      ],
+      "example": "本课只加载本机刚生成文件。",
+      "answer": "反序列化可以执行任意代码，只能加载可信来源且已审查的产物。",
+      "source": {
+        "label": "序列化信任",
+        "href": "#concept-serialization-trust"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "checksum",
+      "lesson_id": "machine-learning-08",
+      "context_id": "concept-serialization-trust",
+      "question": "SHA-256 校验能证明模型安全吗？",
+      "aliases": [
+        "哈希有什么边界"
+      ],
+      "keywords": [
+        "SHA-256",
+        "校验能证明模型安全吗",
+        "哈希有什么边界"
+      ],
+      "diagnostic": "先判断“哈希有什么边界”涉及产物完整性、反序列化信任、输入Schema还是生产差距。",
+      "hints": [
+        "查看 #concept-serialization-trust。",
+        "运行 test_delivery_lab.py。"
+      ],
+      "example": "篡改追加字节即拒绝。",
+      "answer": "它能发现文件与清单不一致，不能证明来源善意或替代签名和权限控制。",
+      "source": {
+        "label": "序列化信任",
+        "href": "#concept-serialization-trust"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "load-order",
+      "lesson_id": "machine-learning-08",
+      "context_id": "concept-serialization-trust",
+      "question": "模型加载前应按什么顺序检查？",
+      "aliases": [
+        "何时才能 unpickle"
+      ],
+      "keywords": [
+        "模型加载前应按什么顺序检查",
+        "何时才能",
+        "unpickle"
+      ],
+      "diagnostic": "先判断“何时才能 unpickle”涉及产物完整性、反序列化信任、输入Schema还是生产差距。",
+      "hints": [
+        "查看 #concept-serialization-trust。",
+        "运行 test_delivery_lab.py。"
+      ],
+      "example": "校验失败不执行pickle。",
+      "answer": "先验证清单、格式、路径、校验和与依赖，之后才反序列化并验证bundle。",
+      "source": {
+        "label": "序列化信任",
+        "href": "#concept-serialization-trust"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "schema-exact",
+      "lesson_id": "machine-learning-08",
+      "context_id": "example-inference-schema",
+      "question": "推理为什么拒绝额外字段？",
+      "aliases": [
+        "多余字段能忽略吗"
+      ],
+      "keywords": [
+        "推理为什么拒绝额外字段",
+        "多余字段能忽略吗"
+      ],
+      "diagnostic": "先判断“多余字段能忽略吗”涉及产物完整性、反序列化信任、输入Schema还是生产差距。",
+      "hints": [
+        "查看 #example-inference-schema。",
+        "运行 test_delivery_lab.py。"
+      ],
+      "example": "additional_properties=false。",
+      "answer": "精确Schema能暴露调用方漂移，避免静默使用错误版本或意外敏感字段。",
+      "source": {
+        "label": "推理 Schema",
+        "href": "#example-inference-schema"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "nullable-unknown",
+      "lesson_id": "machine-learning-08",
+      "context_id": "example-inference-schema",
+      "question": "缺失值和未知类别怎么推理？",
+      "aliases": [
+        "新类别能预测吗"
+      ],
+      "keywords": [
+        "缺失值和未知类别怎么推理",
+        "新类别能预测吗"
+      ],
+      "diagnostic": "先判断“新类别能预测吗”涉及产物完整性、反序列化信任、输入Schema还是生产差距。",
+      "hints": [
+        "查看 #example-inference-schema。",
+        "运行 test_delivery_lab.py。"
+      ],
+      "example": "partner类别合法。",
+      "answer": "受控null交给已拟合填补器，未知非空类别由编码器按既定策略忽略。",
+      "source": {
+        "label": "推理 Schema",
+        "href": "#example-inference-schema"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "nonfinite",
+      "lesson_id": "machine-learning-08",
+      "context_id": "example-inference-schema",
+      "question": "NaN 和无穷为什么要入口拒绝？",
+      "aliases": [
+        "inf 能送给模型吗"
+      ],
+      "keywords": [
+        "NaN",
+        "和无穷为什么要入口拒绝",
+        "inf",
+        "能送给模型吗"
+      ],
+      "diagnostic": "先判断“inf 能送给模型吗”涉及产物完整性、反序列化信任、输入Schema还是生产差距。",
+      "hints": [
+        "查看 #example-inference-schema。",
+        "运行 test_delivery_lab.py。"
+      ],
+      "example": "只接受有限数字或null。",
+      "answer": "它们不属于本课外部数值契约，入口拒绝可给出明确错误并避免下游不确定行为。",
+      "source": {
+        "label": "推理 Schema",
+        "href": "#example-inference-schema"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "production-gap",
+      "lesson_id": "machine-learning-08",
+      "context_id": "project-structured-data-ml-v08",
+      "question": "离线产物为什么还不是生产服务？",
+      "aliases": [
+        "模型文件能直接上线吗"
+      ],
+      "keywords": [
+        "离线产物为什么还不是生产服务",
+        "模型文件能直接上线吗"
+      ],
+      "diagnostic": "先判断“模型文件能直接上线吗”涉及产物完整性、反序列化信任、输入Schema还是生产差距。",
+      "hints": [
+        "查看 #project-structured-data-ml-v08。",
+        "运行 test_delivery_lab.py。"
+      ],
+      "example": "本课明确离线教学边界。",
+      "answer": "还缺来源签名、服务边界、性能、监控、灰度、回滚、隐私与运行治理。",
+      "source": {
+        "label": "结构化 ML 系统 v0.8",
+        "href": "#project-structured-data-ml-v08"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "experiment-v08",
+      "lesson_id": "machine-learning-08",
+      "context_id": "project-structured-data-ml-v08",
+      "question": "结构化机器学习系统 v0.8 新增什么？",
+      "aliases": [
+        "机器学习第八课项目"
+      ],
+      "keywords": [
+        "结构化机器学习系统",
+        "v0.8",
+        "新增什么",
+        "机器学习第八课项目"
+      ],
+      "diagnostic": "先判断“机器学习第八课项目”涉及产物完整性、反序列化信任、输入Schema还是生产差距。",
+      "hints": [
+        "查看 #project-structured-data-ml-v08。",
+        "运行 test_delivery_lab.py。"
+      ],
+      "example": "9项真实测试。",
+      "answer": "新增完整流水线持久化、清单校验、严格推理Schema、往返一致和篡改拒绝。",
+      "source": {
+        "label": "结构化 ML 系统 v0.8",
+        "href": "#project-structured-data-ml-v08"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

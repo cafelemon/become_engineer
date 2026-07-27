@@ -1,0 +1,338 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "agent-tool-calling-02",
+    "title": "业务校验、主体授权与只读工具执行",
+    "path": "learning-paths/llm-agent/tool-calling-workflow/02-business-validation-authorization-read-only-execution/"
+  },
+  "contexts": [
+    {
+      "id": "overview-read-only-execution",
+      "type": "overview",
+      "title": "只读工具执行",
+      "anchor": "#overview-read-only-execution"
+    },
+    {
+      "id": "concept-validation-order",
+      "type": "concept",
+      "title": "验证授权顺序",
+      "anchor": "#concept-validation-order"
+    },
+    {
+      "id": "concept-least-privilege-reader",
+      "type": "concept",
+      "title": "最小权限读取",
+      "anchor": "#concept-least-privilege-reader"
+    },
+    {
+      "id": "example-owner-read",
+      "type": "example",
+      "title": "所有者读取",
+      "anchor": "#example-owner-read"
+    },
+    {
+      "id": "reproduce-read-only-v14",
+      "type": "reproduce",
+      "title": "运行只读工具",
+      "anchor": "#reproduce-read-only-v14"
+    },
+    {
+      "id": "modify-result-bound",
+      "type": "modify",
+      "title": "修改结果上限",
+      "anchor": "#modify-result-bound"
+    },
+    {
+      "id": "troubleshoot-read-only-tool",
+      "type": "troubleshoot",
+      "title": "只读工具排错",
+      "anchor": "#troubleshoot-read-only-tool"
+    },
+    {
+      "id": "deepen-authorization-boundary",
+      "type": "deepen",
+      "title": "授权边界",
+      "anchor": "#deepen-authorization-boundary"
+    },
+    {
+      "id": "project-learning-assistant-v14",
+      "type": "project",
+      "title": "智能学习助手v0.14",
+      "anchor": "#project-learning-assistant-v14"
+    }
+  ],
+  "cards": [
+    {
+      "id": "validation-order",
+      "lesson_id": "agent-tool-calling-02",
+      "context_id": "concept-validation-order",
+      "question": "为什么授权要在 handler 前？",
+      "aliases": [
+        "先查询再判断权限可以吗"
+      ],
+      "keywords": [
+        "为什么授权要在",
+        "handler",
+        "前",
+        "先查询再判断权限可以吗"
+      ],
+      "diagnostic": "先定位“先查询再判断权限可以吗”属于业务校验、权限、所有权、只读实现、结果上限还是错误脱敏。",
+      "hints": [
+        "查看 #concept-validation-order。",
+        "运行 test_read_only_tool.py 核对handler计数。"
+      ],
+      "example": "validate then authorize。",
+      "answer": "不可以；先访问可能泄露存在性、制造负载。handler计数证明拒绝未触达数据层。",
+      "source": {
+        "label": "验证授权顺序",
+        "href": "#concept-validation-order"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "business-validation",
+      "lesson_id": "agent-tool-calling-02",
+      "context_id": "concept-validation-order",
+      "question": "Schema 通过后还检查什么？",
+      "aliases": [
+        "字段类型对了就安全吗"
+      ],
+      "keywords": [
+        "Schema",
+        "通过后还检查什么",
+        "字段类型对了就安全吗"
+      ],
+      "diagnostic": "先定位“字段类型对了就安全吗”属于业务校验、权限、所有权、只读实现、结果上限还是错误脱敏。",
+      "hints": [
+        "查看 #concept-validation-order。",
+        "运行 test_read_only_tool.py 核对handler计数。"
+      ],
+      "example": "多层门禁。",
+      "answer": "还要ID格式、权限、资源所有权、风险和结果预算。",
+      "source": {
+        "label": "验证授权顺序",
+        "href": "#concept-validation-order"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "readonly-uri",
+      "lesson_id": "agent-tool-calling-02",
+      "context_id": "concept-least-privilege-reader",
+      "question": "怎样证明 SQLite 真只读？",
+      "aliases": [
+        "代码只写SELECT够吗"
+      ],
+      "keywords": [
+        "怎样证明",
+        "SQLite",
+        "真只读",
+        "代码只写SELECT够吗"
+      ],
+      "diagnostic": "先定位“代码只写SELECT够吗”属于业务校验、权限、所有权、只读实现、结果上限还是错误脱敏。",
+      "hints": [
+        "查看 #concept-least-privilege-reader。",
+        "运行 test_read_only_tool.py 核对handler计数。"
+      ],
+      "example": "两层只读。",
+      "answer": "用mode=ro连接并真实尝试INSERT，数据库返回写入失败。",
+      "source": {
+        "label": "最小权限读取",
+        "href": "#concept-least-privilege-reader"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "parameterized-sql",
+      "lesson_id": "agent-tool-calling-02",
+      "context_id": "concept-least-privilege-reader",
+      "question": "为什么 SQL 值要参数化？",
+      "aliases": [
+        "字符串拼接learner_id行吗"
+      ],
+      "keywords": [
+        "为什么",
+        "SQL",
+        "值要参数化",
+        "字符串拼接learner_id行吗"
+      ],
+      "diagnostic": "先定位“字符串拼接learner_id行吗”属于业务校验、权限、所有权、只读实现、结果上限还是错误脱敏。",
+      "hints": [
+        "查看 #concept-least-privilege-reader。",
+        "运行 test_read_only_tool.py 核对handler计数。"
+      ],
+      "example": "WHERE learner_id = ?。",
+      "answer": "参数化让值不改变SQL结构；工具也不接受模型生成SQL。",
+      "source": {
+        "label": "最小权限读取",
+        "href": "#concept-least-privilege-reader"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "ownership",
+      "lesson_id": "agent-tool-calling-02",
+      "context_id": "example-owner-read",
+      "question": "有读取权限就能读所有学习者吗？",
+      "aliases": [
+        "permission够不够"
+      ],
+      "keywords": [
+        "有读取权限就能读所有学习者吗",
+        "permission够不够"
+      ],
+      "diagnostic": "先定位“permission够不够”属于业务校验、权限、所有权、只读实现、结果上限还是错误脱敏。",
+      "hints": [
+        "查看 #example-owner-read。",
+        "运行 test_read_only_tool.py 核对handler计数。"
+      ],
+      "example": "跨主体forbidden。",
+      "answer": "不够；参数learner_id还必须等于当前subject_id。",
+      "source": {
+        "label": "所有者读取",
+        "href": "#example-owner-read"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "bounded-result",
+      "lesson_id": "agent-tool-calling-02",
+      "context_id": "modify-result-bound",
+      "question": "工具结果为什么限制三条？",
+      "aliases": [
+        "把全部记录交给模型不行吗"
+      ],
+      "keywords": [
+        "工具结果为什么限制三条",
+        "把全部记录交给模型不行吗"
+      ],
+      "diagnostic": "先定位“把全部记录交给模型不行吗”属于业务校验、权限、所有权、只读实现、结果上限还是错误脱敏。",
+      "hints": [
+        "查看 #modify-result-bound。",
+        "运行 test_read_only_tool.py 核对handler计数。"
+      ],
+      "example": "LIMIT 3。",
+      "answer": "限制数据暴露和上下文成本；只返回完成数与最多三条课程ID。",
+      "source": {
+        "label": "修改结果上限",
+        "href": "#modify-result-bound"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "error-envelope",
+      "lesson_id": "agent-tool-calling-02",
+      "context_id": "troubleshoot-read-only-tool",
+      "question": "工具失败要把异常堆栈给模型吗？",
+      "aliases": [
+        "数据库路径能回传吗"
+      ],
+      "keywords": [
+        "工具失败要把异常堆栈给模型吗",
+        "数据库路径能回传吗"
+      ],
+      "diagnostic": "先定位“数据库路径能回传吗”属于业务校验、权限、所有权、只读实现、结果上限还是错误脱敏。",
+      "hints": [
+        "查看 #troubleshoot-read-only-tool。",
+        "运行 test_read_only_tool.py 核对handler计数。"
+      ],
+      "example": "tool_unavailable。",
+      "answer": "不能；外部只返回稳定error_code，内部路径、SQL和异常不进入envelope。",
+      "source": {
+        "label": "只读工具排错",
+        "href": "#troubleshoot-read-only-tool"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "parameterization-not-auth",
+      "lesson_id": "agent-tool-calling-02",
+      "context_id": "deepen-authorization-boundary",
+      "question": "参数化 SQL 等于授权吗？",
+      "aliases": [
+        "防注入就不会越权吗"
+      ],
+      "keywords": [
+        "参数化",
+        "SQL",
+        "等于授权吗",
+        "防注入就不会越权吗"
+      ],
+      "diagnostic": "先定位“防注入就不会越权吗”属于业务校验、权限、所有权、只读实现、结果上限还是错误脱敏。",
+      "hints": [
+        "查看 #deepen-authorization-boundary。",
+        "运行 test_read_only_tool.py 核对handler计数。"
+      ],
+      "example": "不同安全层。",
+      "answer": "不等于；合法参数仍可能指向他人资源，必须重新按主体授权。",
+      "source": {
+        "label": "授权边界",
+        "href": "#deepen-authorization-boundary"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "read-logs",
+      "lesson_id": "agent-tool-calling-02",
+      "context_id": "troubleshoot-read-only-tool",
+      "question": "只读工具日志记录结果全文吗？",
+      "aliases": [
+        "排错需要保存query吗"
+      ],
+      "keywords": [
+        "只读工具日志记录结果全文吗",
+        "排错需要保存query吗"
+      ],
+      "diagnostic": "先定位“排错需要保存query吗”属于业务校验、权限、所有权、只读实现、结果上限还是错误脱敏。",
+      "hints": [
+        "查看 #troubleshoot-read-only-tool。",
+        "运行 test_read_only_tool.py 核对handler计数。"
+      ],
+      "example": "允许字段。",
+      "answer": "默认只记call ID、工具名、状态和错误码，不保存参数、查询或结果。",
+      "source": {
+        "label": "只读工具排错",
+        "href": "#troubleshoot-read-only-tool"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    },
+    {
+      "id": "assistant-v14",
+      "lesson_id": "agent-tool-calling-02",
+      "context_id": "project-learning-assistant-v14",
+      "question": "智能学习助手 v0.14 新增什么？",
+      "aliases": [
+        "Tool Calling第二课项目做什么"
+      ],
+      "keywords": [
+        "智能学习助手",
+        "v0.14",
+        "新增什么",
+        "Tool",
+        "Calling第二课项目做什么"
+      ],
+      "diagnostic": "先定位“Tool Calling第二课项目做什么”属于业务校验、权限、所有权、只读实现、结果上限还是错误脱敏。",
+      "hints": [
+        "查看 #project-learning-assistant-v14。",
+        "运行 test_read_only_tool.py 核对handler计数。"
+      ],
+      "example": "下一版多调用关联。",
+      "answer": "新增业务校验、主体授权、所有权、只读SQLite、参数化查询和结果envelope。",
+      "source": {
+        "label": "智能学习助手v0.14",
+        "href": "#project-learning-assistant-v14"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    }
+  ]
+}

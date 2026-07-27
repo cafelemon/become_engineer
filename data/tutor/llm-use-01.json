@@ -1,0 +1,343 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "llm-use-01",
+    "title": "模型边界、消息与离线适配器",
+    "path": "learning-paths/llm-agent/model-use/01-model-boundary-messages-offline-adapter/"
+  },
+  "contexts": [
+    {
+      "id": "overview-model-boundary",
+      "type": "overview",
+      "title": "模型调用结果",
+      "anchor": "#overview-model-boundary"
+    },
+    {
+      "id": "concept-model-call-chain",
+      "type": "concept",
+      "title": "模型调用链",
+      "anchor": "#concept-model-call-chain"
+    },
+    {
+      "id": "concept-message-status",
+      "type": "concept",
+      "title": "消息与状态",
+      "anchor": "#concept-message-status"
+    },
+    {
+      "id": "example-offline-adapter",
+      "type": "example",
+      "title": "离线适配器",
+      "anchor": "#example-offline-adapter"
+    },
+    {
+      "id": "reproduce-model-boundary-v01",
+      "type": "reproduce",
+      "title": "运行离线实验",
+      "anchor": "#reproduce-model-boundary-v01"
+    },
+    {
+      "id": "modify-model-boundary",
+      "type": "modify",
+      "title": "修改失败状态",
+      "anchor": "#modify-model-boundary"
+    },
+    {
+      "id": "troubleshoot-model-boundary",
+      "type": "troubleshoot",
+      "title": "模型边界排错",
+      "anchor": "#troubleshoot-model-boundary"
+    },
+    {
+      "id": "deepen-provider-differences",
+      "type": "deepen",
+      "title": "Provider差异",
+      "anchor": "#deepen-provider-differences"
+    },
+    {
+      "id": "project-learning-assistant-v01",
+      "type": "project",
+      "title": "智能学习助手v0.1",
+      "anchor": "#project-learning-assistant-v01"
+    }
+  ],
+  "cards": [
+    {
+      "id": "model-boundary",
+      "lesson_id": "llm-use-01",
+      "context_id": "concept-model-call-chain",
+      "question": "为什么业务代码不应直接依赖 provider JSON？",
+      "aliases": [
+        "模型API字段能否传遍业务层"
+      ],
+      "keywords": [
+        "为什么业务代码不应直接依赖",
+        "provider",
+        "JSON",
+        "模型API字段能否传遍业务层"
+      ],
+      "diagnostic": "先判断“模型API字段能否传遍业务层”属于请求、adapter、provider响应还是应用结果。",
+      "hints": [
+        "查看 #concept-model-call-chain。",
+        "运行 test_model_boundary.py 并定位调用前后状态。"
+      ],
+      "example": "v0.1用ModelAdapter Protocol。",
+      "answer": "adapter负责协议翻译，业务只依赖稳定请求和结果，provider变化被限制在边界内。",
+      "source": {
+        "label": "模型调用链",
+        "href": "#concept-model-call-chain"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "message-role",
+      "lesson_id": "llm-use-01",
+      "context_id": "concept-message-status",
+      "question": "system 和 user 消息有什么区别？",
+      "aliases": [
+        "消息role为什么不能混"
+      ],
+      "keywords": [
+        "system",
+        "和",
+        "user",
+        "消息有什么区别",
+        "消息role为什么不能混"
+      ],
+      "diagnostic": "先判断“消息role为什么不能混”属于请求、adapter、provider响应还是应用结果。",
+      "hints": [
+        "查看 #concept-message-status。",
+        "运行 test_model_boundary.py 并定位调用前后状态。"
+      ],
+      "example": "请求固定system开头、user结尾。",
+      "answer": "system表达应用职责，user表达本次输入；角色混淆会让数据和规则失去边界。",
+      "source": {
+        "label": "消息与状态",
+        "href": "#concept-message-status"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "result-status",
+      "lesson_id": "llm-use-01",
+      "context_id": "concept-message-status",
+      "question": "模型调用为什么不只有成功和异常？",
+      "aliases": [
+        "refused和incomplete怎么处理"
+      ],
+      "keywords": [
+        "模型调用为什么不只有成功和异常",
+        "refused和incomplete怎么处理"
+      ],
+      "diagnostic": "先判断“refused和incomplete怎么处理”属于请求、adapter、provider响应还是应用结果。",
+      "hints": [
+        "查看 #concept-message-status。",
+        "运行 test_model_boundary.py 并定位调用前后状态。"
+      ],
+      "example": "三种状态都有固定fixture。",
+      "answer": "完成、拒绝和不完整都是有效结束状态，应用必须分别处理。",
+      "source": {
+        "label": "消息与状态",
+        "href": "#concept-message-status"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "finish-reason",
+      "lesson_id": "llm-use-01",
+      "context_id": "concept-message-status",
+      "question": "finish reason 有什么用？",
+      "aliases": [
+        "有text就算完整吗"
+      ],
+      "keywords": [
+        "finish",
+        "reason",
+        "有什么用",
+        "有text就算完整吗"
+      ],
+      "diagnostic": "先判断“有text就算完整吗”属于请求、adapter、provider响应还是应用结果。",
+      "hints": [
+        "查看 #concept-message-status。",
+        "运行 test_model_boundary.py 并定位调用前后状态。"
+      ],
+      "example": "incomplete原因是max_output_units。",
+      "answer": "它解释为何停止；输出上限导致的部分文本不能冒充完整答案。",
+      "source": {
+        "label": "消息与状态",
+        "href": "#concept-message-status"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "offline-adapter",
+      "lesson_id": "llm-use-01",
+      "context_id": "example-offline-adapter",
+      "question": "离线 adapter 能证明什么？",
+      "aliases": [
+        "Mock能证明模型效果吗"
+      ],
+      "keywords": [
+        "离线",
+        "adapter",
+        "能证明什么",
+        "Mock能证明模型效果吗"
+      ],
+      "diagnostic": "先判断“Mock能证明模型效果吗”属于请求、adapter、provider响应还是应用结果。",
+      "hints": [
+        "查看 #example-offline-adapter。",
+        "运行 test_model_boundary.py 并定位调用前后状态。"
+      ],
+      "example": "CI不访问网络。",
+      "answer": "它能确定性证明应用的请求、状态和失败处理，不能证明真实模型质量。",
+      "source": {
+        "label": "离线适配器",
+        "href": "#example-offline-adapter"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "preflight-validation",
+      "lesson_id": "llm-use-01",
+      "context_id": "troubleshoot-model-boundary",
+      "question": "为什么请求要在 adapter 前校验？",
+      "aliases": [
+        "坏消息何时拒绝"
+      ],
+      "keywords": [
+        "为什么请求要在",
+        "adapter",
+        "前校验",
+        "坏消息何时拒绝"
+      ],
+      "diagnostic": "先判断“坏消息何时拒绝”属于请求、adapter、provider响应还是应用结果。",
+      "hints": [
+        "查看 #troubleshoot-model-boundary。",
+        "运行 test_model_boundary.py 并定位调用前后状态。"
+      ],
+      "example": "非法请求时adapter calls仍为空。",
+      "answer": "越早拒绝越不会产生费用或不可控调用，也能给出稳定错误。",
+      "source": {
+        "label": "模型边界排错",
+        "href": "#troubleshoot-model-boundary"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "empty-completed",
+      "lesson_id": "llm-use-01",
+      "context_id": "troubleshoot-model-boundary",
+      "question": "HTTP成功但模型文本为空怎么办？",
+      "aliases": [
+        "completed空响应算成功吗"
+      ],
+      "keywords": [
+        "HTTP成功但模型文本为空怎么办",
+        "completed空响应算成功吗"
+      ],
+      "diagnostic": "先判断“completed空响应算成功吗”属于请求、adapter、provider响应还是应用结果。",
+      "hints": [
+        "查看 #troubleshoot-model-boundary。",
+        "运行 test_model_boundary.py 并定位调用前后状态。"
+      ],
+      "example": "empty_completed=rejected。",
+      "answer": "不能；completed还必须满足应用文本门禁，否则拒绝进入完成态。",
+      "source": {
+        "label": "模型边界排错",
+        "href": "#troubleshoot-model-boundary"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "usage-request-id",
+      "lesson_id": "llm-use-01",
+      "context_id": "deepen-provider-differences",
+      "question": "为什么保留 usage 和 request ID？",
+      "aliases": [
+        "只保存回复文本够吗"
+      ],
+      "keywords": [
+        "为什么保留",
+        "usage",
+        "和",
+        "request",
+        "ID",
+        "只保存回复文本够吗"
+      ],
+      "diagnostic": "先判断“只保存回复文本够吗”属于请求、adapter、provider响应还是应用结果。",
+      "hints": [
+        "查看 #deepen-provider-differences。",
+        "运行 test_model_boundary.py 并定位调用前后状态。"
+      ],
+      "example": "归一化结果保留五类字段。",
+      "answer": "usage支持预算审计，request ID支持故障关联；都不应替代业务结果校验。",
+      "source": {
+        "label": "Provider差异",
+        "href": "#deepen-provider-differences"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "log-redaction",
+      "lesson_id": "llm-use-01",
+      "context_id": "troubleshoot-model-boundary",
+      "question": "模型调用日志应该避免记录什么？",
+      "aliases": [
+        "Prompt和Authorization能打日志吗"
+      ],
+      "keywords": [
+        "模型调用日志应该避免记录什么",
+        "Prompt和Authorization能打日志吗"
+      ],
+      "diagnostic": "先判断“Prompt和Authorization能打日志吗”属于请求、adapter、provider响应还是应用结果。",
+      "hints": [
+        "查看 #troubleshoot-model-boundary。",
+        "运行 test_model_boundary.py 并定位调用前后状态。"
+      ],
+      "example": "固定报告明确raw字段none。",
+      "answer": "默认不记录Authorization、原始Prompt和原始回复，只记录必要状态与内部关联。",
+      "source": {
+        "label": "模型边界排错",
+        "href": "#troubleshoot-model-boundary"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    },
+    {
+      "id": "assistant-v01",
+      "lesson_id": "llm-use-01",
+      "context_id": "project-learning-assistant-v01",
+      "question": "智能学习助手 v0.1 新增什么？",
+      "aliases": [
+        "LLM第一课项目做什么"
+      ],
+      "keywords": [
+        "智能学习助手",
+        "v0.1",
+        "新增什么",
+        "LLM第一课项目做什么"
+      ],
+      "diagnostic": "先判断“LLM第一课项目做什么”属于请求、adapter、provider响应还是应用结果。",
+      "hints": [
+        "查看 #project-learning-assistant-v01。",
+        "运行 test_model_boundary.py 并定位调用前后状态。"
+      ],
+      "example": "下一版冻结Prompt快照。",
+      "answer": "新增消息/请求/结果契约、离线adapter、失败分层和8项测试。",
+      "source": {
+        "label": "智能学习助手v0.1",
+        "href": "#project-learning-assistant-v01"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    }
+  ]
+}

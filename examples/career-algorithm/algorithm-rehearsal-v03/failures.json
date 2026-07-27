@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "records": [
+    {
+      "id": "count-mismatch",
+      "observed_status": "runtime-error",
+      "category": "contract",
+      "counterexample": "2\n9\n",
+      "smaller_probe": "0\n\n",
+      "cause": "declared count was not checked before indexing values",
+      "fix": "validate the declared count before solving",
+      "regression_id": "test_contract_count_mismatch",
+      "after": "regression-pass",
+      "linked_event": "minute-0:start"
+    },
+    {
+      "id": "empty-sequence",
+      "observed_status": "wrong-answer",
+      "category": "boundary",
+      "counterexample": "0\n\n",
+      "smaller_probe": "no smaller valid count exists",
+      "cause": "output code assumed at least one unique value",
+      "fix": "emit a zero count and an empty second line",
+      "regression_id": "test_boundary_empty_sequence",
+      "after": "regression-pass",
+      "linked_event": "minute-8:submit"
+    },
+    {
+      "id": "visited-too-late",
+      "observed_status": "wrong-answer",
+      "category": "implementation",
+      "counterexample": "a-b,a-c,b-d,c-d; a->d",
+      "smaller_probe": "a-b; a->b passes",
+      "cause": "nodes were marked visited after removal instead of before enqueue",
+      "fix": "mark each node when it enters the BFS frontier",
+      "regression_id": "test_implementation_bfs_shared_neighbor",
+      "after": "regression-pass",
+      "linked_event": "minute-40:checkpoint"
+    },
+    {
+      "id": "repeated-linear-scan",
+      "observed_status": "timeout",
+      "category": "complexity",
+      "counterexample": "100 values and 100 repeated membership queries",
+      "smaller_probe": "1 value and 1 query passes",
+      "cause": "every query scanned the complete list",
+      "fix": "build one set and perform one lookup per query",
+      "regression_id": "test_complexity_membership_operation_bound",
+      "after": "regression-pass",
+      "linked_event": "minute-20:checkpoint"
+    },
+    {
+      "id": "late-switch",
+      "observed_status": "switched",
+      "category": "strategy",
+      "counterexample": "checkpoint reached with no invariant and no passing boundary case",
+      "smaller_probe": "before checkpoint the policy keeps working",
+      "cause": "the session had no explicit stop rule at the checkpoint",
+      "fix": "switch only when checkpoint is reached without either progress signal",
+      "regression_id": "test_strategy_checkpoint_switch_rule",
+      "after": "regression-pass",
+      "linked_event": "minute-24:switch"
+    }
+  ]
+}

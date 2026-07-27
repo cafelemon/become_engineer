@@ -1,0 +1,8 @@
+# Web Engineering v0.9-v0.14: explicit, reproducible teaching runtime.
+fastapi==0.139.2
+uvicorn==0.51.0
+SQLAlchemy==2.0.51
+alembic==1.18.5
+psycopg[binary]==3.3.3
+pwdlib[argon2]==0.3.0
+prometheus-client==0.24.1

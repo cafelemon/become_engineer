@@ -1,0 +1,336 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "machine-learning-04",
+    "title": "决策树、切分、过拟合与复杂度约束",
+    "path": "learning-paths/ai-foundation/machine-learning/04-decision-tree-splits-overfitting-complexity/"
+  },
+  "contexts": [
+    {
+      "id": "overview-tree-contract",
+      "type": "overview",
+      "title": "决策树容量契约",
+      "anchor": "#overview-tree-contract"
+    },
+    {
+      "id": "concept-tree-split-impurity",
+      "type": "concept",
+      "title": "切分与不纯度",
+      "anchor": "#concept-tree-split-impurity"
+    },
+    {
+      "id": "concept-overfit-capacity",
+      "type": "concept",
+      "title": "过拟合与容量",
+      "anchor": "#concept-overfit-capacity"
+    },
+    {
+      "id": "example-tree-complexity",
+      "type": "example",
+      "title": "树复杂度比较",
+      "anchor": "#example-tree-complexity"
+    },
+    {
+      "id": "reproduce-tree-v04",
+      "type": "reproduce",
+      "title": "运行树实验",
+      "anchor": "#reproduce-tree-v04"
+    },
+    {
+      "id": "modify-tree",
+      "type": "modify",
+      "title": "修改树容量",
+      "anchor": "#modify-tree"
+    },
+    {
+      "id": "troubleshoot-tree",
+      "type": "troubleshoot",
+      "title": "树模型排错",
+      "anchor": "#troubleshoot-tree"
+    },
+    {
+      "id": "project-structured-data-ml-v04",
+      "type": "project",
+      "title": "结构化 ML 系统 v0.4",
+      "anchor": "#project-structured-data-ml-v04"
+    },
+    {
+      "id": "career-tree-contract",
+      "type": "career",
+      "title": "树模型追问",
+      "anchor": "#career-tree-contract"
+    }
+  ],
+  "cards": [
+    {
+      "id": "tree-split",
+      "lesson_id": "machine-learning-04",
+      "context_id": "concept-tree-split-impurity",
+      "question": "决策树的一个节点怎样切分？",
+      "aliases": [
+        "树如何选择阈值"
+      ],
+      "keywords": [
+        "决策树的一个节点怎样切分",
+        "树如何选择阈值"
+      ],
+      "diagnostic": "先判断“树如何选择阈值”涉及切分、不纯度、容量还是评估边界。",
+      "hints": [
+        "查看 #concept-tree-split-impurity。",
+        "运行 test_decision_tree_lab.py。"
+      ],
+      "example": "根节点使用命名特征和阈值。",
+      "answer": "它比较候选特征和阈值，贪心选择能最大降低加权不纯度的切分。",
+      "source": {
+        "label": "切分与不纯度",
+        "href": "#concept-tree-split-impurity"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "gini",
+      "lesson_id": "machine-learning-04",
+      "context_id": "concept-tree-split-impurity",
+      "question": "Gini 不纯度表示什么？",
+      "aliases": [
+        "gini 越小越好吗"
+      ],
+      "keywords": [
+        "Gini",
+        "不纯度表示什么",
+        "gini",
+        "越小越好吗"
+      ],
+      "diagnostic": "先判断“gini 越小越好吗”涉及切分、不纯度、容量还是评估边界。",
+      "hints": [
+        "查看 #concept-tree-split-impurity。",
+        "运行 test_decision_tree_lab.py。"
+      ],
+      "example": "本课 criterion=gini。",
+      "answer": "它描述节点内类别混合程度，0表示只有一个类别；树寻找能让子节点更纯的切分。",
+      "source": {
+        "label": "切分与不纯度",
+        "href": "#concept-tree-split-impurity"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "greedy-tree",
+      "lesson_id": "machine-learning-04",
+      "context_id": "concept-tree-split-impurity",
+      "question": "决策树切分是全局最优吗？",
+      "aliases": [
+        "树是贪心算法吗"
+      ],
+      "keywords": [
+        "决策树切分是全局最优吗",
+        "树是贪心算法吗"
+      ],
+      "diagnostic": "先判断“树是贪心算法吗”涉及切分、不纯度、容量还是评估边界。",
+      "hints": [
+        "查看 #concept-tree-split-impurity。",
+        "运行 test_decision_tree_lab.py。"
+      ],
+      "example": "换数据或参数根切分会变。",
+      "answer": "常见训练算法逐节点做局部贪心选择，并不保证找到全局最优树。",
+      "source": {
+        "label": "切分与不纯度",
+        "href": "#concept-tree-split-impurity"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "overfit",
+      "lesson_id": "machine-learning-04",
+      "context_id": "concept-overfit-capacity",
+      "question": "训练准确率 100% 为什么可能过拟合？",
+      "aliases": [
+        "训练满分有什么问题"
+      ],
+      "keywords": [
+        "训练准确率",
+        "100%",
+        "为什么可能过拟合",
+        "训练满分有什么问题"
+      ],
+      "diagnostic": "先判断“训练满分有什么问题”涉及切分、不纯度、容量还是评估边界。",
+      "hints": [
+        "查看 #concept-overfit-capacity。",
+        "运行 test_decision_tree_lab.py。"
+      ],
+      "example": "无约束树验证0.567。",
+      "answer": "高容量树可能记住训练细节和噪声，必须用未参与拟合的数据观察泛化。",
+      "source": {
+        "label": "过拟合与容量",
+        "href": "#concept-overfit-capacity"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "generalization-gap",
+      "lesson_id": "machine-learning-04",
+      "context_id": "concept-overfit-capacity",
+      "question": "训练验证差距说明什么？",
+      "aliases": [
+        "generalization gap 是什么"
+      ],
+      "keywords": [
+        "训练验证差距说明什么",
+        "generalization",
+        "gap",
+        "是什么"
+      ],
+      "diagnostic": "先判断“generalization gap 是什么”涉及切分、不纯度、容量还是评估边界。",
+      "hints": [
+        "查看 #concept-overfit-capacity。",
+        "运行 test_decision_tree_lab.py。"
+      ],
+      "example": "无约束差距0.433。",
+      "answer": "它是拟合表现与未见数据表现的一个诊断信号，差距大常提示高方差或分布问题。",
+      "source": {
+        "label": "过拟合与容量",
+        "href": "#concept-overfit-capacity"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "max-depth",
+      "lesson_id": "machine-learning-04",
+      "context_id": "example-tree-complexity",
+      "question": "max_depth 控制什么？",
+      "aliases": [
+        "树深度限制有什么用"
+      ],
+      "keywords": [
+        "max_depth",
+        "控制什么",
+        "树深度限制有什么用"
+      ],
+      "diagnostic": "先判断“树深度限制有什么用”涉及切分、不纯度、容量还是评估边界。",
+      "hints": [
+        "查看 #example-tree-complexity。",
+        "运行 test_decision_tree_lab.py。"
+      ],
+      "example": "受约束树深度3。",
+      "answer": "它限制任一路径连续切分次数，直接缩小可表达规则的复杂度。",
+      "source": {
+        "label": "树复杂度比较",
+        "href": "#example-tree-complexity"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "min-leaf",
+      "lesson_id": "machine-learning-04",
+      "context_id": "example-tree-complexity",
+      "question": "min_samples_leaf 控制什么？",
+      "aliases": [
+        "叶子最少样本数"
+      ],
+      "keywords": [
+        "min_samples_leaf",
+        "控制什么",
+        "叶子最少样本数"
+      ],
+      "diagnostic": "先判断“叶子最少样本数”涉及切分、不纯度、容量还是评估边界。",
+      "hints": [
+        "查看 #example-tree-complexity。",
+        "运行 test_decision_tree_lab.py。"
+      ],
+      "example": "本课叶子最少5。",
+      "answer": "它要求最终叶子至少包含给定样本数，避免用极小碎片拟合偶然模式。",
+      "source": {
+        "label": "树复杂度比较",
+        "href": "#example-tree-complexity"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "tree-rule-boundary",
+      "lesson_id": "machine-learning-04",
+      "context_id": "example-tree-complexity",
+      "question": "导出的树规则能当永久业务规则吗？",
+      "aliases": [
+        "树规则是不是因果"
+      ],
+      "keywords": [
+        "导出的树规则能当永久业务规则吗",
+        "树规则是不是因果"
+      ],
+      "diagnostic": "先判断“树规则是不是因果”涉及切分、不纯度、容量还是评估边界。",
+      "hints": [
+        "查看 #example-tree-complexity。",
+        "运行 test_decision_tree_lab.py。"
+      ],
+      "example": "规则用于审查和调试。",
+      "answer": "不能；规则依赖训练样本、特征、参数和编码，是模型产物而非因果真相。",
+      "source": {
+        "label": "树复杂度比较",
+        "href": "#example-tree-complexity"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "validation-selection",
+      "lesson_id": "machine-learning-04",
+      "context_id": "troubleshoot-tree",
+      "question": "反复看验证集选树有什么风险？",
+      "aliases": [
+        "验证集也会过拟合吗"
+      ],
+      "keywords": [
+        "反复看验证集选树有什么风险",
+        "验证集也会过拟合吗"
+      ],
+      "diagnostic": "先判断“验证集也会过拟合吗”涉及切分、不纯度、容量还是评估边界。",
+      "hints": [
+        "查看 #troubleshoot-tree。",
+        "运行 test_decision_tree_lab.py。"
+      ],
+      "example": "下一课建立选择协议。",
+      "answer": "是；多次选择会把验证反馈变成训练信号，需要交叉验证和冻结最终测试集。",
+      "source": {
+        "label": "树模型排错",
+        "href": "#troubleshoot-tree"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "experiment-v04",
+      "lesson_id": "machine-learning-04",
+      "context_id": "project-structured-data-ml-v04",
+      "question": "结构化机器学习系统 v0.4 新增什么？",
+      "aliases": [
+        "机器学习第四课项目"
+      ],
+      "keywords": [
+        "结构化机器学习系统",
+        "v0.4",
+        "新增什么",
+        "机器学习第四课项目"
+      ],
+      "diagnostic": "先判断“机器学习第四课项目”涉及切分、不纯度、容量还是评估边界。",
+      "hints": [
+        "查看 #project-structured-data-ml-v04。",
+        "运行 test_decision_tree_lab.py。"
+      ],
+      "example": "8项真实测试。",
+      "answer": "新增决策树、结构导出、无约束与受约束容量比较及训练验证差距。",
+      "source": {
+        "label": "结构化 ML 系统 v0.4",
+        "href": "#project-structured-data-ml-v04"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

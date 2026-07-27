@@ -1,0 +1,397 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "web-engineering-01",
+    "title": "PostgreSQL、Alembic 与数据迁移",
+    "path": "learning-paths/web-fullstack/web-engineering/01-postgresql-alembic-data-migration/"
+  },
+  "contexts": [
+    {
+      "id": "overview-postgres-migration",
+      "type": "overview",
+      "title": "overview postgres migration",
+      "anchor": "#overview-postgres-migration"
+    },
+    {
+      "id": "concept-migration-contract",
+      "type": "concept",
+      "title": "concept migration contract",
+      "anchor": "#concept-migration-contract"
+    },
+    {
+      "id": "example-import-idempotent",
+      "type": "example",
+      "title": "example import idempotent",
+      "anchor": "#example-import-idempotent"
+    },
+    {
+      "id": "reproduce-dashboard-v09",
+      "type": "reproduce",
+      "title": "reproduce dashboard v09",
+      "anchor": "#reproduce-dashboard-v09"
+    },
+    {
+      "id": "modify-migration-column",
+      "type": "modify",
+      "title": "modify migration column",
+      "anchor": "#modify-migration-column"
+    },
+    {
+      "id": "troubleshoot-migration",
+      "type": "troubleshoot",
+      "title": "troubleshoot migration",
+      "anchor": "#troubleshoot-migration"
+    },
+    {
+      "id": "project-dashboard-v09",
+      "type": "project",
+      "title": "project dashboard v09",
+      "anchor": "#project-dashboard-v09"
+    },
+    {
+      "id": "career-migration-review",
+      "type": "career",
+      "title": "career migration review",
+      "anchor": "#career-migration-review"
+    }
+  ],
+  "cards": [
+    {
+      "id": "postgres-result",
+      "lesson_id": "web-engineering-01",
+      "context_id": "overview-postgres-migration",
+      "question": "v0.9 最后交付什么？",
+      "aliases": [
+        "PostgreSQL 迁移课做出什么"
+      ],
+      "keywords": [
+        "v0.9",
+        "最后交付什么",
+        "PostgreSQL",
+        "迁移课做出什么"
+      ],
+      "diagnostic": "先确认你正在处理“PostgreSQL 迁移课做出什么”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 overview-postgres-migration 中的责任。",
+        "再用本课固定测试验证 v0.9 最后交付什么。"
+      ],
+      "example": "Web v0.9 把主存储迁到 PostgreSQL，并用迁移和导入校验保存数据语义。",
+      "answer": "Web v0.9 把主存储迁到 PostgreSQL，并用迁移和导入校验保存数据语义。",
+      "source": {
+        "label": "overview postgres migration",
+        "href": "#overview-postgres-migration"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "migration-version",
+      "lesson_id": "web-engineering-01",
+      "context_id": "concept-migration-contract",
+      "question": "为什么结构版本要进代码？",
+      "aliases": [
+        "Alembic 版本表有什么用"
+      ],
+      "keywords": [
+        "为什么结构版本要进代码",
+        "Alembic",
+        "版本表有什么用"
+      ],
+      "diagnostic": "先确认你正在处理“Alembic 版本表有什么用”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 concept-migration-contract 中的责任。",
+        "再用本课固定测试验证 为什么结构版本要进代码。"
+      ],
+      "example": "数据库结构变化必须可排序、可复现、可审查，不能依赖手工改表。",
+      "answer": "数据库结构变化必须可排序、可复现、可审查，不能依赖手工改表。",
+      "source": {
+        "label": "concept migration contract",
+        "href": "#concept-migration-contract"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "upgrade-head",
+      "lesson_id": "web-engineering-01",
+      "context_id": "concept-migration-contract",
+      "question": "upgrade head 做什么？",
+      "aliases": [
+        "怎样推进到最新 revision"
+      ],
+      "keywords": [
+        "upgrade",
+        "head",
+        "做什么",
+        "怎样推进到最新",
+        "revision"
+      ],
+      "diagnostic": "先确认你正在处理“怎样推进到最新 revision”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 concept-migration-contract 中的责任。",
+        "再用本课固定测试验证 upgrade head 做什么。"
+      ],
+      "example": "upgrade head 按 revision 链把数据库推进到当前代码要求的版本。",
+      "answer": "upgrade head 按 revision 链把数据库推进到当前代码要求的版本。",
+      "source": {
+        "label": "concept migration contract",
+        "href": "#concept-migration-contract"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "migration-rollback",
+      "lesson_id": "web-engineering-01",
+      "context_id": "concept-migration-contract",
+      "question": "迁移失败为什么要回滚？",
+      "aliases": [
+        "DDL 失败后怎样保持原结构"
+      ],
+      "keywords": [
+        "迁移失败为什么要回滚",
+        "DDL",
+        "失败后怎样保持原结构"
+      ],
+      "diagnostic": "先确认你正在处理“DDL 失败后怎样保持原结构”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 concept-migration-contract 中的责任。",
+        "再用本课固定测试验证 迁移失败为什么要回滚。"
+      ],
+      "example": "事务中的失败迁移应整体回滚，并在临时库修正后重试。",
+      "answer": "事务中的失败迁移应整体回滚，并在临时库修正后重试。",
+      "source": {
+        "label": "concept migration contract",
+        "href": "#concept-migration-contract"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "import-idempotent",
+      "lesson_id": "web-engineering-01",
+      "context_id": "example-import-idempotent",
+      "question": "SQLite 导入为什么能重复运行？",
+      "aliases": [
+        "教学数据导入怎样避免重复"
+      ],
+      "keywords": [
+        "SQLite",
+        "导入为什么能重复运行",
+        "教学数据导入怎样避免重复"
+      ],
+      "diagnostic": "先确认你正在处理“教学数据导入怎样避免重复”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 example-import-idempotent 中的责任。",
+        "再用本课固定测试验证 SQLite 导入为什么能重复运行。"
+      ],
+      "example": "导入依靠稳定业务键和唯一约束，使重复执行不增加记录或汇总。",
+      "answer": "导入依靠稳定业务键和唯一约束，使重复执行不增加记录或汇总。",
+      "source": {
+        "label": "example import idempotent",
+        "href": "#example-import-idempotent"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "import-invariants",
+      "lesson_id": "web-engineering-01",
+      "context_id": "example-import-idempotent",
+      "question": "迁移后核对哪些不变量？",
+      "aliases": [
+        "怎样证明数据迁移完整"
+      ],
+      "keywords": [
+        "迁移后核对哪些不变量",
+        "怎样证明数据迁移完整"
+      ],
+      "diagnostic": "先确认你正在处理“怎样证明数据迁移完整”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 example-import-idempotent 中的责任。",
+        "再用本课固定测试验证 迁移后核对哪些不变量。"
+      ],
+      "example": "核对记录数、小时汇总、主外键和幂等键，而不是只看脚本退出码。",
+      "answer": "核对记录数、小时汇总、主外键和幂等键，而不是只看脚本退出码。",
+      "source": {
+        "label": "example import idempotent",
+        "href": "#example-import-idempotent"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "pool-pre-ping",
+      "lesson_id": "web-engineering-01",
+      "context_id": "overview-postgres-migration",
+      "question": "连接池 pre ping 有什么用？",
+      "aliases": [
+        "数据库连接失效怎样被发现"
+      ],
+      "keywords": [
+        "连接池",
+        "pre",
+        "ping",
+        "有什么用",
+        "数据库连接失效怎样被发现"
+      ],
+      "diagnostic": "先确认你正在处理“数据库连接失效怎样被发现”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 overview-postgres-migration 中的责任。",
+        "再用本课固定测试验证 连接池 pre ping 有什么用。"
+      ],
+      "example": "pool_pre_ping 在借出连接前检查可用性，减少陈旧连接进入请求。",
+      "answer": "pool_pre_ping 在借出连接前检查可用性，减少陈旧连接进入请求。",
+      "source": {
+        "label": "overview postgres migration",
+        "href": "#overview-postgres-migration"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "run-v09",
+      "lesson_id": "web-engineering-01",
+      "context_id": "reproduce-dashboard-v09",
+      "question": "怎样运行 v0.9 真实迁移测试？",
+      "aliases": [
+        "PostgreSQL 四项测试命令是什么"
+      ],
+      "keywords": [
+        "怎样运行",
+        "v0.9",
+        "真实迁移测试",
+        "PostgreSQL",
+        "四项测试命令是什么"
+      ],
+      "diagnostic": "先确认你正在处理“PostgreSQL 四项测试命令是什么”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 reproduce-dashboard-v09 中的责任。",
+        "再用本课固定测试验证 怎样运行 v0.9 真实迁移测试。"
+      ],
+      "example": "启动回环端口容器后运行 4 项真实 PostgreSQL 测试。",
+      "answer": "启动回环端口容器后运行 4 项真实 PostgreSQL 测试。",
+      "source": {
+        "label": "reproduce dashboard v09",
+        "href": "#reproduce-dashboard-v09"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "modify-revision",
+      "lesson_id": "web-engineering-01",
+      "context_id": "modify-migration-column",
+      "question": "怎样主动新增一个迁移列？",
+      "aliases": [
+        "新 revision 练习怎么做"
+      ],
+      "keywords": [
+        "怎样主动新增一个迁移列",
+        "新",
+        "revision",
+        "练习怎么做"
+      ],
+      "diagnostic": "先确认你正在处理“新 revision 练习怎么做”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 modify-migration-column 中的责任。",
+        "再用本课固定测试验证 怎样主动新增一个迁移列。"
+      ],
+      "example": "先新增兼容列和测试，再升级、回填并验证旧数据仍可读取。",
+      "answer": "先新增兼容列和测试，再升级、回填并验证旧数据仍可读取。",
+      "source": {
+        "label": "modify migration column",
+        "href": "#modify-migration-column"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "revision-troubleshoot",
+      "lesson_id": "web-engineering-01",
+      "context_id": "troubleshoot-migration",
+      "question": "找不到 Alembic revision 怎么排查？",
+      "aliases": [
+        "alembic_version 不一致怎么办"
+      ],
+      "keywords": [
+        "找不到",
+        "Alembic",
+        "revision",
+        "怎么排查",
+        "alembic_version",
+        "不一致怎么办"
+      ],
+      "diagnostic": "先确认你正在处理“alembic_version 不一致怎么办”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 troubleshoot-migration 中的责任。",
+        "再用本课固定测试验证 找不到 Alembic revision 怎么排查。"
+      ],
+      "example": "核对连接 URL、版本表和 revision 链，不直接改版本号掩盖问题。",
+      "answer": "核对连接 URL、版本表和 revision 链，不直接改版本号掩盖问题。",
+      "source": {
+        "label": "troubleshoot migration",
+        "href": "#troubleshoot-migration"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "downgrade-boundary",
+      "lesson_id": "web-engineering-01",
+      "context_id": "troubleshoot-migration",
+      "question": "为什么生产降级不能照搬教学 downgrade？",
+      "aliases": [
+        "downgrade base 的边界是什么"
+      ],
+      "keywords": [
+        "为什么生产降级不能照搬教学",
+        "downgrade",
+        "base",
+        "的边界是什么"
+      ],
+      "diagnostic": "先确认你正在处理“downgrade base 的边界是什么”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 troubleshoot-migration 中的责任。",
+        "再用本课固定测试验证 为什么生产降级不能照搬教学 downgrade。"
+      ],
+      "example": "教学降级在临时库验证可逆性；生产数据回滚还要评估兼容与数据丢失。",
+      "answer": "教学降级在临时库验证可逆性；生产数据回滚还要评估兼容与数据丢失。",
+      "source": {
+        "label": "troubleshoot migration",
+        "href": "#troubleshoot-migration"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "project-v09",
+      "lesson_id": "web-engineering-01",
+      "context_id": "project-dashboard-v09",
+      "question": "v0.9 与 v0.8 的核心差异是什么？",
+      "aliases": [
+        "学习进度报告器迁移证据有哪些"
+      ],
+      "keywords": [
+        "v0.9",
+        "与",
+        "v0.8",
+        "的核心差异是什么",
+        "学习进度报告器迁移证据有哪些"
+      ],
+      "diagnostic": "先确认你正在处理“学习进度报告器迁移证据有哪些”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 project-dashboard-v09 中的责任。",
+        "再用本课固定测试验证 v0.9 与 v0.8 的核心差异是什么。"
+      ],
+      "example": "v0.9 保留资源语义，新增 PostgreSQL、连接池、迁移版本和幂等导入证据。",
+      "answer": "v0.9 保留资源语义，新增 PostgreSQL、连接池、迁移版本和幂等导入证据。",
+      "source": {
+        "label": "project dashboard v09",
+        "href": "#project-dashboard-v09"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    }
+  ]
+}

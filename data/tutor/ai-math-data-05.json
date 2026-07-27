@@ -1,0 +1,336 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "ai-math-data-05",
+    "title": "基线、混淆矩阵、阈值与指标选择",
+    "path": "learning-paths/ai-foundation/math-data/05-baseline-confusion-matrix-threshold-metrics/"
+  },
+  "contexts": [
+    {
+      "id": "overview-evaluation-contract",
+      "type": "overview",
+      "title": "评估契约",
+      "anchor": "#overview-evaluation-contract"
+    },
+    {
+      "id": "concept-baseline-confusion",
+      "type": "concept",
+      "title": "基线与混淆矩阵",
+      "anchor": "#concept-baseline-confusion"
+    },
+    {
+      "id": "concept-metrics-denominators",
+      "type": "concept",
+      "title": "指标分母",
+      "anchor": "#concept-metrics-denominators"
+    },
+    {
+      "id": "example-threshold-cost",
+      "type": "example",
+      "title": "阈值与成本",
+      "anchor": "#example-threshold-cost"
+    },
+    {
+      "id": "reproduce-evaluation-v05",
+      "type": "reproduce",
+      "title": "运行评估实验",
+      "anchor": "#reproduce-evaluation-v05"
+    },
+    {
+      "id": "modify-evaluation-policy",
+      "type": "modify",
+      "title": "修改评估策略",
+      "anchor": "#modify-evaluation-policy"
+    },
+    {
+      "id": "troubleshoot-evaluation-metrics",
+      "type": "troubleshoot",
+      "title": "指标排错",
+      "anchor": "#troubleshoot-evaluation-metrics"
+    },
+    {
+      "id": "project-reproducible-experiment-v05",
+      "type": "project",
+      "title": "实验系统 v0.5",
+      "anchor": "#project-reproducible-experiment-v05"
+    },
+    {
+      "id": "career-threshold-metrics",
+      "type": "career",
+      "title": "阈值追问",
+      "anchor": "#career-threshold-metrics"
+    }
+  ],
+  "cards": [
+    {
+      "id": "baseline",
+      "lesson_id": "ai-math-data-05",
+      "context_id": "concept-baseline-confusion",
+      "question": "为什么评估前要建立简单基线？",
+      "aliases": [
+        "多数类基线有什么用"
+      ],
+      "keywords": [
+        "为什么评估前要建立简单基线",
+        "多数类基线有什么用"
+      ],
+      "diagnostic": "先判断“多数类基线有什么用”涉及基线、四格、指标分母还是阈值成本。",
+      "hints": [
+        "查看 #concept-baseline-confusion。",
+        "运行 test_evaluation_lab.py。"
+      ],
+      "example": "全猜负类准确率 0.5、召回率 0。",
+      "answer": "基线给复杂方案最低比较线，揭示高分是否只是来自类别分布。",
+      "source": {
+        "label": "基线与混淆矩阵",
+        "href": "#concept-baseline-confusion"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "confusion",
+      "lesson_id": "ai-math-data-05",
+      "context_id": "concept-baseline-confusion",
+      "question": "混淆矩阵四格是什么？",
+      "aliases": [
+        "TP FP TN FN"
+      ],
+      "keywords": [
+        "混淆矩阵四格是什么",
+        "TP",
+        "FP",
+        "TN",
+        "FN"
+      ],
+      "diagnostic": "先判断“TP FP TN FN”涉及基线、四格、指标分母还是阈值成本。",
+      "hints": [
+        "查看 #concept-baseline-confusion。",
+        "运行 test_evaluation_lab.py。"
+      ],
+      "example": "四格之和必须等于样本数。",
+      "answer": "每个样本按真实标签和预测标签进入 TP、FP、TN、FN 中唯一一格。",
+      "source": {
+        "label": "基线与混淆矩阵",
+        "href": "#concept-baseline-confusion"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "accuracy",
+      "lesson_id": "ai-math-data-05",
+      "context_id": "concept-metrics-denominators",
+      "question": "准确率怎样计算？",
+      "aliases": [
+        "accuracy 分母"
+      ],
+      "keywords": [
+        "准确率怎样计算",
+        "accuracy",
+        "分母"
+      ],
+      "diagnostic": "先判断“accuracy 分母”涉及基线、四格、指标分母还是阈值成本。",
+      "hints": [
+        "查看 #concept-metrics-denominators。",
+        "运行 test_evaluation_lab.py。"
+      ],
+      "example": "阈值0.5准确率0.667。",
+      "answer": "正确预测 TP+TN 除以全部样本；类别不平衡时可能误导。",
+      "source": {
+        "label": "指标分母",
+        "href": "#concept-metrics-denominators"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "precision",
+      "lesson_id": "ai-math-data-05",
+      "context_id": "concept-metrics-denominators",
+      "question": "精确率回答什么问题？",
+      "aliases": [
+        "报为正的有多少是真的"
+      ],
+      "keywords": [
+        "精确率回答什么问题",
+        "报为正的有多少是真的"
+      ],
+      "diagnostic": "先判断“报为正的有多少是真的”涉及基线、四格、指标分母还是阈值成本。",
+      "hints": [
+        "查看 #concept-metrics-denominators。",
+        "运行 test_evaluation_lab.py。"
+      ],
+      "example": "阈值0.5精确率0.667。",
+      "answer": "precision=TP/(TP+FP)，关注正预测中的真实比例。",
+      "source": {
+        "label": "指标分母",
+        "href": "#concept-metrics-denominators"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "recall",
+      "lesson_id": "ai-math-data-05",
+      "context_id": "concept-metrics-denominators",
+      "question": "召回率回答什么问题？",
+      "aliases": [
+        "真实正类找回多少"
+      ],
+      "keywords": [
+        "召回率回答什么问题",
+        "真实正类找回多少"
+      ],
+      "diagnostic": "先判断“真实正类找回多少”涉及基线、四格、指标分母还是阈值成本。",
+      "hints": [
+        "查看 #concept-metrics-denominators。",
+        "运行 test_evaluation_lab.py。"
+      ],
+      "example": "阈值0.7召回率0.333。",
+      "answer": "recall=TP/(TP+FN)，关注真实正类被找回的比例。",
+      "source": {
+        "label": "指标分母",
+        "href": "#concept-metrics-denominators"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "f1",
+      "lesson_id": "ai-math-data-05",
+      "context_id": "concept-metrics-denominators",
+      "question": "F1 怎样结合精确率和召回率？",
+      "aliases": [
+        "F1 公式"
+      ],
+      "keywords": [
+        "F1",
+        "怎样结合精确率和召回率",
+        "公式"
+      ],
+      "diagnostic": "先判断“F1 公式”涉及基线、四格、指标分母还是阈值成本。",
+      "hints": [
+        "查看 #concept-metrics-denominators。",
+        "运行 test_evaluation_lab.py。"
+      ],
+      "example": "阈值0.5 F1为0.667。",
+      "answer": "F1 是两者调和平均；两者和为0时本课定义为0。",
+      "source": {
+        "label": "指标分母",
+        "href": "#concept-metrics-denominators"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "threshold-boundary",
+      "lesson_id": "ai-math-data-05",
+      "context_id": "example-threshold-cost",
+      "question": "分数等于阈值时如何分类？",
+      "aliases": [
+        "score 大于等于 threshold"
+      ],
+      "keywords": [
+        "分数等于阈值时如何分类",
+        "score",
+        "大于等于",
+        "threshold"
+      ],
+      "diagnostic": "先判断“score 大于等于 threshold”涉及基线、四格、指标分母还是阈值成本。",
+      "hints": [
+        "查看 #example-threshold-cost。",
+        "运行 test_evaluation_lab.py。"
+      ],
+      "example": "0.5分数在0.5阈值下为正。",
+      "answer": "本课固定 score >= threshold 为正类，边界必须写入契约。",
+      "source": {
+        "label": "阈值与成本",
+        "href": "#example-threshold-cost"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "threshold-cost",
+      "lesson_id": "ai-math-data-05",
+      "context_id": "example-threshold-cost",
+      "question": "阈值应该怎样选择？",
+      "aliases": [
+        "误报漏报成本"
+      ],
+      "keywords": [
+        "阈值应该怎样选择",
+        "误报漏报成本"
+      ],
+      "diagnostic": "先判断“误报漏报成本”涉及基线、四格、指标分母还是阈值成本。",
+      "hints": [
+        "查看 #example-threshold-cost。",
+        "运行 test_evaluation_lab.py。"
+      ],
+      "example": "固定 selection=cost-and-validation-contract。",
+      "answer": "结合 FP/FN 代价和独立验证选择，不能只在同一验证集反复追最高分。",
+      "source": {
+        "label": "阈值与成本",
+        "href": "#example-threshold-cost"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "zero-division",
+      "lesson_id": "ai-math-data-05",
+      "context_id": "troubleshoot-evaluation-metrics",
+      "question": "没有正预测时精确率怎么办？",
+      "aliases": [
+        "指标零分母"
+      ],
+      "keywords": [
+        "没有正预测时精确率怎么办",
+        "指标零分母"
+      ],
+      "diagnostic": "先判断“指标零分母”涉及基线、四格、指标分母还是阈值成本。",
+      "hints": [
+        "查看 #troubleshoot-evaluation-metrics。",
+        "运行 test_evaluation_lab.py。"
+      ],
+      "example": "zero-division-defined。",
+      "answer": "必须定义并测试策略；本课返回0，其他系统可能警告或未定义。",
+      "source": {
+        "label": "指标排错",
+        "href": "#troubleshoot-evaluation-metrics"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "experiment-v05",
+      "lesson_id": "ai-math-data-05",
+      "context_id": "project-reproducible-experiment-v05",
+      "question": "实验系统 v0.5 新增什么？",
+      "aliases": [
+        "AI 数学数据第五课项目"
+      ],
+      "keywords": [
+        "实验系统",
+        "v0.5",
+        "新增什么",
+        "AI",
+        "数学数据第五课项目"
+      ],
+      "diagnostic": "先判断“AI 数学数据第五课项目”涉及基线、四格、指标分母还是阈值成本。",
+      "hints": [
+        "查看 #project-reproducible-experiment-v05。",
+        "运行 test_evaluation_lab.py。"
+      ],
+      "example": "输入与边界均显式校验。",
+      "answer": "新增负类基线、混淆矩阵、阈值比较和四种同口径指标。",
+      "source": {
+        "label": "实验系统 v0.5",
+        "href": "#project-reproducible-experiment-v05"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

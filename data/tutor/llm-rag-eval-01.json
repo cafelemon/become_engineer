@@ -1,0 +1,340 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "llm-rag-eval-01",
+    "title": "语料文档契约、来源身份与可复现索引",
+    "path": "learning-paths/llm-agent/rag-eval/01-corpus-document-source-reproducible-index/"
+  },
+  "contexts": [
+    {
+      "id": "overview-reproducible-corpus",
+      "type": "overview",
+      "title": "可复现语料",
+      "anchor": "#overview-reproducible-corpus"
+    },
+    {
+      "id": "concept-document-identity",
+      "type": "concept",
+      "title": "文档身份",
+      "anchor": "#concept-document-identity"
+    },
+    {
+      "id": "concept-hash-trust-boundary",
+      "type": "concept",
+      "title": "哈希与信任边界",
+      "anchor": "#concept-hash-trust-boundary"
+    },
+    {
+      "id": "example-canonical-snapshot",
+      "type": "example",
+      "title": "规范索引快照",
+      "anchor": "#example-canonical-snapshot"
+    },
+    {
+      "id": "reproduce-corpus-v07",
+      "type": "reproduce",
+      "title": "运行语料实验",
+      "anchor": "#reproduce-corpus-v07"
+    },
+    {
+      "id": "modify-corpus-schema",
+      "type": "modify",
+      "title": "修改语料Schema",
+      "anchor": "#modify-corpus-schema"
+    },
+    {
+      "id": "troubleshoot-corpus-index",
+      "type": "troubleshoot",
+      "title": "语料索引排错",
+      "anchor": "#troubleshoot-corpus-index"
+    },
+    {
+      "id": "deepen-corpus-versioning",
+      "type": "deepen",
+      "title": "语料版本深化",
+      "anchor": "#deepen-corpus-versioning"
+    },
+    {
+      "id": "project-learning-assistant-v07",
+      "type": "project",
+      "title": "智能学习助手v0.7",
+      "anchor": "#project-learning-assistant-v07"
+    }
+  ],
+  "cards": [
+    {
+      "id": "document-id",
+      "lesson_id": "llm-rag-eval-01",
+      "context_id": "concept-document-identity",
+      "question": "为什么文档不能用数组下标做身份？",
+      "aliases": [
+        "第0篇文档不能当ID吗"
+      ],
+      "keywords": [
+        "为什么文档不能用数组下标做身份",
+        "第0篇文档不能当ID吗"
+      ],
+      "diagnostic": "先定位“第0篇文档不能当ID吗”属于文档身份、来源、摘要、快照还是持久化。",
+      "hints": [
+        "查看 #concept-document-identity。",
+        "运行 test_corpus_index.py 检查稳定错误码。"
+      ],
+      "example": "ID使用稳定slug。",
+      "answer": "导入顺序会变化；稳定document_id才能让索引、chunk和引用持续指向同一文档。",
+      "source": {
+        "label": "文档身份",
+        "href": "#concept-document-identity"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "source-uri",
+      "lesson_id": "llm-rag-eval-01",
+      "context_id": "concept-document-identity",
+      "question": "source URI 为什么必须带锚点？",
+      "aliases": [
+        "只有课程URL够吗"
+      ],
+      "keywords": [
+        "source",
+        "URI",
+        "为什么必须带锚点",
+        "只有课程URL够吗"
+      ],
+      "diagnostic": "先定位“只有课程URL够吗”属于文档身份、来源、摘要、快照还是持久化。",
+      "hints": [
+        "查看 #concept-document-identity。",
+        "运行 test_corpus_index.py 检查稳定错误码。"
+      ],
+      "example": "course URI加anchor。",
+      "answer": "锚点把引用收窄到明确来源位置，后续才能回到原文核查。",
+      "source": {
+        "label": "文档身份",
+        "href": "#concept-document-identity"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "content-hash",
+      "lesson_id": "llm-rag-eval-01",
+      "context_id": "concept-hash-trust-boundary",
+      "question": "content SHA-256 能证明什么？",
+      "aliases": [
+        "哈希能证明内容是真的吗"
+      ],
+      "keywords": [
+        "content",
+        "SHA-256",
+        "能证明什么",
+        "哈希能证明内容是真的吗"
+      ],
+      "diagnostic": "先定位“哈希能证明内容是真的吗”属于文档身份、来源、摘要、快照还是持久化。",
+      "hints": [
+        "查看 #concept-hash-trust-boundary。",
+        "运行 test_corpus_index.py 检查稳定错误码。"
+      ],
+      "example": "hash不等于trust。",
+      "answer": "只能发现保存前后内容是否一致，不能证明来源可信、事实正确或有授权。",
+      "source": {
+        "label": "哈希与信任边界",
+        "href": "#concept-hash-trust-boundary"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "corpus-fingerprint",
+      "lesson_id": "llm-rag-eval-01",
+      "context_id": "example-canonical-snapshot",
+      "question": "语料 fingerprint 覆盖哪些字段？",
+      "aliases": [
+        "只hash正文够吗"
+      ],
+      "keywords": [
+        "语料",
+        "fingerprint",
+        "覆盖哪些字段",
+        "只hash正文够吗"
+      ],
+      "diagnostic": "先定位“只hash正文够吗”属于文档身份、来源、摘要、快照还是持久化。",
+      "hints": [
+        "查看 #example-canonical-snapshot。",
+        "运行 test_corpus_index.py 检查稳定错误码。"
+      ],
+      "example": "任一身份字段变化都会改变。",
+      "answer": "覆盖Schema、corpus ID和每篇文档的ID、标题、来源、时间、正文与摘要。",
+      "source": {
+        "label": "规范索引快照",
+        "href": "#example-canonical-snapshot"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "canonical-order",
+      "lesson_id": "llm-rag-eval-01",
+      "context_id": "example-canonical-snapshot",
+      "question": "为什么先按 document_id 排序？",
+      "aliases": [
+        "输入重排不应该变版本吗"
+      ],
+      "keywords": [
+        "为什么先按",
+        "document_id",
+        "排序",
+        "输入重排不应该变版本吗"
+      ],
+      "diagnostic": "先定位“输入重排不应该变版本吗”属于文档身份、来源、摘要、快照还是持久化。",
+      "hints": [
+        "查看 #example-canonical-snapshot。",
+        "运行 test_corpus_index.py 检查稳定错误码。"
+      ],
+      "example": "reordered fingerprint equal。",
+      "answer": "顺序不是语义变化；规范排序消除无意义差异，让同一语料得到同一指纹。",
+      "source": {
+        "label": "规范索引快照",
+        "href": "#example-canonical-snapshot"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "duplicate-source",
+      "lesson_id": "llm-rag-eval-01",
+      "context_id": "troubleshoot-corpus-index",
+      "question": "两个文档ID能指向同一来源吗？",
+      "aliases": [
+        "重复source URI怎么处理"
+      ],
+      "keywords": [
+        "两个文档ID能指向同一来源吗",
+        "重复source",
+        "URI怎么处理"
+      ],
+      "diagnostic": "先定位“重复source URI怎么处理”属于文档身份、来源、摘要、快照还是持久化。",
+      "hints": [
+        "查看 #troubleshoot-corpus-index。",
+        "运行 test_corpus_index.py 检查稳定错误码。"
+      ],
+      "example": "duplicate_source_uri。",
+      "answer": "本契约默认拒绝，避免同一来源被重复计权和引用身份分裂。",
+      "source": {
+        "label": "语料索引排错",
+        "href": "#troubleshoot-corpus-index"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "atomic-index",
+      "lesson_id": "llm-rag-eval-01",
+      "context_id": "reproduce-corpus-v07",
+      "question": "索引快照为什么原子替换？",
+      "aliases": [
+        "直接write_text不行吗"
+      ],
+      "keywords": [
+        "索引快照为什么原子替换",
+        "直接write_text不行吗"
+      ],
+      "diagnostic": "先定位“直接write_text不行吗”属于文档身份、来源、摘要、快照还是持久化。",
+      "hints": [
+        "查看 #reproduce-corpus-v07。",
+        "运行 test_corpus_index.py 检查稳定错误码。"
+      ],
+      "example": "测试确认无临时残留。",
+      "answer": "中途崩溃可能留下半份JSON；同目录临时写、fsync再replace减少撕裂窗口。",
+      "source": {
+        "label": "运行语料实验",
+        "href": "#reproduce-corpus-v07"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "schema-version",
+      "lesson_id": "llm-rag-eval-01",
+      "context_id": "modify-corpus-schema",
+      "question": "增加字段为何要升级 Schema？",
+      "aliases": [
+        "loader忽略新字段可以吗"
+      ],
+      "keywords": [
+        "增加字段为何要升级",
+        "Schema",
+        "loader忽略新字段可以吗"
+      ],
+      "diagnostic": "先定位“loader忽略新字段可以吗”属于文档身份、来源、摘要、快照还是持久化。",
+      "hints": [
+        "查看 #modify-corpus-schema。",
+        "运行 test_corpus_index.py 检查稳定错误码。"
+      ],
+      "example": "额外字段默认拒绝。",
+      "answer": "不能让读写双方对身份字段理解不同；新字段需显式版本和迁移策略。",
+      "source": {
+        "label": "修改语料Schema",
+        "href": "#modify-corpus-schema"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "corpus-eval-link",
+      "lesson_id": "llm-rag-eval-01",
+      "context_id": "deepen-corpus-versioning",
+      "question": "评估报告为什么要记录 corpus fingerprint？",
+      "aliases": [
+        "模型没变还需语料版本吗"
+      ],
+      "keywords": [
+        "评估报告为什么要记录",
+        "corpus",
+        "fingerprint",
+        "模型没变还需语料版本吗"
+      ],
+      "diagnostic": "先定位“模型没变还需语料版本吗”属于文档身份、来源、摘要、快照还是持久化。",
+      "hints": [
+        "查看 #deepen-corpus-versioning。",
+        "运行 test_corpus_index.py 检查稳定错误码。"
+      ],
+      "example": "报告关联查询集和检索配置。",
+      "answer": "语料变化也会改变检索和答案；没有语料身份就不能复现实验。",
+      "source": {
+        "label": "语料版本深化",
+        "href": "#deepen-corpus-versioning"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    },
+    {
+      "id": "assistant-v07",
+      "lesson_id": "llm-rag-eval-01",
+      "context_id": "project-learning-assistant-v07",
+      "question": "智能学习助手 v0.7 新增什么？",
+      "aliases": [
+        "RAG第一课项目做什么"
+      ],
+      "keywords": [
+        "智能学习助手",
+        "v0.7",
+        "新增什么",
+        "RAG第一课项目做什么"
+      ],
+      "diagnostic": "先定位“RAG第一课项目做什么”属于文档身份、来源、摘要、快照还是持久化。",
+      "hints": [
+        "查看 #project-learning-assistant-v07。",
+        "运行 test_corpus_index.py 检查稳定错误码。"
+      ],
+      "example": "下一版BM25。",
+      "answer": "新增文档/来源契约、内容摘要、规范语料指纹、原子保存与加载校验。",
+      "source": {
+        "label": "智能学习助手v0.7",
+        "href": "#project-learning-assistant-v07"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    }
+  ]
+}

@@ -4221,6 +4221,21 @@ html.be-modal-open body {
 .be-data-flow span { margin-top: 0.35rem; color: var(--be-muted); font-size: 0.74rem; }
 
 @media (max-width: 44rem) {
+  /* Keep long lesson titles inside the mobile header even when JavaScript is
+     disabled and Material cannot shorten the active navigation topic. */
+  .md-header__title,
+  .md-header__topic,
+  .md-header__topic .md-ellipsis {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .md-header__topic .md-ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   .be-profile-preview > div { grid-template-columns: 1fr; }
   .be-data-flow { grid-template-columns: 1fr; }
   .be-data-flow > div:not(:last-child)::after {

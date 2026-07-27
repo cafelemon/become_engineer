@@ -1,0 +1,343 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "llm-use-02",
+    "title": "Prompt 角色、版本、参数与上下文预算",
+    "path": "learning-paths/llm-agent/model-use/02-prompt-roles-version-parameters-context-budget/"
+  },
+  "contexts": [
+    {
+      "id": "overview-prompt-snapshot",
+      "type": "overview",
+      "title": "Prompt快照",
+      "anchor": "#overview-prompt-snapshot"
+    },
+    {
+      "id": "concept-prompt-as-config",
+      "type": "concept",
+      "title": "Prompt配置",
+      "anchor": "#concept-prompt-as-config"
+    },
+    {
+      "id": "concept-role-budget",
+      "type": "concept",
+      "title": "角色与预算",
+      "anchor": "#concept-role-budget"
+    },
+    {
+      "id": "example-canonical-fingerprint",
+      "type": "example",
+      "title": "规范指纹",
+      "anchor": "#example-canonical-fingerprint"
+    },
+    {
+      "id": "reproduce-prompt-v02",
+      "type": "reproduce",
+      "title": "运行Prompt实验",
+      "anchor": "#reproduce-prompt-v02"
+    },
+    {
+      "id": "modify-prompt-contract",
+      "type": "modify",
+      "title": "修改Prompt契约",
+      "anchor": "#modify-prompt-contract"
+    },
+    {
+      "id": "troubleshoot-prompt-contract",
+      "type": "troubleshoot",
+      "title": "Prompt排错",
+      "anchor": "#troubleshoot-prompt-contract"
+    },
+    {
+      "id": "deepen-prompt-limits",
+      "type": "deepen",
+      "title": "Prompt边界",
+      "anchor": "#deepen-prompt-limits"
+    },
+    {
+      "id": "project-learning-assistant-v02",
+      "type": "project",
+      "title": "智能学习助手v0.2",
+      "anchor": "#project-learning-assistant-v02"
+    }
+  ],
+  "cards": [
+    {
+      "id": "prompt-config",
+      "lesson_id": "llm-use-02",
+      "context_id": "concept-prompt-as-config",
+      "question": "为什么 Prompt 应当版本化？",
+      "aliases": [
+        "Prompt不就是字符串吗"
+      ],
+      "keywords": [
+        "为什么",
+        "Prompt",
+        "应当版本化",
+        "Prompt不就是字符串吗"
+      ],
+      "diagnostic": "先判断“Prompt不就是字符串吗”涉及role、版本、参数、预算、指纹还是审计。",
+      "hints": [
+        "查看 #concept-prompt-as-config。",
+        "运行 test_prompt_contract.py 比较请求快照。"
+      ],
+      "example": "v0.2版本2.0.0。",
+      "answer": "它与代码配置一样影响行为；ID和版本让变更可定位，测试再证明兼容性。",
+      "source": {
+        "label": "Prompt配置",
+        "href": "#concept-prompt-as-config"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "message-role",
+      "lesson_id": "llm-use-02",
+      "context_id": "concept-role-budget",
+      "question": "用户说忽略规则会变成 system 吗？",
+      "aliases": [
+        "用户能否覆盖system role"
+      ],
+      "keywords": [
+        "用户说忽略规则会变成",
+        "system",
+        "吗",
+        "用户能否覆盖system",
+        "role"
+      ],
+      "diagnostic": "先判断“用户能否覆盖system role”涉及role、版本、参数、预算、指纹还是审计。",
+      "hints": [
+        "查看 #concept-role-budget。",
+        "运行 test_prompt_contract.py 比较请求快照。"
+      ],
+      "example": "system_unchanged:true。",
+      "answer": "不能；role由可信请求结构决定，用户文本始终留在user消息。",
+      "source": {
+        "label": "角色与预算",
+        "href": "#concept-role-budget"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "input-budget",
+      "lesson_id": "llm-use-02",
+      "context_id": "concept-role-budget",
+      "question": "为什么在调用前检查上下文预算？",
+      "aliases": [
+        "超长Prompt何时拒绝"
+      ],
+      "keywords": [
+        "为什么在调用前检查上下文预算",
+        "超长Prompt何时拒绝"
+      ],
+      "diagnostic": "先判断“超长Prompt何时拒绝”涉及role、版本、参数、预算、指纹还是审计。",
+      "hints": [
+        "查看 #concept-role-budget。",
+        "运行 test_prompt_contract.py 比较请求快照。"
+      ],
+      "example": "240字节教学预算。",
+      "answer": "可避免无效调用、费用和隐式截断；超限应明确失败或显式分段。",
+      "source": {
+        "label": "角色与预算",
+        "href": "#concept-role-budget"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "unit-boundary",
+      "lesson_id": "llm-use-02",
+      "context_id": "concept-role-budget",
+      "question": "UTF-8 字节能当 token 吗？",
+      "aliases": [
+        "input_units是不是provider tokens"
+      ],
+      "keywords": [
+        "UTF-8",
+        "字节能当",
+        "token",
+        "吗",
+        "input_units是不是provider",
+        "tokens"
+      ],
+      "diagnostic": "先判断“input_units是不是provider tokens”涉及role、版本、参数、预算、指纹还是审计。",
+      "hints": [
+        "查看 #concept-role-budget。",
+        "运行 test_prompt_contract.py 比较请求快照。"
+      ],
+      "example": "固定输出明确not-provider-tokens。",
+      "answer": "不能；它只是离线稳定估算，真实计费和上下文以对应模型计量为准。",
+      "source": {
+        "label": "角色与预算",
+        "href": "#concept-role-budget"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "prompt-fingerprint",
+      "lesson_id": "llm-use-02",
+      "context_id": "example-canonical-fingerprint",
+      "question": "Prompt 指纹覆盖哪些字段？",
+      "aliases": [
+        "hash只算用户问题够吗"
+      ],
+      "keywords": [
+        "Prompt",
+        "指纹覆盖哪些字段",
+        "hash只算用户问题够吗"
+      ],
+      "diagnostic": "先判断“hash只算用户问题够吗”涉及role、版本、参数、预算、指纹还是审计。",
+      "hints": [
+        "查看 #example-canonical-fingerprint。",
+        "运行 test_prompt_contract.py 比较请求快照。"
+      ],
+      "example": "规范JSON后SHA-256。",
+      "answer": "应覆盖ID、版本、模型、角色内容、生成参数与输出上限。",
+      "source": {
+        "label": "规范指纹",
+        "href": "#example-canonical-fingerprint"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "canonical-json",
+      "lesson_id": "llm-use-02",
+      "context_id": "example-canonical-fingerprint",
+      "question": "为什么指纹前要规范序列化？",
+      "aliases": [
+        "JSON key顺序影响hash吗"
+      ],
+      "keywords": [
+        "为什么指纹前要规范序列化",
+        "JSON",
+        "key顺序影响hash吗"
+      ],
+      "diagnostic": "先判断“JSON key顺序影响hash吗”涉及role、版本、参数、预算、指纹还是审计。",
+      "hints": [
+        "查看 #example-canonical-fingerprint。",
+        "运行 test_prompt_contract.py 比较请求快照。"
+      ],
+      "example": "sort_keys与固定separators。",
+      "answer": "语义相同但字节顺序不同会改变哈希；固定排序和分隔符才能稳定比较。",
+      "source": {
+        "label": "规范指纹",
+        "href": "#example-canonical-fingerprint"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "audit-redaction",
+      "lesson_id": "llm-use-02",
+      "context_id": "troubleshoot-prompt-contract",
+      "question": "Prompt 审计记录能保存什么？",
+      "aliases": [
+        "是否记录完整Prompt"
+      ],
+      "keywords": [
+        "Prompt",
+        "审计记录能保存什么",
+        "是否记录完整Prompt"
+      ],
+      "diagnostic": "先判断“是否记录完整Prompt”涉及role、版本、参数、预算、指纹还是审计。",
+      "hints": [
+        "查看 #troubleshoot-prompt-contract。",
+        "运行 test_prompt_contract.py 比较请求快照。"
+      ],
+      "example": "audit_record排除messages。",
+      "answer": "默认保存ID、版本、模型、角色、计量、参数和指纹，不保存原始内容。",
+      "source": {
+        "label": "Prompt排错",
+        "href": "#troubleshoot-prompt-contract"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "hash-secrecy",
+      "lesson_id": "llm-use-02",
+      "context_id": "deepen-prompt-limits",
+      "question": "Prompt 哈希能保证原文保密吗？",
+      "aliases": [
+        "有SHA-256就无法猜原文吗"
+      ],
+      "keywords": [
+        "Prompt",
+        "哈希能保证原文保密吗",
+        "有SHA-256就无法猜原文吗"
+      ],
+      "diagnostic": "先判断“有SHA-256就无法猜原文吗”涉及role、版本、参数、预算、指纹还是审计。",
+      "hints": [
+        "查看 #deepen-prompt-limits。",
+        "运行 test_prompt_contract.py 比较请求快照。"
+      ],
+      "example": "课程明确不作保密承诺。",
+      "answer": "不能；短或可枚举文本可能被猜测，哈希是比较/完整性辅助而非保密方案。",
+      "source": {
+        "label": "Prompt边界",
+        "href": "#deepen-prompt-limits"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "temperature-zero",
+      "lesson_id": "llm-use-02",
+      "context_id": "deepen-prompt-limits",
+      "question": "temperature 0 能保证永远相同吗？",
+      "aliases": [
+        "零温度是否绝对确定"
+      ],
+      "keywords": [
+        "temperature",
+        "0",
+        "能保证永远相同吗",
+        "零温度是否绝对确定"
+      ],
+      "diagnostic": "先判断“零温度是否绝对确定”涉及role、版本、参数、预算、指纹还是审计。",
+      "hints": [
+        "查看 #deepen-prompt-limits。",
+        "运行 test_prompt_contract.py 比较请求快照。"
+      ],
+      "example": "还需provider版本与结果证据。",
+      "answer": "不能保证跨模型更新、服务实现或时间绝对一致；快照只证明应用配置。",
+      "source": {
+        "label": "Prompt边界",
+        "href": "#deepen-prompt-limits"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    },
+    {
+      "id": "assistant-v02",
+      "lesson_id": "llm-use-02",
+      "context_id": "project-learning-assistant-v02",
+      "question": "智能学习助手 v0.2 新增什么？",
+      "aliases": [
+        "LLM第二课项目做什么"
+      ],
+      "keywords": [
+        "智能学习助手",
+        "v0.2",
+        "新增什么",
+        "LLM第二课项目做什么"
+      ],
+      "diagnostic": "先判断“LLM第二课项目做什么”涉及role、版本、参数、预算、指纹还是审计。",
+      "hints": [
+        "查看 #project-learning-assistant-v02。",
+        "运行 test_prompt_contract.py 比较请求快照。"
+      ],
+      "example": "下一版进入严格JSON校验。",
+      "answer": "新增PromptSpec、role、预算、指纹、脱敏审计和8项测试。",
+      "source": {
+        "label": "智能学习助手v0.2",
+        "href": "#project-learning-assistant-v02"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    }
+  ]
+}

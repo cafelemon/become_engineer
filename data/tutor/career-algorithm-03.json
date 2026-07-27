@@ -1,0 +1,332 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "career-algorithm-03",
+    "title": "错因分类、最小反例与回归复盘",
+    "path": "learning-paths/career-algorithm/03-failure-categories-minimal-counterexamples-regression/"
+  },
+  "contexts": [
+    {
+      "id": "overview-algorithm-retrospective",
+      "type": "overview",
+      "title": "复盘证据链",
+      "anchor": "#overview-algorithm-retrospective"
+    },
+    {
+      "id": "concept-five-failure-categories",
+      "type": "concept",
+      "title": "五类错因",
+      "anchor": "#concept-five-failure-categories"
+    },
+    {
+      "id": "example-counterexample-probe",
+      "type": "example",
+      "title": "反例候选与探针",
+      "anchor": "#example-counterexample-probe"
+    },
+    {
+      "id": "reproduce-retrospective-v03",
+      "type": "reproduce",
+      "title": "运行复盘检查",
+      "anchor": "#reproduce-retrospective-v03"
+    },
+    {
+      "id": "concept-regression-evidence",
+      "type": "concept",
+      "title": "回归证据",
+      "anchor": "#concept-regression-evidence"
+    },
+    {
+      "id": "modify-own-retrospective",
+      "type": "modify",
+      "title": "个人失败复盘",
+      "anchor": "#modify-own-retrospective"
+    },
+    {
+      "id": "troubleshoot-retrospective",
+      "type": "troubleshoot",
+      "title": "复盘断链排错",
+      "anchor": "#troubleshoot-retrospective"
+    },
+    {
+      "id": "project-algorithm-rehearsal-v03",
+      "type": "project",
+      "title": "算法演练运行器 v0.3",
+      "anchor": "#project-algorithm-rehearsal-v03"
+    },
+    {
+      "id": "career-retrospective-review",
+      "type": "career",
+      "title": "失败解释追问",
+      "anchor": "#career-retrospective-review"
+    }
+  ],
+  "cards": [
+    {
+      "id": "evidence-chain",
+      "lesson_id": "career-algorithm-03",
+      "context_id": "overview-algorithm-retrospective",
+      "question": "完整失败复盘需要哪些证据？",
+      "aliases": [
+        "失败后应该留下什么"
+      ],
+      "keywords": [
+        "完整失败复盘需要哪些证据",
+        "失败后应该留下什么"
+      ],
+      "diagnostic": "先判断“失败后应该留下什么”的证据链断在观察、反例、修复还是回归。",
+      "hints": [
+        "查看 #overview-algorithm-retrospective 的分类表或固定输出。",
+        "再用两组测试核对“完整失败复盘需要哪些证据”。"
+      ],
+      "example": "修复后固定得到 after=regression-pass。",
+      "answer": "至少关联观察状态、反例候选、更小探针、原因、修复、唯一回归测试和时间线事件。",
+      "source": {
+        "label": "复盘证据链",
+        "href": "#overview-algorithm-retrospective"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "five-categories",
+      "lesson_id": "career-algorithm-03",
+      "context_id": "concept-five-failure-categories",
+      "question": "算法错因分为哪五类？",
+      "aliases": [
+        "契约边界实现复杂度策略怎么区分"
+      ],
+      "keywords": [
+        "算法错因分为哪五类",
+        "契约边界实现复杂度策略怎么区分"
+      ],
+      "diagnostic": "先判断“契约边界实现复杂度策略怎么区分”的证据链断在观察、反例、修复还是回归。",
+      "hints": [
+        "查看 #concept-five-failure-categories 的分类表或固定输出。",
+        "再用两组测试核对“算法错因分为哪五类”。"
+      ],
+      "example": "wrong-answer 可能来自边界或实现，状态不等于根因。",
+      "answer": "本课使用 contract、boundary、implementation、complexity 和 strategy 五类当前假设。",
+      "source": {
+        "label": "五类错因",
+        "href": "#concept-five-failure-categories"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "category-hypothesis",
+      "lesson_id": "career-algorithm-03",
+      "context_id": "concept-five-failure-categories",
+      "question": "错因分类为什么不是永久结论？",
+      "aliases": [
+        "分类错了以后怎么办"
+      ],
+      "keywords": [
+        "错因分类为什么不是永久结论",
+        "分类错了以后怎么办"
+      ],
+      "diagnostic": "先判断“分类错了以后怎么办”的证据链断在观察、反例、修复还是回归。",
+      "hints": [
+        "查看 #concept-five-failure-categories 的分类表或固定输出。",
+        "再用两组测试核对“错因分类为什么不是永久结论”。"
+      ],
+      "example": "不能为了维护旧标签不断叠加补丁。",
+      "answer": "分类只是指导下一实验的当前假设；回归仍失败时应更新类别和原因。",
+      "source": {
+        "label": "五类错因",
+        "href": "#concept-five-failure-categories"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "counterexample-candidate",
+      "lesson_id": "career-algorithm-03",
+      "context_id": "example-counterexample-probe",
+      "question": "为什么只称反例候选？",
+      "aliases": [
+        "工具能否证明全局最小反例"
+      ],
+      "keywords": [
+        "为什么只称反例候选",
+        "工具能否证明全局最小反例"
+      ],
+      "diagnostic": "先判断“工具能否证明全局最小反例”的证据链断在观察、反例、修复还是回归。",
+      "hints": [
+        "查看 #example-counterexample-probe 的分类表或固定输出。",
+        "再用两组测试核对“为什么只称反例候选”。"
+      ],
+      "example": "固定输出明确写 candidate-not-proof-of-global-minimality。",
+      "answer": "最小性依赖输入域、比较方式和搜索范围，结构检查器不能从一段文本证明全局最小。",
+      "source": {
+        "label": "反例候选与探针",
+        "href": "#example-counterexample-probe"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "smaller-probe",
+      "lesson_id": "career-algorithm-03",
+      "context_id": "example-counterexample-probe",
+      "question": "更小探针要记录什么？",
+      "aliases": [
+        "怎样说明反例已经缩小"
+      ],
+      "keywords": [
+        "更小探针要记录什么",
+        "怎样说明反例已经缩小"
+      ],
+      "diagnostic": "先判断“怎样说明反例已经缩小”的证据链断在观察、反例、修复还是回归。",
+      "hints": [
+        "查看 #example-counterexample-probe 的分类表或固定输出。",
+        "再用两组测试核对“更小探针要记录什么”。"
+      ],
+      "example": "数量 0 的更小探针写 no smaller valid count exists。",
+      "answer": "记录一次更小输入的结果，或说明在已声明输入域内为什么无法继续缩小。",
+      "source": {
+        "label": "反例候选与探针",
+        "href": "#example-counterexample-probe"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "regression-gate",
+      "lesson_id": "career-algorithm-03",
+      "context_id": "reproduce-retrospective-v03",
+      "question": "复盘记录怎样通过门槛？",
+      "aliases": [
+        "after 为什么必须 regression-pass"
+      ],
+      "keywords": [
+        "复盘记录怎样通过门槛",
+        "after",
+        "为什么必须",
+        "regression-pass"
+      ],
+      "diagnostic": "先判断“after 为什么必须 regression-pass”的证据链断在观察、反例、修复还是回归。",
+      "hints": [
+        "查看 #reproduce-retrospective-v03 的分类表或固定输出。",
+        "再用两组测试核对“复盘记录怎样通过门槛”。"
+      ],
+      "example": "重复 regression_id 和 still-failing 都会被拒绝。",
+      "answer": "每条修复必须关联唯一测试并达到 regression-pass；未解决时应继续更新假设，不能强行过门。",
+      "source": {
+        "label": "运行复盘检查",
+        "href": "#reproduce-retrospective-v03"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": true
+    },
+    {
+      "id": "operation-count",
+      "lesson_id": "career-algorithm-03",
+      "context_id": "concept-regression-evidence",
+      "question": "复杂度修复为什么用操作计数？",
+      "aliases": [
+        "为什么不用一次耗时证明更快"
+      ],
+      "keywords": [
+        "复杂度修复为什么用操作计数",
+        "为什么不用一次耗时证明更快"
+      ],
+      "diagnostic": "先判断“为什么不用一次耗时证明更快”的证据链断在观察、反例、修复还是回归。",
+      "hints": [
+        "查看 #concept-regression-evidence 的分类表或固定输出。",
+        "再用两组测试核对“复杂度修复为什么用操作计数”。"
+      ],
+      "example": "100 次查询固定执行 100 次集合成员检查。",
+      "answer": "操作计数直接对应实现工作量，避免机器负载干扰；它比一次墙钟稳定，但仍不替代完整证明。",
+      "source": {
+        "label": "回归证据",
+        "href": "#concept-regression-evidence"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "one-fix",
+      "lesson_id": "career-algorithm-03",
+      "context_id": "modify-own-retrospective",
+      "question": "为什么一次只做一个最小修复？",
+      "aliases": [
+        "同时重构和换算法有什么问题"
+      ],
+      "keywords": [
+        "为什么一次只做一个最小修复",
+        "同时重构和换算法有什么问题"
+      ],
+      "diagnostic": "先判断“同时重构和换算法有什么问题”的证据链断在观察、反例、修复还是回归。",
+      "hints": [
+        "查看 #modify-own-retrospective 的分类表或固定输出。",
+        "再用两组测试核对“为什么一次只做一个最小修复”。"
+      ],
+      "example": "先固定反例和失败测试，再改一个状态更新时机。",
+      "answer": "一次改动让回归变化能与具体原因关联；多项同时变化会让修复机制无法解释。",
+      "source": {
+        "label": "个人失败复盘",
+        "href": "#modify-own-retrospective"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "technical-cause",
+      "lesson_id": "career-algorithm-03",
+      "context_id": "troubleshoot-retrospective",
+      "question": "原因为什么不能只写粗心？",
+      "aliases": [
+        "复盘中的 cause 应该怎么写"
+      ],
+      "keywords": [
+        "原因为什么不能只写粗心",
+        "复盘中的",
+        "cause",
+        "应该怎么写"
+      ],
+      "diagnostic": "先判断“复盘中的 cause 应该怎么写”的证据链断在观察、反例、修复还是回归。",
+      "hints": [
+        "查看 #troubleshoot-retrospective 的分类表或固定输出。",
+        "再用两组测试核对“原因为什么不能只写粗心”。"
+      ],
+      "example": "写节点出队后才标记访问，不写我太粗心。",
+      "answer": "原因要指出可观察的技术机制，例如访问时机、边界假设或复杂度增长，才能导出测试。",
+      "source": {
+        "label": "复盘断链排错",
+        "href": "#troubleshoot-retrospective"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    },
+    {
+      "id": "rehearsal-v03",
+      "lesson_id": "career-algorithm-03",
+      "context_id": "project-algorithm-rehearsal-v03",
+      "question": "算法演练运行器 v0.3 交付什么？",
+      "aliases": [
+        "三课项目最终产出是什么"
+      ],
+      "keywords": [
+        "算法演练运行器",
+        "v0.3",
+        "交付什么",
+        "三课项目最终产出是什么"
+      ],
+      "diagnostic": "先判断“三课项目最终产出是什么”的证据链断在观察、反例、修复还是回归。",
+      "hints": [
+        "查看 #project-algorithm-rehearsal-v03 的分类表或固定输出。",
+        "再用两组测试核对“算法演练运行器 v0.3 交付什么”。"
+      ],
+      "example": "项目不预测录用概率，也不保存企业题目或真实账号。",
+      "answer": "它关联判题状态、限时事件、五类错因、反例探针、修复和回归，共有 26 项 Python 测试。",
+      "source": {
+        "label": "算法演练运行器 v0.3",
+        "href": "#project-algorithm-rehearsal-v03"
+      },
+      "updated_at": "2026-07-23",
+      "recommended": false
+    }
+  ]
+}

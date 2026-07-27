@@ -1,0 +1,396 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "web-engineering-05",
+    "title": "容器、配置、健康检查与优雅停止",
+    "path": "learning-paths/web-fullstack/web-engineering/05-containers-config-health-graceful-shutdown/"
+  },
+  "contexts": [
+    {
+      "id": "overview-container-topology",
+      "type": "overview",
+      "title": "overview container topology",
+      "anchor": "#overview-container-topology"
+    },
+    {
+      "id": "concept-live-ready",
+      "type": "concept",
+      "title": "concept live ready",
+      "anchor": "#concept-live-ready"
+    },
+    {
+      "id": "example-secret-file",
+      "type": "example",
+      "title": "example secret file",
+      "anchor": "#example-secret-file"
+    },
+    {
+      "id": "reproduce-dashboard-v13",
+      "type": "reproduce",
+      "title": "reproduce dashboard v13",
+      "anchor": "#reproduce-dashboard-v13"
+    },
+    {
+      "id": "modify-readiness",
+      "type": "modify",
+      "title": "modify readiness",
+      "anchor": "#modify-readiness"
+    },
+    {
+      "id": "troubleshoot-graceful-stop",
+      "type": "troubleshoot",
+      "title": "troubleshoot graceful stop",
+      "anchor": "#troubleshoot-graceful-stop"
+    },
+    {
+      "id": "project-dashboard-v13",
+      "type": "project",
+      "title": "project dashboard v13",
+      "anchor": "#project-dashboard-v13"
+    },
+    {
+      "id": "career-readiness-incident",
+      "type": "career",
+      "title": "career readiness incident",
+      "anchor": "#career-readiness-incident"
+    }
+  ],
+  "cards": [
+    {
+      "id": "container-result",
+      "lesson_id": "web-engineering-05",
+      "context_id": "overview-container-topology",
+      "question": "v0.13 最后交付什么？",
+      "aliases": [
+        "容器健康课做出什么"
+      ],
+      "keywords": [
+        "v0.13",
+        "最后交付什么",
+        "容器健康课做出什么"
+      ],
+      "diagnostic": "先确认你正在处理“容器健康课做出什么”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 overview-container-topology 中的责任。",
+        "再用本课固定测试验证 v0.13 最后交付什么。"
+      ],
+      "example": "v0.13 提供非 root 镜像、app 加数据库拓扑、配置门禁、健康检查和优雅停止。",
+      "answer": "v0.13 提供非 root 镜像、app 加数据库拓扑、配置门禁、健康检查和优雅停止。",
+      "source": {
+        "label": "overview container topology",
+        "href": "#overview-container-topology"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "loopback-bind",
+      "lesson_id": "web-engineering-05",
+      "context_id": "overview-container-topology",
+      "question": "为什么宿主端口只绑定 127.0.0.1？",
+      "aliases": [
+        "Compose 端口怎样避免外网暴露"
+      ],
+      "keywords": [
+        "为什么宿主端口只绑定",
+        "127.0.0.1",
+        "Compose",
+        "端口怎样避免外网暴露"
+      ],
+      "diagnostic": "先确认你正在处理“Compose 端口怎样避免外网暴露”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 overview-container-topology 中的责任。",
+        "再用本课固定测试验证 为什么宿主端口只绑定 127.0.0.1。"
+      ],
+      "example": "教学服务只监听宿主回环地址，降低无意暴露。",
+      "answer": "教学服务只监听宿主回环地址，降低无意暴露。",
+      "source": {
+        "label": "overview container topology",
+        "href": "#overview-container-topology"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "non-root",
+      "lesson_id": "web-engineering-05",
+      "context_id": "overview-container-topology",
+      "question": "应用容器为什么使用非 root 用户？",
+      "aliases": [
+        "Dockerfile USER 有什么用"
+      ],
+      "keywords": [
+        "应用容器为什么使用非",
+        "root",
+        "用户",
+        "Dockerfile",
+        "USER",
+        "有什么用"
+      ],
+      "diagnostic": "先确认你正在处理“Dockerfile USER 有什么用”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 overview-container-topology 中的责任。",
+        "再用本课固定测试验证 应用容器为什么使用非 root 用户。"
+      ],
+      "example": "固定低权限 UID 运行应用，减少容器进程被利用后的权限。",
+      "answer": "固定低权限 UID 运行应用，减少容器进程被利用后的权限。",
+      "source": {
+        "label": "overview container topology",
+        "href": "#overview-container-topology"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "liveness",
+      "lesson_id": "web-engineering-05",
+      "context_id": "concept-live-ready",
+      "question": "liveness 回答什么问题？",
+      "aliases": [
+        "存活检查能访问数据库吗"
+      ],
+      "keywords": [
+        "liveness",
+        "回答什么问题",
+        "存活检查能访问数据库吗"
+      ],
+      "diagnostic": "先确认你正在处理“存活检查能访问数据库吗”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 concept-live-ready 中的责任。",
+        "再用本课固定测试验证 liveness 回答什么问题。"
+      ],
+      "example": "存活只确认进程和事件循环仍工作，不依赖数据库。",
+      "answer": "存活只确认进程和事件循环仍工作，不依赖数据库。",
+      "source": {
+        "label": "concept live ready",
+        "href": "#concept-live-ready"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "readiness",
+      "lesson_id": "web-engineering-05",
+      "context_id": "concept-live-ready",
+      "question": "readiness 回答什么问题？",
+      "aliases": [
+        "数据库未就绪为什么返回 503"
+      ],
+      "keywords": [
+        "readiness",
+        "回答什么问题",
+        "数据库未就绪为什么返回",
+        "503"
+      ],
+      "diagnostic": "先确认你正在处理“数据库未就绪为什么返回 503”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 concept-live-ready 中的责任。",
+        "再用本课固定测试验证 readiness 回答什么问题。"
+      ],
+      "example": "就绪表示配置与依赖足以接流量，数据库不可用时必须失败。",
+      "answer": "就绪表示配置与依赖足以接流量，数据库不可用时必须失败。",
+      "source": {
+        "label": "concept live ready",
+        "href": "#concept-live-ready"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "service-healthy",
+      "lesson_id": "web-engineering-05",
+      "context_id": "concept-live-ready",
+      "question": "depends_on service_healthy 有什么作用？",
+      "aliases": [
+        "容器已启动为什么 app 还要等"
+      ],
+      "keywords": [
+        "depends_on",
+        "service_healthy",
+        "有什么作用",
+        "容器已启动为什么",
+        "app",
+        "还要等"
+      ],
+      "diagnostic": "先确认你正在处理“容器已启动为什么 app 还要等”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 concept-live-ready 中的责任。",
+        "再用本课固定测试验证 depends_on service_healthy 有什么作用。"
+      ],
+      "example": "Compose 等数据库健康检查通过后再启动依赖服务。",
+      "answer": "Compose 等数据库健康检查通过后再启动依赖服务。",
+      "source": {
+        "label": "concept live ready",
+        "href": "#concept-live-ready"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "secret-file",
+      "lesson_id": "web-engineering-05",
+      "context_id": "example-secret-file",
+      "question": "文件型 secret 与普通环境变量怎样分工？",
+      "aliases": [
+        "数据库密码放在哪里"
+      ],
+      "keywords": [
+        "文件型",
+        "secret",
+        "与普通环境变量怎样分工",
+        "数据库密码放在哪里"
+      ],
+      "diagnostic": "先确认你正在处理“数据库密码放在哪里”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 example-secret-file 中的责任。",
+        "再用本课固定测试验证 文件型 secret 与普通环境变量怎样分工。"
+      ],
+      "example": "普通配置可用环境变量，敏感值通过只读文件注入且不提交真实内容。",
+      "answer": "普通配置可用环境变量，敏感值通过只读文件注入且不提交真实内容。",
+      "source": {
+        "label": "example secret file",
+        "href": "#example-secret-file"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "config-fail-fast",
+      "lesson_id": "web-engineering-05",
+      "context_id": "example-secret-file",
+      "question": "生产缺少配置为什么拒绝启动？",
+      "aliases": [
+        "能不能用默认密码继续运行"
+      ],
+      "keywords": [
+        "生产缺少配置为什么拒绝启动",
+        "能不能用默认密码继续运行"
+      ],
+      "diagnostic": "先确认你正在处理“能不能用默认密码继续运行”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 example-secret-file 中的责任。",
+        "再用本课固定测试验证 生产缺少配置为什么拒绝启动。"
+      ],
+      "example": "关键配置缺失立即失败，避免以不安全默认值进入服务状态。",
+      "answer": "关键配置缺失立即失败，避免以不安全默认值进入服务状态。",
+      "source": {
+        "label": "example secret file",
+        "href": "#example-secret-file"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "run-v13",
+      "lesson_id": "web-engineering-05",
+      "context_id": "reproduce-dashboard-v13",
+      "question": "怎样验证 v0.13 Compose 拓扑？",
+      "aliases": [
+        "容器配置测试命令是什么"
+      ],
+      "keywords": [
+        "怎样验证",
+        "v0.13",
+        "Compose",
+        "拓扑",
+        "容器配置测试命令是什么"
+      ],
+      "diagnostic": "先确认你正在处理“容器配置测试命令是什么”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 reproduce-dashboard-v13 中的责任。",
+        "再用本课固定测试验证 怎样验证 v0.13 Compose 拓扑。"
+      ],
+      "example": "先运行单测和 docker compose config，再构建并检查非 root、回环端口与健康顺序。",
+      "answer": "先运行单测和 docker compose config，再构建并检查非 root、回环端口与健康顺序。",
+      "source": {
+        "label": "reproduce dashboard v13",
+        "href": "#reproduce-dashboard-v13"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "modify-readiness",
+      "lesson_id": "web-engineering-05",
+      "context_id": "modify-readiness",
+      "question": "怎样模拟数据库未就绪？",
+      "aliases": [
+        "live 正常 ready 503 怎样验证"
+      ],
+      "keywords": [
+        "怎样模拟数据库未就绪",
+        "live",
+        "正常",
+        "ready",
+        "503",
+        "怎样验证"
+      ],
+      "diagnostic": "先确认你正在处理“live 正常 ready 503 怎样验证”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 modify-readiness 中的责任。",
+        "再用本课固定测试验证 怎样模拟数据库未就绪。"
+      ],
+      "example": "移除数据库配置或暂停依赖，断言 live 保持正常而 ready 拒绝流量。",
+      "answer": "移除数据库配置或暂停依赖，断言 live 保持正常而 ready 拒绝流量。",
+      "source": {
+        "label": "modify readiness",
+        "href": "#modify-readiness"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "graceful-stop",
+      "lesson_id": "web-engineering-05",
+      "context_id": "troubleshoot-graceful-stop",
+      "question": "优雅停止要按什么顺序？",
+      "aliases": [
+        "停止时怎样保护在途请求"
+      ],
+      "keywords": [
+        "优雅停止要按什么顺序",
+        "停止时怎样保护在途请求"
+      ],
+      "diagnostic": "先确认你正在处理“停止时怎样保护在途请求”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 troubleshoot-graceful-stop 中的责任。",
+        "再用本课固定测试验证 优雅停止要按什么顺序。"
+      ],
+      "example": "先停止接新流量，等待在途请求，再关闭连接池和进程。",
+      "answer": "先停止接新流量，等待在途请求，再关闭连接池和进程。",
+      "source": {
+        "label": "troubleshoot graceful stop",
+        "href": "#troubleshoot-graceful-stop"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    },
+    {
+      "id": "project-v13",
+      "lesson_id": "web-engineering-05",
+      "context_id": "project-dashboard-v13",
+      "question": "v0.13 的部署证据有哪些？",
+      "aliases": [
+        "怎样证明容器配置安全"
+      ],
+      "keywords": [
+        "v0.13",
+        "的部署证据有哪些",
+        "怎样证明容器配置安全"
+      ],
+      "diagnostic": "先确认你正在处理“怎样证明容器配置安全”对应的边界，而不是相邻层。",
+      "hints": [
+        "先定位 project-dashboard-v13 中的责任。",
+        "再用本课固定测试验证 v0.13 的部署证据有哪些。"
+      ],
+      "example": "保存镜像用户、Compose 渲染、健康响应、缺配置失败和停止测试。",
+      "answer": "保存镜像用户、Compose 渲染、健康响应、缺配置失败和停止测试。",
+      "source": {
+        "label": "project dashboard v13",
+        "href": "#project-dashboard-v13"
+      },
+      "updated_at": "2026-07-22",
+      "recommended": true
+    }
+  ]
+}

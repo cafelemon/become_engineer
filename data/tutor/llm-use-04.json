@@ -1,0 +1,341 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "llm-use-04",
+    "title": "错误分类、Deadline、退避与有界重试",
+    "path": "learning-paths/llm-agent/model-use/04-error-taxonomy-deadline-backoff-bounded-retry/"
+  },
+  "contexts": [
+    {
+      "id": "overview-bounded-recovery",
+      "type": "overview",
+      "title": "有界失败恢复",
+      "anchor": "#overview-bounded-recovery"
+    },
+    {
+      "id": "concept-error-taxonomy",
+      "type": "concept",
+      "title": "错误分类",
+      "anchor": "#concept-error-taxonomy"
+    },
+    {
+      "id": "concept-three-budgets",
+      "type": "concept",
+      "title": "三层预算",
+      "anchor": "#concept-three-budgets"
+    },
+    {
+      "id": "example-recovery-state-machine",
+      "type": "example",
+      "title": "恢复状态机",
+      "anchor": "#example-recovery-state-machine"
+    },
+    {
+      "id": "reproduce-recovery-v04",
+      "type": "reproduce",
+      "title": "运行恢复实验",
+      "anchor": "#reproduce-recovery-v04"
+    },
+    {
+      "id": "modify-retry-policy",
+      "type": "modify",
+      "title": "修改重试策略",
+      "anchor": "#modify-retry-policy"
+    },
+    {
+      "id": "troubleshoot-bounded-retry",
+      "type": "troubleshoot",
+      "title": "有界重试排错",
+      "anchor": "#troubleshoot-bounded-retry"
+    },
+    {
+      "id": "deepen-backoff-jitter",
+      "type": "deepen",
+      "title": "退避与抖动",
+      "anchor": "#deepen-backoff-jitter"
+    },
+    {
+      "id": "project-learning-assistant-v04",
+      "type": "project",
+      "title": "智能学习助手v0.4",
+      "anchor": "#project-learning-assistant-v04"
+    }
+  ],
+  "cards": [
+    {
+      "id": "retryable-errors",
+      "lesson_id": "llm-use-04",
+      "context_id": "concept-error-taxonomy",
+      "question": "哪些模型调用错误可以重试？",
+      "aliases": [
+        "限流和认证失败都retry吗"
+      ],
+      "keywords": [
+        "哪些模型调用错误可以重试",
+        "限流和认证失败都retry吗"
+      ],
+      "diagnostic": "先确认“限流和认证失败都retry吗”属于错误分类、单次等待、整体预算还是退避决策。",
+      "hints": [
+        "查看 #concept-error-taxonomy。",
+        "运行 test_recovery_policy.py 回放尝试记录。"
+      ],
+      "example": "retryable集合只有三类。",
+      "answer": "默认只重试限流、暂时不可用和timeout；认证、坏请求、拒绝、坏输出与缺信息终止。",
+      "source": {
+        "label": "错误分类",
+        "href": "#concept-error-taxonomy"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "attempt-timeout",
+      "lesson_id": "llm-use-04",
+      "context_id": "concept-three-budgets",
+      "question": "单次 timeout 管什么？",
+      "aliases": [
+        "attempt timeout和deadline区别"
+      ],
+      "keywords": [
+        "单次",
+        "timeout",
+        "管什么",
+        "attempt",
+        "timeout和deadline区别"
+      ],
+      "diagnostic": "先确认“attempt timeout和deadline区别”属于错误分类、单次等待、整体预算还是退避决策。",
+      "hints": [
+        "查看 #concept-three-budgets。",
+        "运行 test_recovery_policy.py 回放尝试记录。"
+      ],
+      "example": "每次call都有timeout。",
+      "answer": "它限制一次provider调用等待时间，不包含整个操作的所有调用与退避。",
+      "source": {
+        "label": "三层预算",
+        "href": "#concept-three-budgets"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "overall-deadline",
+      "lesson_id": "llm-use-04",
+      "context_id": "concept-three-budgets",
+      "question": "整体 deadline 管什么？",
+      "aliases": [
+        "重试总共能等多久"
+      ],
+      "keywords": [
+        "整体",
+        "deadline",
+        "管什么",
+        "重试总共能等多久"
+      ],
+      "diagnostic": "先确认“重试总共能等多久”属于错误分类、单次等待、整体预算还是退避决策。",
+      "hints": [
+        "查看 #concept-three-budgets。",
+        "运行 test_recovery_policy.py 回放尝试记录。"
+      ],
+      "example": "200ms时第二次只剩60ms。",
+      "answer": "它覆盖从操作开始到结束的全部调用与退避，后续timeout必须按剩余时间收窄。",
+      "source": {
+        "label": "三层预算",
+        "href": "#concept-three-budgets"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "attempt-budget",
+      "lesson_id": "llm-use-04",
+      "context_id": "concept-three-budgets",
+      "question": "为什么 deadline 外还要最大尝试次数？",
+      "aliases": [
+        "调用很快会不会无限retry"
+      ],
+      "keywords": [
+        "为什么",
+        "deadline",
+        "外还要最大尝试次数",
+        "调用很快会不会无限retry"
+      ],
+      "diagnostic": "先确认“调用很快会不会无限retry”属于错误分类、单次等待、整体预算还是退避决策。",
+      "hints": [
+        "查看 #concept-three-budgets。",
+        "运行 test_recovery_policy.py 回放尝试记录。"
+      ],
+      "example": "三次后attempt_budget_exhausted。",
+      "answer": "会；次数硬上限保证即使每次立即失败也终止。",
+      "source": {
+        "label": "三层预算",
+        "href": "#concept-three-budgets"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "terminal-error",
+      "lesson_id": "llm-use-04",
+      "context_id": "concept-error-taxonomy",
+      "question": "认证失败为什么不能靠重试恢复？",
+      "aliases": [
+        "401多试几次可以吗"
+      ],
+      "keywords": [
+        "认证失败为什么不能靠重试恢复",
+        "401多试几次可以吗"
+      ],
+      "diagnostic": "先确认“401多试几次可以吗”属于错误分类、单次等待、整体预算还是退避决策。",
+      "hints": [
+        "查看 #concept-error-taxonomy。",
+        "运行 test_recovery_policy.py 回放尝试记录。"
+      ],
+      "example": "authentication只调用一次。",
+      "answer": "相同凭据和请求不会因重复调用自动正确，应停止并修复配置。",
+      "source": {
+        "label": "错误分类",
+        "href": "#concept-error-taxonomy"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "backoff-deadline",
+      "lesson_id": "llm-use-04",
+      "context_id": "example-recovery-state-machine",
+      "question": "退避前为什么再检查 deadline？",
+      "aliases": [
+        "先sleep再看时间行吗"
+      ],
+      "keywords": [
+        "退避前为什么再检查",
+        "deadline",
+        "先sleep再看时间行吗"
+      ],
+      "diagnostic": "先确认“先sleep再看时间行吗”属于错误分类、单次等待、整体预算还是退避决策。",
+      "hints": [
+        "查看 #example-recovery-state-machine。",
+        "运行 test_recovery_policy.py 回放尝试记录。"
+      ],
+      "example": "80ms后20ms退避被拒绝。",
+      "answer": "等待本身消耗总预算；若等待会触及deadline，应立即停止。",
+      "source": {
+        "label": "恢复状态机",
+        "href": "#example-recovery-state-machine"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "virtual-clock",
+      "lesson_id": "llm-use-04",
+      "context_id": "reproduce-recovery-v04",
+      "question": "虚拟时钟是否等于Mock provider？",
+      "aliases": [
+        "不真实sleep算真实测试吗"
+      ],
+      "keywords": [
+        "虚拟时钟是否等于Mock",
+        "provider",
+        "不真实sleep算真实测试吗"
+      ],
+      "diagnostic": "先确认“不真实sleep算真实测试吗”属于错误分类、单次等待、整体预算还是退避决策。",
+      "hints": [
+        "查看 #reproduce-recovery-v04。",
+        "运行 test_recovery_policy.py 回放尝试记录。"
+      ],
+      "example": "8项测试零等待。",
+      "answer": "它替换时间来源以确定性验证真实状态机；本课本就不声称连接provider。",
+      "source": {
+        "label": "运行恢复实验",
+        "href": "#reproduce-recovery-v04"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "retry-after",
+      "lesson_id": "llm-use-04",
+      "context_id": "modify-retry-policy",
+      "question": "如何处理 provider 的 Retry-After？",
+      "aliases": [
+        "服务建议等待多久就盲从吗"
+      ],
+      "keywords": [
+        "如何处理",
+        "provider",
+        "的",
+        "Retry-After",
+        "服务建议等待多久就盲从吗"
+      ],
+      "diagnostic": "先确认“服务建议等待多久就盲从吗”属于错误分类、单次等待、整体预算还是退避决策。",
+      "hints": [
+        "查看 #modify-retry-policy。",
+        "运行 test_recovery_policy.py 回放尝试记录。"
+      ],
+      "example": "超过剩余预算就停止。",
+      "answer": "先校验并设上限，再与本地退避和剩余deadline共同决策。",
+      "source": {
+        "label": "修改重试策略",
+        "href": "#modify-retry-policy"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": true
+    },
+    {
+      "id": "jitter",
+      "lesson_id": "llm-use-04",
+      "context_id": "deepen-backoff-jitter",
+      "question": "生产重试为什么需要 jitter？",
+      "aliases": [
+        "固定指数退避不够吗"
+      ],
+      "keywords": [
+        "生产重试为什么需要",
+        "jitter",
+        "固定指数退避不够吗"
+      ],
+      "diagnostic": "先确认“固定指数退避不够吗”属于错误分类、单次等待、整体预算还是退避决策。",
+      "hints": [
+        "查看 #deepen-backoff-jitter。",
+        "运行 test_recovery_policy.py 回放尝试记录。"
+      ],
+      "example": "测试注入固定随机源。",
+      "answer": "大量客户端固定节奏会同步再冲击服务；有界抖动可分散重试。",
+      "source": {
+        "label": "退避与抖动",
+        "href": "#deepen-backoff-jitter"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    },
+    {
+      "id": "assistant-v04",
+      "lesson_id": "llm-use-04",
+      "context_id": "project-learning-assistant-v04",
+      "question": "智能学习助手 v0.4 新增什么？",
+      "aliases": [
+        "LLM第四课项目做什么"
+      ],
+      "keywords": [
+        "智能学习助手",
+        "v0.4",
+        "新增什么",
+        "LLM第四课项目做什么"
+      ],
+      "diagnostic": "先确认“LLM第四课项目做什么”属于错误分类、单次等待、整体预算还是退避决策。",
+      "hints": [
+        "查看 #project-learning-assistant-v04。",
+        "运行 test_recovery_policy.py 回放尝试记录。"
+      ],
+      "example": "下一版处理流式事件。",
+      "answer": "新增错误分类、timeout、deadline、退避、尝试预算和确定性恢复轨迹。",
+      "source": {
+        "label": "智能学习助手v0.4",
+        "href": "#project-learning-assistant-v04"
+      },
+      "updated_at": "2026-07-26",
+      "recommended": false
+    }
+  ]
+}
