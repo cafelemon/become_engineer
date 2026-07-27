@@ -72,7 +72,7 @@ Node 测试固定输出：
 {"login_checked":true,"refresh_me_checked":true,"forbidden_checked":true,"logout_clears_memory":true,"assertions":7}
 ```
 
-Playwright 配置先完成 TypeScript 构建，再从本机启动 MkDocs 与连接 PostgreSQL 的 FastAPI 应用，避免构建产物触发预览服务重载。六节 Web 工程化课程、共同基座方向选择课和三节算法求职加练在桌面浅色、390px 深色与减少动画、禁用 JavaScript 三种环境下仍能阅读；键盘路径在桌面项目验证一次。登录、刷新、写入、越权和退出在桌面与移动项目各走一遍。当前套件为 33 项通过、6 项按项目条件跳过，结果写到项目内的 `.playwright-results/`，避免依赖 macOS 专用临时目录。
+Playwright 配置先完成 TypeScript 构建，再从本机启动 MkDocs 与连接 PostgreSQL 的 FastAPI 应用，避免构建产物触发预览服务重载。六节 Web 工程化课程、共同基座方向选择课和三节算法求职加练在桌面浅色、390px 深色与减少动画、禁用 JavaScript 三种环境下仍能阅读；键盘路径在桌面项目验证一次。登录、刷新、写入、越权和退出在桌面与移动项目各走一遍。当前套件为 33 项通过、6 项按项目条件跳过，结果写到站点监听树之外的 `/tmp`，兼容 macOS 与 Linux，并避免测试 trace 触发 MkDocs 重载。
 
 交互式应用的浏览器场景应串联登录、刷新恢复、本人写入、越权、退出；CI 先完成 Alembic 迁移并连接真实 PostgreSQL，再启动 API 与浏览器。课程页面可读性检查与应用业务 E2E 是两组不同测试，不能互相替代。
 </section>

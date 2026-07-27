@@ -94,7 +94,6 @@ node_modules/
 .npm/
 .pnpm-store/
 .yarn/
-**/.playwright-results/
 
 # Generated build and site outputs
 dist/
