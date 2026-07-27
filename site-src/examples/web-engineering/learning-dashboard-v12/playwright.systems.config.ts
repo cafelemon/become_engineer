@@ -3,7 +3,7 @@ import { defineConfig, devices } from "@playwright/test";
 export default defineConfig({
   testDir: "./tests",
   testMatch: "systems-engineering-pages.spec.ts",
-  outputDir: "/private/tmp/become-engineer-systems-playwright-results",
+  outputDir: ".playwright-results/systems",
   fullyParallel: true,
   retries: 0,
   reporter: "line",

@@ -34,7 +34,10 @@ std::optional<std::vector<char>> topo(const std::vector<char>& nodes,const std::
   while(!ready.empty()) { char node=ready.top();ready.pop();order.push_back(node);
     for(char next:adjacency[node]) if(--indegree[next]==0) ready.push(next);
   }
-  if(order.size()!=nodes.size()) return std::nullopt; return order;
+  if(order.size()!=nodes.size()) {
+    return std::nullopt;
+  }
+  return order;
 }
 
 std::vector<std::vector<char>> scc(const std::vector<char>& nodes,const std::vector<Edge>& edges) {
@@ -42,7 +45,11 @@ std::vector<std::vector<char>> scc(const std::vector<char>& nodes,const std::vec
   for(auto [left,right]:edges) reversed_edges.push_back({right,left});
   auto reverse=graph(nodes,reversed_edges); std::set<char> seen; std::vector<char> finish;
   const auto visit=[&](const auto& self,char node)->void { seen.insert(node);
-    for(char next:adjacency[node]) if(!seen.contains(next)) self(self,next); finish.push_back(node); };
+    for(char next:adjacency[node]) {
+      if(!seen.contains(next)) self(self,next);
+    }
+    finish.push_back(node);
+  };
   auto sorted=nodes;std::sort(sorted.begin(),sorted.end());for(char node:sorted)if(!seen.contains(node))visit(visit,node);
   seen.clear();std::vector<std::vector<char>> components;
   const auto collect=[&](const auto& self,char node,std::vector<char>& current)->void {seen.insert(node);current.push_back(node);
@@ -79,4 +86,3 @@ int main(){
   std::cout<<"\nsources=A,B distances=";first=true;for(char node:nodes){if(!first)std::cout<<',';first=false;std::cout<<node<<':'<<distances.at(node);}
   std::cout<<"\ninvariants=zero-indegree-only,scc-condensation-acyclic,first-discovery-shortest\n";
 }
-
