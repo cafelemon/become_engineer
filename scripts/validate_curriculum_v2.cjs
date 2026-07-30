@@ -164,6 +164,19 @@ if (migration.lessons.every((item) => item.migration_status === "已迁移")) {
 }
 
 const mapSource = fs.readFileSync(path.join(root, registry.authority), "utf8");
+assert.ok(
+  mapSource.includes(`当前正式课程共 **${registry.course_count} 节**`),
+  `课程地图总览必须显示登记中的 ${registry.course_count} 节正式课程`
+);
+assert.ok(
+  mapSource.includes(`以下 **${registry.course_count} 节课程各出现一次**`),
+  `课程地图明细必须显示登记中的 ${registry.course_count} 节正式课程`
+);
+const agentEngineeringLessons = registry.lessons.filter((lesson) => lesson.module_id === "agent-engineering").length;
+assert.ok(
+  mapSource.includes(`Agent 工程进入 ${agentEngineeringLessons}/6 建设`),
+  `课程地图必须显示 Agent 工程 ${agentEngineeringLessons}/6 的当前进度`
+);
 for (const module of registry.modules) {
   assert.ok(mapSource.includes(`{ #${module.anchor} }`) || mapSource.includes(`id="${module.anchor}"`), `课程地图缺少模块锚点 #${module.anchor}`);
 }

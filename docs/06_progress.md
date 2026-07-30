@@ -2,7 +2,7 @@
 
 ## 2026-07-30：Pages 与 main 增加真实 HTTP 同步门禁
 
-- 复核公开站点后确认机器学习 8/8、深度学习 8/8 已在线；当前 `gh-pages` 提交说明其来源为 `main@f88af20`。
+- 诊断时复核公开站点，确认机器学习 8/8、深度学习 8/8 已在线；当时 `gh-pages` 提交说明其来源为 `main@f88af20`。
 - 历史阻塞分别来自算法示例的编译告警和 Playwright 产物写入 MkDocs 监视目录；修复后 `Deploy MkDocs site` 与 GitHub Pages 部署均成功。
 - 文档 CI 现在为每个 source SHA 生成唯一部署标记；`gh-deploy` 后轮询公开 Pages URL，并核对标记中的完整 SHA 和仓库身份。
 - Actions 成功不再单独视为上线完成；只有真实 HTTP 返回本次 main SHA，部署作业才通过。
