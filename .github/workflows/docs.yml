@@ -97,6 +97,7 @@ on:
       - "scripts/test_web_engineering_e2e_v2.mjs"
       - "scripts/test_web_engineering_container_v2.mjs"
       - "scripts/test_web_engineering_release_v2.mjs"
+      - "scripts/test_agent_engineering_*.mjs"
       - "scripts/lib/validate_web_engineering_lesson.mjs"
       - "scripts/generate_web_engineering_tutor.mjs"
       - "scripts/test_tutor_search.cjs"
@@ -540,6 +541,12 @@ jobs:
       - name: Verify Agent durable run state, event log, and atomic checkpoint
         run: node scripts/test_agent_engineering_01_v2.mjs
 
+      - name: Verify Agent memory provenance, consent, TTL, and context budget
+        run: node scripts/test_agent_engineering_02_v2.mjs
+
+      - name: Verify Agent lease, idempotent step, and crash resume
+        run: node scripts/test_agent_engineering_03_v2.mjs
+
       - name: Verify CS systems concurrency lesson
         run: node scripts/test_cs_systems_concurrency_v2.mjs
 
@@ -609,6 +616,15 @@ jobs:
             -v "$PWD/site-src/examples/web-engineering/learning-dashboard-v14/backup_restore.sh:/work/backup_restore.sh:ro" \
             postgres:16-alpine sh -c 'dropdb -h 127.0.0.1 -p 55439 -U dashboard --if-exists dashboard_verify && createdb -h 127.0.0.1 -p 55439 -U dashboard dashboard_verify && sh /work/backup_restore.sh /tmp/dashboard.dump'
 
+      - name: Stamp source revision for deployment verification
+        run: |
+          set -eu
+          marker_dir="site-src/deployment-revisions"
+          marker_file="$marker_dir/$GITHUB_SHA.json"
+          mkdir -p "$marker_dir"
+          printf '{"source_sha":"%s","workflow_run_id":"%s","repository":"%s"}\n' \
+            "$GITHUB_SHA" "$GITHUB_RUN_ID" "$GITHUB_REPOSITORY" > "$marker_file"
+
       - name: Build documentation strictly
         run: mkdocs build --strict
 
@@ -617,3 +633,21 @@ jobs:
 
       - name: Deploy to GitHub Pages
         run: mkdocs gh-deploy --force --clean --verbose
+
+      - name: Verify public Pages serves this main revision
+        run: |
+          set -eu
+          deployment_url="https://cafelemon.github.io/become_engineer/deployment-revisions/$GITHUB_SHA.json"
+          verified=false
+          for attempt in $(seq 1 36); do
+            if curl --fail --silent --show-error --max-time 20 \
+              "$deployment_url?attempt=$attempt" \
+              --output /tmp/pages-deployment.json \
+              && python -c 'import json, os; data=json.load(open("/tmp/pages-deployment.json", encoding="utf-8")); assert data["source_sha"] == os.environ["GITHUB_SHA"]; assert data["repository"] == os.environ["GITHUB_REPOSITORY"]'; then
+              verified=true
+              break
+            fi
+            sleep 5
+          done
+          test "$verified" = true
+          echo "GitHub Pages is serving source revision $GITHUB_SHA"

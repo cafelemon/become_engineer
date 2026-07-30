@@ -28,6 +28,7 @@
 - [x] `docs/09_learning_experience_frontend_plan.md` 存在。
 - [x] `docs/` 已从 MkDocs 页面构建和搜索索引中完全排除。
 - [x] 公开内容中引用治理文档的链接均指向 GitHub `main` 分支。
+- [x] Pages 部署为每个 main SHA 生成唯一公开标记，并在 CI 中通过真实 HTTP 核对完整 SHA 与仓库身份。
 
 ## 首页与视觉基线
 
@@ -289,6 +290,24 @@
 - [x] expected version 拒绝旧快照覆盖。
 - [x] event ID 同 payload replay，不同 payload 冲突。
 - [x] 状态图和 checkpoint 使用允许列表，不保存 prompt 或隐式思维链。
+- [x] 8 项 unittest、10 张小码卡、20 条问法和 2 条未知问题通过。
+
+## Agent 工程第 2 课
+
+- [x] 工作记忆与持久事实分离，工作记忆不写入事实表。
+- [x] 持久事实绑定主体、来源、同意、TTL 和稳定优先级。
+- [x] 未同意、已过期和跨主体事实在上下文装配前排除。
+- [x] 字符预算选择可复现，并明确不等同于真实 token 计数。
+- [x] prompt、reasoning 和隐式思维链字段被拒绝。
+- [x] 8 项 unittest、10 张小码卡、20 条问法和 2 条未知问题通过。
+
+## Agent 工程第 3 课
+
+- [x] live lease 排除第二 worker，过期后允许接手。
+- [x] lease 丢失的旧 owner 与乱序 step 均被拒绝。
+- [x] side effect 与 completed step 同 SQLite 事务提交。
+- [x] 注入崩溃完整回滚并从第一条未提交 step 恢复。
+- [x] 同 key 同 payload replay，不同 payload 冲突且无重复副作用。
 - [x] 8 项 unittest、10 张小码卡、20 条问法和 2 条未知问题通过。
 
 ## 发布前检查

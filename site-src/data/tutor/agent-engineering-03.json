@@ -1,0 +1,57 @@
+{
+  "version":2,
+  "lesson":{"id":"agent-engineering-03","title":"Lease、幂等 step 与崩溃恢复","path":"learning-paths/llm-agent/agent-engineering/03-lease-idempotent-step-crash-resume/"},
+  "contexts":[
+    {"id":"overview-crash-safe-resume","type":"overview","title":"崩溃安全恢复","anchor":"#overview-crash-safe-resume"},
+    {"id":"concept-lease-not-lock","type":"concept","title":"Lease不是永久锁","anchor":"#concept-lease-not-lock"},
+    {"id":"concept-commit-boundary-replay","type":"concept","title":"提交边界与replay","anchor":"#concept-commit-boundary-replay"},
+    {"id":"example-two-worker-timeline","type":"example","title":"双worker时间线","anchor":"#example-two-worker-timeline"},
+    {"id":"reproduce-recoverable-worker-v21","type":"reproduce","title":"运行可恢复worker","anchor":"#reproduce-recoverable-worker-v21"},
+    {"id":"modify-lease-renewal","type":"modify","title":"修改lease续租","anchor":"#modify-lease-renewal"},
+    {"id":"troubleshoot-resume-worker","type":"troubleshoot","title":"恢复worker排错","anchor":"#troubleshoot-resume-worker"},
+    {"id":"deepen-delivery-semantics","type":"deepen","title":"交付语义边界","anchor":"#deepen-delivery-semantics"},
+    {"id":"project-learning-assistant-v21","type":"project","title":"智能学习助手v0.21","anchor":"#project-learning-assistant-v21"}
+  ],
+  "cards":[
+    {
+      "id":"lease-purpose","lesson_id":"agent-engineering-03","context_id":"concept-lease-not-lock","question":"Lease 解决什么问题？","aliases":["两个worker能同时执行吗"],"keywords":["Lease","两个worker","同时执行"],
+      "diagnostic":"检查同一run当前是否只有一个未过期owner。","hints":["查看 #concept-lease-not-lock。","运行live lease测试。"],"example":"worker-b得到lease_busy。","answer":"Lease在TTL内授予单个worker执行权，避免两个worker同时推进同一run。","source":{"label":"Lease不是永久锁","href":"#concept-lease-not-lock"},"updated_at":"2026-07-30","recommended":true
+    },
+    {
+      "id":"lease-expiry","lesson_id":"agent-engineering-03","context_id":"concept-lease-not-lock","question":"Worker 崩溃后谁能接手？","aliases":["lease过期后会怎样"],"keywords":["worker崩溃","接手","lease过期"],
+      "diagnostic":"比较虚拟时钟与expires_at。","hints":["查看 #concept-lease-not-lock。","运行expired takeover测试。"],"example":"111秒时worker-b接手。","answer":"lease过期后新worker可取得更高generation；旧owner随后被拒绝。","source":{"label":"Lease不是永久锁","href":"#concept-lease-not-lock"},"updated_at":"2026-07-30","recommended":true
+    },
+    {
+      "id":"resume-boundary","lesson_id":"agent-engineering-03","context_id":"concept-commit-boundary-replay","question":"恢复为什么从第一条未提交 step 开始？","aliases":["为什么不能从头重跑"],"keywords":["恢复","未提交step","从头重跑"],
+      "diagnostic":"区分已经原子提交和仍未提交的步骤。","hints":["查看 #concept-commit-boundary-replay。","检查next_step。"],"example":"prepare已提交，write未提交。","answer":"已提交step可能含副作用；从头重跑会重复动作，恢复只能相信提交边界。","source":{"label":"提交边界与replay","href":"#concept-commit-boundary-replay"},"updated_at":"2026-07-30","recommended":true
+    },
+    {
+      "id":"crash-rollback","lesson_id":"agent-engineering-03","context_id":"example-two-worker-timeline","question":"副作用写入后崩溃怎么办？","aliases":["injected_failure留下半条记录吗"],"keywords":["副作用","崩溃","injected_failure","回滚"],
+      "diagnostic":"检查side_effect与completed_step是否同一事务。","hints":["查看 #example-two-worker-timeline。","运行崩溃注入测试。"],"example":"side-effects仍为1。","answer":"本课两条记录同事务，注入故障后一起回滚，next step仍是write。","source":{"label":"双worker时间线","href":"#example-two-worker-timeline"},"updated_at":"2026-07-30","recommended":true
+    },
+    {
+      "id":"idempotent-replay","lesson_id":"agent-engineering-03","context_id":"concept-commit-boundary-replay","question":"安全 replay 要满足什么？","aliases":["重试为什么不重复副作用"],"keywords":["安全replay","重试","重复副作用","幂等键"],
+      "diagnostic":"比较step、幂等键和payload指纹。","hints":["查看 #concept-commit-boundary-replay。","运行same step retry测试。"],"example":"同key同payload返回replay。","answer":"同run、同step、同幂等键且payload指纹相同才返回replay，不新增副作用。","source":{"label":"提交边界与replay","href":"#concept-commit-boundary-replay"},"updated_at":"2026-07-30","recommended":true
+    },
+    {
+      "id":"step-conflict","lesson_id":"agent-engineering-03","context_id":"troubleshoot-resume-worker","question":"同一步重试改 payload 会怎样？","aliases":["step_conflict是什么意思"],"keywords":["重试","改payload","step_conflict"],
+      "diagnostic":"检查重试身份是否试图改写已提交业务动作。","hints":["查看 #troubleshoot-resume-worker。","运行changed retry测试。"],"example":"同key换payload被拒绝。","answer":"返回step_conflict；幂等身份不能成为修改已提交结果的入口。","source":{"label":"恢复worker排错","href":"#troubleshoot-resume-worker"},"updated_at":"2026-07-30","recommended":true
+    },
+    {
+      "id":"step-order","lesson_id":"agent-engineering-03","context_id":"troubleshoot-resume-worker","question":"可以跳过 prepare 直接 write 吗？","aliases":["step_out_of_order怎么处理"],"keywords":["跳过prepare","write","step_out_of_order"],
+      "diagnostic":"比较请求step与next_step。","hints":["查看 #troubleshoot-resume-worker。","运行steps follow plan测试。"],"example":"write先执行被拒绝。","answer":"不能；worker只执行计划中的第一条未提交step。","source":{"label":"恢复worker排错","href":"#troubleshoot-resume-worker"},"updated_at":"2026-07-30","recommended":true
+    },
+    {
+      "id":"lease-renew","lesson_id":"agent-engineering-03","context_id":"modify-lease-renewal","question":"长 step 怎样避免 lease 过期？","aliases":["什么时候需要续租"],"keywords":["长step","lease过期","续租","renew"],
+      "diagnostic":"检查预计执行时间是否接近剩余TTL。","hints":["查看 #modify-lease-renewal。","用虚拟时钟验证续租边界。"],"example":"第8秒续租10秒。","answer":"owner在lease仍有效时renew；续租失败必须停止执行并重新读取状态。","source":{"label":"修改lease续租","href":"#modify-lease-renewal"},"updated_at":"2026-07-30","recommended":true
+    },
+    {
+      "id":"exactly-once-boundary","lesson_id":"agent-engineering-03","context_id":"deepen-delivery-semantics","question":"本课证明外部 API exactly once 吗？","aliases":["邮件支付也不会重复吗"],"keywords":["外部API","exactly once","邮件","支付","重复"],
+      "diagnostic":"确认副作用是否与SQLite处在同一事务域。","hints":["查看 #deepen-delivery-semantics。","区分本地事务与远端系统。"],"example":"远端API需要幂等支持或outbox。","answer":"不证明；外部系统需接受幂等键、outbox/inbox或补偿机制。","source":{"label":"交付语义边界","href":"#deepen-delivery-semantics"},"updated_at":"2026-07-30","recommended":false
+    },
+    {
+      "id":"assistant-v21","lesson_id":"agent-engineering-03","context_id":"project-learning-assistant-v21","question":"智能学习助手 v0.21 新增什么？","aliases":["Agent工程第三课做什么"],"keywords":["智能学习助手","v0.21","Agent工程第三课","新增"],
+      "diagnostic":"定位相对v0.20的恢复增量。","hints":["查看 #project-learning-assistant-v21。","运行recoverable_worker.py。"],"example":"lease与幂等step。","answer":"新增lease、虚拟时钟、幂等step、事务副作用和崩溃resume。","source":{"label":"智能学习助手v0.21","href":"#project-learning-assistant-v21"},"updated_at":"2026-07-30","recommended":false
+    }
+  ]
+}

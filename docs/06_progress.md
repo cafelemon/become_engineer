@@ -1,5 +1,28 @@
 # 进度记录
 
+## 2026-07-30：Pages 与 main 增加真实 HTTP 同步门禁
+
+- 复核公开站点后确认机器学习 8/8、深度学习 8/8 已在线；当前 `gh-pages` 提交说明其来源为 `main@f88af20`。
+- 历史阻塞分别来自算法示例的编译告警和 Playwright 产物写入 MkDocs 监视目录；修复后 `Deploy MkDocs site` 与 GitHub Pages 部署均成功。
+- 文档 CI 现在为每个 source SHA 生成唯一部署标记；`gh-deploy` 后轮询公开 Pages URL，并核对标记中的完整 SHA 和仓库身份。
+- Actions 成功不再单独视为上线完成；只有真实 HTTP 返回本次 main SHA，部署作业才通过。
+
+## 2026-07-30：Agent 工程完成崩溃恢复 v0.21
+
+- 新增《Lease、幂等 step 与崩溃恢复》，Agent 工程进入 3/6，正式课程达到 138 节。
+- live lease 排除第二 worker，虚拟时钟到期后允许新 owner 以更高 generation 接手。
+- 副作用与 completed step 同事务提交；注入故障后同时回滚，从第一条未提交 step resume。
+- 同 step、同 key、同 payload 返回 replay，改变 payload 冲突；外部 exactly-once 明确保留为未证明边界。
+- 8 项真实 SQLite 测试、10 张小码卡、20 条问法和 2 条未知问题随课程登记。
+
+## 2026-07-30：Agent 工程完成有界记忆上下文 v0.20
+
+- 新增《记忆来源、同意、TTL 与上下文预算》，Agent 工程进入 2/6，正式课程达到 137 节。
+- 工作记忆只服务当前 run；持久事实携带主体、来源、同意、过期时间和优先级。
+- 装配器在预算前排除未同意、已过期和跨主体事实，并按 priority 与 memory ID 稳定排序。
+- 字符数只作为离线预算代理，不冒充真实 provider token；prompt、reasoning 和隐式思维链拒绝进入记忆。
+- 8 项真实 SQLite 测试、10 张小码卡、20 条问法和 2 条未知问题随课程登记。
+
 ## 2026-07-26：Agent 工程完成持久运行状态 v0.19
 
 - 新增《SQLite 运行状态、事件日志与原子 checkpoint》，Agent 工程进入 1/6，正式课程达到 136 节。

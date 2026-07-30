@@ -1,0 +1,26 @@
+{
+  "lesson_id":"agent-engineering-02",
+  "cases":[
+    {"query":"工作记忆和持久事实有什么区别","expected_card":"working-vs-fact"},
+    {"query":"当前目标要永久保存吗","expected_card":"working-vs-fact"},
+    {"query":"为什么记忆必须有来源","expected_card":"memory-source"},
+    {"query":"source ID 可以为空吗","expected_card":"memory-source"},
+    {"query":"未同意的记忆能进入上下文吗","expected_card":"consent-gate"},
+    {"query":"consent false 会怎样","expected_card":"consent-gate"},
+    {"query":"TTL 到期后怎样处理记忆","expected_card":"ttl-gate"},
+    {"query":"expires_at 等于现在还能用吗","expected_card":"ttl-gate"},
+    {"query":"怎样阻止其他学习者记忆混入","expected_card":"subject-isolation"},
+    {"query":"跨主体事实为什么被排除","expected_card":"subject-isolation"},
+    {"query":"预算不足时怎样稳定选择","expected_card":"budget-order"},
+    {"query":"同优先级记忆先选谁","expected_card":"budget-order"},
+    {"query":"字符预算等于模型 token 吗","expected_card":"char-budget"},
+    {"query":"budget_chars 是真实token数吗","expected_card":"char-budget"},
+    {"query":"为什么工作记忆不能保存 reasoning","expected_card":"hidden-reasoning"},
+    {"query":"可以把完整prompt放进记忆吗","expected_card":"hidden-reasoning"},
+    {"query":"记忆为什么不是永久用户画像","expected_card":"memory-not-profile"},
+    {"query":"学习偏好可以永不过期吗","expected_card":"memory-not-profile"},
+    {"query":"智能学习助手 v0.20 新增什么","expected_card":"assistant-v20"},
+    {"query":"Agent工程第二课做什么","expected_card":"assistant-v20"}
+  ],
+  "unknown":["怎样给仙人掌换盆","火星上有多少座城市"]
+}

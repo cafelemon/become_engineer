@@ -102,7 +102,7 @@
     <section>
       <h3>Agent 工程</h3>
       <a href="#module-agent-tool-calling" data-status="open">Tool Calling 与有界工作流 · 已开放 6 / 6</a>
-      <a href="#module-agent-engineering" data-status="building">状态、恢复、评估与安全 · 建设中 1 / 6</a>
+      <a href="#module-agent-engineering" data-status="building">状态、恢复、评估与安全 · 建设中 3 / 6</a>
       <a href="#module-agent-specialized" data-status="planned">专业 Agent</a>
       <small>微调、本地推理、多模态 Agent 再追加模型或系统前置</small>
     </section>
@@ -159,7 +159,7 @@
 | <span id="module-llm-use">模型使用与结构化输出</span> | 基础 | 方向主干 | 可验证的模型调用、Schema 与失败处理 | Python 工程化 + Web/API → RAG | LLM 应用路线进入；不强制 ML/DL | 已开放 · 6/6 | 可顺序进入 |
 | <span id="module-llm-rag-eval">检索、RAG 与评估</span> | 工程化 | 方向主干 | 有引用、固定评估集和可观测失败的 RAG | 模型使用 + Web 工程化 → Agent | LLM/Agent 路线共用 | 已开放 · 6/6 | 可顺序进入 |
 | <span id="module-agent-tool-calling">Tool Calling 与有界工作流</span> | 基础 | 方向主干 | 可停止、可验收的工具工作流 | RAG 与评估 → Agent 工程 | Agent 路线进入 | 已开放 · 6/6 | 可顺序进入 |
-| <span id="module-agent-engineering">状态、记忆、上下文、恢复、评估、可观测性与安全</span> | 工程化 | 方向主干 | 可恢复、可评估、可观测的 Agent | Tool Calling → 专业 Agent | Agent 路线共用；求职追加系统设计追问 | 建设中 · 1/6 | 可顺序进入 |
+| <span id="module-agent-engineering">状态、记忆、上下文、恢复、评估、可观测性与安全</span> | 工程化 | 方向主干 | 可恢复、可评估、可观测的 Agent | Tool Calling → 专业 Agent | Agent 路线共用；求职追加系统设计追问 | 建设中 · 3/6 | 可顺序进入 |
 | <span id="module-agent-specialized">专业 Agent</span> | 专业/求职 | 能力深化 | Coding、Research、Text2SQL 等领域项目 | Agent 工程 → 领域交付 | 按兴趣或岗位选择 | 已规划未建设 | 方向可选 |
 | <span id="module-agent-advanced">微调、本地推理与多模态 Agent</span> | 专业/求职 | 能力深化 | 模型或系统边界明确的高级 Agent | Agent 工程 + DL／Transformer／系统能力 | 只在实际需求满足时进入 | 已规划未建设 | 等待前置 |
 | <span id="module-c-start">C 语言起步</span> | 起步 | 方向主干 | 编译、指针、内存与硬件接口基础 | 方向选择 → 设备共同基础 | 仅设备方向进入 | 已规划未建设 | 方向可选 |
@@ -377,9 +377,11 @@
 5. [有界工具循环、状态预算与显式终止](llm-agent/tool-calling-workflow/05-bounded-tool-loop-state-budgets-termination.md) · 已开放
 6. [固定对抗评估、预算指标与回归交付](llm-agent/tool-calling-workflow/06-fixed-adversarial-evaluation-regression-delivery.md) · 已开放
 
-### Agent 工程 · 建设中 1 / 6
+### Agent 工程 · 建设中 3 / 6
 
 1. [SQLite 运行状态、事件日志与原子 checkpoint](llm-agent/agent-engineering/01-sqlite-run-state-event-log-atomic-checkpoint.md) · 建设中
+2. [记忆来源、同意、TTL 与上下文预算](llm-agent/agent-engineering/02-memory-provenance-consent-ttl-context-budget.md) · 建设中
+3. [Lease、幂等 step 与崩溃恢复](llm-agent/agent-engineering/03-lease-idempotent-step-crash-resume.md) · 建设中
 
 ## 规划模块边界
 

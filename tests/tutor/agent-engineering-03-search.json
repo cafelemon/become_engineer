@@ -1,0 +1,16 @@
+{
+  "lesson_id":"agent-engineering-03",
+  "cases":[
+    {"query":"Lease 解决什么问题","expected_card":"lease-purpose"},{"query":"两个worker能同时执行吗","expected_card":"lease-purpose"},
+    {"query":"Worker 崩溃后谁能接手","expected_card":"lease-expiry"},{"query":"lease过期后会怎样","expected_card":"lease-expiry"},
+    {"query":"恢复为什么从第一条未提交 step 开始","expected_card":"resume-boundary"},{"query":"为什么不能从头重跑","expected_card":"resume-boundary"},
+    {"query":"副作用写入后崩溃怎么办","expected_card":"crash-rollback"},{"query":"injected_failure留下半条记录吗","expected_card":"crash-rollback"},
+    {"query":"安全 replay 要满足什么","expected_card":"idempotent-replay"},{"query":"重试为什么不重复副作用","expected_card":"idempotent-replay"},
+    {"query":"同一步重试改 payload 会怎样","expected_card":"step-conflict"},{"query":"step_conflict是什么意思","expected_card":"step-conflict"},
+    {"query":"可以跳过 prepare 直接 write 吗","expected_card":"step-order"},{"query":"step_out_of_order怎么处理","expected_card":"step-order"},
+    {"query":"长 step 怎样避免 lease 过期","expected_card":"lease-renew"},{"query":"什么时候需要续租","expected_card":"lease-renew"},
+    {"query":"本课证明外部 API exactly once 吗","expected_card":"exactly-once-boundary"},{"query":"邮件支付也不会重复吗","expected_card":"exactly-once-boundary"},
+    {"query":"智能学习助手 v0.21 新增什么","expected_card":"assistant-v21"},{"query":"Agent工程第三课做什么","expected_card":"assistant-v21"}
+  ],
+  "unknown":["如何调制一杯柠檬茶","鲸鱼一天睡多久"]
+}

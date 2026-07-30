@@ -1,0 +1,14 @@
+import assert from"node:assert/strict";
+import{spawnSync}from"node:child_process";
+import{readFileSync}from"node:fs";
+import{resolve}from"node:path";
+const root=resolve(import.meta.dirname,"..");
+const lesson=readFileSync(resolve(root,"learning-paths/llm-agent/agent-engineering/03-lease-idempotent-step-crash-resume.md"),"utf8");
+for(const type of["overview","concept","example","reproduce","modify","troubleshoot","project"])assert.match(lesson,new RegExp(`data-context-type="${type}"`));
+for(const phrase of["worker-b:lease_busy","takeover-after-expiry:true","crash=injected_failure,committed:false","replay:true,next-step:none","no-duplicate-effect","零基础兴趣","有基础求职","本模块无招聘信号"])assert.ok(lesson.includes(phrase),phrase);
+const cwd=resolve(root,"site-src/examples/agent-engineering/intelligent-learning-assistant-v21");
+const tests=spawnSync("python3",["-m","unittest","-v","test_recoverable_worker.py"],{cwd,encoding:"utf8"});
+assert.equal(tests.status,0,tests.stdout+tests.stderr);assert.match(tests.stdout+tests.stderr,/Ran 8 tests/);
+const report=spawnSync("python3",["recoverable_worker.py"],{cwd,encoding:"utf8"});
+assert.equal(report.status,0,report.stderr);assert.match(report.stdout,/side-effects:2/);
+console.log(JSON.stringify({valid:true,lesson_id:"agent-engineering-03",tests:8,lease:true,crash_resume:true},null,2));
