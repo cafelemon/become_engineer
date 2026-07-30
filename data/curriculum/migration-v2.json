@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-07-23",
+  "updated_at": "2026-07-30",
   "registry": "site-src/data/curriculum/v2.json",
   "content_standard": "docs/08_content_standard.md",
   "current_schema": "v2-with-v1-compatibility",
@@ -44,7 +44,7 @@
     {"id":"b18-llm-use","order":18,"title":"模型使用与结构化输出","lesson_count":6,"prerequisite_modules":["python-engineering","web-core"],"completion_gate":"六课共 48 项真实离线测试、60 卡/120 问、严格构建 225 个 HTML、45343 条链接、7191 个锚点和 18 项多模式浏览器检查通过，整组已开放。"},
     {"id":"b19-llm-rag-eval","order":19,"title":"检索、RAG 与评估","lesson_count":6,"prerequisite_modules":["llm-use","web-engineering"],"completion_gate":"六课共 48 项真实离线测试、60 卡/120 问、严格构建 232 个 HTML、48410 条链接、7460 个锚点和 18 项多模式浏览器检查通过，整组已开放。"},
     {"id":"b20-agent-tool-calling","order":20,"title":"Tool Calling 与有界工作流","lesson_count":6,"prerequisite_modules":["llm-rag-eval"],"completion_gate":"六课共 48 项真实离线测试、60 卡/120 问、固定对抗评估、严格构建、站内链接和 18 项多模式浏览器检查通过，整组已开放。"},
-    {"id":"b21-agent-engineering","order":21,"title":"Agent 工程","lesson_count":1,"prerequisite_modules":["agent-tool-calling"],"completion_gate":"规划六课；当前完成 SQLite 运行状态、事件日志与原子 checkpoint 1 课、8 项测试。六课组级验收通过后开放。"}
+    {"id":"b21-agent-engineering","order":21,"title":"Agent 工程","lesson_count":3,"prerequisite_modules":["agent-tool-calling"],"completion_gate":"规划六课；当前完成持久状态、记忆上下文与崩溃恢复 3 课、24 项测试。六课组级验收通过后开放。"}
   ],
   "tutor_lesson_ids": {
     "engineering-01":"engineering-foundation-01",
@@ -182,7 +182,9 @@
     "agent-tool-calling-04":"agent-tool-calling-04",
     "agent-tool-calling-05":"agent-tool-calling-05",
     "agent-tool-calling-06":"agent-tool-calling-06",
-    "agent-engineering-01":"agent-engineering-01"
+    "agent-engineering-01":"agent-engineering-01",
+    "agent-engineering-02":"agent-engineering-02",
+    "agent-engineering-03":"agent-engineering-03"
   },
   "lessons": [
     {"id":"engineering-01","target_module_id":"engineering-start","target_depth":"起步","target_role":"共同基座","course_type":"tool-operation","project_line":"engineering-learning-workspace","batch_id":"b01-engineering-start","prerequisite_lesson_ids":[],"migration_status":"已迁移","migration_kind":"重写讲解与复现路径"},
@@ -327,6 +329,8 @@
     {"id":"agent-tool-calling-04","target_module_id":"agent-tool-calling","target_depth":"基础","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b20-agent-tool-calling","prerequisite_lesson_ids":["agent-tool-calling-03"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
     {"id":"agent-tool-calling-05","target_module_id":"agent-tool-calling","target_depth":"基础","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b20-agent-tool-calling","prerequisite_lesson_ids":["agent-tool-calling-04"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
     {"id":"agent-tool-calling-06","target_module_id":"agent-tool-calling","target_depth":"基础","target_role":"方向主干","course_type":"project-integration","project_line":"intelligent-learning-assistant","batch_id":"b20-agent-tool-calling","prerequisite_lesson_ids":["agent-tool-calling-05"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
-    {"id":"agent-engineering-01","target_module_id":"agent-engineering","target_depth":"工程化","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b21-agent-engineering","prerequisite_lesson_ids":["agent-tool-calling-06"],"migration_status":"已迁移","migration_kind":"新建正式课程"}
+    {"id":"agent-engineering-01","target_module_id":"agent-engineering","target_depth":"工程化","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b21-agent-engineering","prerequisite_lesson_ids":["agent-tool-calling-06"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"agent-engineering-02","target_module_id":"agent-engineering","target_depth":"工程化","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b21-agent-engineering","prerequisite_lesson_ids":["agent-engineering-01"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"agent-engineering-03","target_module_id":"agent-engineering","target_depth":"工程化","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b21-agent-engineering","prerequisite_lesson_ids":["agent-engineering-02"],"migration_status":"已迁移","migration_kind":"新建正式课程"}
   ]
 }

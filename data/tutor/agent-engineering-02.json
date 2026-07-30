@@ -1,0 +1,91 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "agent-engineering-02",
+    "title": "记忆来源、同意、TTL 与上下文预算",
+    "path": "learning-paths/llm-agent/agent-engineering/02-memory-provenance-consent-ttl-context-budget/"
+  },
+  "contexts": [
+    {"id":"overview-bounded-memory-context","type":"overview","title":"有界记忆上下文","anchor":"#overview-bounded-memory-context"},
+    {"id":"concept-working-persistent-memory","type":"concept","title":"工作与持久记忆","anchor":"#concept-working-persistent-memory"},
+    {"id":"concept-filter-before-budget","type":"concept","title":"资格过滤与预算","anchor":"#concept-filter-before-budget"},
+    {"id":"example-four-facts-one-eligible","type":"example","title":"四条事实一条合格","anchor":"#example-four-facts-one-eligible"},
+    {"id":"reproduce-memory-context-v20","type":"reproduce","title":"运行记忆装配","anchor":"#reproduce-memory-context-v20"},
+    {"id":"modify-memory-priority","type":"modify","title":"修改记忆优先级","anchor":"#modify-memory-priority"},
+    {"id":"troubleshoot-memory-context","type":"troubleshoot","title":"记忆上下文排错","anchor":"#troubleshoot-memory-context"},
+    {"id":"deepen-memory-is-not-profile","type":"deepen","title":"记忆不是画像","anchor":"#deepen-memory-is-not-profile"},
+    {"id":"project-learning-assistant-v20","type":"project","title":"智能学习助手v0.20","anchor":"#project-learning-assistant-v20"}
+  ],
+  "cards": [
+    {
+      "id":"working-vs-fact","lesson_id":"agent-engineering-02","context_id":"concept-working-persistent-memory",
+      "question":"工作记忆和持久事实有什么区别？","aliases":["当前目标要永久保存吗"],"keywords":["工作记忆","持久事实","当前目标","永久保存"],
+      "diagnostic":"先判断信息只服务当前run还是需要跨run使用。","hints":["查看 #concept-working-persistent-memory。","检查工作记忆是否写入memory_facts。"],
+      "example":"当前目标只属于当前run。","answer":"工作记忆随run结束；持久事实跨run使用，必须带主体、来源、同意和TTL。",
+      "source":{"label":"工作与持久记忆","href":"#concept-working-persistent-memory"},"updated_at":"2026-07-30","recommended":true
+    },
+    {
+      "id":"memory-source","lesson_id":"agent-engineering-02","context_id":"concept-working-persistent-memory",
+      "question":"为什么记忆必须有来源？","aliases":["source ID 可以为空吗"],"keywords":["记忆来源","source ID","为空"],
+      "diagnostic":"检查事实是否能回到明确采集或确认入口。","hints":["查看 #concept-working-persistent-memory。","运行source必填测试。"],
+      "example":"profile-form。","answer":"来源让事实可核查、撤回和解释；空来源记录被拒绝。",
+      "source":{"label":"工作与持久记忆","href":"#concept-working-persistent-memory"},"updated_at":"2026-07-30","recommended":true
+    },
+    {
+      "id":"consent-gate","lesson_id":"agent-engineering-02","context_id":"concept-filter-before-budget",
+      "question":"未同意的记忆能进入上下文吗？","aliases":["consent false 会怎样"],"keywords":["未同意","consent false","上下文"],
+      "diagnostic":"区分记录存在与允许使用。","hints":["查看 #concept-filter-before-budget。","检查eligible_facts的consent条件。"],
+      "example":"已保存但eligible为0。","answer":"不能；装配前必须通过同意门禁，记录存在不代表可使用。",
+      "source":{"label":"资格过滤与预算","href":"#concept-filter-before-budget"},"updated_at":"2026-07-30","recommended":true
+    },
+    {
+      "id":"ttl-gate","lesson_id":"agent-engineering-02","context_id":"concept-filter-before-budget",
+      "question":"TTL 到期后怎样处理记忆？","aliases":["expires_at 等于现在还能用吗"],"keywords":["TTL","expires_at","到期","记忆"],
+      "diagnostic":"比较expires_at与装配时钟now。","hints":["查看 #concept-filter-before-budget。","运行过期事实测试。"],
+      "example":"expires_at <= now时排除。","answer":"到期事实不进入上下文；课程以expires_at大于now作为有效条件。",
+      "source":{"label":"资格过滤与预算","href":"#concept-filter-before-budget"},"updated_at":"2026-07-30","recommended":true
+    },
+    {
+      "id":"subject-isolation","lesson_id":"agent-engineering-02","context_id":"example-four-facts-one-eligible",
+      "question":"怎样阻止其他学习者记忆混入？","aliases":["跨主体事实为什么被排除"],"keywords":["主体隔离","其他学习者","跨主体","排除"],
+      "diagnostic":"检查查询是否绑定当前subject_id。","hints":["查看 #example-four-facts-one-eligible。","运行subjects_are_isolated测试。"],
+      "example":"learner-b事实不会进入learner-a。","answer":"持久查询必须把当前subject_id作为条件，不能先全表读取再在模型侧过滤。",
+      "source":{"label":"四条事实一条合格","href":"#example-four-facts-one-eligible"},"updated_at":"2026-07-30","recommended":true
+    },
+    {
+      "id":"budget-order","lesson_id":"agent-engineering-02","context_id":"concept-filter-before-budget",
+      "question":"预算不足时怎样稳定选择？","aliases":["同优先级记忆先选谁"],"keywords":["预算不足","稳定选择","同优先级","memory ID"],
+      "diagnostic":"检查资格过滤后是否有明确稳定排序。","hints":["查看 #concept-filter-before-budget。","修改priority和budget_chars。"],
+      "example":"priority降序、memory ID升序。","answer":"先按priority降序，再按memory ID升序；按此顺序装入仍能容纳的条目。",
+      "source":{"label":"资格过滤与预算","href":"#concept-filter-before-budget"},"updated_at":"2026-07-30","recommended":true
+    },
+    {
+      "id":"char-budget","lesson_id":"agent-engineering-02","context_id":"deepen-memory-is-not-profile",
+      "question":"字符预算等于模型 token 吗？","aliases":["budget_chars 是真实token数吗"],"keywords":["字符预算","token","budget_chars","真实"],
+      "diagnostic":"判断当前预算是教学代理还是真实provider计数。","hints":["查看 #deepen-memory-is-not-profile。","检查固定报告的limit-chars。"],
+      "example":"29字符教学预算。","answer":"不等于；字符数只用于离线确定性实验，接入模型时需用对应tokenizer重测。",
+      "source":{"label":"记忆不是画像","href":"#deepen-memory-is-not-profile"},"updated_at":"2026-07-30","recommended":true
+    },
+    {
+      "id":"hidden-reasoning","lesson_id":"agent-engineering-02","context_id":"troubleshoot-memory-context",
+      "question":"为什么工作记忆不能保存 reasoning？","aliases":["可以把完整prompt放进记忆吗"],"keywords":["reasoning","完整prompt","工作记忆","禁止"],
+      "diagnostic":"检查输入字段是否越过显式业务状态允许列表。","hints":["查看 #troubleshoot-memory-context。","运行hidden_reasoning测试。"],
+      "example":"reasoning字段直接拒绝。","answer":"恢复只需显式业务状态；保存隐藏推理或完整prompt扩大隐私和注入风险。",
+      "source":{"label":"记忆上下文排错","href":"#troubleshoot-memory-context"},"updated_at":"2026-07-30","recommended":true
+    },
+    {
+      "id":"memory-not-profile","lesson_id":"agent-engineering-02","context_id":"deepen-memory-is-not-profile",
+      "question":"记忆为什么不是永久用户画像？","aliases":["学习偏好可以永不过期吗"],"keywords":["永久画像","学习偏好","过期","数据最小化"],
+      "diagnostic":"检查用途、最短TTL、授权和删除入口。","hints":["查看 #deepen-memory-is-not-profile。","把长期TTL改短并解释原因。"],
+      "example":"刚确认目标使用短TTL。","answer":"事实会过时且可能敏感；应按用途设置最短TTL、授权和删除路径。",
+      "source":{"label":"记忆不是画像","href":"#deepen-memory-is-not-profile"},"updated_at":"2026-07-30","recommended":false
+    },
+    {
+      "id":"assistant-v20","lesson_id":"agent-engineering-02","context_id":"project-learning-assistant-v20",
+      "question":"智能学习助手 v0.20 新增什么？","aliases":["Agent工程第二课做什么"],"keywords":["智能学习助手","v0.20","Agent工程第二课","新增"],
+      "diagnostic":"定位本课相对v0.19的项目增量。","hints":["查看 #project-learning-assistant-v20。","运行memory_context.py。"],
+      "example":"MemoryStore与ContextAssembler。","answer":"新增工作记忆、带来源/同意/TTL的持久事实和确定性上下文预算。",
+      "source":{"label":"智能学习助手v0.20","href":"#project-learning-assistant-v20"},"updated_at":"2026-07-30","recommended":false
+    }
+  ]
+}

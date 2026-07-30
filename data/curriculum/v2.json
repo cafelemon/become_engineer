@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "updated_at": "2026-07-23",
+  "updated_at": "2026-07-30",
   "authority": "learning-paths/curriculum-map.md",
-  "course_count": 136,
+  "course_count": 138,
   "lesson_roots": [
     "learning-paths/engineering-foundation/stage-0",
     "learning-paths/programming-languages/python-basics",
@@ -191,6 +191,8 @@
     {"id":"agent-tool-calling-05","title":"有界工具循环、状态预算与显式终止","url":"learning-paths/llm-agent/tool-calling-workflow/05-bounded-tool-loop-state-budgets-termination.md","module_id":"agent-tool-calling","content_status":"已开放"},
     {"id":"agent-tool-calling-06","title":"固定对抗评估、预算指标与回归交付","url":"learning-paths/llm-agent/tool-calling-workflow/06-fixed-adversarial-evaluation-regression-delivery.md","module_id":"agent-tool-calling","content_status":"已开放"},
     {"id":"agent-engineering-01","title":"SQLite 运行状态、事件日志与原子 checkpoint","url":"learning-paths/llm-agent/agent-engineering/01-sqlite-run-state-event-log-atomic-checkpoint.md","module_id":"agent-engineering","content_status":"已开放"},
+    {"id":"agent-engineering-02","title":"记忆来源、同意、TTL 与上下文预算","url":"learning-paths/llm-agent/agent-engineering/02-memory-provenance-consent-ttl-context-budget.md","module_id":"agent-engineering","content_status":"已开放"},
+    {"id":"agent-engineering-03","title":"Lease、幂等 step 与崩溃恢复","url":"learning-paths/llm-agent/agent-engineering/03-lease-idempotent-step-crash-resume.md","module_id":"agent-engineering","content_status":"已开放"},
     {"id":"web-start-01","title":"浏览器、HTML 与第一张学习卡片","url":"learning-paths/web-fullstack/web-start/01-browser-html-learning-card.md","module_id":"web-start","content_status":"已开放"},
     {"id":"web-start-02","title":"CSS 布局、视觉层级与手机适配","url":"learning-paths/web-fullstack/web-start/02-css-layout-responsive-dashboard.md","module_id":"web-start","content_status":"已开放"},
     {"id":"web-start-03","title":"JavaScript 事件、DOM 与页面状态","url":"learning-paths/web-fullstack/web-start/03-javascript-events-dom-page-state.md","module_id":"web-start","content_status":"已开放"},
