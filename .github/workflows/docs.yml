@@ -98,6 +98,8 @@ on:
       - "scripts/test_web_engineering_container_v2.mjs"
       - "scripts/test_web_engineering_release_v2.mjs"
       - "scripts/test_agent_engineering_*.mjs"
+      - "scripts/test_rag_application_engineering_*.mjs"
+      - "scripts/test_agent_application_orchestration_*.mjs"
       - "scripts/lib/validate_web_engineering_lesson.mjs"
       - "scripts/generate_web_engineering_tutor.mjs"
       - "scripts/test_tutor_search.cjs"
@@ -546,6 +548,89 @@ jobs:
 
       - name: Verify Agent lease, idempotent step, and crash resume
         run: node scripts/test_agent_engineering_03_v2.mjs
+
+      - name: Verify Agent trajectory, telemetry, and security delivery
+        run: |
+          node scripts/test_agent_engineering_04_v2.mjs
+          node scripts/test_agent_engineering_05_v2.mjs
+          node scripts/test_agent_engineering_06_v2.mjs
+
+      - name: Verify RAG application engineering with real pgvector
+        run: |
+          set -eu
+          container=rag-application-pgvector-ci
+          cleanup_pgvector() { docker rm -f "$container" >/dev/null 2>&1 || true; }
+          trap cleanup_pgvector EXIT
+          node scripts/test_rag_application_engineering_01_v2.mjs
+          node scripts/test_rag_application_engineering_02_v2.mjs
+          docker run -d --name "$container" \
+            -e POSTGRES_DB=rag_lab \
+            -e POSTGRES_USER=rag \
+            -e POSTGRES_PASSWORD=rag-ci-only \
+            -p 127.0.0.1:55440:5432 \
+            pgvector/pgvector:0.8.2-pg16-bookworm
+          ready=false
+          for attempt in $(seq 1 30); do
+            if docker exec "$container" pg_isready -U rag -d rag_lab; then
+              ready=true
+              break
+            fi
+            sleep 1
+          done
+          test "$ready" = true
+          RAG_PGVECTOR_URL=postgresql://rag:rag-ci-only@127.0.0.1:55440/rag_lab \
+            node scripts/test_rag_application_engineering_03_v2.mjs
+          node scripts/test_rag_application_engineering_04_v2.mjs
+          node scripts/test_rag_application_engineering_05_v2.mjs
+          node scripts/test_rag_application_engineering_06_v2.mjs
+          docker exec "$container" createdb -U rag rag_app
+          docker exec -i "$container" psql -U rag -d rag_app \
+            < site-src/examples/rag-application-engineering/intelligent-learning-assistant-v30/schema.sql
+          RAG_APP_DATABASE_URL=postgresql://rag:rag-ci-only@127.0.0.1:55440/rag_app \
+            .venv/bin/python -m unittest -v \
+            site-src/examples/rag-application-engineering/intelligent-learning-assistant-v30/test_postgres_schema.py
+
+      - name: Verify Agent application orchestration with real PostgreSQL
+        env:
+          AGENT_POSTGRES_URL: postgresql://dashboard:dashboard@127.0.0.1:55439/dashboard
+        run: |
+          set -eu
+          node scripts/test_agent_application_orchestration_01_v2.mjs
+          node scripts/test_agent_application_orchestration_02_v2.mjs
+          node scripts/test_agent_application_orchestration_03_v2.mjs
+          node scripts/test_agent_application_orchestration_04_v2.mjs
+          node scripts/test_agent_application_orchestration_05_v2.mjs
+          node scripts/test_agent_application_orchestration_06_v2.mjs
+          docker run --rm --network host \
+            -e PGPASSWORD=dashboard \
+            -v /tmp:/backup \
+            postgres:16-alpine pg_dump -h 127.0.0.1 -p 55439 -U dashboard -d dashboard -Fc -f /backup/agent-runs.dump
+          docker run --rm --network host \
+            -e PGPASSWORD=dashboard \
+            postgres:16-alpine createdb -h 127.0.0.1 -p 55439 -U dashboard dashboard_agent_verify
+          docker run --rm --network host \
+            -e PGPASSWORD=dashboard \
+            -v /tmp:/backup \
+            postgres:16-alpine pg_restore -h 127.0.0.1 -p 55439 -U dashboard -d dashboard_agent_verify /backup/agent-runs.dump
+
+      - name: Smoke-test Agent v0.36 non-root container
+        run: |
+          set -eu
+          compose_file=site-src/examples/agent-application-orchestration/intelligent-learning-assistant-v36/compose.yml
+          cleanup_agent() { docker compose -f "$compose_file" down --volumes; }
+          trap cleanup_agent EXIT
+          docker compose -f "$compose_file" up -d --build
+          test "$(docker compose -f "$compose_file" exec -T app id -u)" = 10001
+          published=$(docker compose -f "$compose_file" port app 8000)
+          app_ready=false
+          for attempt in $(seq 1 30); do
+            if curl -fsS "http://$published/health/ready"; then
+              app_ready=true
+              break
+            fi
+            sleep 1
+          done
+          test "$app_ready" = true
 
       - name: Verify CS systems concurrency lesson
         run: node scripts/test_cs_systems_concurrency_v2.mjs
