@@ -10,7 +10,7 @@ const cwd=resolve(root,"site-src/examples/rag-application-engineering/intelligen
 const python=resolve(root,".venv/bin/python");
 const tests=spawnSync(python,["-m","unittest","-v","test_knowledge_service.py","test_api.py"],{cwd,encoding:"utf8"});
 assert.equal(tests.status,0,tests.stdout+tests.stderr);assert.match(tests.stdout+tests.stderr,/Ran 14 tests/);
-const tsc=resolve(root,"site-src/examples/web-engineering/learning-dashboard-v12/node_modules/.bin/tsc");
+const tsc=resolve(cwd,"node_modules/.bin/tsc");
 const build=spawnSync(tsc,["-p","tsconfig.json"],{cwd,encoding:"utf8"});assert.equal(build.status,0,build.stdout+build.stderr);
 const report=spawnSync(python,["knowledge_service.py"],{cwd,encoding:"utf8"});assert.equal(report.status,0,report.stderr);assert.match(report.stdout,/citations:1/);
 console.log(JSON.stringify({valid:true,lesson_id:"rag-application-engineering-06",offline_tests:14,postgres_tests:4,typescript:true},null,2));

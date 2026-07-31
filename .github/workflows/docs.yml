@@ -160,6 +160,8 @@ jobs:
             site-src/examples/web-core/learning-dashboard-v07/package-lock.json
             site-src/examples/web-core/learning-dashboard-v08/package-lock.json
             site-src/examples/web-engineering/learning-dashboard-v12/package-lock.json
+            site-src/examples/rag-application-engineering/intelligent-learning-assistant-v30/package-lock.json
+            site-src/examples/agent-application-orchestration/intelligent-learning-assistant-v36/package-lock.json
 
       - name: Install CI dependencies
         run: |
@@ -582,6 +584,7 @@ jobs:
             node scripts/test_rag_application_engineering_03_v2.mjs
           node scripts/test_rag_application_engineering_04_v2.mjs
           node scripts/test_rag_application_engineering_05_v2.mjs
+          npm ci --prefix site-src/examples/rag-application-engineering/intelligent-learning-assistant-v30
           node scripts/test_rag_application_engineering_06_v2.mjs
           docker exec "$container" createdb -U rag rag_app
           docker exec -i "$container" psql -U rag -d rag_app \
@@ -600,6 +603,7 @@ jobs:
           node scripts/test_agent_application_orchestration_03_v2.mjs
           node scripts/test_agent_application_orchestration_04_v2.mjs
           node scripts/test_agent_application_orchestration_05_v2.mjs
+          npm ci --prefix site-src/examples/agent-application-orchestration/intelligent-learning-assistant-v36
           node scripts/test_agent_application_orchestration_06_v2.mjs
           docker run --rm --network host \
             -e PGPASSWORD=dashboard \
