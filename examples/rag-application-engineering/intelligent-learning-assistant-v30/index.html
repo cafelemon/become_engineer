@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>智能学习助手 v0.30</title>
+<style>
+:root{color-scheme:light dark;font-family:system-ui,sans-serif}body{max-width:68rem;margin:2rem auto;padding:0 1rem}
+header,.grid,form,.panel{display:grid;gap:1rem}.grid{grid-template-columns:1fr 1fr}.panel{padding:1rem;border:1px solid #777;border-radius:.8rem}
+input,textarea,button{font:inherit;padding:.7rem}button{cursor:pointer}.status{min-height:1.5rem}pre{white-space:pre-wrap;overflow-wrap:anywhere}
+@media(max-width:620px){body{margin:1rem auto}.grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style></head><body><header><h1>智能学习助手</h1><p>管理来源、查看 ingestion、调试检索，并在同一页面验证回答引用。</p>
+<noscript><p>JavaScript 已禁用。API 从 <code>/docs</code> 查看；启动：<code>uvicorn app:app</code>。</p></noscript></header>
+<main class="grid"><section class="panel" aria-labelledby="manage-title"><h2 id="manage-title">文档管理台</h2>
+<form id="upload"><label>来源名称 <input name="name" value="权限说明"></label><label>Markdown 内容 <textarea name="content">ACL 必须在召回前执行。</textarea></label><button>创建并接入</button></form>
+<p id="ingestion-status" class="status" role="status"></p><pre id="source-detail"></pre></section>
+<section class="panel" aria-labelledby="chat-title"><h2 id="chat-title">检索调试与聊天</h2>
+<form id="chat"><label>问题 <input name="question" value="ACL 何时执行"></label><button>检索并回答</button></form>
+<p id="answer-status" class="status" role="status"></p><pre id="retrieval-detail"></pre><ol id="citations" aria-label="引用"></ol></section></main>
+<script type="module" src="/assets/app.js"></script></body></html>

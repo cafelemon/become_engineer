@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-07-30",
+  "updated_at": "2026-07-31",
   "registry": "site-src/data/curriculum/v2.json",
   "content_standard": "docs/08_content_standard.md",
   "current_schema": "v2-with-v1-compatibility",
@@ -44,7 +44,9 @@
     {"id":"b18-llm-use","order":18,"title":"模型使用与结构化输出","lesson_count":6,"prerequisite_modules":["python-engineering","web-core"],"completion_gate":"六课共 48 项真实离线测试、60 卡/120 问、严格构建 225 个 HTML、45343 条链接、7191 个锚点和 18 项多模式浏览器检查通过，整组已开放。"},
     {"id":"b19-llm-rag-eval","order":19,"title":"检索、RAG 与评估","lesson_count":6,"prerequisite_modules":["llm-use","web-engineering"],"completion_gate":"六课共 48 项真实离线测试、60 卡/120 问、严格构建 232 个 HTML、48410 条链接、7460 个锚点和 18 项多模式浏览器检查通过，整组已开放。"},
     {"id":"b20-agent-tool-calling","order":20,"title":"Tool Calling 与有界工作流","lesson_count":6,"prerequisite_modules":["llm-rag-eval"],"completion_gate":"六课共 48 项真实离线测试、60 卡/120 问、固定对抗评估、严格构建、站内链接和 18 项多模式浏览器检查通过，整组已开放。"},
-    {"id":"b21-agent-engineering","order":21,"title":"Agent 工程","lesson_count":3,"prerequisite_modules":["agent-tool-calling"],"completion_gate":"规划六课；当前完成持久状态、记忆上下文与崩溃恢复 3 课、24 项测试。六课组级验收通过后开放。"}
+    {"id":"b21-agent-engineering","order":21,"title":"Agent 工程","lesson_count":6,"prerequisite_modules":["agent-tool-calling"],"completion_gate":"六课共 48 项测试、60 卡/120 问、严格构建 246 个 HTML、54854 条链接、8016 个锚点和 18 项多模式浏览器检查通过，整组已开放。"},
+    {"id":"b22-rag-application-engineering","order":22,"title":"RAG 应用工程","lesson_count":6,"prerequisite_modules":["llm-rag-eval","agent-engineering"],"completion_gate":"六课共 58 项代码与真实数据库测试、72 卡/144 问、pgvector 0.8.2、Compose 健康、严格构建 255 个 HTML、58416 条链接、8288 个锚点、18 项课程页面与 3 项应用浏览器检查通过，整组已开放。"},
+    {"id":"b23-agent-application-orchestration","order":23,"title":"Agent 应用编排与交付","lesson_count":6,"prerequisite_modules":["agent-engineering","rag-application-engineering"],"completion_gate":"六课代码、72 卡/144 问与 50 项测试已完成；真实 PostgreSQL、容器、备份恢复、浏览器、严格构建和链接组级验收后开放。"}
   ],
   "tutor_lesson_ids": {
     "engineering-01":"engineering-foundation-01",
@@ -184,7 +186,22 @@
     "agent-tool-calling-06":"agent-tool-calling-06",
     "agent-engineering-01":"agent-engineering-01",
     "agent-engineering-02":"agent-engineering-02",
-    "agent-engineering-03":"agent-engineering-03"
+    "agent-engineering-03":"agent-engineering-03",
+    "agent-engineering-04":"agent-engineering-04",
+    "agent-engineering-05":"agent-engineering-05",
+    "agent-engineering-06":"agent-engineering-06",
+    "rag-application-engineering-01":"rag-application-engineering-01",
+    "rag-application-engineering-02":"rag-application-engineering-02",
+    "rag-application-engineering-03":"rag-application-engineering-03",
+    "rag-application-engineering-04":"rag-application-engineering-04",
+    "rag-application-engineering-05":"rag-application-engineering-05",
+    "rag-application-engineering-06":"rag-application-engineering-06",
+    "agent-application-orchestration-01":"agent-application-orchestration-01",
+    "agent-application-orchestration-02":"agent-application-orchestration-02",
+    "agent-application-orchestration-03":"agent-application-orchestration-03",
+    "agent-application-orchestration-04":"agent-application-orchestration-04",
+    "agent-application-orchestration-05":"agent-application-orchestration-05",
+    "agent-application-orchestration-06":"agent-application-orchestration-06"
   },
   "lessons": [
     {"id":"engineering-01","target_module_id":"engineering-start","target_depth":"起步","target_role":"共同基座","course_type":"tool-operation","project_line":"engineering-learning-workspace","batch_id":"b01-engineering-start","prerequisite_lesson_ids":[],"migration_status":"已迁移","migration_kind":"重写讲解与复现路径"},
@@ -331,6 +348,21 @@
     {"id":"agent-tool-calling-06","target_module_id":"agent-tool-calling","target_depth":"基础","target_role":"方向主干","course_type":"project-integration","project_line":"intelligent-learning-assistant","batch_id":"b20-agent-tool-calling","prerequisite_lesson_ids":["agent-tool-calling-05"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
     {"id":"agent-engineering-01","target_module_id":"agent-engineering","target_depth":"工程化","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b21-agent-engineering","prerequisite_lesson_ids":["agent-tool-calling-06"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
     {"id":"agent-engineering-02","target_module_id":"agent-engineering","target_depth":"工程化","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b21-agent-engineering","prerequisite_lesson_ids":["agent-engineering-01"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
-    {"id":"agent-engineering-03","target_module_id":"agent-engineering","target_depth":"工程化","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b21-agent-engineering","prerequisite_lesson_ids":["agent-engineering-02"],"migration_status":"已迁移","migration_kind":"新建正式课程"}
+    {"id":"agent-engineering-03","target_module_id":"agent-engineering","target_depth":"工程化","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b21-agent-engineering","prerequisite_lesson_ids":["agent-engineering-02"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"agent-engineering-04","target_module_id":"agent-engineering","target_depth":"工程化","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b21-agent-engineering","prerequisite_lesson_ids":["agent-engineering-03"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"agent-engineering-05","target_module_id":"agent-engineering","target_depth":"工程化","target_role":"方向主干","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b21-agent-engineering","prerequisite_lesson_ids":["agent-engineering-04"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"agent-engineering-06","target_module_id":"agent-engineering","target_depth":"工程化","target_role":"方向主干","course_type":"project-integration","project_line":"intelligent-learning-assistant","batch_id":"b21-agent-engineering","prerequisite_lesson_ids":["agent-engineering-05"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"rag-application-engineering-01","target_module_id":"rag-application-engineering","target_depth":"深化","target_role":"能力深化","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b22-rag-application-engineering","prerequisite_lesson_ids":["llm-rag-eval-06","agent-engineering-06"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"rag-application-engineering-02","target_module_id":"rag-application-engineering","target_depth":"深化","target_role":"能力深化","course_type":"ai-experiment","project_line":"intelligent-learning-assistant","batch_id":"b22-rag-application-engineering","prerequisite_lesson_ids":["rag-application-engineering-01"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"rag-application-engineering-03","target_module_id":"rag-application-engineering","target_depth":"深化","target_role":"能力深化","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b22-rag-application-engineering","prerequisite_lesson_ids":["rag-application-engineering-02"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"rag-application-engineering-04","target_module_id":"rag-application-engineering","target_depth":"深化","target_role":"能力深化","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b22-rag-application-engineering","prerequisite_lesson_ids":["rag-application-engineering-03"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"rag-application-engineering-05","target_module_id":"rag-application-engineering","target_depth":"深化","target_role":"能力深化","course_type":"ai-experiment","project_line":"intelligent-learning-assistant","batch_id":"b22-rag-application-engineering","prerequisite_lesson_ids":["rag-application-engineering-04"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"rag-application-engineering-06","target_module_id":"rag-application-engineering","target_depth":"深化","target_role":"能力深化","course_type":"project-integration","project_line":"intelligent-learning-assistant","batch_id":"b22-rag-application-engineering","prerequisite_lesson_ids":["rag-application-engineering-05"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"agent-application-orchestration-01","target_module_id":"agent-application-orchestration","target_depth":"深化","target_role":"能力深化","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b23-agent-application-orchestration","prerequisite_lesson_ids":["agent-engineering-06","rag-application-engineering-06"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"agent-application-orchestration-02","target_module_id":"agent-application-orchestration","target_depth":"深化","target_role":"能力深化","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b23-agent-application-orchestration","prerequisite_lesson_ids":["agent-application-orchestration-01"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"agent-application-orchestration-03","target_module_id":"agent-application-orchestration","target_depth":"深化","target_role":"能力深化","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b23-agent-application-orchestration","prerequisite_lesson_ids":["agent-application-orchestration-02"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"agent-application-orchestration-04","target_module_id":"agent-application-orchestration","target_depth":"深化","target_role":"能力深化","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b23-agent-application-orchestration","prerequisite_lesson_ids":["agent-application-orchestration-03"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"agent-application-orchestration-05","target_module_id":"agent-application-orchestration","target_depth":"深化","target_role":"能力深化","course_type":"ai-experiment","project_line":"intelligent-learning-assistant","batch_id":"b23-agent-application-orchestration","prerequisite_lesson_ids":["agent-application-orchestration-04"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"agent-application-orchestration-06","target_module_id":"agent-application-orchestration","target_depth":"深化","target_role":"能力深化","course_type":"project-integration","project_line":"intelligent-learning-assistant","batch_id":"b23-agent-application-orchestration","prerequisite_lesson_ids":["agent-application-orchestration-05"],"migration_status":"已迁移","migration_kind":"新建正式课程"}
   ]
 }

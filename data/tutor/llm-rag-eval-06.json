@@ -55,6 +55,12 @@
       "anchor": "#deepen-metric-limits"
     },
     {
+      "id": "deepen-layered-rag-evaluation",
+      "type": "deepen",
+      "title": "六层RAG评估",
+      "anchor": "#deepen-layered-rag-evaluation"
+    },
+    {
       "id": "project-learning-assistant-v12",
       "type": "project",
       "title": "智能学习助手v0.12",
@@ -297,6 +303,62 @@
         "href": "#deepen-metric-limits"
       },
       "updated_at": "2026-07-26",
+      "recommended": false
+    },
+    {
+      "id": "six-layer-eval",
+      "lesson_id": "llm-rag-eval-06",
+      "context_id": "deepen-layered-rag-evaluation",
+      "question": "RAG为什么要分六层评估？",
+      "aliases": [
+        "只看最终答案有什么问题"
+      ],
+      "keywords": [
+        "RAG为什么要分六层评估",
+        "只看最终答案有什么问题",
+        "ingestion",
+        "rerank"
+      ],
+      "diagnostic": "分别检查ingestion、chunk、retrieval、rerank、context和answer。",
+      "hints": [
+        "查看 #deepen-layered-rag-evaluation。",
+        "最终答案只能说明结果，不能定位故障层。"
+      ],
+      "example": "answer错可能来自解析漏页或上下文截断。",
+      "answer": "六层指标把文档接入、切片、召回、重排、上下文和回答分开，才能定位回归发生在哪一层。",
+      "source": {
+        "label": "六层RAG评估",
+        "href": "#deepen-layered-rag-evaluation"
+      },
+      "updated_at": "2026-07-31",
+      "recommended": true
+    },
+    {
+      "id": "hard-gates",
+      "lesson_id": "llm-rag-eval-06",
+      "context_id": "deepen-layered-rag-evaluation",
+      "question": "哪些RAG指标不能被平均分抵消？",
+      "aliases": [
+        "召回提高能抵消ACL泄露吗"
+      ],
+      "keywords": [
+        "哪些RAG指标不能被平均分抵消",
+        "召回提高能抵消ACL泄露吗",
+        "hard gate",
+        "引用"
+      ],
+      "diagnostic": "把安全与引用完整性从加权平均中分离为硬门禁。",
+      "hints": [
+        "查看 #deepen-layered-rag-evaluation。",
+        "ACL泄露、伪引用和危险执行必须为零。"
+      ],
+      "example": "acl_leakage=0 and invalid_citation=0。",
+      "answer": "ACL泄露、跨主体内容、伪造引用和危险执行属于硬门禁，任何一次都不能由Recall、MRR或平均分提升抵消。",
+      "source": {
+        "label": "六层RAG评估",
+        "href": "#deepen-layered-rag-evaluation"
+      },
+      "updated_at": "2026-07-31",
       "recommended": false
     },
     {

@@ -1,0 +1,1 @@
+{"name":"intelligent-learning-assistant-v30","version":"0.30.0","type":"module","scripts":{"build":"tsc","test":"npm run build"},"devDependencies":{"typescript":"7.0.2"}}

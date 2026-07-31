@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "agent-engineering-04",
+    "title": "轨迹、结果、恢复与记忆质量评估",
+    "path": "learning-paths/llm-agent/agent-engineering/04-trajectory-outcome-recovery-memory-evaluation/"
+  },
+  "contexts": [
+    {"id":"overview-agent-evaluation","type":"overview","title":"Agent多维评估","anchor":"#overview-agent-evaluation"},
+    {"id":"concept-multi-layer-agent-eval","type":"concept","title":"五种评估信号","anchor":"#concept-multi-layer-agent-eval"},
+    {"id":"concept-transition-and-terminal","type":"concept","title":"状态边与终态","anchor":"#concept-transition-and-terminal"},
+    {"id":"example-right-answer-wrong-path","type":"example","title":"答对但路径错误","anchor":"#example-right-answer-wrong-path"},
+    {"id":"reproduce-trajectory-evaluation-v22","type":"reproduce","title":"运行轨迹评估","anchor":"#reproduce-trajectory-evaluation-v22"},
+    {"id":"modify-add-approval-case","type":"modify","title":"增加审批场景","anchor":"#modify-add-approval-case"},
+    {"id":"troubleshoot-agent-evaluation","type":"troubleshoot","title":"Agent评估排错","anchor":"#troubleshoot-agent-evaluation"},
+    {"id":"deepen-evaluation-boundary","type":"deepen","title":"评估边界","anchor":"#deepen-evaluation-boundary"},
+    {"id":"project-learning-assistant-v22","type":"project","title":"智能学习助手v0.22","anchor":"#project-learning-assistant-v22"}
+  ],
+  "cards": [
+    {"id":"outcome-vs-trajectory","lesson_id":"agent-engineering-04","context_id":"concept-multi-layer-agent-eval","question":"最终答案正确为什么还不能通过？","aliases":["答对了还要看轨迹吗"],"keywords":["最终答案正确","轨迹","答对了还要看轨迹吗"],"diagnostic":"检查状态跳转、记忆与危险执行。","hints":["查看 #concept-multi-layer-agent-eval。","再核对硬门禁是否独立。"],"example":"outcome对但dangerous=1。","answer":"结果可能碰巧正确；非法跳转、错误记忆或未审批危险执行仍应阻止发布。","source":{"label":"五种评估信号","href":"#concept-multi-layer-agent-eval"},"updated_at":"2026-07-31","recommended":true},
+    {"id":"five-signals","lesson_id":"agent-engineering-04","context_id":"concept-multi-layer-agent-eval","question":"Agent评估要看哪五种信号？","aliases":["Agent不能只看准确率吗"],"keywords":["Agent评估","五种信号","准确率"],"diagnostic":"按结果、轨迹、恢复、记忆和危险执行拆分。","hints":["查看 #concept-multi-layer-agent-eval。","分别确认每项分母。"],"example":"outcome、trajectory、recovery、memory、dangerous。","answer":"分别看结果准确率、轨迹有效率、恢复成功率、记忆使用精度和危险执行数。","source":{"label":"五种评估信号","href":"#concept-multi-layer-agent-eval"},"updated_at":"2026-07-31","recommended":true},
+    {"id":"trajectory-valid","lesson_id":"agent-engineering-04","context_id":"concept-transition-and-terminal","question":"怎样判断Agent轨迹有效？","aliases":["状态序列合法条件是什么"],"keywords":["Agent轨迹有效","状态序列","合法条件"],"diagnostic":"验证起点、每条允许边和终态。","hints":["查看 #concept-transition-and-terminal。","逐边对照允许状态图。"],"example":"created→running→completed。","answer":"必须从created开始，每次沿允许边跳转，并以completed、failed或cancelled终止。","source":{"label":"状态边与终态","href":"#concept-transition-and-terminal"},"updated_at":"2026-07-31","recommended":true},
+    {"id":"terminal-required","lesson_id":"agent-engineering-04","context_id":"concept-transition-and-terminal","question":"轨迹停在running算成功吗？","aliases":["为什么必须有终态"],"keywords":["停在running","必须有终态"],"diagnostic":"检查最后状态是否属于显式终态。","hints":["查看 #concept-transition-and-terminal。","检查completed、failed或cancelled。"],"example":"running不是完成证据。","answer":"不算；没有终态就无法区分仍在执行、丢失worker或报告截断。","source":{"label":"状态边与终态","href":"#concept-transition-and-terminal"},"updated_at":"2026-07-31","recommended":true},
+    {"id":"recovery-denominator","lesson_id":"agent-engineering-04","context_id":"concept-multi-layer-agent-eval","question":"恢复成功率的分母是什么？","aliases":["没崩溃的case算恢复成功吗"],"keywords":["恢复成功率","分母","没崩溃"],"diagnostic":"只选择requires_recovery案例。","hints":["查看 #concept-multi-layer-agent-eval。","过滤requires_recovery=true。"],"example":"2个恢复case成功1个=0.5。","answer":"分母只包含确实要求恢复的case，普通完成不能虚增恢复成功率。","source":{"label":"五种评估信号","href":"#concept-multi-layer-agent-eval"},"updated_at":"2026-07-31","recommended":true},
+    {"id":"memory-precision","lesson_id":"agent-engineering-04","context_id":"concept-multi-layer-agent-eval","question":"记忆使用精度怎样计算？","aliases":["过期记忆被用了怎么计分"],"keywords":["记忆使用精度","过期记忆","计分"],"diagnostic":"比较实际使用ID与合格记忆集合。","hints":["查看 #concept-multi-layer-agent-eval。","核对主体、同意和TTL。"],"example":"2次使用1次合格=0.5。","answer":"合格记忆使用次数除以全部实际使用次数；主体错误、未同意或过期记忆都不合格。","source":{"label":"五种评估信号","href":"#concept-multi-layer-agent-eval"},"updated_at":"2026-07-31","recommended":true},
+    {"id":"danger-hard-gate","lesson_id":"agent-engineering-04","context_id":"example-right-answer-wrong-path","question":"危险执行为什么是硬门禁？","aliases":["高准确率能抵消危险动作吗"],"keywords":["危险执行","硬门禁","抵消危险动作"],"diagnostic":"确认危险计数是否独立于平均分。","hints":["查看 #example-right-answer-wrong-path。","确认计数必须等于0。"],"example":"dangerous-executions必须为0。","answer":"未审批危险执行的影响不可被其他平均指标抵消，计数非零就阻止发布。","source":{"label":"答对但路径错误","href":"#example-right-answer-wrong-path"},"updated_at":"2026-07-31","recommended":true},
+    {"id":"suite-fingerprint","lesson_id":"agent-engineering-04","context_id":"troubleshoot-agent-evaluation","question":"评估报告为什么要保存套件指纹？","aliases":["case变了还能直接比吗"],"keywords":["评估报告","套件指纹","case变了"],"diagnostic":"检查案例和协议身份是否一致。","hints":["查看 #troubleshoot-agent-evaluation。","比较case和协议版本。"],"example":"case改变产生新fingerprint。","answer":"指纹证明比较使用同一套case和规则；变化后应建立新基线而不是伪装回归。","source":{"label":"Agent评估排错","href":"#troubleshoot-agent-evaluation"},"updated_at":"2026-07-31","recommended":false},
+    {"id":"fixture-boundary","lesson_id":"agent-engineering-04","context_id":"deepen-evaluation-boundary","question":"固定场景满分代表生产质量吗？","aliases":["scripted model满分能上线吗"],"keywords":["固定场景满分","生产质量","scripted model"],"diagnostic":"区分协议测试与开放分布效果。","hints":["查看 #deepen-evaluation-boundary。","补充真实分布和人工评审。"],"example":"还需人工标注和真实分布。","answer":"不能；它只证明确定性协议与实现，还需代表性真实案例、人工评审、延迟成本和对抗测试。","source":{"label":"评估边界","href":"#deepen-evaluation-boundary"},"updated_at":"2026-07-31","recommended":false},
+    {"id":"assistant-v22","lesson_id":"agent-engineering-04","context_id":"project-learning-assistant-v22","question":"智能学习助手 v0.22 新增什么？","aliases":["Agent工程第四课做什么"],"keywords":["智能学习助手","v0.22","Agent工程第四课"],"diagnostic":"定位相对v0.21的评估增量。","hints":["查看 #project-learning-assistant-v22。","运行固定评估报告。"],"example":"多维评估和硬门禁。","answer":"新增固定case、状态轨迹验证、恢复与记忆分母、危险执行硬门禁和套件指纹。","source":{"label":"智能学习助手v0.22","href":"#project-learning-assistant-v22"},"updated_at":"2026-07-31","recommended":false}
+  ]
+}

@@ -1,0 +1,1 @@
+{"name":"intelligent-learning-assistant-v36","version":"0.36.0","type":"module","scripts":{"build":"tsc"},"devDependencies":{"typescript":"7.0.2"}}

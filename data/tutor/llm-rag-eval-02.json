@@ -55,6 +55,12 @@
       "anchor": "#deepen-lexical-baseline"
     },
     {
+      "id": "deepen-lexical-debug-console",
+      "type": "deepen",
+      "title": "关键词检索调试台",
+      "anchor": "#deepen-lexical-debug-console"
+    },
+    {
       "id": "project-learning-assistant-v08",
       "type": "project",
       "title": "智能学习助手v0.8",
@@ -305,6 +311,62 @@
         "href": "#deepen-lexical-baseline"
       },
       "updated_at": "2026-07-26",
+      "recommended": false
+    },
+    {
+      "id": "lexical-debug",
+      "lesson_id": "llm-rag-eval-02",
+      "context_id": "deepen-lexical-debug-console",
+      "question": "关键词检索调试页应该显示什么？",
+      "aliases": [
+        "BM25搜不到怎么逐层排查"
+      ],
+      "keywords": [
+        "关键词检索调试页应该显示什么",
+        "BM25搜不到怎么逐层排查",
+        "token",
+        "字段权重"
+      ],
+      "diagnostic": "沿查询分析、过滤、字段召回、预算和排序逐层定位。",
+      "hints": [
+        "查看 #deepen-lexical-debug-console。",
+        "不要只展示最终Top-k。"
+      ],
+      "example": "normalized query、tokens、filters、field scores、candidate count。",
+      "answer": "至少显示规范化查询、分词、停用词、ACL/元数据过滤、字段命中与权重、候选数量、截断原因和稳定排序解释。",
+      "source": {
+        "label": "关键词检索调试台",
+        "href": "#deepen-lexical-debug-console"
+      },
+      "updated_at": "2026-07-31",
+      "recommended": true
+    },
+    {
+      "id": "acl-empty",
+      "lesson_id": "llm-rag-eval-02",
+      "context_id": "deepen-lexical-debug-console",
+      "question": "权限过滤后无结果为什么不能提示文档存在？",
+      "aliases": [
+        "搜索能泄露无权文档吗"
+      ],
+      "keywords": [
+        "权限过滤后无结果为什么不能提示文档存在",
+        "搜索能泄露无权文档吗",
+        "ACL",
+        "候选池"
+      ],
+      "diagnostic": "确认ACL是否在召回前执行且外部错误语义一致。",
+      "hints": [
+        "查看 #deepen-lexical-debug-console。",
+        "无权内容不应进入候选或调试输出。"
+      ],
+      "example": "authorized candidates=0。",
+      "answer": "提示存在会形成侧信道；ACL必须在召回前过滤，无权文档不能进入候选池、排序解释或用户可见错误。",
+      "source": {
+        "label": "关键词检索调试台",
+        "href": "#deepen-lexical-debug-console"
+      },
+      "updated_at": "2026-07-31",
       "recommended": false
     },
     {
