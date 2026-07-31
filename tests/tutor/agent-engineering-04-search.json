@@ -1,0 +1,26 @@
+{
+  "lesson_id": "agent-engineering-04",
+  "cases": [
+    {"query":"最终答案正确为什么还不能通过","expected_card":"outcome-vs-trajectory"},
+    {"query":"答对了还要看轨迹吗","expected_card":"outcome-vs-trajectory"},
+    {"query":"Agent评估要看哪五种信号","expected_card":"five-signals"},
+    {"query":"Agent不能只看准确率吗","expected_card":"five-signals"},
+    {"query":"怎样判断Agent轨迹有效","expected_card":"trajectory-valid"},
+    {"query":"状态序列合法条件是什么","expected_card":"trajectory-valid"},
+    {"query":"轨迹停在running算成功吗","expected_card":"terminal-required"},
+    {"query":"为什么必须有终态","expected_card":"terminal-required"},
+    {"query":"恢复成功率的分母是什么","expected_card":"recovery-denominator"},
+    {"query":"没崩溃的case算恢复成功吗","expected_card":"recovery-denominator"},
+    {"query":"记忆使用精度怎样计算","expected_card":"memory-precision"},
+    {"query":"过期记忆被用了怎么计分","expected_card":"memory-precision"},
+    {"query":"危险执行为什么是硬门禁","expected_card":"danger-hard-gate"},
+    {"query":"高准确率能抵消危险动作吗","expected_card":"danger-hard-gate"},
+    {"query":"评估报告为什么要保存套件指纹","expected_card":"suite-fingerprint"},
+    {"query":"case变了还能直接比吗","expected_card":"suite-fingerprint"},
+    {"query":"固定场景满分代表生产质量吗","expected_card":"fixture-boundary"},
+    {"query":"scripted model满分能上线吗","expected_card":"fixture-boundary"},
+    {"query":"智能学习助手 v0.22 新增什么","expected_card":"assistant-v22"},
+    {"query":"Agent工程第四课做什么","expected_card":"assistant-v22"}
+  ],
+  "unknown": ["怎样给咖啡拉花","火星为什么是红色"]
+}

@@ -1,5 +1,28 @@
 # 进度记录
 
+## 2026-07-31：RAG 与 Agent 应用落地扩建完成并开放
+
+- 原 URL 深化检索/RAG/评估六课，补齐文档生命周期、关键词调试、五类切片、模型清单、检索路由、Prompt 分层、语义压缩以及 ingestion/chunk/retrieval/rerank/context/answer 六层评估；课程 ID 与学习状态保持不变。
+- Agent 工程 v0.22–v0.24 完成结果/轨迹/恢复/记忆评估、脱敏可观测性与五类安全攻击门禁；RAG 应用工程 v0.25–v0.30 和 Agent 应用编排交付 v0.31–v0.36 各 6/6 开放，正式课程达到 153 节。
+- RAG 应用工程完成 Markdown、HTML、数字文本 PDF 接入，扫描 PDF 返回 `ocr_required`；实现五种 `Chunker`、embedding 契约、真实 PostgreSQL 16 + pgvector 精确/HNSW 检索、ACL 前置过滤、RRF、重排、抽取压缩、引用保真、FastAPI 管理台和原生 TypeScript 聊天页。
+- Agent 应用编排完成显式状态图、四类上下文、严格计划、真实 PostgreSQL 长任务状态、approve/edit/reject、lease/checkpoint、幂等副作用、八层联合评估、脱敏 trace、权限矩阵、注入隔离和发布回滚门禁；LangGraph 仅保留 P5.18 可选对照。
+- 本轮新增或扩充 186 张知识卡、372 条固定问法与 24 条未知问题；全站共 2115 张卡、4232 条固定问法，Top 3 全量通过。
+- 132 项新增代码与集成测试通过，其中 RAG 应用 58 项、Agent 工程后三课 24 项、Agent 应用 50 项；真实 pgvector 与 PostgreSQL 路径均未用 Mock。
+- v0.34 使用 `pg_dump` 恢复到独立验证库，4 张核心表记录以及主键、外键、唯一约束完整；v0.36 容器健康状态为 ready，以 UID 10001 非 root 运行。
+- 两个应用课程组各完成 18 项课程页多模式检查和 3 项应用端到端检查，覆盖桌面、390px、深浅色、减少动画、键盘与禁用 JavaScript。
+- 全量 V2 内容、Tutor、课程登记通过；严格构建生成 263 个 HTML，61883 条站内链接与 8558 个锚点有效，`git diff --check` 通过。
+
+## 2026-07-31：Agent 工程 6/6 通过组级验收并开放
+
+- 新增 v0.22《轨迹、结果、恢复与记忆质量评估》、v0.23《Trace、Span、关联指标与默认脱敏》和 v0.24《注入、隔离、安全发布与回滚》，正式课程达到 141 节。
+- 结果、状态轨迹、恢复、记忆使用和危险执行分别评估；危险执行不能由平均分抵消。
+- request、run、trace 与 span 可关联，指标使用低基数维度，Prompt、凭据、记忆和工具原文默认不进入遥测。
+- 提示注入、记忆投毒、工具污染、跨主体和未审批发布五类 fixture 全部阻断；发布还要求备份与明确回滚目标。
+- 六课累计 48 项 Python 测试、60 卡、120 问和 12 条未知问题；Top 1/Top 3 均为 100%。
+- `validate_course_content_v2`、`validate_curriculum_v2`、严格 MkDocs 构建和 `git diff --check` 通过。
+- 严格构建生成 246 个 HTML；54854 条站内链接与 8016 个锚点有效。
+- 六页 × 桌面浅色、390px 深色/减少动画、390px 禁用 JavaScript 共 18 项检查通过；键盘焦点正确返回小码入口。
+
 ## 2026-07-30：Pages 与 main 增加真实 HTTP 同步门禁
 
 - 诊断时复核公开站点，确认机器学习 8/8、深度学习 8/8 已在线；当时 `gh-pages` 提交说明其来源为 `main@f88af20`。

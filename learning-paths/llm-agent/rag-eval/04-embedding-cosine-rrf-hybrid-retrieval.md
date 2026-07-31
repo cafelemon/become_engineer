@@ -113,6 +113,24 @@ python3 hybrid_retriever.py
 向量也可能泄露输入特征，本课日志契约不记录查询文本、chunk 文本或向量原值。
 </section>
 
+<section id="deepen-retrieval-strategy-routing" data-learning-context="deepen-retrieval-strategy-routing" data-context-type="deepen" markdown="1">
+## 检索策略不是把所有召回器同时打开
+
+应用查询至少分成精确标识、自然语言事实、多约束问题和复合问题。课程 ID、错误码、版本号优先走 lexical；同义表达可走 vector；带课程、版本、主体条件的查询先做 ACL 与 metadata filter；复合问题可拆成有界子查询后再合并。路由结果应是严格结构，例如 `{lexical_k, vector_k, filters, rewrite, max_candidates}`，不能让模型生成任意 SQL。
+
+候选预算要贯穿全链路：每路召回多少、融合后保留多少、进入 reranker 多少、最终上下文多少。一路返回 1000 条再在末端截断，会浪费数据库、重排和上下文成本，也使故障难以解释。
+
+| 策略 | 适合的失败 | 不应承担 |
+| --- | --- | --- |
+| query normalization | 大小写、全半角、稳定别名 | 发明用户未说的约束 |
+| multi-query | 同一意图的词面变化 | 无限生成改写 |
+| decomposition | 可独立求证的复合问题 | 把强依赖问题硬拆散 |
+| hybrid + RRF | lexical/vector 互补 | 掩盖两路都召回错误 |
+| parent expansion | child 命中但上下文不足 | 绕过来源与 ACL |
+
+后续应用课会在 PostgreSQL/pgvector 上保存 index manifest，并比较 exact、HNSW、过滤和 RRF。模型名、维度、距离函数、归一化、切片策略与语料版本共同决定索引身份；任何一项变化都应重建或创建新索引版本，而不是把新向量写进旧列。
+</section>
+
 <section id="project-learning-assistant-v10" data-learning-context="project-learning-assistant-v10" data-context-type="project" markdown="1">
 ## 可评估的智能学习助手 P5.3 v0.10
 
@@ -121,6 +139,7 @@ python3 hybrid_retriever.py
 - 文件：`hybrid_retriever.py` 与 `test_hybrid_retriever.py`。
 - 保存：关键词/向量/融合三组排名及 8 项测试。
 - 下一版：只让检索证据进入回答，并对每条 claim 做 citation 门禁。
+- 应用承接：后续实现查询路由、ACL/metadata 过滤、候选预算、pgvector 索引版本与重建切换。
 </section>
 
 ## 四类学习者入口

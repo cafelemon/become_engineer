@@ -1,0 +1,18 @@
+{
+  "lesson_id":"rag-application-engineering-02",
+  "cases":[
+    {"query":"切片模型和切片参数差在哪里","expected_card":"model-vs-parameter"},{"query":"chunk size是切片模型吗","expected_card":"model-vs-parameter"},
+    {"query":"固定窗口切片适合做什么","expected_card":"fixed-window"},{"query":"fixed chunk的主要风险是什么","expected_card":"fixed-window"},
+    {"query":"递归切片怎样选择边界","expected_card":"recursive-chunk"},{"query":"recursive separator有什么用","expected_card":"recursive-chunk"},
+    {"query":"标题页码感知切片保留什么","expected_card":"structure-aware"},{"query":"结构切片为什么适合文档","expected_card":"structure-aware"},
+    {"query":"语义断点切片怎样工作","expected_card":"semantic-breakpoint"},{"query":"相邻句向量距离怎么切片","expected_card":"semantic-breakpoint"},
+    {"query":"父子切片怎样兼顾召回和上下文","expected_card":"parent-child"},{"query":"child命中后为什么回填parent","expected_card":"parent-child"},
+    {"query":"父块回填后引用应该指哪里","expected_card":"citation-coordinate"},{"query":"能把整个parent当证据吗","expected_card":"citation-coordinate"},
+    {"query":"切片策略版本要包含哪些信息","expected_card":"strategy-version"},{"query":"改chunk size要换版本吗","expected_card":"strategy-version"},
+    {"query":"切片策略要比较哪些指标","expected_card":"four-metrics"},{"query":"只看平均chunk长度够吗","expected_card":"four-metrics"},
+    {"query":"切片重复率为什么会升高","expected_card":"duplicate-rate"},{"query":"overlap太大会怎样","expected_card":"duplicate-rate"},
+    {"query":"固定embedding adapter能证明语义效果吗","expected_card":"fixed-adapter-limit"},{"query":"CI向量切片满分算真实模型吗","expected_card":"fixed-adapter-limit"},
+    {"query":"智能学习助手 v0.26 新增什么","expected_card":"assistant-v26"},{"query":"RAG应用工程第二课做什么","expected_card":"assistant-v26"}
+  ],
+  "unknown":["怎么给吉他调音","云为什么会飘"]
+}

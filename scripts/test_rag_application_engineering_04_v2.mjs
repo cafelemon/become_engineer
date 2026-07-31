@@ -1,0 +1,14 @@
+import assert from"node:assert/strict";
+import{spawnSync}from"node:child_process";
+import{readFileSync}from"node:fs";
+import{resolve}from"node:path";
+const root=resolve(import.meta.dirname,"..");
+const lesson=readFileSync(resolve(root,"learning-paths/llm-agent/rag-application-engineering/04-query-understanding-filter-hybrid-routing.md"),"utf8");
+for(const type of["overview","concept","example","reproduce","modify","troubleshoot","project"])assert.match(lesson,new RegExp(`data-context-type="${type}"`));
+for(const phrase of["plan=strategy:hybrid,lexical:8,vector:8,max:12","private-candidate:false","sql-from-model:false","ACL 不是生成前提示","零基础兴趣","有基础求职"])assert.ok(lesson.includes(phrase),phrase);
+const cwd=resolve(root,"site-src/examples/rag-application-engineering/intelligent-learning-assistant-v28");
+const tests=spawnSync("python3",["-m","unittest","-v","test_retrieval_router.py"],{cwd,encoding:"utf8"});
+assert.equal(tests.status,0,tests.stdout+tests.stderr);assert.match(tests.stdout+tests.stderr,/Ran 8 tests/);
+const report=spawnSync("python3",["retrieval_router.py"],{cwd,encoding:"utf8"});
+assert.equal(report.status,0,report.stderr);assert.match(report.stdout,/sql-from-model:false/);
+console.log(JSON.stringify({valid:true,lesson_id:"rag-application-engineering-04",tests:8,acl_first:true,model_sql:false},null,2));

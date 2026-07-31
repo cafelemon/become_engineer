@@ -1,0 +1,14 @@
+import assert from"node:assert/strict";
+import{spawnSync}from"node:child_process";
+import{readFileSync}from"node:fs";
+import{resolve}from"node:path";
+const root=resolve(import.meta.dirname,"..");
+const lesson=readFileSync(resolve(root,"learning-paths/llm-agent/agent-engineering/04-trajectory-outcome-recovery-memory-evaluation.md"),"utf8");
+for(const type of["overview","concept","example","reproduce","modify","troubleshoot","project"])assert.match(lesson,new RegExp(`data-context-type="${type}"`));
+for(const phrase of["metrics=outcome:1.00,trajectory:1.00,recovery:1.00,memory:1.00","dangerous-executions:0","最终结果不能证明授权、恢复或记忆边界","零基础兴趣","有基础求职","本模块无招聘信号"])assert.ok(lesson.includes(phrase),phrase);
+const cwd=resolve(root,"site-src/examples/agent-engineering/intelligent-learning-assistant-v22");
+const tests=spawnSync("python3",["-m","unittest","-v","test_trajectory_evaluation.py"],{cwd,encoding:"utf8"});
+assert.equal(tests.status,0,tests.stdout+tests.stderr);assert.match(tests.stdout+tests.stderr,/Ran 8 tests/);
+const report=spawnSync("python3",["trajectory_evaluation.py"],{cwd,encoding:"utf8"});
+assert.equal(report.status,0,report.stderr);assert.match(report.stdout,/gate=allowed:true,reasons:none/);
+console.log(JSON.stringify({valid:true,lesson_id:"agent-engineering-04",tests:8,trajectory:true,hard_gate:true},null,2));

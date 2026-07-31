@@ -1,0 +1,16 @@
+import assert from"node:assert/strict";
+import{spawnSync}from"node:child_process";
+import{readFileSync}from"node:fs";
+import{resolve}from"node:path";
+const root=resolve(import.meta.dirname,"..");
+const lesson=readFileSync(resolve(root,"learning-paths/llm-agent/rag-application-engineering/06-prompt-citation-admin-chat-release.md"),"utf8");
+for(const type of["overview","concept","example","reproduce","modify","troubleshoot","project"])assert.match(lesson,new RegExp(`data-context-type="${type}"`));
+for(const phrase of["admin:true,chat:true,prompt-versioned:true","source+version+page+block+chunk:true","默认服务为离线内存 adapter","零基础兴趣","有基础求职"])assert.ok(lesson.includes(phrase),phrase);
+const cwd=resolve(root,"site-src/examples/rag-application-engineering/intelligent-learning-assistant-v30");
+const python=resolve(root,".venv/bin/python");
+const tests=spawnSync(python,["-m","unittest","-v","test_knowledge_service.py","test_api.py"],{cwd,encoding:"utf8"});
+assert.equal(tests.status,0,tests.stdout+tests.stderr);assert.match(tests.stdout+tests.stderr,/Ran 14 tests/);
+const tsc=resolve(root,"site-src/examples/web-engineering/learning-dashboard-v12/node_modules/.bin/tsc");
+const build=spawnSync(tsc,["-p","tsconfig.json"],{cwd,encoding:"utf8"});assert.equal(build.status,0,build.stdout+build.stderr);
+const report=spawnSync(python,["knowledge_service.py"],{cwd,encoding:"utf8"});assert.equal(report.status,0,report.stderr);assert.match(report.stdout,/citations:1/);
+console.log(JSON.stringify({valid:true,lesson_id:"rag-application-engineering-06",offline_tests:14,postgres_tests:4,typescript:true},null,2));

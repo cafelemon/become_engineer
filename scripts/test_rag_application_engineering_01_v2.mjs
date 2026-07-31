@@ -1,0 +1,15 @@
+import assert from"node:assert/strict";
+import{spawnSync}from"node:child_process";
+import{readFileSync}from"node:fs";
+import{resolve}from"node:path";
+const root=resolve(import.meta.dirname,"..");
+const lesson=readFileSync(resolve(root,"learning-paths/llm-agent/rag-application-engineering/01-document-ingestion-parsing-version-index-jobs.md"),"utf8");
+for(const type of["overview","concept","example","reproduce","modify","troubleshoot","project"])assert.match(lesson,new RegExp(`data-context-type="${type}"`));
+for(const phrase of["job=status:indexed,attempts:1,blocks:1","scanned-pdf:ocr_required","失败版本不能替换线上知识","POST /api/knowledge-sources","零基础兴趣","有基础求职","只使用本项目证据"])assert.ok(lesson.includes(phrase),phrase);
+const cwd=resolve(root,"site-src/examples/rag-application-engineering/intelligent-learning-assistant-v25");
+const python=resolve(root,".venv/bin/python");
+const tests=spawnSync(python,["-m","unittest","-v","test_document_ingestion.py"],{cwd,encoding:"utf8"});
+assert.equal(tests.status,0,tests.stdout+tests.stderr);assert.match(tests.stdout+tests.stderr,/Ran 8 tests/);
+const report=spawnSync(python,["document_ingestion.py"],{cwd,encoding:"utf8"});
+assert.equal(report.status,0,report.stderr);assert.match(report.stdout,/scanned-pdf:ocr_required/);
+console.log(JSON.stringify({valid:true,lesson_id:"rag-application-engineering-01",tests:8,formats:3,ocr:false},null,2));

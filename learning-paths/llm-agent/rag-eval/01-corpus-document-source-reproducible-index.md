@@ -113,6 +113,23 @@ python3 corpus_index.py
 真实站点还要处理删除、重命名、重定向、抓取失败和访问控制。本课使用三个明确课程 URI，不实现爬虫，也不把本地快照描述成知识库服务。
 </section>
 
+<section id="deepen-document-lifecycle-map" data-learning-context="deepen-document-lifecycle-map" data-context-type="deepen" markdown="1">
+## 从语料快照走向文档生命周期
+
+真实知识库不能把“上传一个文件”直接等同于“检索已经可用”。一份来源至少要经过 `registered → parsing → indexed → active`，失败时进入 `failed`，被新版本替代后进入 `superseded`，删除则先标记 `tombstoned`，再从活动索引中撤出。这样管理台才能解释用户看到的是哪一版知识，而不是靠文件名猜测。
+
+| 对象 | 负责回答 | 不应该混在一起的字段 |
+| --- | --- | --- |
+| knowledge source | 谁拥有、从哪里来、谁能访问 | 解析结果、向量 |
+| document version | 本次内容 SHA、解析器版本、创建时间 | 当前是否对所有用户可见 |
+| ingestion job | 解析、切片、embedding、建索引进行到哪一步 | 文档永久身份 |
+| active index | 哪组文档版本正在服务查询 | 历史失败详情 |
+
+同一内容 SHA 的重复请求应返回同一个已完成版本或幂等 replay；新内容生成新版本，在解析和索引全部成功前不能替换 active version。回滚只切换到已经验证过的版本，不重新猜测旧文件。权限、许可和 owner 在解析前检查，删除也必须让旧 chunk、embedding 和缓存退出可检索集合。
+
+后续“RAG 应用工程”会把这些对象落到 PostgreSQL、异步 ingestion 状态和管理台。本课先保留最小快照实验，因为生命周期服务最终仍要依赖这里的稳定身份、内容摘要和规范 fingerprint。
+</section>
+
 <section id="project-learning-assistant-v07" data-learning-context="project-learning-assistant-v07" data-context-type="project" markdown="1">
 ## 可评估的智能学习助手 P5.2 v0.7
 
@@ -121,6 +138,7 @@ python3 corpus_index.py
 - 文件：`corpus_index.py` 与 `test_corpus_index.py`。
 - 保存：固定语料 fingerprint、8 项测试和一次 Schema v2 修改记录。
 - 下一版：在同一文档快照上建立倒排索引和 BM25 关键词基线。
+- 应用承接：后续把快照扩成 source、version、ingestion job 与 active index，不让上传成功冒充索引可用。
 </section>
 
 ## 四类学习者入口

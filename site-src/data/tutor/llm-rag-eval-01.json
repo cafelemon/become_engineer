@@ -55,6 +55,12 @@
       "anchor": "#deepen-corpus-versioning"
     },
     {
+      "id": "deepen-document-lifecycle-map",
+      "type": "deepen",
+      "title": "文档生命周期映射",
+      "anchor": "#deepen-document-lifecycle-map"
+    },
+    {
       "id": "project-learning-assistant-v07",
       "type": "project",
       "title": "智能学习助手v0.7",
@@ -306,6 +312,62 @@
         "href": "#deepen-corpus-versioning"
       },
       "updated_at": "2026-07-26",
+      "recommended": false
+    },
+    {
+      "id": "document-lifecycle",
+      "lesson_id": "llm-rag-eval-01",
+      "context_id": "deepen-document-lifecycle-map",
+      "question": "文档上传成功为什么不等于索引可用？",
+      "aliases": [
+        "知识库文档有哪些状态"
+      ],
+      "keywords": [
+        "文档上传成功为什么不等于索引可用",
+        "知识库文档有哪些状态",
+        "ingestion",
+        "active"
+      ],
+      "diagnostic": "区分来源登记、解析、建索引和激活四个阶段。",
+      "hints": [
+        "查看 #deepen-document-lifecycle-map。",
+        "先确认作业状态和active版本。"
+      ],
+      "example": "registered → parsing → indexed → active。",
+      "answer": "上传只证明来源已接收；解析、索引构建和原子激活仍可能失败，查询只能读取已成功激活的版本。",
+      "source": {
+        "label": "文档生命周期映射",
+        "href": "#deepen-document-lifecycle-map"
+      },
+      "updated_at": "2026-07-31",
+      "recommended": true
+    },
+    {
+      "id": "active-version",
+      "lesson_id": "llm-rag-eval-01",
+      "context_id": "deepen-document-lifecycle-map",
+      "question": "新文档版本什么时候可以切成 active？",
+      "aliases": [
+        "索引失败会替换线上版本吗"
+      ],
+      "keywords": [
+        "新文档版本什么时候可以切成active",
+        "索引失败会替换线上版本吗",
+        "原子切换",
+        "回滚"
+      ],
+      "diagnostic": "检查校验、索引成功和active指针切换是否分离。",
+      "hints": [
+        "查看 #deepen-document-lifecycle-map。",
+        "失败版本应保留错误而不污染active版本。"
+      ],
+      "example": "build success → validate → atomic activate。",
+      "answer": "只有解析、索引和校验全部成功后才能原子切换；失败版本记录原因，旧active版本继续服务并可回滚。",
+      "source": {
+        "label": "文档生命周期映射",
+        "href": "#deepen-document-lifecycle-map"
+      },
+      "updated_at": "2026-07-31",
       "recommended": false
     },
     {

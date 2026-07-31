@@ -1,0 +1,2 @@
+# Optional experiment only. Do not install in the default environment or CI.
+sentence-transformers==5.6.0

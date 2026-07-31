@@ -114,6 +114,24 @@ fixture 中含“忽略系统指令”，chunker 只计算字符区间和摘要�
 精确引用只能证明答案引用了这段文本，不能证明这段文本安全或事实正确。来源准入仍属于第 1 课边界。
 </section>
 
+<section id="deepen-chunking-strategy-matrix" data-learning-context="deepen-chunking-strategy-matrix" data-context-type="deepen" markdown="1">
+## 切片模型决定边界，切片参数决定尺度
+
+“每 500 token 切一次”只是固定窗口策略，不是唯一做法。应用里先识别文档结构，再选择切片模型；随后才调整 chunk size、overlap、最小段长和父子关系。模型选错时，继续微调数字通常救不回来。
+
+| 切片模型 | 适合 | 主要风险 | 必须保存的坐标 |
+| --- | --- | --- | --- |
+| 固定窗口 | 无结构日志、转写文本 | 截断句子和标题 | 字符/token 区间 |
+| 递归分隔 | 普通 Markdown、HTML 正文 | 分隔符顺序影响结果 | 原文字符区间 |
+| 标题/页码感知 | 手册、规范、数字文本 PDF | 标题解析错误、跨页表格 | heading path、page、block |
+| 语义断点 | 主题转换不规则的长段落 | 依赖 embedding，阈值漂移 | 原文区间、模型清单 |
+| 父子切片 | 小块召回、较大段回答 | 存储和去重更复杂 | child 与 parent 双身份 |
+
+语义切片不是“让大模型总结后再切”。它通常比较相邻句段 embedding 的距离，在超过阈值的位置形成断点；因此模型版本、归一化、阈值和最小/最大尺寸必须进入策略身份。自动测试仍使用固定向量替身，只验证断点算法，不宣称真实语义质量。
+
+选择策略至少比较边界覆盖率、目标上下文精度、chunk 尺寸分布、overlap 重复率和索引增量。引用必须始终回到原文坐标；即使父 chunk 被扩展用于回答，也不能把扩展后的整段冒充被召回的精确证据。
+</section>
+
 <section id="project-learning-assistant-v09" data-learning-context="project-learning-assistant-v09" data-context-type="project" markdown="1">
 ## 可评估的智能学习助手 P5.3 v0.9
 
@@ -122,6 +140,7 @@ fixture 中含“忽略系统指令”，chunker 只计算字符区间和摘要�
 - 文件：`chunk_citation.py` 与 `test_chunk_citation.py`。
 - 保存：三段 chunk manifest、8 项测试和三种 overlap 对比。
 - 下一版：加入 embedding adapter、余弦相似度与关键词/向量混合排序。
+- 应用承接：后续用统一 Chunker 比较固定、递归、结构感知、语义断点和父子切片。
 </section>
 
 ## 四类学习者入口

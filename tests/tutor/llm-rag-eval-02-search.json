@@ -80,6 +80,22 @@
     {
       "query": "RAG第二课项目做什么",
       "expected_card": "assistant-v08"
+    },
+    {
+      "query": "关键词检索调试页应该显示什么",
+      "expected_card": "lexical-debug"
+    },
+    {
+      "query": "BM25搜不到怎么逐层排查",
+      "expected_card": "lexical-debug"
+    },
+    {
+      "query": "权限过滤后无结果为什么不能提示文档存在",
+      "expected_card": "acl-empty"
+    },
+    {
+      "query": "搜索能泄露无权文档吗",
+      "expected_card": "acl-empty"
     }
   ],
   "unknown": [

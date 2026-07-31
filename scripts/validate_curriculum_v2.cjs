@@ -173,8 +173,13 @@ assert.ok(
   `课程地图明细必须显示登记中的 ${registry.course_count} 节正式课程`
 );
 const agentEngineeringLessons = registry.lessons.filter((lesson) => lesson.module_id === "agent-engineering").length;
+const agentEngineeringModule = registry.modules.find((module) => module.id === "agent-engineering");
 assert.ok(
-  mapSource.includes(`Agent 工程进入 ${agentEngineeringLessons}/6 建设`),
+  mapSource.includes(
+    agentEngineeringModule?.content_status === "已开放"
+      ? `Agent 工程已开放 ${agentEngineeringLessons}/6`
+      : `Agent 工程进入 ${agentEngineeringLessons}/6 建设`
+  ),
   `课程地图必须显示 Agent 工程 ${agentEngineeringLessons}/6 的当前进度`
 );
 for (const module of registry.modules) {

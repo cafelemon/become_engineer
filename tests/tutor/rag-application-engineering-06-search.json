@@ -1,0 +1,14 @@
+{"lesson_id":"rag-application-engineering-06","cases":[
+{"query":"RAG Prompt 应该怎样分层","expected_card":"prompt-layers"},{"query":"文档内容能当系统指令吗","expected_card":"prompt-layers"},
+{"query":"为什么 Prompt 要保存版本","expected_card":"prompt-version"},{"query":"回答回归怎样定位Prompt变化","expected_card":"prompt-version"},
+{"query":"RAG 应用的稳定 API 资源有哪些","expected_card":"stable-resources"},{"query":"管理台按钮应该直接定义接口吗","expected_card":"stable-resources"},
+{"query":"为什么他人来源返回 404","expected_card":"resource-hiding"},{"query":"跨主体资源为什么不返回403","expected_card":"resource-hiding"},
+{"query":"聊天引用必须返回哪些定位字段","expected_card":"citation-contract"},{"query":"只返回source_id够吗","expected_card":"citation-contract"},
+{"query":"检索不到证据时聊天接口怎样响应","expected_card":"explicit-refusal"},{"query":"RAG可以用模型常识填空吗","expected_card":"explicit-refusal"},
+{"query":"RAG 管理台应该显示哪些中间状态","expected_card":"admin-visibility"},{"query":"为什么不能只显示最终答案","expected_card":"admin-visibility"},
+{"query":"扫描 PDF 没有文本时怎么处理","expected_card":"ocr-failure"},{"query":"空PDF解析能标记成功吗","expected_card":"ocr-failure"},
+{"query":"live 正常为什么 ready 仍可能失败","expected_card":"readiness-boundary"},{"query":"健康检查怎样区分进程和检索可用","expected_card":"readiness-boundary"},
+{"query":"RAG 指标为什么不能用 query 作 label","expected_card":"low-cardinality-metrics"},{"query":"source_id适合Prometheus标签吗","expected_card":"low-cardinality-metrics"},
+{"query":"固定 adapter、真实数据库和浏览器测试分别证明什么","expected_card":"evidence-boundaries"},{"query":"固定测试满分能证明生产RAG吗","expected_card":"evidence-boundaries"},
+{"query":"智能学习助手 v0.30 新增什么","expected_card":"assistant-v30"},{"query":"RAG应用工程第六课交付什么","expected_card":"assistant-v30"}
+],"unknown":["怎么修理自行车刹车","夏季去哪里观鸟"]}

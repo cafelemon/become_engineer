@@ -80,6 +80,22 @@
     {
       "query": "RAG第三课项目做什么",
       "expected_card": "assistant-v09"
+    },
+    {
+      "query": "切片模型和切片参数有什么区别",
+      "expected_card": "chunk-model-vs-params"
+    },
+    {
+      "query": "调chunk size能解决所有切片问题吗",
+      "expected_card": "chunk-model-vs-params"
+    },
+    {
+      "query": "语义切片和父子切片分别解决什么",
+      "expected_card": "semantic-parent-child"
+    },
+    {
+      "query": "什么时候使用parent child chunk",
+      "expected_card": "semantic-parent-child"
     }
   ],
   "unknown": [

@@ -1,0 +1,30 @@
+services:
+  db:
+    image: pgvector/pgvector:0.8.2-pg16-bookworm
+    environment:
+      POSTGRES_DB: rag_app
+      POSTGRES_USER: rag_app
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+    secrets: [db_password]
+    volumes:
+      - rag_data:/var/lib/postgresql/data
+      - ./schema.sql:/docker-entrypoint-initdb.d/001-schema.sql:ro
+    ports: ["127.0.0.1::5432"]
+    healthcheck:
+      test: ["CMD-SHELL","pg_isready -U rag_app -d rag_app"]
+      interval: 2s
+      timeout: 2s
+      retries: 20
+  app:
+    build: .
+    ports: ["127.0.0.1::8000"]
+    depends_on:
+      db:
+        condition: service_healthy
+    read_only: true
+    tmpfs: [/tmp]
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
+volumes:
+  rag_data:

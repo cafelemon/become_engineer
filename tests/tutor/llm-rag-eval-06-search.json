@@ -80,6 +80,22 @@
     {
       "query": "RAG第六课项目做什么",
       "expected_card": "assistant-v12"
+    },
+    {
+      "query": "RAG为什么要分六层评估",
+      "expected_card": "six-layer-eval"
+    },
+    {
+      "query": "只看最终答案有什么问题",
+      "expected_card": "six-layer-eval"
+    },
+    {
+      "query": "哪些RAG指标不能被平均分抵消",
+      "expected_card": "hard-gates"
+    },
+    {
+      "query": "召回提高能抵消ACL泄露吗",
+      "expected_card": "hard-gates"
     }
   ],
   "unknown": [

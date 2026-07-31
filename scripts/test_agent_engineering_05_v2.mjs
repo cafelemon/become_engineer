@@ -1,0 +1,14 @@
+import assert from"node:assert/strict";
+import{spawnSync}from"node:child_process";
+import{readFileSync}from"node:fs";
+import{resolve}from"node:path";
+const root=resolve(import.meta.dirname,"..");
+const lesson=readFileSync(resolve(root,"learning-paths/llm-agent/agent-engineering/05-trace-span-correlation-metrics-redaction.md"),"utf8");
+for(const type of["overview","concept","example","reproduce","modify","troubleshoot","project"])assert.match(lesson,new RegExp(`data-context-type="${type}"`));
+for(const phrase of["correlation=trace:trace-001,spans:3,logs:1","route-template:true,status-class:true","redaction=secret-present:false,prompt:false,tool-output:false","不记录或展示隐式思维链","零基础兴趣","有基础求职","本模块无招聘信号"])assert.ok(lesson.includes(phrase),phrase);
+const cwd=resolve(root,"site-src/examples/agent-engineering/intelligent-learning-assistant-v23");
+const tests=spawnSync("python3",["-m","unittest","-v","test_agent_telemetry.py"],{cwd,encoding:"utf8"});
+assert.equal(tests.status,0,tests.stdout+tests.stderr);assert.match(tests.stdout+tests.stderr,/Ran 8 tests/);
+const report=spawnSync("python3",["agent_telemetry.py"],{cwd,encoding:"utf8"});
+assert.equal(report.status,0,report.stderr);assert.match(report.stdout,/secret-present:false/);
+console.log(JSON.stringify({valid:true,lesson_id:"agent-engineering-05",tests:8,trace:true,redacted:true},null,2));

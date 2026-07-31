@@ -1,0 +1,16 @@
+{
+  "lesson_id":"agent-engineering-05",
+  "cases":[
+    {"query":"request、run、trace和span有什么区别","expected_card":"id-boundaries"},{"query":"四种ID为什么不能混用","expected_card":"id-boundaries"},
+    {"query":"恢复请求怎样关联崩溃前轨迹","expected_card":"resume-correlation"},{"query":"新trace怎么找到旧trace","expected_card":"resume-correlation"},
+    {"query":"parent span ID有什么用","expected_card":"span-parent"},{"query":"检索和工具怎样形成层级","expected_card":"span-parent"},
+    {"query":"为什么指标不能用真实run ID做标签","expected_card":"low-cardinality"},{"query":"高基数指标有什么问题","expected_card":"low-cardinality"},
+    {"query":"HTTP指标应该记录URL还是路由模板","expected_card":"metric-route-template"},{"query":"状态码怎样降基数","expected_card":"metric-route-template"},
+    {"query":"Agent日志默认要脱敏哪些内容","expected_card":"default-redaction"},{"query":"Prompt和工具结果能完整打日志吗","expected_card":"default-redaction"},
+    {"query":"错误和成功请求怎样采样","expected_card":"sampling-policy"},{"query":"为什么错误要始终采样","expected_card":"sampling-policy"},
+    {"query":"管理台应该展示隐式思维链吗","expected_card":"no-chain-of-thought"},{"query":"trace等于模型思考过程吗","expected_card":"no-chain-of-thought"},
+    {"query":"日志越多越容易排错吗","expected_card":"evidence-budget"},{"query":"为什么可观测性也是预算","expected_card":"evidence-budget"},
+    {"query":"智能学习助手 v0.23 新增什么","expected_card":"assistant-v23"},{"query":"Agent工程第五课做什么","expected_card":"assistant-v23"}
+  ],
+  "unknown":["如何修剪玫瑰","鲸鱼为什么会唱歌"]
+}

@@ -97,6 +97,12 @@ node_modules/
 
 # Generated build and site outputs
 dist/
+# 两个可运行教学容器直接发布经 TypeScript 校验的单文件前端；保留精确白名单，
+# 让干净克隆无需依赖仓库外 node_modules 也能完成 Docker 构建。
+!site-src/examples/rag-application-engineering/intelligent-learning-assistant-v30/dist/
+!site-src/examples/rag-application-engineering/intelligent-learning-assistant-v30/dist/app.js
+!site-src/examples/agent-application-orchestration/intelligent-learning-assistant-v36/dist/
+!site-src/examples/agent-application-orchestration/intelligent-learning-assistant-v36/dist/app.js
 build/
 site/
 site-samples/

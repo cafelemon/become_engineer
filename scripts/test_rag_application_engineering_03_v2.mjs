@@ -1,0 +1,13 @@
+import assert from"node:assert/strict";
+import{spawnSync}from"node:child_process";
+import{readFileSync}from"node:fs";
+import{resolve}from"node:path";
+const root=resolve(import.meta.dirname,"..");
+const lesson=readFileSync(resolve(root,"learning-paths/llm-agent/rag-application-engineering/03-embedding-contract-pgvector-index-lifecycle.md"),"utf8");
+for(const type of["overview","concept","example","reproduce","modify","troubleshoot","project"])assert.match(lesson,new RegExp(`data-context-type="${type}"`));
+for(const phrase of["postgresql:16,pgvector-server:0.8.2,pgvector-python:0.5.0","exact-cosine:true,hnsw:true,acl-filter:true","building→ready→active→retired","先 `CREATE EXTENSION vector` 再注册 psycopg","零基础兴趣","有基础求职"])assert.ok(lesson.includes(phrase),phrase);
+if(!process.env.RAG_PGVECTOR_URL)throw new Error("RAG_PGVECTOR_URL is required; use the real pgvector container");
+const cwd=resolve(root,"site-src/examples/rag-application-engineering/intelligent-learning-assistant-v27");
+const tests=spawnSync(resolve(root,".venv/bin/python"),["-m","unittest","-v","test_vector_store.py"],{cwd,encoding:"utf8",env:process.env});
+assert.equal(tests.status,0,tests.stdout+tests.stderr);assert.match(tests.stdout+tests.stderr,/Ran 8 tests/);
+console.log(JSON.stringify({valid:true,lesson_id:"rag-application-engineering-03",tests:8,postgresql:16,pgvector:"0.8.2",mock:false},null,2));

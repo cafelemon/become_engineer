@@ -55,6 +55,12 @@
       "anchor": "#deepen-retrieved-data-boundary"
     },
     {
+      "id": "deepen-chunking-strategy-matrix",
+      "type": "deepen",
+      "title": "切片策略矩阵",
+      "anchor": "#deepen-chunking-strategy-matrix"
+    },
+    {
       "id": "project-learning-assistant-v09",
       "type": "project",
       "title": "智能学习助手v0.9",
@@ -301,6 +307,62 @@
         "href": "#deepen-retrieved-data-boundary"
       },
       "updated_at": "2026-07-26",
+      "recommended": false
+    },
+    {
+      "id": "chunk-model-vs-params",
+      "lesson_id": "llm-rag-eval-03",
+      "context_id": "deepen-chunking-strategy-matrix",
+      "question": "切片模型和切片参数有什么区别？",
+      "aliases": [
+        "调chunk size能解决所有切片问题吗"
+      ],
+      "keywords": [
+        "切片模型和切片参数有什么区别",
+        "调chunk size能解决所有切片问题吗",
+        "边界",
+        "策略"
+      ],
+      "diagnostic": "先判断是在选择边界算法，还是调节既定算法的尺度。",
+      "hints": [
+        "查看 #deepen-chunking-strategy-matrix。",
+        "模型决定边界，参数决定尺度。"
+      ],
+      "example": "heading-aware是模型，max_chars是参数。",
+      "answer": "切片模型决定在哪里断开，如递归、标题感知或语义断点；参数只控制窗口、重叠、阈值等尺度，不能弥补错误的边界模型。",
+      "source": {
+        "label": "切片策略矩阵",
+        "href": "#deepen-chunking-strategy-matrix"
+      },
+      "updated_at": "2026-07-31",
+      "recommended": true
+    },
+    {
+      "id": "semantic-parent-child",
+      "lesson_id": "llm-rag-eval-03",
+      "context_id": "deepen-chunking-strategy-matrix",
+      "question": "语义切片和父子切片分别解决什么？",
+      "aliases": [
+        "什么时候使用parent child chunk"
+      ],
+      "keywords": [
+        "语义切片和父子切片分别解决什么",
+        "什么时候使用parent child chunk",
+        "semantic breakpoint",
+        "父子召回"
+      ],
+      "diagnostic": "区分语义边界识别与小块召回、大块回填。",
+      "hints": [
+        "查看 #deepen-chunking-strategy-matrix。",
+        "用边界覆盖率和上下文精度做对照。"
+      ],
+      "example": "child命中后返回parent上下文。",
+      "answer": "语义切片用相邻语义变化寻找自然边界；父子切片用小子块提高召回精度，再回填父块保持完整上下文。",
+      "source": {
+        "label": "切片策略矩阵",
+        "href": "#deepen-chunking-strategy-matrix"
+      },
+      "updated_at": "2026-07-31",
       "recommended": false
     },
     {

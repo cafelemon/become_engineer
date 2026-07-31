@@ -1,0 +1,18 @@
+{
+  "lesson_id":"rag-application-engineering-04",
+  "cases":[
+    {"query":"RetrievalPlan允许哪些字段","expected_card":"strict-plan"},{"query":"检索路由模型能输出什么","expected_card":"strict-plan"},
+    {"query":"为什么不能让模型直接生成检索SQL","expected_card":"no-model-sql"},{"query":"模型输出raw_sql安全吗","expected_card":"no-model-sql"},
+    {"query":"哪些查询优先走关键词检索","expected_card":"lexical-route"},{"query":"错误码和课程ID用向量合适吗","expected_card":"lexical-route"},
+    {"query":"自然语言问题为什么适合混合检索","expected_card":"hybrid-route"},{"query":"什么时候同时跑BM25和vector","expected_card":"hybrid-route"},
+    {"query":"问题分解为什么要限制子查询数","expected_card":"bounded-decompose"},{"query":"复杂问题能无限拆分吗","expected_card":"bounded-decompose"},
+    {"query":"ACL应该在检索哪一步执行","expected_card":"acl-first"},{"query":"召回后过滤权限可以吗","expected_card":"acl-first"},
+    {"query":"RRF怎样融合多路排名","expected_card":"rrf-purpose"},{"query":"为什么RRF不用直接比较分数","expected_card":"rrf-purpose"},
+    {"query":"父子召回为什么还要按parent去重","expected_card":"dedupe-parent"},{"query":"多个child会挤满上下文吗","expected_card":"dedupe-parent"},
+    {"query":"候选预算要记录哪些阶段","expected_card":"candidate-stages"},{"query":"只看最终TopK够吗","expected_card":"candidate-stages"},
+    {"query":"时间过滤怎样安全加入检索","expected_card":"safe-time-filter"},{"query":"updated_after能直接拼SQL吗","expected_card":"safe-time-filter"},
+    {"query":"检索路由要怎样单独评估","expected_card":"route-eval"},{"query":"答案错怎么判断是路由问题","expected_card":"route-eval"},
+    {"query":"智能学习助手 v0.28 新增什么","expected_card":"assistant-v28"},{"query":"RAG应用工程第四课做什么","expected_card":"assistant-v28"}
+  ],
+  "unknown":["怎么保养皮鞋","候鸟为什么迁徙"]
+}

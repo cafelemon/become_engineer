@@ -80,6 +80,22 @@
     {
       "query": "RAG第四课项目做什么",
       "expected_card": "assistant-v10"
+    },
+    {
+      "query": "查询为什么需要检索策略路由",
+      "expected_card": "retrieval-router"
+    },
+    {
+      "query": "所有查询都同时跑BM25和向量吗",
+      "expected_card": "retrieval-router"
+    },
+    {
+      "query": "候选预算为什么要贯穿召回到上下文",
+      "expected_card": "candidate-budget"
+    },
+    {
+      "query": "先召回1000条最后截断可以吗",
+      "expected_card": "candidate-budget"
     }
   ],
   "unknown": [

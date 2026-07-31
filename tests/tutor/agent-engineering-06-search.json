@@ -1,0 +1,16 @@
+{
+  "lesson_id":"agent-engineering-06",
+  "cases":[
+    {"query":"检索文档里的指令为什么不能执行","expected_card":"retrieved-data"},{"query":"文档说忽略system怎么办","expected_card":"retrieved-data"},
+    {"query":"怎样阻止记忆投毒","expected_card":"memory-poison"},{"query":"未同意的记忆能进入上下文吗","expected_card":"memory-poison"},
+    {"query":"工具结果为什么也可能污染Agent","expected_card":"tool-pollution"},{"query":"工具返回的下一步指令要执行吗","expected_card":"tool-pollution"},
+    {"query":"跨主体隔离为什么要在召回前执行","expected_card":"acl-before-candidate"},{"query":"先召回再让模型别用可以吗","expected_card":"acl-before-candidate"},
+    {"query":"高风险批准要绑定哪些内容","expected_card":"approval-binding"},{"query":"改了参数旧批准还有效吗","expected_card":"approval-binding"},
+    {"query":"Agent发布门禁需要什么","expected_card":"release-gate"},{"query":"安全测试过了就能发布吗","expected_card":"release-gate"},
+    {"query":"为什么发布前要固定回滚目标","expected_card":"rollback-target"},{"query":"事故时再找旧镜像可以吗","expected_card":"rollback-target"},
+    {"query":"Prompt写防注入规则为什么不够","expected_card":"prompt-not-enough"},{"query":"一句忽略恶意指令能防住吗","expected_card":"prompt-not-enough"},
+    {"query":"固定攻击套件全过代表绝对安全吗","expected_card":"security-fixture-limit"},{"query":"五个攻击都挡住就没有风险吗","expected_card":"security-fixture-limit"},
+    {"query":"智能学习助手 v0.24 新增什么","expected_card":"assistant-v24"},{"query":"Agent工程第六课做什么","expected_card":"assistant-v24"}
+  ],
+  "unknown":["怎么挑选西瓜","海豚为什么跃出水面"]
+}

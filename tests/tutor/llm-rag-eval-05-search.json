@@ -80,6 +80,22 @@
     {
       "query": "RAG第五课项目做什么",
       "expected_card": "assistant-v11"
+    },
+    {
+      "query": "重排、压缩、Prompt和回答门禁怎样分工",
+      "expected_card": "rag-pipeline"
+    },
+    {
+      "query": "RAG完整处理顺序是什么",
+      "expected_card": "rag-pipeline"
+    },
+    {
+      "query": "语义压缩后怎样保持引用可追溯",
+      "expected_card": "compression-citation"
+    },
+    {
+      "query": "压缩摘要能直接当精确引文吗",
+      "expected_card": "compression-citation"
     }
   ],
   "unknown": [

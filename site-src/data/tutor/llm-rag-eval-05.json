@@ -49,6 +49,12 @@
       "anchor": "#troubleshoot-grounding"
     },
     {
+      "id": "deepen-prompt-context-compression",
+      "type": "deepen",
+      "title": "Prompt与上下文压缩",
+      "anchor": "#deepen-prompt-context-compression"
+    },
+    {
       "id": "deepen-injection-abstention",
       "type": "deepen",
       "title": "注入与拒答",
@@ -302,6 +308,62 @@
         "href": "#troubleshoot-grounding"
       },
       "updated_at": "2026-07-26",
+      "recommended": false
+    },
+    {
+      "id": "rag-pipeline",
+      "lesson_id": "llm-rag-eval-05",
+      "context_id": "deepen-prompt-context-compression",
+      "question": "重排、压缩、Prompt和回答门禁怎样分工？",
+      "aliases": [
+        "RAG完整处理顺序是什么"
+      ],
+      "keywords": [
+        "重排压缩Prompt和回答门禁怎样分工",
+        "RAG完整处理顺序是什么",
+        "rerank",
+        "compress"
+      ],
+      "diagnostic": "按候选排序、证据裁剪、消息分层和输出验证拆开职责。",
+      "hints": [
+        "查看 #deepen-prompt-context-compression。",
+        "不要把所有逻辑塞进一个Prompt。"
+      ],
+      "example": "recall → rerank → compress → pack → answer → validate。",
+      "answer": "重排选择更相关候选，压缩抽取可追溯证据，Prompt分隔策略与来源，回答门禁检查支持度、引用和拒答。",
+      "source": {
+        "label": "Prompt与上下文压缩",
+        "href": "#deepen-prompt-context-compression"
+      },
+      "updated_at": "2026-07-31",
+      "recommended": true
+    },
+    {
+      "id": "compression-citation",
+      "lesson_id": "llm-rag-eval-05",
+      "context_id": "deepen-prompt-context-compression",
+      "question": "语义压缩后怎样保持引用可追溯？",
+      "aliases": [
+        "压缩摘要能直接当精确引文吗"
+      ],
+      "keywords": [
+        "语义压缩后怎样保持引用可追溯",
+        "压缩摘要能直接当精确引文吗",
+        "抽取式压缩",
+        "原文坐标"
+      ],
+      "diagnostic": "检查压缩片段是否保留原chunk与字符坐标。",
+      "hints": [
+        "查看 #deepen-prompt-context-compression。",
+        "生成摘要不能冒充原文引文。"
+      ],
+      "example": "chunk_id + start/end + extracted_text。",
+      "answer": "优先使用抽取式压缩并保留chunk ID、版本和原文坐标；生成式摘要只能作导航，不能直接冒充精确引文。",
+      "source": {
+        "label": "Prompt与上下文压缩",
+        "href": "#deepen-prompt-context-compression"
+      },
+      "updated_at": "2026-07-31",
       "recommended": false
     },
     {

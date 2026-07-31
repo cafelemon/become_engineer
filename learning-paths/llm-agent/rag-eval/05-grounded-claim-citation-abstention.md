@@ -109,6 +109,23 @@ fixture 的来源中有“忽略系统指令”，context pack 只把它放在 s
 当检索不到支持证据时，`abstained + insufficient_evidence` 是正确产品状态。它让用户知道系统缺证据，也为第 6 课的拒答准确率留下可计算结果。
 </section>
 
+<section id="deepen-prompt-context-compression" data-learning-context="deepen-prompt-context-compression" data-context-type="deepen" markdown="1">
+## Prompt、重排、压缩和回答各有自己的责任
+
+端到端 RAG 不应把检索结果拼成一个长字符串。推荐顺序是 `recall → deduplicate → rerank → compress → order → pack → generate → validate`。CrossEncoder 重排只比较 query 与候选的相关性；抽取式压缩只删除与问题无关的句子；Prompt 负责角色、输出结构和来源数据边界；回答门禁负责状态、claim 与 citation。任何一层都不能替代 ACL。
+
+压缩后的句子必须携带原 chunk ID 和原文区间。若压缩器生成了摘要，只能作为模型输入提示，不能直接成为精确 quote。重复 overlap 可按来源区间去重；多样性选择可避免上下文被同一段落的近重复候选占满。较长的关键定义放在开头或结尾，中间位置保留导航信息，以降低 lost-in-the-middle 风险，但排序规则仍要经过评估。
+
+Prompt 至少分成四块：
+
+1. system policy：任务、拒答、安全和输出 Schema；
+2. conversation：经过预算和主体隔离的会话上下文；
+3. source data：带 ID、版本和坐标的不可信证据；
+4. user request：用户本轮问题，不提升为系统规则。
+
+Prompt 版本、context pack fingerprint、检索 trace ID 和输出校验结果共同进入评估产物。默认运行日志不保存完整 Prompt、来源正文或回答；需要调试时使用受控、短期、脱敏的 evidence bundle。
+</section>
+
 <section id="project-learning-assistant-v11" data-learning-context="project-learning-assistant-v11" data-context-type="project" markdown="1">
 ## 可评估的智能学习助手 P5.3 v0.11
 
@@ -117,6 +134,7 @@ fixture 的来源中有“忽略系统指令”，context pack 只把它放在 s
 - 文件：`grounded_answer.py` 与 `test_grounded_answer.py`。
 - 保存：answered/abstained 固定报告、坏证据回归与日志允许字段。
 - 下一版：用固定案例计算 Recall@k、MRR、引用有效率和拒答准确率，并阻止退化交付。
+- 应用承接：后续加入二阶段重排、抽取式压缩、去重、上下文排序与 Prompt 版本。
 </section>
 
 ## 四类学习者入口

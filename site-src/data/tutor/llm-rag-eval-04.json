@@ -55,6 +55,12 @@
       "anchor": "#deepen-semantic-claim-boundary"
     },
     {
+      "id": "deepen-retrieval-strategy-routing",
+      "type": "deepen",
+      "title": "检索策略路由",
+      "anchor": "#deepen-retrieval-strategy-routing"
+    },
+    {
       "id": "project-learning-assistant-v10",
       "type": "project",
       "title": "智能学习助手v0.10",
@@ -299,6 +305,62 @@
         "href": "#deepen-semantic-claim-boundary"
       },
       "updated_at": "2026-07-26",
+      "recommended": false
+    },
+    {
+      "id": "retrieval-router",
+      "lesson_id": "llm-rag-eval-04",
+      "context_id": "deepen-retrieval-strategy-routing",
+      "question": "查询为什么需要检索策略路由？",
+      "aliases": [
+        "所有查询都同时跑BM25和向量吗"
+      ],
+      "keywords": [
+        "查询为什么需要检索策略路由",
+        "所有查询都同时跑BM25和向量吗",
+        "严格结构",
+        "混合检索"
+      ],
+      "diagnostic": "按精确标识、自然语言、过滤和复杂问题选择召回路径。",
+      "hints": [
+        "查看 #deepen-retrieval-strategy-routing。",
+        "路由输出严格字段而不是任意SQL。"
+      ],
+      "example": "{\"lexical_k\":8,\"vector_k\":0,\"filters\":{}}。",
+      "answer": "精确编号、自然语言和带过滤查询需要不同策略；路由器应输出受限参数，由服务端执行白名单检索，不能让模型直接拼SQL。",
+      "source": {
+        "label": "检索策略路由",
+        "href": "#deepen-retrieval-strategy-routing"
+      },
+      "updated_at": "2026-07-31",
+      "recommended": true
+    },
+    {
+      "id": "candidate-budget",
+      "lesson_id": "llm-rag-eval-04",
+      "context_id": "deepen-retrieval-strategy-routing",
+      "question": "候选预算为什么要贯穿召回到上下文？",
+      "aliases": [
+        "先召回1000条最后截断可以吗"
+      ],
+      "keywords": [
+        "候选预算为什么要贯穿召回到上下文",
+        "先召回1000条最后截断可以吗",
+        "candidate budget",
+        "延迟"
+      ],
+      "diagnostic": "检查多路召回、融合、重排和上下文各层的数量上限。",
+      "hints": [
+        "查看 #deepen-retrieval-strategy-routing。",
+        "预算同时约束延迟、成本和噪声。"
+      ],
+      "example": "recall 40 → dedupe 25 → rerank 12 → context 6。",
+      "answer": "无限召回会放大延迟、重排成本和噪声；每层都应记录输入、去重、淘汰和最终上下文数量。",
+      "source": {
+        "label": "检索策略路由",
+        "href": "#deepen-retrieval-strategy-routing"
+      },
+      "updated_at": "2026-07-31",
       "recommended": false
     },
     {

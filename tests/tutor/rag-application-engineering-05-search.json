@@ -1,0 +1,18 @@
+{
+  "lesson_id":"rag-application-engineering-05",
+  "cases":[
+    {"query":"CrossEncoder 在检索流水线的哪一阶段","expected_card":"reranker-stage"},{"query":"重排器是全库检索器吗","expected_card":"reranker-stage"},
+    {"query":"为什么重排候选池必须有上限","expected_card":"rerank-budget"},{"query":"CrossEncoder为什么不能处理所有chunk","expected_card":"rerank-budget"},
+    {"query":"固定重排 adapter 能证明真实模型效果吗","expected_card":"fixed-adapter-boundary"},{"query":"CI的词项重排能代表CrossEncoder吗","expected_card":"fixed-adapter-boundary"},
+    {"query":"压缩后精确引用要保留哪些字段","expected_card":"citation-coordinates"},{"query":"语义压缩怎样保住引用","expected_card":"citation-coordinates"},
+    {"query":"生成式摘要能直接作为逐字引用吗","expected_card":"generated-summary-boundary"},{"query":"摘要可以继承原文坐标吗","expected_card":"generated-summary-boundary"},
+    {"query":"候选变成上下文包经过哪些阶段","expected_card":"context-pipeline"},{"query":"上下文选择完整流水线是什么","expected_card":"context-pipeline"},
+    {"query":"MMR 式选择解决什么问题","expected_card":"mmr-diversity"},{"query":"为什么上下文需要来源多样性","expected_card":"mmr-diversity"},
+    {"query":"怎样缓解 lost in the middle","expected_card":"lost-middle"},{"query":"重要证据为什么放上下文两端","expected_card":"lost-middle"},
+    {"query":"上下文预算为什么要在选择时硬执行","expected_card":"hard-budget"},{"query":"最后再截断Prompt可以吗","expected_card":"hard-budget"},
+    {"query":"接入真实重排模型要记录什么","expected_card":"real-reranker-adapter"},{"query":"真实CrossEncoder adapter如何可复现","expected_card":"real-reranker-adapter"},
+    {"query":"重排压缩和上下文要怎样分层评估","expected_card":"layered-context-eval"},{"query":"只看最终答案能评估上下文吗","expected_card":"layered-context-eval"},
+    {"query":"智能学习助手 v0.29 新增什么","expected_card":"assistant-v29"},{"query":"RAG应用工程第五课做什么","expected_card":"assistant-v29"}
+  ],
+  "unknown":["古典吉他怎么换弦","如何种植蓝莓"]
+}

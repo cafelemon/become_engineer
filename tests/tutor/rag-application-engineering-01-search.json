@@ -1,0 +1,18 @@
+{
+  "lesson_id":"rag-application-engineering-01",
+  "cases":[
+    {"query":"文档上传成功为什么还不能检索","expected_card":"upload-not-active"},{"query":"HTTP 201等于索引可用吗","expected_card":"upload-not-active"},
+    {"query":"来源、版本、块和作业怎样分工","expected_card":"four-entities"},{"query":"知识库文档为什么要拆四种实体","expected_card":"four-entities"},
+    {"query":"重复上传怎样避免产生新版本","expected_card":"checksum-idempotency"},{"query":"内容SHA幂等怎么做","expected_card":"checksum-idempotency"},
+    {"query":"Markdown解析要保留什么结构","expected_card":"markdown-heading"},{"query":"标题路径为什么要进block","expected_card":"markdown-heading"},
+    {"query":"为什么HTML文本提取不用正则","expected_card":"html-parser"},{"query":"正则能完整解析HTML吗","expected_card":"html-parser"},
+    {"query":"数字文本PDF怎样保留引用位置","expected_card":"pdf-pages"},{"query":"PDF block为什么要存页码","expected_card":"pdf-pages"},
+    {"query":"扫描PDF没有文字时怎么处理","expected_card":"ocr-required"},{"query":"pypdf能当OCR吗","expected_card":"ocr-required"},
+    {"query":"新版本解析失败会影响线上版本吗","expected_card":"failed-version"},{"query":"v2失败为什么v1还能检索","expected_card":"failed-version"},
+    {"query":"文档版本怎样回滚","expected_card":"rollback-version"},{"query":"回滚要重新解析旧文件吗","expected_card":"rollback-version"},
+    {"query":"哪些接入失败适合自动重试","expected_card":"retry-budget"},{"query":"ocr_required应该一直重试吗","expected_card":"retry-budget"},
+    {"query":"文档上传API应该返回什么","expected_card":"ingestion-api"},{"query":"客户端怎样知道索引完成","expected_card":"ingestion-api"},
+    {"query":"智能学习助手 v0.25 新增什么","expected_card":"assistant-v25"},{"query":"RAG应用工程第一课做什么","expected_card":"assistant-v25"}
+  ],
+  "unknown":["怎样制作陶艺杯","土星为什么有光环"]
+}

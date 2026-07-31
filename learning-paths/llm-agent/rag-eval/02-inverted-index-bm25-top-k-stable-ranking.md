@@ -111,6 +111,27 @@ python3 bm25_retriever.py
 本课不做生成，所以检索命中不等于最终回答正确。第 5 课才建立 claim 与 citation 门禁。
 </section>
 
+<section id="deepen-lexical-debug-console" data-learning-context="deepen-lexical-debug-console" data-context-type="deepen" markdown="1">
+## 应用里需要一张关键词检索调试单
+
+用户说“文档明明有这句话却搜不到”时，只展示最终 Top 3 不够。调试页应按阶段给出允许公开的结构化信息：规范化后的 query、tokenizer 版本、query terms、每个 term 的 df/IDF、命中文档字段、字段权重、过滤条件、候选数和截断原因。正文与原始敏感查询仍不写入普通日志。
+
+标题、正文、标签和路径不应被当成一个字段。可先给标题更高权重，再用固定查询集验证；如果路径中的高频词把无关结果推到前面，就应降低字段权重或停止索引该字段，而不是手工给某篇文档加分。
+
+```text
+query
+  → normalize/tokenize
+  → metadata + ACL filter
+  → fielded lexical recall
+  → candidate budget
+  → stable ranking + explanation
+```
+
+“查询无结果”也要区分：没有 token、token 不在索引、权限过滤后为空、候选被预算裁掉、索引版本过旧。只有第一种适合提示用户改写，权限过滤为空不能泄露“其实存在一篇无权文档”。
+
+后续应用课会把 lexical ranking 作为混合检索的一路，并在管理台保存脱敏 retrieval trace。BM25 仍是回归基线：向量或重排上线后若连精确课程 ID、错误码、产品名都找不准，不能用“更语义”解释退化。
+</section>
+
 <section id="project-learning-assistant-v08" data-learning-context="project-learning-assistant-v08" data-context-type="project" markdown="1">
 ## 可评估的智能学习助手 P5.2 v0.8
 
@@ -119,6 +140,7 @@ python3 bm25_retriever.py
 - 文件：`bm25_retriever.py` 与 `test_bm25_retriever.py`。
 - 保存：四条固定排名、8 项测试和一次 tokenizer 修改对比。
 - 下一版：把长文档切成有精确来源坐标、可验证引用的 chunk。
+- 应用承接：后续加入字段权重、ACL 前置过滤、候选预算和检索调试 trace。
 </section>
 
 ## 四类学习者入口

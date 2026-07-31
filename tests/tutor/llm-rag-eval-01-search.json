@@ -80,6 +80,22 @@
     {
       "query": "RAG第一课项目做什么",
       "expected_card": "assistant-v07"
+    },
+    {
+      "query": "文档上传成功为什么不等于索引可用",
+      "expected_card": "document-lifecycle"
+    },
+    {
+      "query": "知识库文档有哪些状态",
+      "expected_card": "document-lifecycle"
+    },
+    {
+      "query": "新文档版本什么时候可以切成 active",
+      "expected_card": "active-version"
+    },
+    {
+      "query": "索引失败会替换线上版本吗",
+      "expected_card": "active-version"
     }
   ],
   "unknown": [

@@ -287,6 +287,25 @@ nav:
                   - SQLite 运行状态、事件日志与原子 checkpoint: learning-paths/llm-agent/agent-engineering/01-sqlite-run-state-event-log-atomic-checkpoint.md
                   - 记忆来源、同意、TTL 与上下文预算: learning-paths/llm-agent/agent-engineering/02-memory-provenance-consent-ttl-context-budget.md
                   - Lease、幂等 step 与崩溃恢复: learning-paths/llm-agent/agent-engineering/03-lease-idempotent-step-crash-resume.md
+                  - 轨迹、结果、恢复与记忆质量评估: learning-paths/llm-agent/agent-engineering/04-trajectory-outcome-recovery-memory-evaluation.md
+                  - Trace、Span、关联指标与默认脱敏: learning-paths/llm-agent/agent-engineering/05-trace-span-correlation-metrics-redaction.md
+                  - 注入、隔离、安全发布与回滚: learning-paths/llm-agent/agent-engineering/06-injection-isolation-security-release-rollback.md
+              - RAG 应用工程:
+                  - 课程说明: learning-paths/llm-agent/rag-application-engineering/README.md
+                  - 文档接入、解析、版本与索引作业: learning-paths/llm-agent/rag-application-engineering/01-document-ingestion-parsing-version-index-jobs.md
+                  - 切片模型、切片策略与对照实验: learning-paths/llm-agent/rag-application-engineering/02-chunking-models-strategies-comparison.md
+                  - Embedding 契约、pgvector 与索引生命周期: learning-paths/llm-agent/rag-application-engineering/03-embedding-contract-pgvector-index-lifecycle.md
+                  - 查询理解、过滤、混合检索与策略路由: learning-paths/llm-agent/rag-application-engineering/04-query-understanding-filter-hybrid-routing.md
+                  - 重排、语义压缩与上下文选择: learning-paths/llm-agent/rag-application-engineering/05-rerank-semantic-compression-context-selection.md
+                  - Prompt、引用、管理台、聊天页与发布: learning-paths/llm-agent/rag-application-engineering/06-prompt-citation-admin-chat-release.md
+              - Agent 应用编排与交付:
+                  - 课程说明: learning-paths/llm-agent/agent-application-orchestration/README.md
+                  - 工作流、路由器与 Agent 的边界: learning-paths/llm-agent/agent-application-orchestration/01-workflow-router-agent-boundaries.md
+                  - 会话上下文、摘要与记忆召回: learning-paths/llm-agent/agent-application-orchestration/02-session-context-summary-memory-retrieval.md
+                  - 任务拆解、子任务预算与重规划: learning-paths/llm-agent/agent-application-orchestration/03-task-decomposition-budget-replanning.md
+                  - 人工审批、长任务与恢复: learning-paths/llm-agent/agent-application-orchestration/04-human-approval-long-running-recovery.md
+                  - 端到端评估、轨迹与故障定位: learning-paths/llm-agent/agent-application-orchestration/05-end-to-end-evaluation-trace-fault-localization.md
+                  - 安全、部署、回滚与交付证据: learning-paths/llm-agent/agent-application-orchestration/06-security-deployment-rollback-delivery-evidence.md
   - 项目:
       - 项目说明: projects/README.md
       - 项目主干规划: projects/project-roadmap.md

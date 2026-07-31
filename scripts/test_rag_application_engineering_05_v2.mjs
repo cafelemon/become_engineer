@@ -1,0 +1,14 @@
+import assert from"node:assert/strict";
+import{spawnSync}from"node:child_process";
+import{readFileSync}from"node:fs";
+import{resolve}from"node:path";
+const root=resolve(import.meta.dirname,"..");
+const lesson=readFileSync(resolve(root,"learning-paths/llm-agent/rag-application-engineering/05-rerank-semantic-compression-context-selection.md"),"utf8");
+for(const type of["overview","concept","example","reproduce","modify","troubleshoot","project"])assert.match(lesson,new RegExp(`data-context-type="${type}"`));
+for(const phrase of["retrieved:2,reranked:2,extracted:2,deduped:1","real-cross-encoder:false","生成式摘要不能伪装成原文引用","lost in the middle","零基础兴趣","有基础求职"])assert.ok(lesson.includes(phrase),phrase);
+const cwd=resolve(root,"site-src/examples/rag-application-engineering/intelligent-learning-assistant-v29");
+const tests=spawnSync("python3",["-m","unittest","-v","test_context_selection.py"],{cwd,encoding:"utf8"});
+assert.equal(tests.status,0,tests.stdout+tests.stderr);assert.match(tests.stdout+tests.stderr,/Ran 8 tests/);
+const report=spawnSync("python3",["context_selection.py"],{cwd,encoding:"utf8"});
+assert.equal(report.status,0,report.stderr);assert.match(report.stdout,/exact:true/);assert.match(report.stdout,/real-cross-encoder:false/);
+console.log(JSON.stringify({valid:true,lesson_id:"rag-application-engineering-05",tests:8,exact_citations:true,real_model:false},null,2));

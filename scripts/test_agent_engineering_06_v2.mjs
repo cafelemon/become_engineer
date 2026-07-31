@@ -1,0 +1,14 @@
+import assert from"node:assert/strict";
+import{spawnSync}from"node:child_process";
+import{readFileSync}from"node:fs";
+import{resolve}from"node:path";
+const root=resolve(import.meta.dirname,"..");
+const lesson=readFileSync(resolve(root,"learning-paths/llm-agent/agent-engineering/06-injection-isolation-security-release-rollback.md"),"utf8");
+for(const type of["overview","concept","example","reproduce","modify","troubleshoot","project"])assert.match(lesson,new RegExp(`data-context-type="${type}"`));
+for(const phrase of["security=cases:5,blocked:5,unexpected-allows:0","isolation=candidate:false,prompt:false,log:false,trace:false","release=allowed:true,reasons:none,rollback:v0.23","不能先进入候选再","零基础兴趣","有基础求职","本模块无招聘信号"])assert.ok(lesson.includes(phrase),phrase);
+const cwd=resolve(root,"site-src/examples/agent-engineering/intelligent-learning-assistant-v24");
+const tests=spawnSync("python3",["-m","unittest","-v","test_security_release_gate.py"],{cwd,encoding:"utf8"});
+assert.equal(tests.status,0,tests.stdout+tests.stderr);assert.match(tests.stdout+tests.stderr,/Ran 8 tests/);
+const report=spawnSync("python3",["security_release_gate.py"],{cwd,encoding:"utf8"});
+assert.equal(report.status,0,report.stderr);assert.match(report.stdout,/unexpected-allows:0/);
+console.log(JSON.stringify({valid:true,lesson_id:"agent-engineering-06",tests:8,attacks_blocked:5,rollback:true},null,2));

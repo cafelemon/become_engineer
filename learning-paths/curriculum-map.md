@@ -25,7 +25,7 @@
   <div><strong>衔接状态</strong><span>可顺序进入 · 缺少起步层 · 等待前置 · 方向可选</span></div>
 </div>
 
-当前正式课程共 **138 节**：工程基础 10 节、Python 起步 7 节、CS 起步 4 节、首个可验证项目 1 节、Python 核心与工程化 7 节、C++ 起步 2 节、C++ 核心 3 节、算法基础与核心 22 节、算法深化 10 节、算法求职加练 3 节、CS 系统基础 6 节、系统工程 6 节、AI 数学数据 6 节、机器学习 8 节、深度学习 8 节、模型使用与结构化输出 6 节、检索/RAG/评估 6 节、Tool Calling 与有界工作流 6 节、Agent 工程 3 节、Web 起步 4 节、Web 核心 4 节、Web 工程化 6 节。
+当前正式课程共 **153 节**：工程基础 10 节、Python 起步 7 节、CS 起步 4 节、首个可验证项目 1 节、Python 核心与工程化 7 节、C++ 起步 2 节、C++ 核心 3 节、算法基础与核心 22 节、算法深化 10 节、算法求职加练 3 节、CS 系统基础 6 节、系统工程 6 节、AI 数学数据 6 节、机器学习 8 节、深度学习 8 节、模型使用与结构化输出 6 节、检索/RAG/评估 6 节、Tool Calling 与有界工作流 6 节、Agent 工程 6 节、RAG 应用工程 6 节、Agent 应用编排与交付 6 节、Web 起步 4 节、Web 核心 4 节、Web 工程化 6 节。
 
 ## 四类用户共用一棵能力树
 
@@ -97,12 +97,14 @@
       <h3>LLM 应用</h3>
       <a href="#module-llm-use" data-status="open">模型使用与结构化输出 · 已开放 6 / 6</a>
       <a href="#module-llm-rag-eval" data-status="open">检索、RAG 与评估 · 已开放 6 / 6</a>
+      <a href="#module-rag-application-engineering" data-status="open">RAG 应用工程 · 已开放 6 / 6</a>
       <small>不要求先完成完整机器学习与深度学习</small>
     </section>
     <section>
       <h3>Agent 工程</h3>
       <a href="#module-agent-tool-calling" data-status="open">Tool Calling 与有界工作流 · 已开放 6 / 6</a>
-      <a href="#module-agent-engineering" data-status="building">状态、恢复、评估与安全 · 建设中 3 / 6</a>
+      <a href="#module-agent-engineering" data-status="open">状态、恢复、评估与安全 · 已开放 6 / 6</a>
+      <a href="#module-agent-application-orchestration" data-status="open">Agent 应用编排与交付 · 已开放 6 / 6</a>
       <a href="#module-agent-specialized" data-status="planned">专业 Agent</a>
       <small>微调、本地推理、多模态 Agent 再追加模型或系统前置</small>
     </section>
@@ -158,8 +160,10 @@
 | <span id="module-multimodal">多模态与其他 AI 专业方向</span> | 专业/求职 | 能力深化 | 多模态或专项模型项目 | 深度学习 → 高级 Agent | 专业方向可选 | 已规划未建设 | 方向可选 |
 | <span id="module-llm-use">模型使用与结构化输出</span> | 基础 | 方向主干 | 可验证的模型调用、Schema 与失败处理 | Python 工程化 + Web/API → RAG | LLM 应用路线进入；不强制 ML/DL | 已开放 · 6/6 | 可顺序进入 |
 | <span id="module-llm-rag-eval">检索、RAG 与评估</span> | 工程化 | 方向主干 | 有引用、固定评估集和可观测失败的 RAG | 模型使用 + Web 工程化 → Agent | LLM/Agent 路线共用 | 已开放 · 6/6 | 可顺序进入 |
+| <span id="module-rag-application-engineering">RAG 应用工程</span> | 深化 | 能力深化 | 文档管理、索引、检索、重排与可交付问答 | RAG 基础 + Agent 工程 → 应用编排 | 四类共用；求职追加真实项目证据 | 已开放 · 6/6 | 可顺序进入 |
 | <span id="module-agent-tool-calling">Tool Calling 与有界工作流</span> | 基础 | 方向主干 | 可停止、可验收的工具工作流 | RAG 与评估 → Agent 工程 | Agent 路线进入 | 已开放 · 6/6 | 可顺序进入 |
-| <span id="module-agent-engineering">状态、记忆、上下文、恢复、评估、可观测性与安全</span> | 工程化 | 方向主干 | 可恢复、可评估、可观测的 Agent | Tool Calling → 专业 Agent | Agent 路线共用；求职追加系统设计追问 | 建设中 · 3/6 | 可顺序进入 |
+| <span id="module-agent-engineering">状态、记忆、上下文、恢复、评估、可观测性与安全</span> | 工程化 | 方向主干 | 可恢复、可评估、可观测的 Agent | Tool Calling → 专业 Agent | Agent 路线共用；求职追加系统设计追问 | 已开放 · 6/6 | 可顺序进入 |
+| <span id="module-agent-application-orchestration">Agent 应用编排与交付</span> | 深化 | 能力深化 | 状态图、上下文、计划、审批、评估与发布闭环 | Agent 工程 + RAG 应用 → 专业 Agent | 四类共用；求职追加真实交付证据 | 已开放 · 6/6 | 可顺序进入 |
 | <span id="module-agent-specialized">专业 Agent</span> | 专业/求职 | 能力深化 | Coding、Research、Text2SQL 等领域项目 | Agent 工程 → 领域交付 | 按兴趣或岗位选择 | 已规划未建设 | 方向可选 |
 | <span id="module-agent-advanced">微调、本地推理与多模态 Agent</span> | 专业/求职 | 能力深化 | 模型或系统边界明确的高级 Agent | Agent 工程 + DL／Transformer／系统能力 | 只在实际需求满足时进入 | 已规划未建设 | 等待前置 |
 | <span id="module-c-start">C 语言起步</span> | 起步 | 方向主干 | 编译、指针、内存与硬件接口基础 | 方向选择 → 设备共同基础 | 仅设备方向进入 | 已规划未建设 | 方向可选 |
@@ -174,7 +178,7 @@
 
 ## 已开放课程明细 { #opened-lessons }
 
-以下 **138 节课程各出现一次**，均已按 V2 登记；Agent 工程进入 3/6 建设。
+以下 **153 节课程各出现一次**，均已按 V2 登记；Agent 工程已开放 6/6，Agent 应用编排与交付六课等待组级验收。
 
 ### 工程基础起步 · 10 节
 
@@ -377,11 +381,32 @@
 5. [有界工具循环、状态预算与显式终止](llm-agent/tool-calling-workflow/05-bounded-tool-loop-state-budgets-termination.md) · 已开放
 6. [固定对抗评估、预算指标与回归交付](llm-agent/tool-calling-workflow/06-fixed-adversarial-evaluation-regression-delivery.md) · 已开放
 
-### Agent 工程 · 建设中 3 / 6
+### Agent 工程 · 已开放 6 / 6
 
-1. [SQLite 运行状态、事件日志与原子 checkpoint](llm-agent/agent-engineering/01-sqlite-run-state-event-log-atomic-checkpoint.md) · 建设中
-2. [记忆来源、同意、TTL 与上下文预算](llm-agent/agent-engineering/02-memory-provenance-consent-ttl-context-budget.md) · 建设中
-3. [Lease、幂等 step 与崩溃恢复](llm-agent/agent-engineering/03-lease-idempotent-step-crash-resume.md) · 建设中
+1. [SQLite 运行状态、事件日志与原子 checkpoint](llm-agent/agent-engineering/01-sqlite-run-state-event-log-atomic-checkpoint.md) · 已开放
+2. [记忆来源、同意、TTL 与上下文预算](llm-agent/agent-engineering/02-memory-provenance-consent-ttl-context-budget.md) · 已开放
+3. [Lease、幂等 step 与崩溃恢复](llm-agent/agent-engineering/03-lease-idempotent-step-crash-resume.md) · 已开放
+4. [轨迹、结果、恢复与记忆质量评估](llm-agent/agent-engineering/04-trajectory-outcome-recovery-memory-evaluation.md) · 已开放
+5. [Trace、Span、关联指标与默认脱敏](llm-agent/agent-engineering/05-trace-span-correlation-metrics-redaction.md) · 已开放
+6. [注入、隔离、安全发布与回滚](llm-agent/agent-engineering/06-injection-isolation-security-release-rollback.md) · 已开放
+
+### RAG 应用工程 · 已开放 6 / 6
+
+1. [文档接入、解析、版本与索引作业](llm-agent/rag-application-engineering/01-document-ingestion-parsing-version-index-jobs.md) · 已开放
+2. [切片模型、切片策略与对照实验](llm-agent/rag-application-engineering/02-chunking-models-strategies-comparison.md) · 已开放
+3. [Embedding 契约、pgvector 与索引生命周期](llm-agent/rag-application-engineering/03-embedding-contract-pgvector-index-lifecycle.md) · 已开放
+4. [查询理解、过滤、混合检索与策略路由](llm-agent/rag-application-engineering/04-query-understanding-filter-hybrid-routing.md) · 已开放
+5. [重排、语义压缩与上下文选择](llm-agent/rag-application-engineering/05-rerank-semantic-compression-context-selection.md) · 已开放
+6. [Prompt、引用、管理台、聊天页与发布](llm-agent/rag-application-engineering/06-prompt-citation-admin-chat-release.md) · 已开放
+
+### Agent 应用编排与交付 · 已开放 6 / 6
+
+1. [工作流、路由器与 Agent 的边界](llm-agent/agent-application-orchestration/01-workflow-router-agent-boundaries.md) · 已开放
+2. [会话上下文、摘要与记忆召回](llm-agent/agent-application-orchestration/02-session-context-summary-memory-retrieval.md) · 已开放
+3. [任务拆解、子任务预算与重规划](llm-agent/agent-application-orchestration/03-task-decomposition-budget-replanning.md) · 已开放
+4. [人工审批、长任务与恢复](llm-agent/agent-application-orchestration/04-human-approval-long-running-recovery.md) · 已开放
+5. [端到端评估、轨迹与故障定位](llm-agent/agent-application-orchestration/05-end-to-end-evaluation-trace-fault-localization.md) · 已开放
+6. [安全、部署、回滚与交付证据](llm-agent/agent-application-orchestration/06-security-deployment-rollback-delivery-evidence.md) · 已开放
 
 ## 规划模块边界
 
@@ -392,15 +417,15 @@
 - **系统工程**：六课已完成描述符 I/O、信号、队列、非阻塞网络、性能与恢复并开放。
 - **算法**：求职叠加三课已完成固定判题、限时策略和错因回归；算法深化 10/10 已开放。
 - **AI 模型**：数学数据实验 6/6、机器学习 8/8 与深度学习 8/8 已开放；强化学习、视觉、NLP/Transformer 与多模态的模型前置已经满足，但专项正文仍未建设。
-- **LLM 应用**：模型使用与结构化输出、检索/RAG/评估均已开放。
-- **Agent 工程**：Tool Calling 与有界工作流 6/6 已开放；状态／记忆／上下文／恢复／评估／可观测性／安全进入 3/6 建设。
+- **LLM 应用**：模型使用与结构化输出、检索/RAG/评估和 RAG 应用工程均已开放。
+- **Agent 工程**：状态、记忆、上下文、恢复、评估、可观测性与安全，以及 Agent 应用编排与交付均已开放 6/6。
 - **设备系统**：C 起步、设备共同基础、MCU/RTOS、Linux/BSP、工业控制；与 AI 或强化学习汇合后进入边缘智能或智能控制。
 
 ## 接下来怎么推进
 
 1. 55 节既有课程已经完成 V2 迁移；后续按依赖关系建设新的连续课程组。
 2. Web 起步与 Web 核心各四课已经完成；学习进度报告器升级为 v0.8，具备运行时契约、SQLite 持久化、资源 CRUD、游标分页、重复写入保护、表单校验和失败恢复。
-3. 共同基座至 Tool Calling 与有界工作流均已开放；Agent 工程进入 3/6 建设。
+3. 共同基座至 Agent 工程 6/6 均已开放。
 4. 每新增一节正式课程，同时更新正文、示例、知识库、测试、项目关系、课程登记和公开状态；禁止只增加空页面或目录标题。
 
 设备方向的硬件门槛与三级出口见[设备系统与边缘智能](device-edge-systems/README.md)。公开课程登记的机器可校验版本位于 `site-src/data/curriculum/v2.json`，但学习者只需要使用本页。

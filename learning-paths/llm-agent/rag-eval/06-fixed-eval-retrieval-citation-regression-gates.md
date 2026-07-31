@@ -115,6 +115,25 @@ python3 rag_evaluation.py
 日志只保留 case ID、聚合指标和门禁原因；教学 query、答案和 citation 文本也不需要进入运行日志。评估产物保留数据 fingerprint、代码版本、配置、基线、候选和失败原因。
 </section>
 
+<section id="deepen-layered-rag-evaluation" data-learning-context="deepen-layered-rag-evaluation" data-context-type="deepen" markdown="1">
+## 六层评估才能说明问题出在哪里
+
+只看最终答案会把解析、切片、召回、重排和上下文错误混在一起。应用评估应保留同一 case ID，并在各层输出独立结果与分母。
+
+| 层 | 代表指标 | 典型失败 |
+| --- | --- | --- |
+| ingestion | 解析成功率、版本激活时间、幂等重放率 | PDF 无文本、旧版本仍 active |
+| chunk | 边界覆盖、上下文精度、尺寸与重复分布 | 标题和正文分离、overlap 过多 |
+| retrieval | Recall@k、MRR、ACL 泄露数、候选数 | 相关证据未召回、越权候选出现 |
+| rerank | nDCG/首相关名次变化、重排延迟 | 候选正确却被降序 |
+| context | 引用保真率、压缩保留率、预算利用率 | 压缩删除关键句、近重复占满 |
+| answer | claim 支持率、拒答准确率、结构有效率 | 有引用但 claim 不受支持 |
+
+端到端还要记录 p50/p95 延迟、模型/数据库调用次数和估算成本，但不能把低延迟平均进质量分。ACL 泄露、错误引用和危险执行是硬门禁，不能由 Recall 提升抵消。
+
+变更切片策略时先看 chunk 与 retrieval；更换 embedding 时看 retrieval 与 rerank；调整 Prompt 时保持前面产物冻结，再看 context 与 answer。这样回归报告能回答“哪一层变了”，而不是只说总分从 0.82 到 0.84。
+</section>
+
 <section id="project-learning-assistant-v12" data-learning-context="project-learning-assistant-v12" data-context-type="project" markdown="1">
 ## 可评估的智能学习助手 P5.4 v0.12
 
@@ -123,6 +142,7 @@ python3 rag_evaluation.py
 - 文件：`rag_evaluation.py` 与 `test_rag_evaluation.py`。
 - 保存：数据 fingerprint、基线/候选报告、门禁决定与 8 项测试。
 - 本组边界：不加入 Tool Calling、Agent、框架、微调或真实 provider；这些在后续模块另建权限和评估契约。
+- 应用承接：后续把 ingestion、chunk、retrieval、rerank、context 和 answer 指标接入同一运行报告。
 </section>
 
 ## 四类学习者入口
