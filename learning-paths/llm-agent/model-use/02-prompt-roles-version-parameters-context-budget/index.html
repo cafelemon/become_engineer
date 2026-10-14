@@ -4869,6 +4869,8 @@
       
         
       
+        
+      
     
     
     
@@ -5770,6 +5772,289 @@
     
   
     Eval、推理 Schema、Manifest 与离线交付
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ai-foundation/nlp-transformer/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NLP 与 Transformer
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_11_4_4" id="__nav_2_11_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_11_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NLP 与 Transformer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/01-text-data-contract-splits-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文本任务、数据契约、切分与指标
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/02-tokenization-tfidf-linear-baseline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分词、TF-IDF 与线性分类基线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/03-vocabulary-embedding-pooling-network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    词表、Embedding 与池化浅层网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/04-rnn-cnn-sequence-baselines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GRU、CNN 序列基线与公平比较
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/05-scaled-dot-product-attention-mask-position/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    缩放点积注意力、Mask 与位置
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/06-transformer-encoder-classification-ablation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transformer Encoder 文本分类与消融
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/07-pretrained-path-unified-evaluation-model-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    预训练路径、统一评测与模型卡
   
 
     
@@ -8546,12 +8831,12 @@ invariants=roles-preserved,version-explicit,parameters-recorded,budget-before-ca
 <section data-context-type="example" data-learning-context="example-canonical-fingerprint" id="example-canonical-fingerprint">
 <h2 id="_2">指纹覆盖影响请求的字段<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="n">canonical</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;prompt_id&quot;</span><span class="p">:</span> <span class="n">spec</span><span class="o">.</span><span class="n">prompt_id</span><span class="p">,</span>
-    <span class="s2">&quot;prompt_version&quot;</span><span class="p">:</span> <span class="n">spec</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
-    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">model</span><span class="p">,</span>
-    <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">asdict</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">],</span>
-    <span class="s2">&quot;max_output_units&quot;</span><span class="p">:</span> <span class="n">spec</span><span class="o">.</span><span class="n">max_output_units</span><span class="p">,</span>
-    <span class="s2">&quot;temperature&quot;</span><span class="p">:</span> <span class="n">spec</span><span class="o">.</span><span class="n">temperature</span><span class="p">,</span>
+    <span class="s2">"prompt_id"</span><span class="p">:</span> <span class="n">spec</span><span class="o">.</span><span class="n">prompt_id</span><span class="p">,</span>
+    <span class="s2">"prompt_version"</span><span class="p">:</span> <span class="n">spec</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
+    <span class="s2">"model"</span><span class="p">:</span> <span class="n">model</span><span class="p">,</span>
+    <span class="s2">"messages"</span><span class="p">:</span> <span class="p">[</span><span class="n">asdict</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">],</span>
+    <span class="s2">"max_output_units"</span><span class="p">:</span> <span class="n">spec</span><span class="o">.</span><span class="n">max_output_units</span><span class="p">,</span>
+    <span class="s2">"temperature"</span><span class="p">:</span> <span class="n">spec</span><span class="o">.</span><span class="n">temperature</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">fingerprint</span> <span class="o">=</span> <span class="n">sha256</span><span class="p">(</span><span class="n">canonical_json</span><span class="p">(</span><span class="n">canonical</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
 </code></pre></div>

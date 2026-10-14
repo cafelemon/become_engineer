@@ -5116,6 +5116,8 @@
       
         
       
+        
+      
     
     
     
@@ -6017,6 +6019,289 @@
     
   
     Eval、推理 Schema、Manifest 与离线交付
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ai-foundation/nlp-transformer/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NLP 与 Transformer
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_11_4_4" id="__nav_2_11_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_11_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NLP 与 Transformer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/01-text-data-contract-splits-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文本任务、数据契约、切分与指标
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/02-tokenization-tfidf-linear-baseline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分词、TF-IDF 与线性分类基线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/03-vocabulary-embedding-pooling-network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    词表、Embedding 与池化浅层网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/04-rnn-cnn-sequence-baselines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GRU、CNN 序列基线与公平比较
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/05-scaled-dot-product-attention-mask-position/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    缩放点积注意力、Mask 与位置
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/06-transformer-encoder-classification-ablation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transformer Encoder 文本分类与消融
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/07-pretrained-path-unified-evaluation-model-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    预训练路径、统一评测与模型卡
   
 
     
@@ -8623,13 +8908,13 @@
 
 <span class="k">def</span><span class="w"> </span><span class="nf">announce</span><span class="p">(</span><span class="n">function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="nb">str</span><span class="p">]:</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;开始 -&gt; &quot;</span> <span class="o">+</span> <span class="n">function</span><span class="p">()</span>
+        <span class="k">return</span> <span class="s2">"开始 -&gt; "</span> <span class="o">+</span> <span class="n">function</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="n">wrapper</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">finish</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="k">return</span> <span class="s2">&quot;完成&quot;</span>
+    <span class="k">return</span> <span class="s2">"完成"</span>
 
 
 <span class="n">traced_finish</span> <span class="o">=</span> <span class="n">announce</span><span class="p">(</span><span class="n">finish</span><span class="p">)</span>
@@ -8638,7 +8923,7 @@
 <p><code>announce()</code> 接收原函数，返回一个新函数。<code>@announce</code> 只是把这种重新绑定写得更紧凑：</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@announce</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">finish</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="k">return</span> <span class="s2">&quot;完成&quot;</span>
+    <span class="k">return</span> <span class="s2">"完成"</span>
 </code></pre></div>
 <p>可以近似读成 <code>finish = announce(finish)</code>。装饰发生在解释器执行函数定义时；真正的 <code>wrapper()</code> 函数体仍要等调用时才运行。</p>
 </section>
@@ -8647,7 +8932,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">trace_calls</span><span class="p">(</span><span class="n">event_sink</span><span class="p">:</span> <span class="n">EventSink</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Decorator</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">decorate</span><span class="p">(</span><span class="n">function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">R</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">R</span><span class="p">]:</span>
         <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">R</span><span class="p">:</span>
-            <span class="n">event_sink</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;开始:</span><span class="si">{</span><span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">event_sink</span><span class="p">(</span><span class="sa">f</span><span class="s2">"开始:</span><span class="si">{</span><span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">wrapper</span>
     <span class="k">return</span> <span class="n">decorate</span>
@@ -8667,8 +8952,8 @@
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ParamSpec</span><span class="p">,</span> <span class="n">TypeVar</span>
 
-<span class="n">P</span> <span class="o">=</span> <span class="n">ParamSpec</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">)</span>
-<span class="n">R</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;R&quot;</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">ParamSpec</span><span class="p">(</span><span class="s2">"P"</span><span class="p">)</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">"R"</span><span class="p">)</span>
 </code></pre></div>
 <p><code>ParamSpec</code> 代表原函数的整组位置参数和关键字参数；<code>TypeVar</code> 把原返回类型连接到包装函数：</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">decorate</span><span class="p">(</span><span class="n">function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">R</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">R</span><span class="p">]:</span>
@@ -8701,16 +8986,16 @@
 <div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
-    <span class="n">event_sink</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;失败:</span><span class="si">{</span><span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">error</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">event_sink</span><span class="p">(</span><span class="sa">f</span><span class="s2">"失败:</span><span class="si">{</span><span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">error</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">raise</span>
 </code></pre></div>
 <p>追踪器可以观察异常类型，但不能把失败悄悄变成 <code>None</code>。测试要同时证明事件出现、原异常继续传播：</p>
-<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="s2">&quot;审计数据无效&quot;</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="s2">"审计数据无效"</span><span class="p">):</span>
     <span class="n">fail_export</span><span class="p">()</span>
 
 <span class="k">assert</span> <span class="n">events</span> <span class="o">==</span> <span class="p">[</span>
-    <span class="s2">&quot;开始:fail_export&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;失败:fail_export:ValueError&quot;</span><span class="p">,</span>
+    <span class="s2">"开始:fail_export"</span><span class="p">,</span>
+    <span class="s2">"失败:fail_export:ValueError"</span><span class="p">,</span>
 <span class="p">]</span>
 </code></pre></div>
 <p>这里捕获 <code>Exception</code> 是为了记录所有普通业务异常，紧接着使用裸 <code>raise</code> 原样传播；它和上一课“捕获 <code>OSError</code> 并转换成 <code>False</code>”的目的不同。</p>
@@ -8724,7 +9009,7 @@
 
 <span class="nd">@contextmanager</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">staged_output_path</span><span class="p">(</span><span class="n">output_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Path</span><span class="p">]:</span>
-    <span class="n">pending_path</span> <span class="o">=</span> <span class="n">output_path</span><span class="o">.</span><span class="n">with_name</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;.</span><span class="si">{</span><span class="n">output_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">.tmp&quot;</span><span class="p">)</span>
+    <span class="n">pending_path</span> <span class="o">=</span> <span class="n">output_path</span><span class="o">.</span><span class="n">with_name</span><span class="p">(</span><span class="sa">f</span><span class="s2">".</span><span class="si">{</span><span class="n">output_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">.tmp"</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">yield</span> <span class="n">pending_path</span>
         <span class="n">pending_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span>
@@ -8743,8 +9028,8 @@
 <section data-context-type="example" data-learning-context="example-staged-write" id="example-staged-write">
 <h2 id="_7">正式路径只在最后一刻被替换<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">staged_output_path</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">pending_path</span><span class="p">:</span>
-    <span class="k">with</span> <span class="n">pending_path</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
-        <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;学习审计快照</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">pending_path</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"w"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"学习审计快照</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div>
 <p>这两个 <code>with</code> 各管一件事：</p>
 <ul>
@@ -8762,10 +9047,10 @@ python<span class="w"> </span>site-src/examples/python-core/decorators_contextma
 </code></pre></div>
 <p>你应该看到：</p>
 <div class="highlight"><pre><span></span><code>result=完成。
-events=[&#39;开始:join_text&#39;, &#39;完成:join_text&#39;]
+events=['开始:join_text', '完成:join_text']
 name=join_text
 failure=ValueError
-failure_events=[&#39;开始:fail_export&#39;, &#39;失败:fail_export:ValueError&#39;]
+failure_events=['开始:fail_export', '失败:fail_export:ValueError']
 published=新审计内容
 preserved=旧审计内容
 pending_exists=False

@@ -5083,6 +5083,8 @@
       
         
       
+        
+      
     
     
     
@@ -5984,6 +5986,289 @@
     
   
     Eval、推理 Schema、Manifest 与离线交付
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ai-foundation/nlp-transformer/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NLP 与 Transformer
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_11_4_4" id="__nav_2_11_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_11_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NLP 与 Transformer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/01-text-data-contract-splits-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文本任务、数据契约、切分与指标
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/02-tokenization-tfidf-linear-baseline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分词、TF-IDF 与线性分类基线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/03-vocabulary-embedding-pooling-network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    词表、Embedding 与池化浅层网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/04-rnn-cnn-sequence-baselines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GRU、CNN 序列基线与公平比较
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/05-scaled-dot-product-attention-mask-position/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    缩放点积注意力、Mask 与位置
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/06-transformer-encoder-classification-ablation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transformer Encoder 文本分类与消融
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/07-pretrained-path-unified-evaluation-model-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    预训练路径、统一评测与模型卡
   
 
     
@@ -8595,14 +8880,14 @@
 <h2 id="sql">SQL 和数据不要自己拼在一起<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h2>
 <p>先看读取一位学习者的条件：</p>
 <div class="highlight"><pre><span></span><code><span class="n">row</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-    <span class="s2">&quot;SELECT name FROM learners WHERE id = ?&quot;</span><span class="p">,</span>
+    <span class="s2">"SELECT name FROM learners WHERE id = ?"</span><span class="p">,</span>
     <span class="p">(</span><span class="n">learner_id</span><span class="p">,),</span>
 <span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
 </code></pre></div>
 <p>问号是占位符，第二个参数才是真正的数据。数据库驱动负责把值安全地绑定进去。</p>
 <p>不要这样写：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 不要照着做</span>
-<span class="n">sql</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;SELECT name FROM learners WHERE id = &#39;</span><span class="si">{</span><span class="n">learner_id</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+<span class="n">sql</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"SELECT name FROM learners WHERE id = '</span><span class="si">{</span><span class="n">learner_id</span><span class="si">}</span><span class="s2">'"</span>
 </code></pre></div>
 <p>字符串拼接会让输入有机会改变 SQL 的结构。占位符把“查询要做什么”和“这次传入什么值”分开。测试会把 <code>'); DROP TABLE learners; --</code> 当作普通备注保存，再确认 <code>learners</code> 表仍然存在。</p>
 </section>
@@ -8681,7 +8966,7 @@ npm<span class="w"> </span><span class="nb">test</span>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">saveStudySession</span><span class="p">(</span>
 <span class="w">  </span><span class="nx">activeLearnerId</span><span class="p">,</span>
 <span class="w">  </span><span class="mf">0.75</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;整理 SQLite 关系图并补回滚测试&quot;</span>
+<span class="w">  </span><span class="s2">"整理 SQLite 关系图并补回滚测试"</span>
 <span class="p">);</span>
 </code></pre></div>
 <p>运行前先写下预测：当前是 <code>8.5</code>，保存后应该变成多少？然后依次检查：</p>

@@ -5070,6 +5070,8 @@
       
         
       
+        
+      
     
     
     
@@ -5971,6 +5973,289 @@
     
   
     Eval、推理 Schema、Manifest 与离线交付
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ai-foundation/nlp-transformer/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NLP 与 Transformer
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_11_4_4" id="__nav_2_11_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_11_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NLP 与 Transformer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-foundation/nlp-transformer/01-text-data-contract-splits-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文本任务、数据契约、切分与指标
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-foundation/nlp-transformer/02-tokenization-tfidf-linear-baseline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分词、TF-IDF 与线性分类基线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-foundation/nlp-transformer/03-vocabulary-embedding-pooling-network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    词表、Embedding 与池化浅层网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-foundation/nlp-transformer/04-rnn-cnn-sequence-baselines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GRU、CNN 序列基线与公平比较
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-foundation/nlp-transformer/05-scaled-dot-product-attention-mask-position/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    缩放点积注意力、Mask 与位置
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-foundation/nlp-transformer/06-transformer-encoder-classification-ablation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transformer Encoder 文本分类与消融
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-foundation/nlp-transformer/07-pretrained-path-unified-evaluation-model-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    预训练路径、统一评测与模型卡
   
 
     
@@ -8537,9 +8822,9 @@ with lock: expected=2000 actual=2000
 <section data-context-type="example" data-learning-context="example-forced-interleaving" id="example-forced-interleaving">
 <h2 id="barrier">用 Barrier 固定交错，不靠“多跑几次看看”<a class="headerlink" href="#barrier" title="Permanent link">&para;</a></h2>
 <p>失败实验先让两个线程都完成读取，再允许它们写回：</p>
-<div class="highlight"><pre><span></span><code><span class="n">snapshot</span> <span class="o">=</span> <span class="n">counter</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">snapshot</span> <span class="o">=</span> <span class="n">counter</span><span class="p">[</span><span class="s2">"value"</span><span class="p">]</span>
 <span class="n">both_have_read</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
-<span class="n">counter</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">snapshot</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">counter</span><span class="p">[</span><span class="s2">"value"</span><span class="p">]</span> <span class="o">=</span> <span class="n">snapshot</span> <span class="o">+</span> <span class="mi">1</span>
 </code></pre></div>
 <p><code>Barrier(2)</code> 要等两个线程都到达。于是两份 <code>snapshot</code> 必然都是 <code>0</code>，两个线程最后都写 <code>1</code>。这个安排让测试每次都能解释同一个失败，不依赖调度器刚好在某一行切换。</p>
 <p>Barrier 只用来搭建教学实验，它不是这个计数器的修复方案。</p>
@@ -8548,13 +8833,13 @@ with lock: expected=2000 actual=2000
 <h2 id="_3">锁要包住完整的不变量<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>修复后的代码是：</p>
 <div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
-    <span class="n">counter</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">counter</span><span class="p">[</span><span class="s2">"value"</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 </code></pre></div>
 <p><code>with lock</code> 进入时获取锁，离开时释放。即使临界区抛出异常，上下文管理也会执行释放路径。</p>
 <p>不要把读取放在锁外、只锁最后的写入：</p>
-<div class="highlight"><pre><span></span><code><span class="n">snapshot</span> <span class="o">=</span> <span class="n">counter</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span>  <span class="c1"># 仍可能同时读到旧值</span>
+<div class="highlight"><pre><span></span><code><span class="n">snapshot</span> <span class="o">=</span> <span class="n">counter</span><span class="p">[</span><span class="s2">"value"</span><span class="p">]</span>  <span class="c1"># 仍可能同时读到旧值</span>
 <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
-    <span class="n">counter</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">snapshot</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">counter</span><span class="p">[</span><span class="s2">"value"</span><span class="p">]</span> <span class="o">=</span> <span class="n">snapshot</span> <span class="o">+</span> <span class="mi">1</span>
 </code></pre></div>
 <p>这段代码看起来“用了锁”，但没有保护读取与写回之间的关系，lost update 仍然存在。</p>
 </section>
@@ -8576,7 +8861,7 @@ python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w">
 <section data-context-type="modify" data-learning-context="modify-counter-invariant" id="modify-counter-invariant">
 <h2 id="_5">给计数器再加一个不变量<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>把共享状态改成：</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="s2">&quot;completed&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;remaining&quot;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="s2">"completed"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"remaining"</span><span class="p">:</span> <span class="mi">2000</span><span class="p">}</span>
 </code></pre></div>
 <p>每次更新同时执行 <code>completed += 1</code> 和 <code>remaining -= 1</code>，始终满足两者之和为 2000。</p>
 <p>先故意只锁其中一项，写测试证明不变量可能被破坏；再用同一把锁保护两项更新和检查。不要给两个字段各配一把互不相关的锁，那会让调用者看到只完成一半的状态。</p>

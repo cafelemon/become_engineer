@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-07-31",
+  "updated_at": "2026-10-14",
   "registry": "site-src/data/curriculum/v2.json",
   "content_standard": "docs/08_content_standard.md",
   "current_schema": "v2-with-v1-compatibility",
@@ -21,6 +21,7 @@
     "reproducible-experiment-evaluation-system": "可复现实验与评估系统",
     "structured-data-ml-system": "结构化数据机器学习系统",
     "diagnosable-neural-network": "可诊断神经网络训练系统",
+    "text-classification-evolution": "文本分类模型演进",
     "intelligent-learning-assistant": "可评估的智能学习助手"
   },
   "batches": [
@@ -46,7 +47,8 @@
     {"id":"b20-agent-tool-calling","order":20,"title":"Tool Calling 与有界工作流","lesson_count":6,"prerequisite_modules":["llm-rag-eval"],"completion_gate":"六课共 48 项真实离线测试、60 卡/120 问、固定对抗评估、严格构建、站内链接和 18 项多模式浏览器检查通过，整组已开放。"},
     {"id":"b21-agent-engineering","order":21,"title":"Agent 工程","lesson_count":6,"prerequisite_modules":["agent-tool-calling"],"completion_gate":"六课共 48 项测试、60 卡/120 问、严格构建 246 个 HTML、54854 条链接、8016 个锚点和 18 项多模式浏览器检查通过，整组已开放。"},
     {"id":"b22-rag-application-engineering","order":22,"title":"RAG 应用工程","lesson_count":6,"prerequisite_modules":["llm-rag-eval","agent-engineering"],"completion_gate":"六课共 58 项代码与真实数据库测试、72 卡/144 问、pgvector 0.8.2、Compose 健康、严格构建 255 个 HTML、58416 条链接、8288 个锚点、18 项课程页面与 3 项应用浏览器检查通过，整组已开放。"},
-    {"id":"b23-agent-application-orchestration","order":23,"title":"Agent 应用编排与交付","lesson_count":6,"prerequisite_modules":["agent-engineering","rag-application-engineering"],"completion_gate":"六课代码、72 卡/144 问与 50 项测试已完成；真实 PostgreSQL、容器、备份恢复、浏览器、严格构建和链接组级验收后开放。"}
+    {"id":"b23-agent-application-orchestration","order":23,"title":"Agent 应用编排与交付","lesson_count":6,"prerequisite_modules":["agent-engineering","rag-application-engineering"],"completion_gate":"六课代码、72 卡/144 问与 50 项测试已完成；真实 PostgreSQL、容器、备份恢复、浏览器、严格构建和链接组级验收后开放。"},
+    {"id":"b24-nlp-transformer","order":24,"title":"NLP 与 Transformer","lesson_count":7,"prerequisite_modules":["deep-learning"],"completion_gate":"七课在同一原创文本语料和固定划分上完成传统、浅层、序列与 Transformer 基线，以统一错误、成本与模型卡评估；真实预训练微调为可选路径，不冒充离线实测。"}
   ],
   "tutor_lesson_ids": {
     "engineering-01":"engineering-foundation-01",
@@ -166,6 +168,13 @@
     "deep-learning-06":"deep-learning-06",
     "deep-learning-07":"deep-learning-07",
     "deep-learning-08":"deep-learning-08",
+    "nlp-transformer-01":"nlp-transformer-01",
+    "nlp-transformer-02":"nlp-transformer-02",
+    "nlp-transformer-03":"nlp-transformer-03",
+    "nlp-transformer-04":"nlp-transformer-04",
+    "nlp-transformer-05":"nlp-transformer-05",
+    "nlp-transformer-06":"nlp-transformer-06",
+    "nlp-transformer-07":"nlp-transformer-07",
     "llm-use-01":"llm-use-01",
     "llm-use-02":"llm-use-02",
     "llm-use-03":"llm-use-03",
@@ -363,6 +372,13 @@
     {"id":"agent-application-orchestration-03","target_module_id":"agent-application-orchestration","target_depth":"深化","target_role":"能力深化","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b23-agent-application-orchestration","prerequisite_lesson_ids":["agent-application-orchestration-02"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
     {"id":"agent-application-orchestration-04","target_module_id":"agent-application-orchestration","target_depth":"深化","target_role":"能力深化","course_type":"web-llm-agent","project_line":"intelligent-learning-assistant","batch_id":"b23-agent-application-orchestration","prerequisite_lesson_ids":["agent-application-orchestration-03"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
     {"id":"agent-application-orchestration-05","target_module_id":"agent-application-orchestration","target_depth":"深化","target_role":"能力深化","course_type":"ai-experiment","project_line":"intelligent-learning-assistant","batch_id":"b23-agent-application-orchestration","prerequisite_lesson_ids":["agent-application-orchestration-04"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
-    {"id":"agent-application-orchestration-06","target_module_id":"agent-application-orchestration","target_depth":"深化","target_role":"能力深化","course_type":"project-integration","project_line":"intelligent-learning-assistant","batch_id":"b23-agent-application-orchestration","prerequisite_lesson_ids":["agent-application-orchestration-05"],"migration_status":"已迁移","migration_kind":"新建正式课程"}
+    {"id":"agent-application-orchestration-06","target_module_id":"agent-application-orchestration","target_depth":"深化","target_role":"能力深化","course_type":"project-integration","project_line":"intelligent-learning-assistant","batch_id":"b23-agent-application-orchestration","prerequisite_lesson_ids":["agent-application-orchestration-05"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"nlp-transformer-01","target_module_id":"nlp-transformer","target_depth":"深化","target_role":"能力深化","course_type":"ai-experiment","project_line":"text-classification-evolution","batch_id":"b24-nlp-transformer","prerequisite_lesson_ids":["deep-learning-08"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"nlp-transformer-02","target_module_id":"nlp-transformer","target_depth":"深化","target_role":"能力深化","course_type":"ai-experiment","project_line":"text-classification-evolution","batch_id":"b24-nlp-transformer","prerequisite_lesson_ids":["nlp-transformer-01"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"nlp-transformer-03","target_module_id":"nlp-transformer","target_depth":"深化","target_role":"能力深化","course_type":"ai-experiment","project_line":"text-classification-evolution","batch_id":"b24-nlp-transformer","prerequisite_lesson_ids":["nlp-transformer-02"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"nlp-transformer-04","target_module_id":"nlp-transformer","target_depth":"深化","target_role":"能力深化","course_type":"ai-experiment","project_line":"text-classification-evolution","batch_id":"b24-nlp-transformer","prerequisite_lesson_ids":["nlp-transformer-03"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"nlp-transformer-05","target_module_id":"nlp-transformer","target_depth":"深化","target_role":"能力深化","course_type":"ai-experiment","project_line":"text-classification-evolution","batch_id":"b24-nlp-transformer","prerequisite_lesson_ids":["nlp-transformer-04"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"nlp-transformer-06","target_module_id":"nlp-transformer","target_depth":"深化","target_role":"能力深化","course_type":"ai-experiment","project_line":"text-classification-evolution","batch_id":"b24-nlp-transformer","prerequisite_lesson_ids":["nlp-transformer-05"],"migration_status":"已迁移","migration_kind":"新建正式课程"},
+    {"id":"nlp-transformer-07","target_module_id":"nlp-transformer","target_depth":"深化","target_role":"能力深化","course_type":"project-integration","project_line":"text-classification-evolution","batch_id":"b24-nlp-transformer","prerequisite_lesson_ids":["nlp-transformer-06"],"migration_status":"已迁移","migration_kind":"新建正式课程"}
   ]
 }

@@ -5092,6 +5092,8 @@
       
         
       
+        
+      
     
     
     
@@ -5993,6 +5995,289 @@
     
   
     Eval、推理 Schema、Manifest 与离线交付
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ai-foundation/nlp-transformer/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NLP 与 Transformer
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_11_4_4" id="__nav_2_11_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_11_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NLP 与 Transformer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/01-text-data-contract-splits-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文本任务、数据契约、切分与指标
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/02-tokenization-tfidf-linear-baseline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分词、TF-IDF 与线性分类基线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/03-vocabulary-embedding-pooling-network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    词表、Embedding 与池化浅层网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/04-rnn-cnn-sequence-baselines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GRU、CNN 序列基线与公平比较
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/05-scaled-dot-product-attention-mask-position/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    缩放点积注意力、Mask 与位置
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/06-transformer-encoder-classification-ablation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transformer Encoder 文本分类与消融
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/07-pretrained-path-unified-evaluation-model-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    预训练路径、统一评测与模型卡
   
 
     
@@ -8574,10 +8859,10 @@
 <h2 id="_4">定义以后，还要调用<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>先看一个很小的函数：</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">build_welcome</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;欢迎回来，</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"欢迎回来，</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span>
 
 
-<span class="n">message</span> <span class="o">=</span> <span class="n">build_welcome</span><span class="p">(</span><span class="s2">&quot;小码&quot;</span><span class="p">)</span>
+<span class="n">message</span> <span class="o">=</span> <span class="n">build_welcome</span><span class="p">(</span><span class="s2">"小码"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
 </code></pre></div>
 <p>读到 <code>def build_welcome(name):</code> 时，Python 会把这段做法记在名字 <code>build_welcome</code> 下，但不会立即执行缩进部分。读到 <code>build_welcome("小码")</code>，这次调用才真正开始。</p>
@@ -8601,8 +8886,8 @@
 
 <span class="k">def</span><span class="w"> </span><span class="nf">build_status</span><span class="p">(</span><span class="n">target_hours</span><span class="p">,</span> <span class="n">finished_hours</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">finished_hours</span> <span class="o">&gt;=</span> <span class="n">target_hours</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;已完成&quot;</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;还需 </span><span class="si">{</span><span class="n">target_hours</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">finished_hours</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2"> 小时&quot;</span>
+        <span class="k">return</span> <span class="s2">"已完成"</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"还需 </span><span class="si">{</span><span class="n">target_hours</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">finished_hours</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2"> 小时"</span>
 </code></pre></div>
 <p><code>calculate_progress(5, 3)</code> 返回 <code>0.6</code>；<code>build_status(5, 3)</code> 返回“还需 2 小时”。同样的函数换一组数字就能继续使用，不需要复制判断规则。</p>
 <p>这里先约定 <code>target_hours</code> 必须是正数。输入校验会在后面的异常处理课程中补上；现在若把目标写成 <code>0</code>，除法自然会报 <code>ZeroDivisionError</code>，不要用一个随意的默认值把问题藏起来。</p>
@@ -8620,13 +8905,13 @@
 </code></pre></div>
 <p>关键字把数据属于谁写得更清楚，也减少了同类型参数传反的机会。</p>
 <p>函数还可以给不常变化的数据设置默认值：</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">build_report_line</span><span class="p">(</span><span class="n">course</span><span class="p">,</span> <span class="n">target_hours</span><span class="p">,</span> <span class="n">finished_hours</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;- &quot;</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">build_report_line</span><span class="p">(</span><span class="n">course</span><span class="p">,</span> <span class="n">target_hours</span><span class="p">,</span> <span class="n">finished_hours</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">"- "</span><span class="p">):</span>
     <span class="n">progress</span> <span class="o">=</span> <span class="n">calculate_progress</span><span class="p">(</span><span class="n">target_hours</span><span class="p">,</span> <span class="n">finished_hours</span><span class="p">)</span>
     <span class="n">status</span> <span class="o">=</span> <span class="n">build_status</span><span class="p">(</span><span class="n">target_hours</span><span class="p">,</span> <span class="n">finished_hours</span><span class="p">)</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">prefix</span><span class="si">}{</span><span class="n">course</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">progress</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">，</span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">prefix</span><span class="si">}{</span><span class="n">course</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">progress</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">，</span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
 <p>大多数记录沿用 <code>"- "</code>；需要换成星号时再明确传入：</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">build_report_line</span><span class="p">(</span><span class="s2">&quot;复盘练习&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;* &quot;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">build_report_line</span><span class="p">(</span><span class="s2">"复盘练习"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">"* "</span><span class="p">))</span>
 </code></pre></div>
 <p>默认值应当代表一个安全、常用而且容易理解的选择。它不是为了把所有参数都省掉。</p>
 </section>
@@ -8686,10 +8971,10 @@ get_status 的调用结果： 进行中
 <div class="highlight"><pre><span></span><code>
 </code></pre></div>
 <p>第一行会正常打印，第二个 <code>print(message)</code> 会触发：</p>
-<div class="highlight"><pre><span></span><code>NameError: name &#39;message&#39; is not defined
+<div class="highlight"><pre><span></span><code>NameError: name 'message' is not defined
 </code></pre></div>
 <p>修复方式不是把 <code>message</code> 变成全局变量，而是在调用处接住返回值：</p>
-<div class="highlight"><pre><span></span><code><span class="n">returned_message</span> <span class="o">=</span> <span class="n">build_message</span><span class="p">(</span><span class="s2">&quot;Python 起步&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">returned_message</span> <span class="o">=</span> <span class="n">build_message</span><span class="p">(</span><span class="s2">"Python 起步"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">returned_message</span><span class="p">)</span>
 </code></pre></div>
 <p>局部范围让不同函数可以放心使用 <code>message</code>、<code>result</code> 这样的临时名字，也避免一个函数无意中改坏另一个函数的中间数据。</p>
@@ -8769,7 +9054,7 @@ get_status 的调用结果： 进行中
 <p>在 <code>notes/learning-log.md</code> 写下三个函数各自负责什么，以及你为什么选择返回值而不是在函数内部直接打印。提交前检查：</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>practice/python-basics/learning_profile.py<span class="w"> </span>notes/learning-log.md
 git<span class="w"> </span>diff<span class="w"> </span>--cached
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;refactor study profile into functions&quot;</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"refactor study profile into functions"</span>
 git<span class="w"> </span>status<span class="w"> </span>--short
 </code></pre></div>
 <p>如果一次修改既调整了函数内部，又改变了调用方式，请把两组输入重新跑一遍。函数减少了重复代码，但不会自动替你保证调用正确。</p>

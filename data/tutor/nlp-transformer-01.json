@@ -1,0 +1,96 @@
+{
+  "version": 2,
+  "lesson": {"id": "nlp-transformer-01", "title": "文本任务、数据契约、切分与指标", "path": "learning-paths/ai-foundation/nlp-transformer/01-text-data-contract-splits-metrics/"},
+  "contexts": [
+    {"id": "overview-text-task", "type": "overview", "title": "文本任务", "anchor": "#overview-text-task"},
+    {"id": "concept-text-contract", "type": "concept", "title": "文本数据契约", "anchor": "#concept-text-contract"},
+    {"id": "concept-split-boundary", "type": "concept", "title": "数据切分", "anchor": "#concept-split-boundary"},
+    {"id": "example-confusion-baseline", "type": "example", "title": "多数类基线指标", "anchor": "#example-confusion-baseline"},
+    {"id": "reproduce-text-v01", "type": "reproduce", "title": "复现 v0.1", "anchor": "#reproduce-text-v01"},
+    {"id": "modify-text-v01", "type": "modify", "title": "修改数据", "anchor": "#modify-text-v01"},
+    {"id": "troubleshoot-text-v01", "type": "troubleshoot", "title": "数据排错", "anchor": "#troubleshoot-text-v01"},
+    {"id": "project-text-v01", "type": "project", "title": "文本项目 v0.1", "anchor": "#project-text-v01"}
+  ],
+  "cards": [
+    {
+      "id": "text-task", "lesson_id": "nlp-transformer-01", "context_id": "overview-text-task",
+      "question": "本课文本分类要预测什么？", "aliases": ["code 和 plan 两个标签是什么"],
+      "keywords": ["文本分类", "预测", "code", "plan", "标签"],
+      "diagnostic": "先确认问题问的是输入短句还是输出标签。",
+      "hints": ["查看顶部 rows 与 labels 的固定报告。", "打开 corpus.csv 的前三行，指出 text 与 label。"],
+      "example": "一句编程排错问题的标签是 code。",
+      "answer": "本课输入一条教学短句，输出 code 或 plan；它不预测提问者身份，也不代表真实业务表现。",
+      "source": {"label": "文本任务", "href": "#overview-text-task"}, "updated_at": "2026-10-13", "recommended": true
+    },
+    {
+      "id": "fields", "lesson_id": "nlp-transformer-01", "context_id": "concept-text-contract",
+      "question": "sample_id、text 和 label 各做什么？", "aliases": ["为什么标签不能放进模型输入"],
+      "keywords": ["sample_id", "text", "label", "字段", "模型输入", "标签"],
+      "diagnostic": "先把追踪身份、预测输入和正确答案分开。",
+      "hints": ["查看 corpus.csv 的列名。", "预测新短句时只有 text 可用于模型输入。"],
+      "example": "C01 是追踪 ID，短句是 text，code 是 label。",
+      "answer": "sample_id 只负责追踪，text 是预测输入，label 是训练与评估答案；把 label 放进输入会泄漏答案。",
+      "source": {"label": "文本数据契约", "href": "#concept-text-contract"}, "updated_at": "2026-10-13", "recommended": true
+    },
+    {
+      "id": "duplicates", "lesson_id": "nlp-transformer-01", "context_id": "concept-text-contract",
+      "question": "为什么要检查重复文本和重复 ID？", "aliases": ["近重复文本会造成什么风险"],
+      "keywords": ["重复文本", "重复 ID", "近重复", "数据泄漏", "检查"],
+      "diagnostic": "区分程序能拒绝的完全重复和需人工检查的近重复。",
+      "hints": ["试着在练习副本中复制一个 sample_id。", "再复制一条 text，看 read_corpus 的拒绝信息。"],
+      "example": "同一句话同时落入训练和验证会虚增表现。",
+      "answer": "重复 ID 破坏样本追踪，重复或近重复文本跨分区会使验证不再独立；程序拒绝完全重复，近重复还需人工审查。",
+      "source": {"label": "文本数据契约", "href": "#concept-text-contract"}, "updated_at": "2026-10-13", "recommended": true
+    },
+    {
+      "id": "splits", "lesson_id": "nlp-transformer-01", "context_id": "concept-split-boundary",
+      "question": "训练验证测试三份数据分别做什么？", "aliases": ["测试集为什么不能反复调参"],
+      "keywords": ["训练", "验证", "测试", "切分", "调参", "封存"],
+      "diagnostic": "先判断是在拟合、比较方案还是最后独立检查。",
+      "hints": ["读取三行分区用途表。", "先把模型选择与最终独立检查分成两件事。"],
+      "example": "IDF 只在 train 拟合；validation 比较候选；test 最后打开。",
+      "answer": "训练集拟合参数，验证集比较方案，测试集在方案冻结后独立检查；反复依测试分数调参会把测试集变成另一份验证集。",
+      "source": {"label": "数据切分", "href": "#concept-split-boundary"}, "updated_at": "2026-10-13", "recommended": true
+    },
+    {
+      "id": "stable-split", "lesson_id": "nlp-transformer-01", "context_id": "concept-split-boundary",
+      "question": "换 CSV 行序后切分为什么不变？", "aliases": ["固定种子和 ID 哈希怎样划分"],
+      "keywords": ["CSV 行序", "切分", "固定种子", "ID 哈希", "SHA-256"],
+      "diagnostic": "检查分区依据是 ID 的确定性排序键还是文件位置。",
+      "hints": ["看 split_rows 的同标签排序。", "观察排序键只依赖固定种子和 sample_id。"],
+      "example": "把 C01 与 C02 两行调换，二者分区仍由各自 ID 决定。",
+      "answer": "程序在每个标签内按固定种子与 ID 的 SHA-256 键排序，而不是按 CSV 物理行号切分。",
+      "source": {"label": "数据切分", "href": "#concept-split-boundary"}, "updated_at": "2026-10-13", "recommended": true
+    },
+    {
+      "id": "macro-f1", "lesson_id": "nlp-transformer-01", "context_id": "example-confusion-baseline",
+      "question": "全部预测 code 的准确率和 macro-F1 是多少？", "aliases": ["为什么准确率 0.5 仍不能识别 plan"],
+      "keywords": ["全部预测 code", "准确率", "macro-F1", "plan", "混淆矩阵"],
+      "diagnostic": "先写出两类各四条的验证混淆矩阵。",
+      "hints": ["code 命中 4 条，plan 命中 0 条。", "分别算两类 F1，再取算术平均。"],
+      "example": "混淆矩阵为实际 code:4/0、实际 plan:4/0。",
+      "answer": "准确率是 4/8=0.5；code F1 约 0.667、plan F1 为 0，macro-F1 约 0.333。",
+      "source": {"label": "多数类基线指标", "href": "#example-confusion-baseline"}, "updated_at": "2026-10-13", "recommended": true
+    },
+    {
+      "id": "eval-api", "lesson_id": "nlp-transformer-01", "context_id": "reproduce-text-v01",
+      "question": "evaluate_validation 为什么拒绝测试 ID？", "aliases": ["评估接口返回哪些指标"],
+      "keywords": ["evaluate_validation", "测试 ID", "评估接口", "指标", "混淆矩阵"],
+      "diagnostic": "先确认传入的是完整验证 ID 与合法标签。",
+      "hints": ["运行 test_validation_rejects_test_id_and_invalid_label。", "检查返回的 accuracy、macro_f1、confusion 三个字段。"],
+      "example": "传入 test.csv 中的 ID 会抛出 validation IDs 错误。",
+      "answer": "该接口只对完整验证集打分，拒绝测试 ID、缺项及未知标签，并返回准确率、macro-F1 和混淆矩阵。",
+      "source": {"label": "复现 v0.1", "href": "#reproduce-text-v01"}, "updated_at": "2026-10-13", "recommended": true
+    },
+    {
+      "id": "manifest", "lesson_id": "nlp-transformer-01", "context_id": "project-text-v01",
+      "question": "manifest.json 要保存什么？", "aliases": ["文本分类 v0.1 留下哪些文件"],
+      "keywords": ["manifest.json", "语料指纹", "分区 ID", "项目", "v0.1"],
+      "diagnostic": "确认要复查的是数据版本、划分还是一次模型得分。",
+      "hints": ["查看 build_manifest 的输出键。", "将 manifest 与 train/validation/test CSV 一起保存。"],
+      "example": "语料 SHA-256 与分区 sample_ids 可验证两次实验是否使用同一数据。",
+      "answer": "manifest 保存语料指纹、固定种子、类别、分区 ID 和计数及测试封存策略；v0.1 还保留三份 CSV 与测试记录。",
+      "source": {"label": "文本项目 v0.1", "href": "#project-text-v01"}, "updated_at": "2026-10-13", "recommended": true
+    }
+  ]
+}

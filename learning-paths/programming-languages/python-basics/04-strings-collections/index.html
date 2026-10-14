@@ -5092,6 +5092,8 @@
       
         
       
+        
+      
     
     
     
@@ -5993,6 +5995,289 @@
     
   
     Eval、推理 Schema、Manifest 与离线交付
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ai-foundation/nlp-transformer/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NLP 与 Transformer
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_11_4_4" id="__nav_2_11_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_11_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NLP 与 Transformer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/01-text-data-contract-splits-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文本任务、数据契约、切分与指标
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/02-tokenization-tfidf-linear-baseline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分词、TF-IDF 与线性分类基线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/03-vocabulary-embedding-pooling-network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    词表、Embedding 与池化浅层网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/04-rnn-cnn-sequence-baselines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GRU、CNN 序列基线与公平比较
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/05-scaled-dot-product-attention-mask-position/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    缩放点积注意力、Mask 与位置
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/06-transformer-encoder-classification-ablation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transformer Encoder 文本分类与消融
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/07-pretrained-path-unified-evaluation-model-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    预训练路径、统一评测与模型卡
   
 
     
@@ -8577,10 +8862,10 @@
 <h2 id="_4">先问数据要拿来做什么<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>假设要表示一条学习记录：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="s2">&quot;course&quot;</span><span class="p">:</span> <span class="s2">&quot;Python 起步&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="s2">&quot;finished_hours&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;起步&quot;</span><span class="p">,</span> <span class="s2">&quot;工具&quot;</span><span class="p">],</span>
+    <span class="s2">"course"</span><span class="p">:</span> <span class="s2">"Python 起步"</span><span class="p">,</span>
+    <span class="s2">"target_hours"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s2">"finished_hours"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s2">"tags"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Python"</span><span class="p">,</span> <span class="s2">"起步"</span><span class="p">,</span> <span class="s2">"工具"</span><span class="p">],</span>
 <span class="p">}</span>
 </code></pre></div>
 <div aria-label="外层列表保存多条记录，每条记录由字典按字段名组织，tags 字段再保存一个列表；汇总时用集合得到唯一标签，并用元组返回固定的汇总结果。" class="be-collection-model" role="img">
@@ -8646,7 +8931,7 @@
 <section data-context-type="example" data-learning-context="example-text-tags" id="example-text-tags">
 <h2 id="_5">字符串先把标签清理干净<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>字符串是有顺序、不可原地修改的字符序列：</p>
-<div class="highlight"><pre><span></span><code><span class="n">course</span> <span class="o">=</span> <span class="s2">&quot;Python 起步&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">course</span> <span class="o">=</span> <span class="s2">"Python 起步"</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">course</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>       <span class="c1"># P</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">course</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>      <span class="c1"># 步</span>
@@ -8663,21 +8948,21 @@
 <li><code>" | ".join(clean_tags)</code> 把字符串列表重新连接成可读文本。</li>
 </ol>
 <p>字符串方法通常返回新值，不会改动原字符串：</p>
-<div class="highlight"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;  Python  &quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="s2">"  Python  "</span>
 <span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>       <span class="c1"># &#39;  Python  &#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>       <span class="c1"># '  Python  '</span>
 
 <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>       <span class="c1"># &#39;Python&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>       <span class="c1"># 'Python'</span>
 </code></pre></div>
 <p><code>join()</code> 的每一项都必须是字符串。如果列表里混入整数，会触发 <code>TypeError</code>；先决定整数应该怎样显示，再明确转换，不要在不理解数据含义时一股脑调用 <code>str()</code>。</p>
 </section>
 <section data-context-type="concept" data-learning-context="concept-sequences" id="concept-sequences">
 <h2 id="_6">列表会变，元组保持固定<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>列表适合保存数量可能变化、需要按顺序处理的一组值：</p>
-<div class="highlight"><pre><span></span><code><span class="n">courses</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;工程基础&quot;</span><span class="p">,</span> <span class="s2">&quot;Python 起步&quot;</span><span class="p">]</span>
-<span class="n">courses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Git 复习&quot;</span><span class="p">)</span>
-<span class="n">courses</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;工程基础起步&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">courses</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"工程基础"</span><span class="p">,</span> <span class="s2">"Python 起步"</span><span class="p">]</span>
+<span class="n">courses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"Git 复习"</span><span class="p">)</span>
+<span class="n">courses</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"工程基础起步"</span>
 
 <span class="k">for</span> <span class="n">course</span> <span class="ow">in</span> <span class="n">courses</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">course</span><span class="p">)</span>
@@ -8721,7 +9006,7 @@
 </table>
 <p>如果写成 <code>result = courses.sort()</code>，<code>result</code> 会是 <code>None</code>，不是排序后的列表。想保留原顺序时用 <code>sorted(courses)</code>；确认可以修改原列表时才调用 <code>.sort()</code>。</p>
 <p>元组同样有顺序，也支持索引、切片和遍历，但不能替换其中的位置：</p>
-<div class="highlight"><pre><span></span><code><span class="n">summary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;进行中&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">summary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s2">"进行中"</span><span class="p">)</span>
 <span class="n">total_target</span><span class="p">,</span> <span class="n">total_finished</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">summary</span>
 </code></pre></div>
 <p>这种解包适合固定结构的返回结果。左右数量必须一致，否则会触发 <code>ValueError</code>。只有一个成员的元组要保留逗号：<code>("Python",)</code>；<code>("Python")</code> 仍然只是字符串。</p>
@@ -8730,41 +9015,41 @@
 <h2 id="_7">列表中的字典表示多条记录<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <p>字典用键说明字段含义：</p>
 <div class="highlight"><pre><span></span><code><span class="n">record</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;course&quot;</span><span class="p">:</span> <span class="s2">&quot;Python 起步&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="s2">&quot;finished_hours&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;起步&quot;</span><span class="p">],</span>
+    <span class="s2">"course"</span><span class="p">:</span> <span class="s2">"Python 起步"</span><span class="p">,</span>
+    <span class="s2">"target_hours"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s2">"finished_hours"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s2">"tags"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Python"</span><span class="p">,</span> <span class="s2">"起步"</span><span class="p">],</span>
 <span class="p">}</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">&quot;course&quot;</span><span class="p">])</span>
-<span class="n">record</span><span class="p">[</span><span class="s2">&quot;finished_hours&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">"course"</span><span class="p">])</span>
+<span class="n">record</span><span class="p">[</span><span class="s2">"finished_hours"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
 </code></pre></div>
 <p>多条结构相同的记录放进列表：</p>
 <div class="highlight"><pre><span></span><code><span class="n">records</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span><span class="s2">&quot;course&quot;</span><span class="p">:</span> <span class="s2">&quot;Python 起步&quot;</span><span class="p">,</span> <span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;finished_hours&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
-    <span class="p">{</span><span class="s2">&quot;course&quot;</span><span class="p">:</span> <span class="s2">&quot;复盘练习&quot;</span><span class="p">,</span> <span class="s2">&quot;target_hours&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;finished_hours&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"course"</span><span class="p">:</span> <span class="s2">"Python 起步"</span><span class="p">,</span> <span class="s2">"target_hours"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">"finished_hours"</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"course"</span><span class="p">:</span> <span class="s2">"复盘练习"</span><span class="p">,</span> <span class="s2">"target_hours"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"finished_hours"</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
 <span class="p">]</span>
 
 <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">&quot;course&quot;</span><span class="p">],</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;finished_hours&quot;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">"course"</span><span class="p">],</span> <span class="n">record</span><span class="p">[</span><span class="s2">"finished_hours"</span><span class="p">])</span>
 </code></pre></div>
 <p><code>record["course"]</code> 适合必填字段：缺失时抛出 <code>KeyError</code>，能尽早暴露数据问题。真正允许缺失的字段再用 <code>.get()</code>：</p>
-<div class="highlight"><pre><span></span><code><span class="n">note</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;note&quot;</span><span class="p">,</span> <span class="s2">&quot;未填写&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">note</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"note"</span><span class="p">,</span> <span class="s2">"未填写"</span><span class="p">)</span>
 </code></pre></div>
 <p>不要对所有字段都使用 <code>.get()</code>。如果课程名或目标小时是必填数据，安静地返回 <code>None</code> 只会把错误推迟到更难排查的位置。</p>
 </section>
 <section data-context-type="concept" data-learning-context="concept-tuple-set" id="concept-tuple-set">
 <h2 id="_8">集合只关心唯一成员<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <p>多条记录可能重复出现同一标签：</p>
-<div class="highlight"><pre><span></span><code><span class="n">tags</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;工具&quot;</span><span class="p">}</span>
-<span class="n">tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;复盘&quot;</span><span class="p">)</span>
-<span class="n">tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">tags</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Python"</span><span class="p">,</span> <span class="s2">"工具"</span><span class="p">}</span>
+<span class="n">tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"复盘"</span><span class="p">)</span>
+<span class="n">tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Python"</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Python"</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">)</span>
 </code></pre></div>
 <p>第二次加入 <code>"Python"</code> 不会产生重复项。集合适合成员判断、去重和集合运算：</p>
-<div class="highlight"><pre><span></span><code><span class="n">current</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;工具&quot;</span><span class="p">,</span> <span class="s2">&quot;复盘&quot;</span><span class="p">}</span>
-<span class="n">required</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;Git&quot;</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="n">current</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Python"</span><span class="p">,</span> <span class="s2">"工具"</span><span class="p">,</span> <span class="s2">"复盘"</span><span class="p">}</span>
+<span class="n">required</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Python"</span><span class="p">,</span> <span class="s2">"Git"</span><span class="p">}</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">current</span> <span class="o">&amp;</span> <span class="n">required</span><span class="p">)</span>  <span class="c1"># 两边都有</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">current</span> <span class="o">|</span> <span class="n">required</span><span class="p">)</span>  <span class="c1"># 合并所有唯一成员</span>
@@ -8807,7 +9092,7 @@
 </ol>
 <p>排序函数先写成有名字的形式：</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">course_name</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;course&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">record</span><span class="p">[</span><span class="s2">"course"</span><span class="p">]</span>
 
 
 <span class="n">sorted_records</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">course_name</span><span class="p">)</span>
@@ -8889,7 +9174,7 @@
 <p>在学习记录中画出自己的数据形状：最外层是什么，每条记录是什么，标签又是什么。然后保存实际输出与四类验证结果：</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>practice/python-basics/learning_profile.py<span class="w"> </span>notes/learning-log.md
 git<span class="w"> </span>diff<span class="w"> </span>--cached
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;summarize multiple study records&quot;</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"summarize multiple study records"</span>
 git<span class="w"> </span>status<span class="w"> </span>--short
 </code></pre></div>
 <p>下一课会把同样的字典和列表写进 JSON。数据形状先在内存里理清，文件读写就不会同时混进两个新问题。</p>

@@ -1,0 +1,96 @@
+{
+  "version": 2,
+  "lesson": {"id": "nlp-transformer-07", "title": "预训练路径、统一评测与模型卡", "path": "learning-paths/ai-foundation/nlp-transformer/07-pretrained-path-unified-evaluation-model-card/"},
+  "contexts": [
+    {"id": "overview-final-gap", "type": "overview", "title": "最终测试落差", "anchor": "#overview-final-gap"},
+    {"id": "concept-one-protocol", "type": "concept", "title": "统一协议", "anchor": "#concept-one-protocol"},
+    {"id": "concept-select-once", "type": "concept", "title": "冻结选模", "anchor": "#concept-select-once"},
+    {"id": "example-selection-trace", "type": "example", "title": "手工走规则", "anchor": "#example-selection-trace"},
+    {"id": "reproduce-delivery-v07", "type": "reproduce", "title": "一次性产物", "anchor": "#reproduce-delivery-v07"},
+    {"id": "modify-policy-v07", "type": "modify", "title": "验证计划练习", "anchor": "#modify-policy-v07"},
+    {"id": "troubleshoot-delivery-v07", "type": "troubleshoot", "title": "评测排错", "anchor": "#troubleshoot-delivery-v07"},
+    {"id": "project-model-card-v07", "type": "project", "title": "模型卡 v0.7", "anchor": "#project-model-card-v07"}
+  ],
+  "cards": [
+    {
+      "id": "gap", "lesson_id": "nlp-transformer-07", "context_id": "overview-final-gap",
+      "question": "验证满分而测试只有 4/8 说明什么？", "aliases": ["为什么不能说模型已经做好了"],
+      "keywords": ["验证满分", "测试", "4/8", "泛化", "做好"],
+      "diagnostic": "先确认两个分数来自不同分区，而不是同一考卷的两次运行。",
+      "hints": ["验证只有八条句子。", "看测试混淆矩阵中 code 的四条只命中一条。"],
+      "example": "v06 验证 8/8，最终测试 4/8。",
+      "answer": "它提示严重泛化风险或小样本波动；不能据验证满分声称可上线，也不能按测试结果回头换模型。",
+      "source": {"label": "最终测试落差", "href": "#overview-final-gap"}, "updated_at": "2026-10-14", "recommended": true
+    },
+    {
+      "id": "protocol", "lesson_id": "nlp-transformer-07", "context_id": "concept-one-protocol",
+      "question": "比较 v02 到 v06 前要核对什么？", "aliases": ["语料指纹和划分 ID 为什么要相同"],
+      "keywords": ["v02", "v06", "语料指纹", "划分 ID", "统一协议"],
+      "diagnostic": "先查数据身份与分区，再比任何模型指标。",
+      "hints": ["看 corpus_sha256、split_seed。", "再核对 train_ids、validation_ids 和测试封存标志。"],
+      "example": "任一候选换了验证 ID，就不能沿用同一比较表。",
+      "answer": "语料 SHA、切分种子、训练/验证 ID 和测试封存状态都须一致；否则不能声称同协议比较。",
+      "source": {"label": "统一协议", "href": "#concept-one-protocol"}, "updated_at": "2026-10-14", "recommended": true
+    },
+    {
+      "id": "cost", "lesson_id": "nlp-transformer-07", "context_id": "concept-one-protocol",
+      "question": "参数量和本机耗时能怎样比较？", "aliases": ["为什么训练秒数不是跨机器速度榜"],
+      "keywords": ["参数量", "本机耗时", "训练秒数", "速度榜", "成本"],
+      "diagnostic": "区分可数的模型参数与受环境波动影响的墙钟时间。",
+      "hints": ["查看候选表的参数量。", "留意启动、预热、硬件和实现差异。"],
+      "example": "v06 有 5,186 个参数；单次秒数随机器负载变化。",
+      "answer": "参数量可作模型规模线索；本机单次耗时只是观察，不能当跨硬件、跨实现的严格性能排名。",
+      "source": {"label": "统一协议", "href": "#concept-one-protocol"}, "updated_at": "2026-10-14", "recommended": true
+    },
+    {
+      "id": "selection", "lesson_id": "nlp-transformer-07", "context_id": "concept-select-once",
+      "question": "第七课预先规定的选模规则是什么？", "aliases": ["为什么最终选 v06 完整 Encoder"],
+      "keywords": ["选模规则", "v06", "完整 Encoder", "macro-F1", "参数量"],
+      "diagnostic": "把候选资格、主指标和同分规则按顺序列出。",
+      "hints": ["先比验证 macro-F1，再比 accuracy。", "同分才看参数量和候选 ID；测试分数不在规则里。"],
+      "example": "v06 完整 Encoder 验证 macro-F1=1.0，先于参数量决胜。",
+      "answer": "仅完整候选入围；按验证 macro-F1、accuracy 降序，参数量升序，候选 ID 字典序。v06 完整版主指标最高而获选。",
+      "source": {"label": "冻结选模", "href": "#concept-select-once"}, "updated_at": "2026-10-14", "recommended": true
+    },
+    {
+      "id": "ablations", "lesson_id": "nlp-transformer-07", "context_id": "concept-one-protocol",
+      "question": "去位置和去 padding mask 为什么不入围？", "aliases": ["消融变体可以当发布候选吗"],
+      "keywords": ["去位置", "去 padding mask", "消融", "发布候选", "入围"],
+      "diagnostic": "确认变体是否故意撤去所要求的完整结构。",
+      "hints": ["查看 v06 variants 中 full 与两个 no_ 项。", "将故障对照保留在附录，不放进 candidates。"],
+      "example": "no_key_padding_mask 明知允许 attention 读补齐键。",
+      "answer": "它们是故意移除结构的诊断实验，不满足完整模型发布资格；只可比较机制，不可参与最终选模。",
+      "source": {"label": "统一协议", "href": "#concept-one-protocol"}, "updated_at": "2026-10-14", "recommended": true
+    },
+    {
+      "id": "receipt", "lesson_id": "nlp-transformer-07", "context_id": "example-selection-trace",
+      "question": "test-opened.json 收据有什么作用？", "aliases": ["最终测试怎样只开一次"],
+      "keywords": ["test-opened.json", "收据", "最终测试", "一次"],
+      "diagnostic": "先检查选择记录在不在，再检查何时开始预测测试集。",
+      "hints": ["finalize 先写 selection.json。", "再写 test-opened.json，最后才预测与评分。"],
+      "example": "非空输出目录拒绝再次 finalize。",
+      "answer": "收据在测试预测前记录获选候选和测试 ID；同目录不允许重复评测，但它是流程审计而非对语料的访问控制。",
+      "source": {"label": "手工走规则", "href": "#example-selection-trace"}, "updated_at": "2026-10-14", "recommended": true
+    },
+    {
+      "id": "no-reselect", "lesson_id": "nlp-transformer-07", "context_id": "troubleshoot-delivery-v07",
+      "question": "看到测试掉分后能改选 v02 吗？", "aliases": ["用测试分数调参有什么问题"],
+      "keywords": ["测试掉分", "改选 v02", "测试分数", "调参", "泄漏"],
+      "diagnostic": "先判断测试标签是否已经影响下一次决策。",
+      "hints": ["本轮选择规则只使用验证集。", "若测试分数反向指导选择，它不再独立。"],
+      "example": "v06 测试只有 4/8，也不能试 v02 测试分数再择优。",
+      "answer": "不能。测试结果只能报告泛化表现；据此重选或调参会污染本轮独立测试。下一轮需新数据协议。",
+      "source": {"label": "评测排错", "href": "#troubleshoot-delivery-v07"}, "updated_at": "2026-10-14", "recommended": true
+    },
+    {
+      "id": "pretrained", "lesson_id": "nlp-transformer-07", "context_id": "project-model-card-v07",
+      "question": "本轮做了预训练模型实测吗？", "aliases": ["模型卡为什么写 pretrained not run"],
+      "keywords": ["预训练模型", "实测", "pretrained", "not run", "模型卡"],
+      "diagnostic": "区分本地随机初始化 Encoder 与外部预训练权重。",
+      "hints": ["查看 MODEL_CARD.md 的模型来源。", "确认没有权重下载、微调或预训练推理报告。"],
+      "example": "v06 使用 PyTorch 层但权重从随机初始化开始训练。",
+      "answer": "没有。本轮只训练本地随机初始化模型；预训练权重下载、微调和评估均未执行，只留下可选人工研究路线。",
+      "source": {"label": "模型卡 v0.7", "href": "#project-model-card-v07"}, "updated_at": "2026-10-14", "recommended": true
+    }
+  ]
+}

@@ -4869,6 +4869,8 @@
       
         
       
+        
+      
     
     
     
@@ -5770,6 +5772,289 @@
     
   
     Eval、推理 Schema、Manifest 与离线交付
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ai-foundation/nlp-transformer/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NLP 与 Transformer
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_11_4_4" id="__nav_2_11_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_11_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NLP 与 Transformer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/01-text-data-contract-splits-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文本任务、数据契约、切分与指标
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/02-tokenization-tfidf-linear-baseline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分词、TF-IDF 与线性分类基线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/03-vocabulary-embedding-pooling-network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    词表、Embedding 与池化浅层网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/04-rnn-cnn-sequence-baselines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GRU、CNN 序列基线与公平比较
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/05-scaled-dot-product-attention-mask-position/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    缩放点积注意力、Mask 与位置
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/06-transformer-encoder-classification-ablation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transformer Encoder 文本分类与消融
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai-foundation/nlp-transformer/07-pretrained-path-unified-evaluation-model-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    预训练路径、统一评测与模型卡
   
 
     
@@ -8506,7 +8791,7 @@
 <p><div class="highlight"><pre><span></span><code>runtime=python:3.11+,dependencies:stdlib-only,network:disabled-by-default
 default=mode:offline,provider:scripted,key-required:false
 scripted=status:completed,request_id:req-scripted,calls:1
-audit={&quot;attempt&quot;:1,&quot;event&quot;:&quot;model_invocation&quot;,&quot;model&quot;:&quot;learning-assistant-offline&quot;,&quot;provider&quot;:&quot;scripted&quot;,&quot;request_id&quot;:&quot;req-scripted&quot;,&quot;status&quot;:&quot;completed&quot;}
+audit={"attempt":1,"event":"model_invocation","model":"learning-assistant-offline","provider":"scripted","request_id":"req-scripted","status":"completed"}
 redaction=authorization:[REDACTED],prompt-logged:false,response-logged:false
 real-call=gates:--real+ALLOW_REAL_PROVIDER=1,base-url:https,key:environment-only,ci:false
 secret-boundary=process-memory:yes,config-repr:false,audit:false,evidence:false,source-control:false
@@ -8581,12 +8866,12 @@ v0.6 默认运行离线证据，不要求密钥、不联网。provider 模式缺
 <section data-context-type="example" data-learning-context="example-redacted-audit" id="example-redacted-audit">
 <h2 id="_5">审计采用允许列表，诊断对象再做递归脱敏<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="n">event</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;event&quot;</span><span class="p">:</span> <span class="s2">&quot;model_invocation&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;provider&quot;</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">provider</span><span class="p">,</span>
-    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
-    <span class="s2">&quot;request_id&quot;</span><span class="p">:</span> <span class="n">result</span><span class="o">.</span><span class="n">request_id</span><span class="p">,</span>
-    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">result</span><span class="o">.</span><span class="n">status</span><span class="p">,</span>
-    <span class="s2">&quot;attempt&quot;</span><span class="p">:</span> <span class="n">attempt</span><span class="p">,</span>
+    <span class="s2">"event"</span><span class="p">:</span> <span class="s2">"model_invocation"</span><span class="p">,</span>
+    <span class="s2">"provider"</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">provider</span><span class="p">,</span>
+    <span class="s2">"model"</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+    <span class="s2">"request_id"</span><span class="p">:</span> <span class="n">result</span><span class="o">.</span><span class="n">request_id</span><span class="p">,</span>
+    <span class="s2">"status"</span><span class="p">:</span> <span class="n">result</span><span class="o">.</span><span class="n">status</span><span class="p">,</span>
+    <span class="s2">"attempt"</span><span class="p">:</span> <span class="n">attempt</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>审计没有 Prompt、回复、Authorization 或 key。对 transport 诊断对象，<code>authorization</code>、<code>token</code>、<code>cookie</code>、<code>password</code>、<code>secret</code> 等键递归替换为 <code>[REDACTED]</code>。异常也被归一化，避免第三方异常链携带 header。</p>
