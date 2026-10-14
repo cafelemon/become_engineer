@@ -1,0 +1,24 @@
+{
+  "lesson_id":"nlp-transformer-06",
+  "cases":[
+    {"query":"Transformer Encoder 文本分类从 ID 到 logits 怎么走","expected_card":"encoder-flow"},
+    {"query":"编码器分类输入输出 shape 是什么","expected_card":"encoder-flow"},
+    {"query":"v0.6 是完整的原论文 Transformer 吗","expected_card":"reference-layer"},
+    {"query":"单层 Encoder 能生成文本吗","expected_card":"reference-layer"},
+    {"query":"PyTorch src_key_padding_mask 中 True 是什么意思","expected_card":"mask-polarity"},
+    {"query":"v05 key_valid 和 PyTorch mask 为什么取反","expected_card":"mask-polarity"},
+    {"query":"去 key padding mask 时为什么还保留池化 mask","expected_card":"pool-mask"},
+    {"query":"无 mask 消融到底去掉了哪个 mask","expected_card":"pool-mask"},
+    {"query":"完整模型补齐后 logits 为什么应相同","expected_card":"padding-invariance"},
+    {"query":"[2,3] 和 [2,3,0,0] 的输出应一样吗","expected_card":"padding-invariance"},
+    {"query":"去掉位置编码后换词序为什么结果相同","expected_card":"position-order"},
+    {"query":"无位置 Transformer 能识别词序吗","expected_card":"position-order"},
+    {"query":"三组消融怎样保持可比","expected_card":"ablation-evidence"},
+    {"query":"验证集 8 条的分数能证明位置有效吗","expected_card":"ablation-evidence"},
+    {"query":"为什么不能用这次训练秒数宣布模型更快","expected_card":"cost-boundary"},
+    {"query":"首组耗时很高怎么比较成本","expected_card":"cost-boundary"},
+    {"query":"v0.6 为什么没有测试集指标","expected_card":"test-sealed"},
+    {"query":"什么时候打开 test 集","expected_card":"test-sealed"}
+  ],
+  "unknown":["如何更换自行车刹车线","明天上海天气预报"]
+}

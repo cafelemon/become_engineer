@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "lesson": {"id":"nlp-transformer-04","title":"GRU、CNN 序列基线与公平比较","path":"learning-paths/ai-foundation/nlp-transformer/04-rnn-cnn-sequence-baselines/"},
+  "contexts": [
+    {"id":"overview-sequence-baselines","type":"overview","title":"序列基线结果","anchor":"#overview-sequence-baselines"},
+    {"id":"concept-gru-order","type":"concept","title":"GRU 与顺序状态","anchor":"#concept-gru-order"},
+    {"id":"concept-cnn-local","type":"concept","title":"CNN 局部窗口","anchor":"#concept-cnn-local"},
+    {"id":"example-sequence-boundary","type":"example","title":"变长句边界","anchor":"#example-sequence-boundary"},
+    {"id":"reproduce-sequence-v04","type":"reproduce","title":"运行两类序列模型","anchor":"#reproduce-sequence-v04"},
+    {"id":"modify-sequence-window","type":"modify","title":"修改卷积窗口","anchor":"#modify-sequence-window"},
+    {"id":"troubleshoot-sequence","type":"troubleshoot","title":"序列模型排错","anchor":"#troubleshoot-sequence"},
+    {"id":"project-sequence-v04","type":"project","title":"文本分类演进 v0.4","anchor":"#project-sequence-v04"}
+  ],
+  "cards": [
+    {"id":"order","lesson_id":"nlp-transformer-04","context_id":"concept-gru-order","question":"GRU 为什么能利用词序而均值池化不能？","aliases":["均值池化和 GRU 的顺序差异是什么"],"keywords":["gru","词序","均值池化","状态"],"diagnostic":"先看表示是否随顺序更新。","hints":["比较交换 token 后的均值。","查看 GRU 状态更新。"],"example":"相同向量交换顺序后均值相同，GRU 的更新路径不同。","answer":"均值池化对顺序不敏感；GRU 按 token 顺序更新隐状态，可表达顺序差异，但不保证本任务更准确。","source":{"label":"GRU 与顺序状态","href":"#concept-gru-order"},"updated_at":"2026-10-14","recommended":true},
+    {"id":"packed","lesson_id":"nlp-transformer-04","context_id":"concept-gru-order","question":"GRU 为什么需要 packed sequence？","aliases":["GRU 如何跳过 padding"],"keywords":["gru","packed","padding","长度"],"diagnostic":"确认最后状态停在真实句尾。","hints":["计算非零 token 数。","查看 pack_padded_sequence。"],"example":"[2,3,0,0] 的真实长度是 2。","answer":"packed sequence 按真实 token 长度运行 GRU，避免尾部补齐让最后状态继续更新。","source":{"label":"GRU 与顺序状态","href":"#concept-gru-order"},"updated_at":"2026-10-14","recommended":true},
+    {"id":"cnn-window","lesson_id":"nlp-transformer-04","context_id":"concept-cnn-local","question":"CNN 宽度三的窗口学到什么？","aliases":["一维卷积怎样处理局部词序"],"keywords":["cnn","卷积","窗口","局部"],"diagnostic":"区分局部模式和全局位置。","hints":["查看 Conv1d 的 kernel_size。","想三个相邻 token 的共同响应。"],"example":"宽度 3 让相邻三个位置影响一个响应。","answer":"同一卷积核扫描相邻三个位置，提取可共享的局部模式；最大池化后精确位置会丢失。","source":{"label":"CNN 局部窗口","href":"#concept-cnn-local"},"updated_at":"2026-10-14","recommended":true},
+    {"id":"cnn-mask","lesson_id":"nlp-transformer-04","context_id":"concept-cnn-local","question":"CNN 有 padding=1 为什么还要 mask？","aliases":["补齐位置为什么不能参与最大池化"],"keywords":["cnn","padding","mask","最大池化"],"diagnostic":"不要把卷积保长误认为排除补齐。","hints":["查看池化前 masked_fill。","比较 [2,3] 与 [2,3,0,0]。"],"example":"补齐只对齐 batch，不应成为最大响应。","answer":"卷积 padding=1 只控制输出长度；补齐位置仍可能产生响应，所以最大池化前要遮蔽。","source":{"label":"CNN 局部窗口","href":"#concept-cnn-local"},"updated_at":"2026-10-14","recommended":true},
+    {"id":"shape","lesson_id":"nlp-transformer-04","context_id":"example-sequence-boundary","question":"GRU 和 CNN 分类器的 shape 如何变化？","aliases":["序列模型输入输出维度是什么"],"keywords":["shape","维度","gru","cnn"],"diagnostic":"写出 batch、序列长度、向量宽度。","hints":["输入 ID 为 [B,L]。","Embedding 后为 [B,L,8]。"],"example":"[B,L] → [B,L,8] → [B,8] → [B,2]。","answer":"整数 ID [B,L] 经 Embedding 为 [B,L,8]，GRU 最后状态或 CNN 池化变为 [B,8]，最终给两类 [B,2] logits。","source":{"label":"变长句边界","href":"#example-sequence-boundary"},"updated_at":"2026-10-14","recommended":true},
+    {"id":"low-score","lesson_id":"nlp-transformer-04","context_id":"overview-sequence-baselines","question":"v0.4 分数低于 v0.3 说明什么？","aliases":["GRU CNN 比浅层模型差吗"],"keywords":["分数","0.625","0.875","比较"],"diagnostic":"先限定到固定小样本和配置。","hints":["查看各模型错误 ID。","检查训练与验证划分是否一致。"],"example":"本课两模型都为 0.625，v0.3 是 0.875。","answer":"只说明这份极小教学验证集和固定配置下未提升；不能断言模型族普遍优劣，应保留错误、成本与所有尝试。","source":{"label":"序列基线结果","href":"#overview-sequence-baselines"},"updated_at":"2026-10-14","recommended":true},
+    {"id":"single-change","lesson_id":"nlp-transformer-04","context_id":"modify-sequence-window","question":"怎样公平修改 CNN 窗口？","aliases":["改 kernel_size 时哪些条件要固定"],"keywords":["cnn","窗口","单变量","实验"],"diagnostic":"确认只有一个因素变化。","hints":["kernel_size=5 对应 padding=2。","保持语料、划分、轮数、学习率。"],"example":"只改卷积窗口并记录参数量、错误 ID。","answer":"只改窗口及维持输出长度所需 padding，固定数据划分、训练配置与指标，保留新旧结果，不用测试集挑配置。","source":{"label":"修改卷积窗口","href":"#modify-sequence-window"},"updated_at":"2026-10-14","recommended":true},
+    {"id":"sealed","lesson_id":"nlp-transformer-04","context_id":"project-sequence-v04","question":"为什么 v0.4 仍不报告测试集分数？","aliases":["什么时候可以打开 test 集"],"keywords":["测试集","sealed","选模","验证"],"diagnostic":"区分验证集模型比较和最终一次测试。","hints":["查看报告 test_status。","想一想反复看 test 的偏差。"],"example":"报告只含 validation，不含 test_metrics。","answer":"本阶段仍比较 GRU/CNN 与其他模型，测试集须在最终选择后才用于一次性评价；sealed 是流程纪律，不是文件权限。","source":{"label":"文本分类演进 v0.4","href":"#project-sequence-v04"},"updated_at":"2026-10-14","recommended":true}
+  ]
+}

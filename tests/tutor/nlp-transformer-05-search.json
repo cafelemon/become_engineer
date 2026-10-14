@@ -1,0 +1,22 @@
+{
+  "lesson_id": "nlp-transformer-05",
+  "cases": [
+    {"query": "Q K V 分别做什么", "expected_card": "qkv"},
+    {"query": "注意力怎样用查询键和值", "expected_card": "qkv"},
+    {"query": "点积为什么除以根号 d", "expected_card": "scale"},
+    {"query": "注意力缩放因子是什么", "expected_card": "scale"},
+    {"query": "padding mask 为什么要遮住补齐词", "expected_card": "padding"},
+    {"query": "key_valid True 是什么意思", "expected_card": "padding"},
+    {"query": "causal mask 和 padding mask 有什么区别", "expected_card": "causal"},
+    {"query": "文本分类为什么默认不遮未来", "expected_card": "causal"},
+    {"query": "自注意力为什么还要位置编码", "expected_card": "position"},
+    {"query": "正弦余弦位置向量做什么", "expected_card": "position"},
+    {"query": "两词手算中第一个输出为什么从 1,2 变成 2,0", "expected_card": "hand"},
+    {"query": "手算注意力权重如何得到 0.5 0.5", "expected_card": "hand"},
+    {"query": "注意力出现 NaN 先查哪里", "expected_card": "nan"},
+    {"query": "为什么首键无效会报错", "expected_card": "nan"},
+    {"query": "v0.5 验证 0.875 能证明注意力更好吗", "expected_card": "compare"},
+    {"query": "v0.4 GRU CNN 与注意力怎样公平比较", "expected_card": "compare"}
+  ],
+  "unknown": ["如何修补漏水的水龙头", "火星土壤能种苹果吗"]
+}

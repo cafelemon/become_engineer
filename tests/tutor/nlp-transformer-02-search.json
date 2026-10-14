@@ -1,0 +1,24 @@
+{
+  "lesson_id":"nlp-transformer-02",
+  "cases":[
+    {"query":"字符二元组怎样从中文句子产生？","expected_card":"char-bigram"},
+    {"query":"二元组分词怎么做","expected_card":"char-bigram"},
+    {"query":"IDF 为什么只从训练句计算？","expected_card":"idf"},
+    {"query":"验证集能参与 IDF 吗","expected_card":"idf"},
+    {"query":"TF-IDF 中词频和 IDF 怎样组合？","expected_card":"tfidf-weight"},
+    {"query":"词出现两次权重怎样变","expected_card":"tfidf-weight"},
+    {"query":"线性分类器如何从 TF-IDF 向量选标签？","expected_card":"linear"},
+    {"query":"score 大于零是什么类别","expected_card":"linear"},
+    {"query":"为什么要与全部预测 code 的基线比较？","expected_card":"baseline"},
+    {"query":"0.5 基线准确率说明什么","expected_card":"baseline"},
+    {"query":"P09 错误样本说明了什么？","expected_card":"error-p09"},
+    {"query":"为什么错题记录被判为 code","expected_card":"error-p09"},
+    {"query":"怎样复现 v0.2 的验证结果？","expected_card":"reproduce"},
+    {"query":"v02 运行命令是什么","expected_card":"reproduce"},
+    {"query":"把二元组改成三元组后应比较什么？","expected_card":"modify"},
+    {"query":"改成字符三元组会怎样","expected_card":"modify"},
+    {"query":"测试集封存是不是访问控制？","expected_card":"sealed"},
+    {"query":"test sealed 是什么意思","expected_card":"sealed"}
+  ],
+  "unknown":["怎样保养木质餐桌","海豚为什么会跃出水面"]
+}

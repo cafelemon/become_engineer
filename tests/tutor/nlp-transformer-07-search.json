@@ -1,0 +1,22 @@
+{
+  "lesson_id": "nlp-transformer-07",
+  "cases": [
+    {"query": "验证满分而测试只有 4/8 说明什么", "expected_card": "gap"},
+    {"query": "为什么不能说模型已经做好了", "expected_card": "gap"},
+    {"query": "比较 v02 到 v06 前要核对什么", "expected_card": "protocol"},
+    {"query": "语料指纹和划分 ID 为什么要相同", "expected_card": "protocol"},
+    {"query": "参数量和本机耗时能怎样比较", "expected_card": "cost"},
+    {"query": "为什么训练秒数不是跨机器速度榜", "expected_card": "cost"},
+    {"query": "第七课预先规定的选模规则是什么", "expected_card": "selection"},
+    {"query": "为什么最终选 v06 完整 Encoder", "expected_card": "selection"},
+    {"query": "去位置和去 padding mask 为什么不入围", "expected_card": "ablations"},
+    {"query": "消融变体可以当发布候选吗", "expected_card": "ablations"},
+    {"query": "test-opened.json 收据有什么作用", "expected_card": "receipt"},
+    {"query": "最终测试怎样只开一次", "expected_card": "receipt"},
+    {"query": "看到测试掉分后能改选 v02 吗", "expected_card": "no-reselect"},
+    {"query": "用测试分数调参有什么问题", "expected_card": "no-reselect"},
+    {"query": "本轮做了预训练模型实测吗", "expected_card": "pretrained"},
+    {"query": "模型卡为什么写 pretrained not run", "expected_card": "pretrained"}
+  ],
+  "unknown": ["如何修理电动滑板车轮胎", "银河系中心温度是多少"]
+}

@@ -1,0 +1,22 @@
+{
+  "lesson_id": "nlp-transformer-01",
+  "cases": [
+    {"query": "本课文本分类要预测什么", "expected_card": "text-task"},
+    {"query": "code 和 plan 两个标签是什么", "expected_card": "text-task"},
+    {"query": "sample_id text 和 label 各做什么", "expected_card": "fields"},
+    {"query": "为什么标签不能放进模型输入", "expected_card": "fields"},
+    {"query": "为什么要检查重复文本和重复 ID", "expected_card": "duplicates"},
+    {"query": "近重复文本会造成什么风险", "expected_card": "duplicates"},
+    {"query": "训练验证测试三份数据分别做什么", "expected_card": "splits"},
+    {"query": "测试集为什么不能反复调参", "expected_card": "splits"},
+    {"query": "换 CSV 行序后切分为什么不变", "expected_card": "stable-split"},
+    {"query": "固定种子和 ID 哈希怎样划分", "expected_card": "stable-split"},
+    {"query": "全部预测 code 的准确率和 macro-F1 是多少", "expected_card": "macro-f1"},
+    {"query": "为什么准确率 0.5 仍不能识别 plan", "expected_card": "macro-f1"},
+    {"query": "evaluate_validation 为什么拒绝测试 ID", "expected_card": "eval-api"},
+    {"query": "评估接口返回哪些指标", "expected_card": "eval-api"},
+    {"query": "manifest.json 要保存什么", "expected_card": "manifest"},
+    {"query": "文本分类 v0.1 留下哪些文件", "expected_card": "manifest"}
+  ],
+  "unknown": ["如何修理自行车刹车", "鲸鱼的迁徙路线是什么"]
+}

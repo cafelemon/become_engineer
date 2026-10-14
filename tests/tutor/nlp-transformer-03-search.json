@@ -1,0 +1,22 @@
+{
+  "lesson_id": "nlp-transformer-03",
+  "cases": [
+    {"query":"为什么词表只能从训练集构建","expected_card":"train-vocab"},
+    {"query":"验证集词能加入词表吗","expected_card":"train-vocab"},
+    {"query":"本课 tokenizer 怎样处理汉字和 Python","expected_card":"tokenizer"},
+    {"query":"这里用的是中文分词器吗","expected_card":"tokenizer"},
+    {"query":"新句子的词不在训练词表里怎么办","expected_card":"unk"},
+    {"query":"OOV 词如何编码","expected_card":"unk"},
+    {"query":"为什么 padding 不计入句向量均值","expected_card":"padding"},
+    {"query":"补齐后为什么 logits 不能变","expected_card":"padding"},
+    {"query":"Embedding 输入输出 shape 是什么","expected_card":"embedding-shape"},
+    {"query":"句向量和 logits 维度怎样变化","expected_card":"embedding-shape"},
+    {"query":"均值池化能辨别词序吗","expected_card":"order-limit"},
+    {"query":"为什么下一课还要 RNN CNN","expected_card":"order-limit"},
+    {"query":"怎样公平比较 v0.2 与 v0.3","expected_card":"fair-comparison"},
+    {"query":"改 embedding 宽度时应固定什么","expected_card":"fair-comparison"},
+    {"query":"v0.3 为什么没有测试集准确率","expected_card":"sealed-test"},
+    {"query":"什么时候才能打开 test 集","expected_card":"sealed-test"}
+  ],
+  "unknown": ["如何清洁机械键盘", "明天的天气如何"]
+}

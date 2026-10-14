@@ -13,6 +13,7 @@ on:
       - "site-src/**/*.json"
       - "site-src/**/*.webp"
       - "site-src/examples/**/*.py"
+      - "site-src/examples/**/*.csv"
       - "site-src/examples/**/*.sql"
       - "site-src/examples/**/*.sh"
       - "site-src/examples/**/*.yaml"
@@ -40,6 +41,7 @@ on:
       - "scripts/test_python_modules_venv_v2.mjs"
       - "scripts/test_python_errors_tests_v2.mjs"
       - "scripts/test_deep_learning_*.mjs"
+      - "scripts/test_nlp_transformer_*.mjs"
       - "scripts/test_cs_data_representation_v2.mjs"
       - "scripts/test_cs_operation_growth_v2.mjs"
       - "scripts/test_cs_text_units_v2.mjs"
@@ -103,6 +105,9 @@ on:
       - "scripts/lib/validate_web_engineering_lesson.mjs"
       - "scripts/generate_web_engineering_tutor.mjs"
       - "scripts/test_tutor_search.cjs"
+      - "scripts/validate_course_content_v2.cjs"
+      - "scripts/validate_curriculum_v2.cjs"
+      - "scripts/check_site_links.cjs"
       - "tests/tutor/**"
       - "mkdocs.yml"
       - "requirements.txt"
@@ -488,6 +493,27 @@ jobs:
       - name: Verify deep-learning inference delivery contracts
         run: node scripts/test_deep_learning_08_v2.mjs
 
+      - name: Verify NLP data and evaluation contracts
+        run: node scripts/test_nlp_transformer_01_v2.mjs
+
+      - name: Verify NLP TF-IDF linear baseline
+        run: node scripts/test_nlp_transformer_02_v2.mjs
+
+      - name: Verify NLP embedding network baseline
+        run: node scripts/test_nlp_transformer_03_v2.mjs
+
+      - name: Verify NLP GRU and CNN sequence baselines
+        run: node scripts/test_nlp_transformer_04_v2.mjs
+
+      - name: Verify NLP attention masks and position
+        run: node scripts/test_nlp_transformer_05_v2.mjs
+
+      - name: Verify NLP Transformer Encoder ablations
+        run: node scripts/test_nlp_transformer_06_v2.mjs
+
+      - name: Verify NLP model selection and final model card
+        run: node scripts/test_nlp_transformer_07_v2.mjs
+
       - name: Verify LLM model boundary and offline adapter
         run: node scripts/test_llm_use_01_v2.mjs
 
@@ -716,6 +742,14 @@ jobs:
 
       - name: Build documentation strictly
         run: mkdocs build --strict
+
+      - name: Validate V2 content and curriculum registration
+        run: |
+          node scripts/validate_course_content_v2.cjs
+          node scripts/validate_curriculum_v2.cjs
+
+      - name: Validate generated site links
+        run: node scripts/check_site_links.cjs
 
       - name: Validate assessment and route rules
         run: node scripts/test_personalization.cjs

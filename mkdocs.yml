@@ -257,6 +257,15 @@ nav:
                   - 初始化、激活分布、梯度诊断与裁剪: learning-paths/ai-foundation/deep-learning/06-initialization-activation-gradient-diagnostics-clipping.md
                   - 检查点、随机状态与精确恢复训练: learning-paths/ai-foundation/deep-learning/07-checkpoint-rng-resume-exact-training.md
                   - Eval、推理 Schema、Manifest 与离线交付: learning-paths/ai-foundation/deep-learning/08-eval-inference-schema-manifest-delivery.md
+              - NLP 与 Transformer:
+                  - 课程说明: learning-paths/ai-foundation/nlp-transformer/README.md
+                  - 文本任务、数据契约、切分与指标: learning-paths/ai-foundation/nlp-transformer/01-text-data-contract-splits-metrics.md
+                  - 分词、TF-IDF 与线性分类基线: learning-paths/ai-foundation/nlp-transformer/02-tokenization-tfidf-linear-baseline.md
+                  - 词表、Embedding 与池化浅层网络: learning-paths/ai-foundation/nlp-transformer/03-vocabulary-embedding-pooling-network.md
+                  - GRU、CNN 序列基线与公平比较: learning-paths/ai-foundation/nlp-transformer/04-rnn-cnn-sequence-baselines.md
+                  - 缩放点积注意力、Mask 与位置: learning-paths/ai-foundation/nlp-transformer/05-scaled-dot-product-attention-mask-position.md
+                  - Transformer Encoder 文本分类与消融: learning-paths/ai-foundation/nlp-transformer/06-transformer-encoder-classification-ablation.md
+                  - 预训练路径、统一评测与模型卡: learning-paths/ai-foundation/nlp-transformer/07-pretrained-path-unified-evaluation-model-card.md
           - LLM 应用与 Agent:
               - 模型使用与结构化输出:
                   - 课程说明: learning-paths/llm-agent/model-use/README.md

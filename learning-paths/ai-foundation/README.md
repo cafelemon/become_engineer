@@ -11,6 +11,7 @@ AI 基础用于建立从数据、模型、训练到评估的完整能力，覆�
 - AI 模型线的进入条件：Python 工程化、共同算法基础，以及数学、数据和可复现实验前置。
 - 顺序固定为数学数据实验 → 机器学习 → 深度学习，再按需进入强化学习、视觉、NLP/Transformer、多模态等专业方向。
 - LLM 应用是相邻但不同的能力线；应用型 LLM/Agent 不强制先完成完整机器学习和深度学习。
+- [NLP 与 Transformer](nlp-transformer/README.md)已开放 7/7；它沿同一文本任务比较传统、浅层、序列、注意力和 Transformer 模型，是模型方向深化，不是应用 Agent 通用前置。
 - 微调、本地推理、多模态 Agent 或模型研究再要求深度学习、Transformer 或系统能力。
 - 完整关系见[完整课程地图](../curriculum-map.md)。
 

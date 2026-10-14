@@ -1,0 +1,22 @@
+{
+  "lesson_id":"nlp-transformer-04",
+  "cases":[
+    {"query":"GRU 为什么能利用词序而均值池化不能","expected_card":"order"},
+    {"query":"均值池化和 GRU 的顺序差异是什么","expected_card":"order"},
+    {"query":"GRU 为什么需要 packed sequence","expected_card":"packed"},
+    {"query":"GRU 如何跳过 padding","expected_card":"packed"},
+    {"query":"CNN 宽度三的窗口学到什么","expected_card":"cnn-window"},
+    {"query":"一维卷积怎样处理局部词序","expected_card":"cnn-window"},
+    {"query":"CNN 有 padding=1 为什么还要 mask","expected_card":"cnn-mask"},
+    {"query":"补齐位置为什么不能参与最大池化","expected_card":"cnn-mask"},
+    {"query":"GRU 和 CNN 分类器的 shape 如何变化","expected_card":"shape"},
+    {"query":"序列模型输入输出维度是什么","expected_card":"shape"},
+    {"query":"v0.4 分数低于 v0.3 说明什么","expected_card":"low-score"},
+    {"query":"GRU CNN 比浅层模型差吗","expected_card":"low-score"},
+    {"query":"怎样公平修改 CNN 窗口","expected_card":"single-change"},
+    {"query":"改 kernel_size 时哪些条件要固定","expected_card":"single-change"},
+    {"query":"为什么 v0.4 仍不报告测试集分数","expected_card":"sealed"},
+    {"query":"什么时候可以打开 test 集","expected_card":"sealed"}
+  ],
+  "unknown":["如何修理电饭煲", "上海明天会下雨吗"]
+}

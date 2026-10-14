@@ -25,7 +25,7 @@
   <div><strong>衔接状态</strong><span>可顺序进入 · 缺少起步层 · 等待前置 · 方向可选</span></div>
 </div>
 
-当前正式课程共 **153 节**：工程基础 10 节、Python 起步 7 节、CS 起步 4 节、首个可验证项目 1 节、Python 核心与工程化 7 节、C++ 起步 2 节、C++ 核心 3 节、算法基础与核心 22 节、算法深化 10 节、算法求职加练 3 节、CS 系统基础 6 节、系统工程 6 节、AI 数学数据 6 节、机器学习 8 节、深度学习 8 节、模型使用与结构化输出 6 节、检索/RAG/评估 6 节、Tool Calling 与有界工作流 6 节、Agent 工程 6 节、RAG 应用工程 6 节、Agent 应用编排与交付 6 节、Web 起步 4 节、Web 核心 4 节、Web 工程化 6 节。
+当前正式课程共 **160 节**：工程基础 10 节、Python 起步 7 节、CS 起步 4 节、首个可验证项目 1 节、Python 核心与工程化 7 节、C++ 起步 2 节、C++ 核心 3 节、算法基础与核心 22 节、算法深化 10 节、算法求职加练 3 节、CS 系统基础 6 节、系统工程 6 节、AI 数学数据 6 节、机器学习 8 节、深度学习 8 节、NLP 与 Transformer 7 节、模型使用与结构化输出 6 节、检索/RAG/评估 6 节、Tool Calling 与有界工作流 6 节、Agent 工程 6 节、RAG 应用工程 6 节、Agent 应用编排与交付 6 节、Web 起步 4 节、Web 核心 4 节、Web 工程化 6 节。
 
 ## 四类用户共用一棵能力树
 
@@ -90,8 +90,9 @@
       <a href="#module-ai-math-data" data-status="open">数学、数据与实验 · 6 / 6</a>
       <a href="#module-machine-learning" data-status="open">机器学习 · 已开放 8 / 8</a>
       <a href="#module-deep-learning" data-status="open">深度学习 · 已开放 8 / 8</a>
+      <a href="#module-nlp-transformer" data-status="open">NLP 与 Transformer · 已开放 7 / 7</a>
       <a href="#module-reinforcement-learning" data-status="planned">强化学习</a>
-      <a href="#module-vision" data-status="planned">视觉 / NLP / 多模态</a>
+      <a href="#module-vision" data-status="planned">视觉 / 多模态</a>
     </section>
     <section>
       <h3>LLM 应用</h3>
@@ -156,7 +157,7 @@
 | <span id="module-deep-learning">深度学习</span> | 核心 | 方向主干 | 神经网络训练、调试和评估 | 机器学习 → RL／视觉／NLP／多模态 | AI 模型路线进入；LLM 应用不强制 | 已开放 · 8/8 | 可顺序进入 |
 | <span id="module-reinforcement-learning">强化学习</span> | 专业/求职 | 能力深化 | 策略、价值、环境与控制实验 | 深度学习 → 智能控制 | 专业方向可选 | 已规划未建设 | 方向可选 |
 | <span id="module-vision">计算机视觉</span> | 专业/求职 | 能力深化 | 视觉数据、模型、评估与部署证据 | 深度学习 → 边缘视觉／多模态 Agent | 专业方向可选 | 已规划未建设 | 方向可选 |
-| <span id="module-nlp-transformer">NLP 与 Transformer</span> | 深化 | 能力深化 | 文本任务、Transformer 与评估 | 深度学习 → 模型型 Agent | 模型方向可选；不是应用 Agent 通用前置 | 已规划未建设 | 方向可选 |
+| <span id="module-nlp-transformer">NLP 与 Transformer</span> | 深化 | 能力深化 | 文本任务、Transformer 与评估 | 深度学习 → 模型型 Agent | 模型方向可选；不是应用 Agent 通用前置 | 已开放 · 7/7 | 方向可选 |
 | <span id="module-multimodal">多模态与其他 AI 专业方向</span> | 专业/求职 | 能力深化 | 多模态或专项模型项目 | 深度学习 → 高级 Agent | 专业方向可选 | 已规划未建设 | 方向可选 |
 | <span id="module-llm-use">模型使用与结构化输出</span> | 基础 | 方向主干 | 可验证的模型调用、Schema 与失败处理 | Python 工程化 + Web/API → RAG | LLM 应用路线进入；不强制 ML/DL | 已开放 · 6/6 | 可顺序进入 |
 | <span id="module-llm-rag-eval">检索、RAG 与评估</span> | 工程化 | 方向主干 | 有引用、固定评估集和可观测失败的 RAG | 模型使用 + Web 工程化 → Agent | LLM/Agent 路线共用 | 已开放 · 6/6 | 可顺序进入 |
@@ -178,7 +179,7 @@
 
 ## 已开放课程明细 { #opened-lessons }
 
-以下 **153 节课程各出现一次**，均已按 V2 登记；Agent 工程已开放 6/6，Agent 应用编排与交付六课等待组级验收。
+以下 **160 节课程各出现一次**，均已按 V2 登记；Agent 工程已开放 6/6，NLP 与 Transformer 已开放 7/7。
 
 ### 工程基础起步 · 10 节
 
@@ -354,6 +355,16 @@
 7. [检查点、随机状态与精确恢复训练](ai-foundation/deep-learning/07-checkpoint-rng-resume-exact-training.md) · 已开放
 8. [Eval、推理 Schema、Manifest 与离线交付](ai-foundation/deep-learning/08-eval-inference-schema-manifest-delivery.md) · 已开放
 
+### NLP 与 Transformer · 已开放 7 / 7
+
+1. [文本任务、数据契约、切分与指标](ai-foundation/nlp-transformer/01-text-data-contract-splits-metrics.md) · 已开放
+2. [分词、TF-IDF 与线性分类基线](ai-foundation/nlp-transformer/02-tokenization-tfidf-linear-baseline.md) · 已开放
+3. [词表、Embedding 与池化浅层网络](ai-foundation/nlp-transformer/03-vocabulary-embedding-pooling-network.md) · 已开放
+4. [GRU、CNN 序列基线与公平比较](ai-foundation/nlp-transformer/04-rnn-cnn-sequence-baselines.md) · 已开放
+5. [缩放点积注意力、Mask 与位置](ai-foundation/nlp-transformer/05-scaled-dot-product-attention-mask-position.md) · 已开放
+6. [Transformer Encoder 文本分类与消融](ai-foundation/nlp-transformer/06-transformer-encoder-classification-ablation.md) · 已开放
+7. [预训练路径、统一评测与模型卡](ai-foundation/nlp-transformer/07-pretrained-path-unified-evaluation-model-card.md) · 已开放
+
 ### 模型使用与结构化输出 · 已开放 6 / 6
 
 1. [模型边界、消息与离线适配器](llm-agent/model-use/01-model-boundary-messages-offline-adapter.md) · 已开放
@@ -416,7 +427,7 @@
 - **应用工程**：Web 起步、Web 核心、CS 系统基础与 Web 工程化均已完成；RAG 与 Agent 的 Web 工程化前置已满足。
 - **系统工程**：六课已完成描述符 I/O、信号、队列、非阻塞网络、性能与恢复并开放。
 - **算法**：求职叠加三课已完成固定判题、限时策略和错因回归；算法深化 10/10 已开放。
-- **AI 模型**：数学数据实验 6/6、机器学习 8/8 与深度学习 8/8 已开放；强化学习、视觉、NLP/Transformer 与多模态的模型前置已经满足，但专项正文仍未建设。
+- **AI 模型**：数学数据实验 6/6、机器学习 8/8、深度学习 8/8 与 NLP/Transformer 7/7 已开放；强化学习、视觉与多模态的专项正文仍未建设。
 - **LLM 应用**：模型使用与结构化输出、检索/RAG/评估和 RAG 应用工程均已开放。
 - **Agent 工程**：状态、记忆、上下文、恢复、评估、可观测性与安全，以及 Agent 应用编排与交付均已开放 6/6。
 - **设备系统**：C 起步、设备共同基础、MCU/RTOS、Linux/BSP、工业控制；与 AI 或强化学习汇合后进入边缘智能或智能控制。

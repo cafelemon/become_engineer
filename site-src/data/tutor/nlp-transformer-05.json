@@ -1,0 +1,88 @@
+{
+  "version": 2,
+  "lesson": {"id": "nlp-transformer-05", "title": "缩放点积注意力、Mask 与位置", "path": "learning-paths/ai-foundation/nlp-transformer/05-scaled-dot-product-attention-mask-position/"},
+  "contexts": [
+    {"id": "overview-attention-result", "type": "overview", "title": "注意力结果", "anchor": "#overview-attention-result"},
+    {"id": "concept-scaled-attention", "type": "concept", "title": "缩放点积注意力", "anchor": "#concept-scaled-attention"},
+    {"id": "concept-mask-position", "type": "concept", "title": "Mask 与位置", "anchor": "#concept-mask-position"},
+    {"id": "example-two-token", "type": "example", "title": "两词手算", "anchor": "#example-two-token"},
+    {"id": "reproduce-attention-v05", "type": "reproduce", "title": "运行注意力实验", "anchor": "#reproduce-attention-v05"},
+    {"id": "modify-attention-v05", "type": "modify", "title": "修改开关", "anchor": "#modify-attention-v05"},
+    {"id": "troubleshoot-attention-v05", "type": "troubleshoot", "title": "数值排错", "anchor": "#troubleshoot-attention-v05"},
+    {"id": "project-attention-v05", "type": "project", "title": "文本分类 v0.5", "anchor": "#project-attention-v05"}
+  ],
+  "cards": [
+    {
+      "id": "qkv", "lesson_id": "nlp-transformer-05", "context_id": "concept-scaled-attention",
+      "question": "Q、K、V 分别做什么？", "aliases": ["注意力怎样用查询键和值"], "keywords": ["Q", "K", "V", "查询", "键", "值", "注意力"],
+      "diagnostic": "先找查询位置，再区分匹配分数和被汇总的值。",
+      "hints": ["查看 QKᵀ 得分公式。", "把 softmax 权重乘 V 后相加。"],
+      "example": "第一个 q 与两个 k 得分相等，会各取一半 v。",
+      "answer": "Q 发起查询，K 与它匹配产生分数，softmax 权重再对 V 加权求和，形成当前位置的新表示。",
+      "source": {"label": "缩放点积注意力", "href": "#concept-scaled-attention"}, "updated_at": "2026-10-14", "recommended": true
+    },
+    {
+      "id": "scale", "lesson_id": "nlp-transformer-05", "context_id": "concept-scaled-attention",
+      "question": "点积为什么除以根号 d？", "aliases": ["注意力缩放因子是什么"], "keywords": ["点积", "根号 d", "缩放", "因子", "维度"],
+      "diagnostic": "先看键向量维度 d，再检查 softmax 前的分数。",
+      "hints": ["两维示例的缩放因子是 1/√2。", "比较维度增大时未缩放点积的幅度。"],
+      "example": "原始点积 1 在 d=2 时变成约 0.707107。",
+      "answer": "除以 √d 抑制点积分数随键维度增大的幅度，让 softmax 不易因过大分数而过早饱和。",
+      "source": {"label": "缩放点积注意力", "href": "#concept-scaled-attention"}, "updated_at": "2026-10-14", "recommended": true
+    },
+    {
+      "id": "padding", "lesson_id": "nlp-transformer-05", "context_id": "concept-mask-position",
+      "question": "padding mask 为什么要遮住补齐词？", "aliases": ["key_valid True 是什么意思"], "keywords": ["padding mask", "补齐词", "key_valid", "True", "遮住"],
+      "diagnostic": "确认 True 表示允许的真实键，不能把补齐位置混入权重。",
+      "hints": ["查看 key_valid 的形状和布尔定义。", "测试 padded key 权重和 padded query 输出都为零。"],
+      "example": "第三个位置是 padding 时，第三列注意力权重为 0。",
+      "answer": "补齐位置不含文本信息；本课 key_valid=True 表示真实词元，padding 键权重为零，padding 查询输出也归零。",
+      "source": {"label": "Mask 与位置", "href": "#concept-mask-position"}, "updated_at": "2026-10-14", "recommended": true
+    },
+    {
+      "id": "causal", "lesson_id": "nlp-transformer-05", "context_id": "concept-mask-position",
+      "question": "causal mask 和 padding mask 有什么区别？", "aliases": ["文本分类为什么默认不遮未来"], "keywords": ["causal mask", "padding mask", "未来", "文本分类", "双向"],
+      "diagnostic": "区分无效填充与原本有效但在当前时刻不应可见的未来词。",
+      "hints": ["padding mask 排除假词元。", "causal mask 用下三角限制未来键；整句分类默认完整句子可见。"],
+      "example": "两词例中 causal 使第一个位置对第二个键权重为 0。",
+      "answer": "padding mask 遮无效补齐；causal mask 遮未来有效词。整句分类输入已完整，本课默认只遮 padding，因果遮蔽只做对照。",
+      "source": {"label": "Mask 与位置", "href": "#concept-mask-position"}, "updated_at": "2026-10-14", "recommended": true
+    },
+    {
+      "id": "position", "lesson_id": "nlp-transformer-05", "context_id": "concept-mask-position",
+      "question": "自注意力为什么还要位置编码？", "aliases": ["正弦余弦位置向量做什么"], "keywords": ["位置编码", "自注意力", "正弦", "余弦", "词序"],
+      "diagnostic": "确认词元内容与它在句中的位置是两种不同信息。",
+      "hints": ["比较同一词元在不同位置的输入向量。", "关闭 use_position 后再比分类器输出。"],
+      "example": "位置 0 的 sin 分量为 0、cos 分量为 1；位置 1 不同。",
+      "answer": "只看词元内容的自注意力不自带原始次序；固定位置向量让模型可区分同一词元所在位置，但不保证理解语法。",
+      "source": {"label": "Mask 与位置", "href": "#concept-mask-position"}, "updated_at": "2026-10-14", "recommended": true
+    },
+    {
+      "id": "hand", "lesson_id": "nlp-transformer-05", "context_id": "example-two-token",
+      "question": "两词手算中第一个输出为什么从 1,2 变成 2,0？", "aliases": ["手算注意力权重如何得到 0.5 0.5"], "keywords": ["两词", "手算", "输出", "1,2", "2,0", "0.5"],
+      "diagnostic": "先算两个等分，再单独施加未来遮蔽。",
+      "hints": ["两个分数相同，所以 softmax 为各 0.5。", "causal 后第一个查询只剩第一个键，权重变 1。"],
+      "example": "0.5(2,0)+0.5(0,4)=(1,2)；遮后为 1(2,0)。",
+      "answer": "无掩码时两个键等分得到 (1,2)；因果遮蔽第二键后第一键独占权重，输出 (2,0)。",
+      "source": {"label": "两词手算", "href": "#example-two-token"}, "updated_at": "2026-10-14", "recommended": true
+    },
+    {
+      "id": "nan", "lesson_id": "nlp-transformer-05", "context_id": "troubleshoot-attention-v05",
+      "question": "注意力出现 NaN 先查哪里？", "aliases": ["为什么首键无效会报错"], "keywords": ["NaN", "首键无效", "没有可见键", "报错"],
+      "diagnostic": "排除一个查询的所有分数都被 mask 成负无穷。",
+      "hints": ["看 key_valid 第一列是否全为 True。", "确认 causal 与 padding 相交后每行至少留一个键。"],
+      "example": "第一词是 padding 且 causal=True 时首查询无可见键。",
+      "answer": "先查 mask 方向和每行是否至少有一个可见键；本实现要求首键有效，避免全遮蔽 softmax 产生 NaN。",
+      "source": {"label": "数值排错", "href": "#troubleshoot-attention-v05"}, "updated_at": "2026-10-14", "recommended": true
+    },
+    {
+      "id": "compare", "lesson_id": "nlp-transformer-05", "context_id": "project-attention-v05",
+      "question": "v0.5 验证 0.875 能证明注意力更好吗？", "aliases": ["v0.4 GRU CNN 与注意力怎样公平比较"], "keywords": ["v0.5", "0.875", "v0.4", "GRU", "CNN", "公平比较"],
+      "diagnostic": "先核对数据与指标相同，再列出模型与训练设置仍不同。",
+      "hints": ["查看报告中的语料指纹、训练与验证 ID。", "再比较词元方式、参数量、训练轮次、种子和错误样本。"],
+      "example": "v0.3 与 v0.5 都是 0.875，v0.4 两模型是 0.625；验证仅 8 条。",
+      "answer": "不能。相同切分只保证基本比较口径，8 条验证句及参数、训练配置差异都不足以把分数差异归因于架构。",
+      "source": {"label": "文本分类 v0.5", "href": "#project-attention-v05"}, "updated_at": "2026-10-14", "recommended": true
+    }
+  ]
+}

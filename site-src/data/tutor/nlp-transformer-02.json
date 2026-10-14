@@ -1,0 +1,83 @@
+{
+  "version": 2,
+  "lesson": {
+    "id": "nlp-transformer-02",
+    "title": "分词、TF-IDF 与线性分类基线",
+    "path": "learning-paths/ai-foundation/nlp-transformer/02-tokenization-tfidf-linear-baseline/"
+  },
+  "contexts": [
+    {"id":"overview-tfidf-result","type":"overview","title":"验证集结果","anchor":"#overview-tfidf-result"},
+    {"id":"concept-token-tfidf","type":"concept","title":"字符二元组与 TF-IDF","anchor":"#concept-token-tfidf"},
+    {"id":"concept-linear-score","type":"concept","title":"线性分类器","anchor":"#concept-linear-score"},
+    {"id":"example-small-tfidf","type":"example","title":"小例子与错误句","anchor":"#example-small-tfidf"},
+    {"id":"reproduce-tfidf-v02","type":"reproduce","title":"运行 v0.2","anchor":"#reproduce-tfidf-v02"},
+    {"id":"modify-ngram-rule","type":"modify","title":"修改特征规则","anchor":"#modify-ngram-rule"},
+    {"id":"troubleshoot-tfidf","type":"troubleshoot","title":"实验排错","anchor":"#troubleshoot-tfidf"},
+    {"id":"project-text-v02","type":"project","title":"P3.2 项目版本","anchor":"#project-text-v02"}
+  ],
+  "cards": [
+    {
+      "id":"char-bigram","lesson_id":"nlp-transformer-02","context_id":"concept-token-tfidf",
+      "question":"字符二元组怎样从中文句子产生？","aliases":["二元组分词怎么做"],"keywords":["字符二元组","二元组分词"],
+      "diagnostic":"先看问题是切词规则还是词权重；这里先只处理相邻字符。","hints":["去掉空白并把英文字母转小写。","在清理后的字符串上滑动长度为 2 的窗口。"],
+      "example":"学习计划 → 学习、习计、计划。","answer":"本课不依赖中文词典；清理文本后取每对相邻字符。它保留局部词形，却可能切开真实词语，也不能直接理解语义。",
+      "source":{"label":"字符二元组与 TF-IDF","href":"#concept-token-tfidf"},"updated_at":"2026-10-13","recommended":true
+    },
+    {
+      "id":"idf","lesson_id":"nlp-transformer-02","context_id":"concept-token-tfidf",
+      "question":"IDF 为什么只从训练句计算？","aliases":["验证集能参与 IDF 吗"],"keywords":["IDF训练","验证集IDF"],
+      "diagnostic":"检查你是否在划分后才调用 fit_vectorizer。","hints":["IDF 统计一个二元组出现于多少篇文档。","验证句若参与统计，未见数据就已经改变了特征权重。"],
+      "example":"24 条训练句拟合 IDF；8 条验证句只调用 transform。","answer":"词表与 IDF 都是拟合得到的参数，只能从 train 计算。validation 和 test 只能沿用已拟合值，否则评估发生信息泄漏。",
+      "source":{"label":"字符二元组与 TF-IDF","href":"#concept-token-tfidf"},"updated_at":"2026-10-13","recommended":true
+    },
+    {
+      "id":"tfidf-weight","lesson_id":"nlp-transformer-02","context_id":"example-small-tfidf",
+      "question":"TF-IDF 中词频和 IDF 怎样组合？","aliases":["词出现两次权重怎样变"],"keywords":["TF-IDF权重","词频IDF"],
+      "diagnostic":"区分归一化前的乘积与 L2 归一化后的向量值。","hints":["本课先用原始出现次数当 TF。","乘以平滑 IDF，再对整句向量做 L2 归一化。"],
+      "example":"训练 3 句时，出现在 1 句的二元组 IDF=1+ln(4/2)。","answer":"每维先算原始词频×平滑 IDF；重复两次会让归一化前该维翻倍，但最后整条向量会共同缩放。",
+      "source":{"label":"小例子与错误句","href":"#example-small-tfidf"},"updated_at":"2026-10-13","recommended":true
+    },
+    {
+      "id":"linear","lesson_id":"nlp-transformer-02","context_id":"concept-linear-score",
+      "question":"线性分类器如何从 TF-IDF 向量选标签？","aliases":["score 大于零是什么类别"],"keywords":["线性分类器","score大于零"],
+      "diagnostic":"先找向量、权重和 bias，再看阈值。","hints":["对每维特征值乘一个学到的权重并求和。","加 bias 后，score≥0 预测 code，负数预测 plan。"],
+      "example":"某些计划相关二元组若给负权重，会把 score 推向 plan。","answer":"本课用二元逻辑回归在训练集学习权重和 bias，再按 score 的正负选择 code 或 plan；这仍是词形线索的线性组合。",
+      "source":{"label":"线性分类器","href":"#concept-linear-score"},"updated_at":"2026-10-13","recommended":true
+    },
+    {
+      "id":"baseline","lesson_id":"nlp-transformer-02","context_id":"overview-tfidf-result",
+      "question":"为什么要与全部预测 code 的基线比较？","aliases":["0.5 基线准确率说明什么"],"keywords":["全部预测code","基线准确率"],
+      "diagnostic":"先看验证集两个类别是否各四条。","hints":["多数类基线完全不读文本。","看 macro-F1 和混淆矩阵，不能只看 accuracy。"],
+      "example":"全部猜 code：accuracy=0.500，macro-F1=0.333。","answer":"它给不利用文本的最低对照。模型 0.875/0.873 优于该对照，但 8 条验证句太少，不能外推真实效果。",
+      "source":{"label":"验证集结果","href":"#overview-tfidf-result"},"updated_at":"2026-10-13","recommended":true
+    },
+    {
+      "id":"error-p09","lesson_id":"nlp-transformer-02","context_id":"example-small-tfidf",
+      "question":"P09 错误样本说明了什么？","aliases":["为什么错题记录被判为 code"],"keywords":["P09","错题记录"],
+      "diagnostic":"先核对 P09 的实际标签、预测标签和原句。","hints":["P09 实际是 plan，预测为 code。","词形可能与技术问题靠近，单句不能证明具体因果。"],
+      "example":"什么时候回顾错题记录 → 实际 plan，预测 code。","answer":"这说明该模型在这一句上失败。可以提出词形歧义假设，但不能只凭一次错误断定权重原因；应读特征和更多同类样本。",
+      "source":{"label":"小例子与错误句","href":"#example-small-tfidf"},"updated_at":"2026-10-13","recommended":true
+    },
+    {
+      "id":"reproduce","lesson_id":"nlp-transformer-02","context_id":"reproduce-tfidf-v02",
+      "question":"怎样复现 v0.2 的验证结果？","aliases":["v02 运行命令是什么"],"keywords":["复现v0.2","v02运行"],
+      "diagnostic":"先确认 Python 3.12 和 v0.1、v0.2 两个相邻目录都存在。","hints":["从仓库根目录运行 unittest discover。","再运行 v0.2 的 experiment.py，核对 232 个特征与 P09。"],
+      "example":"python3 site-src/examples/nlp-transformer/text-classification-evolution-v02/experiment.py","answer":"先跑同目录测试，再运行脚本；预期基线 0.500/0.333、模型 0.875/0.873，输出文件可用 --output 写入空目录。",
+      "source":{"label":"运行 v0.2","href":"#reproduce-tfidf-v02"},"updated_at":"2026-10-13","recommended":true
+    },
+    {
+      "id":"modify","lesson_id":"nlp-transformer-02","context_id":"modify-ngram-rule",
+      "question":"把二元组改成三元组后应比较什么？","aliases":["改成字符三元组会怎样"],"keywords":["三元组","修改特征"],
+      "diagnostic":"先保存原版指标，再预测词表和 P09 是否变化。","hints":["只改 tokens() 的窗口长度。","重新跑脚本，并解释为什么固定输出测试会提醒配置已改变。"],
+      "example":"把 i:i+2 改为 i:i+3，记录词表大小、准确率和错误 ID。","answer":"比较词表规模、验证准确率与 macro-F1、混淆矩阵及错误句；不要借此改动 v0.1 划分或追着 8 条验证句无限调参。",
+      "source":{"label":"修改特征规则","href":"#modify-ngram-rule"},"updated_at":"2026-10-13","recommended":true
+    },
+    {
+      "id":"sealed","lesson_id":"nlp-transformer-02","context_id":"project-text-v02",
+      "question":"测试集封存是不是访问控制？","aliases":["test sealed 是什么意思"],"keywords":["测试集封存","testsealed"],
+      "diagnostic":"区分教学评估流程和文件权限。","hints":["原始 corpus.csv 仍含所有标签。","封存是选模前不使用 test 标签、预测和指标的约定。"],
+      "example":"v0.2 的 result.json 只记录 train/validation ID 和验证结果。","answer":"不是访问控制，而是实验纪律。测试标签在源语料里可见，但不能用于调整 TF-IDF、分类器或选择方案；最终方案冻结后再评估。",
+      "source":{"label":"P3.2 项目版本","href":"#project-text-v02"},"updated_at":"2026-10-13","recommended":true
+    }
+  ]
+}
